@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 
-type Restaurant = {
+type Venue = {
   name: string;
   cuisine: string;
   priceRange: "$" | "$$" | "$$$" | "$$$$";
@@ -19,50 +19,60 @@ type Restaurant = {
 type Result = {
   city: string;
   country: string;
-  restaurants: Restaurant[];
+  venues: Venue[];
+  category: "restaurants" | "cocktail bars";
 };
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Top 5 Restaurants in Any City — Find Where to Eat" },
+      { title: "Top 5 Restaurants & Cocktail Bars in Any City" },
       {
         name: "description",
         content:
-          "Type any city in the world and instantly get the top 5 restaurants worth visiting, curated with AI.",
+          "Type any city and instantly get the top 5 restaurants or cocktail bars, drawing from World's 50 Best, Michelin, and World's Best Discovery.",
       },
-      { property: "og:title", content: "Top 5 Restaurants in Any City" },
+      { property: "og:title", content: "Top 5 Restaurants & Cocktail Bars in Any City" },
       {
         property: "og:description",
         content:
-          "Type any city in the world and instantly get the top 5 restaurants worth visiting.",
+          "Top restaurants and cocktail bars in any city, sourced from World's 50 Best and World's Best Discovery.",
       },
     ],
   }),
   component: Index,
 });
 
-async function fetchRestaurants(city: string): Promise<Result> {
+async function fetchVenues({
+  city,
+  category,
+}: {
+  city: string;
+  category: "restaurants" | "cocktail bars";
+}): Promise<Result> {
   const res = await fetch("/api/top-restaurants", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ city }),
+    body: JSON.stringify({ city, category }),
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data?.error ?? "Something went wrong");
-  return data as Result;
+  return { ...(data as Omit<Result, "category">), category };
 }
 
 function Index() {
-  const [city, setCity] = useState("");
-  const mutation = useMutation({ mutationFn: fetchRestaurants });
+  const [restaurantCity, setRestaurantCity] = useState("");
+  const [barCity, setBarCity] = useState("");
+  const mutation = useMutation({ mutationFn: fetchVenues });
 
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    const trimmed = city.trim();
-    if (!trimmed) return;
-    mutation.mutate(trimmed);
-  };
+  const onSubmit =
+    (category: "restaurants" | "cocktail bars", city: string) =>
+    (e: FormEvent) => {
+      e.preventDefault();
+      const trimmed = city.trim();
+      if (!trimmed) return;
+      mutation.mutate({ city: trimmed, category });
+    };
 
   return (
     <main className="min-h-screen bg-background">
@@ -78,38 +88,48 @@ function Index() {
             <span className="text-muted-foreground">anywhere.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
-            Type any city on the planet and get the top 5 restaurants worth your appetite.
+            Type any city to get the top 5 restaurants or cocktail bars, drawn from World's 50 Best, Michelin, and World's Best Discovery.
           </p>
         </header>
 
-        <form onSubmit={onSubmit} className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <div className="relative flex-1">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              placeholder="Try Tokyo, Lisbon, Mexico City…"
-              className="h-12 pl-10 text-base"
-              maxLength={100}
-              autoFocus
-            />
-          </div>
-          <Button
-            type="submit"
-            size="lg"
-            className="h-12 px-6"
-            disabled={mutation.isPending || !city.trim()}
-          >
-            {mutation.isPending ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Searching
-              </>
-            ) : (
-              "Find restaurants"
-            )}
-          </Button>
-        </form>
+        <div className="mt-10 space-y-4">
+          <form onSubmit={onSubmit("restaurants", restaurantCity)} className="flex flex-col gap-3 sm:flex-row">
+            <div className="relative flex-1">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                value={restaurantCity}
+                onChange={(e) => setRestaurantCity(e.target.value)}
+                placeholder="Restaurants in… Tokyo, Lisbon, Mexico City"
+                className="h-12 pl-10 text-base"
+                maxLength={100}
+                autoFocus
+              />
+            </div>
+            <Button type="submit" size="lg" className="h-12 px-6" disabled={mutation.isPending || !restaurantCity.trim()}>
+              {mutation.isPending && mutation.variables?.category === "restaurants" ? (
+                <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Searching</>
+              ) : ("Find restaurants")}
+            </Button>
+          </form>
+
+          <form onSubmit={onSubmit("cocktail bars", barCity)} className="flex flex-col gap-3 sm:flex-row">
+            <div className="relative flex-1">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                value={barCity}
+                onChange={(e) => setBarCity(e.target.value)}
+                placeholder="Cocktail bars in… London, Singapore, NYC"
+                className="h-12 pl-10 text-base"
+                maxLength={100}
+              />
+            </div>
+            <Button type="submit" size="lg" variant="secondary" className="h-12 px-6" disabled={mutation.isPending || !barCity.trim()}>
+              {mutation.isPending && mutation.variables?.category === "cocktail bars" ? (
+                <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Searching</>
+              ) : ("Find cocktail bars")}
+            </Button>
+          </form>
+        </div>
 
         <section className="mt-12">
           {mutation.isPending && <ResultsSkeleton />}
@@ -140,14 +160,14 @@ function Results({ data }: { data: Result }) {
     <div>
       <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
         <MapPin className="h-4 w-4" />
-        Top 5 in{" "}
+        Top 5 {data.category} in{" "}
         <span className="font-medium text-foreground">
           {data.city}
           {data.country ? `, ${data.country}` : ""}
         </span>
       </div>
       <ol className="space-y-3">
-        {data.restaurants.map((r, i) => (
+        {data.venues.map((r, i) => (
           <li key={`${r.name}-${i}`}>
             <Card className="transition-colors hover:border-foreground/20">
               <CardContent className="flex gap-4 p-5">
