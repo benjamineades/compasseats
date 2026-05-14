@@ -16,12 +16,13 @@ const restaurantsSchema = z.object({
       z.object({
         name: z.string(),
         cuisine: z.string(),
-        priceRange: z.enum(["$", "$$", "$$$", "$$$$"]),
+        priceRange: z.string(),
         description: z.string(),
         neighborhood: z.string().optional(),
       }),
     )
-    .length(5),
+    .min(3)
+    .max(5),
 });
 
 export const Route = createFileRoute("/api/top-restaurants")({
@@ -45,13 +46,13 @@ export const Route = createFileRoute("/api/top-restaurants")({
         }
 
         const gateway = createLovableAiGatewayProvider(apiKey);
-        const model = gateway("google/gemini-3-flash-preview");
+        const model = gateway("google/gemini-2.5-flash");
 
         try {
           const { object } = await generateObject({
             model,
             schema: restaurantsSchema,
-            prompt: `List the top 5 most acclaimed and beloved restaurants in ${parsed.city}. Mix iconic must-visit spots with locally celebrated favorites. For each restaurant include: name, cuisine type, priceRange (one of "$", "$$", "$$$", "$$$$"), a short vivid one-sentence description (max 25 words), and optionally the neighborhood. Also include the city's proper name and country. If "${parsed.city}" is not a recognizable city, still attempt your best interpretation.`,
+            prompt: `List 5 top restaurants in ${parsed.city} based on widely available web reviews and rankings (Yelp, Google, Tripadvisor, Eater, Michelin). Return JSON with: city (proper name), country, and restaurants (array of 5). Each restaurant: name, cuisine, priceRange ("$", "$$", "$$$" or "$$$$"), description (one vivid sentence, max 25 words), neighborhood (optional). If "${parsed.city}" is ambiguous, pick the most famous match.`,
           });
           return Response.json(object);
         } catch (err: unknown) {
