@@ -1,6 +1,6 @@
 import "@tanstack/react-start";
 import { createFileRoute } from "@tanstack/react-router";
-import { generateText, Output } from "ai";
+import { generateObject } from "ai";
 import { z } from "zod";
 import { createLovableAiGatewayProvider } from "@/lib/ai-gateway";
 
@@ -48,12 +48,12 @@ export const Route = createFileRoute("/api/top-restaurants")({
         const model = gateway("google/gemini-3-flash-preview");
 
         try {
-          const { output } = await generateText({
+          const { object } = await generateObject({
             model,
-            output: Output.object({ schema: restaurantsSchema }),
-            prompt: `List the top 5 most acclaimed and beloved restaurants in ${parsed.city}. Mix iconic must-visit spots with locally celebrated favorites. For each: short, vivid one-sentence description (max 25 words) of what makes it special. Use the city's actual name and country. If "${parsed.city}" is not a recognizable city, still attempt your best interpretation.`,
+            schema: restaurantsSchema,
+            prompt: `List the top 5 most acclaimed and beloved restaurants in ${parsed.city}. Mix iconic must-visit spots with locally celebrated favorites. For each restaurant include: name, cuisine type, priceRange (one of "$", "$$", "$$$", "$$$$"), a short vivid one-sentence description (max 25 words), and optionally the neighborhood. Also include the city's proper name and country. If "${parsed.city}" is not a recognizable city, still attempt your best interpretation.`,
           });
-          return Response.json(output);
+          return Response.json(object);
         } catch (err: unknown) {
           const e = err as { statusCode?: number; status?: number; message?: string };
           const status = e.statusCode ?? e.status;
