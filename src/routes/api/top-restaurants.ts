@@ -6,12 +6,13 @@ import { createLovableAiGatewayProvider } from "@/lib/ai-gateway";
 
 const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
+  category: z.enum(["restaurants", "cocktail bars"]).optional().default("restaurants"),
 });
 
-const restaurantsSchema = z.object({
+const resultsSchema = z.object({
   city: z.string(),
   country: z.string(),
-  restaurants: z
+  venues: z
     .array(
       z.object({
         name: z.string(),
@@ -49,10 +50,15 @@ export const Route = createFileRoute("/api/top-restaurants")({
         const model = gateway("google/gemini-2.5-flash");
 
         try {
+          const isBars = parsed.category === "cocktail bars";
+          const listRefs = isBars
+            ? `World's 50 Best Bars, World's Best Discovery, Tales of the Cocktail Spirited Awards, Top 500 Bars, and well-regarded local press`
+            : `World's 50 Best Restaurants, World's Best Discovery, Michelin Guide, Eater, and well-regarded local press`;
+          const cuisineLabel = isBars ? "style/specialty (e.g. speakeasy, tiki, classic)" : "cuisine";
           const { object } = await generateObject({
             model,
-            schema: restaurantsSchema,
-            prompt: `List 5 top restaurants in ${parsed.city} based on widely available web reviews and rankings (Yelp, Google, Tripadvisor, Eater, Michelin). Return JSON with: city (proper name), country, and restaurants (array of 5). Each restaurant: name, cuisine, priceRange ("$", "$$", "$$$" or "$$$$"), description (one vivid sentence, max 25 words), neighborhood (optional). If "${parsed.city}" is ambiguous, pick the most famous match.`,
+            schema: resultsSchema,
+            prompt: `List the 5 top ${parsed.category} in ${parsed.city}. Prioritize venues featured on ${listRefs}. Return JSON with: city (proper name), country, and venues (array of 5). Each venue: name, cuisine (${cuisineLabel}), priceRange ("$", "$$", "$$$" or "$$$$"), description (one vivid sentence, max 25 words, mention list recognition if notable), neighborhood (optional). If "${parsed.city}" is ambiguous, pick the most famous match.`,
           });
           return Response.json(object);
         } catch (err: unknown) {
