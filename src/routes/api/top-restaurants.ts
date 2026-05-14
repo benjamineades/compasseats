@@ -52,13 +52,13 @@ export const Route = createFileRoute("/api/top-restaurants")({
         try {
           const isBars = parsed.category === "cocktail bars";
           const listRefs = isBars
-            ? `World's 50 Best Bars, World's Best Discovery, Tales of the Cocktail Spirited Awards, Top 500 Bars, and well-regarded local press`
-            : `World's 50 Best Restaurants, World's Best Discovery, Michelin Guide, Eater, and well-regarded local press`;
+            ? `World's 50 Best Bars, World's Best Discovery, Tales of the Cocktail Spirited Awards, Top 500 Bars, Google Maps listings, and well-regarded local press`
+            : `World's 50 Best Restaurants, World's Best Discovery, Michelin Guide, Eater, Google Maps listings, and well-regarded local press`;
           const cuisineLabel = isBars ? "style/specialty (e.g. speakeasy, tiki, classic)" : "cuisine";
           const { object } = await generateObject({
             model,
             schema: resultsSchema,
-            prompt: `List the 5 top ${parsed.category} in ${parsed.city}. Prioritize venues featured on ${listRefs}. Return JSON with: city (proper name), country, and venues (array of 5). Each venue: name, cuisine (${cuisineLabel}), priceRange ("$", "$$", "$$$" or "$$$$"), description (one vivid sentence, max 25 words, mention list recognition if notable), neighborhood (optional). If "${parsed.city}" is ambiguous, pick the most famous match.`,
+            prompt: `List the 5 top ${parsed.category} in ${parsed.city}. Prioritize venues featured on ${listRefs}, and cross-check each against current Google Maps listings. STRICT: do NOT include any venue that is marked "Permanently closed" on Google Maps or is otherwise known to have closed. Only include venues currently operating. Return JSON with: city (proper name), country, and venues (array of 5). Each venue: name, cuisine (${cuisineLabel}), priceRange ("$", "$$", "$$$" or "$$$$"), description (one vivid sentence, max 25 words, mention list recognition if notable), neighborhood (optional). If "${parsed.city}" is ambiguous, pick the most famous match.`,
           });
           return Response.json(object);
         } catch (err: unknown) {
