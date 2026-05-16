@@ -132,9 +132,8 @@ RANKING PRIORITY — RESTAURANTS (apply in this STRICT order, fill the 20 slots 
 
 RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill the 20 slots top-down):
   1. Venues on the MOST CURRENT World's 50 Best Bars list (top 50 first, then extended 51–100).
-  2. Then venues that have won a Spirited Award in the most recent ceremony (then prior ceremonies).
-  3. Then venues on the current World's Best Discovery (bars) list.
-  4. ONLY if fewer than 20 bars qualify above, fill remaining slots from consumer review sites. If "${parsed.city}" is in the United States: highest-rated on Yelp FIRST, then highest-rated on Trip Advisor. If "${parsed.city}" is OUTSIDE the United States: highest-rated on Trip Advisor FIRST, then highest-rated on Yelp.
+  2. Then venues that placed on PAST years' World's 50 Best Bars lists (most recent prior year first, working backwards; top 50 before extended 51–100 within each year).
+  3. ONLY if fewer than 20 bars qualify above, fill remaining slots from consumer review sites. If "${parsed.city}" is in the United States: highest-rated on Yelp FIRST, then highest-rated on Trip Advisor. If "${parsed.city}" is OUTSIDE the United States: highest-rated on Trip Advisor FIRST, then highest-rated on Yelp.
 
 Return the 20 restaurants in priority order first, then the 20 cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
