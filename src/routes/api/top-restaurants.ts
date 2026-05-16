@@ -44,6 +44,7 @@ const resultsSchema = z.object({
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
         accoladeOverview: z.string().nullish(),
+        whyThisPick: z.string().nullish(),
       }),
     )
     .min(1)
@@ -120,6 +121,9 @@ ACCOLADE OVERVIEW (accoladeOverview field) — REQUIRED FALLBACK:
   • For COCKTAIL BARS: ALWAYS set accoladeOverview when you have any knowledge of the bar from World's 50 Best Bars, Tales of the Cocktail Spirited Awards, or other established bar guides. 1–2 sentences (max 45 words), explicitly referencing the source — e.g. "World's 50 Best Bars highlights…", "A Spirited Award winner known for…". Summarize the bar's program, signature drinks, and atmosphere. Omit only if no such coverage exists.
   • Never fabricate. If unsure, omit.
 
+WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
+  Always populate whyThisPick with ONE concise sentence (max 25 words) explaining the single strongest reason this venue earned its spot on this list. Be specific: cite the exact accolade ("Holds 3 Michelin stars and ranks #4 on World's 50 Best 2024"), a defining strength ("Pioneered Nordic fermentation and still sets the regional benchmark"), or — for fallback Yelp/Trip Advisor picks — why it's the top-rated choice ("Highest-rated izakaya on Tabelog with 4.6 stars across 2,000+ reviews"). Never generic ("great food"). Never repeat the description verbatim.
+
 For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — most recent year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100 list, with that rank and year; omit if never listed). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — most recent year it placed on World's 50 Best Bars top 50 or extended 51–100, with that rank and year; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, e.g. "World's Best Cocktail Bar", with the year; omit if none). Only include accolade fields you are confident about; never fabricate. If "${parsed.city}" is ambiguous, pick the most famous match.`,
           });
           const normalized = {
@@ -146,6 +150,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 chef: v.chef ?? undefined,
                 signatureDish: v.signatureDish ?? undefined,
                 accoladeOverview: v.accoladeOverview ?? undefined,
+                whyThisPick: v.whyThisPick ?? undefined,
               };
             }),
           };
