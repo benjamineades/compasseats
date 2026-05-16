@@ -6,6 +6,8 @@ import { createLovableAiGatewayProvider } from "@/lib/ai-gateway";
 
 const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
+  region: z.string().trim().max(100).optional(),
+  country: z.string().trim().max(100).optional(),
 });
 
 const numericValue = z.coerce.number().finite();
@@ -85,6 +87,12 @@ export const Route = createFileRoute("/api/top-restaurants")({
         } catch {
           return Response.json({ error: "Invalid request" }, { status: 400 });
         }
+        const cityQuery = [parsed.city, parsed.region, parsed.country]
+          .filter((s): s is string => Boolean(s && s.length))
+          .join(", ");
+        const isUS = parsed.country
+          ? /^(united states|usa|us)$/i.test(parsed.country)
+          : /united states|usa/i.test(cityQuery);
 
         const apiKey = process.env.LOVABLE_API_KEY;
         if (!apiKey) {
