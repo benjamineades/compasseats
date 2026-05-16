@@ -90,9 +90,6 @@ export const Route = createFileRoute("/api/top-restaurants")({
         const cityQuery = [parsed.city, parsed.region, parsed.country]
           .filter((s): s is string => Boolean(s && s.length))
           .join(", ");
-        const isUS = parsed.country
-          ? /^(united states|usa|us)$/i.test(parsed.country)
-          : /united states|usa/i.test(cityQuery);
 
         const apiKey = process.env.LOVABLE_API_KEY;
         if (!apiKey) {
