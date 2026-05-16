@@ -61,7 +61,7 @@ const resultsSchema = z.object({
         hours: z.string().nullish(),
       }),
     )
-    .min(1),
+    .min(0),
 });
 
 const sanitizeAiJson = (text: string) => {
@@ -72,6 +72,23 @@ const sanitizeAiJson = (text: string) => {
   return text
     .slice(start, end + 1)
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, " ");
+};
+
+const MAX_RADIUS_MILES = 30;
+const haversineMiles = (
+  lat1: number,
+  lng1: number,
+  lat2: number,
+  lng2: number,
+) => {
+  const R = 3958.8;
+  const toRad = (d: number) => (d * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
 };
 
 export const Route = createFileRoute("/api/top-restaurants")({
