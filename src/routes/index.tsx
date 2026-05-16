@@ -2,14 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import type { FormEvent, ReactNode } from "react";
 import { useState } from "react";
-import { Search, MapPin, Loader2, Star, Leaf, Utensils, Trophy, Award, ExternalLink, Instagram, Facebook, Globe, CalendarCheck, Clock } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { MapPin, Loader2, Star, Leaf, Utensils, Trophy, Award, ExternalLink, Instagram, Facebook, Globe, CalendarCheck, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { VenueMap } from "@/components/VenueMap";
 import { RotatingEarth } from "@/components/RotatingEarth";
+import { CityAutocomplete } from "@/components/CityAutocomplete";
 
 type Venue = {
   name: string;
@@ -98,17 +98,13 @@ function Index() {
         </header>
 
         <form onSubmit={onSubmit} className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <div className="relative flex-1">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              placeholder="Tokyo, Lisbon, Mexico City…"
-              className="h-12 pl-10 text-base"
-              maxLength={100}
-              autoFocus
-            />
-          </div>
+          <CityAutocomplete
+            value={city}
+            onChange={setCity}
+            onSelect={(s) => mutation.mutate(s.short)}
+            placeholder="Tokyo, Lisbon, Mexico City…"
+            disabled={mutation.isPending}
+          />
           <Button type="submit" size="lg" className="h-12 px-6" disabled={mutation.isPending || !city.trim()}>
             {mutation.isPending ? (
               <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Searching</>
@@ -237,10 +233,11 @@ function VenueColumn({
                         href={v.reservationUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        title={v.reservationPlatform ? `Book via ${v.reservationPlatform}` : "Book a reservation"}
                         className="mt-1.5 inline-flex items-center gap-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400 hover:bg-emerald-500/20"
                       >
                         <CalendarCheck className="h-3 w-3" />
-                        Book on {v.reservationPlatform ?? "Website"}
+                        Book
                         <ExternalLink className="h-3 w-3 opacity-70" />
                       </a>
                     )}
