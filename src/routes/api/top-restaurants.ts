@@ -78,6 +78,14 @@ export const Route = createFileRoute("/api/top-restaurants")({
 
 OVERALL RULE: Within EVERY tier below, always prefer the MOST RECENT accolade year. When two venues are in the same tier, the one whose qualifying accolade was awarded in a more recent year ranks higher. Use rank as a secondary tiebreaker only when the accolade years are equal. Never use an older year's ranking when a more recent year exists.
 
+CURRENT YEAR CONTEXT: It is 2026. The MOST CURRENT lists you must use are:
+  - World's 50 Best Restaurants 2025 (announced June 2025 in Turin) — use this list, NOT 2024 or earlier.
+  - World's 50 Best Bars 2025 (announced October 2025 in Hong Kong) — use this list, NOT 2024 or earlier.
+  - Michelin Guide 2025/2026 editions (whichever is most recently published for the region).
+  - Tales of the Cocktail Spirited Awards 2025 (announced July 2025).
+  - World's Best Discovery list as updated through 2025.
+If you are uncertain whether a venue made the 2025 list, prefer venues you are confident appeared on the 2025 list over those from 2024 or earlier. Always populate the `year` field with the most recent year the venue was listed (prefer 2025 when applicable).
+
 RANKING PRIORITY — RESTAURANTS (apply in this strict order, fill the 10 slots top-down):
   1. Venues on the MOST CURRENT World's 50 Best Restaurants list (top 50 first, then extended 51–100). Sort by most recent listing year first, then by rank.
   2. Then venues in the current Michelin Guide, ordered 3 stars → 2 stars → 1 star → Green Star → Bib Gourmand. Within each star tier, prefer the most recent award/renewal year.
