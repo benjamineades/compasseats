@@ -193,6 +193,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 whyThisPick: v.whyThisPick ?? undefined,
                 reservationUrl,
                 reservationPlatform: reservationUrl ? (v.reservationPlatform ?? "Website") : undefined,
+                hours: v.category === "cocktail bar" ? (v.hours ?? undefined) : undefined,
               };
             }),
           };
