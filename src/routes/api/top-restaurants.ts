@@ -41,6 +41,8 @@ const resultsSchema = z.object({
         spiritedAward: z
           .object({ name: z.string(), year: integerValue })
           .nullish(),
+        chef: z.string().nullish(),
+        signatureDish: z.string().nullish(),
       }),
     )
     .min(1)
