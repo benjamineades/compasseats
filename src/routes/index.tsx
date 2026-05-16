@@ -195,9 +195,7 @@ function Index() {
           {!mutation.isPending && !mutation.isSuccess && !mutation.isError && (
             <div className="mt-6 flex flex-col items-center gap-6">
               <RotatingEarth />
-              <p className="text-center text-sm text-muted-foreground">
-                Pick any city on Earth to begin.
-              </p>
+              <p className="text-center text-sm text-muted-foreground">​</p>
             </div>
           )}
         </section>
