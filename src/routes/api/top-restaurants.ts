@@ -10,6 +10,17 @@ const bodySchema = z.object({
 
 const numericValue = z.coerce.number().finite();
 const integerValue = z.coerce.number().int();
+const validUrlTypes = ["website", "instagram", "facebook"] as const;
+
+const normalizeUrlType = (url?: string, urlType?: string | null) => {
+  if (validUrlTypes.includes(urlType as (typeof validUrlTypes)[number])) {
+    return urlType as (typeof validUrlTypes)[number];
+  }
+  if (!url) return undefined;
+  if (/instagram\.com/i.test(url)) return "instagram";
+  if (/facebook\.com|fb\.com/i.test(url)) return "facebook";
+  return "website";
+};
 
 const resultsSchema = z.object({
   city: z.string(),
@@ -28,7 +39,7 @@ const resultsSchema = z.object({
         lat: numericValue,
         lng: numericValue,
         url: z.string().nullish(),
-        urlType: z.enum(["website", "instagram", "facebook"]).nullish(),
+        urlType: z.string().nullish(),
         michelinStars: integerValue.nullish(),
         michelinGreenStar: z.boolean().nullish(),
         bibGourmand: z.boolean().nullish(),
@@ -164,7 +175,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 lat: v.lat,
                 lng: v.lng,
                 url,
-                urlType: url ? (v.urlType ?? "website") : undefined,
+                urlType: normalizeUrlType(url, v.urlType),
                 michelinStars: v.michelinStars ?? undefined,
                 michelinGreenStar: v.michelinGreenStar ?? undefined,
                 bibGourmand: v.bibGourmand ?? undefined,
