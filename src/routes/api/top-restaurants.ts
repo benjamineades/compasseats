@@ -45,6 +45,8 @@ const resultsSchema = z.object({
         signatureDish: z.string().nullish(),
         accoladeOverview: z.string().nullish(),
         whyThisPick: z.string().nullish(),
+        reservationUrl: z.string().nullish(),
+        reservationPlatform: z.string().nullish(),
       }),
     )
     .min(1),
