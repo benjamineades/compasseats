@@ -357,7 +357,7 @@ function Accolades({ v }: { v: Venue }) {
         className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400"
       >
         <Trophy className="h-3 w-3" />
-        World's 50 Best #{v.worldsBest50Restaurants.rank} ('{String(v.worldsBest50Restaurants.year).slice(-2)})
+        World's 50 Best #{v.worldsBest50Restaurants.rank} ({v.worldsBest50Restaurants.year})
       </span>,
     );
   }
