@@ -28,6 +28,8 @@ type Venue = {
   worldsBest50Restaurants?: { rank: number; year: number };
   worldsBest50Bars?: { rank: number; year: number };
   spiritedAward?: { name: string; year: number };
+  chef?: string;
+  signatureDish?: string;
 };
 
 type Result = {
@@ -233,6 +235,20 @@ function VenueColumn({
                       {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
                     </div>
                     <Accolades v={v} />
+                    {v.category === "restaurant" && (v.chef || v.signatureDish) && (
+                      <div className="mt-2 space-y-0.5 text-sm">
+                        {v.chef && (
+                          <p className="text-foreground">
+                            <span className="text-muted-foreground">Chef:</span> {v.chef}
+                          </p>
+                        )}
+                        {v.signatureDish && (
+                          <p className="text-foreground">
+                            <span className="text-muted-foreground">Signature:</span> {v.signatureDish}
+                          </p>
+                        )}
+                      </div>
+                    )}
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.description}</p>
                   </div>
                 </CardContent>
