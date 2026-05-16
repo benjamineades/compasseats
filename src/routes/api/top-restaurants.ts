@@ -18,33 +18,29 @@ const resultsSchema = z.object({
       z.object({
         name: z.string(),
         category: z.enum(["restaurant", "cocktail bar"]),
-        cuisine: z.string(),
-        priceRange: z.string(),
-        description: z.string(),
-        neighborhood: z.string().optional(),
+        cuisine: z.string().nullish(),
+        priceRange: z.string().nullish(),
+        description: z.string().nullish(),
+        neighborhood: z.string().nullish(),
         lat: z.number(),
         lng: z.number(),
-        url: z
-          .string()
-          .trim()
-          .optional()
-          .transform((v) => (v && /^https?:\/\//i.test(v) ? v : undefined)),
-        urlType: z.enum(["website", "instagram", "facebook"]).optional(),
-        michelinStars: z.number().int().min(0).max(3).optional(),
-        michelinGreenStar: z.boolean().optional(),
-        bibGourmand: z.boolean().optional(),
+        url: z.string().nullish(),
+        urlType: z.enum(["website", "instagram", "facebook"]).nullish(),
+        michelinStars: z.number().int().nullish(),
+        michelinGreenStar: z.boolean().nullish(),
+        bibGourmand: z.boolean().nullish(),
         worldsBest50Restaurants: z
-          .object({ rank: z.number().int().min(1).max(200), year: z.number().int() })
-          .optional(),
+          .object({ rank: z.number().int(), year: z.number().int() })
+          .nullish(),
         worldsBest50Bars: z
-          .object({ rank: z.number().int().min(1).max(200), year: z.number().int() })
-          .optional(),
+          .object({ rank: z.number().int(), year: z.number().int() })
+          .nullish(),
         spiritedAward: z
           .object({ name: z.string(), year: z.number().int() })
-          .optional(),
+          .nullish(),
       }),
     )
-    .min(2)
+    .min(1)
     .max(20),
 });
 
