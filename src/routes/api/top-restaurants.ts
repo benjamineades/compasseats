@@ -44,13 +44,13 @@ const resultsSchema = z.object({
         michelinGreenStar: z.boolean().nullish(),
         bibGourmand: z.boolean().nullish(),
         worldsBest50Restaurants: z
-          .object({ rank: integerValue.nullish(), year: integerValue.nullish() })
+          .object({ rank: integerValue, year: integerValue })
           .nullish(),
         worldsBest50Bars: z
-          .object({ rank: integerValue.nullish(), year: integerValue.nullish() })
+          .object({ rank: integerValue, year: integerValue })
           .nullish(),
         spiritedAward: z
-          .object({ name: z.string().nullish(), year: integerValue.nullish() })
+          .object({ name: z.string(), year: integerValue })
           .nullish(),
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
@@ -61,7 +61,7 @@ const resultsSchema = z.object({
         hours: z.string().nullish(),
       }),
     )
-    .min(0),
+    .min(1),
 });
 
 const sanitizeAiJson = (text: string) => {
@@ -71,32 +71,7 @@ const sanitizeAiJson = (text: string) => {
 
   return text
     .slice(start, end + 1)
-    .replace(
-      /"lat\/lng"\s*:\s*"(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)"/g,
-      '"lat": $1, "lng": $2',
-    )
-    .replace(
-      /"latLng"\s*:\s*"(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)"/g,
-      '"lat": $1, "lng": $2',
-    )
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, " ");
-};
-
-const MAX_RADIUS_MILES = 30;
-const haversineMiles = (
-  lat1: number,
-  lng1: number,
-  lat2: number,
-  lng2: number,
-) => {
-  const R = 3958.8;
-  const toRad = (d: number) => (d * Math.PI) / 180;
-  const dLat = toRad(lat2 - lat1);
-  const dLng = toRad(lng2 - lng1);
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
-  return 2 * R * Math.asin(Math.sqrt(a));
 };
 
 export const Route = createFileRoute("/api/top-restaurants")({
@@ -133,9 +108,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-          prompt: `Today is ${currentMonth} ${currentYear}. List up to 20 top restaurants AND up to 20 top cocktail bars in or around ${parsed.city} (up to 40 venues total).
-
-GEOGRAPHIC RADIUS (hard constraint): Every venue MUST be located within a 30-mile (≈48 km) radius of ${parsed.city}'s city center. Measure straight-line distance from the city-center lat/lng you return. Exclude any venue outside that radius even if it is famous or nearby — do NOT include venues in adjacent cities/metros beyond 30 miles. If a venue is exactly on the boundary and you aren't sure, OMIT it. Return fewer than 20 per category if there aren't enough qualifying venues within the radius — a short, in-radius list is strictly better than padding with out-of-range venues.
+          prompt: `Today is ${currentMonth} ${currentYear}. List the 20 top restaurants AND the 20 top cocktail bars in ${parsed.city} (40 venues total).
 
 RECENCY IS MANDATORY. The official accolade lists you must use:
   • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists.
@@ -145,27 +118,25 @@ RECENCY IS MANDATORY. The official accolade lists you must use:
   • World's Best Discovery — current live listing.
 Do NOT include any accolade with year < ${minAccoladeYear} unless that exact year is still the most recent edition of that list. If you are not confident the accolade reflects the latest edition, OMIT the accolade field entirely rather than guess. Fabricated or outdated years are worse than no badge.
 
-ANTI-HALLUCINATION RULE (overrides the count target below): Every venue you return MUST be a real, currently-operating business that you are confident exists at the address you'd find on Google Maps / Google Business today. Do NOT invent venues, do NOT guess plausible-sounding names, do NOT include venues you only "think" might exist, do NOT include venues you remember but aren't sure are still open. If you cannot independently recall a venue from multiple credible sources (its own coverage, accolade lists, well-known press, or established review platforms) AND have no reason to believe it has closed, OMIT IT. A shorter, fully verifiable list is STRICTLY BETTER than a padded list with fabricated or defunct venues. Specifically exclude any venue that: (a) you cannot place at a specific real address, (b) Google Maps would mark "Permanently closed" / "Temporarily closed", (c) has clearly closed, moved away from ${parsed.city}, rebranded under a different name, or whose chef/team has publicly departed and the venue ceased operating, (d) feels like a generic combination of city + cuisine rather than a venue you actually know.
-
-COUNT TARGET: Aim for up to 20 restaurants AND up to 20 cocktail bars when you can do so WITHOUT violating the anti-hallucination rule above AND while staying within the 30-mile radius. If verified in-radius supply is thinner — e.g. a small city, remote area, or a city you have limited reliable knowledge of — return however many you ARE confident about (could be 1, 5, 10, 15). NEVER fabricate or stretch the radius to reach 20. Fill remaining confident in-radius slots first from the accolade tiers below, then from venues with strong, verifiable Yelp / Trip Advisor / Tabelog presence you actually recognize.
+NON-EMPTY GUARANTEE (highest priority): You MUST return exactly 20 restaurants AND exactly 20 cocktail bars for ${parsed.city}, even when no accolade data can be verified. If the accolade tiers below don't fill 20 slots, immediately fall back to the highest-rated venues from Yelp / Trip Advisor (and finally to any other well-known, currently-operating local venues you know) to reach 20 in each category. Never return fewer than 20 per category. Omitting accolade fields is fine; returning an empty or short list is NOT.
 
 OVERALL RULE: Within EVERY tier below, always prefer the MOST RECENT accolade year. When two venues are in the same tier, the one whose qualifying accolade was awarded in a more recent year ranks higher. Use rank as a secondary tiebreaker only when the accolade years are equal. Never use an older year's ranking when a more recent year exists.
 
-RANKING PRIORITY — RESTAURANTS (apply in this strict order, fill up to 20 in-radius slots top-down):
+RANKING PRIORITY — RESTAURANTS (apply in this strict order, fill the 20 slots top-down):
   1. Venues on the MOST CURRENT World's 50 Best Restaurants list (top 50 first, then extended 51–100).
   2. Then venues in the current Michelin Guide, ordered 3 stars → 2 stars → 1 star → Green Star → Bib Gourmand.
   3. Then venues on the current World's Best Discovery (restaurants) list.
   4. ONLY if fewer than 20 restaurants qualify above, fill remaining slots with the highest-rated restaurants from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
 
-RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill up to 20 in-radius slots top-down):
+RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill the 20 slots top-down):
   1. Venues on the MOST CURRENT World's 50 Best Bars list (top 50 first, then extended 51–100).
   2. Then venues that have won a Spirited Award in the most recent ceremony (then prior ceremonies).
   3. Then venues on the current World's Best Discovery (bars) list.
   4. ONLY if fewer than 20 bars qualify above, fill remaining slots with the highest-rated cocktail bars from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
 
-Return restaurants in priority order first, then cocktail bars in priority order (up to 20 each, fewer if needed to stay truthful). Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for three things: (1) confirm each venue currently exists as an active Google Business listing — if you cannot place it on Google Maps with confidence, drop it, (2) exclude any venue marked "Permanently closed" / "Temporarily closed" or otherwise known to have closed, and (3) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
+Return the 20 restaurants in priority order first, then the 20 cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
-Return JSON with: city (proper name), country, lat and lng as separate numeric fields (city center coordinates), and venues (array of up to 40: up to 20 restaurants then up to 20 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (see DESCRIPTION RULES), neighborhood (optional), lat and lng as separate numeric fields (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided). Never return a combined "lat/lng" or "latLng" key.
+Return JSON with: city (proper name), country, lat/lng (city center coordinates), and venues (array of 40: 20 restaurants then 20 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (see DESCRIPTION RULES), neighborhood (optional), lat/lng (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided).
 
 DESCRIPTION RULES — RESTAURANTS: One vivid sentence, max 35 words. ALSO set these two fields when known: chef (current head/executive chef's full name — only if you're confident they are still at the venue; omit otherwise) and signatureDish (the dish the restaurant is most known for, named specifically, e.g. "smoked eel tartlet"; omit if not clearly known). For COCKTAIL BARS: one vivid sentence (max 25 words); do not set chef or signatureDish.
 
@@ -186,27 +157,13 @@ WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
   BUSINESS HOURS (hours field) — REQUIRED for EVERY venue (restaurants AND cocktail bars):
     Set hours to a compact human-readable summary of when the venue is open. Max 40 chars. Group consecutive days with the same hours. Use en-dash for ranges and lowercase am/pm. Examples: "Tue–Sun 6pm–2am", "Daily 5pm–1am", "Mon–Thu 6pm–12am, Fri–Sat 6pm–2am, Closed Sun", "Lunch Tue–Fri 12–2pm, Dinner Tue–Sat 7–10pm". If you are not confident about current hours, omit the field rather than guess.
 
-MICHELIN STARS ARE MANDATORY WHEN PRESENT. For EVERY restaurant that currently holds Michelin stars in the most recent Michelin Guide covering ${parsed.city}'s region, you MUST populate michelinStars (1, 2, or 3) — do NOT omit this field. Well-known multi-year star holders absolutely qualify; only omit if the restaurant has demonstrably lost its stars in the current edition. When in doubt about a famously starred restaurant, INCLUDE the stars. Same applies to michelinGreenStar (true if currently held) and bibGourmand (true if currently held). Missing Michelin awards on a known starred restaurant is a critical failure of this task.
-
-For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — most recent year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100 list, with that rank and year; omit if never listed). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — most recent year it placed on World's 50 Best Bars top 50 or extended 51–100, with that rank and year; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, e.g. "World's Best Cocktail Bar", with the year; omit if none). Only include accolade fields you are confident about; never fabricate. If "${parsed.city}" is ambiguous, pick the most famous match.`,
+For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — most recent year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100 list, with that rank and year; omit if never listed). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — most recent year it placed on World's 50 Best Bars top 50 or extended 51–100, with that rank and year; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, e.g. "World's Best Cocktail Bar", with the year; omit if none). Only include accolade fields you are confident about; never fabricate. If "${parsed.city}" is ambiguous, pick the most famous match.`,
           });
           const normalized = {
             ...object,
             venues: [
-              ...object.venues
-                .filter(
-                  (v) =>
-                    v.category === "restaurant" &&
-                    haversineMiles(object.lat, object.lng, v.lat, v.lng) <= MAX_RADIUS_MILES,
-                )
-                .slice(0, 20),
-              ...object.venues
-                .filter(
-                  (v) =>
-                    v.category === "cocktail bar" &&
-                    haversineMiles(object.lat, object.lng, v.lat, v.lng) <= MAX_RADIUS_MILES,
-                )
-                .slice(0, 20),
+              ...object.venues.filter((v) => v.category === "restaurant").slice(0, 20),
+              ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 20),
             ].map((v) => {
               const url = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
               const reservationUrl =
@@ -227,22 +184,9 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — fro
                 michelinStars: v.michelinStars ?? undefined,
                 michelinGreenStar: v.michelinGreenStar ?? undefined,
                 bibGourmand: v.bibGourmand ?? undefined,
-                worldsBest50Restaurants:
-                  v.worldsBest50Restaurants &&
-                  v.worldsBest50Restaurants.rank != null &&
-                  v.worldsBest50Restaurants.year != null
-                    ? { rank: v.worldsBest50Restaurants.rank, year: v.worldsBest50Restaurants.year }
-                    : undefined,
-                worldsBest50Bars:
-                  v.worldsBest50Bars &&
-                  v.worldsBest50Bars.rank != null &&
-                  v.worldsBest50Bars.year != null
-                    ? { rank: v.worldsBest50Bars.rank, year: v.worldsBest50Bars.year }
-                    : undefined,
-                spiritedAward:
-                  v.spiritedAward && v.spiritedAward.name && v.spiritedAward.year != null
-                    ? { name: v.spiritedAward.name, year: v.spiritedAward.year }
-                    : undefined,
+                worldsBest50Restaurants: v.worldsBest50Restaurants ?? undefined,
+                worldsBest50Bars: v.worldsBest50Bars ?? undefined,
+                spiritedAward: v.spiritedAward ?? undefined,
                 chef: v.chef ?? undefined,
                 signatureDish: v.signatureDish ?? undefined,
                 accoladeOverview: v.accoladeOverview ?? undefined,
