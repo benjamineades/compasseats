@@ -251,7 +251,7 @@ function VenueColumn({
                     <div className="mt-1 flex flex-wrap gap-1.5">
                       <Badge variant="outline">{v.cuisine}</Badge>
                       {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
-                      {v.category === "cocktail bar" && v.hours && (
+                      {v.hours && (
                         <Badge variant="outline" title="Business hours" className="gap-1">
                           <Clock className="h-3 w-3" />
                           {v.hours}
