@@ -255,7 +255,7 @@ function LinkIcon({ type }: { type?: Venue["urlType"] }) {
 
 function Accolades({ v }: { v: Venue }) {
   const stars = v.michelinStars ?? 0;
-  const items: React.ReactNode[] = [];
+  const items: ReactNode[] = [];
   if (stars > 0) {
     items.push(
       <span
