@@ -87,10 +87,6 @@ function Index() {
     <main className="min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
         <header className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
-            <UtensilsCrossed className="h-3.5 w-3.5" />
-            Powered by AI
-          </div>
           <h1 className="mt-6 text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
             Where to eat & drink,
             <br />
