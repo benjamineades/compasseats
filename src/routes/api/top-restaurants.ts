@@ -6,6 +6,8 @@ import { createLovableAiGatewayProvider } from "@/lib/ai-gateway";
 
 const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
+  region: z.string().trim().max(100).optional(),
+  country: z.string().trim().max(100).optional(),
 });
 
 const numericValue = z.coerce.number().finite();
@@ -85,6 +87,9 @@ export const Route = createFileRoute("/api/top-restaurants")({
         } catch {
           return Response.json({ error: "Invalid request" }, { status: 400 });
         }
+        const cityQuery = [parsed.city, parsed.region, parsed.country]
+          .filter((s): s is string => Boolean(s && s.length))
+          .join(", ");
 
         const apiKey = process.env.LOVABLE_API_KEY;
         if (!apiKey) {
@@ -108,17 +113,17 @@ export const Route = createFileRoute("/api/top-restaurants")({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-          prompt: `Today is ${currentMonth} ${currentYear}. List the 20 top restaurants AND the 20 top cocktail bars in ${parsed.city} (40 venues total).
+          prompt: `Today is ${currentMonth} ${currentYear}. List the 20 top restaurants AND the 20 top cocktail bars in ${cityQuery} (40 venues total).
 
 RECENCY IS MANDATORY. The official accolade lists you must use:
   • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists.
   • World's 50 Best Bars — same rule: most recent edition only.
-  • Michelin Guide — the CURRENT edition for ${parsed.city}'s guide region (typically published late ${currentYear - 1} or in ${currentYear}). Only include stars/Bib/Green Star that appear in the current edition; do not carry forward awards a venue has since lost.
+  • Michelin Guide — the CURRENT edition for ${cityQuery}'s guide region (typically published late ${currentYear - 1} or in ${currentYear}). Only include stars/Bib/Green Star that appear in the current edition; do not carry forward awards a venue has since lost.
   • Tales of the Cocktail Spirited Awards — most recent ceremony only (${currentYear} if held, else ${currentYear - 1}).
   • World's Best Discovery — current live listing.
 Do NOT include any accolade with year < ${minAccoladeYear} unless that exact year is still the most recent edition of that list. If you are not confident the accolade reflects the latest edition, OMIT the accolade field entirely rather than guess. Fabricated or outdated years are worse than no badge.
 
-NON-EMPTY GUARANTEE (highest priority): You MUST return exactly 20 restaurants AND exactly 20 cocktail bars for ${parsed.city}, even when no accolade data can be verified. If the accolade tiers below don't fill 20 slots, immediately fall back to the highest-rated venues from Yelp / Trip Advisor (and finally to any other well-known, currently-operating local venues you know) to reach 20 in each category. Never return fewer than 20 per category. Omitting accolade fields is fine; returning an empty or short list is NOT.
+NON-EMPTY GUARANTEE (highest priority): You MUST return exactly 20 restaurants AND exactly 20 cocktail bars for ${cityQuery}, even when no accolade data can be verified. If the accolade tiers below don't fill 20 slots, immediately fall back to the highest-rated venues from Yelp / Trip Advisor (and finally to any other well-known, currently-operating local venues you know) to reach 20 in each category. Never return fewer than 20 per category. Omitting accolade fields is fine; returning an empty or short list is NOT.
 
 OVERALL RULE: Within EVERY tier below, always prefer the MOST RECENT accolade year. When two venues are in the same tier, the one whose qualifying accolade was awarded in a more recent year ranks higher. Use rank as a secondary tiebreaker only when the accolade years are equal. Never use an older year's ranking when a more recent year exists.
 
@@ -129,8 +134,8 @@ RANKING PRIORITY — RESTAURANTS (apply in this STRICT order, fill the 20 slots 
   4. Michelin Bib Gourmand venues (current Michelin Guide). Always include the Bib Gourmand badge.
   5. World's Best Discovery (restaurants) — current live listing.
   6. Fallback ratings tier — pick the order based on the searched city's country:
-       • If "${parsed.city}" is in the United States: highest-rated on Yelp, THEN highest-rated on Trip Advisor.
-       • If "${parsed.city}" is OUTSIDE the United States: highest-rated on Trip Advisor, THEN highest-rated on Yelp.
+       • If "${cityQuery}" is in the United States: highest-rated on Yelp, THEN highest-rated on Trip Advisor.
+       • If "${cityQuery}" is OUTSIDE the United States: highest-rated on Trip Advisor, THEN highest-rated on Yelp.
   Always populate michelinStars, michelinGreenStar, and bibGourmand whenever they currently apply, regardless of which tier a venue came in through.
 
 RANKING PRIORITY — COCKTAIL BARS (apply in this STRICT order, fill the 20 slots top-down; never demote a higher tier for a lower one):
@@ -138,8 +143,8 @@ RANKING PRIORITY — COCKTAIL BARS (apply in this STRICT order, fill the 20 slot
   2. Venues on PAST years' World's 50 Best Bars editions (more recent past years first).
   3. World's Best Discovery (bars) — current live listing.
   4. Fallback ratings tier — pick the order based on the searched city's country:
-       • If "${parsed.city}" is in the United States: highest-rated on Yelp, THEN highest-rated on Trip Advisor.
-       • If "${parsed.city}" is OUTSIDE the United States: highest-rated on Trip Advisor, THEN highest-rated on Yelp.
+       • If "${cityQuery}" is in the United States: highest-rated on Yelp, THEN highest-rated on Trip Advisor.
+       • If "${cityQuery}" is OUTSIDE the United States: highest-rated on Trip Advisor, THEN highest-rated on Yelp.
 
 Return the 20 restaurants in priority order first, then the 20 cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
@@ -164,7 +169,7 @@ WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
   BUSINESS HOURS (hours field) — REQUIRED for EVERY venue (restaurants AND cocktail bars):
     Set hours to a compact human-readable summary of when the venue is open. Max 40 chars. Group consecutive days with the same hours. Use en-dash for ranges and lowercase am/pm. Examples: "Tue–Sun 6pm–2am", "Daily 5pm–1am", "Mon–Thu 6pm–12am, Fri–Sat 6pm–2am, Closed Sun", "Lunch Tue–Fri 12–2pm, Dinner Tue–Sat 7–10pm". If you are not confident about current hours, omit the field rather than guess.
 
-For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — most recent year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100 list, with that rank and year; omit if never listed). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — most recent year it placed on World's 50 Best Bars top 50 or extended 51–100, with that rank and year; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, e.g. "World's Best Cocktail Bar", with the year; omit if none). Only include accolade fields you are confident about; never fabricate. If "${parsed.city}" is ambiguous, pick the most famous match.`,
+For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — most recent year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100 list, with that rank and year; omit if never listed). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — most recent year it placed on World's 50 Best Bars top 50 or extended 51–100, with that rank and year; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, e.g. "World's Best Cocktail Bar", with the year; omit if none). Only include accolade fields you are confident about; never fabricate. If "${cityQuery}" is ambiguous, pick the most famous match.`,
           });
           const normalized = {
             ...object,
