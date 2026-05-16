@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { VenueMap } from "@/components/VenueMap";
 import { RotatingEarth } from "@/components/RotatingEarth";
-import { CityAutocomplete } from "@/components/CityAutocomplete";
+import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomplete";
 
 type Venue = {
   name: string;
@@ -59,11 +59,13 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-async function fetchVenues(city: string): Promise<Result> {
+type VenueQuery = { city: string; region?: string; country?: string };
+
+async function fetchVenues(q: VenueQuery): Promise<Result> {
   const res = await fetch("/api/top-restaurants", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ city }),
+    body: JSON.stringify(q),
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data?.error ?? "Something went wrong");
@@ -72,13 +74,18 @@ async function fetchVenues(city: string): Promise<Result> {
 
 function Index() {
   const [city, setCity] = useState("");
+  const [selected, setSelected] = useState<CitySuggestion | null>(null);
   const mutation = useMutation({ mutationFn: fetchVenues });
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const trimmed = city.trim();
     if (!trimmed) return;
-    mutation.mutate(trimmed);
+    if (selected && selected.short.toLowerCase() === trimmed.toLowerCase()) {
+      mutation.mutate({ city: selected.city, region: selected.region, country: selected.country });
+    } else {
+      mutation.mutate({ city: trimmed });
+    }
   };
 
   const data = mutation.data;
@@ -100,8 +107,14 @@ function Index() {
         <form onSubmit={onSubmit} className="mt-10 flex flex-col gap-3 sm:flex-row">
           <CityAutocomplete
             value={city}
-            onChange={setCity}
-            onSelect={(s) => mutation.mutate(s.short)}
+            onChange={(v) => {
+              setCity(v);
+              setSelected(null);
+            }}
+            onSelect={(s) => {
+              setSelected(s);
+              mutation.mutate({ city: s.city, region: s.region, country: s.country });
+            }}
             placeholder="Tokyo, Lisbon, Mexico City…"
             disabled={mutation.isPending}
           />
