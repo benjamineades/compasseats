@@ -183,8 +183,20 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
           const normalized = {
             ...object,
             venues: [
-              ...object.venues.filter((v) => v.category === "restaurant").slice(0, 20),
-              ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 20),
+              ...object.venues
+                .filter(
+                  (v) =>
+                    v.category === "restaurant" &&
+                    haversineMiles(object.lat, object.lng, v.lat, v.lng) <= MAX_RADIUS_MILES,
+                )
+                .slice(0, 20),
+              ...object.venues
+                .filter(
+                  (v) =>
+                    v.category === "cocktail bar" &&
+                    haversineMiles(object.lat, object.lng, v.lat, v.lng) <= MAX_RADIUS_MILES,
+                )
+                .slice(0, 20),
             ].map((v) => {
               const url = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
               const reservationUrl =
