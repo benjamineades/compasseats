@@ -68,27 +68,40 @@ export const Route = createFileRoute("/api/top-restaurants")({
         }
 
         const gateway = createLovableAiGatewayProvider(apiKey);
-        const model = gateway("google/gemini-2.5-flash");
+        const model = gateway("google/gemini-2.5-pro");
+
+        const now = new Date();
+        const currentYear = now.getUTCFullYear();
+        const currentMonth = now.toLocaleString("en-US", { month: "long", timeZone: "UTC" });
+        const minAccoladeYear = currentYear - 2;
 
         try {
           const { object } = await generateObject({
             model,
             schema: resultsSchema,
-          prompt: `List the 10 top restaurants AND the 10 top cocktail bars in ${parsed.city} (20 venues total).
+          prompt: `Today is ${currentMonth} ${currentYear}. List the 10 top restaurants AND the 10 top cocktail bars in ${parsed.city} (20 venues total).
+
+RECENCY IS MANDATORY. The official accolade lists you must use:
+  • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists.
+  • World's 50 Best Bars — same rule: most recent edition only.
+  • Michelin Guide — the CURRENT edition for ${parsed.city}'s guide region (typically published late ${currentYear - 1} or in ${currentYear}). Only include stars/Bib/Green Star that appear in the current edition; do not carry forward awards a venue has since lost.
+  • Tales of the Cocktail Spirited Awards — most recent ceremony only (${currentYear} if held, else ${currentYear - 1}).
+  • World's Best Discovery — current live listing.
+Do NOT include any accolade with year < ${minAccoladeYear} unless that exact year is still the most recent edition of that list. If you are not confident the accolade reflects the latest edition, OMIT the accolade field entirely rather than guess. Fabricated or outdated years are worse than no badge.
 
 OVERALL RULE: Within EVERY tier below, always prefer the MOST RECENT accolade year. When two venues are in the same tier, the one whose qualifying accolade was awarded in a more recent year ranks higher. Use rank as a secondary tiebreaker only when the accolade years are equal. Never use an older year's ranking when a more recent year exists.
 
 RANKING PRIORITY — RESTAURANTS (apply in this strict order, fill the 10 slots top-down):
-  1. Venues on the MOST CURRENT World's 50 Best Restaurants list (top 50 first, then extended 51–100). Sort by most recent listing year first, then by rank.
-  2. Then venues in the current Michelin Guide, ordered 3 stars → 2 stars → 1 star → Green Star → Bib Gourmand. Within each star tier, prefer the most recent award/renewal year.
-  3. Then venues on the current World's Best Discovery (restaurants) list, most recent additions first.
-  4. ONLY if fewer than 10 restaurants qualify above, fill remaining slots with the highest-rated restaurants from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp for this fallback.
+  1. Venues on the MOST CURRENT World's 50 Best Restaurants list (top 50 first, then extended 51–100).
+  2. Then venues in the current Michelin Guide, ordered 3 stars → 2 stars → 1 star → Green Star → Bib Gourmand.
+  3. Then venues on the current World's Best Discovery (restaurants) list.
+  4. ONLY if fewer than 10 restaurants qualify above, fill remaining slots with the highest-rated restaurants from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
 
 RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill the 10 slots top-down):
-  1. Venues on the MOST CURRENT World's 50 Best Bars list (top 50 first, then extended 51–100). Sort by most recent listing year first, then by rank.
-  2. Then venues that have won a Tales of the Cocktail Spirited Award, most recent award year first (then by prestige).
-  3. Then venues on the current World's Best Discovery (bars) list, most recent additions first.
-  4. ONLY if fewer than 10 bars qualify above, fill remaining slots with the highest-rated cocktail bars from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp for this fallback.
+  1. Venues on the MOST CURRENT World's 50 Best Bars list (top 50 first, then extended 51–100).
+  2. Then venues that have won a Spirited Award in the most recent ceremony (then prior ceremonies).
+  3. Then venues on the current World's Best Discovery (bars) list.
+  4. ONLY if fewer than 10 bars qualify above, fill remaining slots with the highest-rated cocktail bars from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
 
 Return the 10 restaurants in priority order first, then the 10 cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
