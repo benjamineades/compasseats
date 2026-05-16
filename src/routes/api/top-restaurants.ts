@@ -61,7 +61,7 @@ const resultsSchema = z.object({
         hours: z.string().nullish(),
       }),
     )
-    .min(1),
+    .min(0),
 });
 
 const sanitizeAiJson = (text: string) => {
@@ -72,6 +72,23 @@ const sanitizeAiJson = (text: string) => {
   return text
     .slice(start, end + 1)
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, " ");
+};
+
+const MAX_RADIUS_MILES = 30;
+const haversineMiles = (
+  lat1: number,
+  lng1: number,
+  lat2: number,
+  lng2: number,
+) => {
+  const R = 3958.8;
+  const toRad = (d: number) => (d * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
 };
 
 export const Route = createFileRoute("/api/top-restaurants")({
@@ -108,7 +125,9 @@ export const Route = createFileRoute("/api/top-restaurants")({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-          prompt: `Today is ${currentMonth} ${currentYear}. List the 20 top restaurants AND the 20 top cocktail bars in ${parsed.city} (40 venues total).
+          prompt: `Today is ${currentMonth} ${currentYear}. List up to 20 top restaurants AND up to 20 top cocktail bars in or around ${parsed.city} (up to 40 venues total).
+
+GEOGRAPHIC RADIUS (hard constraint): Every venue MUST be located within a 30-mile (≈48 km) radius of ${parsed.city}'s city center. Measure straight-line distance from the city-center lat/lng you return. Exclude any venue outside that radius even if it is famous or nearby — do NOT include venues in adjacent cities/metros beyond 30 miles. If a venue is exactly on the boundary and you aren't sure, OMIT it. Return fewer than 20 per category if there aren't enough qualifying venues within the radius — a short, in-radius list is strictly better than padding with out-of-range venues.
 
 RECENCY IS MANDATORY. The official accolade lists you must use:
   • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists.
@@ -120,17 +139,17 @@ Do NOT include any accolade with year < ${minAccoladeYear} unless that exact yea
 
 ANTI-HALLUCINATION RULE (overrides the count target below): Every venue you return MUST be a real, currently-operating business that you are confident exists at the address you'd find on Google Maps / Google Business today. Do NOT invent venues, do NOT guess plausible-sounding names, do NOT include venues you only "think" might exist, do NOT include venues you remember but aren't sure are still open. If you cannot independently recall a venue from multiple credible sources (its own coverage, accolade lists, well-known press, or established review platforms) AND have no reason to believe it has closed, OMIT IT. A shorter, fully verifiable list is STRICTLY BETTER than a padded list with fabricated or defunct venues. Specifically exclude any venue that: (a) you cannot place at a specific real address, (b) Google Maps would mark "Permanently closed" / "Temporarily closed", (c) has clearly closed, moved away from ${parsed.city}, rebranded under a different name, or whose chef/team has publicly departed and the venue ceased operating, (d) feels like a generic combination of city + cuisine rather than a venue you actually know.
 
-COUNT TARGET: Aim for 20 restaurants AND 20 cocktail bars when you can do so WITHOUT violating the anti-hallucination rule above. If verified supply is thinner — e.g. a small city or a city you have limited reliable knowledge of — return however many you ARE confident about (could be 5, 10, 15). NEVER fabricate to reach 20. Fill remaining confident slots first from the accolade tiers below, then from venues with strong, verifiable Yelp / Trip Advisor / Tabelog presence you actually recognize.
+COUNT TARGET: Aim for up to 20 restaurants AND up to 20 cocktail bars when you can do so WITHOUT violating the anti-hallucination rule above AND while staying within the 30-mile radius. If verified in-radius supply is thinner — e.g. a small city, remote area, or a city you have limited reliable knowledge of — return however many you ARE confident about (could be 1, 5, 10, 15). NEVER fabricate or stretch the radius to reach 20. Fill remaining confident in-radius slots first from the accolade tiers below, then from venues with strong, verifiable Yelp / Trip Advisor / Tabelog presence you actually recognize.
 
 OVERALL RULE: Within EVERY tier below, always prefer the MOST RECENT accolade year. When two venues are in the same tier, the one whose qualifying accolade was awarded in a more recent year ranks higher. Use rank as a secondary tiebreaker only when the accolade years are equal. Never use an older year's ranking when a more recent year exists.
 
-RANKING PRIORITY — RESTAURANTS (apply in this strict order, fill the 20 slots top-down):
+RANKING PRIORITY — RESTAURANTS (apply in this strict order, fill up to 20 in-radius slots top-down):
   1. Venues on the MOST CURRENT World's 50 Best Restaurants list (top 50 first, then extended 51–100).
   2. Then venues in the current Michelin Guide, ordered 3 stars → 2 stars → 1 star → Green Star → Bib Gourmand.
   3. Then venues on the current World's Best Discovery (restaurants) list.
   4. ONLY if fewer than 20 restaurants qualify above, fill remaining slots with the highest-rated restaurants from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
 
-RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill the 20 slots top-down):
+RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill up to 20 in-radius slots top-down):
   1. Venues on the MOST CURRENT World's 50 Best Bars list (top 50 first, then extended 51–100).
   2. Then venues that have won a Spirited Award in the most recent ceremony (then prior ceremonies).
   3. Then venues on the current World's Best Discovery (bars) list.
@@ -164,8 +183,20 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
           const normalized = {
             ...object,
             venues: [
-              ...object.venues.filter((v) => v.category === "restaurant").slice(0, 20),
-              ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 20),
+              ...object.venues
+                .filter(
+                  (v) =>
+                    v.category === "restaurant" &&
+                    haversineMiles(object.lat, object.lng, v.lat, v.lng) <= MAX_RADIUS_MILES,
+                )
+                .slice(0, 20),
+              ...object.venues
+                .filter(
+                  (v) =>
+                    v.category === "cocktail bar" &&
+                    haversineMiles(object.lat, object.lng, v.lat, v.lng) <= MAX_RADIUS_MILES,
+                )
+                .slice(0, 20),
             ].map((v) => {
               const url = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
               const reservationUrl =
