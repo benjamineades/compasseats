@@ -47,7 +47,7 @@ const resultsSchema = z.object({
       }),
     )
     .min(1)
-    .max(20),
+    .max(40),
 });
 
 export const Route = createFileRoute("/api/top-restaurants")({
