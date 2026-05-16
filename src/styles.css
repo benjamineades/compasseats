@@ -148,8 +148,3 @@
   from { background-position: 0% 0; }
   to   { background-position: -200% 0; }
 }
-
-@keyframes earth-drift {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-200px); }
-}
