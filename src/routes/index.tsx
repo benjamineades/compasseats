@@ -349,6 +349,18 @@ function Accolades({ v }: { v: Venue }) {
       </span>,
     );
   }
+  if (v.category === "restaurant" && v.worldsBest50Restaurants) {
+    items.push(
+      <span
+        key="w50r"
+        title={`World's 50 Best Restaurants #${v.worldsBest50Restaurants.rank} (${v.worldsBest50Restaurants.year})`}
+        className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400"
+      >
+        <Trophy className="h-3 w-3" />
+        World's 50 Best #{v.worldsBest50Restaurants.rank} ('{String(v.worldsBest50Restaurants.year).slice(-2)})
+      </span>,
+    );
+  }
   if (v.michelinGreenStar) {
     items.push(
       <span
@@ -370,17 +382,6 @@ function Accolades({ v }: { v: Venue }) {
       >
         <Utensils className="h-3 w-3" />
         Bib Gourmand
-      </span>,
-    );
-  }
-  if (v.worldsBest50Restaurants) {
-    items.push(
-      <span
-        key="w50r"
-        className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400"
-      >
-        <Trophy className="h-3 w-3" />
-        World's 50 Best #{v.worldsBest50Restaurants.rank} ({v.worldsBest50Restaurants.year})
       </span>,
     );
   }
