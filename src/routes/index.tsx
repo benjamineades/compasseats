@@ -99,9 +99,9 @@ function Index() {
             <br />
             <span className="text-muted-foreground">anywhere.</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
-            Type any city to get its top restaurants and cocktail bars, mapped and ranked from World's 50 Best, Michelin, and World's Best Discovery.
-          </p>
+           <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
+             Type any city to get its top restaurants and cocktail bars, mapped and ranked from World's 50 Best, Michelin Guide, and more.
+           </p>
         </header>
 
         <form onSubmit={onSubmit} className="mt-10 flex flex-col gap-3 sm:flex-row">
