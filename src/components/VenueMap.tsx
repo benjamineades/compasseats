@@ -11,7 +11,7 @@ type Pin = {
 
 type MapModules = {
   reactLeaflet: typeof import("react-leaflet");
-  leaflet: typeof import("leaflet").default;
+  leaflet: typeof import("leaflet");
 };
 
 function numberedIcon(L: MapModules["leaflet"], index: number, isBar: boolean) {
@@ -39,7 +39,7 @@ export function VenueMap({
     let active = true;
     Promise.all([import("react-leaflet"), import("leaflet")]).then(
       ([reactLeaflet, leaflet]) => {
-        if (active) setModules({ reactLeaflet, leaflet: leaflet.default });
+        if (active) setModules({ reactLeaflet, leaflet });
       },
     );
     return () => {
