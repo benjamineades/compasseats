@@ -150,6 +150,10 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
               ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 20),
             ].map((v) => {
               const url = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
+              const reservationUrl =
+                v.reservationUrl && /^https?:\/\//i.test(v.reservationUrl)
+                  ? v.reservationUrl
+                  : undefined;
               return {
                 name: v.name,
                 category: v.category,
@@ -171,6 +175,8 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 signatureDish: v.signatureDish ?? undefined,
                 accoladeOverview: v.accoladeOverview ?? undefined,
                 whyThisPick: v.whyThisPick ?? undefined,
+                reservationUrl,
+                reservationPlatform: reservationUrl ? (v.reservationPlatform ?? "Website") : undefined,
               };
             }),
           };
