@@ -91,7 +91,31 @@ Return the 10 restaurants in priority order first, then the 10 cocktail bars in 
 
 Return JSON with: city (proper name), country, lat/lng (city center coordinates), and venues (array of 20: 10 restaurants then 10 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (one vivid sentence, max 25 words), neighborhood (optional), lat/lng (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided). For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — most recent year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100 list, with that rank and year; omit if never listed). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — most recent year it placed on World's 50 Best Bars top 50 or extended 51–100, with that rank and year; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, e.g. "World's Best Cocktail Bar", with the year; omit if none). Only include accolade fields you are confident about; never fabricate. If "${parsed.city}" is ambiguous, pick the most famous match.`,
           });
-          return Response.json(object);
+          const normalized = {
+            ...object,
+            venues: object.venues.map((v) => {
+              const url = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
+              return {
+                name: v.name,
+                category: v.category,
+                cuisine: v.cuisine ?? "",
+                priceRange: v.priceRange ?? "",
+                description: v.description ?? "",
+                neighborhood: v.neighborhood ?? undefined,
+                lat: v.lat,
+                lng: v.lng,
+                url,
+                urlType: url ? (v.urlType ?? "website") : undefined,
+                michelinStars: v.michelinStars ?? undefined,
+                michelinGreenStar: v.michelinGreenStar ?? undefined,
+                bibGourmand: v.bibGourmand ?? undefined,
+                worldsBest50Restaurants: v.worldsBest50Restaurants ?? undefined,
+                worldsBest50Bars: v.worldsBest50Bars ?? undefined,
+                spiritedAward: v.spiritedAward ?? undefined,
+              };
+            }),
+          };
+          return Response.json(normalized);
         } catch (err: unknown) {
           const e = err as { statusCode?: number; status?: number; message?: string };
           const status = e.statusCode ?? e.status;
