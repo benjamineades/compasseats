@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import { useState, type FormEvent } from "react";
-import { Search, MapPin, UtensilsCrossed, Loader2 } from "lucide-react";
+import { Search, MapPin, UtensilsCrossed, Loader2, Star, Leaf, Utensils, Trophy, Award, ExternalLink, Instagram, Facebook, Globe } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,6 +19,14 @@ type Venue = {
   neighborhood?: string;
   lat: number;
   lng: number;
+  url?: string;
+  urlType?: "website" | "instagram" | "facebook";
+  michelinStars?: number;
+  michelinGreenStar?: boolean;
+  bibGourmand?: boolean;
+  worldsBest50Restaurants?: { rank: number; year: number };
+  worldsBest50Bars?: { rank: number; year: number };
+  spiritedAward?: { name: string; year: number };
 };
 
 type Result = {
@@ -143,34 +151,7 @@ function Index() {
                   Cocktail bars
                 </span>
               </div>
-              <ol className="mt-6 space-y-3">
-                {data.venues.map((v, i) => (
-                  <li key={`${v.name}-${i}`}>
-                    <Card className="transition-colors hover:border-foreground/20">
-                      <CardContent className="flex gap-4 p-5">
-                        <div
-                          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
-                          style={{ background: v.category === "cocktail bar" ? "#7c3aed" : "#ea580c" }}
-                        >
-                          {i + 1}
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-baseline justify-between gap-2">
-                            <h2 className="text-lg font-semibold text-foreground">{v.name}</h2>
-                            <span className="text-sm font-medium text-muted-foreground">{v.priceRange}</span>
-                          </div>
-                          <div className="mt-1 flex flex-wrap gap-1.5">
-                            <Badge variant="secondary" className="capitalize">{v.category}</Badge>
-                            <Badge variant="outline">{v.cuisine}</Badge>
-                            {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
-                          </div>
-                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.description}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </li>
-                ))}
-              </ol>
+              <VenueColumns venues={data.venues} />
             </>
           )}
 
@@ -186,6 +167,166 @@ function Index() {
       </div>
     </main>
   );
+}
+
+function VenueColumns({ venues }: { venues: Venue[] }) {
+  const restaurants = venues.filter((v) => v.category === "restaurant");
+  const bars = venues.filter((v) => v.category === "cocktail bar");
+  const indexOf = (v: Venue) => venues.indexOf(v) + 1;
+  return (
+    <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <VenueColumn title="Restaurants" accent="#ea580c" items={restaurants} indexOf={indexOf} />
+      <VenueColumn title="Cocktail Bars" accent="#7c3aed" items={bars} indexOf={indexOf} />
+    </div>
+  );
+}
+
+function VenueColumn({
+  title,
+  accent,
+  items,
+  indexOf,
+}: {
+  title: string;
+  accent: string;
+  items: Venue[];
+  indexOf: (v: Venue) => number;
+}) {
+  return (
+    <div>
+      <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+        {title}
+      </h3>
+      <ol className="space-y-3">
+        {items.map((v) => {
+          const n = indexOf(v);
+          return (
+            <li key={`${v.name}-${n}`}>
+              <Card className="transition-colors hover:border-foreground/20">
+                <CardContent className="flex gap-3 p-4">
+                  <div
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
+                    style={{ background: accent }}
+                  >
+                    {n}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      {v.url ? (
+                        <a
+                          href={v.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-1.5 text-base font-semibold text-foreground hover:text-primary"
+                        >
+                          {v.name}
+                          <LinkIcon type={v.urlType} />
+                        </a>
+                      ) : (
+                        <h2 className="text-base font-semibold text-foreground">{v.name}</h2>
+                      )}
+                      <span className="text-sm font-medium text-muted-foreground">{v.priceRange}</span>
+                    </div>
+                    <div className="mt-1 flex flex-wrap gap-1.5">
+                      <Badge variant="outline">{v.cuisine}</Badge>
+                      {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
+                    </div>
+                    <Accolades v={v} />
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.description}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+}
+
+function LinkIcon({ type }: { type?: Venue["urlType"] }) {
+  const cls = "h-3.5 w-3.5 opacity-70 group-hover:opacity-100";
+  if (type === "instagram") return <Instagram className={cls} />;
+  if (type === "facebook") return <Facebook className={cls} />;
+  if (type === "website") return <Globe className={cls} />;
+  return <ExternalLink className={cls} />;
+}
+
+function Accolades({ v }: { v: Venue }) {
+  const stars = v.michelinStars ?? 0;
+  const items: React.ReactNode[] = [];
+  if (stars > 0) {
+    items.push(
+      <span
+        key="m"
+        title={`${stars} Michelin Star${stars > 1 ? "s" : ""}`}
+        className="inline-flex items-center gap-0.5 rounded-md border border-red-500/40 bg-red-500/10 px-1.5 py-0.5 text-xs font-medium text-red-400"
+      >
+        {Array.from({ length: stars }).map((_, i) => (
+          <Star key={i} className="h-3 w-3 fill-red-400 stroke-red-400" />
+        ))}
+      </span>,
+    );
+  }
+  if (v.michelinGreenStar) {
+    items.push(
+      <span
+        key="g"
+        title="Michelin Green Star (Sustainability)"
+        className="inline-flex items-center gap-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-1.5 py-0.5 text-xs font-medium text-emerald-400"
+      >
+        <Leaf className="h-3 w-3" />
+        Green Star
+      </span>,
+    );
+  }
+  if (v.bibGourmand) {
+    items.push(
+      <span
+        key="b"
+        title="Michelin Bib Gourmand"
+        className="inline-flex items-center gap-1 rounded-md border border-orange-500/40 bg-orange-500/10 px-1.5 py-0.5 text-xs font-medium text-orange-400"
+      >
+        <Utensils className="h-3 w-3" />
+        Bib Gourmand
+      </span>,
+    );
+  }
+  if (v.worldsBest50Restaurants) {
+    items.push(
+      <span
+        key="w50r"
+        className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400"
+      >
+        <Trophy className="h-3 w-3" />
+        World's 50 Best #{v.worldsBest50Restaurants.rank} ({v.worldsBest50Restaurants.year})
+      </span>,
+    );
+  }
+  if (v.worldsBest50Bars) {
+    items.push(
+      <span
+        key="w50b"
+        className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400"
+      >
+        <Trophy className="h-3 w-3" />
+        World's 50 Best Bars #{v.worldsBest50Bars.rank} ({v.worldsBest50Bars.year})
+      </span>,
+    );
+  }
+  if (v.spiritedAward) {
+    items.push(
+      <span
+        key="sa"
+        className="inline-flex items-center gap-1 rounded-md border border-fuchsia-500/40 bg-fuchsia-500/10 px-1.5 py-0.5 text-xs font-medium text-fuchsia-400"
+      >
+        <Award className="h-3 w-3" />
+        {v.spiritedAward.name} ({v.spiritedAward.year})
+      </span>,
+    );
+  }
+  if (items.length === 0) return null;
+  return <div className="mt-2 flex flex-wrap gap-1.5">{items}</div>;
 }
 
 function ResultsSkeleton() {
