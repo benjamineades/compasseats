@@ -116,7 +116,10 @@ export const Route = createFileRoute("/api/top-restaurants")({
           prompt: `Today is ${currentMonth} ${currentYear}. List the 10 top restaurants AND the 10 top cocktail bars in ${cityQuery} (20 venues total).
 
 RECENCY IS MANDATORY. The official accolade lists you must use:
-  • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists.
+  • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists. Authoritative sources (use these lists as the source of truth for rank + year):
+      - Current top 50: https://www.theworlds50best.com/list/1-50
+      - Current extended 51–100: https://www.theworlds50best.com/list/51-100
+      - Previous editions: https://www.theworlds50best.com/previous-list/2024, /2023, /2022, /2021, /2020, /2019, /2018, /2017, /2016
   • World's 50 Best Bars — same rule: most recent edition only. Authoritative sources (use these lists as the source of truth for rank + year):
       - Current top 50: https://www.theworlds50best.com/bars/list/1-50
       - Current extended 51–100: https://www.theworlds50best.com/bars/list/51-100
