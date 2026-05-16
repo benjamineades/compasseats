@@ -58,6 +58,7 @@ const resultsSchema = z.object({
         whyThisPick: z.string().nullish(),
         reservationUrl: z.string().nullish(),
         reservationPlatform: z.string().nullish(),
+        hours: z.string().nullish(),
       }),
     )
     .min(1),
