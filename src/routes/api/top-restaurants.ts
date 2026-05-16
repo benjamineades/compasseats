@@ -24,23 +24,27 @@ const resultsSchema = z.object({
         neighborhood: z.string().optional(),
         lat: z.number(),
         lng: z.number(),
-        url: z.string().url().optional(),
+        url: z
+          .string()
+          .trim()
+          .optional()
+          .transform((v) => (v && /^https?:\/\//i.test(v) ? v : undefined)),
         urlType: z.enum(["website", "instagram", "facebook"]).optional(),
         michelinStars: z.number().int().min(0).max(3).optional(),
         michelinGreenStar: z.boolean().optional(),
         bibGourmand: z.boolean().optional(),
         worldsBest50Restaurants: z
-          .object({ rank: z.number().int().min(1).max(100), year: z.number().int() })
+          .object({ rank: z.number().int().min(1).max(200), year: z.number().int() })
           .optional(),
         worldsBest50Bars: z
-          .object({ rank: z.number().int().min(1).max(100), year: z.number().int() })
+          .object({ rank: z.number().int().min(1).max(200), year: z.number().int() })
           .optional(),
         spiritedAward: z
           .object({ name: z.string(), year: z.number().int() })
           .optional(),
       }),
     )
-    .min(10)
+    .min(2)
     .max(20),
 });
 
