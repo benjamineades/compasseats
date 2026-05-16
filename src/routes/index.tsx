@@ -137,13 +137,17 @@ function Index() {
               </div>
               <VenueMap
                 center={[data.lat, data.lng]}
-                pins={data.venues.map((v, i) => ({
-                  index: i + 1,
-                  name: v.name,
-                  category: v.category,
-                  lat: v.lat,
-                  lng: v.lng,
-                }))}
+                pins={(() => {
+                  let r = 0;
+                  let b = 0;
+                  return data.venues.map((v) => ({
+                    index: v.category === "restaurant" ? ++r : ++b,
+                    name: v.name,
+                    category: v.category,
+                    lat: v.lat,
+                    lng: v.lng,
+                  }));
+                })()}
               />
               <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5">
@@ -176,11 +180,10 @@ function Index() {
 function VenueColumns({ venues }: { venues: Venue[] }) {
   const restaurants = venues.filter((v) => v.category === "restaurant");
   const bars = venues.filter((v) => v.category === "cocktail bar");
-  const indexOf = (v: Venue) => venues.indexOf(v) + 1;
   return (
     <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-      <VenueColumn title="Restaurants" accent="#ea580c" items={restaurants} indexOf={indexOf} />
-      <VenueColumn title="Cocktail Bars" accent="#7c3aed" items={bars} indexOf={indexOf} />
+      <VenueColumn title="Restaurants" accent="#ea580c" items={restaurants} />
+      <VenueColumn title="Cocktail Bars" accent="#7c3aed" items={bars} />
     </div>
   );
 }
@@ -189,12 +192,10 @@ function VenueColumn({
   title,
   accent,
   items,
-  indexOf,
 }: {
   title: string;
   accent: string;
   items: Venue[];
-  indexOf: (v: Venue) => number;
 }) {
   return (
     <div>
@@ -202,8 +203,8 @@ function VenueColumn({
         {title}
       </h3>
       <ol className="space-y-3">
-        {items.map((v) => {
-          const n = indexOf(v);
+        {items.map((v, i) => {
+          const n = i + 1;
           return (
             <li key={`${v.name}-${n}`}>
               <Card className="transition-colors hover:border-foreground/20">

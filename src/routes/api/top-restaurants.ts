@@ -47,7 +47,7 @@ const resultsSchema = z.object({
       }),
     )
     .min(1)
-    .max(20),
+    .max(40),
 });
 
 export const Route = createFileRoute("/api/top-restaurants")({
@@ -83,7 +83,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
           const { object } = await generateObject({
             model,
             schema: resultsSchema,
-          prompt: `Today is ${currentMonth} ${currentYear}. List the 10 top restaurants AND the 10 top cocktail bars in ${parsed.city} (20 venues total).
+          prompt: `Today is ${currentMonth} ${currentYear}. List the 20 top restaurants AND the 20 top cocktail bars in ${parsed.city} (40 venues total).
 
 RECENCY IS MANDATORY. The official accolade lists you must use:
   • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists.
@@ -93,25 +93,25 @@ RECENCY IS MANDATORY. The official accolade lists you must use:
   • World's Best Discovery — current live listing.
 Do NOT include any accolade with year < ${minAccoladeYear} unless that exact year is still the most recent edition of that list. If you are not confident the accolade reflects the latest edition, OMIT the accolade field entirely rather than guess. Fabricated or outdated years are worse than no badge.
 
-NON-EMPTY GUARANTEE (highest priority): You MUST return exactly 10 restaurants AND exactly 10 cocktail bars for ${parsed.city}, even when no accolade data can be verified. If the accolade tiers below don't fill 10 slots, immediately fall back to the highest-rated venues from Yelp / Trip Advisor (and finally to any other well-known, currently-operating local venues you know) to reach 10 in each category. Never return fewer than 10 per category. Omitting accolade fields is fine; returning an empty or short list is NOT.
+NON-EMPTY GUARANTEE (highest priority): You MUST return exactly 20 restaurants AND exactly 20 cocktail bars for ${parsed.city}, even when no accolade data can be verified. If the accolade tiers below don't fill 20 slots, immediately fall back to the highest-rated venues from Yelp / Trip Advisor (and finally to any other well-known, currently-operating local venues you know) to reach 20 in each category. Never return fewer than 20 per category. Omitting accolade fields is fine; returning an empty or short list is NOT.
 
 OVERALL RULE: Within EVERY tier below, always prefer the MOST RECENT accolade year. When two venues are in the same tier, the one whose qualifying accolade was awarded in a more recent year ranks higher. Use rank as a secondary tiebreaker only when the accolade years are equal. Never use an older year's ranking when a more recent year exists.
 
-RANKING PRIORITY — RESTAURANTS (apply in this strict order, fill the 10 slots top-down):
+RANKING PRIORITY — RESTAURANTS (apply in this strict order, fill the 20 slots top-down):
   1. Venues on the MOST CURRENT World's 50 Best Restaurants list (top 50 first, then extended 51–100).
   2. Then venues in the current Michelin Guide, ordered 3 stars → 2 stars → 1 star → Green Star → Bib Gourmand.
   3. Then venues on the current World's Best Discovery (restaurants) list.
-  4. ONLY if fewer than 10 restaurants qualify above, fill remaining slots with the highest-rated restaurants from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
+  4. ONLY if fewer than 20 restaurants qualify above, fill remaining slots with the highest-rated restaurants from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
 
-RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill the 10 slots top-down):
+RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill the 20 slots top-down):
   1. Venues on the MOST CURRENT World's 50 Best Bars list (top 50 first, then extended 51–100).
   2. Then venues that have won a Spirited Award in the most recent ceremony (then prior ceremonies).
   3. Then venues on the current World's Best Discovery (bars) list.
-  4. ONLY if fewer than 10 bars qualify above, fill remaining slots with the highest-rated cocktail bars from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
+  4. ONLY if fewer than 20 bars qualify above, fill remaining slots with the highest-rated cocktail bars from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
 
-Return the 10 restaurants in priority order first, then the 10 cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
+Return the 20 restaurants in priority order first, then the 20 cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
-Return JSON with: city (proper name), country, lat/lng (city center coordinates), and venues (array of 20: 10 restaurants then 10 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (see DESCRIPTION RULES), neighborhood (optional), lat/lng (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided).
+Return JSON with: city (proper name), country, lat/lng (city center coordinates), and venues (array of 40: 20 restaurants then 20 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (see DESCRIPTION RULES), neighborhood (optional), lat/lng (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided).
 
 DESCRIPTION RULES — RESTAURANTS: One vivid sentence, max 35 words. ALSO set these two fields when known: chef (current head/executive chef's full name — only if you're confident they are still at the venue; omit otherwise) and signatureDish (the dish the restaurant is most known for, named specifically, e.g. "smoked eel tartlet"; omit if not clearly known). For COCKTAIL BARS: one vivid sentence (max 25 words); do not set chef or signatureDish.
 
