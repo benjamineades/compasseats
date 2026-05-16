@@ -43,9 +43,10 @@ export function RotatingEarth() {
           </g>
 
           {/* Scrolling continents */}
-          <g strokeWidth="1" className="animate-[earth-spin_30s_linear_infinite]" style={{ transformOrigin: "center" }}>
+          <g strokeWidth="1" className="animate-[earth-drift_30s_linear_infinite]">
             <use href="#continents" x="20" y="20" width="320" height="160" />
             <use href="#continents" x="-180" y="20" width="320" height="160" />
+            <use href="#continents" x="220" y="20" width="320" height="160" />
           </g>
         </g>
       </svg>
