@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import type { FormEvent, ReactNode } from "react";
 import { useState } from "react";
-import { Search, MapPin, UtensilsCrossed, Loader2, Star, Leaf, Utensils, Trophy, Award, ExternalLink, Instagram, Facebook, Globe, CalendarCheck } from "lucide-react";
+import { Search, MapPin, UtensilsCrossed, Loader2, Star, Leaf, Utensils, Trophy, Award, ExternalLink, Instagram, Facebook, Globe, CalendarCheck, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -34,6 +34,7 @@ type Venue = {
   whyThisPick?: string;
   reservationUrl?: string;
   reservationPlatform?: string;
+  hours?: string;
 };
 
 type Result = {
@@ -250,6 +251,12 @@ function VenueColumn({
                     <div className="mt-1 flex flex-wrap gap-1.5">
                       <Badge variant="outline">{v.cuisine}</Badge>
                       {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
+                      {v.category === "cocktail bar" && v.hours && (
+                        <Badge variant="outline" title="Business hours" className="gap-1">
+                          <Clock className="h-3 w-3" />
+                          {v.hours}
+                        </Badge>
+                      )}
                       {v.category === "restaurant" && v.signatureDish && (
                         <Badge variant="secondary" title="Signature dish">
                           Signature: {v.signatureDish}
