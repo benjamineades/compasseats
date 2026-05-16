@@ -122,17 +122,19 @@ NON-EMPTY GUARANTEE (highest priority): You MUST return exactly 20 restaurants A
 
 OVERALL RULE: Within EVERY tier below, always prefer the MOST RECENT accolade year. When two venues are in the same tier, the one whose qualifying accolade was awarded in a more recent year ranks higher. Use rank as a secondary tiebreaker only when the accolade years are equal. Never use an older year's ranking when a more recent year exists.
 
-RANKING PRIORITY — RESTAURANTS (apply in this strict order, fill the 20 slots top-down):
-  1. Venues on the MOST CURRENT World's 50 Best Restaurants list (top 50 first, then extended 51–100).
-  2. Then venues in the current Michelin Guide, ordered 3 stars → 2 stars → 1 star → Green Star → Bib Gourmand.
-  3. Then venues on the current World's Best Discovery (restaurants) list.
-  4. ONLY if fewer than 20 restaurants qualify above, fill remaining slots with the highest-rated restaurants from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
+RANKING PRIORITY — RESTAURANTS (apply in this STRICT order, fill the 20 slots top-down — never reorder these tiers):
+  1. Any restaurant with 3 Michelin stars in the current Michelin Guide.
+  2. Then venues on the MOST CURRENT World's 50 Best Restaurants list (top 50 first, then extended 51–100).
+  3. Then Michelin-starred restaurants with 2 stars, then 1 star (current Michelin Guide).
+  4. Then Michelin Bib Gourmand venues (current Michelin Guide). Michelin Green Star alone (without stars/Bib) slots in here as a tiebreaker but does not outrank starred venues.
+  5. ONLY if fewer than 20 restaurants qualify above, fill remaining slots from consumer review sites. If "${parsed.city}" is in the United States: highest-rated on Yelp FIRST, then highest-rated on Trip Advisor. If "${parsed.city}" is OUTSIDE the United States: highest-rated on Trip Advisor FIRST, then highest-rated on Yelp.
+  Always populate michelinStars, michelinGreenStar, and bibGourmand fields whenever the venue currently holds those awards — the UI renders badges from them.
 
 RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill the 20 slots top-down):
   1. Venues on the MOST CURRENT World's 50 Best Bars list (top 50 first, then extended 51–100).
   2. Then venues that have won a Spirited Award in the most recent ceremony (then prior ceremonies).
   3. Then venues on the current World's Best Discovery (bars) list.
-  4. ONLY if fewer than 20 bars qualify above, fill remaining slots with the highest-rated cocktail bars from Yelp, then Trip Advisor. If "${parsed.city}" is OUTSIDE the United States, prioritize Trip Advisor BEFORE Yelp.
+  4. ONLY if fewer than 20 bars qualify above, fill remaining slots from consumer review sites. If "${parsed.city}" is in the United States: highest-rated on Yelp FIRST, then highest-rated on Trip Advisor. If "${parsed.city}" is OUTSIDE the United States: highest-rated on Trip Advisor FIRST, then highest-rated on Yelp.
 
 Return the 20 restaurants in priority order first, then the 20 cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
