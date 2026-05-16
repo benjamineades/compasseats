@@ -44,13 +44,13 @@ const resultsSchema = z.object({
         michelinGreenStar: z.boolean().nullish(),
         bibGourmand: z.boolean().nullish(),
         worldsBest50Restaurants: z
-          .object({ rank: integerValue, year: integerValue })
+          .object({ rank: integerValue.nullish(), year: integerValue.nullish() })
           .nullish(),
         worldsBest50Bars: z
-          .object({ rank: integerValue, year: integerValue })
+          .object({ rank: integerValue.nullish(), year: integerValue.nullish() })
           .nullish(),
         spiritedAward: z
-          .object({ name: z.string(), year: integerValue })
+          .object({ name: z.string().nullish(), year: integerValue.nullish() })
           .nullish(),
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
