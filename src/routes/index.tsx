@@ -30,6 +30,7 @@ type Venue = {
   spiritedAward?: { name: string; year: number };
   chef?: string;
   signatureDish?: string;
+  accoladeOverview?: string;
 };
 
 type Result = {
@@ -250,6 +251,11 @@ function VenueColumn({
                       </div>
                     )}
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.description}</p>
+                    {v.accoladeOverview && (
+                      <p className="mt-2 rounded-md border-l-2 border-amber-500/40 bg-amber-500/5 px-2 py-1.5 text-sm leading-relaxed text-muted-foreground">
+                        {v.accoladeOverview}
+                      </p>
+                    )}
                   </div>
                 </CardContent>
               </Card>
