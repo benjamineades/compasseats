@@ -125,7 +125,7 @@ RECENCY IS MANDATORY. The official accolade lists you must use:
       - Current extended 51–100: https://www.theworlds50best.com/bars/list/51-100
       - Previous editions: https://www.theworlds50best.com/bars/previous-list/2024, /2023, /2022, /2021, /2020, /2019
   • Michelin Guide — the CURRENT edition for ${cityQuery}'s guide region (typically published late ${currentYear - 1} or in ${currentYear}). Only include stars/Bib/Green Star that appear in the current edition; do not carry forward awards a venue has since lost. Authoritative source: https://guide.michelin.com/us/en/restaurants
-  • Tales of the Cocktail Spirited Awards — most recent ceremony only (${currentYear} if held, else ${currentYear - 1}).
+  • Tales of the Cocktail Spirited Awards — most recent ceremony only (${currentYear} if held, else ${currentYear - 1}). Authoritative source: https://talesofthecocktail.org/spirited-awards-archive/
   • World's Best Discovery — current live listing.
 Do NOT include any accolade with year < ${minAccoladeYear} unless that exact year is still the most recent edition of that list. If you are not confident the accolade reflects the latest edition, OMIT the accolade field entirely rather than guess. Fabricated or outdated years are worse than no badge.
 
