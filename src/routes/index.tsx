@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import type { FormEvent, ReactNode } from "react";
 import { useState } from "react";
-import { Search, MapPin, UtensilsCrossed, Loader2, Star, Leaf, Utensils, Trophy, Award, ExternalLink, Instagram, Facebook, Globe } from "lucide-react";
+import { Search, MapPin, UtensilsCrossed, Loader2, Star, Leaf, Utensils, Trophy, Award, ExternalLink, Instagram, Facebook, Globe, CalendarCheck } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,6 +32,8 @@ type Venue = {
   signatureDish?: string;
   accoladeOverview?: string;
   whyThisPick?: string;
+  reservationUrl?: string;
+  reservationPlatform?: string;
 };
 
 type Result = {
@@ -233,6 +235,18 @@ function VenueColumn({
                       )}
                       <span className="text-sm font-medium text-muted-foreground">{v.priceRange}</span>
                     </div>
+                    {v.reservationUrl && (
+                      <a
+                        href={v.reservationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1.5 inline-flex items-center gap-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400 hover:bg-emerald-500/20"
+                      >
+                        <CalendarCheck className="h-3 w-3" />
+                        Book on {v.reservationPlatform ?? "Website"}
+                        <ExternalLink className="h-3 w-3 opacity-70" />
+                      </a>
+                    )}
                     <div className="mt-1 flex flex-wrap gap-1.5">
                       <Badge variant="outline">{v.cuisine}</Badge>
                       {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
