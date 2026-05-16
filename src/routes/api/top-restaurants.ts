@@ -71,6 +71,14 @@ const sanitizeAiJson = (text: string) => {
 
   return text
     .slice(start, end + 1)
+    .replace(
+      /"lat\/lng"\s*:\s*"(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)"/g,
+      '"lat": $1, "lng": $2',
+    )
+    .replace(
+      /"latLng"\s*:\s*"(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)"/g,
+      '"lat": $1, "lng": $2',
+    )
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, " ");
 };
 
@@ -157,7 +165,7 @@ RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill up to 20 in
 
 Return restaurants in priority order first, then cocktail bars in priority order (up to 20 each, fewer if needed to stay truthful). Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for three things: (1) confirm each venue currently exists as an active Google Business listing — if you cannot place it on Google Maps with confidence, drop it, (2) exclude any venue marked "Permanently closed" / "Temporarily closed" or otherwise known to have closed, and (3) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
-Return JSON with: city (proper name), country, lat/lng (city center coordinates), and venues (array of 40: 20 restaurants then 20 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (see DESCRIPTION RULES), neighborhood (optional), lat/lng (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided).
+Return JSON with: city (proper name), country, lat and lng as separate numeric fields (city center coordinates), and venues (array of up to 40: up to 20 restaurants then up to 20 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (see DESCRIPTION RULES), neighborhood (optional), lat and lng as separate numeric fields (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided). Never return a combined "lat/lng" or "latLng" key.
 
 DESCRIPTION RULES — RESTAURANTS: One vivid sentence, max 35 words. ALSO set these two fields when known: chef (current head/executive chef's full name — only if you're confident they are still at the venue; omit otherwise) and signatureDish (the dish the restaurant is most known for, named specifically, e.g. "smoked eel tartlet"; omit if not clearly known). For COCKTAIL BARS: one vivid sentence (max 25 words); do not set chef or signatureDish.
 
