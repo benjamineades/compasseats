@@ -31,6 +31,7 @@ type Venue = {
   chef?: string;
   signatureDish?: string;
   accoladeOverview?: string;
+  whyThisPick?: string;
 };
 
 type Result = {
@@ -253,9 +254,24 @@ function VenueColumn({
                     )}
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.description}</p>
                     {v.accoladeOverview && (
-                      <p className="mt-2 rounded-md border-l-2 border-amber-500/40 bg-amber-500/5 px-2 py-1.5 text-sm leading-relaxed text-muted-foreground">
-                        {v.accoladeOverview}
-                      </p>
+                      <div className="mt-2 rounded-md border-l-2 border-amber-500/40 bg-amber-500/5 px-2 py-1.5">
+                        <div className="text-[10px] font-semibold uppercase tracking-wide text-amber-500/90">
+                          Guide overview
+                        </div>
+                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">
+                          {v.accoladeOverview}
+                        </p>
+                      </div>
+                    )}
+                    {v.whyThisPick && (
+                      <div className="mt-2 rounded-md border-l-2 border-primary/50 bg-primary/5 px-2 py-1.5">
+                        <div className="text-[10px] font-semibold uppercase tracking-wide text-primary/90">
+                          Why this pick
+                        </div>
+                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">
+                          {v.whyThisPick}
+                        </p>
+                      </div>
                     )}
                   </div>
                 </CardContent>
