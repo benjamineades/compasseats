@@ -11,6 +11,25 @@ import { VenueMap } from "@/components/VenueMap";
 import { RotatingEarth } from "@/components/RotatingEarth";
 import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomplete";
 
+const MAJOR_CITIES = [
+  "Tokyo", "Lisbon", "Mexico City", "Paris", "New York", "Bangkok", "Istanbul",
+  "Rome", "Buenos Aires", "Cape Town", "Sydney", "Singapore", "Barcelona",
+  "Marrakech", "Seoul", "Mumbai", "Rio de Janeiro", "Cairo", "London", "Berlin",
+  "Hong Kong", "Dubai", "Vienna", "Amsterdam", "Athens", "Stockholm", "Hanoi",
+  "Lima", "Nairobi", "Copenhagen", "Prague", "Madrid", "Shanghai", "Melbourne",
+  "Reykjavik", "Helsinki", "Budapest", "Beirut", "Taipei", "Kyoto",
+];
+
+function pickThreePlaceholder() {
+  const pool = [...MAJOR_CITIES];
+  const picks: string[] = [];
+  for (let i = 0; i < 3 && pool.length; i++) {
+    const idx = Math.floor(Math.random() * pool.length);
+    picks.push(pool.splice(idx, 1)[0]);
+  }
+  return picks.join(", ") + "…";
+}
+
 type Venue = {
   name: string;
   category: "restaurant" | "cocktail bar";
@@ -75,6 +94,7 @@ async function fetchVenues(q: VenueQuery): Promise<Result> {
 function Index() {
   const [city, setCity] = useState("");
   const [selected, setSelected] = useState<CitySuggestion | null>(null);
+  const [placeholder] = useState(pickThreePlaceholder);
   const mutation = useMutation({ mutationFn: fetchVenues });
 
   const onSubmit = (e: FormEvent) => {
@@ -115,7 +135,7 @@ function Index() {
               setSelected(s);
               mutation.mutate({ city: s.city, region: s.region, country: s.country });
             }}
-            placeholder="Tokyo, Lisbon, Mexico City…"
+            placeholder={placeholder}
             disabled={mutation.isPending}
           />
           <Button type="submit" size="lg" className="h-12 px-6" disabled={mutation.isPending || !city.trim()}>
