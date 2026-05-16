@@ -5,6 +5,9 @@ import { Input } from "@/components/ui/input";
 export type CitySuggestion = {
   label: string;
   short: string;
+  city: string;
+  region?: string;
+  country?: string;
 };
 
 type Props = {
@@ -75,7 +78,7 @@ export function CityAutocomplete({ value, onChange, onSelect, placeholder, disab
           const key = label.toLowerCase();
           if (seen.has(key)) continue;
           seen.add(key);
-          mapped.push({ label, short });
+          mapped.push({ label, short, city, region: a.state, country: a.country });
           if (mapped.length >= 6) break;
         }
         setItems(mapped);
