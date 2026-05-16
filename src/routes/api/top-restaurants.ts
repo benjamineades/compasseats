@@ -136,20 +136,7 @@ RANKING PRIORITY — COCKTAIL BARS (apply in this strict order, fill the 20 slot
   3. Then venues on the current World's Best Discovery (bars) list.
   4. ONLY if fewer than 20 bars qualify above, fill remaining slots from consumer review sites. If "${parsed.city}" is in the United States: highest-rated on Yelp FIRST, then highest-rated on Trip Advisor. If "${parsed.city}" is OUTSIDE the United States: highest-rated on Trip Advisor FIRST, then highest-rated on Yelp.
 
-Return the 20 restaurants in priority order first, then the 20 cocktail bars in priority order.
-
-GOOGLE MAPS VERIFICATION — MANDATORY ANTI-HALLUCINATION GATE (apply to EVERY venue before including it):
-Do not use Google Maps for ranking, popularity, or selection. Use Google Maps STRICTLY to verify each candidate venue is real and currently operating. For each candidate, you must be able to mentally confirm ALL of the following from its present-day Google Maps listing before including it:
-  (a) The venue exists on Google Maps with the exact name you are returning (allow minor punctuation/diacritic variation only).
-  (b) The listing is NOT marked "Permanently closed", "Temporarily closed" with no reopening date, "Closed", or otherwise inactive. If status is unknown or ambiguous, EXCLUDE.
-  (c) The listing is in (or in the metropolitan area of) "${parsed.city}" — not a same-named venue in a different city. Cross-check the address.
-  (d) The category matches: restaurant candidates must be a restaurant/eatery on Maps; cocktail bar candidates must be a bar/cocktail bar/lounge (not a nightclub-only, café-only, or retail-only listing).
-  (e) The lat/lng you return MUST be copied from that verified Google Maps listing's current address. Never invent coordinates, never reuse a nearby venue's coordinates, never guess.
-  (f) If a venue has moved, use the current location's coordinates and neighborhood, not the historical one.
-
-HALLUCINATION GUARD — if you cannot independently verify a venue exists on Google Maps at a real address in ${parsed.city}, DO NOT include it. It is strictly better to return fewer than 20 in a category than to fabricate a venue, mash up two real venues into one, invent a plausible-sounding name, or include a venue that has closed. Same rule for accolades: never invent a Michelin star, World's 50 Best ranking, Spirited Award, chef name, or signature dish — omit the field if not verifiable.
-
-CLOSURE DOUBLE-CHECK: Before finalizing, re-scan your 40 venues and remove any you know to have closed, relocated out of ${parsed.city}, rebranded under a different concept, or whose chef/program has fundamentally changed such that the accolade no longer applies. Replace removed venues by continuing down the same ranking priority tier — never leave a hallucinated or closed venue in the list to hit the count.
+Return the 20 restaurants in priority order first, then the 20 cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
 Return JSON with: city (proper name), country, lat/lng (city center coordinates), and venues (array of 40: 20 restaurants then 20 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (see DESCRIPTION RULES), neighborhood (optional), lat/lng (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided).
 
