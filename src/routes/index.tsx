@@ -236,21 +236,17 @@ function VenueColumn({
                     <div className="mt-1 flex flex-wrap gap-1.5">
                       <Badge variant="outline">{v.cuisine}</Badge>
                       {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
+                      {v.category === "restaurant" && v.signatureDish && (
+                        <Badge variant="secondary" title="Signature dish">
+                          Signature: {v.signatureDish}
+                        </Badge>
+                      )}
                     </div>
                     <Accolades v={v} />
-                    {v.category === "restaurant" && (v.chef || v.signatureDish) && (
-                      <div className="mt-2 space-y-0.5 text-sm">
-                        {v.chef && (
-                          <p className="text-foreground">
-                            <span className="text-muted-foreground">Chef:</span> {v.chef}
-                          </p>
-                        )}
-                        {v.signatureDish && (
-                          <p className="text-foreground">
-                            <span className="text-muted-foreground">Signature:</span> {v.signatureDish}
-                          </p>
-                        )}
-                      </div>
+                    {v.category === "restaurant" && v.chef && (
+                      <p className="mt-2 text-sm text-foreground">
+                        <span className="text-muted-foreground">Chef:</span> {v.chef}
+                      </p>
                     )}
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.description}</p>
                     {v.accoladeOverview && (
