@@ -44,13 +44,13 @@ const resultsSchema = z.object({
         michelinGreenStar: z.boolean().nullish(),
         bibGourmand: z.boolean().nullish(),
         worldsBest50Restaurants: z
-          .object({ rank: integerValue, year: integerValue })
+          .object({ rank: integerValue.nullish(), year: integerValue.nullish() })
           .nullish(),
         worldsBest50Bars: z
-          .object({ rank: integerValue, year: integerValue })
+          .object({ rank: integerValue.nullish(), year: integerValue.nullish() })
           .nullish(),
         spiritedAward: z
-          .object({ name: z.string(), year: integerValue })
+          .object({ name: z.string().nullish(), year: integerValue.nullish() })
           .nullish(),
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
@@ -217,9 +217,22 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 michelinStars: v.michelinStars ?? undefined,
                 michelinGreenStar: v.michelinGreenStar ?? undefined,
                 bibGourmand: v.bibGourmand ?? undefined,
-                worldsBest50Restaurants: v.worldsBest50Restaurants ?? undefined,
-                worldsBest50Bars: v.worldsBest50Bars ?? undefined,
-                spiritedAward: v.spiritedAward ?? undefined,
+                worldsBest50Restaurants:
+                  v.worldsBest50Restaurants &&
+                  v.worldsBest50Restaurants.rank != null &&
+                  v.worldsBest50Restaurants.year != null
+                    ? { rank: v.worldsBest50Restaurants.rank, year: v.worldsBest50Restaurants.year }
+                    : undefined,
+                worldsBest50Bars:
+                  v.worldsBest50Bars &&
+                  v.worldsBest50Bars.rank != null &&
+                  v.worldsBest50Bars.year != null
+                    ? { rank: v.worldsBest50Bars.rank, year: v.worldsBest50Bars.year }
+                    : undefined,
+                spiritedAward:
+                  v.spiritedAward && v.spiritedAward.name && v.spiritedAward.year != null
+                    ? { name: v.spiritedAward.name, year: v.spiritedAward.year }
+                    : undefined,
                 chef: v.chef ?? undefined,
                 signatureDish: v.signatureDish ?? undefined,
                 accoladeOverview: v.accoladeOverview ?? undefined,
