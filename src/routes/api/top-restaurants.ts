@@ -68,7 +68,8 @@ export const Route = createFileRoute("/api/top-restaurants")({
         }
 
         const gateway = createLovableAiGatewayProvider(apiKey);
-        const model = gateway("google/gemini-2.5-pro");
+        // Flash is ~3–5x faster than Pro and sufficient for this task.
+        const model = gateway("google/gemini-2.5-flash");
 
         const now = new Date();
         const currentYear = now.getUTCFullYear();
@@ -88,6 +89,8 @@ RECENCY IS MANDATORY. The official accolade lists you must use:
   • Tales of the Cocktail Spirited Awards — most recent ceremony only (${currentYear} if held, else ${currentYear - 1}).
   • World's Best Discovery — current live listing.
 Do NOT include any accolade with year < ${minAccoladeYear} unless that exact year is still the most recent edition of that list. If you are not confident the accolade reflects the latest edition, OMIT the accolade field entirely rather than guess. Fabricated or outdated years are worse than no badge.
+
+NON-EMPTY GUARANTEE (highest priority): You MUST return exactly 10 restaurants AND exactly 10 cocktail bars for ${parsed.city}, even when no accolade data can be verified. If the accolade tiers below don't fill 10 slots, immediately fall back to the highest-rated venues from Yelp / Trip Advisor (and finally to any other well-known, currently-operating local venues you know) to reach 10 in each category. Never return fewer than 10 per category. Omitting accolade fields is fine; returning an empty or short list is NOT.
 
 OVERALL RULE: Within EVERY tier below, always prefer the MOST RECENT accolade year. When two venues are in the same tier, the one whose qualifying accolade was awarded in a more recent year ranks higher. Use rank as a secondary tiebreaker only when the accolade years are equal. Never use an older year's ranking when a more recent year exists.
 
