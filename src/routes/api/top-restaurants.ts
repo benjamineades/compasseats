@@ -8,11 +8,14 @@ const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
 });
 
+const numericValue = z.coerce.number().finite();
+const integerValue = z.coerce.number().int();
+
 const resultsSchema = z.object({
   city: z.string(),
   country: z.string(),
-  lat: z.number(),
-  lng: z.number(),
+  lat: numericValue,
+  lng: numericValue,
   venues: z
     .array(
       z.object({
@@ -22,21 +25,21 @@ const resultsSchema = z.object({
         priceRange: z.string().nullish(),
         description: z.string().nullish(),
         neighborhood: z.string().nullish(),
-        lat: z.number(),
-        lng: z.number(),
+        lat: numericValue,
+        lng: numericValue,
         url: z.string().nullish(),
         urlType: z.enum(["website", "instagram", "facebook"]).nullish(),
-        michelinStars: z.number().int().nullish(),
+        michelinStars: integerValue.nullish(),
         michelinGreenStar: z.boolean().nullish(),
         bibGourmand: z.boolean().nullish(),
         worldsBest50Restaurants: z
-          .object({ rank: z.number().int(), year: z.number().int() })
+          .object({ rank: integerValue, year: integerValue })
           .nullish(),
         worldsBest50Bars: z
-          .object({ rank: z.number().int(), year: z.number().int() })
+          .object({ rank: integerValue, year: integerValue })
           .nullish(),
         spiritedAward: z
-          .object({ name: z.string(), year: z.number().int() })
+          .object({ name: z.string(), year: integerValue })
           .nullish(),
       }),
     )
