@@ -47,8 +47,7 @@ const resultsSchema = z.object({
         whyThisPick: z.string().nullish(),
       }),
     )
-    .min(1)
-    .max(80),
+    .min(1),
 });
 
 const sanitizeAiJson = (text: string) => {
