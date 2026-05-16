@@ -48,8 +48,18 @@ const resultsSchema = z.object({
       }),
     )
     .min(1)
-    .max(40),
+    .max(80),
 });
+
+const sanitizeAiJson = (text: string) => {
+  const start = text.indexOf("{");
+  const end = text.lastIndexOf("}");
+  if (start === -1 || end === -1 || end <= start) return null;
+
+  return text
+    .slice(start, end + 1)
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, " ");
+};
 
 export const Route = createFileRoute("/api/top-restaurants")({
   server: {
@@ -84,6 +94,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
           const { object } = await generateObject({
             model,
             schema: resultsSchema,
+            experimental_repairText: async ({ text }) => sanitizeAiJson(text),
           prompt: `Today is ${currentMonth} ${currentYear}. List the 20 top restaurants AND the 20 top cocktail bars in ${parsed.city} (40 venues total).
 
 RECENCY IS MANDATORY. The official accolade lists you must use:
@@ -128,7 +139,10 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
           });
           const normalized = {
             ...object,
-            venues: object.venues.map((v) => {
+            venues: [
+              ...object.venues.filter((v) => v.category === "restaurant").slice(0, 20),
+              ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 20),
+            ].map((v) => {
               const url = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
               return {
                 name: v.name,
