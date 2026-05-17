@@ -461,9 +461,12 @@ function InfoTip({ text }: { text: string }) {
 
 function summarizeAccolade(v: Venue): string | undefined {
   if (v.michelinStars) return `${"★".repeat(v.michelinStars)} Michelin`;
-  if (v.worldsBest50Restaurants) return `World's 50 Best #${v.worldsBest50Restaurants.rank} (${v.worldsBest50Restaurants.year})`;
-  if (v.worldsBest50Bars) return `World's 50 Best Bars #${v.worldsBest50Bars.rank} (${v.worldsBest50Bars.year})`;
+  if (v.worldsBest50Restaurants && isRecentRanking(v.worldsBest50Restaurants.year))
+    return `World's 50 Best #${v.worldsBest50Restaurants.rank} (${v.worldsBest50Restaurants.year})`;
+  if (v.worldsBest50Bars && isRecentRanking(v.worldsBest50Bars.year))
+    return `World's 50 Best Bars #${v.worldsBest50Bars.rank} (${v.worldsBest50Bars.year})`;
   if (v.spiritedAward) return `${v.spiritedAward.name} (${v.spiritedAward.year})`;
+  if (v.jamesBeardAward) return `James Beard: ${v.jamesBeardAward.name} (${v.jamesBeardAward.year})`;
   if (v.bibGourmand) return "Michelin Bib Gourmand";
   if (v.michelinGreenStar) return "Michelin Green Star";
   return undefined;
@@ -483,13 +486,22 @@ function Accolades({ v }: { v: Venue }) {
     );
   }
   if (v.category === "restaurant" && v.worldsBest50Restaurants) {
-    items.push(
-      <span key="w50r" className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400">
-        <Trophy className="h-3 w-3" />
-        World's 50 Best #{v.worldsBest50Restaurants.rank} ({v.worldsBest50Restaurants.year})
-        <InfoTip text={`Ranked #${v.worldsBest50Restaurants.rank} on the World's 50 Best Restaurants ${v.worldsBest50Restaurants.year} list — the industry's most influential restaurant ranking.`} />
-      </span>,
-    );
+    const w = v.worldsBest50Restaurants;
+    if (isRecentRanking(w.year)) {
+      items.push(
+        <span key="w50r" className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400">
+          <Trophy className="h-3 w-3" />
+          World's 50 Best #{w.rank} ({w.year})
+          <InfoTip text={`Ranked #${w.rank} on the World's 50 Best Restaurants ${w.year} list.`} />
+        </span>,
+      );
+    } else {
+      items.push(
+        <span key="w50r-old" className="inline-flex items-center gap-1 rounded-md border border-border bg-muted/40 px-1.5 py-0.5 text-xs font-medium text-muted-foreground">
+          <Trophy className="h-3 w-3" />Previously ranked — World's 50 Best ({w.year})
+        </span>,
+      );
+    }
   }
   if (v.michelinGreenStar) {
     items.push(
@@ -508,13 +520,22 @@ function Accolades({ v }: { v: Venue }) {
     );
   }
   if (v.worldsBest50Bars) {
-    items.push(
-      <span key="w50b" className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400">
-        <Trophy className="h-3 w-3" />
-        World's 50 Best Bars #{v.worldsBest50Bars.rank} ({v.worldsBest50Bars.year})
-        <InfoTip text={`Ranked #${v.worldsBest50Bars.rank} on the World's 50 Best Bars ${v.worldsBest50Bars.year} list — the definitive global ranking of cocktail bars.`} />
-      </span>,
-    );
+    const w = v.worldsBest50Bars;
+    if (isRecentRanking(w.year)) {
+      items.push(
+        <span key="w50b" className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400">
+          <Trophy className="h-3 w-3" />
+          World's 50 Best Bars #{w.rank} ({w.year})
+          <InfoTip text={`Ranked #${w.rank} on the World's 50 Best Bars ${w.year} list.`} />
+        </span>,
+      );
+    } else {
+      items.push(
+        <span key="w50b-old" className="inline-flex items-center gap-1 rounded-md border border-border bg-muted/40 px-1.5 py-0.5 text-xs font-medium text-muted-foreground">
+          <Trophy className="h-3 w-3" />Previously ranked — World's 50 Best Bars ({w.year})
+        </span>,
+      );
+    }
   }
   if (v.spiritedAward) {
     items.push(
@@ -522,6 +543,15 @@ function Accolades({ v }: { v: Venue }) {
         <Award className="h-3 w-3" />
         {v.spiritedAward.name} ({v.spiritedAward.year})
         <InfoTip text={`Tales of the Cocktail Spirited Award winner — ${v.spiritedAward.name} (${v.spiritedAward.year}). The industry's top honors for bars and bartenders.`} />
+      </span>,
+    );
+  }
+  if (v.jamesBeardAward) {
+    items.push(
+      <span key="jba" className="inline-flex items-center gap-1 rounded-md border border-rose-500/40 bg-rose-500/10 px-1.5 py-0.5 text-xs font-medium text-rose-400">
+        <Award className="h-3 w-3" />
+        James Beard: {v.jamesBeardAward.name} ({v.jamesBeardAward.year})
+        <InfoTip text={`James Beard Award — ${v.jamesBeardAward.name} (${v.jamesBeardAward.year}). One of the most prestigious culinary honors in the United States.`} />
       </span>,
     );
   }
