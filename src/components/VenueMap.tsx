@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import "leaflet/dist/leaflet.css";
 
-type Pin = {
+export type Pin = {
   index: number;
   name: string;
   category: "restaurant" | "cocktail bar";
   lat: number;
   lng: number;
+  accolade?: string;
+  anchorId?: string;
 };
 
 type MapModules = {
@@ -14,9 +16,15 @@ type MapModules = {
   leaflet: typeof import("leaflet");
 };
 
+export const PIN_COLORS = {
+  restaurant: "#d4af37", // gold
+  bar: "#1e3a8a", // navy
+};
+
 function numberedIcon(L: MapModules["leaflet"], index: number, isBar: boolean) {
-  const bg = isBar ? "#7c3aed" : "#ea580c";
-  const html = `<div style="background:${bg};color:#fff;width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);font-weight:700;font-family:ui-sans-serif,system-ui;font-size:13px"><span style="transform:rotate(45deg)">${index}</span></div>`;
+  const bg = isBar ? PIN_COLORS.bar : PIN_COLORS.restaurant;
+  const text = isBar ? "#fff" : "#1a1a1a";
+  const html = `<div style="background:${bg};color:${text};width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);font-weight:700;font-family:ui-sans-serif,system-ui;font-size:13px"><span style="transform:rotate(45deg)">${index}</span></div>`;
   return L.divIcon({
     html,
     className: "",
@@ -80,16 +88,50 @@ export function VenueMap({
         />
         {pins.map((p) => (
           <Marker
-            key={`${p.index}-${p.name}`}
+            key={`${p.category}-${p.index}-${p.name}`}
             position={[p.lat, p.lng]}
             icon={numberedIcon(L, p.index, p.category === "cocktail bar")}
           >
             <Popup>
-              <strong>
-                {p.index}. {p.name}
-              </strong>
-              <br />
-              <span style={{ textTransform: "capitalize" }}>{p.category}</span>
+              <div style={{ minWidth: 180 }}>
+                <strong style={{ fontSize: 14 }}>
+                  {p.index}. {p.name}
+                </strong>
+                <div style={{ fontSize: 12, color: "#555", textTransform: "capitalize", marginTop: 2 }}>
+                  {p.category}
+                </div>
+                {p.accolade && (
+                  <div style={{ fontSize: 12, color: "#b45309", marginTop: 4, fontWeight: 600 }}>
+                    {p.accolade}
+                  </div>
+                )}
+                {p.anchorId && (
+                  <a
+                    href={`#${p.anchorId}`}
+                    onClick={() => {
+                      const el = document.getElementById(p.anchorId!);
+                      if (el) {
+                        el.scrollIntoView({ behavior: "smooth", block: "center" });
+                        el.classList.add("ring-2", "ring-primary");
+                        setTimeout(() => el.classList.remove("ring-2", "ring-primary"), 2000);
+                      }
+                    }}
+                    style={{
+                      display: "inline-block",
+                      marginTop: 8,
+                      padding: "4px 10px",
+                      background: p.category === "cocktail bar" ? PIN_COLORS.bar : PIN_COLORS.restaurant,
+                      color: p.category === "cocktail bar" ? "#fff" : "#1a1a1a",
+                      borderRadius: 6,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      textDecoration: "none",
+                    }}
+                  >
+                    View details →
+                  </a>
+                )}
+              </div>
             </Popup>
           </Marker>
         ))}
