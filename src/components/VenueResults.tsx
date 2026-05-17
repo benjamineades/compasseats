@@ -44,6 +44,7 @@ export type Venue = {
 export type ResultsData = {
   city: string;
   country: string;
+  cityBlurb?: string;
   lat: number;
   lng: number;
   venues: Venue[];

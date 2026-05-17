@@ -89,6 +89,7 @@ function Index() {
         <CityHero
           city={data.city}
           country={data.country}
+          blurb={data.cityBlurb}
           back={{ onClick: resetSearch }}
         />
       )}
