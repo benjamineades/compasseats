@@ -73,7 +73,10 @@ function hasMichelin(v: Venue) {
   return (v.michelinStars ?? 0) > 0 || v.bibGourmand || v.michelinGreenStar;
 }
 function hasWorlds50(v: Venue) {
-  return !!(v.worldsBest50Restaurants || v.worldsBest50Bars);
+  return (
+    (!!v.worldsBest50Restaurants && isRecentRanking(v.worldsBest50Restaurants.year)) ||
+    (!!v.worldsBest50Bars && isRecentRanking(v.worldsBest50Bars.year))
+  );
 }
 
 function distanceKm(a: [number, number], b: [number, number]) {
@@ -113,7 +116,7 @@ export function VenueResults({ data }: { data: ResultsData }) {
       if (filter === "restaurants") return v.category === "restaurant";
       if (filter === "bars") return v.category === "cocktail bar";
       if (filter === "michelin") return (v.michelinStars ?? 0) > 0;
-      if (filter === "worlds50") return !!(v.worldsBest50Restaurants || v.worldsBest50Bars);
+      if (filter === "worlds50") return hasWorlds50(v);
       if (filter === "open") return parseHoursOpenNow(v.hours) === true;
       return true;
     });
