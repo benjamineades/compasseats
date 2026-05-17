@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CitySlugRouteImport } from './routes/city.$slug'
 import { Route as ApiTopRestaurantsRouteImport } from './routes/api/top-restaurants'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CitySlugRoute = CitySlugRouteImport.update({
+  id: '/city/$slug',
+  path: '/city/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiTopRestaurantsRoute = ApiTopRestaurantsRouteImport.update({
@@ -26,27 +32,31 @@ const ApiTopRestaurantsRoute = ApiTopRestaurantsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/top-restaurants': typeof ApiTopRestaurantsRoute
+  '/city/$slug': typeof CitySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/top-restaurants': typeof ApiTopRestaurantsRoute
+  '/city/$slug': typeof CitySlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/top-restaurants': typeof ApiTopRestaurantsRoute
+  '/city/$slug': typeof CitySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/top-restaurants'
+  fullPaths: '/' | '/api/top-restaurants' | '/city/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/top-restaurants'
-  id: '__root__' | '/' | '/api/top-restaurants'
+  to: '/' | '/api/top-restaurants' | '/city/$slug'
+  id: '__root__' | '/' | '/api/top-restaurants' | '/city/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiTopRestaurantsRoute: typeof ApiTopRestaurantsRoute
+  CitySlugRoute: typeof CitySlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/city/$slug': {
+      id: '/city/$slug'
+      path: '/city/$slug'
+      fullPath: '/city/$slug'
+      preLoaderRoute: typeof CitySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/top-restaurants': {
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiTopRestaurantsRoute: ApiTopRestaurantsRoute,
+  CitySlugRoute: CitySlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
