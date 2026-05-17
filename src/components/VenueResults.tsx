@@ -2,6 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import {
   MapPin, Star, Leaf, Utensils, Trophy, Award, ExternalLink,
   Instagram, Facebook, Globe, CalendarCheck, Clock, Info, ArrowUpDown,
+  ChevronDown, ChevronUp, ImageOff,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -32,6 +33,7 @@ export type Venue = {
   worldsBest50Restaurants?: { rank: number; year: number };
   worldsBest50Bars?: { rank: number; year: number };
   spiritedAward?: { name: string; year: number };
+  jamesBeardAward?: { name: string; year: number };
   chef?: string;
   signatureDish?: string;
   accoladeOverview?: string;
@@ -39,6 +41,7 @@ export type Venue = {
   reservationUrl?: string;
   reservationPlatform?: string;
   hours?: string;
+  imageUrl?: string;
 };
 
 export type ResultsData = {
@@ -58,6 +61,23 @@ const MICHELIN_STAR_TIPS: Record<number, string> = {
   2: "Two Michelin Stars: Excellent cooking, worth a detour.",
   3: "Three Michelin Stars: Exceptional cuisine, worth a special journey.",
 };
+
+const CURRENT_YEAR = new Date().getUTCFullYear();
+const MIN_RECENT_YEAR = CURRENT_YEAR - 2;
+
+function isRecentRanking(year?: number): boolean {
+  return typeof year === "number" && year >= MIN_RECENT_YEAR;
+}
+
+function hasMichelin(v: Venue) {
+  return (v.michelinStars ?? 0) > 0 || v.bibGourmand || v.michelinGreenStar;
+}
+function hasWorlds50(v: Venue) {
+  return (
+    (!!v.worldsBest50Restaurants && isRecentRanking(v.worldsBest50Restaurants.year)) ||
+    (!!v.worldsBest50Bars && isRecentRanking(v.worldsBest50Bars.year))
+  );
+}
 
 function distanceKm(a: [number, number], b: [number, number]) {
   const [lat1, lng1] = a, [lat2, lng2] = b;
@@ -96,7 +116,7 @@ export function VenueResults({ data }: { data: ResultsData }) {
       if (filter === "restaurants") return v.category === "restaurant";
       if (filter === "bars") return v.category === "cocktail bar";
       if (filter === "michelin") return (v.michelinStars ?? 0) > 0;
-      if (filter === "worlds50") return !!(v.worldsBest50Restaurants || v.worldsBest50Bars);
+      if (filter === "worlds50") return hasWorlds50(v);
       if (filter === "open") return parseHoursOpenNow(v.hours) === true;
       return true;
     });
@@ -119,6 +139,10 @@ export function VenueResults({ data }: { data: ResultsData }) {
     }
     return map;
   }, [data]);
+
+  const michelinCount = data.venues.filter(hasMichelin).length;
+  const worlds50Count = data.venues.filter(hasWorlds50).length;
+  const noPrestige = michelinCount === 0 && worlds50Count === 0;
 
   const pins: Pin[] = filtered.map((v) => {
     const idx = indexMap.get(v) ?? 0;
@@ -146,8 +170,23 @@ export function VenueResults({ data }: { data: ResultsData }) {
         </span>
       </div>
 
+      {noPrestige ? (
+        <div className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2.5 text-xs leading-relaxed text-amber-200/90">
+          No Michelin or World's 50 Best venues in this city yet — showing top locally acclaimed spots instead.
+        </div>
+      ) : (
+        <div className="mb-4 rounded-lg border border-border bg-card/40 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
+          Rankings reflect most recent available guide year.
+        </div>
+      )}
+
       <div className="relative z-[60]">
-        <FilterBar filter={filter} setFilter={setFilter} />
+        <FilterBar
+          filter={filter}
+          setFilter={setFilter}
+          showMichelin={michelinCount > 0}
+          showWorlds50={worlds50Count > 0}
+        />
       </div>
 
       {filtered.length === 0 ? (
@@ -189,11 +228,12 @@ export function VenueResults({ data }: { data: ResultsData }) {
 }
 
 function FilterBar({
-  filter, setFilter,
+  filter, setFilter, showMichelin, showWorlds50,
 }: {
   filter: Filter; setFilter: (f: Filter) => void;
+  showMichelin: boolean; showWorlds50: boolean;
 }) {
-  const filters: { id: Filter; label: string }[] = [
+  const all: { id: Filter; label: string }[] = [
     { id: "all", label: "All" },
     { id: "restaurants", label: "Restaurants" },
     { id: "bars", label: "Cocktail Bars" },
@@ -201,6 +241,11 @@ function FilterBar({
     { id: "worlds50", label: "World's 50 Best" },
     { id: "open", label: "Open Now" },
   ];
+  const filters = all.filter((f) => {
+    if (f.id === "michelin") return showMichelin;
+    if (f.id === "worlds50") return showWorlds50;
+    return true;
+  });
   return (
     <div className="mb-4 flex flex-wrap items-center gap-2">
       <div className="flex flex-wrap gap-1.5">
@@ -244,79 +289,154 @@ function VenueColumn({
       <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
         {title}
       </h3>
-      <ol className="space-y-3">
+      <ol className="space-y-4">
         {items.map((v) => {
           const n = indexMap.get(v) ?? 0;
           const anchor = venueAnchorId(v.category, n);
           return (
             <li key={`${v.name}-${n}`} id={anchor}>
-              <Card className="transition-all hover:border-foreground/20">
-                <CardContent className="flex gap-3 p-4">
-                  <div
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold"
-                    style={{ background: accent, color: accentText }}
-                  >
-                    {n}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      {v.url ? (
-                        <a href={v.url} target="_blank" rel="noopener noreferrer"
-                          className="group inline-flex items-center gap-1.5 text-base font-semibold text-foreground hover:text-primary">
-                          {v.name}<LinkIcon type={v.urlType} />
-                        </a>
-                      ) : (
-                        <h2 className="text-base font-semibold text-foreground">{v.name}</h2>
-                      )}
-                      <span className="text-sm font-medium text-muted-foreground">{v.priceRange}</span>
-                    </div>
-                    {v.reservationUrl && (
-                      <a href={v.reservationUrl} target="_blank" rel="noopener noreferrer"
-                        title={v.reservationPlatform ? `Book via ${v.reservationPlatform}` : "Book a reservation"}
-                        className="mt-1.5 inline-flex items-center gap-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400 hover:bg-emerald-500/20">
-                        <CalendarCheck className="h-3 w-3" />Book<ExternalLink className="h-3 w-3 opacity-70" />
-                      </a>
-                    )}
-                    <div className="mt-1 flex flex-wrap gap-1.5">
-                      <Badge variant="outline">{v.cuisine}</Badge>
-                      {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
-                      {v.hours && (
-                        <Badge variant="outline" title="Business hours" className="gap-1">
-                          <Clock className="h-3 w-3" />{v.hours}
-                        </Badge>
-                      )}
-                      {v.category === "restaurant" && v.signatureDish && (
-                        <Badge variant="secondary" title="Signature dish">
-                          Signature: {v.signatureDish}
-                        </Badge>
-                      )}
-                    </div>
-                    <Accolades v={v} />
-                    {v.category === "restaurant" && v.chef && (
-                      <p className="mt-2 text-sm text-foreground">
-                        <span className="text-muted-foreground">Chef:</span> {v.chef}
-                      </p>
-                    )}
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.description}</p>
-                    {v.accoladeOverview && (
-                      <div className="mt-2 rounded-md border-l-2 border-amber-500/40 bg-amber-500/5 px-2 py-1.5">
-                        <div className="text-[10px] font-semibold uppercase tracking-wide text-amber-500/90">Guide overview</div>
-                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.accoladeOverview}</p>
-                      </div>
-                    )}
-                    {v.whyThisPick && (
-                      <div className="mt-2 rounded-md border-l-2 border-primary/50 bg-primary/5 px-2 py-1.5">
-                        <div className="text-[10px] font-semibold uppercase tracking-wide text-primary/90">Why this pick</div>
-                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.whyThisPick}</p>
-                      </div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+              <VenueCard v={v} n={n} accent={accent} accentText={accentText} />
             </li>
           );
         })}
       </ol>
+    </div>
+  );
+}
+
+function VenueCard({
+  v, n, accent, accentText,
+}: { v: Venue; n: number; accent: string; accentText: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const hasDetails = !!(v.description || v.accoladeOverview || v.whyThisPick || v.chef);
+
+  const action = v.reservationUrl
+    ? { href: v.reservationUrl, label: "Book", icon: CalendarCheck,
+        title: v.reservationPlatform ? `Book via ${v.reservationPlatform}` : "Book a reservation",
+        cls: "border-emerald-500/40 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20" }
+    : v.url
+    ? { href: v.url, label: "View Website", icon: Globe,
+        title: "Open official website",
+        cls: "border-border bg-card text-foreground hover:bg-accent" }
+    : null;
+
+  return (
+    <Card className="overflow-hidden transition-all hover:border-foreground/20">
+      <VenueHeroImage v={v} n={n} accent={accent} accentText={accentText} />
+      <CardContent className="p-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <Badge variant="outline">{v.cuisine}</Badge>
+            {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
+            {v.hours && (
+              <Badge variant="outline" title="Business hours" className="gap-1">
+                <Clock className="h-3 w-3" />{v.hours}
+              </Badge>
+            )}
+            <span className="text-sm font-medium text-muted-foreground">{v.priceRange}</span>
+          </div>
+          {action && (
+            <a href={action.href} target="_blank" rel="noopener noreferrer" title={action.title}
+              className={`inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs font-medium ${action.cls}`}>
+              <action.icon className="h-3 w-3" />{action.label}<ExternalLink className="h-3 w-3 opacity-70" />
+            </a>
+          )}
+        </div>
+
+        <Accolades v={v} />
+
+        {v.category === "restaurant" && v.signatureDish && (
+          <div className="mt-2">
+            <Badge variant="secondary" title="Signature dish">
+              Signature: {v.signatureDish}
+            </Badge>
+          </div>
+        )}
+
+        {hasDetails && (
+          <>
+            <button
+              type="button"
+              onClick={() => setExpanded((e) => !e)}
+              className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+              aria-expanded={expanded}
+            >
+              {expanded ? (<><ChevronUp className="h-3 w-3" />Hide details</>) : (<><ChevronDown className="h-3 w-3" />Read more</>)}
+            </button>
+            {expanded && (
+              <div className="mt-3 space-y-2">
+                {v.category === "restaurant" && v.chef && (
+                  <p className="text-sm text-foreground">
+                    <span className="text-muted-foreground">Chef:</span> {v.chef}
+                  </p>
+                )}
+                {v.description && (
+                  <p className="text-sm leading-relaxed text-muted-foreground">{v.description}</p>
+                )}
+                {v.accoladeOverview && (
+                  <div className="rounded-md border-l-2 border-amber-500/40 bg-amber-500/5 px-2 py-1.5">
+                    <div className="text-[10px] font-semibold uppercase tracking-wide text-amber-500/90">Guide overview</div>
+                    <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.accoladeOverview}</p>
+                  </div>
+                )}
+                {v.whyThisPick && (
+                  <div className="rounded-md border-l-2 border-primary/50 bg-primary/5 px-2 py-1.5">
+                    <div className="text-[10px] font-semibold uppercase tracking-wide text-primary/90">Why this pick</div>
+                    <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.whyThisPick}</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+function VenueHeroImage({
+  v, n, accent, accentText,
+}: { v: Venue; n: number; accent: string; accentText: string }) {
+  const [errored, setErrored] = useState(false);
+  const showImage = !!v.imageUrl && !errored;
+  return (
+    <div className="relative aspect-[16/9] w-full max-h-[200px] overflow-hidden bg-muted">
+      {showImage ? (
+        <img
+          src={v.imageUrl}
+          alt={v.name}
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          onError={() => setErrored(true)}
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <div
+          className="flex h-full w-full items-center justify-center"
+          style={{
+            background: `linear-gradient(135deg, ${accent}30 0%, ${accent}10 60%, transparent 100%)`,
+          }}
+        >
+          <ImageOff className="h-8 w-8 opacity-30" />
+        </div>
+      )}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+      <div
+        className="absolute left-3 top-3 flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold shadow-md"
+        style={{ background: accent, color: accentText }}
+      >
+        {n}
+      </div>
+      <div className="absolute inset-x-0 bottom-0 p-3">
+        {v.url ? (
+          <a href={v.url} target="_blank" rel="noopener noreferrer"
+            className="group inline-flex items-baseline gap-1.5 text-lg font-semibold leading-tight text-white hover:text-white/90">
+            {v.name}<LinkIcon type={v.urlType} />
+          </a>
+        ) : (
+          <h2 className="text-lg font-semibold leading-tight text-white">{v.name}</h2>
+        )}
+      </div>
     </div>
   );
 }
@@ -344,9 +464,12 @@ function InfoTip({ text }: { text: string }) {
 
 function summarizeAccolade(v: Venue): string | undefined {
   if (v.michelinStars) return `${"★".repeat(v.michelinStars)} Michelin`;
-  if (v.worldsBest50Restaurants) return `World's 50 Best #${v.worldsBest50Restaurants.rank} (${v.worldsBest50Restaurants.year})`;
-  if (v.worldsBest50Bars) return `World's 50 Best Bars #${v.worldsBest50Bars.rank} (${v.worldsBest50Bars.year})`;
+  if (v.worldsBest50Restaurants && isRecentRanking(v.worldsBest50Restaurants.year))
+    return `World's 50 Best #${v.worldsBest50Restaurants.rank} (${v.worldsBest50Restaurants.year})`;
+  if (v.worldsBest50Bars && isRecentRanking(v.worldsBest50Bars.year))
+    return `World's 50 Best Bars #${v.worldsBest50Bars.rank} (${v.worldsBest50Bars.year})`;
   if (v.spiritedAward) return `${v.spiritedAward.name} (${v.spiritedAward.year})`;
+  if (v.jamesBeardAward) return `James Beard: ${v.jamesBeardAward.name} (${v.jamesBeardAward.year})`;
   if (v.bibGourmand) return "Michelin Bib Gourmand";
   if (v.michelinGreenStar) return "Michelin Green Star";
   return undefined;
@@ -366,13 +489,22 @@ function Accolades({ v }: { v: Venue }) {
     );
   }
   if (v.category === "restaurant" && v.worldsBest50Restaurants) {
-    items.push(
-      <span key="w50r" className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400">
-        <Trophy className="h-3 w-3" />
-        World's 50 Best #{v.worldsBest50Restaurants.rank} ({v.worldsBest50Restaurants.year})
-        <InfoTip text={`Ranked #${v.worldsBest50Restaurants.rank} on the World's 50 Best Restaurants ${v.worldsBest50Restaurants.year} list — the industry's most influential restaurant ranking.`} />
-      </span>,
-    );
+    const w = v.worldsBest50Restaurants;
+    if (isRecentRanking(w.year)) {
+      items.push(
+        <span key="w50r" className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400">
+          <Trophy className="h-3 w-3" />
+          World's 50 Best #{w.rank} ({w.year})
+          <InfoTip text={`Ranked #${w.rank} on the World's 50 Best Restaurants ${w.year} list.`} />
+        </span>,
+      );
+    } else {
+      items.push(
+        <span key="w50r-old" className="inline-flex items-center gap-1 rounded-md border border-border bg-muted/40 px-1.5 py-0.5 text-xs font-medium text-muted-foreground">
+          <Trophy className="h-3 w-3" />Previously ranked — World's 50 Best ({w.year})
+        </span>,
+      );
+    }
   }
   if (v.michelinGreenStar) {
     items.push(
@@ -391,13 +523,22 @@ function Accolades({ v }: { v: Venue }) {
     );
   }
   if (v.worldsBest50Bars) {
-    items.push(
-      <span key="w50b" className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400">
-        <Trophy className="h-3 w-3" />
-        World's 50 Best Bars #{v.worldsBest50Bars.rank} ({v.worldsBest50Bars.year})
-        <InfoTip text={`Ranked #${v.worldsBest50Bars.rank} on the World's 50 Best Bars ${v.worldsBest50Bars.year} list — the definitive global ranking of cocktail bars.`} />
-      </span>,
-    );
+    const w = v.worldsBest50Bars;
+    if (isRecentRanking(w.year)) {
+      items.push(
+        <span key="w50b" className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400">
+          <Trophy className="h-3 w-3" />
+          World's 50 Best Bars #{w.rank} ({w.year})
+          <InfoTip text={`Ranked #${w.rank} on the World's 50 Best Bars ${w.year} list.`} />
+        </span>,
+      );
+    } else {
+      items.push(
+        <span key="w50b-old" className="inline-flex items-center gap-1 rounded-md border border-border bg-muted/40 px-1.5 py-0.5 text-xs font-medium text-muted-foreground">
+          <Trophy className="h-3 w-3" />Previously ranked — World's 50 Best Bars ({w.year})
+        </span>,
+      );
+    }
   }
   if (v.spiritedAward) {
     items.push(
@@ -405,6 +546,15 @@ function Accolades({ v }: { v: Venue }) {
         <Award className="h-3 w-3" />
         {v.spiritedAward.name} ({v.spiritedAward.year})
         <InfoTip text={`Tales of the Cocktail Spirited Award winner — ${v.spiritedAward.name} (${v.spiritedAward.year}). The industry's top honors for bars and bartenders.`} />
+      </span>,
+    );
+  }
+  if (v.jamesBeardAward) {
+    items.push(
+      <span key="jba" className="inline-flex items-center gap-1 rounded-md border border-rose-500/40 bg-rose-500/10 px-1.5 py-0.5 text-xs font-medium text-rose-400">
+        <Award className="h-3 w-3" />
+        James Beard: {v.jamesBeardAward.name} ({v.jamesBeardAward.year})
+        <InfoTip text={`James Beard Award — ${v.jamesBeardAward.name} (${v.jamesBeardAward.year}). One of the most prestigious culinary honors in the United States.`} />
       </span>,
     );
   }

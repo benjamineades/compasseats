@@ -55,6 +55,9 @@ const resultsSchema = z.object({
         spiritedAward: z
           .object({ name: z.string(), year: integerValue })
           .nullish(),
+        jamesBeardAward: z
+          .object({ name: z.string(), year: integerValue })
+          .nullish(),
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
         accoladeOverview: z.string().nullish(),
@@ -62,6 +65,7 @@ const resultsSchema = z.object({
         reservationUrl: z.string().nullish(),
         reservationPlatform: z.string().nullish(),
         hours: z.string().nullish(),
+        imageUrl: z.string().nullish(),
       }),
     )
     .min(1),
@@ -155,7 +159,7 @@ RANKING PRIORITY — COCKTAIL BARS (apply in this STRICT order, fill the 10 slot
 
 Return the 10 restaurants in priority order first, then the 10 cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
-Return JSON with: city (proper name), country, cityBlurb, lat/lng (city center coordinates), and venues (array of 20: 10 restaurants then 10 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (see DESCRIPTION RULES), neighborhood (optional), lat/lng (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided).
+Return JSON with: city (proper name), country, cityBlurb, lat/lng (city center coordinates), and venues (array of 20: 10 restaurants then 10 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (see DESCRIPTION RULES), neighborhood (optional), lat/lng (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided), imageUrl (a direct https URL to a representative photo of the venue's dining room, bar, or signature dish — prefer the venue's official website press/media images, Wikipedia, or Michelin/World's 50 Best editorial images; must end in .jpg/.jpeg/.png/.webp and be a publicly hot-linkable image, not a webpage. Omit if you cannot verify a working image URL).
 
 CITY BLURB (cityBlurb field) — REQUIRED: ONE vivid sentence (max 28 words) describing what makes ${cityQuery} distinctive specifically for FOOD AND DRINK. Reference concrete signals — Michelin Guide presence (e.g. "home to X three-star kitchens"), World's 50 Best Restaurants/Bars representation, signature local dishes, defining ingredients, neighborhoods, or cocktail culture. Draw on the Michelin Guide and Wikipedia's culinary coverage of the city. Never generic ("a great food city"). Never mention politics, population, or geography unless directly tied to its cuisine.
 
@@ -163,11 +167,11 @@ DESCRIPTION RULES — RESTAURANTS: One vivid sentence, max 35 words. ALSO set th
 
 ACCOLADE OVERVIEW (accoladeOverview field) — REQUIRED FALLBACK:
   • For RESTAURANTS: Set accoladeOverview ONLY when BOTH chef and signatureDish are unknown. Write 1–2 sentences (max 45 words) that explicitly reference what the Michelin Guide and/or World's 50 Best Restaurants say about this place — start the sentence with phrasing like "The Michelin Guide notes…", "World's 50 Best describes…", or "Per the Michelin Guide and World's 50 Best…". Summarize cooking style, what critics highlight, atmosphere. If neither guide covers this venue, omit the field.
-  • For COCKTAIL BARS: ALWAYS set accoladeOverview when you have any knowledge of the bar from World's 50 Best Bars, Tales of the Cocktail Spirited Awards, or other established bar guides. 1–2 sentences (max 45 words), explicitly referencing the source — e.g. "World's 50 Best Bars highlights…", "A Spirited Award winner known for…". Summarize the bar's program, signature drinks, and atmosphere. Omit only if no such coverage exists.
-  • Never fabricate. If unsure, omit.
+  • For COCKTAIL BARS: Set accoladeOverview when you have knowledge of the bar from World's 50 Best Bars, World's Best Discovery, Tales of the Cocktail Spirited Awards, or James Beard. 1–2 sentences (max 45 words), explicitly referencing the source — e.g. "World's 50 Best Bars highlights…", "A Spirited Award winner known for…". Omit if no such coverage exists.
+  • NEVER cite Yelp, TripAdvisor, Google Reviews/Maps, or other user-rating platforms anywhere in this field. Never fabricate. If unsure, omit.
 
 WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
-  Always populate whyThisPick with ONE concise sentence (max 25 words) explaining the single strongest reason this venue earned its spot on this list. Be specific: cite the exact accolade ("Holds 3 Michelin stars and ranks #4 on World's 50 Best 2024"), a defining strength ("Pioneered Nordic fermentation and still sets the regional benchmark"), or — for fallback Yelp/Trip Advisor picks — why it's the top-rated choice ("Highest-rated izakaya on Tabelog with 4.6 stars across 2,000+ reviews"). Never generic ("great food"). Never repeat the description verbatim.
+  Always populate whyThisPick with ONE concise sentence (max 25 words) explaining the single strongest reason this venue earned its spot. CITATION RULES (strict): the ONLY guides/awards you may cite by name as a reason for inclusion are the Michelin Guide, World's 50 Best Restaurants, World's 50 Best Bars, World's Best Discovery, James Beard Awards, and Tales of the Cocktail Spirited Awards. NEVER cite Yelp, TripAdvisor, Google Reviews/Maps, Tabelog ratings, or any user-rating platform as justification — those are internal ranking signals only and must never appear in user-facing text. If a venue has a qualifying prestige citation, lead with it (e.g. "Three Michelin stars and #4 on World's 50 Best 2025"). If it has none, describe its culinary or craft reputation in concrete terms instead (signature technique, chef pedigree, neighborhood institution status, regional influence). Never generic ("great food"). Never repeat the description verbatim.
 
   RESERVATIONS (reservationUrl + reservationPlatform) — set whenever the venue takes reservations through an online booking platform:
     • Applies to BOTH restaurants AND cocktail bars. Many top cocktail bars (especially World's 50 Best Bars listees) take reservations via Tock, Resy, or SevenRooms — include those.
@@ -178,7 +182,7 @@ WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
   BUSINESS HOURS (hours field) — REQUIRED for EVERY venue (restaurants AND cocktail bars):
     Set hours to a compact human-readable summary of when the venue is open. Max 40 chars. Group consecutive days with the same hours. Use en-dash for ranges and lowercase am/pm. Examples: "Tue–Sun 6pm–2am", "Daily 5pm–1am", "Mon–Thu 6pm–12am, Fri–Sat 6pm–2am, Closed Sun", "Lunch Tue–Fri 12–2pm, Dinner Tue–Sat 7–10pm". If you are not confident about current hours, omit the field rather than guess.
 
-For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — most recent year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100 list, with that rank and year; omit if never listed). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — most recent year it placed on World's 50 Best Bars top 50 or extended 51–100, with that rank and year; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, e.g. "World's Best Cocktail Bar", with the year; omit if none). Only include accolade fields you are confident about; never fabricate. If "${cityQuery}" is ambiguous, pick the most famous match.`,
+For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — MOST RECENT year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100; omit if never listed), jamesBeardAward ({name, year} — most notable recent James Beard Award the restaurant or its chef has won, e.g. "Outstanding Restaurant" or "Best Chef: Northeast"; omit if none). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — MOST RECENT year it placed on World's 50 Best Bars top 50 or extended 51–100; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, with the year; omit if none), jamesBeardAward ({name, year} — for bar program awards; omit if none). For each {rank, year} accolade, ALWAYS return the most recent year the venue has appeared. Only include accolade fields you are confident about; never fabricate. If "${cityQuery}" is ambiguous, pick the most famous match.`,
           });
           const normalized = {
             ...object,
@@ -216,6 +220,8 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 reservationUrl,
                 reservationPlatform: reservationUrl ? (v.reservationPlatform ?? "Website") : undefined,
                 hours: v.hours ?? undefined,
+                jamesBeardAward: v.jamesBeardAward ?? undefined,
+                imageUrl: v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined,
               };
             }),
           };
