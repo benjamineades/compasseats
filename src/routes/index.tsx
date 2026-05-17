@@ -1,68 +1,30 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
-import type { FormEvent, ReactNode } from "react";
+import type { FormEvent } from "react";
 import { useState } from "react";
-import { MapPin, Loader2, Star, Leaf, Utensils, Trophy, Award, ExternalLink, Instagram, Facebook, Globe, CalendarCheck, Clock } from "lucide-react";
+import { Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { VenueMap } from "@/components/VenueMap";
 import { RotatingEarth } from "@/components/RotatingEarth";
 import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomplete";
+import { VenueResults, type ResultsData } from "@/components/VenueResults";
+import { TOP_CITIES } from "@/lib/cities";
 
-const MAJOR_CITIES = [
+const PLACEHOLDER_POOL = [
   "Tokyo", "Lisbon", "Mexico City", "Paris", "New York", "Bangkok", "Istanbul",
   "Rome", "Buenos Aires", "Cape Town", "Sydney", "Singapore", "Barcelona",
   "Marrakech", "Seoul", "Mumbai", "Rio de Janeiro", "Cairo", "London", "Berlin",
-  "Hong Kong", "Dubai", "Vienna", "Amsterdam", "Athens", "Stockholm", "Hanoi",
-  "Lima", "Nairobi", "Copenhagen", "Prague", "Madrid", "Shanghai", "Melbourne",
-  "Reykjavik", "Helsinki", "Budapest", "Beirut", "Taipei", "Kyoto",
 ];
 
 function pickThreePlaceholder() {
-  const pool = [...MAJOR_CITIES];
+  const pool = [...PLACEHOLDER_POOL];
   const picks: string[] = [];
   for (let i = 0; i < 3 && pool.length; i++) {
-    const idx = Math.floor(Math.random() * pool.length);
-    picks.push(pool.splice(idx, 1)[0]);
+    picks.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
   }
   return picks.join(", ") + "…";
 }
-
-type Venue = {
-  name: string;
-  category: "restaurant" | "cocktail bar";
-  cuisine: string;
-  priceRange: string;
-  description: string;
-  neighborhood?: string;
-  lat: number;
-  lng: number;
-  url?: string;
-  urlType?: "website" | "instagram" | "facebook";
-  michelinStars?: number;
-  michelinGreenStar?: boolean;
-  bibGourmand?: boolean;
-  worldsBest50Restaurants?: { rank: number; year: number };
-  worldsBest50Bars?: { rank: number; year: number };
-  spiritedAward?: { name: string; year: number };
-  chef?: string;
-  signatureDish?: string;
-  accoladeOverview?: string;
-  whyThisPick?: string;
-  reservationUrl?: string;
-  reservationPlatform?: string;
-  hours?: string;
-};
-
-type Result = {
-  city: string;
-  country: string;
-  lat: number;
-  lng: number;
-  venues: Venue[];
-};
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -80,7 +42,7 @@ export const Route = createFileRoute("/")({
 
 type VenueQuery = { city: string; region?: string; country?: string };
 
-async function fetchVenues(q: VenueQuery): Promise<Result> {
+async function fetchVenues(q: VenueQuery): Promise<ResultsData> {
   const res = await fetch("/api/top-restaurants", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -88,19 +50,21 @@ async function fetchVenues(q: VenueQuery): Promise<Result> {
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data?.error ?? "Something went wrong");
-  return data as Result;
+  return data as ResultsData;
 }
 
 function Index() {
   const [city, setCity] = useState("");
   const [selected, setSelected] = useState<CitySuggestion | null>(null);
   const [placeholder] = useState(pickThreePlaceholder);
+  const [lastQuery, setLastQuery] = useState<string>("");
   const mutation = useMutation({ mutationFn: fetchVenues });
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const trimmed = city.trim();
     if (!trimmed) return;
+    setLastQuery(trimmed);
     if (selected && selected.short.toLowerCase() === trimmed.toLowerCase()) {
       mutation.mutate({ city: selected.city, region: selected.region, country: selected.country });
     } else {
@@ -115,88 +79,46 @@ function Index() {
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
         <header className="text-center">
           <h1 className="mt-6 text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
-            Where to eat & drink,
-            <br />
+            Where to eat & drink,<br />
             <span className="text-muted-foreground">anywhere.</span>
           </h1>
-           <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
-             Type any city to get its top restaurants and cocktail bars, mapped and ranked from World's 50 Best, Michelin Guide, and more.
-           </p>
+          <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
+            Type any city to get its top restaurants and cocktail bars, mapped and ranked from World's 50 Best, Michelin Guide, and more.
+          </p>
         </header>
 
         <form onSubmit={onSubmit} className="mt-10 flex flex-col gap-3 sm:flex-row">
           <CityAutocomplete
             value={city}
-            onChange={(v) => {
-              setCity(v);
-              setSelected(null);
-            }}
+            onChange={(v) => { setCity(v); setSelected(null); }}
             onSelect={(s) => {
-              setSelected(s);
+              setSelected(s); setLastQuery(s.short);
               mutation.mutate({ city: s.city, region: s.region, country: s.country });
             }}
             placeholder={placeholder}
             disabled={mutation.isPending}
           />
           <Button type="submit" size="lg" className="h-12 px-6" disabled={mutation.isPending || !city.trim()}>
-            {mutation.isPending ? (
-              <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Searching</>
-            ) : ("Find spots")}
+            {mutation.isPending ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin" />Searching</>) : ("Find spots")}
           </Button>
         </form>
 
         <section className="mt-10">
-          {mutation.isPending && <ResultsSkeleton />}
+          {mutation.isPending && <SearchingState query={lastQuery} />}
 
-          {mutation.isError && (
-            <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive">
-              {(mutation.error as Error).message}
-            </div>
-          )}
+          {mutation.isError && <UnmappedCity query={lastQuery} />}
 
-          {mutation.isSuccess && data && (
-            <>
-              <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
-                <MapPin className="h-4 w-4" />
-                Top spots in{" "}
-                <span className="font-medium text-foreground">
-                  {data.city}
-                  {data.country ? `, ${data.country}` : ""}
-                </span>
-              </div>
-              <VenueMap
-                center={[data.lat, data.lng]}
-                pins={(() => {
-                  let r = 0;
-                  let b = 0;
-                  return data.venues.map((v) => ({
-                    index: v.category === "restaurant" ? ++r : ++b,
-                    name: v.name,
-                    category: v.category,
-                    lat: v.lat,
-                    lng: v.lng,
-                  }));
-                })()}
-              />
-              <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="inline-block h-3 w-3 rounded-full" style={{ background: "#ea580c" }} />
-                  Restaurants
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <span className="inline-block h-3 w-3 rounded-full" style={{ background: "#7c3aed" }} />
-                  Cocktail bars
-                </span>
-              </div>
-              <VenueColumns venues={data.venues} />
-            </>
-          )}
+          {mutation.isSuccess && data && data.venues.length > 0 && <VenueResults data={data} />}
+
+          {mutation.isSuccess && data && data.venues.length === 0 && <UnmappedCity query={lastQuery} />}
 
           {!mutation.isPending && !mutation.isSuccess && !mutation.isError && (
-            <div className="mt-6 flex flex-col items-center gap-6">
-              <RotatingEarth />
-              <p className="text-center text-sm text-muted-foreground">​</p>
-            </div>
+            <>
+              <div className="mt-6 flex flex-col items-center gap-6">
+                <RotatingEarth />
+              </div>
+              <PopularCities />
+            </>
           )}
         </section>
       </div>
@@ -204,218 +126,15 @@ function Index() {
   );
 }
 
-function VenueColumns({ venues }: { venues: Venue[] }) {
-  const restaurants = venues.filter((v) => v.category === "restaurant");
-  const bars = venues.filter((v) => v.category === "cocktail bar");
-  return (
-    <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-      <VenueColumn title="Restaurants" accent="#ea580c" items={restaurants} />
-      <VenueColumn title="Cocktail Bars" accent="#7c3aed" items={bars} />
-    </div>
-  );
-}
-
-function VenueColumn({
-  title,
-  accent,
-  items,
-}: {
-  title: string;
-  accent: string;
-  items: Venue[];
-}) {
-  return (
-    <div>
-      <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        {title}
-      </h3>
-      <ol className="space-y-3">
-        {items.map((v, i) => {
-          const n = i + 1;
-          return (
-            <li key={`${v.name}-${n}`}>
-              <Card className="transition-colors hover:border-foreground/20">
-                <CardContent className="flex gap-3 p-4">
-                  <div
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
-                    style={{ background: accent }}
-                  >
-                    {n}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      {v.url ? (
-                        <a
-                          href={v.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group inline-flex items-center gap-1.5 text-base font-semibold text-foreground hover:text-primary"
-                        >
-                          {v.name}
-                          <LinkIcon type={v.urlType} />
-                        </a>
-                      ) : (
-                        <h2 className="text-base font-semibold text-foreground">{v.name}</h2>
-                      )}
-                      <span className="text-sm font-medium text-muted-foreground">{v.priceRange}</span>
-                    </div>
-                    {v.reservationUrl && (
-                      <a
-                        href={v.reservationUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={v.reservationPlatform ? `Book via ${v.reservationPlatform}` : "Book a reservation"}
-                        className="mt-1.5 inline-flex items-center gap-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400 hover:bg-emerald-500/20"
-                      >
-                        <CalendarCheck className="h-3 w-3" />
-                        Book
-                        <ExternalLink className="h-3 w-3 opacity-70" />
-                      </a>
-                    )}
-                    <div className="mt-1 flex flex-wrap gap-1.5">
-                      <Badge variant="outline">{v.cuisine}</Badge>
-                      {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
-                      {v.hours && (
-                        <Badge variant="outline" title="Business hours" className="gap-1">
-                          <Clock className="h-3 w-3" />
-                          {v.hours}
-                        </Badge>
-                      )}
-                      {v.category === "restaurant" && v.signatureDish && (
-                        <Badge variant="secondary" title="Signature dish">
-                          Signature: {v.signatureDish}
-                        </Badge>
-                      )}
-                    </div>
-                    <Accolades v={v} />
-                    {v.category === "restaurant" && v.chef && (
-                      <p className="mt-2 text-sm text-foreground">
-                        <span className="text-muted-foreground">Chef:</span> {v.chef}
-                      </p>
-                    )}
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.description}</p>
-                    {v.accoladeOverview && (
-                      <div className="mt-2 rounded-md border-l-2 border-amber-500/40 bg-amber-500/5 px-2 py-1.5">
-                        <div className="text-[10px] font-semibold uppercase tracking-wide text-amber-500/90">
-                          Guide overview
-                        </div>
-                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">
-                          {v.accoladeOverview}
-                        </p>
-                      </div>
-                    )}
-                    {v.whyThisPick && (
-                      <div className="mt-2 rounded-md border-l-2 border-primary/50 bg-primary/5 px-2 py-1.5">
-                        <div className="text-[10px] font-semibold uppercase tracking-wide text-primary/90">
-                          Why this pick
-                        </div>
-                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">
-                          {v.whyThisPick}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </li>
-          );
-        })}
-      </ol>
-    </div>
-  );
-}
-
-function LinkIcon({ type }: { type?: Venue["urlType"] }) {
-  const cls = "h-3.5 w-3.5 opacity-70 group-hover:opacity-100";
-  if (type === "instagram") return <Instagram className={cls} />;
-  if (type === "facebook") return <Facebook className={cls} />;
-  if (type === "website") return <Globe className={cls} />;
-  return <ExternalLink className={cls} />;
-}
-
-function Accolades({ v }: { v: Venue }) {
-  const stars = v.michelinStars ?? 0;
-  const items: ReactNode[] = [];
-  if (stars > 0) {
-    items.push(
-      <span
-        key="m"
-        title={`${stars} Michelin Star${stars > 1 ? "s" : ""}`}
-        className="inline-flex items-center gap-0.5 rounded-md border border-red-500/40 bg-red-500/10 px-1.5 py-0.5 text-xs font-medium text-red-400"
-      >
-        {Array.from({ length: stars }).map((_, i) => (
-          <Star key={i} className="h-3 w-3 fill-red-400 stroke-red-400" />
-        ))}
-      </span>,
-    );
-  }
-  if (v.category === "restaurant" && v.worldsBest50Restaurants) {
-    items.push(
-      <span
-        key="w50r"
-        title={`World's 50 Best Restaurants #${v.worldsBest50Restaurants.rank} (${v.worldsBest50Restaurants.year})`}
-        className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400"
-      >
-        <Trophy className="h-3 w-3" />
-        World's 50 Best #{v.worldsBest50Restaurants.rank} ({v.worldsBest50Restaurants.year})
-      </span>,
-    );
-  }
-  if (v.michelinGreenStar) {
-    items.push(
-      <span
-        key="g"
-        title="Michelin Green Star (Sustainability)"
-        className="inline-flex items-center gap-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-1.5 py-0.5 text-xs font-medium text-emerald-400"
-      >
-        <Leaf className="h-3 w-3" />
-        Green Star
-      </span>,
-    );
-  }
-  if (v.bibGourmand) {
-    items.push(
-      <span
-        key="b"
-        title="Michelin Bib Gourmand"
-        className="inline-flex items-center gap-1 rounded-md border border-orange-500/40 bg-orange-500/10 px-1.5 py-0.5 text-xs font-medium text-orange-400"
-      >
-        <Utensils className="h-3 w-3" />
-        Bib Gourmand
-      </span>,
-    );
-  }
-  if (v.worldsBest50Bars) {
-    items.push(
-      <span
-        key="w50b"
-        className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400"
-      >
-        <Trophy className="h-3 w-3" />
-        World's 50 Best Bars #{v.worldsBest50Bars.rank} ({v.worldsBest50Bars.year})
-      </span>,
-    );
-  }
-  if (v.spiritedAward) {
-    items.push(
-      <span
-        key="sa"
-        className="inline-flex items-center gap-1 rounded-md border border-fuchsia-500/40 bg-fuchsia-500/10 px-1.5 py-0.5 text-xs font-medium text-fuchsia-400"
-      >
-        <Award className="h-3 w-3" />
-        {v.spiritedAward.name} ({v.spiritedAward.year})
-      </span>,
-    );
-  }
-  if (items.length === 0) return null;
-  return <div className="mt-2 flex flex-wrap gap-1.5">{items}</div>;
-}
-
-function ResultsSkeleton() {
+function SearchingState({ query }: { query: string }) {
   return (
     <div className="space-y-3">
+      <div className="flex items-center justify-center gap-2 rounded-lg border border-border bg-card/40 px-4 py-3 text-sm text-muted-foreground">
+        <Sparkles className="h-4 w-4 animate-pulse text-primary" />
+        <span>Curating the best spots in <span className="font-medium text-foreground">{query || "your city"}</span>…</span>
+      </div>
       <Skeleton className="h-72 w-full rounded-xl md:h-96" />
-      {Array.from({ length: 5 }).map((_, i) => (
+      {Array.from({ length: 4 }).map((_, i) => (
         <Card key={i}>
           <CardContent className="flex gap-4 p-5">
             <Skeleton className="h-9 w-9 rounded-full" />
@@ -427,6 +146,52 @@ function ResultsSkeleton() {
           </CardContent>
         </Card>
       ))}
+    </div>
+  );
+}
+
+function UnmappedCity({ query }: { query: string }) {
+  const suggestions = TOP_CITIES.slice(0, 6);
+  return (
+    <Card className="border-dashed">
+      <CardContent className="flex flex-col items-center gap-4 p-10 text-center">
+        <div className="text-4xl">🗺️</div>
+        <div>
+          <h3 className="text-lg font-semibold text-foreground">
+            We haven't mapped {query ? `"${query}"` : "this city"} yet — check back soon
+          </h3>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Try a nearby major city to get started:
+          </p>
+        </div>
+        <div className="flex flex-wrap justify-center gap-2">
+          {suggestions.map((c) => (
+            <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
+              className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground hover:border-primary hover:text-primary">
+              {c.city}
+            </Link>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function PopularCities() {
+  return (
+    <div className="mt-12">
+      <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+        Popular cities
+      </h2>
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+        {TOP_CITIES.map((c) => (
+          <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
+            className="group rounded-lg border border-border bg-card px-3 py-2.5 text-left transition-colors hover:border-primary/50 hover:bg-accent">
+            <div className="text-sm font-medium text-foreground group-hover:text-primary">{c.city}</div>
+            <div className="text-xs text-muted-foreground">{c.country}</div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

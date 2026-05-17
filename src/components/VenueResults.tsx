@@ -1,0 +1,411 @@
+import { useMemo, useState, type ReactNode } from "react";
+import {
+  MapPin, Star, Leaf, Utensils, Trophy, Award, ExternalLink,
+  Instagram, Facebook, Globe, CalendarCheck, Clock, Info, ArrowUpDown,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+} from "@/components/ui/select";
+import {
+  Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { VenueMap, PIN_COLORS, type Pin } from "@/components/VenueMap";
+import { venueAnchorId } from "@/lib/cities";
+
+export type Venue = {
+  name: string;
+  category: "restaurant" | "cocktail bar";
+  cuisine: string;
+  priceRange: string;
+  description: string;
+  neighborhood?: string;
+  lat: number;
+  lng: number;
+  url?: string;
+  urlType?: "website" | "instagram" | "facebook";
+  michelinStars?: number;
+  michelinGreenStar?: boolean;
+  bibGourmand?: boolean;
+  worldsBest50Restaurants?: { rank: number; year: number };
+  worldsBest50Bars?: { rank: number; year: number };
+  spiritedAward?: { name: string; year: number };
+  chef?: string;
+  signatureDish?: string;
+  accoladeOverview?: string;
+  whyThisPick?: string;
+  reservationUrl?: string;
+  reservationPlatform?: string;
+  hours?: string;
+};
+
+export type ResultsData = {
+  city: string;
+  country: string;
+  lat: number;
+  lng: number;
+  venues: Venue[];
+};
+
+type Filter = "all" | "restaurants" | "bars" | "michelin" | "worlds50" | "open";
+type Sort = "ranked" | "nearest" | "alphabetical";
+
+const MICHELIN_STAR_TIPS: Record<number, string> = {
+  1: "One Michelin Star: A very good restaurant in its category.",
+  2: "Two Michelin Stars: Excellent cooking, worth a detour.",
+  3: "Three Michelin Stars: Exceptional cuisine, worth a special journey.",
+};
+
+function distanceKm(a: [number, number], b: [number, number]) {
+  const [lat1, lng1] = a, [lat2, lng2] = b;
+  const R = 6371, toRad = (d: number) => (d * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1), dLng = toRad(lng2 - lng1);
+  const x = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(x));
+}
+
+function parseHoursOpenNow(hours?: string): boolean | null {
+  if (!hours) return null;
+  // Best-effort heuristic: just check if "Daily" or current weekday short name appears
+  const day = new Date().toLocaleString("en-US", { weekday: "short" });
+  const today3 = day.slice(0, 3);
+  if (/daily/i.test(hours)) return true;
+  if (new RegExp(today3, "i").test(hours)) return true;
+  // Range like Mon–Fri / Tue–Sun
+  const m = hours.match(/(Mon|Tue|Wed|Thu|Fri|Sat|Sun)[–-](Mon|Tue|Wed|Thu|Fri|Sat|Sun)/i);
+  if (m) {
+    const order = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const s = order.indexOf(m[1]), e = order.indexOf(m[2]), now = order.indexOf(today3);
+    if (s >= 0 && e >= 0 && now >= 0) {
+      if (s <= e ? now >= s && now <= e : now >= s || now <= e) return true;
+    }
+  }
+  return false;
+}
+
+export function VenueResults({ data }: { data: ResultsData }) {
+  const [filter, setFilter] = useState<Filter>("all");
+  const [sort, setSort] = useState<Sort>("ranked");
+
+  const filtered = useMemo(() => {
+    const center: [number, number] = [data.lat, data.lng];
+    let venues = data.venues.filter((v) => {
+      if (filter === "restaurants") return v.category === "restaurant";
+      if (filter === "bars") return v.category === "cocktail bar";
+      if (filter === "michelin") return (v.michelinStars ?? 0) > 0;
+      if (filter === "worlds50") return !!(v.worldsBest50Restaurants || v.worldsBest50Bars);
+      if (filter === "open") return parseHoursOpenNow(v.hours) === true;
+      return true;
+    });
+    if (sort === "alphabetical") {
+      venues = [...venues].sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sort === "nearest") {
+      venues = [...venues].sort(
+        (a, b) => distanceKm(center, [a.lat, a.lng]) - distanceKm(center, [b.lat, b.lng]),
+      );
+    }
+    return venues;
+  }, [data, filter, sort]);
+
+  // Original 1..10 indices are based on the unfiltered order (restaurants then bars)
+  const indexMap = useMemo(() => {
+    const map = new Map<Venue, number>();
+    let r = 0, b = 0;
+    for (const v of data.venues) {
+      map.set(v, v.category === "restaurant" ? ++r : ++b);
+    }
+    return map;
+  }, [data]);
+
+  const pins: Pin[] = filtered.map((v) => {
+    const idx = indexMap.get(v) ?? 0;
+    return {
+      index: idx,
+      name: v.name,
+      category: v.category,
+      lat: v.lat,
+      lng: v.lng,
+      accolade: summarizeAccolade(v),
+      anchorId: venueAnchorId(v.category, idx),
+    };
+  });
+
+  const restaurants = filtered.filter((v) => v.category === "restaurant");
+  const bars = filtered.filter((v) => v.category === "cocktail bar");
+
+  return (
+    <TooltipProvider delayDuration={150}>
+      <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
+        <MapPin className="h-4 w-4" />
+        Top spots in{" "}
+        <span className="font-medium text-foreground">
+          {data.city}{data.country ? `, ${data.country}` : ""}
+        </span>
+      </div>
+
+      <FilterBar filter={filter} setFilter={setFilter} sort={sort} setSort={setSort} />
+
+      {filtered.length === 0 ? (
+        <EmptyState />
+      ) : (
+        <>
+          <VenueMap center={[data.lat, data.lng]} pins={pins} />
+          <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="inline-block h-3 w-3 rounded-full" style={{ background: PIN_COLORS.restaurant }} />
+              Restaurants
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <span className="inline-block h-3 w-3 rounded-full" style={{ background: PIN_COLORS.bar }} />
+              Cocktail bars
+            </span>
+          </div>
+          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <VenueColumn title="Restaurants" accent={PIN_COLORS.restaurant} accentText="#1a1a1a" items={restaurants} indexMap={indexMap} />
+            <VenueColumn title="Cocktail Bars" accent={PIN_COLORS.bar} accentText="#fff" items={bars} indexMap={indexMap} />
+          </div>
+        </>
+      )}
+    </TooltipProvider>
+  );
+}
+
+function FilterBar({
+  filter, setFilter, sort, setSort,
+}: {
+  filter: Filter; setFilter: (f: Filter) => void;
+  sort: Sort; setSort: (s: Sort) => void;
+}) {
+  const filters: { id: Filter; label: string }[] = [
+    { id: "all", label: "All" },
+    { id: "restaurants", label: "Restaurants" },
+    { id: "bars", label: "Cocktail Bars" },
+    { id: "michelin", label: "Michelin Starred" },
+    { id: "worlds50", label: "World's 50 Best" },
+    { id: "open", label: "Open Now" },
+  ];
+  return (
+    <div className="mb-4 flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap gap-1.5">
+        {filters.map((f) => (
+          <Button
+            key={f.id}
+            size="sm"
+            variant={filter === f.id ? "default" : "outline"}
+            onClick={() => setFilter(f.id)}
+            className="h-8 rounded-full text-xs"
+          >
+            {f.label}
+          </Button>
+        ))}
+      </div>
+      <div className="ml-auto flex items-center gap-2 text-xs text-muted-foreground">
+        <ArrowUpDown className="h-3.5 w-3.5" />
+        <Select value={sort} onValueChange={(v) => setSort(v as Sort)}>
+          <SelectTrigger className="h-8 w-44 text-xs">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="ranked">Highest Ranked</SelectItem>
+            <SelectItem value="nearest">Nearest to City Center</SelectItem>
+            <SelectItem value="alphabetical">Alphabetical</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
+  );
+}
+
+function EmptyState() {
+  return (
+    <Card className="border-dashed">
+      <CardContent className="flex flex-col items-center gap-3 p-10 text-center">
+        <MapPin className="h-8 w-8 text-muted-foreground" />
+        <h3 className="text-lg font-semibold">No venues match those filters</h3>
+        <p className="max-w-md text-sm text-muted-foreground">
+          Try clearing the filters, or search a nearby major city like Paris, Tokyo, or New York.
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
+function VenueColumn({
+  title, accent, accentText, items, indexMap,
+}: {
+  title: string; accent: string; accentText: string; items: Venue[]; indexMap: Map<Venue, number>;
+}) {
+  return (
+    <div>
+      <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+        {title}
+      </h3>
+      <ol className="space-y-3">
+        {items.map((v) => {
+          const n = indexMap.get(v) ?? 0;
+          const anchor = venueAnchorId(v.category, n);
+          return (
+            <li key={`${v.name}-${n}`} id={anchor}>
+              <Card className="transition-all hover:border-foreground/20">
+                <CardContent className="flex gap-3 p-4">
+                  <div
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold"
+                    style={{ background: accent, color: accentText }}
+                  >
+                    {n}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      {v.url ? (
+                        <a href={v.url} target="_blank" rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-1.5 text-base font-semibold text-foreground hover:text-primary">
+                          {v.name}<LinkIcon type={v.urlType} />
+                        </a>
+                      ) : (
+                        <h2 className="text-base font-semibold text-foreground">{v.name}</h2>
+                      )}
+                      <span className="text-sm font-medium text-muted-foreground">{v.priceRange}</span>
+                    </div>
+                    {v.reservationUrl && (
+                      <a href={v.reservationUrl} target="_blank" rel="noopener noreferrer"
+                        title={v.reservationPlatform ? `Book via ${v.reservationPlatform}` : "Book a reservation"}
+                        className="mt-1.5 inline-flex items-center gap-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400 hover:bg-emerald-500/20">
+                        <CalendarCheck className="h-3 w-3" />Book<ExternalLink className="h-3 w-3 opacity-70" />
+                      </a>
+                    )}
+                    <div className="mt-1 flex flex-wrap gap-1.5">
+                      <Badge variant="outline">{v.cuisine}</Badge>
+                      {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
+                      {v.hours && (
+                        <Badge variant="outline" title="Business hours" className="gap-1">
+                          <Clock className="h-3 w-3" />{v.hours}
+                        </Badge>
+                      )}
+                      {v.category === "restaurant" && v.signatureDish && (
+                        <Badge variant="secondary" title="Signature dish">
+                          Signature: {v.signatureDish}
+                        </Badge>
+                      )}
+                    </div>
+                    <Accolades v={v} />
+                    {v.category === "restaurant" && v.chef && (
+                      <p className="mt-2 text-sm text-foreground">
+                        <span className="text-muted-foreground">Chef:</span> {v.chef}
+                      </p>
+                    )}
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.description}</p>
+                    {v.accoladeOverview && (
+                      <div className="mt-2 rounded-md border-l-2 border-amber-500/40 bg-amber-500/5 px-2 py-1.5">
+                        <div className="text-[10px] font-semibold uppercase tracking-wide text-amber-500/90">Guide overview</div>
+                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.accoladeOverview}</p>
+                      </div>
+                    )}
+                    {v.whyThisPick && (
+                      <div className="mt-2 rounded-md border-l-2 border-primary/50 bg-primary/5 px-2 py-1.5">
+                        <div className="text-[10px] font-semibold uppercase tracking-wide text-primary/90">Why this pick</div>
+                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.whyThisPick}</p>
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+}
+
+function LinkIcon({ type }: { type?: Venue["urlType"] }) {
+  const cls = "h-3.5 w-3.5 opacity-70 group-hover:opacity-100";
+  if (type === "instagram") return <Instagram className={cls} />;
+  if (type === "facebook") return <Facebook className={cls} />;
+  if (type === "website") return <Globe className={cls} />;
+  return <ExternalLink className={cls} />;
+}
+
+function InfoTip({ text }: { text: string }) {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <button type="button" className="ml-0.5 inline-flex" aria-label="What does this mean?">
+          <Info className="h-3 w-3 opacity-60 hover:opacity-100" />
+        </button>
+      </TooltipTrigger>
+      <TooltipContent side="top" className="max-w-xs text-xs leading-snug">{text}</TooltipContent>
+    </Tooltip>
+  );
+}
+
+function summarizeAccolade(v: Venue): string | undefined {
+  if (v.michelinStars) return `${"★".repeat(v.michelinStars)} Michelin`;
+  if (v.worldsBest50Restaurants) return `World's 50 Best #${v.worldsBest50Restaurants.rank} (${v.worldsBest50Restaurants.year})`;
+  if (v.worldsBest50Bars) return `World's 50 Best Bars #${v.worldsBest50Bars.rank} (${v.worldsBest50Bars.year})`;
+  if (v.spiritedAward) return `${v.spiritedAward.name} (${v.spiritedAward.year})`;
+  if (v.bibGourmand) return "Michelin Bib Gourmand";
+  if (v.michelinGreenStar) return "Michelin Green Star";
+  return undefined;
+}
+
+function Accolades({ v }: { v: Venue }) {
+  const stars = v.michelinStars ?? 0;
+  const items: ReactNode[] = [];
+  if (stars > 0) {
+    items.push(
+      <span key="m" className="inline-flex items-center gap-0.5 rounded-md border border-red-500/40 bg-red-500/10 px-1.5 py-0.5 text-xs font-medium text-red-400">
+        {Array.from({ length: stars }).map((_, i) => (
+          <Star key={i} className="h-3 w-3 fill-red-400 stroke-red-400" />
+        ))}
+        <InfoTip text={MICHELIN_STAR_TIPS[stars] ?? "Michelin Star awarded by the Michelin Guide."} />
+      </span>,
+    );
+  }
+  if (v.category === "restaurant" && v.worldsBest50Restaurants) {
+    items.push(
+      <span key="w50r" className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400">
+        <Trophy className="h-3 w-3" />
+        World's 50 Best #{v.worldsBest50Restaurants.rank} ({v.worldsBest50Restaurants.year})
+        <InfoTip text={`Ranked #${v.worldsBest50Restaurants.rank} on the World's 50 Best Restaurants ${v.worldsBest50Restaurants.year} list — the industry's most influential restaurant ranking.`} />
+      </span>,
+    );
+  }
+  if (v.michelinGreenStar) {
+    items.push(
+      <span key="g" className="inline-flex items-center gap-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-1.5 py-0.5 text-xs font-medium text-emerald-400">
+        <Leaf className="h-3 w-3" />Green Star
+        <InfoTip text="Michelin Green Star: Recognises restaurants leading the way in sustainable gastronomy." />
+      </span>,
+    );
+  }
+  if (v.bibGourmand) {
+    items.push(
+      <span key="b" className="inline-flex items-center gap-1 rounded-md border border-orange-500/40 bg-orange-500/10 px-1.5 py-0.5 text-xs font-medium text-orange-400">
+        <Utensils className="h-3 w-3" />Bib Gourmand
+        <InfoTip text="Michelin Bib Gourmand: Friendly establishments serving good food at moderate prices." />
+      </span>,
+    );
+  }
+  if (v.worldsBest50Bars) {
+    items.push(
+      <span key="w50b" className="inline-flex items-center gap-1 rounded-md border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400">
+        <Trophy className="h-3 w-3" />
+        World's 50 Best Bars #{v.worldsBest50Bars.rank} ({v.worldsBest50Bars.year})
+        <InfoTip text={`Ranked #${v.worldsBest50Bars.rank} on the World's 50 Best Bars ${v.worldsBest50Bars.year} list — the definitive global ranking of cocktail bars.`} />
+      </span>,
+    );
+  }
+  if (v.spiritedAward) {
+    items.push(
+      <span key="sa" className="inline-flex items-center gap-1 rounded-md border border-fuchsia-500/40 bg-fuchsia-500/10 px-1.5 py-0.5 text-xs font-medium text-fuchsia-400">
+        <Award className="h-3 w-3" />
+        {v.spiritedAward.name} ({v.spiritedAward.year})
+        <InfoTip text={`Tales of the Cocktail Spirited Award winner — ${v.spiritedAward.name} (${v.spiritedAward.year}). The industry's top honors for bars and bartenders.`} />
+      </span>,
+    );
+  }
+  if (items.length === 0) return null;
+  return <div className="mt-2 flex flex-wrap items-center gap-1.5">{items}</div>;
+}
