@@ -182,6 +182,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
           });
           const normalized = {
             ...object,
+            cityBlurb: object.cityBlurb ?? undefined,
             venues: [
               ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
               ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
