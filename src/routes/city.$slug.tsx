@@ -86,6 +86,13 @@ function CityPage() {
     staleTime: 1000 * 60 * 30,
   });
 
+  const imageQuery = useQuery({
+    queryKey: ["city-image", city.slug],
+    queryFn: () => fetchCityImage(city.city),
+    staleTime: 1000 * 60 * 60 * 24,
+  });
+  const cityImage = imageQuery.data;
+
   return (
     <main className="min-h-screen bg-background">
       {/* Hero */}
@@ -95,6 +102,15 @@ function CityPage() {
           background: `linear-gradient(135deg, hsl(${cityHue(city.slug)} 60% 18%) 0%, hsl(${cityHue(city.slug) + 40} 50% 12%) 100%)`,
         }}
       >
+        {cityImage && (
+          <img
+            src={cityImage}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-luminosity"
+          />
+        )}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/40" />
         <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:24px_24px]" />
         <div className="relative mx-auto max-w-5xl px-6 py-14 md:py-20">
           <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white">
