@@ -286,79 +286,154 @@ function VenueColumn({
       <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
         {title}
       </h3>
-      <ol className="space-y-3">
+      <ol className="space-y-4">
         {items.map((v) => {
           const n = indexMap.get(v) ?? 0;
           const anchor = venueAnchorId(v.category, n);
           return (
             <li key={`${v.name}-${n}`} id={anchor}>
-              <Card className="transition-all hover:border-foreground/20">
-                <CardContent className="flex gap-3 p-4">
-                  <div
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold"
-                    style={{ background: accent, color: accentText }}
-                  >
-                    {n}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      {v.url ? (
-                        <a href={v.url} target="_blank" rel="noopener noreferrer"
-                          className="group inline-flex items-center gap-1.5 text-base font-semibold text-foreground hover:text-primary">
-                          {v.name}<LinkIcon type={v.urlType} />
-                        </a>
-                      ) : (
-                        <h2 className="text-base font-semibold text-foreground">{v.name}</h2>
-                      )}
-                      <span className="text-sm font-medium text-muted-foreground">{v.priceRange}</span>
-                    </div>
-                    {v.reservationUrl && (
-                      <a href={v.reservationUrl} target="_blank" rel="noopener noreferrer"
-                        title={v.reservationPlatform ? `Book via ${v.reservationPlatform}` : "Book a reservation"}
-                        className="mt-1.5 inline-flex items-center gap-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400 hover:bg-emerald-500/20">
-                        <CalendarCheck className="h-3 w-3" />Book<ExternalLink className="h-3 w-3 opacity-70" />
-                      </a>
-                    )}
-                    <div className="mt-1 flex flex-wrap gap-1.5">
-                      <Badge variant="outline">{v.cuisine}</Badge>
-                      {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
-                      {v.hours && (
-                        <Badge variant="outline" title="Business hours" className="gap-1">
-                          <Clock className="h-3 w-3" />{v.hours}
-                        </Badge>
-                      )}
-                      {v.category === "restaurant" && v.signatureDish && (
-                        <Badge variant="secondary" title="Signature dish">
-                          Signature: {v.signatureDish}
-                        </Badge>
-                      )}
-                    </div>
-                    <Accolades v={v} />
-                    {v.category === "restaurant" && v.chef && (
-                      <p className="mt-2 text-sm text-foreground">
-                        <span className="text-muted-foreground">Chef:</span> {v.chef}
-                      </p>
-                    )}
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.description}</p>
-                    {v.accoladeOverview && (
-                      <div className="mt-2 rounded-md border-l-2 border-amber-500/40 bg-amber-500/5 px-2 py-1.5">
-                        <div className="text-[10px] font-semibold uppercase tracking-wide text-amber-500/90">Guide overview</div>
-                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.accoladeOverview}</p>
-                      </div>
-                    )}
-                    {v.whyThisPick && (
-                      <div className="mt-2 rounded-md border-l-2 border-primary/50 bg-primary/5 px-2 py-1.5">
-                        <div className="text-[10px] font-semibold uppercase tracking-wide text-primary/90">Why this pick</div>
-                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.whyThisPick}</p>
-                      </div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+              <VenueCard v={v} n={n} accent={accent} accentText={accentText} />
             </li>
           );
         })}
       </ol>
+    </div>
+  );
+}
+
+function VenueCard({
+  v, n, accent, accentText,
+}: { v: Venue; n: number; accent: string; accentText: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const hasDetails = !!(v.description || v.accoladeOverview || v.whyThisPick || v.chef);
+
+  const action = v.reservationUrl
+    ? { href: v.reservationUrl, label: "Book", icon: CalendarCheck,
+        title: v.reservationPlatform ? `Book via ${v.reservationPlatform}` : "Book a reservation",
+        cls: "border-emerald-500/40 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20" }
+    : v.url
+    ? { href: v.url, label: "View Website", icon: Globe,
+        title: "Open official website",
+        cls: "border-border bg-card text-foreground hover:bg-accent" }
+    : null;
+
+  return (
+    <Card className="overflow-hidden transition-all hover:border-foreground/20">
+      <VenueHeroImage v={v} n={n} accent={accent} accentText={accentText} />
+      <CardContent className="p-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <Badge variant="outline">{v.cuisine}</Badge>
+            {v.neighborhood && <Badge variant="outline">{v.neighborhood}</Badge>}
+            {v.hours && (
+              <Badge variant="outline" title="Business hours" className="gap-1">
+                <Clock className="h-3 w-3" />{v.hours}
+              </Badge>
+            )}
+            <span className="text-sm font-medium text-muted-foreground">{v.priceRange}</span>
+          </div>
+          {action && (
+            <a href={action.href} target="_blank" rel="noopener noreferrer" title={action.title}
+              className={`inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs font-medium ${action.cls}`}>
+              <action.icon className="h-3 w-3" />{action.label}<ExternalLink className="h-3 w-3 opacity-70" />
+            </a>
+          )}
+        </div>
+
+        <Accolades v={v} />
+
+        {v.category === "restaurant" && v.signatureDish && (
+          <div className="mt-2">
+            <Badge variant="secondary" title="Signature dish">
+              Signature: {v.signatureDish}
+            </Badge>
+          </div>
+        )}
+
+        {hasDetails && (
+          <>
+            <button
+              type="button"
+              onClick={() => setExpanded((e) => !e)}
+              className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+              aria-expanded={expanded}
+            >
+              {expanded ? (<><ChevronUp className="h-3 w-3" />Hide details</>) : (<><ChevronDown className="h-3 w-3" />Read more</>)}
+            </button>
+            {expanded && (
+              <div className="mt-3 space-y-2">
+                {v.category === "restaurant" && v.chef && (
+                  <p className="text-sm text-foreground">
+                    <span className="text-muted-foreground">Chef:</span> {v.chef}
+                  </p>
+                )}
+                {v.description && (
+                  <p className="text-sm leading-relaxed text-muted-foreground">{v.description}</p>
+                )}
+                {v.accoladeOverview && (
+                  <div className="rounded-md border-l-2 border-amber-500/40 bg-amber-500/5 px-2 py-1.5">
+                    <div className="text-[10px] font-semibold uppercase tracking-wide text-amber-500/90">Guide overview</div>
+                    <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.accoladeOverview}</p>
+                  </div>
+                )}
+                {v.whyThisPick && (
+                  <div className="rounded-md border-l-2 border-primary/50 bg-primary/5 px-2 py-1.5">
+                    <div className="text-[10px] font-semibold uppercase tracking-wide text-primary/90">Why this pick</div>
+                    <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.whyThisPick}</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+function VenueHeroImage({
+  v, n, accent, accentText,
+}: { v: Venue; n: number; accent: string; accentText: string }) {
+  const [errored, setErrored] = useState(false);
+  const showImage = !!v.imageUrl && !errored;
+  return (
+    <div className="relative aspect-[16/9] w-full max-h-[200px] overflow-hidden bg-muted">
+      {showImage ? (
+        <img
+          src={v.imageUrl}
+          alt={v.name}
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          onError={() => setErrored(true)}
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <div
+          className="flex h-full w-full items-center justify-center"
+          style={{
+            background: `linear-gradient(135deg, ${accent}30 0%, ${accent}10 60%, transparent 100%)`,
+          }}
+        >
+          <ImageOff className="h-8 w-8 opacity-30" />
+        </div>
+      )}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+      <div
+        className="absolute left-3 top-3 flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold shadow-md"
+        style={{ background: accent, color: accentText }}
+      >
+        {n}
+      </div>
+      <div className="absolute inset-x-0 bottom-0 p-3">
+        {v.url ? (
+          <a href={v.url} target="_blank" rel="noopener noreferrer"
+            className="group inline-flex items-baseline gap-1.5 text-lg font-semibold leading-tight text-white hover:text-white/90">
+            {v.name}<LinkIcon type={v.urlType} />
+          </a>
+        ) : (
+          <h2 className="text-lg font-semibold leading-tight text-white">{v.name}</h2>
+        )}
+      </div>
     </div>
   );
 }
