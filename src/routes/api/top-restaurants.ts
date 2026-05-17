@@ -27,6 +27,7 @@ const normalizeUrlType = (url?: string, urlType?: string | null) => {
 const resultsSchema = z.object({
   city: z.string(),
   country: z.string(),
+  cityBlurb: z.string().nullish(),
   lat: numericValue,
   lng: numericValue,
   venues: z
