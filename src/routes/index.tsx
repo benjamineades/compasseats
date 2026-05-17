@@ -78,10 +78,12 @@ function Index() {
     <main className="min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
         <header className="text-center">
-          <h1 className="mt-6 text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
-            Where to eat & drink,<br />
-            <span className="text-muted-foreground">anywhere.</span>
-          </h1>
+          <Link to="/" className="inline-block no-underline">
+            <h1 className="mt-6 cursor-pointer text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
+              Where to eat & drink,<br />
+              <span className="text-muted-foreground">anywhere.</span>
+            </h1>
+          </Link>
           <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
             Type any city to get its top restaurants and cocktail bars, mapped and ranked from World's 50 Best, Michelin Guide, and more.
           </p>
