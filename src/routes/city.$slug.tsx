@@ -78,6 +78,22 @@ async function fetchVenues(c: TopCity): Promise<ResultsData> {
   return data as ResultsData;
 }
 
+async function fetchCityImage(cityName: string): Promise<string | null> {
+  try {
+    const res = await fetch(
+      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(cityName)}`,
+    );
+    if (!res.ok) return null;
+    const data = (await res.json()) as {
+      originalimage?: { source?: string };
+      thumbnail?: { source?: string };
+    };
+    return data.originalimage?.source ?? data.thumbnail?.source ?? null;
+  } catch {
+    return null;
+  }
+}
+
 function CityPage() {
   const { city } = Route.useLoaderData();
   const query = useQuery({
