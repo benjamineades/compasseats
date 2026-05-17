@@ -15,11 +15,9 @@ type Props = {
 type WikiSummary = {
   originalimage?: { source?: string };
   thumbnail?: { source?: string };
-  extract?: string;
-  description?: string;
 };
 
-async function fetchWikiSummary(name: string): Promise<WikiSummary | null> {
+async function fetchWikiImage(name: string): Promise<WikiSummary | null> {
   try {
     const res = await fetch(
       `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(name)}`,
@@ -31,13 +29,6 @@ async function fetchWikiSummary(name: string): Promise<WikiSummary | null> {
   }
 }
 
-function firstSentence(text?: string): string | undefined {
-  if (!text) return undefined;
-  const cleaned = text.replace(/\s+/g, " ").trim();
-  const m = cleaned.match(/^[^.!?]+[.!?]/);
-  return (m ? m[0] : cleaned).trim();
-}
-
 function hueFromString(s: string): number {
   let h = 0;
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360;
@@ -47,13 +38,13 @@ function hueFromString(s: string): number {
 export function CityHero({ city, country, blurb, hueSeed, back, children }: Props) {
   const query = useQuery({
     queryKey: ["city-hero", city, country ?? ""],
-    queryFn: () => fetchWikiSummary(country ? `${city}, ${country}` : city)
-      .then((r) => r ?? fetchWikiSummary(city)),
+    queryFn: () => fetchWikiImage(country ? `${city}, ${country}` : city)
+      .then((r) => r ?? fetchWikiImage(city)),
     staleTime: 1000 * 60 * 60 * 24,
   });
   const summary = query.data;
   const image = summary?.originalimage?.source ?? summary?.thumbnail?.source ?? null;
-  const descriptor = blurb ?? firstSentence(summary?.extract) ?? summary?.description;
+  const descriptor = blurb;
   const hue = hueFromString(hueSeed ?? city);
 
   const backLabel = back.label ?? "Back to search";
