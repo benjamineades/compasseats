@@ -147,7 +147,7 @@ export function VenueResults({ data }: { data: ResultsData }) {
       </div>
 
       <div className="relative z-[60]">
-        <FilterBar filter={filter} setFilter={setFilter} sort={sort} setSort={setSort} />
+        <FilterBar filter={filter} setFilter={setFilter} />
       </div>
 
       {filtered.length === 0 ? (
@@ -164,6 +164,19 @@ export function VenueResults({ data }: { data: ResultsData }) {
               <span className="inline-block h-3 w-3 rounded-full" style={{ background: PIN_COLORS.bar }} />
               Cocktail bars
             </span>
+            <div className="relative z-[60] ml-auto flex items-center gap-2">
+              <ArrowUpDown className="h-3.5 w-3.5" />
+              <Select value={sort} onValueChange={(v) => setSort(v as Sort)}>
+                <SelectTrigger className="h-8 w-44 text-xs">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="ranked">Highest Ranked</SelectItem>
+                  <SelectItem value="nearest">Nearest to City Center</SelectItem>
+                  <SelectItem value="alphabetical">Alphabetical</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
             <VenueColumn title="Restaurants" accent={PIN_COLORS.restaurant} accentText="#1a1a1a" items={restaurants} indexMap={indexMap} />
@@ -176,10 +189,9 @@ export function VenueResults({ data }: { data: ResultsData }) {
 }
 
 function FilterBar({
-  filter, setFilter, sort, setSort,
+  filter, setFilter,
 }: {
   filter: Filter; setFilter: (f: Filter) => void;
-  sort: Sort; setSort: (s: Sort) => void;
 }) {
   const filters: { id: Filter; label: string }[] = [
     { id: "all", label: "All" },
@@ -203,19 +215,6 @@ function FilterBar({
             {f.label}
           </Button>
         ))}
-      </div>
-      <div className="ml-auto flex items-center gap-2 text-xs text-muted-foreground">
-        <ArrowUpDown className="h-3.5 w-3.5" />
-        <Select value={sort} onValueChange={(v) => setSort(v as Sort)}>
-          <SelectTrigger className="h-8 w-44 text-xs">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="ranked">Highest Ranked</SelectItem>
-            <SelectItem value="nearest">Nearest to City Center</SelectItem>
-            <SelectItem value="alphabetical">Alphabetical</SelectItem>
-          </SelectContent>
-        </Select>
       </div>
     </div>
   );
