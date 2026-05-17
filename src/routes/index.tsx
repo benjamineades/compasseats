@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { RotatingEarth } from "@/components/RotatingEarth";
 import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomplete";
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
+import { CityHero } from "@/components/CityHero";
 import { TOP_CITIES } from "@/lib/cities";
 
 const PLACEHOLDER_POOL = [
@@ -73,10 +74,26 @@ function Index() {
   };
 
   const data = mutation.data;
+  const showHero = mutation.isSuccess && data && data.venues.length > 0;
+
+  const resetSearch = () => {
+    mutation.reset();
+    setCity("");
+    setSelected(null);
+    setLastQuery("");
+  };
 
   return (
     <main className="min-h-screen bg-background">
+      {showHero && (
+        <CityHero
+          city={data.city}
+          country={data.country}
+          back={{ onClick: resetSearch }}
+        />
+      )}
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
+        {!showHero && (
         <header className="text-center">
           <Link to="/" className="inline-block no-underline">
             <h1 className="mt-6 cursor-pointer text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
@@ -88,7 +105,9 @@ function Index() {
             Type any city to get its top restaurants and cocktail bars, mapped and ranked from World's 50 Best, Michelin Guide, and more.
           </p>
         </header>
+        )}
 
+        {!showHero && (
         <form onSubmit={onSubmit} className="mt-10 flex flex-col gap-3 sm:flex-row">
           <CityAutocomplete
             value={city}
@@ -104,6 +123,7 @@ function Index() {
             {mutation.isPending ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin" />Searching</>) : ("Find spots")}
           </Button>
         </form>
+        )}
 
         <section className="mt-10">
           {mutation.isPending && <SearchingState query={lastQuery} />}

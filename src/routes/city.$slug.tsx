@@ -1,10 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Loader2, Sparkles } from "lucide-react";
+import { Loader2, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
+import { CityHero } from "@/components/CityHero";
 import { CITIES_BY_SLUG, TOP_CITIES, type TopCity } from "@/lib/cities";
 
 export const Route = createFileRoute("/city/$slug")({
@@ -78,22 +79,6 @@ async function fetchVenues(c: TopCity): Promise<ResultsData> {
   return data as ResultsData;
 }
 
-async function fetchCityImage(cityName: string): Promise<string | null> {
-  try {
-    const res = await fetch(
-      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(cityName)}`,
-    );
-    if (!res.ok) return null;
-    const data = (await res.json()) as {
-      originalimage?: { source?: string };
-      thumbnail?: { source?: string };
-    };
-    return data.originalimage?.source ?? data.thumbnail?.source ?? null;
-  } catch {
-    return null;
-  }
-}
-
 function CityPage() {
   const { city } = Route.useLoaderData();
   const query = useQuery({
@@ -102,43 +87,15 @@ function CityPage() {
     staleTime: 1000 * 60 * 30,
   });
 
-  const imageQuery = useQuery({
-    queryKey: ["city-image", city.slug],
-    queryFn: () => fetchCityImage(city.city),
-    staleTime: 1000 * 60 * 60 * 24,
-  });
-  const cityImage = imageQuery.data;
-
   return (
     <main className="min-h-screen bg-background">
-      {/* Hero */}
-      <section
-        className="relative overflow-hidden border-b border-border"
-        style={{
-          background: `linear-gradient(135deg, hsl(${cityHue(city.slug)} 60% 18%) 0%, hsl(${cityHue(city.slug) + 40} 50% 12%) 100%)`,
-        }}
-      >
-        {cityImage && (
-          <img
-            src={cityImage}
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-luminosity"
-          />
-        )}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/40" />
-        <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:24px_24px]" />
-        <div className="relative mx-auto max-w-5xl px-6 py-14 md:py-20">
-          <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white">
-            <ArrowLeft className="h-4 w-4" />Back to search
-          </Link>
-          <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-6xl">
-            {city.city}
-          </h1>
-          <p className="mt-1 text-lg text-white/70">{city.country}</p>
-          <p className="mt-4 max-w-2xl text-base text-white/80 md:text-lg">{city.blurb}</p>
-        </div>
-      </section>
+      <CityHero
+        city={city.city}
+        country={city.country}
+        blurb={city.blurb}
+        hueSeed={city.slug}
+        back={{ to: "/" }}
+      />
 
       <div className="mx-auto max-w-5xl px-6 py-10">
         {query.isPending && <CityLoading city={city.city} />}
@@ -203,10 +160,4 @@ function OtherCities({ currentSlug }: { currentSlug: string }) {
       </div>
     </div>
   );
-}
-
-function cityHue(slug: string): number {
-  let h = 0;
-  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) % 360;
-  return h;
 }
