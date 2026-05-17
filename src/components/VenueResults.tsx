@@ -2,6 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import {
   MapPin, Star, Leaf, Utensils, Trophy, Award, ExternalLink,
   Instagram, Facebook, Globe, CalendarCheck, Clock, Info, ArrowUpDown,
+  ChevronDown, ChevronUp, ImageOff,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -32,6 +33,7 @@ export type Venue = {
   worldsBest50Restaurants?: { rank: number; year: number };
   worldsBest50Bars?: { rank: number; year: number };
   spiritedAward?: { name: string; year: number };
+  jamesBeardAward?: { name: string; year: number };
   chef?: string;
   signatureDish?: string;
   accoladeOverview?: string;
@@ -39,6 +41,7 @@ export type Venue = {
   reservationUrl?: string;
   reservationPlatform?: string;
   hours?: string;
+  imageUrl?: string;
 };
 
 export type ResultsData = {
@@ -58,6 +61,20 @@ const MICHELIN_STAR_TIPS: Record<number, string> = {
   2: "Two Michelin Stars: Excellent cooking, worth a detour.",
   3: "Three Michelin Stars: Exceptional cuisine, worth a special journey.",
 };
+
+const CURRENT_YEAR = new Date().getUTCFullYear();
+const MIN_RECENT_YEAR = CURRENT_YEAR - 2;
+
+function isRecentRanking(year?: number): boolean {
+  return typeof year === "number" && year >= MIN_RECENT_YEAR;
+}
+
+function hasMichelin(v: Venue) {
+  return (v.michelinStars ?? 0) > 0 || v.bibGourmand || v.michelinGreenStar;
+}
+function hasWorlds50(v: Venue) {
+  return !!(v.worldsBest50Restaurants || v.worldsBest50Bars);
+}
 
 function distanceKm(a: [number, number], b: [number, number]) {
   const [lat1, lng1] = a, [lat2, lng2] = b;
@@ -120,6 +137,10 @@ export function VenueResults({ data }: { data: ResultsData }) {
     return map;
   }, [data]);
 
+  const michelinCount = data.venues.filter(hasMichelin).length;
+  const worlds50Count = data.venues.filter(hasWorlds50).length;
+  const noPrestige = michelinCount === 0 && worlds50Count === 0;
+
   const pins: Pin[] = filtered.map((v) => {
     const idx = indexMap.get(v) ?? 0;
     return {
@@ -146,8 +167,23 @@ export function VenueResults({ data }: { data: ResultsData }) {
         </span>
       </div>
 
+      {noPrestige ? (
+        <div className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2.5 text-xs leading-relaxed text-amber-200/90">
+          No Michelin or World's 50 Best venues in this city yet — showing top locally acclaimed spots instead.
+        </div>
+      ) : (
+        <div className="mb-4 rounded-lg border border-border bg-card/40 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
+          Rankings reflect most recent available guide year.
+        </div>
+      )}
+
       <div className="relative z-[60]">
-        <FilterBar filter={filter} setFilter={setFilter} />
+        <FilterBar
+          filter={filter}
+          setFilter={setFilter}
+          showMichelin={michelinCount > 0}
+          showWorlds50={worlds50Count > 0}
+        />
       </div>
 
       {filtered.length === 0 ? (
@@ -189,11 +225,12 @@ export function VenueResults({ data }: { data: ResultsData }) {
 }
 
 function FilterBar({
-  filter, setFilter,
+  filter, setFilter, showMichelin, showWorlds50,
 }: {
   filter: Filter; setFilter: (f: Filter) => void;
+  showMichelin: boolean; showWorlds50: boolean;
 }) {
-  const filters: { id: Filter; label: string }[] = [
+  const all: { id: Filter; label: string }[] = [
     { id: "all", label: "All" },
     { id: "restaurants", label: "Restaurants" },
     { id: "bars", label: "Cocktail Bars" },
@@ -201,6 +238,11 @@ function FilterBar({
     { id: "worlds50", label: "World's 50 Best" },
     { id: "open", label: "Open Now" },
   ];
+  const filters = all.filter((f) => {
+    if (f.id === "michelin") return showMichelin;
+    if (f.id === "worlds50") return showWorlds50;
+    return true;
+  });
   return (
     <div className="mb-4 flex flex-wrap items-center gap-2">
       <div className="flex flex-wrap gap-1.5">
