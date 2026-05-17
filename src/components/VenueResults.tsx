@@ -145,7 +145,9 @@ export function VenueResults({ data }: { data: ResultsData }) {
         </span>
       </div>
 
-      <FilterBar filter={filter} setFilter={setFilter} sort={sort} setSort={setSort} />
+      <div className="relative z-[60]">
+        <FilterBar filter={filter} setFilter={setFilter} sort={sort} setSort={setSort} />
+      </div>
 
       {filtered.length === 0 ? (
         <EmptyState />
