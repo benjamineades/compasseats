@@ -55,6 +55,9 @@ const resultsSchema = z.object({
         spiritedAward: z
           .object({ name: z.string(), year: integerValue })
           .nullish(),
+        jamesBeardAward: z
+          .object({ name: z.string(), year: integerValue })
+          .nullish(),
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
         accoladeOverview: z.string().nullish(),
@@ -62,6 +65,7 @@ const resultsSchema = z.object({
         reservationUrl: z.string().nullish(),
         reservationPlatform: z.string().nullish(),
         hours: z.string().nullish(),
+        imageUrl: z.string().nullish(),
       }),
     )
     .min(1),
@@ -216,6 +220,8 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 reservationUrl,
                 reservationPlatform: reservationUrl ? (v.reservationPlatform ?? "Website") : undefined,
                 hours: v.hours ?? undefined,
+                jamesBeardAward: v.jamesBeardAward ?? undefined,
+                imageUrl: v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined,
               };
             }),
           };
