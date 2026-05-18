@@ -193,8 +193,12 @@ const sanitizeAiJson = (text: string) => {
   const end = text.lastIndexOf("}");
   if (start === -1 || end === -1 || end <= start) return null;
 
-  const controlChars = new RegExp("[\\u0000-\\u0008\\u000B\\u000C\\u000E-\\u001F]", "g");
-  return text.slice(start, end + 1).replace(controlChars, " ");
+  return Array.from(text.slice(start, end + 1))
+    .map((char) => {
+      const code = char.charCodeAt(0);
+      return code < 32 && code !== 9 && code !== 10 && code !== 13 ? " " : char;
+    })
+    .join("");
 };
 
 export const Route = createFileRoute("/api/top-restaurants")({
