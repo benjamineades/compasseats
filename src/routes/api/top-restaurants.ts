@@ -32,22 +32,68 @@ const absolutizeUrl = (raw: string, base: string): string | undefined => {
   }
 };
 
-const extractOgImage = (html: string, baseUrl: string): string | undefined => {
-  // Look for og:image, og:image:secure_url, twitter:image (in any attribute order)
+const decodeHtmlAttr = (value: string) =>
+  value
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&#x2F;/gi, "/");
+
+const bestSrcsetUrl = (srcset: string) => {
+  const candidates = srcset
+    .split(",")
+    .map((part) => part.trim().split(/\s+/)[0])
+    .filter(Boolean);
+  return candidates.at(-1);
+};
+
+const isUsableVenueImage = (url: string) =>
+  /^https?:\/\//i.test(url) &&
+  !/\.(svg|gif)(?:[?#].*)?$/i.test(url) &&
+  !/(favicon|logo|icon|sprite|placeholder|avatar|badge)/i.test(url);
+
+const extractWebsiteImage = (html: string, baseUrl: string): string | undefined => {
+  const candidates: Array<{ url: string; score: number }> = [];
+  const addCandidate = (raw: string | undefined, score: number) => {
+    if (!raw) return;
+    const abs = absolutizeUrl(decodeHtmlAttr(raw.trim()), baseUrl);
+    if (abs && isUsableVenueImage(abs)) candidates.push({ url: abs, score });
+  };
+
+  // Prefer explicit social preview images from the venue website.
   const patterns = [
     /<meta[^>]+property=["']og:image(?::secure_url)?["'][^>]*content=["']([^"']+)["']/i,
     /<meta[^>]+content=["']([^"']+)["'][^>]*property=["']og:image(?::secure_url)?["']/i,
     /<meta[^>]+name=["']twitter:image["'][^>]*content=["']([^"']+)["']/i,
     /<meta[^>]+content=["']([^"']+)["'][^>]*name=["']twitter:image["']/i,
+    /<meta[^>]+itemprop=["']image["'][^>]*content=["']([^"']+)["']/i,
+    /<meta[^>]+content=["']([^"']+)["'][^>]*itemprop=["']image["']/i,
+    /<link[^>]+rel=["'][^"']*image_src[^"']*["'][^>]*href=["']([^"']+)["']/i,
+    /<link[^>]+href=["']([^"']+)["'][^>]*rel=["'][^"']*image_src[^"']*["']/i,
   ];
   for (const re of patterns) {
     const m = html.match(re);
-    if (m?.[1]) {
-      const abs = absolutizeUrl(m[1].trim(), baseUrl);
-      if (abs && /^https?:\/\//i.test(abs)) return abs;
-    }
+    addCandidate(m?.[1], 1000);
   }
-  return undefined;
+
+  const jsonLdImage = html.match(/"image"\s*:\s*(?:"([^"]+)"|\[\s*"([^"]+)")/i);
+  addCandidate(jsonLdImage?.[1] ?? jsonLdImage?.[2], 900);
+
+  for (const img of html.matchAll(/<img\b[^>]*>/gi)) {
+    const tag = img[0];
+    const srcset = tag.match(/(?:srcset|data-srcset)=["']([^"']+)["']/i)?.[1];
+    const src =
+      bestSrcsetUrl(srcset ?? "") ??
+      tag.match(/(?:src|data-src|data-lazy-src|data-original)=["']([^"']+)["']/i)?.[1];
+    const width = Number(tag.match(/width=["']?(\d+)/i)?.[1] ?? 0);
+    const height = Number(tag.match(/height=["']?(\d+)/i)?.[1] ?? 0);
+    const imageText = `${src ?? ""} ${tag}`;
+    const contextScore = /(hero|banner|restaurant|food|dish|dining|bar|cocktail|gallery|photo|image|uploads|media)/i.test(imageText) ? 160 : 0;
+    const sizeScore = Math.min(width + height, 1600) / 10;
+    addCandidate(src, 400 + contextScore + sizeScore);
+  }
+
+  return candidates.sort((a, b) => b.score - a.score)[0]?.url;
 };
 
 const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
@@ -88,7 +134,7 @@ const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
         return merged;
       }, new Uint8Array()),
     );
-    return extractOgImage(html, pageUrl);
+    return extractWebsiteImage(html, pageUrl);
   } catch {
     return undefined;
   }
