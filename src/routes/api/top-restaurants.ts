@@ -254,13 +254,29 @@ WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
 
 For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — MOST RECENT year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100; omit if never listed), jamesBeardAward ({name, year} — most notable recent James Beard Award the restaurant or its chef has won, e.g. "Outstanding Restaurant" or "Best Chef: Northeast"; omit if none). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — MOST RECENT year it placed on World's 50 Best Bars top 50 or extended 51–100; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, with the year; omit if none), jamesBeardAward ({name, year} — for bar program awards; omit if none). For each {rank, year} accolade, ALWAYS return the most recent year the venue has appeared. Only include accolade fields you are confident about; never fabricate. If "${cityQuery}" is ambiguous, pick the most famous match.`,
           });
+          const orderedVenues = [
+              ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
+              ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
+          ];
+
+          // Resolve missing/invalid imageUrls by scraping og:image from the
+          // venue's official website. AI-returned image URLs from Michelin /
+          // Instagram / Yelp rarely hot-link successfully; og:image does.
+          const resolvedImages = await Promise.all(
+            orderedVenues.map(async (v) => {
+              const aiImg =
+                v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
+              if (aiImg) return aiImg;
+              const site = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
+              if (!site) return undefined;
+              return await fetchOgImage(site);
+            }),
+          );
+
           const normalized = {
             ...object,
             cityBlurb: object.cityBlurb ?? undefined,
-            venues: [
-              ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
-              ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
-            ].map((v) => {
+            venues: orderedVenues.map((v, i) => {
               const url = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
               const reservationUrl =
                 v.reservationUrl && /^https?:\/\//i.test(v.reservationUrl)
@@ -291,7 +307,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 reservationPlatform: reservationUrl ? (v.reservationPlatform ?? "Website") : undefined,
                 hours: v.hours ?? undefined,
                 jamesBeardAward: v.jamesBeardAward ?? undefined,
-                imageUrl: v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined,
+                imageUrl: resolvedImages[i],
               };
             }),
           };
