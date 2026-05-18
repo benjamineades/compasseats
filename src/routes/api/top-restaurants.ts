@@ -88,7 +88,12 @@ const extractWebsiteImage = (html: string, baseUrl: string): string | undefined 
     const width = Number(tag.match(/width=["']?(\d+)/i)?.[1] ?? 0);
     const height = Number(tag.match(/height=["']?(\d+)/i)?.[1] ?? 0);
     const imageText = `${src ?? ""} ${tag}`;
-    const contextScore = /(hero|banner|restaurant|food|dish|dining|bar|cocktail|gallery|photo|image|uploads|media)/i.test(imageText) ? 160 : 0;
+    const contextScore =
+      /(hero|banner|restaurant|food|dish|dining|bar|cocktail|gallery|photo|image|uploads|media)/i.test(
+        imageText,
+      )
+        ? 160
+        : 0;
     const sizeScore = Math.min(width + height, 1600) / 10;
     addCandidate(src, 400 + contextScore + sizeScore);
   }
@@ -125,7 +130,11 @@ const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
       chunks.push(value);
       received += value.length;
     }
-    try { await reader.cancel(); } catch { /* noop */ }
+    try {
+      await reader.cancel();
+    } catch {
+      /* noop */
+    }
     const html = new TextDecoder().decode(
       chunks.reduce((acc, c) => {
         const merged = new Uint8Array(acc.length + c.length);
@@ -162,18 +171,10 @@ const resultsSchema = z.object({
         michelinStars: integerValue.nullish(),
         michelinGreenStar: z.boolean().nullish(),
         bibGourmand: z.boolean().nullish(),
-        worldsBest50Restaurants: z
-          .object({ rank: integerValue, year: integerValue })
-          .nullish(),
-        worldsBest50Bars: z
-          .object({ rank: integerValue, year: integerValue })
-          .nullish(),
-        spiritedAward: z
-          .object({ name: z.string(), year: integerValue })
-          .nullish(),
-        jamesBeardAward: z
-          .object({ name: z.string(), year: integerValue })
-          .nullish(),
+        worldsBest50Restaurants: z.object({ rank: integerValue, year: integerValue }).nullish(),
+        worldsBest50Bars: z.object({ rank: integerValue, year: integerValue }).nullish(),
+        spiritedAward: z.object({ name: z.string(), year: integerValue }).nullish(),
+        jamesBeardAward: z.object({ name: z.string(), year: integerValue }).nullish(),
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
         accoladeOverview: z.string().nullish(),
@@ -192,10 +193,7 @@ const sanitizeAiJson = (text: string) => {
   const end = text.lastIndexOf("}");
   if (start === -1 || end === -1 || end <= start) return null;
 
-  const controlChars = new RegExp(
-    "[\\u0000-\\u0008\\u000B\\u000C\\u000E-\\u001F]",
-    "g",
-  );
+  const controlChars = new RegExp("[\\u0000-\\u0008\\u000B\\u000C\\u000E-\\u001F]", "g");
   return text.slice(start, end + 1).replace(controlChars, " ");
 };
 
@@ -216,10 +214,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
 
         const apiKey = process.env.LOVABLE_API_KEY;
         if (!apiKey) {
-          return Response.json(
-            { error: "AI is not configured." },
-            { status: 500 },
-          );
+          return Response.json({ error: "AI is not configured." }, { status: 500 });
         }
 
         const gateway = createLovableAiGatewayProvider(apiKey);
@@ -236,7 +231,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-          prompt: `Today is ${currentMonth} ${currentYear}. List the 10 top restaurants AND the 10 top cocktail bars in ${cityQuery} (20 venues total).
+            prompt: `Today is ${currentMonth} ${currentYear}. List the 10 top restaurants AND the 10 top cocktail bars in ${cityQuery} (20 venues total).
 
 RECENCY IS MANDATORY. The official accolade lists you must use:
   • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists. Authoritative sources (use these lists as the source of truth for rank + year):
@@ -303,8 +298,8 @@ WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
 For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — MOST RECENT year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100; omit if never listed), jamesBeardAward ({name, year} — most notable recent James Beard Award the restaurant or its chef has won, e.g. "Outstanding Restaurant" or "Best Chef: Northeast"; omit if none). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — MOST RECENT year it placed on World's 50 Best Bars top 50 or extended 51–100; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, with the year; omit if none), jamesBeardAward ({name, year} — for bar program awards; omit if none). For each {rank, year} accolade, ALWAYS return the most recent year the venue has appeared. Only include accolade fields you are confident about; never fabricate. If "${cityQuery}" is ambiguous, pick the most famous match.`,
           });
           const orderedVenues = [
-              ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
-              ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
+            ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
+            ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
           ];
 
           // Resolve images by scraping each venue's official website first.
@@ -312,8 +307,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
           // hot-link successfully, so only use them as a last resort.
           const resolvedImages = await Promise.all(
             orderedVenues.map(async (v) => {
-              const aiImg =
-                v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
+              const aiImg = v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
               const site = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
               if (!site) return aiImg;
               return (await fetchOgImage(site)) ?? aiImg;
@@ -351,7 +345,9 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 accoladeOverview: v.accoladeOverview ?? undefined,
                 whyThisPick: v.whyThisPick ?? undefined,
                 reservationUrl,
-                reservationPlatform: reservationUrl ? (v.reservationPlatform ?? "Website") : undefined,
+                reservationPlatform: reservationUrl
+                  ? (v.reservationPlatform ?? "Website")
+                  : undefined,
                 hours: v.hours ?? undefined,
                 jamesBeardAward: v.jamesBeardAward ?? undefined,
                 imageUrl: resolvedImages[i],
