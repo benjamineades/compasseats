@@ -192,9 +192,11 @@ const sanitizeAiJson = (text: string) => {
   const end = text.lastIndexOf("}");
   if (start === -1 || end === -1 || end <= start) return null;
 
-  return text
-    .slice(start, end + 1)
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, " ");
+  const controlChars = new RegExp(
+    "[\\u0000-\\u0008\\u000B\\u000C\\u000E-\\u001F]",
+    "g",
+  );
+  return text.slice(start, end + 1).replace(controlChars, " ");
 };
 
 export const Route = createFileRoute("/api/top-restaurants")({
