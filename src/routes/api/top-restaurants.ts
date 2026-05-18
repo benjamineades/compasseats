@@ -24,6 +24,76 @@ const normalizeUrlType = (url?: string, urlType?: string | null) => {
   return "website";
 };
 
+const absolutizeUrl = (raw: string, base: string): string | undefined => {
+  try {
+    return new URL(raw, base).toString();
+  } catch {
+    return undefined;
+  }
+};
+
+const extractOgImage = (html: string, baseUrl: string): string | undefined => {
+  // Look for og:image, og:image:secure_url, twitter:image (in any attribute order)
+  const patterns = [
+    /<meta[^>]+property=["']og:image(?::secure_url)?["'][^>]*content=["']([^"']+)["']/i,
+    /<meta[^>]+content=["']([^"']+)["'][^>]*property=["']og:image(?::secure_url)?["']/i,
+    /<meta[^>]+name=["']twitter:image["'][^>]*content=["']([^"']+)["']/i,
+    /<meta[^>]+content=["']([^"']+)["'][^>]*name=["']twitter:image["']/i,
+  ];
+  for (const re of patterns) {
+    const m = html.match(re);
+    if (m?.[1]) {
+      const abs = absolutizeUrl(m[1].trim(), baseUrl);
+      if (abs && /^https?:\/\//i.test(abs)) return abs;
+    }
+  }
+  return undefined;
+};
+
+const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 4000);
+    const res = await fetch(pageUrl, {
+      signal: ctrl.signal,
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (compatible; EatAnywhereBot/1.0; +https://eatanywhere.lovable.app)",
+        Accept: "text/html,application/xhtml+xml",
+      },
+      redirect: "follow",
+    });
+    clearTimeout(timer);
+    if (!res.ok) return undefined;
+    const ct = res.headers.get("content-type") || "";
+    if (!ct.includes("html")) return undefined;
+    // Cap to first 200KB — og tags are always in <head>
+    const reader = res.body?.getReader();
+    if (!reader) return undefined;
+    let received = 0;
+    const chunks: Uint8Array[] = [];
+    const MAX = 200_000;
+    while (received < MAX) {
+      const { done, value } = await reader.read();
+      if (done || !value) break;
+      chunks.push(value);
+      received += value.length;
+    }
+    try { await reader.cancel(); } catch { /* noop */ }
+    const html = new TextDecoder().decode(
+      chunks.reduce((acc, c) => {
+        const merged = new Uint8Array(acc.length + c.length);
+        merged.set(acc, 0);
+        merged.set(c, acc.length);
+        return merged;
+      }, new Uint8Array()),
+    );
+    return extractOgImage(html, pageUrl);
+  } catch {
+    return undefined;
+  }
+};
+
 const resultsSchema = z.object({
   city: z.string(),
   country: z.string(),
@@ -184,13 +254,29 @@ WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
 
 For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — MOST RECENT year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100; omit if never listed), jamesBeardAward ({name, year} — most notable recent James Beard Award the restaurant or its chef has won, e.g. "Outstanding Restaurant" or "Best Chef: Northeast"; omit if none). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — MOST RECENT year it placed on World's 50 Best Bars top 50 or extended 51–100; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, with the year; omit if none), jamesBeardAward ({name, year} — for bar program awards; omit if none). For each {rank, year} accolade, ALWAYS return the most recent year the venue has appeared. Only include accolade fields you are confident about; never fabricate. If "${cityQuery}" is ambiguous, pick the most famous match.`,
           });
+          const orderedVenues = [
+              ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
+              ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
+          ];
+
+          // Resolve missing/invalid imageUrls by scraping og:image from the
+          // venue's official website. AI-returned image URLs from Michelin /
+          // Instagram / Yelp rarely hot-link successfully; og:image does.
+          const resolvedImages = await Promise.all(
+            orderedVenues.map(async (v) => {
+              const aiImg =
+                v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
+              if (aiImg) return aiImg;
+              const site = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
+              if (!site) return undefined;
+              return await fetchOgImage(site);
+            }),
+          );
+
           const normalized = {
             ...object,
             cityBlurb: object.cityBlurb ?? undefined,
-            venues: [
-              ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
-              ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
-            ].map((v) => {
+            venues: orderedVenues.map((v, i) => {
               const url = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
               const reservationUrl =
                 v.reservationUrl && /^https?:\/\//i.test(v.reservationUrl)
@@ -221,7 +307,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 reservationPlatform: reservationUrl ? (v.reservationPlatform ?? "Website") : undefined,
                 hours: v.hours ?? undefined,
                 jamesBeardAward: v.jamesBeardAward ?? undefined,
-                imageUrl: v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined,
+                imageUrl: resolvedImages[i],
               };
             }),
           };
