@@ -24,6 +24,76 @@ const normalizeUrlType = (url?: string, urlType?: string | null) => {
   return "website";
 };
 
+const absolutizeUrl = (raw: string, base: string): string | undefined => {
+  try {
+    return new URL(raw, base).toString();
+  } catch {
+    return undefined;
+  }
+};
+
+const extractOgImage = (html: string, baseUrl: string): string | undefined => {
+  // Look for og:image, og:image:secure_url, twitter:image (in any attribute order)
+  const patterns = [
+    /<meta[^>]+property=["']og:image(?::secure_url)?["'][^>]*content=["']([^"']+)["']/i,
+    /<meta[^>]+content=["']([^"']+)["'][^>]*property=["']og:image(?::secure_url)?["']/i,
+    /<meta[^>]+name=["']twitter:image["'][^>]*content=["']([^"']+)["']/i,
+    /<meta[^>]+content=["']([^"']+)["'][^>]*name=["']twitter:image["']/i,
+  ];
+  for (const re of patterns) {
+    const m = html.match(re);
+    if (m?.[1]) {
+      const abs = absolutizeUrl(m[1].trim(), baseUrl);
+      if (abs && /^https?:\/\//i.test(abs)) return abs;
+    }
+  }
+  return undefined;
+};
+
+const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 4000);
+    const res = await fetch(pageUrl, {
+      signal: ctrl.signal,
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (compatible; EatAnywhereBot/1.0; +https://eatanywhere.lovable.app)",
+        Accept: "text/html,application/xhtml+xml",
+      },
+      redirect: "follow",
+    });
+    clearTimeout(timer);
+    if (!res.ok) return undefined;
+    const ct = res.headers.get("content-type") || "";
+    if (!ct.includes("html")) return undefined;
+    // Cap to first 200KB — og tags are always in <head>
+    const reader = res.body?.getReader();
+    if (!reader) return undefined;
+    let received = 0;
+    const chunks: Uint8Array[] = [];
+    const MAX = 200_000;
+    while (received < MAX) {
+      const { done, value } = await reader.read();
+      if (done || !value) break;
+      chunks.push(value);
+      received += value.length;
+    }
+    try { await reader.cancel(); } catch { /* noop */ }
+    const html = new TextDecoder().decode(
+      chunks.reduce((acc, c) => {
+        const merged = new Uint8Array(acc.length + c.length);
+        merged.set(acc, 0);
+        merged.set(c, acc.length);
+        return merged;
+      }, new Uint8Array()),
+    );
+    return extractOgImage(html, pageUrl);
+  } catch {
+    return undefined;
+  }
+};
+
 const resultsSchema = z.object({
   city: z.string(),
   country: z.string(),
