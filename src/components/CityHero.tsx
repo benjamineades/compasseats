@@ -13,6 +13,7 @@ type Props = {
 };
 
 type WikiSummary = {
+  type?: string;
   originalimage?: { source?: string };
   thumbnail?: { source?: string };
 };
@@ -23,10 +24,27 @@ async function fetchWikiImage(name: string): Promise<WikiSummary | null> {
       `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(name)}`,
     );
     if (!res.ok) return null;
-    return (await res.json()) as WikiSummary;
+    const data = (await res.json()) as WikiSummary;
+    // Skip disambiguation pages — they don't have a representative image.
+    if (data.type === "disambiguation") return null;
+    if (!data.originalimage?.source && !data.thumbnail?.source) return null;
+    return data;
   } catch {
     return null;
   }
+}
+
+async function resolveCityImage(city: string, country?: string): Promise<WikiSummary | null> {
+  const candidates = [
+    country ? `${city}, ${country}` : null,
+    `${city} City`,
+    city,
+  ].filter((v): v is string => !!v);
+  for (const name of candidates) {
+    const hit = await fetchWikiImage(name);
+    if (hit) return hit;
+  }
+  return null;
 }
 
 function hueFromString(s: string): number {
@@ -38,8 +56,7 @@ function hueFromString(s: string): number {
 export function CityHero({ city, country, blurb, hueSeed, back, children }: Props) {
   const query = useQuery({
     queryKey: ["city-hero", city, country ?? ""],
-    queryFn: () => fetchWikiImage(country ? `${city}, ${country}` : city)
-      .then((r) => r ?? fetchWikiImage(city)),
+    queryFn: () => resolveCityImage(city, country),
     staleTime: 1000 * 60 * 60 * 24,
   });
   const summary = query.data;
