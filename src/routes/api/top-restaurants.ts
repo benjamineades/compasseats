@@ -32,22 +32,73 @@ const absolutizeUrl = (raw: string, base: string): string | undefined => {
   }
 };
 
-const extractOgImage = (html: string, baseUrl: string): string | undefined => {
-  // Look for og:image, og:image:secure_url, twitter:image (in any attribute order)
+const decodeHtmlAttr = (value: string) =>
+  value
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&#x2F;/gi, "/");
+
+const bestSrcsetUrl = (srcset: string) => {
+  const candidates = srcset
+    .split(",")
+    .map((part) => part.trim().split(/\s+/)[0])
+    .filter(Boolean);
+  return candidates.at(-1);
+};
+
+const isUsableVenueImage = (url: string) =>
+  /^https?:\/\//i.test(url) &&
+  !/\.(svg|gif)(?:[?#].*)?$/i.test(url) &&
+  !/(favicon|logo|icon|sprite|placeholder|avatar|badge)/i.test(url);
+
+const extractWebsiteImage = (html: string, baseUrl: string): string | undefined => {
+  const candidates: Array<{ url: string; score: number }> = [];
+  const addCandidate = (raw: string | undefined, score: number) => {
+    if (!raw) return;
+    const abs = absolutizeUrl(decodeHtmlAttr(raw.trim()), baseUrl);
+    if (abs && isUsableVenueImage(abs)) candidates.push({ url: abs, score });
+  };
+
+  // Prefer explicit social preview images from the venue website.
   const patterns = [
     /<meta[^>]+property=["']og:image(?::secure_url)?["'][^>]*content=["']([^"']+)["']/i,
     /<meta[^>]+content=["']([^"']+)["'][^>]*property=["']og:image(?::secure_url)?["']/i,
     /<meta[^>]+name=["']twitter:image["'][^>]*content=["']([^"']+)["']/i,
     /<meta[^>]+content=["']([^"']+)["'][^>]*name=["']twitter:image["']/i,
+    /<meta[^>]+itemprop=["']image["'][^>]*content=["']([^"']+)["']/i,
+    /<meta[^>]+content=["']([^"']+)["'][^>]*itemprop=["']image["']/i,
+    /<link[^>]+rel=["'][^"']*image_src[^"']*["'][^>]*href=["']([^"']+)["']/i,
+    /<link[^>]+href=["']([^"']+)["'][^>]*rel=["'][^"']*image_src[^"']*["']/i,
   ];
   for (const re of patterns) {
     const m = html.match(re);
-    if (m?.[1]) {
-      const abs = absolutizeUrl(m[1].trim(), baseUrl);
-      if (abs && /^https?:\/\//i.test(abs)) return abs;
-    }
+    addCandidate(m?.[1], 1000);
   }
-  return undefined;
+
+  const jsonLdImage = html.match(/"image"\s*:\s*(?:"([^"]+)"|\[\s*"([^"]+)")/i);
+  addCandidate(jsonLdImage?.[1] ?? jsonLdImage?.[2], 900);
+
+  for (const img of html.matchAll(/<img\b[^>]*>/gi)) {
+    const tag = img[0];
+    const srcset = tag.match(/(?:srcset|data-srcset)=["']([^"']+)["']/i)?.[1];
+    const src =
+      bestSrcsetUrl(srcset ?? "") ??
+      tag.match(/(?:src|data-src|data-lazy-src|data-original)=["']([^"']+)["']/i)?.[1];
+    const width = Number(tag.match(/width=["']?(\d+)/i)?.[1] ?? 0);
+    const height = Number(tag.match(/height=["']?(\d+)/i)?.[1] ?? 0);
+    const imageText = `${src ?? ""} ${tag}`;
+    const contextScore =
+      /(hero|banner|restaurant|food|dish|dining|bar|cocktail|gallery|photo|image|uploads|media)/i.test(
+        imageText,
+      )
+        ? 160
+        : 0;
+    const sizeScore = Math.min(width + height, 1600) / 10;
+    addCandidate(src, 400 + contextScore + sizeScore);
+  }
+
+  return candidates.sort((a, b) => b.score - a.score)[0]?.url;
 };
 
 const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
@@ -79,7 +130,11 @@ const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
       chunks.push(value);
       received += value.length;
     }
-    try { await reader.cancel(); } catch { /* noop */ }
+    try {
+      await reader.cancel();
+    } catch {
+      /* noop */
+    }
     const html = new TextDecoder().decode(
       chunks.reduce((acc, c) => {
         const merged = new Uint8Array(acc.length + c.length);
@@ -88,7 +143,7 @@ const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
         return merged;
       }, new Uint8Array()),
     );
-    return extractOgImage(html, pageUrl);
+    return extractWebsiteImage(html, pageUrl);
   } catch {
     return undefined;
   }
@@ -116,18 +171,10 @@ const resultsSchema = z.object({
         michelinStars: integerValue.nullish(),
         michelinGreenStar: z.boolean().nullish(),
         bibGourmand: z.boolean().nullish(),
-        worldsBest50Restaurants: z
-          .object({ rank: integerValue, year: integerValue })
-          .nullish(),
-        worldsBest50Bars: z
-          .object({ rank: integerValue, year: integerValue })
-          .nullish(),
-        spiritedAward: z
-          .object({ name: z.string(), year: integerValue })
-          .nullish(),
-        jamesBeardAward: z
-          .object({ name: z.string(), year: integerValue })
-          .nullish(),
+        worldsBest50Restaurants: z.object({ rank: integerValue, year: integerValue }).nullish(),
+        worldsBest50Bars: z.object({ rank: integerValue, year: integerValue }).nullish(),
+        spiritedAward: z.object({ name: z.string(), year: integerValue }).nullish(),
+        jamesBeardAward: z.object({ name: z.string(), year: integerValue }).nullish(),
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
         accoladeOverview: z.string().nullish(),
@@ -146,9 +193,12 @@ const sanitizeAiJson = (text: string) => {
   const end = text.lastIndexOf("}");
   if (start === -1 || end === -1 || end <= start) return null;
 
-  return text
-    .slice(start, end + 1)
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, " ");
+  return Array.from(text.slice(start, end + 1))
+    .map((char) => {
+      const code = char.charCodeAt(0);
+      return code < 32 && code !== 9 && code !== 10 && code !== 13 ? " " : char;
+    })
+    .join("");
 };
 
 export const Route = createFileRoute("/api/top-restaurants")({
@@ -168,10 +218,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
 
         const apiKey = process.env.LOVABLE_API_KEY;
         if (!apiKey) {
-          return Response.json(
-            { error: "AI is not configured." },
-            { status: 500 },
-          );
+          return Response.json({ error: "AI is not configured." }, { status: 500 });
         }
 
         const gateway = createLovableAiGatewayProvider(apiKey);
@@ -188,7 +235,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-          prompt: `Today is ${currentMonth} ${currentYear}. List the 10 top restaurants AND the 10 top cocktail bars in ${cityQuery} (20 venues total).
+            prompt: `Today is ${currentMonth} ${currentYear}. List the 10 top restaurants AND the 10 top cocktail bars in ${cityQuery} (20 venues total).
 
 RECENCY IS MANDATORY. The official accolade lists you must use:
   • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists. Authoritative sources (use these lists as the source of truth for rank + year):
@@ -255,21 +302,19 @@ WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
 For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — MOST RECENT year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100; omit if never listed), jamesBeardAward ({name, year} — most notable recent James Beard Award the restaurant or its chef has won, e.g. "Outstanding Restaurant" or "Best Chef: Northeast"; omit if none). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — MOST RECENT year it placed on World's 50 Best Bars top 50 or extended 51–100; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, with the year; omit if none), jamesBeardAward ({name, year} — for bar program awards; omit if none). For each {rank, year} accolade, ALWAYS return the most recent year the venue has appeared. Only include accolade fields you are confident about; never fabricate. If "${cityQuery}" is ambiguous, pick the most famous match.`,
           });
           const orderedVenues = [
-              ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
-              ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
+            ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
+            ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
           ];
 
-          // Resolve missing/invalid imageUrls by scraping og:image from the
-          // venue's official website. AI-returned image URLs from Michelin /
-          // Instagram / Yelp rarely hot-link successfully; og:image does.
+          // Resolve images by scraping each venue's official website first.
+          // AI-returned image URLs from Michelin / Instagram / Yelp rarely
+          // hot-link successfully, so only use them as a last resort.
           const resolvedImages = await Promise.all(
             orderedVenues.map(async (v) => {
-              const aiImg =
-                v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
-              if (aiImg) return aiImg;
+              const aiImg = v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
               const site = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
-              if (!site) return undefined;
-              return await fetchOgImage(site);
+              if (!site) return aiImg;
+              return (await fetchOgImage(site)) ?? aiImg;
             }),
           );
 
@@ -304,7 +349,9 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 accoladeOverview: v.accoladeOverview ?? undefined,
                 whyThisPick: v.whyThisPick ?? undefined,
                 reservationUrl,
-                reservationPlatform: reservationUrl ? (v.reservationPlatform ?? "Website") : undefined,
+                reservationPlatform: reservationUrl
+                  ? (v.reservationPlatform ?? "Website")
+                  : undefined,
                 hours: v.hours ?? undefined,
                 jamesBeardAward: v.jamesBeardAward ?? undefined,
                 imageUrl: resolvedImages[i],
