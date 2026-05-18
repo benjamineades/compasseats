@@ -305,17 +305,16 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
               ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
           ];
 
-          // Resolve missing/invalid imageUrls by scraping og:image from the
-          // venue's official website. AI-returned image URLs from Michelin /
-          // Instagram / Yelp rarely hot-link successfully; og:image does.
+          // Resolve images by scraping each venue's official website first.
+          // AI-returned image URLs from Michelin / Instagram / Yelp rarely
+          // hot-link successfully, so only use them as a last resort.
           const resolvedImages = await Promise.all(
             orderedVenues.map(async (v) => {
               const aiImg =
                 v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
-              if (aiImg) return aiImg;
               const site = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
-              if (!site) return undefined;
-              return await fetchOgImage(site);
+              if (!site) return aiImg;
+              return (await fetchOgImage(site)) ?? aiImg;
             }),
           );
 
