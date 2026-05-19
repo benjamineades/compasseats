@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { ResultsData, Venue } from "@/components/VenueResults";
 
 export type VenueQuery = { city: string; region?: string; country?: string };
@@ -11,6 +11,16 @@ export function useVenueLoadMore(opts: {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Reset state whenever the city query identity changes (new search).
+  const queryKey = opts.query
+    ? `${opts.query.city}|${opts.query.region ?? ""}|${opts.query.country ?? ""}`
+    : "";
+  useEffect(() => {
+    setHasMore(true);
+    setError(null);
+    setIsLoadingMore(false);
+  }, [queryKey]);
 
   const loadMore = useCallback(async () => {
     if (!opts.data || !opts.query || isLoadingMore || !hasMore) return;
