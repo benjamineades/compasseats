@@ -231,13 +231,19 @@ export const Route = createFileRoute("/api/top-restaurants")({
         const currentYear = now.getUTCFullYear();
         const currentMonth = now.toLocaleString("en-US", { month: "long", timeZone: "UTC" });
         const minAccoladeYear = currentYear - 2;
+        const limit = parsed.limit ?? 10;
+        const excludeList = parsed.exclude ?? [];
+        const isContinuation = excludeList.length > 0;
+        const exclusionBlock = isContinuation
+          ? `\n\nCONTINUATION CALL — the user has already seen the venues listed below and is asking for the NEXT batch. Do NOT include any of these names again; pick the next best venues in their place, continuing down the same priority order. If you genuinely cannot find ${limit} more qualified restaurants OR ${limit} more qualified cocktail bars for ${cityQuery} beyond those already shown, return as many fresh ones as you can (it is OK to return fewer than ${limit}, or even zero in one category). Already-shown venues to EXCLUDE: ${excludeList.join(", ")}.`
+          : "";
 
         try {
           const { object } = await generateObject({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-            prompt: `Today is ${currentMonth} ${currentYear}. List the 10 top restaurants AND the 10 top cocktail bars in ${cityQuery} (20 venues total).
+            prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}
 
 RECENCY IS MANDATORY. The official accolade lists you must use:
   • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists. Authoritative sources (use these lists as the source of truth for rank + year):
