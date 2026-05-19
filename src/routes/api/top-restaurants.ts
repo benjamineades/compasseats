@@ -8,6 +8,8 @@ const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
   region: z.string().trim().max(100).optional(),
   country: z.string().trim().max(100).optional(),
+  exclude: z.array(z.string().trim().min(1).max(200)).max(500).optional(),
+  limit: z.coerce.number().int().min(1).max(10).optional(),
 });
 
 const numericValue = z.coerce.number().finite();
@@ -185,7 +187,7 @@ const resultsSchema = z.object({
         imageUrl: z.string().nullish(),
       }),
     )
-    .min(1),
+      .min(0),
 });
 
 const sanitizeAiJson = (text: string) => {
