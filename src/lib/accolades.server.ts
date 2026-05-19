@@ -180,11 +180,13 @@ const buildIndex = async (): Promise<CacheShape> => {
     if (!restaurant || !category) continue;
     const year = Number(yearStr);
     if (!Number.isFinite(year)) continue;
+    const stateNorm = normalizeLocale(state);
+    const country = US_STATES.has(stateNorm) ? "usa" : stateNorm;
     push(restaurant, {
       displayName: restaurant,
       jamesBeardAward: { name: category, year },
       city: normalizeLocale(city),
-      country: normalizeLocale(state),
+      country,
     });
   }
 
@@ -231,6 +233,11 @@ const localeMatches = (entryLoc: string | undefined, queryLoc: string): boolean 
   return entryLoc.includes(queryLoc) || queryLoc.includes(entryLoc);
 };
 
+const countryMatches = (entryCountry: string | undefined, queryCountry: string): boolean => {
+  if (!entryCountry || !queryCountry) return false;
+  return canonicalCountry(entryCountry) === canonicalCountry(queryCountry);
+};
+
 const mergeEntries = (
   entries: AccoladeEntry[],
   queryCity: string,
@@ -241,7 +248,7 @@ const mergeEntries = (
   let pool = entries;
 
   if (countryNorm) {
-    const byCountry = pool.filter((e) => localeMatches(e.country, countryNorm));
+    const byCountry = pool.filter((e) => countryMatches(e.country, countryNorm));
     if (byCountry.length > 0) {
       pool = byCountry;
     } else if (pool.some((e) => e.country)) {
