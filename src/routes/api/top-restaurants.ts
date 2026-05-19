@@ -372,6 +372,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                   : undefined,
                 hours: v.hours ?? undefined,
                 jamesBeardAward: sheet?.jamesBeardAward ?? v.jamesBeardAward ?? undefined,
+                bestChefAward: sheet?.bestChefAward ?? undefined,
                 imageUrl: resolvedImages[i],
               };
             }),
