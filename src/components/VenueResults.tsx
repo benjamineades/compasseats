@@ -54,7 +54,15 @@ export type ResultsData = {
   venues: Venue[];
 };
 
-type Filter = "all" | "restaurants" | "bars" | "michelin" | "worlds50" | "open";
+type Filter =
+  | "all"
+  | "restaurants"
+  | "bars"
+  | "michelin"
+  | "worlds50"
+  | "bestchef"
+  | "jamesbeard"
+  | "open";
 type Sort = "ranked" | "nearest" | "alphabetical";
 
 const MICHELIN_STAR_TIPS: Record<number, string> = {
@@ -78,6 +86,12 @@ function hasWorlds50(v: Venue) {
     (!!v.worldsBest50Restaurants && isRecentRanking(v.worldsBest50Restaurants.year)) ||
     (!!v.worldsBest50Bars && isRecentRanking(v.worldsBest50Bars.year))
   );
+}
+function hasBestChef(v: Venue) {
+  return !!v.bestChefAward;
+}
+function hasJamesBeard(v: Venue) {
+  return !!v.jamesBeardAward;
 }
 
 function distanceKm(a: [number, number], b: [number, number]) {
@@ -131,6 +145,8 @@ export function VenueResults({
       if (filter === "bars") return v.category === "cocktail bar";
       if (filter === "michelin") return (v.michelinStars ?? 0) > 0;
       if (filter === "worlds50") return hasWorlds50(v);
+      if (filter === "bestchef") return hasBestChef(v);
+      if (filter === "jamesbeard") return hasJamesBeard(v);
       if (filter === "open") return parseHoursOpenNow(v.hours) === true;
       return true;
     });
@@ -156,6 +172,8 @@ export function VenueResults({
 
   const michelinCount = data.venues.filter(hasMichelin).length;
   const worlds50Count = data.venues.filter(hasWorlds50).length;
+  const bestChefCount = data.venues.filter(hasBestChef).length;
+  const jamesBeardCount = data.venues.filter(hasJamesBeard).length;
   const noPrestige = michelinCount === 0 && worlds50Count === 0;
 
   const pins: Pin[] = filtered.map((v) => {
@@ -200,6 +218,8 @@ export function VenueResults({
           setFilter={setFilter}
           showMichelin={michelinCount > 0}
           showWorlds50={worlds50Count > 0}
+          showBestChef={bestChefCount > 0}
+          showJamesBeard={jamesBeardCount > 0}
         />
       </div>
 
@@ -270,10 +290,11 @@ export function VenueResults({
 }
 
 function FilterBar({
-  filter, setFilter, showMichelin, showWorlds50,
+  filter, setFilter, showMichelin, showWorlds50, showBestChef, showJamesBeard,
 }: {
   filter: Filter; setFilter: (f: Filter) => void;
   showMichelin: boolean; showWorlds50: boolean;
+  showBestChef: boolean; showJamesBeard: boolean;
 }) {
   const all: { id: Filter; label: string }[] = [
     { id: "all", label: "All" },
@@ -281,11 +302,15 @@ function FilterBar({
     { id: "bars", label: "Cocktail Bars" },
     { id: "michelin", label: "Michelin Starred" },
     { id: "worlds50", label: "World's 50 Best" },
+    { id: "bestchef", label: "Best Chef Awards" },
+    { id: "jamesbeard", label: "James Beard" },
     { id: "open", label: "Open Now" },
   ];
   const filters = all.filter((f) => {
     if (f.id === "michelin") return showMichelin;
     if (f.id === "worlds50") return showWorlds50;
+    if (f.id === "bestchef") return showBestChef;
+    if (f.id === "jamesbeard") return showJamesBeard;
     return true;
   });
   return (
