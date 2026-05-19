@@ -44,6 +44,50 @@ const normalizeLocale = (raw: string | undefined): string =>
     .toLowerCase()
     .trim();
 
+// Country/state alias map. Keys are normalized input forms; values are the
+// canonical token used for comparison. Covers common variants seen in the
+// sheet (e.g. Michelin uses "USA", James Beard uses state codes) vs what
+// the frontend / geocoder sends ("United States", "New York").
+const COUNTRY_ALIASES: Record<string, string> = {
+  "usa": "usa",
+  "u s a": "usa",
+  "us": "usa",
+  "united states": "usa",
+  "united states of america": "usa",
+  "america": "usa",
+  "uk": "uk",
+  "u k": "uk",
+  "united kingdom": "uk",
+  "great britain": "uk",
+  "britain": "uk",
+  "england": "uk",
+  "scotland": "uk",
+  "wales": "uk",
+  "northern ireland": "uk",
+  "uae": "uae",
+  "united arab emirates": "uae",
+  "south korea": "south korea",
+  "korea": "south korea",
+  "republic of korea": "south korea",
+  "czech republic": "czechia",
+  "czechia": "czechia",
+  "holland": "netherlands",
+  "netherlands": "netherlands",
+  "the netherlands": "netherlands",
+};
+
+const canonicalCountry = (loc: string): string => {
+  const n = normalizeLocale(loc);
+  return COUNTRY_ALIASES[n] ?? n;
+};
+
+// US state names and 2-letter codes — used to coerce James Beard rows
+// (which store the state in the country column) to country = "usa".
+const US_STATES = new Set<string>([
+  "al","ak","az","ar","ca","co","ct","de","fl","ga","hi","id","il","in","ia","ks","ky","la","me","md","ma","mi","mn","ms","mo","mt","ne","nv","nh","nj","nm","ny","nc","nd","oh","ok","or","pa","ri","sc","sd","tn","tx","ut","vt","va","wa","wv","wi","wy","dc",
+  "alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new hampshire","new jersey","new mexico","new york","north carolina","north dakota","ohio","oklahoma","oregon","pennsylvania","rhode island","south carolina","south dakota","tennessee","texas","utah","vermont","virginia","washington","west virginia","wisconsin","wyoming","district of columbia",
+]);
+
 const fetchSheet = async (sheetName: string): Promise<string[][]> => {
   const apiKey = process.env.LOVABLE_API_KEY;
   const conn = process.env.GOOGLE_SHEETS_API_KEY;
@@ -136,11 +180,13 @@ const buildIndex = async (): Promise<CacheShape> => {
     if (!restaurant || !category) continue;
     const year = Number(yearStr);
     if (!Number.isFinite(year)) continue;
+    const stateNorm = normalizeLocale(state);
+    const country = US_STATES.has(stateNorm) ? "usa" : stateNorm;
     push(restaurant, {
       displayName: restaurant,
       jamesBeardAward: { name: category, year },
       city: normalizeLocale(city),
-      country: normalizeLocale(state),
+      country,
     });
   }
 
@@ -187,6 +233,11 @@ const localeMatches = (entryLoc: string | undefined, queryLoc: string): boolean 
   return entryLoc.includes(queryLoc) || queryLoc.includes(entryLoc);
 };
 
+const countryMatches = (entryCountry: string | undefined, queryCountry: string): boolean => {
+  if (!entryCountry || !queryCountry) return false;
+  return canonicalCountry(entryCountry) === canonicalCountry(queryCountry);
+};
+
 const mergeEntries = (
   entries: AccoladeEntry[],
   queryCity: string,
@@ -197,7 +248,7 @@ const mergeEntries = (
   let pool = entries;
 
   if (countryNorm) {
-    const byCountry = pool.filter((e) => localeMatches(e.country, countryNorm));
+    const byCountry = pool.filter((e) => countryMatches(e.country, countryNorm));
     if (byCountry.length > 0) {
       pool = byCountry;
     } else if (pool.some((e) => e.country)) {

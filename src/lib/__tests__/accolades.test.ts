@@ -94,6 +94,46 @@ describe("lookupAccolades — disambiguation", () => {
   });
 });
 
+describe("country alias normalization", () => {
+  it("matches USA sheet entry against 'United States' query", async () => {
+    __test.setIndex([
+      {
+        name: "Per Se",
+        entry: { displayName: "Per Se", michelinStars: 3, city: "new york", country: "usa" },
+      },
+    ]);
+    const r = await lookupAccolades("Per Se", "New York", "United States");
+    expect(r?.michelinStars).toBe(3);
+  });
+
+  it("matches UK aliases (United Kingdom vs England)", async () => {
+    __test.setIndex([
+      {
+        name: "Core by Clare Smyth",
+        entry: { displayName: "Core", michelinStars: 3, city: "london", country: "england" },
+      },
+    ]);
+    const r = await lookupAccolades("Core by Clare Smyth", "London", "United Kingdom");
+    expect(r?.michelinStars).toBe(3);
+  });
+
+  it("treats US state (NY) in JBA rows as USA", async () => {
+    __test.setIndex([
+      {
+        name: "Gramercy Tavern",
+        entry: {
+          displayName: "Gramercy Tavern",
+          jamesBeardAward: { name: "Outstanding Restaurant", year: 2023 },
+          city: "new york",
+          country: "usa", // build-time coercion already applied
+        },
+      },
+    ]);
+    const r = await lookupAccolades("Gramercy Tavern", "New York", "United States");
+    expect(r?.jamesBeardAward?.year).toBe(2023);
+  });
+});
+
 describe("listAccoladesForCity", () => {
   it("enumerates only venues matching the city + country", async () => {
     __test.setIndex([
