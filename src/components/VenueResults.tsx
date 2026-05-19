@@ -34,6 +34,7 @@ export type Venue = {
   worldsBest50Bars?: { rank: number; year: number };
   spiritedAward?: { name: string; year: number };
   jamesBeardAward?: { name: string; year: number };
+  bestChefAward?: { knives: number; year: number };
   chef?: string;
   signatureDish?: string;
   accoladeOverview?: string;
@@ -511,6 +512,8 @@ function summarizeAccolade(v: Venue): string | undefined {
     return `World's 50 Best Bars #${v.worldsBest50Bars.rank} (${v.worldsBest50Bars.year})`;
   if (v.spiritedAward) return `${v.spiritedAward.name} (${v.spiritedAward.year})`;
   if (v.jamesBeardAward) return `James Beard: ${v.jamesBeardAward.name} (${v.jamesBeardAward.year})`;
+  if (v.bestChefAward)
+    return `Best Chef Awards ${"🔪".repeat(v.bestChefAward.knives)} (${v.bestChefAward.year})`;
   if (v.bibGourmand) return "Michelin Bib Gourmand";
   if (v.michelinGreenStar) return "Michelin Green Star";
   return undefined;
@@ -596,6 +599,21 @@ function Accolades({ v }: { v: Venue }) {
         <Award className="h-3 w-3" />
         James Beard: {v.jamesBeardAward.name} ({v.jamesBeardAward.year})
         <InfoTip text={`James Beard Award — ${v.jamesBeardAward.name} (${v.jamesBeardAward.year}). One of the most prestigious culinary honors in the United States.`} />
+      </span>,
+    );
+  }
+  if (v.category === "restaurant" && v.bestChefAward) {
+    const bc = v.bestChefAward;
+    items.push(
+      <span
+        key="bca"
+        className="inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-1.5 py-0.5 text-xs font-medium text-sky-400"
+      >
+        <Award className="h-3 w-3" />
+        Best Chef {bc.knives}-Knives ({bc.year})
+        <InfoTip
+          text={`The Best Chef Awards ${bc.year} rated this restaurant's chef ${bc.knives} of 3 knives — a top global recognition by an international jury of chefs and critics.`}
+        />
       </span>,
     );
   }
