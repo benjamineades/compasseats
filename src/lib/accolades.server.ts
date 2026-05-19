@@ -81,6 +81,13 @@ const canonicalCountry = (loc: string): string => {
   return COUNTRY_ALIASES[n] ?? n;
 };
 
+// US state names and 2-letter codes — used to coerce James Beard rows
+// (which store the state in the country column) to country = "usa".
+const US_STATES = new Set<string>([
+  "al","ak","az","ar","ca","co","ct","de","fl","ga","hi","id","il","in","ia","ks","ky","la","me","md","ma","mi","mn","ms","mo","mt","ne","nv","nh","nj","nm","ny","nc","nd","oh","ok","or","pa","ri","sc","sd","tn","tx","ut","vt","va","wa","wv","wi","wy","dc",
+  "alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan","minnesota","mississippi","missouri","montana","nebraska","nevada","new hampshire","new jersey","new mexico","new york","north carolina","north dakota","ohio","oklahoma","oregon","pennsylvania","rhode island","south carolina","south dakota","tennessee","texas","utah","vermont","virginia","washington","west virginia","wisconsin","wyoming","district of columbia",
+]);
+
 const fetchSheet = async (sheetName: string): Promise<string[][]> => {
   const apiKey = process.env.LOVABLE_API_KEY;
   const conn = process.env.GOOGLE_SHEETS_API_KEY;
