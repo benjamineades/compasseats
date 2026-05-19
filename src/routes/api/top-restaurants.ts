@@ -8,6 +8,7 @@ import {
   listAccoladesForCity,
   type AccoladeEntry,
 } from "@/lib/accolades.server";
+import { restaurantScore, barScore } from "@/lib/ranking";
 
 const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
@@ -333,26 +334,7 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
           const restSheets = await Promise.all(aiRestaurants.map(sheetFor));
           const barSheets = await Promise.all(aiBars.map(sheetFor));
 
-          const restScore = (s: AccoladeEntry | null): number => {
-            if (!s) return 0;
-            const w50 = s.worldsBest50Restaurants;
-            if (w50 && w50.year >= currentYear - 1) return 10_000_000 + (100 - w50.rank);
-            if (s.michelinStars === 3) return 9_000_000;
-            if (s.bestChefAward?.knives === 3) return 8_500_000 + s.bestChefAward.year;
-            if (s.michelinStars === 2) return 8_000_000;
-            if (s.bestChefAward?.knives === 2) return 7_500_000 + s.bestChefAward.year;
-            if (s.jamesBeardAward) return 7_000_000 + s.jamesBeardAward.year;
-            if (s.michelinStars === 1) return 6_500_000;
-            if (s.bestChefAward?.knives === 1) return 6_000_000 + s.bestChefAward.year;
-            if (w50) return 5_000_000 + w50.year * 100 + (100 - w50.rank);
-            return 0;
-          };
-          const barScore = (s: AccoladeEntry | null): number => {
-            if (!s) return 0;
-            const w = s.worldsBest50Bars;
-            if (!w) return 0;
-            return w.year * 1000 + (100 - w.rank);
-          };
+          const restScore = (s: AccoladeEntry | null) => restaurantScore(s, currentYear);
 
           type Indexed<T> = { v: T; sheet: AccoladeEntry | null; score: number };
           const sortByScore = <T,>(arr: Indexed<T>[]) =>
