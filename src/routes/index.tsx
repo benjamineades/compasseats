@@ -11,6 +11,7 @@ import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomp
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
 import { TOP_CITIES } from "@/lib/cities";
+import { useVenueLoadMore, type VenueQuery as LoadMoreQuery } from "@/lib/useVenueLoadMore";
 
 const PLACEHOLDER_POOL = [
   "Tokyo", "Lisbon", "Mexico City", "Paris", "New York", "Bangkok", "Istanbul",
@@ -59,13 +60,28 @@ function Index() {
   const [selected, setSelected] = useState<CitySuggestion | null>(null);
   const [placeholder] = useState(pickThreePlaceholder);
   const [lastQuery, setLastQuery] = useState<string>("");
-  const mutation = useMutation({ mutationFn: fetchVenues });
+  const [results, setResults] = useState<ResultsData | null>(null);
+  const [activeQuery, setActiveQuery] = useState<LoadMoreQuery | null>(null);
+  const mutation = useMutation({
+    mutationFn: fetchVenues,
+    onSuccess: (data, variables) => {
+      setResults(data);
+      setActiveQuery(variables);
+    },
+  });
+  const { loadMore, isLoadingMore, hasMore, error: loadMoreError } = useVenueLoadMore({
+    data: results ?? undefined,
+    query: activeQuery ?? undefined,
+    append: (newVenues) =>
+      setResults((prev) => (prev ? { ...prev, venues: [...prev.venues, ...newVenues] } : prev)),
+  });
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const trimmed = city.trim();
     if (!trimmed) return;
     setLastQuery(trimmed);
+    setResults(null);
     if (selected && selected.short.toLowerCase() === trimmed.toLowerCase()) {
       mutation.mutate({ city: selected.city, region: selected.region, country: selected.country });
     } else {
@@ -73,11 +89,13 @@ function Index() {
     }
   };
 
-  const data = mutation.data;
+  const data = results ?? mutation.data;
   const showHero = mutation.isSuccess && data && data.venues.length > 0;
 
   const resetSearch = () => {
     mutation.reset();
+    setResults(null);
+    setActiveQuery(null);
     setCity("");
     setSelected(null);
     setLastQuery("");
@@ -114,7 +132,7 @@ function Index() {
             value={city}
             onChange={(v) => { setCity(v); setSelected(null); }}
             onSelect={(s) => {
-              setSelected(s); setLastQuery(s.short);
+              setSelected(s); setLastQuery(s.short); setResults(null);
               mutation.mutate({ city: s.city, region: s.region, country: s.country });
             }}
             placeholder={placeholder}
@@ -131,7 +149,15 @@ function Index() {
 
           {mutation.isError && <UnmappedCity query={lastQuery} />}
 
-          {mutation.isSuccess && data && data.venues.length > 0 && <VenueResults data={data} />}
+          {mutation.isSuccess && data && data.venues.length > 0 && (
+            <VenueResults
+              data={data}
+              onLoadMore={loadMore}
+              isLoadingMore={isLoadingMore}
+              hasMore={hasMore}
+              loadMoreError={loadMoreError}
+            />
+          )}
 
           {mutation.isSuccess && data && data.venues.length === 0 && <UnmappedCity query={lastQuery} />}
 

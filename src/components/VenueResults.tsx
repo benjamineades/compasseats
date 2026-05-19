@@ -2,7 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import {
   MapPin, Star, Leaf, Utensils, Trophy, Award, ExternalLink,
   Instagram, Facebook, Globe, CalendarCheck, Clock, Info, ArrowUpDown,
-  ChevronDown, ChevronUp, ImageOff,
+  ChevronDown, ChevronUp, ImageOff, Loader2,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -106,7 +106,20 @@ function parseHoursOpenNow(hours?: string): boolean | null {
   return false;
 }
 
-export function VenueResults({ data }: { data: ResultsData }) {
+export type VenueResultsLoadMore = {
+  onLoadMore?: () => void;
+  isLoadingMore?: boolean;
+  hasMore?: boolean;
+  loadMoreError?: string | null;
+};
+
+export function VenueResults({
+  data,
+  onLoadMore,
+  isLoadingMore,
+  hasMore,
+  loadMoreError,
+}: { data: ResultsData } & VenueResultsLoadMore) {
   const [filter, setFilter] = useState<Filter>("all");
   const [sort, setSort] = useState<Sort>("ranked");
 
@@ -221,6 +234,34 @@ export function VenueResults({ data }: { data: ResultsData }) {
             <VenueColumn title="Restaurants" accent={PIN_COLORS.restaurant} accentText="#1a1a1a" items={restaurants} indexMap={indexMap} />
             <VenueColumn title="Cocktail Bars" accent={PIN_COLORS.bar} accentText="#fff" items={bars} indexMap={indexMap} />
           </div>
+          {onLoadMore && (
+            <div className="mt-10 flex flex-col items-center gap-2 text-center">
+              {loadMoreError && (
+                <p className="text-sm text-destructive">{loadMoreError}</p>
+              )}
+              {hasMore ? (
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={onLoadMore}
+                  disabled={!!isLoadingMore}
+                >
+                  {isLoadingMore ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Finding more spots…
+                    </>
+                  ) : (
+                    "Show 10 more"
+                  )}
+                </Button>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No more results — you've seen every spot we could find in {data.city}.
+                </p>
+              )}
+            </div>
+          )}
         </>
       )}
     </TooltipProvider>

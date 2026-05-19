@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Loader2, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
 import { CITIES_BY_SLUG, TOP_CITIES, type TopCity } from "@/lib/cities";
+import { useVenueLoadMore } from "@/lib/useVenueLoadMore";
 
 export const Route = createFileRoute("/city/$slug")({
   loader: ({ params }) => {
@@ -81,10 +82,19 @@ async function fetchVenues(c: TopCity): Promise<ResultsData> {
 
 function CityPage() {
   const { city } = Route.useLoaderData();
+  const queryClient = useQueryClient();
   const query = useQuery({
     queryKey: ["city-venues", city.slug],
     queryFn: () => fetchVenues(city),
     staleTime: 1000 * 60 * 30,
+  });
+  const { loadMore, isLoadingMore, hasMore, error: loadMoreError } = useVenueLoadMore({
+    data: query.data,
+    query: { city: city.city, region: city.region, country: city.country },
+    append: (newVenues) =>
+      queryClient.setQueryData<ResultsData>(["city-venues", city.slug], (prev) =>
+        prev ? { ...prev, venues: [...prev.venues, ...newVenues] } : prev,
+      ),
   });
 
   return (
@@ -110,7 +120,15 @@ function CityPage() {
             </CardContent>
           </Card>
         )}
-        {query.isSuccess && <VenueResults data={query.data} />}
+        {query.isSuccess && (
+          <VenueResults
+            data={query.data}
+            onLoadMore={loadMore}
+            isLoadingMore={isLoadingMore}
+            hasMore={hasMore}
+            loadMoreError={loadMoreError}
+          />
+        )}
 
         <OtherCities currentSlug={city.slug} />
       </div>

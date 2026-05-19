@@ -8,6 +8,8 @@ const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
   region: z.string().trim().max(100).optional(),
   country: z.string().trim().max(100).optional(),
+  exclude: z.array(z.string().trim().min(1).max(200)).max(500).optional(),
+  limit: z.coerce.number().int().min(1).max(10).optional(),
 });
 
 const numericValue = z.coerce.number().finite();
@@ -185,7 +187,7 @@ const resultsSchema = z.object({
         imageUrl: z.string().nullish(),
       }),
     )
-    .min(1),
+      .min(0),
 });
 
 const sanitizeAiJson = (text: string) => {
@@ -229,13 +231,19 @@ export const Route = createFileRoute("/api/top-restaurants")({
         const currentYear = now.getUTCFullYear();
         const currentMonth = now.toLocaleString("en-US", { month: "long", timeZone: "UTC" });
         const minAccoladeYear = currentYear - 2;
+        const limit = parsed.limit ?? 10;
+        const excludeList = parsed.exclude ?? [];
+        const isContinuation = excludeList.length > 0;
+        const exclusionBlock = isContinuation
+          ? `\n\nCONTINUATION CALL — the user has already seen the venues listed below and is asking for the NEXT batch. Do NOT include any of these names again; pick the next best venues in their place, continuing down the same priority order. If you genuinely cannot find ${limit} more qualified restaurants OR ${limit} more qualified cocktail bars for ${cityQuery} beyond those already shown, return as many fresh ones as you can (it is OK to return fewer than ${limit}, or even zero in one category). Already-shown venues to EXCLUDE: ${excludeList.join(", ")}.`
+          : "";
 
         try {
           const { object } = await generateObject({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-            prompt: `Today is ${currentMonth} ${currentYear}. List the 10 top restaurants AND the 10 top cocktail bars in ${cityQuery} (20 venues total).
+            prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}
 
 RECENCY IS MANDATORY. The official accolade lists you must use:
   • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists. Authoritative sources (use these lists as the source of truth for rank + year):
@@ -302,8 +310,8 @@ WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
 For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — MOST RECENT year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100; omit if never listed), jamesBeardAward ({name, year} — most notable recent James Beard Award the restaurant or its chef has won, e.g. "Outstanding Restaurant" or "Best Chef: Northeast"; omit if none). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — MOST RECENT year it placed on World's 50 Best Bars top 50 or extended 51–100; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, with the year; omit if none), jamesBeardAward ({name, year} — for bar program awards; omit if none). For each {rank, year} accolade, ALWAYS return the most recent year the venue has appeared. Only include accolade fields you are confident about; never fabricate. If "${cityQuery}" is ambiguous, pick the most famous match.`,
           });
           const orderedVenues = [
-            ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
-            ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
+            ...object.venues.filter((v) => v.category === "restaurant").slice(0, limit),
+            ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, limit),
           ];
 
           // Resolve images by scraping each venue's official website first.
