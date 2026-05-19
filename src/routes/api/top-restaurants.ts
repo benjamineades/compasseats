@@ -3,7 +3,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { generateObject } from "ai";
 import { z } from "zod";
 import { createLovableAiGatewayProvider } from "@/lib/ai-gateway";
-import { lookupAccolades } from "@/lib/accolades.server";
+import {
+  lookupAccolades,
+  listAccoladesForCity,
+  type AccoladeEntry,
+} from "@/lib/accolades.server";
 
 const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
@@ -241,50 +245,59 @@ export const Route = createFileRoute("/api/top-restaurants")({
           : "";
 
         try {
+          // Pre-fetch the canonical accolade venues for this city from the
+          // linked spreadsheet. The AI MUST surface these (with current Yelp/
+          // TripAdvisor fallbacks only) and the new priority order is applied
+          // server-side after the AI returns.
+          const cityAccolades = await listAccoladesForCity(parsed.city, parsed.country ?? "");
+          const seenExclude = new Set(excludeList.map((s) => s.trim().toLowerCase()));
+          const seedVenues = cityAccolades
+            .filter((a) => !seenExclude.has(a.name.toLowerCase()))
+            .map((a) => {
+              const tags: string[] = [];
+              if (a.michelinStars) tags.push(`${a.michelinStars}★ Michelin`);
+              if (a.bibGourmand) tags.push("Bib Gourmand");
+              if (a.worldsBest50Restaurants)
+                tags.push(`World's 50 Best #${a.worldsBest50Restaurants.rank} (${a.worldsBest50Restaurants.year})`);
+              if (a.worldsBest50Bars)
+                tags.push(`World's 50 Best Bars #${a.worldsBest50Bars.rank} (${a.worldsBest50Bars.year})`);
+              if (a.bestChefAward)
+                tags.push(`Best Chef ${a.bestChefAward.knives}-knives (${a.bestChefAward.year})`);
+              if (a.jamesBeardAward)
+                tags.push(`James Beard ${a.jamesBeardAward.name} (${a.jamesBeardAward.year})`);
+              return `  • ${a.name} — ${tags.join("; ")}`;
+            })
+            .slice(0, 60)
+            .join("\n");
+          const seedBlock = seedVenues
+            ? `\n\nCANONICAL ACCOLADE VENUES FOR ${cityQuery} (from the official linked spreadsheet — these are the ONLY source of truth for accolades and rankings). You MUST include every one of these that is a restaurant or cocktail bar still operating, up to the ${limit} slots per category. Use the EXACT names below so server-side accolade enrichment can match them. After exhausting this list, fill remaining slots with the highest-rated venues from Yelp / Trip Advisor (no accolades).\n${seedVenues}`
+            : `\n\nNo canonical accolade venues are listed in the linked spreadsheet for ${cityQuery}. Fill all ${limit * 2} slots with the highest-rated currently-operating venues from Yelp / Trip Advisor (no accolade fields).`;
+
           const { object } = await generateObject({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-            prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}
+            prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}${seedBlock}
 
-RECENCY IS MANDATORY. The official accolade lists you must use:
-  • World's 50 Best Restaurants — the edition published in ${currentYear} (or, if not yet announced as of ${currentMonth} ${currentYear}, the ${currentYear - 1} edition). NEVER cite an older edition when a newer one exists. Authoritative sources (use these lists as the source of truth for rank + year):
-      - Current top 50: https://www.theworlds50best.com/list/1-50
-      - Current extended 51–100: https://www.theworlds50best.com/list/51-100
-      - Previous editions: https://www.theworlds50best.com/previous-list/2024, /2023, /2022, /2021, /2020, /2019, /2018, /2017, /2016
-  • World's 50 Best Bars — same rule: most recent edition only. Authoritative sources (use these lists as the source of truth for rank + year):
-      - Current top 50: https://www.theworlds50best.com/bars/list/1-50
-      - Current extended 51–100: https://www.theworlds50best.com/bars/list/51-100
-      - Previous editions: https://www.theworlds50best.com/bars/previous-list/2024, /2023, /2022, /2021, /2020, /2019
-  • Michelin Guide — the CURRENT edition for ${cityQuery}'s guide region (typically published late ${currentYear - 1} or in ${currentYear}). Only include stars/Bib/Green Star that appear in the current edition; do not carry forward awards a venue has since lost. Authoritative source: https://guide.michelin.com/us/en/restaurants
-  • Tales of the Cocktail Spirited Awards — most recent ceremony only (${currentYear} if held, else ${currentYear - 1}). Authoritative source: https://talesofthecocktail.org/spirited-awards-archive/
-  • World's Best Discovery — current live listing.
-Do NOT include any accolade with year < ${minAccoladeYear} unless that exact year is still the most recent edition of that list. If you are not confident the accolade reflects the latest edition, OMIT the accolade field entirely rather than guess. Fabricated or outdated years are worse than no badge.
+ACCOLADES — STRICT RULE: Do NOT populate michelinStars, michelinGreenStar, bibGourmand, worldsBest50Restaurants, worldsBest50Bars, jamesBeardAward, bestChefAward, or spiritedAward. The server enriches these from the linked spreadsheet. Leave all accolade fields empty/null.
 
-NON-EMPTY GUARANTEE (highest priority): You MUST return exactly 10 restaurants AND exactly 10 cocktail bars for ${cityQuery}, even when no accolade data can be verified. If the accolade tiers below don't fill 10 slots, immediately fall back to the highest-rated venues from Yelp / Trip Advisor (and finally to any other well-known, currently-operating local venues you know) to reach 10 in each category. Never return fewer than 10 per category. Omitting accolade fields is fine; returning an empty or short list is NOT.
+RANKING PRIORITY — RESTAURANTS (apply in this STRICT order; the canonical accolade list above is the source of truth):
+  1. Venues on the MOST RECENT World's 50 Best Restaurants edition (from the seed list above).
+  2. Michelin 3-star restaurants (from the seed list).
+  3. Best Chef Awards 3-Knives winners (from the seed list).
+  4. Michelin 2-star restaurants.
+  5. Best Chef Awards 2-Knives winners.
+  6. James Beard Award winners (from the seed list).
+  7. Michelin 1-star restaurants.
+  8. Best Chef Awards 1-Knife winners.
+  9. Fallback when the seed list is exhausted: highest-rated on Yelp if ${cityQuery} is in the United States (then Trip Advisor); otherwise highest-rated on Trip Advisor (then Yelp). No accolades for these.
 
-OVERALL RULE: Within EVERY tier below, always prefer the MOST RECENT accolade year. When two venues are in the same tier, the one whose qualifying accolade was awarded in a more recent year ranks higher. Use rank as a secondary tiebreaker only when the accolade years are equal. Never use an older year's ranking when a more recent year exists.
+RANKING PRIORITY — COCKTAIL BARS:
+  1. Venues on the MOST RECENT World's 50 Best Bars edition (from the seed list above).
+  2. Past years' World's 50 Best Bars editions (more recent first), still from the seed list.
+  3. Fallback when seed list exhausted: highest-rated on Yelp if in USA (then Trip Advisor); otherwise Trip Advisor first.
 
-RANKING PRIORITY — RESTAURANTS (apply in this STRICT order, fill the 10 slots top-down; never demote a higher tier for a lower one):
-  1. Any Michelin 3-star restaurant (current Michelin Guide).
-  2. Venues on the MOST CURRENT World's 50 Best Restaurants list (top 50 first, then extended 51–100).
-  3. Michelin 2-star restaurants, then Michelin 1-star restaurants (current Michelin Guide). Always include the Michelin star badge for these (and Green Star where currently awarded).
-  4. Michelin Bib Gourmand venues (current Michelin Guide). Always include the Bib Gourmand badge.
-  5. World's Best Discovery (restaurants) — current live listing.
-  6. Fallback ratings tier — pick the order based on the searched city's country:
-       • If "${cityQuery}" is in the United States: highest-rated on Yelp, THEN highest-rated on Trip Advisor.
-       • If "${cityQuery}" is OUTSIDE the United States: highest-rated on Trip Advisor, THEN highest-rated on Yelp.
-  Always populate michelinStars, michelinGreenStar, and bibGourmand whenever they currently apply, regardless of which tier a venue came in through.
-
-RANKING PRIORITY — COCKTAIL BARS (apply in this STRICT order, fill the 10 slots top-down; never demote a higher tier for a lower one):
-  1. Venues on the MOST RECENT World's 50 Best Bars edition (top 50 first, then extended 51–100).
-  2. Venues on PAST years' World's 50 Best Bars editions (more recent past years first).
-  3. World's Best Discovery (bars) — current live listing.
-  4. Fallback ratings tier — pick the order based on the searched city's country:
-       • If "${cityQuery}" is in the United States: highest-rated on Yelp, THEN highest-rated on Trip Advisor.
-       • If "${cityQuery}" is OUTSIDE the United States: highest-rated on Trip Advisor, THEN highest-rated on Yelp.
-
-Return the 10 restaurants in priority order first, then the 10 cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
+Return the ${limit} restaurants in priority order first, then the ${limit} cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
 Return JSON with: city (proper name), country, cityBlurb, lat/lng (city center coordinates), and venues (array of 20: 10 restaurants then 10 cocktail bars). Each venue: name, category ("restaurant" or "cocktail bar"), cuisine (for restaurants: cuisine type; for bars: style/specialty like speakeasy, tiki, classic), priceRange ("$", "$$", "$$$" or "$$$$"), description (see DESCRIPTION RULES), neighborhood (optional), lat/lng (precise current venue coordinates), url (the venue's official website if it has one; otherwise the Instagram profile URL; otherwise the Facebook page URL; omit only if none exist), urlType ("website" | "instagram" | "facebook" matching the url provided), imageUrl (a direct https URL to a representative photo of the venue — dining room, bar, or signature dish. SOURCE PRIORITY (use in this strict order; only fall back when the higher tier has no usable image): (1) the venue's Michelin Guide listing hero/gallery image at https://guide.michelin.com, (2) the venue's World's 50 Best Restaurants or World's 50 Best Bars listing image at https://www.theworlds50best.com, (3) the most recent high-quality post image from the venue's official Instagram account, (4) the best-looking image (well lit, aesthetic, professionally composed — prefer plated food or interior shots over crowd/selfie shots) from the venue's Yelp or TripAdvisor listing. Must end in .jpg/.jpeg/.png/.webp and be a publicly hot-linkable image, not a webpage. Omit if you cannot verify a working image URL).
 
@@ -309,12 +322,59 @@ WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
   BUSINESS HOURS (hours field) — REQUIRED for EVERY venue (restaurants AND cocktail bars):
     Set hours to a compact human-readable summary of when the venue is open. Max 40 chars. Group consecutive days with the same hours. Use en-dash for ranges and lowercase am/pm. Examples: "Tue–Sun 6pm–2am", "Daily 5pm–1am", "Mon–Thu 6pm–12am, Fri–Sat 6pm–2am, Closed Sun", "Lunch Tue–Fri 12–2pm, Dinner Tue–Sat 7–10pm". If you are not confident about current hours, omit the field rather than guess.
 
-For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — MOST RECENT year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100; omit if never listed), jamesBeardAward ({name, year} — most notable recent James Beard Award the restaurant or its chef has won, e.g. "Outstanding Restaurant" or "Best Chef: Northeast"; omit if none). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — MOST RECENT year it placed on World's 50 Best Bars top 50 or extended 51–100; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, with the year; omit if none), jamesBeardAward ({name, year} — for bar program awards; omit if none). For each {rank, year} accolade, ALWAYS return the most recent year the venue has appeared. Only include accolade fields you are confident about; never fabricate. If "${cityQuery}" is ambiguous, pick the most famous match.`,
+Accolade fields are populated by the server from the linked spreadsheet; leave them empty. If "${cityQuery}" is ambiguous, pick the most famous match.`,
           });
-          const orderedVenues = [
-            ...object.venues.filter((v) => v.category === "restaurant").slice(0, limit),
-            ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, limit),
-          ];
+          const aiRestaurants = object.venues.filter((v) => v.category === "restaurant");
+          const aiBars = object.venues.filter((v) => v.category === "cocktail bar");
+          // Score each venue using the strict priority rules so the order is
+          // deterministic regardless of what order the AI returned things in.
+          const sheetFor = async (v: { name: string }) =>
+            lookupAccolades(v.name, object.city, object.country);
+          const restSheets = await Promise.all(aiRestaurants.map(sheetFor));
+          const barSheets = await Promise.all(aiBars.map(sheetFor));
+
+          const restScore = (s: AccoladeEntry | null): number => {
+            if (!s) return 0;
+            const w50 = s.worldsBest50Restaurants;
+            if (w50 && w50.year >= currentYear - 1) return 10_000_000 + (100 - w50.rank);
+            if (s.michelinStars === 3) return 9_000_000;
+            if (s.bestChefAward?.knives === 3) return 8_500_000 + s.bestChefAward.year;
+            if (s.michelinStars === 2) return 8_000_000;
+            if (s.bestChefAward?.knives === 2) return 7_500_000 + s.bestChefAward.year;
+            if (s.jamesBeardAward) return 7_000_000 + s.jamesBeardAward.year;
+            if (s.michelinStars === 1) return 6_500_000;
+            if (s.bestChefAward?.knives === 1) return 6_000_000 + s.bestChefAward.year;
+            if (w50) return 5_000_000 + w50.year * 100 + (100 - w50.rank);
+            return 0;
+          };
+          const barScore = (s: AccoladeEntry | null): number => {
+            if (!s) return 0;
+            const w = s.worldsBest50Bars;
+            if (!w) return 0;
+            return w.year * 1000 + (100 - w.rank);
+          };
+
+          type Indexed<T> = { v: T; sheet: AccoladeEntry | null; score: number };
+          const sortByScore = <T,>(arr: Indexed<T>[]) =>
+            arr.sort((a, b) => b.score - a.score).map((x) => ({ v: x.v, sheet: x.sheet }));
+
+          const orderedRest = sortByScore(
+            aiRestaurants.map((v, i) => ({
+              v,
+              sheet: restSheets[i],
+              score: restScore(restSheets[i]),
+            })),
+          ).slice(0, limit);
+          const orderedBars = sortByScore(
+            aiBars.map((v, i) => ({
+              v,
+              sheet: barSheets[i],
+              score: barScore(barSheets[i]),
+            })),
+          ).slice(0, limit);
+          const orderedPairs = [...orderedRest, ...orderedBars];
+          const orderedVenues = orderedPairs.map((p) => p.v);
+          const sheetAccolades = orderedPairs.map((p) => p.sheet);
 
           // Resolve images by scraping each venue's official website first.
           // AI-returned image URLs from Michelin / Instagram / Yelp rarely
@@ -326,12 +386,6 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
               if (!site) return aiImg;
               return (await fetchOgImage(site)) ?? aiImg;
             }),
-          );
-
-          // Spreadsheet-first accolades enrichment. Sheet entries override
-          // AI values; AI fills any gaps. Lookup is cached in-memory.
-          const sheetAccolades = await Promise.all(
-            orderedVenues.map((v) => lookupAccolades(v.name, object.city, object.country)),
           );
 
           const normalized = {
@@ -355,13 +409,13 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 lng: v.lng,
                 url,
                 urlType: normalizeUrlType(url, v.urlType),
-                michelinStars: sheet?.michelinStars ?? v.michelinStars ?? undefined,
-                michelinGreenStar: v.michelinGreenStar ?? undefined,
-                bibGourmand: sheet?.bibGourmand ?? v.bibGourmand ?? undefined,
-                worldsBest50Restaurants:
-                  sheet?.worldsBest50Restaurants ?? v.worldsBest50Restaurants ?? undefined,
-                worldsBest50Bars: sheet?.worldsBest50Bars ?? v.worldsBest50Bars ?? undefined,
-                spiritedAward: v.spiritedAward ?? undefined,
+                // Accolades come ONLY from the linked spreadsheet now.
+                michelinStars: sheet?.michelinStars ?? undefined,
+                michelinGreenStar: undefined,
+                bibGourmand: sheet?.bibGourmand ?? undefined,
+                worldsBest50Restaurants: sheet?.worldsBest50Restaurants ?? undefined,
+                worldsBest50Bars: sheet?.worldsBest50Bars ?? undefined,
+                spiritedAward: undefined,
                 chef: v.chef ?? undefined,
                 signatureDish: v.signatureDish ?? undefined,
                 accoladeOverview: v.accoladeOverview ?? undefined,
@@ -371,7 +425,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                   ? (v.reservationPlatform ?? "Website")
                   : undefined,
                 hours: v.hours ?? undefined,
-                jamesBeardAward: sheet?.jamesBeardAward ?? v.jamesBeardAward ?? undefined,
+                jamesBeardAward: sheet?.jamesBeardAward ?? undefined,
                 bestChefAward: sheet?.bestChefAward ?? undefined,
                 imageUrl: resolvedImages[i],
               };
