@@ -44,6 +44,43 @@ const normalizeLocale = (raw: string | undefined): string =>
     .toLowerCase()
     .trim();
 
+// Country/state alias map. Keys are normalized input forms; values are the
+// canonical token used for comparison. Covers common variants seen in the
+// sheet (e.g. Michelin uses "USA", James Beard uses state codes) vs what
+// the frontend / geocoder sends ("United States", "New York").
+const COUNTRY_ALIASES: Record<string, string> = {
+  "usa": "usa",
+  "u s a": "usa",
+  "us": "usa",
+  "united states": "usa",
+  "united states of america": "usa",
+  "america": "usa",
+  "uk": "uk",
+  "u k": "uk",
+  "united kingdom": "uk",
+  "great britain": "uk",
+  "britain": "uk",
+  "england": "uk",
+  "scotland": "uk",
+  "wales": "uk",
+  "northern ireland": "uk",
+  "uae": "uae",
+  "united arab emirates": "uae",
+  "south korea": "south korea",
+  "korea": "south korea",
+  "republic of korea": "south korea",
+  "czech republic": "czechia",
+  "czechia": "czechia",
+  "holland": "netherlands",
+  "netherlands": "netherlands",
+  "the netherlands": "netherlands",
+};
+
+const canonicalCountry = (loc: string): string => {
+  const n = normalizeLocale(loc);
+  return COUNTRY_ALIASES[n] ?? n;
+};
+
 const fetchSheet = async (sheetName: string): Promise<string[][]> => {
   const apiKey = process.env.LOVABLE_API_KEY;
   const conn = process.env.GOOGLE_SHEETS_API_KEY;
