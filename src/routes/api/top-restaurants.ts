@@ -178,6 +178,7 @@ const resultsSchema = z.object({
         worldsBest50Bars: z.object({ rank: integerValue, year: integerValue }).nullish(),
         spiritedAward: z.object({ name: z.string(), year: integerValue }).nullish(),
         jamesBeardAward: z.object({ name: z.string(), year: integerValue }).nullish(),
+        bestChefAward: z.object({ knives: integerValue, year: integerValue }).nullish(),
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
         accoladeOverview: z.string().nullish(),
@@ -371,6 +372,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                   : undefined,
                 hours: v.hours ?? undefined,
                 jamesBeardAward: sheet?.jamesBeardAward ?? v.jamesBeardAward ?? undefined,
+                bestChefAward: sheet?.bestChefAward ?? undefined,
                 imageUrl: resolvedImages[i],
               };
             }),
