@@ -310,8 +310,8 @@ WHY THIS PICK (whyThisPick field) — REQUIRED for EVERY venue:
 For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — only from the current Michelin Guide; omit or 0 if none), michelinGreenStar (true if currently awarded the Michelin Green Star for sustainability), bibGourmand (true if currently a Michelin Bib Gourmand), worldsBest50Restaurants ({rank, year} — MOST RECENT year the restaurant placed on World's 50 Best Restaurants top 50 or extended 51–100; omit if never listed), jamesBeardAward ({name, year} — most notable recent James Beard Award the restaurant or its chef has won, e.g. "Outstanding Restaurant" or "Best Chef: Northeast"; omit if none). For COCKTAIL BARS, also include when applicable: worldsBest50Bars ({rank, year} — MOST RECENT year it placed on World's 50 Best Bars top 50 or extended 51–100; omit if never listed), spiritedAward ({name, year} — most notable Tales of the Cocktail Spirited Award the bar has won, with the year; omit if none), jamesBeardAward ({name, year} — for bar program awards; omit if none). For each {rank, year} accolade, ALWAYS return the most recent year the venue has appeared. Only include accolade fields you are confident about; never fabricate. If "${cityQuery}" is ambiguous, pick the most famous match.`,
           });
           const orderedVenues = [
-            ...object.venues.filter((v) => v.category === "restaurant").slice(0, 10),
-            ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, 10),
+            ...object.venues.filter((v) => v.category === "restaurant").slice(0, limit),
+            ...object.venues.filter((v) => v.category === "cocktail bar").slice(0, limit),
           ];
 
           // Resolve images by scraping each venue's official website first.
