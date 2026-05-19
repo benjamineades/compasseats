@@ -270,6 +270,26 @@ export const lookupAccolades = async (
   }
 };
 
+// ---- Test helpers ----
+// These are exported solely for unit tests. Do not call from app code.
+export const __test = {
+  mergeEntries,
+  normalizeName,
+  setIndex(entries: Array<{ name: string; entry: AccoladeEntry }>) {
+    const byName = new Map<string, AccoladeEntry[]>();
+    for (const { name, entry } of entries) {
+      const key = normalizeName(name);
+      const arr = byName.get(key);
+      if (arr) arr.push(entry);
+      else byName.set(key, [entry]);
+    }
+    cache = { fetchedAt: Date.now(), byName };
+  },
+  clearIndex() {
+    cache = null;
+  },
+};
+
 // Enumerate every venue in the sheet that matches the queried city/country.
 // Used to seed the AI prompt with the canonical accolade venues for the city
 // so it always returns them (instead of guessing from training data).
