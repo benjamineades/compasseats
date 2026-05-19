@@ -7,6 +7,7 @@ const GATEWAY_BASE = "https://connector-gateway.lovable.dev/google_sheets/v4";
 const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
 
 export type AccoladeEntry = {
+  displayName?: string;
   michelinStars?: number;
   bibGourmand?: boolean;
   worldsBest50Restaurants?: { rank: number; year: number };
@@ -105,6 +106,7 @@ const buildIndex = async (): Promise<CacheShape> => {
     if (!stars && !bib) continue;
     const { city, country } = splitMichelinLocation(location ?? "");
     push(name, {
+      displayName: name,
       michelinStars: stars,
       bibGourmand: bib,
       city,
@@ -121,6 +123,7 @@ const buildIndex = async (): Promise<CacheShape> => {
     if (!Number.isFinite(year) || !Number.isFinite(rank)) continue;
     const isBar = /bar/i.test(type ?? "");
     push(name, {
+      displayName: name,
       [isBar ? "worldsBest50Bars" : "worldsBest50Restaurants"]: { rank, year },
       city: normalizeLocale(city),
       country: normalizeLocale(country),
@@ -134,6 +137,7 @@ const buildIndex = async (): Promise<CacheShape> => {
     const year = Number(yearStr);
     if (!Number.isFinite(year)) continue;
     push(restaurant, {
+      displayName: restaurant,
       jamesBeardAward: { name: category, year },
       city: normalizeLocale(city),
       country: normalizeLocale(state),
@@ -149,6 +153,7 @@ const buildIndex = async (): Promise<CacheShape> => {
     if (!Number.isFinite(year) || !Number.isFinite(knives)) continue;
     const { city, country } = splitMichelinLocation(location ?? "");
     push(restaurant, {
+      displayName: restaurant,
       bestChefAward: { knives, year },
       city,
       country,
@@ -173,24 +178,45 @@ const getIndex = async (): Promise<CacheShape> => {
 };
 
 // Merge multiple entries for the same venue into the strongest/most-recent
-// accolades, scoping to entries whose city/country matches the query when
-// possible (to disambiguate same-named venues in different cities).
+// accolades. Disambiguation is STRICT: when the query supplies a country
+// and the sheet has country data for this name, the country MUST match —
+// otherwise we return null (it's a different venue with the same name).
+// City is matched the same way as a refinement on top of country.
+const localeMatches = (entryLoc: string | undefined, queryLoc: string): boolean => {
+  if (!entryLoc || !queryLoc) return false;
+  return entryLoc.includes(queryLoc) || queryLoc.includes(entryLoc);
+};
+
 const mergeEntries = (
   entries: AccoladeEntry[],
   queryCity: string,
   queryCountry: string,
-): AccoladeEntry => {
+): AccoladeEntry | null => {
   const cityNorm = normalizeLocale(queryCity);
   const countryNorm = normalizeLocale(queryCountry);
-  const scoped = entries.filter((e) => {
-    if (cityNorm && e.city && e.city.includes(cityNorm)) return true;
-    if (countryNorm && e.country && e.country.includes(countryNorm)) return true;
-    return false;
-  });
-  const pool = scoped.length > 0 ? scoped : entries;
+  let pool = entries;
+
+  if (countryNorm) {
+    const byCountry = pool.filter((e) => localeMatches(e.country, countryNorm));
+    if (byCountry.length > 0) {
+      pool = byCountry;
+    } else if (pool.some((e) => e.country)) {
+      // We have country data but none matches → different venue.
+      return null;
+    }
+  }
+  if (cityNorm) {
+    const byCity = pool.filter((e) => localeMatches(e.city, cityNorm));
+    if (byCity.length > 0) {
+      pool = byCity;
+    } else if (pool.some((e) => e.city)) {
+      return null;
+    }
+  }
 
   const merged: AccoladeEntry = {};
   for (const e of pool) {
+    if (!merged.displayName && e.displayName) merged.displayName = e.displayName;
     if (e.michelinStars && (merged.michelinStars ?? 0) < e.michelinStars) {
       merged.michelinStars = e.michelinStars;
     }
@@ -241,5 +267,29 @@ export const lookupAccolades = async (
   } catch (err) {
     console.error("Accolades lookup failed:", err);
     return null;
+  }
+};
+
+// Enumerate every venue in the sheet that matches the queried city/country.
+// Used to seed the AI prompt with the canonical accolade venues for the city
+// so it always returns them (instead of guessing from training data).
+export const listAccoladesForCity = async (
+  queryCity: string,
+  queryCountry: string,
+): Promise<Array<AccoladeEntry & { name: string }>> => {
+  try {
+    const idx = await getIndex();
+    const out: Array<AccoladeEntry & { name: string }> = [];
+    for (const entries of idx.byName.values()) {
+      const merged = mergeEntries(entries, queryCity, queryCountry);
+      if (!merged) continue;
+      const name = merged.displayName ?? entries.find((e) => e.displayName)?.displayName;
+      if (!name) continue;
+      out.push({ ...merged, name });
+    }
+    return out;
+  } catch (err) {
+    console.error("listAccoladesForCity failed:", err);
+    return [];
   }
 };
