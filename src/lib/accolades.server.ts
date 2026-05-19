@@ -110,9 +110,13 @@ const fetchSheet = async (sheetName: string): Promise<string[][]> => {
 };
 
 const parseMichelinStars = (level: string): { stars?: number; bib?: boolean } => {
-  const stars = (level.match(/★/g) ?? []).length;
-  if (stars >= 1) return { stars };
-  if (/bib/i.test(level)) return { bib: true };
+  const glyph = (level.match(/★/g) ?? []).length;
+  if (glyph >= 1) return { stars: glyph };
+  const l = level.toLowerCase();
+  if (/\bthree\b|\b3\b/.test(l) && /star/.test(l)) return { stars: 3 };
+  if (/\btwo\b|\b2\b/.test(l) && /star/.test(l)) return { stars: 2 };
+  if (/\bone\b|\b1\b/.test(l) && /star/.test(l)) return { stars: 1 };
+  if (/bib/.test(l)) return { bib: true };
   return {};
 };
 
