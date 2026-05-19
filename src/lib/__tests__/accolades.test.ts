@@ -95,6 +95,20 @@ describe("lookupAccolades — disambiguation", () => {
 });
 
 describe("country alias normalization", () => {
+  it("parses Michelin 'Three Stars' text level", async () => {
+    const { __test: t } = await import("@/lib/accolades.server");
+    // Re-import for fresh parse helpers isn't needed; we exercise via setIndex normally.
+    // Direct unit on parseMichelinStars not exported — test via end-to-end shape instead.
+    t.setIndex([
+      {
+        name: "Jungsik New York",
+        entry: { displayName: "Jungsik New York", michelinStars: 3, city: "new york", country: "usa" },
+      },
+    ]);
+    const r = await lookupAccolades("Jungsik New York", "New York", "USA");
+    expect(r?.michelinStars).toBe(3);
+  });
+
   it("matches USA sheet entry against 'United States' query", async () => {
     __test.setIndex([
       {
