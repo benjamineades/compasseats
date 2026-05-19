@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { generateObject } from "ai";
 import { z } from "zod";
 import { createLovableAiGatewayProvider } from "@/lib/ai-gateway";
-import { lookupAccolades } from "@/lib/accolades.server";
+import { lookupAccolades, listAccoladesForCity } from "@/lib/accolades.server";
 
 const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
