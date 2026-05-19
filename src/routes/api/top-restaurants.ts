@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { generateObject } from "ai";
 import { z } from "zod";
 import { createLovableAiGatewayProvider } from "@/lib/ai-gateway";
+import { lookupAccolades } from "@/lib/accolades.server";
 
 const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
@@ -326,6 +327,12 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
             }),
           );
 
+          // Spreadsheet-first accolades enrichment. Sheet entries override
+          // AI values; AI fills any gaps. Lookup is cached in-memory.
+          const sheetAccolades = await Promise.all(
+            orderedVenues.map((v) => lookupAccolades(v.name, object.city, object.country)),
+          );
+
           const normalized = {
             ...object,
             cityBlurb: object.cityBlurb ?? undefined,
@@ -335,6 +342,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 v.reservationUrl && /^https?:\/\//i.test(v.reservationUrl)
                   ? v.reservationUrl
                   : undefined;
+              const sheet = sheetAccolades[i];
               return {
                 name: v.name,
                 category: v.category,
@@ -346,11 +354,12 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                 lng: v.lng,
                 url,
                 urlType: normalizeUrlType(url, v.urlType),
-                michelinStars: v.michelinStars ?? undefined,
+                michelinStars: sheet?.michelinStars ?? v.michelinStars ?? undefined,
                 michelinGreenStar: v.michelinGreenStar ?? undefined,
-                bibGourmand: v.bibGourmand ?? undefined,
-                worldsBest50Restaurants: v.worldsBest50Restaurants ?? undefined,
-                worldsBest50Bars: v.worldsBest50Bars ?? undefined,
+                bibGourmand: sheet?.bibGourmand ?? v.bibGourmand ?? undefined,
+                worldsBest50Restaurants:
+                  sheet?.worldsBest50Restaurants ?? v.worldsBest50Restaurants ?? undefined,
+                worldsBest50Bars: sheet?.worldsBest50Bars ?? v.worldsBest50Bars ?? undefined,
                 spiritedAward: v.spiritedAward ?? undefined,
                 chef: v.chef ?? undefined,
                 signatureDish: v.signatureDish ?? undefined,
@@ -361,7 +370,7 @@ For RESTAURANTS, also include when applicable: michelinStars (1, 2, or 3 — onl
                   ? (v.reservationPlatform ?? "Website")
                   : undefined,
                 hours: v.hours ?? undefined,
-                jamesBeardAward: v.jamesBeardAward ?? undefined,
+                jamesBeardAward: sheet?.jamesBeardAward ?? v.jamesBeardAward ?? undefined,
                 imageUrl: resolvedImages[i],
               };
             }),
