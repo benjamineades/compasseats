@@ -479,14 +479,26 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
           const sheetAccolades = orderedPairs.map((p) => p.sheet);
 
           // Resolve images by scraping each venue's official website first.
-          // AI-returned image URLs from Michelin / Instagram / Yelp rarely
-          // hot-link successfully, so only use them as a last resort.
+          // Then fall back to AI URL → Wikipedia → Google Places photo →
+          // a static generic restaurant/bar image so every card has art.
           const resolvedImages = await Promise.all(
             orderedVenues.map(async (v) => {
               const aiImg = v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
               const site = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
-              if (!site) return aiImg;
-              return (await fetchOgImage(site)) ?? aiImg;
+              const fromSite = site ? await fetchOgImage(site) : undefined;
+              if (fromSite) return fromSite;
+              if (aiImg) return aiImg;
+              const fromWiki = await fetchWikipediaImage(v.name, object.city);
+              if (fromWiki) return fromWiki;
+              const fromPlaces = await fetchGooglePlacesImage(
+                v.name,
+                object.city,
+                object.country,
+                v.lat,
+                v.lng,
+              );
+              if (fromPlaces) return fromPlaces;
+              return genericFallback(v.category);
             }),
           );
 
