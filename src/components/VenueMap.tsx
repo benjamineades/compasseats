@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import "leaflet/dist/leaflet.css";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export type Pin = {
   index: number;
@@ -11,27 +10,60 @@ export type Pin = {
   anchorId?: string;
 };
 
-type MapModules = {
-  reactLeaflet: typeof import("react-leaflet");
-  leaflet: typeof import("leaflet");
-};
-
 export const PIN_COLORS = {
   restaurant: "#d4af37", // gold
   bar: "#1e3a8a", // navy
 };
 
-function numberedIcon(L: MapModules["leaflet"], index: number, isBar: boolean) {
-  const bg = isBar ? PIN_COLORS.bar : PIN_COLORS.restaurant;
-  const text = isBar ? "#fff" : "#1a1a1a";
-  const html = `<div style="background:${bg};color:${text};width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);font-weight:700;font-family:ui-sans-serif,system-ui;font-size:13px"><span style="transform:rotate(45deg)">${index}</span></div>`;
-  return L.divIcon({
-    html,
-    className: "",
-    iconSize: [30, 30],
-    iconAnchor: [15, 28],
-    popupAnchor: [0, -26],
+const TRACKING_ID =
+  (import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID as
+    | string
+    | undefined) ?? "";
+
+let mapsLoader: Promise<typeof google> | null = null;
+
+function loadGoogleMaps(): Promise<typeof google> {
+  if (typeof window === "undefined") return Promise.reject(new Error("SSR"));
+  if ((window as any).google?.maps) return Promise.resolve((window as any).google);
+  if (mapsLoader) return mapsLoader;
+  const key = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY as
+    | string
+    | undefined;
+  if (!key) return Promise.reject(new Error("Google Maps browser key missing"));
+  mapsLoader = new Promise<typeof google>((resolve, reject) => {
+    const cbName = `__initGmaps_${Math.random().toString(36).slice(2)}`;
+    (window as any)[cbName] = () => {
+      resolve((window as any).google);
+      delete (window as any)[cbName];
+    };
+    const params = new URLSearchParams({
+      key,
+      loading: "async",
+      callback: cbName,
+      libraries: "marker",
+    });
+    if (TRACKING_ID) params.set("channel", TRACKING_ID);
+    const s = document.createElement("script");
+    s.src = `https://maps.googleapis.com/maps/api/js?${params.toString()}`;
+    s.async = true;
+    s.defer = true;
+    s.onerror = () => {
+      mapsLoader = null;
+      reject(new Error("Failed to load Google Maps"));
+    };
+    document.head.appendChild(s);
   });
+  return mapsLoader;
+}
+
+function pinSvg(index: number, isBar: boolean): string {
+  const bg = isBar ? PIN_COLORS.bar : PIN_COLORS.restaurant;
+  const text = isBar ? "#ffffff" : "#1a1a1a";
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 30 42">
+    <path d="M15 0C6.7 0 0 6.6 0 14.7c0 11 15 27.3 15 27.3s15-16.3 15-27.3C30 6.6 23.3 0 15 0z" fill="${bg}" stroke="#fff" stroke-width="2"/>
+    <text x="15" y="19" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="${text}">${index}</text>
+  </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
 export function VenueMap({
@@ -41,101 +73,130 @@ export function VenueMap({
   center: [number, number];
   pins: Pin[];
 }) {
-  const [modules, setModules] = useState<MapModules | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<google.maps.Map | null>(null);
+  const markersRef = useRef<google.maps.Marker[]>([]);
+  const infoRef = useRef<google.maps.InfoWindow | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
 
+  // Initial load.
   useEffect(() => {
-    let active = true;
-    Promise.all([import("react-leaflet"), import("leaflet")]).then(
-      ([reactLeaflet, leaflet]) => {
-        if (active) setModules({ reactLeaflet, leaflet });
-      },
-    );
+    let cancelled = false;
+    loadGoogleMaps()
+      .then((g) => {
+        if (cancelled || !containerRef.current) return;
+        mapRef.current = new g.maps.Map(containerRef.current, {
+          center: { lat: center[0], lng: center[1] },
+          zoom: 13,
+          scrollwheel: false,
+          gestureHandling: "cooperative",
+          streetViewControl: false,
+          mapTypeControl: false,
+          fullscreenControl: false,
+        });
+        infoRef.current = new g.maps.InfoWindow();
+        setReady(true);
+      })
+      .catch((e) => setError((e as Error).message));
     return () => {
-      active = false;
+      cancelled = true;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!modules) {
-    return <div className="h-72 w-full animate-pulse rounded-xl border border-border bg-muted/40 md:h-96" />;
+  // Update markers + bounds whenever pins change.
+  const pinsKey = useMemo(
+    () =>
+      pins
+        .map((p) => `${p.category}-${p.index}-${p.lat.toFixed(5)},${p.lng.toFixed(5)}`)
+        .join("|"),
+    [pins],
+  );
+
+  useEffect(() => {
+    if (!ready || !mapRef.current) return;
+    const g = (window as any).google as typeof google;
+    // Clear existing markers.
+    for (const m of markersRef.current) m.setMap(null);
+    markersRef.current = [];
+    const bounds = new g.maps.LatLngBounds();
+    for (const p of pins) {
+      const isBar = p.category === "cocktail bar";
+      const marker = new g.maps.Marker({
+        position: { lat: p.lat, lng: p.lng },
+        map: mapRef.current,
+        title: `${p.index}. ${p.name}`,
+        icon: {
+          url: pinSvg(p.index, isBar),
+          scaledSize: new g.maps.Size(30, 42),
+          anchor: new g.maps.Point(15, 40),
+        },
+      });
+      marker.addListener("click", () => {
+        const color = isBar ? PIN_COLORS.bar : PIN_COLORS.restaurant;
+        const textColor = isBar ? "#fff" : "#1a1a1a";
+        const accolade = p.accolade
+          ? `<div style="font-size:12px;color:#b45309;margin-top:4px;font-weight:600">${p.accolade}</div>`
+          : "";
+        const link = p.anchorId
+          ? `<a href="#${p.anchorId}" data-anchor="${p.anchorId}" style="display:inline-block;margin-top:8px;padding:4px 10px;background:${color};color:${textColor};border-radius:6px;font-size:12px;font-weight:600;text-decoration:none">View details →</a>`
+          : "";
+        infoRef.current?.setContent(
+          `<div style="min-width:180px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif">
+            <strong style="font-size:14px">${p.index}. ${p.name}</strong>
+            <div style="font-size:12px;color:#555;text-transform:capitalize;margin-top:2px">${p.category}</div>
+            ${accolade}${link}
+          </div>`,
+        );
+        infoRef.current?.open({ map: mapRef.current!, anchor: marker });
+      });
+      markersRef.current.push(marker);
+      bounds.extend({ lat: p.lat, lng: p.lng });
+    }
+    if (pins.length === 1) {
+      mapRef.current.setCenter({ lat: pins[0].lat, lng: pins[0].lng });
+      mapRef.current.setZoom(14);
+    } else if (pins.length > 1) {
+      mapRef.current.fitBounds(bounds, 40);
+    } else {
+      mapRef.current.setCenter({ lat: center[0], lng: center[1] });
+    }
+  }, [pinsKey, ready, center, pins]);
+
+  // Delegate clicks on InfoWindow "View details" links to smooth-scroll + highlight.
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      const t = e.target as HTMLElement | null;
+      const a = t?.closest?.("a[data-anchor]") as HTMLAnchorElement | null;
+      if (!a) return;
+      const id = a.getAttribute("data-anchor");
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.classList.add("ring-2", "ring-primary");
+      setTimeout(() => el.classList.remove("ring-2", "ring-primary"), 2000);
+    };
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, []);
+
+  if (error) {
+    return (
+      <div className="flex h-72 w-full items-center justify-center rounded-xl border border-border bg-muted/40 text-sm text-muted-foreground md:h-96">
+        Map unavailable
+      </div>
+    );
   }
 
-  const { MapContainer, TileLayer, Marker, Popup } = modules.reactLeaflet;
-  const L = modules.leaflet;
-
-  const lats = pins.map((p) => p.lat);
-  const lngs = pins.map((p) => p.lng);
-  const bounds: import("leaflet").LatLngBoundsExpression | undefined =
-    pins.length > 0
-      ? [
-          [Math.min(...lats), Math.min(...lngs)],
-          [Math.max(...lats), Math.max(...lngs)],
-        ]
-      : undefined;
-
   return (
-    <div className="h-72 w-full overflow-hidden rounded-xl border border-border md:h-96">
-      <MapContainer
-        center={center}
-        zoom={13}
-        bounds={bounds}
-        boundsOptions={{ padding: [30, 30] }}
-        scrollWheelZoom={false}
-        style={{ height: "100%", width: "100%" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {pins.map((p) => (
-          <Marker
-            key={`${p.category}-${p.index}-${p.name}`}
-            position={[p.lat, p.lng]}
-            icon={numberedIcon(L, p.index, p.category === "cocktail bar")}
-          >
-            <Popup>
-              <div style={{ minWidth: 180 }}>
-                <strong style={{ fontSize: 14 }}>
-                  {p.index}. {p.name}
-                </strong>
-                <div style={{ fontSize: 12, color: "#555", textTransform: "capitalize", marginTop: 2 }}>
-                  {p.category}
-                </div>
-                {p.accolade && (
-                  <div style={{ fontSize: 12, color: "#b45309", marginTop: 4, fontWeight: 600 }}>
-                    {p.accolade}
-                  </div>
-                )}
-                {p.anchorId && (
-                  <a
-                    href={`#${p.anchorId}`}
-                    onClick={() => {
-                      const el = document.getElementById(p.anchorId!);
-                      if (el) {
-                        el.scrollIntoView({ behavior: "smooth", block: "center" });
-                        el.classList.add("ring-2", "ring-primary");
-                        setTimeout(() => el.classList.remove("ring-2", "ring-primary"), 2000);
-                      }
-                    }}
-                    style={{
-                      display: "inline-block",
-                      marginTop: 8,
-                      padding: "4px 10px",
-                      background: p.category === "cocktail bar" ? PIN_COLORS.bar : PIN_COLORS.restaurant,
-                      color: p.category === "cocktail bar" ? "#fff" : "#1a1a1a",
-                      borderRadius: 6,
-                      fontSize: 12,
-                      fontWeight: 600,
-                      textDecoration: "none",
-                    }}
-                  >
-                    View details →
-                  </a>
-                )}
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
+    <div className="relative h-72 w-full overflow-hidden rounded-xl border border-border md:h-96">
+      <div ref={containerRef} className="h-full w-full" />
+      {!ready && (
+        <div className="absolute inset-0 animate-pulse bg-muted/40" />
+      )}
     </div>
   );
 }
