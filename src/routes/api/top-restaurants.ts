@@ -533,11 +533,43 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
           const orderedVenues = orderedPairs.map((p) => p.v);
           const sheetAccolades = orderedPairs.map((p) => p.sheet);
 
-          // Resolve images by scraping each venue's official website first.
-          // Then fall back to AI URL → Wikipedia → Google Places photo →
-          // a static generic restaurant/bar image so every card has art.
+          // Look up each venue on Google Places in parallel. This serves two
+          // purposes: (1) drop venues that Google marks as permanently/temp
+          // closed or that don't actually sit in the requested city, and
+          // (2) reuse the Places photo for image fallback.
+          const placeLookups = await Promise.all(
+            orderedVenues.map((v) =>
+              lookupGooglePlace(v.name, object.city, object.country, v.lat, v.lng),
+            ),
+          );
+          const keepMask = orderedVenues.map((v, i) => {
+            const place = placeLookups[i];
+            if (!place) return true; // no Places result — keep (don't drop on API miss)
+            if (
+              place.businessStatus &&
+              place.businessStatus !== "OPERATIONAL"
+            ) {
+              return false;
+            }
+            if (!placeIsInCity(place, object.city, object.country)) {
+              // Place clearly resolves to a different city — drop.
+              return false;
+            }
+            // Snap to current Google coords if available (handles relocations).
+            if (place.location) {
+              v.lat = place.location.latitude;
+              v.lng = place.location.longitude;
+            }
+            return true;
+          });
+          const keptVenues = orderedVenues.filter((_, i) => keepMask[i]);
+          const keptSheets = sheetAccolades.filter((_, i) => keepMask[i]);
+          const keptPlaces = placeLookups.filter((_, i) => keepMask[i]);
+
+          // Resolve images: venue site OG image → AI URL → Wikipedia →
+          // Google Places photo (already fetched above) → static generic.
           const resolvedImages = await Promise.all(
-            orderedVenues.map(async (v) => {
+            keptVenues.map(async (v, i) => {
               const aiImg = v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
               const site = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
               const fromSite = site ? await fetchOgImage(site) : undefined;
@@ -545,13 +577,7 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
               if (aiImg) return aiImg;
               const fromWiki = await fetchWikipediaImage(v.name, object.city);
               if (fromWiki) return fromWiki;
-              const fromPlaces = await fetchGooglePlacesImage(
-                v.name,
-                object.city,
-                object.country,
-                v.lat,
-                v.lng,
-              );
+              const fromPlaces = await fetchGooglePlacePhoto(keptPlaces[i]?.photoName);
               if (fromPlaces) return fromPlaces;
               return genericFallback(v.category);
             }),
@@ -560,13 +586,13 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
           const normalized = {
             ...object,
             cityBlurb: object.cityBlurb ?? undefined,
-            venues: orderedVenues.map((v, i) => {
+            venues: keptVenues.map((v, i) => {
               const url = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
               const reservationUrl =
                 v.reservationUrl && /^https?:\/\//i.test(v.reservationUrl)
                   ? v.reservationUrl
                   : undefined;
-              const sheet = sheetAccolades[i];
+              const sheet = keptSheets[i];
               return {
                 name: v.name,
                 category: v.category,
