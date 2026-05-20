@@ -213,19 +213,27 @@ const fetchWikipediaImage = async (
 
 const GOOGLE_MAPS_GATEWAY = "https://connector-gateway.lovable.dev/google_maps";
 
-const fetchGooglePlacesImage = async (
+type GooglePlace = {
+  id?: string;
+  businessStatus?: string;
+  formattedAddress?: string;
+  location?: { latitude: number; longitude: number };
+  photoName?: string;
+};
+
+const lookupGooglePlace = async (
   name: string,
   city: string,
   country: string,
   lat: number,
   lng: number,
-): Promise<string | undefined> => {
+): Promise<GooglePlace | null> => {
   const lovableKey = process.env.LOVABLE_API_KEY;
   const gmapsKey = process.env.GOOGLE_MAPS_API_KEY;
-  if (!lovableKey || !gmapsKey) return undefined;
+  if (!lovableKey || !gmapsKey) return null;
   try {
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 4000);
+    const timer = setTimeout(() => ctrl.abort(), 4500);
     const searchRes = await fetch(`${GOOGLE_MAPS_GATEWAY}/places/v1/places:searchText`, {
       method: "POST",
       signal: ctrl.signal,
@@ -233,7 +241,8 @@ const fetchGooglePlacesImage = async (
         Authorization: `Bearer ${lovableKey}`,
         "X-Connection-Api-Key": gmapsKey,
         "Content-Type": "application/json",
-        "X-Goog-FieldMask": "places.id,places.photos",
+        "X-Goog-FieldMask":
+          "places.id,places.businessStatus,places.formattedAddress,places.location,places.photos",
       },
       body: JSON.stringify({
         textQuery: [name, city, country].filter(Boolean).join(", "),
@@ -244,14 +253,38 @@ const fetchGooglePlacesImage = async (
       }),
     });
     clearTimeout(timer);
-    if (!searchRes.ok) return undefined;
+    if (!searchRes.ok) return null;
     const data = (await searchRes.json()) as {
-      places?: Array<{ id?: string; photos?: Array<{ name?: string }> }>;
+      places?: Array<{
+        id?: string;
+        businessStatus?: string;
+        formattedAddress?: string;
+        location?: { latitude: number; longitude: number };
+        photos?: Array<{ name?: string }>;
+      }>;
     };
-    const photoName = data.places?.[0]?.photos?.[0]?.name;
-    if (!photoName) return undefined;
-    // Photo media endpoint returns a 302 to the actual image. Follow it with
-    // skipHttpRedirect=true so we receive a JSON pointer to the photoUri.
+    const p = data.places?.[0];
+    if (!p) return null;
+    return {
+      id: p.id,
+      businessStatus: p.businessStatus,
+      formattedAddress: p.formattedAddress,
+      location: p.location,
+      photoName: p.photos?.[0]?.name,
+    };
+  } catch {
+    return null;
+  }
+};
+
+const fetchGooglePlacePhoto = async (
+  photoName: string | undefined,
+): Promise<string | undefined> => {
+  if (!photoName) return undefined;
+  const lovableKey = process.env.LOVABLE_API_KEY;
+  const gmapsKey = process.env.GOOGLE_MAPS_API_KEY;
+  if (!lovableKey || !gmapsKey) return undefined;
+  try {
     const mediaCtrl = new AbortController();
     const mediaTimer = setTimeout(() => mediaCtrl.abort(), 4000);
     const mediaRes = await fetch(
@@ -272,6 +305,28 @@ const fetchGooglePlacesImage = async (
   } catch {
     return undefined;
   }
+};
+
+// Normalize a string for fuzzy substring matching of city/country in an address.
+const normalizeForMatch = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9 ]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const placeIsInCity = (place: GooglePlace, city: string, country: string) => {
+  const addr = place.formattedAddress ? normalizeForMatch(place.formattedAddress) : "";
+  if (!addr) return true; // can't verify — don't drop
+  const cityN = normalizeForMatch(city);
+  if (cityN && addr.includes(cityN)) return true;
+  const countryN = normalizeForMatch(country);
+  // Some addresses list metro/region instead of the city name. Accept a
+  // country match as a soft signal — drop only when address has neither.
+  if (countryN && addr.includes(countryN)) return true;
+  return false;
 };
 
 const genericFallback = (category: "restaurant" | "cocktail bar") =>
