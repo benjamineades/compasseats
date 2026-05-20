@@ -157,6 +157,126 @@ const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
   }
 };
 
+// ---------------------------------------------------------------------------
+// Fallback image sources: Wikipedia → Google Places → static generic.
+// ---------------------------------------------------------------------------
+
+const FALLBACK_RESTAURANT_IMAGE = "/fallback/restaurant.jpg";
+const FALLBACK_BAR_IMAGE = "/fallback/bar.jpg";
+
+const fetchWikipediaImage = async (
+  name: string,
+  city: string,
+): Promise<string | undefined> => {
+  const tryTitle = async (title: string): Promise<string | undefined> => {
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 3500);
+      const res = await fetch(
+        `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`,
+        {
+          signal: ctrl.signal,
+          headers: {
+            "User-Agent":
+              "EatAnywhereBot/1.0 (https://eatanywhere.lovable.app)",
+            Accept: "application/json",
+          },
+        },
+      );
+      clearTimeout(timer);
+      if (!res.ok) return undefined;
+      const data = (await res.json()) as {
+        type?: string;
+        originalimage?: { source?: string };
+        thumbnail?: { source?: string };
+      };
+      if (data.type === "disambiguation") return undefined;
+      const img = data.originalimage?.source ?? data.thumbnail?.source;
+      return img && isUsableVenueImage(img) ? img : undefined;
+    } catch {
+      return undefined;
+    }
+  };
+  // Try a few title forms: "Name (restaurant)", "Name (city)", plain "Name".
+  const candidates = [
+    `${name} (restaurant)`,
+    `${name} (bar)`,
+    city ? `${name} (${city})` : null,
+    name,
+  ].filter((s): s is string => Boolean(s));
+  for (const title of candidates) {
+    const img = await tryTitle(title);
+    if (img) return img;
+  }
+  return undefined;
+};
+
+const GOOGLE_MAPS_GATEWAY = "https://connector-gateway.lovable.dev/google_maps";
+
+const fetchGooglePlacesImage = async (
+  name: string,
+  city: string,
+  country: string,
+  lat: number,
+  lng: number,
+): Promise<string | undefined> => {
+  const lovableKey = process.env.LOVABLE_API_KEY;
+  const gmapsKey = process.env.GOOGLE_MAPS_API_KEY;
+  if (!lovableKey || !gmapsKey) return undefined;
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 4000);
+    const searchRes = await fetch(`${GOOGLE_MAPS_GATEWAY}/places/v1/places:searchText`, {
+      method: "POST",
+      signal: ctrl.signal,
+      headers: {
+        Authorization: `Bearer ${lovableKey}`,
+        "X-Connection-Api-Key": gmapsKey,
+        "Content-Type": "application/json",
+        "X-Goog-FieldMask": "places.id,places.photos",
+      },
+      body: JSON.stringify({
+        textQuery: [name, city, country].filter(Boolean).join(", "),
+        locationBias: Number.isFinite(lat) && Number.isFinite(lng)
+          ? { circle: { center: { latitude: lat, longitude: lng }, radius: 2000 } }
+          : undefined,
+        maxResultCount: 1,
+      }),
+    });
+    clearTimeout(timer);
+    if (!searchRes.ok) return undefined;
+    const data = (await searchRes.json()) as {
+      places?: Array<{ id?: string; photos?: Array<{ name?: string }> }>;
+    };
+    const photoName = data.places?.[0]?.photos?.[0]?.name;
+    if (!photoName) return undefined;
+    // Photo media endpoint returns a 302 to the actual image. Follow it with
+    // skipHttpRedirect=true so we receive a JSON pointer to the photoUri.
+    const mediaCtrl = new AbortController();
+    const mediaTimer = setTimeout(() => mediaCtrl.abort(), 4000);
+    const mediaRes = await fetch(
+      `${GOOGLE_MAPS_GATEWAY}/places/v1/${photoName}/media?maxWidthPx=1200&skipHttpRedirect=true`,
+      {
+        signal: mediaCtrl.signal,
+        headers: {
+          Authorization: `Bearer ${lovableKey}`,
+          "X-Connection-Api-Key": gmapsKey,
+        },
+      },
+    );
+    clearTimeout(mediaTimer);
+    if (!mediaRes.ok) return undefined;
+    const mediaData = (await mediaRes.json()) as { photoUri?: string };
+    const uri = mediaData.photoUri;
+    return uri && /^https?:\/\//i.test(uri) ? uri : undefined;
+  } catch {
+    return undefined;
+  }
+};
+
+const genericFallback = (category: "restaurant" | "cocktail bar") =>
+  category === "cocktail bar" ? FALLBACK_BAR_IMAGE : FALLBACK_RESTAURANT_IMAGE;
+
 const resultsSchema = z.object({
   city: z.string(),
   country: z.string(),
