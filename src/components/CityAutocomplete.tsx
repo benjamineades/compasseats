@@ -26,6 +26,10 @@ type NominatimItem = {
     town?: string;
     village?: string;
     municipality?: string;
+    suburb?: string;
+    neighbourhood?: string;
+    quarter?: string;
+    city_district?: string;
     state?: string;
     country?: string;
   };
@@ -66,7 +70,15 @@ export function CityAutocomplete({ value, onChange, onSelect, placeholder, disab
         const mapped: CitySuggestion[] = [];
         for (const it of data) {
           const a = it.address ?? {};
-          const city = a.city || a.town || a.village || a.municipality;
+          let city =
+            a.city || a.town || a.village || a.municipality ||
+            a.suburb || a.quarter || a.city_district || a.neighbourhood;
+          // City-state edge cases (e.g. Monte-Carlo within Monaco): if the
+          // resolved city name matches the country, prefer a more specific
+          // sub-locality so users searching "Monte Carlo" don't see "Monaco".
+          if (city && a.country && city === a.country) {
+            city = a.suburb || a.quarter || a.city_district || a.neighbourhood || city;
+          }
           if (!city) continue;
           const parts = [city, a.state, a.country].filter(Boolean) as string[];
           const label = parts.join(", ");
