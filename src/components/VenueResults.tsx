@@ -35,6 +35,7 @@ export type Venue = {
   spiritedAward?: { name: string; year: number };
   jamesBeardAward?: { name: string; year: number };
   bestChefAward?: { knives: number; year: number };
+  pinnacleAward?: { pins: number; year: number };
   chef?: string;
   signatureDish?: string;
   accoladeOverview?: string;
@@ -536,6 +537,8 @@ function summarizeAccolade(v: Venue): string | undefined {
   if (v.worldsBest50Bars && isRecentRanking(v.worldsBest50Bars.year))
     return `World's 50 Best Bars #${v.worldsBest50Bars.rank} (${v.worldsBest50Bars.year})`;
   if (v.spiritedAward) return `${v.spiritedAward.name} (${v.spiritedAward.year})`;
+  if (v.pinnacleAward)
+    return `Pinnacle Guide ${v.pinnacleAward.pins}-Pin (${v.pinnacleAward.year})`;
   if (v.jamesBeardAward) return `James Beard: ${v.jamesBeardAward.name} (${v.jamesBeardAward.year})`;
   if (v.bestChefAward)
     return `Best Chef Awards ${"🔪".repeat(v.bestChefAward.knives)} (${v.bestChefAward.year})`;
