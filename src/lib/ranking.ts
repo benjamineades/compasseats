@@ -33,7 +33,18 @@ export const restaurantScore = (
 
 export const barScore = (s: AccoladeEntry | null): number => {
   if (!s) return 0;
+  let score = 0;
   const w = s.worldsBest50Bars;
-  if (!w) return 0;
-  return w.year * 1000 + (100 - w.rank);
+  if (w) score = Math.max(score, 10_000_000 + w.year * 1000 + (100 - w.rank));
+  if (s.pinnacleAward) {
+    // 3-pin > 2-pin > 1-pin; recency as tiebreaker
+    score = Math.max(
+      score,
+      8_000_000 + s.pinnacleAward.pins * 100_000 + s.pinnacleAward.year,
+    );
+  }
+  if (s.spiritedAward) {
+    score = Math.max(score, 6_000_000 + s.spiritedAward.year);
+  }
+  return score;
 };

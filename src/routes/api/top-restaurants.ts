@@ -359,6 +359,7 @@ const resultsSchema = z.object({
         spiritedAward: z.object({ name: z.string(), year: integerValue }).nullish(),
         jamesBeardAward: z.object({ name: z.string(), year: integerValue }).nullish(),
         bestChefAward: z.object({ knives: integerValue, year: integerValue }).nullish(),
+        pinnacleAward: z.object({ pins: integerValue, year: integerValue }).nullish(),
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
         accoladeOverview: z.string().nullish(),
@@ -441,6 +442,10 @@ export const Route = createFileRoute("/api/top-restaurants")({
                 tags.push(`Best Chef ${a.bestChefAward.knives}-knives (${a.bestChefAward.year})`);
               if (a.jamesBeardAward)
                 tags.push(`James Beard ${a.jamesBeardAward.name} (${a.jamesBeardAward.year})`);
+              if (a.pinnacleAward)
+                tags.push(`Pinnacle Guide ${a.pinnacleAward.pins}-pin (${a.pinnacleAward.year})`);
+              if (a.spiritedAward)
+                tags.push(`Spirited Award: ${a.spiritedAward.name} (${a.spiritedAward.year})`);
               return `  • ${a.name} — ${tags.join("; ")}`;
             })
             .slice(0, 60)
@@ -455,7 +460,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
             prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}${seedBlock}
 
-ACCOLADES — STRICT RULE: Do NOT populate michelinStars, michelinGreenStar, bibGourmand, worldsBest50Restaurants, worldsBest50Bars, jamesBeardAward, bestChefAward, or spiritedAward. The server enriches these from the linked spreadsheet. Leave all accolade fields empty/null.
+ACCOLADES — STRICT RULE: Do NOT populate michelinStars, michelinGreenStar, bibGourmand, worldsBest50Restaurants, worldsBest50Bars, jamesBeardAward, bestChefAward, pinnacleAward, or spiritedAward. The server enriches these from the linked spreadsheet. Leave all accolade fields empty/null.
 
 RANKING PRIORITY — RESTAURANTS (apply in this STRICT order; the canonical accolade list above is the source of truth):
   1. Venues on the MOST RECENT World's 50 Best Restaurants edition (from the seed list above).
@@ -471,7 +476,9 @@ RANKING PRIORITY — RESTAURANTS (apply in this STRICT order; the canonical acco
 RANKING PRIORITY — COCKTAIL BARS:
   1. Venues on the MOST RECENT World's 50 Best Bars edition (from the seed list above).
   2. Past years' World's 50 Best Bars editions (more recent first), still from the seed list.
-  3. Fallback when seed list exhausted: highest-rated on Yelp if in USA (then Trip Advisor); otherwise Trip Advisor first.
+  3. Pinnacle Guide bars (3-pin > 2-pin > 1-pin; recent year as tiebreaker) from the seed list.
+  4. Tales of the Cocktail Spirited Award winners (most recent year first) from the seed list.
+  5. Fallback when seed list exhausted: highest-rated on Yelp if in USA (then Trip Advisor); otherwise Trip Advisor first.
 
 Return the ${limit} restaurants in priority order first, then the ${limit} cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
@@ -610,7 +617,8 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
                 bibGourmand: sheet?.bibGourmand ?? undefined,
                 worldsBest50Restaurants: sheet?.worldsBest50Restaurants ?? undefined,
                 worldsBest50Bars: sheet?.worldsBest50Bars ?? undefined,
-                spiritedAward: undefined,
+                spiritedAward: sheet?.spiritedAward ?? undefined,
+                pinnacleAward: sheet?.pinnacleAward ?? undefined,
                 chef: v.chef ?? undefined,
                 signatureDish: v.signatureDish ?? undefined,
                 accoladeOverview: v.accoladeOverview ?? undefined,

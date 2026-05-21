@@ -35,6 +35,7 @@ export type Venue = {
   spiritedAward?: { name: string; year: number };
   jamesBeardAward?: { name: string; year: number };
   bestChefAward?: { knives: number; year: number };
+  pinnacleAward?: { pins: number; year: number };
   chef?: string;
   signatureDish?: string;
   accoladeOverview?: string;
@@ -536,6 +537,8 @@ function summarizeAccolade(v: Venue): string | undefined {
   if (v.worldsBest50Bars && isRecentRanking(v.worldsBest50Bars.year))
     return `World's 50 Best Bars #${v.worldsBest50Bars.rank} (${v.worldsBest50Bars.year})`;
   if (v.spiritedAward) return `${v.spiritedAward.name} (${v.spiritedAward.year})`;
+  if (v.pinnacleAward)
+    return `Pinnacle Guide ${v.pinnacleAward.pins}-Pin (${v.pinnacleAward.year})`;
   if (v.jamesBeardAward) return `James Beard: ${v.jamesBeardAward.name} (${v.jamesBeardAward.year})`;
   if (v.bestChefAward)
     return `Best Chef Awards ${"🔪".repeat(v.bestChefAward.knives)} (${v.bestChefAward.year})`;
@@ -615,6 +618,16 @@ function Accolades({ v }: { v: Venue }) {
         <Award className="h-3 w-3" />
         {v.spiritedAward.name} ({v.spiritedAward.year})
         <InfoTip text={`Tales of the Cocktail Spirited Award winner — ${v.spiritedAward.name} (${v.spiritedAward.year}). The industry's top honors for bars and bartenders.`} />
+      </span>,
+    );
+  }
+  if (v.category === "cocktail bar" && v.pinnacleAward) {
+    const p = v.pinnacleAward;
+    items.push(
+      <span key="pin" className="inline-flex items-center gap-1 rounded-md border border-violet-500/40 bg-violet-500/10 px-1.5 py-0.5 text-xs font-medium text-violet-400">
+        <Trophy className="h-3 w-3" />
+        Pinnacle {p.pins}-Pin ({p.year})
+        <InfoTip text={`The Pinnacle Guide awarded this bar ${p.pins} of 3 pins in ${p.year} — a global rating of the world's best cocktail bars.`} />
       </span>,
     );
   }
