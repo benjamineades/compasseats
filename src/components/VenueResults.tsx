@@ -621,6 +621,16 @@ function Accolades({ v }: { v: Venue }) {
       </span>,
     );
   }
+  if (v.category === "cocktail bar" && v.pinnacleAward) {
+    const p = v.pinnacleAward;
+    items.push(
+      <span key="pin" className="inline-flex items-center gap-1 rounded-md border border-violet-500/40 bg-violet-500/10 px-1.5 py-0.5 text-xs font-medium text-violet-400">
+        <Trophy className="h-3 w-3" />
+        Pinnacle {p.pins}-Pin ({p.year})
+        <InfoTip text={`The Pinnacle Guide awarded this bar ${p.pins} of 3 pins in ${p.year} — a global rating of the world's best cocktail bars.`} />
+      </span>,
+    );
+  }
   if (v.jamesBeardAward) {
     items.push(
       <span key="jba" className="inline-flex items-center gap-1 rounded-md border border-rose-500/40 bg-rose-500/10 px-1.5 py-0.5 text-xs font-medium text-rose-400">
