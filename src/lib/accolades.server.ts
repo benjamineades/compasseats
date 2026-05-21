@@ -14,6 +14,8 @@ export type AccoladeEntry = {
   worldsBest50Bars?: { rank: number; year: number };
   jamesBeardAward?: { name: string; year: number };
   bestChefAward?: { knives: number; year: number };
+  pinnacleAward?: { pins: number; year: number };
+  spiritedAward?: { name: string; year: number };
   // Locale hints used to disambiguate when multiple venues share a name.
   city?: string;
   country?: string;
@@ -130,11 +132,13 @@ const splitMichelinLocation = (loc: string) => {
 };
 
 const buildIndex = async (): Promise<CacheShape> => {
-  const [michelin, w50, jba, chef] = await Promise.all([
+  const [michelin, w50, jba, chef, pinnacle, spirited] = await Promise.all([
     fetchSheet("Michelin Guide"),
     fetchSheet("World's 50 Best"),
     fetchSheet("James Beard Awards"),
     fetchSheet("Best Chef Awards"),
+    fetchSheet("Pinnacle Guide"),
+    fetchSheet("Spirited Awards"),
   ]);
 
   const byName = new Map<string, AccoladeEntry[]>();
@@ -207,6 +211,35 @@ const buildIndex = async (): Promise<CacheShape> => {
       bestChefAward: { knives, year },
       city,
       country,
+    });
+  }
+
+  // Pinnacle Guide: [Number of Pins, Year Earned, Bar Name, City, Country]
+  for (const row of pinnacle) {
+    const [pinsStr, yearStr, bar, city, country] = row;
+    if (!bar) continue;
+    const pins = Number(pinsStr);
+    const year = Number(yearStr);
+    if (!Number.isFinite(pins) || !Number.isFinite(year)) continue;
+    push(bar, {
+      displayName: bar,
+      pinnacleAward: { pins, year },
+      city: normalizeLocale(city),
+      country: normalizeLocale(country),
+    });
+  }
+
+  // Spirited Awards: [Year, Award Category, Bar/Establishment, City, State, Country]
+  for (const row of spirited) {
+    const [yearStr, category, bar, city, , country] = row;
+    if (!bar || !category) continue;
+    const year = Number(yearStr);
+    if (!Number.isFinite(year)) continue;
+    push(bar, {
+      displayName: bar,
+      spiritedAward: { name: category, year },
+      city: normalizeLocale(city),
+      country: normalizeLocale(country),
     });
   }
 
@@ -304,6 +337,21 @@ const mergeEntries = (
           e.bestChefAward.knives > merged.bestChefAward.knives))
     ) {
       merged.bestChefAward = e.bestChefAward;
+    }
+    if (
+      e.pinnacleAward &&
+      (!merged.pinnacleAward ||
+        e.pinnacleAward.pins > merged.pinnacleAward.pins ||
+        (e.pinnacleAward.pins === merged.pinnacleAward.pins &&
+          e.pinnacleAward.year > merged.pinnacleAward.year))
+    ) {
+      merged.pinnacleAward = e.pinnacleAward;
+    }
+    if (
+      e.spiritedAward &&
+      (!merged.spiritedAward || e.spiritedAward.year > merged.spiritedAward.year)
+    ) {
+      merged.spiritedAward = e.spiritedAward;
     }
   }
   return merged;
