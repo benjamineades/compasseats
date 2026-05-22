@@ -722,13 +722,13 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
                   : undefined;
               const sheet = keptSheets[i];
               const prestige = buildPrestigeSentence(sheet, v.category);
-              const aiWhy = (v.whyThisPick ?? "").trim();
+              const aiWhy = scrubAiAccoladeClaims(v.whyThisPick) ?? qualitativeFallback(v);
               const whyThisPick = prestige
                 ? aiWhy
                   ? `${prestige} ${aiWhy}`
                   : prestige
                 : aiWhy || undefined;
-              const aiOverview = (v.accoladeOverview ?? "").trim();
+              const aiOverview = scrubAiAccoladeClaims(v.accoladeOverview);
               const accoladeOverview = prestige
                 ? aiOverview
                   ? `${prestige} ${aiOverview}`
