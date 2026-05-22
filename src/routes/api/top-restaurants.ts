@@ -58,6 +58,51 @@ const buildPrestigeSentence = (
   return parts.length ? parts.join(" ") : undefined;
 };
 
+const QUALITATIVE_FORBIDDEN_PATTERNS = [
+  /\b(?:michelin|bib\s+gourmand|world'?s\s+50\s+best|50\s+best|james\s+beard|best\s+chef|pinnacle|spirited|tales\s+of\s+the\s+cocktail)\b/i,
+  /\b(?:award|awards|awarded|winner|winning|rank|ranked|ranking|guide|stars?|starred|knives?|pins?)\b/i,
+  /#\s*\d+/,
+  /\b(?:19|20)\d{2}\b/,
+  /\b(?:one|two|three|1|2|3)[ -]?(?:star|stars|pin|pins|knife|knives)\b/i,
+] as const;
+
+const hasAccoladeClaim = (text: string) =>
+  QUALITATIVE_FORBIDDEN_PATTERNS.some((pattern) => pattern.test(text));
+
+const scrubAiAccoladeClaims = (value: string | null | undefined): string | undefined => {
+  const text = value?.replace(/\s+/g, " ").trim();
+  if (!text) return undefined;
+  const sentences = text.match(/[^.!?]+[.!?]*/g) ?? [text];
+  const kept = sentences
+    .map((sentence) => sentence.trim())
+    .filter((sentence) => sentence && !hasAccoladeClaim(sentence));
+  const cleaned = kept.join(" ").replace(/\s+/g, " ").trim();
+  if (!cleaned) return undefined;
+  return /[.!?]$/.test(cleaned) ? cleaned : `${cleaned}.`;
+};
+
+const qualitativeFallback = (venue: {
+  name: string;
+  category: "restaurant" | "cocktail bar";
+  cuisine?: string | null;
+  neighborhood?: string | null;
+}) => {
+  const safeCuisine = venue.cuisine && !hasAccoladeClaim(venue.cuisine)
+    ? venue.cuisine.toLowerCase()
+    : undefined;
+  const style = venue.category === "cocktail bar"
+    ? safeCuisine
+      ? `${safeCuisine} drinks`
+      : "a focused cocktail program"
+    : safeCuisine
+      ? `${safeCuisine} cooking`
+      : "confident cooking";
+  const place = venue.neighborhood && !hasAccoladeClaim(venue.neighborhood)
+    ? ` in ${venue.neighborhood}`
+    : "";
+  return `${venue.name} stands out for ${style}${place}, with craft and atmosphere that make it a destination.`;
+};
+
 const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
   region: z.string().trim().max(100).optional(),
