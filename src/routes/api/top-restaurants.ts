@@ -401,6 +401,33 @@ export const Route = createFileRoute("/api/top-restaurants")({
           .filter((s): s is string => Boolean(s && s.length))
           .join(", ");
 
+        const limitForKey = parsed.limit ?? 10;
+        const isInitialSearch = !parsed.exclude || parsed.exclude.length === 0;
+        const cacheKey =
+          [parsed.city, parsed.region ?? "", parsed.country ?? "", String(limitForKey)]
+            .map((s) => s.trim().toLowerCase())
+            .join("|");
+        const cacheRequest = new Request(
+          "https://eatanywhere-cache/top-restaurants?k=" + encodeURIComponent(cacheKey),
+        );
+        const edgeCache =
+          typeof caches !== "undefined" && (caches as unknown as { default?: Cache }).default
+            ? (caches as unknown as { default: Cache }).default
+            : null;
+
+        if (isInitialSearch && edgeCache) {
+          try {
+            const cached = await edgeCache.match(cacheRequest);
+            if (cached) {
+              console.log("[top-restaurants] cache hit", cacheKey);
+              return cached;
+            }
+            console.log("[top-restaurants] cache miss", cacheKey);
+          } catch (e) {
+            console.log("[top-restaurants] cache read error", (e as Error).message);
+          }
+        }
+
         const apiKey = process.env.LOVABLE_API_KEY;
         if (!apiKey) {
           return Response.json({ error: "AI is not configured." }, { status: 500 });
