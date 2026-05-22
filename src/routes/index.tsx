@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import type { FormEvent } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -176,11 +176,26 @@ function Index() {
 }
 
 function SearchingState({ query }: { query: string }) {
+  const messages = useMemo(() => [
+    "Checking Michelin & World's 50 Best…",
+    `Mapping ${query || "your city"}…`,
+    "Finding the best photos…",
+    "Almost there…",
+  ], [query]);
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIdx((i) => (i + 1) % messages.length);
+    }, 2500);
+    return () => clearInterval(id);
+  }, [messages]);
+
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-center gap-2 rounded-lg border border-border bg-card/40 px-4 py-3 text-sm text-muted-foreground">
         <Sparkles className="h-4 w-4 animate-pulse text-primary" />
-        <span>Curating the best spots in <span className="font-medium text-foreground">{query || "your city"}</span>…</span>
+        <span>{messages[idx]}</span>
       </div>
       <Skeleton className="h-72 w-full rounded-xl md:h-96" />
       {Array.from({ length: 4 }).map((_, i) => (
