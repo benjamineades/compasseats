@@ -112,7 +112,7 @@ const extractWebsiteImage = (html: string, baseUrl: string): string | undefined 
 const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
   try {
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 4000);
+    const timer = setTimeout(() => ctrl.abort(), 2500);
     const res = await fetch(pageUrl, {
       signal: ctrl.signal,
       headers: {
@@ -171,7 +171,7 @@ const fetchWikipediaImage = async (
   const tryTitle = async (title: string): Promise<string | undefined> => {
     try {
       const ctrl = new AbortController();
-      const timer = setTimeout(() => ctrl.abort(), 3500);
+      const timer = setTimeout(() => ctrl.abort(), 2000);
       const res = await fetch(
         `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`,
         {
@@ -286,7 +286,7 @@ const fetchGooglePlacePhoto = async (
   if (!lovableKey || !gmapsKey) return undefined;
   try {
     const mediaCtrl = new AbortController();
-    const mediaTimer = setTimeout(() => mediaCtrl.abort(), 4000);
+    const mediaTimer = setTimeout(() => mediaCtrl.abort(), 2500);
     const mediaRes = await fetch(
       `${GOOGLE_MAPS_GATEWAY}/places/v1/${photoName}/media?maxWidthPx=1200&skipHttpRedirect=true`,
       {

@@ -63,7 +63,7 @@ type Filter =
   | "worlds50"
   | "bestchef"
   | "jamesbeard"
-  | "open";
+  | "openToday";
 type Sort = "ranked" | "nearest" | "alphabetical";
 
 const MICHELIN_STAR_TIPS: Record<number, string> = {
@@ -103,9 +103,9 @@ function distanceKm(a: [number, number], b: [number, number]) {
   return 2 * R * Math.asin(Math.sqrt(x));
 }
 
-function parseHoursOpenNow(hours?: string): boolean | null {
+function parseHoursOpenToday(hours?: string): boolean | null {
   if (!hours) return null;
-  // Best-effort heuristic: just check if "Daily" or current weekday short name appears
+  // Best-effort heuristic: checks if the venue is open today (weekday only, not time of day).
   const day = new Date().toLocaleString("en-US", { weekday: "short" });
   const today3 = day.slice(0, 3);
   if (/daily/i.test(hours)) return true;
@@ -148,7 +148,7 @@ export function VenueResults({
       if (filter === "worlds50") return hasWorlds50(v);
       if (filter === "bestchef") return hasBestChef(v);
       if (filter === "jamesbeard") return hasJamesBeard(v);
-      if (filter === "open") return parseHoursOpenNow(v.hours) === true;
+      if (filter === "openToday") return parseHoursOpenToday(v.hours) === true;
       return true;
     });
     if (sort === "alphabetical") {
@@ -305,7 +305,7 @@ function FilterBar({
     { id: "worlds50", label: "World's 50 Best" },
     { id: "bestchef", label: "Best Chef Awards" },
     { id: "jamesbeard", label: "James Beard" },
-    { id: "open", label: "Open Now" },
+    { id: "openToday", label: "Open Today" },
   ];
   const filters = all.filter((f) => {
     if (f.id === "michelin") return showMichelin;
