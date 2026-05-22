@@ -661,7 +661,17 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
               };
             }),
           };
-          return Response.json(normalized);
+          const response = Response.json(normalized);
+          if (isInitialSearch && edgeCache) {
+            try {
+              const cacheable = new Response(response.clone().body, response);
+              cacheable.headers.set("Cache-Control", "public, max-age=86400");
+              await edgeCache.put(cacheRequest, cacheable);
+            } catch (e) {
+              console.log("[top-restaurants] cache write error", (e as Error).message);
+            }
+          }
+          return response;
         } catch (err: unknown) {
           const e = err as { statusCode?: number; status?: number; message?: string };
           const status = e.statusCode ?? e.status;
