@@ -10,6 +10,54 @@ import {
 } from "@/lib/accolades.server";
 import { restaurantScore, barScore } from "@/lib/ranking";
 
+const STAR_WORDS = ["zero", "one", "two", "three"] as const;
+const ordinal = (n: number) => {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return `${n}${s[(v - 20) % 10] ?? s[v] ?? s[0]}`;
+};
+const buildPrestigeSentence = (
+  sheet: AccoladeEntry | null | undefined,
+  category: string,
+): string | undefined => {
+  if (!sheet) return undefined;
+  const parts: string[] = [];
+  if (sheet.worldsBest50Restaurants) {
+    const { rank, year } = sheet.worldsBest50Restaurants;
+    parts.push(`#${rank} on World's 50 Best Restaurants ${year}.`);
+  }
+  if (sheet.worldsBest50Bars) {
+    const { rank, year } = sheet.worldsBest50Bars;
+    parts.push(`#${rank} on World's 50 Best Bars ${year}.`);
+  }
+  if (sheet.michelinStars && sheet.michelinStars > 0) {
+    const word = STAR_WORDS[sheet.michelinStars] ?? String(sheet.michelinStars);
+    parts.push(
+      `${word.charAt(0).toUpperCase() + word.slice(1)} Michelin star${sheet.michelinStars === 1 ? "" : "s"}.`,
+    );
+  }
+  if (sheet.bibGourmand) parts.push("Michelin Bib Gourmand.");
+  if (sheet.bestChefAward) {
+    const { knives, year } = sheet.bestChefAward;
+    parts.push(`Best Chef Awards ${knives}-Knives (${year}).`);
+  }
+  if (sheet.jamesBeardAward) {
+    const { name, year } = sheet.jamesBeardAward;
+    parts.push(`James Beard ${name} (${year}).`);
+  }
+  if (sheet.pinnacleAward) {
+    const { pins, year } = sheet.pinnacleAward;
+    parts.push(`Pinnacle Guide ${pins}-pin (${year}).`);
+  }
+  if (sheet.spiritedAward) {
+    const { name, year } = sheet.spiritedAward;
+    parts.push(`Spirited Award — ${name} (${year}).`);
+  }
+  void category;
+  void ordinal;
+  return parts.length ? parts.join(" ") : undefined;
+};
+
 const bodySchema = z.object({
   city: z.string().trim().min(1).max(100),
   region: z.string().trim().max(100).optional(),
