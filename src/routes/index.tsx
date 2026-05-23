@@ -118,6 +118,10 @@ function Index() {
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
         {!showHero && (
         <header className="text-center">
+          <div className="inline-flex items-center gap-2.5">
+            <Compass size={28} />
+            <Wordmark className="text-foreground" />
+          </div>
           <Link to="/" className="inline-block no-underline">
             <h1 className="mt-6 cursor-pointer font-display text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
               Where to eat & drink,<br />
