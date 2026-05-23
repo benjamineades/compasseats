@@ -9,6 +9,7 @@ import { CityHero } from "@/components/CityHero";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CITIES_BY_SLUG, TOP_CITIES, type TopCity } from "@/lib/cities";
 import { useVenueLoadMore } from "@/lib/useVenueLoadMore";
+import { Compass } from "@/components/Compass";
 
 export const Route = createFileRoute("/city/$slug")({
   loader: ({ params }) => {
