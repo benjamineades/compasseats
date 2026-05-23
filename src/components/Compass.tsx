@@ -18,17 +18,17 @@ export function Compass({ size = 92, spin = false, className = "" }: CompassProp
       aria-hidden="true"
     >
       <circle cx="46" cy="46" r="43" stroke="currentColor" strokeWidth="1" opacity="0.4" />
-      {spin && (
-        <g
-          className="animate-[spin_60s_linear_infinite]"
-          style={{ transformOrigin: "center", transformBox: "fill-box" }}
-        >
+      <g
+        className={spin ? "animate-spin" : undefined}
+        style={spin ? { transformOrigin: "center", transformBox: "fill-box" } : undefined}
+      >
+        {spin && (
           <circle cx="46" cy="46" r="34" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
-        </g>
-      )}
-      <path d="M46 12 L55 50 L46 60 L37 50 Z" fill="currentColor" />
-      <path d="M46 80 L37 50 L46 40 L55 50 Z" fill="currentColor" opacity="0.4" />
-      <circle cx="46" cy="50" r="2.6" fill="var(--foreground)" />
+        )}
+        <path d="M46 12 L55 50 L46 60 L37 50 Z" fill="currentColor" />
+        <path d="M46 80 L37 50 L46 40 L55 50 Z" fill="currentColor" opacity="0.4" />
+        <circle cx="46" cy="50" r="2.6" fill="var(--foreground)" />
+      </g>
     </svg>
   );
 }
