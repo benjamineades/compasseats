@@ -148,7 +148,7 @@ function Index() {
             disabled={mutation.isPending}
           />
           <Button type="submit" size="lg" className="h-12 px-6" disabled={mutation.isPending || !city.trim()}>
-            {mutation.isPending ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin" />Searching</>) : ("Find spots")}
+            {mutation.isPending ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin" />Charting…</>) : ("Find the best")}
           </Button>
         </form>
         )}
@@ -186,9 +186,9 @@ function Index() {
 
 function SearchingState({ query }: { query: string }) {
   const messages = useMemo(() => [
-    "Checking Michelin & World's 50 Best…",
-    `Mapping ${query || "your city"}…`,
-    "Finding the best photos…",
+    "Consulting Michelin & World's 50 Best…",
+    `Charting ${query || "your city"}…`,
+    "Finding the tables worth the detour…",
     "Almost there…",
   ], [query]);
   const [idx, setIdx] = useState(0);
@@ -228,13 +228,13 @@ function UnmappedCity({ query }: { query: string }) {
   return (
     <Card className="border-dashed">
       <CardContent className="flex flex-col items-center gap-4 p-10 text-center">
-        <div className="text-4xl">🗺️</div>
+        <Compass size={40} />
         <div>
           <h3 className="text-lg font-semibold text-foreground">
-            We haven't mapped {query ? `"${query}"` : "this city"} yet — check back soon
+            We haven't charted {query ? `"${query}"` : "this city"} yet.
           </h3>
           <p className="mt-1 text-sm text-muted-foreground">
-            Try a nearby major city to get started:
+            Try a nearby city — we're roaming further every week.
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-2">
@@ -254,7 +254,7 @@ function PopularCities() {
   return (
     <div className="mt-12">
       <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        Popular cities
+        Start with a favourite
       </h2>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
         {TOP_CITIES.map((c) => (
