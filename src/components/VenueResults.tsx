@@ -389,7 +389,7 @@ function VenueCard({
     : null;
 
   return (
-    <Card className="overflow-hidden transition-all hover:border-foreground/20">
+    <Card className="group overflow-hidden transition-all hover:border-foreground/20">
       <VenueHeroImage v={v} n={n} accent={accent} accentText={accentText} />
       <CardContent className="p-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -467,6 +467,27 @@ function VenueHeroImage({
 }: { v: Venue; n: number; accent: string; accentText: string }) {
   const [errored, setErrored] = useState(false);
   const showImage = !!v.imageUrl && !errored;
+
+  const initials = v.name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? "")
+    .join("");
+
+  const monogram = (
+    <div
+      className="flex h-full w-full items-center justify-center"
+      style={{
+        background: `linear-gradient(135deg, ${accent} 0%, ${accent}80 100%)`,
+      }}
+    >
+      <span className="font-display text-5xl font-semibold" style={{ color: accentText }}>
+        {initials}
+      </span>
+    </div>
+  );
+
   return (
     <div className="relative aspect-[16/9] w-full max-h-[200px] overflow-hidden bg-muted">
       {showImage ? (
@@ -476,17 +497,14 @@ function VenueHeroImage({
           loading="lazy"
           referrerPolicy="no-referrer"
           onError={() => setErrored(true)}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
+      ) : v.url ? (
+        <a href={v.url} target="_blank" rel="noopener noreferrer" className="block h-full w-full">
+          {monogram}
+        </a>
       ) : (
-        <div
-          className="flex h-full w-full items-center justify-center"
-          style={{
-            background: `linear-gradient(135deg, ${accent}30 0%, ${accent}10 60%, transparent 100%)`,
-          }}
-        >
-          <ImageOff className="h-8 w-8 opacity-30" />
-        </div>
+        monogram
       )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
       <div
