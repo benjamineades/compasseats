@@ -66,7 +66,7 @@ export const Route = createFileRoute("/city/$slug")({
     <div className="mx-auto max-w-3xl px-6 py-20 text-center">
       <h1 className="text-2xl font-light">Something went wrong</h1>
       <p className="mt-2 text-muted-foreground">{error.message}</p>
-      <Link to="/" className="mt-4 inline-block text-primary underline">Back home</Link>
+      <Link to="/" className="mt-4 inline-block text-accent-strong underline">Back home</Link>
     </div>
   ),
 });
@@ -176,7 +176,7 @@ function OtherCities({ currentSlug }: { currentSlug: string }) {
         {others.map((c) => (
           <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
             className="group rounded-lg border border-border bg-card px-3 py-2.5 text-left hover:border-primary/50 hover:bg-accent">
-            <div className="text-sm font-medium text-foreground group-hover:text-primary">{c.city}</div>
+            <div className="text-sm font-medium text-foreground group-hover:text-accent-strong">{c.city}</div>
             <div className="text-xs text-muted-foreground">{c.country}</div>
           </Link>
         ))}

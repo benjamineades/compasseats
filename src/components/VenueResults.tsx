@@ -426,7 +426,7 @@ function VenueCard({
             <button
               type="button"
               onClick={() => setExpanded((e) => !e)}
-              className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+              className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-accent-strong hover:underline"
               aria-expanded={expanded}
             >
               {expanded ? (<><ChevronUp className="h-3 w-3" />Hide details</>) : (<><ChevronDown className="h-3 w-3" />Read more</>)}
@@ -449,7 +449,7 @@ function VenueCard({
                 )}
                 {v.whyThisPick && (
                   <div className="rounded-md border-l-2 border-primary/50 bg-primary/5 px-2 py-1.5">
-                    <div className="text-[10px] font-semibold uppercase tracking-wide text-primary/90">Why this pick</div>
+                    <div className="text-[10px] font-semibold uppercase tracking-wide text-accent-strong">Why this pick</div>
                     <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{v.whyThisPick}</p>
                   </div>
                 )}
