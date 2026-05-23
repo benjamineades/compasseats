@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import type { ReactNode } from "react";
+import { Wordmark } from "./Logo";
 
 type Props = {
   city: string;
@@ -84,19 +85,22 @@ export function CityHero({ city, country, blurb, hueSeed, back, children }: Prop
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/50" />
       <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:24px_24px]" />
       <div className="relative mx-auto max-w-5xl px-6 py-12 md:py-16">
-        {"to" in back ? (
-          <Link to={back.to} className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white">
-            <ArrowLeft className="h-4 w-4" />{backLabel}
-          </Link>
-        ) : (
-          <button
-            type="button"
-            onClick={back.onClick}
-            className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white"
-          >
-            <ArrowLeft className="h-4 w-4" />{backLabel}
-          </button>
-        )}
+        <div className="flex items-center justify-between">
+          {"to" in back ? (
+            <Link to={back.to} className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white">
+              <ArrowLeft className="h-4 w-4" />{backLabel}
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={back.onClick}
+              className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white"
+            >
+              <ArrowLeft className="h-4 w-4" />{backLabel}
+            </button>
+          )}
+          <Wordmark className="text-white/80" />
+        </div>
         <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-white md:text-6xl">
           {city}
         </h1>
