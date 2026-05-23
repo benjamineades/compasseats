@@ -411,16 +411,46 @@ const normalizeForMatch = (s: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-const placeIsInCity = (place: GooglePlace, city: string, country: string) => {
+// US state name → 2-letter code (Google addresses use the code, e.g. "FL").
+const US_STATE_CODES: Record<string, string> = {
+  alabama: "al", alaska: "ak", arizona: "az", arkansas: "ar", california: "ca",
+  colorado: "co", connecticut: "ct", delaware: "de", florida: "fl", georgia: "ga",
+  hawaii: "hi", idaho: "id", illinois: "il", indiana: "in", iowa: "ia",
+  kansas: "ks", kentucky: "ky", louisiana: "la", maine: "me", maryland: "md",
+  massachusetts: "ma", michigan: "mi", minnesota: "mn", mississippi: "ms",
+  missouri: "mo", montana: "mt", nebraska: "ne", nevada: "nv",
+  "new hampshire": "nh", "new jersey": "nj", "new mexico": "nm", "new york": "ny",
+  "north carolina": "nc", "north dakota": "nd", ohio: "oh", oklahoma: "ok",
+  oregon: "or", pennsylvania: "pa", "rhode island": "ri", "south carolina": "sc",
+  "south dakota": "sd", tennessee: "tn", texas: "tx", utah: "ut", vermont: "vt",
+  virginia: "va", washington: "wa", "west virginia": "wv", wisconsin: "wi",
+  wyoming: "wy", "district of columbia": "dc",
+};
+
+// Strict city verification. The Google address MUST contain the requested
+// city name. When a region is provided, the address must ALSO contain the
+// region (or its US state code). Country alone is NEVER sufficient — that
+// was letting Seaside, CA venues slip into Seaside, FL results.
+const placeIsInCity = (
+  place: GooglePlace,
+  city: string,
+  country: string,
+  region: string,
+) => {
   const addr = place.formattedAddress ? normalizeForMatch(place.formattedAddress) : "";
-  if (!addr) return true; // can't verify — don't drop
+  if (!addr) return true; // can't verify — don't drop on missing data
   const cityN = normalizeForMatch(city);
-  if (cityN && addr.includes(cityN)) return true;
-  const countryN = normalizeForMatch(country);
-  // Some addresses list metro/region instead of the city name. Accept a
-  // country match as a soft signal — drop only when address has neither.
-  if (countryN && addr.includes(countryN)) return true;
-  return false;
+  if (!cityN || !addr.includes(cityN)) return false;
+  const regionN = normalizeForMatch(region);
+  if (regionN) {
+    const stateCode = US_STATE_CODES[regionN];
+    const tokens = addr.split(" ");
+    const matchesRegion =
+      addr.includes(regionN) || (stateCode ? tokens.includes(stateCode) : false);
+    if (!matchesRegion) return false;
+  }
+  void country;
+  return true;
 };
 
 const genericFallback = (category: "restaurant" | "cocktail bar") =>
