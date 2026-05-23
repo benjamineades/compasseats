@@ -115,7 +115,7 @@ function Index() {
         {!showHero && (
         <header className="text-center">
           <Link to="/" className="inline-block no-underline">
-            <h1 className="mt-6 cursor-pointer text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
+            <h1 className="mt-6 cursor-pointer font-display text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
               Where to eat & drink,<br />
               <span className="text-muted-foreground">anywhere.</span>
             </h1>
