@@ -482,7 +482,19 @@ const placeIsInCity = (
     addr.includes(cityN) || aliases.some((a) => addr.includes(a));
   if (!cityMatches) return false;
   const regionN = normalizeForMatch(region);
-  if (regionN) {
+  // Region check is mainly to disambiguate same-named US cities (e.g.
+  // Seaside, FL vs Seaside, CA). For non-US queries, Google's localized
+  // region names ("Toscana" vs the user's "Tuscany") cause false rejections,
+  // and same-name conflicts across regions are rare internationally — so
+  // skip the region check unless the country looks like the US.
+  const countryN = normalizeForMatch(country);
+  const isUS =
+    countryN === "united states" ||
+    countryN === "united states of america" ||
+    countryN === "usa" ||
+    countryN === "us" ||
+    countryN === "america";
+  if (regionN && isUS) {
     const stateCode = US_STATE_CODES[regionN];
     const tokens = addr.split(" ");
     const regionAliases = CITY_ALIASES[regionN] ?? [];
@@ -490,7 +502,6 @@ const placeIsInCity = (
       addr.includes(regionN) || (stateCode ? tokens.includes(stateCode) : false);
     if (!matchesRegion && !regionAliases.some((a) => addr.includes(a))) return false;
   }
-  void country;
   return true;
 };
 
