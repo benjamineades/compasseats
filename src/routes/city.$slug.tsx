@@ -20,7 +20,7 @@ export const Route = createFileRoute("/city/$slug")({
     if (!c) return { meta: [{ title: "City not found" }] };
     const title = `Top Restaurants & Cocktail Bars in ${c.city}, ${c.country}`;
     const description = `${c.blurb} Discover the best Michelin-starred restaurants and World's 50 Best cocktail bars in ${c.city}, mapped and ranked.`;
-    const url = `https://eatanywhere.lovable.app/city/${c.slug}`;
+    const url = `https://www.compasseats.com/city/${c.slug}`;
     return {
       meta: [
         { title },
