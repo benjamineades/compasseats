@@ -60,9 +60,10 @@ function loadGoogleMaps(): Promise<typeof google> {
 function pinSvg(index: number, isBar: boolean): string {
   const bg = isBar ? PIN_COLORS.bar : PIN_COLORS.restaurant;
   const text = isBar ? "#ffffff" : "#1a1a1a";
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 30 42">
-    <path d="M15 0C6.7 0 0 6.6 0 14.7c0 11 15 27.3 15 27.3s15-16.3 15-27.3C30 6.6 23.3 0 15 0z" fill="${bg}" stroke="#fff" stroke-width="2"/>
-    <text x="15" y="19" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="${text}">${index}</text>
+  const prefix = isBar ? "B" : "R";
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="34" height="42" viewBox="0 0 34 42">
+    <path d="M17 0C7.6 0 0 6.6 0 14.7c0 11 17 27.3 17 27.3s17-16.3 17-27.3C34 6.6 26.4 0 17 0z" fill="${bg}" stroke="#fff" stroke-width="2"/>
+    <text x="17" y="19" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,sans-serif" font-size="11" font-weight="700" fill="${text}">${prefix}${index}</text>
   </svg>`;
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
@@ -124,14 +125,15 @@ export function VenueMap({
     const bounds = new g.maps.LatLngBounds();
     for (const p of pins) {
       const isBar = p.category === "cocktail bar";
+      const prefix = isBar ? "B" : "R";
       const marker = new g.maps.Marker({
         position: { lat: p.lat, lng: p.lng },
         map: mapRef.current,
-        title: `${p.index}. ${p.name}`,
+        title: `${prefix}${p.index}. ${p.name}`,
         icon: {
           url: pinSvg(p.index, isBar),
-          scaledSize: new g.maps.Size(30, 42),
-          anchor: new g.maps.Point(15, 40),
+          scaledSize: new g.maps.Size(34, 42),
+          anchor: new g.maps.Point(17, 40),
         },
       });
       marker.addListener("click", () => {
@@ -145,7 +147,7 @@ export function VenueMap({
           : "";
         infoRef.current?.setContent(
           `<div style="min-width:180px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif">
-            <strong style="font-size:14px">${p.index}. ${p.name}</strong>
+            <strong style="font-size:14px">${prefix}${p.index}. ${p.name}</strong>
             <div style="font-size:12px;color:#555;text-transform:capitalize;margin-top:2px">${p.category}</div>
             ${accolade}${link}
           </div>`,

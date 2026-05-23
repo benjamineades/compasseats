@@ -490,10 +490,10 @@ function VenueHeroImage({
       )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
       <div
-        className="absolute left-3 top-3 flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold shadow-md"
+        className="absolute left-3 top-3 flex h-7 min-w-7 items-center justify-center rounded-full px-1 text-xs font-semibold shadow-md"
         style={{ background: accent, color: accentText }}
       >
-        {n}
+        {v.category === "cocktail bar" ? `B${n}` : `R${n}`}
       </div>
       <div className="absolute inset-x-0 bottom-0 p-3">
         {v.url ? (
