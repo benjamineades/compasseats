@@ -2,7 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import {
   MapPin, Star, Leaf, Utensils, Trophy, Award, ExternalLink,
   Instagram, Facebook, Globe, CalendarCheck, Clock, Info, ArrowUpDown,
-  ChevronDown, ChevronUp, ImageOff, Loader2,
+  ChevronDown, ChevronUp, Loader2,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
