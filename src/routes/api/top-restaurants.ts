@@ -9,6 +9,7 @@ import {
   type AccoladeEntry,
 } from "@/lib/accolades.server";
 import { restaurantScore, barScore } from "@/lib/ranking";
+import { fetchSupplementaryVenues } from "@/lib/venue-fallback.server";
 
 const STAR_WORDS = ["zero", "one", "two", "three"] as const;
 const ordinal = (n: number) => {
