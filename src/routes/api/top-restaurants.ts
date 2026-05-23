@@ -631,7 +631,9 @@ export const Route = createFileRoute("/api/top-restaurants")({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-            prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}${seedBlock}
+            prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}${seedBlock}${supplementaryBlock}
+
+NAME SOURCE — STRICT: Every venue you return MUST come from either (a) the canonical accolade list above or (b) the supplementary allow-list above. Do NOT invent venue names. Do NOT pull venues from your training data. If neither list provides enough names to fill ${limit} slots in a category, return fewer venues in that category — better to return 6 real venues than 10 with fabricated names.
 
 ACCOLADES — STRICT RULE: Do NOT populate michelinStars, michelinGreenStar, bibGourmand, worldsBest50Restaurants, worldsBest50Bars, jamesBeardAward, bestChefAward, pinnacleAward, or spiritedAward. The server enriches these from the linked spreadsheet. Leave all accolade fields empty/null.
 
@@ -645,6 +647,7 @@ RANKING PRIORITY — RESTAURANTS (apply in this STRICT order; the canonical acco
   7. Michelin 1-star restaurants.
   8. Best Chef Awards 1-Knife winners.
   9. Fallback when the seed list is exhausted: highest-rated on Yelp if ${cityQuery} is in the United States (then Trip Advisor); otherwise highest-rated on Trip Advisor (then Yelp). No accolades for these.
+      Pick these fallback restaurants ONLY from the supplementary allow-list above, in the order they appear there. Do not reorder or substitute.
 
 RANKING PRIORITY — COCKTAIL BARS:
   1. Venues on the MOST RECENT World's 50 Best Bars edition (from the seed list above).
@@ -652,6 +655,7 @@ RANKING PRIORITY — COCKTAIL BARS:
   3. Pinnacle Guide bars (3-pin > 2-pin > 1-pin; recent year as tiebreaker) from the seed list.
   4. Tales of the Cocktail Spirited Award winners (most recent year first) from the seed list.
   5. Fallback when seed list exhausted: highest-rated on Yelp if in USA (then Trip Advisor); otherwise Trip Advisor first.
+      Pick these fallback bars ONLY from the supplementary allow-list above, in the order they appear there. Do not reorder or substitute.
 
 Return the ${limit} restaurants in priority order first, then the ${limit} cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
