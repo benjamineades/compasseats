@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
-import { ThemeToggle } from "@/components/ThemeToggle";
+
 import { CITIES_BY_SLUG, TOP_CITIES, type TopCity } from "@/lib/cities";
 import { useVenueLoadMore } from "@/lib/useVenueLoadMore";
 import { Compass } from "@/components/Compass";
@@ -101,9 +101,6 @@ function CityPage() {
 
   return (
     <main className="relative min-h-screen bg-background">
-      <div className="fixed top-4 right-4 z-50">
-        <ThemeToggle />
-      </div>
       <CityHero
         city={city.city}
         country={city.country}

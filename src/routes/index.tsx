@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomplete";
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
-import { ThemeToggle } from "@/components/ThemeToggle";
+
 import { Compass, Wordmark, HeroCompass } from "@/components/Compass";
 import { TOP_CITIES } from "@/lib/cities";
 import { useVenueLoadMore, type VenueQuery as LoadMoreQuery } from "@/lib/useVenueLoadMore";
