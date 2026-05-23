@@ -213,7 +213,7 @@ export function VenueResults({
         </div>
       )}
 
-      <div className="relative z-[60]">
+      <div className="sticky top-[70px] z-[60] -mx-6 mb-4 border-b border-border bg-background/80 px-6 py-3 backdrop-blur-md">
         <FilterBar
           filter={filter}
           setFilter={setFilter}
