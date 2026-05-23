@@ -6,7 +6,7 @@ import { Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { RotatingEarth } from "@/components/RotatingEarth";
+import { HeroCompass } from "@/components/Logo";
 import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomplete";
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
@@ -173,7 +173,7 @@ function Index() {
           {!mutation.isPending && !mutation.isSuccess && !mutation.isError && (
             <>
               <div className="mt-6 flex flex-col items-center gap-6">
-                <RotatingEarth />
+                <HeroCompass className="mx-auto aspect-square w-full max-w-xs" />
               </div>
               <PopularCities />
             </>
