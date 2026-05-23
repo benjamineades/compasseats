@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Loader2, Sparkles } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,7 @@ import { CityHero } from "@/components/CityHero";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CITIES_BY_SLUG, TOP_CITIES, type TopCity } from "@/lib/cities";
 import { useVenueLoadMore } from "@/lib/useVenueLoadMore";
+import { Compass } from "@/components/Compass";
 
 export const Route = createFileRoute("/city/$slug")({
   loader: ({ params }) => {
@@ -144,8 +145,8 @@ function CityLoading({ city }: { city: string }) {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-center gap-2 rounded-lg border border-border bg-card/40 px-4 py-3 text-sm text-muted-foreground">
-        <Sparkles className="h-4 w-4 animate-pulse text-primary" />
-        Curating the best spots in <span className="font-medium text-foreground">{city}</span>…
+        <Compass size={16} />
+        Charting <span className="font-medium text-foreground">{city}'s</span> best tables…
       </div>
       <Skeleton className="h-72 w-full rounded-xl md:h-96" />
       {Array.from({ length: 4 }).map((_, i) => (
