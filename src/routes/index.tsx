@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomplete";
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
-import { ThemeToggle } from "@/components/ThemeToggle";
+
 import { Compass, Wordmark, HeroCompass } from "@/components/Compass";
 import { TOP_CITIES } from "@/lib/cities";
 import { useVenueLoadMore, type VenueQuery as LoadMoreQuery } from "@/lib/useVenueLoadMore";
@@ -104,9 +104,6 @@ function Index() {
 
   return (
     <main className="relative min-h-screen bg-background">
-      <div className="fixed top-4 right-4 z-50">
-        <ThemeToggle />
-      </div>
       {showHero && (
         <CityHero
           city={data.city}
