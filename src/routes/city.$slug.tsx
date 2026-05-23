@@ -50,7 +50,7 @@ export const Route = createFileRoute("/city/$slug")({
   component: CityPage,
   notFoundComponent: () => (
     <div className="mx-auto max-w-3xl px-6 py-20 text-center">
-      <h1 className="text-3xl font-semibold">City not yet mapped</h1>
+      <h1 className="text-3xl font-light">City not yet mapped</h1>
       <p className="mt-2 text-muted-foreground">Browse our top cities below.</p>
       <div className="mt-6 flex flex-wrap justify-center gap-2">
         {TOP_CITIES.map((c) => (
@@ -64,7 +64,7 @@ export const Route = createFileRoute("/city/$slug")({
   ),
   errorComponent: ({ error }) => (
     <div className="mx-auto max-w-3xl px-6 py-20 text-center">
-      <h1 className="text-2xl font-semibold">Something went wrong</h1>
+      <h1 className="text-2xl font-light">Something went wrong</h1>
       <p className="mt-2 text-muted-foreground">{error.message}</p>
       <Link to="/" className="mt-4 inline-block text-primary underline">Back home</Link>
     </div>
