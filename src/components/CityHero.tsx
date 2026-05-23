@@ -101,8 +101,8 @@ export function CityHero({ city, country, blurb, hueSeed, back, children }: Prop
           )}
           <Wordmark className="text-white/80" />
         </div>
-        <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-white md:text-6xl">
-          {city}
+        <h1 className="mt-6 font-display text-4xl font-light tracking-tight text-white md:text-6xl">
+          {city}, <span className="italic text-accent-strong">charted.</span>
         </h1>
         {descriptor && (
           <p className="mt-3 max-w-2xl font-display text-xl leading-relaxed text-white/90 md:text-2xl">
