@@ -439,7 +439,9 @@ const placeIsInCity = (
 ) => {
   const addr = place.formattedAddress ? normalizeForMatch(place.formattedAddress) : "";
   if (!addr) return true; // can't verify — don't drop on missing data
-  const cityN = normalizeForMatch(city);
+  // Strip anything after a comma — callers sometimes pass "Washington, DC"
+  // or "Washington, District of Columbia"; we only want the bare city token.
+  const cityN = normalizeForMatch((city ?? "").split(",")[0] ?? "");
   if (!cityN || !addr.includes(cityN)) return false;
   const regionN = normalizeForMatch(region);
   if (regionN) {
