@@ -9,6 +9,8 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Compass, Wordmark } from "@/components/Compass";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 function NotFoundComponent() {
   return (
@@ -119,10 +121,34 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <div className="flex min-h-screen flex-col bg-background text-foreground">
+        <header className="border-b border-border/60">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+            <Link to="/" className="inline-flex items-center gap-2">
+              <Compass size={28} />
+              <Wordmark className="text-foreground" />
+            </Link>
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+            </div>
+          </div>
+        </header>
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <footer className="border-t border-border/60">
+          <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-6 py-10 text-center">
+            <Compass size={36} />
+            <Wordmark className="text-foreground" />
+            <p className="text-sm text-muted-foreground">compasseats.com</p>
+            <p className="font-display italic text-muted-foreground">
+              The world's best, wherever you are.
+            </p>
+          </div>
+        </footer>
+      </div>
     </QueryClientProvider>
   );
 }
