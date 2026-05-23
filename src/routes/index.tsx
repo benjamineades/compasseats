@@ -199,7 +199,7 @@ function SearchingState({ query }: { query: string }) {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-center gap-2 rounded-lg border border-border bg-card/40 px-4 py-3 text-sm text-muted-foreground">
-        <Compass size={16} />
+        <Compass size={16} spin />
         <span>{messages[idx]}</span>
       </div>
       <Skeleton className="h-72 w-full rounded-xl md:h-96" />

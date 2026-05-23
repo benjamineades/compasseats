@@ -213,7 +213,7 @@ export function VenueResults({
         </div>
       )}
 
-      <div className="relative z-[60]">
+      <div className="sticky top-[70px] z-[60] -mx-6 mb-4 border-b border-border bg-background/80 px-6 py-3 backdrop-blur-md">
         <FilterBar
           filter={filter}
           setFilter={setFilter}
@@ -315,7 +315,7 @@ function FilterBar({
     return true;
   });
   return (
-    <div className="mb-4 flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <div className="flex flex-wrap gap-1.5">
         {filters.map((f) => (
           <Button
