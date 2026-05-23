@@ -97,7 +97,7 @@ export function CityHero({ city, country, blurb, hueSeed, back, children }: Prop
             <ArrowLeft className="h-4 w-4" />{backLabel}
           </button>
         )}
-        <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white md:text-6xl">
+        <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-white md:text-6xl">
           {city}
         </h1>
         {country && <p className="mt-1 text-lg text-white/70">{country}</p>}

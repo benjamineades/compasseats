@@ -498,11 +498,11 @@ function VenueHeroImage({
       <div className="absolute inset-x-0 bottom-0 p-3">
         {v.url ? (
           <a href={v.url} target="_blank" rel="noopener noreferrer"
-            className="group inline-flex items-baseline gap-1.5 text-lg font-semibold leading-tight text-white hover:text-white/90">
+            className="group inline-flex items-baseline gap-1.5 font-display text-lg font-semibold leading-tight text-white hover:text-white/90">
             {v.name}<LinkIcon type={v.urlType} />
           </a>
         ) : (
-          <h2 className="text-lg font-semibold leading-tight text-white">{v.name}</h2>
+          <h2 className="font-display text-lg font-semibold leading-tight text-white">{v.name}</h2>
         )}
       </div>
     </div>
