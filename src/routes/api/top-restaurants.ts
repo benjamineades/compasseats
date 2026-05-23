@@ -431,6 +431,40 @@ const US_STATE_CODES: Record<string, string> = {
 // city name. When a region is provided, the address must ALSO contain the
 // region (or its US state code). Country alone is NEVER sufficient — that
 // was letting Seaside, CA venues slip into Seaside, FL results.
+// Aliases for cities whose Google-formatted addresses use a local name
+// different from the English query (e.g. "Mexico City" → "Ciudad de México").
+const CITY_ALIASES: Record<string, string[]> = {
+  "mexico city": ["ciudad de mexico", "cdmx", "df", "distrito federal"],
+  florence: ["firenze"],
+  rome: ["roma"],
+  milan: ["milano"],
+  naples: ["napoli"],
+  venice: ["venezia"],
+  turin: ["torino"],
+  munich: ["munchen"],
+  cologne: ["koln"],
+  vienna: ["wien"],
+  prague: ["praha"],
+  warsaw: ["warszawa"],
+  moscow: ["moskva"],
+  athens: ["athina"],
+  lisbon: ["lisboa"],
+  seville: ["sevilla"],
+  copenhagen: ["kobenhavn"],
+  gothenburg: ["goteborg"],
+  "the hague": ["den haag"],
+  antwerp: ["antwerpen"],
+  brussels: ["bruxelles", "brussel"],
+  geneva: ["geneve"],
+  zurich: ["zurich"],
+  bucharest: ["bucuresti"],
+  belgrade: ["beograd"],
+  istanbul: ["istanbul"],
+  beijing: ["peking"],
+  "ho chi minh city": ["ho chi minh", "saigon"],
+  seoul: ["seoul"],
+};
+
 const placeIsInCity = (
   place: GooglePlace,
   city: string,
@@ -442,14 +476,19 @@ const placeIsInCity = (
   // Strip anything after a comma — callers sometimes pass "Washington, DC"
   // or "Washington, District of Columbia"; we only want the bare city token.
   const cityN = normalizeForMatch((city ?? "").split(",")[0] ?? "");
-  if (!cityN || !addr.includes(cityN)) return false;
+  if (!cityN) return false;
+  const aliases = CITY_ALIASES[cityN] ?? [];
+  const cityMatches =
+    addr.includes(cityN) || aliases.some((a) => addr.includes(a));
+  if (!cityMatches) return false;
   const regionN = normalizeForMatch(region);
   if (regionN) {
     const stateCode = US_STATE_CODES[regionN];
     const tokens = addr.split(" ");
+    const regionAliases = CITY_ALIASES[regionN] ?? [];
     const matchesRegion =
       addr.includes(regionN) || (stateCode ? tokens.includes(stateCode) : false);
-    if (!matchesRegion) return false;
+    if (!matchesRegion && !regionAliases.some((a) => addr.includes(a))) return false;
   }
   void country;
   return true;
