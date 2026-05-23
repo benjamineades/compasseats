@@ -208,9 +208,9 @@ const fetchOgImage = async (pageUrl: string): Promise<string | undefined> => {
     const timer = setTimeout(() => ctrl.abort(), 2500);
     const res = await fetch(pageUrl, {
       signal: ctrl.signal,
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (compatible; EatAnywhereBot/1.0; +https://eatanywhere.lovable.app)",
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (compatible; CompassEatsBot/1.0; +https://www.compasseats.com)",
         Accept: "text/html,application/xhtml+xml",
       },
       redirect: "follow",
@@ -271,7 +271,7 @@ const fetchWikipediaImage = async (
           signal: ctrl.signal,
           headers: {
             "User-Agent":
-              "EatAnywhereBot/1.0 (https://eatanywhere.lovable.app)",
+              "CompassEatsBot/1.0 (https://www.compasseats.com)",
             Accept: "application/json",
           },
         },
@@ -501,7 +501,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
             .map((s) => s.trim().toLowerCase())
             .join("|");
         const cacheRequest = new Request(
-          "https://eatanywhere-cache/top-restaurants?k=" + encodeURIComponent(cacheKey),
+          "https://compasseats-cache/top-restaurants?k=" + encodeURIComponent(cacheKey),
         );
         const edgeCache =
           typeof caches !== "undefined" && (caches as unknown as { default?: Cache }).default
