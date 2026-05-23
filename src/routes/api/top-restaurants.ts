@@ -736,7 +736,7 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
             ) {
               return false;
             }
-            if (!placeIsInCity(place, object.city, object.country, parsed.region ?? "")) {
+            if (!placeIsInCity(place, parsed.city, object.country, parsed.region ?? "")) {
               // Place clearly resolves to a different city — drop.
               return false;
             }
