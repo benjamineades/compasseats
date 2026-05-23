@@ -315,7 +315,7 @@ function FilterBar({
     return true;
   });
   return (
-    <div className="mb-4 flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <div className="flex flex-wrap gap-1.5">
         {filters.map((f) => (
           <Button
