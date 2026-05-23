@@ -60,9 +60,10 @@ function loadGoogleMaps(): Promise<typeof google> {
 function pinSvg(index: number, isBar: boolean): string {
   const bg = isBar ? PIN_COLORS.bar : PIN_COLORS.restaurant;
   const text = isBar ? "#ffffff" : "#1a1a1a";
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 30 42">
-    <path d="M15 0C6.7 0 0 6.6 0 14.7c0 11 15 27.3 15 27.3s15-16.3 15-27.3C30 6.6 23.3 0 15 0z" fill="${bg}" stroke="#fff" stroke-width="2"/>
-    <text x="15" y="19" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="${text}">${index}</text>
+  const prefix = isBar ? "B" : "R";
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="34" height="42" viewBox="0 0 34 42">
+    <path d="M17 0C7.6 0 0 6.6 0 14.7c0 11 17 27.3 17 27.3s17-16.3 17-27.3C34 6.6 26.4 0 17 0z" fill="${bg}" stroke="#fff" stroke-width="2"/>
+    <text x="17" y="19" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,sans-serif" font-size="11" font-weight="700" fill="${text}">${prefix}${index}</text>
   </svg>`;
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
