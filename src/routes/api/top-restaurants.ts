@@ -341,7 +341,7 @@ const lookupGooglePlace = async (
       body: JSON.stringify({
         textQuery: [name, city, country].filter(Boolean).join(", "),
         locationBias: Number.isFinite(lat) && Number.isFinite(lng)
-          ? { circle: { center: { latitude: lat, longitude: lng }, radius: 2000 } }
+          ? { circle: { center: { latitude: lat, longitude: lng }, radius: 48280 } }
           : undefined,
         maxResultCount: 1,
       }),
