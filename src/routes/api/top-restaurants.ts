@@ -9,6 +9,7 @@ import {
   type AccoladeEntry,
 } from "@/lib/accolades.server";
 import { restaurantScore, barScore } from "@/lib/ranking";
+import { fetchSupplementaryVenues } from "@/lib/venue-fallback.server";
 
 const STAR_WORDS = ["zero", "one", "two", "three"] as const;
 const ordinal = (n: number) => {
@@ -410,16 +411,46 @@ const normalizeForMatch = (s: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-const placeIsInCity = (place: GooglePlace, city: string, country: string) => {
+// US state name → 2-letter code (Google addresses use the code, e.g. "FL").
+const US_STATE_CODES: Record<string, string> = {
+  alabama: "al", alaska: "ak", arizona: "az", arkansas: "ar", california: "ca",
+  colorado: "co", connecticut: "ct", delaware: "de", florida: "fl", georgia: "ga",
+  hawaii: "hi", idaho: "id", illinois: "il", indiana: "in", iowa: "ia",
+  kansas: "ks", kentucky: "ky", louisiana: "la", maine: "me", maryland: "md",
+  massachusetts: "ma", michigan: "mi", minnesota: "mn", mississippi: "ms",
+  missouri: "mo", montana: "mt", nebraska: "ne", nevada: "nv",
+  "new hampshire": "nh", "new jersey": "nj", "new mexico": "nm", "new york": "ny",
+  "north carolina": "nc", "north dakota": "nd", ohio: "oh", oklahoma: "ok",
+  oregon: "or", pennsylvania: "pa", "rhode island": "ri", "south carolina": "sc",
+  "south dakota": "sd", tennessee: "tn", texas: "tx", utah: "ut", vermont: "vt",
+  virginia: "va", washington: "wa", "west virginia": "wv", wisconsin: "wi",
+  wyoming: "wy", "district of columbia": "dc",
+};
+
+// Strict city verification. The Google address MUST contain the requested
+// city name. When a region is provided, the address must ALSO contain the
+// region (or its US state code). Country alone is NEVER sufficient — that
+// was letting Seaside, CA venues slip into Seaside, FL results.
+const placeIsInCity = (
+  place: GooglePlace,
+  city: string,
+  country: string,
+  region: string,
+) => {
   const addr = place.formattedAddress ? normalizeForMatch(place.formattedAddress) : "";
-  if (!addr) return true; // can't verify — don't drop
+  if (!addr) return true; // can't verify — don't drop on missing data
   const cityN = normalizeForMatch(city);
-  if (cityN && addr.includes(cityN)) return true;
-  const countryN = normalizeForMatch(country);
-  // Some addresses list metro/region instead of the city name. Accept a
-  // country match as a soft signal — drop only when address has neither.
-  if (countryN && addr.includes(countryN)) return true;
-  return false;
+  if (!cityN || !addr.includes(cityN)) return false;
+  const regionN = normalizeForMatch(region);
+  if (regionN) {
+    const stateCode = US_STATE_CODES[regionN];
+    const tokens = addr.split(" ");
+    const matchesRegion =
+      addr.includes(regionN) || (stateCode ? tokens.includes(stateCode) : false);
+    if (!matchesRegion) return false;
+  }
+  void country;
+  return true;
 };
 
 const genericFallback = (category: "restaurant" | "cocktail bar") =>
@@ -543,10 +574,18 @@ export const Route = createFileRoute("/api/top-restaurants")({
 
         try {
           // Pre-fetch the canonical accolade venues for this city from the
-          // linked spreadsheet. The AI MUST surface these (with current Yelp/
-          // TripAdvisor fallbacks only) and the new priority order is applied
-          // server-side after the AI returns.
-          const cityAccolades = await listAccoladesForCity(parsed.city, parsed.country ?? "");
+          // linked spreadsheet AND scrape supplementary top-rated venues
+          // from Yelp/TripAdvisor via Firecrawl. The AI is forbidden from
+          // inventing venue names — every non-accolade venue must come from
+          // the scraped allow-list below.
+          const [cityAccolades, supplementary] = await Promise.all([
+            listAccoladesForCity(parsed.city, parsed.country ?? ""),
+            fetchSupplementaryVenues(
+              parsed.city,
+              parsed.region ?? "",
+              parsed.country ?? "",
+            ),
+          ]);
           const seenExclude = new Set(excludeList.map((s) => s.trim().toLowerCase()));
           const seedVenues = cityAccolades
             .filter((a) => !seenExclude.has(a.name.toLowerCase()))
@@ -571,14 +610,30 @@ export const Route = createFileRoute("/api/top-restaurants")({
             .slice(0, 60)
             .join("\n");
           const seedBlock = seedVenues
-            ? `\n\nCANONICAL ACCOLADE VENUES FOR ${cityQuery} (from the official linked spreadsheet — these are the ONLY source of truth for accolades and rankings). You MUST include every one of these that is a restaurant or cocktail bar still operating, up to the ${limit} slots per category. Use the EXACT names below so server-side accolade enrichment can match them. After exhausting this list, fill remaining slots with the highest-rated venues from Yelp / Trip Advisor (no accolades).\n${seedVenues}`
-            : `\n\nNo canonical accolade venues are listed in the linked spreadsheet for ${cityQuery}. Fill all ${limit * 2} slots with the highest-rated currently-operating venues from Yelp / Trip Advisor (no accolade fields).`;
+            ? `\n\nCANONICAL ACCOLADE VENUES FOR ${cityQuery} (from the official linked spreadsheet — these are the ONLY source of truth for accolades and rankings). You MUST include every one of these that is a restaurant or cocktail bar still operating, up to the ${limit} slots per category. Use the EXACT names below so server-side accolade enrichment can match them.\n${seedVenues}`
+            : `\n\nNo canonical accolade venues are listed in the linked spreadsheet for ${cityQuery}.`;
+
+          const formatNames = (names: string[]) =>
+            names
+              .filter((n) => !seenExclude.has(n.toLowerCase()))
+              .slice(0, 25)
+              .map((n) => `  • ${n}`)
+              .join("\n");
+          const restNames = formatNames(supplementary.restaurants);
+          const barNames = formatNames(supplementary.bars);
+          const sourceLabel = supplementary.source === "yelp" ? "Yelp" : "Trip Advisor";
+          const supplementaryBlock =
+            restNames || barNames
+              ? `\n\nSUPPLEMENTARY VENUE ALLOW-LIST (top results scraped live from ${sourceLabel} for ${cityQuery}). When the canonical accolade list above does not fill all ${limit} slots in a category, you MUST pick names from this allow-list — do NOT invent venue names or pull from training data. Use the EXACT names shown.\n\nRESTAURANTS:\n${restNames || "  (none returned)"}\n\nCOCKTAIL BARS:\n${barNames || "  (none returned)"}`
+              : `\n\nNo supplementary venues were available from Yelp or Trip Advisor for ${cityQuery}. If the canonical accolade list does not fill ${limit} slots in a category, return fewer venues for that category rather than inventing names.`;
 
           const { object } = await generateObject({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-            prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}${seedBlock}
+            prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}${seedBlock}${supplementaryBlock}
+
+NAME SOURCE — STRICT: Every venue you return MUST come from either (a) the canonical accolade list above or (b) the supplementary allow-list above. Do NOT invent venue names. Do NOT pull venues from your training data. If neither list provides enough names to fill ${limit} slots in a category, return fewer venues in that category — better to return 6 real venues than 10 with fabricated names.
 
 ACCOLADES — STRICT RULE: Do NOT populate michelinStars, michelinGreenStar, bibGourmand, worldsBest50Restaurants, worldsBest50Bars, jamesBeardAward, bestChefAward, pinnacleAward, or spiritedAward. The server enriches these from the linked spreadsheet. Leave all accolade fields empty/null.
 
@@ -592,6 +647,7 @@ RANKING PRIORITY — RESTAURANTS (apply in this STRICT order; the canonical acco
   7. Michelin 1-star restaurants.
   8. Best Chef Awards 1-Knife winners.
   9. Fallback when the seed list is exhausted: highest-rated on Yelp if ${cityQuery} is in the United States (then Trip Advisor); otherwise highest-rated on Trip Advisor (then Yelp). No accolades for these.
+      Pick these fallback restaurants ONLY from the supplementary allow-list above, in the order they appear there. Do not reorder or substitute.
 
 RANKING PRIORITY — COCKTAIL BARS:
   1. Venues on the MOST RECENT World's 50 Best Bars edition (from the seed list above).
@@ -599,6 +655,7 @@ RANKING PRIORITY — COCKTAIL BARS:
   3. Pinnacle Guide bars (3-pin > 2-pin > 1-pin; recent year as tiebreaker) from the seed list.
   4. Tales of the Cocktail Spirited Award winners (most recent year first) from the seed list.
   5. Fallback when seed list exhausted: highest-rated on Yelp if in USA (then Trip Advisor); otherwise Trip Advisor first.
+      Pick these fallback bars ONLY from the supplementary allow-list above, in the order they appear there. Do not reorder or substitute.
 
 Return the ${limit} restaurants in priority order first, then the ${limit} cocktail bars in priority order. Do not use Google Maps for ranking, popularity, or selection. Use Google Maps ONLY for two things: (1) exclude any venue marked "Permanently closed" or otherwise known to have closed, and (2) source each venue's CURRENT precise latitude and longitude from its present-day Google Maps listing — if a venue has moved, use its current address coordinates, not historical ones.
 
@@ -679,7 +736,7 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
             ) {
               return false;
             }
-            if (!placeIsInCity(place, object.city, object.country)) {
+            if (!placeIsInCity(place, object.city, object.country, parsed.region ?? "")) {
               // Place clearly resolves to a different city — drop.
               return false;
             }
