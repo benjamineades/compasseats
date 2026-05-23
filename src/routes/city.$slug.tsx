@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { CITIES_BY_SLUG, TOP_CITIES, type TopCity } from "@/lib/cities";
 import { useVenueLoadMore } from "@/lib/useVenueLoadMore";
 
