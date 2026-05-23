@@ -123,32 +123,26 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col bg-background text-foreground">
-        <header className="border-b border-border/60">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-            <Link to="/" className="inline-flex items-center gap-2">
-              <Compass size={28} />
-              <Wordmark className="text-foreground" />
-            </Link>
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-            </div>
-          </div>
-        </header>
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <footer className="border-t border-border/60">
-          <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-6 py-10 text-center">
-            <Compass size={36} />
-            <Wordmark className="text-foreground" />
-            <p className="text-sm text-muted-foreground">compasseats.com</p>
-            <p className="font-display italic text-muted-foreground">
-              The world's best, wherever you are.
-            </p>
-          </div>
-        </footer>
-      </div>
+      <header className="sticky top-0 z-20 border-b border-border bg-background/70 backdrop-blur-md">
+        <div className="mx-auto flex h-[70px] max-w-5xl items-center justify-between px-6">
+          <Link to="/" className="flex items-center gap-2.5 no-underline">
+            <Compass size={30} />
+            <Wordmark />
+          </Link>
+          <ThemeToggle />
+        </div>
+      </header>
+
+      <Outlet />
+
+      <footer className="mt-20 border-t border-border py-16 text-center">
+        <div className="mx-auto flex flex-col items-center gap-4">
+          <Compass size={44} />
+          <Wordmark className="!text-2xl" />
+          <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent-strong">compasseats.com</p>
+          <p className="text-sm text-muted-foreground">The world's best, wherever you are.</p>
+        </div>
+      </footer>
     </QueryClientProvider>
   );
 }
