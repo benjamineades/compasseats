@@ -99,7 +99,10 @@ function CityPage() {
   });
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="relative min-h-screen bg-background">
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
       <CityHero
         city={city.city}
         country={city.country}
