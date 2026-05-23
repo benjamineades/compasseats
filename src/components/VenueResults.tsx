@@ -213,47 +213,21 @@ export function VenueResults({
         </div>
       )}
 
+      <div className="relative z-[60]">
+        <FilterBar
+          filter={filter}
+          setFilter={setFilter}
+          showMichelin={michelinCount > 0}
+          showWorlds50={worlds50Count > 0}
+          showBestChef={bestChefCount > 0}
+          showJamesBeard={jamesBeardCount > 0}
+        />
+      </div>
+
       {filtered.length === 0 ? (
-        <>
-          <div className="relative z-[60]">
-            <FilterBar
-              filter={filter}
-              setFilter={setFilter}
-              showMichelin={michelinCount > 0}
-              showWorlds50={worlds50Count > 0}
-              showBestChef={bestChefCount > 0}
-              showJamesBeard={jamesBeardCount > 0}
-            />
-          </div>
-          <EmptyState />
-        </>
+        <EmptyState />
       ) : (
         <>
-          <div className="sticky top-0 z-[60] -mx-4 mb-3 border-b border-border/60 bg-background/85 px-4 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/70 sm:-mx-6 sm:px-6">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <FilterBar
-                filter={filter}
-                setFilter={setFilter}
-                showMichelin={michelinCount > 0}
-                showWorlds50={worlds50Count > 0}
-                showBestChef={bestChefCount > 0}
-                showJamesBeard={jamesBeardCount > 0}
-              />
-              <div className="flex items-center gap-2 text-xs text-muted-foreground sm:shrink-0">
-                <ArrowUpDown className="h-3.5 w-3.5" />
-                <Select value={sort} onValueChange={(v) => setSort(v as Sort)}>
-                  <SelectTrigger className="h-8 w-44 text-xs">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="ranked">Highest Ranked</SelectItem>
-                    <SelectItem value="nearest">Nearest to City Center</SelectItem>
-                    <SelectItem value="alphabetical">Alphabetical</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </div>
           <VenueMap center={[data.lat, data.lng]} pins={pins} />
           <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-1.5">
@@ -264,6 +238,19 @@ export function VenueResults({
               <span className="inline-block h-3 w-3 rounded-full" style={{ background: PIN_COLORS.bar }} />
               Cocktail bars
             </span>
+            <div className="relative z-[60] ml-auto flex items-center gap-2">
+              <ArrowUpDown className="h-3.5 w-3.5" />
+              <Select value={sort} onValueChange={(v) => setSort(v as Sort)}>
+                <SelectTrigger className="h-8 w-44 text-xs">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="ranked">Highest Ranked</SelectItem>
+                  <SelectItem value="nearest">Nearest to City Center</SelectItem>
+                  <SelectItem value="alphabetical">Alphabetical</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
             <VenueColumn title="Restaurants" accent={PIN_COLORS.restaurant} accentText="#1a1a1a" items={restaurants} indexMap={indexMap} />
