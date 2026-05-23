@@ -11,6 +11,7 @@ import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomp
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Compass, Wordmark } from "@/components/Logo";
 import { TOP_CITIES } from "@/lib/cities";
 import { useVenueLoadMore, type VenueQuery as LoadMoreQuery } from "@/lib/useVenueLoadMore";
 
