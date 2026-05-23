@@ -125,14 +125,15 @@ export function VenueMap({
     const bounds = new g.maps.LatLngBounds();
     for (const p of pins) {
       const isBar = p.category === "cocktail bar";
+      const prefix = isBar ? "B" : "R";
       const marker = new g.maps.Marker({
         position: { lat: p.lat, lng: p.lng },
         map: mapRef.current,
-        title: `${p.index}. ${p.name}`,
+        title: `${prefix}${p.index}. ${p.name}`,
         icon: {
           url: pinSvg(p.index, isBar),
-          scaledSize: new g.maps.Size(30, 42),
-          anchor: new g.maps.Point(15, 40),
+          scaledSize: new g.maps.Size(34, 42),
+          anchor: new g.maps.Point(17, 40),
         },
       });
       marker.addListener("click", () => {
@@ -146,7 +147,7 @@ export function VenueMap({
           : "";
         infoRef.current?.setContent(
           `<div style="min-width:180px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif">
-            <strong style="font-size:14px">${p.index}. ${p.name}</strong>
+            <strong style="font-size:14px">${prefix}${p.index}. ${p.name}</strong>
             <div style="font-size:12px;color:#555;text-transform:capitalize;margin-top:2px">${p.category}</div>
             ${accolade}${link}
           </div>`,
