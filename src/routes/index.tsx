@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import type { FormEvent } from "react";
 import { useMemo, useState, useEffect } from "react";
-import { Loader2, Sparkles } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -199,7 +199,7 @@ function SearchingState({ query }: { query: string }) {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-center gap-2 rounded-lg border border-border bg-card/40 px-4 py-3 text-sm text-muted-foreground">
-        <Sparkles className="h-4 w-4 animate-pulse text-primary" />
+        <Compass size={16} />
         <span>{messages[idx]}</span>
       </div>
       <Skeleton className="h-72 w-full rounded-xl md:h-96" />
@@ -236,7 +236,7 @@ function UnmappedCity({ query }: { query: string }) {
         <div className="flex flex-wrap justify-center gap-2">
           {suggestions.map((c) => (
             <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
-              className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground hover:border-primary hover:text-primary">
+              className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground hover:border-primary hover:text-accent-strong">
               {c.city}
             </Link>
           ))}
@@ -256,7 +256,7 @@ function PopularCities() {
         {TOP_CITIES.map((c) => (
           <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
             className="group rounded-lg border border-border bg-card px-3 py-2.5 text-left transition-colors hover:border-primary/50 hover:bg-accent">
-            <div className="text-sm font-medium text-foreground group-hover:text-primary">{c.city}</div>
+            <div className="text-sm font-medium text-foreground group-hover:text-accent-strong">{c.city}</div>
             <div className="text-xs text-muted-foreground">{c.country}</div>
           </Link>
         ))}
