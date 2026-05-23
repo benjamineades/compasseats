@@ -482,7 +482,7 @@ function VenueHeroImage({
         background: `linear-gradient(135deg, ${accent} 0%, ${accent}80 100%)`,
       }}
     >
-      <span className="font-display text-5xl font-semibold" style={{ color: accentText }}>
+      <span className="font-display text-5xl font-light" style={{ color: accentText }}>
         {initials}
       </span>
     </div>
