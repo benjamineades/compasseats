@@ -574,10 +574,18 @@ export const Route = createFileRoute("/api/top-restaurants")({
 
         try {
           // Pre-fetch the canonical accolade venues for this city from the
-          // linked spreadsheet. The AI MUST surface these (with current Yelp/
-          // TripAdvisor fallbacks only) and the new priority order is applied
-          // server-side after the AI returns.
-          const cityAccolades = await listAccoladesForCity(parsed.city, parsed.country ?? "");
+          // linked spreadsheet AND scrape supplementary top-rated venues
+          // from Yelp/TripAdvisor via Firecrawl. The AI is forbidden from
+          // inventing venue names — every non-accolade venue must come from
+          // the scraped allow-list below.
+          const [cityAccolades, supplementary] = await Promise.all([
+            listAccoladesForCity(parsed.city, parsed.country ?? ""),
+            fetchSupplementaryVenues(
+              parsed.city,
+              parsed.region ?? "",
+              parsed.country ?? "",
+            ),
+          ]);
           const seenExclude = new Set(excludeList.map((s) => s.trim().toLowerCase()));
           const seedVenues = cityAccolades
             .filter((a) => !seenExclude.has(a.name.toLowerCase()))
@@ -602,8 +610,22 @@ export const Route = createFileRoute("/api/top-restaurants")({
             .slice(0, 60)
             .join("\n");
           const seedBlock = seedVenues
-            ? `\n\nCANONICAL ACCOLADE VENUES FOR ${cityQuery} (from the official linked spreadsheet — these are the ONLY source of truth for accolades and rankings). You MUST include every one of these that is a restaurant or cocktail bar still operating, up to the ${limit} slots per category. Use the EXACT names below so server-side accolade enrichment can match them. After exhausting this list, fill remaining slots with the highest-rated venues from Yelp / Trip Advisor (no accolades).\n${seedVenues}`
-            : `\n\nNo canonical accolade venues are listed in the linked spreadsheet for ${cityQuery}. Fill all ${limit * 2} slots with the highest-rated currently-operating venues from Yelp / Trip Advisor (no accolade fields).`;
+            ? `\n\nCANONICAL ACCOLADE VENUES FOR ${cityQuery} (from the official linked spreadsheet — these are the ONLY source of truth for accolades and rankings). You MUST include every one of these that is a restaurant or cocktail bar still operating, up to the ${limit} slots per category. Use the EXACT names below so server-side accolade enrichment can match them.\n${seedVenues}`
+            : `\n\nNo canonical accolade venues are listed in the linked spreadsheet for ${cityQuery}.`;
+
+          const formatNames = (names: string[]) =>
+            names
+              .filter((n) => !seenExclude.has(n.toLowerCase()))
+              .slice(0, 25)
+              .map((n) => `  • ${n}`)
+              .join("\n");
+          const restNames = formatNames(supplementary.restaurants);
+          const barNames = formatNames(supplementary.bars);
+          const sourceLabel = supplementary.source === "yelp" ? "Yelp" : "Trip Advisor";
+          const supplementaryBlock =
+            restNames || barNames
+              ? `\n\nSUPPLEMENTARY VENUE ALLOW-LIST (top results scraped live from ${sourceLabel} for ${cityQuery}). When the canonical accolade list above does not fill all ${limit} slots in a category, you MUST pick names from this allow-list — do NOT invent venue names or pull from training data. Use the EXACT names shown.\n\nRESTAURANTS:\n${restNames || "  (none returned)"}\n\nCOCKTAIL BARS:\n${barNames || "  (none returned)"}`
+              : `\n\nNo supplementary venues were available from Yelp or Trip Advisor for ${cityQuery}. If the canonical accolade list does not fill ${limit} slots in a category, return fewer venues for that category rather than inventing names.`;
 
           const { object } = await generateObject({
             model,
