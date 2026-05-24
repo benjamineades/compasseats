@@ -437,9 +437,10 @@ function EmptyState() {
 }
 
 function VenueColumn({
-  title, accent, accentText, items, indexMap,
+  title, accent, accentText, items, indexMap, userCoords,
 }: {
   title: string; accent: string; accentText: string; items: Venue[]; indexMap: Map<Venue, number>;
+  userCoords?: [number, number] | null;
 }) {
   return (
     <div>
@@ -452,7 +453,7 @@ function VenueColumn({
           const anchor = venueAnchorId(v.category, n);
           return (
             <li key={`${v.name}-${n}`} id={anchor}>
-              <VenueCard v={v} n={n} accent={accent} accentText={accentText} />
+              <VenueCard v={v} n={n} accent={accent} accentText={accentText} userCoords={userCoords} />
             </li>
           );
         })}
@@ -462,8 +463,8 @@ function VenueColumn({
 }
 
 function VenueCard({
-  v, n, accent, accentText,
-}: { v: Venue; n: number; accent: string; accentText: string }) {
+  v, n, accent, accentText, userCoords,
+}: { v: Venue; n: number; accent: string; accentText: string; userCoords?: [number, number] | null }) {
   const [expanded, setExpanded] = useState(false);
   const hasDetails = !!(v.description || v.accoladeOverview || v.whyThisPick || v.chef);
 
