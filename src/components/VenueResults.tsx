@@ -318,12 +318,13 @@ function FilterBar({
     { id: "openToday", label: "Open Today" },
   ];
 
-  const awards: { id: AwardFilter; label: string; show: boolean }[] = [
+  const allAwards: { id: AwardFilter; label: string; show: boolean }[] = [
     { id: "michelin", label: AWARD_LABELS.michelin, show: showMichelin },
     { id: "worlds50", label: AWARD_LABELS.worlds50, show: showWorlds50 },
     { id: "bestchef", label: AWARD_LABELS.bestchef, show: showBestChef },
     { id: "jamesbeard", label: AWARD_LABELS.jamesbeard, show: showJamesBeard },
-  ].filter((a) => a.show);
+  ];
+  const awards = allAwards.filter((a) => a.show);
 
   const toggle = (id: Filter) =>
     setFilters((prev) => {
