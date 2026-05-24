@@ -70,11 +70,13 @@ function Index() {
   const nearMe = useNearMe();
 
   useEffect(() => {
-    if (nearMe.coords) {
+    // Only redirect if the user explicitly clicked "Near me" this session.
+    // (Coords may also be hydrated from cache on mount — don't auto-navigate then.)
+    if (nearMe.requested && nearMe.coords) {
       const { city } = findNearestCity(nearMe.coords);
       navigate({ to: "/city/$slug", params: { slug: city.slug } });
     }
-  }, [nearMe.coords, navigate]);
+  }, [nearMe.requested, nearMe.coords, navigate]);
 
   const mutation = useMutation({
     mutationFn: fetchVenues,
@@ -189,7 +191,12 @@ function Index() {
               )}
             </Button>
             {nearMe.error && (
-              <p className="text-xs text-destructive">{nearMe.error}</p>
+              <div className="flex flex-col items-center gap-1 text-center">
+                <p className="text-xs text-destructive">{nearMe.error}</p>
+                <p className="text-[11px] text-muted-foreground">
+                  No problem — pick a charted city below to get started.
+                </p>
+              </div>
             )}
           </div>
         )}
