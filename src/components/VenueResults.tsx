@@ -1,8 +1,8 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   MapPin, Star, Leaf, Utensils, Trophy, Award, ExternalLink,
   Instagram, Facebook, Globe, CalendarCheck, Clock, Info, ArrowUpDown,
-  ChevronDown, ChevronUp, Loader2, SlidersHorizontal, X,
+  ChevronDown, ChevronUp, Loader2, SlidersHorizontal, X, Locate,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/tooltip";
 import { VenueMap, PIN_COLORS, type Pin } from "@/components/VenueMap";
 import { venueAnchorId } from "@/lib/cities";
+import { useNearMe, distanceKm as distKm, formatDistance } from "@/lib/useNearMe";
 
 export type Venue = {
   name: string;
@@ -62,7 +63,7 @@ export type ResultsData = {
 type QuickFilter = "restaurants" | "bars" | "openToday";
 type AwardFilter = "michelin" | "worlds50" | "bestchef" | "jamesbeard";
 type Filter = QuickFilter | AwardFilter;
-type Sort = "ranked" | "nearest" | "alphabetical";
+type Sort = "ranked" | "nearest" | "nearMe" | "alphabetical";
 
 const MICHELIN_STAR_TIPS: Record<number, string> = {
   1: "One Michelin Star: A very good restaurant in its category.",
@@ -91,14 +92,6 @@ function hasBestChef(v: Venue) {
 }
 function hasJamesBeard(v: Venue) {
   return !!v.jamesBeardAward;
-}
-
-function distanceKm(a: [number, number], b: [number, number]) {
-  const [lat1, lng1] = a, [lat2, lng2] = b;
-  const R = 6371, toRad = (d: number) => (d * Math.PI) / 180;
-  const dLat = toRad(lat2 - lat1), dLng = toRad(lng2 - lng1);
-  const x = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
-  return 2 * R * Math.asin(Math.sqrt(x));
 }
 
 function parseHoursOpenToday(hours?: string): boolean | null {
@@ -136,6 +129,13 @@ export function VenueResults({
 }: { data: ResultsData } & VenueResultsLoadMore) {
   const [filters, setFilters] = useState<Set<Filter>>(new Set());
   const [sort, setSort] = useState<Sort>("ranked");
+  const { coords: userCoords, loading: locLoading, error: locError, requestLocation } = useNearMe();
+
+  useEffect(() => {
+    if (sort === "nearMe" && !userCoords && !locLoading) {
+      requestLocation();
+    }
+  }, [sort, userCoords, locLoading, requestLocation]);
 
   const filtered = useMemo(() => {
     const center: [number, number] = [data.lat, data.lng];
@@ -159,11 +159,15 @@ export function VenueResults({
       venues = [...venues].sort((a, b) => a.name.localeCompare(b.name));
     } else if (sort === "nearest") {
       venues = [...venues].sort(
-        (a, b) => distanceKm(center, [a.lat, a.lng]) - distanceKm(center, [b.lat, b.lng]),
+        (a, b) => distKm(center, [a.lat, a.lng]) - distKm(center, [b.lat, b.lng]),
+      );
+    } else if (sort === "nearMe" && userCoords) {
+      venues = [...venues].sort(
+        (a, b) => distKm(userCoords, [a.lat, a.lng]) - distKm(userCoords, [b.lat, b.lng]),
       );
     }
     return venues;
-  }, [data, filters, sort]);
+  }, [data, filters, sort, userCoords]);
 
   // Original 1..10 indices are based on the unfiltered order (restaurants then bars)
   const indexMap = useMemo(() => {
@@ -251,14 +255,23 @@ export function VenueResults({
                 <SelectContent>
                   <SelectItem value="ranked">Highest Ranked</SelectItem>
                   <SelectItem value="nearest">Nearest to City Center</SelectItem>
+                  <SelectItem value="nearMe">Nearest to Me</SelectItem>
                   <SelectItem value="alphabetical">Alphabetical</SelectItem>
                 </SelectContent>
               </Select>
+              {sort === "nearMe" && locLoading && (
+                <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <Loader2 className="h-3 w-3 animate-spin" /> Locating…
+                </span>
+              )}
+              {sort === "nearMe" && locError && (
+                <span className="text-xs text-destructive">{locError}</span>
+              )}
             </div>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-            <VenueColumn title="Restaurants" accent={PIN_COLORS.restaurant} accentText="#1a1a1a" items={restaurants} indexMap={indexMap} />
-            <VenueColumn title="Cocktail Bars" accent={PIN_COLORS.bar} accentText="#fff" items={bars} indexMap={indexMap} />
+            <VenueColumn title="Restaurants" accent={PIN_COLORS.restaurant} accentText="#1a1a1a" items={restaurants} indexMap={indexMap} userCoords={userCoords} />
+            <VenueColumn title="Cocktail Bars" accent={PIN_COLORS.bar} accentText="#fff" items={bars} indexMap={indexMap} userCoords={userCoords} />
           </div>
           {onLoadMore && (
             <div className="mt-10 flex flex-col items-center gap-2 text-center">
