@@ -9,6 +9,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomplete";
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
+import { AwardMarquee } from "@/components/AwardMarquee";
+import { ExploreByAward } from "@/components/ExploreByAward";
 
 import { Compass, Wordmark, HeroCompass } from "@/components/Compass";
 import { TOP_CITIES } from "@/lib/cities";
@@ -92,6 +94,9 @@ function Index() {
 
   const data = results ?? mutation.data;
   const showHero = mutation.isSuccess && data && data.venues.length > 0;
+  const heroImageUrl = data
+    ? TOP_CITIES.find((c) => c.city.toLowerCase() === data.city.toLowerCase())?.imageUrl
+    : undefined;
 
   const resetSearch = () => {
     mutation.reset();
@@ -109,6 +114,7 @@ function Index() {
           city={data.city}
           country={data.country}
           blurb={data.cityBlurb}
+          imageUrl={heroImageUrl}
           back={{ onClick: resetSearch }}
         />
       )}
