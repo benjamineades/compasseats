@@ -134,19 +134,25 @@ export function VenueResults({
   hasMore,
   loadMoreError,
 }: { data: ResultsData } & VenueResultsLoadMore) {
-  const [filter, setFilter] = useState<Filter>("all");
+  const [filters, setFilters] = useState<Set<Filter>>(new Set());
   const [sort, setSort] = useState<Sort>("ranked");
 
   const filtered = useMemo(() => {
     const center: [number, number] = [data.lat, data.lng];
+    const wantRest = filters.has("restaurants");
+    const wantBars = filters.has("bars");
+    const wantOpen = filters.has("openToday");
+    const awardChecks: Array<(v: Venue) => boolean> = [];
+    if (filters.has("michelin")) awardChecks.push((v) => (v.michelinStars ?? 0) > 0);
+    if (filters.has("worlds50")) awardChecks.push(hasWorlds50);
+    if (filters.has("bestchef")) awardChecks.push(hasBestChef);
+    if (filters.has("jamesbeard")) awardChecks.push(hasJamesBeard);
+
     let venues = data.venues.filter((v) => {
-      if (filter === "restaurants") return v.category === "restaurant";
-      if (filter === "bars") return v.category === "cocktail bar";
-      if (filter === "michelin") return (v.michelinStars ?? 0) > 0;
-      if (filter === "worlds50") return hasWorlds50(v);
-      if (filter === "bestchef") return hasBestChef(v);
-      if (filter === "jamesbeard") return hasJamesBeard(v);
-      if (filter === "openToday") return parseHoursOpenToday(v.hours) === true;
+      if (wantRest && !wantBars && v.category !== "restaurant") return false;
+      if (wantBars && !wantRest && v.category !== "cocktail bar") return false;
+      if (wantOpen && parseHoursOpenToday(v.hours) !== true) return false;
+      if (awardChecks.length > 0 && !awardChecks.some((fn) => fn(v))) return false;
       return true;
     });
     if (sort === "alphabetical") {
@@ -157,7 +163,7 @@ export function VenueResults({
       );
     }
     return venues;
-  }, [data, filter, sort]);
+  }, [data, filters, sort]);
 
   // Original 1..10 indices are based on the unfiltered order (restaurants then bars)
   const indexMap = useMemo(() => {
@@ -213,8 +219,8 @@ export function VenueResults({
 
       <div className="sticky top-[70px] z-[60] -mx-6 mb-4 border-b border-border bg-background/80 px-6 py-3 backdrop-blur-md">
         <FilterBar
-          filter={filter}
-          setFilter={setFilter}
+          filters={filters}
+          setFilters={setFilters}
           showMichelin={michelinCount > 0}
           showWorlds50={worlds50Count > 0}
           showBestChef={bestChefCount > 0}
