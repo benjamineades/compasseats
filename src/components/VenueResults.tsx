@@ -2,7 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import {
   MapPin, Star, Leaf, Utensils, Trophy, Award, ExternalLink,
   Instagram, Facebook, Globe, CalendarCheck, Clock, Info, ArrowUpDown,
-  ChevronDown, ChevronUp, Loader2,
+  ChevronDown, ChevronUp, Loader2, SlidersHorizontal, X,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +10,10 @@ import { Button } from "@/components/ui/button";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
+import {
+  DropdownMenu, DropdownMenuTrigger, DropdownMenuContent,
+  DropdownMenuCheckboxItem, DropdownMenuLabel, DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 import {
   Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,
 } from "@/components/ui/tooltip";
@@ -55,15 +59,9 @@ export type ResultsData = {
   venues: Venue[];
 };
 
-type Filter =
-  | "all"
-  | "restaurants"
-  | "bars"
-  | "michelin"
-  | "worlds50"
-  | "bestchef"
-  | "jamesbeard"
-  | "openToday";
+type QuickFilter = "restaurants" | "bars" | "openToday";
+type AwardFilter = "michelin" | "worlds50" | "bestchef" | "jamesbeard";
+type Filter = QuickFilter | AwardFilter;
 type Sort = "ranked" | "nearest" | "alphabetical";
 
 const MICHELIN_STAR_TIPS: Record<number, string> = {
