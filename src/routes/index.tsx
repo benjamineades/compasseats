@@ -1,8 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import type { FormEvent } from "react";
 import { useMemo, useState, useEffect } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, Locate } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -13,7 +13,8 @@ import { AwardMarquee } from "@/components/AwardMarquee";
 import { ExploreByAward } from "@/components/ExploreByAward";
 
 import { Compass, Wordmark, HeroCompass } from "@/components/Compass";
-import { TOP_CITIES } from "@/lib/cities";
+import { TOP_CITIES, findNearestCity } from "@/lib/cities";
+import { useNearMe } from "@/lib/useNearMe";
 import { useVenueLoadMore, type VenueQuery as LoadMoreQuery } from "@/lib/useVenueLoadMore";
 
 const PLACEHOLDER_POOL = [
@@ -65,6 +66,16 @@ function Index() {
   const [lastQuery, setLastQuery] = useState<string>("");
   const [results, setResults] = useState<ResultsData | null>(null);
   const [activeQuery, setActiveQuery] = useState<LoadMoreQuery | null>(null);
+  const navigate = useNavigate();
+  const nearMe = useNearMe();
+
+  useEffect(() => {
+    if (nearMe.coords) {
+      const { city } = findNearestCity(nearMe.coords);
+      navigate({ to: "/city/$slug", params: { slug: city.slug } });
+    }
+  }, [nearMe.coords, navigate]);
+
   const mutation = useMutation({
     mutationFn: fetchVenues,
     onSuccess: (data, variables) => {
@@ -153,6 +164,34 @@ function Index() {
             {mutation.isPending ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin" />Charting…</>) : ("Find the best")}
           </Button>
         </form>
+        )}
+
+        {!showHero && (
+          <div className="mt-4 flex flex-col items-center gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="h-9 rounded-full px-4 text-xs"
+              onClick={() => nearMe.requestLocation()}
+              disabled={nearMe.loading}
+            >
+              {nearMe.loading ? (
+                <>
+                  <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />
+                  Finding your city…
+                </>
+              ) : (
+                <>
+                  <Locate className="mr-1.5 h-3.5 w-3.5" />
+                  Near me
+                </>
+              )}
+            </Button>
+            {nearMe.error && (
+              <p className="text-xs text-destructive">{nearMe.error}</p>
+            )}
+          </div>
         )}
 
         <section className="mt-10">
