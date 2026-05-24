@@ -177,7 +177,9 @@ function Index() {
               <div className="mt-6 flex flex-col items-center gap-6">
                 <HeroCompass className="w-full max-w-[220px]" />
               </div>
+              <AwardMarquee />
               <PopularCities />
+              <ExploreByAward />
             </>
           )}
         </section>
@@ -261,9 +263,10 @@ function PopularCities() {
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
         {TOP_CITIES.map((c) => (
           <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
-            className="group rounded-lg border border-border bg-card px-3 py-2.5 text-left transition-colors hover:border-primary/50 hover:bg-accent">
+            className="group flex flex-col rounded-lg border border-border bg-card px-3 py-2.5 text-left transition-colors hover:border-primary/50 hover:bg-accent">
             <div className="text-sm font-medium text-foreground group-hover:text-accent-strong">{c.city}</div>
             <div className="text-xs text-muted-foreground">{c.country}</div>
+            <div className="mt-1 line-clamp-2 text-xs text-muted-foreground/80">{c.blurb}</div>
           </Link>
         ))}
       </div>
