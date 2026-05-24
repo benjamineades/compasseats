@@ -491,6 +491,12 @@ function VenueCard({
                 <Clock className="h-3 w-3" />{v.hours}
               </Badge>
             )}
+            {userCoords && (
+              <Badge variant="outline" className="gap-1" title="Distance from your location">
+                <Locate className="h-3 w-3" />
+                {formatDistance(distKm(userCoords, [v.lat, v.lng]))}
+              </Badge>
+            )}
             <span className="text-sm font-medium text-muted-foreground">{v.priceRange}</span>
           </div>
           {action && (
