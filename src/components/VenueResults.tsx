@@ -297,45 +297,113 @@ export function VenueResults({
   );
 }
 
+const AWARD_LABELS: Record<AwardFilter, string> = {
+  michelin: "Michelin Starred",
+  worlds50: "World's 50 Best",
+  bestchef: "Best Chef Awards",
+  jamesbeard: "James Beard",
+};
+
 function FilterBar({
-  filter, setFilter, showMichelin, showWorlds50, showBestChef, showJamesBeard,
+  filters, setFilters, showMichelin, showWorlds50, showBestChef, showJamesBeard,
 }: {
-  filter: Filter; setFilter: (f: Filter) => void;
+  filters: Set<Filter>;
+  setFilters: (updater: (prev: Set<Filter>) => Set<Filter>) => void;
   showMichelin: boolean; showWorlds50: boolean;
   showBestChef: boolean; showJamesBeard: boolean;
 }) {
-  const all: { id: Filter; label: string }[] = [
-    { id: "all", label: "All" },
+  const quick: { id: QuickFilter; label: string }[] = [
     { id: "restaurants", label: "Restaurants" },
     { id: "bars", label: "Cocktail Bars" },
-    { id: "michelin", label: "Michelin Starred" },
-    { id: "worlds50", label: "World's 50 Best" },
-    { id: "bestchef", label: "Best Chef Awards" },
-    { id: "jamesbeard", label: "James Beard" },
     { id: "openToday", label: "Open Today" },
   ];
-  const filters = all.filter((f) => {
-    if (f.id === "michelin") return showMichelin;
-    if (f.id === "worlds50") return showWorlds50;
-    if (f.id === "bestchef") return showBestChef;
-    if (f.id === "jamesbeard") return showJamesBeard;
-    return true;
-  });
+
+  const awards: { id: AwardFilter; label: string; show: boolean }[] = [
+    { id: "michelin", label: AWARD_LABELS.michelin, show: showMichelin },
+    { id: "worlds50", label: AWARD_LABELS.worlds50, show: showWorlds50 },
+    { id: "bestchef", label: AWARD_LABELS.bestchef, show: showBestChef },
+    { id: "jamesbeard", label: AWARD_LABELS.jamesbeard, show: showJamesBeard },
+  ].filter((a) => a.show);
+
+  const toggle = (id: Filter) =>
+    setFilters((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+
+  const clearAll = () => setFilters(() => new Set());
+
+  const selectedAwards = awards.filter((a) => filters.has(a.id));
+  const noneSelected = filters.size === 0;
+
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      <div className="flex flex-wrap gap-1.5">
-        {filters.map((f) => (
-          <Button
-            key={f.id}
-            size="sm"
-            variant={filter === f.id ? "default" : "outline"}
-            onClick={() => setFilter(f.id)}
-            className="h-8 rounded-full text-xs"
-          >
-            {f.label}
-          </Button>
-        ))}
-      </div>
+    <div className="flex flex-wrap items-center gap-1.5">
+      <Button
+        size="sm"
+        variant={noneSelected ? "default" : "outline"}
+        onClick={clearAll}
+        className="h-8 rounded-full text-xs"
+      >
+        All
+      </Button>
+      {quick.map((f) => (
+        <Button
+          key={f.id}
+          size="sm"
+          variant={filters.has(f.id) ? "default" : "outline"}
+          onClick={() => toggle(f.id)}
+          className="h-8 rounded-full text-xs"
+        >
+          {f.label}
+        </Button>
+      ))}
+
+      {selectedAwards.map((a) => (
+        <Button
+          key={a.id}
+          size="sm"
+          variant="default"
+          onClick={() => toggle(a.id)}
+          className="h-8 gap-1 rounded-full text-xs"
+          title="Remove filter"
+        >
+          {a.label}
+          <X className="h-3 w-3 opacity-80" />
+        </Button>
+      ))}
+
+      {awards.length > 0 && (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button size="sm" variant="outline" className="h-8 gap-1.5 rounded-full text-xs">
+              <SlidersHorizontal className="h-3.5 w-3.5" />
+              Awards
+              {selectedAwards.length > 0 && (
+                <span className="ml-0.5 rounded-full bg-primary px-1.5 text-[10px] font-semibold text-primary-foreground">
+                  {selectedAwards.length}
+                </span>
+              )}
+              <ChevronDown className="h-3 w-3 opacity-70" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="w-56">
+            <DropdownMenuLabel>Filter by award</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            {awards.map((a) => (
+              <DropdownMenuCheckboxItem
+                key={a.id}
+                checked={filters.has(a.id)}
+                onCheckedChange={() => toggle(a.id)}
+                onSelect={(e) => e.preventDefault()}
+              >
+                {a.label}
+              </DropdownMenuCheckboxItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
     </div>
   );
 }
