@@ -64,6 +64,7 @@ type QuickFilter = "restaurants" | "bars" | "openToday";
 type AwardFilter = "michelin" | "worlds50" | "bestchef" | "jamesbeard";
 type Filter = QuickFilter | AwardFilter;
 type Sort = "ranked" | "nearest" | "nearMe" | "alphabetical";
+type Radius = "all" | "1" | "5" | "10";
 
 const MICHELIN_STAR_TIPS: Record<number, string> = {
   1: "One Michelin Star: A very good restaurant in its category.",
@@ -129,6 +130,7 @@ export function VenueResults({
 }: { data: ResultsData } & VenueResultsLoadMore) {
   const [filters, setFilters] = useState<Set<Filter>>(new Set());
   const [sort, setSort] = useState<Sort>("ranked");
+  const [radius, setRadius] = useState<Radius>("all");
   const { coords: userCoords, loading: locLoading, error: locError, requestLocation } = useNearMe();
 
   useEffect(() => {
@@ -136,6 +138,14 @@ export function VenueResults({
       requestLocation();
     }
   }, [sort, userCoords, locLoading, requestLocation]);
+
+  // Graceful fallback: if geolocation fails while "Nearest to Me" is selected,
+  // fall back to "Nearest to City Center" so the page is still useful.
+  useEffect(() => {
+    if (sort === "nearMe" && locError && !userCoords) {
+      setSort("nearest");
+    }
+  }, [sort, locError, userCoords]);
 
   const filtered = useMemo(() => {
     const center: [number, number] = [data.lat, data.lng];
@@ -155,6 +165,11 @@ export function VenueResults({
       if (awardChecks.length > 0 && !awardChecks.some((fn) => fn(v))) return false;
       return true;
     });
+    // Distance-range filter — only when sorting by user location.
+    if (sort === "nearMe" && userCoords && radius !== "all") {
+      const maxKm = Number(radius);
+      venues = venues.filter((v) => distKm(userCoords, [v.lat, v.lng]) <= maxKm);
+    }
     if (sort === "alphabetical") {
       venues = [...venues].sort((a, b) => a.name.localeCompare(b.name));
     } else if (sort === "nearest") {
@@ -167,7 +182,7 @@ export function VenueResults({
       );
     }
     return venues;
-  }, [data, filters, sort, userCoords]);
+  }, [data, filters, sort, userCoords, radius]);
 
   // Original 1..10 indices are based on the unfiltered order (restaurants then bars)
   const indexMap = useMemo(() => {
@@ -259,16 +274,31 @@ export function VenueResults({
                   <SelectItem value="alphabetical">Alphabetical</SelectItem>
                 </SelectContent>
               </Select>
+              {sort === "nearMe" && userCoords && (
+                <Select value={radius} onValueChange={(v) => setRadius(v as Radius)}>
+                  <SelectTrigger className="h-8 w-28 text-xs" title="Distance from you">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Any distance</SelectItem>
+                    <SelectItem value="1">Within 1 km</SelectItem>
+                    <SelectItem value="5">Within 5 km</SelectItem>
+                    <SelectItem value="10">Within 10 km</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
               {sort === "nearMe" && locLoading && (
                 <span className="flex items-center gap-1 text-xs text-muted-foreground">
                   <Loader2 className="h-3 w-3 animate-spin" /> Locating…
                 </span>
               )}
-              {sort === "nearMe" && locError && (
-                <span className="text-xs text-destructive">{locError}</span>
-              )}
             </div>
           </div>
+          {locError && (
+            <p className="mt-2 text-right text-xs text-muted-foreground">
+              {locError} Showing venues nearest to {data.city}'s center instead.
+            </p>
+          )}
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
             <VenueColumn title="Restaurants" accent={PIN_COLORS.restaurant} accentText="#1a1a1a" items={restaurants} indexMap={indexMap} userCoords={userCoords} />
             <VenueColumn title="Cocktail Bars" accent={PIN_COLORS.bar} accentText="#fff" items={bars} indexMap={indexMap} userCoords={userCoords} />
