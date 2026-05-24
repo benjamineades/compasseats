@@ -2,7 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import {
   MapPin, Star, Leaf, Utensils, Trophy, Award, ExternalLink,
   Instagram, Facebook, Globe, CalendarCheck, Clock, Info, ArrowUpDown,
-  ChevronDown, ChevronUp, Loader2,
+  ChevronDown, ChevronUp, Loader2, SlidersHorizontal, X,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +10,10 @@ import { Button } from "@/components/ui/button";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
+import {
+  DropdownMenu, DropdownMenuTrigger, DropdownMenuContent,
+  DropdownMenuCheckboxItem, DropdownMenuLabel, DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 import {
   Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,
 } from "@/components/ui/tooltip";
@@ -55,15 +59,9 @@ export type ResultsData = {
   venues: Venue[];
 };
 
-type Filter =
-  | "all"
-  | "restaurants"
-  | "bars"
-  | "michelin"
-  | "worlds50"
-  | "bestchef"
-  | "jamesbeard"
-  | "openToday";
+type QuickFilter = "restaurants" | "bars" | "openToday";
+type AwardFilter = "michelin" | "worlds50" | "bestchef" | "jamesbeard";
+type Filter = QuickFilter | AwardFilter;
 type Sort = "ranked" | "nearest" | "alphabetical";
 
 const MICHELIN_STAR_TIPS: Record<number, string> = {
@@ -136,19 +134,25 @@ export function VenueResults({
   hasMore,
   loadMoreError,
 }: { data: ResultsData } & VenueResultsLoadMore) {
-  const [filter, setFilter] = useState<Filter>("all");
+  const [filters, setFilters] = useState<Set<Filter>>(new Set());
   const [sort, setSort] = useState<Sort>("ranked");
 
   const filtered = useMemo(() => {
     const center: [number, number] = [data.lat, data.lng];
+    const wantRest = filters.has("restaurants");
+    const wantBars = filters.has("bars");
+    const wantOpen = filters.has("openToday");
+    const awardChecks: Array<(v: Venue) => boolean> = [];
+    if (filters.has("michelin")) awardChecks.push((v) => (v.michelinStars ?? 0) > 0);
+    if (filters.has("worlds50")) awardChecks.push(hasWorlds50);
+    if (filters.has("bestchef")) awardChecks.push(hasBestChef);
+    if (filters.has("jamesbeard")) awardChecks.push(hasJamesBeard);
+
     let venues = data.venues.filter((v) => {
-      if (filter === "restaurants") return v.category === "restaurant";
-      if (filter === "bars") return v.category === "cocktail bar";
-      if (filter === "michelin") return (v.michelinStars ?? 0) > 0;
-      if (filter === "worlds50") return hasWorlds50(v);
-      if (filter === "bestchef") return hasBestChef(v);
-      if (filter === "jamesbeard") return hasJamesBeard(v);
-      if (filter === "openToday") return parseHoursOpenToday(v.hours) === true;
+      if (wantRest && !wantBars && v.category !== "restaurant") return false;
+      if (wantBars && !wantRest && v.category !== "cocktail bar") return false;
+      if (wantOpen && parseHoursOpenToday(v.hours) !== true) return false;
+      if (awardChecks.length > 0 && !awardChecks.some((fn) => fn(v))) return false;
       return true;
     });
     if (sort === "alphabetical") {
@@ -159,7 +163,7 @@ export function VenueResults({
       );
     }
     return venues;
-  }, [data, filter, sort]);
+  }, [data, filters, sort]);
 
   // Original 1..10 indices are based on the unfiltered order (restaurants then bars)
   const indexMap = useMemo(() => {
@@ -215,8 +219,8 @@ export function VenueResults({
 
       <div className="sticky top-[70px] z-[60] -mx-6 mb-4 border-b border-border bg-background/80 px-6 py-3 backdrop-blur-md">
         <FilterBar
-          filter={filter}
-          setFilter={setFilter}
+          filters={filters}
+          setFilters={setFilters}
           showMichelin={michelinCount > 0}
           showWorlds50={worlds50Count > 0}
           showBestChef={bestChefCount > 0}
@@ -293,45 +297,114 @@ export function VenueResults({
   );
 }
 
+const AWARD_LABELS: Record<AwardFilter, string> = {
+  michelin: "Michelin Starred",
+  worlds50: "World's 50 Best",
+  bestchef: "Best Chef Awards",
+  jamesbeard: "James Beard",
+};
+
 function FilterBar({
-  filter, setFilter, showMichelin, showWorlds50, showBestChef, showJamesBeard,
+  filters, setFilters, showMichelin, showWorlds50, showBestChef, showJamesBeard,
 }: {
-  filter: Filter; setFilter: (f: Filter) => void;
+  filters: Set<Filter>;
+  setFilters: (updater: (prev: Set<Filter>) => Set<Filter>) => void;
   showMichelin: boolean; showWorlds50: boolean;
   showBestChef: boolean; showJamesBeard: boolean;
 }) {
-  const all: { id: Filter; label: string }[] = [
-    { id: "all", label: "All" },
+  const quick: { id: QuickFilter; label: string }[] = [
     { id: "restaurants", label: "Restaurants" },
     { id: "bars", label: "Cocktail Bars" },
-    { id: "michelin", label: "Michelin Starred" },
-    { id: "worlds50", label: "World's 50 Best" },
-    { id: "bestchef", label: "Best Chef Awards" },
-    { id: "jamesbeard", label: "James Beard" },
     { id: "openToday", label: "Open Today" },
   ];
-  const filters = all.filter((f) => {
-    if (f.id === "michelin") return showMichelin;
-    if (f.id === "worlds50") return showWorlds50;
-    if (f.id === "bestchef") return showBestChef;
-    if (f.id === "jamesbeard") return showJamesBeard;
-    return true;
-  });
+
+  const allAwards: { id: AwardFilter; label: string; show: boolean }[] = [
+    { id: "michelin", label: AWARD_LABELS.michelin, show: showMichelin },
+    { id: "worlds50", label: AWARD_LABELS.worlds50, show: showWorlds50 },
+    { id: "bestchef", label: AWARD_LABELS.bestchef, show: showBestChef },
+    { id: "jamesbeard", label: AWARD_LABELS.jamesbeard, show: showJamesBeard },
+  ];
+  const awards = allAwards.filter((a) => a.show);
+
+  const toggle = (id: Filter) =>
+    setFilters((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+
+  const clearAll = () => setFilters(() => new Set());
+
+  const selectedAwards = awards.filter((a) => filters.has(a.id));
+  const noneSelected = filters.size === 0;
+
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      <div className="flex flex-wrap gap-1.5">
-        {filters.map((f) => (
-          <Button
-            key={f.id}
-            size="sm"
-            variant={filter === f.id ? "default" : "outline"}
-            onClick={() => setFilter(f.id)}
-            className="h-8 rounded-full text-xs"
-          >
-            {f.label}
-          </Button>
-        ))}
-      </div>
+    <div className="flex flex-wrap items-center gap-1.5">
+      <Button
+        size="sm"
+        variant={noneSelected ? "default" : "outline"}
+        onClick={clearAll}
+        className="h-8 rounded-full text-xs"
+      >
+        All
+      </Button>
+      {quick.map((f) => (
+        <Button
+          key={f.id}
+          size="sm"
+          variant={filters.has(f.id) ? "default" : "outline"}
+          onClick={() => toggle(f.id)}
+          className="h-8 rounded-full text-xs"
+        >
+          {f.label}
+        </Button>
+      ))}
+
+      {selectedAwards.map((a) => (
+        <Button
+          key={a.id}
+          size="sm"
+          variant="default"
+          onClick={() => toggle(a.id)}
+          className="h-8 gap-1 rounded-full text-xs"
+          title="Remove filter"
+        >
+          {a.label}
+          <X className="h-3 w-3 opacity-80" />
+        </Button>
+      ))}
+
+      {awards.length > 0 && (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button size="sm" variant="outline" className="h-8 gap-1.5 rounded-full text-xs">
+              <SlidersHorizontal className="h-3.5 w-3.5" />
+              Awards
+              {selectedAwards.length > 0 && (
+                <span className="ml-0.5 rounded-full bg-primary px-1.5 text-[10px] font-semibold text-primary-foreground">
+                  {selectedAwards.length}
+                </span>
+              )}
+              <ChevronDown className="h-3 w-3 opacity-70" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="w-56">
+            <DropdownMenuLabel>Filter by award</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            {awards.map((a) => (
+              <DropdownMenuCheckboxItem
+                key={a.id}
+                checked={filters.has(a.id)}
+                onCheckedChange={() => toggle(a.id)}
+                onSelect={(e) => e.preventDefault()}
+              >
+                {a.label}
+              </DropdownMenuCheckboxItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
     </div>
   );
 }
