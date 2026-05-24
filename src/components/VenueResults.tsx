@@ -284,6 +284,9 @@ export function VenueResults({
               )}
             </div>
           )}
+          <p className="mt-8 text-center text-xs italic text-muted-foreground">
+            Results charted from Michelin Guide, World's 50 Best, and more. Showing {filtered.length} venue{filtered.length === 1 ? "" : "s"}.
+          </p>
         </>
       )}
     </TooltipProvider>
