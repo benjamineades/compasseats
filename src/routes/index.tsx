@@ -9,6 +9,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { CityAutocomplete, type CitySuggestion } from "@/components/CityAutocomplete";
 import { VenueResults, type ResultsData } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
+import { AwardMarquee } from "@/components/AwardMarquee";
+import { ExploreByAward } from "@/components/ExploreByAward";
 
 import { Compass, Wordmark, HeroCompass } from "@/components/Compass";
 import { TOP_CITIES } from "@/lib/cities";
@@ -92,6 +94,9 @@ function Index() {
 
   const data = results ?? mutation.data;
   const showHero = mutation.isSuccess && data && data.venues.length > 0;
+  const heroImageUrl = data
+    ? TOP_CITIES.find((c) => c.city.toLowerCase() === data.city.toLowerCase())?.imageUrl
+    : undefined;
 
   const resetSearch = () => {
     mutation.reset();
@@ -109,6 +114,7 @@ function Index() {
           city={data.city}
           country={data.country}
           blurb={data.cityBlurb}
+          imageUrl={heroImageUrl}
           back={{ onClick: resetSearch }}
         />
       )}
@@ -171,7 +177,9 @@ function Index() {
               <div className="mt-6 flex flex-col items-center gap-6">
                 <HeroCompass className="w-full max-w-[220px]" />
               </div>
+              <AwardMarquee />
               <PopularCities />
+              <ExploreByAward />
             </>
           )}
         </section>
@@ -255,9 +263,10 @@ function PopularCities() {
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
         {TOP_CITIES.map((c) => (
           <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
-            className="group rounded-lg border border-border bg-card px-3 py-2.5 text-left transition-colors hover:border-primary/50 hover:bg-accent">
+            className="group flex flex-col rounded-lg border border-border bg-card px-3 py-2.5 text-left transition-colors hover:border-primary/50 hover:bg-accent">
             <div className="text-sm font-medium text-foreground group-hover:text-accent-strong">{c.city}</div>
             <div className="text-xs text-muted-foreground">{c.country}</div>
+            <div className="mt-1 line-clamp-2 text-xs text-muted-foreground/80">{c.blurb}</div>
           </Link>
         ))}
       </div>

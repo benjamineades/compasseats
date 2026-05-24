@@ -141,6 +141,16 @@ function RootComponent() {
           <Wordmark className="!text-2xl" />
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent-strong">compasseats.com</p>
           <p className="text-sm text-muted-foreground">The world's best, wherever you are.</p>
+          <nav className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+            <a href="#" className="hover:text-accent-strong">About</a>
+            <span aria-hidden>·</span>
+            <a href="#" className="hover:text-accent-strong">Contact</a>
+            <span aria-hidden>·</span>
+            <a href="#" className="hover:text-accent-strong">Privacy</a>
+            <span aria-hidden>·</span>
+            <a href="#" className="hover:text-accent-strong">Terms</a>
+          </nav>
+          <p className="text-xs text-muted-foreground">© 2026 CompassEats. All rights reserved.</p>
         </div>
       </footer>
     </QueryClientProvider>

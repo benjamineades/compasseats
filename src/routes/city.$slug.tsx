@@ -106,6 +106,7 @@ function CityPage() {
         country={city.country}
         blurb={city.blurb}
         hueSeed={city.slug}
+        imageUrl={city.imageUrl}
         back={{ to: "/" }}
       />
 

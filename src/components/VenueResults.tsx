@@ -284,6 +284,9 @@ export function VenueResults({
               )}
             </div>
           )}
+          <p className="mt-8 text-center text-xs italic text-muted-foreground">
+            Results charted from Michelin Guide, World's 50 Best, and more. Showing {filtered.length} venue{filtered.length === 1 ? "" : "s"}.
+          </p>
         </>
       )}
     </TooltipProvider>
@@ -479,10 +482,10 @@ function VenueHeroImage({
     <div
       className="flex h-full w-full items-center justify-center"
       style={{
-        background: `linear-gradient(135deg, ${accent} 0%, ${accent}80 100%)`,
+        background: `radial-gradient(circle at 30% 25%, ${accent}cc 0%, ${accent} 45%, ${accent}66 100%)`,
       }}
     >
-      <span className="font-display text-5xl font-light" style={{ color: accentText }}>
+      <span className="font-display text-3xl font-light tracking-wide" style={{ color: accentText }}>
         {initials}
       </span>
     </div>

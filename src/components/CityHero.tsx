@@ -9,6 +9,7 @@ type Props = {
   country?: string;
   blurb?: string;
   hueSeed?: string;
+  imageUrl?: string;
   back: { to: "/"; label?: string } | { onClick: () => void; label?: string };
   children?: ReactNode;
 };
@@ -54,14 +55,16 @@ function hueFromString(s: string): number {
   return h;
 }
 
-export function CityHero({ city, country, blurb, hueSeed, back, children }: Props) {
+export function CityHero({ city, country, blurb, hueSeed, imageUrl, back, children }: Props) {
   const query = useQuery({
     queryKey: ["city-hero", city, country ?? ""],
     queryFn: () => resolveCityImage(city, country),
     staleTime: 1000 * 60 * 60 * 24,
+    enabled: !imageUrl,
   });
   const summary = query.data;
-  const image = summary?.originalimage?.source ?? summary?.thumbnail?.source ?? null;
+  const image =
+    imageUrl ?? summary?.originalimage?.source ?? summary?.thumbnail?.source ?? null;
   const descriptor = blurb;
   const hue = hueFromString(hueSeed ?? city);
 
@@ -79,10 +82,10 @@ export function CityHero({ city, country, blurb, hueSeed, back, children }: Prop
           src={image}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-luminosity"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         />
       )}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/50" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/40" />
       <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:24px_24px]" />
       <div className="relative mx-auto max-w-5xl px-6 py-12 md:py-16">
         <div className="flex items-center justify-between">
