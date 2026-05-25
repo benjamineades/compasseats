@@ -695,6 +695,8 @@ function summarizeAccolade(v: Venue): string | undefined {
   if (v.jamesBeardAward) return `James Beard: ${v.jamesBeardAward.name} (${v.jamesBeardAward.year})`;
   if (v.bestChefAward)
     return `Best Chef Awards ${"🔪".repeat(v.bestChefAward.knives)} (${v.bestChefAward.year})`;
+  if (v.oadAward)
+    return `OAD ${v.oadAward.region} #${v.oadAward.rank} (${v.oadAward.year})`;
   if (v.bibGourmand) return "Michelin Bib Gourmand";
   if (v.michelinGreenStar) return "Michelin Green Star";
   return undefined;
