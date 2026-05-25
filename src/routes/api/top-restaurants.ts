@@ -911,7 +911,9 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
             }),
           };
           const response = Response.json(normalized);
-          if (isInitialSearch && edgeCache) {
+          // Never cache an empty venues result — that locks the city into a
+          // permanent zero-results state for 24h on the edge.
+          if (isInitialSearch && edgeCache && normalized.venues.length > 0) {
             try {
               const cacheable = new Response(response.clone().body, response);
               cacheable.headers.set("Cache-Control", "public, max-age=86400");
