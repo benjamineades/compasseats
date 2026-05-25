@@ -540,6 +540,7 @@ const resultsSchema = z.object({
         jamesBeardAward: z.object({ name: z.string(), year: integerValue }).nullish(),
         bestChefAward: z.object({ knives: integerValue, year: integerValue }).nullish(),
         pinnacleAward: z.object({ pins: integerValue, year: integerValue }).nullish(),
+        oadAward: z.object({ rank: integerValue, year: integerValue, region: z.string() }).nullish(),
         chef: z.string().nullish(),
         signatureDish: z.string().nullish(),
         accoladeOverview: z.string().nullish(),
