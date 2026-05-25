@@ -813,6 +813,17 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
           const keptVenues = orderedVenues.filter((_, i) => keepMask[i]);
           const keptSheets = sheetAccolades.filter((_, i) => keepMask[i]);
           const keptPlaces = placeLookups.filter((_, i) => keepMask[i]);
+          console.log(
+            `[top-restaurants] ${cityQuery}: orderedVenues=${orderedVenues.length}, kept=${keptVenues.length}, dropped reasons=${orderedVenues
+              .map((v, i) => {
+                const p = placeLookups[i];
+                if (!p) return `${v.name}:no-place`;
+                if (p.businessStatus && p.businessStatus !== "OPERATIONAL") return `${v.name}:closed`;
+                if (!placeIsInCity(p, parsed.city, object.country, parsed.region ?? "")) return `${v.name}:not-in-city(${p.formattedAddress})`;
+                return `${v.name}:kept`;
+              })
+              .join(" | ")}`,
+          );
 
           // Resolve images: venue site OG image → AI URL → Wikipedia →
           // Google Places photo (already fetched above) → static generic.
