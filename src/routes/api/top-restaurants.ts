@@ -54,13 +54,17 @@ const buildPrestigeSentence = (
     const { name, year } = sheet.spiritedAward;
     parts.push(`Spirited Award — ${name} (${year}).`);
   }
+  if (sheet.oadAward) {
+    const { rank, year, region } = sheet.oadAward;
+    parts.push(`#${rank} on OAD ${region} ${year}.`);
+  }
   void category;
   void ordinal;
   return parts.length ? parts.join(" ") : undefined;
 };
 
 const QUALITATIVE_FORBIDDEN_PATTERNS = [
-  /\b(?:michelin|bib\s+gourmand|world'?s\s+50\s+best|50\s+best|james\s+beard|best\s+chef|pinnacle|spirited|tales\s+of\s+the\s+cocktail)\b/i,
+  /\b(?:michelin|bib\s+gourmand|world'?s\s+50\s+best|50\s+best|james\s+beard|best\s+chef|pinnacle|spirited|tales\s+of\s+the\s+cocktail|oad|opinionated\s+about\s+dining)\b/i,
   /\b(?:award|awards|awarded|winner|winning|rank|ranked|ranking|guide|stars?|starred|knives?|pins?)\b/i,
   /#\s*\d+/,
   /\b(?:19|20)\d{2}\b/,
