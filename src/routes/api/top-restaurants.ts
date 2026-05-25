@@ -694,7 +694,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
 
 NAME SOURCE — STRICT: Every venue you return MUST come from either (a) the canonical accolade list above or (b) the supplementary allow-list above. Do NOT invent venue names. Do NOT pull venues from your training data. If neither list provides enough names to fill ${limit} slots in a category, return fewer venues in that category — better to return 6 real venues than 10 with fabricated names.
 
-ACCOLADES — STRICT RULE: Do NOT populate michelinStars, michelinGreenStar, bibGourmand, worldsBest50Restaurants, worldsBest50Bars, jamesBeardAward, bestChefAward, pinnacleAward, or spiritedAward. The server enriches these from the linked spreadsheet. Leave all accolade fields empty/null.
+ACCOLADES — STRICT RULE: Do NOT populate michelinStars, michelinGreenStar, bibGourmand, worldsBest50Restaurants, worldsBest50Bars, jamesBeardAward, bestChefAward, pinnacleAward, spiritedAward, or oadAward. The server enriches these from the linked spreadsheet. Leave all accolade fields empty/null.
 
 RANKING PRIORITY — RESTAURANTS (apply in this STRICT order; the canonical accolade list above is the source of truth):
   1. Venues on the MOST RECENT World's 50 Best Restaurants edition (from the seed list above).
@@ -703,9 +703,10 @@ RANKING PRIORITY — RESTAURANTS (apply in this STRICT order; the canonical acco
   4. Michelin 2-star restaurants.
   5. Best Chef Awards 2-Knives winners.
   6. James Beard Award winners (from the seed list).
-  7. Michelin 1-star restaurants.
-  8. Best Chef Awards 1-Knife winners.
-  9. Fallback when the seed list is exhausted: highest-rated on Yelp if ${cityQuery} is in the United States (then Trip Advisor); otherwise highest-rated on Trip Advisor (then Yelp). No accolades for these.
+  7. OAD (Opinionated About Dining) listed restaurants (from the seed list), most recent edition first, lower rank wins.
+  8. Michelin 1-star restaurants.
+  9. Best Chef Awards 1-Knife winners.
+  10. Fallback when the seed list is exhausted: highest-rated on Yelp if ${cityQuery} is in the United States (then Trip Advisor); otherwise highest-rated on Trip Advisor (then Yelp). No accolades for these.
       Pick these fallback restaurants ONLY from the supplementary allow-list above, in the order they appear there. Do not reorder or substitute.
 
 RANKING PRIORITY — COCKTAIL BARS:
