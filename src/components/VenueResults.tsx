@@ -41,6 +41,7 @@ export type Venue = {
   jamesBeardAward?: { name: string; year: number };
   bestChefAward?: { knives: number; year: number };
   pinnacleAward?: { pins: number; year: number };
+  oadAward?: { rank: number; year: number; region: string };
   chef?: string;
   signatureDish?: string;
   accoladeOverview?: string;
