@@ -585,7 +585,10 @@ export const Route = createFileRoute("/api/top-restaurants")({
         const limitForKey = parsed.limit ?? 10;
         const isInitialSearch = !parsed.exclude || parsed.exclude.length === 0;
         const cacheKey =
-          [parsed.city, parsed.region ?? "", parsed.country ?? "", String(limitForKey)]
+          // Bump CACHE_VERSION whenever the response shape or generation
+          // logic changes meaningfully — old empty/incorrect cached entries
+          // (e.g. the Copenhagen zero-venues fix) will be invalidated.
+          ["v2", parsed.city, parsed.region ?? "", parsed.country ?? "", String(limitForKey)]
             .map((s) => s.trim().toLowerCase())
             .join("|");
         const cacheRequest = new Request(
@@ -686,13 +689,23 @@ export const Route = createFileRoute("/api/top-restaurants")({
               ? `\n\nSUPPLEMENTARY VENUE ALLOW-LIST (top results scraped live from ${sourceLabel} for ${cityQuery}). When the canonical accolade list above does not fill all ${limit} slots in a category, you MUST pick names from this allow-list — do NOT invent venue names or pull from training data. Use the EXACT names shown.\n\nRESTAURANTS:\n${restNames || "  (none returned)"}\n\nCOCKTAIL BARS:\n${barNames || "  (none returned)"}`
               : `\n\nNo supplementary venues were available from Yelp or Trip Advisor for ${cityQuery}. If the canonical accolade list does not fill ${limit} slots in a category, return fewer venues for that category rather than inventing names.`;
 
+          // When BOTH the canonical accolade seed AND the live supplementary
+          // scrape come back empty (e.g. Firecrawl is down, or the city is
+          // missing from both sources), the strict "only use listed names"
+          // rule causes the model to return 0 venues. In that narrow case,
+          // fall back to model knowledge so the user still sees results.
+          const seedEmpty = seedVenues.length === 0;
+          const supplementaryEmpty = !restNames && !barNames;
+          const nameSourceBlock =
+            seedEmpty && supplementaryEmpty
+              ? `\n\nNAME SOURCE — FALLBACK: No canonical accolade venues and no supplementary allow-list could be sourced for ${cityQuery}. Use your training knowledge to list the most acclaimed, currently operating restaurants and cocktail bars in ${cityQuery}. Prefer venues with Michelin stars, World's 50 Best recognition, or strong international/local reputation. Do not invent fictional names.`
+              : `\n\nNAME SOURCE — STRICT: Every venue you return MUST come from either (a) the canonical accolade list above or (b) the supplementary allow-list above. Do NOT invent venue names. Do NOT pull venues from your training data. If neither list provides enough names to fill ${limit} slots in a category, return fewer venues in that category — better to return 6 real venues than 10 with fabricated names.`;
+
           const { object } = await generateObject({
             model,
             schema: resultsSchema,
             experimental_repairText: async ({ text }) => sanitizeAiJson(text),
-            prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}${seedBlock}${supplementaryBlock}
-
-NAME SOURCE — STRICT: Every venue you return MUST come from either (a) the canonical accolade list above or (b) the supplementary allow-list above. Do NOT invent venue names. Do NOT pull venues from your training data. If neither list provides enough names to fill ${limit} slots in a category, return fewer venues in that category — better to return 6 real venues than 10 with fabricated names.
+            prompt: `Today is ${currentMonth} ${currentYear}. List the ${limit} top restaurants AND the ${limit} top cocktail bars in ${cityQuery} (${limit * 2} venues total).${exclusionBlock}${seedBlock}${supplementaryBlock}${nameSourceBlock}
 
 ACCOLADES — STRICT RULE: Do NOT populate michelinStars, michelinGreenStar, bibGourmand, worldsBest50Restaurants, worldsBest50Bars, jamesBeardAward, bestChefAward, pinnacleAward, spiritedAward, or oadAward. The server enriches these from the linked spreadsheet. Leave all accolade fields empty/null.
 
@@ -747,6 +760,9 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
           });
           const aiRestaurants = object.venues.filter((v) => v.category === "restaurant");
           const aiBars = object.venues.filter((v) => v.category === "cocktail bar");
+          console.log(
+            `[top-restaurants] ${cityQuery}: seed=${cityAccolades.length}, supp.rest=${supplementary.restaurants.length}, supp.bars=${supplementary.bars.length}, ai.rest=${aiRestaurants.length}, ai.bars=${aiBars.length}`,
+          );
           // Score each venue using the strict priority rules so the order is
           // deterministic regardless of what order the AI returned things in.
           const sheetFor = async (v: { name: string }) =>
@@ -810,6 +826,17 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
           const keptVenues = orderedVenues.filter((_, i) => keepMask[i]);
           const keptSheets = sheetAccolades.filter((_, i) => keepMask[i]);
           const keptPlaces = placeLookups.filter((_, i) => keepMask[i]);
+          console.log(
+            `[top-restaurants] ${cityQuery}: orderedVenues=${orderedVenues.length}, kept=${keptVenues.length}, dropped reasons=${orderedVenues
+              .map((v, i) => {
+                const p = placeLookups[i];
+                if (!p) return `${v.name}:no-place`;
+                if (p.businessStatus && p.businessStatus !== "OPERATIONAL") return `${v.name}:closed`;
+                if (!placeIsInCity(p, parsed.city, object.country, parsed.region ?? "")) return `${v.name}:not-in-city(${p.formattedAddress})`;
+                return `${v.name}:kept`;
+              })
+              .join(" | ")}`,
+          );
 
           // Resolve images: venue site OG image → AI URL → Wikipedia →
           // Google Places photo (already fetched above) → static generic.
@@ -887,7 +914,9 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
             }),
           };
           const response = Response.json(normalized);
-          if (isInitialSearch && edgeCache) {
+          // Never cache an empty venues result — that locks the city into a
+          // permanent zero-results state for 24h on the edge.
+          if (isInitialSearch && edgeCache && normalized.venues.length > 0) {
             try {
               const cacheable = new Response(response.clone().body, response);
               cacheable.headers.set("Cache-Control", "public, max-age=86400");
