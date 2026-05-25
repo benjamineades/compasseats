@@ -5,6 +5,7 @@ const AWARDS: { name: string; description: string }[] = [
   { name: "James Beard Foundation", description: "America's most respected culinary honors." },
   { name: "Best Chef Awards", description: "The chef community's vote on the world's best." },
   { name: "Spirited Awards", description: "Tales of the Cocktail's tribute to the bar industry." },
+  { name: "Opinionated About Dining", description: "A community-driven ranking from the world's most serious diners." },
 ];
 
 export function ExploreByAward() {
