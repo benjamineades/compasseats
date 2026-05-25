@@ -662,6 +662,8 @@ export const Route = createFileRoute("/api/top-restaurants")({
                 tags.push(`Pinnacle Guide ${a.pinnacleAward.pins}-pin (${a.pinnacleAward.year})`);
               if (a.spiritedAward)
                 tags.push(`Spirited Award: ${a.spiritedAward.name} (${a.spiritedAward.year})`);
+              if (a.oadAward)
+                tags.push(`OAD ${a.oadAward.region} #${a.oadAward.rank} (${a.oadAward.year})`);
               return `  • ${a.name} — ${tags.join("; ")}`;
             })
             .slice(0, 60)
