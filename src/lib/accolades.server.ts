@@ -16,6 +16,7 @@ export type AccoladeEntry = {
   bestChefAward?: { knives: number; year: number };
   pinnacleAward?: { pins: number; year: number };
   spiritedAward?: { name: string; year: number };
+  oadAward?: { rank: number; year: number; region: string };
   // Locale hints used to disambiguate when multiple venues share a name.
   city?: string;
   country?: string;
