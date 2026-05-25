@@ -881,6 +881,7 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
                 hours: v.hours ?? undefined,
                 jamesBeardAward: sheet?.jamesBeardAward ?? undefined,
                 bestChefAward: sheet?.bestChefAward ?? undefined,
+                oadAward: sheet?.oadAward ?? undefined,
                 imageUrl: resolvedImages[i],
               };
             }),
