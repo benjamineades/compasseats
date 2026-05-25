@@ -747,6 +747,9 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
           });
           const aiRestaurants = object.venues.filter((v) => v.category === "restaurant");
           const aiBars = object.venues.filter((v) => v.category === "cocktail bar");
+          console.log(
+            `[top-restaurants] ${cityQuery}: seed=${cityAccolades.length}, supp.rest=${supplementary.restaurants.length}, supp.bars=${supplementary.bars.length}, ai.rest=${aiRestaurants.length}, ai.bars=${aiBars.length}`,
+          );
           // Score each venue using the strict priority rules so the order is
           // deterministic regardless of what order the AI returned things in.
           const sheetFor = async (v: { name: string }) =>
