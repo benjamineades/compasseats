@@ -386,6 +386,14 @@ const mergeEntries = (
     ) {
       merged.spiritedAward = e.spiritedAward;
     }
+    if (
+      e.oadAward &&
+      (!merged.oadAward ||
+        e.oadAward.year > merged.oadAward.year ||
+        (e.oadAward.year === merged.oadAward.year && e.oadAward.rank < merged.oadAward.rank))
+    ) {
+      merged.oadAward = e.oadAward;
+    }
   }
   return merged;
 };
