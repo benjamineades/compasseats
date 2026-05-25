@@ -5,6 +5,7 @@ const AWARDS = [
   "James Beard Foundation",
   "Best Chef Awards",
   "Tales of the Cocktail Spirited Awards",
+  "Opinionated About Dining",
 ];
 
 function Row() {

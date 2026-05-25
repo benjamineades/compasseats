@@ -41,6 +41,7 @@ export type Venue = {
   jamesBeardAward?: { name: string; year: number };
   bestChefAward?: { knives: number; year: number };
   pinnacleAward?: { pins: number; year: number };
+  oadAward?: { rank: number; year: number; region: string };
   chef?: string;
   signatureDish?: string;
   accoladeOverview?: string;
@@ -61,7 +62,7 @@ export type ResultsData = {
 };
 
 type QuickFilter = "restaurants" | "bars" | "openToday";
-type AwardFilter = "michelin" | "worlds50" | "bestchef" | "jamesbeard";
+type AwardFilter = "michelin" | "worlds50" | "bestchef" | "jamesbeard" | "oad";
 type Filter = QuickFilter | AwardFilter;
 type Sort = "ranked" | "nearest" | "nearMe" | "alphabetical";
 type Radius = "all" | "1" | "5" | "10";
@@ -93,6 +94,9 @@ function hasBestChef(v: Venue) {
 }
 function hasJamesBeard(v: Venue) {
   return !!v.jamesBeardAward;
+}
+function hasOad(v: Venue) {
+  return !!v.oadAward;
 }
 
 function parseHoursOpenToday(hours?: string): boolean | null {
@@ -157,6 +161,7 @@ export function VenueResults({
     if (filters.has("worlds50")) awardChecks.push(hasWorlds50);
     if (filters.has("bestchef")) awardChecks.push(hasBestChef);
     if (filters.has("jamesbeard")) awardChecks.push(hasJamesBeard);
+    if (filters.has("oad")) awardChecks.push(hasOad);
 
     let venues = data.venues.filter((v) => {
       if (wantRest && !wantBars && v.category !== "restaurant") return false;
@@ -198,6 +203,7 @@ export function VenueResults({
   const worlds50Count = data.venues.filter(hasWorlds50).length;
   const bestChefCount = data.venues.filter(hasBestChef).length;
   const jamesBeardCount = data.venues.filter(hasJamesBeard).length;
+  const oadCount = data.venues.filter(hasOad).length;
   const noPrestige = michelinCount === 0 && worlds50Count === 0;
 
   const pins: Pin[] = filtered.map((v) => {
@@ -244,6 +250,7 @@ export function VenueResults({
           showWorlds50={worlds50Count > 0}
           showBestChef={bestChefCount > 0}
           showJamesBeard={jamesBeardCount > 0}
+          showOad={oadCount > 0}
         />
       </div>
 
@@ -345,15 +352,16 @@ const AWARD_LABELS: Record<AwardFilter, string> = {
   worlds50: "World's 50 Best",
   bestchef: "Best Chef Awards",
   jamesbeard: "James Beard",
+  oad: "OAD",
 };
 
 function FilterBar({
-  filters, setFilters, showMichelin, showWorlds50, showBestChef, showJamesBeard,
+  filters, setFilters, showMichelin, showWorlds50, showBestChef, showJamesBeard, showOad,
 }: {
   filters: Set<Filter>;
   setFilters: (updater: (prev: Set<Filter>) => Set<Filter>) => void;
   showMichelin: boolean; showWorlds50: boolean;
-  showBestChef: boolean; showJamesBeard: boolean;
+  showBestChef: boolean; showJamesBeard: boolean; showOad: boolean;
 }) {
   const quick: { id: QuickFilter; label: string }[] = [
     { id: "restaurants", label: "Restaurants" },
@@ -366,6 +374,7 @@ function FilterBar({
     { id: "worlds50", label: AWARD_LABELS.worlds50, show: showWorlds50 },
     { id: "bestchef", label: AWARD_LABELS.bestchef, show: showBestChef },
     { id: "jamesbeard", label: AWARD_LABELS.jamesbeard, show: showJamesBeard },
+    { id: "oad", label: AWARD_LABELS.oad, show: showOad },
   ];
   const awards = allAwards.filter((a) => a.show);
 
@@ -686,6 +695,8 @@ function summarizeAccolade(v: Venue): string | undefined {
   if (v.jamesBeardAward) return `James Beard: ${v.jamesBeardAward.name} (${v.jamesBeardAward.year})`;
   if (v.bestChefAward)
     return `Best Chef Awards ${"🔪".repeat(v.bestChefAward.knives)} (${v.bestChefAward.year})`;
+  if (v.oadAward)
+    return `OAD ${v.oadAward.region} #${v.oadAward.rank} (${v.oadAward.year})`;
   if (v.bibGourmand) return "Michelin Bib Gourmand";
   if (v.michelinGreenStar) return "Michelin Green Star";
   return undefined;
@@ -795,6 +806,21 @@ function Accolades({ v }: { v: Venue }) {
         Best Chef {bc.knives}-Knives ({bc.year})
         <InfoTip
           text={`The Best Chef Awards ${bc.year} rated this restaurant's chef ${bc.knives} of 3 knives — a top global recognition by an international jury of chefs and critics.`}
+        />
+      </span>,
+    );
+  }
+  if (v.category === "restaurant" && v.oadAward) {
+    const o = v.oadAward;
+    items.push(
+      <span
+        key="oad"
+        className="inline-flex items-center gap-1 rounded-md border border-teal-500/40 bg-teal-500/10 px-1.5 py-0.5 text-xs font-medium text-teal-400"
+      >
+        <Trophy className="h-3 w-3" />
+        OAD {o.region} #{o.rank} ({o.year})
+        <InfoTip
+          text={`Opinionated About Dining (OAD) ${o.region} ${o.year} — ranked #${o.rank}. A respected community-driven guide built from detailed reviews by serious diners worldwide.`}
         />
       </span>,
     );

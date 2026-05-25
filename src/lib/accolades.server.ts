@@ -16,6 +16,7 @@ export type AccoladeEntry = {
   bestChefAward?: { knives: number; year: number };
   pinnacleAward?: { pins: number; year: number };
   spiritedAward?: { name: string; year: number };
+  oadAward?: { rank: number; year: number; region: string };
   // Locale hints used to disambiguate when multiple venues share a name.
   city?: string;
   country?: string;
@@ -132,13 +133,23 @@ const splitMichelinLocation = (loc: string) => {
 };
 
 const buildIndex = async (): Promise<CacheShape> => {
-  const [michelin, w50, jba, chef, pinnacle, spirited] = await Promise.all([
+  const OAD_SHEETS = [
+    "OAD North America 2026",
+    "OAD South America 2026",
+    "OAD Asia 2025",
+    "OAD Europe 2025",
+    "OAD Japan 2025",
+    "OAD North America 2025",
+    "OAD South America 2025",
+  ] as const;
+  const [michelin, w50, jba, chef, pinnacle, spirited, ...oadSheets] = await Promise.all([
     fetchSheet("Michelin Guide"),
     fetchSheet("World's 50 Best"),
     fetchSheet("James Beard Awards"),
     fetchSheet("Best Chef Awards"),
     fetchSheet("Pinnacle Guide"),
     fetchSheet("Spirited Awards"),
+    ...OAD_SHEETS.map((name) => fetchSheet(name).catch(() => [] as string[][])),
   ]);
 
   const byName = new Map<string, AccoladeEntry[]>();
@@ -241,6 +252,28 @@ const buildIndex = async (): Promise<CacheShape> => {
       city: normalizeLocale(city),
       country: normalizeLocale(country),
     });
+  }
+
+  // OAD (Opinionated About Dining): one sheet per region/year.
+  // Columns: [Ranking, Restaurant Name, City, State, Country, Cuisine Type]
+  for (let s = 0; s < OAD_SHEETS.length; s++) {
+    const sheetName = OAD_SHEETS[s];
+    const match = sheetName.match(/^OAD\s+(.+?)\s+(\d{4})$/);
+    if (!match) continue;
+    const region = match[1];
+    const year = Number(match[2]);
+    for (const row of oadSheets[s] ?? []) {
+      const [rankStr, restaurant, city, , country] = row;
+      if (!restaurant) continue;
+      const rank = Number(rankStr);
+      if (!Number.isFinite(rank) || !Number.isFinite(year)) continue;
+      push(restaurant, {
+        displayName: restaurant,
+        oadAward: { rank, year, region },
+        city: normalizeLocale(city),
+        country: normalizeLocale(country),
+      });
+    }
   }
 
   return { fetchedAt: Date.now(), byName };
@@ -352,6 +385,14 @@ const mergeEntries = (
       (!merged.spiritedAward || e.spiritedAward.year > merged.spiritedAward.year)
     ) {
       merged.spiritedAward = e.spiritedAward;
+    }
+    if (
+      e.oadAward &&
+      (!merged.oadAward ||
+        e.oadAward.year > merged.oadAward.year ||
+        (e.oadAward.year === merged.oadAward.year && e.oadAward.rank < merged.oadAward.rank))
+    ) {
+      merged.oadAward = e.oadAward;
     }
   }
   return merged;
