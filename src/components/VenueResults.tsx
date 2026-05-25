@@ -810,6 +810,21 @@ function Accolades({ v }: { v: Venue }) {
       </span>,
     );
   }
+  if (v.category === "restaurant" && v.oadAward) {
+    const o = v.oadAward;
+    items.push(
+      <span
+        key="oad"
+        className="inline-flex items-center gap-1 rounded-md border border-teal-500/40 bg-teal-500/10 px-1.5 py-0.5 text-xs font-medium text-teal-400"
+      >
+        <Trophy className="h-3 w-3" />
+        OAD {o.region} #{o.rank} ({o.year})
+        <InfoTip
+          text={`Opinionated About Dining (OAD) ${o.region} ${o.year} — ranked #${o.rank}. A respected community-driven guide built from detailed reviews by serious diners worldwide.`}
+        />
+      </span>,
+    );
+  }
   if (items.length === 0) return null;
   return <div className="mt-2 flex flex-wrap items-center gap-1.5">{items}</div>;
 }
