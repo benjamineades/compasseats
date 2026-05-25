@@ -161,6 +161,7 @@ export function VenueResults({
     if (filters.has("worlds50")) awardChecks.push(hasWorlds50);
     if (filters.has("bestchef")) awardChecks.push(hasBestChef);
     if (filters.has("jamesbeard")) awardChecks.push(hasJamesBeard);
+    if (filters.has("oad")) awardChecks.push(hasOad);
 
     let venues = data.venues.filter((v) => {
       if (wantRest && !wantBars && v.category !== "restaurant") return false;
@@ -202,6 +203,7 @@ export function VenueResults({
   const worlds50Count = data.venues.filter(hasWorlds50).length;
   const bestChefCount = data.venues.filter(hasBestChef).length;
   const jamesBeardCount = data.venues.filter(hasJamesBeard).length;
+  const oadCount = data.venues.filter(hasOad).length;
   const noPrestige = michelinCount === 0 && worlds50Count === 0;
 
   const pins: Pin[] = filtered.map((v) => {
@@ -248,6 +250,7 @@ export function VenueResults({
           showWorlds50={worlds50Count > 0}
           showBestChef={bestChefCount > 0}
           showJamesBeard={jamesBeardCount > 0}
+          showOad={oadCount > 0}
         />
       </div>
 
@@ -349,15 +352,16 @@ const AWARD_LABELS: Record<AwardFilter, string> = {
   worlds50: "World's 50 Best",
   bestchef: "Best Chef Awards",
   jamesbeard: "James Beard",
+  oad: "OAD",
 };
 
 function FilterBar({
-  filters, setFilters, showMichelin, showWorlds50, showBestChef, showJamesBeard,
+  filters, setFilters, showMichelin, showWorlds50, showBestChef, showJamesBeard, showOad,
 }: {
   filters: Set<Filter>;
   setFilters: (updater: (prev: Set<Filter>) => Set<Filter>) => void;
   showMichelin: boolean; showWorlds50: boolean;
-  showBestChef: boolean; showJamesBeard: boolean;
+  showBestChef: boolean; showJamesBeard: boolean; showOad: boolean;
 }) {
   const quick: { id: QuickFilter; label: string }[] = [
     { id: "restaurants", label: "Restaurants" },
@@ -370,6 +374,7 @@ function FilterBar({
     { id: "worlds50", label: AWARD_LABELS.worlds50, show: showWorlds50 },
     { id: "bestchef", label: AWARD_LABELS.bestchef, show: showBestChef },
     { id: "jamesbeard", label: AWARD_LABELS.jamesbeard, show: showJamesBeard },
+    { id: "oad", label: AWARD_LABELS.oad, show: showOad },
   ];
   const awards = allAwards.filter((a) => a.show);
 
