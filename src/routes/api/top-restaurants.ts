@@ -585,7 +585,10 @@ export const Route = createFileRoute("/api/top-restaurants")({
         const limitForKey = parsed.limit ?? 10;
         const isInitialSearch = !parsed.exclude || parsed.exclude.length === 0;
         const cacheKey =
-          [parsed.city, parsed.region ?? "", parsed.country ?? "", String(limitForKey)]
+          // Bump CACHE_VERSION whenever the response shape or generation
+          // logic changes meaningfully — old empty/incorrect cached entries
+          // (e.g. the Copenhagen zero-venues fix) will be invalidated.
+          ["v2", parsed.city, parsed.region ?? "", parsed.country ?? "", String(limitForKey)]
             .map((s) => s.trim().toLowerCase())
             .join("|");
         const cacheRequest = new Request(
