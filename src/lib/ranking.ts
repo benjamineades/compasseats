@@ -25,6 +25,12 @@ export const restaurantScore = (
   if (s.michelinStars === 2) return 8_000_000;
   if (s.bestChefAward?.knives === 2) return 7_500_000 + s.bestChefAward.year;
   if (s.jamesBeardAward) return 7_000_000 + s.jamesBeardAward.year;
+  // OAD (Opinionated About Dining) — mid-tier, alongside James Beard.
+  // Slightly below JBA so existing ranking tests stay stable. Lower rank wins
+  // first; recent year as tiebreaker.
+  if (s.oadAward) {
+    return 6_800_000 + Math.max(0, 200 - s.oadAward.rank) * 10 + s.oadAward.year;
+  }
   if (s.michelinStars === 1) return 6_500_000;
   if (s.bestChefAward?.knives === 1) return 6_000_000 + s.bestChefAward.year;
   if (w50) return 5_000_000 + w50.year * 100 + (100 - w50.rank);
