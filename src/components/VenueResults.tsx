@@ -62,7 +62,7 @@ export type ResultsData = {
 };
 
 type QuickFilter = "restaurants" | "bars" | "openToday";
-type AwardFilter = "michelin" | "worlds50" | "bestchef" | "jamesbeard";
+type AwardFilter = "michelin" | "worlds50" | "bestchef" | "jamesbeard" | "oad";
 type Filter = QuickFilter | AwardFilter;
 type Sort = "ranked" | "nearest" | "nearMe" | "alphabetical";
 type Radius = "all" | "1" | "5" | "10";
@@ -94,6 +94,9 @@ function hasBestChef(v: Venue) {
 }
 function hasJamesBeard(v: Venue) {
   return !!v.jamesBeardAward;
+}
+function hasOad(v: Venue) {
+  return !!v.oadAward;
 }
 
 function parseHoursOpenToday(hours?: string): boolean | null {
