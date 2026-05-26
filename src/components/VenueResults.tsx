@@ -123,6 +123,7 @@ export type VenueResultsLoadMore = {
   isLoadingMore?: boolean;
   hasMore?: boolean;
   loadMoreError?: string | null;
+  secondary?: boolean;
 };
 
 export function VenueResults({
@@ -131,6 +132,7 @@ export function VenueResults({
   isLoadingMore,
   hasMore,
   loadMoreError,
+  secondary: _secondary,
 }: { data: ResultsData } & VenueResultsLoadMore) {
   const [filters, setFilters] = useState<Set<Filter>>(new Set());
   const [sort, setSort] = useState<Sort>("ranked");
