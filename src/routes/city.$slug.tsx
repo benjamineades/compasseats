@@ -1,10 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
+import { useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-import { VenueResults, type ResultsData } from "@/components/VenueResults";
+import { VenueResults, type ResultsData, type Venue } from "@/components/VenueResults";
 import { CityHero } from "@/components/CityHero";
 
 import { CITIES_BY_SLUG, TOP_CITIES, type TopCity } from "@/lib/cities";
@@ -71,11 +72,7 @@ export const Route = createFileRoute("/city/$slug")({
   ),
 });
 
-async function fetchVenues(
-  c: TopCity,
-  tier: "charted" | "rated",
-  exclude?: string[],
-): Promise<ResultsData> {
+async function fetchVenues(c: TopCity): Promise<ResultsData> {
   const res = await fetch("/api/top-restaurants", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -83,8 +80,6 @@ async function fetchVenues(
       city: c.city,
       region: c.region,
       country: c.country,
-      tier,
-      ...(exclude && exclude.length ? { exclude } : {}),
     }),
   });
   const data = await res.json();
@@ -92,40 +87,49 @@ async function fetchVenues(
   return data as ResultsData;
 }
 
+// Split a venue list into charted (sheet-matched) and rated (everything else)
+// using the `tier` tag the API now returns. Falls back gracefully if an older
+// cached response without `tier` comes back (treat as charted).
+function splitByTier(venues: Venue[]) {
+  const charted: Venue[] = [];
+  const rated: Venue[] = [];
+  for (const v of venues) {
+    if ((v as Venue & { tier?: string }).tier === "rated") rated.push(v);
+    else charted.push(v);
+  }
+  return { charted, rated };
+}
+
 function CityPage() {
   const { city } = Route.useLoaderData();
   const queryClient = useQueryClient();
 
-  // TIER 1 — charted (Sheet-sourced). Fast: no Firecrawl in this path.
-  const charted = useQuery({
-    queryKey: ["city-charted", city.slug],
-    queryFn: () => fetchVenues(city, "charted"),
+  const query = useQuery({
+    queryKey: ["city-venues", city.slug],
+    queryFn: () => fetchVenues(city),
     staleTime: 1000 * 60 * 30,
   });
 
-  // TIER 2 — highly rated (Yelp/TripAdvisor via AI). Slower; loads in the
-  // background only AFTER the charted tier resolves, and excludes any venue
-  // already shown in the charted tier so the two lists never overlap.
-  const chartedNames = charted.data?.venues.map((v) => v.name) ?? [];
-  const rated = useQuery({
-    queryKey: ["city-rated", city.slug],
-    enabled: charted.isSuccess, // don't even start until charted is done
-    queryFn: () => fetchVenues(city, "rated", chartedNames.slice(0, 500)),
-    staleTime: 1000 * 60 * 30,
-  });
+  const { charted, rated } = useMemo(
+    () => splitByTier(query.data?.venues ?? []),
+    [query.data],
+  );
 
-  // Load-more applies to the RATED tier (charted is a fixed accolade set).
+  // Load-more appends to the RATED tier (charted is a fixed accolade set).
   const { loadMore, isLoadingMore, hasMore, error: loadMoreError } = useVenueLoadMore({
-    data: rated.data,
+    data: query.data,
     query: { city: city.city, region: city.region, country: city.country },
     append: (newVenues) =>
-      queryClient.setQueryData<ResultsData>(["city-rated", city.slug], (prev) =>
-        prev ? { ...prev, venues: [...prev.venues, ...newVenues] } : prev,
+      queryClient.setQueryData<ResultsData>(["city-venues", city.slug], (prev) =>
+        prev ? { ...prev, venues: [...prev.venues, ...newVenues.map((v) => ({ ...v, tier: "rated" as const }))] } : prev,
       ),
   });
 
-  const hasCharted = charted.isSuccess && charted.data.venues.length > 0;
-  const hasRated = rated.isSuccess && rated.data.venues.length > 0;
+  const hasCharted = charted.length > 0;
+  const hasRated = rated.length > 0;
+
+  const chartedData: ResultsData | undefined = query.data && { ...query.data, venues: charted };
+  const ratedData: ResultsData | undefined = query.data && { ...query.data, venues: rated };
 
   return (
     <main className="relative min-h-screen bg-background">
@@ -139,32 +143,34 @@ function CityPage() {
       />
 
       <div className="mx-auto max-w-5xl px-6 py-10">
-        {/* TIER 1: charted */}
-        {charted.isPending && <CityLoading city={city.city} />}
-        {charted.isError && (
+        {query.isPending && <CityLoading city={city.city} />}
+
+        {query.isError && (
           <Card className="border-destructive/30 bg-destructive/5">
             <CardContent className="flex flex-col items-center gap-3 p-8 text-center">
-              <p className="text-sm text-destructive">{(charted.error as Error).message}</p>
-              <Button onClick={() => charted.refetch()} size="sm" variant="outline">
-                <Loader2 className={`mr-2 h-4 w-4 ${charted.isFetching ? "animate-spin" : ""}`} />
+              <p className="text-sm text-destructive">{(query.error as Error).message}</p>
+              <Button onClick={() => query.refetch()} size="sm" variant="outline">
+                <Loader2 className={`mr-2 h-4 w-4 ${query.isFetching ? "animate-spin" : ""}`} />
                 Try again
               </Button>
             </CardContent>
           </Card>
         )}
-        {hasCharted && (
+
+        {/* TIER 1: charted (sheet-matched, with accolades) */}
+        {query.isSuccess && hasCharted && (
           <section>
             <TierHeading
               eyebrow="Charted by the guides"
               sub={`Award-winning tables and bars in ${city.city}, drawn from the guides that matter.`}
             />
-            <VenueResults data={charted.data} />
+            <VenueResults data={chartedData!} />
           </section>
         )}
 
-        {/* TIER 2: highly rated — only meaningful once charted is done */}
-        {charted.isSuccess && (
-          <section className="mt-14 border-t border-border pt-10">
+        {/* TIER 2: highly rated / local favorites */}
+        {query.isSuccess && (hasRated || !hasCharted) && (
+          <section className={hasCharted ? "mt-14 border-t border-border pt-10" : ""}>
             <TierHeading
               eyebrow={hasCharted ? `Also highly rated in ${city.city}` : "Nearby local favorites"}
               sub={
@@ -174,23 +180,16 @@ function CityPage() {
               }
               secondary
             />
-            {rated.isPending && <RatedLoading />}
-            {rated.isError && (
-              <p className="text-sm text-muted-foreground">
-                Couldn't load more spots right now. {hasCharted ? "The charted picks above are still your best bet." : "Try a nearby city."}
-              </p>
-            )}
-            {hasRated && (
+            {hasRated ? (
               <VenueResults
-                data={rated.data}
+                data={ratedData!}
                 secondary
                 onLoadMore={loadMore}
                 isLoadingMore={isLoadingMore}
                 hasMore={hasMore}
                 loadMoreError={loadMoreError}
               />
-            )}
-            {rated.isSuccess && !hasRated && !hasCharted && (
+            ) : (
               <p className="text-sm text-muted-foreground">
                 We haven't charted this one yet. Try a nearby city — we've mapped the best tables in over 400 of them.
               </p>
@@ -219,15 +218,6 @@ function TierHeading({
         {eyebrow}
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">{sub}</p>
-    </div>
-  );
-}
-
-function RatedLoading() {
-  return (
-    <div className="flex items-center gap-2 rounded-lg border border-border bg-card/40 px-4 py-3 text-sm text-muted-foreground">
-      <Loader2 className="h-4 w-4 animate-spin" />
-      Finding more highly-rated spots…
     </div>
   );
 }
