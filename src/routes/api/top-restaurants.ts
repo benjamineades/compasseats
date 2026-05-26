@@ -114,7 +114,6 @@ const bodySchema = z.object({
   country: z.string().trim().max(100).optional(),
   exclude: z.array(z.string().trim().min(1).max(200)).max(500).optional(),
   limit: z.coerce.number().int().min(1).max(10).optional(),
-  tier: z.enum(["charted", "rated"]).optional().default("charted"),
 });
 
 const numericValue = z.coerce.number().finite();
@@ -589,7 +588,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
           // Bump CACHE_VERSION whenever the response shape or generation
           // logic changes meaningfully — old empty/incorrect cached entries
           // (e.g. the Copenhagen zero-venues fix) will be invalidated.
-          ["v3", parsed.tier, parsed.city, parsed.region ?? "", parsed.country ?? "", String(limitForKey)]
+          ["v4", parsed.city, parsed.region ?? "", parsed.country ?? "", String(limitForKey)]
             .map((s) => s.trim().toLowerCase())
             .join("|");
         const cacheRequest = new Request(
@@ -643,14 +642,11 @@ export const Route = createFileRoute("/api/top-restaurants")({
             parsed.city,
             parsed.country ?? "",
           );
-          const supplementary =
-            parsed.tier === "rated"
-              ? await fetchSupplementaryVenues(
-                  parsed.city,
-                  parsed.region ?? "",
-                  parsed.country ?? "",
-                )
-              : { restaurants: [], bars: [], source: "none" as const };
+          const supplementary = await fetchSupplementaryVenues(
+            parsed.city,
+            parsed.region ?? "",
+            parsed.country ?? "",
+          );
           const seenExclude = new Set(excludeList.map((s) => s.trim().toLowerCase()));
           const seedVenues = cityAccolades
             .filter((a) => !seenExclude.has(a.name.toLowerCase()))
@@ -702,20 +698,9 @@ export const Route = createFileRoute("/api/top-restaurants")({
           const seedEmpty = seedVenues.length === 0;
           const supplementaryEmpty = !restNames && !barNames;
           const nameSourceBlock =
-            parsed.tier === "charted"
-              ? seedEmpty
-                ? `\n\nNAME SOURCE — CHARTED TIER: No canonical accolade venues are listed for ${cityQuery}. Return an empty list for both categories. Do NOT invent venue names. Do NOT pull venues from your training data. Do NOT use any supplementary source.`
-                : `\n\nNAME SOURCE — CHARTED TIER: Every venue you return MUST come from the canonical accolade list above; do NOT invent names or use training data.\n\nFILL BOTH CATEGORIES INDEPENDENTLY. The restaurant slots and the cocktail bar slots are separate quotas — filling one does NOT reduce your obligation to fill the other.\n• RESTAURANTS: include every restaurant from the canonical list (Michelin, World's 50 Best Restaurants, Best Chef, James Beard, OAD, Bib Gourmand), up to ${limit}.\n• COCKTAIL BARS: the canonical list also contains cocktail bars — these are the entries tagged "World's 50 Best Bars", "Spirited Award", or "Pinnacle Guide". You MUST return these as cocktail bars (category "cocktail bar"), up to ${limit}, EVEN IF the restaurant list is already full. Do not skip a bar because it isn't a restaurant — that is exactly the venue this category is for.\nIf either category's canonical entries number fewer than ${limit}, return only as many as exist for that category (do not pad with invented or non-listed venues).`
-              : seedEmpty && supplementaryEmpty
-                // BUG-3 FALLBACK: no sheet data AND no scrape results (small
-                // towns). Let the model surface its best-known local venues so
-                // the page is never blank. These are clearly labeled "Nearby
-                // local favorites" in the UI and carry no accolades. Google
-                // Places verification downstream still filters closed venues.
-                ? `\n\nNAME SOURCE — RATED TIER (LOCAL FALLBACK): No accolade venues and no Yelp/Trip Advisor results were available for ${cityQuery}. Return your best-known, currently-operating restaurants and cocktail bars for ${cityQuery} from general knowledge — up to ${limit} of each. Prefer well-established, well-regarded local spots. Do NOT fabricate venues you are unsure exist. Do NOT populate any accolade fields. If you genuinely know of none, return an empty list.`
-                : supplementaryEmpty
-                  ? `\n\nNAME SOURCE — RATED TIER: No supplementary allow-list venues could be sourced for ${cityQuery}. Return an empty list for both categories. Do NOT use any canonical accolade venues. Do NOT invent venue names. Do NOT pull venues from your training data.`
-                  : `\n\nNAME SOURCE — RATED TIER: Every venue you return MUST come from the supplementary allow-list above. Do NOT include any canonical accolade venues. Do NOT invent venue names. Do NOT pull venues from your training data. If the supplementary list does not fill ${limit} slots in a category, return fewer venues in that category.`;
+            seedEmpty && supplementaryEmpty
+              ? `\n\nNAME SOURCE (LOCAL FALLBACK): No accolade venues and no Yelp/Trip Advisor results were available for ${cityQuery}. Return your best-known, currently-operating restaurants and cocktail bars for ${cityQuery} from general knowledge — up to ${limit} of each. Prefer well-established, well-regarded local spots. Do NOT fabricate venues you are unsure exist. Do NOT populate any accolade fields.`
+              : `\n\nNAME SOURCE — STRICT: Fill BOTH categories independently (restaurant slots and cocktail bar slots are separate quotas). Every venue you return MUST come either from the canonical accolade list OR the supplementary allow-list above — do NOT invent names or pull from training data.\n• Prefer canonical accolade venues; the cocktail bar accolade venues are the entries tagged "World's 50 Best Bars", "Spirited Award", or "Pinnacle Guide" — you MUST return these as cocktail bars even if the restaurant list is already full.\n• When the canonical list does not fill all ${limit} slots in a category, fill the remainder from the supplementary allow-list, in the order it appears.\n• Use EXACT names from the lists so server-side accolade matching works.`;
 
           const { object } = await generateObject({
             model,
@@ -925,6 +910,7 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
                 jamesBeardAward: sheet?.jamesBeardAward ?? undefined,
                 bestChefAward: sheet?.bestChefAward ?? undefined,
                 oadAward: sheet?.oadAward ?? undefined,
+                tier: sheet ? ("charted" as const) : ("rated" as const),
                 imageUrl: resolvedImages[i],
               };
             }),
