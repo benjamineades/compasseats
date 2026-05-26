@@ -71,11 +71,21 @@ export const Route = createFileRoute("/city/$slug")({
   ),
 });
 
-async function fetchVenues(c: TopCity): Promise<ResultsData> {
+async function fetchVenues(
+  c: TopCity,
+  tier: "charted" | "rated",
+  exclude?: string[],
+): Promise<ResultsData> {
   const res = await fetch("/api/top-restaurants", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ city: c.city, region: c.region, country: c.country }),
+    body: JSON.stringify({
+      city: c.city,
+      region: c.region,
+      country: c.country,
+      tier,
+      ...(exclude && exclude.length ? { exclude } : {}),
+    }),
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data?.error ?? "Failed to load");
@@ -85,19 +95,37 @@ async function fetchVenues(c: TopCity): Promise<ResultsData> {
 function CityPage() {
   const { city } = Route.useLoaderData();
   const queryClient = useQueryClient();
-  const query = useQuery({
-    queryKey: ["city-venues", city.slug],
-    queryFn: () => fetchVenues(city),
+
+  // TIER 1 — charted (Sheet-sourced). Fast: no Firecrawl in this path.
+  const charted = useQuery({
+    queryKey: ["city-charted", city.slug],
+    queryFn: () => fetchVenues(city, "charted"),
     staleTime: 1000 * 60 * 30,
   });
+
+  // TIER 2 — highly rated (Yelp/TripAdvisor via AI). Slower; loads in the
+  // background only AFTER the charted tier resolves, and excludes any venue
+  // already shown in the charted tier so the two lists never overlap.
+  const chartedNames = charted.data?.venues.map((v) => v.name) ?? [];
+  const rated = useQuery({
+    queryKey: ["city-rated", city.slug],
+    enabled: charted.isSuccess, // don't even start until charted is done
+    queryFn: () => fetchVenues(city, "rated", chartedNames.slice(0, 500)),
+    staleTime: 1000 * 60 * 30,
+  });
+
+  // Load-more applies to the RATED tier (charted is a fixed accolade set).
   const { loadMore, isLoadingMore, hasMore, error: loadMoreError } = useVenueLoadMore({
-    data: query.data,
+    data: rated.data,
     query: { city: city.city, region: city.region, country: city.country },
     append: (newVenues) =>
-      queryClient.setQueryData<ResultsData>(["city-venues", city.slug], (prev) =>
+      queryClient.setQueryData<ResultsData>(["city-rated", city.slug], (prev) =>
         prev ? { ...prev, venues: [...prev.venues, ...newVenues] } : prev,
       ),
   });
+
+  const hasCharted = charted.isSuccess && charted.data.venues.length > 0;
+  const hasRated = rated.isSuccess && rated.data.venues.length > 0;
 
   return (
     <main className="relative min-h-screen bg-background">
@@ -111,31 +139,96 @@ function CityPage() {
       />
 
       <div className="mx-auto max-w-5xl px-6 py-10">
-        {query.isPending && <CityLoading city={city.city} />}
-        {query.isError && (
+        {/* TIER 1: charted */}
+        {charted.isPending && <CityLoading city={city.city} />}
+        {charted.isError && (
           <Card className="border-destructive/30 bg-destructive/5">
             <CardContent className="flex flex-col items-center gap-3 p-8 text-center">
-              <p className="text-sm text-destructive">{(query.error as Error).message}</p>
-              <Button onClick={() => query.refetch()} size="sm" variant="outline">
-                <Loader2 className={`mr-2 h-4 w-4 ${query.isFetching ? "animate-spin" : ""}`} />
+              <p className="text-sm text-destructive">{(charted.error as Error).message}</p>
+              <Button onClick={() => charted.refetch()} size="sm" variant="outline">
+                <Loader2 className={`mr-2 h-4 w-4 ${charted.isFetching ? "animate-spin" : ""}`} />
                 Try again
               </Button>
             </CardContent>
           </Card>
         )}
-        {query.isSuccess && (
-          <VenueResults
-            data={query.data}
-            onLoadMore={loadMore}
-            isLoadingMore={isLoadingMore}
-            hasMore={hasMore}
-            loadMoreError={loadMoreError}
-          />
+        {hasCharted && (
+          <section>
+            <TierHeading
+              eyebrow="Charted by the guides"
+              sub={`Award-winning tables and bars in ${city.city}, drawn from the guides that matter.`}
+            />
+            <VenueResults data={charted.data} />
+          </section>
+        )}
+
+        {/* TIER 2: highly rated — only meaningful once charted is done */}
+        {charted.isSuccess && (
+          <section className="mt-14 border-t border-border pt-10">
+            <TierHeading
+              eyebrow={hasCharted ? `Also highly rated in ${city.city}` : `Highly rated in ${city.city}`}
+              sub={
+                hasCharted
+                  ? "Beyond the guides — top-rated local spots worth a look."
+                  : `We haven't charted award-winners here yet — here are ${city.city}'s top-rated spots.`
+              }
+              secondary
+            />
+            {rated.isPending && <RatedLoading />}
+            {rated.isError && (
+              <p className="text-sm text-muted-foreground">
+                Couldn't load more spots right now. {hasCharted ? "The charted picks above are still your best bet." : "Try a nearby city."}
+              </p>
+            )}
+            {hasRated && (
+              <VenueResults
+                data={rated.data}
+                secondary
+                onLoadMore={loadMore}
+                isLoadingMore={isLoadingMore}
+                hasMore={hasMore}
+                loadMoreError={loadMoreError}
+              />
+            )}
+            {rated.isSuccess && !hasRated && !hasCharted && (
+              <p className="text-sm text-muted-foreground">
+                We haven't charted this one yet. Try a nearby city — we've mapped the best tables in over 400 of them.
+              </p>
+            )}
+          </section>
         )}
 
         <OtherCities currentSlug={city.slug} />
       </div>
     </main>
+  );
+}
+
+function TierHeading({
+  eyebrow, sub, secondary,
+}: { eyebrow: string; sub: string; secondary?: boolean }) {
+  return (
+    <div className="mb-5">
+      <h2
+        className={
+          secondary
+            ? "text-lg font-light tracking-tight text-muted-foreground"
+            : "text-2xl font-light tracking-tight text-foreground"
+        }
+      >
+        {eyebrow}
+      </h2>
+      <p className="mt-1 text-sm text-muted-foreground">{sub}</p>
+    </div>
+  );
+}
+
+function RatedLoading() {
+  return (
+    <div className="flex items-center gap-2 rounded-lg border border-border bg-card/40 px-4 py-3 text-sm text-muted-foreground">
+      <Loader2 className="h-4 w-4 animate-spin" />
+      Finding more highly-rated spots…
+    </div>
   );
 }
 
