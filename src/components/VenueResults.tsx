@@ -132,7 +132,7 @@ export function VenueResults({
   isLoadingMore,
   hasMore,
   loadMoreError,
-  secondary: _secondary,
+  secondary,
 }: { data: ResultsData } & VenueResultsLoadMore) {
   const [filters, setFilters] = useState<Set<Filter>>(new Set());
   const [sort, setSort] = useState<Sort>("ranked");
