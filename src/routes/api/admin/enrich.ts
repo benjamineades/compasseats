@@ -25,21 +25,28 @@
 //
 // ─────────────────────────────────────────────────────────────────────────────
 // HOW TO RUN (in the browser — no terminal needed)
+//   This route SELF-WALKS: each request processes as many venues as fit within
+//   a ~20s time budget, then returns a `nextUrl` to continue from. You click a
+//   handful of times, not once per 50 rows.
+//
 //   1. Set a secret in your env:  ENRICH_ADMIN_TOKEN=some-long-random-string
-//   2. DRY RUN, first batch (writes nothing, shows a preview of 50 rows):
+//   2. DRY RUN (writes nothing, previews matches):
 //        /api/admin/enrich?token=YOUR_TOKEN
-//   3. Walk the batches using the `nextOffset` value each response returns:
-//        /api/admin/enrich?token=YOUR_TOKEN&offset=50
-//        /api/admin/enrich?token=YOUR_TOKEN&offset=100   ... until done:true
-//   4. When the previews look right, repeat with &write=true to commit:
+//      Then follow the `nextUrl` it returns, repeating until "done": true.
+//   3. When the previews look right, do the same starting from offset 0 but with
+//      &write=true, following each `nextUrl` until "done": true:
 //        /api/admin/enrich?token=YOUR_TOKEN&write=true
-//        /api/admin/enrich?token=YOUR_TOKEN&write=true&offset=50   ... etc.
-//      The FIRST write call creates the tab + header row automatically.
-//   5. Delete this file and re-publish.
+//      The FIRST write request creates the tab + header row automatically. Each
+//      chunk is written as it completes, so progress survives a cut-off request
+//      (re-running just skips venues already in the tab).
+//   4. Delete this file and re-publish.
 //
 // Optional params:
-//   &batch=50   how many venues to process per request (default 50, max 100)
-//   &force=true re-resolve venues even if already present in the tab
+//   &offset=N    start at venue N (the `nextUrl` sets this for you)
+//   &chunk=40    venues resolved per inner chunk (default 40, max 100)
+//   &maxms=20000 per-request time budget in ms (default 20000, max 25000).
+//                Lower it if you see Worker timeouts; raise it cautiously.
+//   &force=true  re-resolve venues even if already present in the tab
 // ─────────────────────────────────────────────────────────────────────────────
 
 import "@tanstack/react-start";
@@ -64,6 +71,16 @@ const HEADER = [
   "businessStatus",
   "lastVerified",
 ] as const;
+
+// JSON response that explicitly declares UTF-8, so accented / non-Latin venue
+// names (e.g. "Faubourg Saint-Honoré", "Nhà hàng 1946") render correctly in the
+// browser instead of as mojibake. The data itself is always UTF-8; this just
+// makes sure the client decodes it that way.
+const json = (body: unknown, status = 200): Response =>
+  new Response(JSON.stringify(body, null, 2), {
+    status,
+    headers: { "Content-Type": "application/json; charset=utf-8" },
+  });
 
 // ── name normalization — MUST stay identical to accolades.server.ts ──────────
 const normalizeName = (raw: string): string =>
@@ -321,19 +338,30 @@ export const Route = createFileRoute("/api/admin/enrich")({
   server: {
     handlers: {
       GET: async ({ request }: { request: Request }) => {
+        const startedAt = Date.now();
         const url = new URL(request.url);
         const token = url.searchParams.get("token") ?? "";
         const expected = process.env.ENRICH_ADMIN_TOKEN ?? "";
         if (!expected || token !== expected) {
-          return Response.json({ error: "Unauthorized" }, { status: 401 });
+          return json({ error: "Unauthorized" }, 401);
         }
 
         const write = url.searchParams.get("write") === "true";
         const force = url.searchParams.get("force") === "true";
         const offset = Math.max(0, Number(url.searchParams.get("offset") ?? "0") || 0);
-        const batch = Math.min(
+        // Venues resolved per inner chunk (each does `chunk` parallel Places
+        // calls, then writes that chunk's rows before starting the next).
+        const chunk = Math.min(
           100,
-          Math.max(1, Number(url.searchParams.get("batch") ?? "50") || 50),
+          Math.max(1, Number(url.searchParams.get("chunk") ?? "40") || 40),
+        );
+        // Wall-clock budget per REQUEST. The handler keeps processing chunks
+        // until it either finishes or this budget is hit, then returns a
+        // continuation URL. Kept well under the Worker CPU ceiling. Tune down
+        // if you see timeouts; tune up (cautiously) to do more per click.
+        const maxMs = Math.min(
+          25_000,
+          Math.max(3_000, Number(url.searchParams.get("maxms") ?? "20000") || 20_000),
         );
 
         try {
@@ -341,11 +369,9 @@ export const Route = createFileRoute("/api/admin/enrich")({
           const venues = await collectVenues();
 
           // 2. Find which venues are already in the enrichment tab (skip unless
-          //    --force). Reading the existing tab also tells us if it's been
-          //    initialized with a header yet.
+          //    &force=true). Also tells us if the tab has been initialized yet.
           const existingHeader = await readHeaderRow(ENRICH_TAB);
-          const tabExists = existingHeader !== null;
-          const tabInitialized = tabExists && existingHeader!.length > 0;
+          const tabInitialized = existingHeader !== null && existingHeader.length > 0;
 
           const alreadyDone = new Set<string>();
           if (tabInitialized && !force) {
@@ -356,96 +382,116 @@ export const Route = createFileRoute("/api/admin/enrich")({
             }
           }
 
-          // 3. Take this batch's slice.
-          const slice = venues.slice(offset, offset + batch);
-          const toProcess = force ? slice : slice.filter((v) => !alreadyDone.has(v.key));
-
-          // 4. Resolve each via Places (sequentially-ish but parallel within the
-          //    batch; batch is small enough to stay under the CPU limit).
-          const resolved = await Promise.all(
-            toProcess.map(async (v) => {
-              const place = await lookupPlace(v.name, v.city, v.country);
-              return { v, place };
-            }),
-          );
-
-          const rows: string[][] = [];
-          const preview: Array<Record<string, unknown>> = [];
-          const now = new Date().toISOString();
+          // 3. Self-walking loop: process consecutive chunks starting at
+          //    `offset` until we run out of venues OR exhaust the time budget.
+          //    Each chunk's rows are appended as soon as the chunk resolves, so
+          //    progress is durable even if the request is later cut off.
+          let headerWritten = tabInitialized;
+          let cursor = offset;
+          let processed = 0;
           let matched = 0;
           let unmatched = 0;
-
-          for (const { v, place } of resolved) {
-            if (place && place.placeId) matched++;
-            else unmatched++;
-            const row = [
-              v.key,
-              place?.canonicalName ?? v.name,
-              v.sheetName,
-              place?.placeId ?? "",
-              place?.lat != null ? String(place.lat) : "",
-              place?.lng != null ? String(place.lng) : "",
-              place?.photoName ?? "",
-              place?.formattedAddress ?? "",
-              place?.businessStatus ?? "",
-              now,
-            ];
-            rows.push(row);
-            preview.push({
-              sheetName: v.name,
-              canonicalName: place?.canonicalName ?? null,
-              matched: Boolean(place?.placeId),
-              placeId: place?.placeId ?? null,
-              lat: place?.lat ?? null,
-              lng: place?.lng ?? null,
-              status: place?.businessStatus ?? null,
-              nameDiffers:
-                place?.canonicalName != null &&
-                normalizeName(place.canonicalName) !== v.key,
-            });
-          }
-
-          // 5. Write (only if &write=true).
           let wrote = 0;
-          if (write && rows.length > 0) {
-            if (!tabInitialized) {
-              await ensureTabExists();
-              await appendRows([[...HEADER]]); // header row first
+          const now = new Date().toISOString();
+          const preview: Array<Record<string, unknown>> = [];
+          const PREVIEW_CAP = 30;
+          let stoppedForTime = false;
+
+          while (cursor < venues.length) {
+            if (Date.now() - startedAt > maxMs) {
+              stoppedForTime = true;
+              break;
             }
-            await appendRows(rows);
-            wrote = rows.length;
+            const slice = venues.slice(cursor, cursor + chunk);
+            cursor += slice.length;
+            const toProcess = force
+              ? slice
+              : slice.filter((v) => !alreadyDone.has(v.key));
+            if (toProcess.length === 0) continue;
+
+            const resolved = await Promise.all(
+              toProcess.map(async (v) => ({ v, place: await lookupPlace(v.name, v.city, v.country) })),
+            );
+
+            const rows: string[][] = [];
+            for (const { v, place } of resolved) {
+              processed++;
+              if (place && place.placeId) matched++;
+              else unmatched++;
+              rows.push([
+                v.key,
+                place?.canonicalName ?? v.name,
+                v.sheetName,
+                place?.placeId ?? "",
+                place?.lat != null ? String(place.lat) : "",
+                place?.lng != null ? String(place.lng) : "",
+                place?.photoName ?? "",
+                place?.formattedAddress ?? "",
+                place?.businessStatus ?? "",
+                now,
+              ]);
+              if (preview.length < PREVIEW_CAP) {
+                preview.push({
+                  sheetName: v.name,
+                  canonicalName: place?.canonicalName ?? null,
+                  matched: Boolean(place?.placeId),
+                  placeId: place?.placeId ?? null,
+                  lat: place?.lat ?? null,
+                  lng: place?.lng ?? null,
+                  status: place?.businessStatus ?? null,
+                  nameDiffers:
+                    place?.canonicalName != null &&
+                    normalizeName(place.canonicalName) !== v.key,
+                });
+              }
+            }
+
+            // Write this chunk immediately (only if &write=true).
+            if (write && rows.length > 0) {
+              if (!headerWritten) {
+                await ensureTabExists();
+                await appendRows([[...HEADER]]);
+                headerWritten = true;
+              }
+              await appendRows(rows);
+              wrote += rows.length;
+            }
           }
 
-          const nextOffset = offset + batch;
-          const done = nextOffset >= venues.length;
+          const done = cursor >= venues.length;
+          const carry: string[] = [];
+          if (chunk !== 40) carry.push(`chunk=${chunk}`);
+          if (maxMs !== 20000) carry.push(`maxms=${maxMs}`);
+          const carryStr = carry.length ? `&${carry.join("&")}` : "";
 
-          return Response.json({
-            mode: write ? "WRITE" : "DRY-RUN (nothing written — add &write=true to commit)",
+          return json({
+            mode: write
+              ? "WRITE"
+              : "DRY-RUN (nothing written — add &write=true to commit)",
             tab: ENRICH_TAB,
             tabExisted: tabInitialized,
             totalUniqueVenues: venues.length,
-            batch,
-            offset,
-            processedThisBatch: toProcess.length,
-            skippedAlreadyDone: slice.length - toProcess.length,
+            startOffset: offset,
+            endOffset: cursor,
+            processedThisRequest: processed,
             matched,
             unmatched,
             rowsWritten: wrote,
-            nextOffset: done ? null : nextOffset,
+            elapsedMs: Date.now() - startedAt,
+            stoppedForTime,
             done,
+            // Visit this next to continue. Stops when "done": true.
             nextUrl: done
               ? null
-              : `${url.pathname}?token=YOUR_TOKEN${write ? "&write=true" : ""}&offset=${nextOffset}${
-                  batch !== 50 ? `&batch=${batch}` : ""
-                }`,
+              : `${url.pathname}?token=YOUR_TOKEN${write ? "&write=true" : ""}${
+                  force ? "&force=true" : ""
+                }&offset=${cursor}${carryStr}`,
+            previewNote: `showing first ${Math.min(preview.length, PREVIEW_CAP)} of ${processed} processed this request`,
             preview,
           });
         } catch (err) {
           console.error("[admin/enrich] error:", err);
-          return Response.json(
-            { error: (err as Error).message ?? "enrichment failed" },
-            { status: 500 },
-          );
+          return json({ error: (err as Error).message ?? "enrichment failed" }, 500);
         }
       },
     },
