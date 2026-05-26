@@ -50,6 +50,7 @@ export type Venue = {
   reservationPlatform?: string;
   hours?: string;
   imageUrl?: string;
+  tier?: "charted" | "rated";
 };
 
 export type ResultsData = {
