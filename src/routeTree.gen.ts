@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CitySlugRouteImport } from './routes/city.$slug'
 import { Route as ApiTopRestaurantsRouteImport } from './routes/api/top-restaurants'
+import { Route as ApiAdminEnrichRouteImport } from './routes/api/admin/enrich'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,49 @@ const ApiTopRestaurantsRoute = ApiTopRestaurantsRouteImport.update({
   path: '/api/top-restaurants',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminEnrichRoute = ApiAdminEnrichRouteImport.update({
+  id: '/api/admin/enrich',
+  path: '/api/admin/enrich',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/top-restaurants': typeof ApiTopRestaurantsRoute
   '/city/$slug': typeof CitySlugRoute
+  '/api/admin/enrich': typeof ApiAdminEnrichRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/top-restaurants': typeof ApiTopRestaurantsRoute
   '/city/$slug': typeof CitySlugRoute
+  '/api/admin/enrich': typeof ApiAdminEnrichRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/top-restaurants': typeof ApiTopRestaurantsRoute
   '/city/$slug': typeof CitySlugRoute
+  '/api/admin/enrich': typeof ApiAdminEnrichRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/top-restaurants' | '/city/$slug'
+  fullPaths: '/' | '/api/top-restaurants' | '/city/$slug' | '/api/admin/enrich'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/top-restaurants' | '/city/$slug'
-  id: '__root__' | '/' | '/api/top-restaurants' | '/city/$slug'
+  to: '/' | '/api/top-restaurants' | '/city/$slug' | '/api/admin/enrich'
+  id:
+    | '__root__'
+    | '/'
+    | '/api/top-restaurants'
+    | '/city/$slug'
+    | '/api/admin/enrich'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiTopRestaurantsRoute: typeof ApiTopRestaurantsRoute
   CitySlugRoute: typeof CitySlugRoute
+  ApiAdminEnrichRoute: typeof ApiAdminEnrichRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +97,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiTopRestaurantsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/enrich': {
+      id: '/api/admin/enrich'
+      path: '/api/admin/enrich'
+      fullPath: '/api/admin/enrich'
+      preLoaderRoute: typeof ApiAdminEnrichRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +111,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiTopRestaurantsRoute: ApiTopRestaurantsRoute,
   CitySlugRoute: CitySlugRoute,
+  ApiAdminEnrichRoute: ApiAdminEnrichRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
