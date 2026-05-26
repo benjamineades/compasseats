@@ -66,7 +66,7 @@ const scrapeNames = async (
   if (!key) return [];
   try {
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 25000);
+    const timer = setTimeout(() => ctrl.abort(), 6000);
     const res = await fetch(`${FIRECRAWL_BASE}/scrape`, {
       method: "POST",
       signal: ctrl.signal,
@@ -77,7 +77,7 @@ const scrapeNames = async (
       body: JSON.stringify({
         url,
         onlyMainContent: true,
-        waitFor: 1500,
+        waitFor: 600,
         formats: [
           {
             type: "json",
@@ -136,14 +136,17 @@ export const fetchSupplementaryVenues = async (
   if (!city) return { restaurants: [], bars: [], source: "none" };
   const cityHint = [city, region, country].filter(Boolean).join(", ");
 
+  // Pick ONE source per city — never chain Yelp then TripAdvisor serially
+  // (that stacked two 25s timeouts into one request). US cities use Yelp,
+  // everyone else uses TripAdvisor. Both scrape calls run in parallel with a
+  // short timeout so the supplementary (rated) tier can never block the
+  // response for long; the charted tier doesn't depend on this at all.
   if (isUS(country)) {
     const [restaurants, bars] = await Promise.all([
       scrapeNames(buildYelpUrl(city, region, "restaurant"), "restaurant", cityHint),
       scrapeNames(buildYelpUrl(city, region, "cocktail bar"), "cocktail bar", cityHint),
     ]);
-    if (restaurants.length || bars.length) {
-      return { restaurants, bars, source: "yelp" };
-    }
+    return { restaurants, bars, source: "yelp" };
   }
 
   const [restaurants, bars] = await Promise.all([
