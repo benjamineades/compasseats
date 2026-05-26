@@ -854,17 +854,17 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
               .join(" | ")}`,
           );
 
-          // Resolve images: venue site OG image → AI URL → Wikipedia →
-          // Google Places photo (already fetched above) → static generic.
+          // Resolve images using ONLY zero/low-latency sources. The Google
+          // Places photo was already fetched during verification, so it costs
+          // nothing extra. We deliberately DO NOT scrape venue websites
+          // (fetchOgImage) or hit Wikipedia here — those network round-trips
+          // were the dominant cause of ~19s response times, since the slowest
+          // single venue gated all 20. Priority: AI image → Places photo →
+          // generic fallback.
           const resolvedImages = await Promise.all(
             keptVenues.map(async (v, i) => {
               const aiImg = v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
-              const site = v.url && /^https?:\/\//i.test(v.url) ? v.url : undefined;
-              const fromSite = site ? await fetchOgImage(site) : undefined;
-              if (fromSite) return fromSite;
               if (aiImg) return aiImg;
-              const fromWiki = await fetchWikipediaImage(v.name, object.city);
-              if (fromWiki) return fromWiki;
               const fromPlaces = await fetchGooglePlacePhoto(keptPlaces[i]?.photoName);
               if (fromPlaces) return fromPlaces;
               return genericFallback(v.category);
