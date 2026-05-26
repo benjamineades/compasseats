@@ -166,11 +166,11 @@ function CityPage() {
         {charted.isSuccess && (
           <section className="mt-14 border-t border-border pt-10">
             <TierHeading
-              eyebrow={hasCharted ? `Also highly rated in ${city.city}` : `Highly rated in ${city.city}`}
+              eyebrow={hasCharted ? `Also highly rated in ${city.city}` : "Nearby local favorites"}
               sub={
                 hasCharted
                   ? "Beyond the guides — top-rated local spots worth a look."
-                  : `We haven't charted award-winners here yet — here are ${city.city}'s top-rated spots.`
+                  : `We haven't charted award-winners in ${city.city} yet — here are some local favorites worth a look.`
               }
               secondary
             />
