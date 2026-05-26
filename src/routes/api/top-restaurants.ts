@@ -114,6 +114,7 @@ const bodySchema = z.object({
   country: z.string().trim().max(100).optional(),
   exclude: z.array(z.string().trim().min(1).max(200)).max(500).optional(),
   limit: z.coerce.number().int().min(1).max(10).optional(),
+  tier: z.enum(["charted", "rated"]).optional().default("charted"),
 });
 
 const numericValue = z.coerce.number().finite();
@@ -588,7 +589,7 @@ export const Route = createFileRoute("/api/top-restaurants")({
           // Bump CACHE_VERSION whenever the response shape or generation
           // logic changes meaningfully — old empty/incorrect cached entries
           // (e.g. the Copenhagen zero-venues fix) will be invalidated.
-          ["v2", parsed.city, parsed.region ?? "", parsed.country ?? "", String(limitForKey)]
+          ["v3", parsed.tier, parsed.city, parsed.region ?? "", parsed.country ?? "", String(limitForKey)]
             .map((s) => s.trim().toLowerCase())
             .join("|");
         const cacheRequest = new Request(
@@ -638,14 +639,18 @@ export const Route = createFileRoute("/api/top-restaurants")({
           // from Yelp/TripAdvisor via Firecrawl. The AI is forbidden from
           // inventing venue names — every non-accolade venue must come from
           // the scraped allow-list below.
-          const [cityAccolades, supplementary] = await Promise.all([
-            listAccoladesForCity(parsed.city, parsed.country ?? ""),
-            fetchSupplementaryVenues(
-              parsed.city,
-              parsed.region ?? "",
-              parsed.country ?? "",
-            ),
-          ]);
+          const cityAccolades = await listAccoladesForCity(
+            parsed.city,
+            parsed.country ?? "",
+          );
+          const supplementary =
+            parsed.tier === "rated"
+              ? await fetchSupplementaryVenues(
+                  parsed.city,
+                  parsed.region ?? "",
+                  parsed.country ?? "",
+                )
+              : { restaurants: [], bars: [], source: "none" as const };
           const seenExclude = new Set(excludeList.map((s) => s.trim().toLowerCase()));
           const seedVenues = cityAccolades
             .filter((a) => !seenExclude.has(a.name.toLowerCase()))
@@ -697,9 +702,13 @@ export const Route = createFileRoute("/api/top-restaurants")({
           const seedEmpty = seedVenues.length === 0;
           const supplementaryEmpty = !restNames && !barNames;
           const nameSourceBlock =
-            seedEmpty && supplementaryEmpty
-              ? `\n\nNAME SOURCE — FALLBACK: No canonical accolade venues and no supplementary allow-list could be sourced for ${cityQuery}. Use your training knowledge to list the most acclaimed, currently operating restaurants and cocktail bars in ${cityQuery}. Prefer venues with Michelin stars, World's 50 Best recognition, or strong international/local reputation. Do not invent fictional names.`
-              : `\n\nNAME SOURCE — STRICT: Every venue you return MUST come from either (a) the canonical accolade list above or (b) the supplementary allow-list above. Do NOT invent venue names. Do NOT pull venues from your training data. If neither list provides enough names to fill ${limit} slots in a category, return fewer venues in that category — better to return 6 real venues than 10 with fabricated names.`;
+            parsed.tier === "charted"
+              ? seedEmpty
+                ? `\n\nNAME SOURCE — CHARTED TIER: No canonical accolade venues are listed for ${cityQuery}. Return an empty list for both categories. Do NOT invent venue names. Do NOT pull venues from your training data. Do NOT use any supplementary source.`
+                : `\n\nNAME SOURCE — CHARTED TIER: Every venue you return MUST come from the canonical accolade list above. Do NOT include any venue that is not on that list. Do NOT invent venue names. Do NOT pull venues from your training data. If the canonical list does not fill ${limit} slots in a category, return fewer venues in that category.`
+              : supplementaryEmpty
+                ? `\n\nNAME SOURCE — RATED TIER: No supplementary allow-list venues could be sourced for ${cityQuery}. Return an empty list for both categories. Do NOT use any canonical accolade venues. Do NOT invent venue names. Do NOT pull venues from your training data.`
+                : `\n\nNAME SOURCE — RATED TIER: Every venue you return MUST come from the supplementary allow-list above. Do NOT include any canonical accolade venues. Do NOT invent venue names. Do NOT pull venues from your training data. If the supplementary list does not fill ${limit} slots in a category, return fewer venues in that category.`;
 
           const { object } = await generateObject({
             model,
