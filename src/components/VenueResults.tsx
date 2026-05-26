@@ -132,7 +132,7 @@ export function VenueResults({
   isLoadingMore,
   hasMore,
   loadMoreError,
-  secondary: _secondary,
+  secondary,
 }: { data: ResultsData } & VenueResultsLoadMore) {
   const [filters, setFilters] = useState<Set<Filter>>(new Set());
   const [sort, setSort] = useState<Sort>("ranked");
@@ -234,7 +234,7 @@ export function VenueResults({
         </span>
       </div>
 
-      {noPrestige ? (
+      {!secondary && (noPrestige ? (
         <div className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2.5 text-xs leading-relaxed text-amber-200/90">
           No Michelin or World's 50 Best venues in this city yet — showing top locally acclaimed spots instead.
         </div>
@@ -242,7 +242,7 @@ export function VenueResults({
         <div className="mb-4 rounded-lg border border-border bg-card/40 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
           Rankings reflect most recent available guide year.
         </div>
-      )}
+      ))}
 
       <div className="sticky top-[70px] z-[60] -mx-6 mb-4 border-b border-border bg-background/80 px-6 py-3 backdrop-blur-md">
         <FilterBar
@@ -341,7 +341,9 @@ export function VenueResults({
             </div>
           )}
           <p className="mt-8 text-center text-xs italic text-muted-foreground">
-            Results charted from Michelin Guide, World's 50 Best, and more. Showing {filtered.length} venue{filtered.length === 1 ? "" : "s"}.
+            {secondary
+              ? `Top-rated local spots. Showing ${filtered.length} venue${filtered.length === 1 ? "" : "s"}.`
+              : `Results charted from Michelin Guide, World's 50 Best, and more. Showing ${filtered.length} venue${filtered.length === 1 ? "" : "s"}.`}
           </p>
         </>
       )}
