@@ -51,6 +51,7 @@ export type Venue = {
   hours?: string;
   imageUrl?: string;
   tier?: "charted" | "rated";
+  temporarilyClosed?: boolean;
 };
 
 export type ResultsData = {
