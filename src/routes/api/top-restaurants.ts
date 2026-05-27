@@ -648,30 +648,50 @@ export const Route = createFileRoute("/api/top-restaurants")({
             parsed.country ?? "",
           );
           const seenExclude = new Set(excludeList.map((s) => s.trim().toLowerCase()));
-          const seedVenues = cityAccolades
-            .filter((a) => !seenExclude.has(a.name.toLowerCase()))
-            .map((a) => {
-              const tags: string[] = [];
-              if (a.michelinStars) tags.push(`${a.michelinStars}★ Michelin`);
-              if (a.bibGourmand) tags.push("Bib Gourmand");
-              if (a.worldsBest50Restaurants)
-                tags.push(`World's 50 Best #${a.worldsBest50Restaurants.rank} (${a.worldsBest50Restaurants.year})`);
-              if (a.worldsBest50Bars)
-                tags.push(`World's 50 Best Bars #${a.worldsBest50Bars.rank} (${a.worldsBest50Bars.year})`);
-              if (a.bestChefAward)
-                tags.push(`Best Chef ${a.bestChefAward.knives}-knives (${a.bestChefAward.year})`);
-              if (a.jamesBeardAward)
-                tags.push(`James Beard ${a.jamesBeardAward.name} (${a.jamesBeardAward.year})`);
-              if (a.pinnacleAward)
-                tags.push(`Pinnacle Guide ${a.pinnacleAward.pins}-pin (${a.pinnacleAward.year})`);
-              if (a.spiritedAward)
-                tags.push(`Spirited Award: ${a.spiritedAward.name} (${a.spiritedAward.year})`);
-              if (a.oadAward)
-                tags.push(`OAD ${a.oadAward.region} #${a.oadAward.rank} (${a.oadAward.year})`);
-              return `  • ${a.name} — ${tags.join("; ")}`;
-            })
-            .slice(0, 60)
-            .join("\n");
+          // Build the seed line for one accolade venue.
+          const seedLine = (a: (typeof cityAccolades)[number]): string => {
+            const tags: string[] = [];
+            if (a.michelinStars) tags.push(`${a.michelinStars}★ Michelin`);
+            if (a.bibGourmand) tags.push("Bib Gourmand");
+            if (a.worldsBest50Restaurants)
+              tags.push(`World's 50 Best #${a.worldsBest50Restaurants.rank} (${a.worldsBest50Restaurants.year})`);
+            if (a.worldsBest50Bars)
+              tags.push(`World's 50 Best Bars #${a.worldsBest50Bars.rank} (${a.worldsBest50Bars.year})`);
+            if (a.bestChefAward)
+              tags.push(`Best Chef ${a.bestChefAward.knives}-knives (${a.bestChefAward.year})`);
+            if (a.jamesBeardAward)
+              tags.push(`James Beard ${a.jamesBeardAward.name} (${a.jamesBeardAward.year})`);
+            if (a.pinnacleAward)
+              tags.push(`Pinnacle Guide ${a.pinnacleAward.pins}-pin (${a.pinnacleAward.year})`);
+            if (a.spiritedAward)
+              tags.push(`Spirited Award: ${a.spiritedAward.name} (${a.spiritedAward.year})`);
+            if (a.oadAward)
+              tags.push(`OAD ${a.oadAward.region} #${a.oadAward.rank} (${a.oadAward.year})`);
+            return `  • ${a.name} — ${tags.join("; ")}`;
+          };
+
+          // Split the seed by category and give each its OWN budget before
+          // joining. Previously this was a flat .slice(0, 60) over the raw
+          // index order — which is dominated by restaurants (Michelin is parsed
+          // first and big cities have hundreds), so cocktail bars were pushed
+          // past the cutoff and never reached the AI. A bar is anything that
+          // carries a bar accolade (World's 50 Best Bars / Pinnacle / Spirited);
+          // everything else is treated as a restaurant. Each side is sorted by
+          // its own ranking score so the strongest survive the budget.
+          const seedYear = new Date().getFullYear();
+          const eligible = cityAccolades.filter((a) => !seenExclude.has(a.name.toLowerCase()));
+          const seedBars = eligible
+            .filter((a) => barScore(a) > 0)
+            .sort((a, b) => barScore(b) - barScore(a))
+            .slice(0, 30);
+          const seedRestaurants = eligible
+            .filter((a) => barScore(a) <= 0)
+            .sort((a, b) => restaurantScore(b, seedYear) - restaurantScore(a, seedYear))
+            .slice(0, 30);
+          const seedVenues = [...seedRestaurants, ...seedBars].map(seedLine).join("\n");
+          console.log(
+            `[top-restaurants] ${cityQuery}: seed restaurants=${seedRestaurants.length}, bars=${seedBars.length} (eligible=${eligible.length})`,
+          );
           const seedBlock = seedVenues
             ? `\n\nCANONICAL ACCOLADE VENUES FOR ${cityQuery} (from the official linked spreadsheet — these are the ONLY source of truth for accolades and rankings). You MUST include every one of these that is a restaurant or cocktail bar still operating, up to the ${limit} slots per category. Use the EXACT names below so server-side accolade enrichment can match them.\n${seedVenues}`
             : `\n\nNo canonical accolade venues are listed in the linked spreadsheet for ${cityQuery}.`;
