@@ -51,6 +51,7 @@ export type Venue = {
   hours?: string;
   imageUrl?: string;
   tier?: "charted" | "rated";
+  temporarilyClosed?: boolean;
 };
 
 export type ResultsData = {
@@ -533,6 +534,15 @@ function VenueCard({
             {v.hours && (
               <Badge variant="outline" title="Business hours" className="gap-1">
                 <Clock className="h-3 w-3" />{v.hours}
+              </Badge>
+            )}
+            {v.temporarilyClosed && (
+              <Badge
+                variant="outline"
+                title="This venue is temporarily closed according to Google"
+                className="gap-1 border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400"
+              >
+                <Clock className="h-3 w-3" />Temporarily closed
               </Badge>
             )}
             {userCoords && (
