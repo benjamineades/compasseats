@@ -107,12 +107,12 @@ export function CityHero({ city, country, blurb, hueSeed, imageUrl, back, childr
         <h1 className="mt-6 font-display text-4xl font-light tracking-tight text-white md:text-6xl">
           {city}, <span className="italic text-accent-strong">charted.</span>
         </h1>
+        {country && <p className="mt-3 text-sm font-medium uppercase tracking-wider text-white/60">{country}</p>}
         {descriptor && (
           <p className="mt-3 max-w-2xl font-display text-xl leading-relaxed text-white/90 md:text-2xl">
             {descriptor}
           </p>
         )}
-        {country && <p className="mt-3 text-sm font-medium uppercase tracking-wider text-white/60">{country}</p>}
         {children}
       </div>
     </section>
