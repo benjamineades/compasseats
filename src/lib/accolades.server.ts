@@ -5,6 +5,7 @@
 const SPREADSHEET_ID = "1dKJY_woXdbO-j9CEADz28IE-1yik1FqHa0BAp29cI5s";
 const GATEWAY_BASE = "https://connector-gateway.lovable.dev/google_sheets/v4";
 const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
+const ENRICHMENT_TAB = "Places Enrichment";
 
 export type AccoladeEntry = {
   displayName?: string;
@@ -20,11 +21,32 @@ export type AccoladeEntry = {
   // Locale hints used to disambiguate when multiple venues share a name.
   city?: string;
   country?: string;
+  // Google Places enrichment, joined from the "Places Enrichment" tab (built by
+  // the one-time admin/enrich route). Present only for venues that have been
+  // enriched. Enables rendering the charted tier straight from the sheet with
+  // NO AI call, and supplies a ToS-safe photo reference instead of a raw URL.
+  places?: PlacesEnrichment;
+};
+
+export type PlacesEnrichment = {
+  placeId: string;
+  canonicalName?: string;
+  lat?: number;
+  lng?: number;
+  photoName?: string;
+  formattedAddress?: string;
+  businessStatus?: string;
 };
 
 type CacheShape = {
   fetchedAt: number;
   byName: Map<string, AccoladeEntry[]>;
+  // Places enrichment keyed by the SAME normalized name key as byName.
+  enrichmentByKey: Map<string, PlacesEnrichment>;
+  // Second matching key: normalized canonical Google name → normalized sheet
+  // key. Lets a lookup on the canonical spelling (e.g. "ben fiddich") resolve
+  // to the sheet's spelling (e.g. "bar benfiddich").
+  canonicalAlias: Map<string, string>;
 };
 
 let cache: CacheShape | null = null;
@@ -276,7 +298,45 @@ const buildIndex = async (): Promise<CacheShape> => {
     }
   }
 
-  return { fetchedAt: Date.now(), byName };
+  // Places Enrichment tab (built by the one-time admin/enrich route).
+  // Columns: [normalizedKey, canonicalName, sheetName, placeId, lat, lng,
+  //           photoName, formattedAddress, businessStatus, lastVerified]
+  // Read defensively: the tab may not exist yet (enrichment not run), in which
+  // case we just skip the join and behave exactly as before.
+  const enrichmentByKey = new Map<string, PlacesEnrichment>();
+  const canonicalAlias = new Map<string, string>();
+  try {
+    const enrichRows = await fetchSheet(ENRICHMENT_TAB);
+    for (const row of enrichRows) {
+      const [key, canonicalName, , placeId, latStr, lngStr, photoName, formattedAddress, businessStatus] = row;
+      if (!key || !placeId) continue;
+      const lat = Number(latStr);
+      const lng = Number(lngStr);
+      const enr: PlacesEnrichment = {
+        placeId,
+        canonicalName: canonicalName || undefined,
+        lat: Number.isFinite(lat) ? lat : undefined,
+        lng: Number.isFinite(lng) ? lng : undefined,
+        photoName: photoName || undefined,
+        formattedAddress: formattedAddress || undefined,
+        businessStatus: businessStatus || undefined,
+      };
+      // Keep the first enrichment per key (stable).
+      if (!enrichmentByKey.has(key)) enrichmentByKey.set(key, enr);
+      // Register the canonical name as a second matching key, but never let it
+      // shadow a real sheet key, and don't overwrite an existing alias.
+      if (canonicalName) {
+        const alias = normalizeName(canonicalName);
+        if (alias && alias !== key && !byName.has(alias) && !canonicalAlias.has(alias)) {
+          canonicalAlias.set(alias, key);
+        }
+      }
+    }
+  } catch (err) {
+    console.warn("Places Enrichment tab unavailable — proceeding without it:", (err as Error).message);
+  }
+
+  return { fetchedAt: Date.now(), byName, enrichmentByKey, canonicalAlias };
 };
 
 const getIndex = async (): Promise<CacheShape> => {
@@ -405,11 +465,42 @@ export const lookupAccolades = async (
 ): Promise<AccoladeEntry | null> => {
   try {
     const idx = await getIndex();
-    const entries = idx.byName.get(normalizeName(venueName));
+    const key = normalizeName(venueName);
+    // Direct hit, else fall back through the canonical-name alias (fixes the
+    // "Ben Fiddich" vs sheet's "Bar Benfiddich" class of misses).
+    let resolvedKey = idx.byName.has(key) ? key : idx.canonicalAlias.get(key);
+    if (!resolvedKey) return null;
+    const entries = idx.byName.get(resolvedKey);
     if (!entries || entries.length === 0) return null;
-    return mergeEntries(entries, queryCity, queryCountry);
+    const merged = mergeEntries(entries, queryCity, queryCountry);
+    if (!merged) return null;
+    // Attach Places enrichment if we have it for this venue.
+    const enr = idx.enrichmentByKey.get(resolvedKey);
+    if (enr) merged.places = enr;
+    return merged;
   } catch (err) {
     console.error("Accolades lookup failed:", err);
+    return null;
+  }
+};
+
+// Direct Places-enrichment lookup by venue name (with canonical-alias
+// fallback). Returns coordinates / placeId / photo reference for a venue, or
+// null. Used by the (future) AI-free charted path to render straight from the
+// sheet index without an AI or live Places call.
+export const lookupEnrichment = async (
+  venueName: string,
+): Promise<PlacesEnrichment | null> => {
+  try {
+    const idx = await getIndex();
+    const key = normalizeName(venueName);
+    const resolvedKey = idx.enrichmentByKey.has(key)
+      ? key
+      : idx.canonicalAlias.get(key);
+    if (!resolvedKey) return null;
+    return idx.enrichmentByKey.get(resolvedKey) ?? null;
+  } catch (err) {
+    console.error("Enrichment lookup failed:", err);
     return null;
   }
 };
@@ -427,7 +518,12 @@ export const __test = {
       if (arr) arr.push(entry);
       else byName.set(key, [entry]);
     }
-    cache = { fetchedAt: Date.now(), byName };
+    cache = {
+      fetchedAt: Date.now(),
+      byName,
+      enrichmentByKey: new Map(),
+      canonicalAlias: new Map(),
+    };
   },
   clearIndex() {
     cache = null;
@@ -444,11 +540,13 @@ export const listAccoladesForCity = async (
   try {
     const idx = await getIndex();
     const out: Array<AccoladeEntry & { name: string }> = [];
-    for (const entries of idx.byName.values()) {
+    for (const [key, entries] of idx.byName.entries()) {
       const merged = mergeEntries(entries, queryCity, queryCountry);
       if (!merged) continue;
       const name = merged.displayName ?? entries.find((e) => e.displayName)?.displayName;
       if (!name) continue;
+      const enr = idx.enrichmentByKey.get(key);
+      if (enr) merged.places = enr;
       out.push({ ...merged, name });
     }
     return out;
