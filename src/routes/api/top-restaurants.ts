@@ -648,50 +648,30 @@ export const Route = createFileRoute("/api/top-restaurants")({
             parsed.country ?? "",
           );
           const seenExclude = new Set(excludeList.map((s) => s.trim().toLowerCase()));
-          // Build the seed line for one accolade venue.
-          const seedLine = (a: (typeof cityAccolades)[number]): string => {
-            const tags: string[] = [];
-            if (a.michelinStars) tags.push(`${a.michelinStars}★ Michelin`);
-            if (a.bibGourmand) tags.push("Bib Gourmand");
-            if (a.worldsBest50Restaurants)
-              tags.push(`World's 50 Best #${a.worldsBest50Restaurants.rank} (${a.worldsBest50Restaurants.year})`);
-            if (a.worldsBest50Bars)
-              tags.push(`World's 50 Best Bars #${a.worldsBest50Bars.rank} (${a.worldsBest50Bars.year})`);
-            if (a.bestChefAward)
-              tags.push(`Best Chef ${a.bestChefAward.knives}-knives (${a.bestChefAward.year})`);
-            if (a.jamesBeardAward)
-              tags.push(`James Beard ${a.jamesBeardAward.name} (${a.jamesBeardAward.year})`);
-            if (a.pinnacleAward)
-              tags.push(`Pinnacle Guide ${a.pinnacleAward.pins}-pin (${a.pinnacleAward.year})`);
-            if (a.spiritedAward)
-              tags.push(`Spirited Award: ${a.spiritedAward.name} (${a.spiritedAward.year})`);
-            if (a.oadAward)
-              tags.push(`OAD ${a.oadAward.region} #${a.oadAward.rank} (${a.oadAward.year})`);
-            return `  • ${a.name} — ${tags.join("; ")}`;
-          };
-
-          // Split the seed by category and give each its OWN budget before
-          // joining. Previously this was a flat .slice(0, 60) over the raw
-          // index order — which is dominated by restaurants (Michelin is parsed
-          // first and big cities have hundreds), so cocktail bars were pushed
-          // past the cutoff and never reached the AI. A bar is anything that
-          // carries a bar accolade (World's 50 Best Bars / Pinnacle / Spirited);
-          // everything else is treated as a restaurant. Each side is sorted by
-          // its own ranking score so the strongest survive the budget.
-          const seedYear = new Date().getFullYear();
-          const eligible = cityAccolades.filter((a) => !seenExclude.has(a.name.toLowerCase()));
-          const seedBars = eligible
-            .filter((a) => barScore(a) > 0)
-            .sort((a, b) => barScore(b) - barScore(a))
-            .slice(0, 30);
-          const seedRestaurants = eligible
-            .filter((a) => barScore(a) <= 0)
-            .sort((a, b) => restaurantScore(b, seedYear) - restaurantScore(a, seedYear))
-            .slice(0, 30);
-          const seedVenues = [...seedRestaurants, ...seedBars].map(seedLine).join("\n");
-          console.log(
-            `[top-restaurants] ${cityQuery}: seed restaurants=${seedRestaurants.length}, bars=${seedBars.length} (eligible=${eligible.length})`,
-          );
+          const seedVenues = cityAccolades
+            .filter((a) => !seenExclude.has(a.name.toLowerCase()))
+            .map((a) => {
+              const tags: string[] = [];
+              if (a.michelinStars) tags.push(`${a.michelinStars}★ Michelin`);
+              if (a.bibGourmand) tags.push("Bib Gourmand");
+              if (a.worldsBest50Restaurants)
+                tags.push(`World's 50 Best #${a.worldsBest50Restaurants.rank} (${a.worldsBest50Restaurants.year})`);
+              if (a.worldsBest50Bars)
+                tags.push(`World's 50 Best Bars #${a.worldsBest50Bars.rank} (${a.worldsBest50Bars.year})`);
+              if (a.bestChefAward)
+                tags.push(`Best Chef ${a.bestChefAward.knives}-knives (${a.bestChefAward.year})`);
+              if (a.jamesBeardAward)
+                tags.push(`James Beard ${a.jamesBeardAward.name} (${a.jamesBeardAward.year})`);
+              if (a.pinnacleAward)
+                tags.push(`Pinnacle Guide ${a.pinnacleAward.pins}-pin (${a.pinnacleAward.year})`);
+              if (a.spiritedAward)
+                tags.push(`Spirited Award: ${a.spiritedAward.name} (${a.spiritedAward.year})`);
+              if (a.oadAward)
+                tags.push(`OAD ${a.oadAward.region} #${a.oadAward.rank} (${a.oadAward.year})`);
+              return `  • ${a.name} — ${tags.join("; ")}`;
+            })
+            .slice(0, 60)
+            .join("\n");
           const seedBlock = seedVenues
             ? `\n\nCANONICAL ACCOLADE VENUES FOR ${cityQuery} (from the official linked spreadsheet — these are the ONLY source of truth for accolades and rankings). You MUST include every one of these that is a restaurant or cocktail bar still operating, up to the ${limit} slots per category. Use the EXACT names below so server-side accolade enrichment can match them.\n${seedVenues}`
             : `\n\nNo canonical accolade venues are listed in the linked spreadsheet for ${cityQuery}.`;
@@ -815,97 +795,62 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
           const orderedVenues = orderedPairs.map((p) => p.v);
           const sheetAccolades = orderedPairs.map((p) => p.sheet);
 
-          // Verify each venue. PREFER sheet enrichment (the "Places Enrichment"
-          // tab) when present: it already has placeId, current coords, business
-          // status, and a photo reference — so we SKIP the live Places call for
-          // enriched (charted) venues entirely. That's the speed + accuracy win.
-          // Venues without enrichment (rated tier, or charted-but-unmatched) fall
-          // back to the existing live Places lookup.
-          //
-          // Returns, per venue: keep flag, a "temporarilyClosed" flag, optional
-          // snapped coords, an optional photoName, and a reason string for logs.
-          type Verify = {
-            keep: boolean;
-            temporarilyClosed: boolean;
-            lat?: number;
-            lng?: number;
-            photoName?: string;
-            reason: string;
-          };
-
-          const verifications: Verify[] = await Promise.all(
-            orderedVenues.map(async (v, i): Promise<Verify> => {
-              const enr = sheetAccolades[i]?.places;
-
-              // ── Enriched path: no live Places call. ──
-              if (enr?.placeId) {
-                const status = enr.businessStatus;
-                if (status === "CLOSED_PERMANENTLY") {
-                  return { keep: false, temporarilyClosed: false, reason: `${v.name}:closed-perm(enriched)` };
-                }
-                return {
-                  keep: true,
-                  temporarilyClosed: status === "CLOSED_TEMPORARILY",
-                  // Snap to enriched coords when we have them.
-                  lat: enr.lat,
-                  lng: enr.lng,
-                  photoName: enr.photoName,
-                  reason: `${v.name}:kept(enriched${status === "CLOSED_TEMPORARILY" ? ",temp-closed" : ""})`,
-                };
-              }
-
-              // ── Fallback path: live Places lookup (unchanged behavior). ──
-              const place = await lookupGooglePlace(v.name, object.city, object.country, v.lat, v.lng);
-              if (!place) {
-                return { keep: true, temporarilyClosed: false, reason: `${v.name}:no-place` };
-              }
-              if (place.businessStatus === "CLOSED_PERMANENTLY") {
-                return { keep: false, temporarilyClosed: false, reason: `${v.name}:closed-perm` };
-              }
-              // Other non-operational, non-temp statuses (e.g. unknown) — keep as
-              // before; only permanent closure drops a venue now.
-              const tempClosed = place.businessStatus === "CLOSED_TEMPORARILY";
-              if (!placeIsInCity(place, parsed.city, object.country, parsed.region ?? "")) {
-                return { keep: false, temporarilyClosed: tempClosed, reason: `${v.name}:not-in-city(${place.formattedAddress})` };
-              }
-              return {
-                keep: true,
-                temporarilyClosed: tempClosed,
-                lat: place.location?.latitude,
-                lng: place.location?.longitude,
-                photoName: place.photoName,
-                reason: `${v.name}:kept${tempClosed ? "(temp-closed)" : ""}`,
-              };
-            }),
+          // Look up each venue on Google Places in parallel. This serves two
+          // purposes: (1) drop venues that Google marks as permanently/temp
+          // closed or that don't actually sit in the requested city, and
+          // (2) reuse the Places photo for image fallback.
+          const placeLookups = await Promise.all(
+            orderedVenues.map((v) =>
+              lookupGooglePlace(v.name, object.city, object.country, v.lat, v.lng),
+            ),
           );
-
-          // Snap coordinates from whichever source verified the venue.
-          orderedVenues.forEach((v, i) => {
-            const ver = verifications[i];
-            if (ver.lat != null && ver.lng != null) {
-              v.lat = ver.lat;
-              v.lng = ver.lng;
+          const keepMask = orderedVenues.map((v, i) => {
+            const place = placeLookups[i];
+            if (!place) return true; // no Places result — keep (don't drop on API miss)
+            if (
+              place.businessStatus &&
+              place.businessStatus !== "OPERATIONAL"
+            ) {
+              return false;
             }
+            if (!placeIsInCity(place, parsed.city, object.country, parsed.region ?? "")) {
+              // Place clearly resolves to a different city — drop.
+              return false;
+            }
+            // Snap to current Google coords if available (handles relocations).
+            if (place.location) {
+              v.lat = place.location.latitude;
+              v.lng = place.location.longitude;
+            }
+            return true;
           });
-
-          const keepMask = verifications.map((ver) => ver.keep);
           const keptVenues = orderedVenues.filter((_, i) => keepMask[i]);
           const keptSheets = sheetAccolades.filter((_, i) => keepMask[i]);
-          const keptVerifications = verifications.filter((_, i) => keepMask[i]);
+          const keptPlaces = placeLookups.filter((_, i) => keepMask[i]);
           console.log(
-            `[top-restaurants] ${cityQuery}: orderedVenues=${orderedVenues.length}, kept=${keptVenues.length}, ` +
-              `enriched=${sheetAccolades.filter((s) => s?.places?.placeId).length}, ` +
-              `reasons=${verifications.map((ver) => ver.reason).join(" | ")}`,
+            `[top-restaurants] ${cityQuery}: orderedVenues=${orderedVenues.length}, kept=${keptVenues.length}, dropped reasons=${orderedVenues
+              .map((v, i) => {
+                const p = placeLookups[i];
+                if (!p) return `${v.name}:no-place`;
+                if (p.businessStatus && p.businessStatus !== "OPERATIONAL") return `${v.name}:closed`;
+                if (!placeIsInCity(p, parsed.city, object.country, parsed.region ?? "")) return `${v.name}:not-in-city(${p.formattedAddress})`;
+                return `${v.name}:kept`;
+              })
+              .join(" | ")}`,
           );
 
-          // Resolve images using ONLY zero/low-latency sources. For enriched
-          // venues the photo reference came from the sheet (no extra call to
-          // fetch the reference). Priority: AI image → Places photo → generic.
+          // Resolve images using ONLY zero/low-latency sources. The Google
+          // Places photo was already fetched during verification, so it costs
+          // nothing extra. We deliberately DO NOT scrape venue websites
+          // (fetchOgImage) or hit Wikipedia here — those network round-trips
+          // were the dominant cause of ~19s response times, since the slowest
+          // single venue gated all 20. Priority: AI image → Places photo →
+          // generic fallback.
           const resolvedImages = await Promise.all(
             keptVenues.map(async (v, i) => {
               const aiImg = v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
               if (aiImg) return aiImg;
-              const fromPlaces = await fetchGooglePlacePhoto(keptVerifications[i]?.photoName);
+              const fromPlaces = await fetchGooglePlacePhoto(keptPlaces[i]?.photoName);
               if (fromPlaces) return fromPlaces;
               return genericFallback(v.category);
             }),
@@ -966,7 +911,6 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
                 bestChefAward: sheet?.bestChefAward ?? undefined,
                 oadAward: sheet?.oadAward ?? undefined,
                 tier: sheet ? ("charted" as const) : ("rated" as const),
-                temporarilyClosed: keptVerifications[i]?.temporarilyClosed || undefined,
                 imageUrl: resolvedImages[i],
               };
             }),
