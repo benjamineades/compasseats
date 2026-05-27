@@ -795,62 +795,97 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
           const orderedVenues = orderedPairs.map((p) => p.v);
           const sheetAccolades = orderedPairs.map((p) => p.sheet);
 
-          // Look up each venue on Google Places in parallel. This serves two
-          // purposes: (1) drop venues that Google marks as permanently/temp
-          // closed or that don't actually sit in the requested city, and
-          // (2) reuse the Places photo for image fallback.
-          const placeLookups = await Promise.all(
-            orderedVenues.map((v) =>
-              lookupGooglePlace(v.name, object.city, object.country, v.lat, v.lng),
-            ),
-          );
-          const keepMask = orderedVenues.map((v, i) => {
-            const place = placeLookups[i];
-            if (!place) return true; // no Places result — keep (don't drop on API miss)
-            if (
-              place.businessStatus &&
-              place.businessStatus !== "OPERATIONAL"
-            ) {
-              return false;
-            }
-            if (!placeIsInCity(place, parsed.city, object.country, parsed.region ?? "")) {
-              // Place clearly resolves to a different city — drop.
-              return false;
-            }
-            // Snap to current Google coords if available (handles relocations).
-            if (place.location) {
-              v.lat = place.location.latitude;
-              v.lng = place.location.longitude;
-            }
-            return true;
-          });
-          const keptVenues = orderedVenues.filter((_, i) => keepMask[i]);
-          const keptSheets = sheetAccolades.filter((_, i) => keepMask[i]);
-          const keptPlaces = placeLookups.filter((_, i) => keepMask[i]);
-          console.log(
-            `[top-restaurants] ${cityQuery}: orderedVenues=${orderedVenues.length}, kept=${keptVenues.length}, dropped reasons=${orderedVenues
-              .map((v, i) => {
-                const p = placeLookups[i];
-                if (!p) return `${v.name}:no-place`;
-                if (p.businessStatus && p.businessStatus !== "OPERATIONAL") return `${v.name}:closed`;
-                if (!placeIsInCity(p, parsed.city, object.country, parsed.region ?? "")) return `${v.name}:not-in-city(${p.formattedAddress})`;
-                return `${v.name}:kept`;
-              })
-              .join(" | ")}`,
+          // Verify each venue. PREFER sheet enrichment (the "Places Enrichment"
+          // tab) when present: it already has placeId, current coords, business
+          // status, and a photo reference — so we SKIP the live Places call for
+          // enriched (charted) venues entirely. That's the speed + accuracy win.
+          // Venues without enrichment (rated tier, or charted-but-unmatched) fall
+          // back to the existing live Places lookup.
+          //
+          // Returns, per venue: keep flag, a "temporarilyClosed" flag, optional
+          // snapped coords, an optional photoName, and a reason string for logs.
+          type Verify = {
+            keep: boolean;
+            temporarilyClosed: boolean;
+            lat?: number;
+            lng?: number;
+            photoName?: string;
+            reason: string;
+          };
+
+          const verifications: Verify[] = await Promise.all(
+            orderedVenues.map(async (v, i): Promise<Verify> => {
+              const enr = sheetAccolades[i]?.places;
+
+              // ── Enriched path: no live Places call. ──
+              if (enr?.placeId) {
+                const status = enr.businessStatus;
+                if (status === "CLOSED_PERMANENTLY") {
+                  return { keep: false, temporarilyClosed: false, reason: `${v.name}:closed-perm(enriched)` };
+                }
+                return {
+                  keep: true,
+                  temporarilyClosed: status === "CLOSED_TEMPORARILY",
+                  // Snap to enriched coords when we have them.
+                  lat: enr.lat,
+                  lng: enr.lng,
+                  photoName: enr.photoName,
+                  reason: `${v.name}:kept(enriched${status === "CLOSED_TEMPORARILY" ? ",temp-closed" : ""})`,
+                };
+              }
+
+              // ── Fallback path: live Places lookup (unchanged behavior). ──
+              const place = await lookupGooglePlace(v.name, object.city, object.country, v.lat, v.lng);
+              if (!place) {
+                return { keep: true, temporarilyClosed: false, reason: `${v.name}:no-place` };
+              }
+              if (place.businessStatus === "CLOSED_PERMANENTLY") {
+                return { keep: false, temporarilyClosed: false, reason: `${v.name}:closed-perm` };
+              }
+              // Other non-operational, non-temp statuses (e.g. unknown) — keep as
+              // before; only permanent closure drops a venue now.
+              const tempClosed = place.businessStatus === "CLOSED_TEMPORARILY";
+              if (!placeIsInCity(place, parsed.city, object.country, parsed.region ?? "")) {
+                return { keep: false, temporarilyClosed: tempClosed, reason: `${v.name}:not-in-city(${place.formattedAddress})` };
+              }
+              return {
+                keep: true,
+                temporarilyClosed: tempClosed,
+                lat: place.location?.latitude,
+                lng: place.location?.longitude,
+                photoName: place.photoName,
+                reason: `${v.name}:kept${tempClosed ? "(temp-closed)" : ""}`,
+              };
+            }),
           );
 
-          // Resolve images using ONLY zero/low-latency sources. The Google
-          // Places photo was already fetched during verification, so it costs
-          // nothing extra. We deliberately DO NOT scrape venue websites
-          // (fetchOgImage) or hit Wikipedia here — those network round-trips
-          // were the dominant cause of ~19s response times, since the slowest
-          // single venue gated all 20. Priority: AI image → Places photo →
-          // generic fallback.
+          // Snap coordinates from whichever source verified the venue.
+          orderedVenues.forEach((v, i) => {
+            const ver = verifications[i];
+            if (ver.lat != null && ver.lng != null) {
+              v.lat = ver.lat;
+              v.lng = ver.lng;
+            }
+          });
+
+          const keepMask = verifications.map((ver) => ver.keep);
+          const keptVenues = orderedVenues.filter((_, i) => keepMask[i]);
+          const keptSheets = sheetAccolades.filter((_, i) => keepMask[i]);
+          const keptVerifications = verifications.filter((_, i) => keepMask[i]);
+          console.log(
+            `[top-restaurants] ${cityQuery}: orderedVenues=${orderedVenues.length}, kept=${keptVenues.length}, ` +
+              `enriched=${sheetAccolades.filter((s) => s?.places?.placeId).length}, ` +
+              `reasons=${verifications.map((ver) => ver.reason).join(" | ")}`,
+          );
+
+          // Resolve images using ONLY zero/low-latency sources. For enriched
+          // venues the photo reference came from the sheet (no extra call to
+          // fetch the reference). Priority: AI image → Places photo → generic.
           const resolvedImages = await Promise.all(
             keptVenues.map(async (v, i) => {
               const aiImg = v.imageUrl && /^https?:\/\//i.test(v.imageUrl) ? v.imageUrl : undefined;
               if (aiImg) return aiImg;
-              const fromPlaces = await fetchGooglePlacePhoto(keptPlaces[i]?.photoName);
+              const fromPlaces = await fetchGooglePlacePhoto(keptVerifications[i]?.photoName);
               if (fromPlaces) return fromPlaces;
               return genericFallback(v.category);
             }),
@@ -911,6 +946,7 @@ Accolade fields are populated by the server from the linked spreadsheet; leave t
                 bestChefAward: sheet?.bestChefAward ?? undefined,
                 oadAward: sheet?.oadAward ?? undefined,
                 tier: sheet ? ("charted" as const) : ("rated" as const),
+                temporarilyClosed: keptVerifications[i]?.temporarilyClosed || undefined,
                 imageUrl: resolvedImages[i],
               };
             }),
