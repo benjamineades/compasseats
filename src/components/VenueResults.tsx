@@ -536,6 +536,15 @@ function VenueCard({
                 <Clock className="h-3 w-3" />{v.hours}
               </Badge>
             )}
+            {v.temporarilyClosed && (
+              <Badge
+                variant="outline"
+                title="This venue is temporarily closed according to Google"
+                className="gap-1 border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400"
+              >
+                <Clock className="h-3 w-3" />Temporarily closed
+              </Badge>
+            )}
             {userCoords && (
               <Badge variant="outline" className="gap-1" title="Distance from your location">
                 <Locate className="h-3 w-3" />
