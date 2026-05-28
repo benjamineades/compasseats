@@ -1,29 +1,53 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo, useState, useTransition, useDeferredValue } from "react";
+import { ArrowRight, ChevronDown, SlidersHorizontal, X } from "lucide-react";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-import { VenueResults, type ResultsData, type Venue } from "@/components/VenueResults";
+import { Badge } from "@/components/ui/badge";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuCheckboxItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 import { CityHero } from "@/components/CityHero";
+import { AwardMarquee } from "@/components/AwardMarquee";
 
-import { CITIES_BY_SLUG, TOP_CITIES, type TopCity } from "@/lib/cities";
-import { useVenueLoadMore } from "@/lib/useVenueLoadMore";
-import { Compass } from "@/components/Compass";
+import {
+  getCity,
+  getVenuesByCity,
+  getCitiesWithVenues,
+  getAwardSource,
+} from "@/lib/venues";
+import type { Award, City, Venue } from "@/lib/schema";
+
+const SITE_URL = "https://compasseats.com";
+
+// ---------------------------------------------------------------------------
+// Route
+// ---------------------------------------------------------------------------
 
 export const Route = createFileRoute("/city/$slug")({
+  staticData: { prerender: true },
   loader: ({ params }) => {
-    const city = CITIES_BY_SLUG[params.slug];
+    const city = getCity(params.slug);
     if (!city) throw notFound();
-    return { city };
+    const venues = getVenuesByCity(params.slug);
+    return { city, venues };
   },
   head: ({ loaderData }) => {
-    const c = loaderData?.city as TopCity | undefined;
-    if (!c) return { meta: [{ title: "City not found" }] };
-    const title = `Top Restaurants & Cocktail Bars in ${c.city}, ${c.country}`;
-    const description = `${c.blurb} Discover the best Michelin-starred restaurants and World's 50 Best cocktail bars in ${c.city}, mapped and ranked.`;
-    const url = `https://www.compasseats.com/city/${c.slug}`;
+    const c = loaderData?.city as City | undefined;
+    const venues = (loaderData?.venues ?? []) as Venue[];
+    if (!c) return { meta: [{ title: "City not found · CompassEats" }] };
+
+    const title = `${c.display}, charted. — Best restaurants and bars | CompassEats`;
+    const description = buildMetaDescription(c);
+    const url = `${SITE_URL}/city/${c.slug}`;
+
     return {
       meta: [
         { title },
@@ -32,213 +56,328 @@ export const Route = createFileRoute("/city/$slug")({
         { property: "og:description", content: description },
         { property: "og:url", content: url },
         { property: "og:type", content: "website" },
+        ...(c.hero_image_url
+          ? [{ property: "og:image", content: c.hero_image_url }]
+          : []),
+        { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
+        ...(c.hero_image_url
+          ? [{ name: "twitter:image", content: c.hero_image_url }]
+          : []),
       ],
       links: [{ rel: "canonical", href: url }],
-      scripts: [{
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "TouristDestination",
-          name: `${c.city}, ${c.country}`,
-          description,
-          url,
-        }),
-      }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(buildItemListJsonLd(c, venues)),
+        },
+      ],
     };
   },
   component: CityPage,
   notFoundComponent: () => (
     <div className="mx-auto max-w-3xl px-6 py-20 text-center">
-      <h1 className="text-3xl font-light">City not yet mapped</h1>
-      <p className="mt-2 text-muted-foreground">Browse our top cities below.</p>
-      <div className="mt-6 flex flex-wrap justify-center gap-2">
-        {TOP_CITIES.map((c) => (
-          <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
-            className="rounded-full border border-border bg-card px-3 py-1 text-sm hover:border-primary">
-            {c.city}
-          </Link>
-        ))}
-      </div>
+      <h1 className="font-display text-3xl font-light italic">
+        We haven't charted this city yet.
+      </h1>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Browse the cities we've mapped from the home page.
+      </p>
+      <Link
+        to="/"
+        className="mt-6 inline-block text-sm text-accent-strong underline"
+      >
+        Back home
+      </Link>
     </div>
   ),
   errorComponent: ({ error }) => (
     <div className="mx-auto max-w-3xl px-6 py-20 text-center">
       <h1 className="text-2xl font-light">Something went wrong</h1>
-      <p className="mt-2 text-muted-foreground">{error.message}</p>
-      <Link to="/" className="mt-4 inline-block text-accent-strong underline">Back home</Link>
+      <p className="mt-2 text-sm text-muted-foreground">{error.message}</p>
+      <Link to="/" className="mt-4 inline-block text-accent-strong underline">
+        Back home
+      </Link>
     </div>
   ),
 });
 
-async function fetchVenues(c: TopCity): Promise<ResultsData> {
-  const res = await fetch("/api/top-restaurants", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      city: c.city,
-      region: c.region,
-      country: c.country,
-    }),
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data?.error ?? "Failed to load");
-  return data as ResultsData;
-}
+// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
 
-// Split a venue list into charted (sheet-matched) and rated (everything else)
-// using the `tier` tag the API now returns. Falls back gracefully if an older
-// cached response without `tier` comes back (treat as charted).
-function splitByTier(venues: Venue[]) {
-  const charted: Venue[] = [];
-  const rated: Venue[] = [];
-  for (const v of venues) {
-    if ((v as Venue & { tier?: string }).tier === "rated") rated.push(v);
-    else charted.push(v);
-  }
-  return { charted, rated };
-}
+type QuickFilter = "restaurants" | "bars" | "openToday";
 
 function CityPage() {
-  const { city } = Route.useLoaderData();
-  const queryClient = useQueryClient();
+  const { city, venues } = Route.useLoaderData() as {
+    city: City;
+    venues: Venue[];
+  };
 
-  const query = useQuery({
-    queryKey: ["city-venues", city.slug],
-    queryFn: () => fetchVenues(city),
-    staleTime: 1000 * 60 * 30,
-  });
+  const [quick, setQuick] = useState<Set<QuickFilter>>(new Set());
+  const [awardFilters, setAwardFilters] = useState<Set<string>>(new Set());
+  const [isPending, startTransition] = useTransition();
 
-  const { charted, rated } = useMemo(
-    () => splitByTier(query.data?.venues ?? []),
-    [query.data],
-  );
+  // Deferred so the filter pills feel responsive while a large list filters.
+  const deferredQuick = useDeferredValue(quick);
+  const deferredAwards = useDeferredValue(awardFilters);
 
-  // Load-more appends to the RATED tier (charted is a fixed accolade set).
-  const { loadMore, isLoadingMore, hasMore, error: loadMoreError } = useVenueLoadMore({
-    data: query.data,
-    query: { city: city.city, region: city.region, country: city.country },
-    append: (newVenues) =>
-      queryClient.setQueryData<ResultsData>(["city-venues", city.slug], (prev) =>
-        prev ? { ...prev, venues: [...prev.venues, ...newVenues.map((v) => ({ ...v, tier: "rated" as const }))] } : prev,
-      ),
-  });
+  const distinctSources = useMemo(() => {
+    const set = new Set<string>();
+    for (const v of venues) for (const a of v.awards) set.add(a.source);
+    return Array.from(set).sort(
+      (a, b) =>
+        (prettyAwardSource(a) ?? a).localeCompare(prettyAwardSource(b) ?? b),
+    );
+  }, [venues]);
 
-  const hasCharted = charted.length > 0;
-  const hasRated = rated.length > 0;
+  const filtered = useMemo(() => {
+    const wantRest = deferredQuick.has("restaurants");
+    const wantBars = deferredQuick.has("bars");
+    const wantOpen = deferredQuick.has("openToday");
+    const todayKey = wantOpen ? currentDayKey(city.timezone) : null;
 
-  const chartedData: ResultsData | undefined = query.data && { ...query.data, venues: charted };
-  const ratedData: ResultsData | undefined = query.data && { ...query.data, venues: rated };
+    return venues.filter((v) => {
+      if (wantRest && !wantBars && v.type !== "restaurant") return false;
+      if (wantBars && !wantRest && v.type !== "bar") return false;
+      if (wantOpen) {
+        if (!v.hours) return false;
+        const ranges = v.hours[todayKey!];
+        if (!ranges || ranges.length === 0) return false;
+      }
+      if (deferredAwards.size > 0) {
+        const ok = v.awards.some((a) => deferredAwards.has(a.source));
+        if (!ok) return false;
+      }
+      return true;
+    });
+  }, [venues, deferredQuick, deferredAwards, city.timezone]);
+
+  const toggleQuick = (id: QuickFilter) =>
+    startTransition(() =>
+      setQuick((prev) => {
+        const next = new Set(prev);
+        next.has(id) ? next.delete(id) : next.add(id);
+        return next;
+      }),
+    );
+
+  const toggleAward = (source: string) =>
+    startTransition(() =>
+      setAwardFilters((prev) => {
+        const next = new Set(prev);
+        next.has(source) ? next.delete(source) : next.add(source);
+        return next;
+      }),
+    );
+
+  const clearAll = () =>
+    startTransition(() => {
+      setQuick(new Set());
+      setAwardFilters(new Set());
+    });
+
+  const noneSelected = quick.size === 0 && awardFilters.size === 0;
 
   return (
     <main className="relative min-h-screen bg-background">
       <CityHero
-        city={city.city}
+        city={city.display}
         country={city.country}
         blurb={city.blurb}
         hueSeed={city.slug}
-        imageUrl={city.imageUrl}
+        imageUrl={city.hero_image_url}
         back={{ to: "/" }}
       />
 
+      <div className="mx-auto max-w-5xl px-6">
+        <AwardMarquee />
+      </div>
+
       <div className="mx-auto max-w-5xl px-6 py-10">
-        {query.isPending && <CityLoading city={city.city} />}
+        {/* Filter bar */}
+        <div className="sticky top-[70px] z-[60] -mx-6 mb-6 border-b border-border bg-background/80 px-6 py-3 backdrop-blur-md">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <Button
+              size="sm"
+              variant={noneSelected ? "default" : "outline"}
+              onClick={clearAll}
+              className="h-8 rounded-full text-xs"
+            >
+              All
+            </Button>
+            <Button
+              size="sm"
+              variant={quick.has("restaurants") ? "default" : "outline"}
+              onClick={() => toggleQuick("restaurants")}
+              className="h-8 rounded-full text-xs"
+            >
+              Restaurants
+            </Button>
+            <Button
+              size="sm"
+              variant={quick.has("bars") ? "default" : "outline"}
+              onClick={() => toggleQuick("bars")}
+              className="h-8 rounded-full text-xs"
+            >
+              Cocktail Bars
+            </Button>
+            <Button
+              size="sm"
+              variant={quick.has("openToday") ? "default" : "outline"}
+              onClick={() => toggleQuick("openToday")}
+              className="h-8 rounded-full text-xs"
+            >
+              Open Today
+            </Button>
 
-        {query.isError && (
-          <Card className="border-destructive/30 bg-destructive/5">
-            <CardContent className="flex flex-col items-center gap-3 p-8 text-center">
-              <p className="text-sm text-destructive">{(query.error as Error).message}</p>
-              <Button onClick={() => query.refetch()} size="sm" variant="outline">
-                <Loader2 className={`mr-2 h-4 w-4 ${query.isFetching ? "animate-spin" : ""}`} />
-                Try again
+            {Array.from(awardFilters).map((src) => (
+              <Button
+                key={src}
+                size="sm"
+                variant="default"
+                onClick={() => toggleAward(src)}
+                className="h-8 gap-1 rounded-full text-xs"
+                title="Remove filter"
+              >
+                {prettyAwardSource(src)}
+                <X className="h-3 w-3 opacity-80" />
               </Button>
-            </CardContent>
-          </Card>
-        )}
+            ))}
 
-        {/* TIER 1: charted (sheet-matched, with accolades) */}
-        {query.isSuccess && hasCharted && (
-          <section>
-            <TierHeading
-              eyebrow="Charted by the guides"
-              sub={`Award-winning tables and bars in ${city.city}, drawn from the guides that matter.`}
-            />
-            <VenueResults data={chartedData!} />
-          </section>
-        )}
-
-        {/* TIER 2: highly rated / local favorites */}
-        {query.isSuccess && (hasRated || !hasCharted) && (
-          <section className={hasCharted ? "mt-14 border-t border-border pt-10" : ""}>
-            <TierHeading
-              eyebrow={hasCharted ? `Also highly rated in ${city.city}` : "Nearby local favorites"}
-              sub={
-                hasCharted
-                  ? "Beyond the guides — top-rated local spots worth a look."
-                  : `We haven't charted award-winners in ${city.city} yet — here are some local favorites worth a look.`
-              }
-              secondary
-            />
-            {hasRated ? (
-              <VenueResults
-                data={ratedData!}
-                secondary
-                onLoadMore={loadMore}
-                isLoadingMore={isLoadingMore}
-                hasMore={hasMore}
-                loadMoreError={loadMoreError}
-              />
-            ) : (
-              <p className="text-sm text-muted-foreground">
-                We haven't charted this one yet. Try a nearby city — we've mapped the best tables in over 400 of them.
-              </p>
+            {distinctSources.length > 0 && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="h-8 gap-1.5 rounded-full text-xs"
+                  >
+                    <SlidersHorizontal className="h-3.5 w-3.5" />
+                    Awards
+                    {awardFilters.size > 0 && (
+                      <span className="ml-0.5 rounded-full bg-primary px-1.5 text-[10px] font-semibold text-primary-foreground">
+                        {awardFilters.size}
+                      </span>
+                    )}
+                    <ChevronDown className="h-3 w-3 opacity-70" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-64">
+                  <DropdownMenuLabel>Filter by award</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  {distinctSources.map((src) => (
+                    <DropdownMenuCheckboxItem
+                      key={src}
+                      checked={awardFilters.has(src)}
+                      onCheckedChange={() => toggleAward(src)}
+                      onSelect={(e) => e.preventDefault()}
+                    >
+                      {prettyAwardSource(src)}
+                    </DropdownMenuCheckboxItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             )}
-          </section>
+          </div>
+        </div>
+
+        {/* Results */}
+        {isPending ? (
+          <ResultsSkeleton />
+        ) : filtered.length === 0 ? (
+          <EmptyState onReset={clearAll} />
+        ) : (
+          <div className="grid gap-4 md:grid-cols-2">
+            {filtered.map((v) => (
+              <VenueCard key={v.id} venue={v} />
+            ))}
+          </div>
         )}
 
-        <OtherCities currentSlug={city.slug} />
+        {!isPending && filtered.length > 0 && (
+          <p className="mt-8 text-center text-xs italic text-muted-foreground">
+            Showing {filtered.length} of {venues.length} charted spot
+            {venues.length === 1 ? "" : "s"} in {city.display}.
+          </p>
+        )}
       </div>
     </main>
   );
 }
 
-function TierHeading({
-  eyebrow, sub, secondary,
-}: { eyebrow: string; sub: string; secondary?: boolean }) {
+// ---------------------------------------------------------------------------
+// Cards
+// ---------------------------------------------------------------------------
+
+function VenueCard({ venue }: { venue: Venue }) {
+  const top = venue.awards[0];
+  const accoladeLabel =
+    venue.awards.length > 1
+      ? `${venue.awards.length} accolades`
+      : top
+        ? `${prettyAwardSource(top.source)} · ${top.category}`
+        : null;
+
   return (
-    <div className="mb-5">
-      <h2
-        className={
-          secondary
-            ? "text-lg font-light tracking-tight text-muted-foreground"
-            : "text-2xl font-light tracking-tight text-foreground"
-        }
-      >
-        {eyebrow}
-      </h2>
-      <p className="mt-1 text-sm text-muted-foreground">{sub}</p>
-    </div>
+    <Link
+      to="/venue/$city/$slug"
+      params={{ city: venue.city_slug, slug: venue.slug }}
+      className="group block"
+    >
+      <Card className="h-full border-border bg-card transition-colors hover:border-accent-strong/50">
+        <CardContent className="flex h-full flex-col gap-2 p-5">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
+            {venue.type === "bar" ? "Cocktail bar" : "Restaurant"}
+            {venue.neighborhood ? ` · ${venue.neighborhood}` : ""}
+          </p>
+          <h3 className="font-display text-xl font-light italic text-foreground group-hover:text-accent-strong">
+            {venue.name}
+          </h3>
+
+          {accoladeLabel && (
+            <p className="text-xs text-muted-foreground">{accoladeLabel}</p>
+          )}
+
+          {venue.blurb_short && (
+            <p className="line-clamp-2 text-sm text-muted-foreground">
+              {venue.blurb_short}
+            </p>
+          )}
+
+          <div className="mt-2 flex flex-wrap items-center gap-1.5">
+            {venue.price_tier && (
+              <Badge variant="outline" className="font-normal">
+                {venue.price_tier}
+              </Badge>
+            )}
+            {venue.cuisine_tags.slice(0, 2).map((t) => (
+              <Badge key={t} variant="secondary" className="font-normal">
+                {t}
+              </Badge>
+            ))}
+          </div>
+
+          <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs text-accent-strong">
+            View <ArrowRight className="h-3 w-3" />
+          </span>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
 
-function CityLoading({ city }: { city: string }) {
+function ResultsSkeleton() {
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-center gap-2 rounded-lg border border-border bg-card/40 px-4 py-3 text-sm text-muted-foreground">
-        <Compass size={16} />
-        Charting <span className="font-medium text-foreground">{city}'s</span> best tables…
-      </div>
-      <Skeleton className="h-72 w-full rounded-xl md:h-96" />
-      {Array.from({ length: 4 }).map((_, i) => (
-        <Card key={i}>
-          <CardContent className="flex gap-4 p-5">
-            <Skeleton className="h-9 w-9 rounded-full" />
-            <div className="flex-1 space-y-2">
-              <Skeleton className="h-5 w-2/3" />
-              <Skeleton className="h-4 w-1/3" />
-              <Skeleton className="h-4 w-full" />
-            </div>
+    <div className="grid gap-4 md:grid-cols-2">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <Card key={i} className="border-border bg-card">
+          <CardContent className="space-y-3 p-5">
+            <Skeleton className="h-3 w-1/3" />
+            <Skeleton className="h-6 w-2/3" />
+            <Skeleton className="h-4 w-1/2" />
+            <Skeleton className="h-4 w-full" />
           </CardContent>
         </Card>
       ))}
@@ -246,22 +385,82 @@ function CityLoading({ city }: { city: string }) {
   );
 }
 
-function OtherCities({ currentSlug }: { currentSlug: string }) {
-  const others = TOP_CITIES.filter((c) => c.slug !== currentSlug).slice(0, 8);
+function EmptyState({ onReset }: { onReset: () => void }) {
   return (
-    <div className="mt-16 border-t border-border pt-8">
-      <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        Explore other cities
-      </h2>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        {others.map((c) => (
-          <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
-            className="group rounded-lg border border-border bg-card px-3 py-2.5 text-left hover:border-primary/50 hover:bg-accent">
-            <div className="text-sm font-medium text-foreground group-hover:text-accent-strong">{c.city}</div>
-            <div className="text-xs text-muted-foreground">{c.country}</div>
-          </Link>
-        ))}
-      </div>
+    <div className="rounded-xl border border-border bg-card/40 px-6 py-12 text-center">
+      <h3 className="font-display text-xl font-light italic text-foreground">
+        Nothing matches those filters.
+      </h3>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Loosen the filters to see more charted spots.
+      </p>
+      <Button onClick={onReset} variant="outline" size="sm" className="mt-4">
+        Clear filters
+      </Button>
     </div>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+function prettyAwardSource(slug: string): string {
+  return getAwardSource(slug)?.name ?? slug;
+}
+
+type DayKey = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
+const WEEKDAY_TO_KEY: Record<string, DayKey> = {
+  Mon: "mon",
+  Tue: "tue",
+  Wed: "wed",
+  Thu: "thu",
+  Fri: "fri",
+  Sat: "sat",
+  Sun: "sun",
+};
+
+/** Returns the current day-of-week key in the given IANA timezone. */
+function currentDayKey(timezone: string | undefined): DayKey {
+  try {
+    const fmt = new Intl.DateTimeFormat("en-US", {
+      weekday: "short",
+      timeZone: timezone || undefined,
+    });
+    const label = fmt.format(new Date()); // "Mon", "Tue", …
+    return WEEKDAY_TO_KEY[label] ?? "mon";
+  } catch {
+    return WEEKDAY_TO_KEY[
+      new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(new Date())
+    ] ?? "mon";
+  }
+}
+
+function buildMetaDescription(c: City): string {
+  const raw =
+    c.blurb?.trim() ||
+    `The finest restaurants and cocktail bars in ${c.display}, ${c.country}, drawn from Michelin, World's 50 Best, and the guides that actually matter.`;
+  return raw.length > 300 ? raw.slice(0, 297).trimEnd() + "…" : raw;
+}
+
+function buildItemListJsonLd(c: City, venues: Venue[]) {
+  const items = venues.slice(0, 20).map((v, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: `${SITE_URL}/venue/${v.city_slug}/${v.slug}`,
+    name: v.name,
+  }));
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Best restaurants and bars in ${c.display}`,
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: items.length,
+    itemListElement: items,
+  };
+}
+
+// Re-export to keep the prerender list builder out of vite.config.ts cycles.
+export { getCitiesWithVenues };
+// silence unused-import warning if Award type is dropped later
+export type { Award };
