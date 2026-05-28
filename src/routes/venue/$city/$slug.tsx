@@ -213,7 +213,12 @@ function VenuePage() {
             <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               On the map
             </h2>
-            <SinglePinMap lat={venue.lat} lng={venue.lng} name={venue.name} />
+            <SinglePinMap
+              lat={venue.lat}
+              lng={venue.lng}
+              name={venue.name}
+              address={venue.address}
+            />
           </section>
 
           {/* Related */}
@@ -444,112 +449,142 @@ function RelatedVenueCard({ venue }: { venue: Venue }) {
   );
 }
 
-// Tiny single-pin map. Uses the same Google Maps loader as VenueMap but
-// kept inline to avoid coupling to its multi-pin signature.
+// Tiny single-pin locator map. MapLibre GL JS with free raster tiles
+// (Geoapify when VITE_GEOAPIFY_KEY is set, OpenStreetMap otherwise).
+// Client-only: SSR/prerender renders a static placeholder with the address.
 function SinglePinMap({
   lat,
   lng,
   name,
+  address,
 }: {
   lat: number;
   lng: number;
   name: string;
+  address?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     let cancelled = false;
-    loadGoogleMaps()
-      .then((g) => {
+    let mapInstance: import("maplibre-gl").Map | null = null;
+
+    (async () => {
+      try {
+        const maplibregl = (await import("maplibre-gl")).default;
+        // Inject MapLibre CSS once (avoids needing a global stylesheet import).
+        if (!document.getElementById("maplibre-gl-css")) {
+          const link = document.createElement("link");
+          link.id = "maplibre-gl-css";
+          link.rel = "stylesheet";
+          link.href = "https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css";
+          document.head.appendChild(link);
+        }
         if (cancelled || !containerRef.current) return;
-        const map = new g.maps.Map(containerRef.current, {
-          center: { lat, lng },
-          zoom: 15,
-          scrollwheel: false,
-          gestureHandling: "cooperative",
-          streetViewControl: false,
-          mapTypeControl: false,
-          fullscreenControl: false,
-        });
-        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="44" viewBox="0 0 34 42"><path d="M17 0C7.6 0 0 6.6 0 14.7c0 11 17 27.3 17 27.3s17-16.3 17-27.3C34 6.6 26.4 0 17 0z" fill="#C6A15B" stroke="#fff" stroke-width="2"/><circle cx="17" cy="15" r="5" fill="#1a1a1a"/></svg>`;
-        new g.maps.Marker({
-          map,
-          position: { lat, lng },
-          title: name,
-          icon: {
-            url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`,
-            scaledSize: new g.maps.Size(36, 44),
-            anchor: new g.maps.Point(18, 42),
+
+        const geoapifyKey = import.meta.env.VITE_GEOAPIFY_KEY as
+          | string
+          | undefined;
+        const useGeoapify = Boolean(geoapifyKey);
+        const tileUrl = useGeoapify
+          ? `https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=${geoapifyKey}`
+          : "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+        const attribution = useGeoapify
+          ? '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors © <a href="https://www.geoapify.com/" target="_blank" rel="noopener">Geoapify</a>'
+          : '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
+
+        mapInstance = new maplibregl.Map({
+          container: containerRef.current,
+          style: {
+            version: 8,
+            sources: {
+              raster: {
+                type: "raster",
+                tiles: [tileUrl],
+                tileSize: 256,
+                attribution,
+              },
+            },
+            layers: [
+              { id: "raster", type: "raster", source: "raster" },
+            ],
           },
+          center: [lng, lat],
+          zoom: 15,
+          attributionControl: { compact: true },
+          dragRotate: false,
+          pitchWithRotate: false,
+          touchPitch: false,
+          touchZoomRotate: true,
         });
-        setReady(true);
-      })
-      .catch((e) => setError((e as Error).message));
+        mapInstance.touchZoomRotate?.disableRotation();
+        mapInstance.keyboard?.disableRotation?.();
+        mapInstance.addControl(new maplibregl.NavigationControl({
+          showCompass: false,
+          showZoom: true,
+        }), "top-right");
+
+        // Custom brass compass-needle marker.
+        const el = document.createElement("div");
+        el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 34 42" aria-hidden="true"><path d="M17 0C7.6 0 0 6.6 0 14.7c0 11 17 27.3 17 27.3s17-16.3 17-27.3C34 6.6 26.4 0 17 0z" fill="#C6A15B" stroke="#fff" stroke-width="2"/><circle cx="17" cy="15" r="5" fill="#1a1a1a"/></svg>`;
+        el.style.cursor = "pointer";
+        el.title = name;
+        new maplibregl.Marker({ element: el, anchor: "bottom" })
+          .setLngLat([lng, lat])
+          .addTo(mapInstance);
+
+        mapInstance.on("load", () => {
+          if (!cancelled) setReady(true);
+        });
+      } catch (e) {
+        if (!cancelled) setError((e as Error).message);
+      }
+    })();
+
     return () => {
       cancelled = true;
+      mapInstance?.remove();
     };
-  }, [lat, lng, name]);
+  }, [lat, lng, name, mounted]);
 
   if (error) {
     return (
-      <div className="flex h-72 w-full items-center justify-center rounded-xl border border-border bg-muted/40 text-sm text-muted-foreground md:h-96">
-        Map unavailable
+      <div className="flex h-72 w-full flex-col items-center justify-center gap-1 rounded-xl border border-border bg-muted/40 px-6 text-center text-sm text-muted-foreground md:h-96">
+        <span>Map unavailable</span>
+        {address && <span className="text-foreground">{address}</span>}
+      </div>
+    );
+  }
+
+  // SSR / pre-hydration placeholder — keeps prerender clean and gives crawlers
+  // the address even when the map can't run.
+  if (!mounted) {
+    return (
+      <div className="flex h-72 w-full flex-col items-center justify-center gap-1 rounded-xl border border-border bg-[#f1ead8] px-6 text-center text-sm text-muted-foreground dark:bg-[#1f1a14] md:h-96">
+        <MapPin className="h-5 w-5 text-accent-strong" />
+        <span className="text-foreground">{name}</span>
+        {address && <span>{address}</span>}
       </div>
     );
   }
 
   return (
     <div className="relative h-72 w-full overflow-hidden rounded-xl border border-border md:h-96">
-      <div ref={containerRef} className="h-full w-full" />
+      <div
+        ref={containerRef}
+        className="h-full w-full [&_.maplibregl-canvas]:![filter:sepia(0.15)_brightness(0.98)_saturate(0.9)] dark:[&_.maplibregl-canvas]:![filter:sepia(0.35)_brightness(0.72)_saturate(0.7)_hue-rotate(-10deg)]"
+      />
       {!ready && <div className="absolute inset-0 animate-pulse bg-muted/40" />}
     </div>
   );
-}
-
-// ---------------------------------------------------------------------------
-// Google Maps loader (shared promise per page load)
-// ---------------------------------------------------------------------------
-
-let mapsLoaderPromise: Promise<typeof google> | null = null;
-function loadGoogleMaps(): Promise<typeof google> {
-  if (typeof window === "undefined") return Promise.reject(new Error("SSR"));
-  const w = window as unknown as { google?: typeof google };
-  if (w.google?.maps) return Promise.resolve(w.google);
-  if (mapsLoaderPromise) return mapsLoaderPromise;
-
-  const key = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY as
-    | string
-    | undefined;
-  const trackingId = import.meta.env
-    .VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID as string | undefined;
-  if (!key) return Promise.reject(new Error("Google Maps browser key missing"));
-
-  mapsLoaderPromise = new Promise<typeof google>((resolve, reject) => {
-    const cb = `__initGmaps_${Math.random().toString(36).slice(2)}`;
-    (window as unknown as Record<string, unknown>)[cb] = () => {
-      resolve((window as unknown as { google: typeof google }).google);
-      delete (window as unknown as Record<string, unknown>)[cb];
-    };
-    const params = new URLSearchParams({
-      key,
-      loading: "async",
-      callback: cb,
-      libraries: "marker",
-    });
-    if (trackingId) params.set("channel", trackingId);
-    const s = document.createElement("script");
-    s.src = `https://maps.googleapis.com/maps/api/js?${params.toString()}`;
-    s.async = true;
-    s.defer = true;
-    s.onerror = () => {
-      mapsLoaderPromise = null;
-      reject(new Error("Failed to load Google Maps"));
-    };
-    document.head.appendChild(s);
-  });
-  return mapsLoaderPromise;
 }
 
 // ---------------------------------------------------------------------------
