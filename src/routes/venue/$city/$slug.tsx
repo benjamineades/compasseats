@@ -213,7 +213,12 @@ function VenuePage() {
             <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               On the map
             </h2>
-            <SinglePinMap lat={venue.lat} lng={venue.lng} name={venue.name} />
+            <SinglePinMap
+              lat={venue.lat}
+              lng={venue.lng}
+              name={venue.name}
+              address={venue.address}
+            />
           </section>
 
           {/* Related */}
