@@ -1,5 +1,5 @@
-/// <reference types="google.maps" />
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import maplibregl from "maplibre-gl";
 
 export type Pin = {
   index: number;
@@ -9,64 +9,89 @@ export type Pin = {
   lng: number;
   accolade?: string;
   anchorId?: string;
+  awards?: string[];
+  citySlug?: string;
+  slug?: string;
 };
 
 export const PIN_COLORS = {
-  restaurant: "#d4af37", // gold
-  bar: "#1e3a8a", // navy
+  restaurant: "#C6A15B", // brass
+  bar: "#C6A15B",
 };
 
-const TRACKING_ID =
-  (import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID as
-    | string
-    | undefined) ?? "";
+const MAPTILER_KEY = import.meta.env.VITE_MAPTILER_KEY as string | undefined;
 
-let mapsLoader: Promise<typeof google> | null = null;
-
-function loadGoogleMaps(): Promise<typeof google> {
-  if (typeof window === "undefined") return Promise.reject(new Error("SSR"));
-  if ((window as any).google?.maps) return Promise.resolve((window as any).google);
-  if (mapsLoader) return mapsLoader;
-  const key = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY as
-    | string
-    | undefined;
-  if (!key) return Promise.reject(new Error("Google Maps browser key missing"));
-  mapsLoader = new Promise<typeof google>((resolve, reject) => {
-    const cbName = `__initGmaps_${Math.random().toString(36).slice(2)}`;
-    (window as any)[cbName] = () => {
-      resolve((window as any).google);
-      delete (window as any)[cbName];
-    };
-    const params = new URLSearchParams({
-      key,
-      loading: "async",
-      callback: cbName,
-      libraries: "marker",
-    });
-    if (TRACKING_ID) params.set("channel", TRACKING_ID);
-    const s = document.createElement("script");
-    s.src = `https://maps.googleapis.com/maps/api/js?${params.toString()}`;
-    s.async = true;
-    s.defer = true;
-    s.onerror = () => {
-      mapsLoader = null;
-      reject(new Error("Failed to load Google Maps"));
-    };
-    document.head.appendChild(s);
-  });
-  return mapsLoader;
+if (import.meta.env.DEV && !MAPTILER_KEY) {
+  throw new Error(
+    "VITE_MAPTILER_KEY is missing. Add it to your .env to render the map.",
+  );
 }
 
-function pinSvg(index: number, isBar: boolean): string {
-  const bg = isBar ? PIN_COLORS.bar : PIN_COLORS.restaurant;
-  const text = isBar ? "#ffffff" : "#1a1a1a";
-  const prefix = isBar ? "B" : "R";
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="34" height="42" viewBox="0 0 34 42">
-    <path d="M17 0C7.6 0 0 6.6 0 14.7c0 11 17 27.3 17 27.3s17-16.3 17-27.3C34 6.6 26.4 0 17 0z" fill="${bg}" stroke="#fff" stroke-width="2"/>
-    <text x="17" y="19" text-anchor="middle" font-family="ui-sans-serif,system-ui,-apple-system,sans-serif" font-size="11" font-weight="700" fill="${text}">${prefix}${index}</text>
-  </svg>`;
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+const styleUrl = (dark: boolean) =>
+  `https://api.maptiler.com/maps/dataviz-${dark ? "dark" : "light"}/style.json?key=${MAPTILER_KEY}`;
+
+const THEME = {
+  light: {
+    background: "#F7F3EB",
+    water: "#E1DACB",
+    land: "#EFE7D5",
+    road: "#D5B79A",
+    text: "#895F2E",
+    halo: "#F7F3EB",
+    clusterStroke: "rgba(247,243,235,0.4)",
+    pinBorder: "rgba(247,243,235,0.5)",
+  },
+  dark: {
+    background: "#23211E",
+    water: "#1A1815",
+    land: "#2A2823",
+    road: "#3A352D",
+    text: "#C6A15B",
+    halo: "#23211E",
+    clusterStroke: "rgba(35,33,30,0.5)",
+    pinBorder: "rgba(35,33,30,0.6)",
+  },
+};
+
+function isDarkMode() {
+  if (typeof document === "undefined") return true;
+  return document.documentElement.classList.contains("dark");
 }
+
+const COMPASS_SVG = `<svg viewBox="0 0 24 24" fill="none" width="12" height="12">
+  <path d="M12 3 L17 14 L12 17 L7 14 Z" fill="white"/>
+  <path d="M12 21 L7 14 L12 11 L17 14 Z" fill="white" opacity="0.35"/>
+  <circle cx="12" cy="14" r="1.5" fill="#23211E"/>
+</svg>`;
+
+type GeoFeature = {
+  type: "Feature";
+  geometry: { type: "Point"; coordinates: [number, number] };
+  properties: Record<string, unknown>;
+};
+
+function toGeoJSON(pins: Pin[]) {
+  return {
+    type: "FeatureCollection" as const,
+    features: pins.map((p, i) => ({
+      type: "Feature" as const,
+      geometry: { type: "Point" as const, coordinates: [p.lng, p.lat] as [number, number] },
+      properties: {
+        id: i,
+        name: p.name,
+        category: p.category,
+        accolade: p.accolade ?? "",
+        anchorId: p.anchorId ?? "",
+        awards: JSON.stringify(p.awards ?? []),
+        citySlug: p.citySlug ?? "",
+        slug: p.slug ?? "",
+      },
+    })),
+  };
+}
+
+const SOURCE_ID = "venues";
+const UNCLUSTERED_LAYER = "venue-points";
 
 export function VenueMap({
   center,
@@ -76,98 +101,307 @@ export function VenueMap({
   pins: Pin[];
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<google.maps.Map | null>(null);
-  const markersRef = useRef<google.maps.Marker[]>([]);
-  const infoRef = useRef<google.maps.InfoWindow | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [ready, setReady] = useState(false);
+  const mapRef = useRef<maplibregl.Map | null>(null);
+  const markersRef = useRef<Map<number, maplibregl.Marker>>(new Map());
+  const popupRef = useRef<maplibregl.Popup | null>(null);
+  const pinsRef = useRef<Pin[]>(pins);
+  const centerRef = useRef<[number, number]>(center);
+  pinsRef.current = pins;
+  centerRef.current = center;
 
-  // Initial load.
+  // Apply brand-warm paint overrides to the active style.
+  const applyBrandOverrides = (map: maplibregl.Map) => {
+    const t = isDarkMode() ? THEME.dark : THEME.light;
+    const layers = map.getStyle()?.layers ?? [];
+    for (const layer of layers) {
+      const id = layer.id.toLowerCase();
+      const type = layer.type;
+      const set = (prop: string, value: unknown) => {
+        try {
+          map.setPaintProperty(layer.id, prop as never, value as never);
+        } catch {
+          /* swallow */
+        }
+      };
+      try {
+        if (type === "background") set("background-color", t.background);
+        else if (id.includes("water")) set("fill-color", t.water);
+        else if (id.includes("landcover") || id.includes("park") || id.includes("landuse"))
+          set("fill-color", t.land);
+        else if (type === "line" && (id.includes("road") || id.includes("transportation"))) {
+          set("line-color", t.road);
+          set("line-opacity", 0.5);
+        } else if (type === "symbol") {
+          set("text-color", t.text);
+          set("text-halo-color", t.halo);
+          set("text-halo-width", 1.5);
+        }
+      } catch {
+        /* swallow */
+      }
+    }
+  };
+
+  const addPinLayers = (map: maplibregl.Map) => {
+    const t = isDarkMode() ? THEME.dark : THEME.light;
+    if (!map.getSource(SOURCE_ID)) {
+      map.addSource(SOURCE_ID, {
+        type: "geojson",
+        data: toGeoJSON(pinsRef.current),
+        cluster: true,
+        clusterMaxZoom: 13,
+        clusterRadius: 50,
+      });
+    } else {
+      (map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource).setData(
+        toGeoJSON(pinsRef.current) as never,
+      );
+    }
+
+    if (!map.getLayer("clusters")) {
+      map.addLayer({
+        id: "clusters",
+        type: "circle",
+        source: SOURCE_ID,
+        filter: ["has", "point_count"],
+        paint: {
+          "circle-color": "#C6A15B",
+          "circle-radius": ["step", ["get", "point_count"], 22, 10, 28, 50, 34],
+          "circle-stroke-width": 2,
+          "circle-stroke-color": t.clusterStroke,
+        },
+      });
+    } else {
+      map.setPaintProperty("clusters", "circle-stroke-color", t.clusterStroke);
+    }
+
+    if (!map.getLayer("cluster-count")) {
+      map.addLayer({
+        id: "cluster-count",
+        type: "symbol",
+        source: SOURCE_ID,
+        filter: ["has", "point_count"],
+        layout: {
+          "text-field": ["get", "point_count_abbreviated"],
+          "text-font": ["Open Sans Bold", "Noto Sans Bold"],
+          "text-size": 13,
+        },
+        paint: { "text-color": "#23211E" },
+      });
+    }
+
+    // Invisible circle layer for unclustered points (used for queryRenderedFeatures).
+    if (!map.getLayer(UNCLUSTERED_LAYER)) {
+      map.addLayer({
+        id: UNCLUSTERED_LAYER,
+        type: "circle",
+        source: SOURCE_ID,
+        filter: ["!", ["has", "point_count"]],
+        paint: { "circle-radius": 1, "circle-opacity": 0 },
+      });
+    }
+
+    syncMarkers(map);
+  };
+
+  // Create/update HTML markers for unclustered (visible) points.
+  const syncMarkers = (map: maplibregl.Map) => {
+    if (!map.getLayer(UNCLUSTERED_LAYER)) return;
+    const features = map.queryRenderedFeatures({ layers: [UNCLUSTERED_LAYER] });
+    const t = isDarkMode() ? THEME.dark : THEME.light;
+    const seen = new Set<number>();
+
+    for (const f of features as unknown as GeoFeature[]) {
+      const id = Number(f.properties.id);
+      if (Number.isNaN(id) || seen.has(id)) continue;
+      seen.add(id);
+      if (markersRef.current.has(id)) continue;
+
+      const el = document.createElement("div");
+      el.style.cssText = [
+        "width:30px",
+        "height:30px",
+        "border-radius:50%",
+        "background:#C6A15B",
+        `border:2px solid ${t.pinBorder}`,
+        "display:flex",
+        "align-items:center",
+        "justify-content:center",
+        "box-shadow:0 2px 6px rgba(0,0,0,0.25)",
+        "cursor:pointer",
+        "transition:transform 150ms ease",
+      ].join(";");
+      el.innerHTML = COMPASS_SVG;
+      el.addEventListener("mouseenter", () => (el.style.transform = "scale(1.12)"));
+      el.addEventListener("mouseleave", () => (el.style.transform = "scale(1)"));
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openPopup(map, f);
+      });
+
+      const marker = new maplibregl.Marker({ element: el, anchor: "center" })
+        .setLngLat(f.geometry.coordinates)
+        .addTo(map);
+      markersRef.current.set(id, marker);
+    }
+
+    // Remove markers that are no longer visible/unclustered.
+    for (const [id, marker] of markersRef.current) {
+      if (!seen.has(id)) {
+        marker.remove();
+        markersRef.current.delete(id);
+      }
+    }
+  };
+
+  const openPopup = (map: maplibregl.Map, f: GeoFeature) => {
+    popupRef.current?.remove();
+    const p = f.properties;
+    let awards: string[] = [];
+    try {
+      awards = JSON.parse(String(p.awards || "[]"));
+    } catch {
+      /* ignore */
+    }
+    const accolade = String(p.accolade || "");
+    const subtitle =
+      awards.length > 1 ? "Multiple awards" : awards[0] || accolade || "";
+    const badges = awards
+      .slice(0, 3)
+      .map(
+        (a) =>
+          `<span style="display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 8px;font-size:0.7rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--accent-strong)">${a}</span>`,
+      )
+      .join(" ");
+    const citySlug = String(p.citySlug || "");
+    const slug = String(p.slug || "");
+    const anchorId = String(p.anchorId || "");
+    const href = slug && citySlug ? `/venue/${citySlug}/${slug}` : anchorId ? `#${anchorId}` : "";
+    const link = href
+      ? `<a href="${href}" ${anchorId && !slug ? `data-anchor="${anchorId}"` : ""} style="display:inline-block;margin-top:10px;font-size:0.8rem;color:var(--accent-strong);text-decoration:none;font-weight:500">View details →</a>`
+      : "";
+
+    const html = `<div style="font-family:var(--font-serif);max-width:260px">
+      <div style="font-family:'Fraunces',serif;font-weight:400;font-size:1.05rem;color:hsl(var(--foreground,0 0% 0%));color:var(--foreground)">${String(p.name || "")}</div>
+      ${subtitle ? `<div style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:0.85rem;margin-top:2px;color:var(--accent-strong)">${subtitle}</div>` : ""}
+      ${badges ? `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">${badges}</div>` : ""}
+      ${link}
+    </div>`;
+
+    popupRef.current = new maplibregl.Popup({
+      closeButton: true,
+      closeOnClick: true,
+      maxWidth: "260px",
+      offset: 18,
+    })
+      .setLngLat(f.geometry.coordinates)
+      .setHTML(html)
+      .addTo(map);
+  };
+
+  // Build (or rebuild) the map with the given theme.
+  const buildMap = (dark: boolean) => {
+    if (!containerRef.current) return;
+    const map = new maplibregl.Map({
+      container: containerRef.current,
+      style: styleUrl(dark),
+      center: [centerRef.current[1], centerRef.current[0]],
+      zoom: 12,
+      attributionControl: { compact: true },
+      dragRotate: false,
+      touchZoomRotate: false,
+    });
+    map.addControl(
+      new maplibregl.NavigationControl({ showCompass: false, showZoom: true }),
+      "top-right",
+    );
+    map.on("style.load", () => {
+      applyBrandOverrides(map);
+      addPinLayers(map);
+      fitToPins(map);
+    });
+    map.on("moveend", () => syncMarkers(map));
+    map.on("zoomend", () => syncMarkers(map));
+    map.on("data", (e) => {
+      if ((e as { sourceId?: string }).sourceId === SOURCE_ID) syncMarkers(map);
+    });
+    map.on("click", "clusters", (e) => {
+      const feats = map.queryRenderedFeatures(e.point, { layers: ["clusters"] });
+      const clusterId = feats[0]?.properties?.cluster_id;
+      const src = map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource;
+      if (clusterId == null || !src) return;
+      src.getClusterExpansionZoom(clusterId).then((zoom) => {
+        const geom = feats[0].geometry as { coordinates: [number, number] };
+        map.easeTo({ center: geom.coordinates, zoom: zoom + 1 });
+      });
+    });
+    map.on("mouseenter", "clusters", () => (map.getCanvas().style.cursor = "pointer"));
+    map.on("mouseleave", "clusters", () => (map.getCanvas().style.cursor = ""));
+    mapRef.current = map;
+  };
+
+  const fitToPins = (map: maplibregl.Map) => {
+    const pts = pinsRef.current;
+    if (pts.length === 1) {
+      map.jumpTo({ center: [pts[0].lng, pts[0].lat], zoom: 14 });
+    } else if (pts.length > 1) {
+      const b = new maplibregl.LngLatBounds();
+      for (const p of pts) b.extend([p.lng, p.lat]);
+      map.fitBounds(b, { padding: 48, maxZoom: 15, duration: 0 });
+    }
+  };
+
+  // Initial mount.
   useEffect(() => {
-    let cancelled = false;
-    loadGoogleMaps()
-      .then((g) => {
-        if (cancelled || !containerRef.current) return;
-        mapRef.current = new g.maps.Map(containerRef.current, {
-          center: { lat: center[0], lng: center[1] },
-          zoom: 13,
-          scrollwheel: false,
-          gestureHandling: "cooperative",
-          streetViewControl: false,
-          mapTypeControl: false,
-          fullscreenControl: false,
-        });
-        infoRef.current = new g.maps.InfoWindow();
-        setReady(true);
-      })
-      .catch((e) => setError((e as Error).message));
+    buildMap(isDarkMode());
     return () => {
-      cancelled = true;
+      for (const m of markersRef.current.values()) m.remove();
+      markersRef.current.clear();
+      popupRef.current?.remove();
+      mapRef.current?.remove();
+      mapRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Update markers + bounds whenever pins change.
-  const pinsKey = useMemo(
-    () =>
-      pins
-        .map((p) => `${p.category}-${p.index}-${p.lat.toFixed(5)},${p.lng.toFixed(5)}`)
-        .join("|"),
-    [pins],
-  );
-
+  // React to theme changes: rebuild style, persist pins via style.load handler.
   useEffect(() => {
-    if (!ready || !mapRef.current) return;
-    const g = (window as any).google as typeof google;
-    // Clear existing markers.
-    for (const m of markersRef.current) m.setMap(null);
-    markersRef.current = [];
-    const bounds = new g.maps.LatLngBounds();
-    for (const p of pins) {
-      const isBar = p.category === "cocktail bar";
-      const prefix = isBar ? "B" : "R";
-      const marker = new g.maps.Marker({
-        position: { lat: p.lat, lng: p.lng },
-        map: mapRef.current,
-        title: `${prefix}${p.index}. ${p.name}`,
-        icon: {
-          url: pinSvg(p.index, isBar),
-          scaledSize: new g.maps.Size(34, 42),
-          anchor: new g.maps.Point(17, 40),
-        },
+    if (typeof document === "undefined") return;
+    let current = isDarkMode();
+    const observer = new MutationObserver(() => {
+      const next = isDarkMode();
+      if (next === current) return;
+      current = next;
+      const map = mapRef.current;
+      if (!map) return;
+      for (const m of markersRef.current.values()) m.remove();
+      markersRef.current.clear();
+      map.setStyle(styleUrl(next));
+      map.once("style.load", () => {
+        applyBrandOverrides(map);
+        addPinLayers(map);
       });
-      marker.addListener("click", () => {
-        const color = isBar ? PIN_COLORS.bar : PIN_COLORS.restaurant;
-        const textColor = isBar ? "#fff" : "#1a1a1a";
-        const accolade = p.accolade
-          ? `<div style="font-size:12px;color:#b45309;margin-top:4px;font-weight:600">${p.accolade}</div>`
-          : "";
-        const link = p.anchorId
-          ? `<a href="#${p.anchorId}" data-anchor="${p.anchorId}" style="display:inline-block;margin-top:8px;padding:4px 10px;background:${color};color:${textColor};border-radius:6px;font-size:12px;font-weight:600;text-decoration:none">View details →</a>`
-          : "";
-        infoRef.current?.setContent(
-          `<div style="min-width:180px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif">
-            <strong style="font-size:14px">${prefix}${p.index}. ${p.name}</strong>
-            <div style="font-size:12px;color:#555;text-transform:capitalize;margin-top:2px">${p.category}</div>
-            ${accolade}${link}
-          </div>`,
-        );
-        infoRef.current?.open({ map: mapRef.current!, anchor: marker });
-      });
-      markersRef.current.push(marker);
-      bounds.extend({ lat: p.lat, lng: p.lng });
-    }
-    if (pins.length === 1) {
-      mapRef.current.setCenter({ lat: pins[0].lat, lng: pins[0].lng });
-      mapRef.current.setZoom(14);
-    } else if (pins.length > 1) {
-      mapRef.current.fitBounds(bounds, 40);
-    } else {
-      mapRef.current.setCenter({ lat: center[0], lng: center[1] });
-    }
-  }, [pinsKey, ready, center, pins]);
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // Delegate clicks on InfoWindow "View details" links to smooth-scroll + highlight.
+  // Update data when pins change.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !map.getSource(SOURCE_ID)) return;
+    (map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource).setData(
+      toGeoJSON(pins) as never,
+    );
+    fitToPins(map);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pins]);
+
+  // Smooth-scroll for in-page anchor links inside popups.
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const t = e.target as HTMLElement | null;
@@ -186,20 +420,9 @@ export function VenueMap({
     return () => document.removeEventListener("click", handler);
   }, []);
 
-  if (error) {
-    return (
-      <div className="flex h-72 w-full items-center justify-center rounded-xl border border-border bg-muted/40 text-sm text-muted-foreground md:h-96">
-        Map unavailable
-      </div>
-    );
-  }
-
   return (
     <div className="relative h-72 w-full overflow-hidden rounded-xl border border-border md:h-96">
       <div ref={containerRef} className="h-full w-full" />
-      {!ready && (
-        <div className="absolute inset-0 animate-pulse bg-muted/40" />
-      )}
     </div>
   );
 }
