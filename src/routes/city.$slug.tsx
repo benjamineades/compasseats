@@ -20,10 +20,9 @@ import { AwardMarquee } from "@/components/AwardMarquee";
 import {
   getCity,
   getVenuesByCity,
-  getCitiesWithVenues,
   getAwardSource,
 } from "@/lib/venues";
-import type { Award, City, Venue } from "@/lib/schema";
+import type { City, Venue } from "@/lib/schema";
 
 const SITE_URL = "https://compasseats.com";
 
@@ -460,7 +459,3 @@ function buildItemListJsonLd(c: City, venues: Venue[]) {
   };
 }
 
-// Re-export to keep the prerender list builder out of vite.config.ts cycles.
-export { getCitiesWithVenues };
-// silence unused-import warning if Award type is dropped later
-export type { Award };
