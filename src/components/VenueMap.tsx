@@ -331,7 +331,9 @@ export function VenueMap({
       const src = map.getSource(SOURCE_ID) as maplibregl.GeoJSONSource;
       if (clusterId == null || !src) return;
       src.getClusterExpansionZoom(clusterId).then((zoom) => {
-        const geom = feats[0].geometry as { coordinates: [number, number] };
+        const geom = feats[0].geometry as unknown as {
+          coordinates: [number, number];
+        };
         map.easeTo({ center: geom.coordinates, zoom: zoom + 1 });
       });
     });
