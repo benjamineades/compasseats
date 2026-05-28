@@ -113,7 +113,7 @@ export const CitySchema = z.object({
   blurb: z.string().optional(), // 1-2 sentence intro for /city pages
   hero_image_url: z.string().url().optional(),
   venue_count: z.number().int().nonnegative().default(0), // populated by sync
-  timezone: z.string().optional(), // "Asia/Tokyo" — needed for "open today" pill
+  timezone: z.string().optional(), // "Asia/Tokyo"
 });
 export type City = z.infer<typeof CitySchema>;
 
