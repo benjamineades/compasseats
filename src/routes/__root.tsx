@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import "maplibre-gl/dist/maplibre-gl.css";
 import { Compass, Wordmark } from "@/components/Compass";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
