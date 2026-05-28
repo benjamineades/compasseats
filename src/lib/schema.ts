@@ -55,11 +55,21 @@ export const AWARD_SOURCES = [
   { slug: "james-beard", name: "James Beard Awards", tier: "regional" },
   { slug: "best-chef-awards", name: "Best Chef Awards", tier: "global" },
   { slug: "spirited-awards", name: "Spirited Awards", tier: "global" },
-  // Roadmap additions:
+  { slug: "pinnacle-guide", name: "The Pinnacle Guide", tier: "global" },
+  { slug: "oad", name: "OAD Top Restaurants", tier: "global" },
+  { slug: "101-best-steakhouses", name: "101 Best Steakhouses", tier: "global" },
+  // Bar-coverage expansion — the differentiator. 50 Best regional + extended
+  // bar lists. These reuse the same row shape as the global 50 Best Bars tab
+  // (Year, Rank, Name, City, Country) so ingestion is uniform.
+  { slug: "worlds-50-best-bars-51-100", name: "World's 50 Best Bars (51–100)", tier: "global" },
+  { slug: "north-america-50-best-bars", name: "North America's 50 Best Bars", tier: "regional" },
+  { slug: "asia-50-best-bars", name: "Asia's 50 Best Bars", tier: "regional" },
+  { slug: "north-america-50-best-bars-51-100", name: "North America's 50 Best Bars (51–100)", tier: "regional" },
+  { slug: "asia-50-best-bars-51-100", name: "Asia's 50 Best Bars (51–100)", tier: "regional" },
+  // Roadmap additions (restaurants):
   { slug: "la-liste", name: "La Liste", tier: "global" },
   { slug: "gault-millau", name: "Gault & Millau", tier: "regional" },
   { slug: "tabelog", name: "Tabelog", tier: "regional" },
-  { slug: "oad", name: "OAD Top Restaurants", tier: "global" },
   { slug: "forbes-travel-guide", name: "Forbes Travel Guide", tier: "global" },
 ] as const;
 
