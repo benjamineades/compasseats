@@ -106,7 +106,7 @@ export const Route = createFileRoute("/city/$slug")({
 // Page
 // ---------------------------------------------------------------------------
 
-type QuickFilter = "restaurants" | "bars" | "openToday";
+type QuickFilter = "restaurants" | "bars";
 
 function CityPage() {
   const { city, venues } = Route.useLoaderData() as {
@@ -134,24 +134,17 @@ function CityPage() {
   const filtered = useMemo(() => {
     const wantRest = deferredQuick.has("restaurants");
     const wantBars = deferredQuick.has("bars");
-    const wantOpen = deferredQuick.has("openToday");
-    const todayKey = wantOpen ? currentDayKey(city.timezone) : null;
 
     return venues.filter((v) => {
       if (wantRest && !wantBars && v.type !== "restaurant") return false;
       if (wantBars && !wantRest && v.type !== "bar") return false;
-      if (wantOpen) {
-        if (!v.hours) return false;
-        const ranges = v.hours[todayKey!];
-        if (!ranges || ranges.length === 0) return false;
-      }
       if (deferredAwards.size > 0) {
         const ok = v.awards.some((a) => deferredAwards.has(a.source));
         if (!ok) return false;
       }
       return true;
     });
-  }, [venues, deferredQuick, deferredAwards, city.timezone]);
+  }, [venues, deferredQuick, deferredAwards]);
 
   const toggleQuick = (id: QuickFilter) =>
     startTransition(() =>
@@ -221,14 +214,6 @@ function CityPage() {
               className="h-8 rounded-full text-xs"
             >
               Cocktail Bars
-            </Button>
-            <Button
-              size="sm"
-              variant={quick.has("openToday") ? "default" : "outline"}
-              onClick={() => toggleQuick("openToday")}
-              className="h-8 rounded-full text-xs"
-            >
-              Open Today
             </Button>
 
             {Array.from(awardFilters).map((src) => (
