@@ -11,5 +11,14 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
+    // Prerender every active venue page at build time. The list is sourced from
+    // data/venues.json via getAllVenuePaths() (populated by scripts/sync-sheet.ts).
+    pages: async () => {
+      const { getAllVenuePaths } = await import("./src/lib/venues");
+      return getAllVenuePaths().map((p) => ({
+        path: `/venue/${p.citySlug}/${p.venueSlug}`,
+        prerender: { enabled: true },
+      }));
+    },
   },
 });
