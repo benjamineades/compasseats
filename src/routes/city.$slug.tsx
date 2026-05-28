@@ -393,33 +393,6 @@ function prettyAwardSource(slug: string): string {
   return getAwardSource(slug)?.name ?? slug;
 }
 
-type DayKey = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
-const WEEKDAY_TO_KEY: Record<string, DayKey> = {
-  Mon: "mon",
-  Tue: "tue",
-  Wed: "wed",
-  Thu: "thu",
-  Fri: "fri",
-  Sat: "sat",
-  Sun: "sun",
-};
-
-/** Returns the current day-of-week key in the given IANA timezone. */
-function currentDayKey(timezone: string | undefined): DayKey {
-  try {
-    const fmt = new Intl.DateTimeFormat("en-US", {
-      weekday: "short",
-      timeZone: timezone || undefined,
-    });
-    const label = fmt.format(new Date()); // "Mon", "Tue", …
-    return WEEKDAY_TO_KEY[label] ?? "mon";
-  } catch {
-    return WEEKDAY_TO_KEY[
-      new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(new Date())
-    ] ?? "mon";
-  }
-}
-
 function buildMetaDescription(c: City): string {
   const raw =
     c.blurb?.trim() ||
