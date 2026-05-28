@@ -111,7 +111,7 @@ export const Route = createFileRoute("/venue/$city/$slug")({
 // ---------------------------------------------------------------------------
 
 function VenuePage() {
-  const { venue } = Route.useLoaderData();
+  const { venue } = Route.useLoaderData() as { venue: Venue };
   const related = getRelatedVenues(venue, 4);
 
   const top = pickTopAward(venue.awards);
@@ -125,7 +125,9 @@ function VenuePage() {
   const reservationHref = venue.reservation_url ?? venue.website ?? null;
   const reservationLabel = venue.reservation_url ? "Take me there →" : "View website →";
 
-  const distinctSources = Array.from(new Set(venue.awards.map((a) => a.source)));
+  const distinctSources = Array.from(
+    new Set<string>(venue.awards.map((a: Award) => a.source)),
+  );
 
   return (
     <main className="relative min-h-screen bg-background">
@@ -349,7 +351,8 @@ function FactRow({
   );
 }
 
-const DAY_LABELS: { key: keyof NonNullable<Venue["hours"]>; label: string }[] = [
+type DayKey = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
+const DAY_LABELS: { key: DayKey; label: string }[] = [
   { key: "mon", label: "Mon" },
   { key: "tue", label: "Tue" },
   { key: "wed", label: "Wed" },
