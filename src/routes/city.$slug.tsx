@@ -106,7 +106,7 @@ export const Route = createFileRoute("/city/$slug")({
 // Page
 // ---------------------------------------------------------------------------
 
-type QuickFilter = "restaurants" | "bars" | "openToday";
+type QuickFilter = "restaurants" | "bars";
 
 function CityPage() {
   const { city, venues } = Route.useLoaderData() as {
@@ -134,24 +134,17 @@ function CityPage() {
   const filtered = useMemo(() => {
     const wantRest = deferredQuick.has("restaurants");
     const wantBars = deferredQuick.has("bars");
-    const wantOpen = deferredQuick.has("openToday");
-    const todayKey = wantOpen ? currentDayKey(city.timezone) : null;
 
     return venues.filter((v) => {
       if (wantRest && !wantBars && v.type !== "restaurant") return false;
       if (wantBars && !wantRest && v.type !== "bar") return false;
-      if (wantOpen) {
-        if (!v.hours) return false;
-        const ranges = v.hours[todayKey!];
-        if (!ranges || ranges.length === 0) return false;
-      }
       if (deferredAwards.size > 0) {
         const ok = v.awards.some((a) => deferredAwards.has(a.source));
         if (!ok) return false;
       }
       return true;
     });
-  }, [venues, deferredQuick, deferredAwards, city.timezone]);
+  }, [venues, deferredQuick, deferredAwards]);
 
   const toggleQuick = (id: QuickFilter) =>
     startTransition(() =>
@@ -221,14 +214,6 @@ function CityPage() {
               className="h-8 rounded-full text-xs"
             >
               Cocktail Bars
-            </Button>
-            <Button
-              size="sm"
-              variant={quick.has("openToday") ? "default" : "outline"}
-              onClick={() => toggleQuick("openToday")}
-              className="h-8 rounded-full text-xs"
-            >
-              Open Today
             </Button>
 
             {Array.from(awardFilters).map((src) => (
@@ -406,33 +391,6 @@ function EmptyState({ onReset }: { onReset: () => void }) {
 
 function prettyAwardSource(slug: string): string {
   return getAwardSource(slug)?.name ?? slug;
-}
-
-type DayKey = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
-const WEEKDAY_TO_KEY: Record<string, DayKey> = {
-  Mon: "mon",
-  Tue: "tue",
-  Wed: "wed",
-  Thu: "thu",
-  Fri: "fri",
-  Sat: "sat",
-  Sun: "sun",
-};
-
-/** Returns the current day-of-week key in the given IANA timezone. */
-function currentDayKey(timezone: string | undefined): DayKey {
-  try {
-    const fmt = new Intl.DateTimeFormat("en-US", {
-      weekday: "short",
-      timeZone: timezone || undefined,
-    });
-    const label = fmt.format(new Date()); // "Mon", "Tue", …
-    return WEEKDAY_TO_KEY[label] ?? "mon";
-  } catch {
-    return WEEKDAY_TO_KEY[
-      new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(new Date())
-    ] ?? "mon";
-  }
 }
 
 function buildMetaDescription(c: City): string {
