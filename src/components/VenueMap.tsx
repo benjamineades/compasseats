@@ -270,7 +270,7 @@ export function VenueMap({
       .slice(0, 3)
       .map(
         (a) =>
-          `<span style="display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 8px;font-size:0.7rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--accent-strong)">${a}</span>`,
+          `<span style="display:inline-block;border:1px solid var(--border);border-radius:999px;padding:2px 8px;font-size:0.7rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--accent-strong)">${a}</span>`,
       )
       .join(" ");
     const citySlug = String(p.citySlug || "");
