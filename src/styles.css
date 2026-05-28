@@ -191,3 +191,28 @@
   background-size: 200% 100%;
   animation: shimmer-slide 1.8s ease-in-out infinite;
 }
+
+/* MapLibre brand polish */
+.maplibregl-ctrl-attrib {
+  font-size: 10px;
+  color: var(--muted-foreground);
+  background: color-mix(in oklab, var(--background) 80%, transparent);
+}
+.maplibregl-ctrl-attrib a {
+  color: var(--muted-foreground);
+}
+.maplibregl-popup-content {
+  background: var(--background);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+.maplibregl-popup-tip {
+  border-top-color: var(--background);
+  border-bottom-color: var(--background);
+}
+.maplibregl-ctrl-group {
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
