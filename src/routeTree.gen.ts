@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CitySlugRouteImport } from './routes/city.$slug'
+import { Route as AwardAwardRouteImport } from './routes/award/$award'
 import { Route as ApiTopRestaurantsRouteImport } from './routes/api/top-restaurants'
 import { Route as VenueCitySlugRouteImport } from './routes/venue/$city/$slug'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const CitySlugRoute = CitySlugRouteImport.update({
   id: '/city/$slug',
   path: '/city/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AwardAwardRoute = AwardAwardRouteImport.update({
+  id: '/award/$award',
+  path: '/award/$award',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiTopRestaurantsRoute = ApiTopRestaurantsRouteImport.update({
@@ -38,12 +44,14 @@ const VenueCitySlugRoute = VenueCitySlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/top-restaurants': typeof ApiTopRestaurantsRoute
+  '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/top-restaurants': typeof ApiTopRestaurantsRoute
+  '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
@@ -51,18 +59,30 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/top-restaurants': typeof ApiTopRestaurantsRoute
+  '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/top-restaurants' | '/city/$slug' | '/venue/$city/$slug'
+  fullPaths:
+    | '/'
+    | '/api/top-restaurants'
+    | '/award/$award'
+    | '/city/$slug'
+    | '/venue/$city/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/top-restaurants' | '/city/$slug' | '/venue/$city/$slug'
+  to:
+    | '/'
+    | '/api/top-restaurants'
+    | '/award/$award'
+    | '/city/$slug'
+    | '/venue/$city/$slug'
   id:
     | '__root__'
     | '/'
     | '/api/top-restaurants'
+    | '/award/$award'
     | '/city/$slug'
     | '/venue/$city/$slug'
   fileRoutesById: FileRoutesById
@@ -70,6 +90,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiTopRestaurantsRoute: typeof ApiTopRestaurantsRoute
+  AwardAwardRoute: typeof AwardAwardRoute
   CitySlugRoute: typeof CitySlugRoute
   VenueCitySlugRoute: typeof VenueCitySlugRoute
 }
@@ -88,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/city/$slug'
       fullPath: '/city/$slug'
       preLoaderRoute: typeof CitySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/award/$award': {
+      id: '/award/$award'
+      path: '/award/$award'
+      fullPath: '/award/$award'
+      preLoaderRoute: typeof AwardAwardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/top-restaurants': {
@@ -110,9 +138,20 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiTopRestaurantsRoute: ApiTopRestaurantsRoute,
+  AwardAwardRoute: AwardAwardRoute,
   CitySlugRoute: CitySlugRoute,
   VenueCitySlugRoute: VenueCitySlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
