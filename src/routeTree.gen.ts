@@ -14,7 +14,6 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CitySlugRouteImport } from './routes/city.$slug'
 import { Route as AwardAwardRouteImport } from './routes/award/$award'
-import { Route as ApiTopRestaurantsRouteImport } from './routes/api/top-restaurants'
 import { Route as VenueCitySlugRouteImport } from './routes/venue/$city/$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -42,11 +41,6 @@ const AwardAwardRoute = AwardAwardRouteImport.update({
   path: '/award/$award',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiTopRestaurantsRoute = ApiTopRestaurantsRouteImport.update({
-  id: '/api/top-restaurants',
-  path: '/api/top-restaurants',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const VenueCitySlugRoute = VenueCitySlugRouteImport.update({
   id: '/venue/$city/$slug',
   path: '/venue/$city/$slug',
@@ -57,7 +51,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/api/top-restaurants': typeof ApiTopRestaurantsRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
@@ -66,7 +59,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/api/top-restaurants': typeof ApiTopRestaurantsRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
@@ -76,7 +68,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/api/top-restaurants': typeof ApiTopRestaurantsRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
@@ -87,7 +78,6 @@ export interface FileRouteTypes {
     | '/'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/api/top-restaurants'
     | '/award/$award'
     | '/city/$slug'
     | '/venue/$city/$slug'
@@ -96,7 +86,6 @@ export interface FileRouteTypes {
     | '/'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/api/top-restaurants'
     | '/award/$award'
     | '/city/$slug'
     | '/venue/$city/$slug'
@@ -105,7 +94,6 @@ export interface FileRouteTypes {
     | '/'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/api/top-restaurants'
     | '/award/$award'
     | '/city/$slug'
     | '/venue/$city/$slug'
@@ -115,7 +103,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  ApiTopRestaurantsRoute: typeof ApiTopRestaurantsRoute
   AwardAwardRoute: typeof AwardAwardRoute
   CitySlugRoute: typeof CitySlugRoute
   VenueCitySlugRoute: typeof VenueCitySlugRoute
@@ -158,13 +145,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AwardAwardRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/top-restaurants': {
-      id: '/api/top-restaurants'
-      path: '/api/top-restaurants'
-      fullPath: '/api/top-restaurants'
-      preLoaderRoute: typeof ApiTopRestaurantsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/venue/$city/$slug': {
       id: '/venue/$city/$slug'
       path: '/venue/$city/$slug'
@@ -179,7 +159,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  ApiTopRestaurantsRoute: ApiTopRestaurantsRoute,
   AwardAwardRoute: AwardAwardRoute,
   CitySlugRoute: CitySlugRoute,
   VenueCitySlugRoute: VenueCitySlugRoute,
@@ -187,13 +166,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
