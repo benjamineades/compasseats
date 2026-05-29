@@ -275,7 +275,7 @@ function CityPage() {
           <EmptyState onReset={clearAll} />
         ) : (
           <>
-            <div className="mb-8 h-[280px] overflow-hidden rounded-xl md:h-[420px]">
+            <div className="mb-8">
               <VenueMap venues={filtered} />
             </div>
             <div className="grid gap-4 md:grid-cols-2">
