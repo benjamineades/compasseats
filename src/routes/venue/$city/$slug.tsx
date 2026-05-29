@@ -1,11 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { ArrowRight, MapPin, Phone, Globe, Clock } from "lucide-react";
+import { ArrowRight, Phone, Globe, Clock } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Compass } from "@/components/Compass";
+import { VenueMap } from "@/components/VenueMap";
 
 import {
   getVenue,
@@ -213,12 +213,7 @@ function VenuePage() {
             <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               On the map
             </h2>
-            <SinglePinMap
-              lat={venue.lat}
-              lng={venue.lng}
-              name={venue.name}
-              address={venue.address}
-            />
+            <VenueMap venues={[venue]} />
           </section>
 
           {/* Related */}
