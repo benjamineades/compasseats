@@ -19,6 +19,7 @@ export function CitySearch({ placeholder }: Props) {
   const [debounced, setDebounced] = useState("");
   const [uncharted, setUncharted] = useState<GeoapifyCityResult[]>([]);
   const [loading, setLoading] = useState(false);
+  const [geoapifyError, setGeoapifyError] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const navigate = useNavigate();
@@ -43,25 +44,32 @@ export function CitySearch({ placeholder }: Props) {
     if (debounced.length < 3) {
       setUncharted([]);
       setLoading(false);
+      setGeoapifyError(false);
       return;
     }
     const cached = cacheRef.current.get(debounced);
     if (cached) {
       setUncharted(cached);
       setLoading(false);
+      setGeoapifyError(false);
       return;
     }
     abortRef.current?.abort();
     const ctrl = new AbortController();
     abortRef.current = ctrl;
     setLoading(true);
+    setGeoapifyError(false);
     geoapifyCitySearch(debounced, ctrl.signal)
       .then((res) => {
         cacheRef.current.set(debounced, res);
         setUncharted(res);
       })
       .catch((e) => {
-        if ((e as Error).name !== "AbortError") setUncharted([]);
+        if ((e as Error).name !== "AbortError") {
+          console.warn("[CitySearch] Geoapify autocomplete failed:", e);
+          setGeoapifyError(true);
+          setUncharted([]);
+        }
       })
       .finally(() => {
         if (!ctrl.signal.aborted) setLoading(false);
@@ -82,7 +90,7 @@ export function CitySearch({ placeholder }: Props) {
     );
   }, [uncharted, charted]);
 
-  // Flat list for keyboard nav.
+  // Flat list for keyboard nav (charted + uncharted only; skeletons are not selectable).
   const flat = useMemo(
     () => [
       ...charted.map((c) => ({ kind: "charted" as const, data: c })),
@@ -133,11 +141,11 @@ export function CitySearch({ placeholder }: Props) {
     else goUncharted(item.data);
   };
 
-  const showEmpty =
-    debounced.length >= 1 &&
-    charted.length === 0 &&
-    unchartedFiltered.length === 0 &&
-    !loading;
+  const showExplore = debounced.length >= 3 && !geoapifyError;
+  const showGlobalEmpty =
+    debounced.length >= 1 && charted.length === 0 && !showExplore;
+  const showDropdown =
+    flat.length > 0 || showGlobalEmpty || showExplore;
 
   const sectionLabelStyle: React.CSSProperties = {
     fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
@@ -184,7 +192,7 @@ export function CitySearch({ placeholder }: Props) {
         maxLength={100}
         autoComplete="off"
       />
-      {open && (flat.length > 0 || showEmpty) && (
+      {open && showDropdown && (
         <div
           className="absolute left-0 right-0 top-full z-50 mt-1 overflow-auto"
           style={{
@@ -193,6 +201,7 @@ export function CitySearch({ placeholder }: Props) {
             borderRadius: 4,
             boxShadow: "0 8px 32px rgba(0,0,0,0.18)",
             maxHeight: "60vh",
+            minHeight: debounced.length >= 1 ? 280 : undefined,
           }}
         >
           {charted.length > 0 && (
@@ -212,24 +221,47 @@ export function CitySearch({ placeholder }: Props) {
               })}
             </>
           )}
-          {unchartedFiltered.length > 0 && (
+
+          {showExplore && (
             <>
               <div style={sectionLabelStyle}>Explore further</div>
-              {unchartedFiltered.map((u, i) => {
-                const idx = charted.length + i;
-                return (
-                  <UnchartedRow
-                    key={`u-${u.placeId}`}
-                    item={u}
-                    active={idx === active}
-                    onMouseEnter={() => setActive(idx)}
-                    onClick={() => goUncharted(u)}
-                  />
-                );
-              })}
+              {loading ? (
+                <>
+                  <SkeletonRow />
+                  <SkeletonRow delay={0.15} />
+                  <SkeletonRow delay={0.3} />
+                </>
+              ) : unchartedFiltered.length > 0 ? (
+                unchartedFiltered.map((u, i) => {
+                  const idx = charted.length + i;
+                  return (
+                    <UnchartedRow
+                      key={`u-${u.placeId}`}
+                      item={u}
+                      active={idx === active}
+                      onMouseEnter={() => setActive(idx)}
+                      onClick={() => goUncharted(u)}
+                    />
+                  );
+                })
+              ) : (
+                <div
+                  className="px-4 py-3"
+                  style={{
+                    fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+                    fontWeight: 400,
+                    fontSize: "0.88rem",
+                    color: "var(--muted-foreground)",
+                    fontStyle: "italic",
+                  }}
+                >
+                  No matching cities — try a different spelling?
+                </div>
+              )}
             </>
           )}
-          {showEmpty && (
+
+          {showGlobalEmpty && (
             <div className="px-4 py-4 text-sm text-muted-foreground">
               No matches. Try another spelling, or a nearby city.
             </div>
@@ -347,5 +379,43 @@ function UnchartedRow({
         {label}
       </span>
     </button>
+  );
+}
+
+function SkeletonRow({ delay = 0 }: { delay?: number }) {
+  return (
+    <div className="flex items-center gap-3 px-4 py-2.5">
+      <span
+        aria-hidden
+        className="shimmer"
+        style={{
+          width: 8,
+          height: 8,
+          borderRadius: 999,
+          flex: "0 0 auto",
+          animationDelay: `${delay}s`,
+        }}
+      />
+      <span className="min-w-0 flex-1 space-y-1.5">
+        <span
+          className="block shimmer"
+          style={{
+            width: "65%",
+            height: 14,
+            borderRadius: 3,
+            animationDelay: `${delay + 0.05}s`,
+          }}
+        />
+        <span
+          className="block shimmer"
+          style={{
+            width: "40%",
+            height: 10,
+            borderRadius: 3,
+            animationDelay: `${delay + 0.1}s`,
+          }}
+        />
+      </span>
+    </div>
   );
 }
