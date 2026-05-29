@@ -1,528 +1,355 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, MapPin, Phone, Globe, Clock } from "lucide-react";
+// src/routes/venue/$city/$slug.tsx
+// ─────────────────────────────────────────────────────────────────────────────
+// CompassEats — Static Venue Page
+// The canonical, crawlable page for a single venue.
+// URL: /venue/[city]/[slug]    e.g.  /venue/tokyo/sushi-saito
+//
+// Reads from the static data layer (built by scripts/sync-sheet.ts):
+//   - getVenue, getCity, getVenuesByCity   ← src/lib/venues.ts
+//   - getVenueJsonLd                       ← src/lib/structured-data.ts
+//   - AWARD_SOURCES registry               ← src/lib/schema.ts
+//
+// If accessor signatures in your repo differ slightly from these, just
+// rename — the route component itself is the meat.
+// ─────────────────────────────────────────────────────────────────────────────
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Compass } from "@/components/Compass";
-import { VenueMap } from "@/components/VenueMap";
+import { createFileRoute, Link, notFound } from '@tanstack/react-router'
+import { getVenue, getCity, getVenuesByCity } from '@/lib/venues'
+import { getVenueJsonLd } from '@/lib/structured-data'
+import { AWARD_SOURCES } from '@/lib/schema'
 
-import {
-  getVenue,
-  getRelatedVenues,
-  getAwardSource,
-} from "@/lib/venues";
-import type { Award, Venue } from "@/lib/schema";
-import {
-  buildVenueStructuredData,
-  buildBreadcrumbStructuredData,
-} from "@/lib/structured-data";
-import { CITIES_BY_SLUG } from "@/lib/cities";
-
-const SITE_URL = "https://compasseats.com";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
-
-// ---------------------------------------------------------------------------
-// Route
-// ---------------------------------------------------------------------------
-
-export const Route = createFileRoute("/venue/$city/$slug")({
-  // Active venue pages are baked at build time — see vite.config.ts prerender.
-  staticData: { prerender: true },
+// ── Route definition ────────────────────────────────────────────────────────
+export const Route = createFileRoute('/venue/$city/$slug')({
   loader: ({ params }) => {
-    const venue = getVenue(params.city, params.slug);
-    if (!venue || venue.status !== "active") throw notFound();
-    return { venue };
+    const venue = getVenue(params.city, params.slug)
+    if (!venue) throw notFound()
+    const city = getCity(params.city)
+    const related = getVenuesByCity(params.city)
+      .filter((v) => v.slug !== venue.slug && (v.accolades?.length ?? 0) > 0)
+      .slice(0, 6)
+    return { venue, city, related }
   },
   head: ({ loaderData }) => {
-    const v = loaderData?.venue;
-    if (!v) {
-      return { meta: [{ title: "Venue not found · CompassEats" }] };
-    }
-
-    const top = pickTopAward(v.awards);
-    const topLabel = top
-      ? `${prettyAwardSource(top.source)} ${top.category}`
-      : v.type === "bar"
-      ? "Cocktail bar"
-      : "Restaurant";
-
-    const title = `${v.name} — ${topLabel} · ${v.city_display} | CompassEats`;
-    const description = buildMetaDescription(v);
-    const canonical = `${SITE_URL}/venue/${v.city_slug}/${v.slug}`;
-    const cityHero = CITIES_BY_SLUG[v.city_slug]?.imageUrl;
-    const image = v.photo_url ?? cityHero ?? DEFAULT_OG_IMAGE;
-
+    if (!loaderData) return {}
+    const { venue, city } = loaderData
+    const cityName = city?.name ?? venue.city
+    const title = `${venue.name} — ${cityName} · CompassEats`
+    const description = buildMetaDescription(venue, cityName)
+    const url = `https://compasseats.com/venue/${cityToSlug(venue.city)}/${venue.slug}`
     return {
       meta: [
         { title },
-        { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-        { property: "og:url", content: canonical },
-        { property: "og:type", content: "restaurant.restaurant" },
-        { property: "og:image", content: image },
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: title },
-        { name: "twitter:description", content: description },
-        { name: "twitter:image", content: image },
+        { name: 'description', content: description },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:type', content: 'article' },
+        { property: 'og:url', content: url },
+        ...(venue.photo_url ? [{ property: 'og:image', content: venue.photo_url }] : []),
+        { name: 'twitter:card', content: venue.photo_url ? 'summary_large_image' : 'summary' },
       ],
-      links: [{ rel: "canonical", href: canonical }],
+      links: [{ rel: 'canonical', href: url }],
       scripts: [
         {
-          type: "application/ld+json",
-          children: JSON.stringify(buildVenueStructuredData(v)),
-        },
-        {
-          type: "application/ld+json",
-          children: JSON.stringify(buildBreadcrumbStructuredData(v)),
+          type: 'application/ld+json',
+          children: JSON.stringify(getVenueJsonLd(venue, city)),
         },
       ],
-    };
+    }
   },
   component: VenuePage,
-  notFoundComponent: () => (
-    <div className="mx-auto max-w-3xl px-6 py-20 text-center">
-      <Compass size={40} />
-      <h1 className="mt-4 font-display text-3xl font-light italic text-foreground">
-        We haven't charted this one yet.
-      </h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-        Try browsing the city or head back home.
-      </p>
-      <Link
-        to="/"
-        className="mt-6 inline-block text-sm text-accent-strong underline"
-      >
-        Back home
-      </Link>
-    </div>
-  ),
-  errorComponent: ({ error }) => (
-    <div className="mx-auto max-w-3xl px-6 py-20 text-center">
-      <h1 className="text-2xl font-light">Something went wrong</h1>
-      <p className="mt-2 text-sm text-muted-foreground">{error.message}</p>
-    </div>
-  ),
-});
+  notFoundComponent: VenueNotFound,
+})
 
-// ---------------------------------------------------------------------------
-// Page
-// ---------------------------------------------------------------------------
-
+// ── Page component ──────────────────────────────────────────────────────────
 function VenuePage() {
-  const { venue } = Route.useLoaderData() as { venue: Venue };
-  const related = getRelatedVenues(venue, 4);
-
-  const top = pickTopAward(venue.awards);
-  const eyebrow = `${venue.type === "bar" ? "Cocktail bar" : "Restaurant"} · ${
-    venue.neighborhood ?? venue.city_display
-  }`;
-  const subtitle = buildSubtitle(venue, top);
-  const groupedAwards = groupAwardsBySource(venue.awards);
-  const blurb = venue.blurb_long?.trim() || venue.blurb_short?.trim() || buildAutoSummary(venue.awards);
-
-  const reservationHref = venue.reservation_url ?? venue.website ?? null;
-  const reservationLabel = venue.reservation_url ? "Take me there →" : "View website →";
-
-  const distinctSources = Array.from(
-    new Set<string>(venue.awards.map((a: Award) => a.source)),
-  );
+  const { venue, city, related } = Route.useLoaderData()
+  const cityName = city?.name ?? venue.city
+  const citySlug = cityToSlug(venue.city)
+  const accolades = (venue.accolades ?? []).slice().sort(byAccoladeWeight)
 
   return (
-    <main className="relative min-h-screen bg-background">
-      {/* Hero */}
-      <section className="border-b border-border bg-card/40">
-        <div className="mx-auto max-w-5xl px-6 py-10 md:py-14">
-          <nav className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-            <Link to="/" className="hover:text-accent-strong">Home</Link>
-            <span aria-hidden>›</span>
-            <Link
-              to="/city/$slug"
-              params={{ slug: venue.city_slug }}
-              className="hover:text-accent-strong"
-            >
-              {venue.city_display}
-            </Link>
-            <span aria-hidden>›</span>
-            <span className="text-foreground">{venue.name}</span>
-          </nav>
+    <article className="mx-auto max-w-5xl px-6 pb-24 pt-8">
+      {/* Breadcrumb */}
+      <nav className="mb-8 flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-accent-strong/80">
+        <Link to="/" className="transition-colors hover:text-accent-strong">Home</Link>
+        <span className="opacity-50">/</span>
+        <Link
+          to="/city/$slug"
+          params={{ slug: citySlug }}
+          className="transition-colors hover:text-accent-strong"
+        >
+          {cityName}, charted
+        </Link>
+        <span className="opacity-50">/</span>
+        <span className="text-fg normal-case tracking-normal">{venue.name}</span>
+      </nav>
 
-          <p className="mt-6 text-xs font-medium uppercase tracking-[0.25em] text-accent-strong">
-            {eyebrow}
+      {/* Hero */}
+      <header className="grid items-center gap-10 md:grid-cols-[1.1fr_1fr]">
+        <div>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-accent-strong">
+            {venue.type === 'bar' ? 'Cocktail Bar' : 'Restaurant'}
+            <span className="mx-3 opacity-40">·</span>
+            {cityName}{venue.country ? `, ${venue.country}` : ''}
           </p>
-          <h1 className="mt-3 font-display text-4xl font-light italic tracking-tight text-foreground md:text-6xl">
+          <h1 className="font-display text-5xl font-light leading-[1.02] tracking-tight text-fg md:text-6xl">
             {venue.name}
           </h1>
-          {subtitle && (
-            <p className="mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">
-              {subtitle}
+          {venue.description && (
+            <p className="mt-5 max-w-xl font-display text-lg italic leading-relaxed text-fg-dim">
+              {venue.description}
             </p>
           )}
-        </div>
-      </section>
 
-      <div className="mx-auto grid max-w-5xl gap-12 px-6 py-12 md:grid-cols-[1fr_320px]">
-        {/* Main column */}
-        <div className="min-w-0">
-          {/* Awards rail */}
-          {venue.awards.length > 0 && (
-            <section>
-              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                Charted by
-              </h2>
-              <div className="mt-4 -mx-2 flex snap-x gap-3 overflow-x-auto pb-2 px-2">
-                {groupedAwards.map((g) => (
-                  <Card
-                    key={g.source}
-                    className="min-w-[220px] snap-start border-border bg-card"
-                  >
-                    <CardContent className="p-4">
-                      <p className="font-display text-sm font-medium text-accent-strong">
-                        {prettyAwardSource(g.source)}
-                      </p>
-                      <ul className="mt-2 space-y-1">
-                        {g.entries.map((a, i) => (
-                          <li key={i} className="text-sm text-foreground">
-                            <span className="font-medium">{a.year}</span>{" "}
-                            <span className="text-muted-foreground">— {a.category}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Editorial blurb */}
-          <section className="mt-12">
-            <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent-strong">
-              We've charted {venue.name}.
-            </p>
-            <div className="prose-venue mt-4 space-y-4 font-display text-lg font-light leading-relaxed text-foreground md:text-xl">
-              {blurb.split(/\n\n+/).map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
-          </section>
-
-          {/* Map */}
-          <section className="mt-12">
-            <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              On the map
-            </h2>
-            <VenueMap venues={[venue]} />
-          </section>
-
-          {/* Related */}
-          {related.length > 0 && (
-            <section className="mt-16">
-              <h2 className="font-display text-2xl font-light italic text-foreground">
-                Other charted spots in {venue.city_display}
-              </h2>
-              <p className="mt-1 text-sm text-muted-foreground">Worth the detour.</p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {related.map((r) => (
-                  <RelatedVenueCard key={r.id} venue={r} />
-                ))}
-              </div>
-            </section>
-          )}
+          <div className="mt-7 flex flex-wrap gap-3">
+            {venue.website && (
+              <a
+                href={venue.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-bg shadow-sm transition-transform hover:-translate-y-0.5"
+              >
+                Visit website
+                <span aria-hidden="true">→</span>
+              </a>
+            )}
+            {venue.lat != null && venue.lng != null && (
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${venue.lat},${venue.lng}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-accent-strong transition-colors hover:border-accent-strong/60"
+              >
+                Take me there
+                <span aria-hidden="true">→</span>
+              </a>
+            )}
+          </div>
         </div>
 
-        {/* Facts column */}
-        <aside className="space-y-6 md:sticky md:top-24 md:self-start">
-          <Card className="border-border bg-card">
-            <CardContent className="space-y-5 p-5">
-              {reservationHref && (
-                <a
-                  href={reservationHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block w-full"
+        {venue.photo_url && (
+          <figure className="overflow-hidden rounded-2xl border border-line shadow-2xl">
+            <img
+              src={venue.photo_url}
+              alt={venue.name}
+              loading="eager"
+              className="aspect-[4/5] w-full object-cover"
+            />
+          </figure>
+        )}
+      </header>
+
+      {/* Accolades */}
+      {accolades.length > 0 && (
+        <section className="mt-16">
+          <h2 className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-accent-strong">
+            Charted by
+          </h2>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {accolades.map((a, i) => (
+              <li key={`${a.source}-${a.year ?? i}`}>
+                <AccoladeCard accolade={a} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* Details + location */}
+      <section className="mt-16 grid gap-10 md:grid-cols-2">
+        <div>
+          <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-accent-strong">
+            The details
+          </h2>
+          <dl className="space-y-5">
+            <DetailRow label="Address" value={venue.address} />
+            <DetailRow
+              label="City"
+              value={
+                <Link
+                  to="/city/$slug"
+                  params={{ slug: citySlug }}
+                  className="text-accent-strong underline-offset-4 hover:underline"
                 >
-                  <Button
-                    className="w-full bg-[hsl(var(--brand-brass,38_50%_57%))] text-background hover:bg-[hsl(var(--brand-brass,38_50%_57%))]/90"
-                    style={{ backgroundColor: "#C6A15B", color: "#1a1a1a" }}
-                  >
-                    {reservationLabel}
-                  </Button>
-                </a>
-              )}
-
-              <FactRow icon={<MapPin className="h-4 w-4" />} label="Address">
-                <p className="text-foreground">{venue.address}</p>
-                <p className="text-muted-foreground">
-                  {venue.city_display}, {venue.country}
-                </p>
-              </FactRow>
-
-              {venue.phone && (
-                <FactRow icon={<Phone className="h-4 w-4" />} label="Phone">
-                  <a
-                    href={`tel:${venue.phone}`}
-                    className="text-foreground hover:text-accent-strong"
-                  >
-                    {venue.phone}
-                  </a>
-                </FactRow>
-              )}
-
-              {venue.website && (
-                <FactRow icon={<Globe className="h-4 w-4" />} label="Website">
+                  {cityName}{venue.country ? `, ${venue.country}` : ''}
+                </Link>
+              }
+            />
+            {venue.website && (
+              <DetailRow
+                label="Website"
+                value={
                   <a
                     href={venue.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="break-all text-foreground hover:text-accent-strong"
+                    className="text-accent-strong underline-offset-4 hover:underline"
                   >
-                    {prettyHost(venue.website)}
+                    {prettyUrl(venue.website)}
                   </a>
-                </FactRow>
-              )}
-
-              {venue.hours && <HoursBlock hours={venue.hours} />}
-
-              {venue.price_tier && (
-                <FactRow label="Price">
-                  <PriceTierPills tier={venue.price_tier} />
-                </FactRow>
-              )}
-
-              {venue.cuisine_tags.length > 0 && (
-                <FactRow label="Cuisine">
-                  <div className="flex flex-wrap gap-1.5">
-                    {venue.cuisine_tags.map((t) => (
-                      <Badge key={t} variant="secondary" className="font-normal">
-                        {t}
-                      </Badge>
-                    ))}
-                  </div>
-                </FactRow>
-              )}
-            </CardContent>
-          </Card>
-        </aside>
-      </div>
-
-      {/* Credits footer */}
-      <section className="border-t border-border bg-card/40">
-        <div className="mx-auto max-w-5xl px-6 py-8 text-xs text-muted-foreground">
-          <span className="font-semibold uppercase tracking-[0.2em] text-accent-strong">
-            Charted by
-          </span>{" "}
-          <span className="ml-2">
-            {distinctSources.length > 0
-              ? distinctSources.map(prettyAwardSource).join(" · ")
-              : "CompassEats editors"}
-          </span>
-          {venue.last_verified && (
-            <span className="ml-2">· Last verified {venue.last_verified}</span>
-          )}
+                }
+              />
+            )}
+          </dl>
         </div>
+
+        {/* Find-your-way card. MapLibre embed can drop in here later; for now,
+            a clean coords + action card keeps the design cohesive and avoids
+            shipping an off-brand iframe. */}
+        {venue.lat != null && venue.lng != null && (
+          <aside className="flex flex-col justify-between rounded-2xl border border-line bg-panel/40 p-6">
+            <div>
+              <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-accent-strong">
+                Find your way
+              </h2>
+              <p className="font-display text-2xl font-light leading-snug text-fg">
+                {cityName}, <em className="italic text-accent-strong">charted.</em>
+              </p>
+              <p className="mt-2 font-mono text-xs tabular-nums text-fg-dimmer">
+                {venue.lat.toFixed(4)}, {venue.lng.toFixed(4)}
+              </p>
+            </div>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${venue.lat},${venue.lng}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-line px-4 py-2 text-sm font-medium text-accent-strong transition-colors hover:border-accent-strong/60"
+            >
+              Open in Maps
+              <span aria-hidden="true">→</span>
+            </a>
+          </aside>
+        )}
       </section>
-    </main>
-  );
+
+      {/* Related */}
+      {related.length > 0 && (
+        <section className="mt-20 border-t border-line pt-12">
+          <h2 className="mb-1 font-display text-3xl font-light text-fg">
+            More in <em className="italic font-normal text-accent-strong">{cityName}</em>
+          </h2>
+          <p className="mb-8 text-sm text-fg-dim">Worth the detour, all of them.</p>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {related.map((v) => (
+              <li key={v.slug}>
+                <RelatedCard venue={v} citySlug={citySlug} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </article>
+  )
 }
 
-// ---------------------------------------------------------------------------
-// Subcomponents
-// ---------------------------------------------------------------------------
+// ── Subcomponents ───────────────────────────────────────────────────────────
 
-function FactRow({
-  icon,
-  label,
-  children,
-}: {
-  icon?: React.ReactNode;
-  label: string;
-  children: React.ReactNode;
-}) {
+function AccoladeCard({ accolade }: { accolade: any }) {
+  const meta = AWARD_SOURCES[accolade.source]
+  const label = meta?.displayName ?? accolade.source
   return (
-    <div>
-      <div className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-        {icon}
-        <span>{label}</span>
+    <div className="group relative h-full rounded-xl border border-line bg-panel/40 p-4 transition-colors hover:border-accent-strong/40">
+      <div className="flex items-baseline justify-between gap-3">
+        <p className="font-display text-base leading-snug text-fg">{label}</p>
+        {accolade.year && (
+          <span className="shrink-0 text-xs font-medium tabular-nums text-fg-dimmer">
+            {accolade.year}
+          </span>
+        )}
       </div>
-      <div className="mt-1.5 text-sm leading-relaxed">{children}</div>
+      {(accolade.rank || accolade.note) && (
+        <p className="mt-2 text-sm text-accent-strong">
+          {accolade.rank ? `#${accolade.rank}` : ''}
+          {accolade.rank && accolade.note ? ' · ' : ''}
+          {accolade.note ?? ''}
+        </p>
+      )}
     </div>
-  );
+  )
 }
 
-type DayKey = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
-const DAY_LABELS: { key: DayKey; label: string }[] = [
-  { key: "mon", label: "Mon" },
-  { key: "tue", label: "Tue" },
-  { key: "wed", label: "Wed" },
-  { key: "thu", label: "Thu" },
-  { key: "fri", label: "Fri" },
-  { key: "sat", label: "Sat" },
-  { key: "sun", label: "Sun" },
-];
-
-function HoursBlock({ hours }: { hours: NonNullable<Venue["hours"]> }) {
-  if (hours.note) {
-    return (
-      <FactRow icon={<Clock className="h-4 w-4" />} label="Hours">
-        <p className="text-foreground">{hours.note}</p>
-      </FactRow>
-    );
-  }
-  return (
-    <FactRow icon={<Clock className="h-4 w-4" />} label="Hours">
-      <table className="w-full text-sm">
-        <tbody>
-          {DAY_LABELS.map(({ key, label }) => {
-            const ranges = hours[key];
-            return (
-              <tr key={key} className="border-b border-border/40 last:border-0">
-                <td className="py-1 pr-3 text-muted-foreground">{label}</td>
-                <td className="py-1 text-right text-foreground">
-                  {ranges && ranges.length > 0
-                    ? ranges.map((r) => `${r.open}–${r.close}`).join(", ")
-                    : <span className="text-muted-foreground">Closed</span>}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </FactRow>
-  );
-}
-
-function PriceTierPills({ tier }: { tier: "$" | "$$" | "$$$" | "$$$$" }) {
-  const active = tier.length;
-  return (
-    <div className="flex gap-1">
-      {[1, 2, 3, 4].map((n) => (
-        <span
-          key={n}
-          className={`inline-flex h-6 w-6 items-center justify-center rounded-full border text-xs ${
-            n <= active
-              ? "border-transparent bg-foreground text-background"
-              : "border-border text-muted-foreground"
-          }`}
-        >
-          $
-        </span>
-      ))}
-    </div>
-  );
-}
-
-function RelatedVenueCard({ venue }: { venue: Venue }) {
-  const top = pickTopAward(venue.awards);
+function RelatedCard({ venue, citySlug }: { venue: any; citySlug: string }) {
+  const top = venue.accolades?.[0]
+  const topLabel = top ? AWARD_SOURCES[top.source]?.displayName ?? top.source : null
   return (
     <Link
       to="/venue/$city/$slug"
-      params={{ city: venue.city_slug, slug: venue.slug }}
-      className="group block"
+      params={{ city: citySlug, slug: venue.slug }}
+      className="group flex h-full flex-col rounded-xl border border-line bg-panel/40 p-5 transition-all hover:-translate-y-0.5 hover:border-accent-strong/40"
     >
-      <Card className="h-full border-border bg-card transition-colors hover:border-accent-strong/50">
-        <CardContent className="flex h-full flex-col gap-2 p-4">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
-            {venue.type === "bar" ? "Cocktail bar" : "Restaurant"}
-            {venue.neighborhood ? ` · ${venue.neighborhood}` : ""}
-          </p>
-          <h3 className="font-display text-lg font-light italic text-foreground group-hover:text-accent-strong">
-            {venue.name}
-          </h3>
-          {top && (
-            <p className="text-xs text-muted-foreground">
-              {prettyAwardSource(top.source)} · {top.category}
-            </p>
-          )}
-          <span className="mt-auto inline-flex items-center gap-1 text-xs text-accent-strong">
-            View <ArrowRight className="h-3 w-3" />
-          </span>
-        </CardContent>
-      </Card>
+      <p className="font-display text-lg leading-snug text-fg transition-colors group-hover:text-accent-strong">
+        {venue.name}
+      </p>
+      {topLabel && (
+        <p className="mt-2 text-xs font-medium uppercase tracking-wider text-accent-strong/80">
+          {topLabel}
+          {top?.rank ? ` · #${top.rank}` : ''}
+        </p>
+      )}
     </Link>
-  );
+  )
 }
 
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-const AWARD_PRESTIGE: Record<string, number> = {
-  michelin: 0,
-  "worlds-50-best-restaurants": 1,
-  "worlds-50-best-bars": 1,
-  "best-chef-awards": 2,
-  "la-liste": 3,
-  "james-beard": 4,
-  "spirited-awards": 4,
-  "forbes-travel-guide": 5,
-  "gault-millau": 5,
-  tabelog: 6,
-  oad: 6,
-};
-
-function pickTopAward(awards: Award[]): Award | undefined {
-  if (awards.length === 0) return undefined;
-  return [...awards].sort((a, b) => {
-    const pa = AWARD_PRESTIGE[a.source] ?? 99;
-    const pb = AWARD_PRESTIGE[b.source] ?? 99;
-    if (pa !== pb) return pa - pb;
-    return b.year - a.year;
-  })[0];
+function DetailRow({ label, value }: { label: string; value: React.ReactNode }) {
+  return (
+    <div>
+      <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-accent-strong/80">
+        {label}
+      </dt>
+      <dd className="mt-1 text-fg">{value}</dd>
+    </div>
+  )
 }
 
-function prettyAwardSource(slug: string): string {
-  return getAwardSource(slug)?.name ?? slug;
+function VenueNotFound() {
+  return (
+    <div className="mx-auto max-w-xl px-6 py-32 text-center">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-accent-strong">
+        404
+      </p>
+      <h1 className="font-display text-4xl font-light text-fg">
+        We haven't charted this one yet.
+      </h1>
+      <p className="mt-4 text-fg-dim">
+        Try a nearby city — we've mapped the best tables in many of them, and we're roaming further every week.
+      </p>
+      <Link
+        to="/"
+        className="mt-8 inline-flex rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-bg"
+      >
+        Find your bearings →
+      </Link>
+    </div>
+  )
 }
 
-function groupAwardsBySource(awards: Award[]) {
-  const map = new Map<string, Award[]>();
-  for (const a of awards) {
-    if (!map.has(a.source)) map.set(a.source, []);
-    map.get(a.source)!.push(a);
+// ── Helpers ─────────────────────────────────────────────────────────────────
+
+function buildMetaDescription(venue: any, cityName: string): string {
+  const top = venue.accolades?.[0]
+  if (top) {
+    const label = AWARD_SOURCES[top.source]?.displayName ?? top.source
+    const rankBit = top.rank ? ` (#${top.rank})` : ''
+    const yearBit = top.year ? `, ${top.year}` : ''
+    return `${venue.name} in ${cityName} — charted on ${label}${rankBit}${yearBit}. The world's best, wherever you are.`
   }
-  // sort each group by year desc, then sort groups by prestige
-  for (const [, entries] of map) entries.sort((a, b) => b.year - a.year);
-  return Array.from(map.entries())
-    .sort((a, b) => (AWARD_PRESTIGE[a[0]] ?? 99) - (AWARD_PRESTIGE[b[0]] ?? 99))
-    .map(([source, entries]) => ({ source, entries }));
+  return `${venue.name} in ${cityName} — charted on CompassEats. The world's best, wherever you are.`
 }
 
-function buildSubtitle(venue: Venue, top: Award | undefined): string {
-  const parts: string[] = [];
-  if (top) parts.push(`${top.category} · ${prettyAwardSource(top.source)}`);
-  if (venue.cuisine_tags.length > 0) {
-    parts.push(
-      venue.cuisine_tags
-        .slice(0, 3)
-        .map((t) => t.charAt(0).toUpperCase() + t.slice(1))
-        .join(", "),
-    );
-  }
-  return parts.join(" · ");
+function byAccoladeWeight(a: any, b: any) {
+  const wa = AWARD_SOURCES[a.source]?.weight ?? 0
+  const wb = AWARD_SOURCES[b.source]?.weight ?? 0
+  return wb - wa
 }
 
-function buildAutoSummary(awards: Award[]): string {
-  if (awards.length === 0) return "A charted destination on CompassEats.";
-  const lines = groupAwardsBySource(awards).slice(0, 3).map((g) => {
-    const years = g.entries.map((e) => e.year).slice(0, 3).join(", ");
-    const cat = g.entries[0].category;
-    return `Recognized by ${prettyAwardSource(g.source)} (${cat}, ${years}).`;
-  });
-  return lines.join(" ");
+function cityToSlug(city: string): string {
+  return city.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 }
 
-function buildMetaDescription(v: Venue): string {
-  const raw = v.blurb_short?.trim() || buildAutoSummary(v.awards);
-  return raw.length > 155 ? raw.slice(0, 152).trimEnd() + "…" : raw;
-}
-
-function prettyHost(url: string): string {
+function prettyUrl(url: string): string {
   try {
-    return new URL(url).host.replace(/^www\./, "");
+    return new URL(url).hostname.replace(/^www\./, '')
   } catch {
-    return url;
+    return url
   }
 }
