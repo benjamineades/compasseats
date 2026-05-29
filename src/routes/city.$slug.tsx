@@ -276,7 +276,7 @@ function CityPage() {
         ) : (
           <>
             <div className="mb-8">
-              <VenueMap venues={filtered} />
+              <VenueMap venues={filtered} cityContext={city.slug} />
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {filtered.map((v) => (

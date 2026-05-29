@@ -123,10 +123,12 @@ export function VenueMap({
   venues,
   center,
   zoom,
+  cityContext,
 }: {
   venues: Venue[];
   center?: [number, number];
   zoom?: number;
+  cityContext?: string;
 }) {
   // Guard against bad/missing coordinates in the source data.
   // (lat/lng === 0 is treated as invalid — Null Island. No CompassEats
@@ -161,9 +163,11 @@ export function VenueMap({
   const pinsRef = useRef<Pin[]>(pins);
   const centerRef = useRef<[number, number]>(resolvedCenter);
   const zoomRef = useRef<number | undefined>(zoom);
+  const cityContextRef = useRef<string | undefined>(cityContext);
   pinsRef.current = pins;
   centerRef.current = resolvedCenter;
   zoomRef.current = zoom;
+  cityContextRef.current = cityContext;
 
   // Apply brand-warm paint overrides to the active style.
   const applyBrandOverrides = (map: maplibregl.Map) => {
@@ -403,8 +407,72 @@ export function VenueMap({
     if (pts.length === 1) {
       map.jumpTo({ center: [pts[0].lng, pts[0].lat], zoom: zoomRef.current ?? 14 });
     } else if (pts.length > 1) {
+      // Per-city outlier rejection for camera framing.
+      //
+      // Why this exists: source data occasionally contains venues with valid
+      // lat/lng that are geographically wrong for their assigned city — e.g.
+      // "Sushi Ogawa" was tagged city_slug=tokyo but geocoded to Washington DC
+      // (38.92, -77.05). Without filtering, fitBounds spans Tokyo↔DC and
+      // collapses every Tokyo venue into a single cluster in the Pacific.
+      //
+      // Strategy: compute the median lat/lng, then keep a venue for fitBounds
+      // only if its Haversine distance from the median is < max(50km, 2.5 *
+      // median_distance). The 50km floor protects tight-cluster cities from
+      // rejecting legitimate outer-neighborhood venues; the 2.5x dynamic
+      // threshold accommodates sprawling metros (LA, Tokyo).
+      //
+      // Outliers are EXCLUDED from fitBounds but STILL RENDERED as pins —
+      // the camera just doesn't zoom out to encompass them. In dev, rejected
+      // venues are logged via console.table so Sheet rows with bad coords
+      // can be identified and corrected.
+      const sortedLats = pts.map((p) => p.lat).sort((a, b) => a - b);
+      const sortedLngs = pts.map((p) => p.lng).sort((a, b) => a - b);
+      const median = (arr: number[]) => arr[Math.floor(arr.length / 2)];
+      const mLat = median(sortedLats);
+      const mLng = median(sortedLngs);
+
+      const toRad = (d: number) => (d * Math.PI) / 180;
+      const haversineKm = (lat1: number, lng1: number, lat2: number, lng2: number) => {
+        const R = 6371;
+        const dLat = toRad(lat2 - lat1);
+        const dLng = toRad(lng2 - lng1);
+        const a =
+          Math.sin(dLat / 2) ** 2 +
+          Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+        return 2 * R * Math.asin(Math.sqrt(a));
+      };
+
+      const distances = pts.map((p) => haversineKm(p.lat, p.lng, mLat, mLng));
+      const sortedDist = [...distances].sort((a, b) => a - b);
+      const medianDist = sortedDist[Math.floor(sortedDist.length / 2)];
+      const threshold = Math.max(50, 2.5 * medianDist);
+
+      const kept: Pin[] = [];
+      const outliers: Array<Pin & { distanceKm: number }> = [];
+      pts.forEach((p, i) => {
+        if (distances[i] < threshold) kept.push(p);
+        else outliers.push({ ...p, distanceKm: distances[i] });
+      });
+
+      if (import.meta.env.DEV && outliers.length > 0) {
+        console.warn(
+          `[VenueMap] Excluded ${outliers.length} geographic outliers from fitBounds for ${cityContextRef.current || "this view"}. ` +
+            `These venues have valid coords but are far from the median — likely data errors in the Sheet:`,
+        );
+        console.table(
+          outliers.map((v) => ({
+            slug: v.slug,
+            name: v.name,
+            lat: v.lat,
+            lng: v.lng,
+            distance_km_from_median: Math.round(v.distanceKm),
+          })),
+        );
+      }
+
+      const framing = kept.length > 0 ? kept : pts;
       const b = new maplibregl.LngLatBounds();
-      for (const p of pts) b.extend([p.lng, p.lat]);
+      for (const p of framing) b.extend([p.lng, p.lat]);
       map.fitBounds(b, { padding: 48, maxZoom: 15, duration: 0 });
     }
   };
