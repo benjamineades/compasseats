@@ -463,6 +463,7 @@ function SinglePinMap({
   name: string;
   address?: string;
 }) {
+  console.log('MapTiler key present:', !!import.meta.env.VITE_MAPTILER_KEY, 'length:', import.meta.env.VITE_MAPTILER_KEY?.length);
   const containerRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
