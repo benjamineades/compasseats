@@ -145,17 +145,10 @@ export function VenueMap({
       lng <= 180
     );
   };
-  const pins = useMemo(() => {
-    const total = venues.length;
-    const valid = venues.filter(isValidCoord);
-    const invalidCount = total - valid.length;
-    if (invalidCount > 0) {
-      console.warn(
-        `[VenueMap] Filtered out ${invalidCount} venues with invalid coords (had ${total}, kept ${valid.length})`,
-      );
-    }
-    return valid.map(venueToPin);
-  }, [venues]);
+  const pins = useMemo(
+    () => venues.filter(isValidCoord).map(venueToPin),
+    [venues],
+  );
   const resolvedCenter: [number, number] =
     center ??
     (pins.length > 0
