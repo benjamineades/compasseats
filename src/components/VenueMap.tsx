@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import { AWARD_SOURCES, type Venue } from "@/lib/schema";
 
@@ -128,7 +128,7 @@ export function VenueMap({
   center?: [number, number];
   zoom?: number;
 }) {
-  const pins = venues.map(venueToPin);
+  const pins = useMemo(() => venues.map(venueToPin), [venues]);
   const resolvedCenter: [number, number] =
     center ??
     (pins.length > 0
