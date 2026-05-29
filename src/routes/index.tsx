@@ -1,14 +1,13 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Loader2, Locate, MapPin, Search, Utensils } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Loader2, Locate } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { AwardMarquee } from "@/components/AwardMarquee";
 import { ExploreByAward } from "@/components/ExploreByAward";
 import { Compass, Wordmark, HeroCompass } from "@/components/Compass";
+import { CitySearch } from "@/components/CitySearch";
 import { TOP_CITIES, findNearestCity } from "@/lib/cities";
 import { useNearMe } from "@/lib/useNearMe";
-import type { VenueIndexEntry } from "@/lib/schema";
 
 const PLACEHOLDER_POOL = [
   "Tokyo", "Lisbon", "Mexico City", "Paris", "New York", "Bangkok", "Istanbul",
@@ -71,7 +70,7 @@ function Index() {
         </header>
 
         <div className="mt-10">
-          <StaticSearch placeholder={placeholder} />
+          <CitySearch placeholder={placeholder} />
         </div>
 
         <div className="mt-4 flex flex-col items-center gap-2">
