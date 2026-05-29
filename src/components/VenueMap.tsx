@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import maplibregl from "maplibre-gl";
+import { AWARD_SOURCES, type Venue } from "@/lib/schema";
 
 export type Pin = {
   index: number;
@@ -18,6 +19,31 @@ export const PIN_COLORS = {
   restaurant: "#C6A15B", // brass
   bar: "#C6A15B",
 };
+
+const AWARD_NAME_BY_SLUG: Record<string, string> = Object.fromEntries(
+  AWARD_SOURCES.map((s) => [s.slug, s.name]),
+);
+
+/** Convert a Venue into a Pin for the map layer. */
+function venueToPin(v: Venue, index: number): Pin {
+  const awards = (v.awards ?? [])
+    .slice(0, 3)
+    .map((a) => {
+      const name = AWARD_NAME_BY_SLUG[a.source] ?? a.source;
+      return `${name} · ${a.category}`;
+    });
+  return {
+    index,
+    name: v.name,
+    category: v.type === "bar" ? "cocktail bar" : "restaurant",
+    lat: v.lat,
+    lng: v.lng,
+    accolade: awards[0],
+    awards,
+    citySlug: v.city_slug,
+    slug: v.slug,
+  };
+}
 
 const MAPTILER_KEY = import.meta.env.VITE_MAPTILER_KEY as string | undefined;
 
@@ -94,20 +120,30 @@ const SOURCE_ID = "venues";
 const UNCLUSTERED_LAYER = "venue-points";
 
 export function VenueMap({
+  venues,
   center,
-  pins,
+  zoom,
 }: {
-  center: [number, number];
-  pins: Pin[];
+  venues: Venue[];
+  center?: [number, number];
+  zoom?: number;
 }) {
+  const pins = useMemo(() => venues.map(venueToPin), [venues]);
+  const resolvedCenter: [number, number] =
+    center ??
+    (pins.length > 0
+      ? [pins[0].lat, pins[0].lng]
+      : [0, 0]);
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const markersRef = useRef<Map<number, maplibregl.Marker>>(new Map());
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const pinsRef = useRef<Pin[]>(pins);
-  const centerRef = useRef<[number, number]>(center);
+  const centerRef = useRef<[number, number]>(resolvedCenter);
+  const zoomRef = useRef<number | undefined>(zoom);
   pinsRef.current = pins;
-  centerRef.current = center;
+  centerRef.current = resolvedCenter;
+  zoomRef.current = zoom;
 
   // Apply brand-warm paint overrides to the active style.
   const applyBrandOverrides = (map: maplibregl.Map) => {
@@ -306,7 +342,7 @@ export function VenueMap({
       container: containerRef.current,
       style: styleUrl(dark),
       center: [centerRef.current[1], centerRef.current[0]],
-      zoom: 12,
+      zoom: zoomRef.current ?? 12,
       attributionControl: { compact: true },
       dragRotate: false,
       touchZoomRotate: false,
@@ -345,7 +381,7 @@ export function VenueMap({
   const fitToPins = (map: maplibregl.Map) => {
     const pts = pinsRef.current;
     if (pts.length === 1) {
-      map.jumpTo({ center: [pts[0].lng, pts[0].lat], zoom: 14 });
+      map.jumpTo({ center: [pts[0].lng, pts[0].lat], zoom: zoomRef.current ?? 14 });
     } else if (pts.length > 1) {
       const b = new maplibregl.LngLatBounds();
       for (const p of pts) b.extend([p.lng, p.lat]);

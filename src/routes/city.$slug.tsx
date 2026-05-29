@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { CityHero } from "@/components/CityHero";
 import { AwardMarquee } from "@/components/AwardMarquee";
+import { VenueMap } from "@/components/VenueMap";
 
 import {
   getCity,
@@ -273,11 +274,16 @@ function CityPage() {
         ) : filtered.length === 0 ? (
           <EmptyState onReset={clearAll} />
         ) : (
-          <div className="grid gap-4 md:grid-cols-2">
-            {filtered.map((v) => (
-              <VenueCard key={v.id} venue={v} />
-            ))}
-          </div>
+          <>
+            <div className="mb-8">
+              <VenueMap venues={filtered} />
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              {filtered.map((v) => (
+                <VenueCard key={v.id} venue={v} />
+              ))}
+            </div>
+          </>
         )}
 
         {!isPending && filtered.length > 0 && (
