@@ -9,6 +9,51 @@ export type TopCity = {
   lng: number;
 };
 
+import citiesData from "../../data/cities.json";
+import type { City } from "./schema";
+
+/** All charted cities (from the static data/cities.json artifact). */
+const ALL_CITIES = citiesData as unknown as City[];
+
+/** Search across every charted city by display name or country. */
+export function searchCities(query: string, limit = 8): City[] {
+  const q = query.trim().toLowerCase();
+  if (q.length < 1) return [];
+  const matches: City[] = [];
+  for (const c of ALL_CITIES) {
+    if (c.venue_count <= 0) continue;
+    const hay =
+      c.display.toLowerCase().includes(q) ||
+      c.country.toLowerCase().includes(q);
+    if (hay) {
+      matches.push(c);
+      if (matches.length >= limit * 3) break;
+    }
+  }
+  // Prefer venue-rich, then prefix matches.
+  matches.sort((a, b) => {
+    const ap = a.display.toLowerCase().startsWith(q) ? 1 : 0;
+    const bp = b.display.toLowerCase().startsWith(q) ? 1 : 0;
+    if (ap !== bp) return bp - ap;
+    return b.venue_count - a.venue_count;
+  });
+  return matches.slice(0, limit);
+}
+
+/** N nearest charted cities (venue_count > 0) to a given coordinate. */
+export function findNearestCities(
+  coords: [number, number],
+  n = 3,
+): Array<{ city: City; distanceKm: number }> {
+  const charted = ALL_CITIES.filter((c) => c.venue_count > 0);
+  const scored = charted.map((c) => ({
+    city: c,
+    distanceKm: haversineKm(coords, [c.lat, c.lng]),
+  }));
+  scored.sort((a, b) => a.distanceKm - b.distanceKm);
+  return scored.slice(0, n);
+}
+
 const UNSPLASH = (id: string) =>
   `https://images.unsplash.com/photo-${id}?w=1600&q=80&auto=format&fit=crop`;
 
