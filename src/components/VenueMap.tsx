@@ -128,7 +128,27 @@ export function VenueMap({
   center?: [number, number];
   zoom?: number;
 }) {
-  const pins = useMemo(() => venues.map(venueToPin), [venues]);
+  // Guard against bad/missing coordinates in the source data.
+  // (lat/lng === 0 is treated as invalid — Null Island. No CompassEats
+  // venue legitimately sits on the equator or prime meridian.)
+  const isValidCoord = (v: { lat?: unknown; lng?: unknown }) => {
+    const lat = typeof v.lat === "number" ? v.lat : NaN;
+    const lng = typeof v.lng === "number" ? v.lng : NaN;
+    return (
+      isFinite(lat) &&
+      isFinite(lng) &&
+      lat !== 0 &&
+      lng !== 0 &&
+      lat >= -90 &&
+      lat <= 90 &&
+      lng >= -180 &&
+      lng <= 180
+    );
+  };
+  const pins = useMemo(
+    () => venues.filter(isValidCoord).map(venueToPin),
+    [venues],
+  );
   const resolvedCenter: [number, number] =
     center ??
     (pins.length > 0
