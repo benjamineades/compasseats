@@ -158,17 +158,26 @@ function AwardPage() {
 
   const [typeFilter, setTypeFilter] = useState<Set<VenueTypeFilter>>(new Set());
   const [cityFilter, setCityFilter] = useState<Set<string>>(new Set());
+  const [countryFilter, setCountryFilter] = useState<Set<string>>(new Set());
   const [isPending, startTransition] = useTransition();
 
   const deferredTypeFilter = useDeferredValue(typeFilter);
   const deferredCityFilter = useDeferredValue(cityFilter);
+  const deferredCountryFilter = useDeferredValue(countryFilter);
 
-  // Default sort: award year desc (latest year for this source)
+  // Sort: by this source's rank ascending (rank=1 first). Unranked venues
+  // fall to the end and tiebreak on overall award prestige (descending) so
+  // a multi-award unranked venue still beats a single-award unranked venue.
   const sortedVenues = useMemo(() => {
     return [...venues].sort((a, b) => {
-      const aYear = latestYearForSource(a, source.slug);
-      const bYear = latestYearForSource(b, source.slug);
-      return bYear - aYear;
+      const am = a.awards.find((x) => x.source === source.slug);
+      const bm = b.awards.find((x) => x.source === source.slug);
+      const ar = am?.rank ?? Infinity;
+      const br = bm?.rank ?? Infinity;
+      if (ar !== br) return ar - br;
+      const ap = am ? getAwardPrestige(am) : 0;
+      const bp = bm ? getAwardPrestige(bm) : 0;
+      return bp - ap;
     });
   }, [venues, source.slug]);
 
@@ -180,7 +189,41 @@ function AwardPage() {
     return Array.from(map.entries()).sort((a, b) => a[1].localeCompare(b[1]));
   }, [venues]);
 
+  const countryOptions = useMemo(() => {
+    const set = new Set<string>();
+    for (const v of venues) set.add(v.country);
+    return Array.from(set).sort((a, b) => a.localeCompare(b));
+  }, [venues]);
+
   const cityCount = new Set(venues.map((v) => v.city_slug)).size;
+  const countryCount = countryOptions.length;
+
+  // Year span across every matching award entry on every venue.
+  const { minYear, maxYear } = useMemo(() => {
+    let mn = Infinity;
+    let mx = -Infinity;
+    for (const v of venues) {
+      for (const a of v.awards) {
+        if (a.source !== source.slug) continue;
+        if (a.year < mn) mn = a.year;
+        if (a.year > mx) mx = a.year;
+      }
+    }
+    return { minYear: isFinite(mn) ? mn : null, maxYear: isFinite(mx) ? mx : null };
+  }, [venues, source.slug]);
+
+  // Ranked vs unranked split for this source.
+  const { rankedCount, unrankedCount } = useMemo(() => {
+    let r = 0;
+    let u = 0;
+    for (const v of venues) {
+      const m = v.awards.find((a) => a.source === source.slug);
+      if (!m) continue;
+      if (typeof m.rank === "number") r++;
+      else u++;
+    }
+    return { rankedCount: r, unrankedCount: u };
+  }, [venues, source.slug]);
 
   const filtered = useMemo(() => {
     const wantRest = deferredTypeFilter.has("restaurant");
@@ -191,9 +234,11 @@ function AwardPage() {
       if (wantBars && !wantRest && v.type !== "bar") return false;
       if (deferredCityFilter.size > 0 && !deferredCityFilter.has(v.city_slug))
         return false;
+      if (deferredCountryFilter.size > 0 && !deferredCountryFilter.has(v.country))
+        return false;
       return true;
     });
-  }, [sortedVenues, deferredTypeFilter, deferredCityFilter]);
+  }, [sortedVenues, deferredTypeFilter, deferredCityFilter, deferredCountryFilter]);
 
   const toggleType = (id: VenueTypeFilter) =>
     startTransition(() =>
@@ -213,17 +258,35 @@ function AwardPage() {
       }),
     );
 
+  const toggleCountry = (name: string) =>
+    startTransition(() =>
+      setCountryFilter((prev) => {
+        const next = new Set(prev);
+        next.has(name) ? next.delete(name) : next.add(name);
+        return next;
+      }),
+    );
+
   const clearAll = () =>
     startTransition(() => {
       setTypeFilter(new Set());
       setCityFilter(new Set());
+      setCountryFilter(new Set());
     });
 
-  const noneSelected = typeFilter.size === 0 && cityFilter.size === 0;
+  const noneSelected =
+    typeFilter.size === 0 && cityFilter.size === 0 && countryFilter.size === 0;
 
   const blurb =
     AWARD_BLURBS[source.slug] ??
     `Every ${source.name} venue we chart, updated and verified.`;
+
+  const yearLabel =
+    minYear == null || maxYear == null
+      ? null
+      : minYear === maxYear
+        ? String(minYear)
+        : `${minYear}–${maxYear}`;
 
   return (
     <main className="relative min-h-screen bg-background">
@@ -241,6 +304,8 @@ function AwardPage() {
           <p className="mt-6 text-xs font-medium uppercase tracking-[0.25em] text-accent-strong">
             {venues.length} venues · {cityCount} cit
             {cityCount === 1 ? "y" : "ies"}
+            {countryCount > 1 ? ` · ${countryCount} countries` : ""}
+            {yearLabel ? ` · ${yearLabel}` : ""}
           </p>
           <h1 className="mt-3 font-display text-4xl font-light italic tracking-tight text-foreground md:text-6xl">
             {source.name}
@@ -248,10 +313,39 @@ function AwardPage() {
           <p className="mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">
             {blurb}
           </p>
+
+          {/* Stat strip */}
+          <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border pt-6 sm:grid-cols-4">
+            <Stat label="Venues" value={String(venues.length)} />
+            <Stat
+              label={countryCount === 1 ? "Country" : "Countries"}
+              value={String(countryCount)}
+            />
+            <Stat
+              label={cityCount === 1 ? "City" : "Cities"}
+              value={String(cityCount)}
+            />
+            {yearLabel ? (
+              <Stat label="Years" value={yearLabel} />
+            ) : null}
+            {rankedCount > 0 ? (
+              <Stat
+                label="Ranked / Unranked"
+                value={`${rankedCount} / ${unrankedCount}`}
+              />
+            ) : null}
+          </dl>
         </div>
       </section>
 
       <div className="mx-auto max-w-5xl px-6 py-10">
+        {/* Map */}
+        {venues.length > 0 && (
+          <div className="mb-8">
+            <VenueMap venues={venues} cityContext={`award:${source.slug}`} />
+          </div>
+        )}
+
         {/* Filter bar */}
         <div className="sticky top-[70px] z-[60] -mx-6 mb-6 border-b border-border bg-background/80 px-6 py-3 backdrop-blur-md">
           <div className="flex flex-wrap items-center gap-1.5">
@@ -280,6 +374,20 @@ function AwardPage() {
               Bars
             </Button>
 
+            {Array.from(countryFilter).map((name) => (
+              <Button
+                key={`c-${name}`}
+                size="sm"
+                variant="default"
+                onClick={() => toggleCountry(name)}
+                className="h-8 gap-1 rounded-full text-xs"
+                title="Remove filter"
+              >
+                {name}
+                <X className="h-3 w-3 opacity-80" />
+              </Button>
+            ))}
+
             {Array.from(cityFilter).map((slug) => (
               <Button
                 key={slug}
@@ -293,6 +401,40 @@ function AwardPage() {
                 <X className="h-3 w-3 opacity-80" />
               </Button>
             ))}
+
+            {countryOptions.length > 1 && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="h-8 gap-1.5 rounded-full text-xs"
+                  >
+                    <ChevronDown className="h-3 w-3 opacity-70" />
+                    Country
+                    {countryFilter.size > 0 && (
+                      <span className="ml-0.5 rounded-full bg-primary px-1.5 text-[10px] font-semibold text-primary-foreground">
+                        {countryFilter.size}
+                      </span>
+                    )}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="max-h-80 w-56 overflow-y-auto">
+                  <DropdownMenuLabel>Filter by country</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  {countryOptions.map((name) => (
+                    <DropdownMenuCheckboxItem
+                      key={name}
+                      checked={countryFilter.has(name)}
+                      onCheckedChange={() => toggleCountry(name)}
+                      onSelect={(e) => e.preventDefault()}
+                    >
+                      {name}
+                    </DropdownMenuCheckboxItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
 
             {cityOptions.length > 0 && (
               <DropdownMenu>
@@ -311,7 +453,7 @@ function AwardPage() {
                     )}
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-56">
+                <DropdownMenuContent align="start" className="max-h-80 w-56 overflow-y-auto">
                   <DropdownMenuLabel>Filter by city</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   {cityOptions.map(([slug, display]) => (
