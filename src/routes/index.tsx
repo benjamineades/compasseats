@@ -4,7 +4,6 @@ import { Loader2, Locate } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AwardMarquee } from "@/components/AwardMarquee";
 import { ExploreByAward } from "@/components/ExploreByAward";
-import { Compass, Wordmark, HeroCompass } from "@/components/Compass";
 import { CitySearch } from "@/components/CitySearch";
 import { TOP_CITIES, findNearestCity } from "@/lib/cities";
 import { useNearMe } from "@/lib/useNearMe";
