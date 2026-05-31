@@ -22,6 +22,7 @@ import {
   getCity,
   getVenuesByCity,
   getAwardSource,
+  getAwardPrestige,
 } from "@/lib/venues";
 import type { City, Venue } from "@/lib/schema";
 
@@ -136,7 +137,7 @@ function CityPage() {
     const wantRest = deferredQuick.has("restaurants");
     const wantBars = deferredQuick.has("bars");
 
-    return venues.filter((v) => {
+    const result = venues.filter((v) => {
       if (wantRest && !wantBars && v.type !== "restaurant") return false;
       if (wantBars && !wantRest && v.type !== "bar") return false;
       if (deferredAwards.size > 0) {
@@ -144,6 +145,18 @@ function CityPage() {
         if (!ok) return false;
       }
       return true;
+    });
+
+    const scoreOf = (v: Venue) =>
+      v.awards.reduce((sum, a) => sum + getAwardPrestige(a), 0);
+
+    return result.sort((a, b) => {
+      const sb = scoreOf(b);
+      const sa = scoreOf(a);
+      if (sb !== sa) return sb - sa;
+      if (b.awards.length !== a.awards.length)
+        return b.awards.length - a.awards.length;
+      return a.name.localeCompare(b.name);
     });
   }, [venues, deferredQuick, deferredAwards]);
 
