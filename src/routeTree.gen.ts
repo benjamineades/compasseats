@@ -16,6 +16,7 @@ import { Route as UnchartedSlugRouteImport } from './routes/uncharted/$slug'
 import { Route as CitySlugRouteImport } from './routes/city.$slug'
 import { Route as AwardAwardRouteImport } from './routes/award/$award'
 import { Route as CityRouteImport } from './routes/city.'
+import { Route as VenueCitySlugRouteImport } from './routes/venue/$city/$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -52,6 +53,11 @@ const CityRoute = CityRouteImport.update({
   path: '/city/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VenueCitySlugRoute = VenueCitySlugRouteImport.update({
+  id: '/venue/$city/$slug',
+  path: '/venue/$city/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
+  '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
+  '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
+  '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/award/$award'
     | '/city/$slug'
     | '/uncharted/$slug'
+    | '/venue/$city/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/award/$award'
     | '/city/$slug'
     | '/uncharted/$slug'
+    | '/venue/$city/$slug'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/award/$award'
     | '/city/$slug'
     | '/uncharted/$slug'
+    | '/venue/$city/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   AwardAwardRoute: typeof AwardAwardRoute
   CitySlugRoute: typeof CitySlugRoute
   UnchartedSlugRoute: typeof UnchartedSlugRoute
+  VenueCitySlugRoute: typeof VenueCitySlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -172,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/venue/$city/$slug': {
+      id: '/venue/$city/$slug'
+      path: '/venue/$city/$slug'
+      fullPath: '/venue/$city/$slug'
+      preLoaderRoute: typeof VenueCitySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   AwardAwardRoute: AwardAwardRoute,
   CitySlugRoute: CitySlugRoute,
   UnchartedSlugRoute: UnchartedSlugRoute,
+  VenueCitySlugRoute: VenueCitySlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
