@@ -48,10 +48,10 @@ const VENUES_TAB = process.env.COMPASSEATS_VENUES_TAB ?? "venues";
 const CITIES_TAB = process.env.COMPASSEATS_CITIES_TAB ?? "cities";
 
 if (!API_KEY || !SHEET_ID) {
-  console.error(
-    "Missing env: set GOOGLE_SHEETS_API_KEY and COMPASSEATS_SHEET_ID"
+  console.warn(
+    "[sync-sheet] Missing GOOGLE_SHEETS_API_KEY or COMPASSEATS_SHEET_ID — skipping live Sheet fetch. Using committed data/*.json files."
   );
-  process.exit(1);
+  process.exit(0);
 }
 
 const DATA_DIR = resolve(process.cwd(), "data");
