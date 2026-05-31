@@ -56,6 +56,18 @@ for (const v of VENUES) {
   }
 }
 
+// Active-venue counts by city_slug, derived at module load from the venue
+// join — the source of truth, independent of any stored `City.venue_count`
+// (which can drift if the sync hasn't run after a venue add/remove).
+const activeVenueCountByCity = new Map<string, number>();
+for (const v of VENUES) {
+  if (v.status !== "active") continue;
+  activeVenueCountByCity.set(
+    v.city_slug,
+    (activeVenueCountByCity.get(v.city_slug) ?? 0) + 1,
+  );
+}
+
 // -------------------------------------------------------------------------
 // Cities
 // -------------------------------------------------------------------------
@@ -69,8 +81,12 @@ export function getCity(slug: string): City | undefined {
 }
 
 export function getCitiesWithVenues(): City[] {
-  return CITIES.filter((c) => c.venue_count > 0).sort(
-    (a, b) => b.venue_count - a.venue_count
+  return CITIES.filter(
+    (c) => (activeVenueCountByCity.get(c.slug) ?? 0) > 0,
+  ).sort(
+    (a, b) =>
+      (activeVenueCountByCity.get(b.slug) ?? 0) -
+      (activeVenueCountByCity.get(a.slug) ?? 0),
   );
 }
 
