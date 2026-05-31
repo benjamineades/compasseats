@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
+    "prebuild": "bun run scripts/sync-sheet.ts",
     "build": "CI=true vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
