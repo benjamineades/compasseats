@@ -111,6 +111,43 @@ export function getVenuesByAward(source: AwardSource): Venue[] {
 }
 
 // -------------------------------------------------------------------------
+// Award prestige scoring
+// -------------------------------------------------------------------------
+
+/**
+ * Numeric prestige score for a single award entry. Higher = more prestigious.
+ *
+ * Used as a tiebreaker when sorting venues that don't have a numeric rank on
+ * a given list (e.g. Bib Gourmand, James Beard semifinalists), and on city
+ * pages where venues span many sources. Tiering:
+ *   - "global" sources score higher than "regional"
+ *   - Michelin + the World's 50 Best families get a hand-picked boost so they
+ *     outrank other global sources
+ *   - Lower-numbered ranks (rank=1 > rank=50 > rank=200) contribute more
+ */
+export function getAwardPrestige(award: { source: string; rank?: number }): number {
+  const src = getAwardSource(award.source);
+  if (!src) return 0;
+
+  let score = src.tier === "global" ? 3 : 2;
+
+  // Hand-picked boost: the lists that move the needle culturally.
+  const FLAGSHIP = new Set([
+    "michelin",
+    "worlds-50-best-restaurants",
+    "worlds-50-best-bars",
+  ]);
+  if (FLAGSHIP.has(src.slug)) score += 2;
+
+  // Ranked entries: rank=1 contributes ~1.0, rank=50 ~0.5, rank=200 ~0.0.
+  if (typeof award.rank === "number" && award.rank > 0) {
+    score += Math.max(0, (201 - Math.min(award.rank, 200)) / 200);
+  }
+
+  return score;
+}
+
+// -------------------------------------------------------------------------
 // Related-venue suggestions (for "Other charted spots in [city]")
 // -------------------------------------------------------------------------
 
