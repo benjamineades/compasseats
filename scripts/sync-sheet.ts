@@ -309,7 +309,7 @@ async function main() {
       console.error(`  row ${e.rowIndex} (${e.id}): ${e.message}`);
     });
     if (errors.length > 25) console.error(`  …and ${errors.length - 25} more`);
-    process.exit(1);
+    throw new Error(`${errors.length} validation errors — see details above`);
   }
 
   const index = buildIndex(venues);
