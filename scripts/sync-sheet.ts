@@ -47,11 +47,18 @@ const SHEET_ID = process.env.COMPASSEATS_SHEET_ID;
 const VENUES_TAB = process.env.COMPASSEATS_VENUES_TAB ?? "venues";
 const CITIES_TAB = process.env.COMPASSEATS_CITIES_TAB ?? "cities";
 
-if (!API_KEY || !SHEET_ID) {
-  console.warn(
-    "[sync-sheet] Missing GOOGLE_SHEETS_API_KEY or COMPASSEATS_SHEET_ID — skipping live Sheet fetch. Using committed data/*.json files."
-  );
+function skipSync(reason: string) {
+  const bar = "━".repeat(62);
+  console.warn("\n" + bar);
+  console.warn(" ⚠️  SYNC SKIPPED — using committed JSON, data may be stale ");
+  console.warn(bar);
+  console.warn("  Reason: " + reason);
+  console.warn(bar + "\n");
   process.exit(0);
+}
+
+if (!API_KEY || !SHEET_ID) {
+  skipSync("Missing GOOGLE_SHEETS_API_KEY or COMPASSEATS_SHEET_ID");
 }
 
 const DATA_DIR = resolve(process.cwd(), "data");
@@ -274,7 +281,7 @@ async function main() {
   }
   if (dupes.length) {
     console.error(`Duplicate venue keys: ${dupes.join(", ")}`);
-    process.exit(1);
+    throw new Error(`Duplicate venue keys: ${dupes.join(", ")}`);
   }
 
   // City venue counts
@@ -302,7 +309,7 @@ async function main() {
       console.error(`  row ${e.rowIndex} (${e.id}): ${e.message}`);
     });
     if (errors.length > 25) console.error(`  …and ${errors.length - 25} more`);
-    process.exit(1);
+    throw new Error(`${errors.length} validation errors — see details above`);
   }
 
   const index = buildIndex(venues);
@@ -327,5 +334,5 @@ async function main() {
 
 main().catch((err) => {
   console.error(err);
-  process.exit(1);
+  skipSync("Sheet sync failed — see error above");
 });
