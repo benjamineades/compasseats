@@ -281,7 +281,7 @@ async function main() {
   }
   if (dupes.length) {
     console.error(`Duplicate venue keys: ${dupes.join(", ")}`);
-    process.exit(1);
+    throw new Error(`Duplicate venue keys: ${dupes.join(", ")}`);
   }
 
   // City venue counts
