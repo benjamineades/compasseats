@@ -57,6 +57,19 @@ function skipSync(reason: string) {
   process.exit(0);
 }
 
+/**
+ * Thrown for problems in the Sheet data itself (duplicate keys, schema
+ * validation failures). These must FAIL the build — they cannot be papered
+ * over by falling back to committed JSON, because the committed JSON would
+ * silently drift from the Sheet of record.
+ */
+class DataValidationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "DataValidationError";
+  }
+}
+
 if (!API_KEY || !SHEET_ID) {
   skipSync("Missing GOOGLE_SHEETS_API_KEY or COMPASSEATS_SHEET_ID");
 }
@@ -281,7 +294,7 @@ async function main() {
   }
   if (dupes.length) {
     console.error(`Duplicate venue keys: ${dupes.join(", ")}`);
-    throw new Error(`Duplicate venue keys: ${dupes.join(", ")}`);
+    throw new DataValidationError(`Duplicate venue keys: ${dupes.join(", ")}`);
   }
 
   // City venue counts
@@ -309,7 +322,7 @@ async function main() {
       console.error(`  row ${e.rowIndex} (${e.id}): ${e.message}`);
     });
     if (errors.length > 25) console.error(`  …and ${errors.length - 25} more`);
-    throw new Error(`${errors.length} validation errors — see details above`);
+    throw new DataValidationError(`${errors.length} validation errors — see details above`);
   }
 
   const index = buildIndex(venues);
@@ -333,6 +346,11 @@ async function main() {
 }
 
 main().catch((err) => {
+  if (err instanceof DataValidationError) {
+    console.error("\n❌ DATA VALIDATION FAILED — fix the Sheet data before rebuilding.");
+    console.error(`   ${err.message}\n`);
+    process.exit(1);
+  }
   console.error(err);
-  skipSync("Sheet sync failed — see error above");
+  skipSync("Sheet unreachable or fetch failed — see error above");
 });
