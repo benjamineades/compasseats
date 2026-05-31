@@ -14,10 +14,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import { VenueMap } from "@/components/VenueMap";
 
 import {
   getAwardSource,
   getVenuesByAward,
+  getAwardPrestige,
 } from "@/lib/venues";
 import type { Venue } from "@/lib/schema";
 import type { AwardSource } from "@/lib/schema";
