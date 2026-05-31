@@ -665,14 +665,24 @@ function prettyAwardSource(slug: string): string {
   return getAwardSource(slug)?.name ?? slug;
 }
 
-function latestYearForSource(venue: Venue, sourceSlug: string): number {
-  const years = venue.awards
-    .filter((a) => a.source === sourceSlug)
-    .map((a) => a.year);
-  return years.length > 0 ? Math.max(...years) : 0;
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
+        {label}
+      </dt>
+      <dd className="mt-1 font-display text-2xl font-light italic text-foreground">
+        {value}
+      </dd>
+    </div>
+  );
 }
 
-function buildItemListJsonLd(sourceName: string, venues: Venue[]) {
+function buildCollectionPageJsonLd(
+  sourceName: string,
+  sourceSlug: string,
+  venues: Venue[],
+) {
   const items = venues.slice(0, 20).map((v, i) => ({
     "@type": "ListItem",
     position: i + 1,
@@ -681,10 +691,15 @@ function buildItemListJsonLd(sourceName: string, venues: Venue[]) {
   }));
   return {
     "@context": "https://schema.org",
-    "@type": "ItemList",
+    "@type": "CollectionPage",
     name: `${sourceName} — Charted venues`,
-    itemListOrder: "https://schema.org/ItemListOrderAscending",
-    numberOfItems: items.length,
-    itemListElement: items,
+    url: `${SITE_URL}/award/${sourceSlug}`,
+    mainEntity: {
+      "@type": "ItemList",
+      name: `${sourceName} — Charted venues`,
+      itemListOrder: "https://schema.org/ItemListOrderAscending",
+      numberOfItems: items.length,
+      itemListElement: items,
+    },
   };
 }
