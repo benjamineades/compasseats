@@ -4,7 +4,7 @@ import { Loader2, Locate } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AwardMarquee } from "@/components/AwardMarquee";
 import { ExploreByAward } from "@/components/ExploreByAward";
-import { Compass, Wordmark, HeroCompass } from "@/components/Compass";
+import { HeroCompass } from "@/components/Compass";
 import { CitySearch } from "@/components/CitySearch";
 import { TOP_CITIES, findNearestCity } from "@/lib/cities";
 import { useNearMe } from "@/lib/useNearMe";
@@ -54,10 +54,6 @@ function Index() {
     <main className="relative min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
         <header className="text-center">
-          <div className="inline-flex items-center gap-2.5">
-            <Compass size={28} />
-            <Wordmark className="text-foreground" />
-          </div>
           <Link to="/" className="inline-block no-underline">
             <h1 className="mt-6 cursor-pointer font-display text-4xl font-light tracking-tight text-foreground md:text-6xl">
               Where to eat & drink,<br />
