@@ -20,7 +20,7 @@ export const Route = createFileRoute('/city/$slug')({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
-    const { city, venues } = loaderData
+    const { city, venues } = loaderData as { city: any; venues: any[] }
     const title = `${city.name}, charted — ${venues.length} of the world's best · CompassEats`
     const description = buildMetaDescription(city, venues)
     const url = `https://compasseats.com/city/${city.slug}`
@@ -50,7 +50,7 @@ export const Route = createFileRoute('/city/$slug')({
 
 // ── Page ────────────────────────────────────────────────────────────────────
 function CityPage() {
-  const { city, venues } = Route.useLoaderData()
+  const { city, venues } = Route.useLoaderData() as { city: any; venues: any[] }
   const [filter, setFilter] = useState<'all' | 'restaurants' | 'bars'>('all')
 
   const counts = useMemo(
