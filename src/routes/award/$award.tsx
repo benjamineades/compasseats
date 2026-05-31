@@ -109,7 +109,9 @@ export const Route = createFileRoute("/award/$award")({
       scripts: [
         {
           type: "application/ld+json",
-          children: JSON.stringify(buildItemListJsonLd(source.name, venues)),
+          children: JSON.stringify(
+            buildCollectionPageJsonLd(source.name, source.slug, venues),
+          ),
         },
       ],
     };
