@@ -94,6 +94,14 @@ export function getAllVenuePaths(): { citySlug: string; venueSlug: string }[] {
   }));
 }
 
+/**
+ * All active venues. Mirrors `getAllVenuePaths`'s status filter so callers
+ * (sitemap generator, etc.) can derive per-venue fields like `last_verified`.
+ */
+export function getAllVenues(): Venue[] {
+  return VENUES.filter((v) => v.status === "active");
+}
+
 // -------------------------------------------------------------------------
 // Awards
 // -------------------------------------------------------------------------
