@@ -78,6 +78,10 @@ export const TOP_CITIES: TopCity[] = [
   { slug: "dubai", city: "Dubai", country: "United Arab Emirates", lat: 25.2048, lng: 55.2708, blurb: "A booming capital of flagship restaurants and high-design cocktail bars.", imageUrl: UNSPLASH("1512453979798-5ea266f8880c") },
   { slug: "sydney", city: "Sydney", country: "Australia", lat: -33.8688, lng: 151.2093, blurb: "Coastal fine dining and a long-celebrated craft cocktail culture.", imageUrl: UNSPLASH("1506973035872-a4ec16b8e8d9") },
   { slug: "buenos-aires", city: "Buenos Aires", country: "Argentina", lat: -34.6037, lng: -58.3816, blurb: "Steakhouses, modern Argentine kitchens, and South America's top cocktail bars.", imageUrl: UNSPLASH("1589909202802-8f4aadce1849") },
+  { slug: "chicago", city: "Chicago", country: "United States", region: "Illinois", lat: 41.8781, lng: -87.6298, blurb: "Deep-dish heritage alongside Michelin-starred tasting menus and craft cocktail pioneers.", imageUrl: UNSPLASH("1494522855154-9297ac14b55f") },
+  { slug: "melbourne", city: "Melbourne", country: "Australia", lat: -37.8136, lng: 144.9631, blurb: "Laneway cafés, multicultural fine dining, and a globally ranked cocktail bar scene.", imageUrl: UNSPLASH("1545044846-351ba102b6d5") },
+  { slug: "taipei", city: "Taipei", country: "Taiwan", lat: 25.0330, lng: 121.5654, blurb: "Night-market legends and a rising roster of Michelin-starred Taiwanese kitchens.", imageUrl: UNSPLASH("1552465011-b4e21bf6e79a") },
+  { slug: "vienna", city: "Vienna", country: "Austria", lat: 48.2082, lng: 16.3738, blurb: "Imperial coffeehouses, modern Austrian tasting menus, and storied cocktail bars.", imageUrl: UNSPLASH("1516550893923-42d28e5677af") },
 ];
 
 export const CITIES_BY_SLUG: Record<string, TopCity> = Object.fromEntries(
