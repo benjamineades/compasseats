@@ -56,12 +56,11 @@ function Index() {
         <header className="text-center">
           <Link to="/" className="inline-block no-underline">
             <h1 className="mt-6 cursor-pointer font-display text-4xl font-light tracking-tight text-foreground md:text-6xl">
-              Where to eat & drink,<br />
-              <span className="text-muted-foreground">anywhere.</span>
+              CompassEats
             </h1>
           </Link>
           <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
-            Type any city to get its top restaurants and cocktail bars, mapped and ranked from World's 50 Best, Michelin Guide, and more.
+            The world's best, wherever you are.
           </p>
         </header>
 
@@ -117,7 +116,7 @@ function PopularCities() {
   return (
     <div className="mt-12">
       <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        Start with a favourite
+        SCOUT A TOP DESTINATION
       </h2>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
         {TOP_CITIES.map((c) => (
