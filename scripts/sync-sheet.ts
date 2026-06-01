@@ -103,7 +103,7 @@ interface SheetValuesResponse {
 async function fetchSheetTab(tab: string): Promise<Record<string, string>[]> {
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(
     tab
-  )}?key=${API_KEY}`;
+  )}?key=${API_KEY}&majorDimension=ROWS&valueRenderOption=UNFORMATTED_VALUE`;
 
   const res = await fetch(url);
   if (!res.ok) {
@@ -116,9 +116,16 @@ async function fetchSheetTab(tab: string): Promise<Record<string, string>[]> {
 
   const [headers, ...rows] = json.values;
   return rows.map((row) => {
+    // Google Sheets returns "ragged" rows — trailing (and sometimes middle)
+    // empty cells are dropped, so `row` can be shorter than `headers`. Pad
+    // it so header→value mapping by index stays aligned.
+    const padded = row.slice();
+    while (padded.length < headers.length) padded.push("");
+
     const obj: Record<string, string> = {};
     headers.forEach((h, i) => {
-      obj[h.trim()] = (row[i] ?? "").trim();
+      const cell = padded[i];
+      obj[h.trim()] = (cell ?? "").toString().trim();
     });
     return obj;
   });
