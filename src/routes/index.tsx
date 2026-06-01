@@ -54,8 +54,9 @@ function Index() {
     <main className="relative min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
         <header className="text-center">
+          <HeroCompass className="mx-auto mb-6 w-full max-w-[180px] md:max-w-[200px]" />
           <Link to="/" className="inline-block no-underline">
-            <h1 className="mt-6 cursor-pointer font-display text-4xl font-light tracking-tight text-foreground md:text-6xl">
+            <h1 className="cursor-pointer font-display text-4xl font-light tracking-tight text-foreground md:text-6xl">
               CompassEats
             </h1>
           </Link>
@@ -99,16 +100,59 @@ function Index() {
             )}
         </div>
 
+        <TrustPoints />
+
         <section className="mt-10">
-          <div className="mt-6 flex flex-col items-center gap-6">
-            <HeroCompass className="w-full max-w-[220px]" />
-          </div>
           <AwardMarquee />
           <PopularCities />
           <ExploreByAward />
         </section>
       </div>
     </main>
+  );
+}
+
+function TrustPoints() {
+  const points = [
+    {
+      title: "Charted, not crowdsourced",
+      body: "Drawn from real award guides, never strangers' star-ratings.",
+    },
+    {
+      title: "Anywhere you land",
+      body: "Type any city and see its best tables and bars in seconds.",
+    },
+    {
+      title: "We've done the legwork",
+      body: "We cross-reference the guides so you don't have to.",
+    },
+  ];
+  return (
+    <section className="mt-10 md:mt-12">
+      <p className="mx-auto max-w-[520px] text-center font-sans text-sm font-light text-muted-foreground md:text-base">
+        The best restaurants and cocktail bars in any city — ranked by the guides that actually matter.
+      </p>
+      <div className="mx-auto mt-7 grid max-w-[640px] grid-cols-1 gap-6 md:grid-cols-3 md:gap-0">
+        {points.map((p, i) => (
+          <div
+            key={p.title}
+            className={
+              "px-0 text-center md:px-[26px] " +
+              (i < points.length - 1
+                ? "md:border-r md:border-[rgba(198,161,91,0.18)]"
+                : "")
+            }
+          >
+            <h3 className="font-display text-base font-normal text-accent-strong md:text-lg">
+              {p.title}
+            </h3>
+            <p className="mt-1.5 font-sans text-sm font-light text-muted-foreground">
+              {p.body}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
