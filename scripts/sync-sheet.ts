@@ -152,6 +152,28 @@ function parseFloatOrNaN(s: string): number {
   return Number.isFinite(n) ? n : NaN;
 }
 
+/**
+ * Sheets returns date cells as serial numbers (days since 1899-12-30) when
+ * we request UNFORMATTED_VALUE. Normalize to ISO YYYY-MM-DD so the schema's
+ * regex passes. Pass-through for empty strings and already-ISO values.
+ */
+function normalizeSheetDate(raw: string): string {
+  const s = (raw ?? "").toString().trim();
+  if (!s) return "";
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+  if (/^\d+(\.\d+)?$/.test(s)) {
+    const serial = Number(s);
+    // Sheets/Excel epoch is 1899-12-30 (accounts for the 1900 leap-year bug)
+    const ms = Math.round(serial * 86400_000) + Date.UTC(1899, 11, 30);
+    const d = new Date(ms);
+    const y = d.getUTCFullYear();
+    const m = String(d.getUTCMonth() + 1).padStart(2, "0");
+    const day = String(d.getUTCDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  }
+  return s;
+}
+
 function parseHours(raw: string) {
   if (!raw.trim()) return undefined;
   try {
@@ -203,7 +225,7 @@ function rowToVenue(raw: Record<string, string>): Venue {
     awards: parseAwards(row.awards_json),
     photo_url: row.photo_url || undefined,
     status: (row.status || "active").toLowerCase(),
-    last_verified: row.last_verified || undefined,
+    last_verified: normalizeSheetDate(row.last_verified) || undefined,
   };
 
   return VenueSchema.parse(candidate);
