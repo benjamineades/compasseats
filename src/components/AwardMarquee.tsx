@@ -1,23 +1,27 @@
-const AWARDS = [
-  "Michelin Guide",
-  "World's 50 Best Restaurants",
-  "World's 50 Best Bars",
-  "James Beard Foundation",
-  "Best Chef Awards",
-  "Tales of the Cocktail Spirited Awards",
-  "Opinionated About Dining",
+import { Link } from "@tanstack/react-router";
+
+const AWARD_LINKS = [
+  { label: "Michelin Guide", slug: "michelin" },
+  { label: "World's 50 Best Restaurants", slug: "worlds-50-best-restaurants" },
+  { label: "World's 50 Best Bars", slug: "worlds-50-best-bars" },
+  { label: "James Beard Foundation", slug: "james-beard" },
+  { label: "Best Chef Awards", slug: "best-chef-awards" },
+  { label: "Tales of the Cocktail Spirited Awards", slug: "spirited-awards" },
+  { label: "Opinionated About Dining", slug: "oad" },
 ];
 
 function Row() {
   return (
     <div className="flex shrink-0 items-center gap-3 pr-3">
-      {AWARDS.map((a) => (
-        <span
-          key={a}
-          className="whitespace-nowrap rounded-full border border-accent-strong/40 px-3.5 py-1.5 font-display text-xs tracking-wide text-accent-strong"
+      {AWARD_LINKS.map((a) => (
+        <Link
+          key={a.slug}
+          to="/award/$award"
+          params={{ award: a.slug }}
+          className="whitespace-nowrap rounded-full border border-accent-strong/40 px-3.5 py-1.5 font-display text-xs tracking-wide text-accent-strong transition-colors hover:bg-accent-strong/10"
         >
-          {a}
-        </span>
+          {a.label}
+        </Link>
       ))}
     </div>
   );
