@@ -42,19 +42,25 @@ import {
 // Config
 // -------------------------------------------------------------------------
 
-const API_KEY = process.env.SHEETS_API_KEY || process.env.GOOGLE_SHEETS_API_KEY;
-const SHEET_ID = process.env.COMPASSEATS_SHEET_ID;
-const VENUES_TAB = process.env.COMPASSEATS_VENUES_TAB ?? "venues";
-const CITIES_TAB = process.env.COMPASSEATS_CITIES_TAB ?? "cities";
+/**
+ * Thrown when the Sheet can't be reached or required env vars are missing.
+ * Callers (CLI / Vite plugin) decide how to surface this — both treat it as
+ * a loud warning, NOT a build failure, so the committed JSON stays in use.
+ */
+export class SyncSkipped extends Error {
+  constructor(reason: string) {
+    super(reason);
+    this.name = "SyncSkipped";
+  }
+}
 
-function skipSync(reason: string) {
+function logSkipBanner(reason: string) {
   const bar = "━".repeat(62);
   console.warn("\n" + bar);
   console.warn(" ⚠️  SYNC SKIPPED — using committed JSON, data may be stale ");
   console.warn(bar);
   console.warn("  Reason: " + reason);
   console.warn(bar + "\n");
-  process.exit(0);
 }
 
 /**
@@ -63,15 +69,11 @@ function skipSync(reason: string) {
  * over by falling back to committed JSON, because the committed JSON would
  * silently drift from the Sheet of record.
  */
-class DataValidationError extends Error {
+export class DataValidationError extends Error {
   constructor(message: string) {
     super(message);
     this.name = "DataValidationError";
   }
-}
-
-if (!API_KEY || !SHEET_ID) {
-  skipSync("Missing SHEETS_API_KEY (or GOOGLE_SHEETS_API_KEY) or COMPASSEATS_SHEET_ID");
 }
 
 const DATA_DIR = resolve(process.cwd(), "data");
@@ -100,10 +102,14 @@ interface SheetValuesResponse {
   values?: string[][];
 }
 
-async function fetchSheetTab(tab: string): Promise<Record<string, string>[]> {
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(
+async function fetchSheetTab(
+  tab: string,
+  sheetId: string,
+  apiKey: string,
+): Promise<Record<string, string>[]> {
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(
     tab
-  )}?key=${API_KEY}&majorDimension=ROWS&valueRenderOption=UNFORMATTED_VALUE`;
+  )}?key=${apiKey}&majorDimension=ROWS&valueRenderOption=UNFORMATTED_VALUE`;
 
   const res = await fetch(url);
   if (!res.ok) {
@@ -255,12 +261,41 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
 // Main
 // -------------------------------------------------------------------------
 
-async function main() {
+/**
+ * Run the Sheet → JSON sync.
+ *
+ * Throws:
+ *  - SyncSkipped         when env is missing or the Sheet fetch fails.
+ *                        Caller should warn and fall back to committed JSON.
+ *  - DataValidationError when row data is bad (duplicate keys, schema fail).
+ *                        Caller MUST fail the build — committed JSON would
+ *                        silently drift from the Sheet of record.
+ */
+export async function runSync(): Promise<void> {
+  const API_KEY =
+    process.env.SHEETS_API_KEY || process.env.GOOGLE_SHEETS_API_KEY;
+  const SHEET_ID = process.env.COMPASSEATS_SHEET_ID;
+  const VENUES_TAB = process.env.COMPASSEATS_VENUES_TAB ?? "venues";
+  const CITIES_TAB = process.env.COMPASSEATS_CITIES_TAB ?? "cities";
+
+  if (!API_KEY || !SHEET_ID) {
+    throw new SyncSkipped(
+      "Missing SHEETS_API_KEY (or GOOGLE_SHEETS_API_KEY) or COMPASSEATS_SHEET_ID",
+    );
+  }
+
   console.log("Fetching Sheet…");
-  const [venueRows, cityRows] = await Promise.all([
-    fetchSheetTab(VENUES_TAB),
-    fetchSheetTab(CITIES_TAB),
-  ]);
+  let venueRows: Record<string, string>[];
+  let cityRows: Record<string, string>[];
+  try {
+    [venueRows, cityRows] = await Promise.all([
+      fetchSheetTab(VENUES_TAB, SHEET_ID, API_KEY),
+      fetchSheetTab(CITIES_TAB, SHEET_ID, API_KEY),
+    ]);
+  } catch (err) {
+    console.error((err as Error).message);
+    throw new SyncSkipped("Sheet unreachable or fetch failed — see error above");
+  }
   console.log(`  ${venueRows.length} venue rows, ${cityRows.length} city rows`);
 
   const errors: ValidationError[] = [];
@@ -352,12 +387,26 @@ async function main() {
   console.log(`\nAward sources registered: ${AWARD_SOURCES.length}`);
 }
 
-main().catch((err) => {
-  if (err instanceof DataValidationError) {
-    console.error("\n❌ DATA VALIDATION FAILED — fix the Sheet data before rebuilding.");
-    console.error(`   ${err.message}\n`);
-    process.exit(1);
-  }
-  console.error(err);
-  skipSync("Sheet unreachable or fetch failed — see error above");
-});
+// CLI entrypoint — only runs when invoked directly
+// (`bun run scripts/sync-sheet.ts`), not when imported by vite.config.ts.
+const invokedDirectly =
+  typeof process !== "undefined" &&
+  !!process.argv[1] &&
+  /sync-sheet\.ts$/.test(process.argv[1]);
+
+if (invokedDirectly) {
+  runSync().catch((err) => {
+    if (err instanceof DataValidationError) {
+      console.error("\n❌ DATA VALIDATION FAILED — fix the Sheet data before rebuilding.");
+      console.error(`   ${err.message}\n`);
+      process.exit(1);
+    }
+    if (err instanceof SyncSkipped) {
+      logSkipBanner(err.message);
+      process.exit(0);
+    }
+    console.error(err);
+    logSkipBanner("Unexpected error — see above");
+    process.exit(0);
+  });
+}
