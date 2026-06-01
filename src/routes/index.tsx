@@ -66,38 +66,37 @@ function Index() {
         </header>
 
         <div className="mt-10">
-          <CitySearch placeholder={placeholder} />
-        </div>
-
-        <div className="mt-4 flex flex-col items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-3.5">
+            <div className="min-w-0 flex-1">
+              <CitySearch placeholder={placeholder} />
+            </div>
             <Button
               type="button"
-              variant="outline"
-              size="sm"
-              className="h-9 rounded-full px-4 text-xs"
+              className="h-12 shrink-0 rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
               onClick={() => nearMe.requestLocation()}
               disabled={nearMe.loading}
             >
               {nearMe.loading ? (
                 <>
-                  <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />
+                  <Loader2 className="mr-1.5 h-4 w-4 animate-spin" />
                   Finding your city…
                 </>
               ) : (
                 <>
-                  <Locate className="mr-1.5 h-3.5 w-3.5" />
+                  <Locate className="mr-1.5 h-4 w-4" />
                   Near me
                 </>
               )}
             </Button>
-            {nearMe.error && (
-              <div className="flex flex-col items-center gap-1 text-center">
-                <p className="text-xs text-destructive">{nearMe.error}</p>
-                <p className="text-[11px] text-muted-foreground">
-                  No problem — pick a charted city below to get started.
-                </p>
-              </div>
-            )}
+          </div>
+          {nearMe.error && (
+            <div className="mt-3 flex flex-col items-center gap-1 text-center">
+              <p className="text-xs text-destructive">{nearMe.error}</p>
+              <p className="text-[11px] text-muted-foreground">
+                No problem — pick a charted city below to get started.
+              </p>
+            </div>
+          )}
         </div>
 
         <TrustPoints />
