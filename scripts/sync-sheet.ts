@@ -42,7 +42,7 @@ import {
 // Config
 // -------------------------------------------------------------------------
 
-const API_KEY = process.env.COMPASSEATS_SHEETS_KEY;
+const API_KEY = process.env.SHEETS_API_KEY || process.env.GOOGLE_SHEETS_API_KEY;
 const SHEET_ID = process.env.COMPASSEATS_SHEET_ID;
 const VENUES_TAB = process.env.COMPASSEATS_VENUES_TAB ?? "venues";
 const CITIES_TAB = process.env.COMPASSEATS_CITIES_TAB ?? "cities";
@@ -71,7 +71,7 @@ class DataValidationError extends Error {
 }
 
 if (!API_KEY || !SHEET_ID) {
-  skipSync("Missing GOOGLE_SHEETS_API_KEY or COMPASSEATS_SHEET_ID");
+  skipSync("Missing SHEETS_API_KEY (or GOOGLE_SHEETS_API_KEY) or COMPASSEATS_SHEET_ID");
 }
 
 const DATA_DIR = resolve(process.cwd(), "data");
