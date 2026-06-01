@@ -15,7 +15,7 @@
  * Sheet has changed.
  *
  * ENV:
- *   GOOGLE_SHEETS_API_KEY    public read-only key (Sheet must be link-shared)
+ *   COMPASSEATS_SHEETS_KEY   public read-only key (Sheet must be link-shared)
  *   COMPASSEATS_SHEET_ID     spreadsheet id from the URL
  *   COMPASSEATS_VENUES_TAB   tab name, defaults to "venues"
  *   COMPASSEATS_CITIES_TAB   tab name, defaults to "cities"
@@ -42,7 +42,7 @@ import {
 // Config
 // -------------------------------------------------------------------------
 
-const API_KEY = process.env.GOOGLE_SHEETS_API_KEY;
+const API_KEY = process.env.COMPASSEATS_SHEETS_KEY;
 const SHEET_ID = process.env.COMPASSEATS_SHEET_ID;
 const VENUES_TAB = process.env.COMPASSEATS_VENUES_TAB ?? "venues";
 const CITIES_TAB = process.env.COMPASSEATS_CITIES_TAB ?? "cities";
