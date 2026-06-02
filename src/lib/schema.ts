@@ -71,6 +71,11 @@ export const AWARD_SOURCES = [
   { slug: "gault-millau", name: "Gault & Millau", tier: "regional" },
   { slug: "tabelog", name: "Tabelog", tier: "regional" },
   { slug: "forbes-travel-guide", name: "Forbes Travel Guide", tier: "global" },
+  { slug: "asia-50-best-restaurants", name: "Asia's 50 Best Restaurants", tier: "regional" },
+  { slug: "latin-america-50-best-restaurants", name: "Latin America's 50 Best Restaurants", tier: "regional" },
+  { slug: "north-america-50-best-restaurants", name: "North America's 50 Best Restaurants", tier: "regional" },
+  { slug: "mena-50-best-restaurants", name: "Middle East & North Africa's 50 Best Restaurants", tier: "regional" },
+  { slug: "africa-50-best-restaurants", name: "Africa's 50 Best Restaurants", tier: "regional" },
 ] as const;
 
 export type AwardSource = (typeof AWARD_SOURCES)[number]["slug"];
