@@ -1,11 +1,11 @@
 import { ClientOnly, createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { lazy, type ReactNode } from "react";
 import { ArrowRight, MapPin, Phone, Globe, Clock } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Compass } from "@/components/Compass";
-import { VenueMap } from "@/components/VenueMap";
 
 import {
   getVenue,
@@ -21,6 +21,9 @@ import { CITIES_BY_SLUG } from "@/lib/cities";
 
 const SITE_URL = "https://compasseats.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+const VenueMap = lazy(() =>
+  import("@/components/VenueMap").then((module) => ({ default: module.VenueMap })),
+);
 
 // ---------------------------------------------------------------------------
 // Route
@@ -338,9 +341,9 @@ function FactRow({
   label,
   children,
 }: {
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   label: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <div>

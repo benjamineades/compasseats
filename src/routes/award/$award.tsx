@@ -1,5 +1,5 @@
 import { ClientOnly, createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useMemo, useState, useTransition, useDeferredValue } from "react";
+import { lazy, useMemo, useState, useTransition, useDeferredValue } from "react";
 import { ArrowRight, ChevronDown, X } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,7 +14,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { VenueMap } from "@/components/VenueMap";
 
 import {
   getAwardSource,
@@ -25,6 +24,9 @@ import type { Venue } from "@/lib/schema";
 import type { AwardSource } from "@/lib/schema";
 
 const SITE_URL = "https://compasseats.com";
+const VenueMap = lazy(() =>
+  import("@/components/VenueMap").then((module) => ({ default: module.VenueMap })),
+);
 
 // ---------------------------------------------------------------------------
 // Hard-coded editorial blurbs (will move to data later)
