@@ -1,5 +1,5 @@
 import { ClientOnly, createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useMemo, useState, useTransition, useDeferredValue } from "react";
+import { lazy, useMemo, useState, useTransition, useDeferredValue } from "react";
 import { ArrowRight, ChevronDown, SlidersHorizontal, X } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { CityHero } from "@/components/CityHero";
 import { AwardMarquee } from "@/components/AwardMarquee";
-import { VenueMap } from "@/components/VenueMap";
 
 import {
   getCity,
@@ -27,6 +26,9 @@ import {
 import type { City, Venue } from "@/lib/schema";
 
 const SITE_URL = "https://compasseats.com";
+const VenueMap = lazy(() =>
+  import("@/components/VenueMap").then((module) => ({ default: module.VenueMap })),
+);
 
 // ---------------------------------------------------------------------------
 // Route
