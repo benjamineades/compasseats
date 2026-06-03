@@ -76,6 +76,8 @@ export const AWARD_SOURCES = [
   { slug: "north-america-50-best-restaurants", name: "North America's 50 Best Restaurants", tier: "regional" },
   { slug: "mena-50-best-restaurants", name: "Middle East & North Africa's 50 Best Restaurants", tier: "regional" },
   { slug: "africa-50-best-restaurants", name: "Africa's 50 Best Restaurants", tier: "regional" },
+  { slug: "worlds-50-best-restaurants-51-100", name: "World's 50 Best Restaurants (51–100)", tier: "global" },
+  { slug: "asia-50-best-restaurants-51-100", name: "Asia's 50 Best Restaurants (51–100)", tier: "regional" },
 ] as const;
 
 export type AwardSource = (typeof AWARD_SOURCES)[number]["slug"];
