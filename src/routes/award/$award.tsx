@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState, useTransition, useDeferredValue } from "react";
 import { ArrowRight, ChevronDown, X } from "lucide-react";
 
@@ -342,7 +342,9 @@ function AwardPage() {
         {/* Map */}
         {venues.length > 0 && (
           <div className="mb-8">
-            <VenueMap venues={venues} cityContext={`award:${source.slug}`} />
+            <ClientOnly fallback={<MapPlaceholder />}>
+              <VenueMap venues={venues} cityContext={`award:${source.slug}`} />
+            </ClientOnly>
           </div>
         )}
 
@@ -676,6 +678,10 @@ function Stat({ label, value }: { label: string; value: string }) {
       </dd>
     </div>
   );
+}
+
+function MapPlaceholder() {
+  return <div className="h-72 w-full rounded-xl border border-border bg-card md:h-96" />;
 }
 
 function buildCollectionPageJsonLd(

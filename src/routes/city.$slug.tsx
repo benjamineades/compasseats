@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState, useTransition, useDeferredValue } from "react";
 import { ArrowRight, ChevronDown, SlidersHorizontal, X } from "lucide-react";
 
@@ -289,7 +289,9 @@ function CityPage() {
         ) : (
           <>
             <div className="mb-8">
-              <VenueMap venues={filtered} cityContext={city.slug} />
+              <ClientOnly fallback={<MapPlaceholder />}>
+                <VenueMap venues={filtered} cityContext={city.slug} />
+              </ClientOnly>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {filtered.map((v) => (
@@ -386,6 +388,10 @@ function ResultsSkeleton() {
       ))}
     </div>
   );
+}
+
+function MapPlaceholder() {
+  return <div className="h-72 w-full rounded-xl border border-border bg-card md:h-96" />;
 }
 
 function EmptyState({ onReset }: { onReset: () => void }) {

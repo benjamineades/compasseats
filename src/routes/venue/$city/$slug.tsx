@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Phone, Globe, Clock } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -213,7 +213,9 @@ function VenuePage() {
             <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               On the map
             </h2>
-            <VenueMap venues={[venue]} />
+            <ClientOnly fallback={<MapPlaceholder />}>
+              <VenueMap venues={[venue]} />
+            </ClientOnly>
           </section>
 
           {/* Related */}
@@ -411,6 +413,10 @@ function PriceTierPills({ tier }: { tier: "$" | "$$" | "$$$" | "$$$$" }) {
       ))}
     </div>
   );
+}
+
+function MapPlaceholder() {
+  return <div className="h-72 w-full rounded-xl border border-border bg-card md:h-96" />;
 }
 
 function RelatedVenueCard({ venue }: { venue: Venue }) {
