@@ -3,28 +3,57 @@ import { writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { runSync, DataValidationError, SyncSkipped } from "./scripts/sync-sheet";
 
-// TanStack Start's preview-server plugin imports `dist/server/<entry>.js`
-// (basename of `tanstackStart.server.entry`, here "server"), but the
-// Cloudflare Vite plugin emits the worker bundle as `dist/server/index.js`
-// (its virtual worker entry is named "index", and wrangler.jsonc consumes
-// that filename). Bridge the two by writing a tiny `server.js` re-export
-// alongside `index.js` after the SSR build completes.
+// TanStack Start's preview-server plugin (used by the prerenderer) imports
+// `dist/server/<basename(serverInput)>.js` — with our `server.entry: "server"`
+// that's `dist/server/server.js`. The Cloudflare Vite plugin emits the worker
+// bundle as `dist/server/index.mjs` (its virtual entry is named "index" and
+// wrangler.jsonc consumes that filename). Bridge the two by writing a tiny
+// `server.js` re-export that delegates to `./index.mjs`.
+//
+// Timing: the prerenderer runs in the `buildApp` hook (order: "post") of the
+// post-build plugin, which fires AFTER every environment's `closeBundle`.
+// We attach to the SSR environment's `writeBundle` so the alias exists
+// before any closeBundle/post-build work — well before prerender starts.
 function emitServerJsAlias() {
   return {
     name: "lovable:emit-server-js-alias",
     apply: "build" as const,
+    // closeBundle runs per environment after the bundle is written. Both the
+    // client and server environments hit this hook; only act once when the
+    // SSR worker bundle (`index.mjs`) is on disk. This fires before the
+    // post-build `buildApp` hook that starts the prerender preview server.
     closeBundle: {
       order: "post" as const,
+      sequential: true,
       handler() {
         const dir = join(process.cwd(), "dist", "server");
-        const target = join(dir, "index.js");
+        const target = join(dir, "index.mjs");
         const alias = join(dir, "server.js");
-        if (existsSync(target)) {
-          writeFileSync(
-            alias,
-            'export { default } from "./index.js";\nexport * from "./index.js";\n',
-          );
-        }
+        if (!existsSync(target)) return; // not the SSR environment's pass
+        // The TanStack preview-server-plugin calls `serverBuild.fetch(webReq)`
+        // with a single argument (no env, no ctx). The Cloudflare worker
+        // bundle's default export expects (request, env, ctx) and dereferences
+        // ctx.context.waitUntil. Wrap the worker export so the preview server
+        // can drive it from plain Node without crashing in augmentReq().
+        writeFileSync(
+          alias,
+          [
+            'import worker from "./index.mjs";',
+            'export * from "./index.mjs";',
+            'const nodeExecutionCtx = {',
+            '  waitUntil() {},',
+            '  passThroughOnException() {},',
+            '};',
+            'export default {',
+            '  fetch(request, env, ctx) {',
+            '    const e = env ?? {};',
+            '    const c = ctx ?? nodeExecutionCtx;',
+            '    return worker.fetch(request, e, c);',
+            '  },',
+            '};',
+            '',
+          ].join("\n"),
+        );
       },
     },
   };
