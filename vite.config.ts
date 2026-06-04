@@ -18,24 +18,18 @@ function emitServerJsAlias() {
   return {
     name: "lovable:emit-server-js-alias",
     apply: "build" as const,
-    // Run in the SSR (server) environment only; that's where the worker
-    // bundle lands and where we know the output dir.
-    applyToEnvironment(env: { name: string }) {
-      return env.name === "server";
-    },
-    writeBundle: {
+    // closeBundle runs per environment after the bundle is written. Both the
+    // client and server environments hit this hook; only act once when the
+    // SSR worker bundle (`index.mjs`) is on disk. This fires before the
+    // post-build `buildApp` hook that starts the prerender preview server.
+    closeBundle: {
       order: "post" as const,
-      handler(this: { environment?: { config: { build: { outDir: string } } } }) {
-        const outDir =
-          this.environment?.config.build.outDir ??
-          join(process.cwd(), "dist", "server");
-        const target = join(outDir, "index.mjs");
-        const alias = join(outDir, "server.js");
-        if (!existsSync(target)) {
-          throw new Error(
-            `[emit-server-js-alias] expected ${target} to exist after SSR build`,
-          );
-        }
+      sequential: true,
+      handler() {
+        const dir = join(process.cwd(), "dist", "server");
+        const target = join(dir, "index.mjs");
+        const alias = join(dir, "server.js");
+        if (!existsSync(target)) return; // not the SSR environment's pass
         writeFileSync(
           alias,
           'export { default } from "./index.mjs";\nexport * from "./index.mjs";\n',
