@@ -293,7 +293,12 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
  *                        Caller MUST fail the build — committed JSON would
  *                        silently drift from the Sheet of record.
  */
-export async function runSync(): Promise<void> {
+ let _syncPromise: Promise<void> | null = null;
+ export function runSync(): Promise<void> {
+   if (!_syncPromise) _syncPromise = _runSyncOnce();
+   return _syncPromise;
+ }
+ async function _runSyncOnce(): Promise<void> {
   const API_KEY =
     process.env.SHEETS_API_KEY || process.env.GOOGLE_SHEETS_API_KEY;
   const SHEET_ID = process.env.COMPASSEATS_SHEET_ID;
