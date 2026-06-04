@@ -30,9 +30,27 @@ function emitServerJsAlias() {
         const target = join(dir, "index.mjs");
         const alias = join(dir, "server.js");
         if (!existsSync(target)) return; // not the SSR environment's pass
+        // The TanStack preview-server-plugin calls `serverBuild.fetch(webReq)`
+        // with a single argument (no env, no ctx). The Cloudflare worker
+        // bundle's default export expects (request, env, ctx) and dereferences
+        // ctx.context.waitUntil. Wrap the worker export so the preview server
+        // can drive it from plain Node without crashing in augmentReq().
         writeFileSync(
           alias,
-          'export { default } from "./index.mjs";\nexport * from "./index.mjs";\n',
+          [
+            'import worker from "./index.mjs";',
+            'export * from "./index.mjs";',
+            'const noopCtx = { waitUntil() {}, passThroughOnException() {} };',
+            'export default {',
+            '  fetch(request, env, ctx) {',
+            '    const e = env ?? {};',
+            '    const c = ctx ?? { context: noopCtx };',
+            '    if (!c.context) c.context = noopCtx;',
+            '    return worker.fetch(request, e, c);',
+            '  },',
+            '};',
+            '',
+          ].join("\n"),
         );
       },
     },
