@@ -74,15 +74,15 @@ export default defineConfig({
     server: { entry: "server" },
     pages: [
       ...getAllVenuePaths().map((p) => ({
-        path: `/venue/${p.citySlug}/${p.venueSlug}`,
+        path: `/venue/${p.citySlug}/${p.venueSlug}/`,
         prerender: { enabled: true },
       })),
       ...getCitiesWithVenues().map((c) => ({
-        path: `/city/${c.slug}`,
+        path: `/city/${c.slug}/`,
         prerender: { enabled: true },
       })),
       ...getAllAwardSources().map((s) => ({
-        path: `/award/${s.slug}`,
+        path: `/award/${s.slug}/`,
         prerender: { enabled: true },
       })),
     ],
