@@ -3,28 +3,43 @@ import { writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { runSync, DataValidationError, SyncSkipped } from "./scripts/sync-sheet";
 
-// TanStack Start's preview-server plugin imports `dist/server/<entry>.js`
-// (basename of `tanstackStart.server.entry`, here "server"), but the
-// Cloudflare Vite plugin emits the worker bundle as `dist/server/index.js`
-// (its virtual worker entry is named "index", and wrangler.jsonc consumes
-// that filename). Bridge the two by writing a tiny `server.js` re-export
-// alongside `index.js` after the SSR build completes.
+// TanStack Start's preview-server plugin (used by the prerenderer) imports
+// `dist/server/<basename(serverInput)>.js` — with our `server.entry: "server"`
+// that's `dist/server/server.js`. The Cloudflare Vite plugin emits the worker
+// bundle as `dist/server/index.mjs` (its virtual entry is named "index" and
+// wrangler.jsonc consumes that filename). Bridge the two by writing a tiny
+// `server.js` re-export that delegates to `./index.mjs`.
+//
+// Timing: the prerenderer runs in the `buildApp` hook (order: "post") of the
+// post-build plugin, which fires AFTER every environment's `closeBundle`.
+// We attach to the SSR environment's `writeBundle` so the alias exists
+// before any closeBundle/post-build work — well before prerender starts.
 function emitServerJsAlias() {
   return {
     name: "lovable:emit-server-js-alias",
     apply: "build" as const,
-    closeBundle: {
+    // Run in the SSR (server) environment only; that's where the worker
+    // bundle lands and where we know the output dir.
+    applyToEnvironment(env: { name: string }) {
+      return env.name === "server";
+    },
+    writeBundle: {
       order: "post" as const,
-      handler() {
-        const dir = join(process.cwd(), "dist", "server");
-        const target = join(dir, "index.js");
-        const alias = join(dir, "server.js");
-        if (existsSync(target)) {
-          writeFileSync(
-            alias,
-            'export { default } from "./index.js";\nexport * from "./index.js";\n',
+      handler(this: { environment?: { config: { build: { outDir: string } } } }) {
+        const outDir =
+          this.environment?.config.build.outDir ??
+          join(process.cwd(), "dist", "server");
+        const target = join(outDir, "index.mjs");
+        const alias = join(outDir, "server.js");
+        if (!existsSync(target)) {
+          throw new Error(
+            `[emit-server-js-alias] expected ${target} to exist after SSR build`,
           );
         }
+        writeFileSync(
+          alias,
+          'export { default } from "./index.mjs";\nexport * from "./index.mjs";\n',
+        );
       },
     },
   };
