@@ -392,23 +392,84 @@ function VenuePage() {
 // Subcomponents
 // ---------------------------------------------------------------------------
 
-function FactRow({
-  icon,
-  label,
-  children,
-}: {
-  icon?: ReactNode;
-  label: string;
-  children: ReactNode;
-}) {
+function FactItem({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div>
-      <div className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-        {icon}
-        <span>{label}</span>
+    <div className="py-3 first:pt-0 last:pb-0">
+      <div
+        className="text-[10px] font-semibold uppercase tracking-[0.18em]"
+        style={{ color: BRONZE }}
+      >
+        {label}
       </div>
       <div className="mt-1.5 text-sm leading-relaxed">{children}</div>
     </div>
+  );
+}
+
+function AccoladeCard({
+  group,
+  defaultOpen,
+}: {
+  group: { source: string; entries: Award[] };
+  defaultOpen: boolean;
+}) {
+  const headline = group.entries[0];
+  const rest = group.entries.slice(1);
+  return (
+    <Collapsible defaultOpen={defaultOpen}>
+      <div
+        className="rounded-xl"
+        style={{
+          backgroundColor: PAPER_CARD,
+          border: `1px solid ${HAIRLINE}`,
+        }}
+      >
+        <CollapsibleTrigger
+          className="interactive group flex w-full items-center gap-4 px-4 py-3.5 text-left [&[data-state=open]>svg]:rotate-180"
+          style={{ color: INK }}
+          disabled={rest.length === 0}
+        >
+          <span
+            className="inline-flex h-9 min-w-[3rem] shrink-0 items-center justify-center rounded-md px-2 font-display text-base"
+            style={{
+              color: BRONZE,
+              backgroundColor: "rgba(137,95,46,0.08)",
+            }}
+          >
+            {headline.year}
+          </span>
+          <span className="flex-1 text-sm font-medium" style={{ color: INK }}>
+            {prettyAwardSource(group.source)}
+          </span>
+          <span className="hidden text-sm sm:inline" style={{ color: INK_MUTED }}>
+            {awardLabel(headline)}
+          </span>
+          {rest.length > 0 && (
+            <ChevronDown
+              className="h-4 w-4 shrink-0 transition-transform duration-200"
+              style={{ color: INK_MUTED }}
+            />
+          )}
+        </CollapsibleTrigger>
+        <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+          {rest.length > 0 && (
+            <ul
+              className="space-y-1.5 px-4 pb-4 pt-3 text-sm"
+              style={{ borderTop: `1px solid ${HAIRLINE}` }}
+            >
+              {rest.map((a, i) => (
+                <li key={i} className="flex items-baseline gap-4">
+                  <span className="w-12 shrink-0" style={{ color: BRONZE }}>
+                    {a.year}
+                  </span>
+                  <span style={{ color: INK_MUTED }}>{awardLabel(a)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </CollapsibleContent>
+      </div>
+    </Collapsible>
   );
 }
 
