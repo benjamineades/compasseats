@@ -281,6 +281,15 @@ export function VenueMap({
       el.style.cssText = [
         "width:30px",
         "height:30px",
+        "cursor:pointer",
+      ].join(";");
+      // IMPORTANT: never set `transform` on this root element — MapLibre
+      // owns its transform (translate(x,y)) to anchor the marker. Apply
+      // hover affordances to the inner visual child only.
+      const visual = document.createElement("div");
+      visual.style.cssText = [
+        "width:30px",
+        "height:30px",
         "border-radius:50%",
         "background:#C6A15B",
         `border:2px solid ${t.pinBorder}`,
@@ -288,12 +297,13 @@ export function VenueMap({
         "align-items:center",
         "justify-content:center",
         "box-shadow:0 2px 6px rgba(0,0,0,0.25)",
-        "cursor:pointer",
         "transition:transform 150ms ease",
+        "transform-origin:center",
       ].join(";");
-      el.innerHTML = COMPASS_SVG;
-      el.addEventListener("mouseenter", () => (el.style.transform = "scale(1.12)"));
-      el.addEventListener("mouseleave", () => (el.style.transform = "scale(1)"));
+      visual.innerHTML = COMPASS_SVG;
+      el.appendChild(visual);
+      el.addEventListener("mouseenter", () => (visual.style.transform = "scale(1.12)"));
+      el.addEventListener("mouseleave", () => (visual.style.transform = "scale(1)"));
       el.addEventListener("click", (e) => {
         e.stopPropagation();
         openPopup(map, f);
