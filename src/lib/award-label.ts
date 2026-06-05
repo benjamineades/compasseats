@@ -50,6 +50,12 @@ function sourceNameShort(slug: string): string {
   return SHORT_NAME_BY_SLUG[slug] ?? sourceName(slug);
 }
 
+const MICHELIN_STAR_PREFIX: Record<string, string> = {
+  "Three Stars": "★★★",
+  "Two Stars": "★★",
+  "One Star": "★",
+};
+
 function compose(award: Award, name: string): string {
   // Ranked entries: lead with the rank.
   if (typeof award.rank === "number" && award.rank > 0) {
@@ -57,9 +63,10 @@ function compose(award: Award, name: string): string {
   }
 
   // Michelin: category carries the meaning ("Three Stars", "Bib Gourmand").
-  // Append " · Michelin" so the badge still attributes the source.
+  // Prefix with star glyphs for ★/★★/★★★; Bib Gourmand stays as-is.
   if (award.source === "michelin") {
-    return `${award.category} · ${name}`;
+    const stars = MICHELIN_STAR_PREFIX[award.category];
+    return stars ? `${stars} ${award.category}` : award.category;
   }
 
   // Everything else: "{category} · {source}".
