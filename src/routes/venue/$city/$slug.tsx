@@ -484,59 +484,42 @@ const DAY_LABELS: { key: DayKey; label: string }[] = [
   { key: "sun", label: "Sun" },
 ];
 
-function HoursBlock({ hours }: { hours: NonNullable<Venue["hours"]> }) {
+function HoursValue({ hours }: { hours: NonNullable<Venue["hours"]> }) {
   if (hours.note) {
-    return (
-      <FactRow icon={<Clock className="h-4 w-4" />} label="Hours">
-        <p className="text-foreground">{hours.note}</p>
-      </FactRow>
-    );
+    return <p style={{ color: INK }}>{hours.note}</p>;
   }
   return (
-    <FactRow icon={<Clock className="h-4 w-4" />} label="Hours">
-      <table className="w-full text-sm">
-        <tbody>
-          {DAY_LABELS.map(({ key, label }) => {
-            const ranges = hours[key];
-            return (
-              <tr key={key} className="border-b border-border/40 last:border-0">
-                <td className="py-1 pr-3 text-muted-foreground">{label}</td>
-                <td className="py-1 text-right text-foreground">
-                  {ranges && ranges.length > 0
-                    ? ranges.map((r) => `${r.open}–${r.close}`).join(", ")
-                    : <span className="text-muted-foreground">Closed</span>}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </FactRow>
-  );
-}
-
-function PriceTierPills({ tier }: { tier: "$" | "$$" | "$$$" | "$$$$" }) {
-  const active = tier.length;
-  return (
-    <div className="flex gap-1">
-      {[1, 2, 3, 4].map((n) => (
-        <span
-          key={n}
-          className={`inline-flex h-6 w-6 items-center justify-center rounded-full border text-xs ${
-            n <= active
-              ? "border-transparent bg-foreground text-background"
-              : "border-border text-muted-foreground"
-          }`}
-        >
-          $
-        </span>
-      ))}
-    </div>
+    <table className="w-full text-sm">
+      <tbody>
+        {DAY_LABELS.map(({ key, label }) => {
+          const ranges = hours[key];
+          return (
+            <tr key={key}>
+              <td className="py-0.5 pr-3" style={{ color: INK_MUTED }}>
+                {label}
+              </td>
+              <td className="py-0.5 text-right" style={{ color: INK }}>
+                {ranges && ranges.length > 0 ? (
+                  ranges.map((r) => `${r.open}–${r.close}`).join(", ")
+                ) : (
+                  <span style={{ color: INK_MUTED }}>Closed</span>
+                )}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
 }
 
 function MapPlaceholder() {
-  return <div className="h-72 w-full rounded-xl border border-border bg-card md:h-96" />;
+  return (
+    <div
+      className="h-72 w-full rounded-xl md:h-96"
+      style={{ backgroundColor: PAPER_CARD, border: `1px solid ${HAIRLINE}` }}
+    />
+  );
 }
 
 function RelatedVenueCard({ venue }: { venue: Venue }) {
@@ -545,27 +528,38 @@ function RelatedVenueCard({ venue }: { venue: Venue }) {
     <Link
       to="/venue/$city/$slug"
       params={{ city: venue.city_slug, slug: venue.slug }}
-      className="interactive group block"
+      className="interactive group block rounded-xl"
+      style={{
+        backgroundColor: PAPER_CARD,
+        border: `1px solid ${HAIRLINE}`,
+      }}
     >
-      <Card className="h-full border-border bg-card transition-colors hover:border-accent-strong/50">
-        <CardContent className="flex h-full flex-col gap-2 p-4">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
-            {venue.type === "bar" ? "Cocktail bar" : "Restaurant"}
-            {venue.neighborhood ? ` · ${venue.neighborhood}` : ""}
+      <div className="flex h-full flex-col gap-2 p-4">
+        <p
+          className="text-[10px] font-semibold uppercase tracking-[0.2em]"
+          style={{ color: BRONZE }}
+        >
+          {venue.type === "bar" ? "Cocktail bar" : "Restaurant"}
+          {venue.neighborhood ? ` · ${venue.neighborhood}` : ""}
+        </p>
+        <h3
+          className="font-display text-lg font-light italic"
+          style={{ color: INK }}
+        >
+          {venue.name}
+        </h3>
+        {top && (
+          <p className="text-xs" style={{ color: INK_MUTED }}>
+            {awardLabel(top)}
           </p>
-          <h3 className="font-display text-lg font-light italic text-foreground group-hover:text-accent-strong">
-            {venue.name}
-          </h3>
-          {top && (
-            <p className="text-xs text-muted-foreground">
-              {prettyAwardSource(top.source)} · {top.category}
-            </p>
-          )}
-          <span className="mt-auto inline-flex items-center gap-1 text-xs text-accent-strong">
-            View <ArrowRight className="h-3 w-3" />
-          </span>
-        </CardContent>
-      </Card>
+        )}
+        <span
+          className="mt-auto inline-flex items-center gap-1 text-xs"
+          style={{ color: BRONZE }}
+        >
+          View <ArrowRight className="h-3 w-3" />
+        </span>
+      </div>
     </Link>
   );
 }
