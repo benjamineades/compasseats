@@ -244,7 +244,7 @@ function CityPage() {
         </div>
         <div className="mb-10">
           <ClientOnly fallback={<MapPlaceholder />}>
-            <VenueMap venues={sortedVenues} cityContext={city.slug} />
+            <VenueMap venues={filtered} cityContext={city.slug} />
           </ClientOnly>
         </div>
 

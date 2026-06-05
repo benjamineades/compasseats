@@ -1,18 +1,28 @@
 import { ClientOnly, createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { lazy, type ReactNode } from "react";
-import { ArrowRight, MapPin, Phone, Globe, Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Phone, Globe, Clock } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Compass } from "@/components/Compass";
+import { VenuePhoto } from "@/components/VenuePhoto";
+import { AwardBadgeRow } from "@/components/AwardBadge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 import {
   getVenue,
   getRelatedVenues,
   getAwardSource,
+  getAwardPrestige,
 } from "@/lib/venues";
 import type { Award, Venue } from "@/lib/schema";
+import { awardLabel } from "@/lib/award-label";
 import {
   buildVenueStructuredData,
   buildBreadcrumbStructuredData,
@@ -117,16 +127,23 @@ function VenuePage() {
   const { venue } = Route.useLoaderData() as { venue: Venue };
   const related = getRelatedVenues(venue, 4);
 
-  const top = pickTopAward(venue.awards);
-  const eyebrow = `${venue.type === "bar" ? "Cocktail bar" : "Restaurant"} · ${
-    venue.neighborhood ?? venue.city_display
-  }`;
-  const subtitle = buildSubtitle(venue, top);
-  const groupedAwards = groupAwardsBySource(venue.awards);
-  const blurb = venue.blurb_long?.trim() || venue.blurb_short?.trim() || buildAutoSummary(venue.awards);
+  const typeLabel = venue.type === "bar" ? "Cocktail bar" : "Restaurant";
+  const placeLine = `${venue.neighborhood ? venue.neighborhood + ", " : ""}${venue.city_display}`;
 
-  const reservationHref = venue.reservation_url ?? venue.website ?? null;
-  const reservationLabel = venue.reservation_url ? "Take me there →" : "View website →";
+  const cuisineLine =
+    venue.cuisine_tags.length > 0
+      ? venue.cuisine_tags
+          .slice(0, 3)
+          .map((t) => t.charAt(0).toUpperCase() + t.slice(1))
+          .join(", ")
+      : "";
+  const metaSegments = [venue.price_tier, typeLabel, cuisineLine].filter(
+    (s): s is string => Boolean(s),
+  );
+
+  const { pullQuote, bodyProse } = buildBlurbParts(venue);
+  const groupedAwards = groupAwardsBySourceByPrestige(venue.awards);
+  const defaultOpenSource = groupedAwards[0]?.source;
 
   const distinctSources = Array.from(
     new Set<string>(venue.awards.map((a: Award) => a.source)),
@@ -134,82 +151,113 @@ function VenuePage() {
 
   return (
     <main className="relative min-h-screen bg-background">
-      {/* Hero */}
-      <section className="border-b border-border bg-card/40">
-        <div className="mx-auto max-w-5xl px-6 py-10 md:py-14">
-          <nav className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-            <Link to="/" className="hover:text-accent-strong">Home</Link>
-            <span aria-hidden>›</span>
+      {/* Hero image */}
+      <section className="relative h-[360px] w-full overflow-hidden border-b border-border md:h-[400px]">
+        <VenuePhoto src={venue.photo_url} alt={venue.name} className="h-full w-full object-cover" />
+        {/* Scrim */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
+
+        {/* Back link */}
+        <div className="absolute inset-x-0 top-0">
+          <div className="mx-auto flex max-w-5xl items-center px-6 pt-5">
             <Link
               to="/city/$slug"
               params={{ slug: venue.city_slug }}
-              className="hover:text-accent-strong"
+              className="interactive inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-xs text-white backdrop-blur hover:border-white/50 hover:text-accent-strong"
             >
-              {venue.city_display}
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Back to {venue.city_display}
             </Link>
-            <span aria-hidden>›</span>
-            <span className="text-foreground">{venue.name}</span>
-          </nav>
+          </div>
+        </div>
 
-          <p className="mt-6 text-xs font-medium uppercase tracking-[0.25em] text-accent-strong">
-            {eyebrow}
-          </p>
-          <h1 className="mt-3 font-display text-4xl font-light italic tracking-tight text-foreground md:text-6xl">
-            {venue.name}
-          </h1>
-          {subtitle && (
-            <p className="mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">
-              {subtitle}
+        {/* Overlay content bottom-left */}
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="mx-auto max-w-5xl px-6 pb-8 md:pb-10">
+            <p className="font-display text-2xl font-light italic text-accent-strong/90 md:text-3xl">
+              {placeLine}
             </p>
-          )}
+            <h1 className="mt-1 font-display text-4xl font-light italic tracking-tight text-white md:text-6xl">
+              {venue.name}
+            </h1>
+            {metaSegments.length > 0 && (
+              <p className="mt-3 text-sm text-white/75 md:text-base">
+                {metaSegments.join(" · ")}
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
       <div className="mx-auto grid max-w-5xl gap-12 px-6 py-12 md:grid-cols-[1fr_320px]">
         {/* Main column */}
         <div className="min-w-0">
-          {/* Awards rail */}
-          {venue.awards.length > 0 && (
-            <section>
-              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                Charted by
-              </h2>
-              <div className="mt-4 -mx-2 flex snap-x gap-3 overflow-x-auto pb-2 px-2">
-                {groupedAwards.map((g) => (
-                  <Card
-                    key={g.source}
-                    className="min-w-[220px] snap-start border-border bg-card"
-                  >
-                    <CardContent className="p-4">
-                      <p className="font-display text-sm font-medium text-accent-strong">
-                        {prettyAwardSource(g.source)}
-                      </p>
-                      <ul className="mt-2 space-y-1">
-                        {g.entries.map((a, i) => (
-                          <li key={i} className="text-sm text-foreground">
-                            <span className="font-medium">{a.year}</span>{" "}
-                            <span className="text-muted-foreground">— {a.category}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+          {/* Editorial blurb */}
+          <section>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-accent-strong">
+              Why we point you here
+            </p>
+            <blockquote className="mt-4 border-l-2 border-accent-strong pl-5 font-display text-xl font-light italic leading-snug text-accent-strong md:text-2xl">
+              {pullQuote}
+            </blockquote>
+            {bodyProse && (
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-foreground">
+                {bodyProse.split(/\n\n+/).map((p, i) => (
+                  <p key={i}>{p}</p>
                 ))}
               </div>
+            )}
+          </section>
+
+          {/* Accolades */}
+          {groupedAwards.length > 0 && (
+            <section className="mt-12">
+              <h2 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-accent-strong">
+                Accolades
+              </h2>
+              <Accordion
+                type="multiple"
+                defaultValue={defaultOpenSource ? [defaultOpenSource] : []}
+                className="mt-3 border-t border-border"
+              >
+                {groupedAwards.map((g) => {
+                  const headline = g.entries[0];
+                  const rest = g.entries.slice(1);
+                  return (
+                    <AccordionItem
+                      key={g.source}
+                      value={g.source}
+                      className="border-b border-border"
+                    >
+                      <AccordionTrigger className="interactive group py-4 hover:no-underline">
+                        <div className="flex flex-1 items-baseline gap-3 text-left">
+                          <span className="w-12 shrink-0 font-display text-base text-accent-strong">
+                            {headline.year}
+                          </span>
+                          <span className="flex-1 text-sm text-foreground">
+                            <span className="font-medium">{prettyAwardSource(g.source)}</span>
+                            <span className="text-muted-foreground"> — {distinctionLabel(headline)}</span>
+                          </span>
+                        </div>
+                      </AccordionTrigger>
+                      {rest.length > 0 && (
+                        <AccordionContent className="pb-4">
+                          <ul className="space-y-1.5 pl-[60px] text-sm">
+                            {rest.map((a, i) => (
+                              <li key={i} className="flex items-baseline gap-3">
+                                <span className="w-12 shrink-0 text-muted-foreground">{a.year}</span>
+                                <span className="text-muted-foreground">{distinctionLabel(a)}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </AccordionContent>
+                      )}
+                    </AccordionItem>
+                  );
+                })}
+              </Accordion>
             </section>
           )}
-
-          {/* Editorial blurb */}
-          <section className="mt-12">
-            <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent-strong">
-              We've charted {venue.name}.
-            </p>
-            <div className="prose-venue mt-4 space-y-4 font-display text-lg font-light leading-relaxed text-foreground md:text-xl">
-              {blurb.split(/\n\n+/).map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
-          </section>
 
           {/* Map */}
           <section className="mt-12">
@@ -241,21 +289,36 @@ function VenuePage() {
         <aside className="space-y-6 md:sticky md:top-24 md:self-start">
           <Card className="border-border bg-card">
             <CardContent className="space-y-5 p-5">
-              {reservationHref && (
-                <a
-                  href={reservationHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block w-full"
-                >
-                  <Button
-                    className="w-full bg-[hsl(var(--brand-brass,38_50%_57%))] text-background hover:bg-[hsl(var(--brand-brass,38_50%_57%))]/90"
-                    style={{ backgroundColor: "#C6A15B", color: "#1a1a1a" }}
-                  >
-                    {reservationLabel}
-                  </Button>
-                </a>
+              {(venue.reservation_url || venue.website) && (
+                <div className="space-y-2">
+                  {venue.reservation_url ? (
+                    <Button asChild className="interactive w-full">
+                      <a href={venue.reservation_url} target="_blank" rel="noopener noreferrer">
+                        Reserve a table →
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button asChild className="interactive w-full">
+                      <a href={venue.website!} target="_blank" rel="noopener noreferrer">
+                        Visit website ↗
+                      </a>
+                    </Button>
+                  )}
+                  {venue.reservation_url && venue.website && (
+                    <Button asChild variant="outline" className="interactive w-full">
+                      <a href={venue.website} target="_blank" rel="noopener noreferrer">
+                        Visit website ↗
+                      </a>
+                    </Button>
+                  )}
+                </div>
               )}
+
+              {venue.awards.length > 0 && (
+                <AwardBadgeRow venue={venue} max={3} />
+              )}
+
+              {venue.hours && <HoursBlock hours={venue.hours} />}
 
               <FactRow icon={<MapPin className="h-4 w-4" />} label="Address">
                 <p className="text-foreground">{venue.address}</p>
@@ -264,11 +327,23 @@ function VenuePage() {
                 </p>
               </FactRow>
 
+              {venue.cuisine_tags.length > 0 && (
+                <FactRow label="Cuisine">
+                  <div className="flex flex-wrap gap-1.5">
+                    {venue.cuisine_tags.map((t) => (
+                      <Badge key={t} variant="secondary" className="font-normal">
+                        {t}
+                      </Badge>
+                    ))}
+                  </div>
+                </FactRow>
+              )}
+
               {venue.phone && (
                 <FactRow icon={<Phone className="h-4 w-4" />} label="Phone">
                   <a
                     href={`tel:${venue.phone}`}
-                    className="text-foreground hover:text-accent-strong"
+                    className="interactive text-foreground hover:text-accent-strong"
                   >
                     {venue.phone}
                   </a>
@@ -281,30 +356,16 @@ function VenuePage() {
                     href={venue.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="break-all text-foreground hover:text-accent-strong"
+                    className="interactive break-all text-foreground hover:text-accent-strong"
                   >
                     {prettyHost(venue.website)}
                   </a>
                 </FactRow>
               )}
 
-              {venue.hours && <HoursBlock hours={venue.hours} />}
-
               {venue.price_tier && (
                 <FactRow label="Price">
                   <PriceTierPills tier={venue.price_tier} />
-                </FactRow>
-              )}
-
-              {venue.cuisine_tags.length > 0 && (
-                <FactRow label="Cuisine">
-                  <div className="flex flex-wrap gap-1.5">
-                    {venue.cuisine_tags.map((t) => (
-                      <Badge key={t} variant="secondary" className="font-normal">
-                        {t}
-                      </Badge>
-                    ))}
-                  </div>
                 </FactRow>
               )}
             </CardContent>
@@ -428,7 +489,7 @@ function RelatedVenueCard({ venue }: { venue: Venue }) {
     <Link
       to="/venue/$city/$slug"
       params={{ city: venue.city_slug, slug: venue.slug }}
-      className="group block"
+      className="interactive group block"
     >
       <Card className="h-full border-border bg-card transition-colors hover:border-accent-strong/50">
         <CardContent className="flex h-full flex-col gap-2 p-4">
@@ -499,18 +560,50 @@ function groupAwardsBySource(awards: Award[]) {
     .map(([source, entries]) => ({ source, entries }));
 }
 
-function buildSubtitle(venue: Venue, top: Award | undefined): string {
-  const parts: string[] = [];
-  if (top) parts.push(`${top.category} · ${prettyAwardSource(top.source)}`);
-  if (venue.cuisine_tags.length > 0) {
-    parts.push(
-      venue.cuisine_tags
-        .slice(0, 3)
-        .map((t) => t.charAt(0).toUpperCase() + t.slice(1))
-        .join(", "),
-    );
+function distinctionLabel(award: Award): string {
+  if (typeof award.rank === "number" && award.rank > 0) {
+    return `No. ${award.rank}`;
   }
-  return parts.join(" · ");
+  return award.category;
+}
+
+function groupAwardsBySourceByPrestige(
+  awards: Award[],
+): { source: string; entries: Award[] }[] {
+  const groups = groupAwardsBySource(awards);
+  const bestPrestige = (entries: Award[]) =>
+    entries.reduce((m, a) => Math.max(m, getAwardPrestige(a)), 0);
+  return [...groups].sort(
+    (a, b) => bestPrestige(b.entries) - bestPrestige(a.entries),
+  );
+}
+
+function buildBlurbParts(venue: Venue): {
+  pullQuote: string;
+  bodyProse: string;
+} {
+  const shortQ = venue.blurb_short?.trim();
+  const longQ = venue.blurb_long?.trim();
+
+  if (shortQ && longQ) {
+    return { pullQuote: shortQ, bodyProse: longQ };
+  }
+  if (shortQ) {
+    return { pullQuote: shortQ, bodyProse: "" };
+  }
+  if (longQ) {
+    // Split first sentence as the pull-quote, rest as body prose.
+    const match = longQ.match(/^(.+?[.!?])(\s+)(.*)$/s);
+    if (match) {
+      return { pullQuote: match[1].trim(), bodyProse: match[3].trim() };
+    }
+    return { pullQuote: longQ, bodyProse: "" };
+  }
+  const where = venue.neighborhood || venue.city_display;
+  return {
+    pullQuote: `A charted favorite in ${where}.`,
+    bodyProse: "",
+  };
 }
 
 function buildAutoSummary(awards: Award[]): string {
