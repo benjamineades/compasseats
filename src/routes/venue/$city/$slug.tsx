@@ -1,19 +1,14 @@
 import { ClientOnly, createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { lazy, type ReactNode } from "react";
-import { ArrowLeft, ArrowRight, MapPin, Phone, Globe, Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Compass } from "@/components/Compass";
 import { VenuePhoto } from "@/components/VenuePhoto";
-import { AwardBadgeRow } from "@/components/AwardBadge";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 import {
   getVenue,
@@ -31,6 +26,19 @@ import { CITIES_BY_SLUG } from "@/lib/cities";
 
 const SITE_URL = "https://compasseats.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+
+// ---------------------------------------------------------------------------
+// Paper palette — explicit fixed colors so the body stays light regardless
+// of the global dark/light theme toggle.
+// ---------------------------------------------------------------------------
+const PAPER = "#F7F3EB";
+const PAPER_CARD = "#FCFAF5";
+const INK = "#23211E";
+const INK_MUTED = "#6a6253";
+const BRONZE = "#895F2E";
+const BRASS = "#C6A15B";
+const HAIRLINE = "rgba(35,33,30,0.12)";
+
 const VenueMap = lazy(() =>
   import("@/components/VenueMap").then((module) => ({ default: module.VenueMap })),
 );
