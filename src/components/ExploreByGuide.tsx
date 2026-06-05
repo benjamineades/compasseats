@@ -22,14 +22,17 @@ const FEATURED = FEATURED_SLUGS
 export function ExploreByGuide() {
   return (
     <section className="mt-16">
-      <div className="mb-5">
-        <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">
+      <div className="mb-6 text-center">
+        <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent-strong">
           Browse the source
         </p>
         <h2 className="font-display text-2xl font-light text-foreground">
-          Explore by guide
+          Explore by{" "}
+          <em className="italic text-accent-strong" style={{ fontStyle: "italic" }}>
+            guide
+          </em>
         </h2>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <p className="mt-2 text-sm text-muted-foreground">
           The guides we chart from.
         </p>
       </div>
@@ -42,7 +45,7 @@ export function ExploreByGuide() {
             <Link
               to="/award/$award"
               params={{ award: g.slug }}
-              className="interactive group flex items-center justify-between gap-4 px-1 py-3.5 hover:bg-accent/40"
+              className="interactive group flex items-center justify-between gap-4 px-2 py-4 hover:bg-accent/40"
             >
               <span className="font-display text-base text-foreground group-hover:text-accent-strong">
                 {g.name}

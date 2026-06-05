@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, LocateFixed } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ExploreByGuide } from "@/components/ExploreByGuide";
 import { HeroCompass } from "@/components/Compass";
@@ -136,7 +136,7 @@ function Index() {
               type="button"
               onClick={() => nearMe.requestLocation()}
               disabled={nearMe.loading}
-              className="interactive inline-flex items-center gap-1.5 text-xs text-muted-foreground underline-offset-4 hover:text-accent-strong hover:underline disabled:opacity-60"
+              className="interactive inline-flex items-center gap-1.5 text-xs text-accent-strong underline-offset-4 hover:underline disabled:opacity-60"
             >
               {nearMe.loading ? (
                 <>
@@ -144,7 +144,10 @@ function Index() {
                   Finding your city…
                 </>
               ) : (
-                "Use my location instead"
+                <>
+                  <LocateFixed className="h-3.5 w-3.5" />
+                  Use my location instead
+                </>
               )}
             </button>
           </div>
@@ -159,9 +162,7 @@ function Index() {
           </div>
         </section>
 
-        <TrustPoints />
-
-        <section className="mt-10">
+        <section className="mt-12">
           <TopDestinations />
           <ExploreByGuide />
         </section>
@@ -219,26 +220,23 @@ const FIXED_EIGHT = TOP_CITIES.slice(0, 8);
 function TopDestinations() {
   return (
     <div className="mt-12">
-      <div className="mb-5">
-        <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">
+      <div className="mb-6 text-center">
+        <p className="text-xs uppercase tracking-[0.2em] text-accent-strong">
           Top destinations
         </p>
-        <h2 className="font-display text-2xl font-light text-foreground">
-          Top destinations
-        </h2>
       </div>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {FIXED_EIGHT.map((c) => (
           <Link
             key={c.slug}
             to="/city/$slug"
             params={{ slug: c.slug }}
-            className="interactive group flex h-full flex-col rounded-lg border border-border bg-card px-4 py-4 text-left hover:border-primary/50"
+            className="interactive group flex h-full flex-col items-center justify-center rounded-lg border border-border bg-card px-4 py-5 text-center hover:border-primary/50"
           >
-            <div className="font-display text-lg text-foreground group-hover:text-accent-strong">
+            <div className="font-display text-xl text-foreground group-hover:text-accent-strong">
               {c.city}
             </div>
-            <div className="mt-0.5 text-xs uppercase tracking-wide text-muted-foreground">
+            <div className="mt-1 text-xs uppercase tracking-[0.1em] text-muted-foreground">
               {c.country}
             </div>
           </Link>
