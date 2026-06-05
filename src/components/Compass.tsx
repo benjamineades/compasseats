@@ -37,10 +37,11 @@ export function Compass({ size = 92, spin = false, className = "" }: CompassProp
 
 /**
  * Large animated compass rose — the homepage hero centerpiece
- * (replaces RotatingEarth). Outer ring is static; the inner ring and
- * tick marks rotate slowly. Cardinal letters N/E/S/W rotate with the
- * inner ring. On hover the slow spin pauses and the rotating group
- * settles back to N-up; under prefers-reduced-motion it stays static.
+ * (replaces RotatingEarth). The full face — both rings, tick marks,
+ * and the N/E/S/W cardinal letters — rotates together slowly. The
+ * needle and center dot stay fixed. On hover the slow spin pauses
+ * and the rotating group settles back to N-up; under
+ * prefers-reduced-motion it stays static.
  */
 export function HeroCompass({ className = "" }: { className?: string }) {
   const groupRef = useRef<SVGGElement>(null);
@@ -98,18 +99,18 @@ export function HeroCompass({ className = "" }: { className?: string }) {
           <line x1="16" y1="60" x2="24" y2="60" />
           <line x1="96" y1="60" x2="104" y2="60" />
         </g>
-      </g>
-      {/* Static compass face — N at top, E right, S bottom, W left. */}
-      <g
-        fontFamily="var(--font-display)"
-        textAnchor="middle"
-        dominantBaseline="central"
-        fill="currentColor"
-      >
-        <text x="60" y="10" fontStyle="italic" fontSize="10" fontWeight="500">N</text>
-        <text x="110" y="60" fontSize="8" opacity="0.5">E</text>
-        <text x="60" y="110" fontSize="8" opacity="0.5">S</text>
-        <text x="10" y="60" fontSize="8" opacity="0.5">W</text>
+        {/* Cardinal letters rotate with the rings — N at top when settled. */}
+        <g
+          fontFamily="var(--font-display)"
+          textAnchor="middle"
+          dominantBaseline="central"
+          fill="currentColor"
+        >
+          <text x="60" y="10" fontStyle="italic" fontSize="10" fontWeight="500">N</text>
+          <text x="110" y="60" fontSize="8" opacity="0.5">E</text>
+          <text x="60" y="110" fontSize="8" opacity="0.5">S</text>
+          <text x="10" y="60" fontSize="8" opacity="0.5">W</text>
+        </g>
       </g>
       {/* Needle — brass tip points UP toward N (smallest y in SVG = top). */}
       <path d="M60 22 L67 60 L60 70 L53 60 Z" fill="currentColor" />
