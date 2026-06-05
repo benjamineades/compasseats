@@ -353,7 +353,7 @@ export function VenueMap({
 
     const html = `<div style="font-family:var(--font-serif);max-width:260px">
       <div style="font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;color:#23211E">${String(p.name || "")}</div>
-      ${subtitle ? `<div style="font-family:'Fraunces',serif;font-weight:400;font-style:italic;font-size:0.85rem;margin-top:2px;color:#6B4A1F">${subtitle}</div>` : ""}
+      ${subtitle ? `<div style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:0.85rem;margin-top:2px;color:var(--accent-strong)">${subtitle}</div>` : ""}
       ${badges ? `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">${badges}</div>` : ""}
       ${link}
     </div>`;
