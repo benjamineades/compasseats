@@ -1,12 +1,11 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Loader2, Locate } from "lucide-react";
+import { Loader2, Locate, RotateCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AwardMarquee } from "@/components/AwardMarquee";
-import { ExploreByAward } from "@/components/ExploreByAward";
+import { ExploreByGuide } from "@/components/ExploreByGuide";
 import { HeroCompass } from "@/components/Compass";
 import { CitySearch } from "@/components/CitySearch";
-import { TOP_CITIES, findNearestCity } from "@/lib/cities";
+import { TOP_CITIES, type TopCity, findNearestCity } from "@/lib/cities";
 import { useNearMe } from "@/lib/useNearMe";
 
 const PLACEHOLDER_POOL = [
@@ -153,9 +152,8 @@ function Index() {
         <TrustPoints />
 
         <section className="mt-10">
-          <AwardMarquee />
-          <PopularCities />
-          <ExploreByAward />
+          <TopDestinations />
+          <ExploreByGuide />
         </section>
       </div>
     </main>
@@ -206,19 +204,68 @@ function TrustPoints() {
   );
 }
 
-function PopularCities() {
+function shuffleTake<T>(arr: readonly T[], n: number): T[] {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a.slice(0, n);
+}
+
+// Stable initial pick for SSR — first 8 of the curated list. After mount we
+// reshuffle client-side so each visit varies, without a hydration mismatch.
+const INITIAL_EIGHT: TopCity[] = TOP_CITIES.slice(0, 8);
+
+function TopDestinations() {
+  const [picks, setPicks] = useState<TopCity[]>(INITIAL_EIGHT);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    setPicks(shuffleTake(TOP_CITIES, 8));
+  }, []);
+
   return (
     <div className="mt-12">
-      <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        SCOUT A TOP DESTINATION
-      </h2>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-        {TOP_CITIES.map((c) => (
-          <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
-            className="interactive group flex flex-col rounded-lg border border-border bg-card px-3 py-2.5 text-left hover:border-primary/50 hover:bg-accent">
-            <div className="text-sm font-medium text-foreground group-hover:text-accent-strong">{c.city}</div>
-            <div className="text-xs text-muted-foreground">{c.country}</div>
-            <div className="mt-1 line-clamp-2 text-xs text-muted-foreground/80">{c.blurb}</div>
+      <div className="mb-5 flex items-end justify-between gap-4">
+        <div>
+          <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">
+            A taste of the atlas
+          </p>
+          <h2 className="font-display text-2xl font-light text-foreground">
+            Top destinations
+          </h2>
+        </div>
+        {mounted && (
+          <button
+            type="button"
+            onClick={() => setPicks(shuffleTake(TOP_CITIES, 8))}
+            className="interactive inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground hover:border-primary/50 hover:text-accent-strong"
+            aria-label="Show me more cities"
+          >
+            <RotateCw className="h-3 w-3" />
+            Reshuffle
+          </button>
+        )}
+      </div>
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+        {picks.map((c) => (
+          <Link
+            key={c.slug}
+            to="/city/$slug"
+            params={{ slug: c.slug }}
+            className="interactive group flex h-full flex-col rounded-lg border border-border bg-card px-4 py-3.5 text-left hover:border-primary/50"
+          >
+            <div className="font-display text-base text-foreground group-hover:text-accent-strong">
+              {c.city}
+            </div>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground">
+              {c.country}
+            </div>
+            <p className="mt-2 line-clamp-2 text-xs font-light leading-relaxed text-muted-foreground/85">
+              {c.blurb}
+            </p>
           </Link>
         ))}
       </div>
