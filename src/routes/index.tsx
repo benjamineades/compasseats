@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Loader2, Locate, RotateCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ExploreByGuide } from "@/components/ExploreByGuide";
