@@ -23,7 +23,7 @@ export function ExploreByAward() {
             key={a.slug}
             to="/award/$award"
             params={{ award: a.slug }}
-            className="group rounded-lg border border-border bg-card px-4 py-3 transition-colors hover:border-primary/50 hover:bg-accent"
+            className="interactive group rounded-lg border border-border bg-card px-4 py-3 hover:border-primary/50 hover:bg-accent"
           >
             <div className="font-display text-base text-foreground group-hover:text-accent-strong">{a.name}</div>
             <div className="mt-0.5 text-xs text-muted-foreground">{a.description}</div>

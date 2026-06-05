@@ -107,6 +107,8 @@
   --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
   --font-serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
   --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --ease-standard: cubic-bezier(.4, 0, .2, 1);
+  --dur: 150ms;
 }
 
 .dark {
@@ -160,6 +162,36 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }
+}
+
+@utility interactive {
+  transition:
+    transform var(--dur) var(--ease-standard),
+    background-color var(--dur) var(--ease-standard),
+    color var(--dur) var(--ease-standard),
+    border-color var(--dur) var(--ease-standard),
+    box-shadow var(--dur) var(--ease-standard);
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover,
+    &:active {
+      transform: none;
+    }
+  }
+}
+
+@keyframes hero-compass-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 @keyframes earth-spin {

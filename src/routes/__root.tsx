@@ -128,7 +128,6 @@ function RootComponent() {
       <header className="sticky top-0 z-20 border-b border-border bg-background/70 backdrop-blur-md">
         <div className="mx-auto flex h-[70px] max-w-5xl items-center justify-between px-6">
           <Link to="/" className="flex items-center gap-2.5 no-underline">
-            <Compass size={30} />
             <Wordmark />
           </Link>
           <ThemeToggle />

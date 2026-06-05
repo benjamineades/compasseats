@@ -53,26 +53,71 @@ function Index() {
   return (
     <main className="relative min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
-        <header className="text-center">
-          <HeroCompass className="mx-auto mb-6 w-full max-w-[180px] md:max-w-[200px]" />
-          <Link to="/" className="inline-block no-underline">
-            <h1 className="cursor-pointer font-display text-4xl font-light tracking-tight text-foreground md:text-6xl">
-              CompassEats
-            </h1>
-          </Link>
-          <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
-            The world's best, wherever you are.
-          </p>
-        </header>
+        <section className="relative">
+          {/* Hero background layers (non-interactive) */}
+          <div aria-hidden className="pointer-events-none absolute inset-0 -z-0">
+            {/* Warm radial glow */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 62% 55% at 50% 38%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 72%)",
+              }}
+            />
+            {/* Large-cell grid */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, color-mix(in oklab, var(--primary) 5%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--primary) 5%, transparent) 1px, transparent 1px)",
+                backgroundSize: "110px 110px",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 82% 80% at 50% 42%, transparent 8%, #000 58%, transparent 100%)",
+                maskImage:
+                  "radial-gradient(ellipse 82% 80% at 50% 42%, transparent 8%, #000 58%, transparent 100%)",
+              }}
+            />
+            {/* Corner coordinates */}
+            <div
+              className="absolute left-2 top-2 font-display text-[11px] tracking-wide md:left-4 md:top-4 md:text-xs"
+              style={{ color: "color-mix(in oklab, var(--primary) 12%, transparent)" }}
+            >
+              33°45′N
+            </div>
+            <div
+              className="absolute right-2 top-2 font-display text-[11px] tracking-wide md:right-4 md:top-4 md:text-xs"
+              style={{ color: "color-mix(in oklab, var(--primary) 12%, transparent)" }}
+            >
+              84°23′W
+            </div>
+            <div
+              className="absolute bottom-2 right-2 font-display text-[11px] tracking-[0.2em] md:bottom-4 md:right-4 md:text-xs"
+              style={{ color: "color-mix(in oklab, var(--primary) 12%, transparent)" }}
+            >
+              ATL
+            </div>
+          </div>
 
-        <div className="mt-10">
+          <header className="relative z-10 text-center">
+            <HeroCompass className="mx-auto mb-6 w-full max-w-[180px] md:max-w-[200px]" />
+            <Link to="/" className="inline-block no-underline">
+              <h1 className="cursor-pointer font-display text-4xl font-light tracking-tight text-foreground md:text-6xl">
+                CompassEats
+              </h1>
+            </Link>
+            <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
+              The world's best, wherever you are.
+            </p>
+          </header>
+
+          <div className="relative z-10 mt-10">
           <div className="flex flex-wrap items-center justify-center gap-3.5">
             <div className="min-w-0 flex-1">
               <CitySearch placeholder={placeholder} />
             </div>
             <Button
               type="button"
-              className="h-12 shrink-0 rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+              className="interactive h-12 shrink-0 rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
               onClick={() => nearMe.requestLocation()}
               disabled={nearMe.loading}
             >
@@ -97,7 +142,8 @@ function Index() {
               </p>
             </div>
           )}
-        </div>
+          </div>
+        </section>
 
         <TrustPoints />
 
@@ -164,7 +210,7 @@ function PopularCities() {
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
         {TOP_CITIES.map((c) => (
           <Link key={c.slug} to="/city/$slug" params={{ slug: c.slug }}
-            className="group flex flex-col rounded-lg border border-border bg-card px-3 py-2.5 text-left transition-colors hover:border-primary/50 hover:bg-accent">
+            className="interactive group flex flex-col rounded-lg border border-border bg-card px-3 py-2.5 text-left hover:border-primary/50 hover:bg-accent">
             <div className="text-sm font-medium text-foreground group-hover:text-accent-strong">{c.city}</div>
             <div className="text-xs text-muted-foreground">{c.country}</div>
             <div className="mt-1 line-clamp-2 text-xs text-muted-foreground/80">{c.blurb}</div>
