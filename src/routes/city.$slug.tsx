@@ -116,6 +116,8 @@ export const Route = createFileRoute("/city/$slug")({
 
 type QuickFilter = "restaurants" | "bars";
 
+const INITIAL_ROW_CAP = 50;
+
 function CityPage() {
   const { city, venues } = Route.useLoaderData() as {
     city: City;
@@ -124,6 +126,7 @@ function CityPage() {
 
   const [quick, setQuick] = useState<Set<QuickFilter>>(new Set());
   const [awardFilters, setAwardFilters] = useState<Set<string>>(new Set());
+  const [showAll, setShowAll] = useState(false);
   const [isPending, startTransition] = useTransition();
 
   // Deferred so the filter pills feel responsive while a large list filters.
@@ -189,9 +192,13 @@ function CityPage() {
     startTransition(() => {
       setQuick(new Set());
       setAwardFilters(new Set());
+      setShowAll(false);
     });
 
   const noneSelected = quick.size === 0 && awardFilters.size === 0;
+
+  const visible = showAll ? filtered : filtered.slice(0, INITIAL_ROW_CAP);
+  const hasMore = filtered.length > INITIAL_ROW_CAP;
 
   // MODE A — single-venue city: a generous feature, no filter bar, no list.
   if (venues.length === 1) {
@@ -229,6 +236,18 @@ function CityPage() {
       <CitySpotlight city={city} venues={sortedVenues} />
 
       <div className="mx-auto max-w-5xl px-6 py-10">
+        {/* Map — sits above the filter bar so it never gets pinned under it */}
+        <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
+            The lay of the land · {city.display} · {formatCoord(city.lat, city.lng)}
+          </p>
+        </div>
+        <div className="mb-10">
+          <ClientOnly fallback={<MapPlaceholder />}>
+            <VenueMap venues={sortedVenues} cityContext={city.slug} />
+          </ClientOnly>
+        </div>
+
         {/* Filter bar */}
         <div className="sticky top-[70px] z-[60] -mx-6 mb-6 border-b border-border bg-background/80 px-6 py-3 backdrop-blur-md">
           <div className="flex flex-wrap items-center gap-1.5">
@@ -315,28 +334,32 @@ function CityPage() {
           <EmptyState onReset={clearAll} />
         ) : (
           <>
-            <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
-                The lay of the land · {city.display} · {formatCoord(city.lat, city.lng)}
-              </p>
-            </div>
-            <div className="mb-10">
-              <ClientOnly fallback={<MapPlaceholder />}>
-                <VenueMap venues={filtered} cityContext={city.slug} />
-              </ClientOnly>
-            </div>
-
             <div className="divide-y divide-border/50">
-              {filtered.map((v, i) => (
+              {visible.map((v, i) => (
                 <VenueRankedRow key={v.id} venue={v} rank={i + 1} />
               ))}
             </div>
+
+            {hasMore && (
+              <div className="mt-8 flex justify-center">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowAll((s) => !s)}
+                  className="rounded-full"
+                >
+                  {showAll
+                    ? "Show less"
+                    : `Show all ${filtered.length} charted spots in ${city.display} →`}
+                </Button>
+              </div>
+            )}
           </>
         )}
 
         {!isPending && filtered.length > 0 && (
           <p className="mt-8 text-center text-xs italic text-muted-foreground">
-            Showing {filtered.length} of {venues.length} charted spot
+            Showing {visible.length} of {venues.length} charted spot
             {venues.length === 1 ? "" : "s"} in {city.display}.
           </p>
         )}
