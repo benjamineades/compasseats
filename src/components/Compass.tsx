@@ -98,18 +98,20 @@ export function HeroCompass({ className = "" }: { className?: string }) {
           <line x1="16" y1="60" x2="24" y2="60" />
           <line x1="96" y1="60" x2="104" y2="60" />
         </g>
-        <g
-          fontFamily="var(--font-display)"
-          textAnchor="middle"
-          dominantBaseline="central"
-          fill="currentColor"
-        >
-          <text x="60" y="8" fontStyle="italic" fontSize="10" fontWeight="500">N</text>
-          <text x="112" y="60" fontSize="8" opacity="0.45">E</text>
-          <text x="60" y="112" fontSize="8" opacity="0.45">S</text>
-          <text x="8" y="60" fontSize="8" opacity="0.45">W</text>
-        </g>
       </g>
+      {/* Static compass face — N at top, E right, S bottom, W left. */}
+      <g
+        fontFamily="var(--font-display)"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fill="currentColor"
+      >
+        <text x="60" y="10" fontStyle="italic" fontSize="10" fontWeight="500">N</text>
+        <text x="110" y="60" fontSize="8" opacity="0.5">E</text>
+        <text x="60" y="110" fontSize="8" opacity="0.5">S</text>
+        <text x="10" y="60" fontSize="8" opacity="0.5">W</text>
+      </g>
+      {/* Needle — brass tip points UP toward N (smallest y in SVG = top). */}
       <path d="M60 22 L67 60 L60 70 L53 60 Z" fill="currentColor" />
       <path d="M60 98 L53 60 L60 50 L67 60 Z" fill="currentColor" opacity="0.45" />
       <circle cx="60" cy="60" r="3.4" fill="var(--foreground)" />

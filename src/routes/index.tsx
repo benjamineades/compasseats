@@ -54,51 +54,55 @@ function Index() {
     <main className="relative min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
         <section className="relative">
-          {/* Hero background layers (non-interactive) */}
-          <div aria-hidden className="pointer-events-none absolute inset-0 -z-0">
-            {/* Warm radial glow */}
+          <header className="relative overflow-hidden px-2 pb-10 pt-8 text-center md:px-4 md:pb-14 md:pt-10">
+            {/* Hero background layers (non-interactive) — scoped to header */}
+            <div aria-hidden className="pointer-events-none absolute inset-0 -z-0">
+              {/* Warm radial glow */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 62% 55% at 50% 38%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 72%)",
+                }}
+              />
+              {/* Large-cell grid */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, color-mix(in oklab, var(--primary) 5%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--primary) 5%, transparent) 1px, transparent 1px)",
+                  backgroundSize: "110px 110px",
+                  WebkitMaskImage:
+                    "radial-gradient(ellipse 82% 80% at 50% 42%, transparent 8%, #000 58%, transparent 100%)",
+                  maskImage:
+                    "radial-gradient(ellipse 82% 80% at 50% 42%, transparent 8%, #000 58%, transparent 100%)",
+                }}
+              />
+            </div>
+            {/* Corner coordinates — pinned to header so all three are visible */}
             <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(ellipse 62% 55% at 50% 38%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 72%)",
-              }}
-            />
-            {/* Large-cell grid */}
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, color-mix(in oklab, var(--primary) 5%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--primary) 5%, transparent) 1px, transparent 1px)",
-                backgroundSize: "110px 110px",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 82% 80% at 50% 42%, transparent 8%, #000 58%, transparent 100%)",
-                maskImage:
-                  "radial-gradient(ellipse 82% 80% at 50% 42%, transparent 8%, #000 58%, transparent 100%)",
-              }}
-            />
-            {/* Corner coordinates */}
-            <div
-              className="absolute left-2 top-2 font-display text-[11px] tracking-wide md:left-4 md:top-4 md:text-xs"
-              style={{ color: "color-mix(in oklab, var(--primary) 12%, transparent)" }}
+              aria-hidden
+              className="pointer-events-none absolute left-1 top-1 z-10 font-display text-[11px] tracking-wide md:left-3 md:top-3 md:text-xs"
+              style={{ color: "color-mix(in oklab, var(--primary) 22%, transparent)" }}
             >
               33°45′N
             </div>
             <div
-              className="absolute right-2 top-2 font-display text-[11px] tracking-wide md:right-4 md:top-4 md:text-xs"
-              style={{ color: "color-mix(in oklab, var(--primary) 12%, transparent)" }}
+              aria-hidden
+              className="pointer-events-none absolute right-1 top-1 z-10 font-display text-[11px] tracking-wide md:right-3 md:top-3 md:text-xs"
+              style={{ color: "color-mix(in oklab, var(--primary) 22%, transparent)" }}
             >
               84°23′W
             </div>
             <div
-              className="absolute bottom-2 right-2 font-display text-[11px] tracking-[0.2em] md:bottom-4 md:right-4 md:text-xs"
-              style={{ color: "color-mix(in oklab, var(--primary) 12%, transparent)" }}
+              aria-hidden
+              className="pointer-events-none absolute bottom-1 right-1 z-10 font-display text-[11px] tracking-[0.2em] md:bottom-3 md:right-3 md:text-xs"
+              style={{ color: "color-mix(in oklab, var(--primary) 22%, transparent)" }}
             >
               ATL
             </div>
-          </div>
 
-          <header className="relative z-10 text-center">
+            <div className="relative z-10">
             <HeroCompass className="mx-auto mb-6 w-full max-w-[180px] md:max-w-[200px]" />
             <Link to="/" className="inline-block no-underline">
               <h1 className="cursor-pointer font-display text-4xl font-light tracking-tight text-foreground md:text-6xl">
@@ -108,9 +112,10 @@ function Index() {
             <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
               The world's best, wherever you are.
             </p>
+            </div>
           </header>
 
-          <div className="relative z-10 mt-10">
+          <div className="relative z-10 mt-8">
           <div className="flex flex-wrap items-center justify-center gap-3.5">
             <div className="min-w-0 flex-1">
               <CitySearch placeholder={placeholder} />
