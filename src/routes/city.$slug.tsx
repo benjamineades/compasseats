@@ -5,7 +5,6 @@ import { ArrowRight, ChevronDown, SlidersHorizontal, X } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -16,6 +15,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { CityHero } from "@/components/CityHero";
 import { AwardMarquee } from "@/components/AwardMarquee";
+import { AwardBadgeRow } from "@/components/AwardBadge";
+import { VenuePhoto } from "@/components/VenuePhoto";
+import { CitySpotlight } from "@/components/CitySpotlight";
+import { VenueRankedRow } from "@/components/VenueRankedRow";
+import { formatCoord } from "@/lib/format-coords";
 
 import {
   getCity,
@@ -135,11 +139,24 @@ function CityPage() {
     );
   }, [venues]);
 
+  const sortedVenues = useMemo(() => {
+    const scoreOf = (v: Venue) =>
+      v.awards.reduce((sum, a) => sum + getAwardPrestige(a), 0);
+    return [...venues].sort((a, b) => {
+      const sb = scoreOf(b);
+      const sa = scoreOf(a);
+      if (sb !== sa) return sb - sa;
+      if (b.awards.length !== a.awards.length)
+        return b.awards.length - a.awards.length;
+      return a.name.localeCompare(b.name);
+    });
+  }, [venues]);
+
   const filtered = useMemo(() => {
     const wantRest = deferredQuick.has("restaurants");
     const wantBars = deferredQuick.has("bars");
 
-    const result = venues.filter((v) => {
+    return sortedVenues.filter((v) => {
       if (wantRest && !wantBars && v.type !== "restaurant") return false;
       if (wantBars && !wantRest && v.type !== "bar") return false;
       if (deferredAwards.size > 0) {
@@ -148,19 +165,7 @@ function CityPage() {
       }
       return true;
     });
-
-    const scoreOf = (v: Venue) =>
-      v.awards.reduce((sum, a) => sum + getAwardPrestige(a), 0);
-
-    return result.sort((a, b) => {
-      const sb = scoreOf(b);
-      const sa = scoreOf(a);
-      if (sb !== sa) return sb - sa;
-      if (b.awards.length !== a.awards.length)
-        return b.awards.length - a.awards.length;
-      return a.name.localeCompare(b.name);
-    });
-  }, [venues, deferredQuick, deferredAwards]);
+  }, [sortedVenues, deferredQuick, deferredAwards]);
 
   const toggleQuick = (id: QuickFilter) =>
     startTransition(() =>
@@ -188,6 +193,24 @@ function CityPage() {
 
   const noneSelected = quick.size === 0 && awardFilters.size === 0;
 
+  // MODE A — single-venue city: a generous feature, no filter bar, no list.
+  if (venues.length === 1) {
+    return (
+      <main className="relative min-h-screen bg-background">
+        <CityHero
+          city={city.display}
+          country={city.country}
+          blurb={city.blurb}
+          hueSeed={city.slug}
+          imageUrl={city.hero_image_url}
+          back={{ to: "/" }}
+        />
+        <SingleVenueFeature city={city} venue={venues[0]} />
+      </main>
+    );
+  }
+
+  // MODE B — multi-venue city: spotlight + map + ranked listings.
   return (
     <main className="relative min-h-screen bg-background">
       <CityHero
@@ -202,6 +225,8 @@ function CityPage() {
       <div className="mx-auto max-w-5xl px-6">
         <AwardMarquee />
       </div>
+
+      <CitySpotlight city={city} venues={sortedVenues} />
 
       <div className="mx-auto max-w-5xl px-6 py-10">
         {/* Filter bar */}
@@ -290,14 +315,20 @@ function CityPage() {
           <EmptyState onReset={clearAll} />
         ) : (
           <>
-            <div className="mb-8">
+            <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
+                The lay of the land · {city.display} · {formatCoord(city.lat, city.lng)}
+              </p>
+            </div>
+            <div className="mb-10">
               <ClientOnly fallback={<MapPlaceholder />}>
                 <VenueMap venues={filtered} cityContext={city.slug} />
               </ClientOnly>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              {filtered.map((v) => (
-                <VenueCard key={v.id} venue={v} />
+
+            <div className="divide-y divide-border/50">
+              {filtered.map((v, i) => (
+                <VenueRankedRow key={v.id} venue={v} rank={i + 1} />
               ))}
             </div>
           </>
@@ -315,63 +346,92 @@ function CityPage() {
 }
 
 // ---------------------------------------------------------------------------
-// Cards
+// Single-venue feature (Mode A)
 // ---------------------------------------------------------------------------
 
-function VenueCard({ venue }: { venue: Venue }) {
-  const top = venue.awards[0];
-  const accoladeLabel =
-    venue.awards.length > 1
-      ? `${venue.awards.length} accolades`
-      : top
-        ? `${prettyAwardSource(top.source)} · ${top.category}`
-        : null;
+function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
+  const where = venue.neighborhood || venue.city_display;
+  const why =
+    venue.blurb_short?.trim() ||
+    `${city.display}'s one charted spot — worth the detour.`;
 
   return (
-    <Link
-      to="/venue/$city/$slug"
-      params={{ city: venue.city_slug, slug: venue.slug }}
-      className="group block"
-    >
-      <Card className="h-full border-border bg-card transition-colors hover:border-accent-strong/50">
-        <CardContent className="flex h-full flex-col gap-2 p-5">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
-            {venue.type === "bar" ? "Cocktail bar" : "Restaurant"}
-            {venue.neighborhood ? ` · ${venue.neighborhood}` : ""}
-          </p>
-          <h3 className="font-display text-xl font-light italic text-foreground group-hover:text-accent-strong">
-            {venue.name}
-          </h3>
-
-          {accoladeLabel && (
-            <p className="text-xs text-muted-foreground">{accoladeLabel}</p>
-          )}
-
-          {venue.blurb_short && (
-            <p className="line-clamp-2 text-sm text-muted-foreground">
-              {venue.blurb_short}
-            </p>
-          )}
-
-          <div className="mt-2 flex flex-wrap items-center gap-1.5">
-            {venue.price_tier && (
-              <Badge variant="outline" className="font-normal">
-                {venue.price_tier}
-              </Badge>
-            )}
-            {venue.cuisine_tags.slice(0, 2).map((t) => (
-              <Badge key={t} variant="secondary" className="font-normal">
-                {t}
-              </Badge>
-            ))}
+    <>
+      <section className="mx-auto max-w-5xl px-6 py-12 md:py-16">
+        <div className="grid gap-8 md:grid-cols-[1.1fr_1fr] md:gap-10">
+          <div className="aspect-[4/5] w-full overflow-hidden rounded-xl border border-border md:aspect-[4/5]">
+            <VenuePhoto src={venue.photo_url} alt={venue.name} />
           </div>
 
-          <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs text-accent-strong">
-            View <ArrowRight className="h-3 w-3" />
-          </span>
-        </CardContent>
-      </Card>
-    </Link>
+          <div className="flex flex-col justify-center">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
+              {venue.type === "bar" ? "Cocktail bar" : "Restaurant"} · {where}
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-light italic text-foreground md:text-5xl">
+              {venue.name}
+            </h2>
+            <p className="mt-4 max-w-prose text-base text-muted-foreground">{why}</p>
+
+            <div className="mt-5">
+              <AwardBadgeRow venue={venue} max={4} />
+            </div>
+
+            <div className="mt-7 flex flex-wrap items-center gap-2">
+              {venue.reservation_url && (
+                <Button asChild className="interactive">
+                  <a
+                    href={venue.reservation_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Reserve a table
+                  </a>
+                </Button>
+              )}
+              {venue.website && (
+                <Button asChild variant="outline" className="interactive">
+                  <a
+                    href={venue.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit website
+                  </a>
+                </Button>
+              )}
+              <Button asChild variant="ghost" className="interactive">
+                <Link
+                  to="/venue/$city/$slug"
+                  params={{ city: venue.city_slug, slug: venue.slug }}
+                >
+                  View venue
+                  <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-6 pb-12">
+        <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
+          The lay of the land · {city.display} · {formatCoord(city.lat, city.lng)}
+        </p>
+        <ClientOnly fallback={<MapPlaceholder />}>
+          <VenueMap venues={[venue]} cityContext={city.slug} />
+        </ClientOnly>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-6 pb-16 text-center">
+        <Link
+          to="/"
+          className="interactive inline-flex items-center gap-1.5 text-sm italic text-muted-foreground hover:text-accent-strong"
+        >
+          Looking for more? Explore other charted cities
+          <ArrowRight className="h-3.5 w-3.5" />
+        </Link>
+      </section>
+    </>
   );
 }
 
