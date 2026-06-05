@@ -85,12 +85,12 @@ export function HeroCompass({ className = "" }: { className?: string }) {
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
-      <circle cx="60" cy="60" r="56" stroke="currentColor" strokeWidth="1" opacity="0.5" />
       <g
         ref={groupRef}
         className="motion-safe:animate-[hero-compass-spin_50s_linear_infinite]"
         style={{ transformOrigin: "60px 60px" }}
       >
+        <circle cx="60" cy="60" r="56" stroke="currentColor" strokeWidth="1" opacity="0.5" />
         <circle cx="60" cy="60" r="44" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
         <g stroke="currentColor" strokeWidth="1" opacity="0.55">
           <line x1="60" y1="16" x2="60" y2="24" />
