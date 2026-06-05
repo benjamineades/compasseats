@@ -57,12 +57,12 @@ function Index() {
           <header className="relative overflow-hidden px-2 pb-10 pt-8 text-center md:px-4 md:pb-14 md:pt-10">
             {/* Hero background layers (non-interactive) — scoped to header */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-0">
-              {/* Warm radial glow */}
+              {/* Warm top-sourced wash — light from above, fading down before the search row */}
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(ellipse 62% 55% at 50% 38%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 72%)",
+                    "radial-gradient(120% 80% at 50% -10%, color-mix(in oklab, var(--primary) 16%, transparent), transparent 60%)",
                 }}
               />
               {/* Large-cell grid */}
