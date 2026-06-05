@@ -24,7 +24,7 @@ export function ExploreByGuide() {
     <section className="mt-16">
       <div className="mb-5">
         <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">
-          The registry
+          Browse the source
         </p>
         <h2 className="font-display text-2xl font-light text-foreground">
           Explore by guide
