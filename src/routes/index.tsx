@@ -1,11 +1,11 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Loader2, Locate, RotateCw } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ExploreByGuide } from "@/components/ExploreByGuide";
 import { HeroCompass } from "@/components/Compass";
 import { CitySearch } from "@/components/CitySearch";
-import { TOP_CITIES, type TopCity, findNearestCity } from "@/lib/cities";
+import { TOP_CITIES, findNearestCity } from "@/lib/cities";
 import { useNearMe } from "@/lib/useNearMe";
 
 const PLACEHOLDER_POOL = [
@@ -103,13 +103,18 @@ function Index() {
 
             <div className="relative z-10">
             <HeroCompass className="mx-auto mb-6 w-full max-w-[180px] md:max-w-[200px]" />
-            <Link to="/" className="inline-block no-underline">
-              <h1 className="cursor-pointer font-display text-4xl font-light tracking-tight text-foreground md:text-6xl">
-                CompassEats
-              </h1>
-            </Link>
+            <p className="mb-3 text-xs uppercase tracking-[0.2em] text-accent-strong">
+              The world's best, wherever you are
+            </p>
+            <h1 className="font-display text-4xl font-light tracking-tight text-foreground md:text-6xl">
+              Eat and drink well,
+              <br />
+              <em className="not-italic italic text-accent-strong/90" style={{ fontStyle: "italic" }}>
+                anywhere on earth.
+              </em>
+            </h1>
             <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
-              The world's best, wherever you are.
+              Name a city. We'll point you to its finest tables and bars — ranked by the guides that matter.
             </p>
             </div>
           </header>
@@ -122,21 +127,26 @@ function Index() {
             <Button
               type="button"
               className="interactive h-12 shrink-0 rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+            >
+              Find the best →
+            </Button>
+          </div>
+          <div className="mt-3 text-center">
+            <button
+              type="button"
               onClick={() => nearMe.requestLocation()}
               disabled={nearMe.loading}
+              className="interactive inline-flex items-center gap-1.5 text-xs text-muted-foreground underline-offset-4 hover:text-accent-strong hover:underline disabled:opacity-60"
             >
               {nearMe.loading ? (
                 <>
-                  <Loader2 className="mr-1.5 h-4 w-4 animate-spin" />
+                  <Loader2 className="h-3 w-3 animate-spin" />
                   Finding your city…
                 </>
               ) : (
-                <>
-                  <Locate className="mr-1.5 h-4 w-4" />
-                  Near me
-                </>
+                "Use my location instead"
               )}
-            </Button>
+            </button>
           </div>
           {nearMe.error && (
             <div className="mt-3 flex flex-col items-center gap-1 text-center">
@@ -204,68 +214,33 @@ function TrustPoints() {
   );
 }
 
-function shuffleTake<T>(arr: readonly T[], n: number): T[] {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a.slice(0, n);
-}
-
-// Stable initial pick for SSR — first 8 of the curated list. After mount we
-// reshuffle client-side so each visit varies, without a hydration mismatch.
-const INITIAL_EIGHT: TopCity[] = TOP_CITIES.slice(0, 8);
+const FIXED_EIGHT = TOP_CITIES.slice(0, 8);
 
 function TopDestinations() {
-  const [picks, setPicks] = useState<TopCity[]>(INITIAL_EIGHT);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    setPicks(shuffleTake(TOP_CITIES, 8));
-  }, []);
-
   return (
     <div className="mt-12">
-      <div className="mb-5 flex items-end justify-between gap-4">
-        <div>
-          <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">
-            A taste of the atlas
-          </p>
-          <h2 className="font-display text-2xl font-light text-foreground">
-            Top destinations
-          </h2>
-        </div>
-        {mounted && (
-          <button
-            type="button"
-            onClick={() => setPicks(shuffleTake(TOP_CITIES, 8))}
-            className="interactive inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground hover:border-primary/50 hover:text-accent-strong"
-            aria-label="Show me more cities"
-          >
-            <RotateCw className="h-3 w-3" />
-            Reshuffle
-          </button>
-        )}
+      <div className="mb-5">
+        <p className="mb-1 text-xs uppercase tracking-wide text-muted-foreground">
+          Top destinations
+        </p>
+        <h2 className="font-display text-2xl font-light text-foreground">
+          Top destinations
+        </h2>
       </div>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-        {picks.map((c) => (
+        {FIXED_EIGHT.map((c) => (
           <Link
             key={c.slug}
             to="/city/$slug"
             params={{ slug: c.slug }}
-            className="interactive group flex h-full flex-col rounded-lg border border-border bg-card px-4 py-3.5 text-left hover:border-primary/50"
+            className="interactive group flex h-full flex-col rounded-lg border border-border bg-card px-4 py-4 text-left hover:border-primary/50"
           >
-            <div className="font-display text-base text-foreground group-hover:text-accent-strong">
+            <div className="font-display text-lg text-foreground group-hover:text-accent-strong">
               {c.city}
             </div>
-            <div className="text-xs uppercase tracking-wide text-muted-foreground">
+            <div className="mt-0.5 text-xs uppercase tracking-wide text-muted-foreground">
               {c.country}
             </div>
-            <p className="mt-2 line-clamp-2 text-xs font-light leading-relaxed text-muted-foreground/85">
-              {c.blurb}
-            </p>
           </Link>
         ))}
       </div>
