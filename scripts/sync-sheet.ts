@@ -377,12 +377,28 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
 
   // Orphan check — venues pointing to a city not in the cities tab
   const citySlugs = new Set(cities.map((c) => c.slug));
-  const orphans = venues
-    .filter((v) => !citySlugs.has(v.city_slug))
-    .map((v) => `${v.id} → ${v.city_slug}`);
-  if (orphans.length) {
-    console.warn(`Warning: ${orphans.length} venues reference unknown cities:`);
-    orphans.slice(0, 10).forEach((o) => console.warn(`  ${o}`));
+  const orphansByCity = new Map<string, string[]>();
+  for (const v of venues) {
+    if (v.status !== "active") continue;
+    if (citySlugs.has(v.city_slug)) continue;
+    if (!orphansByCity.has(v.city_slug)) orphansByCity.set(v.city_slug, []);
+    orphansByCity.get(v.city_slug)!.push(`${v.id} (${v.name})`);
+  }
+  if (orphansByCity.size) {
+    console.error(
+      `\n❌ ${orphansByCity.size} city_slug value(s) used by venues are missing from the cities tab:\n`,
+    );
+    for (const [slug, vs] of orphansByCity) {
+      console.error(`  ${slug} — ${vs.length} venue(s)`);
+      vs.slice(0, 5).forEach((s) => console.error(`    ${s}`));
+      if (vs.length > 5) console.error(`    …and ${vs.length - 5} more`);
+    }
+    console.error(
+      "\nFix: add a matching row to the cities tab, or correct the city_slug on the venue row(s).\n",
+    );
+    throw new DataValidationError(
+      `${orphansByCity.size} orphan city_slug(s): ${[...orphansByCity.keys()].join(", ")}`,
+    );
   }
 
   if (errors.length) {
