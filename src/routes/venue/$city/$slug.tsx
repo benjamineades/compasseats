@@ -560,18 +560,50 @@ function groupAwardsBySource(awards: Award[]) {
     .map(([source, entries]) => ({ source, entries }));
 }
 
-function buildSubtitle(venue: Venue, top: Award | undefined): string {
-  const parts: string[] = [];
-  if (top) parts.push(`${top.category} · ${prettyAwardSource(top.source)}`);
-  if (venue.cuisine_tags.length > 0) {
-    parts.push(
-      venue.cuisine_tags
-        .slice(0, 3)
-        .map((t) => t.charAt(0).toUpperCase() + t.slice(1))
-        .join(", "),
-    );
+function distinctionLabel(award: Award): string {
+  if (typeof award.rank === "number" && award.rank > 0) {
+    return `No. ${award.rank}`;
   }
-  return parts.join(" · ");
+  return award.category;
+}
+
+function groupAwardsBySourceByPrestige(
+  awards: Award[],
+): { source: string; entries: Award[] }[] {
+  const groups = groupAwardsBySource(awards);
+  const bestPrestige = (entries: Award[]) =>
+    entries.reduce((m, a) => Math.max(m, getAwardPrestige(a)), 0);
+  return [...groups].sort(
+    (a, b) => bestPrestige(b.entries) - bestPrestige(a.entries),
+  );
+}
+
+function buildBlurbParts(venue: Venue): {
+  pullQuote: string;
+  bodyProse: string;
+} {
+  const shortQ = venue.blurb_short?.trim();
+  const longQ = venue.blurb_long?.trim();
+
+  if (shortQ && longQ) {
+    return { pullQuote: shortQ, bodyProse: longQ };
+  }
+  if (shortQ) {
+    return { pullQuote: shortQ, bodyProse: "" };
+  }
+  if (longQ) {
+    // Split first sentence as the pull-quote, rest as body prose.
+    const match = longQ.match(/^(.+?[.!?])(\s+)(.*)$/s);
+    if (match) {
+      return { pullQuote: match[1].trim(), bodyProse: match[3].trim() };
+    }
+    return { pullQuote: longQ, bodyProse: "" };
+  }
+  const where = venue.neighborhood || venue.city_display;
+  return {
+    pullQuote: `A charted favorite in ${where}.`,
+    bodyProse: "",
+  };
 }
 
 function buildAutoSummary(awards: Award[]): string {
