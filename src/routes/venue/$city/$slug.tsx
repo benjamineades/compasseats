@@ -1,19 +1,14 @@
 import { ClientOnly, createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { lazy, type ReactNode } from "react";
-import { ArrowLeft, ArrowRight, MapPin, Phone, Globe, Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Compass } from "@/components/Compass";
 import { VenuePhoto } from "@/components/VenuePhoto";
-import { AwardBadgeRow } from "@/components/AwardBadge";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 import {
   getVenue,
@@ -31,6 +26,19 @@ import { CITIES_BY_SLUG } from "@/lib/cities";
 
 const SITE_URL = "https://compasseats.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+
+// ---------------------------------------------------------------------------
+// Paper palette — explicit fixed colors so the body stays light regardless
+// of the global dark/light theme toggle.
+// ---------------------------------------------------------------------------
+const PAPER = "#F7F3EB";
+const PAPER_CARD = "#FCFAF5";
+const INK = "#23211E";
+const INK_MUTED = "#6a6253";
+const BRONZE = "#895F2E";
+const BRASS = "#C6A15B";
+const HAIRLINE = "rgba(35,33,30,0.12)";
+
 const VenueMap = lazy(() =>
   import("@/components/VenueMap").then((module) => ({ default: module.VenueMap })),
 );
@@ -189,194 +197,181 @@ function VenuePage() {
         </div>
       </section>
 
-      <div className="mx-auto grid max-w-5xl gap-12 px-6 py-12 md:grid-cols-[1fr_320px]">
-        {/* Main column */}
-        <div className="min-w-0">
-          {/* Editorial blurb */}
-          <section>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-accent-strong">
-              Why we point you here
-            </p>
-            <blockquote className="mt-4 border-l-2 border-accent-strong pl-5 font-display text-xl font-light italic leading-snug text-accent-strong md:text-2xl">
-              {pullQuote}
-            </blockquote>
-            {bodyProse && (
-              <div className="mt-5 space-y-4 text-base leading-relaxed text-foreground">
-                {bodyProse.split(/\n\n+/).map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-            )}
-          </section>
-
-          {/* Accolades */}
-          {groupedAwards.length > 0 && (
-            <section className="mt-12">
-              <h2 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-accent-strong">
-                Accolades
-              </h2>
-              <Accordion
-                type="multiple"
-                defaultValue={defaultOpenSource ? [defaultOpenSource] : []}
-                className="mt-3 border-t border-border"
+      {/* Paper body — explicit light surface, ignores theme toggle */}
+      <div style={{ backgroundColor: PAPER, color: INK }}>
+        <div className="mx-auto grid max-w-5xl gap-12 px-6 py-12 md:grid-cols-[1fr_320px]">
+          {/* Main column */}
+          <div className="min-w-0">
+            {/* Editorial blurb */}
+            <section>
+              <p
+                className="text-[10px] font-semibold uppercase tracking-[0.25em]"
+                style={{ color: BRONZE }}
               >
-                {groupedAwards.map((g) => {
-                  const headline = g.entries[0];
-                  const rest = g.entries.slice(1);
-                  return (
-                    <AccordionItem
+                Why we point you here
+              </p>
+              <blockquote
+                className="mt-4 pl-5 font-display text-xl font-light italic leading-snug md:text-2xl"
+                style={{ borderLeft: `2px solid ${BRASS}`, color: BRONZE }}
+              >
+                {pullQuote}
+              </blockquote>
+              {bodyProse && (
+                <div
+                  className="mt-6 space-y-4 text-base leading-relaxed"
+                  style={{ color: INK }}
+                >
+                  {bodyProse.split(/\n\n+/).map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+              )}
+            </section>
+
+            {/* Accolades */}
+            {groupedAwards.length > 0 && (
+              <section className="mt-12">
+                <h2
+                  className="text-[10px] font-semibold uppercase tracking-[0.25em]"
+                  style={{ color: BRONZE }}
+                >
+                  Accolades
+                </h2>
+                <div className="mt-4 space-y-2.5">
+                  {groupedAwards.map((g) => (
+                    <AccoladeCard
                       key={g.source}
-                      value={g.source}
-                      className="border-b border-border"
-                    >
-                      <AccordionTrigger className="interactive group py-4 hover:no-underline">
-                        <div className="flex flex-1 items-baseline gap-3 text-left">
-                          <span className="w-12 shrink-0 font-display text-base text-accent-strong">
-                            {headline.year}
-                          </span>
-                          <span className="flex-1 text-sm text-foreground">
-                            <span className="font-medium">{prettyAwardSource(g.source)}</span>
-                            <span className="text-muted-foreground"> — {distinctionLabel(headline)}</span>
-                          </span>
-                        </div>
-                      </AccordionTrigger>
-                      {rest.length > 0 && (
-                        <AccordionContent className="pb-4">
-                          <ul className="space-y-1.5 pl-[60px] text-sm">
-                            {rest.map((a, i) => (
-                              <li key={i} className="flex items-baseline gap-3">
-                                <span className="w-12 shrink-0 text-muted-foreground">{a.year}</span>
-                                <span className="text-muted-foreground">{distinctionLabel(a)}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </AccordionContent>
-                      )}
-                    </AccordionItem>
-                  );
-                })}
-              </Accordion>
-            </section>
-          )}
+                      group={g}
+                      defaultOpen={g.source === defaultOpenSource}
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
 
-          {/* Map */}
-          <section className="mt-12">
-            <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              On the map
-            </h2>
-            <ClientOnly fallback={<MapPlaceholder />}>
-              <VenueMap venues={[venue]} />
-            </ClientOnly>
-          </section>
-
-          {/* Related */}
-          {related.length > 0 && (
-            <section className="mt-16">
-              <h2 className="font-display text-2xl font-light italic text-foreground">
-                Other charted spots in {venue.city_display}
+            {/* Map */}
+            <section className="mt-12">
+              <h2
+                className="mb-4 text-[10px] font-semibold uppercase tracking-[0.25em]"
+                style={{ color: BRONZE }}
+              >
+                On the map
               </h2>
-              <p className="mt-1 text-sm text-muted-foreground">Worth the detour.</p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {related.map((r) => (
-                  <RelatedVenueCard key={r.id} venue={r} />
-                ))}
-              </div>
+              <ClientOnly fallback={<MapPlaceholder />}>
+                <VenueMap venues={[venue]} />
+              </ClientOnly>
             </section>
-          )}
-        </div>
 
-        {/* Facts column */}
-        <aside className="space-y-6 md:sticky md:top-24 md:self-start">
-          <Card className="border-border bg-card">
-            <CardContent className="space-y-5 p-5">
+            {/* Related */}
+            {related.length > 0 && (
+              <section className="mt-16">
+                <h2
+                  className="font-display text-2xl font-light italic"
+                  style={{ color: INK }}
+                >
+                  Other charted spots in {venue.city_display}
+                </h2>
+                <p className="mt-1 text-sm" style={{ color: INK_MUTED }}>
+                  Worth the detour.
+                </p>
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {related.map((r) => (
+                    <RelatedVenueCard key={r.id} venue={r} />
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+
+          {/* Facts column */}
+          <aside className="md:sticky md:top-24 md:self-start">
+            <div
+              className="rounded-xl p-5"
+              style={{
+                backgroundColor: "#FFFFFF",
+                border: `1px solid ${HAIRLINE}`,
+                boxShadow: "0 1px 2px rgba(35,33,30,0.04), 0 8px 24px rgba(35,33,30,0.06)",
+              }}
+            >
+              {/* Action buttons */}
               {(venue.reservation_url || venue.website) && (
                 <div className="space-y-2">
-                  {venue.reservation_url ? (
-                    <Button asChild className="interactive w-full">
-                      <a href={venue.reservation_url} target="_blank" rel="noopener noreferrer">
-                        Reserve a table →
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button asChild className="interactive w-full">
-                      <a href={venue.website!} target="_blank" rel="noopener noreferrer">
-                        Visit website ↗
-                      </a>
-                    </Button>
+                  {venue.reservation_url && (
+                    <a
+                      href={venue.reservation_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="interactive inline-flex h-10 w-full items-center justify-center rounded-md text-sm font-medium"
+                      style={{ backgroundColor: BRASS, color: INK }}
+                    >
+                      Reserve a table →
+                    </a>
                   )}
-                  {venue.reservation_url && venue.website && (
-                    <Button asChild variant="outline" className="interactive w-full">
-                      <a href={venue.website} target="_blank" rel="noopener noreferrer">
-                        Visit website ↗
-                      </a>
-                    </Button>
+                  {venue.website && (
+                    <a
+                      href={venue.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="interactive inline-flex h-10 w-full items-center justify-center rounded-md text-sm font-medium"
+                      style={{
+                        backgroundColor: venue.reservation_url ? "#FFFFFF" : BRASS,
+                        color: INK,
+                        border: `1px solid ${venue.reservation_url ? HAIRLINE : BRASS}`,
+                      }}
+                    >
+                      Visit website ↗
+                    </a>
                   )}
                 </div>
               )}
 
-              {venue.awards.length > 0 && (
-                <AwardBadgeRow venue={venue} max={3} />
-              )}
+              {/* Facts list */}
+              <dl className="mt-5 divide-y" style={{ borderColor: HAIRLINE }}>
+                {venue.hours && (
+                  <FactItem label="Hours">
+                    <HoursValue hours={venue.hours} />
+                  </FactItem>
+                )}
+                <FactItem label="Address">
+                  <p style={{ color: INK }}>{venue.address}</p>
+                  <p style={{ color: INK_MUTED }}>
+                    {venue.city_display}, {venue.country}
+                  </p>
+                </FactItem>
+                {venue.cuisine_tags.length > 0 && (
+                  <FactItem label="Cuisine">
+                    <p style={{ color: INK }}>
+                      {venue.cuisine_tags
+                        .map((t) => t.charAt(0).toUpperCase() + t.slice(1))
+                        .join(", ")}
+                    </p>
+                  </FactItem>
+                )}
+                {venue.phone && (
+                  <FactItem label="Phone">
+                    <a
+                      href={`tel:${venue.phone}`}
+                      className="interactive"
+                      style={{ color: INK }}
+                    >
+                      {venue.phone}
+                    </a>
+                  </FactItem>
+                )}
+              </dl>
+            </div>
+          </aside>
+        </div>
 
-              {venue.hours && <HoursBlock hours={venue.hours} />}
-
-              <FactRow icon={<MapPin className="h-4 w-4" />} label="Address">
-                <p className="text-foreground">{venue.address}</p>
-                <p className="text-muted-foreground">
-                  {venue.city_display}, {venue.country}
-                </p>
-              </FactRow>
-
-              {venue.cuisine_tags.length > 0 && (
-                <FactRow label="Cuisine">
-                  <div className="flex flex-wrap gap-1.5">
-                    {venue.cuisine_tags.map((t) => (
-                      <Badge key={t} variant="secondary" className="font-normal">
-                        {t}
-                      </Badge>
-                    ))}
-                  </div>
-                </FactRow>
-              )}
-
-              {venue.phone && (
-                <FactRow icon={<Phone className="h-4 w-4" />} label="Phone">
-                  <a
-                    href={`tel:${venue.phone}`}
-                    className="interactive text-foreground hover:text-accent-strong"
-                  >
-                    {venue.phone}
-                  </a>
-                </FactRow>
-              )}
-
-              {venue.website && (
-                <FactRow icon={<Globe className="h-4 w-4" />} label="Website">
-                  <a
-                    href={venue.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="interactive break-all text-foreground hover:text-accent-strong"
-                  >
-                    {prettyHost(venue.website)}
-                  </a>
-                </FactRow>
-              )}
-
-              {venue.price_tier && (
-                <FactRow label="Price">
-                  <PriceTierPills tier={venue.price_tier} />
-                </FactRow>
-              )}
-            </CardContent>
-          </Card>
-        </aside>
-      </div>
-
-      {/* Credits footer */}
-      <section className="border-t border-border bg-card/40">
-        <div className="mx-auto max-w-5xl px-6 py-8 text-xs text-muted-foreground">
-          <span className="font-semibold uppercase tracking-[0.2em] text-accent-strong">
+        {/* Credits footer (on paper) */}
+        <div
+          className="mx-auto max-w-5xl px-6 py-8 text-xs"
+          style={{ borderTop: `1px solid ${HAIRLINE}`, color: INK_MUTED }}
+        >
+          <span
+            className="font-semibold uppercase tracking-[0.2em]"
+            style={{ color: BRONZE }}
+          >
             Charted by
           </span>{" "}
           <span className="ml-2">
@@ -388,7 +383,7 @@ function VenuePage() {
             <span className="ml-2">· Last verified {venue.last_verified}</span>
           )}
         </div>
-      </section>
+      </div>
     </main>
   );
 }
@@ -397,23 +392,84 @@ function VenuePage() {
 // Subcomponents
 // ---------------------------------------------------------------------------
 
-function FactRow({
-  icon,
-  label,
-  children,
-}: {
-  icon?: ReactNode;
-  label: string;
-  children: ReactNode;
-}) {
+function FactItem({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div>
-      <div className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-        {icon}
-        <span>{label}</span>
+    <div className="py-3 first:pt-0 last:pb-0">
+      <div
+        className="text-[10px] font-semibold uppercase tracking-[0.18em]"
+        style={{ color: BRONZE }}
+      >
+        {label}
       </div>
       <div className="mt-1.5 text-sm leading-relaxed">{children}</div>
     </div>
+  );
+}
+
+function AccoladeCard({
+  group,
+  defaultOpen,
+}: {
+  group: { source: string; entries: Award[] };
+  defaultOpen: boolean;
+}) {
+  const headline = group.entries[0];
+  const rest = group.entries.slice(1);
+  return (
+    <Collapsible defaultOpen={defaultOpen}>
+      <div
+        className="rounded-xl"
+        style={{
+          backgroundColor: PAPER_CARD,
+          border: `1px solid ${HAIRLINE}`,
+        }}
+      >
+        <CollapsibleTrigger
+          className="interactive group flex w-full items-center gap-4 px-4 py-3.5 text-left [&[data-state=open]>svg]:rotate-180"
+          style={{ color: INK }}
+          disabled={rest.length === 0}
+        >
+          <span
+            className="inline-flex h-9 min-w-[3rem] shrink-0 items-center justify-center rounded-md px-2 font-display text-base"
+            style={{
+              color: BRONZE,
+              backgroundColor: "rgba(137,95,46,0.08)",
+            }}
+          >
+            {headline.year}
+          </span>
+          <span className="flex-1 text-sm font-medium" style={{ color: INK }}>
+            {prettyAwardSource(group.source)}
+          </span>
+          <span className="hidden text-sm sm:inline" style={{ color: INK_MUTED }}>
+            {awardLabel(headline)}
+          </span>
+          {rest.length > 0 && (
+            <ChevronDown
+              className="h-4 w-4 shrink-0 transition-transform duration-200"
+              style={{ color: INK_MUTED }}
+            />
+          )}
+        </CollapsibleTrigger>
+        <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+          {rest.length > 0 && (
+            <ul
+              className="space-y-1.5 px-4 pb-4 pt-3 text-sm"
+              style={{ borderTop: `1px solid ${HAIRLINE}` }}
+            >
+              {rest.map((a, i) => (
+                <li key={i} className="flex items-baseline gap-4">
+                  <span className="w-12 shrink-0" style={{ color: BRONZE }}>
+                    {a.year}
+                  </span>
+                  <span style={{ color: INK_MUTED }}>{awardLabel(a)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </CollapsibleContent>
+      </div>
+    </Collapsible>
   );
 }
 
@@ -428,59 +484,42 @@ const DAY_LABELS: { key: DayKey; label: string }[] = [
   { key: "sun", label: "Sun" },
 ];
 
-function HoursBlock({ hours }: { hours: NonNullable<Venue["hours"]> }) {
+function HoursValue({ hours }: { hours: NonNullable<Venue["hours"]> }) {
   if (hours.note) {
-    return (
-      <FactRow icon={<Clock className="h-4 w-4" />} label="Hours">
-        <p className="text-foreground">{hours.note}</p>
-      </FactRow>
-    );
+    return <p style={{ color: INK }}>{hours.note}</p>;
   }
   return (
-    <FactRow icon={<Clock className="h-4 w-4" />} label="Hours">
-      <table className="w-full text-sm">
-        <tbody>
-          {DAY_LABELS.map(({ key, label }) => {
-            const ranges = hours[key];
-            return (
-              <tr key={key} className="border-b border-border/40 last:border-0">
-                <td className="py-1 pr-3 text-muted-foreground">{label}</td>
-                <td className="py-1 text-right text-foreground">
-                  {ranges && ranges.length > 0
-                    ? ranges.map((r) => `${r.open}–${r.close}`).join(", ")
-                    : <span className="text-muted-foreground">Closed</span>}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </FactRow>
-  );
-}
-
-function PriceTierPills({ tier }: { tier: "$" | "$$" | "$$$" | "$$$$" }) {
-  const active = tier.length;
-  return (
-    <div className="flex gap-1">
-      {[1, 2, 3, 4].map((n) => (
-        <span
-          key={n}
-          className={`inline-flex h-6 w-6 items-center justify-center rounded-full border text-xs ${
-            n <= active
-              ? "border-transparent bg-foreground text-background"
-              : "border-border text-muted-foreground"
-          }`}
-        >
-          $
-        </span>
-      ))}
-    </div>
+    <table className="w-full text-sm">
+      <tbody>
+        {DAY_LABELS.map(({ key, label }) => {
+          const ranges = hours[key];
+          return (
+            <tr key={key}>
+              <td className="py-0.5 pr-3" style={{ color: INK_MUTED }}>
+                {label}
+              </td>
+              <td className="py-0.5 text-right" style={{ color: INK }}>
+                {ranges && ranges.length > 0 ? (
+                  ranges.map((r) => `${r.open}–${r.close}`).join(", ")
+                ) : (
+                  <span style={{ color: INK_MUTED }}>Closed</span>
+                )}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
 }
 
 function MapPlaceholder() {
-  return <div className="h-72 w-full rounded-xl border border-border bg-card md:h-96" />;
+  return (
+    <div
+      className="h-72 w-full rounded-xl md:h-96"
+      style={{ backgroundColor: PAPER_CARD, border: `1px solid ${HAIRLINE}` }}
+    />
+  );
 }
 
 function RelatedVenueCard({ venue }: { venue: Venue }) {
@@ -489,27 +528,38 @@ function RelatedVenueCard({ venue }: { venue: Venue }) {
     <Link
       to="/venue/$city/$slug"
       params={{ city: venue.city_slug, slug: venue.slug }}
-      className="interactive group block"
+      className="interactive group block rounded-xl"
+      style={{
+        backgroundColor: PAPER_CARD,
+        border: `1px solid ${HAIRLINE}`,
+      }}
     >
-      <Card className="h-full border-border bg-card transition-colors hover:border-accent-strong/50">
-        <CardContent className="flex h-full flex-col gap-2 p-4">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
-            {venue.type === "bar" ? "Cocktail bar" : "Restaurant"}
-            {venue.neighborhood ? ` · ${venue.neighborhood}` : ""}
+      <div className="flex h-full flex-col gap-2 p-4">
+        <p
+          className="text-[10px] font-semibold uppercase tracking-[0.2em]"
+          style={{ color: BRONZE }}
+        >
+          {venue.type === "bar" ? "Cocktail bar" : "Restaurant"}
+          {venue.neighborhood ? ` · ${venue.neighborhood}` : ""}
+        </p>
+        <h3
+          className="font-display text-lg font-light italic"
+          style={{ color: INK }}
+        >
+          {venue.name}
+        </h3>
+        {top && (
+          <p className="text-xs" style={{ color: INK_MUTED }}>
+            {awardLabel(top)}
           </p>
-          <h3 className="font-display text-lg font-light italic text-foreground group-hover:text-accent-strong">
-            {venue.name}
-          </h3>
-          {top && (
-            <p className="text-xs text-muted-foreground">
-              {prettyAwardSource(top.source)} · {top.category}
-            </p>
-          )}
-          <span className="mt-auto inline-flex items-center gap-1 text-xs text-accent-strong">
-            View <ArrowRight className="h-3 w-3" />
-          </span>
-        </CardContent>
-      </Card>
+        )}
+        <span
+          className="mt-auto inline-flex items-center gap-1 text-xs"
+          style={{ color: BRONZE }}
+        >
+          View <ArrowRight className="h-3 w-3" />
+        </span>
+      </div>
     </Link>
   );
 }
