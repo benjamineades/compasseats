@@ -149,6 +149,7 @@ export default defineConfig({
   },
   tanstackStart: {
     server: { entry: "server" },
+    prerender: { concurrency: 1 },
     pages: prerenderPages,
   },
 });
