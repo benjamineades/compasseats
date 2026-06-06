@@ -339,15 +339,12 @@ function CityPage() {
                   <button
                     type="button"
                     className="inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors hover:text-[color:var(--seg-hover)]"
-                    style={
-                      {
-                        border: `1px solid ${HAIRLINE}`,
-                        backgroundColor: "transparent",
-                        color: INK_MUTED,
-                        // @ts-expect-error custom prop
-                        "--seg-hover": BRONZE,
-                      } as React.CSSProperties
-                    }
+                    style={{
+                      border: `1px solid ${HAIRLINE}`,
+                      backgroundColor: "transparent",
+                      color: INK_MUTED,
+                      ["--seg-hover" as never]: BRONZE,
+                    } as React.CSSProperties}
                   >
                     <SlidersHorizontal className="h-3.5 w-3.5" />
                     Awards
