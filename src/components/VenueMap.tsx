@@ -25,11 +25,22 @@ const AWARD_NAME_BY_SLUG: Record<string, string> = Object.fromEntries(
 );
 
 /** Convert a Venue into a Pin for the map layer. */
+const MICHELIN_STARS: Record<string, string> = {
+  "Three Stars": "★★★",
+  "Two Stars": "★★",
+  "One Star": "★",
+};
+
 function venueToPin(v: Venue, index: number): Pin {
   const awards = (v.awards ?? [])
     .slice(0, 3)
     .map((a) => {
       const name = AWARD_NAME_BY_SLUG[a.source] ?? a.source;
+      if (a.source === "michelin") {
+        const stars = MICHELIN_STARS[a.category];
+        if (stars) return `${stars} Michelin`;
+        return a.category;
+      }
       return `${name} · ${a.category}`;
     });
   return {
