@@ -11,6 +11,8 @@ type Props = {
   hueSeed?: string;
   imageUrl?: string;
   back: { to: "/"; label?: string } | { onClick: () => void; label?: string };
+  crumbs?: { label: string; to?: "/" }[];
+  counts?: { total: number; restaurants: number; bars: number };
   children?: ReactNode;
 };
 
@@ -55,7 +57,7 @@ function hueFromString(s: string): number {
   return h;
 }
 
-export function CityHero({ city, country, blurb, hueSeed, imageUrl, back, children }: Props) {
+export function CityHero({ city, country, blurb, hueSeed, imageUrl, back, crumbs, counts, children }: Props) {
   const query = useQuery({
     queryKey: ["city-hero", city, country ?? ""],
     queryFn: () => resolveCityImage(city, country),
@@ -104,10 +106,48 @@ export function CityHero({ city, country, blurb, hueSeed, imageUrl, back, childr
           )}
           <Wordmark className="text-white/80" />
         </div>
+        {crumbs && crumbs.length > 0 && (
+          <nav aria-label="Breadcrumb" className="mt-6 mb-2 text-xs">
+            {crumbs.map((seg, i) => (
+              <span key={i}>
+                {i > 0 && <span className="mx-1.5 text-white/60">›</span>}
+                {seg.to ? (
+                  <Link
+                    to={seg.to}
+                    className="text-accent-strong no-underline hover:text-white"
+                  >
+                    {seg.label}
+                  </Link>
+                ) : (
+                  <span className="text-white/60">{seg.label}</span>
+                )}
+              </span>
+            ))}
+          </nav>
+        )}
         <h1 className="mt-6 font-display text-4xl font-light tracking-tight text-white md:text-6xl">
           {city}, <span className="italic text-accent-strong">charted.</span>
         </h1>
-        {country && <p className="mt-3 text-sm font-medium uppercase tracking-wider text-white/60">{country}</p>}
+        {counts && (
+          <p className="mt-2 text-sm">
+            <b className="font-semibold text-accent-strong">{counts.total}</b>
+            <span className="text-white/70"> charted spots</span>
+            {counts.restaurants > 0 && (
+              <>
+                <span className="text-white/70"> · </span>
+                <b className="font-semibold text-accent-strong">{counts.restaurants}</b>
+                <span className="text-white/70"> restaurants</span>
+              </>
+            )}
+            {counts.bars > 0 && (
+              <>
+                <span className="text-white/70"> · </span>
+                <b className="font-semibold text-accent-strong">{counts.bars}</b>
+                <span className="text-white/70"> bars</span>
+              </>
+            )}
+          </p>
+        )}
         {descriptor && (
           <p className="mt-3 max-w-2xl font-display text-xl leading-relaxed text-white/90 md:text-2xl">
             {descriptor}
