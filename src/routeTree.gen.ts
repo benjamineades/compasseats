@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
-import { Route as CitiesRouteImport } from './routes/cities'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UnchartedSlugRouteImport } from './routes/uncharted/$slug'
 import { Route as CitySlugRouteImport } from './routes/city.$slug'
@@ -26,11 +25,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
   id: '/robots.txt',
   path: '/robots.txt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CitiesRoute = CitiesRouteImport.update({
-  id: '/cities',
-  path: '/cities',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -61,7 +55,6 @@ const VenueCitySlugRoute = VenueCitySlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/cities': typeof CitiesRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/award/$award': typeof AwardAwardRoute
@@ -71,7 +64,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/cities': typeof CitiesRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/award/$award': typeof AwardAwardRoute
@@ -82,7 +74,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/cities': typeof CitiesRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/award/$award': typeof AwardAwardRoute
@@ -94,7 +85,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/cities'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/award/$award'
@@ -104,7 +94,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/cities'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/award/$award'
@@ -114,7 +103,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/cities'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/award/$award'
@@ -125,7 +113,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CitiesRoute: typeof CitiesRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AwardAwardRoute: typeof AwardAwardRoute
@@ -148,13 +135,6 @@ declare module '@tanstack/react-router' {
       path: '/robots.txt'
       fullPath: '/robots.txt'
       preLoaderRoute: typeof RobotsDottxtRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cities': {
-      id: '/cities'
-      path: '/cities'
-      fullPath: '/cities'
-      preLoaderRoute: typeof CitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -197,7 +177,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CitiesRoute: CitiesRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   AwardAwardRoute: AwardAwardRoute,
@@ -208,3 +187,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
