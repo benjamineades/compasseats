@@ -14,7 +14,6 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { CityHero } from "@/components/CityHero";
-import { AwardMarquee } from "@/components/AwardMarquee";
 import { AwardBadgeRow } from "@/components/AwardBadge";
 import { VenuePhoto } from "@/components/VenuePhoto";
 import { CitySpotlight } from "@/components/CitySpotlight";
@@ -250,10 +249,6 @@ function CityPage() {
         <span className="mx-1.5">›</span>
         <span>{city.display}</span>
       </nav>
-
-      <div className="mx-auto max-w-5xl px-6">
-        <AwardMarquee />
-      </div>
 
       <CitySpotlight city={city} venues={sortedVenues} />
 
