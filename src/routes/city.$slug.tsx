@@ -446,6 +446,7 @@ function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
   const why = buildSingleWhy(venue, city);
   const pillAwards = buildPillAwards(venue);
   const hasReservation = Boolean(venue.reservation_url);
+  const hasPhoto = !!venue.photo_url?.trim();
 
   return (
     <>
@@ -470,15 +471,29 @@ function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
             </span>
           </div>
 
-          <div className="grid items-stretch gap-8 md:grid-cols-[1.1fr_1fr] md:gap-10">
-            <div
-              className="aspect-[4/5] w-full overflow-hidden rounded-xl"
-              style={{ border: "1px solid rgba(255,255,255,0.08)" }}
-            >
-              <VenuePhoto src={venue.photo_url} alt={venue.name} />
-            </div>
+          <div
+            className={
+              hasPhoto
+                ? "grid items-stretch gap-8 md:grid-cols-[1.1fr_1fr] md:gap-10"
+                : "mx-auto max-w-2xl text-center"
+            }
+          >
+            {hasPhoto && (
+              <div
+                className="aspect-[4/5] w-full overflow-hidden rounded-xl"
+                style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+              >
+                <VenuePhoto src={venue.photo_url} alt={venue.name} />
+              </div>
+            )}
 
-            <div className="flex flex-col justify-center">
+            <div
+              className={
+                hasPhoto
+                  ? "flex flex-col justify-center"
+                  : "flex flex-col items-center"
+              }
+            >
               <p className="text-sm" style={{ color: PAPER_DIM }}>
                 {typeCap} · {where}
               </p>
@@ -502,7 +517,11 @@ function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
 
               {pillAwards.length > 0 && (
                 <div
-                  className="flex flex-wrap gap-1.5"
+                  className={
+                    hasPhoto
+                      ? "flex flex-wrap gap-1.5"
+                      : "flex flex-wrap justify-center gap-1.5"
+                  }
                   style={{ marginTop: 15 }}
                 >
                   {pillAwards.map((label, i) => (
@@ -524,7 +543,11 @@ function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
               )}
 
               <div
-                className="flex flex-wrap items-center"
+                className={
+                  hasPhoto
+                    ? "flex flex-wrap items-center"
+                    : "flex flex-wrap items-center justify-center"
+                }
                 style={{ marginTop: 20, gap: 10 }}
               >
                 {hasReservation ? (
