@@ -441,8 +441,8 @@ function AccoladeCard({
           <span className="flex-1 text-sm font-medium" style={{ color: INK }}>
             {prettyAwardSource(group.source)}
           </span>
-          <span className="hidden text-sm sm:inline" style={{ color: INK_MUTED }}>
-            {awardLabel(headline)}
+          <span className="text-sm" style={{ color: INK_MUTED }}>
+            {distinctionLabel(headline)}
           </span>
           {rest.length > 0 && (
             <ChevronDown
@@ -462,7 +462,7 @@ function AccoladeCard({
                   <span className="w-12 shrink-0" style={{ color: BRONZE }}>
                     {a.year}
                   </span>
-                  <span style={{ color: INK_MUTED }}>{awardLabel(a)}</span>
+                  <span style={{ color: INK_MUTED }}>{distinctionLabel(a)}</span>
                 </li>
               ))}
             </ul>
@@ -610,10 +610,23 @@ function groupAwardsBySource(awards: Award[]) {
     .map(([source, entries]) => ({ source, entries }));
 }
 
+const MICHELIN_STARS: Record<string, string> = {
+  "Three Stars": "★★★",
+  "Two Stars": "★★",
+  "One Star": "★",
+};
+
 function distinctionLabel(award: Award): string {
+  // Michelin: show star glyphs; keep Bib Gourmand / Selected as words.
+  if (award.source === "michelin") {
+    return MICHELIN_STARS[award.category] ?? award.category;
+  }
+  // Ranked entries (50 Best, OAD, steakhouses): lead with the rank.
   if (typeof award.rank === "number" && award.rank > 0) {
     return `No. ${award.rank}`;
   }
+  // Everything else (La Liste "77/100", Best Chef "2-Knife", James Beard, etc.):
+  // the category string already carries the meaning.
   return award.category;
 }
 
