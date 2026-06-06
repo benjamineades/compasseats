@@ -25,6 +25,12 @@ const AWARD_NAME_BY_SLUG: Record<string, string> = Object.fromEntries(
 );
 
 /** Convert a Venue into a Pin for the map layer. */
+const MICHELIN_STARS: Record<string, string> = {
+  "Three Stars": "★★★",
+  "Two Stars": "★★",
+  "One Star": "★",
+};
+
 function venueToPin(v: Venue, index: number): Pin {
   const awards = (v.awards ?? [])
     .slice(0, 3)
