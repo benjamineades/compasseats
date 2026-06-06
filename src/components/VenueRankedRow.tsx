@@ -6,10 +6,14 @@
  */
 
 import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-
 import type { Venue } from "@/lib/schema";
 import { AwardBadgeRow } from "@/components/AwardBadge";
+
+const INK = "#23211E";
+const INK_MUTED = "#6a6253";
+const BRONZE = "#895F2E";
+const HAIRLINE = "rgba(35,33,30,0.12)";
+const BRASS_HOVER_BG = "rgba(198,161,91,0.06)";
 
 const TIERS = ["$", "$$", "$$$", "$$$$"] as const;
 
@@ -19,10 +23,11 @@ function PriceTier({ tier }: { tier: Venue["price_tier"] }) {
   return (
     <span
       aria-label={`Price tier ${tier}`}
-      className="font-mono text-xs tracking-tight"
+      className="font-mono text-xs"
+      style={{ letterSpacing: "0.05em", fontWeight: 600 }}
     >
-      <span className="text-accent-strong">{tier}</span>
-      <span className="text-muted-foreground/30">
+      <span style={{ color: BRONZE }}>{tier}</span>
+      <span style={{ color: BRONZE, opacity: 0.3 }}>
         {"$".repeat(TIERS.length - filled)}
       </span>
     </span>
@@ -37,46 +42,77 @@ export function VenueRankedRow({
   rank: number;
 }) {
   const where = venue.neighborhood || venue.city_display;
+  const typeLabel = venue.type === "bar" ? "Cocktail bar" : "Restaurant";
 
   return (
     <Link
       to="/venue/$city/$slug"
       params={{ city: venue.city_slug, slug: venue.slug }}
-      className="interactive group block rounded-xl border border-transparent px-4 py-4 hover:border-border hover:bg-card/60 md:px-5"
+      className="group block"
+      style={{
+        padding: "18px 6px",
+        borderBottom: `1px solid ${HAIRLINE}`,
+        transition: "background-color 160ms ease, padding-left 160ms ease",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = BRASS_HOVER_BG;
+        e.currentTarget.style.paddingLeft = "14px";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = "transparent";
+        e.currentTarget.style.paddingLeft = "6px";
+      }}
     >
-      <div className="flex items-start gap-4 md:gap-6">
-        <div className="w-10 shrink-0 pt-1 text-right font-display text-2xl font-light text-accent-strong md:w-12 md:text-3xl">
+      <div
+        className="grid items-center gap-4 md:gap-6"
+        style={{ gridTemplateColumns: "40px 1fr auto auto" }}
+      >
+        <div
+          className="font-display text-lg"
+          style={{ color: BRONZE, fontWeight: 500 }}
+        >
           {String(rank).padStart(2, "0")}
         </div>
 
-        <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <h3 className="font-display text-lg font-light italic text-foreground group-hover:text-accent-strong md:text-xl">
+        <div className="min-w-0">
+          <h3
+            className="font-display"
+            style={{
+              color: INK,
+              fontSize: "1.35rem",
+              fontWeight: 400,
+              lineHeight: 1.2,
+              transition: "color 160ms ease",
+            }}
+          >
+            <span
+              className="group-hover:[color:var(--hov)]"
+              style={{ ["--hov" as never]: BRONZE }}
+            >
               {venue.name}
-            </h3>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              {venue.type === "bar" ? "Cocktail bar" : "Restaurant"} · {where}
-            </p>
-            {venue.price_tier && (
-              <span className="ml-auto">
-                <PriceTier tier={venue.price_tier} />
-              </span>
-            )}
-          </div>
-
+            </span>
+          </h3>
+          <p className="mt-1 text-sm" style={{ color: INK_MUTED }}>
+            {typeLabel} · {where}
+          </p>
           {venue.blurb_short && (
-            <p className="mt-1.5 line-clamp-2 max-w-prose text-sm text-muted-foreground">
+            <p
+              className="mt-1.5 line-clamp-2 max-w-prose text-sm"
+              style={{ color: INK_MUTED }}
+            >
               {venue.blurb_short}
             </p>
           )}
-
-          <div className="mt-3 flex flex-wrap items-center gap-2">
+          <div className="mt-2 flex flex-wrap items-center gap-2">
             <AwardBadgeRow venue={venue} max={3} short />
-            <span className="ml-auto inline-flex items-center gap-1 text-xs text-accent-strong opacity-0 transition-opacity group-hover:opacity-100">
-              View <ArrowRight className="h-3 w-3" />
-            </span>
           </div>
         </div>
+
+        <div className="hidden md:block">
+          {venue.price_tier && <PriceTier tier={venue.price_tier} />}
+        </div>
+
+        <div />
       </div>
     </Link>
   );
