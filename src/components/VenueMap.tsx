@@ -30,6 +30,11 @@ function venueToPin(v: Venue, index: number): Pin {
     .slice(0, 3)
     .map((a) => {
       const name = AWARD_NAME_BY_SLUG[a.source] ?? a.source;
+      if (a.source === "michelin") {
+        const stars = MICHELIN_STARS[a.category];
+        if (stars) return `${stars} Michelin`;
+        return a.category;
+      }
       return `${name} · ${a.category}`;
     });
   return {

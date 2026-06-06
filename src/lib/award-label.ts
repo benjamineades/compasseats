@@ -66,7 +66,8 @@ function compose(award: Award, name: string): string {
   // Prefix with star glyphs for ★/★★/★★★; Bib Gourmand stays as-is.
   if (award.source === "michelin") {
     const stars = MICHELIN_STAR_PREFIX[award.category];
-    return stars ? `${stars} ${award.category}` : award.category;
+    if (stars) return `${stars} Michelin`;
+    return award.category;
   }
 
   // Everything else: "{category} · {source}".
