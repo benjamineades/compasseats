@@ -207,6 +207,15 @@ function CityPage() {
   const visible = showAll ? filtered : filtered.slice(0, INITIAL_ROW_CAP);
   const hasMore = filtered.length > INITIAL_ROW_CAP;
 
+  const restaurantCount = venues.filter((v) => v.type === "restaurant").length;
+  const barCount = venues.filter((v) => v.type === "bar").length;
+  const crumbs = [
+    { label: "Home", to: "/" as const },
+    ...(city.country ? [{ label: city.country }] : []),
+    { label: city.display },
+  ];
+  const counts = { total: venues.length, restaurants: restaurantCount, bars: barCount };
+
   // MODE A — single-venue city: a generous feature, no filter bar, no list.
   if (venues.length === 1) {
     return (
@@ -218,6 +227,8 @@ function CityPage() {
           hueSeed={city.slug}
           imageUrl={city.hero_image_url}
           back={{ to: "/" }}
+          crumbs={crumbs}
+          counts={counts}
         />
         <SingleVenueFeature city={city} venue={venues[0]} />
       </main>
@@ -234,6 +245,8 @@ function CityPage() {
         hueSeed={city.slug}
         imageUrl={city.hero_image_url}
         back={{ to: "/" }}
+        crumbs={crumbs}
+        counts={counts}
       />
 
       <div style={{ backgroundColor: INK_3 }}>
