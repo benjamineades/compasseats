@@ -19,6 +19,7 @@ import { VenuePhoto } from "@/components/VenuePhoto";
 import { CitySpotlight } from "@/components/CitySpotlight";
 import { VenueRankedRow } from "@/components/VenueRankedRow";
 import { formatCoord } from "@/lib/format-coords";
+import { awardLabelShort } from "@/lib/award-label";
 
 import {
   getCity,
@@ -36,6 +37,9 @@ const INK_MUTED = "#6a6253";
 const BRONZE = "#895F2E";
 const BRASS = "#C6A15B";
 const HAIRLINE = "rgba(35,33,30,0.12)";
+const PAPER_DIM = "#E7DFCC";
+const BRASS_SOFT = "#D8BE8A";
+const BRASS_LINE = "rgba(198,161,91,.28)";
 
 const VenueMap = lazy(() =>
   import("@/components/VenueMap").then((module) => ({ default: module.VenueMap })),
@@ -438,88 +442,239 @@ function CityPage() {
 
 function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
   const where = venue.neighborhood || venue.city_display;
-  const why =
-    venue.blurb_short?.trim() ||
-    `${city.display}'s one charted spot — worth the detour.`;
+  const typeCap = venue.type === "bar" ? "Cocktail bar" : "Restaurant";
+  const why = buildSingleWhy(venue, city);
+  const pillAwards = buildPillAwards(venue);
+  const hasReservation = Boolean(venue.reservation_url);
 
   return (
     <>
-      <section className="mx-auto max-w-5xl px-6 py-12 md:py-16">
-        <div className="grid gap-8 md:grid-cols-[1.1fr_1fr] md:gap-10">
-          <div className="aspect-[4/5] w-full overflow-hidden rounded-xl border border-border md:aspect-[4/5]">
-            <VenuePhoto src={venue.photo_url} alt={venue.name} />
+      {/* Section 1 — dark feature band */}
+      <section
+        style={{ backgroundColor: INK_3 }}
+        className="px-6 py-12 md:px-12 md:py-16"
+      >
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-5 flex items-baseline gap-3">
+            <h2
+              className="font-display text-2xl italic"
+              style={{ color: BRASS_SOFT, fontWeight: 400 }}
+            >
+              The one worth knowing.
+            </h2>
+            <span
+              className="ml-auto text-xs font-semibold uppercase"
+              style={{ color: PAPER_DIM, letterSpacing: "0.16em" }}
+            >
+              {city.display}
+            </span>
           </div>
 
-          <div className="flex flex-col justify-center">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
-              {venue.type === "bar" ? "Cocktail bar" : "Restaurant"} · {where}
-            </p>
-            <h2 className="mt-3 font-display text-4xl font-light italic text-foreground md:text-5xl">
-              {venue.name}
-            </h2>
-            <p className="mt-4 max-w-prose text-base text-muted-foreground">{why}</p>
-
-            <div className="mt-5">
-              <AwardBadgeRow venue={venue} max={4} />
+          <div className="grid items-stretch gap-8 md:grid-cols-[1.1fr_1fr] md:gap-10">
+            <div
+              className="aspect-[4/5] w-full overflow-hidden rounded-xl"
+              style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <VenuePhoto src={venue.photo_url} alt={venue.name} />
             </div>
 
-            <div className="mt-7 flex flex-wrap items-center gap-2">
-              {venue.reservation_url && (
-                <Button asChild className="interactive">
-                  <a
-                    href={venue.reservation_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Reserve a table
-                  </a>
-                </Button>
+            <div className="flex flex-col justify-center">
+              <p className="text-sm" style={{ color: PAPER_DIM }}>
+                {typeCap} · {where}
+              </p>
+              <h3
+                className="mt-2 font-display text-4xl md:text-5xl"
+                style={{ color: PAPER, fontWeight: 300, lineHeight: 1.05 }}
+              >
+                {venue.name}
+              </h3>
+              <p
+                className="max-w-prose text-base"
+                style={{
+                  color: PAPER,
+                  fontWeight: 300,
+                  lineHeight: 1.6,
+                  marginTop: 14,
+                }}
+              >
+                {why}
+              </p>
+
+              {pillAwards.length > 0 && (
+                <div
+                  className="flex flex-wrap gap-1.5"
+                  style={{ marginTop: 15 }}
+                >
+                  {pillAwards.map((label, i) => (
+                    <span
+                      key={i}
+                      className="text-xs"
+                      style={{
+                        color: BRASS_SOFT,
+                        border: `1px solid ${BRASS_LINE}`,
+                        padding: "5px 11px",
+                        borderRadius: 100,
+                        fontWeight: 600,
+                      }}
+                    >
+                      {label}
+                    </span>
+                  ))}
+                </div>
               )}
-              {venue.website && (
-                <Button asChild variant="outline" className="interactive">
+
+              <div
+                className="flex flex-wrap items-center"
+                style={{ marginTop: 20, gap: 10 }}
+              >
+                {hasReservation ? (
+                  <>
+                    <a
+                      href={venue.reservation_url!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm transition-transform hover:-translate-y-0.5"
+                      style={{
+                        backgroundColor: BRASS,
+                        color: INK,
+                        fontWeight: 600,
+                        padding: "11px 22px",
+                        borderRadius: 8,
+                      }}
+                    >
+                      Reserve a table <span aria-hidden>→</span>
+                    </a>
+                    <Link
+                      to="/venue/$city/$slug"
+                      params={{ city: venue.city_slug, slug: venue.slug }}
+                      className="inline-flex items-center gap-1 text-sm"
+                      style={{
+                        border: "1px solid rgba(255,255,255,0.2)",
+                        color: PAPER_DIM,
+                        fontWeight: 600,
+                        padding: "10px 21px",
+                        borderRadius: 8,
+                      }}
+                    >
+                      View venue <span aria-hidden>→</span>
+                    </Link>
+                  </>
+                ) : (
+                  <Link
+                    to="/venue/$city/$slug"
+                    params={{ city: venue.city_slug, slug: venue.slug }}
+                    className="inline-flex items-center gap-1 text-sm transition-transform hover:-translate-y-0.5"
+                    style={{
+                      backgroundColor: BRASS,
+                      color: INK,
+                      fontWeight: 600,
+                      padding: "11px 22px",
+                      borderRadius: 8,
+                    }}
+                  >
+                    View venue <span aria-hidden>→</span>
+                  </Link>
+                )}
+
+                {venue.website && (
                   <a
                     href={venue.website}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 bg-transparent text-xs"
+                    style={{
+                      color: BRASS_SOFT,
+                      border: "none",
+                      padding: "8px 4px",
+                    }}
                   >
                     Visit website
                   </a>
-                </Button>
-              )}
-              <Button asChild variant="ghost" className="interactive">
-                <Link
-                  to="/venue/$city/$slug"
-                  params={{ city: venue.city_slug, slug: venue.slug }}
-                >
-                  View venue
-                  <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </Button>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-12">
-        <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
-          The lay of the land · {city.display} · {formatCoord(city.lat, city.lng)}
-        </p>
-        <ClientOnly fallback={<MapPlaceholder />}>
-          <VenueMap venues={[venue]} cityContext={city.slug} />
-        </ClientOnly>
+      {/* Section 2 — paper map band */}
+      <section style={{ backgroundColor: PAPER }} className="py-10">
+        <div className="mx-auto max-w-5xl px-6">
+          <p
+            className="mb-3.5 text-[10px] font-semibold uppercase"
+            style={{ color: BRONZE, letterSpacing: "0.25em" }}
+          >
+            The lay of the land · {city.display} ·{" "}
+            {formatCoord(city.lat, city.lng)}
+          </p>
+          <div
+            className="overflow-hidden rounded-xl"
+            style={{ border: `1px solid ${HAIRLINE}` }}
+          >
+            <ClientOnly fallback={<MapPlaceholder />}>
+              <VenueMap venues={[venue]} cityContext={city.slug} />
+            </ClientOnly>
+          </div>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-16 text-center">
-        <Link
-          to="/"
-          className="interactive inline-flex items-center gap-1.5 text-sm italic text-muted-foreground hover:text-accent-strong"
-        >
-          Looking for more? Explore other charted cities
-          <ArrowRight className="h-3.5 w-3.5" />
-        </Link>
+      {/* Section 3 — paper outro */}
+      <section style={{ backgroundColor: PAPER }} className="pb-16 text-center">
+        <div className="mx-auto max-w-5xl px-6">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-1.5 text-sm italic transition-colors"
+            style={{ color: INK_MUTED, ["--hov" as never]: BRONZE }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = BRONZE)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = INK_MUTED)}
+          >
+            Looking for more? Explore other charted cities
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
       </section>
     </>
   );
+}
+
+function buildSingleWhy(venue: Venue, city: City): string {
+  const blurb = venue.blurb_short?.trim() || venue.blurb_long?.trim();
+  if (blurb) return blurb;
+
+  const bestBySource = new Map<string, (typeof venue.awards)[number]>();
+  for (const a of venue.awards) {
+    const cur = bestBySource.get(a.source);
+    if (!cur || getAwardPrestige(a) > getAwardPrestige(cur)) {
+      bestBySource.set(a.source, a);
+    }
+  }
+  const top = Array.from(bestBySource.values())
+    .sort((a, b) => getAwardPrestige(b) - getAwardPrestige(a))
+    .slice(0, 2)
+    .map((a) => awardLabelShort(a));
+
+  const typeLabel = venue.type === "bar" ? "bars" : "tables";
+  if (top.length === 2) {
+    return `${top[0]} and ${top[1]} — one of ${city.display}'s most decorated ${typeLabel}.`;
+  }
+  if (top.length === 1) {
+    return `${top[0]} — one of ${city.display}'s most celebrated ${typeLabel}.`;
+  }
+  return `One of ${city.display}'s most celebrated ${venue.type === "bar" ? "cocktail bars" : "restaurants"}.`;
+}
+
+function buildPillAwards(venue: Venue): string[] {
+  const bestBySource = new Map<string, (typeof venue.awards)[number]>();
+  for (const a of venue.awards) {
+    const cur = bestBySource.get(a.source);
+    if (!cur || getAwardPrestige(a) > getAwardPrestige(cur)) {
+      bestBySource.set(a.source, a);
+    }
+  }
+  return Array.from(bestBySource.values())
+    .sort((a, b) => getAwardPrestige(b) - getAwardPrestige(a))
+    .slice(0, 4)
+    .map((a) => awardLabelShort(a));
 }
 
 function ResultsSkeleton() {
