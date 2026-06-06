@@ -30,6 +30,14 @@ import {
 import type { City, Venue } from "@/lib/schema";
 
 const SITE_URL = "https://compasseats.com";
+const PAPER = "#F7F3EB";
+const INK = "#23211E";
+const INK_3 = "#34312C"; // darkest band (spotlight surface, set later)
+const INK_MUTED = "#6a6253";
+const BRONZE = "#895F2E";
+const BRASS = "#C6A15B";
+const HAIRLINE = "rgba(35,33,30,0.12)";
+
 const VenueMap = lazy(() =>
   import("@/components/VenueMap").then((module) => ({ default: module.VenueMap })),
 );
@@ -219,7 +227,7 @@ function CityPage() {
 
   // MODE B — multi-venue city: spotlight + map + ranked listings.
   return (
-    <main className="relative min-h-screen bg-background">
+    <main className="relative min-h-screen" style={{ backgroundColor: PAPER }}>
       <CityHero
         city={city.display}
         country={city.country}
@@ -229,86 +237,129 @@ function CityPage() {
         back={{ to: "/" }}
       />
 
+      <nav
+        className="mx-auto max-w-5xl px-6 pt-5 text-xs"
+        style={{ color: INK_MUTED }}
+        aria-label="Breadcrumb"
+      >
+        <Link to="/" style={{ color: BRONZE }} className="hover:underline">
+          Home
+        </Link>
+        <span className="mx-1.5">›</span>
+        <span>{city.country}</span>
+        <span className="mx-1.5">›</span>
+        <span>{city.display}</span>
+      </nav>
+
       <div className="mx-auto max-w-5xl px-6">
         <AwardMarquee />
       </div>
 
       <CitySpotlight city={city} venues={sortedVenues} />
 
-      <div className="mx-auto max-w-5xl px-6 py-10">
-        {/* Map — sits above the filter bar so it never gets pinned under it */}
-        <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
+      <section style={{ backgroundColor: PAPER }} className="py-10">
+        <div className="mx-auto max-w-5xl px-6">
+          <p
+            className="text-[10px] font-semibold uppercase tracking-[0.25em]"
+            style={{ color: BRONZE, marginBottom: 14 }}
+          >
             The lay of the land · {city.display} · {formatCoord(city.lat, city.lng)}
           </p>
+          <div
+            className="overflow-hidden rounded-xl"
+            style={{ border: `1px solid ${HAIRLINE}` }}
+          >
+            <ClientOnly fallback={<MapPlaceholder />}>
+              <VenueMap venues={filtered} cityContext={city.slug} />
+            </ClientOnly>
+          </div>
         </div>
-        <div className="mb-10">
-          <ClientOnly fallback={<MapPlaceholder />}>
-            <VenueMap venues={filtered} cityContext={city.slug} />
-          </ClientOnly>
-        </div>
+      </section>
 
-        {/* Filter bar */}
-        <div className="sticky top-[70px] z-[60] -mx-6 mb-6 border-b border-border bg-background/80 px-6 py-3 backdrop-blur-md">
-          <div className="flex flex-wrap items-center gap-1.5">
-            <Button
-              size="sm"
-              variant={noneSelected ? "default" : "outline"}
-              onClick={clearAll}
-              className="h-8 rounded-full text-xs"
+      <div className="mx-auto max-w-5xl px-6 pb-10">
+        {/* Section headline + segmented toggle row */}
+        <div
+          className="mb-6 flex flex-wrap items-end justify-between gap-4 pb-4"
+          style={{ borderBottom: `2px solid ${INK}` }}
+        >
+          <h2
+            className="font-display text-3xl font-light"
+            style={{ color: INK }}
+          >
+            The ones <em className="italic" style={{ color: BRONZE }}>worth the detour</em>
+          </h2>
+          <div className="flex flex-wrap items-center gap-2">
+            <div
+              className="inline-flex items-center"
+              style={{
+                backgroundColor: "rgba(35,33,30,0.06)",
+                padding: 4,
+                borderRadius: 100,
+                gap: 5,
+              }}
             >
-              All
-            </Button>
-            <Button
-              size="sm"
-              variant={quick.has("restaurants") ? "default" : "outline"}
-              onClick={() => toggleQuick("restaurants")}
-              className="h-8 rounded-full text-xs"
-            >
-              Restaurants
-            </Button>
-            <Button
-              size="sm"
-              variant={quick.has("bars") ? "default" : "outline"}
-              onClick={() => toggleQuick("bars")}
-              className="h-8 rounded-full text-xs"
-            >
-              Cocktail Bars
-            </Button>
+              <SegToggle
+                active={noneSelected}
+                onClick={clearAll}
+                label="All"
+              />
+              <SegToggle
+                active={quick.has("restaurants")}
+                onClick={() => toggleQuick("restaurants")}
+                label="Restaurants"
+              />
+              <SegToggle
+                active={quick.has("bars")}
+                onClick={() => toggleQuick("bars")}
+                label="Cocktail Bars"
+              />
+            </div>
 
             {Array.from(awardFilters).map((src) => (
-              <Button
+              <button
                 key={src}
-                size="sm"
-                variant="default"
+                type="button"
                 onClick={() => toggleAward(src)}
-                className="h-8 gap-1 rounded-full text-xs"
                 title="Remove filter"
+                className="inline-flex h-8 items-center gap-1 rounded-full px-3 text-xs font-medium"
+                style={{
+                  border: `1px solid ${HAIRLINE}`,
+                  backgroundColor: "#FCFAF5",
+                  color: INK,
+                }}
               >
                 {prettyAwardSource(src)}
                 <X className="h-3 w-3 opacity-80" />
-              </Button>
+              </button>
             ))}
 
             {distinctSources.length > 0 && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="h-8 gap-1.5 rounded-full text-xs"
+                  <button
+                    type="button"
+                    className="inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors hover:text-[color:var(--seg-hover)]"
+                    style={{
+                      border: `1px solid ${HAIRLINE}`,
+                      backgroundColor: "transparent",
+                      color: INK_MUTED,
+                      ["--seg-hover" as never]: BRONZE,
+                    } as React.CSSProperties}
                   >
                     <SlidersHorizontal className="h-3.5 w-3.5" />
                     Awards
                     {awardFilters.size > 0 && (
-                      <span className="ml-0.5 rounded-full bg-primary px-1.5 text-[10px] font-semibold text-primary-foreground">
+                      <span
+                        className="ml-0.5 rounded-full px-1.5 text-[10px] font-semibold"
+                        style={{ backgroundColor: BRONZE, color: PAPER }}
+                      >
                         {awardFilters.size}
                       </span>
                     )}
                     <ChevronDown className="h-3 w-3 opacity-70" />
-                  </Button>
+                  </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-64">
+                <DropdownMenuContent align="end" className="w-64">
                   <DropdownMenuLabel>Filter by award</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   {distinctSources.map((src) => (
@@ -358,7 +409,10 @@ function CityPage() {
         )}
 
         {!isPending && filtered.length > 0 && (
-          <p className="mt-8 text-center text-xs italic text-muted-foreground">
+          <p
+            className="mt-8 text-center text-xs italic"
+            style={{ color: INK_MUTED }}
+          >
             Showing {visible.length} of {venues.length} charted spot
             {venues.length === 1 ? "" : "s"} in {city.display}.
           </p>
@@ -476,7 +530,43 @@ function ResultsSkeleton() {
 }
 
 function MapPlaceholder() {
-  return <div className="h-72 w-full rounded-xl border border-border bg-card md:h-96" />;
+  return (
+    <div
+      className="h-72 w-full md:h-96"
+      style={{ backgroundColor: "#2c2a26" }}
+    />
+  );
+}
+
+function SegToggle({
+  active,
+  onClick,
+  label,
+}: {
+  active: boolean;
+  onClick: () => void;
+  label: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        border: 0,
+        backgroundColor: active ? "#FCFAF5" : "transparent",
+        color: active ? INK : INK_MUTED,
+        fontWeight: active ? 600 : 500,
+        padding: "8px 16px",
+        borderRadius: 100,
+        fontSize: 14,
+        boxShadow: active ? "0 1px 2px rgba(0,0,0,0.06)" : "none",
+        cursor: "pointer",
+        transition: "background-color 120ms, color 120ms",
+      }}
+    >
+      {label}
+    </button>
+  );
 }
 
 function EmptyState({ onReset }: { onReset: () => void }) {
