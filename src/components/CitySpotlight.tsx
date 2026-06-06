@@ -67,16 +67,13 @@ export function CitySpotlight({ city, venues }: { city: City; venues: Venue[] })
   // Selection rule: prefer photographed venues, sorted by prestige. If none
   // have a photo, fall back to top prestige overall (photo-less; compass
   // placeholder will render).
-  const { candidates, hasPhotos } = useMemo(() => {
+  const candidates = useMemo(() => {
     const sorted = [...venues].sort((a, b) => scoreVenue(b) - scoreVenue(a));
     const photographed = sorted.filter((v) => v.photo_url && v.photo_url.trim());
     if (photographed.length > 0) {
-      return {
-        candidates: photographed.slice(0, Math.min(10, photographed.length)),
-        hasPhotos: true,
-      };
+      return photographed.slice(0, Math.min(10, photographed.length));
     }
-    return { candidates: sorted.slice(0, Math.min(10, sorted.length)), hasPhotos: false };
+    return sorted.slice(0, Math.min(10, sorted.length));
   }, [venues]);
 
   const opener = useMemo(
@@ -246,8 +243,6 @@ export function CitySpotlight({ city, venues }: { city: City; venues: Venue[] })
           </div>
         </div>
       </div>
-      {/* swallow unused-var lint for hasPhotos (kept for clarity) */}
-      <span hidden>{hasPhotos ? "" : ""}</span>
     </section>
   );
 }
