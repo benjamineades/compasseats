@@ -130,7 +130,16 @@ function RootComponent() {
           <Link to="/" className="flex items-center gap-2.5 no-underline">
             <Wordmark />
           </Link>
-          <ThemeToggle />
+          <nav className="flex items-center gap-6">
+            <Link
+              to="/cities"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              activeProps={{ className: "text-sm text-foreground" }}
+            >
+              Cities
+            </Link>
+            <ThemeToggle />
+          </nav>
         </div>
       </header>
 
