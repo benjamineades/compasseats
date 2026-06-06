@@ -34,8 +34,12 @@ function buildGuides(): {
     count: getVenuesByAward(s.slug as AwardSource).length,
   }));
   const byCount = (a: GuideRow, b: GuideRow) => b.count - a.count;
-  const global = rows.filter((r) => r.tier === "global").sort(byCount);
-  const regional = rows.filter((r) => r.tier === "regional").sort(byCount);
+  const global = rows
+    .filter((r) => r.tier === "global" && r.count > 0)
+    .sort(byCount);
+  const regional = rows
+    .filter((r) => r.tier === "regional" && r.count > 0)
+    .sort(byCount);
   const total = rows.reduce((s, r) => s + r.count, 0);
   return { global, regional, total };
 }
