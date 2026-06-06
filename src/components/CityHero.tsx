@@ -72,6 +72,8 @@ export function CityHero({ city, country, blurb, hueSeed, imageUrl, back, crumbs
 
   const backLabel = back.label ?? "Back to search";
 
+  const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
+
   return (
     <section
       className="relative overflow-hidden border-b border-border"
@@ -131,19 +133,19 @@ export function CityHero({ city, country, blurb, hueSeed, imageUrl, back, crumbs
         {counts && (
           <p className="mt-2 text-sm">
             <b className="font-semibold text-accent-strong">{counts.total}</b>
-            <span className="text-white/70"> charted spots</span>
+            <span className="text-white/70"> {plural(counts.total, "charted spot").replace(`${counts.total} `, "")}</span>
             {counts.restaurants > 0 && (
               <>
                 <span className="text-white/70"> · </span>
                 <b className="font-semibold text-accent-strong">{counts.restaurants}</b>
-                <span className="text-white/70"> restaurants</span>
+                <span className="text-white/70"> {plural(counts.restaurants, "restaurant").replace(`${counts.restaurants} `, "")}</span>
               </>
             )}
             {counts.bars > 0 && (
               <>
                 <span className="text-white/70"> · </span>
                 <b className="font-semibold text-accent-strong">{counts.bars}</b>
-                <span className="text-white/70"> bars</span>
+                <span className="text-white/70"> {plural(counts.bars, "bar").replace(`${counts.bars} `, "")}</span>
               </>
             )}
           </p>

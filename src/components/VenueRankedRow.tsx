@@ -104,7 +104,12 @@ export function VenueRankedRow({
             </p>
           )}
           <div className="mt-2 flex flex-wrap items-center gap-2">
-            <AwardBadgeRow venue={venue} max={3} short />
+            <AwardBadgeRow
+              venue={venue}
+              max={3}
+              short
+              className="[&>span]:!border-[rgba(137,95,46,0.35)]"
+            />
           </div>
         </div>
 
