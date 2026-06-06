@@ -9,15 +9,21 @@
 
 import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, RotateCcw } from "lucide-react";
+import { RotateCcw } from "lucide-react";
 
 import type { City, Venue } from "@/lib/schema";
 import { getAwardPrestige } from "@/lib/venues";
-import { isOpenNow } from "@/lib/open-now";
-import { formatCoord } from "@/lib/format-coords";
-import { Button } from "@/components/ui/button";
-import { AwardBadgeRow } from "@/components/AwardBadge";
+import { awardLabelShort } from "@/lib/award-label";
 import { VenuePhoto } from "@/components/VenuePhoto";
+
+const INK_3 = "#34312C";
+const PAPER = "#F7F3EB";
+const PAPER_DIM = "#E7DFCC";
+const BRASS = "#C6A15B";
+const BRASS_SOFT = "#D8BE8A";
+const BRONZE = "#895F2E";
+const LINE = "rgba(198,161,91,.28)";
+const INK = "#23211E";
 
 const OPENERS = [
   "In the mood for somewhere special?",
@@ -30,25 +36,46 @@ function scoreVenue(v: Venue): number {
   return v.awards.reduce((sum, a) => sum + getAwardPrestige(a), 0);
 }
 
+function buildWhy(venue: Venue, city: City): string {
+  const blurb = venue.blurb_short?.trim() || venue.blurb_long?.trim();
+  if (blurb) return blurb;
+
+  // De-dupe by source, prefer highest prestige.
+  const bestBySource = new Map<string, (typeof venue.awards)[number]>();
+  for (const a of venue.awards) {
+    const cur = bestBySource.get(a.source);
+    if (!cur || getAwardPrestige(a) > getAwardPrestige(cur)) {
+      bestBySource.set(a.source, a);
+    }
+  }
+  const top = Array.from(bestBySource.values())
+    .sort((a, b) => getAwardPrestige(b) - getAwardPrestige(a))
+    .slice(0, 2)
+    .map((a) => awardLabelShort(a));
+
+  const typeLabel = venue.type === "bar" ? "bars" : "tables";
+  if (top.length === 2) {
+    return `${top[0]} and ${top[1]} — one of ${city.display}'s most decorated ${typeLabel}.`;
+  }
+  if (top.length === 1) {
+    return `${top[0]} — one of ${city.display}'s most celebrated ${typeLabel}.`;
+  }
+  return `One of ${city.display}'s most celebrated ${venue.type === "bar" ? "cocktail bars" : "restaurants"}.`;
+}
+
 export function CitySpotlight({ city, venues }: { city: City; venues: Venue[] }) {
-  // Pool: top 10 by prestige — the candidate set for "show me another".
-  const pool = useMemo(() => {
-    return [...venues]
-      .sort((a, b) => scoreVenue(b) - scoreVenue(a))
-      .slice(0, Math.min(10, venues.length));
+  // Selection rule: prefer photographed venues, sorted by prestige. If none
+  // have a photo, fall back to top prestige overall (photo-less; compass
+  // placeholder will render).
+  const candidates = useMemo(() => {
+    const sorted = [...venues].sort((a, b) => scoreVenue(b) - scoreVenue(a));
+    const photographed = sorted.filter((v) => v.photo_url && v.photo_url.trim());
+    if (photographed.length > 0) {
+      return photographed.slice(0, Math.min(10, photographed.length));
+    }
+    return sorted.slice(0, Math.min(10, sorted.length));
   }, [venues]);
 
-  // OPEN_NOW: prefer venues currently open in the city's timezone. When no
-  // hours are populated yet, every isOpenNow() returns null and openPool is
-  // empty → we fall back to the prestige pool. This branch activates
-  // automatically once `venue.hours` lands in the data.
-  const openPool = useMemo(() => {
-    return pool.filter((v) => isOpenNow(v, city.timezone) === true);
-  }, [pool, city.timezone]);
-
-  const candidates = openPool.length > 0 ? openPool : pool;
-
-  // Random opener + initial featured pick, stable per render.
   const opener = useMemo(
     () => OPENERS[Math.floor(Math.random() * OPENERS.length)],
     [],
@@ -59,7 +86,6 @@ export function CitySpotlight({ city, venues }: { city: City; venues: Venue[] })
   const reroll = () => {
     if (candidates.length <= 1) return;
     let next = featuredIdx;
-    // Avoid landing on the same venue twice in a row.
     while (next === featuredIdx) {
       next = Math.floor(Math.random() * candidates.length);
     }
@@ -68,69 +94,146 @@ export function CitySpotlight({ city, venues }: { city: City; venues: Venue[] })
 
   if (!featured) return null;
 
-  const where = featured.neighborhood || featured.city_display;
-  const why =
-    featured.blurb_short?.trim() ||
-    `A charted favorite in ${featured.neighborhood || city.display}.`;
+  const where = featured.neighborhood || city.display;
+  const typeCap = featured.type === "bar" ? "Cocktail bar" : "Restaurant";
+  const why = buildWhy(featured, city);
+
+  // De-dupe awards by source for pills.
+  const pillAwards = useMemoAwards(featured);
+
+  const showShuffle = candidates.length > 1;
+  const hasReservation = Boolean(featured.reservation_url);
 
   return (
-    <section className="relative overflow-hidden border-y border-border bg-card">
-      <div className="mx-auto max-w-5xl px-6 py-12 md:py-16">
-        <div className="mb-8 flex flex-wrap items-baseline justify-between gap-3">
-          <h2 className="font-display text-2xl font-light italic text-foreground md:text-3xl">
+    <section style={{ backgroundColor: INK_3 }} className="px-6 py-9 md:px-12 md:py-[34px]">
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-5 flex items-baseline gap-3">
+          <h2
+            className="font-display text-2xl italic"
+            style={{ color: BRASS_SOFT, fontWeight: 400 }}
+          >
             {opener}
           </h2>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-accent-strong">
+          <span
+            className="ml-auto text-xs font-semibold uppercase"
+            style={{ color: PAPER_DIM, letterSpacing: "0.16em" }}
+          >
             {city.display}
           </span>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-[300px_1fr] md:gap-8">
-          <div className="aspect-[4/5] w-full overflow-hidden rounded-xl border border-border md:aspect-auto md:h-[360px]">
-            <VenuePhoto src={featured.photo_url} alt={featured.name} />
+        <div className="grid gap-6 md:gap-[30px] md:[grid-template-columns:320px_1fr]">
+          <div
+            className="overflow-hidden"
+            style={{ borderRadius: 13, minHeight: 250 }}
+          >
+            <div className="h-full w-full md:h-[360px]">
+              <VenuePhoto src={featured.photo_url} alt={featured.name} />
+            </div>
           </div>
 
-          <div className="flex flex-col">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent-strong">
-              {featured.type === "bar" ? "Cocktail bar" : "Restaurant"} · {where}
+          <div className="flex flex-col justify-center">
+            <p className="text-sm" style={{ color: PAPER_DIM }}>
+              {typeCap} · {where}
             </p>
-            <h3 className="mt-2 font-display text-3xl font-light italic text-foreground md:text-4xl">
+            <h3
+              className="mt-2 font-display text-3xl md:text-4xl"
+              style={{ color: PAPER, fontWeight: 500, lineHeight: 1 }}
+            >
               {featured.name}
             </h3>
-            <p className="mt-3 max-w-prose text-sm text-muted-foreground md:text-base">
+            <p
+              className="text-base"
+              style={{
+                color: PAPER,
+                fontWeight: 300,
+                lineHeight: 1.6,
+                maxWidth: 560,
+                marginTop: 14,
+              }}
+            >
               {why}
             </p>
 
-            <div className="mt-4">
-              <AwardBadgeRow venue={featured} max={3} short />
-            </div>
+            {pillAwards.length > 0 && (
+              <div className="flex flex-wrap gap-1.5" style={{ marginTop: 15 }}>
+                {pillAwards.map((label, i) => (
+                  <span
+                    key={i}
+                    className="text-xs"
+                    style={{
+                      color: BRASS_SOFT,
+                      border: `1px solid ${LINE}`,
+                      padding: "5px 11px",
+                      borderRadius: 100,
+                      fontWeight: 600,
+                    }}
+                  >
+                    {label}
+                  </span>
+                ))}
+              </div>
+            )}
 
-            <div className="mt-6 flex flex-wrap items-center gap-2">
-              {featured.reservation_url && (
-                <Button asChild size="sm" className="interactive">
+            <div
+              className="flex flex-wrap items-center"
+              style={{ marginTop: 20, gap: 10 }}
+            >
+              {hasReservation ? (
+                <>
                   <a
-                    href={featured.reservation_url}
+                    href={featured.reservation_url!}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm transition-transform hover:-translate-y-0.5"
+                    style={{
+                      backgroundColor: BRASS,
+                      color: INK,
+                      fontWeight: 600,
+                      padding: "11px 22px",
+                      borderRadius: 8,
+                    }}
                   >
-                    Reserve a table
+                    Reserve a table <span aria-hidden>→</span>
                   </a>
-                </Button>
-              )}
-              <Button asChild size="sm" variant="outline" className="interactive">
+                  <Link
+                    to="/venue/$city/$slug"
+                    params={{ city: city.slug, slug: featured.slug }}
+                    className="inline-flex items-center gap-1 text-sm"
+                    style={{
+                      border: `1px solid ${LINE}`,
+                      color: BRASS_SOFT,
+                      fontWeight: 600,
+                      padding: "10px 21px",
+                      borderRadius: 8,
+                    }}
+                  >
+                    View venue <span aria-hidden>→</span>
+                  </Link>
+                </>
+              ) : (
                 <Link
                   to="/venue/$city/$slug"
-                  params={{ city: featured.city_slug, slug: featured.slug }}
+                  params={{ city: city.slug, slug: featured.slug }}
+                  className="inline-flex items-center gap-1 text-sm transition-transform hover:-translate-y-0.5"
+                  style={{
+                    backgroundColor: BRASS,
+                    color: INK,
+                    fontWeight: 600,
+                    padding: "11px 22px",
+                    borderRadius: 8,
+                  }}
                 >
-                  View venue
-                  <ArrowRight className="ml-1 h-3.5 w-3.5" />
+                  View venue <span aria-hidden>→</span>
                 </Link>
-              </Button>
-              {candidates.length > 1 && (
+              )}
+
+              {showShuffle && (
                 <button
                   type="button"
                   onClick={reroll}
-                  className="interactive ml-auto inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground hover:text-accent-strong"
+                  className="inline-flex items-center gap-1 bg-transparent text-xs"
+                  style={{ color: BRASS, border: "none", padding: "8px 4px" }}
                 >
                   <RotateCcw className="h-3 w-3" />
                   Show me another
@@ -140,15 +243,22 @@ export function CitySpotlight({ city, venues }: { city: City; venues: Venue[] })
           </div>
         </div>
       </div>
-
-      {/* Faint city coordinate, bottom-right. */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-3 right-4 font-display text-xs tracking-wider"
-        style={{ color: "color-mix(in oklab, var(--primary) 12%, transparent)" }}
-      >
-        {formatCoord(city.lat, city.lng)}
-      </span>
     </section>
   );
+}
+
+function useMemoAwards(venue: Venue): string[] {
+  return useMemo(() => {
+    const bestBySource = new Map<string, (typeof venue.awards)[number]>();
+    for (const a of venue.awards) {
+      const cur = bestBySource.get(a.source);
+      if (!cur || getAwardPrestige(a) > getAwardPrestige(cur)) {
+        bestBySource.set(a.source, a);
+      }
+    }
+    return Array.from(bestBySource.values())
+      .sort((a, b) => getAwardPrestige(b) - getAwardPrestige(a))
+      .slice(0, 3)
+      .map((a) => awardLabelShort(a));
+  }, [venue]);
 }
