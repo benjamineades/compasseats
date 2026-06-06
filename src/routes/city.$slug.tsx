@@ -236,19 +236,21 @@ function CityPage() {
         back={{ to: "/" }}
       />
 
-      <nav
-        className="mx-auto max-w-5xl px-6 pt-5 text-xs"
-        style={{ color: INK_MUTED }}
-        aria-label="Breadcrumb"
-      >
-        <Link to="/" style={{ color: BRONZE }} className="hover:underline">
-          Home
-        </Link>
-        <span className="mx-1.5">›</span>
-        <span>{city.country}</span>
-        <span className="mx-1.5">›</span>
-        <span>{city.display}</span>
-      </nav>
+      <div style={{ backgroundColor: INK_3 }}>
+        <nav
+          className="mx-auto max-w-5xl px-6 pt-5 text-xs"
+          style={{ color: "#E7DFCC" }}
+          aria-label="Breadcrumb"
+        >
+          <Link to="/" style={{ color: "#D8BE8A" }} className="hover:underline">
+            Home
+          </Link>
+          <span className="mx-1.5" style={{ color: "#E7DFCC" }}>›</span>
+          <span>{city.country}</span>
+          <span className="mx-1.5" style={{ color: "#E7DFCC" }}>›</span>
+          <span>{city.display}</span>
+        </nav>
+      </div>
 
       <CitySpotlight city={city} venues={sortedVenues} />
 
