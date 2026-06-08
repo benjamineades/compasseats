@@ -237,6 +237,7 @@ export const SheetRowSchema = z.object({
   cuisine_tags: z.string().optional().default(""), // comma-separated
   blurb_short: z.string().optional().default(""),
   blurb_long: z.string().optional().default(""),
+  chef: z.string().optional().default(""),
   awards_json: z.string().optional().default(""), // JSON array
   photo_url: z.string().optional().default(""),
   status: z.string().optional().default("active"),
