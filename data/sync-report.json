@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-06-09T16:15:35.893Z",
+  "venue_count": 11032,
+  "city_count": 3255,
+  "active_venue_count": 10684,
+  "sample": [
+    {
+      "slug": "piazza-duomo",
+      "city_slug": "alba",
+      "name": "Piazza Duomo",
+      "blurb_long_head": "Up the stair, past a Francesco Clemente fresco, Chef Enrico Crippa builds menus "
+    },
+    {
+      "slug": "le-clos-des-sens",
+      "city_slug": "annecy",
+      "name": "Le Clos Des Sens",
+      "blurb_long_head": "Annecy's alpine elegance finds its culinary match here, where three Michelin sta"
+    },
+    {
+      "slug": "zilte",
+      "city_slug": "antwerp",
+      "name": "Zilte",
+      "blurb_long_head": "Antwerp's most ambitious table holds three Michelin stars and a spot on the glob"
+    },
+    {
+      "slug": "casa-marcial",
+      "city_slug": "arriondas",
+      "name": "Casa Marcial",
+      "blurb_long_head": "Creative cooking in Arriondas reaches rare heights here, backed by three Micheli"
+    },
+    {
+      "slug": "moor-hall-restaurant-with-rooms",
+      "city_slug": "aughton",
+      "name": "Moor Hall Restaurant with Rooms",
+      "blurb_long_head": "Modern British cooking at its most accomplished, with three Michelin stars and g"
+    }
+  ],
+  "spot_checks": {
+    "restaurant-mirazur": {
+      "found": true,
+      "blurb_long_head": "Tucked onto the coast right where France meets Italy, Mirazur has the kind of Me"
+    },
+    "le-bernardin": {
+      "found": true,
+      "blurb_long_head": "Nearly everything here is in service of balance — between simplicity and refinem"
+    }
+  }
+}
