@@ -18,15 +18,6 @@
     "venue_count": 3
   },
   {
-    "slug": "aakirkeby",
-    "display": "Aakirkeby",
-    "country": "Denmark",
-    "country_code": "DK",
-    "lat": 55.004554,
-    "lng": 14.968984,
-    "venue_count": 1
-  },
-  {
     "slug": "aalborg",
     "display": "Aalborg",
     "country": "Denmark",
@@ -492,15 +483,6 @@
     "country_code": "ES",
     "lat": 40.249077,
     "lng": 0.284856,
-    "venue_count": 1
-  },
-  {
-    "slug": "alcudia",
-    "display": "Alcúdia",
-    "country": "Spain",
-    "country_code": "ES",
-    "lat": 39.83408,
-    "lng": 3.118141,
     "venue_count": 1
   },
   {
@@ -1107,15 +1089,6 @@
     "venue_count": 3
   },
   {
-    "slug": "apatamonasterio",
-    "display": "Apatamonasterio",
-    "country": "Spain",
-    "country_code": "ES",
-    "lat": 43.115872,
-    "lng": -2.598469,
-    "venue_count": 1
-  },
-  {
     "slug": "apeldoorn",
     "display": "Apeldoorn",
     "country": "Netherlands",
@@ -1534,9 +1507,9 @@
     "display": "Atxondo",
     "country": "Spain",
     "country_code": "ES",
-    "lat": 43.115184,
-    "lng": -2.600455,
-    "venue_count": 2
+    "lat": 43.115872,
+    "lng": -2.598469,
+    "venue_count": 1
   },
   {
     "slug": "aubenas",
@@ -1750,9 +1723,9 @@
     "display": "Axpe",
     "country": "Spain",
     "country_code": "ES",
-    "lat": 43.115413,
-    "lng": -2.599793,
-    "venue_count": 3
+    "lat": 43.115184,
+    "lng": -2.600455,
+    "venue_count": 2
   },
   {
     "slug": "ayora",
@@ -1879,15 +1852,6 @@
     "lat": 48.457488,
     "lng": 8.250923,
     "venue_count": 2
-  },
-  {
-    "slug": "bad-peterstal-griesbach",
-    "display": "Bad Peterstal-Griesbach",
-    "country": "Germany",
-    "country_code": "DE",
-    "lat": 48.457407,
-    "lng": 8.250836,
-    "venue_count": 1
   },
   {
     "slug": "bad-ragaz",
@@ -2358,15 +2322,6 @@
     "venue_count": 1
   },
   {
-    "slug": "barranco",
-    "display": "Barranco",
-    "country": "Peru",
-    "country_code": "PE",
-    "lat": -12.150867,
-    "lng": -77.021999,
-    "venue_count": 4
-  },
-  {
     "slug": "barranquilla",
     "display": "Barranquilla",
     "country": "Colombia",
@@ -2713,9 +2668,9 @@
     "display": "Beograd",
     "country": "Serbia",
     "country_code": "RS",
-    "lat": 44.8156,
-    "lng": 20.45134,
-    "venue_count": 2
+    "lat": 44.813291,
+    "lng": 20.45198,
+    "venue_count": 1
   },
   {
     "slug": "berchtesgaden",
@@ -3964,9 +3919,9 @@
     "display": "Brugge",
     "country": "Belgium",
     "country_code": "BE",
-    "lat": 51.209311,
-    "lng": 3.235994,
-    "venue_count": 7
+    "lat": 51.209598,
+    "lng": 3.228944,
+    "venue_count": 6
   },
   {
     "slug": "brunico",
@@ -4036,9 +3991,9 @@
     "display": "Bruxelles",
     "country": "Belgium",
     "country_code": "BE",
-    "lat": 50.822899,
-    "lng": 4.359771,
-    "venue_count": 5
+    "lat": 50.792069,
+    "lng": 4.382575,
+    "venue_count": 2
   },
   {
     "slug": "bruz",
@@ -4279,9 +4234,9 @@
     "display": "Cadiz",
     "country": "Spain",
     "country_code": "ES",
-    "lat": 36.588898,
-    "lng": -6.23578,
-    "venue_count": 4
+    "lat": 36.584151,
+    "lng": -6.242236,
+    "venue_count": 3
   },
   {
     "slug": "cadzand",
@@ -4851,15 +4806,6 @@
     "venue_count": 2
   },
   {
-    "slug": "carmel",
-    "display": "Carmel",
-    "country": "United States",
-    "country_code": "US",
-    "lat": 36.55413,
-    "lng": -121.924218,
-    "venue_count": 1
-  },
-  {
     "slug": "carmel-by-the-sea",
     "display": "Carmel by the Sea",
     "country": "United States",
@@ -4948,15 +4894,6 @@
     "lat": 19.484012,
     "lng": -50.694351,
     "venue_count": 3
-  },
-  {
-    "slug": "cartagena-de-indias",
-    "display": "Cartagena de Indias",
-    "country": "Colombia",
-    "country_code": "CO",
-    "lat": 10.423679,
-    "lng": -75.54964,
-    "venue_count": 1
   },
   {
     "slug": "cartes",
@@ -5067,15 +5004,6 @@
     "venue_count": 1
   },
   {
-    "slug": "castel-del-sangro",
-    "display": "Castel del Sangro",
-    "country": "Italy",
-    "country_code": "IT",
-    "lat": 41.77999,
-    "lng": 14.094598,
-    "venue_count": 1
-  },
-  {
     "slug": "castel-di-sangro",
     "display": "Castel di Sangro",
     "country": "Italy",
@@ -5128,15 +5056,6 @@
     "lat": 37.931556,
     "lng": 14.087808,
     "venue_count": 2
-  },
-  {
-    "slug": "castellamare-di-stabia",
-    "display": "Castellamare di Stabia",
-    "country": "Italy",
-    "country_code": "IT",
-    "lat": 40.70225,
-    "lng": 14.483099,
-    "venue_count": 1
   },
   {
     "slug": "castellammare-di-stabia",
@@ -5593,9 +5512,9 @@
     "display": "Changzhou",
     "country": "China",
     "country_code": "CN",
-    "lat": 30.865169,
-    "lng": 97.75404,
-    "venue_count": 9
+    "lat": 30.95183,
+    "lng": 94.952879,
+    "venue_count": 8
   },
   {
     "slug": "chantilly",
@@ -7398,15 +7317,6 @@
     "venue_count": 2
   },
   {
-    "slug": "donostia",
-    "display": "Donostia",
-    "country": "Spain",
-    "country_code": "ES",
-    "lat": 43.321703,
-    "lng": -1.97999,
-    "venue_count": 1
-  },
-  {
     "slug": "donostia-san-sebastian",
     "display": "Donostia / San Sebastián",
     "country": "Spain",
@@ -7564,18 +7474,9 @@
     "display": "Dublin",
     "country": "Ireland",
     "country_code": "IE",
-    "lat": 53.345186,
-    "lng": -6.266063,
-    "venue_count": 5
-  },
-  {
-    "slug": "dublin-2",
-    "display": "Dublin 2",
-    "country": "Ireland",
-    "country_code": "IE",
-    "lat": 53.3384,
-    "lng": -6.253027,
-    "venue_count": 1
+    "lat": 53.346153,
+    "lng": -6.264379,
+    "venue_count": 3
   },
   {
     "slug": "dublin-city",
@@ -9004,9 +8905,9 @@
     "display": "Frankfurt",
     "country": "Germany",
     "country_code": "DE",
-    "lat": 50.117249,
-    "lng": 8.66888,
-    "venue_count": 2
+    "lat": 50.115988,
+    "lng": 8.675802,
+    "venue_count": 0
   },
   {
     "slug": "frankfurt-on-the-main",
@@ -9087,15 +8988,6 @@
     "country_code": "DE",
     "lat": 48.170833,
     "lng": 7.891389,
-    "venue_count": 1
-  },
-  {
-    "slug": "freiburg",
-    "display": "Freiburg",
-    "country": "Germany",
-    "country_code": "DE",
-    "lat": 48.006675,
-    "lng": 7.864903,
     "venue_count": 1
   },
   {
@@ -9792,15 +9684,6 @@
     "venue_count": 1
   },
   {
-    "slug": "gipuzkoa",
-    "display": "Gipuzkoa",
-    "country": "Spain",
-    "country_code": "ES",
-    "lat": 43.272404,
-    "lng": -1.917212,
-    "venue_count": 1
-  },
-  {
     "slug": "girona",
     "display": "Girona",
     "country": "Spain",
@@ -9841,9 +9724,9 @@
     "display": "Glasgow",
     "country": "United Kingdom",
     "country_code": "GB",
-    "lat": 55.871067,
-    "lng": -4.286875,
-    "venue_count": 2
+    "lat": 55.864674,
+    "lng": -4.284431,
+    "venue_count": 1
   },
   {
     "slug": "glasgow-city",
@@ -9976,9 +9859,9 @@
     "display": "Gothenberg",
     "country": "Sweden",
     "country_code": "SE",
-    "lat": 57.702856,
-    "lng": 11.948643,
-    "venue_count": 2
+    "lat": 57.706308,
+    "lng": 11.962217,
+    "venue_count": 1
   },
   {
     "slug": "gothenburg",
@@ -10282,9 +10165,9 @@
     "display": "Guadalupe",
     "country": "Mexico",
     "country_code": "MX",
-    "lat": 29.515693,
-    "lng": -113.115883,
-    "venue_count": 5
+    "lat": 28.861937,
+    "lng": -112.263362,
+    "venue_count": 4
   },
   {
     "slug": "guangzhou",
@@ -10323,15 +10206,6 @@
     "venue_count": 2
   },
   {
-    "slug": "guetaria",
-    "display": "Guetaria",
-    "country": "Spain",
-    "country_code": "ES",
-    "lat": 43.303045,
-    "lng": -2.204978,
-    "venue_count": 1
-  },
-  {
     "slug": "guethary",
     "display": "Guéthary",
     "country": "France",
@@ -10343,15 +10217,6 @@
   {
     "slug": "guia-de-isora",
     "display": "Guía de Isora",
-    "country": "Spain",
-    "country_code": "ES",
-    "lat": 28.171166,
-    "lng": -16.799506,
-    "venue_count": 1
-  },
-  {
-    "slug": "guia-de-isora-tenerife",
-    "display": "Guia de Isora Tenerife",
     "country": "Spain",
     "country_code": "ES",
     "lat": 28.171166,
@@ -10600,15 +10465,6 @@
     "lat": 51.403,
     "lng": 9.715345,
     "venue_count": 1
-  },
-  {
-    "slug": "hannover",
-    "display": "Hannover",
-    "country": "Germany",
-    "country_code": "DE",
-    "lat": 52.370157,
-    "lng": 9.747249,
-    "venue_count": 2
   },
   {
     "slug": "hanoi",
@@ -11265,7 +11121,7 @@
     "country_code": "SI",
     "lat": 46.028402,
     "lng": 14.221473,
-    "venue_count": 2
+    "venue_count": 1
   },
   {
     "slug": "horn-bad-meinberg",
@@ -11848,9 +11704,9 @@
     "display": "Izmir",
     "country": "Turkey",
     "country_code": "TR",
-    "lat": 38.350318,
-    "lng": 26.923299,
-    "venue_count": 11
+    "lat": 38.371997,
+    "lng": 26.988696,
+    "venue_count": 8
   },
   {
     "slug": "jackson",
@@ -12514,9 +12370,9 @@
     "display": "Knokke-Heist",
     "country": "Belgium",
     "country_code": "BE",
-    "lat": 51.340576,
-    "lng": 3.265794,
-    "venue_count": 2
+    "lat": 51.33943,
+    "lng": 3.288024,
+    "venue_count": 1
   },
   {
     "slug": "knowstone",
@@ -12618,15 +12474,6 @@
     "venue_count": 1
   },
   {
-    "slug": "konstanz",
-    "display": "Konstanz",
-    "country": "Germany",
-    "country_code": "DE",
-    "lat": 47.667335,
-    "lng": 9.187864,
-    "venue_count": 1
-  },
-  {
     "slug": "kontich",
     "display": "Kontich",
     "country": "Belgium",
@@ -12723,15 +12570,6 @@
     "country_code": "NL",
     "lat": 51.457078,
     "lng": 4.022569,
-    "venue_count": 1
-  },
-  {
-    "slug": "kruisem",
-    "display": "Kruisem",
-    "country": "Belgium",
-    "country_code": "BE",
-    "lat": 50.903667,
-    "lng": 3.509657,
     "venue_count": 1
   },
   {
@@ -13536,15 +13374,6 @@
     "venue_count": 39
   },
   {
-    "slug": "lasarte",
-    "display": "Lasarte",
-    "country": "Spain",
-    "country_code": "ES",
-    "lat": 43.26679,
-    "lng": -2.015529,
-    "venue_count": 1
-  },
-  {
     "slug": "lasarte-oria",
     "display": "Lasarte-Oria",
     "country": "Spain",
@@ -13824,15 +13653,6 @@
     "venue_count": 1
   },
   {
-    "slug": "lech",
-    "display": "Lech",
-    "country": "Austria",
-    "country_code": "AT",
-    "lat": 47.20899,
-    "lng": 10.123977,
-    "venue_count": 2
-  },
-  {
     "slug": "lech-am-arlberg",
     "display": "Lech am Arlberg",
     "country": "Austria",
@@ -14001,15 +13821,6 @@
     "country_code": "ES",
     "lat": 43.011243,
     "lng": -1.902673,
-    "venue_count": 1
-  },
-  {
-    "slug": "lennik",
-    "display": "Lennik",
-    "country": "Belgium",
-    "country_code": "BE",
-    "lat": 50.805522,
-    "lng": 4.155446,
     "venue_count": 1
   },
   {
@@ -14895,15 +14706,6 @@
     "venue_count": 6
   },
   {
-    "slug": "luzern",
-    "display": "Luzern",
-    "country": "Switzerland",
-    "country_code": "CH",
-    "lat": 47.055235,
-    "lng": 8.319756,
-    "venue_count": 1
-  },
-  {
     "slug": "lympstone",
     "display": "Lympstone",
     "country": "United Kingdom",
@@ -14989,9 +14791,9 @@
     "display": "Macao",
     "country": "China",
     "country_code": "CN",
-    "lat": 22.167565,
-    "lng": 113.589546,
-    "venue_count": 19
+    "lat": 22.186183,
+    "lng": 113.641892,
+    "venue_count": 6
   },
   {
     "slug": "macau",
@@ -15133,17 +14935,8 @@
     "display": "Makati",
     "country": "Philippines",
     "country_code": "PH",
-    "lat": 14.548394,
-    "lng": 121.029208,
-    "venue_count": 4
-  },
-  {
-    "slug": "makati-city",
-    "display": "Makati City",
-    "country": "Philippines",
-    "country_code": "PH",
-    "lat": 14.566884,
-    "lng": 121.007948,
+    "lat": 14.531876,
+    "lng": 121.022728,
     "venue_count": 1
   },
   {
@@ -15180,24 +14973,6 @@
     "country_code": "IT",
     "lat": 45.762422,
     "lng": 10.807989,
-    "venue_count": 1
-  },
-  {
-    "slug": "malfa",
-    "display": "Malfa",
-    "country": "Italy",
-    "country_code": "IT",
-    "lat": 57.675369,
-    "lng": 12.179004,
-    "venue_count": 1
-  },
-  {
-    "slug": "malfa-salina",
-    "display": "Malfa Salina",
-    "country": "Italy",
-    "country_code": "IT",
-    "lat": 57.675369,
-    "lng": 12.179004,
     "venue_count": 1
   },
   {
@@ -15340,9 +15115,9 @@
     "display": "Manhattan",
     "country": "United States",
     "country_code": "US",
-    "lat": 40.830675,
-    "lng": -72.845379,
-    "venue_count": 36
+    "lat": 40.559375,
+    "lng": -75.631303,
+    "venue_count": 25
   },
   {
     "slug": "manigod",
@@ -15358,9 +15133,9 @@
     "display": "Manila",
     "country": "Philippines",
     "country_code": "PH",
-    "lat": 14.553444,
-    "lng": 121.034568,
-    "venue_count": 10
+    "lat": 14.558934,
+    "lng": 121.037527,
+    "venue_count": 8
   },
   {
     "slug": "manila-metro-manila",
@@ -15376,9 +15151,9 @@
     "display": "Manilla",
     "country": "Philippines",
     "country_code": "PH",
-    "lat": 14.552908,
-    "lng": 121.034553,
-    "venue_count": 4
+    "lat": 14.551383,
+    "lng": 121.029157,
+    "venue_count": 3
   },
   {
     "slug": "mannheim",
@@ -15691,9 +15466,9 @@
     "display": "Marrakesh",
     "country": "Morocco",
     "country_code": "MA",
-    "lat": 31.625829,
-    "lng": -7.998457,
-    "venue_count": 3
+    "lat": 31.626108,
+    "lng": -7.998582,
+    "venue_count": 2
   },
   {
     "slug": "marseille",
@@ -16110,15 +15885,6 @@
     "venue_count": 5
   },
   {
-    "slug": "metro-manila",
-    "display": "Metro Manila",
-    "country": "Philippines",
-    "country_code": "PH",
-    "lat": 14.559011,
-    "lng": 121.056139,
-    "venue_count": 1
-  },
-  {
     "slug": "metz",
     "display": "Metz",
     "country": "France",
@@ -16159,9 +15925,9 @@
     "display": "Miami",
     "country": "United States",
     "country_code": "US",
-    "lat": 26.241344,
-    "lng": -64.795224,
-    "venue_count": 46
+    "lat": 26.250443,
+    "lng": -64.475825,
+    "venue_count": 45
   },
   {
     "slug": "miami-beach",
@@ -16288,15 +16054,6 @@
     "lat": 45.926948,
     "lng": -79.20484,
     "venue_count": 6
-  },
-  {
-    "slug": "miraflores",
-    "display": "Miraflores",
-    "country": "Peru",
-    "country_code": "PE",
-    "lat": -12.117652,
-    "lng": -77.039888,
-    "venue_count": 2
   },
   {
     "slug": "miranda-de-ebro",
@@ -16749,15 +16506,6 @@
     "venue_count": 2
   },
   {
-    "slug": "montemor-o-novo-alentejo",
-    "display": "Montemor-o-Novo (Alentejo)",
-    "country": "Portugal",
-    "country_code": "PT",
-    "lat": 38.645462,
-    "lng": -8.246568,
-    "venue_count": 1
-  },
-  {
     "slug": "montepagano",
     "display": "Montepagano",
     "country": "Italy",
@@ -16915,9 +16663,9 @@
     "display": "Montreuil",
     "country": "France",
     "country_code": "FR",
-    "lat": 49.667484,
-    "lng": 2.093853,
-    "venue_count": 2
+    "lat": 48.863906,
+    "lng": 2.433255,
+    "venue_count": 1
   },
   {
     "slug": "montreux",
@@ -17762,18 +17510,18 @@
     "display": "New York",
     "country": "United States",
     "country_code": "US",
-    "lat": 40.606085,
-    "lng": -72.327008,
-    "venue_count": 272
+    "lat": 40.603106,
+    "lng": -72.291269,
+    "venue_count": 266
   },
   {
     "slug": "new-york-city",
     "display": "New York City",
     "country": "United States",
     "country_code": "US",
-    "lat": 39.859119,
-    "lng": -74.353344,
-    "venue_count": 16
+    "lat": 39.495813,
+    "lng": -74.503964,
+    "venue_count": 11
   },
   {
     "slug": "newberg",
@@ -17798,18 +17546,18 @@
     "display": "Newcastle",
     "country": "United Kingdom",
     "country_code": "GB",
-    "lat": 53.446459,
-    "lng": -0.69981,
-    "venue_count": 4
+    "lat": 48.84018,
+    "lng": 2.345809,
+    "venue_count": 1
   },
   {
     "slug": "newcastle-upon-tyne",
     "display": "Newcastle Upon Tyne",
     "country": "United Kingdom",
     "country_code": "GB",
-    "lat": 54.978938,
-    "lng": -1.687422,
-    "venue_count": 4
+    "lat": 54.969082,
+    "lng": -1.607675,
+    "venue_count": 3
   },
   {
     "slug": "newlyn",
@@ -18356,9 +18104,9 @@
     "display": "Oaxaca de Juárez",
     "country": "Mexico",
     "country_code": "MX",
-    "lat": 17.065116,
-    "lng": -96.726865,
-    "venue_count": 2
+    "lat": 17.065065,
+    "lng": -96.729158,
+    "venue_count": 1
   },
   {
     "slug": "oberboihingen",
@@ -19162,15 +18910,6 @@
     "venue_count": 4
   },
   {
-    "slug": "padua",
-    "display": "Padua",
-    "country": "Italy",
-    "country_code": "IT",
-    "lat": 45.421743,
-    "lng": 11.809634,
-    "venue_count": 1
-  },
-  {
     "slug": "paestum",
     "display": "Paestum",
     "country": "Italy",
@@ -19675,15 +19414,6 @@
     "venue_count": 1
   },
   {
-    "slug": "peyre-en-aubrac",
-    "display": "Peyre en Aubrac",
-    "country": "France",
-    "country_code": "FR",
-    "lat": 44.716587,
-    "lng": 3.287686,
-    "venue_count": 1
-  },
-  {
     "slug": "pezenas",
     "display": "Pézenas",
     "country": "France",
@@ -20111,9 +19841,9 @@
     "display": "Poio",
     "country": "Spain",
     "country_code": "ES",
-    "lat": 42.421341,
-    "lng": -8.711733,
-    "venue_count": 2
+    "lat": 42.409312,
+    "lng": -8.754456,
+    "venue_count": 1
   },
   {
     "slug": "polesine-parmense",
@@ -20773,15 +20503,6 @@
     "venue_count": 1
   },
   {
-    "slug": "puerta-de-santa-maria",
-    "display": "Puerta de Santa Maria",
-    "country": "Spain",
-    "country_code": "ES",
-    "lat": 36.603142,
-    "lng": -6.216411,
-    "venue_count": 1
-  },
-  {
     "slug": "puerto-de-la-cruz",
     "display": "Puerto de la Cruz",
     "country": "Spain",
@@ -21383,24 +21104,6 @@
     "lat": 21.920583,
     "lng": 6.722083,
     "venue_count": 3
-  },
-  {
-    "slug": "rickenbach",
-    "display": "Rickenbach",
-    "country": "Switzerland",
-    "country_code": "CH",
-    "lat": 47.017243,
-    "lng": 8.665411,
-    "venue_count": 1
-  },
-  {
-    "slug": "rickenbach-sz",
-    "display": "Rickenbach SZ",
-    "country": "Switzerland",
-    "country_code": "CH",
-    "lat": 47.017243,
-    "lng": 8.665411,
-    "venue_count": 1
   },
   {
     "slug": "ried-muotathal",
@@ -23378,9 +23081,9 @@
     "display": "San Sebastián",
     "country": "Spain",
     "country_code": "ES",
-    "lat": 43.302295,
-    "lng": -1.982049,
-    "venue_count": 6
+    "lat": 43.316982,
+    "lng": -1.990814,
+    "venue_count": 3
   },
   {
     "slug": "san-teodoro",
@@ -23450,9 +23153,9 @@
     "display": "Sankt Anton am Arlberg",
     "country": "Austria",
     "country_code": "AT",
-    "lat": 47.136818,
-    "lng": 10.275028,
-    "venue_count": 2
+    "lat": 47.135902,
+    "lng": 10.274333,
+    "venue_count": 1
   },
   {
     "slug": "sankt-gallen",
@@ -23923,15 +23626,6 @@
     "venue_count": 2
   },
   {
-    "slug": "sarmeola-di-rubano",
-    "display": "Sarmeola di Rubano",
-    "country": "Italy",
-    "country_code": "IT",
-    "lat": 45.421743,
-    "lng": 11.809634,
-    "venue_count": 1
-  },
-  {
     "slug": "saronno",
     "display": "Saronno",
     "country": "Italy",
@@ -24136,15 +23830,6 @@
     "country_code": "DE",
     "lat": 51.096096,
     "lng": 14.42957,
-    "venue_count": 1
-  },
-  {
-    "slug": "schloss-bensberg",
-    "display": "Schloss Bensberg",
-    "country": "Germany",
-    "country_code": "DE",
-    "lat": 50.966264,
-    "lng": 7.16069,
     "venue_count": 1
   },
   {
@@ -24622,7 +24307,7 @@
     "country_code": "CN",
     "lat": 31.696207,
     "lng": 109.296724,
-    "venue_count": 112
+    "venue_count": 114
   },
   {
     "slug": "shantou",
@@ -24787,15 +24472,6 @@
     "venue_count": 1
   },
   {
-    "slug": "simrisham",
-    "display": "Simrisham",
-    "country": "Sweden",
-    "country_code": "SE",
-    "lat": 55.496194,
-    "lng": 14.313004,
-    "venue_count": 1
-  },
-  {
     "slug": "simrishamn",
     "display": "Simrishamn",
     "country": "Sweden",
@@ -24955,15 +24631,6 @@
     "country_code": "GB",
     "lat": 54.71068,
     "lng": -2.875363,
-    "venue_count": 1
-  },
-  {
-    "slug": "skillinge",
-    "display": "Skillinge",
-    "country": "Sweden",
-    "country_code": "SE",
-    "lat": 55.496194,
-    "lng": 14.313004,
     "venue_count": 1
   },
   {
@@ -25300,15 +24967,6 @@
     "venue_count": 1
   },
   {
-    "slug": "st-gallen",
-    "display": "St. Gallen",
-    "country": "Switzerland",
-    "country_code": "CH",
-    "lat": 47.421466,
-    "lng": 9.375454,
-    "venue_count": 1
-  },
-  {
     "slug": "st-julian-s",
     "display": "St Julian's",
     "country": "Malta",
@@ -25432,15 +25090,6 @@
     "country_code": "SI",
     "lat": 46.283577,
     "lng": 13.89015,
-    "venue_count": 1
-  },
-  {
-    "slug": "starnberg",
-    "display": "Starnberg",
-    "country": "Germany",
-    "country_code": "DE",
-    "lat": 36.55413,
-    "lng": -121.924218,
     "venue_count": 1
   },
   {
@@ -25741,15 +25390,6 @@
     "venue_count": 1
   },
   {
-    "slug": "sutp-nar-mevkii-urla",
-    "display": "Sütpınarı Mevkii Urla",
-    "country": "Turkey",
-    "country_code": "TR",
-    "lat": 38.34473,
-    "lng": 26.761013,
-    "venue_count": 1
-  },
-  {
     "slug": "suzhou",
     "display": "Suzhou",
     "country": "China",
@@ -25891,15 +25531,6 @@
     "country_code": "ES",
     "lat": 39.956584,
     "lng": -4.832043,
-    "venue_count": 1
-  },
-  {
-    "slug": "tallin",
-    "display": "Tallin",
-    "country": "Estonia",
-    "country_code": "EE",
-    "lat": 59.494867,
-    "lng": 24.826693,
     "venue_count": 1
   },
   {
@@ -26114,9 +25745,9 @@
     "display": "Tel Aviv",
     "country": "Israel",
     "country_code": "IL",
-    "lat": 32.068844,
-    "lng": 34.775576,
-    "venue_count": 14
+    "lat": 32.069208,
+    "lng": 34.77605,
+    "venue_count": 13
   },
   {
     "slug": "tel-aviv-jaffo",
@@ -26135,15 +25766,6 @@
     "lat": 41.213907,
     "lng": 14.515964,
     "venue_count": 2
-  },
-  {
-    "slug": "telese-terme",
-    "display": "Telese Terme",
-    "country": "Italy",
-    "country_code": "IT",
-    "lat": 41.202984,
-    "lng": 14.499323,
-    "venue_count": 1
   },
   {
     "slug": "telfs",
@@ -26472,15 +26094,6 @@
   {
     "slug": "tirol",
     "display": "Tirol",
-    "country": "Italy",
-    "country_code": "IT",
-    "lat": 46.686253,
-    "lng": 11.155794,
-    "venue_count": 1
-  },
-  {
-    "slug": "tirolo",
-    "display": "Tirolo",
     "country": "Italy",
     "country_code": "IT",
     "lat": 46.686253,
@@ -27397,15 +27010,6 @@
     "venue_count": 1
   },
   {
-    "slug": "vaihingen-an-der-enz-rosswag",
-    "display": "Vaihingen an der Enz Rosswag",
-    "country": "Germany",
-    "country_code": "DE",
-    "lat": 48.936466,
-    "lng": 8.916673,
-    "venue_count": 1
-  },
-  {
     "slug": "vailly",
     "display": "Vailly",
     "country": "France",
@@ -27514,15 +27118,6 @@
     "venue_count": 14
   },
   {
-    "slug": "valenica",
-    "display": "Valenica",
-    "country": "Spain",
-    "country_code": "ES",
-    "lat": 39.469639,
-    "lng": -0.374525,
-    "venue_count": 1
-  },
-  {
     "slug": "vall-d-alba",
     "display": "Vall d'Alba",
     "country": "Spain",
@@ -27554,9 +27149,9 @@
     "display": "Valle de Guadalupe",
     "country": "Mexico",
     "country_code": "MX",
-    "lat": 32.071362,
-    "lng": -116.596839,
-    "venue_count": 3
+    "lat": 32.073878,
+    "lng": -116.5948,
+    "venue_count": 2
   },
   {
     "slug": "valletta",
@@ -28234,15 +27829,6 @@
     "venue_count": 0
   },
   {
-    "slug": "vitacura",
-    "display": "Vitacura",
-    "country": "Chile",
-    "country_code": "CL",
-    "lat": -33.382497,
-    "lng": -70.584028,
-    "venue_count": 1
-  },
-  {
     "slug": "vitre",
     "display": "Vitré",
     "country": "France",
@@ -28389,15 +27975,6 @@
   {
     "slug": "vulcanello",
     "display": "Vulcanello",
-    "country": "Italy",
-    "country_code": "IT",
-    "lat": 38.430358,
-    "lng": 14.95619,
-    "venue_count": 2
-  },
-  {
-    "slug": "vulcano-island",
-    "display": "Vulcano Island",
     "country": "Italy",
     "country_code": "IT",
     "lat": 38.430358,
@@ -28634,18 +28211,18 @@
     "display": "Washington DC",
     "country": "United States",
     "country_code": "US",
-    "lat": 38.892709,
-    "lng": -77.069767,
-    "venue_count": 25
+    "lat": 38.899252,
+    "lng": -77.033005,
+    "venue_count": 17
   },
   {
     "slug": "washington-dc-metro",
     "display": "Washington, DC Metro",
     "country": "United States",
     "country_code": "US",
-    "lat": 38.902743,
-    "lng": -77.027779,
-    "venue_count": 12
+    "lat": 38.903794,
+    "lng": -77.036121,
+    "venue_count": 8
   },
   {
     "slug": "wasserburg-am-inn",
@@ -29120,9 +28697,9 @@
     "display": "Windermere",
     "country": "United Kingdom",
     "country_code": "GB",
-    "lat": 54.391546,
-    "lng": -2.925696,
-    "venue_count": 3
+    "lat": 54.409596,
+    "lng": -2.948207,
+    "venue_count": 2
   },
   {
     "slug": "windorf",
