@@ -423,10 +423,41 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
     ),
   ]);
 
+  // TEMPORARY: post-publish auditable summary. Remove once we've confirmed
+  // the build-time sync is doing what we expect.
+  const sample = venues.slice(0, 5).map((v) => ({
+    slug: v.slug,
+    city_slug: v.city_slug,
+    name: v.name,
+    blurb_long_head: (v.blurb_long ?? "").slice(0, 80),
+  }));
+  const mirazur = venues.find((v) => v.slug === "restaurant-mirazur");
+  const bernardin = venues.find((v) => v.slug === "le-bernardin");
+  const report = {
+    generated_at: new Date().toISOString(),
+    venue_count: venues.length,
+    city_count: cities.length,
+    active_venue_count: index.length,
+    sample,
+    spot_checks: {
+      "restaurant-mirazur": mirazur
+        ? { found: true, blurb_long_head: (mirazur.blurb_long ?? "").slice(0, 80) }
+        : { found: false },
+      "le-bernardin": bernardin
+        ? { found: true, blurb_long_head: (bernardin.blurb_long ?? "").slice(0, 80) }
+        : { found: false },
+    },
+  };
+  await writeFile(
+    resolve(DATA_DIR, "sync-report.json"),
+    JSON.stringify(report, null, 2),
+  );
+
   console.log("\nWrote:");
   console.log(`  data/venues.json         ${venues.length} venues`);
   console.log(`  data/cities.json         ${cities.length} cities`);
   console.log(`  data/venues-index.json   ${index.length} active venues`);
+  console.log(`  data/sync-report.json    summary + spot checks`);
   console.log(`\nAward sources registered: ${AWARD_SOURCES.length}`);
 }
 
