@@ -59,7 +59,12 @@ const MICHELIN_STAR_PREFIX: Record<string, string> = {
 function compose(award: Award, name: string): string {
   // Ranked entries: lead with the rank.
   if (typeof award.rank === "number" && award.rank > 0) {
-    return `No. ${award.rank} · ${name}`;
+    const base = `No. ${award.rank} · ${name}`;
+    if (award.year <= new Date().getFullYear() - 2) {
+      const yy = String(award.year).slice(-2);
+      return `${base} ’${yy}`;
+    }
+    return base;
   }
 
   // Michelin: category carries the meaning ("Three Stars", "Bib Gourmand").
