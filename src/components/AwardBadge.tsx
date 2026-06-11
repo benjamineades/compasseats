@@ -52,8 +52,6 @@ export function AwardBadgeRow({
   short?: boolean;
   className?: string;
 }) {
-  // De-dupe by source, keeping the highest-prestige entry per source. Ties
-  // broken by the more recent year.
   const bestBySource = new Map<string, Award>();
   for (const a of venue.awards) {
     const current = bestBySource.get(a.source);
@@ -61,11 +59,13 @@ export function AwardBadgeRow({
       bestBySource.set(a.source, a);
       continue;
     }
-    const challengerScore = getAwardPrestige(a);
-    const incumbentScore = getAwardPrestige(current);
+    // Keep the most recent entry per source; on a year tie, prefer the
+    // better (lower) rank, treating a missing rank as worse than any number.
+    const challengerRank = a.rank ?? Infinity;
+    const incumbentRank = current.rank ?? Infinity;
     if (
-      challengerScore > incumbentScore ||
-      (challengerScore === incumbentScore && a.year > current.year)
+      a.year > current.year ||
+      (a.year === current.year && challengerRank < incumbentRank)
     ) {
       bestBySource.set(a.source, a);
     }
