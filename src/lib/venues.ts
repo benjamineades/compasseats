@@ -141,34 +141,100 @@ export function getVenuesByAward(source: AwardSource): Venue[] {
 /**
  * Numeric prestige score for a single award entry. Higher = more prestigious.
  *
- * Used as a tiebreaker when sorting venues that don't have a numeric rank on
- * a given list (e.g. Bib Gourmand, James Beard semifinalists), and on city
- * pages where venues span many sources. Tiering:
- *   - "global" sources score higher than "regional"
- *   - Michelin + the World's 50 Best families get a hand-picked boost so they
- *     outrank other global sources
- *   - Lower-numbered ranks (rank=1 > rank=50 > rank=200) contribute more
+ * Combines three factors multiplicatively:
+ *   - source weight: hand-tuned per-source importance (Michelin / 50 Best
+ *     Restaurants lead; tier-based fallback for the rest)
+ *   - strength (0–1): derived from numeric rank when present, otherwise
+ *     mapped from the category text (Michelin star levels, Bib, knives,
+ *     La Liste score, etc.) using the same rank formula
+ *   - recency decay: recent awards score full, older ones taper off
+ *     (floored at 0.25) so a current ranking outranks a decade-old one
  */
-export function getAwardPrestige(award: { source: string; rank?: number }): number {
+export function getAwardPrestige(award: {
+  source: string;
+  rank?: number;
+  category?: string;
+  year?: number;
+}): number {
   const src = getAwardSource(award.source);
   if (!src) return 0;
 
-  let score = src.tier === "global" ? 3 : 2;
-
-  // Hand-picked boost: the lists that move the needle culturally.
-  const FLAGSHIP = new Set([
-    "michelin",
-    "worlds-50-best-restaurants",
-    "worlds-50-best-bars",
-  ]);
-  if (FLAGSHIP.has(src.slug)) score += 2;
-
-  // Ranked entries: rank=1 contributes ~1.0, rank=50 ~0.5, rank=200 ~0.0.
-  if (typeof award.rank === "number" && award.rank > 0) {
-    score += Math.max(0, (201 - Math.min(award.rank, 200)) / 200);
+  // Source weight.
+  let weight: number;
+  switch (src.slug) {
+    case "michelin":
+    case "worlds-50-best-restaurants":
+      weight = 1.0;
+      break;
+    case "la-liste":
+      weight = 0.9;
+      break;
+    case "james-beard":
+      weight = 0.85;
+      break;
+    case "worlds-50-best-bars":
+      weight = 0.8;
+      break;
+    case "best-chef-awards":
+      weight = 0.7;
+      break;
+    case "oad":
+    case "spirited-awards":
+      weight = 0.6;
+      break;
+    case "pinnacle-guide":
+      weight = 0.5;
+      break;
+    default:
+      weight = src.tier === "global" ? 0.55 : 0.4;
   }
 
-  return score;
+  // Strength: rank-or-category, normalized to (0, 1].
+  const rankToStrength = (r: number) =>
+    (201 - Math.min(Math.max(r, 1), 200)) / 200;
+
+  let equivalentRank: number;
+  if (typeof award.rank === "number" && award.rank > 0) {
+    equivalentRank = award.rank;
+  } else {
+    const cat = (award.category ?? "").toLowerCase();
+    const categoryMap: Array<[string, number]> = [
+      ["three stars", 1],
+      ["two stars", 8],
+      ["one star", 30],
+      ["bib", 160],
+      ["selected", 200],
+      ["3-knife", 60],
+      ["2-knife", 110],
+      ["1-knife", 150],
+    ];
+    const hit = categoryMap.find(([needle]) => cat.includes(needle));
+    if (hit) {
+      equivalentRank = hit[1];
+    } else if (src.slug === "la-liste") {
+      const m = (award.category ?? "").match(/^\s*(\d+(?:\.\d+)?)/);
+      if (m) {
+        const score = parseFloat(m[1]);
+        equivalentRank = Math.max(1, (100 - score) * 8);
+      } else {
+        equivalentRank = 180;
+      }
+    } else {
+      equivalentRank = 180;
+    }
+  }
+  const strength = rankToStrength(equivalentRank);
+
+  // Recency decay.
+  let recency: number;
+  if (typeof award.year !== "number") {
+    recency = 1.0;
+  } else {
+    const age = new Date().getFullYear() - award.year;
+    recency = age <= 1 ? 1.0 : Math.max(0.25, 1.0 - 0.12 * (age - 1));
+  }
+
+  return weight * strength * recency;
 }
 
 // -------------------------------------------------------------------------
