@@ -321,8 +321,10 @@ export function getVenuePrestige(venue: Venue): number {
 
   const sorted = Array.from(bestBySource.values()).sort((a, b) => b - a);
   let score = 0;
+  const WEIGHTS = [1.0, 0.45, 0.25, 0.15];
   for (let i = 0; i < sorted.length; i++) {
-    score += i === 0 ? sorted[i] : sorted[i] * 0.2;
+    const w = i < WEIGHTS.length ? WEIGHTS[i] : 0.10;
+    score += sorted[i] * w;
   }
 
   if (!isBar) {
