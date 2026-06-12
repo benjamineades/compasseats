@@ -303,20 +303,54 @@ export function getAwardPrestige(
 
 /**
  * Aggregate prestige for a venue. Each award source contributes only
- * its single highest-prestige entry, so a long ranking history on the
- * same list cannot outscore a stronger credential elsewhere.
+ * its single highest-prestige entry, combined with a tapered weighting
+ * so secondary credentials still count. For restaurants, a Michelin-tier
+ * floor dominates the spine: three-stars outrank two-stars outrank
+ * one-stars regardless of résumé length. Former World's #1 restaurants
+ * get a permanent top-tier floor.
  */
 export function getVenuePrestige(venue: {
+  type?: string;
   awards: Array<{ source: string; rank?: number; category?: string; year?: number }>;
 }): number {
+  const isBar = /bar/i.test(venue.type ?? "");
+
   const bestBySource = new Map<string, number>();
   for (const a of venue.awards) {
-    const p = getAwardPrestige(a);
+    const p = getAwardPrestige(a, isBar);
     const cur = bestBySource.get(a.source) ?? 0;
     if (p > cur) bestBySource.set(a.source, p);
   }
-  let score = 0;
-  for (const v of bestBySource.values()) score += v;
+
+  const sorted = Array.from(bestBySource.values()).sort((a, b) => b - a);
+  const WEIGHTS = [1.0, 0.45, 0.25, 0.15];
+  let raw = 0;
+  for (let i = 0; i < sorted.length; i++) {
+    raw += sorted[i] * (i < WEIGHTS.length ? WEIGHTS[i] : 0.10);
+  }
+
+  let score = raw;
+
+  if (!isBar) {
+    // Michelin-tier floor — dominates the restaurant ordering.
+    const michelin = venue.awards.find((a) => a.source === "michelin");
+    const cat = (michelin?.category ?? "").toLowerCase();
+    let floor = 0;
+    if (cat.includes("three star")) floor = 300;
+    else if (cat.includes("two star")) floor = 200;
+    else if (cat.includes("one star")) floor = 100;
+    else if (cat.includes("bib")) floor = 40;
+    score = floor + raw * 0.5;
+
+    // Former World's #1 restaurants — permanent top tier.
+    const everHeldWorldsNumberOne = venue.awards.some(
+      (a) => a.source === "worlds-50-best-restaurants" && a.rank === 1,
+    );
+    if (everHeldWorldsNumberOne) {
+      score = Math.max(score, 400) + raw * 0.05;
+    }
+  }
+
   return score;
 }
 
