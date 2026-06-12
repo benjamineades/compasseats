@@ -139,102 +139,202 @@ export function getVenuesByAward(source: AwardSource): Venue[] {
 // -------------------------------------------------------------------------
 
 /**
- * Numeric prestige score for a single award entry. Higher = more prestigious.
+ * Explicit-tier prestige scoring. Restaurants and bars are scored on
+ * separate scales so their points are comparable within each cohort.
  *
- * Combines three factors multiplicatively:
- *   - source weight: hand-tuned per-source importance (Michelin / 50 Best
- *     Restaurants lead; tier-based fallback for the rest)
- *   - strength (0–1): derived from numeric rank when present, otherwise
- *     mapped from the category text (Michelin star levels, Bib, knives,
- *     La Liste score, etc.) using the same rank formula
- *   - recency decay: recent awards score full, older ones taper off
- *     (floored at 0.25) so a current ranking outranks a decade-old one
+ * - Status credentials (michelin, la-liste, pinnacle-guide) are awarded
+ *   "until withdrawn" — they bypass the rolling window and the recency
+ *   multiplier.
+ * - Annual ranked lists (50 Best, OAD, James Beard, Spirited, etc.) only
+ *   count if award.year is within PRESTIGE_WINDOW_YEARS, and decay with age.
  */
-export function getAwardPrestige(award: {
+const PRESTIGE_WINDOW_YEARS = 5;
+const CURRENT_YEAR = new Date().getFullYear();
+const STATUS_SOURCES = new Set(["michelin", "la-liste", "pinnacle-guide"]);
+
+function recencyMultiplier(year: number | undefined): number {
+  if (typeof year !== "number") return 1.0;
+  const age = CURRENT_YEAR - year;
+  if (age <= 1) return 1.0;
+  return Math.max(0.5, 1 - 0.08 * (age - 1));
+}
+
+function scoreRestaurantAward(award: {
   source: string;
   rank?: number;
   category?: string;
-  year?: number;
 }): number {
-  const src = getAwardSource(award.source);
-  if (!src) return 0;
-
-  // Source weight.
-  let weight: number;
-  switch (src.slug) {
-    case "michelin":
+  const rank = award.rank;
+  const cat = (award.category ?? "").toLowerCase();
+  switch (award.source) {
     case "worlds-50-best-restaurants":
-      weight = 1.0;
-      break;
-    case "la-liste":
-      weight = 0.9;
-      break;
-    case "james-beard":
-      weight = 0.85;
-      break;
-    case "worlds-50-best-bars":
-      weight = 0.8;
-      break;
-    case "best-chef-awards":
-      weight = 0.7;
-      break;
-    case "oad":
-    case "spirited-awards":
-      weight = 0.6;
-      break;
-    case "pinnacle-guide":
-      weight = 0.5;
-      break;
+    case "worlds-50-best-restaurants-51-100": {
+      if (typeof rank !== "number") return 0;
+      if (rank === 1) return 95;
+      if (rank <= 10) return 90 - rank;
+      if (rank <= 50) return 74 - rank * 0.45;
+      return 0;
+    }
+    case "michelin": {
+      if (cat.includes("three star")) return 85;
+      if (cat.includes("two star")) return 68;
+      if (cat.includes("one star")) return 50;
+      if (cat.includes("bib")) return 18;
+      return 0;
+    }
+    case "la-liste": {
+      const m = (award.category ?? "").match(/(\d+(?:\.\d+)?)/);
+      if (!m) return 0;
+      const score = parseFloat(m[1]);
+      if (score >= 99.5) return 83;
+      if (score >= 99) return 67;
+      if (score >= 97) return 52;
+      if (score >= 90) return 34;
+      return score * 0.2;
+    }
+    case "latin-america-50-best-restaurants":
+    case "asia-50-best-restaurants":
+    case "mena-50-best-restaurants":
+    case "north-america-50-best-restaurants":
+    case "africa-50-best-restaurants":
+    case "asia-50-best-restaurants-51-100": {
+      if (typeof rank !== "number") return 0;
+      if (rank <= 10) return 60 - rank;
+      if (rank <= 50) return 44 - rank * 0.3;
+      return 0;
+    }
+    case "james-beard": {
+      if (cat.includes("outstanding restaurant") || cat.includes("outstanding chef")) return 58;
+      if (cat.startsWith("best chef") || cat.includes("best new")) return 42;
+      if (cat.includes("america's classics") || cat.includes("americas classics")) return 28;
+      return 22;
+    }
+    case "best-chef-awards": {
+      if (cat.includes("3-knife")) return 30;
+      if (cat.includes("2-knife")) return 20;
+      if (cat.includes("1-knife")) return 12;
+      return 0;
+    }
+    case "oad": {
+      if (typeof rank !== "number") return 5;
+      if (rank <= 50) return 38 - rank * 0.3;
+      if (rank <= 200) return 22 - rank * 0.05;
+      return 5;
+    }
+    case "101-best-steakhouses": {
+      if (typeof rank !== "number") return 5;
+      return Math.max(5, 30 - rank * 0.2);
+    }
     default:
-      weight = src.tier === "global" ? 0.55 : 0.4;
+      return 0;
+  }
+}
+
+function scoreBarAward(award: {
+  source: string;
+  rank?: number;
+  category?: string;
+}): number {
+  const rank = award.rank;
+  const cat = (award.category ?? "").toLowerCase();
+  switch (award.source) {
+    case "worlds-50-best-bars":
+    case "worlds-50-best-bars-51-100": {
+      if (typeof rank !== "number") return 0;
+      if (rank === 1) return 100;
+      if (rank <= 10) return 92 - rank;
+      if (rank <= 25) return 84 - rank * 0.6;
+      if (rank <= 50) return 70 - rank * 0.5;
+      if (rank <= 100) return 46 - rank * 0.18;
+      return 0;
+    }
+    case "pinnacle-guide": {
+      if (typeof rank === "number") {
+        if (rank <= 3) return 84;
+        if (rank <= 10) return 66;
+      }
+      return 50;
+    }
+    case "spirited-awards": {
+      if (cat.includes("world's best bar") && !cat.includes("international")) return 88;
+      if (cat.includes("best international") || cat.startsWith("world's best")) return 60;
+      if (cat.includes("best new international")) return 54;
+      if (cat.includes("u.s.") || cat.includes("american")) return 38;
+      return 34;
+    }
+    case "north-america-50-best-bars":
+    case "asia-50-best-bars": {
+      if (typeof rank !== "number") return 0;
+      if (rank <= 25) return 60 - rank * 0.5;
+      return 42 - rank * 0.3;
+    }
+    case "north-america-50-best-bars-51-100":
+    case "asia-50-best-bars-51-100": {
+      if (typeof rank !== "number") return 0;
+      return Math.max(8, 38 - rank * 0.2);
+    }
+    default:
+      return 0;
+  }
+}
+
+export function getAwardPrestige(
+  award: {
+    source: string;
+    rank?: number;
+    category?: string;
+    year?: number;
+  },
+  isBar: boolean = false,
+): number {
+  // 5-year window for non-status (annual) awards.
+  const isStatus = STATUS_SOURCES.has(award.source);
+  if (!isStatus && typeof award.year === "number") {
+    if (CURRENT_YEAR - award.year > PRESTIGE_WINDOW_YEARS) return 0;
   }
 
-  // Strength: rank-or-category, normalized to (0, 1].
-  const rankToStrength = (r: number) =>
-    (201 - Math.min(Math.max(r, 1), 200)) / 200;
+  const base = isBar ? scoreBarAward(award) : scoreRestaurantAward(award);
+  if (base <= 0) return 0;
 
-  let equivalentRank: number;
-  if (typeof award.rank === "number" && award.rank > 0) {
-    equivalentRank = award.rank;
-  } else {
-    const cat = (award.category ?? "").toLowerCase();
-    const categoryMap: Array<[string, number]> = [
-      ["three stars", 1],
-      ["two stars", 8],
-      ["one star", 30],
-      ["bib", 160],
-      ["selected", 200],
-      ["3-knife", 60],
-      ["2-knife", 110],
-      ["1-knife", 150],
-    ];
-    const hit = categoryMap.find(([needle]) => cat.includes(needle));
-    if (hit) {
-      equivalentRank = hit[1];
-    } else if (src.slug === "la-liste") {
-      const m = (award.category ?? "").match(/^\s*(\d+(?:\.\d+)?)/);
-      if (m) {
-        const score = parseFloat(m[1]);
-        equivalentRank = Math.max(1, (100 - score) * 8);
-      } else {
-        equivalentRank = 180;
-      }
-    } else {
-      equivalentRank = 180;
+  // Status credentials don't decay.
+  if (isStatus) return base;
+  return base * recencyMultiplier(award.year);
+}
+
+/**
+ * Aggregate prestige for a venue. Keeps the highest score per source,
+ * sums them with full weight on the strongest and 0.20 on the rest.
+ * Restaurants that have ever held World's 50 Best #1 get a permanent
+ * top-tier floor of 200 plus a small share of their current score so
+ * they remain ordered by present-day standing.
+ */
+export function getVenuePrestige(venue: Venue): number {
+  const isBar = /bar/i.test(venue.type);
+
+  const bestBySource = new Map<string, number>();
+  for (const a of venue.awards) {
+    const p = getAwardPrestige(a, isBar);
+    if (p <= 0) continue;
+    const cur = bestBySource.get(a.source) ?? 0;
+    if (p > cur) bestBySource.set(a.source, p);
+  }
+
+  const sorted = Array.from(bestBySource.values()).sort((a, b) => b - a);
+  let score = 0;
+  for (let i = 0; i < sorted.length; i++) {
+    score += i === 0 ? sorted[i] : sorted[i] * 0.2;
+  }
+
+  if (!isBar) {
+    const everWorldNumberOne = venue.awards.some(
+      (a) => a.source === "worlds-50-best-restaurants" && a.rank === 1,
+    );
+    if (everWorldNumberOne) {
+      score = Math.max(score, 200) + score * 0.05;
     }
   }
-  const strength = rankToStrength(equivalentRank);
 
-  // Recency decay.
-  let recency: number;
-  if (typeof award.year !== "number") {
-    recency = 1.0;
-  } else {
-    const age = new Date().getFullYear() - award.year;
-    recency = age <= 1 ? 1.0 : Math.max(0.25, 1.0 - 0.12 * (age - 1));
-  }
-
-  return weight * strength * recency;
+  return score;
 }
 
 // -------------------------------------------------------------------------
