@@ -216,10 +216,10 @@ function scoreRestaurantAward(award: {
       return 0;
     }
     case "oad": {
-      if (typeof rank !== "number") return 5;
+      if (typeof rank !== "number") return 0;
       if (rank <= 50) return 38 - rank * 0.3;
       if (rank <= 200) return 22 - rank * 0.05;
-      return 5;
+      return 0;
     }
     case "101-best-steakhouses": {
       if (typeof rank !== "number") return 5;
