@@ -26,6 +26,7 @@ import {
   getVenuesByCity,
   getAwardSource,
   getAwardPrestige,
+  getVenuePrestige,
 } from "@/lib/venues";
 import type { City, Venue } from "@/lib/schema";
 
@@ -154,8 +155,7 @@ function CityPage() {
   }, [venues]);
 
   const sortedVenues = useMemo(() => {
-    const scoreOf = (v: Venue) =>
-      v.awards.reduce((sum, a) => sum + getAwardPrestige(a), 0);
+    const scoreOf = (v: Venue) => getVenuePrestige(v);
     return [...venues].sort((a, b) => {
       const sb = scoreOf(b);
       const sa = scoreOf(a);
