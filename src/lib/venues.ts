@@ -339,7 +339,6 @@ export function getVenuePrestige(venue: {
     if (cat.includes("three star")) floor = 300;
     else if (cat.includes("two star")) floor = 200;
     else if (cat.includes("one star")) floor = 100;
-    else if (cat.includes("bib")) floor = 40;
     score = floor + raw * 0.5;
 
     // Former World's #1 restaurants — permanent top tier.
