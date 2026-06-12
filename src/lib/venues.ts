@@ -302,40 +302,21 @@ export function getAwardPrestige(
 }
 
 /**
- * Aggregate prestige for a venue. Keeps the highest score per source,
- * sums them with full weight on the strongest and 0.20 on the rest.
- * Restaurants that have ever held World's 50 Best #1 get a permanent
- * top-tier floor of 200 plus a small share of their current score so
- * they remain ordered by present-day standing.
+ * Aggregate prestige for a venue. Each award source contributes only
+ * its single highest-prestige entry, so a long ranking history on the
+ * same list cannot outscore a stronger credential elsewhere.
  */
-export function getVenuePrestige(venue: Venue): number {
-  const isBar = /bar/i.test(venue.type);
-
+export function getVenuePrestige(venue: {
+  awards: Array<{ source: string; rank?: number; category?: string; year?: number }>;
+}): number {
   const bestBySource = new Map<string, number>();
   for (const a of venue.awards) {
-    const p = getAwardPrestige(a, isBar);
-    if (p <= 0) continue;
+    const p = getAwardPrestige(a);
     const cur = bestBySource.get(a.source) ?? 0;
     if (p > cur) bestBySource.set(a.source, p);
   }
-
-  const sorted = Array.from(bestBySource.values()).sort((a, b) => b - a);
   let score = 0;
-  const WEIGHTS = [1.0, 0.45, 0.25, 0.15];
-  for (let i = 0; i < sorted.length; i++) {
-    const w = i < WEIGHTS.length ? WEIGHTS[i] : 0.10;
-    score += sorted[i] * w;
-  }
-
-  if (!isBar) {
-    const everWorldNumberOne = venue.awards.some(
-      (a) => a.source === "worlds-50-best-restaurants" && a.rank === 1,
-    );
-    if (everWorldNumberOne) {
-      score = Math.max(score, 200) + score * 0.05;
-    }
-  }
-
+  for (const v of bestBySource.values()) score += v;
   return score;
 }
 
