@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompassEats — Data Pipeline &amp; Publish Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#211F1C; --bg-2:#28241F; --panel:#2F2A24; --panel-2:#383229;
+    --brass:#C6A15B; --brass-soft:#DEC68F; --cream:#F5F0E6; --cream-dim:#CBC2B0;
+    --cream-dimmer:#988F7E; --clay:#D88A63; --sage:#A4B79F;
+    --line:rgba(198,161,91,.20); --line-soft:rgba(198,161,91,.10);
+    --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,sans-serif;
+    --shadow:0 18px 40px -24px rgba(0,0,0,.7);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:radial-gradient(1100px 640px at 85% -10%, rgba(198,161,91,.10), transparent 60%), var(--bg);
+    color:var(--cream); font-family:var(--sans); font-weight:400; line-height:1.65; padding:56px 22px 100px;
+    -webkit-font-smoothing:antialiased; background-attachment:fixed;}
+  .wrap{max-width:880px;margin:0 auto}
+  .eyebrow{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--brass);font-weight:600;margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.5vw,3rem);letter-spacing:-.02em;line-height:1.05}
+  h1 em{font-style:italic;color:var(--brass-soft)}
+  .meta{margin:18px 0 40px;display:flex;flex-wrap:wrap;gap:10px}
+  .m{font-size:.74rem;color:var(--cream-dim);border:1px solid var(--line);border-radius:100px;padding:5px 13px}
+  .m b{color:var(--brass-soft);font-weight:600}
+  h2{font-family:var(--serif);font-weight:400;font-size:1.55rem;margin:46px 0 6px;color:var(--cream)}
+  h2 .n{color:var(--brass);font-size:1rem;font-weight:600;font-family:var(--sans);margin-right:10px;letter-spacing:.05em}
+  .lead{color:var(--cream-dim);font-weight:300;margin-bottom:18px;font-size:.96rem}
+  .card{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:13px;padding:22px 24px;margin:16px 0;box-shadow:var(--shadow)}
+  .card h3{font-size:.96rem;font-weight:600;color:var(--brass-soft);margin-bottom:10px;margin-top:18px}
+  .card h3:first-child{margin-top:0}
+  p{margin:9px 0;font-size:.92rem;color:var(--cream-dim);font-weight:300}
+  p strong,li strong{color:var(--cream);font-weight:600}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:.82em;background:rgba(198,161,91,.12);color:var(--brass-soft);padding:1px 6px;border-radius:5px}
+  pre{background:#1A1815;border:1px solid var(--line);border-radius:9px;padding:14px 16px;overflow-x:auto;margin:12px 0}
+  pre code{background:none;color:var(--cream-dim);padding:0;font-size:.8rem;line-height:1.7}
+  ol,ul{margin:10px 0 10px 4px;padding-left:22px}
+  li{font-size:.92rem;color:var(--cream-dim);font-weight:300;margin:7px 0}
+  .flow{font-family:ui-monospace,Menlo,monospace;font-size:.82rem;line-height:1.5;color:var(--cream-dim)}
+  .flow b{color:var(--brass-soft)} .flow .x{color:var(--clay)}
+  .flag{border-left:3px solid var(--clay);background:rgba(216,138,99,.07);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0}
+  .flag b{color:var(--clay)}
+  .ok{border-left:3px solid var(--sage);background:rgba(164,183,159,.07);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0}
+  .ok b{color:var(--sage)}
+  .step{display:flex;gap:14px;margin:14px 0}
+  .step .num{flex:0 0 28px;height:28px;border-radius:50%;background:var(--brass);color:#211F1C;font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+  .step .body{flex:1}
+  .divider{height:1px;background:var(--line);margin:46px 0}
+  footer{margin-top:50px;color:var(--cream-dimmer);font-size:.78rem;font-weight:300;text-align:center}
+  .tag{display:inline-block;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:100px;margin-left:8px;vertical-align:middle}
+  .tag.sage{background:rgba(164,183,159,.15);color:var(--sage)}
+  .tag.clay{background:rgba(216,138,99,.15);color:var(--clay)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Living doc · Operations</div>
+  <h1>Data Pipeline &amp; <em>Publish Reference</em></h1>
+  <div class="meta">
+    <span class="m">Version <b>2.0</b></span>
+    <span class="m">Updated <b>June 12, 2026</b></span>
+    <span class="m">Owner <b>Ben</b></span>
+    <span class="m">Status <b>Proven live workflow</b></span>
+  </div>
+
+  <p class="lead">How data gets from the Google Sheet to the live site — and the workflow we actually use, now that the automatic build-time sync is confirmed unavailable on this plan. <strong>If a change is correct in the Sheet but wrong on the site, the answer is almost always "the JSON in the repo wasn't regenerated and re-committed."</strong> This doc is the ritual that prevents that.</p>
+
+  <div class="flag">
+    <p><b>v2.0 supersedes v1.0.</b> v1.0 said the fix was to set Build Secrets. <strong>That fix is not available</strong> — Build Secrets are a Lovable <em>Enterprise-only</em> feature, and this project isn't on Enterprise. The build-time Sheet sync therefore <strong>cannot run</strong> on a normal publish; the <code>SYNC SKIPPED</code> banner is the permanent, expected state. The real workflow is manual JSON regeneration + GitHub commit, documented below.</p>
+  </div>
+
+  <h2><span class="n">01</span>How data flows</h2>
+  <p class="lead">The frontend never touches Google Sheets. Everything is baked into static JSON, which is prerendered into HTML at build time.</p>
+  <div class="card">
+    <p class="flow">
+      <b>Google Sheet</b> &nbsp;(source of truth · ID <code>1dKJY_woXdbO…cI5s</code>)<br>
+      &nbsp;&nbsp;↓ &nbsp;Apps Script pipeline — reshape → mergeDuplicateVenues → blurbs → clearWrongCity → importOptionB → generateCitiesTab<br>
+      &nbsp;&nbsp;↓ &nbsp;<span class="x">build-time sync (scripts/sync-sheet.ts) — SKIPS on our plan, see §02</span><br>
+      &nbsp;&nbsp;↓ &nbsp;<b>data/venues.json · data/cities.json · data/venues-index.json · data/sync-report.json</b><br>
+      &nbsp;&nbsp;↓ &nbsp;prerender (TanStack Start, vite.config.ts) — every /city/… and /venue/… page → static HTML<br>
+      &nbsp;&nbsp;↓ &nbsp;Cloudflare deploy — new HTML served immediately (no CDN purge needed)
+    </p>
+  </div>
+  <p>The frontend reads the committed JSON via plain imports in <code>src/lib/venues.ts</code> (lines ~19–21). Pages are <strong>fully prerendered</strong> — the live site does not re-read data per request. <strong>So the deployed HTML is only ever as fresh as <code>data/venues.json</code> was at build time.</strong></p>
+
+  <h2><span class="n">02</span>Why the automatic sync can't run <span class="tag clay">root cause</span></h2>
+  <p>The build only re-fetches the Sheet if two variables exist in the <strong>build environment</strong>: <code>SHEETS_API_KEY</code> (or <code>GOOGLE_SHEETS_API_KEY</code>) and <code>COMPASSEATS_SHEET_ID</code>. On Lovable those are <strong>Build Secrets — an Enterprise-only feature.</strong> Runtime/Cloud secrets are <em>not</em> visible to the build. So <code>runSync()</code> throws <code>SyncSkipped</code>, the build swallows it with a warning, and ships whatever JSON is already committed:</p>
+  <pre><code>⚠️  SYNC SKIPPED — using committed JSON, data may be stale</code></pre>
+  <p>This banner appears on <strong>every</strong> publish and is <strong>normal</strong>. It does not mean the publish failed. It means: "I deployed the committed JSON as-is." The committed JSON is therefore the thing we maintain by hand.</p>
+  <div class="flag">
+    <p><b>This was the cause of months of "stale build" confusion.</b> Belcanto's missing stars, Kadeau, Plénitude, wrong-city blurbs — all traced to the sync skipping since June 9, 2026, redeploying old JSON every publish. Correct Sheet data never reached the site because nothing regenerated the JSON.</p>
+  </div>
+
+  <h2><span class="n">03</span>The publish workflow (what we actually do) <span class="tag sage">proven live</span></h2>
+  <p class="lead">Proven end-to-end on June 12, 2026 — Belcanto ★★, Kadeau ★★★, Sushi&nbsp;Sho ★★★ (NYC) + ★ (Stockholm) all went live through these steps.</p>
+  <div class="card">
+    <div class="step"><div class="num">1</div><div class="body"><strong>Run the full Apps Script pipeline in order</strong> on the Sheet — reshape → mergeDuplicateVenues → importBlurbsFromDrive → clearWrongCityBlurbs → importOptionB → generateCitiesTab. The Sheet must be correct first.</div></div>
+    <div class="step"><div class="num">2</div><div class="body"><strong>Export the Sheet</strong> (File → Download → .xlsx) and hand it to Claude. Claude regenerates the four data files with a faithful reproduction of <code>sync-sheet.ts</code> — same <code>rowToVenue</code>/<code>rowToCity</code>/index logic, same schema validation, plus euro→dollar price normalization so non-dollar Michelin data passes. Claude returns: <code>venues.json</code>, <code>cities.json</code>, <code>venues-index.json</code>, <code>sync-report.json</code>.</div></div>
+    <div class="step"><div class="num">3</div><div class="body"><strong>Commit the four files via GitHub web.</strong> Repo → <code>data</code> folder → <strong>Add file → Upload files</strong> → drag all four in (same names = replace) → commit to <code>main</code>. <em>Use upload, not the text editor</em> — the editor chokes on the 11&nbsp;MB <code>venues.json</code> and can present a misleading blank box.</div></div>
+    <div class="step"><div class="num">4</div><div class="body"><strong>Publish in Lovable.</strong> The build prints <code>SYNC SKIPPED</code> (expected) and deploys the freshly committed JSON.</div></div>
+    <div class="step"><div class="num">5</div><div class="body"><strong>Verify on the live site</strong> — see §04.</div></div>
+  </div>
+  <div class="flag">
+    <p><b>Two hazards to avoid.</b> (1) Never paste into a GitHub editor that shows an empty <em>"Enter file contents here"</em> box for a file that should be huge — committing it would wipe that dataset. Cancel and use Upload instead. (2) Make sure filenames are exact (<code>venues.json</code>, not <code>venues (1).json</code>) or you create a duplicate instead of replacing.</p>
+  </div>
+
+  <h2><span class="n">04</span>Post-publish verification (every time)</h2>
+  <p class="lead">"I republished" is not the same as "the data refreshed." Confirm with your own eyes.</p>
+  <div class="card">
+    <h3>Check A — the data file actually changed</h3>
+    <p>In the repo, the four files under <code>data/</code> should show your recent commit time ("Add files via upload, X minutes ago"). If they show an old date, the upload didn't land.</p>
+    <h3>Check B — a known value is present</h3>
+    <p>Spot-check a venue you just changed, in the file the site reads:</p>
+    <pre><code>jq '.[] | select(.slug=="belcanto") | .awards' data/venues.json</code></pre>
+    <p>If the value you expect (e.g. a <code>michelin</code> award) isn't there, the page won't show it — regardless of what the Sheet says.</p>
+    <h3>Check C — the live page</h3>
+    <p>Load the actual page (e.g. the Lisbon city page) and confirm the change is visible. Because pages are prerendered, what you see is exactly the committed JSON.</p>
+  </div>
+  <div class="ok">
+    <p><b>Rule of thumb:</b> live HTML is built from <code>data/venues.json</code>. Sheet-correct-but-site-wrong always means "the JSON wasn't regenerated and re-committed." Regenerate → upload → publish.</p>
+  </div>
+
+  <h2><span class="n">05</span>What is NOT the problem</h2>
+  <ul>
+    <li><strong>No CDN/edge cache to purge.</strong> Cloudflare serves new HTML as soon as the deploy is live.</li>
+    <li><strong>No KV, R2, Supabase, or runtime data store</strong> between the JSON and the page.</li>
+    <li><strong>Browser cache</strong> is the only client-side layer — a hard refresh rules it out.</li>
+    <li><strong>The <code>SYNC SKIPPED</code> banner</strong> is expected, not an error. Don't chase it.</li>
+    <li><strong>Scoring/display code</strong> is rarely the cause — if the award isn't in the committed JSON, no formula can show it. Check the data first.</li>
+  </ul>
+
+  <h2><span class="n">06</span>The escape hatch (if commits get tedious) <span class="tag clay">future option</span></h2>
+  <p>The manual upload works but is a chore on every data change. The clean long-term fix — <strong>without</strong> Lovable Enterprise — is to point <strong>Cloudflare Pages</strong> at the same GitHub repo with <code>SHEETS_API_KEY</code> and <code>COMPASSEATS_SHEET_ID</code> set as build env vars (Cloudflare's free tier supports build-time env vars — confirm current terms when the time comes). That makes the <em>original</em> build-time sync "just work" on every deploy, no manual JSON.</p>
+  <p><span class="lead">This is a roughly half-day change, not a migration: the repo is a standard TanStack Start app with no Lovable lock-in, so the data and frontend are already portable. Treat the manual workflow as the test — if it stays smooth, stay on Lovable; if it becomes friction, this is the move. Don't do it preemptively.</span></p>
+
+  <div class="divider"></div>
+  <h2>Changelog</h2>
+  <p><strong>v2.0 — June 12, 2026.</strong> Rewrote after discovering Build Secrets are Lovable Enterprise-only, so the build-time sync can never run on this plan. Documents the proven manual workflow (Claude regenerates JSON from a Sheet export → Ben uploads via GitHub web → publish), the post-publish verification ritual, and the Cloudflare Pages escape hatch. Supersedes v1.0, which incorrectly prescribed setting Build Secrets.</p>
+  <p><strong>v1.0 — June 12, 2026.</strong> Initial doc, created after diagnosing the sync had been silently skipping since June 9. Prescribed setting Build Secrets — later found to be unavailable on this plan.</p>
+
+  <footer>CompassEats living docs · keep versioned · store in <code>docs/</code> · re-upload on change</footer>
+</div>
+</body>
+</html>
