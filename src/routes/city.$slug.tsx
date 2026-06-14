@@ -139,6 +139,7 @@ function CityPage() {
   const [quick, setQuick] = useState<Set<QuickFilter>>(new Set());
   const [awardFilters, setAwardFilters] = useState<Set<string>>(new Set());
   const [showAll, setShowAll] = useState(false);
+  const [showAllBars, setShowAllBars] = useState(false);
   const [isPending, startTransition] = useTransition();
 
   // Deferred so the filter pills feel responsive while a large list filters.
@@ -208,8 +209,22 @@ function CityPage() {
 
   const noneSelected = quick.size === 0 && awardFilters.size === 0;
 
-  const visible = showAll ? filtered : filtered.slice(0, INITIAL_ROW_CAP);
-  const hasMore = filtered.length > INITIAL_ROW_CAP;
+  const restaurants = useMemo(
+    () => filtered.filter((v) => v.type !== "bar"),
+    [filtered],
+  );
+  const bars = useMemo(
+    () => filtered.filter((v) => v.type === "bar"),
+    [filtered],
+  );
+
+  const visibleRestaurants = showAll
+    ? restaurants
+    : restaurants.slice(0, INITIAL_ROW_CAP);
+  const hasMoreRestaurants = restaurants.length > INITIAL_ROW_CAP;
+
+  const visibleBars = showAllBars ? bars : bars.slice(0, INITIAL_ROW_CAP);
+  const hasMoreBars = bars.length > INITIAL_ROW_CAP;
 
   const restaurantCount = venues.filter((v) => v.type === "restaurant").length;
   const barCount = venues.filter((v) => v.type === "bar").length;
@@ -300,7 +315,7 @@ function CityPage() {
             className="font-display text-3xl font-light"
             style={{ color: INK }}
           >
-            The ones <em className="italic" style={{ color: BRONZE }}>worth the detour</em>
+            What&rsquo;s <em className="italic" style={{ color: BRONZE }}>charted</em> in {city.display}
           </h2>
           <div className="flex flex-wrap items-center gap-2">
             <div
@@ -399,25 +414,56 @@ function CityPage() {
           <EmptyState onReset={clearAll} />
         ) : (
           <>
-            <div className="divide-y divide-border/50">
-              {visible.map((v, i) => (
-                <VenueRankedRow key={v.id} venue={v} rank={i + 1} />
-              ))}
-            </div>
-
-            {hasMore && (
-              <div className="mt-8 flex justify-center">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setShowAll((s) => !s)}
-                  className="rounded-full"
+            {restaurants.length > 0 && (
+              <section>
+                <h3
+                  className="mb-4 font-display text-2xl font-light"
+                  style={{ color: INK }}
                 >
-                  {showAll
-                    ? "Show less"
-                    : `Show all ${filtered.length} charted spots in ${city.display} →`}
-                </Button>
-              </div>
+                  Where to <em className="italic" style={{ color: BRONZE }}>eat</em>
+                </h3>
+                <div className="divide-y divide-border/50">
+                  {visibleRestaurants.map((v, i) => (
+                    <VenueRankedRow key={v.id} venue={v} rank={i + 1} />
+                  ))}
+                </div>
+                {hasMoreRestaurants && (
+                  <div className="mt-6 flex justify-center">
+                    <Button variant="outline" size="sm"
+                      onClick={() => setShowAll((s) => !s)} className="rounded-full">
+                      {showAll
+                        ? "Show less"
+                        : `Show all ${restaurants.length} places to eat in ${city.display} →`}
+                    </Button>
+                  </div>
+                )}
+              </section>
+            )}
+
+            {bars.length > 0 && (
+              <section className={restaurants.length > 0 ? "mt-12" : ""}>
+                <h3
+                  className="mb-4 font-display text-2xl font-light"
+                  style={{ color: INK }}
+                >
+                  Where to <em className="italic" style={{ color: BRONZE }}>drink</em>
+                </h3>
+                <div className="divide-y divide-border/50">
+                  {visibleBars.map((v, i) => (
+                    <VenueRankedRow key={v.id} venue={v} rank={i + 1} />
+                  ))}
+                </div>
+                {hasMoreBars && (
+                  <div className="mt-6 flex justify-center">
+                    <Button variant="outline" size="sm"
+                      onClick={() => setShowAllBars((s) => !s)} className="rounded-full">
+                      {showAllBars
+                        ? "Show less"
+                        : `Show all ${bars.length} bars in ${city.display} →`}
+                    </Button>
+                  </div>
+                )}
+              </section>
             )}
           </>
         )}
