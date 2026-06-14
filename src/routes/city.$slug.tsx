@@ -473,8 +473,9 @@ function CityPage() {
             className="mt-8 text-center text-xs italic"
             style={{ color: INK_MUTED }}
           >
-            Showing {visible.length} of {venues.length} charted spot
-            {venues.length === 1 ? "" : "s"} in {city.display}.
+            Showing {visibleRestaurants.length + visibleBars.length} of{" "}
+            {venues.length} charted spot{venues.length === 1 ? "" : "s"} in{" "}
+            {city.display}.
           </p>
         )}
       </div>
