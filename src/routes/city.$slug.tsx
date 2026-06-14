@@ -5,6 +5,7 @@ import { ArrowRight, ChevronDown, SlidersHorizontal, X } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -415,55 +416,77 @@ function CityPage() {
         ) : (
           <>
             {restaurants.length > 0 && (
-              <section>
-                <h3
-                  className="mb-4 font-display text-2xl font-light"
-                  style={{ color: INK }}
+              <Collapsible defaultOpen={false} className="mb-2">
+                <CollapsibleTrigger
+                  className="group flex w-full items-center justify-between border-b pb-3 mb-4 text-left [&[data-state=open]>svg]:rotate-180"
+                  style={{ borderColor: HAIRLINE }}
                 >
-                  Where to <em className="italic" style={{ color: BRONZE }}>eat</em>
-                </h3>
-                <div className="divide-y divide-border/50">
-                  {visibleRestaurants.map((v, i) => (
-                    <VenueRankedRow key={v.id} venue={v} rank={i + 1} />
-                  ))}
-                </div>
-                {hasMoreRestaurants && (
-                  <div className="mt-6 flex justify-center">
-                    <Button variant="outline" size="sm"
-                      onClick={() => setShowAll((s) => !s)} className="rounded-full">
-                      {showAll
-                        ? "Show less"
-                        : `Show all ${restaurants.length} places to eat in ${city.display} →`}
-                    </Button>
+                  <h3 className="font-display text-2xl font-light" style={{ color: INK }}>
+                    Where to <em className="italic" style={{ color: BRONZE }}>eat</em>
+                    <span className="ml-2 text-base" style={{ color: INK_MUTED }}>
+                      {restaurants.length}
+                    </span>
+                  </h3>
+                  <ChevronDown
+                    className="h-5 w-5 transition-transform duration-200"
+                    style={{ color: INK_MUTED }}
+                  />
+                </CollapsibleTrigger>
+                <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                  <div className="divide-y divide-border/50">
+                    {visibleRestaurants.map((v, i) => (
+                      <VenueRankedRow key={v.id} venue={v} rank={i + 1} />
+                    ))}
                   </div>
-                )}
-              </section>
+                  {hasMoreRestaurants && (
+                    <div className="mt-6 flex justify-center">
+                      <Button variant="outline" size="sm"
+                        onClick={() => setShowAll((s) => !s)} className="rounded-full">
+                        {showAll
+                          ? "Show less"
+                          : `Show all ${restaurants.length} places to eat in ${city.display} →`}
+                      </Button>
+                    </div>
+                  )}
+                </CollapsibleContent>
+              </Collapsible>
             )}
 
             {bars.length > 0 && (
-              <section className={restaurants.length > 0 ? "mt-12" : ""}>
-                <h3
-                  className="mb-4 font-display text-2xl font-light"
-                  style={{ color: INK }}
+              <Collapsible defaultOpen={false} className={restaurants.length > 0 ? "mt-8" : ""}>
+                <CollapsibleTrigger
+                  className="group flex w-full items-center justify-between border-b pb-3 mb-4 text-left [&[data-state=open]>svg]:rotate-180"
+                  style={{ borderColor: HAIRLINE }}
                 >
-                  Where to <em className="italic" style={{ color: BRONZE }}>drink</em>
-                </h3>
-                <div className="divide-y divide-border/50">
-                  {visibleBars.map((v, i) => (
-                    <VenueRankedRow key={v.id} venue={v} rank={i + 1} />
-                  ))}
-                </div>
-                {hasMoreBars && (
-                  <div className="mt-6 flex justify-center">
-                    <Button variant="outline" size="sm"
-                      onClick={() => setShowAllBars((s) => !s)} className="rounded-full">
-                      {showAllBars
-                        ? "Show less"
-                        : `Show all ${bars.length} bars in ${city.display} →`}
-                    </Button>
+                  <h3 className="font-display text-2xl font-light" style={{ color: INK }}>
+                    Where to <em className="italic" style={{ color: BRONZE }}>drink</em>
+                    <span className="ml-2 text-base" style={{ color: INK_MUTED }}>
+                      {bars.length}
+                    </span>
+                  </h3>
+                  <ChevronDown
+                    className="h-5 w-5 transition-transform duration-200"
+                    style={{ color: INK_MUTED }}
+                  />
+                </CollapsibleTrigger>
+                <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                  <div className="divide-y divide-border/50">
+                    {visibleBars.map((v, i) => (
+                      <VenueRankedRow key={v.id} venue={v} rank={i + 1} />
+                    ))}
                   </div>
-                )}
-              </section>
+                  {hasMoreBars && (
+                    <div className="mt-6 flex justify-center">
+                      <Button variant="outline" size="sm"
+                        onClick={() => setShowAllBars((s) => !s)} className="rounded-full">
+                        {showAllBars
+                          ? "Show less"
+                          : `Show all ${bars.length} bars in ${city.display} →`}
+                      </Button>
+                    </div>
+                  )}
+                </CollapsibleContent>
+              </Collapsible>
             )}
           </>
         )}
