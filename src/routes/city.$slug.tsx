@@ -128,7 +128,7 @@ export const Route = createFileRoute("/city/$slug")({
 
 type QuickFilter = "restaurants" | "bars";
 
-const INITIAL_ROW_CAP = 50;
+const INITIAL_ROW_CAP = 10;
 
 function CityPage() {
   const { city, venues } = Route.useLoaderData() as {
