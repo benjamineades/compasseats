@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompassEats — Field Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#211F1C;--bg-2:#28241F;--panel:#2F2A24;--panel-2:#383229;
+    --brass:#C6A15B;--brass-soft:#DEC68F;--cream:#F5F0E6;--cream-dim:#CBC2B0;--cream-dimmer:#988F7E;
+    --clay:#D88A63;--sage:#A4B79F;
+    --line:rgba(198,161,91,.22);--line-soft:rgba(198,161,91,.11);
+    --serif:"Fraunces",Georgia,serif;--sans:"Hanken Grotesk",-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:
+      radial-gradient(900px 520px at 84% -10%, rgba(198,161,91,.12), transparent 60%),
+      radial-gradient(760px 520px at 2% 108%, rgba(216,138,99,.08), transparent 55%),
+      var(--bg);
+    color:var(--cream);font-family:var(--sans);font-weight:400;line-height:1.5;
+    -webkit-font-smoothing:antialiased;background-attachment:fixed;padding:30px 22px 50px;
+  }
+  .grain{position:fixed;inset:0;opacity:.04;pointer-events:none;z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .contour{position:fixed;top:-160px;right:-180px;width:560px;height:560px;color:var(--brass);opacity:.05;z-index:0;pointer-events:none}
+
+  .card{position:relative;z-index:1;max-width:1040px;margin:0 auto}
+
+  /* header */
+  .hd{display:flex;align-items:center;gap:18px;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:22px}
+  .hd .mark{width:54px;height:54px;flex:0 0 auto;filter:drop-shadow(0 5px 16px rgba(198,161,91,.25))}
+  .hd .ttl{flex:1}
+  .hd .eyebrow{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--brass);font-weight:800;margin-bottom:5px}
+  .hd h1{font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1;letter-spacing:-.02em}
+  .hd h1 b{font-weight:600;font-style:italic;color:var(--brass-soft)}
+  .hd .sub{font-family:var(--serif);font-style:italic;color:var(--cream-dim);font-size:.96rem;margin-top:6px}
+  .hd .ver{text-align:right;font-size:.64rem;color:var(--cream-dimmer);letter-spacing:.04em;line-height:1.7;flex:0 0 auto}
+  .hd .ver b{color:var(--brass-soft);font-weight:600}
+
+  /* golden rule strip */
+  .rule-strip{position:relative;background:linear-gradient(115deg,rgba(198,161,91,.15),var(--panel) 62%);border:1px solid var(--line);border-radius:12px;padding:13px 16px 13px 20px;margin-bottom:22px;overflow:hidden}
+  .rule-strip::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--brass)}
+  .rule-strip .rt{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);font-weight:800;margin-bottom:3px}
+  .rule-strip p{font-size:.86rem;color:var(--cream-dim);font-weight:300}
+  .rule-strip b{color:var(--cream);font-weight:600}
+  .rule-strip code{font-family:ui-monospace,Menlo,monospace;font-size:.84em;color:var(--brass-soft);background:var(--bg-2);border:1px solid var(--line-soft);padding:1px 5px;border-radius:5px}
+
+  /* two-column grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .panel{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:16px;padding:20px 20px 22px;box-shadow:0 16px 44px -22px rgba(0,0,0,.6)}
+  .panel-h{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .panel-h .nm{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--panel-2),var(--panel));border:1px solid var(--line);color:var(--brass);font-weight:800;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .panel-h h2{font-family:var(--serif);font-weight:420;font-size:1.18rem;color:var(--cream);letter-spacing:-.01em}
+  .panel-h .tag{margin-left:auto;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dimmer);font-weight:700}
+
+  code{font-family:ui-monospace,Menlo,monospace;font-size:.82em;color:var(--brass-soft);background:var(--bg-2);border:1px solid var(--line-soft);padding:1px 5px;border-radius:5px;white-space:nowrap}
+  .lbl{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);font-weight:800;margin:16px 0 8px}
+  .lbl:first-of-type{margin-top:4px}
+
+  /* chain (compact) */
+  .chain{position:relative;padding-left:4px;margin:2px 0 4px}
+  .chain::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--brass),rgba(198,161,91,.2))}
+  .clink{position:relative;padding:5px 0 5px 32px;font-size:.83rem;color:var(--cream-dim);font-weight:300}
+  .clink::before{content:"";position:absolute;left:3px;top:9px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--brass);box-shadow:0 0 0 3px var(--bg),0 0 9px rgba(198,161,91,.4)}
+  .clink.go::before{background:var(--brass);box-shadow:0 0 0 3px var(--bg),0 0 12px rgba(198,161,91,.7)}
+  .clink b{color:var(--cream);font-weight:600}
+  .clink .n{color:var(--brass-soft);font-style:italic;font-family:var(--serif)}
+
+  /* path mini-cards */
+  .paths{display:grid;gap:9px;margin-top:6px}
+  .path{border:1px solid var(--line-soft);border-radius:10px;padding:11px 13px;background:rgba(198,161,91,.03)}
+  .path .ph{font-weight:700;font-size:.8rem;color:var(--brass-soft);margin-bottom:3px}
+  .path .pd{font-size:.78rem;color:var(--cream-dim);font-weight:300}
+
+  /* scripts list */
+  .scripts{display:grid;gap:8px}
+  .scr{display:grid;grid-template-columns:24px 1fr;gap:11px;align-items:start;padding:9px 11px;border:1px solid var(--line-soft);border-radius:10px;background:rgba(198,161,91,.03)}
+  .scr .si{width:24px;height:24px;border-radius:7px;background:var(--bg-2);border:1px solid var(--line);color:var(--brass);font-weight:800;font-size:.74rem;display:flex;align-items:center;justify-content:center}
+  .scr.hold .si{border-color:rgba(216,138,99,.5);color:var(--clay)}
+  .scr .sname{font-weight:600;color:var(--cream);font-size:.83rem}
+  .scr .sname code{font-size:.92em;color:var(--brass-soft);background:none;border:none;padding:0}
+  .scr .sd{font-size:.76rem;color:var(--cream-dim);font-weight:300;margin-top:1px}
+  .scr.hold .sd b{color:var(--clay)}
+
+  /* run-how strip */
+  .howto{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+  .howto ol{list-style:none;counter-reset:h;display:grid;gap:5px}
+  .howto li{counter-increment:h;position:relative;padding-left:24px;font-size:.79rem;color:var(--cream-dim);font-weight:300}
+  .howto li::before{content:counter(h);position:absolute;left:0;top:1px;width:17px;height:17px;border-radius:50%;background:var(--panel-2);border:1px solid var(--line);color:var(--brass);font-weight:700;font-size:.64rem;display:flex;align-items:center;justify-content:center}
+  .howto b{color:var(--cream);font-weight:600}
+
+  /* footer */
+  .ft{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:22px;padding-top:16px;border-top:1px solid var(--line);flex-wrap:wrap}
+  .ft .lf{font-size:.78rem;color:var(--cream-dim);font-weight:300}
+  .ft .lf b{color:var(--brass-soft);font-weight:600}
+  .ft .lf code{font-size:.85em}
+  .ft .rf{font-family:var(--serif);font-style:italic;color:var(--cream-dimmer);font-size:.82rem}
+
+  @media(max-width:720px){.grid{grid-template-columns:1fr}.hd{flex-wrap:wrap}.hd .ver{text-align:left;width:100%}}
+
+  /* PRINT — one page, warm paper */
+  @media print{
+    @page{size:A4 portrait;margin:11mm}
+    :root{
+      --bg:#F7F3EB;--bg-2:#EFE8D9;--panel:#F4EEE1;--panel-2:#E9E1D0;
+      --cream:#2A2620;--cream-dim:#564F42;--cream-dimmer:#7C725F;
+      --brass:#895F2E;--brass-soft:#74521F;--clay:#A85B33;--sage:#5E7A55;
+      --line:rgba(137,95,46,.34);--line-soft:rgba(137,95,46,.17);
+    }
+    body{background:#F7F3EB;padding:0;font-size:11px}
+    .grain,.contour{display:none}
+    .panel,.rule-strip,.scr,.path{box-shadow:none;break-inside:avoid}
+    .grid{gap:12px}
+    .hd h1{font-size:1.7rem}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<svg class="contour" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">
+  <ellipse cx="200" cy="200" rx="58" ry="48" transform="rotate(16 200 200)"/>
+  <ellipse cx="200" cy="200" rx="98" ry="82" transform="rotate(12 200 200)"/>
+  <ellipse cx="200" cy="200" rx="140" ry="118" transform="rotate(8 200 200)"/>
+  <ellipse cx="200" cy="200" rx="184" ry="156" transform="rotate(4 200 200)"/>
+</svg>
+
+<div class="card">
+
+  <!-- header -->
+  <div class="hd">
+    <svg class="mark" viewBox="0 0 92 92" fill="none" aria-hidden="true">
+      <circle cx="46" cy="46" r="43" stroke="#C6A15B" stroke-width="1" opacity=".45"/>
+      <path d="M46 12 L55 50 L46 60 L37 50 Z" fill="#C6A15B"/>
+      <path d="M46 80 L37 50 L46 40 L55 50 Z" fill="#DEC68F" opacity=".45"/>
+      <circle cx="46" cy="50" r="2.8" fill="#F5F0E6"/>
+    </svg>
+    <div class="ttl">
+      <div class="eyebrow">Quick-Start Field Card</div>
+      <h1>Compass<b>Eats</b></h1>
+      <div class="sub">Add a venue · run the scripts — the two-minute version. <span style="color:#C6A15B">Publish = regenerate JSON + commit via GitHub (June 12, 2026 — build sync is Enterprise-gated, does not run).</span></div>
+    </div>
+    <div class="ver">v<b>1.3</b><br>June 14, 2026<br>Full detail → handbook</div>
+  </div>
+
+  <!-- golden rule -->
+  <div class="rule-strip">
+    <div class="rt">★ The one rule that governs everything</div>
+    <p>A venue shows on the site only when it's in the <code>venues</code> tab, has <b>at least one accolade</b>, and has its required fields filled — <b>name, type, city, address, lat/lng</b>. Miss one → it waits in <code>needs_enrichment</code>. That's what <b>"charted"</b> means: <i>sheet-matched-with-an-accolade.</i></p>
+  </div>
+
+  <!-- two panels -->
+  <div class="grid">
+
+    <!-- ADD A VENUE -->
+    <div class="panel">
+      <div class="panel-h"><span class="nm">A</span><h2>Add a Venue</h2><span class="tag">→ charted</span></div>
+
+      <div class="lbl">The chain — what must be true</div>
+      <div class="chain">
+        <div class="clink"><b>Lands in <code>venues</code></b></div>
+        <div class="clink"><b>Has an accolade</b> <span class="n">— makes it charted</span></div>
+        <div class="clink"><b>Required fields filled</b> — name, type, city, address, lat/lng</div>
+        <div class="clink"><b>City exists in <code>cities</code></b></div>
+        <div class="clink"><b>Regenerate JSON locally → commit via GitHub → Publish</div>
+        <div class="clink go"><b>Publish in Lovable</b> <span class="n">— live ✅</span></div>
+      </div>
+
+      <div class="lbl">Two ways to do it</div>
+      <div class="paths">
+        <div class="path">
+          <div class="ph">Path A · a whole award list</div>
+          <div class="pd">Paste into the import tab (bars → <code>makeBarImportTemplate</code> + <code>ingestBarLists</code>; restaurants → <code>makeRestaurantImportTemplate</code> + <code>ingestRestaurantLists</code>) → ingest fills the <code>Bar Awards</code> / <code>Restaurant Awards</code> tab → run <code>reshape.gs</code> to fold into <code>venues</code> → enrich gaps → re-run <code>cities.gs</code> if new cities → publish in Lovable. <b style="color:var(--brass-soft)">New award source? Add it to <code>AWARD_SOURCES</code> in <code>schema.ts</code> first.</b></div>
+        </div>
+        <div class="path">
+          <div class="ph">Path B · one venue by hand</div>
+          <div class="pd">Add a row in <code>venues</code> → fill name, type, city, country, address → add lat/lng → add ≥1 accolade → confirm <code>city</code> matches a <code>cities</code> row → publish in Lovable.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RUN THE SCRIPTS -->
+    <div class="panel">
+      <div class="panel-h"><span class="nm">B</span><h2>Run the Scripts</h2><span class="tag">in order</span></div>
+
+      <div class="lbl">Order matters</div>
+      <div class="scripts">
+        <div class="scr"><span class="si">1</span><div><div class="sname"><code>reshape.gs</code></div><div class="sd">Merges all award tabs + enrichment → <code>venues</code>; sends incomplete rows to <code>needs_enrichment</code>; de-dupes. <b style="color:var(--brass-soft)">Run after any list change.</b></div></div></div>
+        <div class="scr"><span class="si">2</span><div><div class="sname"><code>cities.gs</code></div><div class="sd">Builds <code>cities</code> with centroid lat/lng. Preserves your manual edits (hero image, timezone) on re-run.</div></div></div>
+        <div class="scr"><span class="si">3</span><div><div class="sname"><code>bar-ingest.gs</code></div><div class="sd">Bar importer: <code>makeBarImportTemplate</code> + <code>ingestBarLists</code>. Writes to the <code>Bar Awards</code> tab (reshape reads it). Use when adding a bar list.</div></div></div>
+        <div class="scr"><span class="si">4</span><div><div class="sname"><code>restaurant-ingest.gs</code></div><div class="sd">Restaurant importer: <code>makeRestaurantImportTemplate</code> + <code>ingestRestaurantLists</code>. Writes to the <code>Restaurant Awards</code> tab (reshape reads it). Grades go in <code>category_override</code>.</div></div></div>
+        <div class="scr hold"><span class="si">5</span><div><div class="sname"><code>photos.gs</code> &nbsp;⚠️</div><div class="sd"><b>Hold.</b> Bills per image load — cache to a CDN first, then point <code>photo_url</code> at the cached copies.</div></div></div>
+      </div>
+
+      <div class="howto">
+        <div class="lbl" style="margin-top:0">How to run any one</div>
+        <ol>
+          <li><b>Extensions → Apps Script</b> in the Sheet</li>
+          <li>Click the <b>script file</b>, pick the <b>function</b></li>
+          <li>Hit <b>▶ Run</b> (authorize on first run)</li>
+          <li>Watch the <b>Execution log</b> → back to the Sheet</li>
+        </ol>
+      </div>
+
+      <div class="howto">
+        <div class="lbl" style="margin-top:0">Canonical full-pipeline order (after any list/data change)</div>
+        <ol>
+          <li><b><code>reshapeCompassEats</code></b> — fold all award + enrichment tabs into <code>venues</code></li>
+          <li><b><code>mergeDuplicateVenues</code></b> — collapse same-venue duplicate rows</li>
+          <li><b><code>importBlurbsFromDrive</code></b> — reload bulk blurbs (reshape blanks them)</li>
+          <li><b><code>clearWrongCityBlurbs</code></b> — strip blurbs that landed on the wrong city</li>
+          <li><b><code>importOptionB</code></b> — reload the sourced rich (Option&nbsp;B) blurbs</li>
+          <li><b><code>generateCitiesTab</code></b> — rebuild <code>cities</code> (preserves manual edits)</li>
+          <li><b>Regenerate the four <code>data/*.json</code></b> from a Sheet export</li>
+          <li><b>GitHub web → Add file → Upload files</b> (drag-drop replace) → <b>Publish</b></li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- footer -->
+  <div class="ft">
+    <div class="lf">Then: regenerate the four <code>data/*.json</code> files from a Sheet export → upload via <b>GitHub web → Add file → Upload files</b> → <b>Publish in Lovable</b> (build prints <code>SYNC SKIPPED</code> — expected; Build Secrets are Enterprise-only) → verify on <code>compasseats.com</code> in a fresh tab. <b>Hero photo?</b> Paste a bare <code>images.unsplash.com</code> URL into <code>hero_image_url</code>, publish.</div>
+    <div class="rf">The world's best, wherever you are.</div>
+  </div>
+
+</div>
+</body>
+</html>

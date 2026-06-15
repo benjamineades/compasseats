@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CompassEats Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#211F1C;
+    --bg-2:#28241F;
+    --panel:#2F2A24;
+    --panel-2:#383229;
+    --brass:#C6A15B;
+    --brass-soft:#DEC68F;
+    --cream:#F5F0E6;
+    --cream-dim:#CBC2B0;
+    --cream-dimmer:#988F7E;
+    --clay:#D88A63;
+    --sage:#A4B79F;
+    --line:rgba(198,161,91,.20);
+    --line-soft:rgba(198,161,91,.10);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Hanken Grotesk",-apple-system,sans-serif;
+    --shadow:0 18px 50px -20px rgba(0,0,0,.6);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 680px at 82% -8%, rgba(198,161,91,.11), transparent 60%),
+      radial-gradient(950px 640px at 4% 104%, rgba(216,138,99,.07), transparent 55%),
+      var(--bg);
+    color:var(--cream);
+    font-family:var(--sans);
+    font-weight:400;line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* ---------- atmosphere: contour map + grain ---------- */
+  .contours{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
+  .contours svg{position:absolute}
+  .contours .tl{top:-180px;left:-220px;width:760px;height:760px;color:var(--brass);opacity:.06}
+  .contours .br{bottom:-260px;right:-240px;width:860px;height:860px;color:var(--clay);opacity:.05}
+  .grain{position:fixed;inset:0;opacity:.04;pointer-events:none;z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  /* ---------- reading progress ---------- */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:50;
+    background:linear-gradient(90deg,var(--clay),var(--brass) 55%,var(--brass-soft));
+    box-shadow:0 0 14px rgba(198,161,91,.5);transition:width .12s linear}
+
+  /* ---------- COVER ---------- */
+  .cover{position:relative;z-index:1;text-align:center;padding:104px 32px 76px;overflow:hidden}
+  .cover .rose{width:132px;height:132px;margin:0 auto 38px;display:block;animation:rise 1s cubic-bezier(.2,.7,.2,1) both;filter:drop-shadow(0 8px 26px rgba(198,161,91,.25))}
+  .rose .ring-spin{transform-origin:50% 50%;animation:spin 80s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .eyebrow{font-size:.7rem;letter-spacing:.46em;text-transform:uppercase;color:var(--brass);font-weight:700;margin-bottom:24px;animation:rise .9s .08s both}
+  .cover h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.9rem,7.4vw,5.4rem);line-height:.94;letter-spacing:-.025em;animation:rise .9s .16s both}
+  .cover h1 b{font-weight:600;font-style:italic;color:var(--brass-soft)}
+  .cover .tag{margin-top:24px;font-family:var(--serif);font-style:italic;font-size:1.28rem;color:var(--cream-dim);font-weight:300;animation:rise .9s .28s both}
+  .cover .rule-orn{display:flex;align-items:center;justify-content:center;gap:14px;margin:34px auto 0;max-width:340px;animation:rise .9s .36s both}
+  .cover .rule-orn .ln{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--line))}
+  .cover .rule-orn .ln.r{background:linear-gradient(90deg,var(--line),transparent)}
+  .cover .rule-orn .dot{width:5px;height:5px;background:var(--brass);transform:rotate(45deg)}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:34px;animation:rise .9s .46s both}
+  .meta-row .m{font-size:.74rem;letter-spacing:.02em;color:var(--cream-dim);background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:30px;padding:8px 17px}
+  .meta-row .m b{color:var(--brass-soft);font-weight:600}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+  /* ---------- LAYOUT ---------- */
+  .shell{position:relative;z-index:1;max-width:1220px;margin:0 auto;padding:0 32px 40px;display:grid;grid-template-columns:248px 1fr;gap:60px;align-items:start}
+  .toc{position:sticky;top:26px;align-self:start;padding:24px 20px;background:linear-gradient(180deg,var(--panel),rgba(40,36,31,.6));border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(6px);box-shadow:var(--shadow)}
+  .toc h6{font-size:.64rem;letter-spacing:.32em;text-transform:uppercase;color:var(--brass);font-weight:800;margin-bottom:14px;padding-left:4px}
+  .toc a{display:flex;gap:11px;align-items:baseline;text-decoration:none;color:var(--cream-dim);font-size:.85rem;padding:7px 8px;border-radius:8px;transition:color .2s,background .2s,padding-left .2s;position:relative}
+  .toc a .nn{color:var(--brass);font-weight:700;font-size:.72rem;min-width:18px;font-variant-numeric:tabular-nums;opacity:.8}
+  .toc a:hover{color:var(--brass-soft);background:rgba(198,161,91,.07);padding-left:12px}
+  .toc a.active{color:var(--cream);background:rgba(198,161,91,.12)}
+  .toc a.active::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:16px;border-radius:3px;background:var(--brass);box-shadow:0 0 8px rgba(198,161,91,.6)}
+  .toc a.active .nn{opacity:1}
+  .content{min-width:0}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:42px 0 16px;border-top:1px solid var(--line-soft);scroll-margin-top:24px}
+  section:first-of-type{border-top:0}
+  .bearing{display:inline-flex;align-items:center;gap:11px;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--brass);font-weight:800;margin-bottom:16px}
+  .bearing .ndl{width:15px;height:15px;flex:0 0 auto}
+  .bearing .deg{color:var(--cream-dimmer);font-weight:600;letter-spacing:.12em}
+  h2{font-family:var(--serif);font-weight:340;font-size:clamp(1.8rem,3.6vw,2.7rem);line-height:1.06;letter-spacing:-.012em;color:var(--cream);margin-bottom:16px}
+  h2 em{font-style:italic;color:var(--brass-soft)}
+  h3{font-family:var(--serif);font-weight:440;font-size:1.34rem;color:var(--brass-soft);margin:34px 0 12px;display:flex;align-items:center;gap:10px}
+  h3 .pin{width:8px;height:8px;background:var(--brass);transform:rotate(45deg);flex:0 0 auto}
+  h4{font-family:var(--sans);font-weight:700;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:26px 0 10px}
+  p{color:var(--cream-dim);font-weight:300;margin-bottom:14px;max-width:70ch}
+  p.lead{font-size:1.12rem;color:var(--cream);font-weight:300;max-width:64ch}
+  strong,b{color:var(--cream);font-weight:600}
+  em{color:var(--brass-soft)}
+  code{font-family:"SFMono-Regular",ui-monospace,Menlo,monospace;font-size:.82em;background:var(--bg-2);border:1px solid var(--line-soft);color:var(--brass-soft);padding:2px 7px;border-radius:6px;white-space:nowrap}
+  a.inline{color:var(--brass-soft);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;transition:text-decoration-color .2s}
+  a.inline:hover{text-decoration-color:var(--brass)}
+
+  /* lists */
+  ul,ol{margin:6px 0 18px;padding-left:0;list-style:none}
+  ul.bul>li{position:relative;padding:6px 0 6px 24px;color:var(--cream-dim);font-weight:300;max-width:70ch}
+  ul.bul>li::before{content:"";position:absolute;left:3px;top:15px;width:6px;height:6px;background:var(--brass);transform:rotate(45deg)}
+  ol.steps{counter-reset:step;margin:10px 0 20px}
+  ol.steps>li{counter-increment:step;position:relative;padding:11px 0 11px 48px;color:var(--cream-dim);font-weight:300;border-bottom:1px solid var(--line-soft);max-width:72ch}
+  ol.steps>li:last-child{border-bottom:0}
+  ol.steps>li::before{content:counter(step);position:absolute;left:0;top:9px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--panel-2),var(--panel));border:1px solid var(--line);color:var(--brass);font-family:var(--sans);font-weight:700;font-size:.82rem;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 3px rgba(33,31,28,.6)}
+
+  /* ---------- TABLES ---------- */
+  .tw{overflow-x:auto;margin:16px 0 24px;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:460px}
+  thead th{background:linear-gradient(180deg,var(--bg-2),var(--panel));text-align:left;font-family:var(--sans);font-weight:700;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);padding:14px 17px;border-bottom:1px solid var(--line)}
+  tbody td{padding:13px 17px;border-bottom:1px solid var(--line-soft);color:var(--cream-dim);font-weight:300;vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:nth-child(even){background:rgba(198,161,91,.022)}
+  tbody tr:hover{background:rgba(198,161,91,.055)}
+  tbody td:first-child{color:var(--cream);font-weight:500}
+
+  /* ---------- CALLOUTS ---------- */
+  .callout{position:relative;margin:22px 0;padding:20px 24px 20px 26px;border-radius:14px;border:1px solid var(--line);background:var(--panel);overflow:hidden;box-shadow:var(--shadow)}
+  .callout::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
+  .callout .ct{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:9px}
+  .callout p{margin:0;color:var(--cream-dim);max-width:none}
+  .callout p+p{margin-top:9px}
+  .callout strong{color:var(--cream)}
+  .callout.rule::before{background:var(--brass)} .callout.rule{background:linear-gradient(115deg,rgba(198,161,91,.13),var(--panel) 58%)} .callout.rule .ct{color:var(--brass)}
+  .callout.warn::before{background:var(--clay)} .callout.warn{background:linear-gradient(115deg,rgba(216,138,99,.13),var(--panel) 58%)} .callout.warn .ct{color:var(--clay)}
+  .callout.tip::before{background:var(--sage)} .callout.tip{background:linear-gradient(115deg,rgba(164,183,159,.13),var(--panel) 58%)} .callout.tip .ct{color:var(--sage)}
+
+  /* ---------- PIPELINE FLOW ---------- */
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:20px 0 10px}
+  .fstep{flex:1 1 160px;min-width:150px;background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:14px;padding:18px 16px 15px;position:relative;transition:transform .25s,border-color .25s}
+  .fstep:hover{transform:translateY(-4px);border-color:rgba(198,161,91,.4)}
+  .fstep .fnum{font-size:.6rem;letter-spacing:.2em;color:var(--brass);font-weight:800;opacity:.7}
+  .fstep .fh{font-family:var(--serif);font-size:1.06rem;color:var(--brass-soft);margin:3px 0 4px}
+  .fstep .fd{font-size:.78rem;color:var(--cream-dim);font-weight:300;line-height:1.45}
+  .fstep .ftag{margin-top:10px;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dimmer);font-weight:700;border-top:1px solid var(--line-soft);padding-top:8px}
+  .farrow{display:flex;align-items:center;justify-content:center;color:var(--brass);font-size:1.3rem;padding:0 7px;flex:0 0 auto;opacity:.7}
+  @media(max-width:660px){.farrow{transform:rotate(90deg);width:100%;padding:9px 0}}
+
+  /* ---------- CHART CHAIN (glowing vertical timeline) ---------- */
+  .chain{margin:20px 0 24px;position:relative;padding-left:6px}
+  .chain::before{content:"";position:absolute;left:13px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--brass),rgba(198,161,91,.2))}
+  .clink{position:relative;padding:9px 0 9px 50px;margin-bottom:2px}
+  .clink::before{content:"";position:absolute;left:6px;top:13px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--brass);box-shadow:0 0 0 4px rgba(33,31,28,1),0 0 12px rgba(198,161,91,.45)}
+  .clink.done::before{background:var(--brass);box-shadow:0 0 0 4px rgba(33,31,28,1),0 0 16px rgba(198,161,91,.7)}
+  .clink b{color:var(--cream);font-weight:600}
+  .clink .note{color:var(--brass-soft);font-style:italic;font-family:var(--serif)}
+
+  /* ---------- GLOSSARY ---------- */
+  .gloss{display:grid;gap:0;margin:16px 0 10px;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  .grow{display:grid;grid-template-columns:210px 1fr;gap:22px;padding:14px 20px;border-bottom:1px solid var(--line-soft);transition:background .2s}
+  .grow:last-child{border-bottom:0}
+  .grow:hover{background:rgba(198,161,91,.045)}
+  .grow .gt{font-weight:600;color:var(--cream);font-size:.92rem}
+  .grow .gt code{display:inline}
+  .grow .gd{color:var(--cream-dim);font-weight:300;font-size:.9rem;max-width:none}
+  @media(max-width:620px){.grow{grid-template-columns:1fr;gap:4px}}
+
+  /* ---------- CHIPS ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+  .chips span{font-size:.82rem;padding:6px 14px;border:1px solid var(--line);border-radius:30px;color:var(--cream-dim);font-weight:300}
+  .chips.no span{border-color:rgba(216,138,99,.4);color:var(--clay)}
+  .chips.yes span{border-color:rgba(164,183,159,.42);color:var(--sage)}
+  .vlabel{margin:14px 0 2px;font-weight:700;font-size:.78rem;letter-spacing:.06em}
+  .vlabel.use{color:var(--sage)} .vlabel.avoid{color:var(--clay)}
+
+  /* ---------- FOOTER ---------- */
+  footer{position:relative;z-index:1;text-align:center;padding:66px 32px 84px;margin-top:34px;border-top:1px solid var(--line)}
+  footer .fc{width:50px;height:50px;margin:0 auto 18px;opacity:.9}
+  footer .fm{font-family:var(--serif);font-size:1.5rem}
+  footer .fm .c{color:var(--brass);font-style:italic}
+  footer .fn{margin-top:10px;font-size:.8rem;color:var(--cream-dim);font-weight:300;font-style:italic;font-family:var(--serif)}
+
+  @media(max-width:900px){
+    .shell{grid-template-columns:1fr;gap:26px}
+    .toc{position:static;top:auto}
+  }
+
+  /* ---------- PRINT: flip to warm paper ---------- */
+  @media print{
+    @page{margin:18mm}
+    :root{
+      --bg:#F7F3EB;--bg-2:#EFE8D9;--panel:#F2ECDE;--panel-2:#E9E1D0;
+      --cream:#2A2620;--cream-dim:#564F42;--cream-dimmer:#7C725F;
+      --brass:#895F2E;--brass-soft:#74521F;--clay:#A85B33;--sage:#5E7A55;
+      --line:rgba(137,95,46,.32);--line-soft:rgba(137,95,46,.16);--shadow:none;
+    }
+    body{background:#F7F3EB}
+    .contours,.grain,.progress,.toc{display:none}
+    .shell{grid-template-columns:1fr;gap:0;padding:0}
+    .cover{padding:20px 0 30px}
+    .cover .rose{animation:none}
+    section{break-inside:avoid-page}
+    .callout,.tw,.gloss,.fstep{break-inside:avoid;box-shadow:none}
+    a.inline{color:#74521F}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="contours" aria-hidden="true">
+  <svg class="tl" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1.1">
+    <ellipse cx="200" cy="200" rx="60" ry="48" transform="rotate(18 200 200)"/>
+    <ellipse cx="200" cy="200" rx="96" ry="80" transform="rotate(14 200 200)"/>
+    <ellipse cx="200" cy="200" rx="134" ry="112" transform="rotate(10 200 200)"/>
+    <ellipse cx="200" cy="200" rx="172" ry="146" transform="rotate(6 200 200)"/>
+    <ellipse cx="200" cy="200" rx="210" ry="180" transform="rotate(2 200 200)"/>
+  </svg>
+  <svg class="br" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1.1">
+    <ellipse cx="200" cy="200" rx="52" ry="64" transform="rotate(-22 200 200)"/>
+    <ellipse cx="200" cy="200" rx="86" ry="104" transform="rotate(-18 200 200)"/>
+    <ellipse cx="200" cy="200" rx="122" ry="146" transform="rotate(-14 200 200)"/>
+    <ellipse cx="200" cy="200" rx="160" ry="190" transform="rotate(-10 200 200)"/>
+    <ellipse cx="200" cy="200" rx="198" ry="232" transform="rotate(-6 200 200)"/>
+  </svg>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ========= COVER ========= -->
+<header class="cover">
+  <svg class="rose" viewBox="0 0 140 140" fill="none" aria-hidden="true">
+    <circle cx="70" cy="70" r="65" stroke="#C6A15B" stroke-width="1" opacity=".5"/>
+    <g class="ring-spin">
+      <circle cx="70" cy="70" r="53" stroke="#C6A15B" stroke-width=".55" opacity=".3"/>
+      <g stroke="#C6A15B" stroke-width="1" opacity=".5">
+        <line x1="70" y1="19" x2="70" y2="27"/><line x1="70" y1="113" x2="70" y2="121"/>
+        <line x1="19" y1="70" x2="27" y2="70"/><line x1="113" y1="70" x2="121" y2="70"/>
+        <line x1="34" y1="34" x2="39" y2="39"/><line x1="101" y1="101" x2="106" y2="106"/>
+        <line x1="106" y1="34" x2="101" y2="39"/><line x1="39" y1="101" x2="34" y2="106"/>
+      </g>
+    </g>
+    <path d="M70 24 L76 64 L70 70 L64 64 Z" fill="#C6A15B"/>
+    <path d="M70 116 L64 76 L70 70 L76 76 Z" fill="#DEC68F" opacity=".5"/>
+    <path d="M24 70 L64 64 L70 70 L64 76 Z" fill="#DEC68F" opacity=".55"/>
+    <path d="M116 70 L76 76 L70 70 L76 64 Z" fill="#DEC68F" opacity=".55"/>
+    <path d="M41 41 L66 66 L62 70 L57 65 Z" fill="#C6A15B" opacity=".35"/>
+    <path d="M99 99 L74 74 L78 70 L83 75 Z" fill="#C6A15B" opacity=".35"/>
+    <path d="M99 41 L74 66 L78 70 L73 65 Z" fill="#DEC68F" opacity=".3"/>
+    <path d="M41 99 L66 74 L62 70 L67 75 Z" fill="#DEC68F" opacity=".3"/>
+    <circle cx="70" cy="70" r="4" fill="#F5F0E6"/>
+  </svg>
+  <p class="eyebrow">Operating Manual</p>
+  <h1>The Compass<b>Eats</b> Handbook</h1>
+  <p class="tag">The world's best, wherever you are.</p>
+  <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
+  <div class="meta-row">
+    <span class="m">Version <b>2.3</b></span>
+    <span class="m">Updated <b>June 14, 2026</b></span>
+    <span class="m">Maintained by <b>Ben + Claude</b></span>
+  </div>
+</header>
+
+<div class="shell">
+
+  <!-- ========= TOC ========= -->
+  <nav class="toc" id="toc">
+    <h6>Contents</h6>
+    <a href="#s1"><span class="nn">01</span> What CompassEats Is</a>
+    <a href="#s2"><span class="nn">02</span> How It Fits Together</a>
+    <a href="#s3"><span class="nn">03</span> The Google Sheet</a>
+    <a href="#s4"><span class="nn">04</span> How to Add Venues</a>
+    <a href="#s5"><span class="nn">05</span> Add a New Accolade</a>
+    <a href="#s6"><span class="nn">06</span> The Apps Scripts</a>
+    <a href="#s7"><span class="nn">07</span> Enriching Venues</a>
+    <a href="#s8"><span class="nn">08</span> The Codebase</a>
+    <a href="#s9"><span class="nn">09</span> Brand &amp; Voice</a>
+    <a href="#s10"><span class="nn">10</span> Deploying</a>
+    <a href="#s11"><span class="nn">11</span> Roadmap</a>
+    <a href="#s12"><span class="nn">12</span> Glossary</a>
+    <a href="#cl"><span class="nn">✦</span> Changelog</a>
+  </nav>
+
+  <main class="content">
+
+    <div class="callout tip">
+      <div class="ct">🔄 How this handbook stays current</div>
+      <p>This is a <strong>living document</strong>. Every time we add, remove, or change a feature, Claude hands back an updated handbook (or just the edited section) for you to re-save. The version number bumps and the <a class="inline" href="#cl">Changelog</a> records what changed.</p>
+      <p>Canonical home: the Claude Project files. Recommended second home: your repo at <code>docs/</code>, where git history becomes a free, automatic record of every version.</p>
+      <p><strong>Companion docs (also in Project files):</strong> <em>CompassEats-Field-Card.html</em> (one-page quick start), <em>CompassEats-Ingest-Tools.html</em> (bar &amp; restaurant ingest deep-dive), and <em>CompassEats-Punch-List.html</em> — the <strong>canonical, living roadmap</strong>. Detailed work-in-progress lives there; this handbook keeps a high-level snapshot in §11.</p>
+    </div>
+
+    <!-- ===== 1 ===== -->
+    <section id="s1">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>01 — The Idea <span class="deg">· N</span></span>
+      <h2>A compass for the <em>hungry &amp; thirsty</em>, anywhere on earth.</h2>
+      <p class="lead">CompassEats lets anyone search a city and instantly see its best restaurants and cocktail bars, ranked from the guides that actually matter — Michelin, World's 50 Best, James Beard, the Spirited Awards, and more. No crowd noise. Just a clear line to the places worth your time.</p>
+      <p>The product exists to <strong>end the "where should we eat/drink?" argument</strong> — to be the well-traveled friend who always knows the spot.</p>
+      <h4>Strategic positioning</h4>
+      <ul class="bul">
+        <li><strong>Go deep, not wide.</strong> Restaurants + bars only. No hotels, wineries, or "experiences."</li>
+        <li><strong>Cocktail bars are the wedge.</strong> Neither main competitor fully owns this space — it's our differentiator.</li>
+        <li><strong>Stay simple.</strong> No accounts, no social feed, no points. Search → see the best → go.</li>
+      </ul>
+      <h4>The competitors</h4>
+      <div class="tw"><table>
+        <thead><tr><th>Competitor</th><th>What they are</th><th>Notable gap</th></tr></thead>
+        <tbody>
+          <tr><td>thebestrestaurantsguide.com</td><td>Static directory, ~12.9K restaurants, 26 award sources, permalink pages</td><td>No bars</td></tr>
+          <tr><td>joinpearl.co</td><td>Luxury platform, social/gamification, 50+ sources, hotels/wineries/experiences, mobile app</td><td>Spread thin; complex</td></tr>
+          <tr><td>guide.michelin.com</td><td>The authoritative restaurant guide</td><td>Single source; no bars</td></tr>
+          <tr><td>beliapp.com</td><td>Social dining-tracker app</td><td>Crowd-driven, not authority-driven</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>Our edge:</strong> authority-ranked, restaurant <em>and</em> bar, cross-guide in one view, map-first, dead simple.</p>
+    </section>
+
+    <!-- ===== 2 ===== -->
+    <section id="s2">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>02 — Architecture <span class="deg">· NE</span></span>
+      <h2>How it all <em>fits together.</em></h2>
+      <p class="lead">The whole system is one clean pipeline, flowing left to right.</p>
+      <div class="flow">
+        <div class="fstep"><div class="fnum">01</div><div class="fh">Google Sheet</div><div class="fd">Award tabs + enrichment</div><div class="ftag">Source of truth</div></div>
+        <div class="farrow">→</div>
+        <div class="fstep"><div class="fnum">02</div><div class="fh">Clean tabs</div><div class="fd">venues · cities · needs_enrichment</div><div class="ftag">Scripts build</div></div>
+        <div class="farrow">→</div>
+        <div class="fstep"><div class="fnum">03</div><div class="fh">Static JSON</div><div class="fd">Generated into the repo</div><div class="ftag">What the site reads</div></div>
+        <div class="farrow">→</div>
+        <div class="fstep"><div class="fnum">04</div><div class="fh">Live website</div><div class="fd">Cloudflare deploy</div><div class="ftag">What users see</div></div>
+      </div>
+      <h4>The big architectural shift</h4>
+      <p>CompassEats is <strong>migrating away from AI-generated venues</strong> (the old approach: venues invented by an LLM at request time — ephemeral, no permalinks, bad for SEO) <strong>to static data</strong> built from the Google Sheet. This is the single most important upgrade: it gives every venue a permanent, crawlable page — exactly the advantage competitors have and we didn't.</p>
+      <h4>Page URLs (permalinks)</h4>
+      <div class="tw"><table>
+        <thead><tr><th>Page type</th><th>URL pattern</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>City page</td><td><code>/city/[slug]</code></td><td><code>/city/tokyo</code></td></tr>
+          <tr><td>Venue page</td><td><code>/venue/[city]/[slug]</code></td><td><code>/venue/tokyo/sushi-saito</code></td></tr>
+          <tr><td>Award page</td><td><code>/award/[slug]</code></td><td><code>/award/worlds-50-best</code></td></tr>
+          <tr><td>Cities index</td><td><code>/cities</code></td><td><code>/cities</code> &mdash; collapsible Continent &rarr; Country &rarr; City</td></tr>
+          <tr><td>Guides index</td><td><code>/guides</code></td><td><code>/guides</code> &mdash; all award sources, global/regional</td></tr>
+        </tbody>
+      </table></div>
+
+      <h4>City page layout — stacked, collapsible eat/drink sections</h4>
+      <p>As of June 14, 2026 the city page no longer interleaves restaurants and bars in one ranked list. The old single list cross-scored the two types against each other, so a mid-pack 50&nbsp;Best bar could outrank a two-Michelin-star restaurant &mdash; a false comparison (the per-type scoring in <code>getVenuePrestige</code> was always correct; only the render mixed them). The page now shows <strong>two stacked sections</strong>: <strong>&ldquo;Where to eat&rdquo;</strong> then <strong>&ldquo;Where to drink&rdquo;</strong>, each ranked on its own prestige scale and never interleaved. A section with zero venues is omitted entirely.</p>
+      <p>Both sections are <strong>collapsible accordions, collapsed by default</strong> (Radix <code>Collapsible</code> from <code>@/components/ui/collapsible</code>), each header showing a count &mdash; &ldquo;Where to drink&nbsp;76&rdquo;. This was a deliberate UX choice for the cocktail-bar wedge: a bar-seeker lands on the page and taps &ldquo;drink&rdquo; without scrolling past dozens of restaurants. The page-level heading is <strong>&ldquo;What&rsquo;s charted in {city}&rdquo;</strong>; the existing All&nbsp;/&nbsp;Restaurants&nbsp;/&nbsp;Cocktail&nbsp;Bars toggle is unchanged and filters over the sections (selecting one type hides the other section). Per-section row cap is <code>INITIAL_ROW_CAP = 10</code> with an independent &ldquo;Show all&rdquo; per section. All of this lives in <code>src/routes/city.$slug.tsx</code>; it is a frontend-only change &mdash; no JSON regeneration needed.</p>
+      <p class="callout">Design path not taken (recorded so it isn&rsquo;t relitigated): <strong>side-by-side eat/drink columns were rejected</strong> &mdash; only ~22 cities have 5+ bars, and the median &ldquo;both&rdquo; city has just 2, so columns would render a tall restaurant list beside a near-empty bar column. Stacked collapsible sections scale cleanly from 2 bars to 76.</p>
+
+      <h4>The stack at a glance</h4>
+      <div class="tw"><table>
+        <thead><tr><th>Layer</th><th>Tech</th></tr></thead>
+        <tbody>
+          <tr><td>Framework</td><td>TanStack Start (React 19)</td></tr>
+          <tr><td>Styling</td><td>Tailwind v4 (oklch colors)</td></tr>
+          <tr><td>Runtime / packages</td><td>Bun</td></tr>
+          <tr><td>Hosting / deploy</td><td>Cloudflare</td></tr>
+          <tr><td>Maps</td><td>MapLibre GL JS + MapTiler tiles</td></tr>
+          <tr><td>City-search fallback</td><td>Geoapify (free tier)</td></tr>
+          <tr><td>Frontend builder</td><td>Lovable (AI-assisted)</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ===== 3 ===== -->
+    <section id="s3">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>03 — Source of Truth <span class="deg">· E</span></span>
+      <h2>The Google Sheet.</h2>
+      <p class="lead">Everything starts here. The Sheet is the one place you edit data. The website is just a polished, read-only view of it.</p>
+      <h4>The tabs</h4>
+      <div class="tw"><table>
+        <thead><tr><th>Tab</th><th>What it holds</th><th>How it's made</th></tr></thead>
+        <tbody>
+          <tr><td>Award tabs (16+)</td><td>One tab per award source — the raw lists you paste in. Includes the ingest-tool output tabs <code>Bar Awards</code> and <code>Restaurant Awards</code>.</td><td>You paste / ingest</td></tr>
+          <tr><td>Places Enrichment</td><td>Address &amp; coordinates pulled from Google Places</td><td>Built during enrichment</td></tr>
+          <tr><td><code>venues</code></td><td>The master table — all award tabs + enrichment merged &amp; de-duplicated (~8,552)</td><td><code>reshape.gs</code></td></tr>
+          <tr><td><code>needs_enrichment</code></td><td>Venues missing required data, can't go live yet (~904)</td><td><code>reshape.gs</code></td></tr>
+          <tr><td><code>cities</code></td><td>Every charted city with a centroid lat/lng (~2,733)</td><td><code>cities.gs</code></td></tr>
+        </tbody>
+      </table></div>
+      <h4>The <code>venues</code> tab — core columns</h4>
+      <p>These fields define a venue. The authoritative definition lives in <code>src/lib/schema.ts</code> — if you change columns here, mirror the change there.</p>
+      <div class="tw"><table>
+        <thead><tr><th>Column</th><th>What it is</th><th>Required to go live?</th></tr></thead>
+        <tbody>
+          <tr><td><code>name</code></td><td>Venue name</td><td>✅ Yes</td></tr>
+          <tr><td><code>type</code></td><td><code>restaurant</code> or <code>bar</code></td><td>✅ Yes</td></tr>
+          <tr><td><code>city</code></td><td>Must match a row in <code>cities</code></td><td>✅ Yes</td></tr>
+          <tr><td><code>country</code></td><td>Country</td><td>Recommended</td></tr>
+          <tr><td><code>address</code></td><td>Full street address</td><td>✅ Yes</td></tr>
+          <tr><td><code>lat</code> / <code>lng</code></td><td>Map coordinates</td><td>✅ Yes — no coords, no pin</td></tr>
+          <tr><td><code>accolades</code></td><td>Award source(s) + rank + year</td><td>✅ <strong>This makes it charted</strong></td></tr>
+          <tr><td><code>photo_url</code></td><td>Image for the card / page</td><td>Optional</td></tr>
+          <tr><td><code>website</code></td><td>Outbound link</td><td>Optional</td></tr>
+          <tr><td><code>slug</code></td><td>URL-safe name for the permalink</td><td>Auto-generated</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout rule">
+        <div class="ct">★ The golden rule</div>
+        <p>A venue becomes <strong>"charted"</strong> (visible on the site) only when it is in <code>venues</code>, has <strong>at least one accolade</strong>, and has its <strong>required fields filled</strong> (name, type, city, address, lat/lng). Missing any required field sends it to <code>needs_enrichment</code> instead, and it won't show until fixed.</p>
+      </div>
+    </section>
+
+    <!-- ===== 4 ===== -->
+    <section id="s4">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>04 — The Headline Workflow <span class="deg">· SE</span></span>
+      <h2>How to <em>add venues.</em></h2>
+      <p class="lead">Here's the full chain of what must be true for a new venue to appear as charted on the website.</p>
+      <div class="chain">
+        <div class="clink"><b>1. Venue lands in the <code>venues</code> tab</b></div>
+        <div class="clink"><b>2. It has at least one accolade</b> <span class="note">— this makes it charted</span></div>
+        <div class="clink"><b>3. Required fields filled</b> — name, type, city, address, lat/lng</div>
+        <div class="clink"><b>4. Its city exists in <code>cities</code></b> — so it maps to a city page</div>
+        <div class="clink"><b>5. Build-time sync</b> regenerates the static JSON</div>
+        <div class="clink done"><b>6. Site redeploys</b> <span class="note">— venue is live and charted ✅</span></div>
+      </div>
+
+      <h3><span class="pin"></span>Path A — Add a whole award list (the normal way)</h3>
+      <p>Use this when you have a published list (e.g. "Asia's 50 Best Bars 2025").</p>
+      <ol class="steps">
+        <li><strong>Open the matching award tab</strong> (or create a new one — see §5 if the <em>source</em> is brand new).</li>
+        <li><strong>Paste the list in.</strong> For bars, use the bar-ingest tool: run <code>makeBarImportTemplate</code>, fill it, then run <code>ingestBarLists</code> (§6).</li>
+        <li><strong>Run <code>reshape.gs</code>.</strong> Merges new entries into <code>venues</code> and de-duplicates. Incomplete rows route to <code>needs_enrichment</code>.</li>
+        <li><strong>Enrich anything in <code>needs_enrichment</code></strong> (§7) — fill addresses and coordinates.</li>
+        <li><strong>Re-run <code>cities.gs</code></strong> if you added venues in a previously-uncharted city.</li>
+        <li><strong>Sync &amp; deploy</strong> (§8 / §10).</li>
+      </ol>
+
+      <h3><span class="pin"></span>Path B — Add a single venue by hand</h3>
+      <p>For a one-off addition or quick fix (this is how the Sushi Ogawa proof-of-concept was done).</p>
+      <ol class="steps">
+        <li>Go to the <code>venues</code> tab and <strong>add a new row</strong>.</li>
+        <li>Fill the core columns: <code>name</code>, <code>type</code>, <code>city</code>, <code>country</code>, <code>address</code>.</li>
+        <li><strong>Add coordinates</strong> (<code>lat</code>/<code>lng</code>). No coords yet? Leave blank and enrich later — but it won't go live without them.</li>
+        <li><strong>Add at least one accolade.</strong> No accolade = not charted.</li>
+        <li>Make sure the <code>city</code> value <strong>exactly matches</strong> a row in <code>cities</code>. New city → re-run <code>cities.gs</code>.</li>
+        <li><strong>Sync &amp; deploy.</strong></li>
+      </ol>
+      <div class="callout tip">
+        <div class="ct">🧠 Why the accolade matters</div>
+        <p>"Charted" literally means <em>sheet-matched-with-an-accolade</em>. A place with no award attached is just a location — CompassEats only shows venues an authority has vouched for.</p>
+      </div>
+    </section>
+
+    <!-- ===== 5 ===== -->
+    <section id="s5">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>05 — Awards <span class="deg">· S</span></span>
+      <h2>How to add a <em>new accolade.</em></h2>
+      <p class="lead">There are two layers (e.g. La Liste, Gault &amp; Millau, Tabelog, OAD, Forbes). Both must be done for it to work end-to-end.</p>
+      <h3><span class="pin"></span>Layer 1 — In the Google Sheet (the data)</h3>
+      <ol class="steps">
+        <li><strong>Create a new tab</strong> named for the source (e.g. <code>La Liste</code>).</li>
+        <li><strong>Paste the list</strong>, matching the column shape of the other award tabs (name, city, rank/year).</li>
+        <li><strong>Run <code>reshape.gs</code></strong> so its entries flow into <code>venues</code>. Reshape merges <em>all</em> award tabs, so a new one is picked up automatically as long as it follows the shape.</li>
+      </ol>
+      <h3><span class="pin"></span>Layer 2 — In the code (the registry)</h3>
+      <p>The site needs to <em>know about</em> the source to label it, give it an icon, weight it, and build its <code>/award/[slug]</code> page.</p>
+      <ol class="steps">
+        <li>Open <code>src/lib/schema.ts</code>.</li>
+        <li>Find the <code>AWARD_SOURCES</code> registry (currently <strong>18 sources</strong>).</li>
+        <li><strong>Add a new entry</strong> — display name, slug, weight/styling. Mirror the existing entries.</li>
+        <li>Special card treatment goes here (e.g. <strong>OAD rank 200+ is deprioritized</strong> vs. Michelin / 50 Best).</li>
+        <li>Commit. Next build picks it up.</li>
+      </ol>
+      <div class="callout warn">
+        <div class="ct">⚙️ Do both layers</div>
+        <p>Layer 1 without Layer 2 → the data exists but the site won't render the source nicely. Layer 2 without Layer 1 → an empty award page.</p>
+      </div>
+    </section>
+
+    <!-- ===== 6 ===== -->
+    <section id="s6">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>06 — Automation <span class="deg">· SW</span></span>
+      <h2>The <em>Apps Scripts.</em></h2>
+      <p class="lead">These automation scripts live inside the Google Sheet. They turn your raw award tabs into the clean tables the website reads.</p>
+      <h3><span class="pin"></span>How to run any Apps Script</h3>
+      <ol class="steps">
+        <li>In the Sheet, click <strong>Extensions → Apps Script</strong> — opens the editor in a new tab.</li>
+        <li>In the left sidebar, <strong>click the script file</strong> (e.g. <code>reshape.gs</code>).</li>
+        <li>At the top, <strong>select the function</strong> to run from the dropdown.</li>
+        <li>Click <strong>▶ Run</strong>.</li>
+        <li>First run only: <strong>authorize</strong> the script (it's your own script on your own Sheet).</li>
+        <li>Watch the <strong>Execution log</strong> for progress and final counts, then switch back to the Sheet.</li>
+      </ol>
+      <h3><span class="pin"></span>Run them in this order</h3>
+      <div class="tw"><table>
+        <thead><tr><th>#</th><th>Script</th><th>What it does</th><th>When to run</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><code>reshape.gs</code></td><td>Merges all award tabs (including <code>Bar Awards</code> and <code>Restaurant Awards</code>) + <code>Places Enrichment</code> into <code>venues</code> (~9,200) and routes incomplete rows to <code>needs_enrichment</code> (~160). Also reads <code>closed_venues</code> and excludes anything listed there from both tabs. <strong>Rebuilds <code>venues</code> from scratch each run</strong> — which is why ingest must write to award tabs reshape reads, never to <code>venues</code> directly.</td><td>After changing any award list, or after editing <code>closed_venues</code></td></tr>
+          <tr><td>2</td><td><code>cities.gs</code></td><td>Builds <code>cities</code> (~2,950) with a centroid lat/lng. <strong>Preserves manual edits on re-run.</strong></td><td>After reshape, esp. if new cities appeared</td></tr>
+          <tr><td>3</td><td><code>bar-ingest.gs</code></td><td>The bar-list importer: <code>makeBarImportTemplate</code> + <code>ingestBarLists</code>. Appends award rows to the <code>Bar Awards</code> tab (does <strong>not</strong> write to <code>venues</code>); reshape reads <code>Bar Awards</code> as a source.</td><td>When adding a new bar list</td></tr>
+          <tr><td>4</td><td><code>restaurant-ingest.gs</code></td><td>The restaurant-list importer: <code>makeRestaurantImportTemplate</code> + <code>ingestRestaurantLists</code>. Mirrors the bar tool; accepts award display names or slugs; grading via <code>category_override</code>. Appends award rows to the <code>Restaurant Awards</code> tab (does <strong>not</strong> write to <code>venues</code>); reshape reads it as a source. See Ingest-Tools §6.</td><td>When adding a new restaurant list</td></tr>
+          <tr><td>5</td><td><code>enrichment-audit.gs</code></td><td>Reads <code>needs_enrichment</code> and writes a triage-ready <code>enrichment_audit</code> tab — sorted by award prestige, color-coded by reshape's <code>reason</code>. See §7.</td><td>Anytime you want to know which venues to enrich next</td></tr>
+          <tr><td>6</td><td><code>geo-enrich.gs</code></td><td>Automated Google Places enrichment: <code>geoEnrich</code> looks up audit venues by name+city and writes geo to <code>Places Enrichment</code>; <code>suggestReviewDecisions</code> / <code>convertSuggestions</code> / <code>acceptReviewRows</code> drive the review loop. Reads <code>PLACES_API_KEY</code> from Script Properties. See §7.</td><td>To turn audited venues into live geo</td></tr>
+          <tr><td>7</td><td><code>geocode.gs</code></td><td>Geoapify fallback (free): fills <em>lat/lng only</em> on rows that have an address but no coords. Owns the in-Sheet <strong>CompassEats menu</strong> (<code>onOpen</code>) and the Geoapify key setup. Cannot supply a <code>placeId</code>, so it's a long-tail fallback, not the primary enricher.</td><td>For venues Google Places can't resolve</td></tr>
+          <tr><td>8</td><td><code>hero-photos.gs</code></td><td>Fills <code>cities.hero_image_url</code> from Pexels — resumable batches, <code>"{city} skyline"</code> query, attribution in <code>photo_credit</code>/<code>photo_source</code>. Skips weak matches. (A one-off Google Places pass is planned to run first for major cities.)</td><td>After new cities appear from ingest</td></tr>
+          <tr><td>9</td><td><code>photos.gs</code></td><td>Fills venue <code>photo_url</code>.</td><td>⚠️ Hold — see below</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout rule">
+        <div class="ct">★ Four verified <code>normKey_</code> patches live in reshape</div>
+        <p>To match award rows to <code>Places Enrichment</code>, reshape normalizes venue names to a key. Four character-class fixes have been verified against Places and live in <code>normKey_</code>: <strong>strip apostrophes</strong> (so <em>Tetsuya's</em> → <em>tetsuyas</em>), <strong>convert &amp; → "and"</strong> (so <em>Jigger &amp; Pony</em> → <em>jigger and pony</em>), <strong>strip Unicode fractions</strong> (so <em>8½</em> → <em>8</em>), and <strong>strip superscripts</strong> (so <em>Tanière³</em> → <em>taniere</em>). Each was verified by checking the actual <code>Places Enrichment.normalizedKey</code> before patching. Don't add more without doing the same.</p>
+      </div>
+      <div class="callout warn">
+        <div class="ct">⚠️ The photos script bills per image load</div>
+        <p>Don't run <code>photos.gs</code> casually. The plan is to <strong>cache images to a CDN first</strong>, then point <code>photo_url</code> at the cached copies so we aren't paying per page view. Leave it parked until that caching step is in place.</p>
+      </div>
+      <div class="callout tip">
+        <div class="ct">◆ On <code>cities.gs</code> preserving edits</div>
+        <p>It's written so re-running won't wipe manual fields you've filled — like <code>hero_image_url</code>. Re-run safely to pick up new cities without losing hand-curated touches. <em>(<code>timezone</code> is now dormant since "Open Today" was dropped — leave blank.)</em></p>
+      </div>
+    </section>
+
+    <!-- ===== 7 ===== -->
+    <section id="s7">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>07 — Data Quality <span class="deg">· W</span></span>
+      <h2>Enriching venues &amp; <em>filling gaps.</em></h2>
+      <p class="lead">"Enrichment" = pairing an award-winning venue with the geo data (place ID, lat/lng, address) it needs to go live on the site. The whole pipeline hinges on reshape's matching step — so it's worth understanding what that step actually does.</p>
+
+      <h3><span class="pin"></span>How reshape's matching actually works</h3>
+      <p style="margin:10px 0"><strong>City slugs are alias-aware (June 12, 2026).</strong> Reshape builds <code>city_slug</code> via <code>slugify_(cityKey_(v.city), …)</code>, so the <code>CITY_ALIASES_</code> map controls the actual page slug, not just award-grouping identity. Adding an alias (e.g. <code>'new york city': 'new york'</code>) now merges those venues onto one city page automatically. This fixed the New York split (<code>new-york-city</code> → <code>new-york</code>, reuniting the three-stars) and the <code>rio-de-janiero</code> typo. <code>generateCitiesTab</code> rebuilds cities from venues, so emptied city rows self-prune.</p>
+      <p>Reshape doesn't compare award rows against the <code>venues</code> tab. It compares them against <code>Places Enrichment</code> — and the <strong>geo lookup</strong> is name-only, no city. For each award row:</p>
+      <ol class="steps">
+        <li>The venue name is normalized via <code>normKey_</code> (lowercase, accents stripped, apostrophes removed, <code>&amp;</code> → "and", fractions / superscripts stripped, then alphanumeric-only).</li>
+        <li>That normalized key is looked up in <code>Places Enrichment.normalizedKey</code> to attach geo (<code>placeId</code>, lat/lng).</li>
+        <li><strong>The venue's identity is <code>normKey(name) + '|' + cityKey(city)</code></strong> (as of June 5, 2026) — name <em>and</em> city. Two award rows merge into one venue only if they share both. This is what keeps same-name venues in different cities (Atlas Atlanta vs Atlas Singapore) as separate records.</li>
+        <li>If no enrichment match is found, the venue is still created from its name+city identity and lands in <code>needs_enrichment</code> with no geo.</li>
+      </ol>
+      <div class="callout rule">
+        <div class="ct">⚠ Geo is still name-only — the open follow-on</div>
+        <p>Identity is name+city, but the <em>geo</em> attached in step 2 is matched by name alone. So a venue split out by the identity fix can inherit the wrong city's coordinates (Atlas Singapore briefly carried Atlanta's geo). Punch-listed as "per-city geo matching" — make <code>geoEnrich</code> and reshape both key geo on name+city. Until then, the residual is duplicate rows / occasional wrong pins, not wrong awards.</p>
+      </div>
+
+      <div class="callout rule">
+        <div class="ct">★ What "unmatched" really means in reshape's log</div>
+        <p>The <code>award rows unmatched</code> count is <strong>not</strong> "couldn't be matched to a venue." It means "this award row's normalized name was not found in <code>Places Enrichment</code>." The venue still gets created — it just has no geo, so it goes to <code>needs_enrichment</code>. Every award row produces a venue somewhere; nothing is silently dropped.</p>
+      </div>
+
+      <h3><span class="pin"></span>The <code>needs_enrichment</code> tab — your real triage target</h3>
+      <p>Reshape labels every row in <code>needs_enrichment</code> with a <code>reason</code> — one of three:</p>
+      <div class="tw"><table>
+        <thead><tr><th>Reason</th><th>What it means</th><th>How to fix</th></tr></thead>
+        <tbody>
+          <tr><td><code>has placeId, missing coords</code></td><td>Places matched the name but lat/lng came back empty.</td><td>Re-run Places enrichment for this <code>placeId</code>.</td></tr>
+          <tr><td><code>no placeId</code></td><td>Name didn't match anything in <code>Places Enrichment</code>, but a city was provided by the award tab.</td><td>Find the venue in Google Places, add a row to <code>Places Enrichment</code> with the correct <code>normalizedKey</code>.</td></tr>
+          <tr><td><code>no placeId + no city</code></td><td>No Places match <em>and</em> no city. Worst case.</td><td>Research the venue manually, then enrich.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3><span class="pin"></span>The audit workflow</h3>
+      <p>Don't work <code>needs_enrichment</code> top-to-bottom. Run <code>enrichment-audit.gs</code> first — it ranks every row by award prestige (a Michelin 3-Star is worth more attention than a single-list mention) and writes a triage-ready <code>enrichment_audit</code> tab.</p>
+      <ol class="steps">
+        <li>Run <code>auditEnrichment</code> from <code>enrichment-audit.gs</code> (see §6).</li>
+        <li>Open the <code>enrichment_audit</code> tab. It's sorted by <code>priority</code> — row 1 is the highest-prestige venue still missing geo.</li>
+        <li>Color hint: green = easiest (missing coords only), yellow = needs a Places lookup, red = no city either.</li>
+        <li>Work top-down. For each row, the <code>suggested_action</code> column tells you the literal next step.</li>
+        <li>After a batch of fixes, run <code>reshape</code> → run <code>auditEnrichment</code> again → watch the list shrink.</li>
+      </ol>
+
+      <h3><span class="pin"></span>Automated geo-enrichment (<code>geo-enrich.gs</code>)</h3>
+      <p>The audit tells you <em>what</em> to enrich; <code>geo-enrich.gs</code> does it <strong>automatically</strong> via the Google Places API instead of one venue at a time by hand. It reads <code>enrichment_audit</code> top-down (highest prestige first), looks each venue up by name + city, and writes the result to <code>Places Enrichment</code> — so the next reshape graduates it into <code>venues</code>.</p>
+      <p><strong>Setup (one-time):</strong> store a Google Maps Platform key (with <em>Places API (New)</em> enabled, restricted to that API) in <em>Project Settings → Script Properties</em> as <code>PLACES_API_KEY</code>. The key never lives in the code.</p>
+      <p><strong>The loop:</strong></p>
+      <ol class="steps">
+        <li>Run <code>geoEnrich</code>. It processes up to <code>MAX_TO_PROCESS</code> venues per run (start small, e.g. 200, to verify match quality before spending). <strong>Resumable</strong> — re-run to continue; it skips anything already done.</li>
+        <li>A <strong>safety gate</strong> auto-accepts only when the returned name <em>and</em> city both match; anything ambiguous is parked in <code>enrichment_review</code>. Permanently-closed venues route straight to <code>closed_venues</code>.</li>
+        <li>Run <code>suggestReviewDecisions</code> — it pre-fills the review tab's <code>decision</code> column with <code>ACCEPT?</code> / <code>REJECT?</code> suggestions (strong name match vs. no shared words).</li>
+        <li><strong>Scan the suggestions.</strong> Most parked rows are correct venues that tripped on localized city spellings (Moskva/Moscow, München/Munich, 京都/Kyoto) — those are safe accepts. Watch for <strong>same-chain different-branch traps</strong> (e.g. a Miami restaurant matched to its Chicago sibling) and flip those to <code>REJECT?</code>. The address column is your tell.</li>
+        <li>Run <code>convertSuggestions</code> (turns <code>?</code> suggestions into final <code>ACCEPT</code>/<code>REJECT</code>), then <code>acceptReviewRows</code> (copies accepts into <code>Places Enrichment</code>, drops rejects).</li>
+        <li>Run <code>reshape</code> → the accepted venues go live.</li>
+      </ol>
+      <p class="callout"><strong>Cost.</strong> Places Text Search bills ~$32/1,000 lookups (often inside the monthly free credit, which resets on the 1st). One request per venue. The per-run cap is your spend control; there is no time-based cooldown — <code>geoEnrich</code> simply has nothing to do until a new ingest adds more un-geocoded venues to <code>needs_enrichment</code>.</p>
+      <p class="callout"><strong>Geoapify vs. Google.</strong> <code>geocode.gs</code> (Geoapify) fills <em>lat/lng only</em> and is free — but reshape's completeness test also requires a <code>placeId</code>, which only <code>geo-enrich.gs</code> (Google Places) supplies. Use Geoapify as a fallback for the long tail Google can't resolve, not as the primary enricher.</p>
+
+      <h3><span class="pin"></span>The <code>closed_venues</code> tab</h3>
+      <p>Some venues are <strong>permanently closed</strong> (Charlie Trotter's, El Bulli, Le Gavroche post-Jan 2024). The brand's voice is <em>"point you to the spot"</em> — you can't go to a closed restaurant, so closed venues are excluded from the site.</p>
+      <p>To exclude one, add a row to the <code>closed_venues</code> tab with two columns:</p>
+      <div class="tw"><table>
+        <thead><tr><th>name</th><th>city</th></tr></thead>
+        <tbody>
+          <tr><td>Charlie Trotter's</td><td>Chicago</td></tr>
+          <tr><td>Le Gavroche</td><td>London</td></tr>
+        </tbody>
+      </table></div>
+      <p>Reshape reads this tab on every run and excludes matching venues from <strong>both</strong> <code>venues</code> and <code>needs_enrichment</code>. The final log line <code>closed excluded: N</code> shows how many were filtered. Clear the tab to bring them back — fully reversible.</p>
+
+      <h3><span class="pin"></span>How to add a new <code>normKey_</code> patch</h3>
+      <p>If a high-prestige venue stays stuck in <code>needs_enrichment</code> and you suspect a normalization bug, follow this protocol — never skip it:</p>
+      <ol class="steps">
+        <li><strong>Verify first.</strong> Open the <code>Places Enrichment</code> tab. ⌘F / Ctrl+F the <code>normalizedKey</code> column for the venue name. See exactly what key Places stores.</li>
+        <li>Compare to what reshape's current <code>normKey_</code> would produce. If they differ, you've found the gap.</li>
+        <li><strong>One regex change per patch.</strong> Don't bundle multiple character-class fixes into one save. Bundling makes regressions hard to attribute.</li>
+        <li>Apply the patch → save → re-run reshape → re-run the audit.</li>
+        <li>If the unmatched count goes up, revert immediately. (This has happened — assuming a pattern from one or two examples instead of verifying caused a 700-venue regression that had to be rolled back.)</li>
+      </ol>
+
+      <div class="callout warn">
+        <div class="ct">✓ Fixed June 5, 2026 — the collision that was once a known limitation</div>
+        <p>This was punch-listed for months: reshape's identity was <strong>name-only</strong>, so same-named venues in different cities collapsed into one record (all <em>L'Atelier de Joël Robuchon</em> locations; Atlas Atlanta inheriting Atlas Singapore's bar awards and type). A <code>collision_audit</code> found <strong>603 names appearing in 2+ cities</strong>. <strong>Fixed</strong> by adding a <code>cityKey_</code> helper and changing identity to <code>normKey(name) + '|' + cityKey(city)</code>. Result: <code>venues</code> 9,863 → 11,224, match rate held (unmatched stayed at 106). Atlas, Bacchanalia, Singapore all verified correct.</p>
+        <p><strong>Two residuals it created, with a fixed fix-order:</strong> (1) geo is still matched by name, so split venues can carry a sibling's coordinates — punch-listed as <em>per-city geo matching</em>; (2) one real venue can split into multiple rows when sources spell its city differently (Lisboa/Lisbon, antwerp/anterwp) — punch-listed as <em>city-label canonicalization</em>. <strong>Order is mandatory: geo fix FIRST, then canonicalization.</strong> Building the canonicalization map before the geo fix fails — an attempt to auto-generate it from the contaminated audit data chained false matches and tried to merge 236 unrelated cities into "new-york." The dupe data isn't trustworthy until geo is per-city.</p>
+      </div>
+
+      <h3><span class="pin"></span>Outlier detection</h3>
+      <p>A passive pass flags suspicious data (coords in the wrong country, a wildly off rank). The <strong>Sushi Ogawa fix</strong> was the proof-of-concept — spot the anomaly, correct it in the Sheet, re-sync.</p>
+    </section>
+
+    <!-- ===== 8 ===== -->
+    <section id="s8">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>08 — The Code <span class="deg">· NW</span></span>
+      <h2>The website <em>codebase.</em></h2>
+      <p class="lead">Repo: <code>github.com/benjamineades/compasseats</code></p>
+      <h4>Key files</h4>
+      <div class="tw"><table>
+        <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><code>src/lib/schema.ts</code></td><td>Zod schema for a venue + the <code>AWARD_SOURCES</code> registry (18). The authoritative data contract.</td></tr>
+          <tr><td><code>scripts/sync-sheet.ts</code></td><td>Fetches the Sheet, validates every row, writes the static JSON. Exposes <code>runSync()</code>, called by the Vite plugin on every build (§10).</td></tr>
+          <tr><td><code>vite.config.ts</code></td><td>Build config + <code>syncSheetPlugin()</code> that runs the Sheet sync on every build (§10).</td></tr>
+          <tr><td><code>src/lib/venues.ts</code></td><td>Accessors — how the app reads venues, cities, awards.</td></tr>
+          <tr><td><code>src/lib/structured-data.ts</code></td><td>Generates Schema.org JSON-LD for SEO.</td></tr>
+          <tr><td><code>src/lib/cities.ts</code></td><td>Curated city list + lat/lng + <code>findNearestCity</code>.</td></tr>
+          <tr><td><code>Compass.tsx</code></td><td>The compass-needle logo: mark, <code>HeroCompass</code>, <code>Wordmark</code>.</td></tr>
+          <tr><td><code>ThemeToggle.tsx</code></td><td>Dark/light toggle.</td></tr>
+          <tr><td><code>useNearMe.ts</code></td><td>Geolocation hook for "near me".</td></tr>
+          <tr><td><code>styles.css</code></td><td>The dual-mode oklch design tokens (§9).</td></tr>
+          <tr><td><code>__root.tsx</code></td><td>Fonts, SEO, canonical URL, header &amp; footer.</td></tr>
+          <tr><td><code>index.tsx</code></td><td>Homepage — compass hero + brand copy.</td></tr>
+        </tbody>
+      </table></div>
+      <h4>The data flow in code</h4>
+      <ol class="steps">
+        <li><code>runSync()</code> (in <code>sync-sheet.ts</code>) runs on every Vite build via the plugin in <code>vite.config.ts</code>, pulls the Sheet, validates against <code>schema.ts</code>.</li>
+        <li>It writes a slim <code>venues-index.json</code> (fast client search) + the full data for pages.</li>
+        <li>The client loads the slim index for search; full venue data loads on the venue page (keeps it fast).</li>
+      </ol>
+      <h4>The Lovable workflow</h4>
+      <ul class="bul">
+        <li><strong>Changes to existing files</strong> → Claude gives a Lovable-format prompt to paste in.</li>
+        <li><strong>Brand-new components or hooks</strong> → Claude gives the full code file.</li>
+      </ul>
+    </section>
+
+    <!-- ===== 9 ===== -->
+    <section id="s9">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>09 — Identity <span class="deg">· NNW</span></span>
+      <h2>Brand &amp; voice, <em>at a glance.</em></h2>
+      <p class="lead">Full detail lives in <code>compasseats-brand-identity.html</code>. This is the cheat sheet.</p>
+      <h4>Aesthetic</h4>
+      <p>Editorial <strong>travel-journal</strong>. Warm tones throughout. Dual-mode, defaulting to dark (set before paint to avoid a flash).</p>
+      <h4>Design tokens</h4>
+      <div class="tw"><table>
+        <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td>Dark background</td><td><code>#23211E</code></td><td>Dark surface — <strong>not navy</strong> (rejected as "too collegiate")</td></tr>
+          <tr><td>Light background</td><td><code>#F7F3EB</code></td><td>Warm paper, light surface</td></tr>
+          <tr><td><code>--primary</code> (brass)</td><td><code>#C6A15B</code></td><td><strong>Fills only</strong> — buttons, compass, rings</td></tr>
+          <tr><td>Bronze</td><td><code>#895F2E</code></td><td><strong>Accent text on light surfaces</strong></td></tr>
+          <tr><td><code>--accent-strong</code></td><td>auto-swap brass↔bronze</td><td><strong>Text only</strong></td></tr>
+          <tr><td><code>--clay</code> / <code>--sage</code></td><td>darken in light mode</td><td>Secondary text, safely</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout rule">
+        <div class="ct">🎯 Two token rules that prevent bugs</div>
+        <p><strong>1.</strong> Never use <code>text-primary</code> on light surfaces — brass fails contrast on paper (2.2:1). Always use <code>text-accent-strong</code>, which swaps to bronze.</p>
+        <p><strong>2.</strong> Brass is for fills; bronze is for text. <code>--accent-strong</code> handles the swap for you.</p>
+      </div>
+      <h4>Fonts</h4>
+      <ul class="bul">
+        <li><strong>Fraunces</strong> — display serif (light 300 + italic) for headlines &amp; the wordmark.</li>
+        <li><strong>Hanken Grotesk</strong> — body sans for the interface.</li>
+      </ul>
+      <h4>Voice — <em>your well-traveled friend who always knows the spot</em></h4>
+      <p>Confident but warm. Directional. Never a critic talking down.</p>
+      <div class="vlabel use">◆ USE</div>
+      <div class="chips yes"><span>charted</span><span>point you to</span><span>wherever you land</span><span>worth the detour</span><span>find your bearings</span></div>
+      <div class="vlabel avoid">✕ AVOID</div>
+      <div class="chips no"><span>curated experiences</span><span>top 10</span><span>users rated</span><span>exclusive for connoisseurs</span></div>
+      <h4>Patterns</h4>
+      <ul class="bul">
+        <li>City headers → <em>"{City}, charted."</em></li>
+        <li>CTAs → <em>"Find the best," "Take me there," "Show me the way"</em> (never "Search"/"Submit")</li>
+        <li>Loading → <em>"Charting [city]'s best tables…"</em></li>
+        <li>Empty state → <em>"We haven't charted this one yet."</em></li>
+        <li>Tagline → <em>"The world's best, wherever you are."</em></li>
+      </ul>
+    </section>
+
+    <!-- ===== 10 ===== -->
+    <section id="s10">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>10 — Shipping <span class="deg">· NNE</span></span>
+      <h2>Deploying the site.</h2>
+      <div style="border-left:3px solid #C6A15B;background:rgba(198,161,91,.08);padding:14px 18px;margin:14px 0;border-radius:0 8px 8px 0">
+        <strong>The real publish workflow (corrected June 12, 2026).</strong> The build-time Sheet sync cannot run without Enterprise Build Secrets, so the sync has effectively never run on a normal publish. The working process is now: <strong>(1)</strong> run the Apps Script pipeline so the Sheet is correct; <strong>(2)</strong> export the Sheet and regenerate the four data files (<code>data/venues.json</code>, <code>data/cities.json</code>, <code>data/venues-index.json</code>, <code>data/sync-report.json</code>) — a faithful reproduction of <code>sync-sheet.ts</code>; <strong>(3)</strong> upload them via <strong>GitHub web → Add file → Upload files</strong> (drag-drop replace; the text editor chokes on the 11&nbsp;MB <code>venues.json</code>); <strong>(4)</strong> Publish in Lovable. Verify: <code>data/sync-report.json</code> commit time is recent, and <code>jq</code> a known venue. See the dedicated <em>Data Pipeline</em> living doc (v2.0) for the full ritual. Escape hatch if manual commits get tedious: point Cloudflare Pages at the repo with the two env vars set (free-tier build env vars) — confirm terms when the time comes; the repo is standard TanStack Start, no lock-in.
+      </div>
+      <div class="callout warn">
+        <div class="ct">⚠️ Known live-site issue</div>
+        <p><code>compasseats.com</code> may still serve an older build even when the repo is correct — the domain needs <strong>republishing</strong>. After any change, confirm the live site actually updated.</p>
+      </div>
+      <h4>The deploy chain</h4>
+      <ol class="steps">
+        <li>Make your change (Sheet data, or code via Lovable).</li>
+        <li>If data: run the relevant Apps Scripts (§6) so the <code>venues</code> and <code>cities</code> tabs regenerate.</li>
+        <li>Click <strong>Publish in Lovable</strong>. <strong>Important (corrected June 12, 2026):</strong> the build's Sheet sync <em>does not run on this plan</em> — it requires <code>SHEETS_API_KEY</code> + <code>COMPASSEATS_SHEET_ID</code> as Build Secrets, which are Lovable <strong>Enterprise-only</strong>. Every publish prints <code>⚠️ SYNC SKIPPED — using committed JSON, data may be stale</code> and redeploys whatever JSON is committed. That banner is <strong>expected</strong>, not an error.</li>
+        <li>Verify it's live on <code>compasseats.com</code> — not just in Lovable's preview. Load the real URL in a fresh tab and hard-refresh.</li>
+      </ol>
+
+      <div class="callout warn">
+        <div class="ct">⚠️ How the sync actually runs (hard-won, June 1)</div>
+        <p>Lovable's publish runs <strong>only</strong> the Vite build — it does <strong>not</strong> execute <code>prebuild</code>/<code>postinstall</code> or any other <code>package.json</code> lifecycle script. The Sheet sync is therefore wired in as a <strong>Vite plugin</strong> (<code>syncSheetPlugin()</code> in <code>vite.config.ts</code>, <code>apply:"build"</code>, <code>buildStart</code> → <code>runSync()</code>). If you ever see stale data on a publish, the sync didn't run — check this plugin first.</p>
+      </div>
+
+      <h4>What the sync needs to succeed</h4>
+      <ul class="bul">
+        <li><strong>Build Secrets</strong> (Lovable → Workspace Settings → Build Secrets, <em>not</em> runtime secrets): <code>SHEETS_API_KEY</code> (a real Google API key, starts with <code>AIza</code>) and <code>COMPASSEATS_SHEET_ID</code>. <em>Note:</em> the connector-managed <code>GOOGLE_SHEETS_API_KEY</code> holds a Lovable token (<code>lovc…</code>), not a Google key, and is locked — that's why the code reads <code>SHEETS_API_KEY</code> first and only falls back to <code>GOOGLE_SHEETS_API_KEY</code>.</li>
+        <li><strong>The Google key</strong> must have the <strong>Google Sheets API enabled</strong> in its Cloud project and be restricted to that API.</li>
+        <li><strong>The Sheet must be link-shared</strong> "Anyone with the link → Viewer." An API key (no OAuth) can only read public Sheets; a restricted Sheet returns <code>403 PERMISSION_DENIED</code>.</li>
+      </ul>
+
+      <h4>The validation gate</h4>
+      <p>The sync splits failures two ways: a <strong>data-validation error</strong> (duplicate slugs, bad <code>country_code</code>, schema failures) throws <code>DataValidationError</code> and <strong>fails the build</strong> — by design, so bad data can't silently ship. A <strong>Sheet-unreachable error</strong> (missing secret, 403, network) throws <code>SyncSkipped</code>, prints a loud <code>⚠️ SYNC SKIPPED</code> banner, and lets the build continue on the committed JSON. If a publish fails the build, read the error: it's almost always a data problem to fix in the Sheet.</p>
+
+      <h3><span class="pin"></span>Deploy troubleshooting — hard-won lessons</h3>
+      <p>The June 4 2026 publish failed eight times before going green, on <strong>four stacked, distinct causes</strong> — each masked the next, and a misleading symptom (a recurring <code>ReadableStream</code> error) sent debugging down wrong paths for hours. If a publish fails mysteriously, check these before theorizing:</p>
+
+      <p class="callout"><strong>The <code>ReadableStream</code> red herring.</strong> An error dump showing <code>body: { stream: ReadableStream { disturbed: false, state: 'readable' } }</code> is <strong>not</strong> a streaming-SSR problem. It's the unconsumed body of a <strong>500 response</strong> — the prerenderer throws before reading the body because the response wasn't OK. The real error is whatever produced the 500, which is often swallowed by <code>brandedErrorResponse</code>. <strong>First move:</strong> get the real exception surfaced (temporarily log it before it's converted to the branded 500, or reproduce via <code>vite preview</code>), don't chase the stream.</p>
+
+      <ol class="steps">
+        <li><strong>Stale prerender data.</strong> <code>vite.config.ts</code> builds the prerender page list from the venue JSON. That list must be generated <em>after</em> the Sheet sync, or it's built from stale committed JSON. Fixed via sync-before-pages at config load + an idempotent memoized <code>runSync()</code> (one sync per process, called from both a top-level gate and the backup plugin). Tell-tale: prerender page count looks older/smaller than current venue count.</li>
+        <li><strong>Missing server entry.</strong> The TanStack preview/prerender server imports <code>dist/server/server.js</code>, but the Cloudflare plugin emits <code>dist/server/index.mjs</code> (its <code>MAIN_ENTRY_NAME</code> is hardcoded to <code>index</code>, and the preview plugin hardcodes a <code>.js</code> extension). The <code>emitServerJsAlias</code> shim must write a <code>server.js</code> that re-exports from <code>index.mjs</code>, and it must check for the right source filename (<code>index.mjs</code>, not <code>index.js</code>). Tell-tale: <code>ERR_MODULE_NOT_FOUND: Cannot find module '…/dist/server/server.js'</code>.</li>
+        <li><strong><code>augmentReq</code> read-only <code>ip</code>.</strong> The Cloudflare adapter's <code>augmentReq()</code> assigns <code>request.ip</code>, but the preview/prerender HTTP path passes a spec <code>Request</code> whose <code>ip</code> is a read-only getter → <code>TypeError: Cannot set property ip…</code> thrown before SSR runs, producing the 500. Fixed in the <code>emitServerJsAlias</code> shim by wrapping the incoming request in a Proxy that stores writes (<code>ip</code>, <code>cf</code>, <code>waitUntil</code>, etc.) on a side overrides map instead of touching the read-only getter.</li>
+        <li><strong>Orphan <code>city_slug</code> 404s.</strong> Venues referencing a <code>city_slug</code> with no row in the <code>cities</code> tab cause the prerender link-crawler to hit <code>/city/{slug}/</code> → 404 → hard build fail. Fixed by re-running <code>cities.gs</code> (it builds city rows from venue slugs) + a sync-time orphan validation that now fails loud at sync rather than deep in prerender. After enrichment adds venues in new cities, always re-run <code>cities.gs</code>, then check country codes (see below).</li>
+      </ol>
+
+      <p class="callout"><strong>country_code blanks (recurring).</strong> <code>cities.gs</code> can't auto-map small territories to a 2-letter ISO code, leaving a blank that hard-fails schema validation. Hit twice on this deploy: Cayman → <code>KY</code>, Jersey → <code>JE</code>. After <strong>every</strong> <code>cities.gs</code> run, check with <code>=FILTER(A:A, LEN(D:D)&lt;&gt;2)</code> in an empty cell and hand-fill any blank (Maldives <code>MV</code>, Jamaica <code>JM</code>, Rwanda <code>RW</code>, etc.), then delete the formula.</p>
+
+      <p class="callout"><strong>The <code>build:dev</code> sync gap.</strong> The root cause of the stale-data issue: <code>build</code> has a <code>prebuild</code> sync hook but <code>build:dev</code> (Lovable's preview pipeline) does not, so preview builds skipped sync. The idempotent <code>runSync()</code> now covers both, but a <code>prebuild:dev</code> hook would make the two modes truly consistent (punch-list item).</p>
+
+      <p>Meta-lesson from this session: when a build keeps failing on slightly different routes with the same error, <strong>stop patching forward</strong>. Force a root-cause diagnosis — surface the real (un-branded) exception, and <strong>revert-and-observe</strong> (temporarily undo a suspected fix and see if the error changes). Stacking blind patches is how one bug becomes six. Several edits from this saga (<code>router.tsx</code> trailing-slash, <code>start.ts</code>/<code>server.ts</code> redirect-passthrough) were later proven inert and are flagged for cleanup.</p>
+    </section>
+
+    <!-- ===== 11 ===== -->
+    <section id="s11">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>11 — What's Next <span class="deg">· ENE</span></span>
+      <h2>Roadmap &amp; <em>punch lists.</em></h2>
+      <p class="lead">The canonical, living roadmap lives in <strong>CompassEats-Punch-List.html</strong>. That's where detailed work-in-progress, tiered priorities, and the recently-shipped victory lap live, updated each session. This section keeps a high-level snapshot here so the Handbook is still self-contained.</p>
+
+      <div class="callout rule">
+        <div class="ct">★ Foundation phase — shipped</div>
+        <p>The architectural arc that began with the cost-cutting sprint is <strong>complete end-to-end</strong> as of May 31, 2026. The site has real, crawlable, authority-sorted static pages and Google has the full sitemap.</p>
+      </div>
+
+      <h3 style="color:var(--sage)"><span class="pin" style="background:var(--sage)"></span>✅ What's done</h3>
+      <ul class="bul">
+        <li><strong>Cost-cutting sprint</strong> (May 28) — MapLibre + MapTiler replacing Google Maps · build-time geocoding · two-tier city search with Geoapify fallback · "Open Today" pill dropped. <em>No more Google Places API billing.</em></li>
+        <li><strong>Data pipeline solid</strong> (May 30) — four verified <code>normKey_</code> patches (apostrophes · ampersands · fractions · superscripts) · <code>closed_venues</code> exclusion tab · <code>needs_enrichment</code> shrunk <strong>896 → 161</strong> (82% reduction, ~735 venues rescued).</li>
+        <li><strong>Static-page architecture</strong> (May 31) — venue · city · award routes all live with real data. Prestige-sorted grids. Shared <code>getAwardPrestige</code> helper. MapLibre brass-clustered maps. Real APIs throughout (<code>@/lib/</code>, <code>venue.awards</code>, <code>city.display</code>, <code>getAwardSource</code>).</li>
+        <li><strong>Sitemap submitted to Google Search Console</strong> (May 31) — <strong>11,002</strong> truth-aligned URLs at <code>/sitemap.xml</code>. Status: <strong>Success.</strong> Per-entry <code>lastmod</code>, weekly/monthly <code>changefreq</code>, <code>robots.txt</code> reference.</li>
+        <li><strong>Sync pipeline hardened + hero photos live</strong> (June 1) — sync now runs on every publish via a <strong>Vite plugin</strong> (Lovable skips <code>prebuild</code>); real Google <code>SHEETS_API_KEY</code> in Build Secrets; Sheet link-shared for API-key read; <strong>fail-on-data-error / fall-back-on-unreachable</strong> validation split with a loud SKIP banner. Reshape slugifier now handles <strong>non-Latin names</strong> (CJK/Thai/Korean → city+placeId fallback, ~97 broken slugs fixed); cities <code>COUNTRY_CODE</code> table expanded (~43 fixed). <strong>City hero photos now render</strong> — paste a bare <code>images.unsplash.com</code> URL into <code>hero_image_url</code>, publish.</li>
+        <li><strong>Restaurant ingest tool shipped + hero-photo automation</strong> (June 2) — <code>restaurant-ingest.gs</code> live, mirroring the bar tool: display-name-or-slug source resolution, grading via <code>category_override</code> (knives/stars/scores, no per-award columns), one slug per region, optional <code>cuisine</code>/<code>price_band</code>. Built <code>hero-photos.gs</code> (resumable Pexels batch, <code>"{city} skyline"</code>, attribution columns) on the Strategy-C plan; one-off Google Places pass queued to run after the new ingest expands the city list. Bar 51–100→single-slug migration deferred as its own task.</li>
+      </ul>
+
+      <h3><span class="pin"></span>🔵 Active focus</h3>
+      <ul class="bul">
+        <li><strong>W50 regional list compilation</strong> — three staged import files, <strong>2,301 award rows</strong>: Asia + N. America bars (851) · Asia + Latin America restaurants (1,100) · N. America + MENA restaurants (350). Standard 6-col format. Ready to paste, reshape, confirm.</li>
+        <li><strong>Manual closure triage continuation</strong> — work through the remaining ~161 rows in <code>needs_enrichment</code> as time allows; high-prestige obvious closures go into <code>closed_venues</code>.</li>
+      </ul>
+
+      <h3><span class="pin"></span>🧭 Where the rest lives</h3>
+      <p>Everything else — polish punch list (card layout, OAD deprioritization, single-venue city UX), pipeline improvements (closure detection script, chain-collision fix, photo CDN, fix the cities <code>COUNTRY_CODE</code> table edits so 5 hand-typed codes become automatic, address-leak in one Luxembourg country field), expansion (AI-augmented thin cities, more bar lists, the deferred bar 51–100 slug migration, save-to-list), and horizon items (blog, mobile app, sister projects) — lives in the <strong>Punch List</strong> document, organized by tier with effort estimates. <em>Open that, not this, when picking the next thing to build.</em></p>
+    </section>
+
+    <!-- ===== 12 ===== -->
+    <section id="s12">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>12 — Definitions <span class="deg">· True N</span></span>
+      <h2>Glossary.</h2>
+      <p class="lead">Terms specific to CompassEats and the tools it's built on.</p>
+
+      <h4>Project terms</h4>
+      <div class="gloss">
+        <div class="grow"><div class="gt">Charted</div><div class="gd">A venue in the <code>venues</code> tab <em>and</em> matched with at least one accolade — i.e. <em>sheet-matched-with-an-accolade</em>. Charted venues are the ones shown on the site.</div></div>
+        <div class="grow"><div class="gt">Accolade / Award</div><div class="gd">A recognition from an authoritative guide attached to a venue (source + rank + year). Having one is what makes a venue charted.</div></div>
+        <div class="grow"><div class="gt">Award source</div><div class="gd">The guide itself — Michelin, World's 50 Best, James Beard, Spirited Awards, OAD, etc.</div></div>
+        <div class="grow"><div class="gt">The wedge</div><div class="gd">The strategic differentiator — cocktail bars, which competitors don't fully own.</div></div>
+        <div class="grow"><div class="gt"><code>venues</code> tab</div><div class="gd">The master table of all merged, de-duplicated venues.</div></div>
+        <div class="grow"><div class="gt"><code>needs_enrichment</code></div><div class="gd">The "waiting room" — venues missing required data (address, coords) that can't go live yet.</div></div>
+        <div class="grow"><div class="gt"><code>cities</code> tab</div><div class="gd">The list of charted cities, each with a centroid lat/lng.</div></div>
+        <div class="grow"><div class="gt">Enrichment</div><div class="gd">Filling in a venue's missing data (mainly address + coordinates, later a photo).</div></div>
+        <div class="grow"><div class="gt">Places Enrichment</div><div class="gd">A Sheet tab keyed by <code>normalizedKey</code> that maps venue names to Google Places data (placeId, lat/lng, address). This is what reshape consults to attach geo to award rows — the lookup is name-only, no city.</div></div>
+        <div class="grow"><div class="gt"><code>normKey_</code></div><div class="gd">The normalization function inside <code>reshape.gs</code> that turns a venue name into a lookup key. Four character-class fixes are verified to live here (see §6); the rule is one regex per patch, verified against <code>Places Enrichment</code> first.</div></div>
+        <div class="grow"><div class="gt">Chain collision</div><div class="gd"><strong>Fixed June 5, 2026.</strong> Reshape once identified venues by name only, so same-named venues in different cities (L'Atelier de Joël Robuchon; Atlas Atlanta/Singapore) collapsed into one record and shared awards/type. Identity is now <code>normKey + cityKey</code>, which separates them. See §7 and §6.</div></div>
+        <div class="grow"><div class="gt"><code>cityKey_</code></div><div class="gd">Companion to <code>normKey_</code> added June 5, 2026. Normalizes a city label (accents, apostrophes, punctuation) plus a few hard equivalences (New York City → new york, Washington DC → washington) so it can join the name to form venue identity. The eventual <em>city-label canonicalization</em> map will live here.</div></div>
+        <div class="grow"><div class="gt"><code>collision_audit</code> / <code>geo_audit</code> / <code>dupe_audit</code></div><div class="gd">Read-only diagnostic tabs written by audit scripts. <code>collision_audit</code> lists names appearing in 2+ cities (collision risk); <code>geo_audit</code> lists rows sharing a <code>placeId</code> across cities; <code>dupe_audit</code> lists same name+city appearing as 2+ rows. Worklists for the open geo / canonicalization follow-ons.</div></div>
+        <div class="grow"><div class="gt"><code>closed_venues</code> tab</div><div class="gd">A two-column tab (<code>name</code>, <code>city</code>) listing permanently closed venues. Reshape excludes anything matching from both <code>venues</code> and <code>needs_enrichment</code>. Reversible — clear the tab and they come back.</div></div>
+        <div class="grow"><div class="gt"><code>enrichment_audit</code> tab</div><div class="gd">Output of <code>enrichment-audit.gs</code>: every row in <code>needs_enrichment</code> ranked by award prestige, color-coded by reshape's <code>reason</code>. The triage worklist.</div></div>
+        <div class="grow"><div class="gt">Outlier detection</div><div class="gd">A passive pass that flags suspicious venue data (wrong-country coords, off ranks) for correction.</div></div>
+        <div class="grow"><div class="gt">Source of truth</div><div class="gd">The Google Sheet — the one place data is edited. The site only reads from it.</div></div>
+      </div>
+
+      <h4>Technical terms</h4>
+      <div class="gloss">
+        <div class="grow"><div class="gt">Repo (repository)</div><div class="gd">The GitHub project holding the website's code: <code>github.com/benjamineades/compasseats</code>.</div></div>
+        <div class="grow"><div class="gt">Static data</div><div class="gd">Pre-generated data files built ahead of time (fast, crawlable) — vs. data made on the fly.</div></div>
+        <div class="grow"><div class="gt">Ephemeral</div><div class="gd">Temporary, not saved. Describes the <em>old</em> AI-generated-venue approach we're leaving.</div></div>
+        <div class="grow"><div class="gt">AI-generated venues</div><div class="gd">The deprecated method where an LLM invented venues at request time. Being replaced by static Sheet data.</div></div>
+        <div class="grow"><div class="gt">Slug</div><div class="gd">A URL-safe version of a name (e.g. <code>new-york</code> for "New York").</div></div>
+        <div class="grow"><div class="gt">Permalink</div><div class="gd">A permanent, stable URL for a page (so it can be linked and indexed by Google).</div></div>
+        <div class="grow"><div class="gt">Geocoding</div><div class="gd">Converting an address or place name into latitude/longitude coordinates.</div></div>
+        <div class="grow"><div class="gt">Centroid</div><div class="gd">The average center point of all a city's venues — used to center its map.</div></div>
+        <div class="grow"><div class="gt">Apps Script</div><div class="gd">Google's built-in JavaScript automation that runs inside Google Sheets.</div></div>
+        <div class="grow"><div class="gt"><code>.gs</code></div><div class="gd">The file extension for an Apps Script file.</div></div>
+        <div class="grow"><div class="gt">Zod</div><div class="gd">A JavaScript library for validating that data matches a defined shape (used in <code>schema.ts</code>).</div></div>
+        <div class="grow"><div class="gt">Schema</div><div class="gd">The defined structure/shape data must conform to.</div></div>
+        <div class="grow"><div class="gt"><code>AWARD_SOURCES</code> registry</div><div class="gd">The list in <code>schema.ts</code> that tells the site about each award source (name, slug, styling/weight). 18 currently.</div></div>
+        <div class="grow"><div class="gt">JSON-LD / Schema.org</div><div class="gd">A structured-data format embedded in pages so search engines understand them (SEO).</div></div>
+        <div class="grow"><div class="gt"><code>venues-index.json</code></div><div class="gd">The slim search index loaded by the browser for fast city/venue search.</div></div>
+        <div class="grow"><div class="gt">Lovable</div><div class="gd">The AI-assisted frontend builder Ben uses to make changes.</div></div>
+        <div class="grow"><div class="gt">Lovable prompt</div><div class="gd">A change instruction written specifically for Lovable to execute.</div></div>
+        <div class="grow"><div class="gt">TanStack Start</div><div class="gd">The React framework powering the site.</div></div>
+        <div class="grow"><div class="gt">Tailwind v4</div><div class="gd">The CSS framework used for styling.</div></div>
+        <div class="grow"><div class="gt">oklch</div><div class="gd">A perceptually-uniform color format used for the design tokens.</div></div>
+        <div class="grow"><div class="gt">Bun</div><div class="gd">The JavaScript runtime and package manager used.</div></div>
+        <div class="grow"><div class="gt">Cloudflare</div><div class="gd">The hosting/deployment platform.</div></div>
+        <div class="grow"><div class="gt">MapLibre GL JS</div><div class="gd">The open-source map renderer (replaced Google Maps).</div></div>
+        <div class="grow"><div class="gt">MapTiler</div><div class="gd">The provider of the map tiles / basemap.</div></div>
+        <div class="grow"><div class="gt">Geoapify</div><div class="gd">The free geocoder used as a fallback for searching any uncharted city.</div></div>
+        <div class="grow"><div class="gt">Nominatim</div><div class="gd">OpenStreetMap's free geocoder (an alternative option).</div></div>
+        <div class="grow"><div class="gt">Basemap</div><div class="gd">The underlying map layer (streets, terrain) the pins sit on.</div></div>
+        <div class="grow"><div class="gt">Clustering</div><div class="gd">Grouping nearby map pins into one marker when zoomed out.</div></div>
+        <div class="grow"><div class="gt">Popover</div><div class="gd">The info card that appears when you click a map pin.</div></div>
+        <div class="grow"><div class="gt">CDN</div><div class="gd">Content Delivery Network — for serving/caching images quickly and cheaply.</div></div>
+        <div class="grow"><div class="gt">Design token</div><div class="gd">A named design value (color, font), e.g. <code>--primary</code>.</div></div>
+        <div class="grow"><div class="gt">Brass / Bronze</div><div class="gd">The gold accent colors — brass <code>#C6A15B</code> for fills, bronze <code>#895F2E</code> for text on light.</div></div>
+        <div class="grow"><div class="gt">Canonical URL</div><div class="gd">The official/preferred URL for a page, declared for SEO.</div></div>
+        <div class="grow"><div class="gt">OG image (Open Graph)</div><div class="gd">The preview image shown when a link is shared on social/messaging.</div></div>
+      </div>
+
+      <h4>Award shorthand</h4>
+      <div class="gloss">
+        <div class="grow"><div class="gt">W50</div><div class="gd">World's 50 Best (Restaurants or Bars).</div></div>
+        <div class="grow"><div class="gt">OAD</div><div class="gd">Opinionated About Dining (a restaurant ranking).</div></div>
+        <div class="grow"><div class="gt">50 Best Bars</div><div class="gd">The World's 50 Best Bars.</div></div>
+        <div class="grow"><div class="gt">Spirited Awards</div><div class="gd">Tales of the Cocktail's bar/bartender awards.</div></div>
+      </div>
+    </section>
+
+    <!-- ===== CHANGELOG ===== -->
+    <section id="cl">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>✦ — History</span>
+      <h2>Changelog.</h2>
+      <div class="tw"><table>
+        <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
+        <tbody>
+          <tr><td><code>2.3</code></td><td>June 14, 2026</td><td><strong>City page layout — stacked collapsible eat/drink sections (Piece&nbsp;2).</strong> Documented the new <code>city.$slug.tsx</code> layout: restaurants and bars no longer interleave in one ranked list (the false cross-type comparison); two stacked, collapsible-and-collapsed-by-default sections (&ldquo;Where to eat&rdquo; / &ldquo;Where to drink&rdquo;) each ranked on its own prestige scale, with counts in the headers, page heading &ldquo;What&rsquo;s charted in {city}&rdquo;, per-section cap of 10, toggle unchanged. Recorded the rejected side-by-side-columns path. Manual-publish workflow and alias-aware <code>city_slug</code> were already documented in v2.2 (no change). <em>Not touched here but logged in the Punch List v2.11: the ~348-venue hidden-Michelin-stars bug (split rows under two city spellings) &mdash; a trust-critical symptom of the city-label canonicalization track, to be fixed after the per-city geo pass.</em></td></tr>
+        <tr><td><code>2.2</code></td><td>June 12, 2026</td><td><strong>Michelin re-ingest live · stale-build root cause solved · NY city-split fixed.</strong> Corrected the deploy section: the build-time Sheet sync needs Enterprise-only Build Secrets and never runs on this plan — the working path is manual JSON regeneration committed via GitHub web (see Data Pipeline doc v2.0); the <code>SYNC SKIPPED</code> banner is expected. Made <code>city_slug</code> alias-aware (<code>slugify_(cityKey_(v.city),…)</code>) so <code>CITY_ALIASES_</code> controls page slugs — merged <code>new-york-city</code> into <code>new-york</code> with all five three-stars, fixed the <code>rio-de-janiero</code> typo, emptied city rows self-prune. Michelin re-ingested via the restaurant-ingest tool (3,772 rows; 7,163 venues now carry Michelin), old manual <code>Michelin Guide</code> tab retiring; ingest dedupe now keys on <code>name|city</code>. Queued: site-wide all-caps name cleanup (418 venues), local-currency price tiers, Piece 2 stacked city layout.</td></tr>
+          <tr><td><code>2.1</code></td><td>June 9, 2026</td><td><strong>Shipped Option B blurbs + built the sourcing pipeline.</strong> The 30 marquee hand-enriched blurbs plus the first 10 Tier-1 three-star venues from the new sourcing pipeline are <strong>live</strong> (48 rows total via <code>importOptionB</code>). Resolved the long publish-gap saga: the recurring digit-leading-slug abort (福1015 → <code>1015</code>) is now <strong>permanently fixed</strong> in reshape's <code>slugify_</code> (rejects any slug not starting with a letter → falls through to the <code>venue-{placeId-tail}</code> fallback); the city-alias map's keys were rewritten in <code>normKey_</code> space-form (was hyphen-form, which could never match — this is why dedup silently no-op'd for weeks); venues 11,224 → 11,032, cities → 3,255. Defined the <strong>Option B qualifying set</strong>: ~997 venues (968 needing blurbs) = all 2&amp;3-star Michelin, World's 50 Best Restaurants &amp; Bars top-50 (5-year window + "considerable history" 3+-year override), La Liste 99.5+, James Beard Best Chef/Restaurant; regional 50 Best lists excluded. Two tracks agreed: Tier-1 (~255) hand-sourced, full 968 via the pipeline. <strong>Pipeline = fetch real per-venue source text (Michelin + World's 50 Best) → write only from sources → claim-by-claim verification gate → flag anything untraceable.</strong> Proven on 10 venues, zero hallucination flags. Logged new punch-list items: 3 wrong-row marquee venues (Narisawa→Tokyo, Pierre Gagnaire→Paris, Etxebarri→Axpe), the <code>photo_url</code>-empty-for-all-venues photo workstream, and residual cross-city award bleed / "United States"-in-name string corruption.</td></tr>
+          <tr><td><code>2.0</code></td><td>June 6, 2026</td><td><strong>Added the two new index routes.</strong> Added <code>/cities</code> (collapsible Continent &rarr; Country &rarr; City) and <code>/guides</code> (all award sources, global/regional) to the Page URLs table &mdash; both now live and wired into the header nav alongside the existing <code>/city</code>, <code>/venue</code>, and <code>/award</code> routes. Build-status detail for the session's UI work (city-page fixed-hex redesign, Michelin pill change, mobile accolade distinctions) lives in the Punch List and Design System docs; this Handbook stays focused on architecture, pipeline, and routing.</td></tr>
+          <tr><td><code>1.9</code></td><td>June 5, 2026</td><td><strong>Logged the award-collision fix.</strong> Rewrote the §7 matching steps: venue identity is now <code>normKey(name) + '|' + cityKey(city)</code> (was name-only), so same-name venues in different cities no longer share awards/type — Atlas Atlanta/Singapore and Bacchanalia Atlanta/London verified separated; <code>venues</code> 9,863 → 11,224, match rate held. Reclassified the §6 "chain collision" callout from <em>known limitation</em> to <em>fixed</em>, recording the two residuals it created (name-only geo → wrong pins; inconsistent city labels → duplicate rows) and the <strong>mandatory fix-order: per-city geo FIRST, then city-label canonicalization</strong> — with the "236 cities merged into new-york" dead-end documented so the order isn't reversed. New glossary entries: <code>cityKey_</code>, <code>collision_audit</code> / <code>geo_audit</code> / <code>dupe_audit</code>; updated the Chain-collision entry to "fixed."</td></tr> capturing the four stacked root causes from the June 4 production deploy (eight build cycles to clear): stale prerender data / sync-ordering, missing <code>dist/server/server.js</code> entry shim, the <code>augmentReq</code> read-only-<code>ip</code> <code>TypeError</code> fixed via a request Proxy, and orphan <code>city_slug</code> 404s. Documented the <code>ReadableStream</code>-is-really-a-500 red herring, the recurring small-territory <code>country_code</code> blank (Cayman <code>KY</code>, Jersey <code>JE</code>), the <code>build:dev</code> sync-parity gap, and the meta-lesson: stop patching forward — surface the real exception and revert-and-observe. Site live with ~640 enriched venues and 19 orphan cities resolved.</td></tr>
+          <tr><td><code>1.7</code></td><td>June 3, 2026</td><td><strong>Documented the automated geo-enrichment workflow.</strong> Added <code>geo-enrich.gs</code> (Google Places lookup + <code>suggestReviewDecisions</code>/<code>convertSuggestions</code>/<code>acceptReviewRows</code> review loop) and the <code>geocode.gs</code> Geoapify fallback to §6's script table (now 9 scripts), and wrote a new §7 subsection covering the full loop: audit → geoEnrich → review-suggest → convert → accept → reshape, plus the safety gate, the localized-city-spelling caveat, branch-trap warning, cost notes, and the Geoapify-vs-Google distinction (only Google supplies the <code>placeId</code> reshape requires). Reflects the session that rescued ~640 stranded venues: <code>venues</code> ~9,226 → 9,863, bars → 707, <code>needs_enrichment</code> down to ~116. Key stored in Script Properties as <code>PLACES_API_KEY</code>, never in code.</td></tr>
+          <tr><td><code>1.6</code></td><td>June 3, 2026</td><td><strong>Fixed the ingest-erases-on-reshape bug.</strong> Both ingest tools wrote directly into <code>venues</code>, which reshape clears and rebuilds every run from its <code>SOURCE_MAP</code> sources only — so every ingested bar/restaurant vanished on the next reshape. Rerouted ingest to write to dedicated <code>Bar Awards</code> / <code>Restaurant Awards</code> tabs that reshape now reads as sources. Updated the §3 tabs table and §6 script table to reflect this: ingest writes award tabs, never <code>venues</code>; reshape rebuilds from scratch (the reason the old design failed). Confirmed <code>AWARD_SOURCES</code> already holds all bar slugs and most restaurant slugs; flagged <code>worlds-50-best-restaurants-51-100</code> and <code>asia-50-best-restaurants-51-100</code> as the only additions needed.</td></tr>
+          <tr><td><code>1.5</code></td><td>June 2, 2026</td><td>Logged the <strong>restaurant ingest tool</strong> (<code>restaurant-ingest.gs</code>) as live in §6's script table (renumbered to 7 scripts) and removed it from the §11 future-expansion snapshot. Added <code>hero-photos.gs</code> (Pexels city-photo batch) to the script table. Recorded the June 2 shipped milestone and the deferred bar 51–100→single-slug migration. Restaurant tool details (grading via <code>category_override</code>, display-name source resolution, one slug per region, La Liste score reshape) live in Ingest-Tools §6 v1.3.</td></tr>
+          <tr><td><code>1.4</code></td><td>June 1, 2026</td><td>Documented the <strong>real publish mechanics</strong>: Lovable's publish runs only the Vite build and skips <code>package.json</code> lifecycle hooks, so the Sheet sync is now wired as a Vite plugin (<code>syncSheetPlugin()</code> in <code>vite.config.ts</code>). Rewrote §10 deploy chain with the publish flow, the Build Secrets the sync needs (<code>SHEETS_API_KEY</code> + <code>COMPASSEATS_SHEET_ID</code>, the connector-locked <code>GOOGLE_SHEETS_API_KEY</code> caveat), the link-share requirement for API-key reads, and the <code>DataValidationError</code> vs <code>SyncSkipped</code> validation split. Logged that reshape's slugifier now handles non-Latin names (CJK/Thai/Korean → city+placeId fallback) and the cities <code>COUNTRY_CODE</code> table was expanded. <strong>City hero photos now render</strong> end-to-end. Added <code>vite.config.ts</code> to Key files.</td></tr>
+          <tr><td><code>1.3</code></td><td>May 31, 2026</td><td>Static-page architecture <strong>complete</strong>: venue · city · award routes all live with real data, sitemap (11,002 URLs) submitted to Google Search Console with Status: Success. Slimmed §11 to a foundation-shipped snapshot pointing to the new <strong>CompassEats-Punch-List.html</strong> standalone document as the canonical, living roadmap. Added the Punch List to the companion-docs note in "How this handbook stays current."</td></tr>
+          <tr><td><code>1.2</code></td><td>May 30, 2026</td><td>Rewrote §7 to reflect reshape's actual matching logic: name-only against <code>Places Enrichment</code>, not name+city against <code>venues</code>. Documented what "unmatched" really means in reshape's log, the three <code>reason</code> values reshape assigns, the <code>enrichment-audit.gs</code> workflow (added to §6 as script #4), the <code>closed_venues</code> exclusion mechanism, the four verified <code>normKey_</code> patches (apostrophes, &amp;→and, fractions, superscripts), and the verify-first-bundle-never protocol for adding more. Flagged chain-collision as a known limitation. Updated row counts (venues ~9,200, needs_enrichment ~160 — an 82% drop from the 896 baseline). New glossary entries for <code>normKey_</code>, chain collision, <code>closed_venues</code>, and <code>enrichment_audit</code>.</td></tr>
+          <tr><td><code>1.1</code></td><td>May 30, 2026</td><td>Logged the W50 regional list compilation: three staged import files (2,301 award rows, 6-col format) — Asia + N. America bars; Asia + Latin America restaurants; N. America + MENA restaurants. Updated the parking lot (regional bar &amp; restaurant lists now compiled) and added a "paste, reshape, confirm all" action reminder to the Next-major-phase section, including the Nomi/"Monash" blank-country flag and the name-variant merge watchlist.</td></tr>
+          <tr><td><code>1.0</code></td><td>May 28, 2026</td><td>Initial handbook. Architecture, Sheet structure, adding venues, adding accolades, all four Apps Scripts, enrichment, codebase, brand/voice, deploy, roadmap, and full glossary. Reflects completed cost-cutting sprint (MapLibre swap, free geocoding, two-tier city search).</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <svg class="fc" viewBox="0 0 92 92" fill="none" aria-hidden="true">
+    <circle cx="46" cy="46" r="43" stroke="#C6A15B" stroke-width="1" opacity=".4"/>
+    <path d="M46 12 L55 50 L46 60 L37 50 Z" fill="#C6A15B"/>
+    <path d="M46 80 L37 50 L46 40 L55 50 Z" fill="#DEC68F" opacity=".4"/>
+    <circle cx="46" cy="50" r="2.6" fill="#F5F0E6"/>
+  </svg>
+  <div class="fm">Compass<span class="c">Eats</span></div>
+  <div class="fn">Keep it close, keep it current.</div>
+</footer>
+
+<script>
+  var prog=document.getElementById('progress');
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var pct=max>0?(h.scrollTop||document.body.scrollTop)/max*100:0;
+    prog.style.width=pct+'%';
+  }
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var map={};links.forEach(function(a){var id=a.getAttribute('href').slice(1);var el=document.getElementById(id);if(el)map[id]=a;});
+  var ids=Object.keys(map);
+  function spy(){
+    var pos=(window.scrollY||document.documentElement.scrollTop)+140;
+    var current=ids[0];
+    ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=pos)current=id;});
+    links.forEach(function(a){a.classList.remove('active');});
+    if(map[current])map[current].classList.add('active');
+  }
+  window.addEventListener('scroll',function(){onScroll();spy();},{passive:true});
+  window.addEventListener('load',function(){onScroll();spy();});
+</script>
+</body>
+</html>

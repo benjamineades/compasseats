@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompassEats — The Ingest Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#211F1C;
+    --bg-2:#28241F;
+    --panel:#2F2A24;
+    --panel-2:#383229;
+    --brass:#C6A15B;
+    --brass-soft:#DEC68F;
+    --cream:#F5F0E6;
+    --cream-dim:#CBC2B0;
+    --cream-dimmer:#988F7E;
+    --clay:#D88A63;
+    --sage:#A4B79F;
+    --line:rgba(198,161,91,.20);
+    --line-soft:rgba(198,161,91,.10);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Hanken Grotesk",-apple-system,sans-serif;
+    --shadow:0 18px 50px -20px rgba(0,0,0,.6);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1100px 640px at 85% -10%, rgba(198,161,91,.10), transparent 60%),
+      radial-gradient(900px 600px at 4% 105%, rgba(216,138,99,.07), transparent 55%),
+      var(--bg);
+    color:var(--cream);
+    font-family:var(--sans);
+    font-weight:400;line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+
+  /* atmosphere */
+  .contours{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .contours svg{position:absolute}
+  .contours .tl{top:-200px;left:-220px;width:720px;height:720px;color:var(--brass);opacity:.06}
+  .contours .br{bottom:-260px;right:-260px;width:820px;height:820px;color:var(--clay);opacity:.05}
+  .grain{position:fixed;inset:0;opacity:.04;pointer-events:none;z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  /* progress */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:50;
+    background:linear-gradient(90deg,var(--clay),var(--brass) 55%,var(--brass-soft));
+    box-shadow:0 0 14px rgba(198,161,91,.5);transition:width .12s linear}
+
+  /* cover */
+  .cover{position:relative;z-index:1;text-align:center;padding:96px 32px 72px;overflow:hidden}
+  .cover .icon{width:118px;height:118px;margin:0 auto 32px;display:block;animation:rise 1s cubic-bezier(.2,.7,.2,1) both;filter:drop-shadow(0 8px 26px rgba(198,161,91,.25))}
+  .icon .ring-pulse{transform-origin:50% 50%;animation:pulse 4.5s ease-in-out infinite}
+  .icon .arrows{transform-origin:50% 50%}
+  .icon .arrows .a1{animation:dash 3s linear infinite}
+  .icon .arrows .a2{animation:dash 3s linear infinite .6s}
+  .icon .arrows .a3{animation:dash 3s linear infinite 1.2s}
+  .icon .arrows .a4{animation:dash 3s linear infinite 1.8s}
+  @keyframes dash{0%{stroke-dashoffset:0;opacity:.1}40%{opacity:.9}100%{stroke-dashoffset:-40;opacity:.1}}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:.7}}
+  .eyebrow{font-size:.7rem;letter-spacing:.46em;text-transform:uppercase;color:var(--brass);font-weight:700;margin-bottom:22px;animation:rise .9s .08s both}
+  .cover h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.6rem,7vw,4.8rem);line-height:.96;letter-spacing:-.022em;animation:rise .9s .16s both}
+  .cover h1 b{font-weight:600;font-style:italic;color:var(--brass-soft)}
+  .cover .tag{margin-top:22px;font-family:var(--serif);font-style:italic;font-size:1.22rem;color:var(--cream-dim);font-weight:300;max-width:620px;margin-left:auto;margin-right:auto;animation:rise .9s .28s both}
+  .cover .rule-orn{display:flex;align-items:center;justify-content:center;gap:14px;margin:32px auto 0;max-width:340px;animation:rise .9s .36s both}
+  .cover .rule-orn .ln{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--line))}
+  .cover .rule-orn .ln.r{background:linear-gradient(90deg,var(--line),transparent)}
+  .cover .rule-orn .dot{width:5px;height:5px;background:var(--brass);transform:rotate(45deg)}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:32px;animation:rise .9s .46s both}
+  .meta-row .m{font-size:.74rem;color:var(--cream-dim);background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:30px;padding:8px 17px}
+  .meta-row .m b{color:var(--brass-soft);font-weight:600}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+  /* layout */
+  .shell{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 32px 40px;display:grid;grid-template-columns:236px 1fr;gap:56px;align-items:start}
+  .toc{position:sticky;top:26px;align-self:start;padding:22px 18px;background:linear-gradient(180deg,var(--panel),rgba(40,36,31,.6));border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(6px);box-shadow:var(--shadow)}
+  .toc h6{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--brass);font-weight:800;margin-bottom:12px;padding-left:4px}
+  .toc a{display:flex;gap:11px;align-items:baseline;text-decoration:none;color:var(--cream-dim);font-size:.84rem;padding:7px 8px;border-radius:8px;transition:color .2s,background .2s,padding-left .2s;position:relative}
+  .toc a .nn{color:var(--brass);font-weight:700;font-size:.7rem;min-width:18px;font-variant-numeric:tabular-nums;opacity:.8}
+  .toc a:hover{color:var(--brass-soft);background:rgba(198,161,91,.07);padding-left:12px}
+  .toc a.active{color:var(--cream);background:rgba(198,161,91,.12)}
+  .toc a.active::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:16px;border-radius:3px;background:var(--brass);box-shadow:0 0 8px rgba(198,161,91,.6)}
+  .content{min-width:0}
+
+  /* sections */
+  section{padding:40px 0 14px;border-top:1px solid var(--line-soft);scroll-margin-top:24px}
+  section:first-of-type{border-top:0}
+  .bearing{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--brass);font-weight:800;margin-bottom:14px}
+  .bearing .ndl{width:15px;height:15px;flex:0 0 auto}
+  h2{font-family:var(--serif);font-weight:340;font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.08;letter-spacing:-.01em;color:var(--cream);margin-bottom:16px}
+  h2 em{font-style:italic;color:var(--brass-soft)}
+  h3{font-family:var(--serif);font-weight:440;font-size:1.3rem;color:var(--brass-soft);margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+  h3 .pin{width:8px;height:8px;background:var(--brass);transform:rotate(45deg);flex:0 0 auto}
+  h4{font-family:var(--sans);font-weight:700;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:24px 0 10px}
+  p{color:var(--cream-dim);font-weight:300;margin-bottom:14px;max-width:70ch}
+  p.lead{font-size:1.1rem;color:var(--cream);font-weight:300;max-width:64ch}
+  strong,b{color:var(--cream);font-weight:600}
+  em{color:var(--brass-soft)}
+  code{font-family:"SFMono-Regular",ui-monospace,Menlo,monospace;font-size:.82em;background:var(--bg-2);border:1px solid var(--line-soft);color:var(--brass-soft);padding:2px 7px;border-radius:6px;white-space:nowrap}
+
+  ul,ol{margin:6px 0 18px;padding-left:0;list-style:none}
+  ul.bul>li{position:relative;padding:6px 0 6px 24px;color:var(--cream-dim);font-weight:300;max-width:72ch}
+  ul.bul>li::before{content:"";position:absolute;left:3px;top:15px;width:6px;height:6px;background:var(--brass);transform:rotate(45deg)}
+  ol.steps{counter-reset:step;margin:10px 0 20px}
+  ol.steps>li{counter-increment:step;position:relative;padding:11px 0 11px 48px;color:var(--cream-dim);font-weight:300;border-bottom:1px solid var(--line-soft);max-width:74ch}
+  ol.steps>li:last-child{border-bottom:0}
+  ol.steps>li::before{content:counter(step);position:absolute;left:0;top:9px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--panel-2),var(--panel));border:1px solid var(--line);color:var(--brass);font-family:var(--sans);font-weight:700;font-size:.82rem;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 3px rgba(33,31,28,.6)}
+
+  /* tables */
+  .tw{overflow-x:auto;margin:14px 0 22px;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:460px}
+  thead th{background:linear-gradient(180deg,var(--bg-2),var(--panel));text-align:left;font-family:var(--sans);font-weight:700;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);padding:13px 17px;border-bottom:1px solid var(--line)}
+  tbody td{padding:12px 17px;border-bottom:1px solid var(--line-soft);color:var(--cream-dim);font-weight:300;vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:nth-child(even){background:rgba(198,161,91,.022)}
+  tbody tr:hover{background:rgba(198,161,91,.055)}
+  tbody td:first-child{color:var(--cream);font-weight:500}
+
+  /* callouts */
+  .callout{position:relative;margin:20px 0;padding:18px 22px 18px 24px;border-radius:14px;border:1px solid var(--line);background:var(--panel);overflow:hidden;box-shadow:var(--shadow)}
+  .callout::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
+  .callout .ct{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;margin-bottom:7px;display:flex;align-items:center;gap:9px}
+  .callout p{margin:0;color:var(--cream-dim);max-width:none}
+  .callout p+p{margin-top:8px}
+  .callout strong{color:var(--cream)}
+  .callout.rule::before{background:var(--brass)} .callout.rule{background:linear-gradient(115deg,rgba(198,161,91,.13),var(--panel) 58%)} .callout.rule .ct{color:var(--brass)}
+  .callout.warn::before{background:var(--clay)} .callout.warn{background:linear-gradient(115deg,rgba(216,138,99,.13),var(--panel) 58%)} .callout.warn .ct{color:var(--clay)}
+  .callout.tip::before{background:var(--sage)} .callout.tip{background:linear-gradient(115deg,rgba(164,183,159,.13),var(--panel) 58%)} .callout.tip .ct{color:var(--sage)}
+
+  /* a flow of cards */
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:18px 0 8px}
+  .fstep{flex:1 1 160px;min-width:150px;background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:14px;padding:16px 15px 14px;position:relative;transition:transform .25s,border-color .25s}
+  .fstep:hover{transform:translateY(-3px);border-color:rgba(198,161,91,.4)}
+  .fstep .fnum{font-size:.6rem;letter-spacing:.2em;color:var(--brass);font-weight:800;opacity:.7}
+  .fstep .fh{font-family:var(--serif);font-size:1.02rem;color:var(--brass-soft);margin:3px 0 4px}
+  .fstep .fd{font-size:.78rem;color:var(--cream-dim);font-weight:300;line-height:1.45}
+  .farrow{display:flex;align-items:center;justify-content:center;color:var(--brass);font-size:1.3rem;padding:0 6px;flex:0 0 auto;opacity:.7}
+  @media(max-width:660px){.farrow{transform:rotate(90deg);width:100%;padding:8px 0}}
+
+  /* example block - worked example with numbers */
+  .example{margin:18px 0 24px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(150deg,var(--panel) 0%,var(--bg-2) 100%);padding:24px 24px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .example::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--brass),transparent)}
+  .example .et{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);font-weight:800;margin-bottom:6px}
+  .example h4{margin:0 0 4px;color:var(--brass);letter-spacing:.18em}
+  .example .eh{font-family:var(--serif);font-size:1.2rem;font-weight:440;color:var(--cream);margin-bottom:14px}
+  .example .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0 14px}
+  .example .stat{text-align:center;padding:14px 10px;background:rgba(33,31,28,.5);border:1px solid var(--line-soft);border-radius:10px}
+  .example .stat .n{font-family:var(--serif);font-size:1.9rem;font-weight:340;color:var(--brass-soft);line-height:1}
+  .example .stat .l{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dimmer);font-weight:700;margin-top:6px}
+  .example p{color:var(--cream-dim);margin:0}
+  @media(max-width:560px){.example .stats{grid-template-columns:1fr}}
+
+  /* split layout */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0 22px}
+  .split .card{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+  .split .card h4{margin:0 0 8px}
+  .split .card p{margin:0;font-size:.9rem}
+  .split .card.now{border-left:3px solid var(--brass)}
+  .split .card.next{border-left:3px solid var(--sage)}
+  @media(max-width:560px){.split{grid-template-columns:1fr}}
+
+  /* function table - special */
+  .fn{display:grid;gap:10px;margin:14px 0 22px}
+  .fn .row{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:start;padding:14px 16px;background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:12px;transition:border-color .2s}
+  .fn .row:hover{border-color:rgba(198,161,91,.4)}
+  .fn .row .name{color:var(--cream);font-weight:600;font-size:.9rem}
+  .fn .row .name code{font-size:.92em;color:var(--brass-soft);background:none;border:none;padding:0;display:block;margin-bottom:3px}
+  .fn .row .name .pill{display:inline-block;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);background:rgba(198,161,91,.1);border:1px solid var(--line);padding:2px 8px;border-radius:30px;font-weight:700;margin-top:2px}
+  .fn .row .desc{color:var(--cream-dim);font-weight:300;font-size:.9rem}
+  @media(max-width:620px){.fn .row{grid-template-columns:1fr;gap:6px}}
+
+  /* footer */
+  footer{position:relative;z-index:1;text-align:center;padding:60px 32px 80px;margin-top:32px;border-top:1px solid var(--line)}
+  footer .fc{width:48px;height:48px;margin:0 auto 16px;opacity:.9}
+  footer .fm{font-family:var(--serif);font-size:1.4rem}
+  footer .fm .c{color:var(--brass);font-style:italic}
+  footer .fn-line{margin-top:10px;font-size:.78rem;color:var(--cream-dim);font-weight:300;font-style:italic;font-family:var(--serif)}
+
+  @media(max-width:900px){
+    .shell{grid-template-columns:1fr;gap:24px}
+    .toc{position:static;top:auto}
+  }
+
+  @media print{
+    @page{margin:18mm}
+    :root{
+      --bg:#F7F3EB;--bg-2:#EFE8D9;--panel:#F2ECDE;--panel-2:#E9E1D0;
+      --cream:#2A2620;--cream-dim:#564F42;--cream-dimmer:#7C725F;
+      --brass:#895F2E;--brass-soft:#74521F;--clay:#A85B33;--sage:#5E7A55;
+      --line:rgba(137,95,46,.32);--line-soft:rgba(137,95,46,.16);--shadow:none;
+    }
+    body{background:#F7F3EB}
+    .contours,.grain,.progress,.toc{display:none}
+    .shell{grid-template-columns:1fr;gap:0;padding:0}
+    .cover{padding:18px 0 28px}
+    .cover .icon{animation:none}
+    section{break-inside:avoid-page}
+    .callout,.example,.tw,.fstep,.fn .row{break-inside:avoid;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="contours" aria-hidden="true">
+  <svg class="tl" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1.1">
+    <ellipse cx="200" cy="200" rx="60" ry="48" transform="rotate(18 200 200)"/>
+    <ellipse cx="200" cy="200" rx="96" ry="80" transform="rotate(14 200 200)"/>
+    <ellipse cx="200" cy="200" rx="134" ry="112" transform="rotate(10 200 200)"/>
+    <ellipse cx="200" cy="200" rx="172" ry="146" transform="rotate(6 200 200)"/>
+    <ellipse cx="200" cy="200" rx="210" ry="180" transform="rotate(2 200 200)"/>
+  </svg>
+  <svg class="br" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1.1">
+    <ellipse cx="200" cy="200" rx="52" ry="64" transform="rotate(-22 200 200)"/>
+    <ellipse cx="200" cy="200" rx="86" ry="104" transform="rotate(-18 200 200)"/>
+    <ellipse cx="200" cy="200" rx="122" ry="146" transform="rotate(-14 200 200)"/>
+    <ellipse cx="200" cy="200" rx="160" ry="190" transform="rotate(-10 200 200)"/>
+  </svg>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- COVER -->
+<header class="cover">
+  <!-- icon: compass center receiving arrows from 4 quadrants (lists being ingested) -->
+  <svg class="icon" viewBox="0 0 140 140" fill="none" aria-hidden="true">
+    <!-- pulsing outer ring -->
+    <circle class="ring-pulse" cx="70" cy="70" r="62" stroke="#C6A15B" stroke-width="1" stroke-dasharray="2 6" opacity=".4"/>
+    <!-- incoming arrows -->
+    <g class="arrows" stroke="#C6A15B" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="14 26">
+      <line class="a1" x1="14" y1="14" x2="56" y2="56"/>
+      <line class="a2" x1="126" y1="14" x2="84" y2="56"/>
+      <line class="a3" x1="126" y1="126" x2="84" y2="84"/>
+      <line class="a4" x1="14" y1="126" x2="56" y2="84"/>
+    </g>
+    <!-- arrowheads pointing in -->
+    <g fill="#C6A15B">
+      <path d="M52 56 L58 52 L56 58 Z"/>
+      <path d="M88 56 L82 52 L84 58 Z"/>
+      <path d="M88 84 L82 88 L84 82 Z"/>
+      <path d="M52 84 L58 88 L56 82 Z"/>
+    </g>
+    <!-- core compass -->
+    <circle cx="70" cy="70" r="22" fill="#28241F" stroke="#C6A15B" stroke-width="1"/>
+    <path d="M70 52 L75 70 L70 76 L65 70 Z" fill="#C6A15B"/>
+    <path d="M70 88 L65 70 L70 64 L75 70 Z" fill="#DEC68F" opacity=".5"/>
+    <circle cx="70" cy="70" r="2.6" fill="#F5F0E6"/>
+  </svg>
+
+  <p class="eyebrow">Operating Manual · Ingestion</p>
+  <h1>The Ingest <b>Tools.</b></h1>
+  <p class="tag">How new lists become charted venues — the bar tool today, the restaurant tool soon, both following one pattern.</p>
+  <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
+  <div class="meta-row">
+    <span class="m">Version <b>1.6</b></span>
+    <span class="m">Updated <b>June 14, 2026</b></span>
+    <span class="m">Companion to <b>The Handbook §6</b></span>
+  </div>
+</header>
+
+<div class="shell">
+
+  <!-- TOC -->
+  <nav class="toc" id="toc">
+    <h6>Contents</h6>
+    <a href="#s1"><span class="nn">01</span> The Pattern</a>
+    <a href="#s2"><span class="nn">02</span> The Bar Ingest Tool</a>
+    <a href="#s3"><span class="nn">03</span> Step-by-Step</a>
+    <a href="#s4"><span class="nn">04</span> A Worked Example</a>
+    <a href="#s5"><span class="nn">05</span> Adding New Bar Lists</a>
+    <a href="#s6"><span class="nn">06</span> The Restaurant Tool</a>
+    <a href="#s7"><span class="nn">07</span> Adding Award Sources</a>
+    <a href="#s8"><span class="nn">08</span> Troubleshooting</a>
+    <a href="#cl"><span class="nn">✦</span> Changelog</a>
+  </nav>
+
+  <main class="content">
+
+    <div class="callout tip">
+      <div class="ct">📘 Where this fits</div>
+      <p>This guide is a deep-dive companion to <strong>The CompassEats Handbook §6 (The Apps Scripts)</strong>. The handbook gives you the high-level order of operations; this doc unpacks <em>how the ingest tools actually work</em> when you're ready to bring a new list into the system.</p>
+    </div>
+
+    <!-- ===== 1 ===== -->
+    <section id="s1">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>01 — The Pattern</span>
+      <h2>One architecture, <em>two implementations.</em></h2>
+      <p class="lead">CompassEats has a single ingest pattern, implemented twice — once for bars (live today) and once for restaurants (mirroring it, coming next). Same shape, different inputs.</p>
+
+      <div class="split">
+        <div class="card now">
+          <h4 style="color:var(--brass)">◆ Live today</h4>
+          <p style="color:var(--cream);font-weight:500;margin-bottom:6px">Bar Ingest Tool</p>
+          <p><code>compasseats-bar-ingest.gs</code></p>
+          <p style="margin-top:6px">Pull bar lists into the Sheet, then on into the master <code>venues</code> tab.</p>
+        </div>
+        <div class="card now">
+          <h4 style="color:var(--brass)">◆ Live today</h4>
+          <p style="color:var(--cream);font-weight:500;margin-bottom:6px">Restaurant Ingest Tool</p>
+          <p><code>compasseats-restaurant-ingest.gs</code></p>
+          <p style="margin-top:6px">Same shape as the bar tool, restaurant inputs. Sources: W50 regional lists, La Liste, 101 Steakhouses.</p>
+        </div>
+      </div>
+
+      <h4>The shape both tools share</h4>
+      <p>Every ingest tool exposes the same two-function workflow. <strong>One function builds a paste template; the other reads it and processes the data.</strong></p>
+
+      <div class="flow">
+        <div class="fstep"><div class="fnum">01</div><div class="fh">Template</div><div class="fd">A function creates a clean tab with the expected columns to paste your list into.</div></div>
+        <div class="farrow">→</div>
+        <div class="fstep"><div class="fnum">02</div><div class="fh">You paste</div><div class="fd">Drop your list into the template. The shape matches the system's expectations.</div></div>
+        <div class="farrow">→</div>
+        <div class="fstep"><div class="fnum">03</div><div class="fh">Ingest</div><div class="fd">A function reads the template, matches against existing venues, and routes everything to the right place.</div></div>
+        <div class="farrow">→</div>
+        <div class="fstep"><div class="fnum">04</div><div class="fh">Reshape</div><div class="fd"><code>reshape.gs</code> folds the new data into the master <code>venues</code> tab.</div></div>
+      </div>
+    </section>
+
+    <!-- ===== 2 ===== -->
+    <section id="s2">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>02 — The Bar Ingest Tool</span>
+      <h2><em>compasseats-bar-ingest.gs</em></h2>
+      <p class="lead">The live, working ingest tool. Built to absorb published bar lists (50 Best Bars and its regional spin-offs, Spirited Awards lists, etc.) without you having to hand-reformat anything.</p>
+
+      <h4>The two functions</h4>
+      <div class="fn">
+        <div class="row">
+          <div class="name">
+            <code>makeBarImportTemplate</code>
+            <span class="pill">Run first</span>
+          </div>
+          <div class="desc">Creates a fresh import-template tab in the Sheet with the columns the ingestion expects. Run this once per list you want to bring in. You then paste your list into that tab.</div>
+        </div>
+        <div class="row">
+          <div class="name">
+            <code>ingestBarLists</code>
+            <span class="pill">Run second</span>
+          </div>
+          <div class="desc">Reads the filled-in template, de-dupes each entry against the <code>Bar Awards</code> tab (by <code>source_slug</code> + <code>year</code> + normalized name), and appends new award rows to <code>Bar Awards</code>. It does <strong>not</strong> write to <code>venues</code> — <code>reshape</code> reads <code>Bar Awards</code> as a source and folds it in. This is what lets ingested bars survive every reshape.</div>
+        </div>
+      </div>
+
+      <h4>What "ingest" does</h4>
+      <p>When ingest runs, every pasted row is turned into one award row and written to the <code>Bar Awards</code> tab (restaurants → <code>Restaurant Awards</code>). Two outcomes per row:</p>
+      <ul class="bul">
+        <li><strong>Added</strong> — a new award row is appended to <code>Bar Awards</code>. On the next <code>reshape</code>, it's matched to geo and either lands in <code>venues</code> (if found in <code>Places Enrichment</code>) or in <code>needs_enrichment</code> (if not).</li>
+        <li><strong>Skipped (duplicate)</strong> — an identical <code>source_slug</code> + <code>year</code> + name already exists in <code>Bar Awards</code> (the <strong>restaurant</strong> tool's dedupe was updated June 12, 2026 to key on <code>source_slug + year + name + <strong>city</strong></code>, so same-name venues in different cities — e.g. Sushi Sho NY vs Stockholm — are no longer collapsed), so the row is ignored. This is how the same bar across multiple years correctly stacks distinct awards without duplicating.</li>
+      </ul>
+      <p>The actual append-to-existing-venue and route-to-<code>needs_enrichment</code> decisions now happen in <strong>reshape</strong>, not ingest — because reshape is the single place that merges all award sources and matches them to <code>Places Enrichment</code>. Ingest's only job is to get clean award rows into the awards tab.</p>
+
+      <div class="callout rule">
+        <div class="ct">★ Why this matters</div>
+        <p>Keeping a venue's award history un-fragmented now happens in <strong>reshape</strong>, which groups every award row by venue identity. If <strong>Connaught Bar</strong> appears in <code>Bar Awards</code> under several years, reshape collects them all onto one venue record — a stacked accolade history, not duplicate rows. Ingest's per-row dedupe just prevents the <em>same</em> award (same slug + year) being listed twice.</p>
+      </div>
+
+      <div class="callout tip">
+        <div class="ct">🌏 Non-Latin names &amp; country codes (June 1)</div>
+        <p>Reshape's <code>slugify_</code> now handles venues with <strong>non-Latin names</strong> (Chinese, Japanese, Korean, Thai). Previously these slugified to an empty string and the deduper produced broken slugs like <code>-2</code>, <code>-3</code>; now an empty result falls back to <code>{city-slug}-{placeId tail}</code> (e.g. <code>tokyo-ireai</code>) — always valid, unique, and stable across re-syncs. Existing Latin slugs are unchanged.</p>
+        <p>Separately, the cities generator (<code>generateCitiesTab</code>) maps each country name to an ISO-3166 alpha-2 <code>country_code</code> via a lookup table that was expanded to cover ~40 more countries. Any country still missing a code shows blank and <strong>fails the build's validation gate</strong> — fix it by adding the country to the table, or type the 2-letter code directly into the <code>country_code</code> cell (manual edits are preserved on re-run). A blank <code>country</code> field upstream needs fixing at the source award tab.</p>
+      </div>
+    </section>
+
+    <!-- ===== 3 ===== -->
+    <section id="s3">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>03 — Step-by-Step</span>
+      <h2>Ingesting a bar list, <em>start to finish.</em></h2>
+      <p class="lead">Twelve steps from a published list to charted venues on the website.</p>
+
+      <ol class="steps">
+        <li><strong>Have your source list ready</strong> — the rankings page, an export, or any clean copy/paste source.</li>
+        <li>In the Sheet, click <strong>Extensions → Apps Script</strong>. The editor opens in a new tab.</li>
+        <li>In the left sidebar, click <strong><code>compasseats-bar-ingest.gs</code></strong>.</li>
+        <li>From the function dropdown at the top, select <strong><code>makeBarImportTemplate</code></strong>, then click <strong>▶ Run</strong>. Authorize on first run.</li>
+        <li>Switch back to the Sheet. You'll see a <strong>new import-template tab</strong> ready for your list. Read its column headers — that's the shape ingest expects.</li>
+        <li><strong>Paste your list</strong> into the template, matching the column shape (typically rank, venue name, city, country, and the source/year metadata).</li>
+        <li>Sanity-check the pasted rows: cities spelled consistently, ranks numeric, source name correct.</li>
+        <li>Back in Apps Script, select <strong><code>ingestBarLists</code></strong> from the dropdown and click <strong>▶ Run</strong>.</li>
+        <li><strong>Read the Execution log.</strong> It reports <em>award rows added to Bar Awards</em>, plus <em>duplicates / invalid / blank rows skipped</em>.</li>
+        <li>Run <strong><code>reshape</code></strong> from <code>compasseats-reshape.gs</code> to fold the <code>Bar Awards</code> rows into <code>venues</code> (matched to geo) and route geo-less ones to <code>needs_enrichment</code>.</li>
+        <li><strong>Enrich any rows</strong> that landed in <code>needs_enrichment</code> — fill addresses and lat/lng (see Handbook §7).</li>
+        <li>Run <strong><code>reshape</code></strong> a second time to promote newly-enriched rows into <code>venues</code>. Sync &amp; deploy.</li>
+      </ol>
+
+      <div class="callout tip">
+        <div class="ct">🧭 Reading the log</div>
+        <p>Ingest's log tells you how many award rows it added to <code>Bar Awards</code> and how many it skipped (duplicates, invalid slugs, blanks). The <em>appended vs new vs needs_enrichment</em> split now appears in <strong>reshape's</strong> log instead — that's the step that matches each award row to geo. A reshape where "of which bars" climbs is your confirmation the bars went live.</p>
+      </div>
+    </section>
+
+    <!-- ===== 4 ===== -->
+    <section id="s4">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>04 — A Worked Example</span>
+      <h2>The first N. America <em>51–100 paste.</em></h2>
+      <p class="lead">Here's how the tool actually behaved on a real ingestion — a useful benchmark for what to expect.</p>
+
+      <div class="example">
+        <div class="et">Real run</div>
+        <div class="eh">North America's 50 Best Bars 51–100 — first paste</div>
+        <div class="stats">
+          <div class="stat"><div class="n">40</div><div class="l">Appended</div></div>
+          <div class="stat"><div class="n">8</div><div class="l">New venues</div></div>
+          <div class="stat"><div class="n">52</div><div class="l">→ needs_enrichment</div></div>
+        </div>
+        <p>Out of ~100 entries, 40 already existed in <code>venues</code> and gained a new accolade. 8 were brand-new venues that came in clean. 52 landed in <code>needs_enrichment</code> because they were recognized as new but were missing addresses or coordinates — the most common ingestion outcome for any list with venues we haven't catalogued before.</p>
+      </div>
+
+      <h4>What that tells you</h4>
+      <ul class="bul">
+        <li>The high <em>appended</em> count is a healthy sign of cross-list overlap — many top bars appear on multiple guides, and the tool is correctly recognizing them as the <strong>same venue</strong>, not creating duplicates.</li>
+        <li>The 52 in <code>needs_enrichment</code> is the next-step queue, not an error. Each one needs an address + lat/lng to graduate to <code>venues</code>.</li>
+        <li>If you ever see a run where <em>new</em> is suspiciously high — say, 80 out of 100 — that's a flag that <strong>matching is failing</strong> (city spellings off, name variants not normalizing). Worth pausing and checking before reshape.</li>
+      </ul>
+    </section>
+
+    <!-- ===== 5 ===== -->
+    <section id="s5">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>05 — Adding New Bar Lists</span>
+      <h2>Bringing in <em>the parking lot.</em></h2>
+      <p class="lead">Several bar lists are queued for ingestion. The process is identical for each — pull the list, run the template, paste, ingest, reshape.</p>
+
+      <h4>The queued lists</h4>
+      <div class="tw"><table>
+        <thead><tr><th>List</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>World's 50 Best Bars 51–100</td><td>Queued</td><td>Extension of the main W50 Best Bars list</td></tr>
+          <tr><td>Asia's 50 Best Bars</td><td>✅ Compiled</td><td>Full 1–100, 2021–25, in the staged bulk import file</td></tr>
+          <tr><td>North America's 50 Best Bars</td><td>✅ Compiled</td><td>Full 1–100, 2022–26, in the staged bulk file. Supersedes the partial 40 / 8 / 52 template paste (§4).</td></tr>
+          <tr><td>Latin America's 50 Best Bars</td><td>Future</td><td>No current 50 Best edition for this region</td></tr>
+          <tr><td>Europe's 50 Best Bars (when published)</td><td>Future</td><td>Regional</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout">
+        <div class="ct">📦 Bulk path — the staged 6-column import files</div>
+        <p>The regional lists above (and all four regional <em>restaurant</em> lists, §6) were compiled directly into ready-to-paste files in the standard <code>source, year, rank, name, city, country</code> shape — a faster bulk route than running <code>makeBarImportTemplate</code> once per list. <strong>2,301 award rows</strong> across three files: Asia + N. America bars (851); Asia + Latin America restaurants (1,100); N. America + MENA restaurants (350). Paste them into the award-rows area, re-run <code>reshape.gs</code>, and confirm all counts. The per-list template flow below remains the right tool for <em>one-off</em> additions and any list that needs source/category setup first.</p>
+      </div>
+
+      <div class="callout warn">
+        <div class="ct">⚙️ Mixing lists is now fine</div>
+        <p>The v2 tools read <strong>every row independently</strong> by its own <code>source_slug</code>, <code>year</code>, and <code>rank</code> — so you can pile multiple years, ranking bands, and even regions into one import tab and ingest them in a single run. Example: North America 1–50 (2026), 1–50 (2025), and 51–100 (2026) can all sit in one tab together. The only discipline is <strong>per-row accuracy</strong>: each row's slug must match its rank band (1–50 rows use the base slug; 51–100 rows use the <code>-51-100</code> slug), the year must be right, and names clean. Dedupe is by <code>slug + year + name</code>, so the same venue across different years correctly stacks as separate awards.</p>
+      </div>
+    </section>
+
+    <!-- ===== 6 ===== -->
+    <section id="s6">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>06 — The Restaurant Ingest Tool</span>
+      <h2><em>Built</em> — and live alongside the bar tool.</h2>
+      <p class="lead">The restaurant tool follows the bar tool's pattern exactly — same two-function workflow, same name-matching, same <code>awards_json</code> dedupe, same routing to <code>needs_enrichment</code>, same 23-column <code>venues</code> rows — tuned for restaurant lists with two extra optional venue-attribute columns and a flexible grading field.</p>
+
+      <div class="callout">
+        <div class="ct">📦 Source data already compiled</div>
+        <p>All four current regional restaurant lists are compiled into staged import files: <strong>Asia's 50 Best Restaurants</strong> (2019, 2021–26, full 1–100 where published), <strong>Latin America's 50 Best Restaurants</strong> (2019, 2020, 2022–25), <strong>North America's 50 Best Restaurants</strong> (2025–26), and <strong>MENA's 50 Best Restaurants</strong> (2022–26). Missing originals recovered via the web: Asia 2021 (1–100) and the MENA 2022 No.1 (3 Fils). One row carries a deliberately blank country — MENA 2024 #25 <em>Nomi</em>, whose published city "Monash" isn't a MENA location — flagged for manual verification. <strong>La Liste 2026</strong> is also on hand (a score-based list, reshaped on ingest — see below).</p>
+      </div>
+
+      <div class="callout tip">
+        <div class="ct">✱ Two important design decisions (June 2)</div>
+        <p><strong>Grading lives in <code>category_override</code>, never in its own column.</strong> Awards grade venues differently — a numeric rank (No. 1), Michelin stars (Two Stars), Best Chef knives (3 Knives), La Liste scores (99.5/100), Gault &amp; Millau toques. Rather than a column per system, a plain numeric rank goes in <code>rank</code> (auto-labels "No. {rank}") and <em>any other grading</em> goes in <code>category_override</code> as free text. A brand-new award type needs <strong>no script change and no new column</strong>.</p>
+        <p style="margin-top:10px"><strong>One slug per region.</strong> Unlike the bars (which use split <code>…-51-100</code> slugs), each restaurant region is a single source covering the full 1–100. Cleaner, and there's no legacy restaurant data to migrate.</p>
+      </div>
+
+      <h4>The two functions</h4>
+      <div class="fn">
+        <div class="row">
+          <div class="name">
+            <code>compasseats-restaurant-ingest.gs</code>
+            <span class="pill" style="background:#2c5e3f;color:#c8f0d6">Live</span>
+          </div>
+          <div class="desc">The script file. Sits alongside the bar tool in Apps Script.</div>
+        </div>
+        <div class="row">
+          <div class="name">
+            <code>makeRestaurantImportTemplate</code>
+            <span class="pill" style="background:#2c5e3f;color:#c8f0d6">Live</span>
+          </div>
+          <div class="desc">Creates the import tab with columns <code>source_slug, year, rank, name, city, country, category_override, cuisine, price_band</code>. The first six match the bar shape; the last three are optional.</div>
+        </div>
+        <div class="row">
+          <div class="name">
+            <code>ingestRestaurantLists</code>
+            <span class="pill" style="background:#2c5e3f;color:#c8f0d6">Live</span>
+          </div>
+          <div class="desc">Mirror of <code>ingestBarLists</code>. De-dupes by <code>source_slug</code> + <code>year</code> + normalized name and appends new rows to the <code>Restaurant Awards</code> tab (carrying <code>cuisine</code> and <code>price_band</code> through). Does not write to <code>venues</code> — <code>reshape</code> reads <code>Restaurant Awards</code> and folds it in.</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="ct">🔤 Accepts display names <em>or</em> slugs</div>
+        <p>The compiled files carry the full award name in the source column (e.g. <code>Asia's 50 Best Restaurants</code>), not the slug. The tool's <code>resolveSourceR_</code> step translates known display names to their registry slug automatically — handling smart apostrophes, <code>&amp;</code> vs "and", and spacing — so the files paste in <strong>as-is</strong>. A row already in slug form passes straight through. Unknown sources are counted as <em>invalid</em> and skipped (visible in the log).</p>
+      </div>
+
+      <h4>Where the optional fields land</h4>
+      <ul class="bul">
+        <li><code>cuisine</code> → <code>venues.cuisine_tags</code> (backfilled only if empty — never clobbers existing data).</li>
+        <li><code>price_band</code> → <code>venues.price_tier</code> (same backfill-only rule).</li>
+        <li>Both can be blank, so the 6-column compiled files work without edits.</li>
+      </ul>
+
+      <h4>La Liste — the score-based exception</h4>
+      <p>La Liste's source file is shaped differently (<code>Score, Name, City, State, Country</code> — no source/year/rank). It's reshaped into the template on ingest: <code>Score</code> → <code>category_override</code> as <code>{score}/100</code> (e.g. <code>99.5/100</code>), <code>source</code> = <code>la-liste</code>, year from the file title, <code>rank</code> left blank, <code>State</code> ignored (city + country drive matching).</p>
+
+      <div class="callout warn">
+        <div class="ct">⚠️ Registry first, or the build breaks</div>
+        <p>Five regional restaurant slugs (<code>asia-50-best-restaurants</code>, <code>latin-america-50-best-restaurants</code>, <code>north-america-50-best-restaurants</code>, <code>mena-50-best-restaurants</code>, <code>africa-50-best-restaurants</code>) must be added to <code>AWARD_SOURCES</code> in <code>schema.ts</code> <em>before</em> reshape/deploy. The schema's validation gate rejects any venue carrying an unregistered award source. Ingesting into the Sheet is safe either way — the gate only bites on rebuild.</p>
+      </div>
+
+      <div class="callout tip">
+        <div class="ct">◆ Why mirror, not unify</div>
+        <p>Restaurants and bars share a lot, but not everything. Restaurants carry cuisine and price band; bars have signature drinks and bartender awards. Keeping the two tools as separate mirrors (rather than one unified ingest) lets each evolve its own quirks without contaminating the other. Same architecture, room to specialize.</p>
+      </div>
+    </section>
+
+    <!-- ===== 7 ===== -->
+    <section id="s7">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>07 — Adding Award Sources</span>
+      <h2>Both tools must make this <em>easy.</em></h2>
+      <p class="lead">A hard requirement of the ingest tools: adding a new award source (a new guide, a new regional list) should never require rewriting script code. New source → one paste, one config entry, done.</p>
+
+      <h4>The two-place rule</h4>
+      <p>A new award source touches exactly two places in the system. Get both right and it works end-to-end. (This rule comes from <strong>Handbook §5</strong> — repeated here in the ingest context.)</p>
+
+      <div class="split">
+        <div class="card now">
+          <h4 style="color:var(--brass)">Layer 1 · The Sheet</h4>
+          <p>Run the ingest tool's template function, paste the list. The tool routes everything into <code>venues</code> and <code>needs_enrichment</code> — <strong>no script edit needed</strong> as long as the list matches the template shape.</p>
+        </div>
+        <div class="card now">
+          <h4 style="color:var(--brass)">Layer 2 · The Code</h4>
+          <p>Add an entry to the <code>AWARD_SOURCES</code> registry in <code>src/lib/schema.ts</code> so the website knows how to label, weight, and link the new source. Without this, the data exists but won't render nicely.</p>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="ct">⚙️ Without Layer 2</div>
+        <p>If you ingest a list whose source isn't in <code>AWARD_SOURCES</code> yet, the venues will still appear on the site — but the accolade will show as a raw source key (something like <code>tabelog_2024</code>) instead of a clean label. Always pair an ingest with a registry update.</p>
+      </div>
+    </section>
+
+    <!-- ===== 8 ===== -->
+    <section id="s8">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>08 — Troubleshooting</span>
+      <h2>When something <em>looks off.</em></h2>
+
+      <h3><span class="pin"></span>"Too many new venues" in the log</h3>
+      <p>If a list of 100 entries yields 80+ <em>new</em> with very few <em>appended</em>, the matcher is probably failing. Common causes:</p>
+      <ul class="bul">
+        <li><strong>City spelling mismatch</strong> — your pasted list says "New York City"; <code>venues</code> has "New York". Normalize to one form.</li>
+        <li><strong>Name variants</strong> — "The Connaught Bar" vs "Connaught Bar". A leading article can break the match.</li>
+        <li><strong>Encoding artifacts</strong> — smart quotes, em-dashes, dual-script names. Clean these in the template before ingest.</li>
+      </ul>
+      <p>Cancel the ingest, fix the template, and re-run.</p>
+
+      <h3><span class="pin"></span>Everything went to needs_enrichment</h3>
+      <p>If <em>routed</em> is 90%+, the template shape is probably wrong — the tool is recognizing the source but can't read the rest of the columns. Re-check that you pasted into the right columns and that the source/year metadata is filled in correctly.</p>
+
+      <h3><span class="pin"></span>The Execution log is empty or vague</h3>
+      <p>Apps Script sometimes buffers logs. Hit <strong>View → Logs</strong> manually. If the log still looks empty, check the Sheet — the changes will be there even if the log didn't surface them.</p>
+
+      <h3><span class="pin"></span>A venue ended up duplicated</h3>
+      <p>This is the rarest case but worth knowing. If the matcher missed an obvious match (different spelling slipped through), you'll end up with two rows for the same venue. Fix it manually in <code>venues</code> by merging the accolades onto the canonical row and deleting the duplicate. Then add the alternate spelling to your normalization list so it doesn't happen again.</p>
+
+      <div class="callout tip">
+        <div class="ct">🧠 Trust but verify</div>
+        <p>After every ingest, the highest-leverage 30 seconds you can spend is opening <code>venues</code>, sorting by date added (or by source), and eyeballing the top 20 new entries. You'll catch most of the above issues at a glance.</p>
+      </div>
+    </section>
+
+    <!-- changelog -->
+    <section id="cl">
+      <span class="bearing"><svg class="ndl" viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 15 L9 12 Z" fill="#C6A15B"/><path d="M12 21 L9 12 L12 9 L15 12 Z" fill="#DEC68F" opacity=".4"/></svg>✦ — History</span>
+      <h2>Changelog.</h2>
+      <div class="tw"><table>
+        <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
+        <tbody>
+          <tr><td><code>1.5</code></td><td>June 12, 2026</td><td><strong>Restaurant dedupe now city-aware + Michelin flows through ingest.</strong> Both signature lines in <code>ingestRestaurantLists</code> now append <code>+ '|' + normKeyR_(city)</code>, so the dedupe key is <code>source_slug + year + name + city</code> — this stopped 50 same-name-different-city pairs (Sushi Sho NY ★★★ vs Stockholm ★) from being silently dropped. <strong>Michelin is now ingested through the restaurant-ingest tool</strong> (<code>Restaurant Awards</code> tab, source slug <code>michelin</code>, star level in <code>category_override</code> as "Three Stars"/"Two Stars"/"One Star"/"Bib Gourmand"). A 3,820-row Michelin import (full master + 2026 announcements, borough roll-ups applied) added 3,772 rows to <code>Restaurant Awards</code>; 7,163 venues now carry a Michelin award. <strong>CORRECTION (June 14):</strong> the old <code>Michelin Guide</code> tab must <em>not</em> be retired — verified that the import covers only ~3,800 venues while the old tab holds ~7,225, and the old tab is the <em>broader</em> source (it carries ~3,500 starred venues the import lacks, incl. 63 three-stars: The Fat Duck, Waterside Inn, L'Enclume, Jordnær). Both Michelin sources must stay enabled in reshape's <code>SOURCE_MAP</code> until a genuinely complete worldwide list is built. Disabling the old tab drops the site from ~11,075 to ~8,366 venues.</td></tr>
+          <tr><td><code>1.4</code></td><td>June 3, 2026</td><td><strong>Critical architecture fix — ingest tools no longer write to <code>venues</code>.</strong> Both ingest tools previously wrote new venues and appended awards directly into the <code>venues</code> tab; because <code>reshape</code> does <code>sheet.clear()</code> on <code>venues</code> and rebuilds it only from sources in <code>SOURCE_MAP</code>, every ingested bar and restaurant was silently erased on the next reshape. <strong>Fix:</strong> <code>ingestBarLists</code> now appends to a <code>Bar Awards</code> tab and <code>ingestRestaurantLists</code> to a <code>Restaurant Awards</code> tab; reshape reads both as sources (<code>__bars__</code> / <code>__restaurants__</code>) and folds them in like every other award tab, so venues survive. Reshape's <code>BAR_SOURCES</code> expanded to type all regional bar slugs correctly; <code>cuisine</code>/<code>price_band</code> now carry through the Restaurant Awards tab into <code>cuisine_tags</code>/<code>price_tier</code>. Ingest log changed from the old three-number split to rows-added-to-awards-tab + skipped; the appended/new/needs split now surfaces in <strong>reshape's</strong> log. Documented that mixing multiple years/bands/lists in one import tab is now supported (dedupe is <code>slug + year + name</code>). Confirmed all bar slugs and most restaurant slugs already in <code>AWARD_SOURCES</code>; only <code>worlds-50-best-restaurants-51-100</code> and <code>asia-50-best-restaurants-51-100</code> remained to add.</td></tr><td>Restaurant ingest tool <strong>built and live</strong>. Rewrote §06 from "coming next" to the shipped tool: <code>makeRestaurantImportTemplate</code> + <code>ingestRestaurantLists</code>, a faithful mirror of the bar tool. Documented the two design decisions — grading carried in <code>category_override</code> (knives/stars/scores/toques, no per-award columns) and one slug per region (no <code>51-100</code> split, unlike bars). Documented the <code>resolveSourceR_</code> display-name→slug aliasing so compiled files paste in as-is, the optional <code>cuisine</code>→<code>cuisine_tags</code> / <code>price_band</code>→<code>price_tier</code> backfill, the La Liste score reshape (<code>{score}/100</code> → <code>category_override</code>), and the registry-first warning (five new regional restaurant slugs must enter <code>AWARD_SOURCES</code> before deploy). Bar 51–100→single-slug migration explicitly deferred to its own task.</td></tr>
+          <tr><td><code>1.2</code></td><td>June 1, 2026</td><td>Added a callout documenting reshape's non-Latin slug handling (CJK/Thai/Korean names now fall back to <code>{city-slug}-{placeId tail}</code> instead of producing broken <code>-2</code>/<code>-3</code> slugs) and the cities <code>country_code</code> lookup (expanded table; blanks fail the build's validation gate; manual code entries are preserved on re-run).</td></tr>
+          <tr><td><code>1.1</code></td><td>May 30, 2026</td><td>Logged the bulk W50 regional compilation: marked Asia's &amp; North America's 50 Best Bars as compiled in the queued-lists table, documented the staged 6-column bulk import path (2,301 rows across three files) alongside the per-list template flow, and noted all four regional restaurant lists compiled ahead of the restaurant tool (incl. recovered Asia 2021 and MENA 2022 No.1, and the Nomi/"Monash" blank-country flag).</td></tr>
+          <tr><td><code>1.0</code></td><td>May 29, 2026</td><td>Initial ingest-tools guide. Documents the bar ingest tool (live), the planned restaurant ingest tool, the two-function pattern shared by both, the matching/routing behavior, a worked example from the N.America 51–100 first paste, and troubleshooting.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <svg class="fc" viewBox="0 0 92 92" fill="none" aria-hidden="true">
+    <circle cx="46" cy="46" r="43" stroke="#C6A15B" stroke-width="1" opacity=".4"/>
+    <path d="M46 12 L55 50 L46 60 L37 50 Z" fill="#C6A15B"/>
+    <path d="M46 80 L37 50 L46 40 L55 50 Z" fill="#DEC68F" opacity=".4"/>
+    <circle cx="46" cy="50" r="2.6" fill="#F5F0E6"/>
+  </svg>
+  <div class="fm">Compass<span class="c">Eats</span></div>
+  <div class="fn-line">Pull lists in. Let the system do the rest.</div>
+</footer>
+
+<script>
+  var prog=document.getElementById('progress');
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var pct=max>0?(h.scrollTop||document.body.scrollTop)/max*100:0;
+    prog.style.width=pct+'%';
+  }
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var map={};links.forEach(function(a){var id=a.getAttribute('href').slice(1);var el=document.getElementById(id);if(el)map[id]=a;});
+  var ids=Object.keys(map);
+  function spy(){
+    var pos=(window.scrollY||document.documentElement.scrollTop)+140;
+    var current=ids[0];
+    ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=pos)current=id;});
+    links.forEach(function(a){a.classList.remove('active');});
+    if(map[current])map[current].classList.add('active');
+  }
+  window.addEventListener('scroll',function(){onScroll();spy();},{passive:true});
+  window.addEventListener('load',function(){onScroll();spy();});
+</script>
+</body>
+</html>
