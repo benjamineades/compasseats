@@ -63,7 +63,7 @@
   <div class="eyebrow">Living doc · Operations</div>
   <h1>Pipeline <em>Run Order</em></h1>
   <div class="meta">
-    <span class="m">Version <b>1.0</b></span>
+    <span class="m">Version <b>1.1</b></span>
     <span class="m">Updated <b>June 16, 2026</b></span>
     <span class="m">Owner <b>Ben</b></span>
     <span class="m">Status <b>Canonical</b></span>
@@ -117,8 +117,8 @@
 
   <div class="step"><div class="num">4</div><div class="body">
     <h3><code>clearWrongCityBlurbs</code></h3>
-    <p>Clears blurbs that landed on secondary / mis-geocoded rows that share a slug with the flagship.</p>
-    <p class="why">Runs <em>before</em> Option B because <code>importOptionB</code> matches by slug only and can otherwise write the premium blurb onto the wrong row. This clears the field first so Option B lands clean.</p>
+    <p>Blanks <code>blurb_short</code>/<code>blurb_long</code> for a hardcoded list (~119) of <code>city_slug/slug</code> keys whose bulk (Option A) blurb describes a <em>different</em> city than the venue&rsquo;s own &mdash; same-name confusion from batch generation (e.g. Atlas&nbsp;Atlanta carrying the Singapore blurb, Aqua&nbsp;Wolfsburg the Hong&nbsp;Kong one). Cleared venues fall back to the honest &ldquo;A charted favorite in {city}&rdquo; line.</p>
+    <p class="why">Runs <em>before</em> Option B: the marquee venues inside that list (Central, Maido, &hellip;) then get their correct hand-built blurb re-applied by <code>importOptionB</code>, while the non-marquee ones stay blanked. The wrong text lives in <code>blurbs_final.csv</code>, so it returns on every <code>importBlurbsFromDrive</code> until that file is regenerated. <strong>Keyed on <code>city_slug/slug</code></strong>, so any <code>CITY_ALIASES_</code> fold that moves a flagged venue silently breaks its key &mdash; re-audit the list whenever aliases change.</p>
   </div></div>
 
   <div class="step"><div class="num">5</div><div class="body">
@@ -141,6 +141,7 @@
 
   <h2><span class="n">B</span>Publish stage — the repo</h2>
   <p class="lead">The build-time Sheet sync can't run on this plan (Build Secrets are Enterprise-only), so JSON is regenerated from a Sheet export and committed by hand. See the Data Pipeline doc for the root cause.</p>
+  <p class="lead">All Apps Script files are mirrored in the repo under <code>/apps-script/</code> (re-commit when edited). A handoff to a fresh session therefore needs only the current Sheet <code>.xlsx</code> &mdash; scripts, code, and docs are pulled from the repo.</p>
 
   <div class="step"><div class="num">7</div><div class="body">
     <h3>Regenerate JSON</h3>
@@ -177,8 +178,8 @@
   </div>
 
   <footer>
-    CompassEats · Pipeline Run Order · v1.0 — Jun 16, 2026<br>
-    Changelog: v1.0 — first standalone run-order reference; pulls the sequence out of the Data Pipeline doc, adds per-step order rationale, the preflight gate, and the build-gate checklist (geo-fix + city-fold session).
+    CompassEats · Pipeline Run Order · v1.1 — Jun 16, 2026<br>
+    Changelog: v1.1 — corrected the clearWrongCityBlurbs step to match the real script and noted its city_slug/slug fragility + the /apps-script repo mirror. · v1.0 — first standalone run-order reference; pulls the sequence out of the Data Pipeline doc, adds per-step order rationale, the preflight gate, and the build-gate checklist (geo-fix + city-fold session).
   </footer>
 </div>
 </body>
