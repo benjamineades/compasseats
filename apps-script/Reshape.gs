@@ -211,7 +211,6 @@ var CITY_ALIASES_ = {
   'cartagena de indias': 'cartagena',
   'castel del sangro': 'castel di sangro',
   'castellammare di stabia': 'castellamare di stabia',
-  'changzhou': 'hangzhou',
   'cioccaro': 'cioccaro di penango',
   'cornaredo': 'milan',
   'courchevel 1850': 'courchevel',
@@ -241,7 +240,7 @@ var CITY_ALIASES_ = {
   'heidelburg': 'heidelberg',
   'heist': 'knokke heist',
   'isola vulcano': 'vulcanello',
-  'izmir': 'urla',
+  'urla': 'izmir',
   'jiminez de jamuz': 'jimenez de jamuz',
   'knokke': 'knokke heist',
   'konstanz': 'constance',
@@ -302,7 +301,7 @@ var CITY_ALIASES_ = {
   'st anton em arlburg': 'sankt anton am arlberg',
   'starnberg': 'carmel by the sea',
   'stavenger': 'stavanger',
-  'sutp nar mevkii urla': 'urla',
+  'sutp nar mevkii urla': 'izmir',
   'tallin': 'tallinn',
   'tel aviv jaffo': 'tel aviv',
   'telese terme': 'telese',
@@ -325,6 +324,117 @@ var CITY_ALIASES_ = {
 function cityKey_(city) {
   var k = normKey_(city || '');
   return CITY_ALIASES_[k] ? CITY_ALIASES_[k] : k;
+}
+
+var CITY_DISPLAY_ = {
+  'aix-en-provence': 'Aix-en-Provence',
+  'ambleside': 'Ambleside',
+  'antwerp': 'Antwerp',
+  'azay-le-rideau': 'Azay-le-Rideau',
+  'bad-neuenahr-ahrweiler': 'Bad Neuenahr-Ahrweiler',
+  'baden-baden': 'Baden-Baden',
+  'barcelona': 'Barcelona',
+  'belgrade': 'Belgrade',
+  'bengaluru': 'Bengaluru',
+  'bourg-charente': 'Bourg-Charente',
+  'bruges': 'Bruges',
+  'brussels': 'Brussels',
+  'cadiz': 'Cádiz',
+  'cairo': 'Cairo',
+  'cancun': 'Cancún',
+  'canterbury': 'Canterbury',
+  'cartmel': 'Cartmel',
+  'clermont-ferrand': 'Clermont-Ferrand',
+  'conques-en-rouergue': 'Conques-en-Rouergue',
+  'copenhagen': 'Copenhagen',
+  'correncon-en-vercors': 'Corrençon-en-Vercors',
+  'courchevel': 'Courchevel',
+  'dublin': 'Dublin',
+  'edinburgh': 'Edinburgh',
+  'evian-les-bains': 'Évian-les-Bains',
+  'frankfurt': 'Frankfurt',
+  'glasgow': 'Glasgow',
+  'gothenburg': 'Gothenburg',
+  'grenzach-wyhlen': 'Grenzach-Wyhlen',
+  'grindavik': 'Grindavík',
+  'guadalupe': 'Guadalupe',
+  'hong-kong': 'Hong Kong',
+  'horsham': 'Horsham',
+  'knokke-heist': 'Knokke-Heist',
+  'la-teste-de-buch': 'La Teste-de-Buch',
+  'les-sables-dolonne': 'Les Sables-d\'Olonne',
+  'lisbon': 'Lisbon',
+  'lisle-sur-la-sorgue': 'L\'Isle-sur-la-Sorgue',
+  'los-angeles': 'Los Angeles',
+  'lyon': 'Lyon',
+  'macau': 'Macau',
+  'malaga': 'Málaga',
+  'manila': 'Manila',
+  'marcq-en-bar-ul': 'Marcq-en-Barœul',
+  'marrakech': 'Marrakech',
+  'massa-lubrense': 'Massa Lubrense',
+  'merida': 'Mérida',
+  'miami': 'Miami',
+  'milan': 'Milan',
+  'monaco': 'Monaco',
+  'montemor-o-novo': 'Montemor-o-Novo',
+  'monterrey': 'Monterrey',
+  'montreal': 'Montréal',
+  'montreuil': 'Montreuil',
+  'munster': 'Münster',
+  'new-york': 'New York',
+  'newcastle': 'Newcastle upon Tyne',
+  'noirmoutier-en-lile': 'Noirmoutier-en-l\'Île',
+  'oaxaca': 'Oaxaca',
+  'paliseul': 'Paliseul',
+  'panama-city': 'Panama City',
+  'peyre-en-aubrac': 'Aumont-Aubrac',
+  'poio': 'Pontevedra',
+  'porto': 'Porto',
+  'puy-en-velay': 'Puy-en-Velay',
+  'redwood-city': 'Redwood City',
+  'reims': 'Reims',
+  'riga': 'Riga',
+  'rio-de-janeiro': 'Rio de Janeiro',
+  'rottach-egern': 'Rottach-Egern',
+  'saint-bonnet-le-froid': 'Saint-Bonnet-le-Froid',
+  'saint-emilion': 'Saint-Émilion',
+  'saint-petersburg': 'Saint Petersburg',
+  'saint-remy': 'Saint-Rémy',
+  'san-jose': 'San José',
+  'san-sebastian': 'San Sebastián',
+  'sankt-anton-am-arlberg': 'Sankt Anton am Arlberg',
+  'senigallia': 'Senigallia',
+  'serralunga-dalba': 'Serralunga d\'Alba',
+  'sydney': 'Sydney',
+  'sylt': 'Sylt',
+  'taipei': 'Taipei',
+  'talloires-montmin': 'Talloires-Montmin',
+  'tbilisi': 'Tbilisi',
+  'tel-aviv': 'Tel Aviv',
+  'urdaniz': 'Urdániz',
+  'uriage-les-bains': 'Uriage-les-Bains',
+  'urla': 'İzmir',
+  'valencia': 'Valencia',
+  'venice': 'Venice',
+  'washington-dc': 'Washington',
+  'zurich': 'Zürich',
+};
+
+// Canonical display label + true town for a venue, given its city_slug and raw source city.
+// Returns {display, neighborhood}. If the slug has a canonical label and the raw city
+// differs from it (ignoring accents/case), the raw city is preserved as the neighborhood.
+function cityDisplay_(cslug, rawCity) {
+  var canon = CITY_DISPLAY_[cslug];
+  if (!canon) return { display: rawCity || '', neighborhood: '' };
+  var a = normKey_(canon), b = normKey_(rawCity || '');
+  // Suppress pseudo-neighborhoods that are just the canonical name with a generic
+  // suffix/prefix (e.g. "New York City" vs "New York", "Dublin City" vs "Dublin",
+  // "Glasgow City", "Donostia / San Sebastián" containing "San Sebastián").
+  var bStripped = b.replace(/\b(city|stad|cidade|ciudad|metro|greater)\b/g, ' ').replace(/\s+/g, ' ').trim();
+  var pseudo = (b === a) || (bStripped === a) || (b.indexOf(a) !== -1 && (b.length - a.length) <= 12 && /\b(city|metro|greater|jaffo|de juarez)\b/.test(b));
+  var hood = (b && b !== a && !pseudo) ? rawCity : '';
+  return { display: canon, neighborhood: hood };
 }
 
 
@@ -633,14 +743,16 @@ function reshapeCompassEats() {
 
     cityCount[cslug] = (cityCount[cslug] || 0) + 1;
 
+    var disp_ = cityDisplay_(cslug, v.city);
+
     venueRows.push([
       v.place_id,          // id
       vslug,               // slug
       v.name,              // name
       cslug,               // city_slug
-      v.city,              // city_display
+      disp_.display,       // city_display
       v.country || '',     // country
-      '',                  // neighborhood
+      disp_.neighborhood,  // neighborhood
       v.type,              // type
       v.lat,               // lat
       v.lng,               // lng
