@@ -209,8 +209,8 @@
   <p class="tag">Charting what's next. Updated each session as work ships and new work appears.</p>
   <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
   <div class="meta-row">
-    <span class="m">Version <b>2.16</b></span>
-    <span class="m">Updated <b>June 16, 2026</b></span>
+    <span class="m">Version <b>2.17</b></span>
+    <span class="m">Updated <b>June 17, 2026</b></span>
     <span class="m">Data cleanup <b>shipping</b></span>
   </div>
 </header>
@@ -220,14 +220,14 @@
   <!-- DASHBOARD -->
   <section class="dash">
     <div class="dcard done">
-      <div class="dnum">34</div>
+      <div class="dnum">35</div>
       <div class="dlabel">Shipped</div>
-      <div class="dsub">Static architecture, sitemap live · ingest + geo-enrichment · live deploy · core pages redesigned · award-collision fix · mobile accolade distinctions · Cities + Guides index + header nav · city page fixed-hex redesign · bulk blurbs (11k) live · Option B blurbs (48) live · country-string corruption fixed · cross-city bleed verified clean · city-label canonicalization (93→0)</div>
+      <div class="dsub">Static architecture, sitemap live · ingest + geo-enrichment · live deploy · core pages redesigned · award-collision fix · mobile accolade distinctions · Cities + Guides index + header nav · city page fixed-hex redesign · bulk blurbs (11k) live · Option B blurbs (48) live · country-string corruption fixed · cross-city bleed verified clean · city-label canonicalization (93→0) · W50 regional award history (+254 rows)</div>
     </div>
     <div class="dcard active">
-      <div class="dnum">1</div>
+      <div class="dnum">0</div>
       <div class="dlabel">In motion</div>
-      <div class="dsub">W50 regional list compilation · Option B blurb pipeline · Michelin re-ingest · manual closure triage</div>
+      <div class="dsub">No active build track — pick up the next item from Up&nbsp;next (venue photos)</div>
     </div>
     <div class="dcard next">
       <div class="dnum">6</div>
@@ -246,7 +246,7 @@
     <div class="tier-head">
       <div class="icon-slot">◉</div>
       <h2>In motion</h2>
-      <span class="count">5 items</span>
+      <span class="count">6 items</span>
     </div>
     <p class="tier-sub">Currently active work — touched in recent sessions, partially done, picking back up where we left off.</p>
     <div class="items">
@@ -292,11 +292,12 @@
 
       <div class="item">
         <div class="top">
-          <h3>W50 regional list compilation</h3>
-          <div class="pills"><span class="pill active">Active</span><span class="pill larger">Larger</span></div>
+          <h3><span class="check">SHIPPED — W50 regional list compilation</span></h3>
+          <div class="pills"><span class="pill shipped">Shipped</span><span class="pill">June&nbsp;17</span></div>
         </div>
-        <p>Three staged import files of 2,301 award rows total: <strong>Asia + N. America bars</strong>; <strong>Asia + Latin America restaurants</strong>; <strong>N. America + MENA restaurants</strong>. 6-column format.</p>
-        <p><span class="why">Next: paste each into the bar / restaurant ingest tools, reshape, confirm. Watch for the Nomi/"Monash" blank-country flag and the name-variant merge cases.</span></p>
+        <p>The 2,301 staged award rows turned out to be <strong>74% already ingested</strong> from prior sessions — a diagnostic-first check against the live data (not just the punch-list memory) was the whole game here. Bars were fully staged already (only 2 stray rows added). The real gap was <strong>asia-50-best-restaurants: +240 rows</strong> of earlier award-year history (2019–2024) on venues already listed, plus <strong>+14 James Beard 2026</strong> rows that came in alongside. LatAm / MENA / N.&nbsp;America restaurants were already complete (0–5 new each).</p>
+        <p>Verified live: <strong>Sorn</strong> (Bangkok) now shows Asia's 50 Best history back to 2019 (No.&nbsp;48); <strong>Caprice</strong> (Hong&nbsp;Kong) back to 2021. Published counts held clean — <strong>10,357 venues / 3,098 cities / 10,020 active / blurb_long on 10,120</strong>; no phantom-duplicate venues, no orphans, gate passed.</p>
+        <p><span class="why">Two ingest-script bugs fixed permanently along the way and committed to <code>/apps-script/</code>: (1) the restaurant resolver compared normalized input against un-normalized alias keys, so every display-name source silently failed — fixed by normalizing the keys too; (2) the bar ingest had no alias map at all (slug-only), so display-name sources were all rejected — added <code>SOURCE_ALIASES_B</code> + <code>resolveSourceB_</code>. Compiled 6-column files now paste in as-is. Lesson re-confirmed: the staging tabs run ahead of <code>venues.awards_json</code>, so always de-dup against the actual staging tab, and clear-and-recreate an import tab rather than trusting a paste landed (a stale "Restaurant List Import" tab caused two false runs with 201 invalid-slug rows before a tab nuke fixed it).</span></p>
       </div>
 
       <div class="item">
@@ -1084,6 +1085,7 @@
     <div class="tw"><table>
       <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
       <tbody>
+        <tr><td><code>2.17</code></td><td>June 17, 2026</td><td><strong>W50 regional list compilation shipped + two ingest bugs fixed.</strong> The 2,301 staged award rows were <strong>74% already ingested</strong>; a diagnostic-first comparison against live data (not punch-list memory) found the real gap was <strong>asia-50-best-restaurants +240</strong> earlier-year rows plus <strong>James&nbsp;Beard&nbsp;2026 +14</strong>. Bars were already fully staged (2 stray rows added); LatAm/MENA/N.America restaurants already complete. Verified live: Sorn (Bangkok) Asia's&nbsp;50&nbsp;Best history back to 2019; Caprice (Hong&nbsp;Kong) back to 2021. Counts held clean: <strong>10,357 venues / 3,098 cities / 10,020 active / blurb_long 10,120</strong>, gate passed, no phantom dupes. Fixed + committed two ingest-script bugs: the restaurant resolver compared normalized input to un-normalized alias keys (every display-name source silently failed); the bar ingest had no alias map at all. Both now accept display-name sources, so compiled 6-column files paste in as-is. Process lesson encoded: de-dup against the actual staging tab (it runs ahead of <code>venues.awards_json</code>), and clear-and-recreate an import tab rather than trusting a paste — a stale Restaurant&nbsp;List&nbsp;Import tab caused two false runs (201 invalid rows) before a tab nuke fixed it. Shipped 34&nbsp;→&nbsp;35; In&nbsp;motion active track 1&nbsp;→&nbsp;0. Next active track: <strong>venue photos</strong> (<code>photo_url</code> empty for all venues).</td></tr>
         <tr><td><code>2.16</code></td><td>June 16, 2026</td><td><strong>Canonicalization verified live + doc maintenance.</strong> Spot-checks confirmed on the published site: Mugaritz shows "Errenteria, San&nbsp;Sebastián"; <code>/city/changzhou</code> exists (9 spots); Hangzhou down to 30 spots with stars intact. Updated the <em>Pipeline Run Order</em> doc (v1.2) to document the new <code>CITY_DISPLAY_</code> / <code>cityDisplay_()</code> step in reshape. Marked the script single-source-of-truth item largely done — all <code>.gs</code> + living docs now committed to the repo, so handoffs require only the Sheet .xlsx. Confirmed the Platform &amp; Lovable constraints doc is still the one open standing-doc item. Next active track set: <strong>W50 regional list compilation</strong> (2,301 staged award rows).</td></tr>
         <tr><td><code>2.15</code></td><td>June 16, 2026</td><td><strong>City-label canonicalization shipped — 93 inconsistent slugs to 0.</strong> The slug-level merges were already done by the 84-alias pass; what remained was inconsistent <code>city_display</code> within a slug. Built a <code>CITY_DISPLAY_</code> map (92 canonical labels) + <code>cityDisplay_()</code> helper in <code>Reshape.gs</code> that writes the canonical label and preserves the true town in <code>neighborhood</code>, with a pseudo-neighborhood guard (suppresses "New&nbsp;York&nbsp;City"→New&nbsp;York, "Dublin&nbsp;City"→Dublin while keeping Manhattan, Errenteria, El&nbsp;Puerto&nbsp;de&nbsp;Santa&nbsp;María, Atherton). Two merge calls baked in: <strong>hangzhou/changzhou split</strong> (removed the bad <code>'changzhou':'hangzhou'</code> alias — Michelin + coordinates confirmed separate cities) and <strong>urla→izmir merge</strong> (flipped the reversed alias). Regenerated JSON: <strong>10,356 venues / 3,097 cities / 10,019 active / blurb_long on 10,119</strong>; 251 venues now carry a neighborhood; <code>generateCitiesTab</code> propagated canonical labels (Cádiz, Pontevedra, New&nbsp;York, Zürich all clean). Confirmed <code>clearWrongCityBlurbs</code> needed no re-key (its one changzhou key already matched). Parked 5 wrong-coordinate rows to the geo re-pin track.</td></tr>
         <tr><td><code>2.14</code></td><td>June 16, 2026</td><td><strong>City-label canonicalization opened as the next active track.</strong> Live spot-check after publishing the wrong-city-blurb fix confirmed the wins (Lima Maido/Central premium blurbs intact; Atlanta Atlas/Bacchanalia wrong-city blurbs cleared; Copenhagen Jordnær showing ★★★). Verified <strong>Aqua (Wolfsburg) is correctly suppressed</strong> — the 3-star permanently closed 21&nbsp;Mar&nbsp;2026 (Sven Elverfeld), so the closed-venue logic rightly drops it and its single-venue city from search. Surfaced that <strong>669 venues carry a city label not matching their grouped city</strong> — spelling variants (Antwerp/Antwerpen) plus real metro merges (greater San&nbsp;Sebastián, Courchevel&nbsp;1850). Ben decided the San&nbsp;Sebastián towns should merge; logged the track with its geo-cleared approach and the open display-rule decision (recommended: canonical metro label + true town preserved in <code>neighborhood</code>). Also: full Apps Script toolkit (21 files) now mirrored to <code>/apps-script/</code> in the repo — handoffs now require only the current Sheet .xlsx.</td></tr>
