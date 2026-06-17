@@ -99,7 +99,7 @@
 
   <div class="step"><div class="num">1</div><div class="body">
     <h3><code>reshapeCompassEats</code></h3>
-    <p>Rebuilds the <code>venues</code> tab from the award source tabs + Places Enrichment. Applies <code>CITY_ALIASES_</code> (suburb/fold relabels), unions awards for same identity (<code>normKey + city</code>), reads geo by <code>name|city</code> then name-only fallback.</p>
+    <p>Rebuilds the <code>venues</code> tab from the award source tabs + Places Enrichment. Applies <code>CITY_ALIASES_</code> (suburb/fold relabels → <code>city_slug</code>), then <code>CITY_DISPLAY_</code> via <code>cityDisplay_()</code> (sets the canonical <code>city_display</code> label per slug and preserves the true town in <code>neighborhood</code>, with a pseudo-neighborhood guard for verbose restatements like "New York City"). Unions awards for same identity (<code>normKey + city</code>), reads geo by <code>name|city</code> then name-only fallback.</p>
     <p class="why">⚠ Rewrites the tab from scratch — <strong>wipes <code>blurb_short</code> / <code>blurb_long</code></strong>. That's why the blurb imports must follow. Log: <code>ALIAS KEYS AT RUNTIME</code> + venue total.</p>
   </div></div>
 
@@ -178,8 +178,8 @@
   </div>
 
   <footer>
-    CompassEats · Pipeline Run Order · v1.1 — Jun 16, 2026<br>
-    Changelog: v1.1 — corrected the clearWrongCityBlurbs step to match the real script and noted its city_slug/slug fragility + the /apps-script repo mirror. · v1.0 — first standalone run-order reference; pulls the sequence out of the Data Pipeline doc, adds per-step order rationale, the preflight gate, and the build-gate checklist (geo-fix + city-fold session).
+    CompassEats · Pipeline Run Order · v1.2 — Jun 16, 2026<br>
+    Changelog: v1.2 — corrected the clearWrongCityBlurbs step to match the real script and noted its city_slug/slug fragility + the /apps-script repo mirror. · v1.0 — first standalone run-order reference; pulls the sequence out of the Data Pipeline doc, adds per-step order rationale, the preflight gate, and the build-gate checklist (geo-fix + city-fold session).
   </footer>
 </div>
 </body>
