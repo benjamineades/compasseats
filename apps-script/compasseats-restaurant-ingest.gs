@@ -91,7 +91,17 @@ function resolveSourceR_(raw) {
   if (!s) return '';
   if (VALID_RESTAURANT_SLUGS.indexOf(s) >= 0) return s;          // already a slug
   var norm = normSourceR_(s);
-  if (SOURCE_ALIASES_R[norm]) return SOURCE_ALIASES_R[norm];     // display name
+  // Build a normalized-key view of the alias map ONCE, so apostrophes/&
+  // in the keys don't block the match (keys were stored un-normalized).
+  if (!resolveSourceR_._normMap) {
+    resolveSourceR_._normMap = {};
+    for (var key in SOURCE_ALIASES_R) {
+      if (SOURCE_ALIASES_R.hasOwnProperty(key)) {
+        resolveSourceR_._normMap[normSourceR_(key)] = SOURCE_ALIASES_R[key];
+      }
+    }
+  }
+  if (resolveSourceR_._normMap[norm]) return resolveSourceR_._normMap[norm];  // display name
   for (var k = 0; k < VALID_RESTAURANT_SLUGS.length; k++) {
     if (normSourceR_(VALID_RESTAURANT_SLUGS[k]) === norm) return VALID_RESTAURANT_SLUGS[k];
   }
