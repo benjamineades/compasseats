@@ -298,7 +298,7 @@
   },
   {
     "slug": "aix-en-provence",
-    "display": "Aix en Provence",
+    "display": "Aix-en-Provence",
     "country": "France",
     "country_code": "FR",
     "lat": 43.538477,
@@ -1873,7 +1873,7 @@
   },
   {
     "slug": "baden-baden",
-    "display": "Baden Baden",
+    "display": "Baden-Baden",
     "country": "Germany",
     "country_code": "DE",
     "lat": 48.74779,
@@ -3781,7 +3781,7 @@
   },
   {
     "slug": "bruges",
-    "display": "Sint-Kruis",
+    "display": "Bruges",
     "country": "Belgium",
     "country_code": "BE",
     "lat": 51.209586,
@@ -3826,7 +3826,7 @@
   },
   {
     "slug": "brussels",
-    "display": "Anderlecht",
+    "display": "Brussels",
     "country": "Belgium",
     "country_code": "BE",
     "lat": 50.829236,
@@ -4078,7 +4078,7 @@
   },
   {
     "slug": "cadiz",
-    "display": "El Puerto de Santa María",
+    "display": "Cádiz",
     "country": "Spain",
     "country_code": "ES",
     "lat": 36.589907,
@@ -4168,7 +4168,7 @@
   },
   {
     "slug": "cairo",
-    "display": "Giza",
+    "display": "Cairo",
     "country": "Egypt",
     "country_code": "EG",
     "lat": 32.667001,
@@ -4393,7 +4393,7 @@
   },
   {
     "slug": "cancun",
-    "display": "Cancun",
+    "display": "Cancún",
     "country": "Mexico",
     "country_code": "MX",
     "lat": 21.027417,
@@ -4447,7 +4447,7 @@
   },
   {
     "slug": "canterbury",
-    "display": "Fordwich",
+    "display": "Canterbury",
     "country": "United Kingdom",
     "country_code": "GB",
     "lat": 49.155411,
@@ -5328,6 +5328,15 @@
     "venue_count": 1
   },
   {
+    "slug": "changzhou",
+    "display": "Changzhou",
+    "country": "China",
+    "country_code": "CN",
+    "lat": 30.865169,
+    "lng": 97.75404,
+    "venue_count": 9
+  },
+  {
     "slug": "chantilly",
     "display": "Chantilly",
     "country": "France",
@@ -5842,7 +5851,7 @@
   },
   {
     "slug": "clermont-ferrand",
-    "display": "Clermont Ferrand",
+    "display": "Clermont-Ferrand",
     "country": "France",
     "country_code": "FR",
     "lat": 46.748995,
@@ -6247,7 +6256,7 @@
   },
   {
     "slug": "correncon-en-vercors",
-    "display": "Autrans Méaudre en Vercors",
+    "display": "Corrençon-en-Vercors",
     "country": "France",
     "country_code": "FR",
     "lat": 45.076564,
@@ -6391,7 +6400,7 @@
   },
   {
     "slug": "courchevel",
-    "display": "Courchevel 1850",
+    "display": "Courchevel",
     "country": "France",
     "country_code": "FR",
     "lat": 45.412296,
@@ -7210,7 +7219,7 @@
   },
   {
     "slug": "dublin",
-    "display": "Dublin City",
+    "display": "Dublin",
     "country": "Ireland",
     "country_code": "IE",
     "lat": 53.341263,
@@ -8551,7 +8560,7 @@
   },
   {
     "slug": "frankfurt",
-    "display": "Frankfurt on the Main",
+    "display": "Frankfurt",
     "country": "Germany",
     "country_code": "DE",
     "lat": 50.112839,
@@ -9325,7 +9334,7 @@
   },
   {
     "slug": "glasgow",
-    "display": "Glasgow City",
+    "display": "Glasgow",
     "country": "United Kingdom",
     "country_code": "GB",
     "lat": 55.868481,
@@ -9613,7 +9622,7 @@
   },
   {
     "slug": "grenzach-wyhlen",
-    "display": "Grenzach Wyhlen",
+    "display": "Grenzach-Wyhlen",
     "country": "Germany",
     "country_code": "DE",
     "lat": 47.561097,
@@ -10012,9 +10021,9 @@
     "display": "Hangzhou",
     "country": "China",
     "country_code": "CN",
-    "lat": 30.183343,
-    "lng": 114.273368,
-    "venue_count": 38
+    "lat": 29.978413,
+    "lng": 119.425499,
+    "venue_count": 30
   },
   {
     "slug": "hann-munden",
@@ -11205,6 +11214,15 @@
     "venue_count": 31
   },
   {
+    "slug": "izmir",
+    "display": "İzmir",
+    "country": "Turkey",
+    "country_code": "TR",
+    "lat": 38.347737,
+    "lng": 26.910288,
+    "venue_count": 12
+  },
+  {
     "slug": "jackson",
     "display": "Jackson",
     "country": "United States",
@@ -11827,7 +11845,7 @@
   },
   {
     "slug": "knokke-heist",
-    "display": "Heist",
+    "display": "Knokke-Heist",
     "country": "Belgium",
     "country_code": "BE",
     "lat": 51.341192,
@@ -12367,7 +12385,7 @@
   },
   {
     "slug": "la-teste-de-buch",
-    "display": "Pyla-sur-Mer",
+    "display": "La Teste-de-Buch",
     "country": "France",
     "country_code": "FR",
     "lat": 44.618602,
@@ -14077,7 +14095,7 @@
   },
   {
     "slug": "lyon",
-    "display": "Collonges-au-Mont-d'Or",
+    "display": "Lyon",
     "country": "France",
     "country_code": "FR",
     "lat": 45.771618,
@@ -14275,7 +14293,7 @@
   },
   {
     "slug": "malaga",
-    "display": "Malaga",
+    "display": "Málaga",
     "country": "Spain",
     "country_code": "ES",
     "lat": 36.706234,
@@ -14815,7 +14833,7 @@
   },
   {
     "slug": "massa-lubrense",
-    "display": "Marina del Cantone",
+    "display": "Massa Lubrense",
     "country": "Italy",
     "country_code": "IT",
     "lat": 40.591671,
@@ -15148,7 +15166,7 @@
   },
   {
     "slug": "merida",
-    "display": "Merida",
+    "display": "Mérida",
     "country": "Mexico",
     "country_code": "MX",
     "lat": 20.923908,
@@ -15463,7 +15481,7 @@
   },
   {
     "slug": "monaco",
-    "display": "Monte-Carlo",
+    "display": "Monaco",
     "country": "Monaco",
     "country_code": "MC",
     "lat": 41.790604,
@@ -15877,7 +15895,7 @@
   },
   {
     "slug": "montreuil",
-    "display": "La Madelaine-sous-Montreuil",
+    "display": "Montreuil",
     "country": "France",
     "country_code": "FR",
     "lat": 49.667484,
@@ -16697,7 +16715,7 @@
   },
   {
     "slug": "new-york",
-    "display": "New York City",
+    "display": "New York",
     "country": "United States",
     "country_code": "US",
     "lat": 40.631044,
@@ -16724,7 +16742,7 @@
   },
   {
     "slug": "newcastle",
-    "display": "East Wallhouses",
+    "display": "Newcastle upon Tyne",
     "country": "United Kingdom",
     "country_code": "GB",
     "lat": 54.978938,
@@ -16931,7 +16949,7 @@
   },
   {
     "slug": "noirmoutier-en-lile",
-    "display": "L'Herbaudière",
+    "display": "Noirmoutier-en-l'Île",
     "country": "France",
     "country_code": "FR",
     "lat": 47.012251,
@@ -18092,7 +18110,7 @@
   },
   {
     "slug": "paliseul",
-    "display": "Our",
+    "display": "Paliseul",
     "country": "Belgium",
     "country_code": "BE",
     "lat": 49.927638,
@@ -18164,7 +18182,7 @@
   },
   {
     "slug": "panama-city",
-    "display": "Panamá City",
+    "display": "Panama City",
     "country": "Panama",
     "country_code": "PA",
     "lat": 13.425907,
@@ -18938,7 +18956,7 @@
   },
   {
     "slug": "poio",
-    "display": "Raxó",
+    "display": "Pontevedra",
     "country": "Spain",
     "country_code": "ES",
     "lat": 42.426942,
@@ -19982,7 +20000,7 @@
   },
   {
     "slug": "redwood-city",
-    "display": "Atherton",
+    "display": "Redwood City",
     "country": "United States",
     "country_code": "US",
     "lat": 37.476642,
@@ -20027,7 +20045,7 @@
   },
   {
     "slug": "reims",
-    "display": "Tinqueux",
+    "display": "Reims",
     "country": "France",
     "country_code": "FR",
     "lat": 49.249393,
@@ -20999,7 +21017,7 @@
   },
   {
     "slug": "saint-emilion",
-    "display": "Saint Emilion",
+    "display": "Saint-Émilion",
     "country": "France",
     "country_code": "FR",
     "lat": 44.891812,
@@ -21377,7 +21395,7 @@
   },
   {
     "slug": "saint-petersburg",
-    "display": "Saint Petersbourg",
+    "display": "Saint Petersburg",
     "country": "Russia",
     "country_code": "RU",
     "lat": 59.940686,
@@ -21809,7 +21827,7 @@
   },
   {
     "slug": "san-jose",
-    "display": "San Jose",
+    "display": "San José",
     "country": "United States",
     "country_code": "US",
     "lat": 20.889607,
@@ -21989,7 +22007,7 @@
   },
   {
     "slug": "san-sebastian",
-    "display": "Lasarte-Oria",
+    "display": "San Sebastián",
     "country": "Spain",
     "country_code": "ES",
     "lat": 43.305542,
@@ -24176,7 +24194,7 @@
   },
   {
     "slug": "sylt",
-    "display": "Rantum",
+    "display": "Sylt",
     "country": "Germany",
     "country_code": "DE",
     "lat": 54.877333,
@@ -25589,7 +25607,7 @@
   },
   {
     "slug": "urdaniz",
-    "display": "Urdaitz",
+    "display": "Urdániz",
     "country": "Spain",
     "country_code": "ES",
     "lat": 33.979943,
@@ -25613,15 +25631,6 @@
     "lat": 45.141758,
     "lng": 5.831291,
     "venue_count": 2
-  },
-  {
-    "slug": "urla",
-    "display": "Urla",
-    "country": "Turkey",
-    "country_code": "TR",
-    "lat": 38.347737,
-    "lng": 26.910288,
-    "venue_count": 12
   },
   {
     "slug": "uster",
@@ -27839,7 +27848,7 @@
   },
   {
     "slug": "zurich",
-    "display": "Zurich",
+    "display": "Zürich",
     "country": "Switzerland",
     "country_code": "CH",
     "lat": 46.321136,
