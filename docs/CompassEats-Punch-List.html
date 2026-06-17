@@ -209,7 +209,7 @@
   <p class="tag">Charting what's next. Updated each session as work ships and new work appears.</p>
   <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
   <div class="meta-row">
-    <span class="m">Version <b>2.14</b></span>
+    <span class="m">Version <b>2.15</b></span>
     <span class="m">Updated <b>June 16, 2026</b></span>
     <span class="m">Data cleanup <b>shipping</b></span>
   </div>
@@ -220,14 +220,14 @@
   <!-- DASHBOARD -->
   <section class="dash">
     <div class="dcard done">
-      <div class="dnum">33</div>
+      <div class="dnum">34</div>
       <div class="dlabel">Shipped</div>
-      <div class="dsub">Static architecture, sitemap live · ingest + geo-enrichment · live deploy · core pages redesigned · award-collision fix · mobile accolade distinctions · Cities + Guides index + header nav · city page fixed-hex redesign · bulk blurbs (11k) live · Option B blurbs (48) live · country-string corruption fixed · cross-city bleed verified clean</div>
+      <div class="dsub">Static architecture, sitemap live · ingest + geo-enrichment · live deploy · core pages redesigned · award-collision fix · mobile accolade distinctions · Cities + Guides index + header nav · city page fixed-hex redesign · bulk blurbs (11k) live · Option B blurbs (48) live · country-string corruption fixed · cross-city bleed verified clean · city-label canonicalization (93→0)</div>
     </div>
     <div class="dcard active">
-      <div class="dnum">2</div>
+      <div class="dnum">1</div>
       <div class="dlabel">In motion</div>
-      <div class="dsub">Michelin re-ingest (live) · Option B blurb pipeline · W50 regional list compilation</div>
+      <div class="dsub">Option B blurb pipeline · Michelin re-ingest · Option B blurb pipeline · W50 regional list compilation</div>
     </div>
     <div class="dcard next">
       <div class="dnum">6</div>
@@ -246,20 +246,19 @@
     <div class="tier-head">
       <div class="icon-slot">◉</div>
       <h2>In motion</h2>
-      <span class="count">6 items</span>
+      <span class="count">5 items</span>
     </div>
     <p class="tier-sub">Currently active work — touched in recent sessions, partially done, picking back up where we left off.</p>
     <div class="items">
 
       <div class="item">
         <div class="top">
-          <h3>City-label canonicalization — metro merges + consistent display</h3>
-          <div class="pills"><span class="pill active">Next active</span><span class="pill larger">Larger</span></div>
+          <h3><span class="check">SHIPPED — City-label canonicalization (consistent display + town→neighborhood)</span></h3>
+          <div class="pills"><span class="pill done">Shipped</span><span class="pill quick">June&nbsp;16</span></div>
         </div>
-        <p><strong>669 venues show a city label that differs from the city they're grouped under.</strong> Two facets: same-city spelling/diacritic variants (Antwerp/Antwerpen, Donostia/San&nbsp;Sebastián) and genuine metro merges (greater San&nbsp;Sebastián — Lasarte-Oria / Errenteria / Igeldo; Courchevel vs Courchevel&nbsp;1850; Jordnær showing Gentofte on the Copenhagen page). <strong>Decision (Ben, June&nbsp;16):</strong> the greater-San&nbsp;Sebastián towns should merge — representative of the whole track.</p>
-        <p><span class="why"><strong>Now unblocked:</strong> this was parked because the earlier attempt, run on name-only geo, collapsed 236 unrelated cities into <code>new-york</code>. The per-city geo fix shipped this session removed that contamination, so clustering can finally run on clean coordinates.</span></p>
-        <p><span class="why"><strong>Approach (mirrors the 84-alias fold pass):</strong> extend the <code>geo_city_cache</code> into a metro-cluster proposer (nearby same-country cities + name/diacritic variants) → human-reviewed merge list → apply via <code>CITY_ALIASES_</code> (space-form) → reshape → verify → regenerate JSON → publish. Review-before-apply; no blind merges.</span></p>
-        <p><span class="why"><strong>Open decision (display rule):</strong> recommended — set <code>city_display</code> to the canonical metro for consistency, but preserve the true town in the <code>neighborhood</code> field so a "San&nbsp;Sebastián · Errenteria" sub-label is recoverable later. Needs a small reshape tweak to write display + neighborhood on alias hit.</span></p>
+        <p><strong>From 93 inconsistent slugs to 0.</strong> The slug-level merges were already done by the earlier 84-alias pass; what remained was inconsistent <code>city_display</code> within a slug (Martín&nbsp;Berasategui showing "Lasarte-Oria" on the San&nbsp;Sebastián page, etc.). Root cause: reshape passed the raw source city straight to <code>city_display</code> with no canonicalization. <strong>Fix:</strong> a <code>CITY_DISPLAY_</code> map (92 canonical labels keyed by city_slug) + a <code>cityDisplay_()</code> helper in <code>Reshape.gs</code> that sets the canonical label and, when the true town differs, preserves it in <code>neighborhood</code>. A pseudo-neighborhood guard suppresses verbose restatements ("New&nbsp;York&nbsp;City"→New&nbsp;York, "Dublin&nbsp;City"→Dublin) while keeping real towns (Manhattan, Errenteria, El&nbsp;Puerto&nbsp;de&nbsp;Santa&nbsp;María, Atherton).</p>
+        <p><span class="why"><strong>Display rule (Ben, June&nbsp;16):</strong> canonical metro label on the card, true town preserved in <code>neighborhood</code> for a recoverable "San&nbsp;Sebastián · Errenteria" sub-label. <strong>Verified in regenerated JSON:</strong> 251 venues now carry a real neighborhood; <code>generateCitiesTab</code> propagated the canonical labels into the cities tab (Cádiz, Pontevedra, New&nbsp;York, Zürich all clean). No regressions — active count held at 10,019.</span></p>
+        <p><span class="why"><strong>Two merge decisions baked in:</strong> (1) <strong>hangzhou/changzhou split</strong> — removed the bad <code>'changzhou':'hangzhou'</code> alias after Michelin + coordinates confirmed they're separate cities ~150&nbsp;km apart; Changzhou now its own page. (2) <strong>urla→izmir merge</strong> — flipped the reversed <code>'izmir':'urla'</code> alias so venues pool under İzmir with Urla in <code>neighborhood</code>.</p>
       </div>
 
       <div class="item">
@@ -462,10 +461,19 @@
     <div class="tier-head">
       <div class="icon-slot">◆</div>
       <h2>Pipeline &amp; data improvements</h2>
-      <span class="count">14 items</span>
+      <span class="count">15 items</span>
     </div>
     <p class="tier-sub">Structural and infrastructure work. Less visible, but durable — each one prevents future drift.</p>
     <div class="items">
+
+      <div class="item">
+        <div class="top">
+          <h3>Geo re-pin — 5 wrong-coordinate rows surfaced by the changzhou split</h3>
+          <div class="pills"><span class="pill quick">Small</span><span class="pill medium">Geo track</span></div>
+        </div>
+        <p><strong>Five venues carry a correct-ish name but coordinates in the wrong city</strong> — they mis-slug regardless of labels, so they belong in the geo-requery / re-pin pass, not the label track. Under <code>changzhou</code>: "Xin Xinyuan Ruyifang" (sits at Hangzhou coords), "South Garden Chinese Restaurant" (Miami, −80&nbsp;lng), "Taihu Lake" (Suzhou area). Under <code>hangzhou</code>: "Man Ho Chinese Restaurant" (Hong&nbsp;Kong, 22.27&nbsp;lat), "Yuzhilan Fabrics" (Chengdu, 104.26&nbsp;lng).</p>
+        <p><span class="why">The changzhou split didn't create these — it made them visible under a small slug instead of buried in a large one. Re-pin by geo in the next merge_review / geo-requery pass.</span></p>
+      </div>
 
       <div class="item">
         <div class="top">
@@ -1076,6 +1084,7 @@
     <div class="tw"><table>
       <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
       <tbody>
+        <tr><td><code>2.15</code></td><td>June 16, 2026</td><td><strong>City-label canonicalization shipped — 93 inconsistent slugs to 0.</strong> The slug-level merges were already done by the 84-alias pass; what remained was inconsistent <code>city_display</code> within a slug. Built a <code>CITY_DISPLAY_</code> map (92 canonical labels) + <code>cityDisplay_()</code> helper in <code>Reshape.gs</code> that writes the canonical label and preserves the true town in <code>neighborhood</code>, with a pseudo-neighborhood guard (suppresses "New&nbsp;York&nbsp;City"→New&nbsp;York, "Dublin&nbsp;City"→Dublin while keeping Manhattan, Errenteria, El&nbsp;Puerto&nbsp;de&nbsp;Santa&nbsp;María, Atherton). Two merge calls baked in: <strong>hangzhou/changzhou split</strong> (removed the bad <code>'changzhou':'hangzhou'</code> alias — Michelin + coordinates confirmed separate cities) and <strong>urla→izmir merge</strong> (flipped the reversed alias). Regenerated JSON: <strong>10,356 venues / 3,097 cities / 10,019 active / blurb_long on 10,119</strong>; 251 venues now carry a neighborhood; <code>generateCitiesTab</code> propagated canonical labels (Cádiz, Pontevedra, New&nbsp;York, Zürich all clean). Confirmed <code>clearWrongCityBlurbs</code> needed no re-key (its one changzhou key already matched). Parked 5 wrong-coordinate rows to the geo re-pin track.</td></tr>
         <tr><td><code>2.14</code></td><td>June 16, 2026</td><td><strong>City-label canonicalization opened as the next active track.</strong> Live spot-check after publishing the wrong-city-blurb fix confirmed the wins (Lima Maido/Central premium blurbs intact; Atlanta Atlas/Bacchanalia wrong-city blurbs cleared; Copenhagen Jordnær showing ★★★). Verified <strong>Aqua (Wolfsburg) is correctly suppressed</strong> — the 3-star permanently closed 21&nbsp;Mar&nbsp;2026 (Sven Elverfeld), so the closed-venue logic rightly drops it and its single-venue city from search. Surfaced that <strong>669 venues carry a city label not matching their grouped city</strong> — spelling variants (Antwerp/Antwerpen) plus real metro merges (greater San&nbsp;Sebastián, Courchevel&nbsp;1850). Ben decided the San&nbsp;Sebastián towns should merge; logged the track with its geo-cleared approach and the open display-rule decision (recommended: canonical metro label + true town preserved in <code>neighborhood</code>). Also: full Apps Script toolkit (21 files) now mirrored to <code>/apps-script/</code> in the repo — handoffs now require only the current Sheet .xlsx.</td></tr>
         <tr><td><code>2.13</code></td><td>June 16, 2026</td><td><strong>Hidden-stars fix executed end-to-end (geo-first path) + blurb integrity restored.</strong> Ran the per-city geo re-query so split same-name venues stopped sharing one place_id, then applied <strong>84 <code>CITY_ALIASES_</code> entries</strong> (geocode-validated at a tightened 20&nbsp;km radius; 7 metro folds — Beverly Hills/West Hollywood→LA, Queens→NY, Coral Gables→Miami, Gaia→Porto, Santa Coloma→Barcelona, Monte Carlo→Monaco; distinct cities Jerez/Alcúdia/Woodinville deliberately excluded) → reshape → <code>mergeDuplicateVenues</code> (574 groups collapsed, 630 rows removed, 337 cross-city in <code>merge_review</code>) → verified all 16 folded source slugs gone and marquee three-stars (Jordnær, Fat Duck, L'Enclume) + folds (Somni, Zaab&nbsp;Zaab, Spago) binding to single active rows with stars intact. <strong>Caught a regression before publish:</strong> reshape wipes blurbs, and the blurb imports had been skipped — fixed by running <code>importBlurbsFromDrive</code> → <code>clearWrongCityBlurbs</code> (stale <code>beverly-hills/spago</code> key remapped to <code>los-angeles/spago</code>) → <code>importOptionB</code>, which cleared ~106 wrong-city blurbs to the honest fallback while preserving Central/Maido's premium text. Built a local harness that runs the <em>real</em> <code>sync-sheet.ts</code> against a Sheet export (exact schema validation; surfaced + auto-normalized 2,616 euro <code>price_tier</code> values and trimmed export blank-padding rows). Final JSON: 10,355 venues / 3,096 cities / 10,018 active / blurb_long on 10,119. New <strong>Pipeline Run Order</strong> living doc created. <strong>New infra items queued:</strong> commit <code>.gs</code> scripts to the repo as single source of truth (per-handoff upload reduces to just the Sheet .xlsx); a Platform &amp; Lovable constraints reference doc.</td></tr>
         <tr><td><code>2.12</code></td><td>June 14, 2026</td><td><strong>Hidden-stars fix re-scoped after read-only investigation — the "fast display union" is off the table.</strong> A diagnostic of the venue page (<code>src/routes/venue/$city/$slug.tsx</code> + <code>src/lib/venues.ts</code>) and the reshape script established that the imagined shortcut — join a venue's split rows by a shared <code>place_id</code> and union their awards at display time — cannot ship safely. Three findings: <strong>place_id is never published</strong> (reshape's <code>VENUE_HEADERS</code> omits it, so <code>venues.json</code> has none); the only shared published key is the <code>slug</code>, and unioning on it re-creates the June&nbsp;5 same-name-across-cities collision (Atlas, Bacchanalia); and <strong>place_id is itself contaminated</strong> because reshape resolves geo by name only (<code>enrich[nk]</code>), so same-name venues in different cities already share one place_id. A wrongly-shown award is a fabrication, worse than an omission. <strong>Confirmed correct path:</strong> per-city geo fix FIRST → then build city-label canonicalization from clean audit data and merge split rows (verifying the merge unions awards). Updated the Pipeline hidden-stars item to record all three findings and removed the "even pre-merge a display union would surface the stars" claim. <strong>Decision:</strong> proceeding with the per-city geo fix (Option A) as the next active work.</td></tr>
