@@ -40,7 +40,49 @@ var VALID_BAR_SLUGS = [
   'north-america-50-best-bars', 'north-america-50-best-bars-51-100',
   'asia-50-best-bars', 'asia-50-best-bars-51-100',
   'pinnacle-guide', 'spirited-awards', 'james-beard'
-];
+]; // SOURCE ALIAS MAP — lets compiled files with display names paste in AS-IS.
+var SOURCE_ALIASES_B = {
+  "asia's 50 best bars": 'asia-50-best-bars',
+  "asia's 50 best bars 51-100": 'asia-50-best-bars-51-100',
+  "north america's 50 best bars": 'north-america-50-best-bars',
+  "north america's 50 best bars 51-100": 'north-america-50-best-bars-51-100',
+  "world's 50 best bars": 'worlds-50-best-bars',
+  "worlds 50 best bars": 'worlds-50-best-bars',
+  "world's 50 best bars 51-100": 'worlds-50-best-bars-51-100',
+  "spirited awards": 'spirited-awards',
+  "the pinnacle guide": 'pinnacle-guide',
+  "pinnacle guide": 'pinnacle-guide',
+  "james beard awards": 'james-beard'
+};
+
+function normSourceB_(s) {
+  if (!s) return '';
+  var t = String(s).toLowerCase();
+  t = t.replace(/['\u2018\u2019\u02BC`]/g, '');
+  t = t.replace(/&/g, ' and ');
+  t = t.replace(/[^a-z0-9]+/g, ' ');
+  return t.replace(/\s+/g, ' ').trim();
+}
+
+function resolveSourceB_(raw) {
+  var s = String(raw || '').trim();
+  if (!s) return '';
+  if (VALID_BAR_SLUGS.indexOf(s) >= 0) return s;          // already a slug
+  var norm = normSourceB_(s);
+  if (!resolveSourceB_._normMap) {
+    resolveSourceB_._normMap = {};
+    for (var key in SOURCE_ALIASES_B) {
+      if (SOURCE_ALIASES_B.hasOwnProperty(key)) {
+        resolveSourceB_._normMap[normSourceB_(key)] = SOURCE_ALIASES_B[key];
+      }
+    }
+  }
+  if (resolveSourceB_._normMap[norm]) return resolveSourceB_._normMap[norm];
+  for (var k = 0; k < VALID_BAR_SLUGS.length; k++) {
+    if (normSourceB_(VALID_BAR_SLUGS[k]) === norm) return VALID_BAR_SLUGS[k];
+  }
+  return '';
+}
 
 // Column shape of the "Bar Awards" tab (reshape's parser reads these positions)
 var BAR_AWARDS_HEADERS =
@@ -137,7 +179,7 @@ function ingestBarLists() {
     var rows = importSheets[si].getDataRange().getValues();
     for (var ri = 1; ri < rows.length; ri++) {
       var row = rows[ri];
-      var src = String(row[0] || '').trim();
+      var src = resolveSourceB_(row[0]);
       var name = String(row[3] || '').trim();
       if (!src && !name) { blank++; continue; }
       if (!src || !name) { blank++; continue; }
