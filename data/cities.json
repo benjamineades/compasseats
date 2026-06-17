@@ -27127,6 +27127,15 @@
     "venue_count": 2
   },
   {
+    "slug": "west-university-place",
+    "display": "West University Place",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 19.418948,
+    "lng": -99.158084,
+    "venue_count": 1
+  },
+  {
     "slug": "westendorf",
     "display": "Westendorf",
     "country": "Austria",
