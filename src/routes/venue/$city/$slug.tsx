@@ -161,7 +161,7 @@ function VenuePage() {
     <main className="relative min-h-screen bg-background">
       {/* Hero image */}
       <section className="relative h-[360px] w-full overflow-hidden border-b border-border md:h-[400px]">
-        <VenuePhoto src={venue.photo_url} alt={venue.name} className="h-full w-full object-cover" />
+        <VenuePhoto src={venue.photo_url} placeId={venue.id} alt={venue.name} className="h-full w-full object-cover" />
         {/* Scrim */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
 

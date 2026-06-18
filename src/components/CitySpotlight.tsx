@@ -128,7 +128,7 @@ export function CitySpotlight({ city, venues }: { city: City; venues: Venue[] })
             style={{ borderRadius: 13, minHeight: 250 }}
           >
             <div className="h-full w-full md:h-[360px]">
-              <VenuePhoto src={featured.photo_url} alt={featured.name} />
+              <VenuePhoto src={featured.photo_url} placeId={featured.id} alt={featured.name} />
             </div>
           </div>
 
