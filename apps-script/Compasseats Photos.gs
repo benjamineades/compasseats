@@ -45,7 +45,7 @@
  */
 
 // ---- Config ---------------------------------------------------------------
-var PLACES_API_KEY = 'AIzaSyBxszZ9NOp3jBdoouT9atVogHzq7-S6Ry0';
+var PLACES_API_KEY = 'YOUR_API_KEY';
 var PHOTO_MAX_WIDTH = 1200;        // px; 800–1600 is reasonable for cards/hero
 var VALIDATE_SAMPLE = 5;           // do a real fetch on N rows to confirm key (incurs cost). 0 = skip.
 var FORCE_REFRESH = false;         // true = overwrite existing photo_url values
@@ -57,7 +57,7 @@ var ENRICHMENT_TAB = 'Places Enrichment';
 // ---------------------------------------------------------------------------
 
 function resolvePhotoUrls() {
-  if (PLACES_API_KEY === 'AIzaSyA3wtqxR5fhhgQYf2MCjnvQq04LiSj8iiQ' || !PLACES_API_KEY) {
+  if (PLACES_API_KEY === 'YOUR_API_KEY' || !PLACES_API_KEY) {
     throw new Error('Set PLACES_API_KEY at the top of the script first.');
   }
 
