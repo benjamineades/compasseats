@@ -137,6 +137,23 @@ async function fetchSheetTab(
   });
 }
 
+/**
+ * Like fetchSheetTab, but tolerant: returns [] if the tab is missing or has
+ * no data rows, instead of throwing. Used for optional side tabs such as
+ * "curated_photos" (which may not exist yet, or may be header-only).
+ */
+async function fetchOptionalTab(
+  tab: string,
+  sheetId: string,
+  apiKey: string,
+): Promise<Record<string, string>[]> {
+  try {
+    return await fetchSheetTab(tab, sheetId, apiKey);
+  } catch {
+    return [];
+  }
+}
+
 // -------------------------------------------------------------------------
 // Row → Venue transformation
 // -------------------------------------------------------------------------
@@ -195,7 +212,10 @@ function parseAwards(raw: string): Award[] {
   }
 }
 
-function rowToVenue(raw: Record<string, string>): Venue {
+function rowToVenue(
+  raw: Record<string, string>,
+  curatedById: Map<string, string>,
+): Venue {
   const row = SheetRowSchema.parse(raw);
 
   const cuisine_tags = row.cuisine_tags
@@ -223,7 +243,14 @@ function rowToVenue(raw: Record<string, string>): Venue {
     blurb_short: row.blurb_short || undefined,
     blurb_long: row.blurb_long || undefined,
     awards: parseAwards(row.awards_json),
-    photo_url: row.photo_url || undefined,
+    // Photo resolution cascade. Curated photos (hosted on R2) win; they live
+    // in their own tab so they survive every reshape. When the owner-filtered
+    // Places worker is live, add its route as the middle branch, e.g.:
+    //   curatedById.get(row.id) ||
+    //   (row.id ? `https://compasseats.com/api/venue-photo/${row.id}` : undefined) ||
+    //   undefined
+    // (row.id is the Google placeId.) For now: curated → else compass (empty).
+    photo_url: curatedById.get(row.id) || row.photo_url || undefined,
     status: (row.status || "active").toLowerCase(),
     last_verified: normalizeSheetDate(row.last_verified) || undefined,
   };
@@ -304,6 +331,8 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
   const SHEET_ID = process.env.COMPASSEATS_SHEET_ID;
   const VENUES_TAB = process.env.COMPASSEATS_VENUES_TAB ?? "venues";
   const CITIES_TAB = process.env.COMPASSEATS_CITIES_TAB ?? "cities";
+  const CURATED_TAB =
+    process.env.COMPASSEATS_CURATED_TAB ?? "curated_photos";
 
   if (!API_KEY || !SHEET_ID) {
     throw new SyncSkipped(
@@ -325,12 +354,24 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
   }
   console.log(`  ${venueRows.length} venue rows, ${cityRows.length} city rows`);
 
+  // Curated photos (id → curated_photo_url) live in their own tab so they
+  // survive every reshape — reshape only ever rebuilds "venues"/"cities".
+  // Tolerant: a missing or empty curated tab simply yields no curated photos.
+  const curatedRows = await fetchOptionalTab(CURATED_TAB, SHEET_ID, API_KEY);
+  const curatedById = new Map<string, string>();
+  for (const r of curatedRows) {
+    const id = (r.id ?? "").trim();
+    const url = (r.curated_photo_url ?? "").trim();
+    if (id && url) curatedById.set(id, url);
+  }
+  console.log(`  ${curatedById.size} curated photo(s)`);
+
   const errors: ValidationError[] = [];
   const venues: Venue[] = [];
 
   venueRows.forEach((row, i) => {
     try {
-      venues.push(rowToVenue(row));
+      venues.push(rowToVenue(row, curatedById));
     } catch (err) {
       errors.push({
         rowIndex: i + 2, // +2 = 1-indexed + header row
