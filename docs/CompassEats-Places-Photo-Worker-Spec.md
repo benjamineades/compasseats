@@ -2,7 +2,34 @@
 
 **What this is:** a build + decision spec for a small Cloudflare Worker that serves a real, owner-uploaded Google Places photo for venues that don't have a curated photo of their own — live, at request time. Hand this to a developer or to Lovable.
 
-**Status:** spec only. Not built. Read the **Cost** and **Recommendation** sections before deciding to build it — the economics changed from earlier framing and matter to the decision.
+**Status: BUILT & LIVE (June 18, 2026).** Read the AS-BUILT section first. The build diverged from the original plan below in several important ways; where they conflict, **AS-BUILT wins**.
+
+---
+
+## AS-BUILT (what actually shipped)
+
+**Worker:** `compasseats-venue-photo` on Cloudflare, live at `https://compasseats-venue-photo.benjamin-eades.workers.dev`. Source: `compasseats-venue-photo-worker.js`. API key in the Worker secret `PLACES_KEY` (the restricted "CompassEats Worker — Places (New)" key).
+
+**Endpoints** (placeId = last path segment):
+- `/{placeId}` → 302 redirect to the chosen image (for eyeballing).
+- `/{placeId}?meta=1` → JSON `{ ok, source, photoUri, attribution, attributionUri }` **with CORS** — this is what the website calls.
+- `/{placeId}?debug=1` → JSON diagnostics (photo list, attributions, the pick).
+
+**Owner detection — the key correction.** The original spec assumed owner photos have an *empty* `authorAttributions`. That is **false in the Places API (New)** — it attaches an attribution to *every* photo. Owner photos are instead detected by an attribution whose **displayName matches the venue's own name** (e.g. EMP's own uploads are attributed "Eleven Madison Park"). Field mask is `id,displayName,photos`.
+
+**Selection.** Owner photo (name match, prefer landscape + largest) → else, with `VISITOR_FALLBACK=true`, the first decent landscape visitor photo in Google's order → else 404 (compass). **Owner photos are rare** (~1 in 6 even among notable venues), so the visitor fallback is on; visitor photos are current and were eyeballed "mostly good."
+
+**Attribution (required).** Because visitor photos are served, the site shows the credit Google requires — "Photo: {attribution} via Google", linked to `attributionUri`. That's why `?meta=1` returns attribution.
+
+**Site integration.** `src/components/VenuePhoto.tsx` resolves the cascade client-side: curated `photo_url` (from the `curated_photos` tab via `sync-sheet.ts`) → else fetch `?meta=1` by `venue.id` → else compass; with an `onError` compass fallback and the credit line. **No `sync-sheet.ts` worker-route bake** (the original plan) — the component derives the Worker URL from the placeId it already has. Callers pass `placeId={venue.id}` (venue route + `CitySpotlight`).
+
+**Cost & caps.** Every photo view = 1 Place Details + 1 Place Photo, uncacheable (as in the spec). Hard daily quota caps set: `GetPlaceRequest` and `GetPhotoMediaRequest` = **500/day** each; a cap hit falls back to compass.
+
+**Known follow-up.** The visitor auto-pick can surface a food close-up over the room. Override per-venue today via the `curated_photos` tab; a "photo picker" tool is on the punch list.
+
+---
+
+*(The original build/decision spec follows, for background. Where it differs from AS-BUILT above — owner = empty attribution, the redirect-only / sync-bake integration, the "should we build it" framing — AS-BUILT is correct.)*
 
 ---
 
