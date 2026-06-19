@@ -7213,8 +7213,8 @@
     "display": "Dubai",
     "country": "United Arab Emirates",
     "country_code": "AE",
-    "lat": 26.203235,
-    "lng": 52.728582,
+    "lat": 26.203228,
+    "lng": 52.728572,
     "venue_count": 72
   },
   {
@@ -16142,9 +16142,9 @@
     "display": "Mumbai",
     "country": "India",
     "country_code": "IN",
-    "lat": 19.005297,
-    "lng": 72.836613,
-    "venue_count": 14
+    "lat": 19.005434,
+    "lng": 72.837215,
+    "venue_count": 13
   },
   {
     "slug": "mungia",
