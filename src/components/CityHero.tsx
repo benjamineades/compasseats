@@ -22,6 +22,7 @@ type WikiSummary = {
   type?: string;
   originalimage?: { source?: string };
   thumbnail?: { source?: string };
+  coordinates?: { lat?: number; lon?: number };
 };
 
 async function fetchWikiImage(name: string): Promise<WikiSummary | null> {
@@ -60,13 +61,36 @@ async function fetchGeoTitles(lat: number, lng: number): Promise<string[]> {
   }
 }
 
+// Rough distance in km between two points (haversine).
+function distanceKm(aLat: number, aLng: number, bLat: number, bLng: number): number {
+  const toRad = (d: number) => (d * Math.PI) / 180;
+  const R = 6371;
+  const dLat = toRad(bLat - aLat);
+  const dLng = toRad(bLng - aLng);
+  const s =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(aLat)) * Math.cos(toRad(bLat)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.min(1, Math.sqrt(s)));
+}
+
+// Trust a name match only if it sits near the city's real coordinates. This
+// rejects same-name-different-subject matches — e.g. "Savannah" the grassland
+// biome instead of Savannah, Georgia, or "Florence" the name vs the city.
+function matchesLocation(hit: WikiSummary, lat?: number, lng?: number): boolean {
+  if (typeof lat !== "number" || typeof lng !== "number") return true;
+  const c = hit.coordinates;
+  if (typeof c?.lat !== "number" || typeof c?.lon !== "number") return false;
+  return distanceKm(lat, lng, c.lat, c.lon) <= 80;
+}
+
 async function resolveCityImage(
   city: string,
   country?: string,
   lat?: number,
   lng?: number,
 ): Promise<WikiSummary | null> {
-  // 1. Try the city by name first (fast, and accurate for known places).
+  // 1. Try the city by name (accurate & iconic for well-known places), but
+  //    only trust the result if it sits near the city's real coordinates.
   const candidates = [
     country ? `${city}, ${country}` : null,
     `${city} City`,
@@ -74,7 +98,7 @@ async function resolveCityImage(
   ].filter((v): v is string => !!v);
   for (const name of candidates) {
     const hit = await fetchWikiImage(name);
-    if (hit) return hit;
+    if (hit && matchesLocation(hit, lat, lng)) return hit;
   }
   // 2. Fall back to "what notable place is right here?" using coordinates.
   if (typeof lat === "number" && typeof lng === "number") {
