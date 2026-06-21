@@ -246,6 +246,8 @@ function CityPage() {
           blurb={city.blurb}
           hueSeed={city.slug}
           imageUrl={city.hero_image_url}
+          lat={city.lat}
+          lng={city.lng}
           back={{ to: "/" }}
           crumbs={crumbs}
           counts={counts}
@@ -264,6 +266,8 @@ function CityPage() {
         blurb={city.blurb}
         hueSeed={city.slug}
         imageUrl={city.hero_image_url}
+        lat={city.lat}
+        lng={city.lng}
         back={{ to: "/" }}
         crumbs={crumbs}
         counts={counts}
