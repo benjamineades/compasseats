@@ -516,7 +516,9 @@ function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
   const why = buildSingleWhy(venue, city);
   const pillAwards = buildPillAwards(venue);
   const hasReservation = Boolean(venue.reservation_url);
-  const hasPhoto = !!venue.photo_url?.trim();
+  // Show the photo layout when we have either a curated photo OR a Google
+  // place id (the VenuePhoto component live-fetches from the photo worker).
+  const hasPhoto = !!venue.photo_url?.trim() || !!venue.id?.trim();
 
   return (
     <>
@@ -553,7 +555,7 @@ function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
                 className="aspect-[4/5] w-full overflow-hidden rounded-xl"
                 style={{ border: "1px solid rgba(255,255,255,0.08)" }}
               >
-                <VenuePhoto src={venue.photo_url} alt={venue.name} />
+                <VenuePhoto src={venue.photo_url} placeId={venue.id} alt={venue.name} />
               </div>
             )}
 
