@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompassEats — Design System & Build Log (v1, June 2026)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#23211E; --ink-2:#2B2925; --ink-3:#34312C;
+    --brass:#C6A15B; --brass-soft:#D8BE8A; --bronze:#895F2E;
+    --paper:#F7F3EB; --paper-dim:#E7DFCC; --clay:#C16E4F; --sage:#8DA38C;
+    --line:rgba(198,161,91,.28);
+    --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--ink);color:var(--paper);-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(1100px 700px at 50% -5%, rgba(198,161,91,.08), transparent 60%);
+    padding:50px 24px 90px;line-height:1.65}
+  .wrap{max-width:920px;margin:0 auto}
+  .eyebrow{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--brass);font-weight:600;margin-bottom:12px}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,2.8rem);letter-spacing:-.02em;line-height:1.05;margin-bottom:10px}
+  h1 em{font-style:italic;color:var(--brass-soft)}
+  .meta{color:var(--paper-dim);font-weight:300;font-size:.95rem;margin-bottom:8px}
+  .changelog{font-size:.82rem;color:var(--paper-dim);opacity:.8;border-left:2px solid var(--line);padding-left:14px;margin:18px 0 8px}
+  h2{font-family:var(--serif);font-weight:400;font-size:1.5rem;color:var(--brass-soft);margin:44px 0 6px;letter-spacing:-.01em}
+  h2 .n{color:var(--brass);font-size:1rem;font-style:italic;margin-right:8px}
+  h3{font-family:var(--serif);font-weight:500;font-size:1.1rem;color:var(--paper);margin:24px 0 8px}
+  p{color:var(--paper-dim);font-weight:300;margin-bottom:12px;font-size:.95rem}
+  p b, li b{color:var(--paper);font-weight:600}
+  .brass{color:var(--brass-soft)}
+  ul{margin:0 0 14px 0;padding-left:0;list-style:none}
+  li{color:var(--paper-dim);font-weight:300;font-size:.93rem;padding-left:20px;position:relative;margin-bottom:7px}
+  li::before{content:"";position:absolute;left:4px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--brass);opacity:.6}
+  hr{border:0;border-top:1px solid var(--line);margin:40px 0}
+  .box{background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin:16px 0}
+  .box.warn{border-left:3px solid var(--clay)}
+  .box.ok{border-left:3px solid var(--sage)}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:.84em;background:var(--ink-3);padding:2px 6px;border-radius:4px;color:var(--brass-soft)}
+  .swatch{display:inline-block;width:13px;height:13px;border-radius:3px;vertical-align:middle;margin-right:6px;border:1px solid rgba(255,255,255,.1)}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.88rem}
+  th{text-align:left;color:var(--brass);font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:8px 10px;border-bottom:1px solid rgba(198,161,91,.12);color:var(--paper-dim);font-weight:300;vertical-align:top}
+  td b{color:var(--paper)}
+  .tag{display:inline-block;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:3px 9px;border-radius:100px;margin-left:8px}
+  .tag.done{background:var(--sage);color:var(--ink)}
+  .tag.todo{background:transparent;border:1px solid var(--line);color:var(--paper-dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">CompassEats &middot; Living Doc</div>
+  <h1>Design System &amp; <em>Build Log</em></h1>
+  <div class="meta">The redesign decisions, the build sequence, and what's next. Companion to the Brand Identity guide and the Compass Network architecture doc.</div>
+  <div class="changelog"><b>v3 &mdash; June 21, 2026.</b> Documented the <b>City hero &mdash; compass title-card fallback</b> component (photo cascade: name &rarr; coordinate geosearch &rarr; compass title card; the ~80&nbsp;km geo-proximity guard; the warm-gradient + homepage-compass-rose no-photo state) and noted the single-venue feature now pulls a live photo via <code>placeId</code>. <b>v2 &mdash; June 6, 2026.</b> Updated for the city-page fixed-hex redesign (both modes migrated off theme tokens; marquee removed; in-hero breadcrumb + counts; awards-derived spotlight "why"; photographed-first pick; centered no-photo single-venue layout), the site-wide Michelin pill change ("&#9733;&#9733; Michelin"), the now-shipped Cities and Guides index pages + header nav, and a clarified award-label section (pills via <code>award-label.ts</code> vs detail-card <code>distinctionLabel</code> vs hand-built map popups). <b>v1 &mdash; June 5, 2026:</b> the full homepage / city / venue redesign sprint: compass, backgrounds, editorial-light venue treatment, two-mode city page, rank-aware badges, brand-architecture direction.</div>
+
+  <hr>
+
+  <h2><span class="n">01</span>Visual language locked this sprint</h2>
+
+  <h3>The two-surface system</h3>
+  <p>CompassEats now uses a deliberate <b>dark-for-moments / paper-for-detail</b> system, not a uniform dark site:</p>
+  <ul>
+    <li><b>Dark surfaces</b> (<span class="swatch" style="background:#23211E"></span>warm charcoal <code>#23211E</code>): homepage, city hero/skyline, spotlight band, all hero imagery, footer.</li>
+    <li><b>Light editorial surfaces</b> (<span class="swatch" style="background:#F7F3EB"></span>warm paper <code>#F7F3EB</code>): the venue detail <i>body</i>, the <b>Cities index</b> (<code>/cities</code>), the <b>Guides index</b> (<code>/guides</code>), and the paper bands of the city page (map + ranked list). Dark heroes, paper reading surfaces &mdash; now applied consistently across every major surface.</li>
+  </ul>
+  <div class="box warn">
+    <p style="margin:0"><b>Critical implementation note.</b> The paper venue body uses <b>explicit fixed hex values</b>, NOT theme tokens, so it stays paper even when the site is in dark mode (the default). In dark mode <code>--accent-strong</code> collapses to brass and <code>--background</code> is charcoal &mdash; relying on those would break the light look. Fixed values for paper sections: bg <code>#F7F3EB</code>, ink <code>#23211E</code>, muted ink <code>#6a6253</code>, bronze accent <code>#895F2E</code>, brass <code>#C6A15B</code>, card fill <code>#FCFAF5</code>, hairline <code>rgba(35,33,30,.12)</code>.</p>
+  </div>
+
+  <h3>The compass mark &amp; motion</h3>
+  <ul>
+    <li>Mark: two concentric rings, four cardinal tick marks, a two-tone needle (brass north <code>#C6A15B</code> / bronze south), Fraunces <b>N/E/S/W letters just outside the outer ring</b> (N italic, emphasis).</li>
+    <li>Motion (<b>Option A &mdash; full face spins</b>): rings + ticks + letters all rotate together, 50s linear; needle + center pivot stay fixed. On <b>hover</b>: spin pauses and the dial settles to N-up over ~2.6s <code>cubic-bezier(.22,.7,.2,1)</code>. Honors <code>prefers-reduced-motion</code> (static N-up).</li>
+    <li>Header lockup is <b>wordmark text only</b> &mdash; no compass icon in the header (one compass per page). Footer keeps its compass.</li>
+  </ul>
+
+  <h3>Homepage hero background</h3>
+  <ul>
+    <li>Top-sourced warm glow (originates above the viewport, fades downward &mdash; "light over a horizon"), over a <b>large-cell nautical-chart grid</b> (110px cells, ~5% brass opacity), masked so the center stays clear and edges fade.</li>
+    <li><b>Corner coordinates</b> in Fraunces at ~12% opacity. Homepage = fixed Atlanta HQ (<code>33&deg;45&prime;N &middot; 84&deg;23&prime;W &middot; ATL</code>). City pages show that city's real coordinates (dynamic, from geocoded city data). Spotlight band carries a single faint city coordinate, no grid.</li>
+  </ul>
+
+  <h3>Typography &amp; color</h3>
+  <ul>
+    <li>Fraunces (display serif, light weights + italic) for headings/marks; Hanken Grotesk (sans) for body.</li>
+    <li><span class="swatch" style="background:#C6A15B"></span>Brass <code>#C6A15B</code> = fills/buttons (both modes). <span class="swatch" style="background:#895F2E"></span>Bronze <code>#895F2E</code> = accent TEXT on light surfaces only (collapses to brass in dark).</li>
+  </ul>
+
+  <h3>Interaction standard</h3>
+  <p>Global: <code>--ease-standard: cubic-bezier(.4,0,.2,1)</code>, <code>--dur: 150ms</code>, an <code>.interactive</code> utility (hover lift <code>translateY(-2px)</code> / press <code>scale(.98)</code>, reduced-motion guarded). <b>Never applied to MapLibre marker root elements</b> &mdash; hover affordances go on an inner child so MapLibre's positioning transform is preserved (this caused the pin-jump bug).</p>
+
+  <hr>
+
+  <h2><span class="n">02</span>Award badge logic</h2>
+  <p>The pill/badge label helper <code>awardLabel(award)</code> (and <code>awardLabelShort</code>) in <code>src/lib/award-label.ts</code> drives the standalone <b>pills</b> &mdash; ranked rows, city spotlight, city venue cards, related-venue cards. Two other surfaces build their own labels deliberately: the <b>venue detail accolade cards</b> use a local <code>distinctionLabel</code> (the source name is already shown separately in each card header, so the distinction stays bare, e.g. "&#9733;&#9733;" under a "Michelin Guide" header), and <b>map popups</b> are hand-built in <code>VenueMap</code>. When changing a label format (e.g. the Michelin "&#9733;&#9733; Michelin" change), update <code>award-label.ts</code> AND the <code>VenueMap</code> popup builder to keep all surfaces consistent &mdash; the detail-page cards are intentionally separate. All powered by <code>venue.awards</code> (parsed <code>Award[]</code> of <code>{source, year, category, rank?}</code> &mdash; 100% populated, no data work needed).</p>
+  <table>
+    <tr><th>Pattern</th><th>Sources</th><th>Renders as</th></tr>
+    <tr><td><b>Ranked</b></td><td>worlds-50-best-restaurants, worlds-50-best-bars, oad, 101-best-steakhouses</td><td>"No. 42 &middot; World's 50 Best"</td></tr>
+    <tr><td><b>Michelin</b></td><td>michelin</td><td><b>star glyphs + source</b>: "&#9733;&#9733; Michelin", "&#9733; Michelin", "&#9733;&#9733;&#9733; Michelin" (glyphs convey the count; "Michelin" disambiguates from other star systems). Non-star distinctions keep their words: "Bib Gourmand", "Selected".</td></tr>
+    <tr><td><b>Tiered / named</b></td><td>best-chef-awards, pinnacle-guide, james-beard, spirited-awards, la-liste, etc.</td><td>"3-Knife &middot; Best Chef", "Outstanding Chef &middot; James Beard"</td></tr>
+  </table>
+  <ul>
+    <li><code>awardLabelShort</code> abbreviates long names for tight rows ("World's 50 Best Restaurants" &rarr; "World's 50 Best").</li>
+    <li><code>AwardBadge</code> + <code>AwardBadgeRow</code> components; row de-dupes by source (one badge per guide, highest-prestige) and sorts by <code>getAwardPrestige</code>.</li>
+    <li>Venue accolades show <b>every year</b> via collapsible per-source groups &mdash; newest year in header, prior years on expand.</li>
+  </ul>
+
+  <hr>
+
+  <h2><span class="n">03</span>Page-by-page state</h2>
+
+  <h3>Homepage <span class="tag done">Done</span></h3>
+  <ul>
+    <li>Hero: spinning lettered compass, eyebrow "The world's best, wherever you are", H1 "Eat and drink well, <i>anywhere on earth.</i>" (no longer the brand name; no self-link), subhead, search + "Find the best &rarr;" + "Use my location instead" (brass + locator icon).</li>
+    <li>Order: Hero &rarr; Top destinations &rarr; Explore by guide. <b>Trust block removed</b> (parked for a future About page). <b>Marquee removed.</b></li>
+    <li>Top destinations: fixed 8 cities, city + country only (no blurbs, no rotation), centered cards.</li>
+    <li>Explore by guide: "Browse the source" eyebrow + "Explore by <i>guide</i>" (italic brass), ruled list sourced from <code>AWARD_SOURCES</code> registry, counts shown only if real.</li>
+  </ul>
+
+  <h3>City page <span class="tag done">Done</span> <code>src/routes/city.$slug.tsx</code></h3>
+  <ul>
+    <li><b>Two modes by venue count, both on the fixed-hex two-surface system</b> (migrated off semantic theme tokens June 6 &mdash; the last major surface to move). <b>Single-venue (75% of cities):</b> dark hero &rarr; dark feature band (one generous venue: photo + name + awards-derived "why" + pills + CTAs; <b>centered single-column only when no photo can be found</b>, so no empty box; <b>June&nbsp;21:</b> the feature now passes <code>placeId</code> to <code>VenuePhoto</code>, so single-venue cities pull a live photo and the centered layout is just the rare fallback) &rarr; paper map band &rarr; paper "explore other cities" outro. <b>Multi-venue:</b> dark hero &rarr; dark CitySpotlight band &rarr; paper map band &rarr; "The ones <i>worth the detour</i>" headline + segmented All/Restaurants/Cocktail Bars toggle &rarr; ranked list. <b>AwardMarquee removed</b> from the city page.</li>
+    <li><b>Hero</b> carries an in-hero breadcrumb (Home &rsaquo; Country &rsaquo; City) above the headline and a per-city counts line below ("23 charted spots &middot; 22 restaurants &middot; 1 bar" &mdash; correctly pluralized, computed from loaded venues, restaurant/bar split by <code>type</code>).</li>
+    <li>Spotlight: rotating soft opener, <b>photographed-first</b> featured pick (falls back to top-prestige + compass placeholder when no venue has a photo, hiding "Show me another" when there's nothing to rotate to), single faint city coordinate. The "why" uses an <b>awards-derived fallback</b> when <code>blurb_short</code> is absent ("Two Michelin stars and a World's 50 Best ranking &mdash; one of {city}'s most decorated addresses") &mdash; the old bland "A charted favorite in {city}" fallback is gone. <b>"Open now" logic built but dormant</b> (auto-activates when <code>hours</code> data lands).</li>
+    <li>Map above filters in a bronze-eyebrow paper band, framed (rounded + hairline); reuses <code>VenueMap</code>; <b>pins filter</b> with the filter bar (<code>venues={filtered}</code>). Ranked rows: bronze numerals, name in solid ink (legible on paper), type &middot; neighborhood, price when present, bronze-outline pills. List capped at 50 with "Show all N" expander.</li>
+  </ul>
+
+  <h3>City hero &mdash; photo cascade &amp; compass title-card fallback <span class="tag done">Done</span> <code>src/components/CityHero.tsx</code></h3>
+  <ul>
+    <li><b>The banner resolves a real photo before it ever falls back.</b> Order: stored <code>hero_image_url</code> (none today) &rarr; Wikipedia summary <b>by name</b>, trusted only if its coordinates sit within <b>~80&nbsp;km</b> of the city's real <code>lat</code>/<code>lng</code> (the <b>geo-proximity guard</b> &mdash; stops "Savannah"&rarr;grassland-<i>savanna</i> biome and every other ambiguous-name mismatch) &rarr; Wikipedia <b>geosearch by coordinates</b> (catches small towns the name alone can't &mdash; Brusaporto, Chagny) &rarr; the compass title-card below. Wikipedia is free, so heroes add no Google cost. The route passes <code>city</code>, <code>country</code>, <code>lat</code>, <code>lng</code> to both call sites.</li>
+    <li><b>Compass title-card fallback (the no-photo state)</b> &mdash; a deliberate title card, never an empty gradient. Base: a warm charcoal gradient <code>linear-gradient(135deg, hsl(32 52% 21%) &rarr; hsl(24 46% 12%))</code> with the <b>homepage compass rose</b> set faintly behind the city name (<span class="swatch" style="background:#C6A15B"></span>brass <code>#C6A15B</code>, ~0.20 opacity; rings + cardinal ticks + N/E/S/W + two-tone needle, static N-up). A horizontal veil eases the warm color off by <b>~50% toward the compass on the right</b> (<code>linear-gradient(to right, rgba(19,17,15,0) 20% &rarr; .50 95%)</code>) so the title keeps a full-warm pocket on the left and the compass sits in a calmer one on the right.</li>
+    <li><b>Shared composition.</b> Both states keep the dotted texture (~0.14 opacity), the in-hero breadcrumb + counts, and white text. Over a real photo a top&rarr;bottom black wash (70&rarr;40%) preserves legibility; that wash is <b>suppressed on the fallback</b> so the warm card reads true.</li>
+  </ul>
+
+  <h3>Venue page <span class="tag done">Done</span> <code>src/routes/venue/$city/$slug.tsx</code></h3>
+  <ul>
+    <li>Dark photo hero (VenuePhoto with charcoal+compass fallback), place line above name (larger than eyebrow, smaller than H1), meta line leads with price.</li>
+    <li><b>Light paper body</b> (editorial). "Why we point you here" pull-quote + prose (blurb fallbacks). Collapsible per-source accolades with star glyphs.</li>
+    <li>Sidebar: white card, actions on top (Reserve / Visit website, shown only when URL exists), facts list. <b>No Chef row</b> (field not in data).</li>
+  </ul>
+
+  <hr>
+
+  <h2><span class="n">04</span>Data reality (what's empty)</h2>
+  <p>All pages degrade gracefully; the site <b>works</b> everywhere but only <b>sings</b> where data exists. Current fill on the <code>venues</code> tab (~9,226 venues):</p>
+  <ul>
+    <li><b>awards</b> &mdash; 100% &#10003; (badges + accolades fully powered)</li>
+    <li><b>photo_url</b> &mdash; ~43% (over half show the charcoal/compass hero fallback)</li>
+    <li><b>blurb_short / blurb_long</b> &mdash; 0% (spotlights &amp; venue pages show fallback lines)</li>
+    <li><b>price_tier, hours, reservation_url, website, neighborhood</b> &mdash; 0%</li>
+    <li><b>chef</b> &mdash; field does not exist in schema (would be net-new)</li>
+  </ul>
+  <div class="box ok"><p style="margin:0">The schema is ready for all of it &mdash; <code>venue.hours</code> is even a pre-parsed object, so "open now" lights up the moment hours are populated, no rebuild.</p></div>
+
+  <hr>
+
+  <h2><span class="n">05</span>What's next</h2>
+  <p>This doc captures <b>design decisions</b>. For the live to-do list &mdash; what's shipped, in motion, up next, and queued &mdash; see the canonical <b class="brass">CompassEats Punch List</b> (the dedicated roadmap doc in the Project files). It's the single source of truth for tasks; this doc deliberately doesn't duplicate it.</p>
+  <p>Shipped since this doc's first version: the <b>Cities index</b> (collapsible Continent &rarr; Country &rarr; City), the <b>Guides index</b>, the <b>header nav</b> (Cities + Guides), the <b>city-page fixed-hex redesign</b> (both modes), and mobile accolade distinctions. Still ahead, carried in the Punch List: the <b>blurb-generation batch</b> (biggest content unlock), a <b>prestige-weighting reweight</b> (cross-source calibration), the <b>theme-toggle</b> keep/remove decision (now that every surface is fixed-hex, the toggle has little left to legitimately toggle), and small label/data fixes (James Beard category formatting, La Liste 2026 year, "Portugese" spelling). The Punch List is the single source of truth for status &mdash; open that to pick the next build.</p>
+
+  <hr>
+
+  <h2><span class="n">06</span>The big content unlock: blurb batch</h2>
+  <p>Highest-leverage remaining work &mdash; fills the single most visible gap across spotlight, city cards, AND venue pages. <b>Approach deliberately:</b> draft the voice/prompt template first (grounded in brand vocabulary &mdash; <i>charted, point you to, worth the detour</i>; never "curated experiences" or "top 10"), test on ~10 varied venues, review together, THEN scale to ~9,200. Generated once, stored in the Sheet (<code>blurb_short</code>/<code>blurb_long</code>) so pages stay static and fast. A bad pass at scale is expensive to redo &mdash; voice matters more than plumbing.</p>
+
+  <hr>
+
+  <h2><span class="n">07</span>Working method (keep doing this)</h2>
+  <ul>
+    <li><b>Diagnostic-first prompts:</b> have Lovable investigate &amp; report (real file/token/component names) BEFORE writing changes. Guessing blind caused repeated misses (the compass grouping especially).</li>
+    <li><b>Full drop-in file replacements</b>, not partial diffs (Ben applies via Lovable).</li>
+    <li><b>One build step at a time</b>, verify (screenshot) before the next. Tightly-scoped prompts that say "currently shows X &rarr; change to Y" land better than "match the mockup" (Lovable can't see mockups).</li>
+    <li><b>Single source of truth:</b> <code>AWARD_SOURCES</code> in <code>schema.ts</code> drives all guide labels everywhere.</li>
+  </ul>
+
+</div>
+</body>
+</html>
