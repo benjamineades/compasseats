@@ -209,9 +209,9 @@
   <p class="tag">Charting what's next. Updated each session as work ships and new work appears.</p>
   <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
   <div class="meta-row">
-    <span class="m">Version <b>2.20</b></span>
-    <span class="m">Updated <b>June 17, 2026</b></span>
-    <span class="m">Data cleanup <b>shipping</b></span>
+    <span class="m">Version <b>2.21</b></span>
+    <span class="m">Updated <b>June 20, 2026</b></span>
+    <span class="m">Type fix <b>shipped</b></span>
   </div>
 </header>
 
@@ -220,14 +220,14 @@
   <!-- DASHBOARD -->
   <section class="dash">
     <div class="dcard done">
-      <div class="dnum">36</div>
+      <div class="dnum">37</div>
       <div class="dlabel">Shipped</div>
-      <div class="dsub">Static architecture, sitemap live · ingest + geo-enrichment · live deploy · core pages redesigned · award-collision fix · mobile accolade distinctions · Cities + Guides index + header nav · city page fixed-hex redesign · bulk blurbs (11k) live · Option B blurbs (48) live · country-string corruption fixed · cross-city bleed verified clean · city-label canonicalization (93→0) · W50 regional award history (+254 rows)</div>
+      <div class="dsub">Static architecture, sitemap live · ingest + geo-enrichment · live deploy · core pages redesigned · award-collision fix · mobile accolade distinctions · Cities + Guides index + header nav · city page fixed-hex redesign · bulk blurbs (11k) live · Option B blurbs (48) live · country-string corruption fixed · cross-city bleed verified clean · city-label canonicalization (93→0) · W50 regional award history (+254 rows) · type:bar mislabel fix (8 starred restaurants, live)</div>
     </div>
     <div class="dcard active">
       <div class="dnum">0</div>
       <div class="dlabel">In motion</div>
-      <div class="dsub">No active build track — recommended next: the <code>type: bar</code> mislabel fix (see handoff), then the W50 regional lists</div>
+      <div class="dsub">No active build track. Type fix shipped June 20. Per-city geo collision cleanup was attempted June 20 and <strong>reverted</strong> (it destabilized names→slugs→blurbs); needs a redesign with <code>blurbs_final.csv</code> in hand before retry. Recommended next: a frontend/UX item from "Up next — polish."</div>
     </div>
     <div class="dcard next">
       <div class="dnum">5</div>
@@ -469,11 +469,11 @@
 
       <div class="item">
         <div class="top">
-          <h3>Type mislabel — 8 starred restaurants tagged as <code>bar</code></h3>
-          <div class="pills"><span class="pill quick">Small</span><span class="pill medium">Trust</span></div>
+          <h3 class="check">✓ SHIPPED — Type mislabel fixed (8 starred restaurants were tagged as <code>bar</code>)</h3>
+          <div class="pills"><span class="pill done">Done</span><span class="pill medium">Trust</span></div>
         </div>
         <p><strong>Eight Michelin-starred / World&rsquo;s-50-Best restaurants carry <code>type: bar</code> in the data</strong>, so they render as &ldquo;Cocktail&nbsp;bar&rdquo; on their venue and city-card pages. <strong>Eleven&nbsp;Madison&nbsp;Park</strong> was the visible symptom &mdash; shown as &ldquo;Cocktail&nbsp;bar &middot; New&nbsp;York&rdquo; with three Michelin stars. Clean detector: <code>type=bar</code> <em>and</em> holding a restaurant-only award (W50&nbsp;Restaurants / Asia&rsquo;s&nbsp;50&nbsp;Best / MENA&nbsp;50&nbsp;Best / LatAm&nbsp;50&nbsp;Best / La&nbsp;Liste) &mdash; pure cocktail bars don&rsquo;t appear on restaurant lists. The eight: <strong>Eleven&nbsp;Madison&nbsp;Park</strong> (New&nbsp;York), <strong>8&frac12;&nbsp;Otto&nbsp;e&nbsp;Mezzo&nbsp;BOMBANA</strong> (Hong&nbsp;Kong), <strong>Mimi&nbsp;Kakushi</strong>, <strong>La&nbsp;Petite&nbsp;Maison&nbsp;(LPM)</strong>, <strong>Zuma</strong> (all Dubai), <strong>ARCA</strong> (Tulum), <strong>The&nbsp;Bombay&nbsp;Canteen</strong>, <strong>Americano</strong> (both Mumbai).</p>
-        <p><span class="why"><strong>Fix:</strong> set <code>type</code>&nbsp;=&nbsp;<code>restaurant</code> on these rows at the source, then reshape &rarr; regenerate JSON &rarr; publish. Worth a one-line check of how <code>type</code> gets assigned at ingest (likely these came in via a bar-list source or were hand-typed) so it doesn&rsquo;t recur. Low effort, but a trust item &mdash; a three-star restaurant labelled &ldquo;cocktail bar&rdquo; undercuts the &ldquo;knows the spot&rdquo; positioning, same family as the hidden-stars bug. Surfaced June&nbsp;17 during the venue-photo render test. <strong>Now visibly live</strong> &mdash; EMP&rsquo;s published page (June&nbsp;18) reads &ldquo;Cocktail&nbsp;bar &middot; Contemporary.&rdquo; <strong>Recommended next task</strong> (see the session handoff).</span></p>
+        <p><span class="why"><strong>Shipped June&nbsp;20 — durable fix, not a one-off edit.</strong> Root cause: in <code>Reshape.gs</code> the type assignment was a one-way switch &mdash; any appearance on a bar list permanently set <code>type: bar</code>, even when the venue also held a flagship restaurant award. The fix adds a <code>RESTAURANT_AUTHORITY</code> map of restaurant-only ranking lists (W50 Restaurants &amp; 51&ndash;100, Asia&rsquo;s/MENA/LatAm/North&nbsp;America 50&nbsp;Best &amp; 51&ndash;100, La&nbsp;Liste) that <em>overrides</em> bar-typing: if a venue carries one of those, it is a restaurant regardless of any bar-list signal. Verified against live data this flips <strong>exactly the 8</strong> and leaves all 13 genuine bars-on-restaurant-lists (Kumiko, ATLAS, etc.) untouched &mdash; a deliberately narrow detector, since a broad &ldquo;any restaurant award&rdquo; rule would wrongly flip real bars. Side effect (good): with correct types, Zuma&nbsp;Dubai and The&nbsp;Bombay&nbsp;Canteen each collapsed from two rows to one via <code>mergeDuplicateVenues</code>. Bar count 718&nbsp;&rarr;&nbsp;711. Verified live: EMP now reads &ldquo;Contemporary&rdquo;, not &ldquo;Cocktail&nbsp;bar.&rdquo; <strong>One residual:</strong> La&nbsp;Petite&nbsp;Maison&nbsp;(LPM)&nbsp;Dubai is a separate name-variant/geo tangle &mdash; folds into the geo-collision redesign below.</span></p>
       </div>
 
       <div class="item">
@@ -672,11 +672,12 @@
 
       <div class="item">
         <div class="top">
-          <h3>Per-city geo matching (name+city) — the collision-fix follow-on</h3>
-          <div class="pills"><span class="pill larger">Larger</span><span class="pill medium">Do first in pipeline</span></div>
+          <h3>Per-city geo matching (name+city) — collision cleanup <span class="pill larger">Attempt 1 reverted · needs redesign</span></h3>
+          <div class="pills"><span class="pill larger">Larger</span><span class="pill medium">Blocked on a precondition</span></div>
         </div>
-        <p>The June 5 award-collision fix made venue <strong>identity</strong> <code>normKey + city_slug</code>, which correctly separated same-name venues across cities (Atlas Atlanta/Singapore, Bacchanalia Atlanta/London, ~600 others). But <strong>geo lookup is still name-only</strong> — so a split venue can inherit the wrong city's <code>place_id</code> and coordinates (e.g. Atlas Singapore carrying Atlanta's geo). The fix: make <code>geoEnrich</code> and reshape both key geo on name+city so each namesake gets and keeps its own coordinates.</p>
-        <p><span class="why">This is identity-logic surgery — the same class of change that broke the match rate once mid-session before being corrected. Back up reshape first, run read-only diagnostics, verify the unmatched/needs_enrichment counts hold before syncing. All 652 <code>geo_audit</code> groups currently share identical coords, so today this is duplicate rows, NOT live wrong pins — lower urgency, but it's the root the next two items depend on.</span></p>
+        <p>The June 5 award-collision fix made venue <strong>identity</strong> <code>normKey + city_slug</code>, which correctly separated same-name venues across cities (Atlas Atlanta/Singapore, Bacchanalia Atlanta/London, ~600 others). But <strong>geo lookup is still name-only</strong> — so a split venue can inherit the wrong city's <code>place_id</code> and coordinates. The intended fix: key geo on name+city (composite <code>name|city</code> rows in Places Enrichment, which reshape already prefers) so each namesake keeps its own place.</p>
+        <p><span class="why"><strong>Attempt 1 (June 20) — reverted.</strong> The <code>CollisionRequery.gs</code> tool re-queried Google Places by name+city and wrote ~424 composite rows; collisions dropped 338&nbsp;&rarr;&nbsp;203. <strong>But it broke ~294 blurbs.</strong> Why: the override rows stored Google&rsquo;s returned <em>name</em> in <code>canonicalName</code>; reshape uses that as the venue name; the name drives the <strong>slug</strong>; blurbs are matched by slug &mdash; so &ldquo;The&nbsp;Ivy&rdquo;&rarr;&ldquo;ivy&nbsp;Sydney&rdquo;, &ldquo;Restaurante&nbsp;Rodero&rdquo;&rarr;&ldquo;Rodero&rdquo;, etc., and those venues lost their editorial blurbs. Patching the names afterward made it worse (the blanked rows then conflicted with older <code>geo-requery</code> rows). Clean call: removed all 424 collision rows, re-ran the pipeline, restored the exact pre-collision state (10,356 venues · 10,119 blurbs · 338 collisions). Nothing was published, so the <strong>live site was never affected.</strong></p>
+        <p><span class="why"><strong>The lesson for Attempt 2:</strong> a geo fix must correct <em>coordinates only</em> and never change a venue&rsquo;s name. Two requirements before retrying: (1) reshape must always use the <strong>editorial/award name</strong> for the slug (never Google&rsquo;s name), so geo can change freely without moving slugs; (2) <code>blurbs_final.csv</code> must be re-keyed to those stable slugs <em>in lockstep</em> &mdash; which means <strong>that file must be in hand before any collision work</strong> (it lives on Drive, not in the Sheet). The 424 corrected <code>place_id</code>s from Attempt 1 are <strong>preserved</strong> (in the session TSV + exports), so re-querying won&rsquo;t be re-paid. Also fold in two tool fixes to <code>CollisionRequery.gs</code>: write a blank <code>canonicalName</code> from the start, and mark parked rows as &ldquo;seen&rdquo; so re-runs don&rsquo;t re-bill. <strong>Note a live pre-existing case</strong> uncovered here: &ldquo;ivy&nbsp;Sydney&rdquo; is one name shared by three different Ivy restaurants (Sydney/London/LA) from the older <code>geo-requery</code> work — a textbook target for the redesign.</span></p>
       </div>
 
       <div class="item">
