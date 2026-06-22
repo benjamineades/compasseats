@@ -1,6 +1,30 @@
 {
-  "generated_at": "2026-06-13T02:32:08.308533Z",
-  "venues": 10474,
-  "cities": 3188,
-  "source": "local-generated-from-sheet-export"
+  "generated_at": "2026-06-22T14:54:07.154Z",
+  "venue_count": 10355,
+  "city_count": 3098,
+  "active_venue_count": 10018,
+  "bars": 710,
+  "curated_photos": 0,
+  "death_co_rows": [
+    {
+      "name": "Death & Co East Village",
+      "city": "New York",
+      "slug": "death-co-east-village"
+    },
+    {
+      "name": "Death & Co. D.C.",
+      "city": "Washington",
+      "slug": "death-co-d-c"
+    },
+    {
+      "name": "Death & Co Los Angeles",
+      "city": "Los Angeles",
+      "slug": "death-co-los-angeles"
+    },
+    {
+      "name": "Death & Co Denver",
+      "city": "Denver",
+      "slug": "death-co-denver"
+    }
+  ]
 }
