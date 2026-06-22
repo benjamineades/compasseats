@@ -5334,7 +5334,7 @@
     "lat": 40.7416519,
     "lng": -73.9872353,
     "address": "11 Madison Ave, New York, NY 10010, USA",
-    "type": "restaurant",
+    "type": "bar",
     "cuisine_tags": [
       "Contemporary"
     ],
@@ -11463,6 +11463,11 @@
         "rank": 95
       },
       {
+        "source": "la-liste",
+        "year": 2026,
+        "category": "95/100"
+      },
+      {
         "source": "asia-50-best-restaurants",
         "year": 2023,
         "category": "No. 81",
@@ -12747,11 +12752,12 @@
     "id": "ChIJUwatTl1ZwokRUDXxYoFa-hk",
     "slug": "aska",
     "name": "Aska",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7124154,
-    "lng": -73.96652449999999,
+    "lng": -73.9665244999999,
     "address": "47 S 5th St, Brooklyn, NY 11249, USA",
     "type": "restaurant",
     "cuisine_tags": [
@@ -12767,6 +12773,16 @@
         "category": "Two Stars"
       },
       {
+        "source": "best-chef-awards",
+        "year": 2025,
+        "category": "2-Knife"
+      },
+      {
+        "source": "best-chef-awards",
+        "year": 2024,
+        "category": "2-Knife"
+      },
+      {
         "source": "oad",
         "year": 2026,
         "category": "No. 19",
@@ -12777,6 +12793,18 @@
         "year": 2025,
         "category": "No. 16",
         "rank": 16
+      },
+      {
+        "source": "north-america-50-best-restaurants",
+        "year": 2025,
+        "category": "No. 24",
+        "rank": 24
+      },
+      {
+        "source": "north-america-50-best-restaurants",
+        "year": 2026,
+        "category": "No. 23",
+        "rank": 23
       },
       {
         "source": "la-liste",
@@ -26164,6 +26192,7 @@
     "city_slug": "seoul",
     "city_display": "Seoul",
     "country": "South Korea",
+    "neighborhood": "Mosu",
     "lat": 37.5411532,
     "lng": 126.9961548,
     "address": "4 Hoenamu-ro 41-gil, Yongsan District, Seoul, South Korea",
@@ -26209,6 +26238,16 @@
         "year": 2021,
         "category": "No. 67",
         "rank": 67
+      },
+      {
+        "source": "best-chef-awards",
+        "year": 2025,
+        "category": "3-Knife"
+      },
+      {
+        "source": "best-chef-awards",
+        "year": 2024,
+        "category": "2-Knife"
       },
       {
         "source": "la-liste",
@@ -42244,9 +42283,10 @@
     "id": "ChIJ35V_tZlbwokRzolpCln-mG4",
     "slug": "francie",
     "name": "Francie",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7101876,
     "lng": -73.9640308,
     "address": "136 Broadway, Brooklyn, NY 11249, USA",
@@ -42270,9 +42310,10 @@
     "id": "ChIJ__-z7kBZwokRezHqB39zBLI",
     "slug": "oxomoco",
     "name": "Oxomoco",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7298214,
     "lng": -73.9554759999999,
     "address": "128 Greenpoint Ave, Brooklyn, NY 11222, USA",
@@ -42296,9 +42337,10 @@
     "id": "ChIJh2cqMDNZwokRqMMqNP9srxI",
     "slug": "restaurant-yuu",
     "name": "Restaurant Yuu",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.723456,
     "lng": -73.9524875,
     "address": "55 Nassau Ave #1A, Brooklyn, NY 11222, USA",
@@ -42334,9 +42376,10 @@
     "id": "ChIJ34eY6E5ZwokRvof_huM7t3U",
     "slug": "shota-omakase",
     "name": "Shota omakase",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7135199999999,
     "lng": -73.9661572999999,
     "address": "50 S 3rd St, Brooklyn, NY 11249, USA",
@@ -42372,9 +42415,10 @@
     "id": "ChIJbTCMl19ZwokRUohF137p9cQ",
     "slug": "the-four-horsemen",
     "name": "The Four Horsemen",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7130584,
     "lng": -73.9573216,
     "address": "295 Grand St, Brooklyn, NY 11211, USA",
@@ -42389,6 +42433,12 @@
         "source": "michelin",
         "year": 2025,
         "category": "One Star"
+      },
+      {
+        "source": "north-america-50-best-restaurants",
+        "year": 2025,
+        "category": "No. 15",
+        "rank": 15
       }
     ],
     "status": "active",
@@ -71331,6 +71381,18 @@
         "source": "michelin",
         "year": 2025,
         "category": "One Star"
+      },
+      {
+        "source": "oad",
+        "year": 2026,
+        "category": "No. 224",
+        "rank": 224
+      },
+      {
+        "source": "oad",
+        "year": 2025,
+        "category": "No. 250",
+        "rank": 250
       },
       {
         "source": "101-best-steakhouses",
@@ -119173,9 +119235,10 @@
     "id": "ChIJNTreqsH_zYUR82jk2MVoXMM",
     "slug": "sud-777",
     "name": "Sud 777",
-    "city_slug": "alvaro-obregon",
-    "city_display": "Álvaro Obregón",
+    "city_slug": "mexico-city",
+    "city_display": "Mexico City",
     "country": "Mexico",
+    "neighborhood": "Álvaro Obregón",
     "lat": 19.3090281,
     "lng": -99.2093428,
     "address": "Blvrd de la Luz 777, Jardines del Pedregal, Álvaro Obregón, 01900 Ciudad de México, CDMX, Mexico",
@@ -119187,9 +119250,72 @@
     "blurb_long": "Sud 777 brings creative cooking to Álvaro Obregón with the kind of confidence that earns one Michelin star. It's the sort of place worth building a night around when you roam this part of Mexico City, where ambition and recognition meet.",
     "awards": [
       {
+        "source": "best-chef-awards",
+        "year": 2025,
+        "category": "2-Knife"
+      },
+      {
+        "source": "best-chef-awards",
+        "year": 2024,
+        "category": "2-Knife"
+      },
+      {
+        "source": "la-liste",
+        "year": 2026,
+        "category": "83.5/100"
+      },
+      {
+        "source": "latin-america-50-best-restaurants",
+        "year": 2025,
+        "category": "No. 59",
+        "rank": 59
+      },
+      {
+        "source": "latin-america-50-best-restaurants",
+        "year": 2024,
+        "category": "No. 47",
+        "rank": 47
+      },
+      {
+        "source": "latin-america-50-best-restaurants",
+        "year": 2023,
+        "category": "No. 31",
+        "rank": 31
+      },
+      {
+        "source": "latin-america-50-best-restaurants",
+        "year": 2022,
+        "category": "No. 23",
+        "rank": 23
+      },
+      {
+        "source": "latin-america-50-best-restaurants",
+        "year": 2020,
+        "category": "No. 17",
+        "rank": 17
+      },
+      {
+        "source": "latin-america-50-best-restaurants",
+        "year": 2019,
+        "category": "No. 16",
+        "rank": 16
+      },
+      {
         "source": "michelin",
         "year": 2025,
         "category": "One Star"
+      },
+      {
+        "source": "oad",
+        "year": 2026,
+        "category": "No. 171",
+        "rank": 171
+      },
+      {
+        "source": "oad",
+        "year": 2025,
+        "category": "No. 161",
+        "rank": 161
       }
     ],
     "status": "active",
@@ -129898,9 +130024,10 @@
     "id": "ChIJgbi06LFbwokRGr3pch2KH_A",
     "slug": "agi-s-counter",
     "name": "Agi's Counter",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6700133,
     "lng": -73.9583818,
     "address": "818 Franklin Ave, Brooklyn, NY 11225, USA",
@@ -129925,11 +130052,12 @@
     "id": "ChIJQ928SqRbwokRKuID55C7xFo",
     "slug": "alta-calidad",
     "name": "Alta Calidad",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6801337,
-    "lng": -73.96823239999999,
+    "lng": -73.9682323999999,
     "address": "552 Vanderbilt Ave, Brooklyn, NY 11238, USA",
     "type": "restaurant",
     "cuisine_tags": [
@@ -129952,9 +130080,10 @@
     "id": "ChIJbQc9ABZZwokRMAK6C-Ekxg4",
     "slug": "bonnie-s",
     "name": "Bonnie's",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7178057,
     "lng": -73.9464373,
     "address": "398 Manhattan Ave, Brooklyn, NY 11211, USA",
@@ -129979,10 +130108,11 @@
     "id": "ChIJk6_emFpbwokReeza0hzar2c",
     "slug": "cafe-mars",
     "name": "Café Mars",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
-    "lat": 40.677885499999995,
+    "neighborhood": "Brooklyn",
+    "lat": 40.6778854999999,
     "lng": -73.9859784,
     "address": "272 3rd Ave, Brooklyn, NY 11215, USA",
     "type": "restaurant",
@@ -130006,9 +130136,10 @@
     "id": "ChIJJ5J8yJ9bwokRjpOkpYgii5k",
     "slug": "chavela-s",
     "name": "Chavela's",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6734559,
     "lng": -73.9572247,
     "address": "736 Franklin Ave, Brooklyn, NY 11238, USA",
@@ -130033,9 +130164,10 @@
     "id": "ChIJrwxm-gpFwokR9f10RT15Ni8",
     "slug": "chuan-tian-xia",
     "name": "Chuan Tian Xia",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6396357,
     "lng": -74.0091003,
     "address": "5502 7th Ave, Brooklyn, NY 11220, USA",
@@ -130060,11 +130192,12 @@
     "id": "ChIJ4ahOydVYwokR7cBu4R_8BXo",
     "slug": "gordo-s-cantina",
     "name": "Gordo's Cantina",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7049645,
-    "lng": -73.91757179999999,
+    "lng": -73.9175717999999,
     "address": "140 St Nicholas Ave, Brooklyn, NY 11237, USA",
     "type": "restaurant",
     "cuisine_tags": [
@@ -130087,9 +130220,10 @@
     "id": "ChIJVVXpcQBbwokRtKzSlyOoW1Y",
     "slug": "haenyeo",
     "name": "Haenyeo",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6751935,
     "lng": -73.9811059,
     "address": "239 5th Ave, Brooklyn, NY 11215, USA",
@@ -130114,9 +130248,10 @@
     "id": "ChIJ0VWwJI9awokRoiFWFqYZMQ8",
     "slug": "hometown-bar-b-que",
     "name": "Hometown Bar-B-Que",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6749167,
     "lng": -74.0161583,
     "address": "454 Van Brunt St, Brooklyn, NY 11231, USA",
@@ -130141,10 +130276,11 @@
     "id": "ChIJl2K8TWdbwokRVLXghh72lXs",
     "slug": "lore",
     "name": "LORE",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
-    "lat": 40.663081999999996,
+    "neighborhood": "Brooklyn",
+    "lat": 40.6630819999999,
     "lng": -73.9844024,
     "address": "441 7th Ave, Brooklyn, NY 11215, USA",
     "type": "restaurant",
@@ -130168,9 +130304,10 @@
     "id": "ChIJqzhkS7dbwokRtGCdHcorPvU",
     "slug": "miss-ada",
     "name": "Miss Ada",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.689425,
     "lng": -73.9723664,
     "address": "184 Dekalb Ave, Brooklyn, NY 11205, USA",
@@ -130195,9 +130332,10 @@
     "id": "ChIJpVRN4RTrhkcRX2ugXuHaeZM",
     "slug": "ristorante-olmo",
     "name": "Ristorante Olmo",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 45.4869300999999,
     "lng": 9.01212799999999,
     "address": "Piazza della Chiesa, 7, 20007 Cornaredo MI, Italy",
@@ -130222,9 +130360,10 @@
     "id": "ChIJl-l0rSdZwokReqiZ7S2yx0A",
     "slug": "pierozek",
     "name": "Pierozek",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7230109,
     "lng": -73.9502255,
     "address": "592 Manhattan Ave, Brooklyn, NY 11222, USA",
@@ -130246,15 +130385,16 @@
     "last_verified": "2026-06-22"
   },
   {
-    "id": "ChIJzSOyOg1dwokRfQ-5htUfsRY",
+    "id": "ChIJWV3KRQBZwokRZlT-Om1I_1E",
     "slug": "roberta-s",
-    "name": "Roberta's",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "name": "Roberta’s",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
-    "lat": 40.705081,
-    "lng": -73.9335834,
-    "address": "261 Moore St, Brooklyn, NY 11206, USA",
+    "neighborhood": "Brooklyn",
+    "lat": 40.750707,
+    "lng": -73.99157799999999,
+    "address": "One Penn Plaza, Plaza 33 East, New York, NY 10119, USA",
     "type": "restaurant",
     "cuisine_tags": [
       "Pizza"
@@ -130276,11 +130416,12 @@
     "id": "ChIJa7TQMZFbwokRjivvo3SFNDQ",
     "slug": "runner-up",
     "name": "Runner Up",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6656268,
-    "lng": -73.98227390000001,
+    "lng": -73.9822739,
     "address": "499 11th St, Brooklyn, NY 11215, USA",
     "type": "restaurant",
     "cuisine_tags": [
@@ -130303,10 +130444,11 @@
     "id": "ChIJUTD-vEFbwokRhahGeJOPB2Q",
     "slug": "sal-tang-s",
     "name": "Sal Tang's",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
-    "lat": 40.685317000000005,
+    "neighborhood": "Brooklyn",
+    "lat": 40.685317,
     "lng": -74.000428,
     "address": "521 Hicks St, Brooklyn, NY 11231, USA",
     "type": "restaurant",
@@ -130330,10 +130472,11 @@
     "id": "ChIJ9ev4B-FbwokRhzTqc9KP5-I",
     "slug": "shalom-japan",
     "name": "Shalom Japan",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
-    "lat": 40.709173299999996,
+    "neighborhood": "Brooklyn",
+    "lat": 40.7091732999999,
     "lng": -73.9557774,
     "address": "310 S 4th St rear, Brooklyn, NY 11211, USA",
     "type": "restaurant",
@@ -130357,9 +130500,10 @@
     "id": "ChIJmeKSwPFdwokRZ--71Rq0GBY",
     "slug": "sobre-masa",
     "name": "Sobre Masa",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7062811,
     "lng": -73.9313702,
     "address": "52 Harrison Pl, Brooklyn, NY 11237, USA",
@@ -130384,9 +130528,10 @@
     "id": "ChIJOTob_r1bwokRtUoNNbcmw_g",
     "slug": "speedy-romeo",
     "name": "Speedy Romeo",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6875,
     "lng": -73.96,
     "address": "376 Classon Ave, Brooklyn, NY 11238, USA",
@@ -130411,11 +130556,12 @@
     "id": "ChIJoWqUUFhFwokRgLdrJbh0bBg",
     "slug": "tanoreen",
     "name": "Tanoreen",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
-    "lat": 40.630791599999995,
-    "lng": -74.02778649999999,
+    "neighborhood": "Brooklyn",
+    "lat": 40.6307915999999,
+    "lng": -74.0277864999999,
     "address": "7523 3rd Ave, Brooklyn, NY 11209, USA",
     "type": "restaurant",
     "cuisine_tags": [
@@ -130438,9 +130584,10 @@
     "id": "ChIJpx9oNwBZwokRadMPBkSKnvY",
     "slug": "taqueria-el-chato",
     "name": "Taqueria El Chato",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7235891,
     "lng": -73.9505516,
     "address": "620 Manhattan Ave, Brooklyn, NY 11222, USA",
@@ -130465,9 +130612,10 @@
     "id": "ChIJ_zbudV1bwokRyxgi4zQEn0Y",
     "slug": "untable",
     "name": "Untable",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6835757,
     "lng": -73.9994403,
     "address": "529 Henry St, Brooklyn, NY 11231, USA",
@@ -130492,9 +130640,10 @@
     "id": "ChIJ4-bYSvxbwokRPhLlLQFzOEo",
     "slug": "win-son",
     "name": "Win Son",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7074661,
     "lng": -73.9434952,
     "address": "159 Graham Ave, Brooklyn, NY 11206, USA",
@@ -130519,10 +130668,11 @@
     "id": "ChIJB14pRT9FwokRnMbBprTy7RI",
     "slug": "yemenat",
     "name": "Yemenat",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
-    "lat": 40.627327900000004,
+    "neighborhood": "Brooklyn",
+    "lat": 40.6273279,
     "lng": -74.0233464,
     "address": "7721 5th Ave, Brooklyn, NY 11209, USA",
     "type": "restaurant",
@@ -212736,9 +212886,10 @@
     "id": "ChIJ11ZmtA4A0oUR8RL-loZYpUE",
     "slug": "taqueria-los-milanesos",
     "name": "Taquería Los Milanesos",
-    "city_slug": "alvaro-obregon",
-    "city_display": "Álvaro Obregón",
+    "city_slug": "mexico-city",
+    "city_display": "Mexico City",
     "country": "Mexico",
+    "neighborhood": "Álvaro Obregón",
     "lat": 19.3416413,
     "lng": -99.2053500999999,
     "address": "Veracruz 156, Progreso, Álvaro Obregón, 01080 Ciudad de México, CDMX, Mexico",
@@ -215842,7 +215993,7 @@
     "lat": 25.2026719,
     "lng": 55.2406267999999,
     "address": "Four Seasons Resort - 23A St - Jumeirah - Jumeira Second - Dubai - United Arab Emirates",
-    "type": "restaurant",
+    "type": "bar",
     "cuisine_tags": [],
     "blurb_long": "Charted at No. 36 on the World's 50 Best Bars list and No. 35 on MENA's 50 Best Restaurants, Mimi Kakushi is worth building a night around. When you roam Dubai looking for a reliably brilliant drink, let me point you to this spot—it's worth the detour for a bar that's earned its place among the region's best.",
     "awards": [
@@ -217307,9 +217458,53 @@
     "lat": 25.2132921,
     "lng": 55.2825141999999,
     "address": "Gate Village No, 8 - Zaa'beel Second - DIFC - Dubai - United Arab Emirates",
-    "type": "restaurant",
-    "cuisine_tags": [],
+    "type": "bar",
+    "cuisine_tags": [
+      "French"
+    ],
     "awards": [
+      {
+        "source": "mena-50-best-restaurants",
+        "year": 2026,
+        "category": "No. 27",
+        "rank": 27
+      },
+      {
+        "source": "mena-50-best-restaurants",
+        "year": 2025,
+        "category": "No. 23",
+        "rank": 23
+      },
+      {
+        "source": "mena-50-best-restaurants",
+        "year": 2024,
+        "category": "No. 23",
+        "rank": 23
+      },
+      {
+        "source": "mena-50-best-restaurants",
+        "year": 2023,
+        "category": "No. 21",
+        "rank": 21
+      },
+      {
+        "source": "mena-50-best-restaurants",
+        "year": 2022,
+        "category": "No. 8",
+        "rank": 8
+      },
+      {
+        "source": "oad",
+        "year": 2025,
+        "category": "No. 184",
+        "rank": 184
+      },
+      {
+        "source": "pinnacle-guide",
+        "year": 2025,
+        "category": "1-Pin",
+        "rank": 1
+      },
       {
         "source": "worlds-50-best-bars",
         "year": 2025,
@@ -217321,36 +217516,6 @@
         "year": 2024,
         "category": "No. 76",
         "rank": 76
-      },
-      {
-        "source": "mena-50-best-restaurants",
-        "year": 2022,
-        "category": "No. 8",
-        "rank": 8
-      },
-      {
-        "source": "mena-50-best-restaurants",
-        "year": 2023,
-        "category": "No. 21",
-        "rank": 21
-      },
-      {
-        "source": "mena-50-best-restaurants",
-        "year": 2024,
-        "category": "No. 23",
-        "rank": 23
-      },
-      {
-        "source": "mena-50-best-restaurants",
-        "year": 2025,
-        "category": "No. 23",
-        "rank": 23
-      },
-      {
-        "source": "mena-50-best-restaurants",
-        "year": 2026,
-        "category": "No. 27",
-        "rank": 27
       }
     ],
     "status": "active",
@@ -218224,7 +218389,7 @@
     "lat": 20.1495855,
     "lng": -87.4595899999999,
     "address": "Carr. Tulum-Boca Paila km 7.6, Tulum Beach, 77780 Tulum, Q.R., Mexico",
-    "type": "restaurant",
+    "type": "bar",
     "cuisine_tags": [
       "Mexican"
     ],
@@ -222197,6 +222362,11 @@
         "rank": 45
       },
       {
+        "source": "james-beard",
+        "year": 2016,
+        "category": "Outstanding Bar Program"
+      },
+      {
         "source": "north-america-50-best-bars",
         "year": 2023,
         "category": "No. 39",
@@ -222557,48 +222727,12 @@
     "lat": 25.213935,
     "lng": 55.2833272,
     "address": "Podium Level, Gate Village - 06 Al Mustaqbal St - Zaa'beel Second - DIFC - Dubai - United Arab Emirates",
-    "type": "restaurant",
+    "type": "bar",
     "cuisine_tags": [
       "Japanese"
     ],
     "blurb_long": "Charted on the World's 50 Best Bars list and MENA's 50 Best Restaurants, Zuma Dubai is the rare place that excels at both—reason enough to point you there. It's worth building a night around, whether you roam in for inventive cocktails or stay for the full Japanese izakaya experience in one of Dubai's most consistently celebrated spots.",
     "awards": [
-      {
-        "source": "mena-50-best-restaurants",
-        "year": 2026,
-        "category": "No. 34",
-        "rank": 34
-      },
-      {
-        "source": "mena-50-best-restaurants",
-        "year": 2025,
-        "category": "No. 19",
-        "rank": 19
-      },
-      {
-        "source": "mena-50-best-restaurants",
-        "year": 2024,
-        "category": "No. 13",
-        "rank": 13
-      },
-      {
-        "source": "mena-50-best-restaurants",
-        "year": 2023,
-        "category": "No. 13",
-        "rank": 13
-      },
-      {
-        "source": "mena-50-best-restaurants",
-        "year": 2022,
-        "category": "No. 2",
-        "rank": 2
-      },
-      {
-        "source": "oad",
-        "year": 2025,
-        "category": "No. 324",
-        "rank": 324
-      },
       {
         "source": "worlds-50-best-bars",
         "year": 2022,
@@ -222628,6 +222762,36 @@
         "year": 2011,
         "category": "No. 49",
         "rank": 49
+      },
+      {
+        "source": "oad",
+        "year": 2025,
+        "category": "No. 324",
+        "rank": 324
+      },
+      {
+        "source": "mena-50-best-restaurants",
+        "year": 2022,
+        "category": "No. 2",
+        "rank": 2
+      },
+      {
+        "source": "mena-50-best-restaurants",
+        "year": 2024,
+        "category": "No. 13",
+        "rank": 13
+      },
+      {
+        "source": "mena-50-best-restaurants",
+        "year": 2025,
+        "category": "No. 19",
+        "rank": 19
+      },
+      {
+        "source": "mena-50-best-restaurants",
+        "year": 2026,
+        "category": "No. 34",
+        "rank": 34
       }
     ],
     "status": "active",
@@ -227803,6 +227967,11 @@
         "source": "best-chef-awards",
         "year": 2024,
         "category": "2-Knife"
+      },
+      {
+        "source": "la-liste",
+        "year": 2026,
+        "category": "95/100"
       }
     ],
     "status": "closed",
@@ -233369,6 +233538,11 @@
         "source": "best-chef-awards",
         "year": 2024,
         "category": "3-Knife"
+      },
+      {
+        "source": "la-liste",
+        "year": 2026,
+        "category": "88/100"
       }
     ],
     "status": "active",
@@ -233655,35 +233829,6 @@
         "source": "la-liste",
         "year": 2026,
         "category": "89/100"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJJeNdcbOjfDURCzyDecCVK7o",
-    "slug": "mosu-seoul",
-    "name": "MOSU Seoul",
-    "city_slug": "mosu",
-    "city_display": "Mosu",
-    "country": "South Korea",
-    "lat": 37.5411532,
-    "lng": 126.9961548,
-    "address": "4 Hoenamu-ro 41-gil, Yongsan District, Seoul, South Korea",
-    "type": "restaurant",
-    "cuisine_tags": [],
-    "blurb_short": "Seoul's two Michelin star destination for modern cooking that Asia's best lists keep coming back to.",
-    "blurb_long": "Seoul's modern cooking scene finds its highest expression here, where two Michelin stars and repeated appearances on Asia's best lists speak to the kitchen's sustained ambition. The approach is precise and contemporary, building on seasonal rhythm and craft without unnecessary flourish. It's the kind of place worth the occasion.",
-    "awards": [
-      {
-        "source": "best-chef-awards",
-        "year": 2025,
-        "category": "3-Knife"
-      },
-      {
-        "source": "best-chef-awards",
-        "year": 2024,
-        "category": "2-Knife"
       }
     ],
     "status": "active",
@@ -234171,90 +234316,6 @@
     "last_verified": "2026-06-22"
   },
   {
-    "id": "ChIJNTreqsH_zYUR82jk2MVoXMM",
-    "slug": "sud-777",
-    "name": "Sud 777",
-    "city_slug": "mexico-city",
-    "city_display": "Mexico City",
-    "country": "Mexico",
-    "lat": 19.3090281,
-    "lng": -99.2093428,
-    "address": "Blvrd de la Luz 777, Jardines del Pedregal, Álvaro Obregón, 01900 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "blurb_short": "Creative cooking in Álvaro Obregón that's charted with one Michelin star — worth the detour.",
-    "blurb_long": "Sud 777 brings creative cooking to Álvaro Obregón with the kind of confidence that earns one Michelin star. It's the sort of place worth building a night around when you roam this part of Mexico City, where ambition and recognition meet.",
-    "awards": [
-      {
-        "source": "best-chef-awards",
-        "year": 2025,
-        "category": "2-Knife"
-      },
-      {
-        "source": "best-chef-awards",
-        "year": 2024,
-        "category": "2-Knife"
-      },
-      {
-        "source": "la-liste",
-        "year": 2026,
-        "category": "83.5/100"
-      },
-      {
-        "source": "latin-america-50-best-restaurants",
-        "year": 2025,
-        "category": "No. 59",
-        "rank": 59
-      },
-      {
-        "source": "latin-america-50-best-restaurants",
-        "year": 2024,
-        "category": "No. 47",
-        "rank": 47
-      },
-      {
-        "source": "latin-america-50-best-restaurants",
-        "year": 2023,
-        "category": "No. 31",
-        "rank": 31
-      },
-      {
-        "source": "latin-america-50-best-restaurants",
-        "year": 2022,
-        "category": "No. 23",
-        "rank": 23
-      },
-      {
-        "source": "latin-america-50-best-restaurants",
-        "year": 2020,
-        "category": "No. 17",
-        "rank": 17
-      },
-      {
-        "source": "latin-america-50-best-restaurants",
-        "year": 2019,
-        "category": "No. 16",
-        "rank": 16
-      },
-      {
-        "source": "oad",
-        "year": 2026,
-        "category": "No. 171",
-        "rank": 171
-      },
-      {
-        "source": "oad",
-        "year": 2025,
-        "category": "No. 161",
-        "rank": 161
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
     "id": "ChIJNYBnzWEHKxMRX5mxOCnG_lc",
     "slug": "podere-belvedere-tuscany",
     "name": "Podere Belvedere Tuscany",
@@ -234494,55 +234555,6 @@
         "source": "best-chef-awards",
         "year": 2024,
         "category": "2-Knife"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJUwatTl1ZwokRUDXxYoFa-hk",
-    "slug": "aska",
-    "name": "Aska",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.7124154,
-    "lng": -73.9665244999999,
-    "address": "47 S 5th St, Brooklyn, NY 11249, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Scandinavian"
-    ],
-    "price_tier": "$$$$",
-    "blurb_short": "New York cooking that's charted among North America's best and earned serious knife recognition.",
-    "blurb_long": "This is New York cooking with the kind of precision that's earned it a spot on North America's 50 Best and a 2-Knife nod from the best chef awards. Worth building a night around when you're in the city and ready for something that feels both ambitious and grounded in real skill.",
-    "awards": [
-      {
-        "source": "best-chef-awards",
-        "year": 2025,
-        "category": "2-Knife"
-      },
-      {
-        "source": "best-chef-awards",
-        "year": 2024,
-        "category": "2-Knife"
-      },
-      {
-        "source": "north-america-50-best-restaurants",
-        "year": 2025,
-        "category": "No. 24",
-        "rank": 24
-      },
-      {
-        "source": "north-america-50-best-restaurants",
-        "year": 2026,
-        "category": "No. 23",
-        "rank": 23
-      },
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Two Stars"
       }
     ],
     "status": "active",
@@ -235865,7 +235877,7 @@
     "lat": 22.1496013999999,
     "lng": 113.5530914,
     "address": "1/F, 1031, GALAXY RESORT MACAU 銀河度假, Estrada da Baia de Nossa Senhora da Esperanca, Macao",
-    "type": "restaurant",
+    "type": "bar",
     "cuisine_tags": [
       "Italian"
     ],
@@ -236987,6 +236999,11 @@
         "source": "best-chef-awards",
         "year": 2025,
         "category": "1-Knife"
+      },
+      {
+        "source": "la-liste",
+        "year": 2026,
+        "category": "80/100"
       }
     ],
     "status": "active",
@@ -239819,7 +239836,9 @@
     "lng": -73.9555292,
     "address": "150 Green St, Brooklyn, NY 11222, USA",
     "type": "restaurant",
-    "cuisine_tags": [],
+    "cuisine_tags": [
+      "Nordic"
+    ],
     "blurb_short": "Nordic cooking with serious ambition and the global recognition to prove it.",
     "blurb_long": "Brooklyn's Nordic answer to the kind of cooking that earns international attention and keeps it. The approach is rooted in seasonality and restraint, but there's real technical confidence behind each plate. It's the sort of place you build a night around when you want precision without pretense, and a meal that lingers long after.",
     "awards": [
@@ -239827,6 +239846,18 @@
         "source": "best-chef-awards",
         "year": 2025,
         "category": "1-Knife"
+      },
+      {
+        "source": "oad",
+        "year": 2026,
+        "category": "No. 40",
+        "rank": 40
+      },
+      {
+        "source": "oad",
+        "year": 2025,
+        "category": "No. 61",
+        "rank": 61
       }
     ],
     "status": "active",
@@ -244354,9 +244385,10 @@
     "id": "ChIJHzZ2mzxbwokR3LxA89MHy78",
     "slug": "clover-hill",
     "name": "Clover Hill",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6931706999999,
     "lng": -73.9987297,
     "address": "20 Columbia Pl, Brooklyn, NY 11201, USA",
@@ -245234,9 +245266,10 @@
     "id": "ChIJJXCD6ltZwokRJ_cwjKQH63c",
     "slug": "lilia",
     "name": "Lilia",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7175365,
     "lng": -73.9524225,
     "address": "567 Union Ave, Brooklyn, NY 11211, USA",
@@ -245439,9 +245472,10 @@
     "id": "ChIJhVuYdE9awokRN7LlQtVmbvg",
     "slug": "sahadi-s",
     "name": "Sahadi's",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.6902247,
     "lng": -73.9933623,
     "address": "187 Atlantic Ave, Brooklyn, NY 11201, USA",
@@ -246207,30 +246241,6 @@
         "source": "james-beard",
         "year": 2016,
         "category": "Best Chefs in America West"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJW_WGT2BZwokRNpvZ4k3lVcs",
-    "slug": "maison-premiere",
-    "name": "Maison Premiere",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
-    "country": "United States",
-    "lat": 40.7142687,
-    "lng": -73.96166459999999,
-    "address": "298 Bedford Ave, Brooklyn, NY 11249, USA",
-    "type": "restaurant",
-    "cuisine_tags": [],
-    "blurb_short": "Brooklyn's James Beard-recognized bar worth building a night around for serious cocktails.",
-    "blurb_long": "When a Brooklyn bar charts a James Beard win for Outstanding Bar Program, it's worth the detour. Maison Premiere earned that recognition in 2016, and it remains a place to roam to when you want drinks done with real intention and craft.",
-    "awards": [
-      {
-        "source": "james-beard",
-        "year": 2016,
-        "category": "Outstanding Bar Program"
       }
     ],
     "status": "active",
@@ -248684,38 +248694,6 @@
         "year": 2026,
         "category": "1-Pin",
         "rank": 1
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJC1IO84VCXz4RdlE5yzrVRes",
-    "slug": "la-petite-maison-lpm-dubai-2",
-    "name": "La Petite Maison (LPM) Dubai",
-    "city_slug": "dubai",
-    "city_display": "Dubai",
-    "country": "United Arab Emirates",
-    "lat": 25.2132921,
-    "lng": 55.2825141999999,
-    "address": "Gate Village No, 8 - Zaa'beel Second - DIFC - Dubai - United Arab Emirates",
-    "type": "bar",
-    "cuisine_tags": [
-      "French"
-    ],
-    "blurb_long": "Charted on OAD's rankings at No. 184 and earning a Pin from Pinnacle Guide, LPM Dubai is worth building a night around. When you roam through Dubai's bar scene, this is the spot we'd point you to for drinks that deliver on every level—a reliable choice that's absolutely worth the detour.",
-    "awards": [
-      {
-        "source": "pinnacle-guide",
-        "year": 2025,
-        "category": "1-Pin",
-        "rank": 1
-      },
-      {
-        "source": "oad",
-        "year": 2025,
-        "category": "No. 184",
-        "rank": 184
       }
     ],
     "status": "active",
@@ -251246,39 +251224,6 @@
     "last_verified": "2026-06-22"
   },
   {
-    "id": "ChIJHZyajD1ZwokREWLihHYSryQ",
-    "slug": "ilis",
-    "name": "ILIS",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
-    "country": "United States",
-    "lat": 40.7334873,
-    "lng": -73.9555292,
-    "address": "150 Green St, Brooklyn, NY 11222, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Nordic"
-    ],
-    "blurb_short": "Nordic cooking with serious ambition and the global recognition to prove it.",
-    "blurb_long": "Brooklyn's Nordic answer to the kind of cooking that earns international attention and keeps it. The approach is rooted in seasonality and restraint, but there's real technical confidence behind each plate. It's the sort of place you build a night around when you want precision without pretense, and a meal that lingers long after.",
-    "awards": [
-      {
-        "source": "oad",
-        "year": 2026,
-        "category": "No. 40",
-        "rank": 40
-      },
-      {
-        "source": "oad",
-        "year": 2025,
-        "category": "No. 61",
-        "rank": 61
-      }
-    ],
-    "status": "closed",
-    "last_verified": "2026-06-22"
-  },
-  {
     "id": "ChIJS69fG0ShXogR-Eys3I85Uqc",
     "slug": "blackberry-farm",
     "name": "Blackberry Farm",
@@ -252551,9 +252496,10 @@
     "id": "ChIJlWmsggZZwokR2yHyFpFXD1o",
     "slug": "house-brooklyn",
     "name": "HOUSE Brooklyn",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7246907,
     "lng": -73.9536601,
     "address": "50 Norman Ave, Brooklyn, NY 11222, USA",
@@ -254057,39 +254003,6 @@
         "year": 2026,
         "category": "No. 223",
         "rank": 223
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJLz5MuTq_woARNr7ORKQW7-4",
-    "slug": "gwen",
-    "name": "Gwen",
-    "city_slug": "hollywood",
-    "city_display": "Hollywood",
-    "country": "United States",
-    "lat": 34.097749,
-    "lng": -118.333428,
-    "address": "6600 Sunset Blvd, Los Angeles, CA 90028, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "New American"
-    ],
-    "blurb_short": "A one Michelin star steakhouse that's charted among the country's finest, worth building a night around.",
-    "blurb_long": "Los Angeles steakhouse cooking elevated to one Michelin star standards—something rare enough to notice. Charted nationally among the best, it's worth the detour when you're after serious, accomplished technique applied to the kind of meal that anchors an evening in this city.",
-    "awards": [
-      {
-        "source": "oad",
-        "year": 2026,
-        "category": "No. 224",
-        "rank": 224
-      },
-      {
-        "source": "oad",
-        "year": 2025,
-        "category": "No. 250",
-        "rank": 250
       }
     ],
     "status": "active",
@@ -257154,9 +257067,10 @@
     "id": "ChIJxxa_ELAPdkgRF2wx7RLroiY",
     "slug": "the-river-cafe",
     "name": "The River Café",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 51.4839987999999,
     "lng": -0.2242253,
     "address": "Thames Wharf, Rainville Rd, London W6 9HA, UK",
@@ -258198,9 +258112,10 @@
     "id": "ChIJB2xIGTFawokRSX4sCtT9djg",
     "slug": "cecconi-s-dumbo",
     "name": "Cecconi's DUMBO",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7034875999999,
     "lng": -73.9916178,
     "address": "55 Water St, Brooklyn, NY 11201, USA",
@@ -260350,9 +260265,10 @@
     "id": "ChIJYUlOWWBZwokRiO-JUciJ0uE",
     "slug": "salt-charcoal",
     "name": "Salt + Charcoal",
-    "city_slug": "brooklyn",
-    "city_display": "Brooklyn",
+    "city_slug": "new-york",
+    "city_display": "New York",
     "country": "United States",
+    "neighborhood": "Brooklyn",
     "lat": 40.7147055,
     "lng": -73.9613,
     "address": "171 Grand St, Brooklyn, NY 11249, USA",
@@ -263741,9 +263657,10 @@
     "id": "ChIJ4cPZaB-_woARtEolLtFFYus",
     "slug": "yamashiro-hollywood",
     "name": "Yamashiro Hollywood",
-    "city_slug": "hollywood",
-    "city_display": "Hollywood",
+    "city_slug": "los-angeles",
+    "city_display": "Los Angeles",
     "country": "United States",
+    "neighborhood": "Hollywood",
     "lat": 34.1057604,
     "lng": -118.3420926,
     "address": "1999 N Sycamore Ave, Los Angeles, CA 90068, USA",
@@ -270651,59 +270568,6 @@
     "blurb_short": "Indian cooking in Mumbai, charted by OAD and backed by serious recognition.",
     "blurb_long": "Mumbai's own flavors run deep here, expressed through Indian cooking that's earned its place on OAD's 2025 list. The recognition speaks to a kitchen that knows how to honor the breadth of the country's culinary traditions with clarity and intention.",
     "awards": [
-      {
-        "source": "asia-50-best-bars",
-        "year": 2023,
-        "category": "No. 35",
-        "rank": 35
-      },
-      {
-        "source": "asia-50-best-bars-51-100",
-        "year": 2025,
-        "category": "No. 69",
-        "rank": 69
-      },
-      {
-        "source": "asia-50-best-bars-51-100",
-        "year": 2024,
-        "category": "No. 59",
-        "rank": 59
-      },
-      {
-        "source": "asia-50-best-bars-51-100",
-        "year": 2022,
-        "category": "No. 76",
-        "rank": 76
-      },
-      {
-        "source": "asia-50-best-restaurants",
-        "year": 2025,
-        "category": "No. 91",
-        "rank": 91
-      },
-      {
-        "source": "asia-50-best-restaurants",
-        "year": 2024,
-        "category": "No. 70",
-        "rank": 70
-      },
-      {
-        "source": "asia-50-best-restaurants-51-100",
-        "year": 2025,
-        "category": "No. 91",
-        "rank": 91
-      },
-      {
-        "source": "asia-50-best-restaurants-51-100",
-        "year": 2024,
-        "category": "No. 70",
-        "rank": 70
-      },
-      {
-        "source": "la-liste",
-        "year": 2026,
-        "category": "91/100"
-      },
       {
         "source": "oad",
         "year": 2025,
@@ -278308,6 +278172,11 @@
         "year": 2025,
         "category": "No. 592",
         "rank": 592
+      },
+      {
+        "source": "la-liste",
+        "year": 2026,
+        "category": "86/100"
       }
     ],
     "status": "closed",
@@ -300984,6 +300853,76 @@
     "last_verified": "2026-06-22"
   },
   {
+    "id": "ChIJ7ZgINYzO5zsRqQBKogByTGY",
+    "slug": "the-bombay-canteen-2",
+    "name": "The Bombay Canteen",
+    "city_slug": "mumbai",
+    "city_display": "Mumbai",
+    "country": "India",
+    "lat": 19.003245,
+    "lng": 72.827576,
+    "address": "Unit-1, Process House, S.B. Road, Kamala Mills, Near Radio Mirchi Office Lower, Parel, Mumbai, Maharashtra 400013, India",
+    "type": "bar",
+    "cuisine_tags": [],
+    "awards": [
+      {
+        "source": "asia-50-best-bars-51-100",
+        "year": 2022,
+        "category": "No. 76",
+        "rank": 76
+      },
+      {
+        "source": "asia-50-best-bars",
+        "year": 2023,
+        "category": "No. 35",
+        "rank": 35
+      },
+      {
+        "source": "asia-50-best-bars-51-100",
+        "year": 2024,
+        "category": "No. 59",
+        "rank": 59
+      },
+      {
+        "source": "asia-50-best-bars-51-100",
+        "year": 2025,
+        "category": "No. 69",
+        "rank": 69
+      },
+      {
+        "source": "asia-50-best-restaurants-51-100",
+        "year": 2024,
+        "category": "No. 70",
+        "rank": 70
+      },
+      {
+        "source": "asia-50-best-restaurants-51-100",
+        "year": 2025,
+        "category": "No. 91",
+        "rank": 91
+      },
+      {
+        "source": "la-liste",
+        "year": 2026,
+        "category": "91/100"
+      },
+      {
+        "source": "asia-50-best-restaurants",
+        "year": 2024,
+        "category": "No. 70",
+        "rank": 70
+      },
+      {
+        "source": "asia-50-best-restaurants",
+        "year": 2025,
+        "category": "No. 91",
+        "rank": 91
+      }
+    ],
+    "status": "active",
+    "last_verified": "2026-06-22"
+  },
+  {
     "id": "ChIJOTgMUa2f4jARaWNuTejtk04",
     "slug": "findthelockerroom",
     "name": "#FindTheLockerRoom",
@@ -301472,7 +301411,7 @@
     "lat": 18.9290078,
     "lng": 72.8326453,
     "address": "Radha Bhavan, 121/123, Nagindas Master Rd, Kala Ghoda, Fort, Mumbai, Maharashtra 400001, India",
-    "type": "restaurant",
+    "type": "bar",
     "cuisine_tags": [],
     "blurb_long": "BAR Americano has charted on Asia's 50 Best Bars at No. 57 and Asia's 50 Best Restaurants at No. 71, plus earned an 88.5 from La Liste—rare triple recognition that makes this Mumbai destination worth building a night around and absolutely worth the detour when you roam through the city.",
     "awards": [
@@ -306425,31 +306364,6 @@
     "last_verified": "2026-06-22"
   },
   {
-    "id": "ChIJbTCMl19ZwokRUohF137p9cQ",
-    "slug": "the-four-horsemen",
-    "name": "The Four Horsemen",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "USA",
-    "lat": 40.7130584,
-    "lng": -73.9573216,
-    "address": "295 Grand St, Brooklyn, NY 11211, USA",
-    "type": "restaurant",
-    "cuisine_tags": [],
-    "blurb_short": "Michelin-starred American cooking in Brooklyn, charted and worth building a night around.",
-    "blurb_long": "This Brooklyn spot has held onto its Michelin star for good reason, delivering American cooking with the kind of confidence that makes it worth the detour. It's the sort of place where the accolade feels earned, not just awarded—dinner here is worth building a night around.",
-    "awards": [
-      {
-        "source": "north-america-50-best-restaurants",
-        "year": 2025,
-        "category": "No. 15",
-        "rank": 15
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
     "id": "ChIJ4chOq8y3t4kRcTTAVjo_JxI",
     "slug": "moon-rabbit-by-kevin-tien",
     "name": "Moon Rabbit by Kevin Tien",
@@ -308056,6 +307970,29 @@
     "last_verified": "2026-06-22"
   },
   {
+    "id": "ChIJZTweiZFCXz4RdaYGx-3ktrA",
+    "slug": "zuma-dubai-2",
+    "name": "Zuma Dubai",
+    "city_slug": "dubai",
+    "city_display": "Dubai",
+    "country": "UAE",
+    "lat": 25.213935,
+    "lng": 55.2833272,
+    "address": "Podium Level, Gate Village - 06 Al Mustaqbal St - Zaa'beel Second - DIFC - Dubai - United Arab Emirates",
+    "type": "restaurant",
+    "cuisine_tags": [],
+    "awards": [
+      {
+        "source": "mena-50-best-restaurants",
+        "year": 2023,
+        "category": "No. 13",
+        "rank": 13
+      }
+    ],
+    "status": "active",
+    "last_verified": "2026-06-22"
+  },
+  {
     "id": "ChIJw9tabJBLHRURRMAxlOIQGxA",
     "slug": "a",
     "name": "a",
@@ -309250,54 +309187,6 @@
     "last_verified": "2026-06-22"
   },
   {
-    "id": "ChIJ9Rn3Stqe4jARvC9rgWzu31Q",
-    "slug": "gaa",
-    "name": "Gaa",
-    "city_slug": "wattana",
-    "city_display": "Wattana",
-    "country": "Thailand",
-    "lat": 13.7273792,
-    "lng": 100.5782473,
-    "address": "46, 1 Soi Sukhumvit 53, Khwaeng Khlong Tan Nuea, Watthana, Krung Thep Maha Nakhon 10110, Thailand",
-    "type": "restaurant",
-    "cuisine_tags": [],
-    "blurb_short": "Charted by La Liste at 95, this Wattana restaurant is worth building a night around.",
-    "blurb_long": "When La Liste charted this at 95 points in 2026, they confirmed what makes Bangkok dining so magnetic. In Wattana, where the city hums with possibility, this is the kind of place worth the detour—serious cooking that earns its recognition without needing to announce it.",
-    "awards": [
-      {
-        "source": "la-liste",
-        "year": 2026,
-        "category": "95/100"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ4cQcDV2uEmsRMxTEHBIe9ZQ",
-    "slug": "quay-restaurant",
-    "name": "Quay Restaurant",
-    "city_slug": "the-rocks",
-    "city_display": "The Rocks",
-    "country": "Australia",
-    "lat": -33.8575687,
-    "lng": 151.2100844,
-    "address": "Upper Level Overseas Passenger Terminal, The Rocks NSW 2000, Australia",
-    "type": "restaurant",
-    "cuisine_tags": [],
-    "blurb_short": "Progressive Australian cuisine that's been charted among the world's finest for years running.",
-    "blurb_long": "Progressive Australian cuisine executed at the highest level, with a tasting menu that unfolds like a love letter to native ingredients and modern technique. It's been charted among the world's finest for years, and the recent two-knife nod confirms what the devoted already know: this is cooking that balances ambition with soul, precision with surprise, each course worth the journey.",
-    "awards": [
-      {
-        "source": "la-liste",
-        "year": 2026,
-        "category": "95/100"
-      }
-    ],
-    "status": "closed",
-    "last_verified": "2026-06-22"
-  },
-  {
     "id": "ChIJd-YbQolF0i0RIipQCICvvsM",
     "slug": "rumari",
     "name": "RUMARI",
@@ -310188,30 +310077,6 @@
     "last_verified": "2026-06-22"
   },
   {
-    "id": "ChIJV78Bu1CwEmsRYWibp1s0y6A",
-    "slug": "saint-peters",
-    "name": "Saint Peters",
-    "city_slug": "paddington",
-    "city_display": "Paddington",
-    "country": "Australia",
-    "lat": -33.9155155,
-    "lng": 151.174618399999,
-    "address": "St Peters NSW 2044, Australia",
-    "type": "restaurant",
-    "cuisine_tags": [],
-    "blurb_short": "Sydney's most ambitious live-fire cooking, anchored by seasonal craft and a three-Knife reputation.",
-    "blurb_long": "Live-fire cooking at its most refined, driven by seasonal discipline and technique that's earned consistent three-Knife recognition. The kitchen works with smoke, flame, and timing that feels instinctive, turning out food that's both primal and precise. It's the kind of cooking that reminds you why Sydney holds its own on any global stage.",
-    "awards": [
-      {
-        "source": "la-liste",
-        "year": 2026,
-        "category": "88/100"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
     "id": "ChIJJTXao35LjEgRRP4agsiaonU",
     "slug": "edinbane-lodge",
     "name": "Edinbane Lodge",
@@ -310568,30 +310433,6 @@
       }
     ],
     "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJTd9AGwJ3X0YRugDia1Gerg0",
-    "slug": "aloe",
-    "name": "Aloë",
-    "city_slug": "alvsjo",
-    "city_display": "Älvsjö",
-    "country": "Sweden",
-    "lat": 59.284251700000006,
-    "lng": 17.9853328,
-    "address": "Svartlösavägen 52, 125 33 Älvsjö, Sweden",
-    "type": "restaurant",
-    "cuisine_tags": [],
-    "blurb_short": "Älvsjö's Aloë has charted on La Liste—worth the detour south from Stockholm's center.",
-    "blurb_long": "Sometimes the best cooking happens outside the spotlight districts. Aloë in Älvsjö, a suburb south of Stockholm, has quietly charted on La Liste with an 86-point score—the kind of recognition that makes it worth building a night around, even if it means roaming beyond the usual paths.",
-    "awards": [
-      {
-        "source": "la-liste",
-        "year": 2026,
-        "category": "86/100"
-      }
-    ],
-    "status": "closed",
     "last_verified": "2026-06-22"
   },
   {
@@ -311958,30 +311799,6 @@
         "source": "la-liste",
         "year": 2026,
         "category": "80.5/100"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJQZJjXt5p1moR8e0l-C91LuM",
-    "slug": "amaru",
-    "name": "Amaru",
-    "city_slug": "armadale",
-    "city_display": "Armadale",
-    "country": "Australia",
-    "lat": -37.8558133,
-    "lng": 145.0249461,
-    "address": "1121 High St, Armadale VIC 3143, Australia",
-    "type": "restaurant",
-    "cuisine_tags": [],
-    "blurb_short": "Melbourne's Amaru holds a Knife from the Best Chef Awards, marking serious ambition.",
-    "blurb_long": "Amaru arrives in Melbourne with confidence and clarity, earning a Knife from the Best Chef Awards in 2025. That recognition signals cooking worth the detour—precision and intent in a city that knows its food.",
-    "awards": [
-      {
-        "source": "la-liste",
-        "year": 2026,
-        "category": "80/100"
       }
     ],
     "status": "active",
@@ -315432,1248 +315249,6 @@
         "source": "la-liste",
         "year": 2026,
         "category": "75/100"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJWZ2zdav40YURFvsU_rU3uaE",
-    "slug": "pujol",
-    "name": "Pujol",
-    "city_slug": "miguel-hidalgo",
-    "city_display": "Miguel Hidalgo",
-    "country": "Mexico",
-    "lat": 19.432376299999998,
-    "lng": -99.1948132,
-    "address": "Tennyson 133, Polanco, Polanco IV Secc, Miguel Hidalgo, 11570 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$$$",
-    "blurb_short": "Chef Enrique Olvera's Mexico City landmark, where ancient tradition and invention sit at the same table.",
-    "blurb_long": "Olvera has done as much as anyone alive to carry Mexican cooking onto the world stage without ever cutting it loose from roots that go back thousands of years — and Pujol, now twenty-five-plus years in, is where it all started. The seasonal tasting menu is the heart of it, but the thing a lot of people come for is the taco omakase, which shares a name with street food and almost nothing else. Whatever you do, don't skip the mole madre — a sauce they've kept going and aged for well over a thousand days. Two Michelin stars and a long run on the World's 50 Best. Come hungry, come curious.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Two Stars"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJbS8EZf8B0oURwwD8B0MpqK0",
-    "slug": "quintonil",
-    "name": "Quintonil",
-    "city_slug": "miguel-hidalgo",
-    "city_display": "Miguel Hidalgo",
-    "country": "Mexico",
-    "lat": 19.4308408,
-    "lng": -99.1917115,
-    "address": "Av. Isaac Newton 55, Polanco, Polanco IV Secc, Miguel Hidalgo, 11560 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$$$",
-    "blurb_short": "Named for a wild Mexican herb, Chef Jorge Vallejo's Mexico City kitchen turns the country's pantry into quiet art.",
-    "blurb_long": "Chef Vallejo is out gathering ingredients every single day — local gardens, orchards, the length of Mexico's astonishing pantry — and it shows up on the plate as some of the prettiest food you'll come across, a leafy little bouquet where a tamale should be, flowers ringing a pool of mole. The room's stylish and genuinely relaxed, run out front by his wife Alejandra Flores, and the all-Mexican wine pairing changes constantly and is well worth a yes. Two Michelin stars and a regular near the top of the World's 50 Best. A bright, big-hearted case for modern Mexican cooking.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Two Stars"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJs1uZdNP-0YUR7xEuCTGxAMM",
-    "slug": "los-cocuyos",
-    "name": "Los Cocuyos",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4302794,
-    "lng": -99.1387977,
-    "address": "Simón Bolívar 59, Centro Histórico de la Cdad. de México, Centro, Cuauhtémoc, 06000 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$",
-    "blurb_short": "Mexican cooking in the capital, recognized with a Michelin Bib Gourmand for quality and value.",
-    "blurb_long": "Mexican cooking anchored in the capital earns its Michelin Bib Gourmand for delivering genuine flavor without pretense. It's the kind of place that reminds you why Mexico City remains one of the world's great eating cities—worth the detour for accessible, honest food.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJy990SgD_0YURNegboxhV2fU",
-    "slug": "la-89",
-    "name": "La 89",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4201303,
-    "lng": -99.158575,
-    "address": "C.Colima 134, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$",
-    "blurb_short": "Michelin-charted Mexican cooking in the capital, worth the detour for quality without the ceremony.",
-    "blurb_long": "This Bib Gourmand spot proves Mexico City's strength in delivering serious Mexican cooking without pretense. Michelin has charted it for good reason—the kind of place worth building a night around when you want the capital's flavors done right, at prices that make sense.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJKe1IfUb50YURJZF3_O1Orsg",
-    "slug": "pink-rambo",
-    "name": "Pink Rambo",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4453052,
-    "lng": -99.16319440000001,
-    "address": "C. Cedro 66, Sta María la Ribera, Cuauhtémoc, 06400 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Contemporary"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Contemporary cooking in Mexico City that's charted by Michelin's Bib Gourmand—smart, approachable, worth the detour.",
-    "blurb_long": "Pink Rambo brings contemporary cooking to Mexico City with the kind of confidence that earns a Michelin Bib Gourmand. It's the sort of place that proves you don't need luxury prices to eat exceptionally well—just point yourself here and let the food speak for itself.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ6861PAD_0YURBCIy7ssSy54",
-    "slug": "ultramarinos-demar",
-    "name": "ULTRAMARINOS DEMAR",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.423471499999998,
-    "lng": -99.1586808,
-    "address": "Mérida 21, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Seafood"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted seafood in Mexico City that's worth the detour for coastal cooking done right.",
-    "blurb_long": "Mexico City's distance from the coast makes great seafood all the more valuable, and this Bib Gourmand spot proves it's worth building a night around. The Michelin recognition speaks to the careful sourcing and skill that define the kind of seafood you'd roam the capital for.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJOVp_-i3_0YURA1takNZDGYU",
-    "slug": "fugaz",
-    "name": "Fugaz",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4238167,
-    "lng": -99.1613177,
-    "address": "C. Orizaba 3b, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Mexican cooking in the capital, recognized with a Michelin Bib Gourmand for quality and value.",
-    "blurb_long": "Fugaz delivers Mexican cooking in the heart of the capital with the kind of quality-to-value ratio that earned it a Michelin Bib Gourmand in 2025. It's proof that Mexico City's dining scene rewards both craft and accessibility in equal measure.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ-8zCEcv_0YURIByYeea8JdM",
-    "slug": "plonk",
-    "name": "PLONK",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.410373099999997,
-    "lng": -99.1693688,
-    "address": "Iztaccihuatl 52, Hipódromo, Cuauhtémoc, 06100 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted Mexican cooking in the capital, worth the detour for approachable, accomplished plates.",
-    "blurb_long": "PLONK earned its Michelin Bib Gourmand for delivering exactly what Mexico City does best: Mexican cooking that's both rooted and confident, without the ceremony or the bill of fine dining. It's the kind of place worth building a night around when you want substance over spectacle.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ3fK3p_gB0oURgOC4DpJkSCo",
-    "slug": "comedor-jacinta",
-    "name": "Comedor Jacinta",
-    "city_slug": "miguel-hidalgo",
-    "city_display": "Miguel Hidalgo",
-    "country": "Mexico",
-    "lat": 19.430068,
-    "lng": -99.1962132,
-    "address": "Virgilio 40, Polanco, Polanco IV Secc, Miguel Hidalgo, 11550 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted Mexican cooking in the capital, worth the detour for honest, accessible flavors.",
-    "blurb_long": "Comedor Jacinta earned its Bib Gourmand for delivering the kind of Mexican cooking that reminds you why you came to this city in the first place—generous, grounded, and worth building a night around. It's the rare place where recognition feels like confirmation, not surprise.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJYds7cuD50YURyD2wYfNGCDs",
-    "slug": "siembra-comedor",
-    "name": "Siembra Comedor",
-    "city_slug": "miguel-hidalgo",
-    "city_display": "Miguel Hidalgo",
-    "country": "Mexico",
-    "lat": 19.4374051,
-    "lng": -99.184164,
-    "address": "Av. Ejército Nacional Mexicano 314, Chapultepec Morales, Polanco V Secc, Miguel Hidalgo, 11560 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$",
-    "blurb_short": "Michelin-charted Mexican cooking in the capital that's worth the detour without the splurge.",
-    "blurb_long": "Siembra Comedor delivers the kind of Mexican cooking that earns a Michelin Bib Gourmand—serious, rooted, and priced so you can actually return. It's worth building a night around when you're ready to roam beyond the obvious and let the capital's deeper flavors come through.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ26Gpazn_0YURtu2DV7CbGZE",
-    "slug": "galanga",
-    "name": "Galanga",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4129991999999,
-    "lng": -99.1626812999999,
-    "address": "Monterrey 204, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Thai"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted Thai in Mexico City that's earned its Bib Gourmand for good reason.",
-    "blurb_long": "Finding confident Thai cooking in Mexico City is easier than you'd think, and Galanga is proof. Michelin has charted it with a Bib Gourmand through 2025, the kind of recognition that means serious flavor without the ceremony. Worth the detour when you're roaming the city.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ_SAr-Pz_0YURKHUdChyefYY",
-    "slug": "pargot-restaurante",
-    "name": "Pargot Restaurante",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4135658,
-    "lng": -99.1571464,
-    "address": "Córdoba 212, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Mexican cooking in the capital, recognized with a Michelin Bib Gourmand in 2025.",
-    "blurb_long": "Pargot Restaurante brings Mexican cooking to the table with the kind of care Michelin noticed when awarding it a Bib Gourmand in 2025. In a capital defined by its culinary depth, that recognition points to real value and genuine flavor worth the detour.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJez8vvy__0YURP0rx5WhEig4",
-    "slug": "contramar",
-    "name": "Contramar",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4195793,
-    "lng": -99.1671526,
-    "address": "Durango 200, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Seafood"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin Bib Gourmand seafood in Mexico City, charted by OAD and worth the detour.",
-    "blurb_long": "This is the seafood spot in Mexico City worth building a night around. Recognized with a Michelin Bib Gourmand and charted by OAD, Contramar brings the ocean to the capital with the kind of polish and consistency that earns serious trust from locals and travelers alike.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJb2bGJKv40YURSRf5qxN_yoA",
-    "slug": "raiz",
-    "name": "Raíz",
-    "city_slug": "miguel-hidalgo",
-    "city_display": "Miguel Hidalgo",
-    "country": "Mexico",
-    "lat": 19.4320246,
-    "lng": -99.1865747,
-    "address": "Schiller 331, Chapultepec Morales, Polanco V Secc, Miguel Hidalgo, 11560 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Contemporary"
-    ],
-    "price_tier": "$",
-    "blurb_short": "Contemporary cooking in Mexico City, charted by Michelin with a Bib Gourmand for approachable excellence.",
-    "blurb_long": "Raíz makes contemporary cooking feel approachable in Mexico City, the kind of place worth building a night around without the ceremony. Michelin pointed it out with a Bib Gourmand in 2025, a recognition that signals both quality and value in a city where both matter.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJFQm9dQr_0YUR_e1Y_Ar5QlY",
-    "slug": "filigrana",
-    "name": "Filigrana",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4175768,
-    "lng": -99.1739985,
-    "address": "Av. Veracruz 62, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Mexican cooking in the capital, recognized with a Michelin Bib Gourmand in 2025.",
-    "blurb_long": "Filigrana serves Mexican food in Mexico City with the kind of quality-to-value balance that earned it a Michelin Bib Gourmand in 2025. The recognition speaks to cooking that honors the country's traditions without pretense—worth the detour when you're roaming the capital.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ7a-_e0j_0YUR7PyT4k0gCys",
-    "slug": "aleli",
-    "name": "Aleli",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4202281,
-    "lng": -99.1701387,
-    "address": "Sinaloa 141, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Spanish"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Spanish cooking in Mexico City, recognized with a Michelin Bib Gourmand in 2025.",
-    "blurb_long": "Aleli brings Spanish cooking to Mexico City with the kind of quality and value that earned it a Michelin Bib Gourmand in 2025. The recognition speaks to careful work—honest flavors, fair prices, and the sort of meal worth building a night around.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJH-kaX5X50YURRySENQ6rOyw",
-    "slug": "caracol-de-mar",
-    "name": "Caracol de Mar",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4089407,
-    "lng": -99.1735312,
-    "address": "Campeche 340, Colonia Condesa, Cuauhtémoc, 06100 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted Mexican cooking in the capital, worth the detour for honest, accessible flavors.",
-    "blurb_long": "Caracol de Mar earned its Bib Gourmand for a reason—this is Mexican cooking that honors the country's coastal traditions without pretense. In a city where you could roam for weeks and still not exhaust the options, Michelin's recognition here points you to something genuinely worth building a night around.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ6Yh4chz_0YURut_rRG8Ikw4",
-    "slug": "vigneron",
-    "name": "Vigneron",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4145413,
-    "lng": -99.1603471,
-    "address": "Jalapa 181, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Contemporary"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Contemporary cooking in Mexico City that's earned Michelin's Bib Gourmand — quality worth the detour.",
-    "blurb_long": "Vigneron has charted its place in Mexico City's contemporary scene with a Michelin Bib Gourmand, the kind of recognition that points you to serious cooking at approachable prices. It's the sort of spot worth building a night around when you're roaming the capital.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJE2QjOAD_0YURgYassGxtrpU",
-    "slug": "tacos-del-valle-roma-norte",
-    "name": "Tacos del Valle (Roma Norte)",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4178796,
-    "lng": -99.1607078999999,
-    "address": "Av. Álvaro Obregón 130, Roma Nte. Cuauhtémoc, Roma Nte., Álvaro Obregón, 06700 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$",
-    "blurb_short": "Michelin-charted Mexican cooking in Roma Norte that makes the case for staying close.",
-    "blurb_long": "This Roma Norte spot earned its Bib Gourmand for a reason—it's the kind of Mexican cooking that reminds you why you came to the city in the first place. Worth building a night around, especially when you want to roam one of the capital's most vital neighborhoods.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJz312zu__0YURaZJReDCl2uQ",
-    "slug": "jowong",
-    "name": "Jowong",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.416727899999998,
-    "lng": -99.1769747,
-    "address": "C. de Pachuca 51, Colonia Condesa, Cuauhtémoc, 06140 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Korean"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Korean cooking in Mexico City, recognized with a Michelin Bib Gourmand in 2025.",
-    "blurb_long": "Korean cooking has found serious footing in Mexico City, and Jowong earned a Michelin Bib Gourmand in 2025 for delivering exactly what the distinction promises: quality and value in equal measure, worth the detour when you're roaming the capital.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJEcBouVr_0YURj4yco-UwNco",
-    "slug": "voraz",
-    "name": "Voraz",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4087489,
-    "lng": -99.1654124,
-    "address": "Aguascalientes 93, Roma Sur, Cuauhtémoc, 06760 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted Mexican cooking in the capital, worth the detour for approachable, confident flavors.",
-    "blurb_long": "Voraz serves the kind of Mexican cooking that earns a Michelin Bib Gourmand: rooted, generous, and priced to return to often. In a city where tradition runs deep and competition runs deeper, this is worth building a night around when you want something both serious and welcoming.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJHUMfYOcc0oURJKAtQ97QjUk",
-    "slug": "taqueria-el-jarocho",
-    "name": "Taquería El Jarocho",
-    "city_slug": "cuauhtemoc",
-    "city_display": "Cuauhtémoc",
-    "country": "Mexico",
-    "lat": 19.4112354,
-    "lng": -99.1659883,
-    "address": "Tapachula 94, Roma Nte., Cuauhtémoc, 06760 Ciudad de México, CDMX, Mexico",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$",
-    "blurb_short": "Michelin-charted Mexican cooking in the capital, recognized with a Bib Gourmand in 2025.",
-    "blurb_long": "Mexican City's taquería tradition finds confident expression here, earning a Michelin Bib Gourmand in 2025. The recognition speaks to cooking that honors the cuisine's depth without pretense — exactly what you'd hope to find in the capital.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJB14pRT9FwokRnMbBprTy7RI",
-    "slug": "yemenat",
-    "name": "Yemenat",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6273279,
-    "lng": -74.0233464,
-    "address": "7721 5th Ave, Brooklyn, NY 11209, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Middle Eastern"
-    ],
-    "price_tier": "$",
-    "blurb_short": "Middle Eastern cooking in Brooklyn, charted by Michelin with a Bib Gourmand for accessible excellence.",
-    "blurb_long": "Brooklyn's Middle Eastern dining scene gets a confident nod here, where a Michelin Bib Gourmand—renewed through 2025—points you to cooking worth building a night around. The kind of place that earns recognition not through flash, but through flavors that feel both grounded and essential.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJoWqUUFhFwokRgLdrJbh0bBg",
-    "slug": "tanoreen",
-    "name": "Tanoreen",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6307915999999,
-    "lng": -74.0277864999999,
-    "address": "7523 3rd Ave, Brooklyn, NY 11209, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Middle Eastern"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted Middle Eastern cooking in Brooklyn worth building a night around.",
-    "blurb_long": "This Brooklyn spot brings the warmth and depth of Middle Eastern cooking to the table with enough confidence to earn a Michelin Bib Gourmand. It's the kind of place locals point you to when they want you to understand what the borough does best—worth the detour.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJrwxm-gpFwokR9f10RT15Ni8",
-    "slug": "chuan-tian-xia",
-    "name": "Chuan Tian Xia",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6396357,
-    "lng": -74.0091003,
-    "address": "5502 7th Ave, Brooklyn, NY 11220, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Chinese"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Bib Gourmand-charted Chinese cooking in Brooklyn worth building a night around.",
-    "blurb_long": "Chuan Tian Xia is the kind of Chinese restaurant Michelin points you to when quality and value align perfectly—its Bib Gourmand recognition through 2025 confirms what makes it worth the detour across Brooklyn for cooking that earns serious trust.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ0VWwJI9awokRoiFWFqYZMQ8",
-    "slug": "hometown-bar-b-que",
-    "name": "Hometown Bar-B-Que",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6749167,
-    "lng": -74.0161583,
-    "address": "454 Van Brunt St, Brooklyn, NY 11231, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Barbecue"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Brooklyn barbecue worth the detour, charted with a Michelin Bib Gourmand for good reason.",
-    "blurb_long": "Brooklyn knows how to handle smoke and fire, and this barbecue spot has earned its Michelin Bib Gourmand through 2025 for exactly that. It's the kind of place worth building a night around when you're in the neighborhood and craving real American barbecue done right.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJl2K8TWdbwokRVLXghh72lXs",
-    "slug": "lore",
-    "name": "LORE",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6630819999999,
-    "lng": -73.9844024,
-    "address": "441 7th Ave, Brooklyn, NY 11215, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Contemporary"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Contemporary cooking in Brooklyn that's earned Michelin's Bib Gourmand for accessible excellence.",
-    "blurb_long": "LORE brings contemporary cooking to Brooklyn with the kind of clarity that earns a Michelin Bib Gourmand—recognition for plates worth building a night around without the steep check. It's charted for thoughtful, modern flavors that feel right at home in this borough.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJUTD-vEFbwokRhahGeJOPB2Q",
-    "slug": "sal-tang-s",
-    "name": "Sal Tang's",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.685317,
-    "lng": -74.000428,
-    "address": "521 Hicks St, Brooklyn, NY 11231, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Chinese Contemporary"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Contemporary Chinese cooking in Brooklyn that's charted with a Michelin Bib Gourmand for good reason.",
-    "blurb_long": "If you're looking to roam Brooklyn for contemporary Chinese cooking that knows what it's doing, point yourself here. The Michelin Bib Gourmand recognition—most recently in 2025—is the kind of trust signal worth building a night around, especially when thoughtful technique meets approachable ambition.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ_zbudV1bwokRyxgi4zQEn0Y",
-    "slug": "untable",
-    "name": "Untable",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6835757,
-    "lng": -73.9994403,
-    "address": "529 Henry St, Brooklyn, NY 11231, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Thai"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted Thai in Brooklyn that's worth building a night around for precise, confident cooking.",
-    "blurb_long": "This Brooklyn Thai spot earned its Bib Gourmand for a reason — the kind of precise, layered cooking that makes you want to roam across the borough. Michelin keeps charting it year after year, and that trust points you to something genuinely worth the detour.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJa7TQMZFbwokRjivvo3SFNDQ",
-    "slug": "runner-up",
-    "name": "Runner Up",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6656268,
-    "lng": -73.9822739,
-    "address": "499 11th St, Brooklyn, NY 11215, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "American"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "American cooking in Brooklyn with a Michelin Bib Gourmand — worth the detour across the bridge.",
-    "blurb_long": "Runner Up has charted its place in Brooklyn's dining scene with American cooking that earned a Michelin Bib Gourmand in 2025. The recognition points you to exactly the kind of meal worth building a night around — thoughtful, skilled, and rooted in the borough's creative energy.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJqzhkS7dbwokRtGCdHcorPvU",
-    "slug": "miss-ada",
-    "name": "Miss Ada",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.689425,
-    "lng": -73.9723664,
-    "address": "184 Dekalb Ave, Brooklyn, NY 11205, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Israeli"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted Israeli cooking in Brooklyn worth building a night around.",
-    "blurb_long": "Miss Ada brings the bright, generous flavors of Israeli cooking to Brooklyn with the kind of confidence that earned it a Michelin Bib Gourmand. It's the sort of place we'd point you to when you're ready to roam beyond the usual—worth the detour for cooking that feels both grounded and alive.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJk6_emFpbwokReeza0hzar2c",
-    "slug": "cafe-mars",
-    "name": "Café Mars",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6778854999999,
-    "lng": -73.9859784,
-    "address": "272 3rd Ave, Brooklyn, NY 11215, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Contemporary"
-    ],
-    "price_tier": "$$$",
-    "blurb_short": "Contemporary cooking in Brooklyn with Michelin Bib Gourmand recognition—worth building a night around.",
-    "blurb_long": "Café Mars has charted itself as one of Brooklyn's contemporary dining addresses worth the detour, earning a Michelin Bib Gourmand for approachable cooking that doesn't compromise on ambition. It's the kind of place where the borough's creative energy meets real skill at the stove.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJgbi06LFbwokRGr3pch2KH_A",
-    "slug": "agi-s-counter",
-    "name": "Agi's Counter",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6700133,
-    "lng": -73.9583818,
-    "address": "818 Franklin Ave, Brooklyn, NY 11225, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Creative"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Creative cooking in Brooklyn that's earned a Michelin Bib Gourmand — worth the detour.",
-    "blurb_long": "Agi's Counter brings creative cooking to Brooklyn with the kind of confidence that's earned it a Michelin Bib Gourmand. It's the sort of place worth building a night around when you're ready to roam beyond the usual and see what inventive hands can do.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJVVXpcQBbwokRtKzSlyOoW1Y",
-    "slug": "haenyeo",
-    "name": "Haenyeo",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6751935,
-    "lng": -73.9811059,
-    "address": "239 5th Ave, Brooklyn, NY 11215, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Korean"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Brooklyn Korean cooking charted by Michelin's Bib Gourmand—worth the detour for serious, approachable flavors.",
-    "blurb_long": "Haenyeo brings Korean cooking to Brooklyn with the kind of confidence that earns a Michelin Bib Gourmand. It's the sort of place we point you to when you want flavors that feel both serious and approachable, worth building a night around without the fuss.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJQ928SqRbwokRKuID55C7xFo",
-    "slug": "alta-calidad",
-    "name": "Alta Calidad",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6801337,
-    "lng": -73.9682323999999,
-    "address": "552 Vanderbilt Ave, Brooklyn, NY 11238, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Mexican cooking in Brooklyn, recognized with a Michelin Bib Gourmand through 2025.",
-    "blurb_long": "Brooklyn's Mexican food scene has plenty to offer, and Alta Calidad has earned consistent recognition — a Michelin Bib Gourmand through 2025 — for delivering the kind of cooking that feels both honest and worth the detour.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJJ5J8yJ9bwokRjpOkpYgii5k",
-    "slug": "chavela-s",
-    "name": "Chavela's",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6734559,
-    "lng": -73.9572247,
-    "address": "736 Franklin Ave, Brooklyn, NY 11238, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Brooklyn Mexican cooking charted by Michelin's Bib Gourmand—worth building a night around.",
-    "blurb_long": "Chavela's brings the kind of Mexican cooking that earns a Michelin Bib Gourmand and keeps it year after year. It's the sort of place we'd point you to when you want something beyond the usual Brooklyn lineup—worth the detour, worth building a night around.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJOTob_r1bwokRtUoNNbcmw_g",
-    "slug": "speedy-romeo",
-    "name": "Speedy Romeo",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.6875,
-    "lng": -73.96,
-    "address": "376 Classon Ave, Brooklyn, NY 11238, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Pizza"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted pizza in Brooklyn that's worth building a night around.",
-    "blurb_long": "Brooklyn pizza done with enough precision to earn a Michelin Bib Gourmand year after year. It's the kind of place that proves the borough's pizza reputation isn't just hype—worth the detour when you're roaming the city and want something both trusted and satisfying.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ9ev4B-FbwokRhzTqc9KP5-I",
-    "slug": "shalom-japan",
-    "name": "Shalom Japan",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.7091732999999,
-    "lng": -73.9557774,
-    "address": "310 S 4th St rear, Brooklyn, NY 11211, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Fusion"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Fusion cooking in Brooklyn, charted by Michelin's Bib Gourmand—point you to something different.",
-    "blurb_long": "Fusion cooking done with enough confidence to earn Michelin's Bib Gourmand through 2025, this Brooklyn spot is worth building a night around when you roam the borough. The recognition says what you need to know: good value, serious intent, something genuinely different.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJbQc9ABZZwokRMAK6C-Ekxg4",
-    "slug": "bonnie-s",
-    "name": "Bonnie's",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.7178057,
-    "lng": -73.9464373,
-    "address": "398 Manhattan Ave, Brooklyn, NY 11211, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Cantonese"
-    ],
-    "price_tier": "$$$",
-    "blurb_short": "Cantonese cooking in Brooklyn, recognized by Michelin's Bib Gourmand for quality and value.",
-    "blurb_long": "Brooklyn's Cantonese dining scene gets a confident nod from Michelin's Bib Gourmand, a recognition that flags quality without the formality. The kind of place that delivers on flavor and fairness in equal measure—charted for good reason.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJWV3KRQBZwokRZlT-Om1I_1E",
-    "slug": "roberta-s",
-    "name": "Roberta’s",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.750707,
-    "lng": -73.99157799999999,
-    "address": "One Penn Plaza, Plaza 33 East, New York, NY 10119, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Pizza"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Brooklyn pizza earning Michelin's Bib Gourmand — excellent value in a borough built on it.",
-    "blurb_long": "Brooklyn knows pizza, and Roberta's has earned Michelin's Bib Gourmand through 2025 for doing it with both skill and value. In a city where pizza is serious business, that recognition speaks to consistent, confident work worth the detour.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJmeKSwPFdwokRZ--71Rq0GBY",
-    "slug": "sobre-masa",
-    "name": "Sobre Masa",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.7062811,
-    "lng": -73.9313702,
-    "address": "52 Harrison Pl, Brooklyn, NY 11237, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Michelin-charted Mexican cooking in Brooklyn worth building a night around.",
-    "blurb_long": "Sobre Masa brings the kind of Mexican cooking to Brooklyn that earns a Michelin Bib Gourmand and keeps it—this is the real thing, worth the detour. When you roam this far, you want somewhere that delivers, and this is exactly where we'd point you.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJl-l0rSdZwokReqiZ7S2yx0A",
-    "slug": "pierozek",
-    "name": "Pierozek",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.7230109,
-    "lng": -73.9502255,
-    "address": "592 Manhattan Ave, Brooklyn, NY 11222, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Polish"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Polish cooking in Brooklyn, charted by Michelin with a Bib Gourmand through 2025.",
-    "blurb_long": "Pierozek brings Polish cooking to Brooklyn with the kind of confidence that earns a Michelin Bib Gourmand year after year, most recently in 2025. It's worth the detour for anyone ready to roam beyond the usual—honest, well-executed food that proves tradition has plenty to say.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJpVRN4RTrhkcRX2ugXuHaeZM",
-    "slug": "ristorante-olmo",
-    "name": "Ristorante Olmo",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 45.4869300999999,
-    "lng": 9.01212799999999,
-    "address": "Piazza della Chiesa, 7, 20007 Cornaredo MI, Italy",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$$",
-    "blurb_short": "Cornaredo's Michelin-starred modern kitchen, charted and confident just beyond Milan.",
-    "blurb_long": "Ristorante Olmo brings modern cuisine to Cornaredo with a Michelin star that signals serious ambition just beyond Milan's reach. The cooking is contemporary, precise, and worth the detour when you're ready to roam past the city center.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJpx9oNwBZwokRadMPBkSKnvY",
-    "slug": "taqueria-el-chato",
-    "name": "Taqueria El Chato",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.7235891,
-    "lng": -73.9505516,
-    "address": "620 Manhattan Ave, Brooklyn, NY 11222, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$",
-    "blurb_short": "Mexican cooking in Brooklyn that's earned Michelin's Bib Gourmand—charted, trusted, worth the detour.",
-    "blurb_long": "Taqueria El Chato brings Mexican cooking to Brooklyn with the kind of consistency that earned it a Michelin Bib Gourmand in 2025. It's the sort of place we'd point you to when you want something satisfying without ceremony—proof that the borough's taqueria scene can absolutely be worth building a night around.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ4-bYSvxbwokRPhLlLQFzOEo",
-    "slug": "win-son",
-    "name": "Win Son",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.7074661,
-    "lng": -73.9434952,
-    "address": "159 Graham Ave, Brooklyn, NY 11206, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Chinese"
-    ],
-    "price_tier": "$$$",
-    "blurb_short": "Chinese cooking in Brooklyn charted by Michelin's Bib Gourmand—worth building a night around.",
-    "blurb_long": "Win Son brings Chinese cooking to Brooklyn with the kind of confidence that earns a Michelin Bib Gourmand year after year. It's the sort of place we'd point you to when you want something worth the detour, where the recognition tells you everything you need to know about what's on the plate.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
-      }
-    ],
-    "status": "active",
-    "last_verified": "2026-06-22"
-  },
-  {
-    "id": "ChIJ4ahOydVYwokR7cBu4R_8BXo",
-    "slug": "gordo-s-cantina",
-    "name": "Gordo's Cantina",
-    "city_slug": "new-york",
-    "city_display": "New York",
-    "country": "United States",
-    "lat": 40.7049645,
-    "lng": -73.9175717999999,
-    "address": "140 St Nicholas Ave, Brooklyn, NY 11237, USA",
-    "type": "restaurant",
-    "cuisine_tags": [
-      "Mexican"
-    ],
-    "price_tier": "$$",
-    "blurb_short": "Mexican cooking in Brooklyn with the kind of Michelin recognition that makes it worth the detour.",
-    "blurb_long": "Gordo's Cantina brings serious Mexican cooking to Brooklyn, charted with a Michelin Bib Gourmand that signals quality without pretense. It's the kind of place worth building a night around when you roam this part of the city and want something both satisfying and celebrated.",
-    "awards": [
-      {
-        "source": "michelin",
-        "year": 2025,
-        "category": "Bib Gourmand"
       }
     ],
     "status": "active",

@@ -702,15 +702,6 @@
     "venue_count": 1
   },
   {
-    "slug": "alvaro-obregon",
-    "display": "Álvaro Obregón",
-    "country": "Mexico",
-    "country_code": "MX",
-    "lat": 19.3253347,
-    "lng": -99.20734644999996,
-    "venue_count": 2
-  },
-  {
     "slug": "alverca-do-ribatejo",
     "display": "Alverca do Ribatejo",
     "country": "Portugal",
@@ -727,15 +718,6 @@
     "lat": 44.8259045,
     "lng": 1.6922347,
     "venue_count": 1
-  },
-  {
-    "slug": "alvsjo",
-    "display": "Älvsjö",
-    "country": "Sweden",
-    "country_code": "SE",
-    "lat": 59.284252,
-    "lng": 17.985333,
-    "venue_count": 0
   },
   {
     "slug": "alzira",
@@ -1266,15 +1248,6 @@
     "country_code": "BE",
     "lat": 49.6625454,
     "lng": 5.8437645,
-    "venue_count": 1
-  },
-  {
-    "slug": "armadale",
-    "display": "Armadale",
-    "country": "Australia",
-    "country_code": "AU",
-    "lat": -37.8558133,
-    "lng": 145.0249461,
     "venue_count": 1
   },
   {
@@ -3769,15 +3742,6 @@
     "lat": 42.3326522,
     "lng": -71.1188664,
     "venue_count": 1
-  },
-  {
-    "slug": "brooklyn",
-    "display": "Brooklyn",
-    "country": "United States",
-    "country_code": "US",
-    "lat": 40.705081,
-    "lng": -73.9613,
-    "venue_count": 37
   },
   {
     "slug": "bruges",
@@ -6487,15 +6451,6 @@
     "lat": 51.6655916,
     "lng": 5.2294132,
     "venue_count": 1
-  },
-  {
-    "slug": "cuauhtemoc",
-    "display": "Cuauhtémoc",
-    "country": "Mexico",
-    "country_code": "MX",
-    "lat": 19.4175768,
-    "lng": -99.16319440000001,
-    "venue_count": 17
   },
   {
     "slug": "cucuron",
@@ -10566,15 +10521,6 @@
     "venue_count": 1
   },
   {
-    "slug": "hollywood",
-    "display": "Hollywood",
-    "country": "United States",
-    "country_code": "US",
-    "lat": 34.1017547,
-    "lng": -118.3377603,
-    "venue_count": 2
-  },
-  {
     "slug": "holt",
     "display": "Holt",
     "country": "United Kingdom",
@@ -13909,9 +13855,9 @@
     "display": "Los Angeles",
     "country": "United States",
     "country_code": "US",
-    "lat": 34.066500399999995,
-    "lng": -118.3084997,
-    "venue_count": 102
+    "lat": 34.0665901,
+    "lng": -118.30855,
+    "venue_count": 103
   },
   {
     "slug": "los-gatos",
@@ -14215,8 +14161,8 @@
     "display": "Madonna di Campiglio",
     "country": "Italy",
     "country_code": "IT",
-    "lat": 46.223505,
-    "lng": 10.824616,
+    "lat": 46.223456,
+    "lng": 10.824313,
     "venue_count": 0
   },
   {
@@ -15196,9 +15142,9 @@
     "display": "Mexico City",
     "country": "Mexico",
     "country_code": "MX",
-    "lat": 19.41967755,
-    "lng": -99.16572495,
-    "venue_count": 62
+    "lat": 19.4195793,
+    "lng": -99.1659883,
+    "venue_count": 63
   },
   {
     "slug": "mgarr",
@@ -15244,15 +15190,6 @@
     "lat": 34.4946258999999,
     "lng": 136.7103253,
     "venue_count": 3
-  },
-  {
-    "slug": "miguel-hidalgo",
-    "display": "Miguel Hidalgo",
-    "country": "Mexico",
-    "country_code": "MX",
-    "lat": 19.4320246,
-    "lng": -99.1917115,
-    "venue_count": 5
   },
   {
     "slug": "milan",
@@ -16030,15 +15967,6 @@
     "venue_count": 19
   },
   {
-    "slug": "mosu",
-    "display": "Mosu",
-    "country": "South Korea",
-    "country_code": "KR",
-    "lat": 37.5411532,
-    "lng": 126.9961548,
-    "venue_count": 1
-  },
-  {
     "slug": "mougins",
     "display": "Mougins",
     "country": "France",
@@ -16143,8 +16071,8 @@
     "country": "India",
     "country_code": "IN",
     "lat": 19.003245,
-    "lng": 72.83298649999999,
-    "venue_count": 13
+    "lng": 72.83281589999999,
+    "venue_count": 14
   },
   {
     "slug": "mungia",
@@ -16718,9 +16646,9 @@
     "display": "New York",
     "country": "United States",
     "country_code": "US",
-    "lat": 40.73331525,
-    "lng": -73.9871036,
-    "venue_count": 330
+    "lat": 40.7330271,
+    "lng": -73.98666989999995,
+    "venue_count": 340
   },
   {
     "slug": "newberg",
@@ -17981,15 +17909,6 @@
     "lat": 58.550261,
     "lng": 23.281697,
     "venue_count": 0
-  },
-  {
-    "slug": "paddington",
-    "display": "Paddington",
-    "country": "Australia",
-    "country_code": "AU",
-    "lat": -33.9155155,
-    "lng": 151.174618399999,
-    "venue_count": 1
   },
   {
     "slug": "paderborn",
@@ -24643,15 +24562,6 @@
     "venue_count": 6
   },
   {
-    "slug": "the-rocks",
-    "display": "The Rocks",
-    "country": "Australia",
-    "country_code": "AU",
-    "lat": -33.857569,
-    "lng": 151.210084,
-    "venue_count": 0
-  },
-  {
     "slug": "theoule-sur-mer",
     "display": "Théoule-sur-Mer",
     "country": "France",
@@ -26890,15 +26800,6 @@
     "country_code": "BE",
     "lat": 50.8135319999999,
     "lng": 2.63880169999999,
-    "venue_count": 1
-  },
-  {
-    "slug": "wattana",
-    "display": "Wattana",
-    "country": "Thailand",
-    "country_code": "TH",
-    "lat": 13.7273792,
-    "lng": 100.5782473,
     "venue_count": 1
   },
   {
