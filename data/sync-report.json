@@ -1,30 +1,46 @@
 {
-  "generated_at": "2026-06-22T21:07:34.664Z",
+  "generated_at": "2026-06-23T17:38:45.169917Z",
   "venue_count": 10298,
   "city_count": 3087,
   "active_venue_count": 9964,
-  "bars": 717,
-  "curated_photos": 0,
-  "death_co_rows": [
+  "bar_count": 664,
+  "blurb_long_count": 10059,
+  "validation_errors": 0,
+  "spot_checks": {
+    "restaurant-mirazur": {
+      "found": true,
+      "blurb_long_head": "Tucked onto the coast right where France meets Italy, Mirazur has the kind of Me"
+    },
+    "le-bernardin": {
+      "found": true,
+      "blurb_long_head": "Nearly everything here is in service of balance — between simplicity and refinem"
+    }
+  },
+  "sample": [
     {
-      "name": "Death & Co East Village",
-      "city": "New York",
-      "slug": "death-co-east-village"
+      "slug": "piazza-duomo",
+      "city_slug": "alba",
+      "name": "Piazza Duomo"
     },
     {
-      "name": "Death & Co. D.C.",
-      "city": "Washington",
-      "slug": "death-co-d-c"
+      "slug": "le-clos-des-sens",
+      "city_slug": "annecy",
+      "name": "Le Clos Des Sens"
     },
     {
-      "name": "Death & Co Los Angeles",
-      "city": "Los Angeles",
-      "slug": "death-co-los-angeles"
+      "slug": "zilte",
+      "city_slug": "antwerp",
+      "name": "Zilte"
     },
     {
-      "name": "Death & Co Denver",
-      "city": "Denver",
-      "slug": "death-co-denver"
+      "slug": "casa-marcial",
+      "city_slug": "arriondas",
+      "name": "Casa Marcial"
+    },
+    {
+      "slug": "moor-hall-restaurant-with-rooms",
+      "city_slug": "aughton",
+      "name": "Moor Hall Restaurant with Rooms"
     }
   ]
 }
