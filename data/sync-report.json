@@ -1,46 +1,13 @@
 {
-  "generated_at": "2026-06-23T17:38:45.169917Z",
-  "venue_count": 10298,
-  "city_count": 3087,
-  "active_venue_count": 9964,
-  "bar_count": 664,
-  "blurb_long_count": 10059,
-  "validation_errors": 0,
-  "spot_checks": {
-    "restaurant-mirazur": {
-      "found": true,
-      "blurb_long_head": "Tucked onto the coast right where France meets Italy, Mirazur has the kind of Me"
-    },
-    "le-bernardin": {
-      "found": true,
-      "blurb_long_head": "Nearly everything here is in service of balance — between simplicity and refinem"
-    }
-  },
-  "sample": [
-    {
-      "slug": "piazza-duomo",
-      "city_slug": "alba",
-      "name": "Piazza Duomo"
-    },
-    {
-      "slug": "le-clos-des-sens",
-      "city_slug": "annecy",
-      "name": "Le Clos Des Sens"
-    },
-    {
-      "slug": "zilte",
-      "city_slug": "antwerp",
-      "name": "Zilte"
-    },
-    {
-      "slug": "casa-marcial",
-      "city_slug": "arriondas",
-      "name": "Casa Marcial"
-    },
-    {
-      "slug": "moor-hall-restaurant-with-rooms",
-      "city_slug": "aughton",
-      "name": "Moor Hall Restaurant with Rooms"
-    }
-  ]
+  "generated_at": "2026-06-24T19:59:48.623397Z",
+  "venues_total": 10277,
+  "venues_active": 9943,
+  "venues_bars": 715,
+  "venues_bars_active": 662,
+  "cities_total": 3071,
+  "blurbs_long_filled": 10038,
+  "blurbs_short_filled": 9352,
+  "batch2_folds_applied": 16,
+  "collisions_remaining": 263,
+  "pipeline_run": "June 24 2026"
 }
