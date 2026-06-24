@@ -27,6 +27,12 @@ const VENUES = venuesData as unknown as Venue[];
 const CITIES = citiesData as unknown as City[];
 const INDEX = indexData as unknown as VenueIndexEntry[];
 
+// Defensive: tolerate venues missing the `awards` array (e.g. when the
+// upstream JSON schema drifts or sync is skipped on a fresh checkout).
+for (const v of VENUES) {
+  if (!Array.isArray((v as any).awards)) (v as any).awards = [];
+}
+
 // -------------------------------------------------------------------------
 // Indexes (built once on import)
 // -------------------------------------------------------------------------
