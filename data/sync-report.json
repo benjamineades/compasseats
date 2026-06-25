@@ -1,13 +1,11 @@
 {
-  "generated_at": "2026-06-24T19:59:48.623397Z",
-  "venues_total": 10277,
-  "venues_active": 9943,
+  "generated_at": "2026-06-25T09:37:15.082663+00:00",
+  "venues_total": 10262,
+  "venues_active": 9928,
   "venues_bars": 715,
-  "venues_bars_active": 662,
-  "cities_total": 3071,
-  "blurbs_long_filled": 10038,
-  "blurbs_short_filled": 9352,
-  "batch2_folds_applied": 16,
-  "collisions_remaining": 263,
-  "pipeline_run": "June 24 2026"
+  "cities_total": 3069,
+  "blurbs_long_filled": 10023,
+  "collisions_remaining": 250,
+  "amber_round": "27 of 31 resolved; 4 deferred to red session",
+  "pipeline_run": "June 25 2026"
 }
