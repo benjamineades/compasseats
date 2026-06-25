@@ -27,10 +27,83 @@ const VENUES = venuesData as unknown as Venue[];
 const CITIES = citiesData as unknown as City[];
 const INDEX = indexData as unknown as VenueIndexEntry[];
 
-// Defensive: tolerate venues missing the `awards` array (e.g. when the
-// upstream JSON schema drifts or sync is skipped on a fresh checkout).
-for (const v of VENUES) {
-  if (!Array.isArray((v as any).awards)) (v as any).awards = [];
+// ---------------------------------------------------------------------------
+// Shape normalization (defensive) — runs once, on load
+// ---------------------------------------------------------------------------
+//
+// The rest of the app trusts the "final" Venue shape (see VenueSchema):
+//   - `awards`        an array of { source, year, category, rank? }
+//   - `cuisine_tags`  an array of strings
+//   - `hours`         a parsed object
+//   - `name`          a string
+//
+// Some upstream JSON generators emit the *raw sheet* shape instead, where
+// awards arrive in `awards_json`, hours in `hours_json`, `cuisine_tags` is a
+// single comma-separated string, and numeric-looking names (e.g. a bar
+// called "715") arrive as numbers. Left unhandled, that drift silently
+// empties every award list (breaking guide pages and award pills) and
+// crashes the venue page (`cuisine_tags.map`) and city pages
+// (`name.localeCompare`). We normalize here so no single generator can take
+// the site down again.
+
+function toStringArray(value: unknown): string[] {
+  if (Array.isArray(value)) return value.map((t) => String(t).trim()).filter(Boolean);
+  if (typeof value === "string") return value.split(",").map((t) => t.trim()).filter(Boolean);
+  return [];
+}
+
+function safeJsonArray(s: string): any[] {
+  try {
+    const parsed = JSON.parse(s);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function normalizeAwards(v: any): any[] {
+  const raw = Array.isArray(v.awards)
+    ? v.awards
+    : Array.isArray(v.awards_json)
+      ? v.awards_json
+      : typeof v.awards_json === "string" && v.awards_json.trim()
+        ? safeJsonArray(v.awards_json)
+        : [];
+  return raw.filter((a: any) => a && typeof a === "object");
+}
+
+function normalizeHours(v: any): unknown {
+  if (v.hours && typeof v.hours === "object") return v.hours;
+  const hj = v.hours_json;
+  if (hj && typeof hj === "object") return hj;
+  if (typeof hj === "string" && hj.trim()) {
+    try {
+      return JSON.parse(hj);
+    } catch {
+      return undefined;
+    }
+  }
+  return undefined;
+}
+
+for (const v of VENUES as any[]) {
+  v.name = v.name == null ? "" : String(v.name);
+  v.city_display = v.city_display == null ? "" : String(v.city_display);
+  v.country = v.country == null ? "" : String(v.country);
+  v.cuisine_tags = toStringArray(v.cuisine_tags);
+  v.awards = normalizeAwards(v);
+  const hours = normalizeHours(v);
+  if (hours !== undefined) v.hours = hours;
+}
+
+// The slim search index can drift the same way; coerce the text fields it
+// exposes so search/sort never crash on a malformed entry.
+for (const e of INDEX as any[]) {
+  e.name = e.name == null ? "" : String(e.name);
+  e.city_display = e.city_display == null ? "" : String(e.city_display);
+  if ((e.award_count == null) && Array.isArray((e as any).awards_json)) {
+    e.award_count = (e as any).awards_json.length;
+  }
 }
 
 // -------------------------------------------------------------------------
