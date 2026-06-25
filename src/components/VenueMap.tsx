@@ -390,8 +390,9 @@ export function VenueMap({
       zoom: zoomRef.current ?? 12,
       attributionControl: { compact: true },
       dragRotate: false,
-      touchZoomRotate: false,
+      touchZoomRotate: true,
     });
+    map.touchZoomRotate.disableRotation();
     map.addControl(
       new maplibregl.NavigationControl({ showCompass: false, showZoom: true }),
       "top-right",
