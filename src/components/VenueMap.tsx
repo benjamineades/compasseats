@@ -13,6 +13,7 @@ export type Pin = {
   awards?: string[];
   citySlug?: string;
   slug?: string;
+  tier?: PinTier;
 };
 
 export const PIN_COLORS = {
@@ -30,6 +31,22 @@ const MICHELIN_STARS: Record<string, string> = {
   "Two Stars": "★★",
   "One Star": "★",
 };
+
+type PinTier = 'pinnacle' | 'acclaimed' | 'recognized';
+
+function getPinTier(v: Venue): PinTier {
+  const awards = v.awards ?? [];
+  for (const a of awards) {
+    if (a.source === 'michelin' && a.category === 'Three Stars') return 'pinnacle';
+    if ((a.source === 'worlds-50-best-restaurants' || a.source === 'worlds-50-best-bars') && a.rank != null && a.rank <= 10) return 'pinnacle';
+  }
+  for (const a of awards) {
+    if (a.source === 'michelin' && (a.category === 'Two Stars' || a.category === 'One Star')) return 'acclaimed';
+    if (a.source === 'worlds-50-best-restaurants' || a.source === 'worlds-50-best-bars') return 'acclaimed';
+    if (a.source === 'james-beard') return 'acclaimed';
+  }
+  return 'recognized';
+}
 
 function venueToPin(v: Venue, index: number): Pin {
   const awards = (v.awards ?? [])
@@ -53,6 +70,7 @@ function venueToPin(v: Venue, index: number): Pin {
     awards,
     citySlug: v.city_slug,
     slug: v.slug,
+    tier: getPinTier(v),
   };
 }
 
@@ -122,6 +140,7 @@ function toGeoJSON(pins: Pin[]) {
         awards: JSON.stringify(p.awards ?? []),
         citySlug: p.citySlug ?? "",
         slug: p.slug ?? "",
+        tier: p.tier ?? 'recognized',
       },
     })),
   };
