@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompassEats — Platform &amp; Lovable Constraints</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#211F1C;
+    --bg-2:#28241F;
+    --panel:#2F2A24;
+    --panel-2:#383229;
+    --brass:#C6A15B;
+    --brass-soft:#DEC68F;
+    --cream:#F5F0E6;
+    --cream-dim:#CBC2B0;
+    --cream-dimmer:#988F7E;
+    --clay:#D88A63;
+    --sage:#A4B79F;
+    --line:rgba(198,161,91,.20);
+    --line-soft:rgba(198,161,91,.10);
+    --red:#D86363;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Hanken Grotesk",-apple-system,sans-serif;
+    --shadow:0 18px 50px -20px rgba(0,0,0,.6);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1100px 640px at 85% -10%, rgba(198,161,91,.10), transparent 60%),
+      radial-gradient(900px 600px at 4% 105%, rgba(216,138,99,.07), transparent 55%),
+      var(--bg);
+    color:var(--cream);
+    font-family:var(--sans);
+    font-weight:400;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+  .grain{position:fixed;inset:0;opacity:.04;pointer-events:none;z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:50;
+    background:linear-gradient(90deg,var(--clay),var(--brass) 55%,var(--brass-soft));
+    box-shadow:0 0 14px rgba(198,161,91,.5);transition:width .12s linear}
+
+  /* cover */
+  .cover{position:relative;z-index:1;text-align:center;padding:88px 32px 60px}
+  .eyebrow{font-size:.7rem;letter-spacing:.44em;text-transform:uppercase;color:var(--brass);font-weight:700;margin-bottom:20px;animation:rise .9s .08s both}
+  .cover h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,6.8vw,4.2rem);line-height:.98;letter-spacing:-.022em;animation:rise .9s .16s both}
+  .cover h1 b{font-weight:600;font-style:italic;color:var(--brass-soft)}
+  .cover .tag{margin-top:20px;font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--cream-dim);font-weight:300;max-width:580px;margin-left:auto;margin-right:auto;animation:rise .9s .28s both}
+  .cover .rule-orn{display:flex;align-items:center;justify-content:center;gap:14px;margin:30px auto 0;max-width:320px;animation:rise .9s .36s both}
+  .cover .rule-orn .ln{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--line))}
+  .cover .rule-orn .ln.r{background:linear-gradient(90deg,var(--line),transparent)}
+  .cover .rule-orn .dot{width:5px;height:5px;background:var(--brass);transform:rotate(45deg)}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px;animation:rise .9s .46s both}
+  .meta-row .m{font-size:.74rem;color:var(--cream-dim);background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:30px;padding:8px 17px}
+  .meta-row .m b{color:var(--brass-soft);font-weight:600}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+  /* shell */
+  .shell{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 32px 80px}
+
+  /* section headers */
+  .sec{margin:0 0 52px}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:6px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .sec-num{font-size:.68rem;letter-spacing:.36em;text-transform:uppercase;color:var(--brass);font-weight:700;flex:0 0 auto}
+  .sec-head h2{font-family:var(--serif);font-weight:340;font-size:clamp(1.5rem,2.8vw,2rem);color:var(--cream);letter-spacing:-.01em;line-height:1}
+  .sec-date{margin-left:auto;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dimmer);font-weight:600;background:var(--panel);border:1px solid var(--line);border-radius:30px;padding:5px 12px;flex:0 0 auto}
+  .sec-lead{font-size:.92rem;color:var(--cream-dim);font-weight:300;max-width:72ch;margin-bottom:22px;font-style:italic;font-family:var(--serif)}
+
+  /* fact cards */
+  .facts{display:grid;gap:10px}
+  .fact{background:linear-gradient(180deg,var(--panel),rgba(40,36,31,.7));border:1px solid var(--line);border-left:4px solid var(--brass);border-radius:12px;padding:16px 20px}
+  .fact.safe{border-left-color:var(--sage)}
+  .fact.warn{border-left-color:var(--clay)}
+  .fact.danger{border-left-color:var(--red)}
+  .fact-q{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);font-weight:700;margin-bottom:6px}
+  .fact.safe .fact-q{color:var(--sage)}
+  .fact.warn .fact-q{color:var(--clay)}
+  .fact.danger .fact-q{color:var(--red)}
+  .fact p{color:var(--cream-dim);font-size:.9rem;font-weight:300;line-height:1.6;max-width:76ch}
+  .fact p+p{margin-top:6px}
+  .fact code{font-family:monospace;font-size:.82em;background:rgba(198,161,91,.12);border:1px solid rgba(198,161,91,.2);border-radius:4px;padding:1px 5px;color:var(--brass-soft)}
+  .fact strong{color:var(--cream);font-weight:600}
+  .fact em{color:var(--cream-dimmer);font-style:italic}
+
+  /* table */
+  .tbl-wrap{overflow-x:auto;margin:14px 0}
+  table{width:100%;border-collapse:collapse;font-size:.84rem}
+  th{text-align:left;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);font-weight:700;padding:8px 14px;border-bottom:1px solid var(--line)}
+  td{padding:10px 14px;border-bottom:1px solid var(--line-soft);color:var(--cream-dim);font-weight:300;vertical-align:top}
+  td code{font-family:monospace;font-size:.82em;background:rgba(198,161,91,.1);border:1px solid rgba(198,161,91,.18);border-radius:4px;padding:1px 5px;color:var(--brass-soft)}
+  td strong{color:var(--cream);font-weight:600}
+  tr:last-child td{border-bottom:0}
+  td.yes{color:var(--sage)} td.no{color:var(--red)} td.partial{color:var(--clay)}
+
+  /* callout box */
+  .callout{background:linear-gradient(135deg,rgba(216,138,99,.10),rgba(198,161,91,.06));border:1px solid rgba(216,138,99,.35);border-radius:14px;padding:20px 24px;margin:20px 0}
+  .callout.good{background:linear-gradient(135deg,rgba(164,183,159,.10),rgba(198,161,91,.06));border-color:rgba(164,183,159,.35)}
+  .callout .callout-label{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--clay);font-weight:700;margin-bottom:8px}
+  .callout.good .callout-label{color:var(--sage)}
+  .callout p{color:var(--cream-dim);font-size:.9rem;font-weight:300;line-height:1.6;max-width:76ch}
+  .callout code{font-family:monospace;font-size:.82em;background:rgba(198,161,91,.12);border:1px solid rgba(198,161,91,.2);border-radius:4px;padding:1px 5px;color:var(--brass-soft)}
+  .callout strong{color:var(--cream);font-weight:600}
+
+  /* workflow steps */
+  .steps{display:grid;gap:10px;margin:16px 0}
+  .step{display:flex;gap:16px;align-items:flex-start}
+  .step-n{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--brass);margin-top:2px}
+  .step p{color:var(--cream-dim);font-size:.9rem;font-weight:300;line-height:1.6}
+  .step p strong{color:var(--cream);font-weight:600}
+  .step code{font-family:monospace;font-size:.82em;background:rgba(198,161,91,.12);border:1px solid rgba(198,161,91,.2);border-radius:4px;padding:1px 5px;color:var(--brass-soft)}
+
+  /* divider */
+  hr{border:0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:52px 0}
+
+  /* changelog */
+  .changelog{margin-top:60px}
+  .changelog h3{font-family:var(--serif);font-weight:440;font-size:1.2rem;color:var(--cream);margin-bottom:16px}
+  .changelog table{font-size:.8rem}
+
+  /* footer */
+  footer{position:relative;z-index:1;text-align:center;padding:40px 32px;font-size:.72rem;color:var(--cream-dimmer);letter-spacing:.06em;border-top:1px solid var(--line-soft)}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="progress" id="prog"></div>
+
+<div class="cover">
+  <p class="eyebrow">CompassEats · Living Doc</p>
+  <h1>Platform &amp; Lovable<br><b>Constraints</b></h1>
+  <p class="tag">Verified facts about how the build, deploy, and Lovable sync actually work — so they're never re-derived.</p>
+  <div class="rule-orn"><div class="ln"></div><div class="dot"></div><div class="ln r"></div></div>
+  <div class="meta-row">
+    <div class="m">Version <b>1.0</b></div>
+    <div class="m">First verified <b>June 25, 2026</b></div>
+    <div class="m">Plan <b>Pro</b></div>
+    <div class="m">Source <b>Lovable direct interview</b></div>
+  </div>
+</div>
+
+<div class="shell">
+
+  <!-- ═══ SECTION 1 — SYNC ═══ -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2>GitHub ↔ Lovable Sync</h2>
+      <span class="sec-date">Verified Jun 25 2026</span>
+    </div>
+    <p class="sec-lead">How changes travel between GitHub and Lovable, and which direction controls what.</p>
+    <div class="facts">
+      <div class="fact safe">
+        <div class="fact-q">Direction &amp; trigger</div>
+        <p><strong>Bidirectional and automatic.</strong> Lovable edits push to GitHub automatically. GitHub commits (including web uploads) sync back into the Lovable sandbox via a GitHub App webhook — typically within seconds, at most ~1 minute. No manual "pull" button needed.</p>
+      </div>
+      <div class="fact safe">
+        <div class="fact-q">GitHub upload → live site path</div>
+        <p>Upload file on GitHub → commit lands on <code>main</code> → Lovable webhook fires → sandbox updates → <strong>Preview URL refreshes automatically</strong> → you verify → <strong>click Publish</strong> → production updates. Publishing is never automatic — it always requires a manual click.</p>
+      </div>
+      <div class="fact warn">
+        <div class="fact-q">Conflict risk — concurrent edits</div>
+        <p><strong>Do not edit the same file in Lovable AND on GitHub at the same time.</strong> The sync is plain git, not conflict-aware. For large files like <code>data/venues.json</code> there is no useful 3-way merge — one side silently wins and the other's edit can be lost. Rule: <strong>GitHub is the sole writer for <code>data/*.json</code></strong>. Never edit those files in Lovable chat while a GitHub upload is in flight.</p>
+      </div>
+      <div class="fact">
+        <div class="fact-q">Sync lag</div>
+        <p>Seconds to ~1 minute in normal operation. If a change hasn't appeared after 2 minutes, something is wrong (webhook miss, push to non-default branch) — not just slow.</p>
+      </div>
+      <div class="fact safe">
+        <div class="fact-q">Most reliable way to ship large data files (11 MB+)</div>
+        <p>GitHub web UI → repo → <code>data/</code> folder → <strong>Add file → Upload files</strong> (drag-drop). Keep exact filename (<code>venues.json</code>, not <code>venues (1).json</code>) so it replaces rather than duplicates. <strong>Never use the GitHub text editor</strong> for files this size — it silently mishandles them and can commit an empty file. After upload: wait for sandbox to reflect the change, verify in Preview, then click Publish.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ═══ SECTION 2 — AUTONOMOUS EDITING ═══ -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2>When Lovable Edits Files on Its Own</h2>
+      <span class="sec-date">Verified Jun 25 2026</span>
+    </div>
+    <p class="sec-lead">The most important section. Understand this before sending any prompt that touches data.</p>
+
+    <div class="callout">
+      <div class="callout-label">⚠ The incident — June 25, 2026</div>
+      <p>Lovable auto-resolved a load-time crash by setting <code>awards</code> to <code>[]</code> on every venue. This silenced the error but deleted all award data, breaking every guide page and award pill on the site. Root cause: the fix optimized for "make the red error go away" rather than "preserve the data." This is the canonical example of destructive default-to-empty behavior.</p>
+    </div>
+
+    <div class="facts">
+      <div class="fact safe">
+        <div class="fact-q">Does Lovable edit files between chat messages?</div>
+        <p><strong>No.</strong> There is no background auto-healer. Lovable only edits files during a chat turn you started. Build failures, runtime errors, preview console errors — none of these cause file edits on their own. They only become edits if you send a message and Lovable acts on them.</p>
+      </div>
+      <div class="fact warn">
+        <div class="fact-q">What Lovable WILL edit within a turn (without being asked)</div>
+        <p>Fixing <em>direct fallout</em> from a change you asked for (e.g. you rename a symbol, Lovable updates import sites). If you ask to "fix the build" or "make the error go away," Lovable treats the whole error chain as in-scope. It <strong>should not</strong> edit unrelated files or "improve" code you didn't ask about — if it does, that's a mistake, not a feature.</p>
+      </div>
+      <div class="fact danger">
+        <div class="fact-q">The default-to-empty trap</div>
+        <p>When Lovable doesn't understand a data shape, it may default ambiguous fields to <code>[]</code> or <code>null</code> to make an error stop. <strong>This is destructive masking.</strong> The correct behavior is to stop and ask, or fail loudly — not silently empty data. Treat any Lovable "fix" that touches data-loading code with extreme suspicion.</p>
+      </div>
+      <div class="fact">
+        <div class="fact-q">Can you lock a file so Lovable never touches it?</div>
+        <p>No built-in lock flag exists. Three effective substitutes, in order of reliability:</p>
+        <p><strong>1. Project memory (<code>mem://</code>):</strong> Add a rule like "Never modify <code>src/lib/venues.ts</code> without an explicit full-file replacement from the user. Defensive normalization here has wiped live data before." Always in context, treated as a hard rule.</p>
+        <p><strong>2. Comment at top of file:</strong> <code>// LOCKED — do not edit without explicit user instruction.</code> Read every time Lovable opens the file.</p>
+        <p><strong>3. Custom Knowledge (Project Settings → Customization → Knowledge):</strong> Same effect as a memory, surfaced on every turn.</p>
+      </div>
+      <div class="fact safe">
+        <div class="fact-q">Most reliable prompt wording to protect a specific file</div>
+        <p>Combine scope + file name + reason + what to do instead:</p>
+        <p><em>"Do not modify <code>src/lib/venues.ts</code> under any circumstance in this turn, even to fix a build or runtime error. If a fix appears to require editing it, stop and ask me first. This file is the source of truth for data normalization and has been broken by well-intentioned edits before."</em></p>
+        <p>The reason this works: it names the file explicitly AND tells Lovable what to do instead (stop and ask), which removes the "but the build is red" temptation.</p>
+      </div>
+      <div class="fact safe">
+        <div class="fact-q">Strongest possible read-only mode</div>
+        <p>Prefix any turn with: <strong>"Investigation only — do not change anything."</strong> Lovable will not write to disk at all under this header. This is the mechanism used for the Lovable Interview that produced this document.</p>
+      </div>
+      <div class="fact">
+        <div class="fact-q">Is there a UI toggle that disables all autonomous edits?</div>
+        <p>Not exactly. There is a <strong>Chat mode</strong> vs <strong>Build mode</strong> toggle in the Lovable UI. Chat mode limits Lovable to discussion only. Build mode (the default for this project) allows file edits. Switching to Chat mode for investigative sessions is an option, though the "Investigation only" prompt prefix achieves the same result within a turn.</p>
+      </div>
+    </div>
+
+    <div class="callout good">
+      <div class="callout-label">Standing rule — locked in</div>
+      <p>When asking Lovable to rebuild after a data update, always include: <strong>"Do not modify <code>src/lib/venues.ts</code> or add any defensive award normalization — the data files are already correct."</strong></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ═══ SECTION 3 — ROLLBACK ═══ -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2>Version History &amp; Rollback</h2>
+      <span class="sec-date">Verified Jun 25 2026</span>
+    </div>
+    <p class="sec-lead">How to undo a bad change — to code and to the live site.</p>
+    <div class="facts">
+      <div class="fact safe">
+        <div class="fact-q">Does Lovable keep version history?</div>
+        <p><strong>Yes.</strong> Every AI chat message that produces a code change creates a restorable checkpoint. Browse via the <strong>History tab</strong> at the top of chat (full list) or the <strong>Revert button</strong> under any AI message. History spans the project's full lifetime with no documented hard cap. Reverted points are archived, not destroyed — they can be reapplied.</p>
+      </div>
+      <div class="fact warn">
+        <div class="fact-q">Fastest rollback when the live site is broken</div>
+        <p>Two steps, both required: <strong>(1) Code:</strong> History tab → pick last known-good version → Revert. This rewrites the working tree and auto-pushes to GitHub. Preview rebuilds within seconds. <strong>(2) Live site:</strong> Reverting code does NOT automatically redeploy. You must then verify the preview looks correct, then click <strong>Publish</strong> to push the good state live. There is no one-click "rollback published deployment" button.</p>
+      </div>
+      <div class="fact safe">
+        <div class="fact-q">Is GitHub commit history a reliable rollback path?</div>
+        <p>Yes. A <code>git revert &lt;sha&gt;</code> pushed to <code>main</code> flows back into Lovable's sandbox within seconds. Same rule applies: it does not redeploy — you still click Publish after. Caveat: don't edit in Lovable AND GitHub simultaneously during a rollback or you'll get merge conflicts. Lovable's in-app History is faster for most cases; GitHub revert is better for surgical per-file rollbacks.</p>
+      </div>
+      <div class="fact safe">
+        <div class="fact-q">Preview vs published — safety model</div>
+        <p><strong>Preview URL</strong> updates automatically on every code change. <strong>Published site</strong> (<code>compasseats.com</code>) only updates when you click Publish. This is the core safety gate — make changes, verify in Preview, then Publish only when satisfied. Exception: backend/edge-function changes deploy immediately on save; static pages and data files are gated behind Publish.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ═══ SECTION 4 — BUILD & DEPLOY ═══ -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2>Build &amp; Deploy Pipeline</h2>
+      <span class="sec-date">Verified Jun 25 2026</span>
+    </div>
+    <p class="sec-lead">What actually runs when Lovable builds and publishes this project.</p>
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-q">Build commands (from package.json)</div>
+        <p><code>prebuild</code>: <code>bun run scripts/sync-sheet.ts</code><br>
+        <code>build</code>: <code>CI=true vite build</code><br>
+        <code>build:dev</code>: <code>vite build --mode development</code><br>
+        Bun auto-runs <code>prebuild</code> before <code>build</code>. The sync script fires first, hits the missing-secrets guard, prints the SYNC SKIPPED banner, and exits cleanly. Then <code>vite build</code> runs with <code>@cloudflare/vite-plugin</code> and <code>@tanstack/router-plugin</code>.</p>
+      </div>
+      <div class="fact safe">
+        <div class="fact-q">The SYNC SKIPPED banner</div>
+        <p><strong>Normal and expected on every build.</strong> <code>scripts/sync-sheet.ts</code> checks for <code>SHEETS_API_KEY</code> and <code>COMPASSEATS_SHEET_ID</code> at lines 328–341. On Pro plan these aren't available as Build Secrets, so the script throws <code>SyncSkipped</code>, which is caught and swallowed with a banner and <code>process.exit(0)</code>. The build proceeds against the committed <code>data/*.json</code>. This is not a failure. Important caveat: <code>DataValidationError</code> (duplicate keys, schema failures) is <em>not</em> swallowed — it rethrows and kills the build.</p>
+      </div>
+      <div class="fact">
+        <div class="fact-q">Can the sync step be turned off entirely?</div>
+        <p>Yes — three changes required (describe only, don't make them unless intentional): remove <code>"prebuild"</code> script from <code>package.json</code>; delete the <code>if (isBuild) { await runSync() }</code> block in <code>vite.config.ts</code>; delete <code>syncSheetPlugin()</code> and its entry in the plugins array in <code>vite.config.ts</code>. The <code>scripts/sync-sheet.ts</code> file itself can stay for manual runs.</p>
+      </div>
+      <div class="fact safe">
+        <div class="fact-q">What "Publish" actually does</div>
+        <p>Takes the latest committed code on <code>main</code> → runs the full build pipeline → uploads the resulting Cloudflare Worker + static assets → points <code>compasseats.lovable.app</code>, <code>compasseats.com</code>, and <code>www.compasseats.com</code> at the new deployment. Every Publish is a fresh build from source. If the build fails, the previous deployment keeps serving — Publish does not blank the site on failure.</p>
+      </div>
+      <div class="fact safe">
+        <div class="fact-q">Hosting architecture</div>
+        <p><strong>Lovable is the control plane; Cloudflare Workers is the runtime.</strong> The build emits a Cloudflare Workers bundle (SSR + static assets). Lovable's infrastructure deploys it to Cloudflare on Lovable's account. Custom domain config (<code>compasseats.com</code>) lives in Lovable's Project Settings → Domains — DNS A records point to <code>185.158.133.1</code> with a <code>_lovable</code> TXT verification record. SSL is auto-provisioned. There is no <code>wrangler.toml</code> in the repo.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ═══ SECTION 5 — FILE SIZE ═══ -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <h2>File Size &amp; Data File Limits</h2>
+      <span class="sec-date">Verified Jun 25 2026</span>
+    </div>
+    <p class="sec-lead">Where the ceilings are as venues.json grows.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Limit</th><th>Value</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Chat upload to Lovable</td><td><strong>20 MB</strong> hard cap</td><td>10 files max per message. venues.json at 11 MB fits; 25 MB would not.</td></tr>
+          <tr><td>GitHub web upload</td><td><strong>100 MB</strong> per file</td><td>The reliable path for large data files. No resumability issues.</td></tr>
+          <tr><td>Cloudflare Worker bundle</td><td><strong>25 MB compressed</strong></td><td>Applies to the entire deployed artifact. JSON imported at module scope counts against this. Files in <code>public/</code> served as static assets do not.</td></tr>
+          <tr><td>Editor display</td><td>Truncated above ~1 MB</td><td>Display-only clipping. File on disk is intact. Do not use the Lovable editor to view or edit venues.json.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-q">Practical breakpoints for venues.json</div>
+        <p><strong>Up to ~15 MB:</strong> fine in current pipeline (loaded server-side at module scope).<br>
+        <strong>20–25 MB:</strong> approaching chat upload cap; GitHub becomes the only ingest path. SSR cold-start parse time becomes noticeable.<br>
+        <strong>25 MB+:</strong> Worker bundle pressure, slow preview rebuilds, sandbox memory issues. Consider splitting into per-city files or moving to runtime-fetched storage.</p>
+      </div>
+      <div class="fact warn">
+        <div class="fact-q">Best method ranking for replacing venues.json today</div>
+        <p><strong>1st — GitHub web upload</strong> (drag-drop to <code>data/</code> folder). Most reliable, 100 MB cap, syncs to Lovable automatically.<br>
+        <strong>2nd — Chat upload to Lovable</strong> (attach file, Lovable copies to <code>data/venues.json</code>). Fine at 11 MB; fragile near 20 MB.<br>
+        <strong>Never — Lovable code editor paste.</strong> Not designed for multi-MB JSON.</p>
+      </div>
+      <div class="fact">
+        <div class="fact-q">Special-treatment paths</div>
+        <p>No directories are special in the sync (<code>/data</code>, <code>/public</code>, <code>/apps-script</code>, <code>/docs</code> all sync like any other folder). The only truly special paths are: <code>src/routeTree.gen.ts</code> (auto-overwritten by TanStack Router on every build — never edit); <code>.lovable/</code> (Lovable metadata — safe to read, don't hand-edit); <code>.git/</code> (never copy in); <code>node_modules/</code>, <code>dist/</code> (gitignored, don't sync).</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ═══ SECTION 6 — SECRETS ═══ -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">06</span>
+      <h2>Secrets &amp; Environment Variables</h2>
+      <span class="sec-date">Verified Jun 25 2026</span>
+    </div>
+    <p class="sec-lead">What secrets exist, what each can do, and what's already configured.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Category</th><th>Available on Pro?</th><th>Readable at BUILD time?</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Runtime secrets</strong></td><td class="yes">Yes</td><td class="no">No</td><td>Injected into the deployed Worker at request time. Not available during <code>vite build</code>.</td></tr>
+          <tr><td><strong>Connector secrets</strong></td><td class="yes">Yes</td><td class="no">No</td><td>Auto-managed when a workspace App Connector (Google Sheets, etc.) is linked. Server runtime only.</td></tr>
+          <tr><td><strong>Build Secrets</strong></td><td class="no">No — Business/Enterprise only</td><td class="yes">Yes</td><td>The only category <code>scripts/sync-sheet.ts</code> can read. This is why the sync always skips on Pro.</td></tr>
+          <tr><td><strong>VITE_* env vars</strong></td><td class="yes">Yes</td><td class="yes">Yes — but public</td><td>Bundled into client JS. Anyone can read them. Never put secrets here.</td></tr>
+          <tr><td><strong>Lovable Cloud Function secrets</strong></td><td class="yes">Yes (if Cloud enabled)</td><td class="no">No</td><td>Edge-function runtime only.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="facts">
+      <div class="fact warn">
+        <div class="fact-q">Current plan: Pro</div>
+        <p><strong>Build Secrets are not available on Pro.</strong> They require Business or Enterprise. This is the sole reason the Sheet sync always skips during build. Upgrading to Business unlocks Build Secrets — the existing <code>scripts/sync-sheet.ts</code> code would work immediately with no other changes.</p>
+      </div>
+      <div class="fact">
+        <div class="fact-q">Runtime secrets already configured on this project</div>
+        <p><code>COMPASSEATS_SHEET_ID</code> · <code>SHEETS_API_KEY</code> · <code>ENRICH_ADMIN_TOKEN</code> · <code>GOOGLE_SHEETS_API_KEY</code> (Google Sheets connector) · <code>LOVABLE_API_KEY</code> (managed, rotate-only). Note: <code>SHEETS_API_KEY</code> and <code>COMPASSEATS_SHEET_ID</code> are already saved — they just aren't visible to the build step. If the sync ever moved to a server function, these would light it up immediately.</p>
+      </div>
+      <div class="fact">
+        <div class="fact-q">Workspace App Connectors configured</div>
+        <p>Google Sheets — linked ✓ &nbsp;·&nbsp; Google Drive — available, not linked &nbsp;·&nbsp; Firecrawl — available, not linked</p>
+      </div>
+      <div class="fact safe">
+        <div class="fact-q">Ways to get Sheet sync running automatically without upgrading</div>
+        <p><strong>Best option — GitHub Actions (free):</strong> Add <code>SHEETS_API_KEY</code> and <code>COMPASSEATS_SHEET_ID</code> as GitHub repo secrets. Add a <code>.github/workflows/sync-sheet.yml</code> with a nightly schedule + manual trigger. Steps: <code>bun install</code> → <code>bun run scripts/sync-sheet.ts</code> → commit and push changed <code>data/*.json</code> to <code>main</code>. Nothing under <code>src/</code> is touched. Changes sync to Lovable automatically, you verify in Preview, then click Publish. No plan upgrade required.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ═══ SECTION 7 — CAPABILITIES ═══ -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">07</span>
+      <h2>What Lovable Can Do (That External Assistants Cannot)</h2>
+      <span class="sec-date">Verified Jun 25 2026</span>
+    </div>
+    <p class="sec-lead">Task routing: use Lovable for these, use Claude + GitHub for everything else.</p>
+    <div class="facts">
+      <div class="fact safe">
+        <div class="fact-q">Lovable's exclusive capabilities</div>
+        <p>Mutate the sandbox in place (edits land on <code>main</code> via sync without manual git). Trigger and inspect builds/deploys. Read published and preview Worker logs. Read/write runtime secrets. Manage workspace App Connectors and make authenticated calls through the connector gateway. Manage custom domain and publish settings. Invoke live server routes to test them (<code>invoke-server-function</code>). Browse the running app with a real Playwright Chromium browser (screenshots, console, network). Asset generation and CDN migration. Add/manage project memories (<code>mem://</code>) that persist across sessions.</p>
+      </div>
+      <div class="fact warn">
+        <div class="fact-q">Lovable's hard limitations</div>
+        <p>No rollback of a published deployment without revert + republish. Cannot manage Build Secrets (workspace-scoped, your account only). No scheduled jobs or cron primitives. Cannot be triggered headlessly — always requires a chat turn. Cannot edit registrar DNS for domains not purchased through Lovable. Cannot exceed 20 MB chat upload cap. Cannot write to the Worker filesystem at runtime. In-turn code editing behavior cannot be fully disabled — "Investigation only" prefix is the mechanism, not a hard lock.</p>
+      </div>
+      <div class="fact">
+        <div class="fact-q">Diagnostics Lovable can pull for you</div>
+        <p>Published Worker logs (last hour, up to 100 entries, keyword-filterable). Preview Worker logs (same). Browser console + network snapshot. Live HTTP probe of any route. Build-time error output from a sandbox build. Security and dependency scans on demand. <strong>What's not available:</strong> full historical build log per Publish (no per-publish artifact; details only visible while the build is running).</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ═══ SECTION 8 — IDEAL WORKFLOW ═══ -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="sec-num">08</span>
+      <h2>The Ideal Sheet → JSON → Live Workflow</h2>
+      <span class="sec-date">Verified Jun 25 2026</span>
+    </div>
+    <p class="sec-lead">The recommended path to get Sheet changes live with zero risk of code being auto-changed.</p>
+
+    <div class="callout good">
+      <div class="callout-label">Today's workflow (manual, stable)</div>
+      <p>Edit Google Sheet → export .xlsx → Claude regenerates <code>data/*.json</code> → upload to GitHub via drag-drop → verify in Lovable Preview → click Publish. Works reliably today with no changes required.</p>
+    </div>
+
+    <p style="color:var(--cream-dim);font-size:.9rem;font-weight:300;margin:20px 0 12px">Recommended future upgrade — GitHub Actions auto-sync:</p>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><p><strong>One-time setup:</strong> Add <code>SHEETS_API_KEY</code> and <code>COMPASSEATS_SHEET_ID</code> to GitHub repo Secrets (Settings → Secrets and variables → Actions).</p></div>
+      <div class="step"><div class="step-n">2</div><p><strong>One-time setup:</strong> Add <code>.github/workflows/sync-sheet.yml</code> with a nightly cron trigger AND a manual "Run workflow" button. Steps: <code>bun install</code> → <code>bun run scripts/sync-sheet.ts</code> → commit changed <code>data/*.json</code> to <code>main</code>. Only <code>data/</code> is touched — never <code>src/</code>.</p></div>
+      <div class="step"><div class="step-n">3</div><p><strong>Daily flow:</strong> Edit the Google Sheet → wait for nightly run, or click "Run workflow" in GitHub Actions for instant sync.</p></div>
+      <div class="step"><div class="step-n">4</div><p>The Action commits updated JSON to <code>main</code> → syncs to Lovable sandbox in ~60s → Preview URL rebuilds automatically → verify it looks right.</p></div>
+      <div class="step"><div class="step-n">5</div><p><strong>Click Publish in Lovable.</strong> Live.</p></div>
+    </div>
+
+    <div class="facts" style="margin-top:20px">
+      <div class="fact safe">
+        <div class="fact-q">Three layers to lock in "no code edits"</div>
+        <p><strong>1. Project memory:</strong> "Never modify files outside <code>data/</code> in response to data-shaped problems. If a build fails because of data, surface the error — do not patch code to make it green."<br>
+        <strong>2. Locked comment:</strong> <code>// LOCKED — do not modify without explicit user approval</code> at the top of <code>src/lib/venues.ts</code> and <code>src/lib/schema.ts</code>.<br>
+        <strong>3. Turn prefix:</strong> "Investigation only — do not change anything." on any turn where you want read-only behavior.</p>
+      </div>
+      <div class="fact">
+        <div class="fact-q">Cloudflare Pages as an alternative (escape hatch)</div>
+        <p>Feasible: CF Pages free tier supports build-time env vars, so <code>scripts/sync-sheet.ts</code> would run automatically on every push. <strong>But:</strong> it removes the manual Publish gate (continuous deployment unless you use a separate <code>production</code> branch), requires a <code>wrangler.toml</code>, moves domain management to CF Pages, and narrows what Lovable can see and control. The GitHub Actions approach (above) achieves the Sheet auto-sync without any of these trade-offs. CF Pages is the right choice only if you also want continuous deployment and real per-build logs.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ═══ CHANGELOG ═══ -->
+  <div class="changelog">
+    <h3>Changelog</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Version</th><th>Date</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>1.0</code></td><td>June 25, 2026</td><td>First version. All facts sourced directly from a structured 7-prompt read-only interview with Lovable against the live project. Covers sync, autonomous editing, rollback, build pipeline, file limits, secrets, capabilities, and the ideal workflow.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /shell -->
+
+<footer>
+  CompassEats · Platform &amp; Lovable Constraints · v1.0 — Jun 25, 2026<br>
+  Facts sourced from direct Lovable interview. Update version + date when any fact is re-verified or changes.
+</footer>
+
+<script>
+  const prog = document.getElementById('prog');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    prog.style.width = (pct * 100) + '%';
+  });
+</script>
+</body>
+</html>
