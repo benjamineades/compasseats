@@ -307,30 +307,43 @@ export function VenueMap({
       seen.add(id);
       if (markersRef.current.has(id)) continue;
 
-      const el = document.createElement("div");
-      el.style.cssText = [
-        "width:30px",
-        "height:30px",
-        "cursor:pointer",
-      ].join(";");
       // IMPORTANT: never set `transform` on this root element — MapLibre
       // owns its transform (translate(x,y)) to anchor the marker. Apply
       // hover affordances to the inner visual child only.
-      const visual = document.createElement("div");
+      const tier = String(f.properties.tier || 'recognized') as PinTier;
+      const isBar = String(f.properties.category || '') === 'cocktail bar';
+
+      const sizes: Record<PinTier, number> = { pinnacle: 38, acclaimed: 30, recognized: 24 };
+      const size = sizes[tier];
+
+      const el = document.createElement('div');
+      el.style.cssText = `width:${size}px;height:${size}px;cursor:pointer;`;
+
+      const visual = document.createElement('div');
+      const borderRadius = isBar ? '6px' : '50%';
+      const isFilled = tier !== 'recognized';
+      const bg = isFilled ? '#C6A15B' : 'transparent';
+      const border = tier === 'recognized' ? `2px solid #C6A15B` : `2px solid ${t.pinBorder}`;
+      const shadow = tier === 'pinnacle' ? '0 3px 10px rgba(198,161,91,0.5)' : '0 2px 6px rgba(0,0,0,0.25)';
+
       visual.style.cssText = [
-        "width:30px",
-        "height:30px",
-        "border-radius:50%",
-        "background:#C6A15B",
-        `border:2px solid ${t.pinBorder}`,
-        "display:flex",
-        "align-items:center",
-        "justify-content:center",
-        "box-shadow:0 2px 6px rgba(0,0,0,0.25)",
-        "transition:transform 150ms ease",
-        "transform-origin:center",
-      ].join(";");
-      visual.innerHTML = COMPASS_SVG;
+        `width:${size}px`,
+        `height:${size}px`,
+        `border-radius:${borderRadius}`,
+        `background:${bg}`,
+        `border:${border}`,
+        'display:flex',
+        'align-items:center',
+        'justify-content:center',
+        `box-shadow:${shadow}`,
+        'transition:transform 150ms ease',
+        'transform-origin:center',
+      ].join(';');
+
+      const iconSize = tier === 'pinnacle' ? 16 : tier === 'acclaimed' ? 12 : 10;
+      const iconColor = isFilled ? '#23211E' : '#C6A15B';
+      visual.innerHTML = `<svg viewBox="0 0 24 24" fill="none" width="${iconSize}" height="${iconSize}"><path d="M12 3 L17 14 L12 17 L7 14 Z" fill="${iconColor}"/><path d="M12 21 L7 14 L12 11 L17 14 Z" fill="${iconColor}" opacity="0.35"/><circle cx="12" cy="14" r="1.5" fill="${isFilled ? '#C6A15B' : '#23211E'}"/></svg>`;
+
       el.appendChild(visual);
       el.addEventListener("mouseenter", () => (visual.style.transform = "scale(1.12)"));
       el.addEventListener("mouseleave", () => (visual.style.transform = "scale(1)"));
