@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   createFileRoute,
   Link,
@@ -19,14 +19,6 @@ const INK_MUTED = "#6a6253";
 const BRONZE = "#895F2E";
 const HAIRLINE = "rgba(35,33,30,0.12)";
 const BRASS = "#C6A15B";
-
-function isDarkMode() {
-  if (typeof document === "undefined") return false;
-  return document.documentElement.classList.contains("dark");
-}
-
-const styleUrl = (dark: boolean) =>
-  `https://api.maptiler.com/maps/dataviz-${dark ? "dark" : "light"}/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`;
 
 function formatNum(n: number): string {
   return n.toLocaleString("en-US");
