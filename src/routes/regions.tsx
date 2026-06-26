@@ -134,25 +134,25 @@ function RegionsPage() {
           </p>
         </header>
 
-        <div className="space-y-12">
-          {groups.map((g) => (
-            <section key={g.country}>
-              <div className="mb-3 flex items-baseline justify-between gap-4">
+        <div>
+          {groups.map((g, i) => (
+            <section key={g.country} className={i === 0 ? "" : "mt-12 md:mt-16"}>
+              <header className="mb-4">
                 <h2
                   className="font-display text-2xl italic"
                   style={{ color: INK }}
                 >
                   {g.country}
                 </h2>
-                <span className="text-xs" style={{ color: INK_MUTED }}>
+                <p className="mt-1 text-sm" style={{ color: INK_MUTED }}>
                   {formatNum(g.regions.length)}{" "}
                   {g.regions.length === 1 ? "region" : "regions"} ·{" "}
                   {formatNum(g.total)} venues
-                </span>
-              </div>
+                </p>
+              </header>
               <ul
                 role="list"
-                className="border-t"
+                className="border-t pl-4"
                 style={{ borderColor: HAIRLINE }}
               >
                 {g.regions.map((r) => (
