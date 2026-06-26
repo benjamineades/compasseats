@@ -555,6 +555,7 @@ function SingleVenueFeature({
   // Show the photo layout when we have either a curated photo OR a Google
   // place id (the VenuePhoto component live-fetches from the photo worker).
   const hasPhoto = !!venue.photo_url?.trim() || !!venue.id?.trim();
+  const [showNearby, setShowNearby] = useState(false);
 
   return (
     <>
@@ -742,8 +743,18 @@ function SingleVenueFeature({
             className="overflow-hidden rounded-xl"
             style={{ border: `1px solid ${HAIRLINE}` }}
           >
+            {nearby.length > 0 && (
+              <NearbyToggle
+                on={showNearby}
+                onChange={setShowNearby}
+                count={nearby.length}
+              />
+            )}
             <ClientOnly fallback={<MapPlaceholder />}>
-              <VenueMap venues={[venue]} cityContext={city.slug} />
+              <VenueMap
+                venues={showNearby ? [venue, ...nearby] : [venue]}
+                cityContext={city.slug}
+              />
             </ClientOnly>
           </div>
         </div>
