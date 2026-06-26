@@ -20,6 +20,14 @@ const BRONZE = "#895F2E";
 const HAIRLINE = "rgba(35,33,30,0.12)";
 const BRASS = "#C6A15B";
 
+function isDarkMode() {
+  if (typeof document === "undefined") return false;
+  return document.documentElement.classList.contains("dark");
+}
+
+const styleUrl = (dark: boolean) =>
+  `https://api.maptiler.com/maps/dataviz-${dark ? "dark" : "light"}/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`;
+
 function formatNum(n: number): string {
   return n.toLocaleString("en-US");
 }
@@ -194,13 +202,9 @@ function RegionMap({ region }: { region: Region }) {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const dark =
-      typeof document !== "undefined" &&
-      document.documentElement.classList.contains("dark");
-
     const map = new maplibregl.Map({
       container: containerRef.current,
-      style: `https://api.maptiler.com/maps/dataviz-${dark ? "dark" : "light"}/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`,
+      style: styleUrl(isDarkMode()),
       center: [region.center_lng, region.center_lat],
       zoom: 7,
       attributionControl: { compact: true },
@@ -274,6 +278,25 @@ function RegionMap({ region }: { region: Region }) {
       mapRef.current = null;
     };
   }, [region, router]);
+
+  // React to theme changes: swap the style when the `dark` class toggles.
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    let current = isDarkMode();
+    const observer = new MutationObserver(() => {
+      const next = isDarkMode();
+      if (next === current) return;
+      current = next;
+      const map = mapRef.current;
+      if (!map) return;
+      map.setStyle(styleUrl(next));
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   return <div ref={containerRef} className="h-[460px] md:h-[560px] w-full" />;
 }
