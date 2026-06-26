@@ -2,11 +2,12 @@
  * scripts/sync-sheet.ts
  *
  * Pulls the CompassEats venue Sheet, validates every row against the schema
- * in src/lib/schema.ts, and writes three artifacts:
+ * in src/lib/schema.ts, and writes four artifacts:
  *
  *   data/venues.json         full Venue[] — used by venue & city pages
  *   data/cities.json         City[] with computed venue_count — used by /city pages and homepage
  *   data/venues-index.json   slim VenueIndexEntry[] — shipped to the client for search
+ *   data/regions.json        Region[] — used by /region pages
  *
  * Run before every build:
  *   bun run scripts/sync-sheet.ts
@@ -19,6 +20,7 @@
  *   COMPASSEATS_SHEET_ID     spreadsheet id from the URL
  *   COMPASSEATS_VENUES_TAB   tab name, defaults to "venues"
  *   COMPASSEATS_CITIES_TAB   tab name, defaults to "cities"
+ *   COMPASSEATS_REGIONS_TAB  tab name, defaults to "regions"
  *
  * The Sheet must have a header row matching SheetRowSchema column names.
  */
@@ -30,10 +32,12 @@ import {
   AwardSchema,
   CitySchema,
   HoursSchema,
+  RegionSchema,
   SheetRowSchema,
   VenueSchema,
   type Award,
   type City,
+  type Region,
   type Venue,
   type VenueIndexEntry,
 } from "../src/lib/schema";
@@ -122,9 +126,6 @@ async function fetchSheetTab(
 
   const [headers, ...rows] = json.values;
   return rows.map((row) => {
-    // Google Sheets returns "ragged" rows — trailing (and sometimes middle)
-    // empty cells are dropped, so `row` can be shorter than `headers`. Pad
-    // it so header→value mapping by index stays aligned.
     const padded = row.slice();
     while (padded.length < headers.length) padded.push("");
 
@@ -140,7 +141,7 @@ async function fetchSheetTab(
 /**
  * Like fetchSheetTab, but tolerant: returns [] if the tab is missing or has
  * no data rows, instead of throwing. Used for optional side tabs such as
- * "curated_photos" (which may not exist yet, or may be header-only).
+ * "curated_photos" and "regions" (which may not exist yet).
  */
 async function fetchOptionalTab(
   tab: string,
@@ -180,7 +181,6 @@ function normalizeSheetDate(raw: string): string {
   if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
   if (/^\d+(\.\d+)?$/.test(s)) {
     const serial = Number(s);
-    // Sheets/Excel epoch is 1899-12-30 (accounts for the 1900 leap-year bug)
     const ms = Math.round(serial * 86400_000) + Date.UTC(1899, 11, 30);
     const d = new Date(ms);
     const y = d.getUTCFullYear();
@@ -243,13 +243,6 @@ function rowToVenue(
     blurb_short: row.blurb_short || undefined,
     blurb_long: row.blurb_long || undefined,
     awards: parseAwards(row.awards_json),
-    // Photo resolution cascade. Curated photos (hosted on R2) win; they live
-    // in their own tab so they survive every reshape. When the owner-filtered
-    // Places worker is live, add its route as the middle branch, e.g.:
-    //   curatedById.get(row.id) ||
-    //   (row.id ? `https://compasseats.com/api/venue-photo/${row.id}` : undefined) ||
-    //   undefined
-    // (row.id is the Google placeId.) For now: curated → else compass (empty).
     photo_url: curatedById.get(row.id) || row.photo_url || undefined,
     status: (row.status || "active").toLowerCase(),
     last_verified: normalizeSheetDate(row.last_verified) || undefined,
@@ -275,6 +268,42 @@ function rowToCity(raw: Record<string, string>): City {
 }
 
 // -------------------------------------------------------------------------
+// Row → Region transformation
+// -------------------------------------------------------------------------
+
+interface RegionCityEntry {
+  slug: string;
+  display: string;
+  country: string;
+  country_code: string;
+  venue_count: number;
+  lat: number;
+  lng: number;
+}
+
+function rowToRegion(raw: Record<string, string>): Region {
+  let cities: RegionCityEntry[] = [];
+  if (raw.cities_json && raw.cities_json.trim()) {
+    try {
+      cities = JSON.parse(raw.cities_json);
+    } catch {
+      cities = [];
+    }
+  }
+
+  return RegionSchema.parse({
+    slug: (raw.slug ?? "").toLowerCase(),
+    display: raw.display,
+    country: raw.country || undefined,
+    center_lat: parseFloatOrNaN(raw.center_lat),
+    center_lng: parseFloatOrNaN(raw.center_lng),
+    venue_count: Number(raw.venue_count) || 0,
+    city_count: Number(raw.city_count) || 0,
+    cities,
+  });
+}
+
+// -------------------------------------------------------------------------
 // Index builder
 // -------------------------------------------------------------------------
 
@@ -284,7 +313,7 @@ function pickTopAward(awards: Award[]) {
     const ap = AWARD_PRESTIGE[a.source] ?? 99;
     const bp = AWARD_PRESTIGE[b.source] ?? 99;
     if (ap !== bp) return ap - bp;
-    return b.year - a.year; // newer wins ties
+    return b.year - a.year;
   });
   const top = sorted[0];
   return { source: top.source, category: top.category, year: top.year };
@@ -310,22 +339,13 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
 // Main
 // -------------------------------------------------------------------------
 
-/**
- * Run the Sheet → JSON sync.
- *
- * Throws:
- *  - SyncSkipped         when env is missing or the Sheet fetch fails.
- *                        Caller should warn and fall back to committed JSON.
- *  - DataValidationError when row data is bad (duplicate keys, schema fail).
- *                        Caller MUST fail the build — committed JSON would
- *                        silently drift from the Sheet of record.
- */
- let _syncPromise: Promise<void> | null = null;
- export function runSync(): Promise<void> {
-   if (!_syncPromise) _syncPromise = _runSyncOnce();
-   return _syncPromise;
- }
- async function _runSyncOnce(): Promise<void> {
+let _syncPromise: Promise<void> | null = null;
+export function runSync(): Promise<void> {
+  if (!_syncPromise) _syncPromise = _runSyncOnce();
+  return _syncPromise;
+}
+
+async function _runSyncOnce(): Promise<void> {
   const API_KEY =
     process.env.SHEETS_API_KEY || process.env.GOOGLE_SHEETS_API_KEY;
   const SHEET_ID = process.env.COMPASSEATS_SHEET_ID;
@@ -333,6 +353,8 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
   const CITIES_TAB = process.env.COMPASSEATS_CITIES_TAB ?? "cities";
   const CURATED_TAB =
     process.env.COMPASSEATS_CURATED_TAB ?? "curated_photos";
+  const REGIONS_TAB =
+    process.env.COMPASSEATS_REGIONS_TAB ?? "regions";
 
   if (!API_KEY || !SHEET_ID) {
     throw new SyncSkipped(
@@ -354,9 +376,7 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
   }
   console.log(`  ${venueRows.length} venue rows, ${cityRows.length} city rows`);
 
-  // Curated photos (id → curated_photo_url) live in their own tab so they
-  // survive every reshape — reshape only ever rebuilds "venues"/"cities".
-  // Tolerant: a missing or empty curated tab simply yields no curated photos.
+  // Curated photos (id → curated_photo_url) — tolerant optional tab
   const curatedRows = await fetchOptionalTab(CURATED_TAB, SHEET_ID, API_KEY);
   const curatedById = new Map<string, string>();
   for (const r of curatedRows) {
@@ -366,6 +386,10 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
   }
   console.log(`  ${curatedById.size} curated photo(s)`);
 
+  // Regions — tolerant optional tab (missing tab = no regions written)
+  const regionRows = await fetchOptionalTab(REGIONS_TAB, SHEET_ID, API_KEY);
+  console.log(`  ${regionRows.length} region row(s)`);
+
   const errors: ValidationError[] = [];
   const venues: Venue[] = [];
 
@@ -374,7 +398,7 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
       venues.push(rowToVenue(row, curatedById));
     } catch (err) {
       errors.push({
-        rowIndex: i + 2, // +2 = 1-indexed + header row
+        rowIndex: i + 2,
         id: row.id ?? "(no id)",
         message: (err as Error).message,
       });
@@ -391,6 +415,16 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
         id: row.slug ?? "(no slug)",
         message: `city: ${(err as Error).message}`,
       });
+    }
+  });
+
+  // Parse regions — non-fatal: a bad region row is skipped with a warning
+  const regions: Region[] = [];
+  regionRows.forEach((row, i) => {
+    try {
+      regions.push(rowToRegion(row));
+    } catch (err) {
+      console.warn(`  region row ${i + 2} skipped: ${(err as Error).message}`);
     }
   });
 
@@ -416,7 +450,7 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
   }
   for (const c of cities) c.venue_count = counts.get(c.slug) ?? 0;
 
-  // Orphan check — venues pointing to a city not in the cities tab
+  // Orphan check
   const citySlugs = new Set(cities.map((c) => c.slug));
   const orphansByCity = new Map<string, string[]>();
   for (const v of venues) {
@@ -454,18 +488,26 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
   const index = buildIndex(venues);
 
   await mkdir(DATA_DIR, { recursive: true });
-  await Promise.all([
+
+  const writeOps: Promise<void>[] = [
     writeFile(resolve(DATA_DIR, "venues.json"), JSON.stringify(venues, null, 2)),
     writeFile(resolve(DATA_DIR, "cities.json"), JSON.stringify(cities, null, 2)),
     writeFile(
       resolve(DATA_DIR, "venues-index.json"),
-      // Index is compact — no pretty-printing
       JSON.stringify(index)
     ),
-  ]);
+  ];
 
-  // TEMPORARY: post-publish auditable summary. Remove once we've confirmed
-  // the build-time sync is doing what we expect.
+  // Only write regions.json when the tab was present and produced rows
+  if (regions.length > 0) {
+    writeOps.push(
+      writeFile(resolve(DATA_DIR, "regions.json"), JSON.stringify(regions, null, 2))
+    );
+  }
+
+  await Promise.all(writeOps);
+
+  // Auditable summary
   const sample = venues.slice(0, 5).map((v) => ({
     slug: v.slug,
     city_slug: v.city_slug,
@@ -478,6 +520,7 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
     generated_at: new Date().toISOString(),
     venue_count: venues.length,
     city_count: cities.length,
+    region_count: regions.length,
     active_venue_count: index.length,
     sample,
     spot_checks: {
@@ -498,12 +541,16 @@ function buildIndex(venues: Venue[]): VenueIndexEntry[] {
   console.log(`  data/venues.json         ${venues.length} venues`);
   console.log(`  data/cities.json         ${cities.length} cities`);
   console.log(`  data/venues-index.json   ${index.length} active venues`);
+  if (regions.length > 0) {
+    console.log(`  data/regions.json        ${regions.length} regions`);
+  } else {
+    console.log(`  data/regions.json        (skipped — no "regions" tab in Sheet yet)`);
+  }
   console.log(`  data/sync-report.json    summary + spot checks`);
   console.log(`\nAward sources registered: ${AWARD_SOURCES.length}`);
 }
 
-// CLI entrypoint — only runs when invoked directly
-// (`bun run scripts/sync-sheet.ts`), not when imported by vite.config.ts.
+// CLI entrypoint
 const invokedDirectly =
   typeof process !== "undefined" &&
   !!process.argv[1] &&
