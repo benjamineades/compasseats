@@ -196,7 +196,7 @@ function RegionMap({ region }: { region: Region }) {
 
     const map = new maplibregl.Map({
       container: containerRef.current,
-      style: "https://tiles.openfreemap.org/styles/positron",
+      style: `https://api.maptiler.com/maps/dataviz-light/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`,
       center: [region.center_lng, region.center_lat],
       zoom: 7,
       attributionControl: { compact: true },
