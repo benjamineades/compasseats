@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   createFileRoute,
   Link,
@@ -19,14 +19,6 @@ const INK_MUTED = "#6a6253";
 const BRONZE = "#895F2E";
 const HAIRLINE = "rgba(35,33,30,0.12)";
 const BRASS = "#C6A15B";
-
-function isDarkMode() {
-  if (typeof document === "undefined") return false;
-  return document.documentElement.classList.contains("dark");
-}
-
-const styleUrl = (dark: boolean) =>
-  `https://api.maptiler.com/maps/dataviz-${dark ? "dark" : "light"}/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`;
 
 function formatNum(n: number): string {
   return n.toLocaleString("en-US");
@@ -199,19 +191,34 @@ function RegionMap({ region }: { region: Region }) {
   const mapRef = useRef<maplibregl.Map | null>(null);
   const router = useRouter();
 
+  const [isDark, setIsDark] = useState(
+    typeof document !== "undefined" &&
+      document.documentElement.classList.contains("dark"),
+  );
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const styleUrl = `https://api.maptiler.com/maps/dataviz-${isDark ? "dark" : "light"}/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`;
+
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const initialStyle = styleUrl(isDarkMode());
-    console.log('[RegionMap] style string:', initialStyle);
     const map = new maplibregl.Map({
       container: containerRef.current,
-      style: initialStyle,
+      style: styleUrl,
       center: [region.center_lng, region.center_lat],
       zoom: 7,
       attributionControl: { compact: true },
     });
-    console.log('[RegionMap] style URL:', map.getStyle()?.name ?? 'unknown');
     map.addControl(
       new maplibregl.NavigationControl({ showCompass: false }),
       "top-right",
@@ -282,24 +289,12 @@ function RegionMap({ region }: { region: Region }) {
     };
   }, [region, router]);
 
-  // React to theme changes: swap the style when the `dark` class toggles.
+  // React to theme changes: swap the style when isDark flips.
   useEffect(() => {
-    if (typeof document === "undefined") return;
-    let current = isDarkMode();
-    const observer = new MutationObserver(() => {
-      const next = isDarkMode();
-      if (next === current) return;
-      current = next;
-      const map = mapRef.current;
-      if (!map) return;
-      map.setStyle(styleUrl(next));
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-    return () => observer.disconnect();
-  }, []);
+    const map = mapRef.current;
+    if (!map) return;
+    map.setStyle(styleUrl);
+  }, [styleUrl]);
 
   return <div ref={containerRef} className="h-[460px] md:h-[560px] w-full" />;
 }
