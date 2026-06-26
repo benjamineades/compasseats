@@ -530,6 +530,7 @@ function CityPage() {
           </p>
         )}
       </div>
+      <WorthTheDetour city={city} nearby={nearby} />
     </main>
   );
 }
@@ -537,6 +538,78 @@ function CityPage() {
 // ---------------------------------------------------------------------------
 // Single-venue feature (Mode A)
 // ---------------------------------------------------------------------------
+
+function WorthTheDetour({ city, nearby }: { city: City; nearby: Venue[] }) {
+  const picks = useMemo(() => {
+    return [...nearby]
+      .sort((a, b) => getVenuePrestige(b) - getVenuePrestige(a))
+      .slice(0, 6)
+      .map((v) => ({
+        v,
+        km: Math.round(haversineKm(city.lat, city.lng, v.lat, v.lng)),
+      }));
+  }, [nearby, city.lat, city.lng]);
+
+  if (picks.length === 0) return null;
+
+  return (
+    <section
+      style={{ backgroundColor: PAPER, borderTop: `1px solid ${HAIRLINE}` }}
+      className="py-12"
+    >
+      <div className="mx-auto max-w-5xl px-6">
+        <p
+          className="text-[10px] font-semibold uppercase"
+          style={{ color: BRONZE, letterSpacing: "0.25em", marginBottom: 10 }}
+        >
+          Worth the detour · within {NEARBY_RADIUS_KM} km
+        </p>
+        <h3
+          className="font-display text-2xl md:text-3xl"
+          style={{ color: INK, fontWeight: 400, marginBottom: 18 }}
+        >
+          A short trip from {city.display}
+        </h3>
+        <ul>
+          {picks.map(({ v, km }, idx) => (
+            <li
+              key={v.id || v.slug}
+              style={{
+                borderTop: idx === 0 ? "none" : `1px solid ${HAIRLINE}`,
+              }}
+            >
+              <Link
+                to="/venue/$city/$slug"
+                params={{ city: v.city_slug, slug: v.slug }}
+                className="group flex items-baseline justify-between gap-4 py-3 transition-colors"
+              >
+                <span className="min-w-0 flex-1">
+                  <span
+                    className="font-display text-lg"
+                    style={{ color: INK, fontWeight: 500 }}
+                  >
+                    {v.name}
+                  </span>
+                  <span
+                    className="ml-2 text-xs"
+                    style={{ color: INK_MUTED }}
+                  >
+                    {v.city_display}
+                    {v.country ? `, ${v.country}` : ""} · ~{km} km
+                  </span>
+                </span>
+                <ArrowRight
+                  className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5"
+                  style={{ color: BRONZE }}
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
 
 function SingleVenueFeature({
   city,
@@ -759,6 +832,9 @@ function SingleVenueFeature({
           </div>
         </div>
       </section>
+
+      {/* Worth the detour — nearby venues */}
+      <WorthTheDetour city={city} nearby={nearby} />
 
       {/* Section 3 — paper outro */}
       <section style={{ backgroundColor: PAPER }} className="pb-16 text-center">
