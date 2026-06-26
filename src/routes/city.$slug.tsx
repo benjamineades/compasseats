@@ -538,7 +538,15 @@ function CityPage() {
 // Single-venue feature (Mode A)
 // ---------------------------------------------------------------------------
 
-function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
+function SingleVenueFeature({
+  city,
+  venue,
+  nearby,
+}: {
+  city: City;
+  venue: Venue;
+  nearby: Venue[];
+}) {
   const where = venue.neighborhood || venue.city_display;
   const typeCap = venue.type === "bar" ? "Cocktail bar" : "Restaurant";
   const why = buildSingleWhy(venue, city);
