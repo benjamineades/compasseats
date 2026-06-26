@@ -53,6 +53,22 @@ const VenueMap = lazy(() =>
 // ---------------------------------------------------------------------------
 const NEARBY_RADIUS_KM = 100;
 
+const IMPERIAL_COUNTRIES = new Set([
+  'United States', 'United Kingdom', 'Liberia', 'Myanmar',
+]);
+
+function usesImperial(country: string): boolean {
+  return IMPERIAL_COUNTRIES.has(country);
+}
+
+function formatDistance(km: number, imperial: boolean): string {
+  if (imperial) {
+    const mi = Math.round(km * 0.621371);
+    return `${mi} mi`;
+  }
+  return `${Math.round(km)} km`;
+}
+
 function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number) {
   const R = 6371;
   const toRad = (d: number) => (d * Math.PI) / 180;
@@ -78,7 +94,7 @@ function getDetourVenues(
   nearby: Venue[],
   cityLat: number,
   cityLng: number,
-): Array<Venue & { detourDistanceMi: number }> {
+): Array<Venue & { detourDistanceKm: number }> {
   const MICHELIN_STARS = new Set(["Three Stars", "Two Stars", "One Star"]);
   const W50_SOURCES = new Set([
     "worlds-50-best-restaurants",
@@ -98,14 +114,12 @@ function getDetourVenues(
     .filter(isQualifying)
     .map((v) => ({
       ...v,
-      detourDistanceMi: Math.round(
-        haversineKm(cityLat, cityLng, v.lat, v.lng) * 0.621371,
-      ),
+      detourDistanceKm: Math.round(haversineKm(cityLat, cityLng, v.lat, v.lng)),
     }))
     .sort((a, b) => {
       const pd = getVenuePrestige(b) - getVenuePrestige(a);
       if (pd !== 0) return pd;
-      return a.detourDistanceMi - b.detourDistanceMi;
+      return a.detourDistanceKm - b.detourDistanceKm;
     })
     .slice(0, 10);
 }
@@ -301,6 +315,7 @@ function CityPage() {
     { label: city.display },
   ];
   const counts = { total: venues.length, restaurants: restaurantCount, bars: barCount };
+  const imperial = usesImperial(city.country);
 
   // MODE A — single-venue city: a generous feature, no filter bar, no list.
   if (venues.length === 1) {
@@ -354,6 +369,7 @@ function CityPage() {
               on={showNearby}
               onChange={setShowNearby}
               count={nearby.length}
+              imperial={imperial}
             />
           )}
           <div
@@ -566,7 +582,7 @@ function CityPage() {
           </p>
         )}
       </div>
-      <WorthTheDetour city={city} nearby={nearby} />
+      <WorthTheDetour city={city} nearby={nearby} imperial={imperial} />
     </main>
   );
 }
@@ -593,6 +609,7 @@ function SingleVenueFeature({
   // place id (the VenuePhoto component live-fetches from the photo worker).
   const hasPhoto = !!venue.photo_url?.trim() || !!venue.id?.trim();
   const [showNearby, setShowNearby] = useState(false);
+  const imperial = usesImperial(city.country);
 
   return (
     <>
@@ -781,6 +798,7 @@ function SingleVenueFeature({
               on={showNearby}
               onChange={setShowNearby}
               count={nearby.length}
+              imperial={imperial}
             />
           )}
           <div
@@ -798,7 +816,7 @@ function SingleVenueFeature({
       </section>
 
       {/* Worth the detour — nearby venues */}
-      <WorthTheDetour city={city} nearby={nearby} />
+      <WorthTheDetour city={city} nearby={nearby} imperial={imperial} />
 
       {/* Section 3 — paper outro */}
       <section style={{ backgroundColor: PAPER }} className="pb-16 text-center">
@@ -885,7 +903,7 @@ function MapPlaceholder() {
   );
 }
 
-function WorthTheDetour({ nearby, city }: { nearby: Venue[]; city: City }) {
+function WorthTheDetour({ nearby, city, imperial }: { nearby: Venue[]; city: City; imperial: boolean }) {
   const detourVenues = useMemo(
     () => getDetourVenues(nearby, city.lat, city.lng),
     [nearby, city.lat, city.lng],
@@ -964,7 +982,7 @@ function WorthTheDetour({ nearby, city }: { nearby: Venue[]; city: City }) {
                 </div>
                 <div className="shrink-0 text-right">
                   <span className="text-sm font-medium" style={{ color: BRONZE }}>
-                    {v.detourDistanceMi} mi
+                    {formatDistance(v.detourDistanceKm, imperial)}
                   </span>
                   <ArrowRight
                     className="ml-1 inline h-3.5 w-3.5"
@@ -984,10 +1002,12 @@ function NearbyToggle({
   on,
   onChange,
   count,
+  imperial,
 }: {
   on: boolean;
   onChange: (next: boolean) => void;
   count: number;
+  imperial: boolean;
 }) {
   return (
     <div
@@ -1006,8 +1026,8 @@ function NearbyToggle({
         </span>
         <span className="text-xs italic" style={{ color: INK_MUTED }}>
           {on
-            ? `Including ${count} venue${count === 1 ? "" : "s"} within ~100 km`
-            : `${count} more venue${count === 1 ? "" : "s"} within ~100 km`}
+            ? `Including ${count} venue${count === 1 ? "" : "s"} within ~${formatDistance(100, imperial)}`
+            : `${count} more venue${count === 1 ? "" : "s"} within ~${formatDistance(100, imperial)}`}
         </span>
       </div>
       <button
