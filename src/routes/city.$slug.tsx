@@ -282,8 +282,7 @@ function CityPage() {
           crumbs={crumbs}
           counts={counts}
         />
-        <SingleVenueFeature city={city} venue={venues[0]} />
-        <NearbyMapBand city={city} venues={[venues[0]]} nearby={nearby} />
+        <SingleVenueFeature city={city} venue={venues[0]} nearby={nearby} />
       </main>
     );
   }
