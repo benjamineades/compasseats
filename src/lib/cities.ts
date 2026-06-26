@@ -13,6 +13,10 @@ import citiesData from "../../data/cities.json";
 import regionsData from "../../data/regions.json";
 import type { City, Region } from "./schema";
 
+function foldAccents(s: string): string {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+
 /** All charted cities (from the static data/cities.json artifact). */
 const ALL_CITIES = citiesData as unknown as City[];
 
@@ -21,14 +25,14 @@ const ALL_REGIONS = regionsData as unknown as Region[];
 
 /** Search across every charted city by display name or country. */
 export function searchCities(query: string, limit = 8): City[] {
-  const q = query.trim().toLowerCase();
+  const q = foldAccents(query.trim());
   if (q.length < 1) return [];
   const matches: City[] = [];
   for (const c of ALL_CITIES) {
     if (c.venue_count <= 0) continue;
     const hay =
-      c.display.toLowerCase().includes(q) ||
-      c.country.toLowerCase().includes(q);
+      foldAccents(c.display).includes(q) ||
+      foldAccents(c.country).includes(q);
     if (hay) {
       matches.push(c);
       if (matches.length >= limit * 3) break;
@@ -36,8 +40,8 @@ export function searchCities(query: string, limit = 8): City[] {
   }
   // Prefer venue-rich, then prefix matches.
   matches.sort((a, b) => {
-    const ap = a.display.toLowerCase().startsWith(q) ? 1 : 0;
-    const bp = b.display.toLowerCase().startsWith(q) ? 1 : 0;
+    const ap = foldAccents(a.display).startsWith(q) ? 1 : 0;
+    const bp = foldAccents(b.display).startsWith(q) ? 1 : 0;
     if (ap !== bp) return bp - ap;
     return b.venue_count - a.venue_count;
   });
@@ -46,22 +50,22 @@ export function searchCities(query: string, limit = 8): City[] {
 
 /** Search across every region by display name or country. */
 export function searchRegions(query: string, limit = 5): Region[] {
-  const q = query.trim().toLowerCase();
+  const q = foldAccents(query.trim());
   if (q.length < 1) return [];
   const matches: Region[] = [];
   for (const r of ALL_REGIONS) {
     if (r.venue_count === 0) continue;
-    const country = (r.country ?? "").toLowerCase();
+    const country = foldAccents(r.country ?? "");
     const hay =
-      r.display.toLowerCase().includes(q) || country.includes(q);
+      foldAccents(r.display).includes(q) || country.includes(q);
     if (hay) {
       matches.push(r);
       if (matches.length >= limit * 3) break;
     }
   }
   matches.sort((a, b) => {
-    const ap = a.display.toLowerCase().startsWith(q) ? 1 : 0;
-    const bp = b.display.toLowerCase().startsWith(q) ? 1 : 0;
+    const ap = foldAccents(a.display).startsWith(q) ? 1 : 0;
+    const bp = foldAccents(b.display).startsWith(q) ? 1 : 0;
     if (ap !== bp) return bp - ap;
     return b.venue_count - a.venue_count;
   });
