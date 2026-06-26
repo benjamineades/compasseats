@@ -100,7 +100,11 @@ export const Route = createFileRoute("/regions")({
 });
 
 function RegionsPage() {
-  const { groups, regionCount } = Route.useLoaderData();
+  const { groups, regionCount } = Route.useLoaderData() as {
+    groups: CountryGroup[];
+    regionCount: number;
+    countryCount: number;
+  };
 
   return (
     <main style={{ backgroundColor: PAPER, color: INK }} className="min-h-screen">
