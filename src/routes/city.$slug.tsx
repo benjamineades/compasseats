@@ -833,6 +833,9 @@ function SingleVenueFeature({
         </div>
       </section>
 
+      {/* Worth the detour — nearby venues */}
+      <WorthTheDetour city={city} nearby={nearby} />
+
       {/* Section 3 — paper outro */}
       <section style={{ backgroundColor: PAPER }} className="pb-16 text-center">
         <div className="mx-auto max-w-5xl px-6">
