@@ -10,10 +10,14 @@ export type TopCity = {
 };
 
 import citiesData from "../../data/cities.json";
-import type { City } from "./schema";
+import regionsData from "../../data/regions.json";
+import type { City, Region } from "./schema";
 
 /** All charted cities (from the static data/cities.json artifact). */
 const ALL_CITIES = citiesData as unknown as City[];
+
+/** All regions (from the static data/regions.json artifact). */
+const ALL_REGIONS = regionsData as unknown as Region[];
 
 /** Search across every charted city by display name or country. */
 export function searchCities(query: string, limit = 8): City[] {
@@ -31,6 +35,30 @@ export function searchCities(query: string, limit = 8): City[] {
     }
   }
   // Prefer venue-rich, then prefix matches.
+  matches.sort((a, b) => {
+    const ap = a.display.toLowerCase().startsWith(q) ? 1 : 0;
+    const bp = b.display.toLowerCase().startsWith(q) ? 1 : 0;
+    if (ap !== bp) return bp - ap;
+    return b.venue_count - a.venue_count;
+  });
+  return matches.slice(0, limit);
+}
+
+/** Search across every region by display name or country. */
+export function searchRegions(query: string, limit = 5): Region[] {
+  const q = query.trim().toLowerCase();
+  if (q.length < 1) return [];
+  const matches: Region[] = [];
+  for (const r of ALL_REGIONS) {
+    if (r.venue_count === 0) continue;
+    const country = (r.country ?? "").toLowerCase();
+    const hay =
+      r.display.toLowerCase().includes(q) || country.includes(q);
+    if (hay) {
+      matches.push(r);
+      if (matches.length >= limit * 3) break;
+    }
+  }
   matches.sort((a, b) => {
     const ap = a.display.toLowerCase().startsWith(q) ? 1 : 0;
     const bp = b.display.toLowerCase().startsWith(q) ? 1 : 0;
