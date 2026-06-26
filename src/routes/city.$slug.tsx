@@ -845,6 +845,55 @@ function MapPlaceholder() {
   );
 }
 
+function NearbyToggle({
+  on,
+  onChange,
+  count,
+}: {
+  on: boolean;
+  onChange: (next: boolean) => void;
+  count: number;
+}) {
+  return (
+    <div
+      className="mb-3 flex items-center justify-between gap-3 rounded-lg px-3 py-2"
+      style={{
+        backgroundColor: "rgba(35,33,30,0.04)",
+        border: `1px solid ${HAIRLINE}`,
+      }}
+    >
+      <div className="flex flex-col">
+        <span
+          className="text-[11px] font-semibold uppercase tracking-[0.18em]"
+          style={{ color: BRONZE }}
+        >
+          Show nearby
+        </span>
+        <span className="text-xs italic" style={{ color: INK_MUTED }}>
+          {on
+            ? `Including ${count} venue${count === 1 ? "" : "s"} within ~100 km`
+            : `${count} more venue${count === 1 ? "" : "s"} within ~100 km`}
+        </span>
+      </div>
+      <button
+        type="button"
+        role="switch"
+        aria-checked={on}
+        onClick={() => onChange(!on)}
+        className="relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full transition-colors"
+        style={{
+          backgroundColor: on ? BRASS : "rgba(35,33,30,0.18)",
+        }}
+      >
+        <span
+          className="inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform"
+          style={{ transform: on ? "translateX(22px)" : "translateX(2px)" }}
+        />
+      </button>
+    </div>
+  );
+}
+
 function SegToggle({
   active,
   onClick,
