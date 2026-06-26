@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompassEats — Pipeline Run Order</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#211F1C; --bg-2:#28241F; --panel:#2F2A24; --panel-2:#383229;
+    --brass:#C6A15B; --brass-soft:#DEC68F; --cream:#F5F0E6; --cream-dim:#CBC2B0;
+    --cream-dimmer:#988F7E; --clay:#D88A63; --sage:#A4B79F;
+    --line:rgba(198,161,91,.20); --line-soft:rgba(198,161,91,.10);
+    --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,sans-serif;
+    --shadow:0 18px 40px -24px rgba(0,0,0,.7);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:radial-gradient(1100px 640px at 85% -10%, rgba(198,161,91,.10), transparent 60%), var(--bg);
+    color:var(--cream); font-family:var(--sans); font-weight:400; line-height:1.65; padding:56px 22px 100px;
+    -webkit-font-smoothing:antialiased; background-attachment:fixed;}
+  .wrap{max-width:880px;margin:0 auto}
+  .eyebrow{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--brass);font-weight:600;margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.5vw,3rem);letter-spacing:-.02em;line-height:1.05}
+  h1 em{font-style:italic;color:var(--brass-soft)}
+  .meta{margin:18px 0 40px;display:flex;flex-wrap:wrap;gap:10px}
+  .m{font-size:.74rem;color:var(--cream-dim);border:1px solid var(--line);border-radius:100px;padding:5px 13px}
+  .m b{color:var(--brass-soft);font-weight:600}
+  h2{font-family:var(--serif);font-weight:400;font-size:1.55rem;margin:46px 0 6px;color:var(--cream)}
+  h2 .n{color:var(--brass);font-size:1rem;font-weight:600;font-family:var(--sans);margin-right:10px;letter-spacing:.05em}
+  .lead{color:var(--cream-dim);font-weight:300;margin-bottom:18px;font-size:.96rem}
+  .card{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:13px;padding:22px 24px;margin:16px 0;box-shadow:var(--shadow)}
+  .card h3{font-size:.96rem;font-weight:600;color:var(--brass-soft);margin-bottom:10px;margin-top:18px}
+  .card h3:first-child{margin-top:0}
+  p{margin:9px 0;font-size:.92rem;color:var(--cream-dim);font-weight:300}
+  p strong,li strong{color:var(--cream);font-weight:600}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:.82em;background:rgba(198,161,91,.12);color:var(--brass-soft);padding:1px 6px;border-radius:5px}
+  pre{background:#1A1815;border:1px solid var(--line);border-radius:9px;padding:14px 16px;overflow-x:auto;margin:12px 0}
+  pre code{background:none;color:var(--cream-dim);padding:0;font-size:.8rem;line-height:1.7}
+  ol,ul{margin:10px 0 10px 4px;padding-left:22px}
+  li{font-size:.92rem;color:var(--cream-dim);font-weight:300;margin:7px 0}
+  .flow{font-family:ui-monospace,Menlo,monospace;font-size:.82rem;line-height:1.9;color:var(--cream-dim)}
+  .flow b{color:var(--brass-soft)} .flow .x{color:var(--clay)} .flow .g{color:var(--sage)}
+  .flag{border-left:3px solid var(--clay);background:rgba(216,138,99,.07);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0}
+  .flag b{color:var(--clay)}
+  .ok{border-left:3px solid var(--sage);background:rgba(164,183,159,.07);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0}
+  .ok b{color:var(--sage)}
+  .step{display:flex;gap:14px;margin:18px 0}
+  .step .num{flex:0 0 28px;height:28px;border-radius:50%;background:var(--brass);color:#211F1C;font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+  .step .body{flex:1}
+  .step .body h3{font-size:.98rem;font-weight:600;color:var(--cream);margin-bottom:4px}
+  .step .body h3 code{font-size:.84em}
+  .step .body .why{font-size:.82rem;color:var(--cream-dimmer)}
+  .divider{height:1px;background:var(--line);margin:46px 0}
+  footer{margin-top:50px;color:var(--cream-dimmer);font-size:.78rem;font-weight:300;text-align:center}
+  .tag{display:inline-block;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:100px;margin-left:8px;vertical-align:middle}
+  .tag.sage{background:rgba(164,183,159,.15);color:var(--sage)}
+  .tag.clay{background:rgba(216,138,99,.15);color:var(--clay)}
+  .tag.brass{background:rgba(198,161,91,.15);color:var(--brass-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Living doc · Operations</div>
+  <h1>Pipeline <em>Run Order</em></h1>
+  <div class="meta">
+    <span class="m">Version <b>1.4</b></span>
+    <span class="m">Updated <b>June 26, 2026</b></span>
+    <span class="m">Owner <b>Ben</b></span>
+    <span class="m">Status <b>Canonical</b></span>
+  </div>
+
+  <p class="lead">The Apps Script panel lists the tools but not the <strong>sequence</strong> — and the sequence is load-bearing. Run this start-to-finish whenever Sheet data, matching logic, or <code>CITY_ALIASES_</code> changes. Out-of-order runs produce stale or corrupt data (e.g. blurbs wiped, orphan cities, awards bound to the wrong row). Companion to the <em>Data Pipeline &amp; Publish Reference</em>, which explains <em>why</em> publishing is manual on this plan.</p>
+
+  <div class="card">
+    <p class="flow">
+      <b>reshapeCompassEats</b><br>
+      &nbsp;&nbsp;↓<br>
+      <b>mergeDuplicateVenues</b><br>
+      &nbsp;&nbsp;↓<br>
+      <b>importBlurbsFromDrive</b><br>
+      &nbsp;&nbsp;↓<br>
+      <b>clearWrongCityBlurbs</b><br>
+      &nbsp;&nbsp;↓<br>
+      <b>importOptionB</b><br>
+      &nbsp;&nbsp;↓<br>
+      <b>generateCitiesTab</b><br>
+      &nbsp;&nbsp;↓<br>
+      <b>generateRegionsTab</b><br>
+      &nbsp;&nbsp;↓ &nbsp;<span class="g">preflightPublish — gate (expect 0 / 0)</span><br>
+      &nbsp;&nbsp;↓<br>
+      <b>regenerate JSON</b> &nbsp;(venues · cities · venues-index · regions)<br>
+      &nbsp;&nbsp;↓<br>
+      <b>upload</b> &nbsp;(GitHub web → <code>/data</code>)<br>
+      &nbsp;&nbsp;↓<br>
+      <b>publish</b> &nbsp;(Lovable)
+    </p>
+  </div>
+
+  <h2><span class="n">A</span>Apps Script stage — the Sheet</h2>
+  <p class="lead">Six functions, in this exact order. Each runs in the one "Compass Eats" project; they share globals, so the order they fire in matters.</p>
+
+  <div class="ok">
+    <p><b>Conditional pre-step — <code>geoEnrich</code>.</b> Geocoding is <em>not</em> part of this standard loop. Run it <strong>only when you've added venues or changed names / cities</strong> — i.e. when there's new geo to fetch — then begin the sequence below at <code>reshapeCompassEats</code>. A change that doesn't move identity (e.g. a <code>type</code>-only fix, where no name, city, or slug changes) needs <strong>no</strong> geo step; running it would be a no-op. Earlier handoffs listed <code>geoEnrich</code> inline, which caused a wrong run order — hence this note.</p>
+  </div>
+
+  <div class="step"><div class="num">1</div><div class="body">
+    <h3><code>reshapeCompassEats</code></h3>
+    <p>Rebuilds the <code>venues</code> tab from the award source tabs + Places Enrichment. Applies <code>CITY_ALIASES_</code> (suburb/fold relabels → <code>city_slug</code>), then <code>CITY_DISPLAY_</code> via <code>cityDisplay_()</code> (sets the canonical <code>city_display</code> label per slug and preserves the true town in <code>neighborhood</code>, with a pseudo-neighborhood guard for verbose restatements like "New York City"). Unions awards for same identity (<code>normKey + city</code>), reads geo by <code>name|city</code> then name-only fallback.</p>
+    <p class="why">⚠ Rewrites the tab from scratch — <strong>wipes <code>blurb_short</code> / <code>blurb_long</code></strong>. That's why the blurb imports must follow. Log: <code>ALIAS KEYS AT RUNTIME</code> + venue total.</p>
+  </div></div>
+
+  <div class="step"><div class="num">2</div><div class="body">
+    <h3><code>mergeDuplicateVenues</code></h3>
+    <p>Collapses rows sharing <code>place_id + city_slug + type</code>, unioning their awards. Same <code>place_id</code> across <em>different</em> cities is sent to the <code>merge_review</code> tab, never auto-merged.</p>
+    <p class="why">Must run after reshape (operates on freshly-built rows). Log: merge groups collapsed, rows removed, <code>merge_review</code> count.</p>
+  </div></div>
+
+  <div class="step"><div class="num">3</div><div class="body">
+    <h3><code>importBlurbsFromDrive</code></h3>
+    <p>Reads <code>blurbs_final.csv</code> from Drive and fills <code>blurb_short</code> / <code>blurb_long</code>, matching on <strong>slug only</strong>.</p>
+    <p class="why">Repopulates what reshape wiped. Slug-keyed, so city folds/merges don't break the match. Log: "Filled blurbs on N rows" (expect ~10,200+).</p>
+  </div></div>
+
+  <div class="step"><div class="num">4</div><div class="body">
+    <h3><code>clearWrongCityBlurbs</code></h3>
+    <p>Blanks <code>blurb_short</code>/<code>blurb_long</code> for a hardcoded list (~119) of <code>city_slug/slug</code> keys whose bulk (Option A) blurb describes a <em>different</em> city than the venue&rsquo;s own &mdash; same-name confusion from batch generation (e.g. Atlas&nbsp;Atlanta carrying the Singapore blurb, Aqua&nbsp;Wolfsburg the Hong&nbsp;Kong one). Cleared venues fall back to the honest &ldquo;A charted favorite in {city}&rdquo; line.</p>
+    <p class="why">Runs <em>before</em> Option B: the marquee venues inside that list (Central, Maido, &hellip;) then get their correct hand-built blurb re-applied by <code>importOptionB</code>, while the non-marquee ones stay blanked. The wrong text lives in <code>blurbs_final.csv</code>, so it returns on every <code>importBlurbsFromDrive</code> until that file is regenerated. <strong>Keyed on <code>city_slug/slug</code></strong>, so any <code>CITY_ALIASES_</code> fold that moves a flagged venue silently breaks its key &mdash; re-audit the list whenever aliases change.</p>
+  </div></div>
+
+  <div class="step"><div class="num">5</div><div class="body">
+    <h3><code>importOptionB</code></h3>
+    <p>Writes the verified, hand-built Option B premium blurbs over the generic ones for the marquee set.</p>
+    <p class="why">Last blurb step so its text wins. Slug-matched. Log: Option B rows written.</p>
+  </div></div>
+
+  <div class="step"><div class="num">6</div><div class="body">
+    <h3><code>generateCitiesTab</code></h3>
+    <p>Rebuilds the <code>cities</code> tab from the venues' current <code>city_slug</code>s — creates any new fold-target city, drops emptied ones, auto-fills <code>country_code</code>, sets lat/lng to each city's venue centroid.</p>
+    <p class="why"><strong>Mandatory after any <code>city_slug</code> change</strong> (folds, aliases). Skip it and the build fails the orphan-city check (every venue's city_slug must have a cities-tab row). Log: cities count.</p>
+  </div></div>
+
+  <div class="step"><div class="num">7</div><div class="body">
+    <h3><code>generateRegionsTab</code></h3>
+    <p>Reads the <code>city_regions</code> tab (City | Country | Region mapping) and the freshly-built <code>cities</code> tab, then writes the <code>regions</code> tab — one row per region with slug, centroid, venue count, city count, and a <code>cities_json</code> array. This is what <code>sync-sheet.ts</code> reads to produce <code>data/regions.json</code>.</p>
+    <p class="why">Must run <strong>after</strong> <code>generateCitiesTab</code> — it reads the cities tab for coordinates and venue counts. <strong>Conditional:</strong> skip if you haven't changed the <code>city_regions</code> tab and no new cities were added. If a new city belongs to a region, add it to <code>city_regions</code> first, then re-run this step. Log: "Regions written: N · Cities matched: N."</p>
+  </div></div>
+
+  <div class="ok">
+    <p><b>Gate — <code>preflightPublish</code>.</b> Read-only check that mirrors the two build-fatal rules in <code>sync-sheet.ts</code>: duplicate <code>city/slug</code> keys and orphan <code>city_slug</code>s. Both must read <strong>0</strong> before regenerating JSON. Cheap insurance against a failed deploy.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2><span class="n">B</span>Publish stage — the repo</h2>
+  <p class="lead">The build-time Sheet sync can't run on this plan (Build Secrets are Enterprise-only), so JSON is regenerated from a Sheet export and committed by hand. See the Data Pipeline doc for the root cause.</p>
+  <p class="lead">All Apps Script files are mirrored in the repo under <code>/apps-script/</code> (re-commit when edited). A handoff to a fresh session therefore needs only the current Sheet <code>.xlsx</code> &mdash; scripts, code, and docs are pulled from the repo.</p>
+
+  <div class="step"><div class="num">8</div><div class="body">
+    <h3>Regenerate JSON</h3>
+    <p><strong>File → Download → Microsoft Excel (.xlsx)</strong>, then run it through the sync transform to produce <code>venues.json</code>, <code>cities.json</code>, <code>venues-index.json</code>, and <code>regions.json</code>. This is the same validation the build would run — it trims the export's blank padding rows, normalizes euro <code>price_tier</code> values to <code>$</code>-tiers, and <strong>fails loudly</strong> on any bad row (missing lat/lng, unknown award source, bad <code>country_code</code>).</p>
+    <p class="why">Always sanity-check the new <code>venues.json</code> against the committed one before shipping: venue count, and <code>blurb_long</code> coverage (~10,200+). A sudden blurb drop to zero means a blurb step was skipped. Also confirm <code>regions.json</code> has the expected region count (currently 107).</p>
+  </div></div>
+
+  <div class="step"><div class="num">9</div><div class="body">
+    <h3>Upload to GitHub</h3>
+    <p>Repo → <code>data</code> folder → <strong>Add file → Upload files</strong> → drag all four <code>.json</code> in (exact same names overwrite) → commit to <code>main</code>. All four are well under the 25 MB web limit.</p>
+  </div></div>
+
+  <div class="step"><div class="num">10</div><div class="body">
+    <h3>Publish</h3>
+    <p>Trigger the Lovable build. It reads the newly committed JSON and prerenders every <code>/city/…</code>, <code>/venue/…</code>, and <code>/region/…</code> page. Expect the <code>SYNC SKIPPED</code> banner — that's normal here; the committed JSON is the source.</p>
+    <p class="why">Spot-check 3–4 fixed venues on the live site afterward (correct city, stars/awards rendering).</p>
+  </div></div>
+
+  <div class="divider"></div>
+
+  <h2><span class="n">C</span>Build gates to remember <span class="tag clay">fail = no deploy</span></h2>
+  <div class="card">
+    <ul>
+      <li><strong>Duplicate <code>city/slug</code> keys</strong> — two active venues can't share one.</li>
+      <li><strong>Orphan <code>city_slug</code></strong> — every venue's city must exist in the cities tab (run <code>generateCitiesTab</code>).</li>
+      <li><strong><code>price_tier</code></strong> — only <code>$ $$ $$$ $$$$</code> or blank; euros are normalized at JSON regen, but the Sheet still holds <code>€</code> until scrubbed.</li>
+      <li><strong>Every venue needs numeric <code>lat</code> + <code>lng</code></strong>, and every award <code>source</code> must be one of the 25 registered slugs.</li>
+      <li><strong>City <code>country_code</code></strong> exactly 2 letters; any <code>hero_image_url</code> must be a valid URL.</li>
+    </ul>
+  </div>
+
+  <div class="flag">
+    <p><b>When in doubt:</b> if a change is right in the Sheet but wrong on the site, the JSON wasn't regenerated and re-committed. The Sheet is never read live in production.</p>
+  </div>
+
+  <footer>
+    CompassEats · Pipeline Run Order · v1.4 — Jun 26, 2026<br>
+    Changelog: v1.4 — added <code>generateRegionsTab</code> as step 7 (after <code>generateCitiesTab</code>, conditional on <code>city_regions</code> tab changes); renumbered publish stage to steps 8–10; added <code>regions.json</code> to the regenerate and upload steps; noted <code>/region/…</code> pages in the publish step. · v1.3 — flagged <code>geoEnrich</code> as a conditional pre-step (not part of the standard loop) and noted that identity-neutral fixes like a type-only change skip it; harmonized the version badge (was 1.1 / 1.2 mismatch). · v1.2 — corrected the clearWrongCityBlurbs step to match the real script and noted its city_slug/slug fragility + the /apps-script repo mirror. · v1.0 — first standalone run-order reference; pulls the sequence out of the Data Pipeline doc, adds per-step order rationale, the preflight gate, and the build-gate checklist.
+  </footer>
+</div>
+</body>
+</html>
