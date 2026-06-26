@@ -283,6 +283,7 @@ function CityPage() {
           counts={counts}
         />
         <SingleVenueFeature city={city} venue={venues[0]} />
+        <NearbyMapBand city={city} venues={[venues[0]]} nearby={nearby} />
       </main>
     );
   }
@@ -313,12 +314,22 @@ function CityPage() {
           >
             The lay of the land · {city.display} · {formatCoord(city.lat, city.lng)}
           </p>
+          {nearby.length > 0 && (
+            <NearbyToggle
+              on={showNearby}
+              onChange={setShowNearby}
+              count={nearby.length}
+            />
+          )}
           <div
             className="overflow-hidden rounded-xl"
             style={{ border: `1px solid ${HAIRLINE}` }}
           >
             <ClientOnly fallback={<MapPlaceholder />}>
-              <VenueMap venues={filtered} cityContext={city.slug} />
+              <VenueMap
+                venues={showNearby ? [...filtered, ...nearby] : filtered}
+                cityContext={city.slug}
+              />
             </ClientOnly>
           </div>
         </div>
