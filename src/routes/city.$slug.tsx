@@ -74,6 +74,42 @@ function computeNearbyVenues(city: City, ownSlug: string): Venue[] {
   });
 }
 
+function getDetourVenues(
+  nearby: Venue[],
+  cityLat: number,
+  cityLng: number,
+): Array<Venue & { detourDistanceMi: number }> {
+  const MICHELIN_STARS = new Set(["Three Stars", "Two Stars", "One Star"]);
+  const W50_SOURCES = new Set([
+    "worlds-50-best-restaurants",
+    "worlds-50-best-bars",
+  ]);
+
+  const isQualifying = (v: Venue) => {
+    for (const a of v.awards) {
+      if (a.source === "michelin" && MICHELIN_STARS.has(a.category)) return true;
+      if (W50_SOURCES.has(a.source)) return true;
+      if (a.source === "james-beard") return true;
+    }
+    return false;
+  };
+
+  return nearby
+    .filter(isQualifying)
+    .map((v) => ({
+      ...v,
+      detourDistanceMi: Math.round(
+        haversineKm(cityLat, cityLng, v.lat, v.lng) * 0.621371,
+      ),
+    }))
+    .sort((a, b) => {
+      const pd = getVenuePrestige(b) - getVenuePrestige(a);
+      if (pd !== 0) return pd;
+      return a.detourDistanceMi - b.detourDistanceMi;
+    })
+    .slice(0, 10);
+}
+
 // ---------------------------------------------------------------------------
 // Route
 // ---------------------------------------------------------------------------
