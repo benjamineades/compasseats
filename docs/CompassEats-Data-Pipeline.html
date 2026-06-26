@@ -59,8 +59,8 @@
   <div class="eyebrow">Living doc · Operations</div>
   <h1>Data Pipeline &amp; <em>Publish Reference</em></h1>
   <div class="meta">
-    <span class="m">Version <b>2.0</b></span>
-    <span class="m">Updated <b>June 12, 2026</b></span>
+    <span class="m">Version <b>2.1</b></span>
+    <span class="m">Updated <b>June 25, 2026</b></span>
     <span class="m">Owner <b>Ben</b></span>
     <span class="m">Status <b>Proven live workflow</b></span>
   </div>
@@ -68,7 +68,7 @@
   <p class="lead">How data gets from the Google Sheet to the live site — and the workflow we actually use, now that the automatic build-time sync is confirmed unavailable on this plan. <strong>If a change is correct in the Sheet but wrong on the site, the answer is almost always "the JSON in the repo wasn't regenerated and re-committed."</strong> This doc is the ritual that prevents that.</p>
 
   <div class="flag">
-    <p><b>v2.0 supersedes v1.0.</b> v1.0 said the fix was to set Build Secrets. <strong>That fix is not available</strong> — Build Secrets are a Lovable <em>Enterprise-only</em> feature, and this project isn't on Enterprise. The build-time Sheet sync therefore <strong>cannot run</strong> on a normal publish; the <code>SYNC SKIPPED</code> banner is the permanent, expected state. The real workflow is manual JSON regeneration + GitHub commit, documented below.</p>
+    <p><b>v2.0 supersedes v1.0.</b> v1.0 said the fix was to set Build Secrets. <strong>That fix is not available on Pro</strong> — Build Secrets require a Lovable <em>Business or Enterprise</em> plan. The build-time Sheet sync therefore <strong>cannot run</strong> on a normal publish; the <code>SYNC SKIPPED</code> banner is the permanent, expected state. The real workflow is manual JSON regeneration + GitHub commit, documented below.</p>
   </div>
 
   <h2><span class="n">01</span>How data flows</h2>
@@ -86,7 +86,7 @@
   <p>The frontend reads the committed JSON via plain imports in <code>src/lib/venues.ts</code> (lines ~19–21). Pages are <strong>fully prerendered</strong> — the live site does not re-read data per request. <strong>So the deployed HTML is only ever as fresh as <code>data/venues.json</code> was at build time.</strong></p>
 
   <h2><span class="n">02</span>Why the automatic sync can't run <span class="tag clay">root cause</span></h2>
-  <p>The build only re-fetches the Sheet if two variables exist in the <strong>build environment</strong>: <code>SHEETS_API_KEY</code> (or <code>GOOGLE_SHEETS_API_KEY</code>) and <code>COMPASSEATS_SHEET_ID</code>. On Lovable those are <strong>Build Secrets — an Enterprise-only feature.</strong> Runtime/Cloud secrets are <em>not</em> visible to the build. So <code>runSync()</code> throws <code>SyncSkipped</code>, the build swallows it with a warning, and ships whatever JSON is already committed:</p>
+  <p>The build only re-fetches the Sheet if two variables exist in the <strong>build environment</strong>: <code>SHEETS_API_KEY</code> (or <code>GOOGLE_SHEETS_API_KEY</code>) and <code>COMPASSEATS_SHEET_ID</code>. On Lovable those are <strong>Build Secrets — a Business/Enterprise feature, not available on Pro.</strong> Runtime/Cloud secrets are <em>not</em> visible to the build. So <code>runSync()</code> throws <code>SyncSkipped</code>, the build swallows it with a warning, and ships whatever JSON is already committed:</p>
   <pre><code>⚠️  SYNC SKIPPED — using committed JSON, data may be stale</code></pre>
   <p>This banner appears on <strong>every</strong> publish and is <strong>normal</strong>. It does not mean the publish failed. It means: "I deployed the committed JSON as-is." The committed JSON is therefore the thing we maintain by hand.</p>
   <div class="flag">
@@ -137,6 +137,7 @@
 
   <div class="divider"></div>
   <h2>Changelog</h2>
+  <p><strong>v2.1 — June 25, 2026.</strong> Corrected "Build Secrets are Enterprise-only" to "Business/Enterprise — not available on Pro" in both the flag box (§02 intro) and the §02 body text. This was confirmed directly from Lovable during a structured interview session. No workflow steps changed.</p>
   <p><strong>v2.0 — June 12, 2026.</strong> Rewrote after discovering Build Secrets are Lovable Enterprise-only, so the build-time sync can never run on this plan. Documents the proven manual workflow (Claude regenerates JSON from a Sheet export → Ben uploads via GitHub web → publish), the post-publish verification ritual, and the Cloudflare Pages escape hatch. Supersedes v1.0, which incorrectly prescribed setting Build Secrets.</p>
   <p><strong>v1.0 — June 12, 2026.</strong> Initial doc, created after diagnosing the sync had been silently skipping since June 9. Prescribed setting Build Secrets — later found to be unavailable on this plan.</p>
 
