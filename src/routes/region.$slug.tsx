@@ -131,7 +131,7 @@ function RegionPage() {
 
         <section className="mt-12 md:mt-16">
           <ul role="list" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {region.cities.map((c) => (
+            {region.cities.filter((c) => c.venue_count > 0).map((c) => (
               <li key={c.slug}>
                 <Link
                   to="/city/$slug"
@@ -211,7 +211,7 @@ function RegionMap({ region }: { region: Region }) {
     map.keyboard.disableRotation();
 
     const markers: maplibregl.Marker[] = [];
-    for (const c of region.cities) {
+    for (const c of region.cities.filter((c) => c.venue_count > 0)) {
       if (
         typeof c.lat !== "number" ||
         typeof c.lng !== "number" ||
