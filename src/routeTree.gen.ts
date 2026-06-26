@@ -11,10 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as RegionsRouteImport } from './routes/regions'
 import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as CitiesRouteImport } from './routes/cities'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UnchartedSlugRouteImport } from './routes/uncharted/$slug'
+import { Route as RegionSlugRouteImport } from './routes/region.$slug'
 import { Route as CitySlugRouteImport } from './routes/city.$slug'
 import { Route as AwardAwardRouteImport } from './routes/award/$award'
 import { Route as VenueCitySlugRouteImport } from './routes/venue/$city/$slug'
@@ -27,6 +29,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
   id: '/robots.txt',
   path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegionsRoute = RegionsRouteImport.update({
+  id: '/regions',
+  path: '/regions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuidesRoute = GuidesRouteImport.update({
@@ -49,6 +56,11 @@ const UnchartedSlugRoute = UnchartedSlugRouteImport.update({
   path: '/uncharted/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegionSlugRoute = RegionSlugRouteImport.update({
+  id: '/region/$slug',
+  path: '/region/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CitySlugRoute = CitySlugRouteImport.update({
   id: '/city/$slug',
   path: '/city/$slug',
@@ -69,10 +81,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cities': typeof CitiesRoute
   '/guides': typeof GuidesRoute
+  '/regions': typeof RegionsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
+  '/region/$slug': typeof RegionSlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
@@ -80,10 +94,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cities': typeof CitiesRoute
   '/guides': typeof GuidesRoute
+  '/regions': typeof RegionsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
+  '/region/$slug': typeof RegionSlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
@@ -92,10 +108,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cities': typeof CitiesRoute
   '/guides': typeof GuidesRoute
+  '/regions': typeof RegionsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
+  '/region/$slug': typeof RegionSlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
@@ -105,10 +123,12 @@ export interface FileRouteTypes {
     | '/'
     | '/cities'
     | '/guides'
+    | '/regions'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/award/$award'
     | '/city/$slug'
+    | '/region/$slug'
     | '/uncharted/$slug'
     | '/venue/$city/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -116,10 +136,12 @@ export interface FileRouteTypes {
     | '/'
     | '/cities'
     | '/guides'
+    | '/regions'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/award/$award'
     | '/city/$slug'
+    | '/region/$slug'
     | '/uncharted/$slug'
     | '/venue/$city/$slug'
   id:
@@ -127,10 +149,12 @@ export interface FileRouteTypes {
     | '/'
     | '/cities'
     | '/guides'
+    | '/regions'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/award/$award'
     | '/city/$slug'
+    | '/region/$slug'
     | '/uncharted/$slug'
     | '/venue/$city/$slug'
   fileRoutesById: FileRoutesById
@@ -139,10 +163,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CitiesRoute: typeof CitiesRoute
   GuidesRoute: typeof GuidesRoute
+  RegionsRoute: typeof RegionsRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AwardAwardRoute: typeof AwardAwardRoute
   CitySlugRoute: typeof CitySlugRoute
+  RegionSlugRoute: typeof RegionSlugRoute
   UnchartedSlugRoute: typeof UnchartedSlugRoute
   VenueCitySlugRoute: typeof VenueCitySlugRoute
 }
@@ -161,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/robots.txt'
       fullPath: '/robots.txt'
       preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/regions': {
+      id: '/regions'
+      path: '/regions'
+      fullPath: '/regions'
+      preLoaderRoute: typeof RegionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides': {
@@ -191,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UnchartedSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/region/$slug': {
+      id: '/region/$slug'
+      path: '/region/$slug'
+      fullPath: '/region/$slug'
+      preLoaderRoute: typeof RegionSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/city/$slug': {
       id: '/city/$slug'
       path: '/city/$slug'
@@ -219,23 +259,15 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CitiesRoute: CitiesRoute,
   GuidesRoute: GuidesRoute,
+  RegionsRoute: RegionsRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   AwardAwardRoute: AwardAwardRoute,
   CitySlugRoute: CitySlugRoute,
+  RegionSlugRoute: RegionSlugRoute,
   UnchartedSlugRoute: UnchartedSlugRoute,
   VenueCitySlugRoute: VenueCitySlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

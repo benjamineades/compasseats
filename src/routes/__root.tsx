@@ -139,6 +139,13 @@ function RootComponent() {
               Cities
             </Link>
             <Link
+              to="/regions"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              activeProps={{ className: "text-sm text-foreground" }}
+            >
+              Regions
+            </Link>
+            <Link
               to="/guides"
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "text-sm text-foreground" }}
