@@ -739,17 +739,17 @@ function SingleVenueFeature({
             The lay of the land · {city.display} ·{" "}
             {formatCoord(city.lat, city.lng)}
           </p>
+          {nearby.length > 0 && (
+            <NearbyToggle
+              on={showNearby}
+              onChange={setShowNearby}
+              count={nearby.length}
+            />
+          )}
           <div
             className="overflow-hidden rounded-xl"
             style={{ border: `1px solid ${HAIRLINE}` }}
           >
-            {nearby.length > 0 && (
-              <NearbyToggle
-                on={showNearby}
-                onChange={setShowNearby}
-                count={nearby.length}
-              />
-            )}
             <ClientOnly fallback={<MapPlaceholder />}>
               <VenueMap
                 venues={showNearby ? [venue, ...nearby] : [venue]}
