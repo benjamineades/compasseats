@@ -2,13 +2,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Search, Loader2 } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { Input } from "@/components/ui/input";
-import { searchCities } from "@/lib/cities";
+import { searchCities, searchRegions } from "@/lib/cities";
 import {
   geoapifyCitySearch,
   slugifyPlace,
   type GeoapifyCityResult,
 } from "@/lib/geoapify-search";
-import type { City } from "@/lib/schema";
+import type { City, Region } from "@/lib/schema";
 
 type Props = {
   placeholder?: string;
@@ -36,6 +36,12 @@ export function CitySearch({ placeholder }: Props) {
   // Tier 1: synchronous charted matches.
   const charted: City[] = useMemo(
     () => (debounced.length >= 1 ? searchCities(debounced, 8) : []),
+    [debounced],
+  );
+
+  // Tier 1b: synchronous region matches.
+  const regions: Region[] = useMemo(
+    () => (debounced.length >= 1 ? searchRegions(debounced, 5) : []),
     [debounced],
   );
 
@@ -90,13 +96,14 @@ export function CitySearch({ placeholder }: Props) {
     );
   }, [uncharted, charted]);
 
-  // Flat list for keyboard nav (charted + uncharted only; skeletons are not selectable).
+  // Flat list for keyboard nav (charted + regions + uncharted; skeletons are not selectable).
   const flat = useMemo(
     () => [
       ...charted.map((c) => ({ kind: "charted" as const, data: c })),
+      ...regions.map((r) => ({ kind: "region" as const, data: r })),
       ...unchartedFiltered.map((u) => ({ kind: "uncharted" as const, data: u })),
     ],
-    [charted, unchartedFiltered],
+    [charted, regions, unchartedFiltered],
   );
 
   useEffect(() => {
@@ -114,6 +121,11 @@ export function CitySearch({ placeholder }: Props) {
   const goCharted = (c: City) => {
     setOpen(false);
     navigate({ to: "/city/$slug", params: { slug: c.slug } });
+  };
+
+  const goRegion = (r: Region) => {
+    setOpen(false);
+    navigate({ to: "/region/$slug", params: { slug: r.slug } });
   };
 
   const goUncharted = (u: GeoapifyCityResult) => {
@@ -138,12 +150,13 @@ export function CitySearch({ placeholder }: Props) {
     const item = flat[idx];
     if (!item) return;
     if (item.kind === "charted") goCharted(item.data);
+    else if (item.kind === "region") goRegion(item.data);
     else goUncharted(item.data);
   };
 
   const showExplore = debounced.length >= 3 && !geoapifyError;
   const showGlobalEmpty =
-    debounced.length >= 1 && charted.length === 0 && !showExplore;
+    debounced.length >= 1 && charted.length === 0 && regions.length === 0 && !showExplore;
   const showDropdown =
     flat.length > 0 || showGlobalEmpty || showExplore;
 
@@ -222,6 +235,27 @@ export function CitySearch({ placeholder }: Props) {
             </>
           )}
 
+          {regions.length > 0 && (
+            <>
+              {charted.length > 0 && (
+                <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
+              )}
+              <div style={sectionLabelStyle}>Regions</div>
+              {regions.map((r, i) => {
+                const idx = charted.length + i;
+                return (
+                  <RegionRow
+                    key={`r-${r.slug}`}
+                    region={r}
+                    active={idx === active}
+                    onMouseEnter={() => setActive(idx)}
+                    onClick={() => goRegion(r)}
+                  />
+                );
+              })}
+            </>
+          )}
+
           {showExplore && (
             <>
               <div style={sectionLabelStyle}>Explore further</div>
@@ -233,7 +267,7 @@ export function CitySearch({ placeholder }: Props) {
                 </>
               ) : unchartedFiltered.length > 0 ? (
                 unchartedFiltered.map((u, i) => {
-                  const idx = charted.length + i;
+                  const idx = charted.length + regions.length + i;
                   return (
                     <UnchartedRow
                       key={`u-${u.placeId}`}
