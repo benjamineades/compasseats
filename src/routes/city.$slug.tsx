@@ -51,7 +51,7 @@ const VenueMap = lazy(() =>
 // ---------------------------------------------------------------------------
 // Nearby radius (centroid + Haversine)
 // ---------------------------------------------------------------------------
-const NEARBY_RADIUS_KM = 100;
+const NEARBY_RADIUS_KM = 150;
 
 const IMPERIAL_COUNTRIES = new Set([
   'United States', 'United Kingdom', 'Liberia', 'Myanmar',
@@ -63,10 +63,18 @@ function usesImperial(country: string): boolean {
 
 function formatDistance(km: number, imperial: boolean): string {
   if (imperial) {
-    const mi = Math.round(km * 0.621371);
-    return `${mi} mi`;
+    const mi = km * 0.621371;
+    let rounded: number;
+    if (mi < 10) rounded = Math.round(mi);
+    else if (mi < 50) rounded = Math.round(mi / 5) * 5;
+    else rounded = Math.round(mi / 10) * 10;
+    return `~${rounded} mi`;
   }
-  return `${Math.round(km)} km`;
+  let rounded: number;
+  if (km < 10) rounded = Math.round(km);
+  else if (km < 50) rounded = Math.round(km / 5) * 5;
+  else rounded = Math.round(km / 10) * 10;
+  return `~${rounded} km`;
 }
 
 function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number) {
@@ -914,85 +922,92 @@ function WorthTheDetour({ nearby, city, imperial }: { nearby: Venue[]; city: Cit
   return (
     <section style={{ backgroundColor: PAPER }} className="py-10">
       <div className="mx-auto max-w-5xl px-6">
-        <div
-          className="mb-6 pb-4"
-          style={{ borderBottom: `2px solid ${INK}` }}
-        >
-          <h2 className="font-display text-3xl font-light" style={{ color: INK }}>
-            Worth the{" "}
-            <em className="italic" style={{ color: BRONZE }}>
-              detour
-            </em>
-          </h2>
-          <p className="mt-1 text-sm" style={{ color: INK_MUTED }}>
-            Acclaimed spots within 100 km of {city.display}
-          </p>
-        </div>
-        <div className="divide-y" style={{ borderColor: HAIRLINE }}>
-          {detourVenues.map((v) => {
-            const topAward = [...v.awards].sort(
-              (a, b) => getAwardPrestige(b) - getAwardPrestige(a),
-            )[0];
-            const pill = topAward ? awardLabelShort(topAward) : null;
-            const typeLabel = v.type === "bar" ? "Cocktail bar" : "Restaurant";
-            return (
-              <Link
-                key={v.id}
-                to="/venue/$city/$slug"
-                params={{ city: v.city_slug, slug: v.slug }}
-                className="flex items-center justify-between gap-4 py-4 transition-colors"
-                style={{ color: INK }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = "rgba(35,33,30,0.03)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = "transparent")
-                }
-              >
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                    <span
-                      className="font-display text-lg font-light leading-tight"
-                      style={{ color: INK }}
-                    >
-                      {v.name}
-                    </span>
-                    <span className="text-xs italic" style={{ color: INK_MUTED }}>
-                      {v.city_display || v.city_slug}
-                    </span>
-                  </div>
-                  <div className="mt-1 flex flex-wrap items-center gap-2">
-                    <span className="text-xs" style={{ color: INK_MUTED }}>
-                      {typeLabel}
-                    </span>
-                    {pill && (
-                      <span
-                        className="text-[11px] font-semibold"
-                        style={{
-                          color: BRONZE,
-                          border: `1px solid rgba(137,95,46,0.3)`,
-                          padding: "2px 9px",
-                          borderRadius: 100,
-                        }}
-                      >
-                        {pill}
+        <Collapsible defaultOpen={false}>
+          <CollapsibleTrigger
+            className="group flex w-full items-center justify-between border-b pb-3 mb-4 text-left [&[data-state=open]>svg]:rotate-180"
+            style={{ borderColor: HAIRLINE }}
+          >
+            <div>
+              <h2 className="font-display text-3xl font-light" style={{ color: INK }}>
+                Worth the{" "}
+                <em className="italic" style={{ color: BRONZE }}>
+                  detour
+                </em>
+              </h2>
+              <p className="mt-1 text-sm" style={{ color: INK_MUTED }}>
+                Acclaimed spots within {formatDistance(NEARBY_RADIUS_KM, imperial)} of {city.display}
+              </p>
+            </div>
+            <ChevronDown
+              className="h-5 w-5 transition-transform duration-200"
+              style={{ color: INK_MUTED }}
+            />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+            <div className="divide-y" style={{ borderColor: HAIRLINE }}>
+              {detourVenues.map((v) => {
+                const topAward = [...v.awards].sort(
+                  (a, b) => getAwardPrestige(b) - getAwardPrestige(a),
+                )[0];
+                const pill = topAward ? awardLabelShort(topAward) : null;
+                const typeLabel = v.type === "bar" ? "Cocktail bar" : "Restaurant";
+                return (
+                  <Link
+                    key={v.id}
+                    to="/venue/$city/$slug"
+                    params={{ city: v.city_slug, slug: v.slug }}
+                    className="flex items-center justify-between gap-4 py-4 transition-colors"
+                    style={{ color: INK }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.backgroundColor = "rgba(35,33,30,0.03)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.backgroundColor = "transparent")
+                    }
+                  >
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                        <span
+                          className="font-display text-lg font-light leading-tight"
+                          style={{ color: INK }}
+                        >
+                          {v.name}
+                        </span>
+                        <span className="text-xs italic" style={{ color: INK_MUTED }}>
+                          {v.city_display || v.city_slug}
+                        </span>
+                      </div>
+                      <div className="mt-1 flex flex-wrap items-center gap-2">
+                        <span className="text-xs" style={{ color: INK_MUTED }}>
+                          {typeLabel}
+                        </span>
+                        {pill && (
+                          <span
+                            className="text-[11px] font-semibold"
+                            style={{
+                              color: BRONZE,
+                              border: `1px solid rgba(137,95,46,0.3)`,
+                              padding: "2px 9px",
+                              borderRadius: 100,
+                            }}
+                          >
+                            {pill}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="shrink-0 text-right">
+                      <span className="text-sm font-medium" style={{ color: BRONZE }}>
+                        {formatDistance(v.detourDistanceKm, imperial)}
                       </span>
-                    )}
-                  </div>
-                </div>
-                <div className="shrink-0 text-right">
-                  <span className="text-sm font-medium" style={{ color: BRONZE }}>
-                    {formatDistance(v.detourDistanceKm, imperial)}
-                  </span>
-                  <ArrowRight
-                    className="ml-1 inline h-3.5 w-3.5"
-                    style={{ color: BRONZE }}
-                  />
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+                      <ArrowRight className="ml-1 inline h-3.5 w-3.5" style={{ color: BRONZE }} />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
       </div>
     </section>
   );
@@ -1026,8 +1041,8 @@ function NearbyToggle({
         </span>
         <span className="text-xs italic" style={{ color: INK_MUTED }}>
           {on
-            ? `Including ${count} venue${count === 1 ? "" : "s"} within ~${formatDistance(100, imperial)}`
-            : `${count} more venue${count === 1 ? "" : "s"} within ~${formatDistance(100, imperial)}`}
+            ? `Including ${count} venue${count === 1 ? "" : "s"} within ${formatDistance(NEARBY_RADIUS_KM, imperial)}`
+            : `${count} more venue${count === 1 ? "" : "s"} within ${formatDistance(NEARBY_RADIUS_KM, imperial)}`}
         </span>
       </div>
       <button
