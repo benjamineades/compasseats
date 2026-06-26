@@ -28,6 +28,7 @@ import {
   getAwardSource,
   getAwardPrestige,
   getVenuePrestige,
+  getAllVenues,
 } from "@/lib/venues";
 import type { City, Venue } from "@/lib/schema";
 
@@ -48,6 +49,32 @@ const VenueMap = lazy(() =>
 );
 
 // ---------------------------------------------------------------------------
+// Nearby radius (centroid + Haversine)
+// ---------------------------------------------------------------------------
+const NEARBY_RADIUS_KM = 100;
+
+function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number) {
+  const R = 6371;
+  const toRad = (d: number) => (d * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+
+function computeNearbyVenues(city: City, ownSlug: string): Venue[] {
+  const all = getAllVenues();
+  return all.filter((v) => {
+    if (v.city_slug === ownSlug) return false;
+    if (typeof v.lat !== "number" || typeof v.lng !== "number") return false;
+    if (v.lat === 0 && v.lng === 0) return false;
+    return haversineKm(city.lat, city.lng, v.lat, v.lng) <= NEARBY_RADIUS_KM;
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Route
 // ---------------------------------------------------------------------------
 
@@ -57,7 +84,8 @@ export const Route = createFileRoute("/city/$slug")({
     const city = getCity(params.slug);
     if (!city) throw notFound();
     const venues = getVenuesByCity(params.slug);
-    return { city, venues };
+    const nearby = computeNearbyVenues(city, params.slug);
+    return { city, venues, nearby };
   },
   head: ({ loaderData }) => {
     const c = loaderData?.city as City | undefined;
@@ -132,15 +160,17 @@ type QuickFilter = "restaurants" | "bars";
 const INITIAL_ROW_CAP = 10;
 
 function CityPage() {
-  const { city, venues } = Route.useLoaderData() as {
+  const { city, venues, nearby } = Route.useLoaderData() as {
     city: City;
     venues: Venue[];
+    nearby: Venue[];
   };
 
   const [quick, setQuick] = useState<Set<QuickFilter>>(new Set());
   const [awardFilters, setAwardFilters] = useState<Set<string>>(new Set());
   const [showAll, setShowAll] = useState(false);
   const [showAllBars, setShowAllBars] = useState(false);
+  const [showNearby, setShowNearby] = useState(false);
   const [isPending, startTransition] = useTransition();
 
   // Deferred so the filter pills feel responsive while a large list filters.
