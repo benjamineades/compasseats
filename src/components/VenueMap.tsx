@@ -454,6 +454,11 @@ export function VenueMap({
     map.on("mouseenter", "clusters", () => (map.getCanvas().style.cursor = "pointer"));
     map.on("mouseleave", "clusters", () => (map.getCanvas().style.cursor = ""));
     mapRef.current = map;
+    // Force a resize after a short delay to handle cases where the container
+    // has zero dimensions at mount time (e.g. ClientOnly hydration on mobile).
+    setTimeout(() => {
+      map.resize();
+    }, 50);
   };
 
   const fitToPins = (map: maplibregl.Map) => {
@@ -534,7 +539,13 @@ export function VenueMap({
   // Initial mount.
   useEffect(() => {
     buildMap(isDarkMode());
+    // Additional resize pass for mobile — ensures tiles render when the
+    // container becomes visible after a layout pass.
+    const raf = requestAnimationFrame(() => {
+      mapRef.current?.resize();
+    });
     return () => {
+      cancelAnimationFrame(raf);
       for (const m of markersRef.current.values()) m.remove();
       markersRef.current.clear();
       popupRef.current?.remove();
