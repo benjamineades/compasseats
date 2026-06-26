@@ -28,6 +28,7 @@ import {
   getAwardSource,
   getAwardPrestige,
   getVenuePrestige,
+  getAllVenues,
 } from "@/lib/venues";
 import type { City, Venue } from "@/lib/schema";
 
@@ -48,6 +49,32 @@ const VenueMap = lazy(() =>
 );
 
 // ---------------------------------------------------------------------------
+// Nearby radius (centroid + Haversine)
+// ---------------------------------------------------------------------------
+const NEARBY_RADIUS_KM = 100;
+
+function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number) {
+  const R = 6371;
+  const toRad = (d: number) => (d * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+
+function computeNearbyVenues(city: City, ownSlug: string): Venue[] {
+  const all = getAllVenues();
+  return all.filter((v) => {
+    if (v.city_slug === ownSlug) return false;
+    if (typeof v.lat !== "number" || typeof v.lng !== "number") return false;
+    if (v.lat === 0 && v.lng === 0) return false;
+    return haversineKm(city.lat, city.lng, v.lat, v.lng) <= NEARBY_RADIUS_KM;
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Route
 // ---------------------------------------------------------------------------
 
@@ -57,7 +84,8 @@ export const Route = createFileRoute("/city/$slug")({
     const city = getCity(params.slug);
     if (!city) throw notFound();
     const venues = getVenuesByCity(params.slug);
-    return { city, venues };
+    const nearby = computeNearbyVenues(city, params.slug);
+    return { city, venues, nearby };
   },
   head: ({ loaderData }) => {
     const c = loaderData?.city as City | undefined;
@@ -132,15 +160,17 @@ type QuickFilter = "restaurants" | "bars";
 const INITIAL_ROW_CAP = 10;
 
 function CityPage() {
-  const { city, venues } = Route.useLoaderData() as {
+  const { city, venues, nearby } = Route.useLoaderData() as {
     city: City;
     venues: Venue[];
+    nearby: Venue[];
   };
 
   const [quick, setQuick] = useState<Set<QuickFilter>>(new Set());
   const [awardFilters, setAwardFilters] = useState<Set<string>>(new Set());
   const [showAll, setShowAll] = useState(false);
   const [showAllBars, setShowAllBars] = useState(false);
+  const [showNearby, setShowNearby] = useState(false);
   const [isPending, startTransition] = useTransition();
 
   // Deferred so the filter pills feel responsive while a large list filters.
@@ -252,7 +282,7 @@ function CityPage() {
           crumbs={crumbs}
           counts={counts}
         />
-        <SingleVenueFeature city={city} venue={venues[0]} />
+        <SingleVenueFeature city={city} venue={venues[0]} nearby={nearby} />
       </main>
     );
   }
@@ -283,12 +313,22 @@ function CityPage() {
           >
             The lay of the land · {city.display} · {formatCoord(city.lat, city.lng)}
           </p>
+          {nearby.length > 0 && (
+            <NearbyToggle
+              on={showNearby}
+              onChange={setShowNearby}
+              count={nearby.length}
+            />
+          )}
           <div
             className="overflow-hidden rounded-xl"
             style={{ border: `1px solid ${HAIRLINE}` }}
           >
             <ClientOnly fallback={<MapPlaceholder />}>
-              <VenueMap venues={filtered} cityContext={city.slug} />
+              <VenueMap
+                venues={showNearby ? [...filtered, ...nearby] : filtered}
+                cityContext={city.slug}
+              />
             </ClientOnly>
           </div>
         </div>
@@ -498,7 +538,15 @@ function CityPage() {
 // Single-venue feature (Mode A)
 // ---------------------------------------------------------------------------
 
-function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
+function SingleVenueFeature({
+  city,
+  venue,
+  nearby,
+}: {
+  city: City;
+  venue: Venue;
+  nearby: Venue[];
+}) {
   const where = venue.neighborhood || venue.city_display;
   const typeCap = venue.type === "bar" ? "Cocktail bar" : "Restaurant";
   const why = buildSingleWhy(venue, city);
@@ -507,6 +555,7 @@ function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
   // Show the photo layout when we have either a curated photo OR a Google
   // place id (the VenuePhoto component live-fetches from the photo worker).
   const hasPhoto = !!venue.photo_url?.trim() || !!venue.id?.trim();
+  const [showNearby, setShowNearby] = useState(false);
 
   return (
     <>
@@ -690,12 +739,22 @@ function SingleVenueFeature({ city, venue }: { city: City; venue: Venue }) {
             The lay of the land · {city.display} ·{" "}
             {formatCoord(city.lat, city.lng)}
           </p>
+          {nearby.length > 0 && (
+            <NearbyToggle
+              on={showNearby}
+              onChange={setShowNearby}
+              count={nearby.length}
+            />
+          )}
           <div
             className="overflow-hidden rounded-xl"
             style={{ border: `1px solid ${HAIRLINE}` }}
           >
             <ClientOnly fallback={<MapPlaceholder />}>
-              <VenueMap venues={[venue]} cityContext={city.slug} />
+              <VenueMap
+                venues={showNearby ? [venue, ...nearby] : [venue]}
+                cityContext={city.slug}
+              />
             </ClientOnly>
           </div>
         </div>
@@ -783,6 +842,55 @@ function MapPlaceholder() {
       className="h-72 w-full md:h-96"
       style={{ backgroundColor: "#2c2a26" }}
     />
+  );
+}
+
+function NearbyToggle({
+  on,
+  onChange,
+  count,
+}: {
+  on: boolean;
+  onChange: (next: boolean) => void;
+  count: number;
+}) {
+  return (
+    <div
+      className="mb-3 flex items-center justify-between gap-3 rounded-lg px-3 py-2"
+      style={{
+        backgroundColor: "rgba(35,33,30,0.04)",
+        border: `1px solid ${HAIRLINE}`,
+      }}
+    >
+      <div className="flex flex-col">
+        <span
+          className="text-[11px] font-semibold uppercase tracking-[0.18em]"
+          style={{ color: BRONZE }}
+        >
+          Show nearby
+        </span>
+        <span className="text-xs italic" style={{ color: INK_MUTED }}>
+          {on
+            ? `Including ${count} venue${count === 1 ? "" : "s"} within ~100 km`
+            : `${count} more venue${count === 1 ? "" : "s"} within ~100 km`}
+        </span>
+      </div>
+      <button
+        type="button"
+        role="switch"
+        aria-checked={on}
+        onClick={() => onChange(!on)}
+        className="relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full transition-colors"
+        style={{
+          backgroundColor: on ? BRASS : "rgba(35,33,30,0.18)",
+        }}
+      >
+        <span
+          className="inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform"
+          style={{ transform: on ? "translateX(22px)" : "translateX(2px)" }}
+        />
+      </button>
+    </div>
   );
 }
 
