@@ -575,78 +575,6 @@ function CityPage() {
 // Single-venue feature (Mode A)
 // ---------------------------------------------------------------------------
 
-function WorthTheDetour({ city, nearby }: { city: City; nearby: Venue[] }) {
-  const picks = useMemo(() => {
-    return [...nearby]
-      .sort((a, b) => getVenuePrestige(b) - getVenuePrestige(a))
-      .slice(0, 6)
-      .map((v) => ({
-        v,
-        km: Math.round(haversineKm(city.lat, city.lng, v.lat, v.lng)),
-      }));
-  }, [nearby, city.lat, city.lng]);
-
-  if (picks.length === 0) return null;
-
-  return (
-    <section
-      style={{ backgroundColor: PAPER, borderTop: `1px solid ${HAIRLINE}` }}
-      className="py-12"
-    >
-      <div className="mx-auto max-w-5xl px-6">
-        <p
-          className="text-[10px] font-semibold uppercase"
-          style={{ color: BRONZE, letterSpacing: "0.25em", marginBottom: 10 }}
-        >
-          Worth the detour · within {NEARBY_RADIUS_KM} km
-        </p>
-        <h3
-          className="font-display text-2xl md:text-3xl"
-          style={{ color: INK, fontWeight: 400, marginBottom: 18 }}
-        >
-          A short trip from {city.display}
-        </h3>
-        <ul>
-          {picks.map(({ v, km }, idx) => (
-            <li
-              key={v.id || v.slug}
-              style={{
-                borderTop: idx === 0 ? "none" : `1px solid ${HAIRLINE}`,
-              }}
-            >
-              <Link
-                to="/venue/$city/$slug"
-                params={{ city: v.city_slug, slug: v.slug }}
-                className="group flex items-baseline justify-between gap-4 py-3 transition-colors"
-              >
-                <span className="min-w-0 flex-1">
-                  <span
-                    className="font-display text-lg"
-                    style={{ color: INK, fontWeight: 500 }}
-                  >
-                    {v.name}
-                  </span>
-                  <span
-                    className="ml-2 text-xs"
-                    style={{ color: INK_MUTED }}
-                  >
-                    {v.city_display}
-                    {v.country ? `, ${v.country}` : ""} · ~{km} km
-                  </span>
-                </span>
-                <ArrowRight
-                  className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5"
-                  style={{ color: BRONZE }}
-                />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 function SingleVenueFeature({
   city,
   venue,
@@ -954,6 +882,101 @@ function MapPlaceholder() {
       className="h-72 w-full md:h-96"
       style={{ backgroundColor: "#2c2a26" }}
     />
+  );
+}
+
+function WorthTheDetour({ nearby, city }: { nearby: Venue[]; city: City }) {
+  const detourVenues = useMemo(
+    () => getDetourVenues(nearby, city.lat, city.lng),
+    [nearby, city.lat, city.lng],
+  );
+
+  if (detourVenues.length === 0) return null;
+
+  return (
+    <section style={{ backgroundColor: PAPER }} className="py-10">
+      <div className="mx-auto max-w-5xl px-6">
+        <div
+          className="mb-6 pb-4"
+          style={{ borderBottom: `2px solid ${INK}` }}
+        >
+          <h2 className="font-display text-3xl font-light" style={{ color: INK }}>
+            Worth the{" "}
+            <em className="italic" style={{ color: BRONZE }}>
+              detour
+            </em>
+          </h2>
+          <p className="mt-1 text-sm" style={{ color: INK_MUTED }}>
+            Acclaimed spots within 100 km of {city.display}
+          </p>
+        </div>
+        <div className="divide-y" style={{ borderColor: HAIRLINE }}>
+          {detourVenues.map((v) => {
+            const topAward = [...v.awards].sort(
+              (a, b) => getAwardPrestige(b) - getAwardPrestige(a),
+            )[0];
+            const pill = topAward ? awardLabelShort(topAward) : null;
+            const typeLabel = v.type === "bar" ? "Cocktail bar" : "Restaurant";
+            return (
+              <Link
+                key={v.id}
+                to="/venue/$city/$slug"
+                params={{ city: v.city_slug, slug: v.slug }}
+                className="flex items-center justify-between gap-4 py-4 transition-colors"
+                style={{ color: INK }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "rgba(35,33,30,0.03)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "transparent")
+                }
+              >
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                    <span
+                      className="font-display text-lg font-light leading-tight"
+                      style={{ color: INK }}
+                    >
+                      {v.name}
+                    </span>
+                    <span className="text-xs italic" style={{ color: INK_MUTED }}>
+                      {v.city_display || v.city_slug}
+                    </span>
+                  </div>
+                  <div className="mt-1 flex flex-wrap items-center gap-2">
+                    <span className="text-xs" style={{ color: INK_MUTED }}>
+                      {typeLabel}
+                    </span>
+                    {pill && (
+                      <span
+                        className="text-[11px] font-semibold"
+                        style={{
+                          color: BRONZE,
+                          border: `1px solid rgba(137,95,46,0.3)`,
+                          padding: "2px 9px",
+                          borderRadius: 100,
+                        }}
+                      >
+                        {pill}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="shrink-0 text-right">
+                  <span className="text-sm font-medium" style={{ color: BRONZE }}>
+                    {v.detourDistanceMi} mi
+                  </span>
+                  <ArrowRight
+                    className="ml-1 inline h-3.5 w-3.5"
+                    style={{ color: BRONZE }}
+                  />
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }
 
