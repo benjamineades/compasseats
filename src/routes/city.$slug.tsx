@@ -51,7 +51,7 @@ const VenueMap = lazy(() =>
 // ---------------------------------------------------------------------------
 // Nearby radius (centroid + Haversine)
 // ---------------------------------------------------------------------------
-const NEARBY_RADIUS_KM = 100;
+const NEARBY_RADIUS_KM = 150;
 
 const IMPERIAL_COUNTRIES = new Set([
   'United States', 'United Kingdom', 'Liberia', 'Myanmar',
@@ -63,10 +63,18 @@ function usesImperial(country: string): boolean {
 
 function formatDistance(km: number, imperial: boolean): string {
   if (imperial) {
-    const mi = Math.round(km * 0.621371);
-    return `${mi} mi`;
+    const mi = km * 0.621371;
+    let rounded: number;
+    if (mi < 10) rounded = Math.round(mi);
+    else if (mi < 50) rounded = Math.round(mi / 5) * 5;
+    else rounded = Math.round(mi / 10) * 10;
+    return `~${rounded} mi`;
   }
-  return `${Math.round(km)} km`;
+  let rounded: number;
+  if (km < 10) rounded = Math.round(km);
+  else if (km < 50) rounded = Math.round(km / 5) * 5;
+  else rounded = Math.round(km / 10) * 10;
+  return `~${rounded} km`;
 }
 
 function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number) {
@@ -1026,8 +1034,8 @@ function NearbyToggle({
         </span>
         <span className="text-xs italic" style={{ color: INK_MUTED }}>
           {on
-            ? `Including ${count} venue${count === 1 ? "" : "s"} within ~${formatDistance(100, imperial)}`
-            : `${count} more venue${count === 1 ? "" : "s"} within ~${formatDistance(100, imperial)}`}
+            ? `Including ${count} venue${count === 1 ? "" : "s"} within ${formatDistance(NEARBY_RADIUS_KM, imperial)}`
+            : `${count} more venue${count === 1 ? "" : "s"} within ${formatDistance(NEARBY_RADIUS_KM, imperial)}`}
         </span>
       </div>
       <button
