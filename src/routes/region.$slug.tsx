@@ -130,6 +130,18 @@ function RegionPage() {
         </header>
 
         <section className="mt-12 md:mt-16">
+          <p
+            className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em]"
+            style={{ color: BRONZE }}
+          >
+            On the map
+          </p>
+          <div className="overflow-hidden rounded-xl border" style={{ borderColor: HAIRLINE }}>
+            <RegionMap region={region} />
+          </div>
+        </section>
+
+        <section className="mt-16 md:mt-20">
           <ul role="list" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {region.cities.filter((c) => c.venue_count > 0).map((c) => (
               <li key={c.slug}>
@@ -160,18 +172,6 @@ function RegionPage() {
             ))}
           </ul>
         </section>
-
-        <section className="mt-16 md:mt-20">
-          <p
-            className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em]"
-            style={{ color: BRONZE }}
-          >
-            On the map
-          </p>
-          <div className="overflow-hidden rounded-xl border" style={{ borderColor: HAIRLINE }}>
-            <RegionMap region={region} />
-          </div>
-        </section>
       </div>
     </main>
   );
@@ -194,9 +194,13 @@ function RegionMap({ region }: { region: Region }) {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const dark =
+      typeof document !== "undefined" &&
+      document.documentElement.classList.contains("dark");
+
     const map = new maplibregl.Map({
       container: containerRef.current,
-      style: `https://api.maptiler.com/maps/dataviz-light/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`,
+      style: `https://api.maptiler.com/maps/dataviz-${dark ? "dark" : "light"}/style.json?key=${import.meta.env.VITE_MAPTILER_KEY}`,
       center: [region.center_lng, region.center_lat],
       zoom: 7,
       attributionControl: { compact: true },
