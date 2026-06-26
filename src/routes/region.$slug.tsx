@@ -202,13 +202,16 @@ function RegionMap({ region }: { region: Region }) {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const initialStyle = styleUrl(isDarkMode());
+    console.log('[RegionMap] style string:', initialStyle);
     const map = new maplibregl.Map({
       container: containerRef.current,
-      style: styleUrl(isDarkMode()),
+      style: initialStyle,
       center: [region.center_lng, region.center_lat],
       zoom: 7,
       attributionControl: { compact: true },
     });
+    console.log('[RegionMap] style URL:', map.getStyle()?.name ?? 'unknown');
     map.addControl(
       new maplibregl.NavigationControl({ showCompass: false }),
       "top-right",
