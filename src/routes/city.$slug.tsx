@@ -53,6 +53,22 @@ const VenueMap = lazy(() =>
 // ---------------------------------------------------------------------------
 const NEARBY_RADIUS_KM = 100;
 
+const IMPERIAL_COUNTRIES = new Set([
+  'United States', 'United Kingdom', 'Liberia', 'Myanmar',
+]);
+
+function usesImperial(country: string): boolean {
+  return IMPERIAL_COUNTRIES.has(country);
+}
+
+function formatDistance(km: number, imperial: boolean): string {
+  if (imperial) {
+    const mi = Math.round(km * 0.621371);
+    return `${mi} mi`;
+  }
+  return `${Math.round(km)} km`;
+}
+
 function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number) {
   const R = 6371;
   const toRad = (d: number) => (d * Math.PI) / 180;
@@ -78,7 +94,7 @@ function getDetourVenues(
   nearby: Venue[],
   cityLat: number,
   cityLng: number,
-): Array<Venue & { detourDistanceMi: number }> {
+): Array<Venue & { detourDistanceKm: number }> {
   const MICHELIN_STARS = new Set(["Three Stars", "Two Stars", "One Star"]);
   const W50_SOURCES = new Set([
     "worlds-50-best-restaurants",
@@ -98,14 +114,12 @@ function getDetourVenues(
     .filter(isQualifying)
     .map((v) => ({
       ...v,
-      detourDistanceMi: Math.round(
-        haversineKm(cityLat, cityLng, v.lat, v.lng) * 0.621371,
-      ),
+      detourDistanceKm: Math.round(haversineKm(cityLat, cityLng, v.lat, v.lng)),
     }))
     .sort((a, b) => {
       const pd = getVenuePrestige(b) - getVenuePrestige(a);
       if (pd !== 0) return pd;
-      return a.detourDistanceMi - b.detourDistanceMi;
+      return a.detourDistanceKm - b.detourDistanceKm;
     })
     .slice(0, 10);
 }
