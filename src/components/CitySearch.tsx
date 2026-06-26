@@ -453,3 +453,85 @@ function SkeletonRow({ delay = 0 }: { delay?: number }) {
     </div>
   );
 }
+
+function RegionRow({
+  region,
+  active,
+  onClick,
+  onMouseEnter,
+}: {
+  region: Region;
+  active: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onMouseDown={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+      onMouseEnter={onMouseEnter}
+      className="flex w-full items-center gap-3 px-4 py-2.5 text-left"
+      style={{ background: active ? "var(--accent)" : "transparent" }}
+    >
+      <span
+        aria-hidden
+        style={{
+          width: 8,
+          height: 8,
+          borderRadius: 2,
+          background: "var(--primary)",
+          opacity: 0.55,
+          flex: "0 0 auto",
+        }}
+      />
+      <span className="min-w-0 flex-1">
+        <span className="flex items-baseline gap-2">
+          <span
+            className="truncate"
+            style={{
+              fontFamily: "Fraunces, serif",
+              fontWeight: 400,
+              fontStyle: "italic",
+              fontSize: "1.05rem",
+              color: "var(--foreground)",
+            }}
+          >
+            {region.display}
+          </span>
+          <span
+            style={{
+              fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+              fontWeight: 600,
+              fontSize: "0.6rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--primary)",
+              border: "1px solid var(--primary)",
+              borderRadius: 999,
+              padding: "1px 6px",
+              flex: "0 0 auto",
+            }}
+          >
+            Region
+          </span>
+        </span>
+        <span
+          className="block truncate"
+          style={{
+            fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+            fontWeight: 400,
+            fontSize: "0.78rem",
+            color: "var(--muted-foreground)",
+          }}
+        >
+          {region.country ? `${region.country} · ` : ""}
+          {region.venue_count}{" "}
+          {region.venue_count === 1 ? "venue" : "venues"}
+        </span>
+      </span>
+    </button>
+  );
+}
