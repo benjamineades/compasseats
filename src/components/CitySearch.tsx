@@ -378,6 +378,16 @@ function UnchartedRow({
   onClick: () => void;
   onMouseEnter: () => void;
 }) {
+  item,
+  active,
+  onClick,
+  onMouseEnter,
+}: {
+  item: GeoapifyCityResult;
+  active: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+}) {
   const label = `${item.name}${item.region ? `, ${item.region}` : ""}, ${item.country}`;
   return (
     <button
