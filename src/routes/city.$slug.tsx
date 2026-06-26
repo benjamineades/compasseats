@@ -530,6 +530,7 @@ function CityPage() {
           </p>
         )}
       </div>
+      <WorthTheDetour city={city} nearby={nearby} />
     </main>
   );
 }
