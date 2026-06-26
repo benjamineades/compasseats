@@ -315,6 +315,7 @@ function CityPage() {
     { label: city.display },
   ];
   const counts = { total: venues.length, restaurants: restaurantCount, bars: barCount };
+  const imperial = usesImperial(city.country);
 
   // MODE A — single-venue city: a generous feature, no filter bar, no list.
   if (venues.length === 1) {
@@ -368,6 +369,7 @@ function CityPage() {
               on={showNearby}
               onChange={setShowNearby}
               count={nearby.length}
+              imperial={imperial}
             />
           )}
           <div
@@ -580,7 +582,7 @@ function CityPage() {
           </p>
         )}
       </div>
-      <WorthTheDetour city={city} nearby={nearby} />
+      <WorthTheDetour city={city} nearby={nearby} imperial={imperial} />
     </main>
   );
 }
@@ -607,6 +609,7 @@ function SingleVenueFeature({
   // place id (the VenuePhoto component live-fetches from the photo worker).
   const hasPhoto = !!venue.photo_url?.trim() || !!venue.id?.trim();
   const [showNearby, setShowNearby] = useState(false);
+  const imperial = usesImperial(city.country);
 
   return (
     <>
@@ -795,6 +798,7 @@ function SingleVenueFeature({
               on={showNearby}
               onChange={setShowNearby}
               count={nearby.length}
+              imperial={imperial}
             />
           )}
           <div
@@ -812,7 +816,7 @@ function SingleVenueFeature({
       </section>
 
       {/* Worth the detour — nearby venues */}
-      <WorthTheDetour city={city} nearby={nearby} />
+      <WorthTheDetour city={city} nearby={nearby} imperial={imperial} />
 
       {/* Section 3 — paper outro */}
       <section style={{ backgroundColor: PAPER }} className="pb-16 text-center">
@@ -899,7 +903,7 @@ function MapPlaceholder() {
   );
 }
 
-function WorthTheDetour({ nearby, city }: { nearby: Venue[]; city: City }) {
+function WorthTheDetour({ nearby, city, imperial }: { nearby: Venue[]; city: City; imperial: boolean }) {
   const detourVenues = useMemo(
     () => getDetourVenues(nearby, city.lat, city.lng),
     [nearby, city.lat, city.lng],
@@ -978,7 +982,7 @@ function WorthTheDetour({ nearby, city }: { nearby: Venue[]; city: City }) {
                 </div>
                 <div className="shrink-0 text-right">
                   <span className="text-sm font-medium" style={{ color: BRONZE }}>
-                    {v.detourDistanceMi} mi
+                    {formatDistance(v.detourDistanceKm, imperial)}
                   </span>
                   <ArrowRight
                     className="ml-1 inline h-3.5 w-3.5"
@@ -998,10 +1002,12 @@ function NearbyToggle({
   on,
   onChange,
   count,
+  imperial,
 }: {
   on: boolean;
   onChange: (next: boolean) => void;
   count: number;
+  imperial: boolean;
 }) {
   return (
     <div
@@ -1020,8 +1026,8 @@ function NearbyToggle({
         </span>
         <span className="text-xs italic" style={{ color: INK_MUTED }}>
           {on
-            ? `Including ${count} venue${count === 1 ? "" : "s"} within ~100 km`
-            : `${count} more venue${count === 1 ? "" : "s"} within ~100 km`}
+            ? `Including ${count} venue${count === 1 ? "" : "s"} within ~${formatDistance(100, imperial)}`
+            : `${count} more venue${count === 1 ? "" : "s"} within ~${formatDistance(100, imperial)}`}
         </span>
       </div>
       <button
