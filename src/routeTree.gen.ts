@@ -16,6 +16,7 @@ import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as CitiesRouteImport } from './routes/cities'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UnchartedSlugRouteImport } from './routes/uncharted/$slug'
+import { Route as RegionSlugRouteImport } from './routes/region.$slug'
 import { Route as CitySlugRouteImport } from './routes/city.$slug'
 import { Route as AwardAwardRouteImport } from './routes/award/$award'
 import { Route as VenueCitySlugRouteImport } from './routes/venue/$city/$slug'
@@ -55,6 +56,11 @@ const UnchartedSlugRoute = UnchartedSlugRouteImport.update({
   path: '/uncharted/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegionSlugRoute = RegionSlugRouteImport.update({
+  id: '/region/$slug',
+  path: '/region/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CitySlugRoute = CitySlugRouteImport.update({
   id: '/city/$slug',
   path: '/city/$slug',
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
+  '/region/$slug': typeof RegionSlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
+  '/region/$slug': typeof RegionSlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
+  '/region/$slug': typeof RegionSlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
@@ -119,6 +128,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/award/$award'
     | '/city/$slug'
+    | '/region/$slug'
     | '/uncharted/$slug'
     | '/venue/$city/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -131,6 +141,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/award/$award'
     | '/city/$slug'
+    | '/region/$slug'
     | '/uncharted/$slug'
     | '/venue/$city/$slug'
   id:
@@ -143,6 +154,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/award/$award'
     | '/city/$slug'
+    | '/region/$slug'
     | '/uncharted/$slug'
     | '/venue/$city/$slug'
   fileRoutesById: FileRoutesById
@@ -156,6 +168,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AwardAwardRoute: typeof AwardAwardRoute
   CitySlugRoute: typeof CitySlugRoute
+  RegionSlugRoute: typeof RegionSlugRoute
   UnchartedSlugRoute: typeof UnchartedSlugRoute
   VenueCitySlugRoute: typeof VenueCitySlugRoute
 }
@@ -211,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UnchartedSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/region/$slug': {
+      id: '/region/$slug'
+      path: '/region/$slug'
+      fullPath: '/region/$slug'
+      preLoaderRoute: typeof RegionSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/city/$slug': {
       id: '/city/$slug'
       path: '/city/$slug'
@@ -244,6 +264,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   AwardAwardRoute: AwardAwardRoute,
   CitySlugRoute: CitySlugRoute,
+  RegionSlugRoute: RegionSlugRoute,
   UnchartedSlugRoute: UnchartedSlugRoute,
   VenueCitySlugRoute: VenueCitySlugRoute,
 }
