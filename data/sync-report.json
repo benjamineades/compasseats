@@ -1,11 +1,1 @@
-{
-  "generated_at": "2026-06-25T09:37:15.082663+00:00",
-  "venues_total": 10262,
-  "venues_active": 9928,
-  "venues_bars": 715,
-  "cities_total": 3069,
-  "blurbs_long_filled": 10023,
-  "collisions_remaining": 250,
-  "amber_round": "27 of 31 resolved; 4 deferred to red session",
-  "pipeline_run": "June 25 2026"
-}
+{"generated_at":"2026-06-27T05:06:25.778693Z","venue_count":9986,"city_count":3080,"region_count":111,"index_count":9986,"warnings":[]}
