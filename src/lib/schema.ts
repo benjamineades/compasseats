@@ -66,6 +66,7 @@ export const AWARD_SOURCES = [
   { slug: "asia-50-best-bars", name: "Asia's 50 Best Bars", tier: "regional" },
   { slug: "north-america-50-best-bars-51-100", name: "North America's 50 Best Bars (51–100)", tier: "regional" },
   { slug: "asia-50-best-bars-51-100", name: "Asia's 50 Best Bars (51–100)", tier: "regional" },
+  { slug: "europe-50-best-bars", name: "Europe's 50 Best Bars", tier: "regional" },
   // Roadmap additions (restaurants):
   { slug: "la-liste", name: "La Liste", tier: "global" },
   { slug: "gault-millau", name: "Gault & Millau", tier: "regional" },
