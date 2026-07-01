@@ -129,6 +129,14 @@ export type City = z.infer<typeof CitySchema>;
 // Region
 // -------------------------------------------------------------------------
 
+/** A single venue reference embedded in a region-page city entry. */
+export const RegionCityVenueSchema = z.object({
+  slug: SlugSchema,
+  name: z.string().min(1),
+  type: z.enum(["restaurant", "bar"]),
+});
+export type RegionCityVenue = z.infer<typeof RegionCityVenueSchema>;
+
 /** A city entry within a region — slim shape used in the regions list. */
 export const RegionCitySchema = z.object({
   slug: SlugSchema,                       // "florence"
@@ -138,6 +146,10 @@ export const RegionCitySchema = z.object({
   venue_count: z.number().int().nonnegative(),
   lat: z.number().min(-90).max(90),
   lng: z.number().min(-180).max(180),
+  // Added July 1, 2026 — powers the region-page "expand a city to see its
+  // venues" dropdown. Optional so older cached regions.json (from before
+  // this field existed) still validates without a rebuild.
+  venues: z.array(RegionCityVenueSchema).optional(),
 });
 export type RegionCity = z.infer<typeof RegionCitySchema>;
 
