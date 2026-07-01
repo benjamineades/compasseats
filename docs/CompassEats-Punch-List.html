@@ -209,9 +209,9 @@
   <p class="tag">Charting what's next. Updated each session as work ships and new work appears.</p>
   <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
   <div class="meta-row">
-    <span class="m">Version <b>2.25</b></span>
-    <span class="m">Updated <b>June 26, 2026</b></span>
-    <span class="m">Regions feature <b>shipped</b></span>
+    <span class="m">Version <b>2.26</b></span>
+    <span class="m">Updated <b>July 1, 2026</b></span>
+    <span class="m">Enrichment catch-up + JSON republish <b>shipped</b></span>
   </div>
 </header>
 
@@ -235,9 +235,9 @@
       <div class="dsub">Dukes Bar re-enrich · curated top-city hero photos · multi-venue card photos · card polish · prestige reweighting</div>
     </div>
     <div class="dcard later">
-      <div class="dnum">28</div>
+      <div class="dnum">29</div>
       <div class="dlabel">Queued</div>
-      <div class="dsub">NY city-split · district alias map · local-currency tiers · pipeline · expansion · horizon</div>
+      <div class="dsub">NY city-split · district alias map · local-currency tiers · <strong>shared-pin geo collision (323 groups)</strong> · pipeline · expansion · horizon</div>
     </div>
   </section>
 
@@ -491,10 +491,19 @@
     <div class="tier-head">
       <div class="icon-slot">◆</div>
       <h2>Pipeline &amp; data improvements</h2>
-      <span class="count">20 items</span>
+      <span class="count">21 items</span>
     </div>
     <p class="tier-sub">Structural and infrastructure work. Less visible, but durable — each one prevents future drift.</p>
     <div class="items">
+
+      <div class="item">
+        <div class="top">
+          <h3>323 venues sharing one map pin across different cities — likely wrong addresses</h3>
+          <div class="pills"><span class="pill medium">Medium</span><span class="pill medium">Geo track</span></div>
+        </div>
+        <p><strong>Surfaced July&nbsp;1 while regenerating the website data files.</strong> 323 groups of venues (roughly 700 individual rows) share the exact same Google Places ID and map coordinates even though they're listed under different cities — meaning at least one listing in each group is showing the wrong address / map pin. Examples: <strong>Isshisouden&nbsp;Nakamura</strong> shows identical coordinates under both Kyoto and Tokyo; <strong>Xinrongji</strong> shares one pin across Beijing, Hong&nbsp;Kong, Shanghai, and Taizhou; <strong>Da&nbsp;Vittorio</strong> shares one pin across Brusaporto, Shanghai, and Sankt&nbsp;Moritz; <strong>8½&nbsp;Otto&nbsp;e&nbsp;Mezzo&nbsp;BOMBANA</strong> shares one pin across Hong&nbsp;Kong and Macau.</p>
+        <p><span class="why"><strong>Why it wasn't caught earlier:</strong> the build's duplicate-key check only guards <code>city_slug/slug</code> pairs (which are unique here, since each city variant got its own slug) — there's no check on the underlying <code>id</code>/place&nbsp;ID being reused across cities, so the site builds and publishes cleanly even with this in the data. <strong>Likely cause:</strong> these are almost certainly chain or multi-location restaurants where reshape's name-first geo matching found only one Google Places result for the name and applied it to every city variant of that name. <strong>Fix:</strong> needs a dedicated per-venue re-geocode pass targeting just these 323 groups — its own focused session given the volume, similar in shape to the existing red-collision-bucket geo work already queued below.</span></p>
+      </div>
 
       <div class="item">
         <div class="top">
@@ -1185,6 +1194,7 @@
     <div class="tw"><table>
       <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
       <tbody>
+        <tr><td><code>2.26</code></td><td>July 1, 2026</td><td><strong>Enrichment catch-up completed + full JSON republish.</strong> Cleared the geo-enrichment backlog that had grown since the last session: ran <code>geoEnrich</code> (16 new venues looked up, 10 parked to <code>enrichment_review</code>, 6 permanently unfindable), reviewed and rejected all 10 parked candidates (every one was a wrong Google Places match — confirmed by hand, e.g. "Refer" Beijing matched to an unrelated restaurant), then ran the full pipeline in order (<code>reshapeCompassEats</code> → <code>mergeDuplicateVenues</code> → <code>importBlurbsFromDrive</code> → <code>clearWrongCityBlurbs</code> → <code>importOptionB</code> → <code>generateCitiesTab</code> → <code>generateRegionsTab</code> → <code>preflightPublish</code>, clean 0/0). Result: <strong>11,220 venues</strong> after reshape, settling to <strong>10,539</strong> post-merge; <code>needs_enrichment</code> down to 66 (irreducible — no Places match exists). <strong>Caught before publish:</strong> 10 hand-written blurb_short values exceeded the schema's 180-character card limit (would have failed the entire build, not just those 10 rows) — trimmed all 10 with Ben's approval, preserving voice. Regenerated all four data files via a faithful Python reproduction of <code>sync-sheet.ts</code> (pulled fresh from the repo, including the euro→dollar <code>price_tier</code> normalization): <strong>venues.json</strong> (10,539), <strong>cities.json</strong> (3,125), <strong>venues-index.json</strong> (10,200 active), <strong>regions.json</strong> (111). Blurb coverage 95.8%. <strong>New Pipeline item logged:</strong> 323 venues sharing one map pin across different cities (see above) — a real trust risk, queued as its own session. Pipeline&nbsp;&amp;&nbsp;data 20&nbsp;→&nbsp;21, Queued 28&nbsp;→&nbsp;29.</td></tr>
         <tr><td><code>2.25</code></td><td>June 26, 2026</td><td><strong>Regions feature shipped end-to-end.</strong> Built and shipped the full Regions browsing feature. <strong>Data:</strong> hand-curated 3,069-city → 107-region mapping (<code>Cities_Regions_FINAL.csv</code>); all 140 flagged ambiguous cases resolved (138 kept as-is, Marrakech blanked from Atlas Mountains, Montegrosso moved from Piedmont → Puglia); Kyoto Prefecture merged into Kansai (394 venues, 5 cities). <code>data/regions.json</code> committed to repo. <code>RegionSchema</code> + <code>RegionCitySchema</code> added to <code>src/lib/schema.ts</code>. <code>scripts/sync-sheet.ts</code> updated to optionally read a <code>regions</code> Sheet tab. <code>apps-script/generateRegionsTab.gs</code> delivered for future pipeline runs. <strong>Frontend:</strong> <code>/regions</code> index (107 regions, grouped by country with italic headers + indented region rows) + <code>/region/$slug</code> pages (map above city cards; MapLibre theme-reactive dataviz-light/dark matching city/venue maps; brass pins; 0-venue cities filtered from cards and map) + "Regions" nav link in header. <strong>Search:</strong> <code>searchRegions()</code> added to <code>src/lib/cities.ts</code>; accent-folding helper (<code>foldAccents()</code>) applied to both city and region search (fixes Quebec → Québec and all similar accented-character mismatches); region results appear in the homepage search dropdown with REGION badge. Shipped 43 → 52.</td></tr>
         <tr><td><code>2.24</code></td><td>June 25, 2026</td><td><strong>Map improvements: pinch-to-zoom + tiered pin system shipped.</strong> Two <code>VenueMap.tsx</code> changes shipped via Lovable. <strong>Pinch-to-zoom:</strong> changed <code>touchZoomRotate: false</code> → <code>touchZoomRotate: true</code> and added <code>map.touchZoomRotate.disableRotation()</code> to preserve the no-rotation behaviour on mobile — users can now pinch to zoom on touch screens. <strong>Tiered pin system:</strong> replaced the single uniform brass pin with three tiers — <em>pinnacle</em> (38px, 3-star Michelin or W50 top-10), <em>acclaimed</em> (30px, 1–2 star Michelin / ranked W50 / James Beard), <em>recognized</em> (24px hollow, all others) — plus a shape distinction (circle = restaurant, rounded square = cocktail bar). Tier is derived from <code>getPinTier()</code> on each venue's awards array and stored in GeoJSON properties. <strong>Pin aesthetic is functional placeholder</strong> — a visual redesign pass is logged in Up Next (see "Map pin visual redesign").</td></tr>
         <tr><td><code>2.24</code></td><td>June 28, 2026</td><td><strong>Geo-enrichment marathon complete — 10,481 venues live, Eatrenalin shipped.</strong> Ran 6 rounds of <code>geoEnrich</code> / <code>enrichment_review</code> triage, resolving 275 stuck venues from <code>needs_enrichment</code> down to 72 (the irreducible floor of no-Google-result cases). Key milestones: diagnosed stale <code>enrichment_audit</code> worklist (154 new venues invisible to geoEnrich — fixed by running <code>auditEnrichment</code> to rebuild); triaged 5 enrichment_review batches totalling 135 rows (56 ACCEPTs, 79 REJECTs) with address verification; resolved the <code>convertSuggestions</code>/<code>acceptReviewRows</code> function confusion (all 4 functions live in <code>geo-enrich.gs</code>). Net result: <strong>Michelin 2026 in venues 1,587→1,722</strong> (+135), <strong>JB 2026 in venues +13</strong>, <strong>Eatrenalin live</strong> (Roland-Mack-Ring 5, Rust, Germany, Michelin 2026 One Star). 72 permanently stuck: obscure Chinese Michelin bibs (untranslated names), OAD long-tail, a mezcal brand (Del Maguey — not a restaurant), Susar Toronto (OAD 2002, likely closed). Regenerated all 4 JSON files from v24 export (<strong>venues.json: 10,481 / cities.json: 3,115 / venues-index.json: 10,481 / regions.json: 111</strong>) — clean validation, 0 orphan city slugs, 0 missing required fields. Updated Option B progress to 131 rows (Batches 1–8, through P range, ~910 remaining). <strong>Next session: Option B blurbs — continue from Q range.</strong></td></tr>
