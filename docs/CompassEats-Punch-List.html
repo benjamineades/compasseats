@@ -209,9 +209,9 @@
   <p class="tag">Charting what's next. Updated each session as work ships and new work appears.</p>
   <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
   <div class="meta-row">
-    <span class="m">Version <b>2.26</b></span>
+    <span class="m">Version <b>2.27</b></span>
     <span class="m">Updated <b>July 1, 2026</b></span>
-    <span class="m">Enrichment catch-up + JSON republish <b>shipped</b></span>
+    <span class="m">Bar-ingest dropdown fix + 12 new punch-list items <b>logged</b></span>
   </div>
 </header>
 
@@ -235,9 +235,9 @@
       <div class="dsub">Dukes Bar re-enrich · curated top-city hero photos · multi-venue card photos · card polish · prestige reweighting</div>
     </div>
     <div class="dcard later">
-      <div class="dnum">29</div>
+      <div class="dnum">41</div>
       <div class="dlabel">Queued</div>
-      <div class="dsub">NY city-split · district alias map · local-currency tiers · <strong>shared-pin geo collision (323 groups)</strong> · pipeline · expansion · horizon</div>
+      <div class="dsub">NY city-split · district alias map · local-currency tiers · shared-pin geo collision (319 groups) · <strong>12 new UX/polish items (July 1)</strong> · pipeline · expansion · horizon</div>
     </div>
   </section>
 
@@ -326,7 +326,7 @@
     <div class="tier-head">
       <div class="icon-slot">▸</div>
       <h2>Up next — polish</h2>
-      <span class="count">10 items</span>
+      <span class="count">21 items</span>
     </div>
     <p class="tier-sub">Visible UX wins on the live site. None block anything; all noticeably improve the product. Start here when picking up work.</p>
     <div class="items">
@@ -400,10 +400,10 @@
 
       <div class="item">
         <div class="top">
-          <h3>Theme toggle — keep or remove?</h3>
-          <div class="pills"><span class="pill quick">Quick</span><span class="pill medium">Decision</span></div>
+          <h3>Theme toggle — DECIDED: remove</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Repo-only</span></div>
         </div>
-        <p>With the two-surface system (dark heroes / paper editorial bodies) now established, evaluate whether the dark/light toggle still earns its place or dilutes a now-confident look. <strong>Revisit AFTER</strong> the cities index brings the light treatment to a second page — judging it with the full system visible beats guessing. Removal is a ~5-min change; deferring costs nothing.</p>
+        <p>Decision made July 1, 2026: remove the dark/light mode toggle entirely — not needed. <strong>Note before removing:</strong> a few components read <code>document.documentElement.classList.contains("dark")</code> to pick a map style variant (e.g. <code>RegionMap</code> in <code>region.$slug.tsx</code>, and the equivalent in the city/venue map components) — these should be hard-coded to the light/dataviz-light MapTiler style once the toggle is gone, not left listening for a class that will never change.</p>
       </div>
 
       <div class="item">
@@ -481,6 +481,95 @@
         </div>
         <p>The three-tier pin system (pinnacle / acclaimed / recognized) is <strong>functional and live</strong> — tiers are correctly assigned and render at different sizes with bars as rounded squares vs restaurant circles. The <em>aesthetic</em> is placeholder-level: flat brass fill, the same compass SVG at every tier, hollow outline for recognized. This pass should make the pins feel like a deliberate design decision, not scaffolding.</p>
         <p><span class="why"><strong>Things to consider:</strong> a richer pinnacle pin (gold glow / inner detail that reads at 38px); a legend / map key so first-time visitors understand the three tiers without guessing; whether the bar diamond/square shape is distinct enough from the restaurant circle at small sizes on a crowded map; and whether recognized-tier pins (hollow, 24px) are legible enough on both light and dark basemaps. All changes go in <code>src/components/VenueMap.tsx</code> — the tier logic itself is solid and should not be touched.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Search by venue name on the homepage search bar</h3>
+          <div class="pills"><span class="pill medium">Medium</span></div>
+        </div>
+        <p>The homepage search currently resolves cities and regions (<code>searchRegions()</code>/city search in <code>src/lib/cities.ts</code>) but not individual venue names. Someone who already knows they want to check on "Noma" or "Le Bernardin" should be able to type the venue name directly and land on its page, not have to go city-first. Wire venue-name matching into the same search dropdown, likely sourced from <code>venues-index.json</code> (already the lightweight per-venue lookup file) rather than the full <code>venues.json</code>.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>"Explore by Region" page — group by continent, like Cities already does</h3>
+          <div class="pills"><span class="pill medium">Medium</span><span class="pill quick">Repo-only</span></div>
+        </div>
+        <p>The Cities index (<code>src/routes/cities.tsx</code>) already does exactly this: a collapsible Continent → Country → City accordion, all collapsed by default. The Regions index (<code>src/routes/regions.tsx</code>) currently only groups by country with italic country headers — no continent layer. Bring the same nested-accordion treatment here: e.g. a "Europe" subheader that expands to France, Germany, Italy, etc., each expanding to its regions. Should be able to reuse the existing <code>CONTINENT_BY_CODE</code> map from the Cities page rather than rebuilding it.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Guide pages — match the Region/City visual language</h3>
+          <div class="pills"><span class="pill medium">Medium</span><span class="pill quick">Repo-only</span></div>
+        </div>
+        <p>Individual Guide pages (<code>/award/$award</code>) still use the older card-grid look. Bring them in line with the now-established Region/City pattern: white paper background, plain list rather than cards. While in there, audit font family/size/weight across the page — the goal is one consistent typographic system across Cities, Regions, and Guides, not three slightly different ones.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Guide pages — surface newly added award sources</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Repo-only</span></div>
+        </div>
+        <p>Confirm the Guides index (<code>src/routes/guides.tsx</code>) picks up new sources automatically — it's built from the <code>AWARD_SOURCES</code> registry plus <code>getVenuesByAward(slug).length</code>, so a newly registered source like <code>europe-50-best-bars</code> should appear without code changes once the schema and venue data are updated. Verify this is actually true post-publish rather than assuming it; if it isn't, that's a real bug in the Guides page, not just a missing entry.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Cities page — fix font/sizing inconsistency</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Repo-only</span></div>
+        </div>
+        <p>The word "Cities" at the top of <code>/cities</code> currently renders in italic at a different size than the equivalent headers on Regions and Guides. Bring it in line with the shared heading style used elsewhere (see the Region page <code>&lt;h1&gt;</code> treatment as the reference).</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Homepage — condense for mobile</h3>
+          <div class="pills"><span class="pill medium">Medium</span></div>
+        </div>
+        <p>Homepage scaling on mobile needs work — too much information and too many functional elements competing for a small screen. Pass needed to decide what's essential above the fold on mobile vs. what can move lower or collapse, so the mobile homepage feels purpose-built rather than a squeezed desktop layout.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Fix the rotating compass — should the needle spin, not the whole compass?</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Repo-only</span></div>
+        </div>
+        <p>The rotating compass animation on desktop is currently broken. Worth reconsidering the animation itself while fixing it — a spinning needle inside a fixed compass face likely reads as more polished and less disorienting than the whole compass icon rotating.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Shrink top-destination cards for mobile</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Repo-only</span></div>
+        </div>
+        <p>The top-destination cards on the homepage are oversized on mobile. Part of the broader homepage mobile pass above, but called out separately since it's a self-contained sizing fix.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Mobile search bar — let example-city text scroll instead of cutting off</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Repo-only</span></div>
+        </div>
+        <p>On mobile, the placeholder text showing example cities in the search bar is static and gets visually cut off at the edge of the screen. Have it crawl/scroll across the bar (marquee-style) instead, so the full set of examples is readable without needing more horizontal space than a phone has.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Homepage top destinations — refresh selection on each page load</h3>
+          <div class="pills"><span class="pill medium">Medium</span></div>
+        </div>
+        <p>Top destinations on the homepage should rotate to new options on each page load rather than showing the same static set every time. Needs a selection rule that filters out single-venue or obscure cities — the goal is a rotating set of destinations that always feels like a credible recommendation, never a city that only happens to have one charted venue.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Region pages — expandable per-city venue list (dropdown), not card grid</h3>
+          <div class="pills"><span class="pill larger">Larger</span><span class="pill medium">Blocked — needs data first</span></div>
+        </div>
+        <p>On region pages (e.g. French Alps), replace the current city card grid with a plain list of cities. Each city name links to its city page as it does now, but should also expand (dropdown/accordion) to show that city's venues inline, each venue name linking to its own venue page.</p>
+        <p><span class="why"><strong>Currently blocked:</strong> <code>RegionCitySchema</code> (src/lib/schema.ts) only carries slug/display/country/country_code/venue_count/lat/lng per city — no per-venue names or slugs. The data needed to populate the dropdown doesn't exist in <code>regions.json</code> yet. Needs <code>generateRegionsTab.gs</code> (lives in Apps Script, not currently mirrored in the GitHub repo — request the current version directly from Ben before touching this) extended to embed a slim venue list (slug, name, type) per city, then <code>RegionCitySchema</code> updated to match, then the Python JSON-regeneration step updated, then the frontend change. A four-part change — do not attempt the frontend half in isolation.</span></p>
       </div>
 
     </div>
@@ -855,7 +944,7 @@
     <div class="tier-head">
       <div class="icon-slot">✦</div>
       <h2>Expansion</h2>
-      <span class="count">6 items</span>
+      <span class="count">7 items</span>
     </div>
     <p class="tier-sub">New surface area. Each one widens what CompassEats does or covers — bigger lifts, but where the product grows.</p>
     <div class="items">
@@ -909,6 +998,14 @@
           <div class="pills"><span class="pill medium">Medium</span></div>
         </div>
         <p>"My next trip" or "favorites" — no accounts, no backend. Save venues to a local list, optionally encode the list into a shareable URL. Stays true to the "no accounts" product principle.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Website / Instagram / Facebook links for every venue</h3>
+          <div class="pills"><span class="pill larger">Larger</span><span class="pill medium">Data generation + verification</span></div>
+        </div>
+        <p>Add and verify a website link, and where available Instagram and/or Facebook, for every venue on the site. This is a real data-generation task across ~11,000+ venues, not a UI change — each link needs to be found and confirmed correct (not guessed) before it goes live, since a wrong link is worse than no link for a "trustworthy friend" product. Needs a sourcing plan (a batch web-search + verification pass, likely similar in shape to the Option B sourcing pipeline) before any frontend work to display the links.</p>
       </div>
 
     </div>
@@ -1194,6 +1291,7 @@
     <div class="tw"><table>
       <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
       <tbody>
+        <tr><td><code>2.27</code></td><td>July 1, 2026</td><td><strong>Bar-ingest dropdown repair, Option B source fix confirmed, region-page feature scoped (blocked on data), 12 new punch-list items logged.</strong> Diagnosed the "Europe's 50 Best Bars missing from dropdown" report: the underlying script already had the source registered correctly and Ben's 50 pasted rows were already valid — the dropdown menu itself was just stale (data-validation rules are only set at tab-creation time and don't auto-refresh when the source list changes later). Added a one-time <code>fixBarImportDropdown()</code> repair function to <code>compasseats-bar-ingest.gs</code> that re-applies the dropdown across the whole column without touching pasted data. <strong>Confirmed 319 = 323 − 4</strong> (the 4 safe German-city aliases already shipped in v2.26) — one combined collision-cleanup step going forward, not two. <strong>Region-page city/venue dropdown feature evaluated and blocked:</strong> <code>RegionCitySchema</code> only carries aggregate counts per city, no per-venue names/slugs, so the requested "expand a city to see its venues" UI has no data to render yet — needs <code>generateRegionsTab.gs</code> (not in the GitHub mirror; live-only in Apps Script) extended to embed a slim venue list per city, then schema + JSON-regen + frontend, in that order. Logged as a 4-part blocked item rather than attempted piecemeal. <strong>12 new items added to the punch list</strong> per Ben's direct requests: venue-name search on the homepage, continent-grouping for the Regions index (mirroring the existing Cities accordion), Guide-page visual parity with Region/City pages, Guide-page new-source verification, Cities-page heading font/size fix, homepage mobile condensing, the broken rotating compass, mobile top-destination card sizing, mobile search-bar marquee text, homepage top-destination rotation logic, the region-dropdown feature above, and venue website/Instagram/Facebook links (data-generation task, Expansion tier). <strong>Theme toggle decision closed:</strong> Ben confirmed removal — flagged that the map components' dark/light style-switching logic needs to be hard-coded to light once the toggle is gone, not left listening for a class that will never flip. Up next — polish 10&nbsp;→&nbsp;21, Expansion 6&nbsp;→&nbsp;7, Queued 29&nbsp;→&nbsp;41. <strong>Session ended with a handoff prepared</strong> for a fresh chat to tackle the 319-collision cleanup + Da Vittorio city-label fix as one focused session.</td></tr>
         <tr><td><code>2.26</code></td><td>July 1, 2026</td><td><strong>Enrichment catch-up completed + full JSON republish.</strong> Cleared the geo-enrichment backlog that had grown since the last session: ran <code>geoEnrich</code> (16 new venues looked up, 10 parked to <code>enrichment_review</code>, 6 permanently unfindable), reviewed and rejected all 10 parked candidates (every one was a wrong Google Places match — confirmed by hand, e.g. "Refer" Beijing matched to an unrelated restaurant), then ran the full pipeline in order (<code>reshapeCompassEats</code> → <code>mergeDuplicateVenues</code> → <code>importBlurbsFromDrive</code> → <code>clearWrongCityBlurbs</code> → <code>importOptionB</code> → <code>generateCitiesTab</code> → <code>generateRegionsTab</code> → <code>preflightPublish</code>, clean 0/0). Result: <strong>11,220 venues</strong> after reshape, settling to <strong>10,539</strong> post-merge; <code>needs_enrichment</code> down to 66 (irreducible — no Places match exists). <strong>Caught before publish:</strong> 10 hand-written blurb_short values exceeded the schema's 180-character card limit (would have failed the entire build, not just those 10 rows) — trimmed all 10 with Ben's approval, preserving voice. Regenerated all four data files via a faithful Python reproduction of <code>sync-sheet.ts</code> (pulled fresh from the repo, including the euro→dollar <code>price_tier</code> normalization): <strong>venues.json</strong> (10,539), <strong>cities.json</strong> (3,125), <strong>venues-index.json</strong> (10,200 active), <strong>regions.json</strong> (111). Blurb coverage 95.8%. <strong>New Pipeline item logged:</strong> 323 venues sharing one map pin across different cities (see above) — a real trust risk, queued as its own session. Pipeline&nbsp;&amp;&nbsp;data 20&nbsp;→&nbsp;21, Queued 28&nbsp;→&nbsp;29.</td></tr>
         <tr><td><code>2.25</code></td><td>June 26, 2026</td><td><strong>Regions feature shipped end-to-end.</strong> Built and shipped the full Regions browsing feature. <strong>Data:</strong> hand-curated 3,069-city → 107-region mapping (<code>Cities_Regions_FINAL.csv</code>); all 140 flagged ambiguous cases resolved (138 kept as-is, Marrakech blanked from Atlas Mountains, Montegrosso moved from Piedmont → Puglia); Kyoto Prefecture merged into Kansai (394 venues, 5 cities). <code>data/regions.json</code> committed to repo. <code>RegionSchema</code> + <code>RegionCitySchema</code> added to <code>src/lib/schema.ts</code>. <code>scripts/sync-sheet.ts</code> updated to optionally read a <code>regions</code> Sheet tab. <code>apps-script/generateRegionsTab.gs</code> delivered for future pipeline runs. <strong>Frontend:</strong> <code>/regions</code> index (107 regions, grouped by country with italic headers + indented region rows) + <code>/region/$slug</code> pages (map above city cards; MapLibre theme-reactive dataviz-light/dark matching city/venue maps; brass pins; 0-venue cities filtered from cards and map) + "Regions" nav link in header. <strong>Search:</strong> <code>searchRegions()</code> added to <code>src/lib/cities.ts</code>; accent-folding helper (<code>foldAccents()</code>) applied to both city and region search (fixes Quebec → Québec and all similar accented-character mismatches); region results appear in the homepage search dropdown with REGION badge. Shipped 43 → 52.</td></tr>
         <tr><td><code>2.24</code></td><td>June 25, 2026</td><td><strong>Map improvements: pinch-to-zoom + tiered pin system shipped.</strong> Two <code>VenueMap.tsx</code> changes shipped via Lovable. <strong>Pinch-to-zoom:</strong> changed <code>touchZoomRotate: false</code> → <code>touchZoomRotate: true</code> and added <code>map.touchZoomRotate.disableRotation()</code> to preserve the no-rotation behaviour on mobile — users can now pinch to zoom on touch screens. <strong>Tiered pin system:</strong> replaced the single uniform brass pin with three tiers — <em>pinnacle</em> (38px, 3-star Michelin or W50 top-10), <em>acclaimed</em> (30px, 1–2 star Michelin / ranked W50 / James Beard), <em>recognized</em> (24px hollow, all others) — plus a shape distinction (circle = restaurant, rounded square = cocktail bar). Tier is derived from <code>getPinTier()</code> on each venue's awards array and stored in GeoJSON properties. <strong>Pin aesthetic is functional placeholder</strong> — a visual redesign pass is logged in Up Next (see "Map pin visual redesign").</td></tr>
