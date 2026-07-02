@@ -8,6 +8,12 @@ import {
 import maplibregl from "maplibre-gl";
 import { z } from "zod";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import regionsData from "../../data/regions.json";
 import { RegionSchema, type Region } from "@/lib/schema";
 
@@ -97,6 +103,11 @@ function RegionPage() {
     return set.size > 1;
   }, [region]);
 
+  const citiesWithVenues = useMemo(
+    () => region.cities.filter((c) => c.venue_count > 0),
+    [region],
+  );
+
   return (
     <main style={{ backgroundColor: PAPER, color: INK }} className="min-h-screen">
       <div className="mx-auto max-w-5xl px-6 py-16 md:py-20">
@@ -142,35 +153,93 @@ function RegionPage() {
         </section>
 
         <section className="mt-16 md:mt-20">
-          <ul role="list" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {region.cities.filter((c) => c.venue_count > 0).map((c) => (
-              <li key={c.slug}>
-                <Link
-                  to="/city/$slug"
-                  params={{ slug: c.slug }}
-                  className="group block h-full rounded-lg border p-5 transition-colors"
-                  style={{ borderColor: HAIRLINE, backgroundColor: PAPER }}
-                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = BRONZE)}
-                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = HAIRLINE)}
+          <p
+            className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em]"
+            style={{ color: BRONZE }}
+          >
+            Cities in {region.display}
+          </p>
+          <Accordion
+            type="multiple"
+            className="border-t"
+            style={{ borderColor: HAIRLINE }}
+          >
+            {citiesWithVenues.map((c) => {
+              const venues = c.venues ?? [];
+              return (
+                <AccordionItem
+                  key={c.slug}
+                  value={c.slug}
+                  className="border-b"
+                  style={{ borderColor: HAIRLINE }}
                 >
-                  <h3 className="font-display text-2xl italic" style={{ color: INK }}>
-                    {c.display}
-                  </h3>
-                  {multiCountry ? (
-                    <p
-                      className="mt-1 text-[11px] uppercase tracking-[0.15em]"
-                      style={{ color: INK_MUTED }}
+                  <div className="flex items-baseline justify-between gap-4 py-4">
+                    <Link
+                      to="/city/$slug"
+                      params={{ slug: c.slug }}
+                      className="group min-w-0"
                     >
-                      {c.country}
-                    </p>
-                  ) : null}
-                  <p className="mt-3 text-sm tabular-nums" style={{ color: INK_MUTED }}>
-                    {formatNum(c.venue_count)} {c.venue_count === 1 ? "venue" : "venues"}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+                      <span
+                        className="font-display text-2xl italic transition-colors group-hover:[color:var(--hover)]"
+                        style={{ color: INK, ["--hover" as never]: BRONZE }}
+                      >
+                        {c.display}
+                      </span>
+                      {multiCountry ? (
+                        <span
+                          className="ml-3 text-[11px] uppercase tracking-[0.15em]"
+                          style={{ color: INK_MUTED }}
+                        >
+                          {c.country}
+                        </span>
+                      ) : null}
+                    </Link>
+                    <AccordionTrigger
+                      className="shrink-0 gap-2 py-0 hover:no-underline [&>svg]:h-4 [&>svg]:w-4"
+                    >
+                      <span className="text-xs tabular-nums" style={{ color: INK_MUTED }}>
+                        {formatNum(c.venue_count)} {c.venue_count === 1 ? "venue" : "venues"}
+                      </span>
+                    </AccordionTrigger>
+                  </div>
+                  <AccordionContent className="pb-4">
+                    {venues.length > 0 ? (
+                      <ul className="grid gap-x-6 gap-y-1.5 pl-1 sm:grid-cols-2 lg:grid-cols-3">
+                        {venues.map((v) => (
+                          <li key={v.slug}>
+                            <Link
+                              to="/venue/$city/$slug"
+                              params={{ city: c.slug, slug: v.slug }}
+                              className="group flex items-baseline gap-2 py-1 no-underline"
+                            >
+                              <span
+                                className="text-sm transition-colors group-hover:[color:var(--hover)]"
+                                style={{ color: INK, ["--hover" as never]: BRONZE }}
+                              >
+                                {v.name}
+                              </span>
+                              {v.type === "bar" ? (
+                                <span
+                                  className="text-[10px] uppercase tracking-wider"
+                                  style={{ color: INK_MUTED }}
+                                >
+                                  bar
+                                </span>
+                              ) : null}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="pl-1 text-sm" style={{ color: INK_MUTED }}>
+                        Venue list not available yet for this city.
+                      </p>
+                    )}
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            })}
+          </Accordion>
         </section>
       </div>
     </main>
