@@ -198,7 +198,9 @@ function normalizePriceTier(raw: string): string | undefined {
   return "$".repeat(Math.min(count, 4));
 }
 
+function parseHours(raw: string) {
   if (!raw.trim()) return undefined;
+
   try {
     const parsed = JSON.parse(raw);
     return HoursSchema.parse(parsed);
