@@ -243,7 +243,7 @@ function rowToVenue(
     address: row.address,
     type: row.type.toLowerCase(),
     cuisine_tags,
-    price_tier: row.price_tier || undefined,
+    price_tier: normalizePriceTier(row.price_tier),
     phone: row.phone || undefined,
     website: row.website || undefined,
     reservation_url: row.reservation_url || undefined,
