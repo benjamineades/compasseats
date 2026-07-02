@@ -33,10 +33,3 @@ dist-ssr
 
 # Environment
 .env
-
-# Generated data artifacts (sync script recreates these at build time)
-data/venues.json
-data/venues-index.json
-data/cities.json
-data/regions.json
-data/sync-report.json
