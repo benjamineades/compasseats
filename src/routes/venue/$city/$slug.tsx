@@ -131,6 +131,30 @@ export const Route = createFileRoute("/venue/$city/$slug")({
 // Page
 // ---------------------------------------------------------------------------
 
+const PRICE_TIERS = ["$", "$$", "$$$", "$$$$"] as const;
+
+function PriceTierPill({ tier }: { tier: string }) {
+  const filled = tier.length;
+  const total = PRICE_TIERS.length;
+  return (
+    <span
+      aria-label={`Price tier ${tier}`}
+      className="inline-flex items-center rounded-full border px-2.5 py-0.5 font-mono text-xs backdrop-blur"
+      style={{
+        borderColor: "rgba(216,190,138,0.45)",
+        backgroundColor: "rgba(0,0,0,0.25)",
+        letterSpacing: "0.05em",
+        fontWeight: 600,
+      }}
+    >
+      <span style={{ color: "#D8BE8A" }}>{tier}</span>
+      <span style={{ color: "#D8BE8A", opacity: 0.35 }}>
+        {"$".repeat(total - filled)}
+      </span>
+    </span>
+  );
+}
+
 function VenuePage() {
   const { venue } = Route.useLoaderData() as { venue: Venue };
   const related = getRelatedVenues(venue, 4);
