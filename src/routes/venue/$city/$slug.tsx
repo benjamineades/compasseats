@@ -145,7 +145,7 @@ function VenuePage() {
           .map((t) => t.charAt(0).toUpperCase() + t.slice(1))
           .join(", ")
       : "";
-  const metaSegments = [venue.price_tier, typeLabel, cuisineLine].filter(
+  const metaSegments = [typeLabel, cuisineLine].filter(
     (s): s is string => Boolean(s),
   );
 
@@ -188,10 +188,11 @@ function VenuePage() {
             <h1 className="mt-1 font-display text-4xl font-light italic tracking-tight text-white md:text-6xl">
               {venue.name}
             </h1>
-            {metaSegments.length > 0 && (
-              <p className="mt-3 text-sm text-white/75 md:text-base">
-                {metaSegments.join(" · ")}
-              </p>
+            {(metaSegments.length > 0 || venue.price_tier) && (
+              <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-white/75 md:text-base">
+                {venue.price_tier && <PriceTierPill tier={venue.price_tier} />}
+                {metaSegments.length > 0 && <span>{metaSegments.join(" · ")}</span>}
+              </div>
             )}
           </div>
         </div>
