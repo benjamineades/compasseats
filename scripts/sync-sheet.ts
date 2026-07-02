@@ -191,7 +191,13 @@ function normalizeSheetDate(raw: string): string {
   return s;
 }
 
-function parseHours(raw: string) {
+function normalizePriceTier(raw: string): string | undefined {
+  const symbols = (raw ?? "").toString().match(/\p{Sc}/gu);
+  const count = symbols ? symbols.length : 0;
+  if (count === 0) return undefined;
+  return "$".repeat(Math.min(count, 4));
+}
+
   if (!raw.trim()) return undefined;
   try {
     const parsed = JSON.parse(raw);
