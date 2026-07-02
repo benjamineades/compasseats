@@ -191,16 +191,8 @@ function normalizeSheetDate(raw: string): string {
   return s;
 }
 
-function normalizePriceTier(raw: string): string | undefined {
-  const symbols = (raw ?? "").toString().match(/\p{Sc}/gu);
-  const count = symbols ? symbols.length : 0;
-  if (count === 0) return undefined;
-  return "$".repeat(Math.min(count, 4));
-}
-
 function parseHours(raw: string) {
   if (!raw.trim()) return undefined;
-
   try {
     const parsed = JSON.parse(raw);
     return HoursSchema.parse(parsed);
@@ -243,7 +235,7 @@ function rowToVenue(
     address: row.address,
     type: row.type.toLowerCase(),
     cuisine_tags,
-    price_tier: normalizePriceTier(row.price_tier),
+    price_tier: row.price_tier || undefined,
     phone: row.phone || undefined,
     website: row.website || undefined,
     reservation_url: row.reservation_url || undefined,
@@ -287,6 +279,9 @@ interface RegionCityEntry {
   venue_count: number;
   lat: number;
   lng: number;
+  // Added July 1, 2026 — see RegionCitySchema in schema.ts. Optional so
+  // regions rows written before this existed still parse cleanly.
+  venues?: { slug: string; name: string; type: "restaurant" | "bar" }[];
 }
 
 function rowToRegion(raw: Record<string, string>): Region {
