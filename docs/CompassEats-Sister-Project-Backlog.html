@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompassEats — Sister-Project Backlog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#23211E; --panel:#2F2A24; --panel-2:#383229;
+    --brass:#C6A15B; --brass-soft:#DEC68F; --bronze:#895F2E;
+    --cream:#F5F0E6; --cream-dim:#CBC2B0; --cream-dimmer:#988F7E;
+    --clay:#D88A63; --sage:#A4B79F;
+    --line:rgba(198,161,91,.20); --line-soft:rgba(198,161,91,.10);
+    --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:radial-gradient(1100px 640px at 85% -10%, rgba(198,161,91,.10), transparent 60%),
+    radial-gradient(900px 600px at 4% 105%, rgba(216,138,99,.07), transparent 55%), var(--bg);
+    color:var(--cream); font-family:var(--sans); line-height:1.68; -webkit-font-smoothing:antialiased;
+    background-attachment:fixed;}
+  .wrap{max-width:920px;margin:0 auto;padding:64px 28px 96px}
+  header.cov{text-align:center;padding:24px 0 40px;border-bottom:1px solid var(--line);margin-bottom:40px}
+  .badge{display:inline-block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--brass);border:1px solid var(--line);border-radius:100px;padding:6px 16px;margin-bottom:22px}
+  h1{font-family:var(--serif);font-weight:300;font-size:2.7rem;line-height:1.1;letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--brass-soft)}
+  .sub{color:var(--cream-dim);margin-top:14px;font-size:1.02rem}
+  .meta{color:var(--cream-dimmer);font-size:.82rem;margin-top:16px}
+  h2{font-family:var(--serif);font-weight:300;font-size:1.7rem;margin:44px 0 8px;color:var(--cream)}
+  h2 .n{color:var(--brass);font-size:1rem;font-family:var(--sans);font-weight:600;margin-right:10px;letter-spacing:.05em}
+  .intro{color:var(--cream-dim);margin-bottom:18px;max-width:70ch}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);
+    border-radius:14px;padding:20px 22px;margin:16px 0}
+  .why{color:var(--cream-dimmer);font-size:.86rem;font-style:italic;margin-bottom:12px}
+  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.9rem}
+  th{text-align:left;color:var(--brass);font-weight:600;font-size:.74rem;letter-spacing:.09em;
+    text-transform:uppercase;padding:8px 12px;border-bottom:1px solid var(--line)}
+  td{padding:9px 12px;border-bottom:1px solid var(--line-soft);color:var(--cream);vertical-align:top}
+  td .city{color:var(--cream-dimmer);font-size:.85rem}
+  .yr{color:var(--brass-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pill{display:inline-block;font-size:.68rem;padding:2px 9px;border-radius:100px;
+    background:rgba(198,161,91,.12);color:var(--brass-soft);border:1px solid var(--line);white-space:nowrap}
+  ul.clean{list-style:none;padding:0;margin:8px 0}
+  ul.clean li{padding:7px 0 7px 22px;position:relative;color:var(--cream-dim);border-bottom:1px solid var(--line-soft)}
+  ul.clean li:before{content:"◆";position:absolute;left:0;color:var(--brass);font-size:.7rem;top:10px}
+  ul.clean li b{color:var(--cream)}
+  .note{background:rgba(216,138,99,.08);border-left:3px solid var(--clay);border-radius:0 10px 10px 0;
+    padding:12px 16px;margin:14px 0;color:var(--cream-dim);font-size:.9rem}
+  .note b{color:var(--clay)}
+  code{background:rgba(198,161,91,.10);color:var(--brass-soft);padding:1px 6px;border-radius:5px;font-size:.85em}
+  footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);text-align:center;color:var(--cream-dimmer);font-size:.82rem}
+  .cl td{font-size:.84rem;color:var(--cream-dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="cov">
+    <div class="badge">✦ Deferred Scope · Living Doc</div>
+    <h1>The <em>Sister-Project</em> Backlog</h1>
+    <div class="sub">A holding pen for venues and award categories that belong to the future casual-dining project — not the flagship guide. So we never lose track of what we set aside.</div>
+    <div class="meta">v1.0 · Created July 1, 2026 · Seeded from the James Beard 2018–2024 ingest pass</div>
+  </header>
+
+  <div class="intro" style="max-width:74ch">
+    The flagship CompassEats guide covers serious restaurants and cocktail bars ranked by the world's authoritative lists. The <b>sister project</b> is the eventual home for the more casual end — bakeries, pizza parlors, coffee shops, breweries, and beloved neighborhood institutions. When we're working through an award source and hit something that's real and prestigious but <em>casual</em>, it lands here instead of getting thrown away.
+  </div>
+
+  <h2><span class="n">01</span>Bakeries &amp; standalone pastry shops</h2>
+  <p class="intro">James Beard honors bakers and pastry shops every year. We <b>include pastry chefs who work inside full-service restaurants</b> in the main guide, but <b>standalone bakeries, patisseries, and tortillerias go here.</b> These are all winners from 2018–2024.</p>
+  <div class="card">
+    <div class="why">Award categories: Outstanding Baker (2018–2022) · Outstanding Bakery (2023–2024) · Outstanding Pastry Chef where the venue is a standalone bakery/patisserie.</div>
+    <table>
+      <thead><tr><th>Venue</th><th>City</th><th>Award</th><th class="yr">Year</th></tr></thead>
+      <tbody>
+        <tr><td>B. Patisserie</td><td class="city">San Francisco, CA</td><td>Outstanding Baker</td><td class="yr">2018</td></tr>
+        <tr><td>Publican Quality Bread</td><td class="city">Chicago, IL</td><td>Outstanding Baker</td><td class="yr">2019</td></tr>
+        <tr><td>Barrio Bread</td><td class="city">Tucson, AZ</td><td>Outstanding Baker</td><td class="yr">2022</td></tr>
+        <tr><td>Warda Pâtisserie</td><td class="city">Detroit, MI</td><td>Outstanding Pastry Chef <span class="pill">standalone patisserie</span></td><td class="yr">2022</td></tr>
+        <tr><td>Yoli Tortilleria</td><td class="city">Kansas City, MO</td><td>Outstanding Bakery</td><td class="yr">2023</td></tr>
+        <tr><td>ZU Bakery</td><td class="city">Portland, ME</td><td>Outstanding Bakery</td><td class="yr">2024</td></tr>
+        <tr><td>Norimoto Bakery</td><td class="city">Portland, ME</td><td>Outstanding Pastry Chef or Baker</td><td class="yr">2024</td></tr>
+      </tbody>
+    </table>
+    <div class="note"><b>Borderline the other way:</b> <b>Willa Jean</b> (New Orleans, 2019) and <b>République</b> (Los Angeles, 2023) both won pastry awards but operate as full cafés/restaurants, so they were <em>included in the main restaurant guide</em>. If you later decide they read as bakeries, pull them from the James Beard restaurant import and add them here.</div>
+  </div>
+
+  <h2><span class="n">02</span>America's Classics</h2>
+  <p class="intro">James Beard's <b>America's Classics</b> honors beloved, locally-owned institutions with "timeless appeal" — diners, taquerias, noodle parlors, steakhouses. Almost all are casual and regional: perfect sister-project material, wrong fit for the flagship guide.</p>
+  <div class="card">
+    <div class="why">Winners below are pulled for 2018, 2019, and 2023. The 2022 and 2024 slates still need pulling when this project spins up.</div>
+    <table>
+      <thead><tr><th>Venue</th><th>City</th><th class="yr">Year</th></tr></thead>
+      <tbody>
+        <tr><td>Sun Wah BBQ</td><td class="city">Chicago, IL</td><td class="yr">2018</td></tr>
+        <tr><td>Galleria Umberto</td><td class="city">Boston, MA</td><td class="yr">2018</td></tr>
+        <tr><td>Los Hernandez Tamales</td><td class="city">Union Gap, WA</td><td class="yr">2018</td></tr>
+        <tr><td>El Güero Canelo</td><td class="city">Tucson, AZ</td><td class="yr">2018</td></tr>
+        <tr><td>Dong Phuong Bakery</td><td class="city">New Orleans, LA</td><td class="yr">2018</td></tr>
+        <tr><td>Pho 79</td><td class="city">Garden Grove, CA</td><td class="yr">2019</td></tr>
+        <tr><td>Jim's Steak &amp; Spaghetti House</td><td class="city">Huntington, WV</td><td class="yr">2019</td></tr>
+        <tr><td>A&amp;A Bake &amp; Double Roti Shop</td><td class="city">Brooklyn, NY</td><td class="yr">2019</td></tr>
+        <tr><td>Sehnert's Bakery &amp; Bieroc Café</td><td class="city">McCook, NE</td><td class="yr">2019</td></tr>
+        <tr><td>Annie's Paramount Steakhouse</td><td class="city">Washington, D.C.</td><td class="yr">2019</td></tr>
+        <tr><td>Joe's Bakery &amp; Coffee Shop</td><td class="city">Austin, TX</td><td class="yr">2023</td></tr>
+        <tr><td>La Casita Blanca</td><td class="city">San Juan, PR</td><td class="yr">2023</td></tr>
+        <tr><td>Manago Hotel</td><td class="city">Captain Cook, HI</td><td class="yr">2023</td></tr>
+        <tr><td>Nezinscot Farm</td><td class="city">Turner, ME</td><td class="yr">2023</td></tr>
+        <tr><td>Pekin Noodle Parlor</td><td class="city">Butte, MT</td><td class="yr">2023</td></tr>
+        <tr><td>Wagner's Village Inn</td><td class="city">Oldenburg, IN</td><td class="yr">2023</td></tr>
+      </tbody>
+    </table>
+    <div class="note"><b>To do when this spins up:</b> pull America's Classics winners for <b>2022</b> and <b>2024</b> (plus 2025 if wanted) from jamesbeard.org.</div>
+  </div>
+
+  <h2><span class="n">03</span>Skipped: Outstanding Restaurateur</h2>
+  <p class="intro">The Outstanding Restaurateur award honors a <b>person who runs a portfolio of venues</b> — it doesn't map to one place, so it was left out of the James Beard ingest entirely. If you ever want these, the move is to attach the award to the restaurateur's <b>flagship</b> venue by hand.</p>
+  <div class="card">
+    <table>
+      <thead><tr><th>Restaurateur</th><th>Group / flagship</th><th class="yr">Year</th></tr></thead>
+      <tbody>
+        <tr><td>Caroline Styne</td><td class="city">The Lucques Group (a.o.c., Los Angeles)</td><td class="yr">2018</td></tr>
+        <tr><td>Kevin Boehm &amp; Rob Katz</td><td class="city">Boka Restaurant Group (Boka, Chicago)</td><td class="yr">2019</td></tr>
+        <tr><td>Chris Bianco</td><td class="city">Pizzeria Bianco (Phoenix)</td><td class="yr">2022</td></tr>
+        <tr><td>Ellen Yin</td><td class="city">High Street Hospitality (Fork, Philadelphia)</td><td class="yr">2023</td></tr>
+        <tr><td>Erika &amp; Kelly Whitaker</td><td class="city">ID EST (The Wolf's Tailor, Boulder)</td><td class="yr">2024</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="n">04</span>Beverage producers (likely out of scope)</h2>
+  <p class="intro">James Beard's producer/professional awards honor <b>wineries, breweries, and distilleries</b> — production businesses, not visitable bars or restaurants. Noted here for completeness; a brewery taproom could theoretically fit a future "breweries" sister-project, but the awards themselves are about the maker, not a venue.</p>
+  <ul class="clean">
+    <li><b>Grgich Hills Estate</b> — Rutherford, CA · Outstanding Wine, Spirits, or Beer Professional (2018) <span class="pill">winery</span></li>
+    <li><b>Allagash Brewing Company</b> — Portland, ME · Outstanding Wine, Spirits, or Beer Producer (2019) <span class="pill">brewery</span></li>
+  </ul>
+
+  <h2><span class="n">05</span>Roadmap: casual categories to build out later</h2>
+  <p class="intro">The stated shape of the sister project. When it launches, these are the lanes — and each will want its own authoritative sources the way the flagship uses Michelin, 50 Best, etc.</p>
+  <ul class="clean">
+    <li><b>Bakeries &amp; patisseries</b> — seed list already in §01 above.</li>
+    <li><b>Pizza parlors</b> — e.g. 50 Top Pizza (USA / World) as a source.</li>
+    <li><b>Coffee shops / roasters</b> — specialty coffee guides, Coffee Review.</li>
+    <li><b>Breweries &amp; taprooms</b> — GABF / World Beer Cup medalists, RateBeer.</li>
+    <li><b>Beloved neighborhood institutions</b> — America's Classics (§02) is a natural spine for this.</li>
+    <li><b>Casual dining generally</b> — the everyday "good, reliable, nearby" tier that sits below the flagship's fine-dining focus.</li>
+  </ul>
+
+  <h2><span class="n">06</span>Changelog</h2>
+  <div class="card">
+    <table class="cl">
+      <thead><tr><th>Version</th><th>Date</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td class="yr">1.0</td><td>Jul 1, 2026</td><td>Doc created. Seeded from the James Beard 2018–2024 ingest pass: bakeries/pastry shops, America's Classics (2018/2019/2023), skipped Outstanding Restaurateurs, beverage producers, and the casual-category roadmap.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>Compass<span style="color:var(--brass)">Eats</span> — Sister-Project Backlog · keep it, don't lose it.</footer>
+</div>
+</body>
+</html>
