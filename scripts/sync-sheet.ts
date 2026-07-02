@@ -191,8 +191,16 @@ function normalizeSheetDate(raw: string): string {
   return s;
 }
 
+function normalizePriceTier(raw: string): string | undefined {
+  const symbols = (raw ?? "").toString().match(/\p{Sc}/gu);
+  const count = symbols ? symbols.length : 0;
+  if (count === 0) return undefined;
+  return "$".repeat(Math.min(count, 4));
+}
+
 function parseHours(raw: string) {
   if (!raw.trim()) return undefined;
+
   try {
     const parsed = JSON.parse(raw);
     return HoursSchema.parse(parsed);
@@ -235,7 +243,7 @@ function rowToVenue(
     address: row.address,
     type: row.type.toLowerCase(),
     cuisine_tags,
-    price_tier: row.price_tier || undefined,
+    price_tier: normalizePriceTier(row.price_tier),
     phone: row.phone || undefined,
     website: row.website || undefined,
     reservation_url: row.reservation_url || undefined,
