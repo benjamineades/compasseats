@@ -209,9 +209,9 @@
   <p class="tag">Charting what's next. Updated each session as work ships and new work appears.</p>
   <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
   <div class="meta-row">
-    <span class="m">Version <b>2.29</b></span>
-    <span class="m">Updated <b>July 3, 2026</b></span>
-    <span class="m">Region-matching auto-suggest tool <b>shipped</b> · collision-pin fix + Da&nbsp;Vittorio blurb bug <b>fixed &amp; republished</b></span>
+    <span class="m">Version <b>2.30</b></span>
+    <span class="m">Updated <b>July 4, 2026</b></span>
+    <span class="m">Full site audit folded in — 3 critical live-site bugs found, 5 compass concepts delivered, 12 new items logged</span>
   </div>
 </header>
 
@@ -230,14 +230,14 @@
       <div class="dsub">No active build track. Most recent shipped work (July&nbsp;3): the region-matching auto-suggest tool is fully wired end-to-end — geocode 153 named travel regions, match unmapped cities against each region's boundary box, a cleanup pass that catches Google's whole-country/wrong-place fallbacks, a targeted retry pass that recovered 12 of 18 previously-bad regions, a manual review queue, and an apply step. Grew the regions tab 111&nbsp;→&nbsp;113 and added 66 city-region assignments this session. Also republished all four data files with the region growth, the collision-pin fix (see Pipeline item below), and a corrected Da&nbsp;Vittorio (Sankt&nbsp;Moritz) blurb that had been duplicating the Bergamo flagship's text verbatim.</div>
     </div>
     <div class="dcard next">
-      <div class="dnum">6</div>
+      <div class="dnum">9</div>
       <div class="dlabel">Up next</div>
-      <div class="dsub">Dukes Bar re-enrich · curated top-city hero photos · multi-venue card photos · card polish · prestige reweighting · price_tier display as a bronze pill (styling only, requested July 1)</div>
+      <div class="dsub"><strong>New from the July 3–4 audit:</strong> fix the stale "Eat Anywhere" deployed build (wrong canonicals) · wire the dead "Find the best →" button · ship real About/Contact/Privacy/Terms/Methodology pages. Plus the existing short list: Dukes Bar re-enrich · curated top-city hero photos · multi-venue card photos · card polish · prestige reweighting · price_tier display as a bronze pill.</div>
     </div>
     <div class="dcard later">
-      <div class="dnum">42</div>
+      <div class="dnum">54</div>
       <div class="dlabel">Queued</div>
-      <div class="dsub">NY city-split · district alias map · shared-pin geo collision (326 groups remaining, down from 364 — see Pipeline) · Sankt&nbsp;Moritz missing its Michelin 2-star (award-import task) · OPTION_B twin-slug hardening · Ninjang mislabeled-country data bug · 12 new UX/polish items (July 1) · pipeline · expansion · horizon</div>
+      <div class="dsub">NY city-split · district alias map · shared-pin geo collision (326 groups remaining, down from 364 — see Pipeline) · Sankt&nbsp;Moritz missing its Michelin 2-star (award-import task) · OPTION_B twin-slug hardening · Ninjang mislabeled-country data bug · 12 new UX/polish items (July 1) · <strong>12 new items from the July 3–4 full-site audit</strong> (OG image, TrustPoints render, homepage title tag, hardcoded ATL coords, award-badge jargon tooltips, uncharted-city page review, mobile QA checklist, spreadsheet archive protocol, scaling headroom review, "Point Me" flagship feature) · pipeline · expansion · horizon</div>
     </div>
   </section>
 
@@ -326,10 +326,37 @@
     <div class="tier-head">
       <div class="icon-slot">▸</div>
       <h2>Up next — polish</h2>
-      <span class="count">22 items</span>
+      <span class="count">39 items</span>
     </div>
     <p class="tier-sub">Visible UX wins on the live site. None block anything; all noticeably improve the product. Start here when picking up work.</p>
     <div class="items">
+
+      <div class="item">
+        <div class="top">
+          <h3>Live site serving a stale "Eat Anywhere" build — wrong canonicals, broken city pages</h3>
+          <div class="pills"><span class="pill larger">Critical — SEO &amp; trust</span><span class="pill quick">1 rebuild + cache purge</span></div>
+        </div>
+        <p><strong>Found in the July 3–4 full-site audit.</strong> The deployed <code>/city/tokyo</code> page — and likely every prerendered city page — serves HTML whose canonical tag points to <code>https://eatanywhere.lovable.app</code>, author "Eat Anywhere," Twitter handle <code>@EatAnywhere</code>, and body copy stuck on the loading state ("Curating the best spots in Tokyo…") instead of the real venue list. <strong>The current source code is correct</strong> — <code>SITE_URL</code> is <code>compasseats.com</code> everywhere in <code>city.$slug.tsx</code> — so this is stale deployed output, not a code bug.</p>
+        <p><span class="why"><strong>Likely cause:</strong> <code>vite.config.ts</code> sets the venue/city/award prerender list to <code>concurrency: 1, failOnError: false</code> — a page that errors during prerender doesn't fail the build, it just keeps silently serving whatever old file was already there. A canonical tag pointing at a dead Lovable subdomain actively tells Google to credit that domain instead of <code>compasseats.com</code> on our highest-value pages. <strong>Fix path:</strong> (1) in Lovable Chat mode, ask it to <em>report, not fix</em> — how many city pages prerendered successfully in the last build, and whether <code>/city/tokyo</code> specifically failed, with the real error text; (2) trigger a full rebuild; (3) purge the Cloudflare cache (Caching → Configuration → Purge Everything); (4) verify via "view source" on a couple of city pages that the canonical now reads <code>compasseats.com</code> and real venue content appears in the raw HTML; (5) as hardening, ask Lovable to log a loud per-page prerender-failure summary so this can't recur silently.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Homepage's primary button — "Find the best →" — has no click handler</h3>
+          <div class="pills"><span class="pill larger">Critical — first impression</span><span class="pill quick">1 Lovable prompt</span></div>
+        </div>
+        <p><strong>Found in the July 3–4 audit</strong>, confirmed in <code>src/routes/index.tsx</code>. The brass "Find the best →" button next to the city search box has no <code>onClick</code> and isn't part of a form — clicking it does nothing. Search currently only works through the <code>CitySearch</code> autocomplete dropdown or pressing Enter, so a first-time visitor who types a city and reaches for the obvious button gets silence.</p>
+        <p><span class="why">This is the very first action nearly every new visitor takes. Fix: wire it to submit the current search input using the same match logic the dropdown already uses, falling through to the existing uncharted-city path when there's no match.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Footer trust pages — About / Contact / Privacy / Terms all point to <code>#</code></h3>
+          <div class="pills"><span class="pill larger">Critical — trust</span><span class="pill medium">Content + 1 Lovable prompt</span></div>
+        </div>
+        <p><strong>Elevated from the note logged under "Guides nav link wired" below</strong> — the July 3–4 audit flagged this as the single biggest trust problem on the live site: every footer link is a dead <code>#</code> anchor. Scope now includes a fifth page, <strong>Methodology</strong> (the sources CompassEats charts from, how a venue qualifies, how often data refreshes) — pure writing, no engineering risk, and it directly answers "why should I believe this."</p>
+        <p><span class="why"><strong>Plan:</strong> Claude drafts About / Contact / Privacy / Terms / Methodology copy (using the existing "well-traveled friend" positioning language for About) → one Lovable prompt adds the routes and wires the footer + award-badge links to Methodology → a real inbox via Cloudflare email forwarding (free) for the Contact address.</span></p>
+      </div>
 
       <div class="item">
         <div class="top">
@@ -362,7 +389,7 @@
           <h3>✓ SHIPPED — Guides nav link wired</h3>
           <div class="pills"><span class="pill done">Shipped</span><span class="pill quick">Repo-only</span></div>
         </div>
-        <p>Added a "Guides" <code>&lt;Link&gt;</code> in the header <code>&lt;nav&gt;</code> beside "Cities", same styling. Header browse-by pair complete. <strong>Still pending:</strong> add <strong>Bars</strong> and <strong>The Journal</strong> links only when those destinations exist — Lovable correctly refuses to dead-link. Footer anchors (About/Contact/Privacy/Terms → <code>#</code>) also still pending real destinations.</p>
+        <p>Added a "Guides" <code>&lt;Link&gt;</code> in the header <code>&lt;nav&gt;</code> beside "Cities", same styling. Header browse-by pair complete. <strong>Still pending:</strong> add <strong>Bars</strong> and <strong>The Journal</strong> links only when those destinations exist — Lovable correctly refuses to dead-link. Footer anchors (About/Contact/Privacy/Terms → <code>#</code>) — <strong>see the elevated item at the top of this tier</strong>, now scoped to include a Methodology page too.</p>
       </div>
 
       <div class="item">
@@ -537,6 +564,7 @@
           <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Repo-only</span></div>
         </div>
         <p>The rotating compass animation on desktop is currently broken. Worth reconsidering the animation itself while fixing it — a spinning needle inside a fixed compass face likely reads as more polished and less disorienting than the whole compass icon rotating.</p>
+        <p><span class="why"><strong>Five full concepts delivered (July 3–4 audit), decision pending:</strong> <em>The Gimbal</em> (brass ring sways on a tilted ship-compass mount), <em>The Mariner</em> (liquid-damped needle wobble under a glass dome — the most "physically real"), <em>The Cartographer</em> (three independently-rotating layers with mouse-parallax depth), <em>The Wayfinder</em> (near-nothing minimal — one ring, one needle, a confident snap-to-north every few seconds), and <em>The Sextant</em> (machined-brass 3D body whose needle tracks the cursor like a magnet). All five are pure CSS/SVG — no 3D library needed, so any one drops into the existing <code>Compass.tsx</code> with no new dependencies. Live side-by-side preview in <code>CompassEats-Compass-Options.html</code>. Recommendation: Wayfinder if the goal is to let the food be the hero; Sextant if the goal is a signature "wow" object — and Sextant's cursor-tracking needle could double as the actual mechanism for the "Point Me" feature below, not just decoration.</span></p>
       </div>
 
       <div class="item">
@@ -574,6 +602,63 @@
 
       <div class="item">
         <div class="top">
+          <h3>Site-wide social-share image hosted on a Lovable-internal bucket we don't control</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">1 Lovable prompt</span></div>
+        </div>
+        <p><strong>Found in the July 3–4 audit.</strong> <code>__root.tsx</code>'s <code>og:image</code> / <code>twitter:image</code> meta tags point to <code>storage.googleapis.com/gpt-engineer-file-uploads/…</code> — a screenshot hosted on Lovable's internal build storage, not something we control. <code>public/og-image.jpg</code> already exists in the repo; swap the meta tags to <code>https://compasseats.com/og-image.jpg</code> so link previews (iMessage, Slack, group chats) can't silently break if that bucket is ever cleaned up.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>TrustPoints component is fully written but never rendered on the homepage</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill medium">Best trust copy on the site, currently invisible</span></div>
+        </div>
+        <p><strong>Found in the July 3–4 audit.</strong> <code>index.tsx</code> defines a <code>TrustPoints</code> component — "Charted, not crowdsourced," "Anywhere you land," "We've done the legwork" — but never mounts it anywhere in the page tree. Render it between <code>TopDestinations</code> and <code>ExploreByGuide</code>; no content or style changes needed.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Homepage <code>&lt;title&gt;</code> tag drops the CompassEats brand name</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">One line</span></div>
+        </div>
+        <p><strong>Found in the July 3–4 audit.</strong> Current title is "Top Restaurants &amp; Cocktail Bars in Any City" — Google shows this as the headline in search results, and the brand never appears in it. Change to "CompassEats — Top Restaurants &amp; Cocktail Bars in Any City" in the homepage route's <code>head</code> config.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Homepage hero corner coordinates are permanently Atlanta (33°45′N · 84°23′W · ATL)</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill medium">Confusing for non-Atlanta visitors</span></div>
+        </div>
+        <p><strong>Found in the July 3–4 audit.</strong> The decorative corner markings on the homepage hero are hardcoded to Atlanta for every visitor worldwide — a visitor in Tokyo sees "ATL" and may wonder if the site is Atlanta-only. Simplest fix: replace with neutral compass-degree markings (e.g. <code>000°</code> / <code>090°</code> / <code>N</code>) instead of a real city.</p>
+        <p><span class="why">Nicer future version: derive the marking from the visitor's near-me coordinates when available (the <code>useNearMe</code> hook already exists), falling back to the neutral markings otherwise. Not worth blocking the quick fix on this.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Award badges use jargon (OAD, La Liste, Bib Gourmand) with no plain-language explanation</h3>
+          <div class="pills"><span class="pill medium">Medium</span></div>
+        </div>
+        <p><strong>Found in the July 3–4 audit.</strong> Most diners don't know what "OAD" or "50 Best Discovery" means. Add a hover/tap tooltip on every award badge with one plain sentence (e.g. "OAD — Opinionated About Dining, voted by frequent fine-diners") and link the badge into the matching <code>/guides</code> page — the Guides page already exists but nothing currently routes into it from a badge.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Uncharted-city page — confirm it does its three jobs</h3>
+          <div class="pills"><span class="pill medium">Medium</span></div>
+        </div>
+        <p><strong>Found in the July 3–4 audit.</strong> When someone searches a city with no charted venues, <code>/uncharted/$slug</code> needs to (1) say plainly this city has nothing charted <em>yet</em>, (2) immediately surface the nearest charted cities with distances — the 150&nbsp;km "nearby" logic already exists in <code>city.$slug.tsx</code> and should be reused here, and (3) make it effortless to search a different city without hitting Back. Audit the live page against those three jobs and close whichever gap is missing.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Mobile / tablet device QA pass — checklist from the July 3–4 audit</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">No code, 15 minutes</span></div>
+        </div>
+        <p>Complements the mobile items already queued above (homepage condense, top-destination card sizing, search placeholder scroll). Run this on a real phone and tablet, screenshot anything that fails: search input + button wrapping at narrow widths; city-page filter dropdowns staying fully on-screen; the map's one-finger pan fighting page scroll (the usual MapLibre mobile issue — fix is requiring two fingers to pan the map); long addresses wrapping cleanly on venue pages (the Don Bravo Japanese address is a good test case); award-row tables not needing horizontal scroll; tap targets ≥44px on badges and footer links; the exact <code>md:</code> breakpoint (~768px) on an iPad not producing a squeezed middle-state layout.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
           <h3>Price tier — promote to a bronze pill, out of the hero meta line</h3>
           <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Repo-only</span></div>
         </div>
@@ -588,7 +673,7 @@
     <div class="tier-head">
       <div class="icon-slot">◆</div>
       <h2>Pipeline &amp; data improvements</h2>
-      <span class="count">24 items</span>
+      <span class="count">45 items</span>
     </div>
     <p class="tier-sub">Structural and infrastructure work. Less visible, but durable — each one prevents future drift.</p>
     <div class="items">
@@ -727,6 +812,7 @@
         <p><strong>Goal:</strong> let each venue display its <em>local</em> currency — Paris <code>€€€</code>, Tokyo <code>¥¥¥</code>, London <code>£££</code>, US <code>$$$</code> — instead of flattening to dollar signs. More on-brand, and it stops non-dollar source data (Michelin's European <code>€€€€</code>) from failing schema validation.</p>
         <p><span class="why"><strong>Approach (decided):</strong> store price as a <strong>tier number 1–4</strong> plus optional <strong>currency symbol</strong>, not an overloaded dollar string. Sync normalizes any source glyph (<code>€€€</code>, <code>¥¥</code>, <code>£££</code>) into e.g. <code>{ price_tier: 3, price_currency: "€" }</code>; display renders <code>tier</code> copies of <code>currency</code>; sort/filter uses the numeric tier. <strong>Rejected:</strong> allowing <code>€</code>/<code>¥</code>/<code>£</code> as extra valid strings — fragments data, pushes equivalence logic into every consumer.</span></p>
         <p><span class="why"><strong>Breaking schema change — coordinated edits:</strong> (1) <code>schema.ts</code> — <code>price_tier</code> → <code>z.number().int().min(1).max(4)</code> + optional <code>price_currency</code>; (2) <code>sync-sheet.ts</code> <code>rowToVenue</code> — parse string → tier+currency; (3) every price display (card + venue-page badge). <strong>Interim (live now):</strong> the JSON generator normalizes <code>€</code>→<code>$</code> so data validates and the site shows universal <code>$$$$</code> — fine to leave until this lands.</span></p>
+        <p><span class="why"><strong>Coverage gap found in the July 3–4 audit:</strong> this item fixes currency <em>display</em>, but a separate, bigger gap sits underneath it — <strong>64% of venues (6,781 of 10,564) have no <code>price_tier</code> at all</strong>, not just the wrong currency symbol. That's a real enrichment gap, not a formatting bug. Google Places returns a price-level field on most listings; a future <strong>Places-enrichment backfill pass</strong> (reusing the existing enrichment-review workflow) could close most of it. Worth scoping as its own Pipeline item once this currency-format fix lands, so the two don't get tangled together.</span></p>
       </div>
 
 
@@ -971,6 +1057,24 @@
         <p>Non-Latin slug corrections that were done locally need to be persisted back to the Sheet so the next full re-sync doesn't re-introduce the garbled versions.</p>
       </div>
 
+      <div class="item">
+        <div class="top">
+          <h3>Spreadsheet archive protocol — 12 stale audit tabs safe to archive</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">30 minutes, zero risk</span></div>
+        </div>
+        <p><strong>Found in the July 3–4 audit.</strong> The Sheet is at 42 tabs / ~77,000 rows. Cross-referencing every tab against every Apps Script's tab references turned up ten superseded one-off audit jobs with zero remaining script references and confirmed-complete status: <code>Blurb Test</code>, <code>dupe_audit</code>, <code>collision_audit</code>, <code>geo_audit</code>, <code>geo_requery_done</code>, <code>merge_review</code>, <code>enrichment_audit</code>, <code>alias_proposals</code> — plus the five 2025 OAD/steakhouse tabs, once their rows are confirmed carried into <code>Restaurant Awards</code>.</p>
+        <p><span class="why"><strong>Rule: rename, never delete.</strong> Prefix with <code>z_</code> and move to the end of the tab bar rather than deleting — several scripts reference tabs by exact name, and a script erroring on a missing tab is a useful signal that it's still live, whereas a silently-deleted tab that turns out to matter can't be recovered without a version-history dig. Do one tab at a time; if the next pipeline run errors, rename it back before touching the next one. <strong>Do not touch:</strong> <code>Places Enrichment</code> (the geo-cache, 10 scripts reference it), <code>venues</code>/<code>cities</code>/<code>regions</code>/<code>city_regions</code>/<code>closed_venues</code>/<code>needs_enrichment</code> (pipeline core), or any currently-active review tab (<code>collision_review</code>, <code>region_match_review</code>, <code>enrichment_review</code>, <code>closure_triage</code>, <code>curated_photos</code>).</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Scaling headroom review (July 3–4 audit) — no blockers today, two items worth scheduling ahead of time</h3>
+          <div class="pills"><span class="pill medium">Medium</span><span class="pill quick">Informational — no action required yet</span></div>
+        </div>
+        <p>Checked <code>venues.json</code> in-memory size (11.5&nbsp;MB / 10,564 venues — the code's own comment already flags ~20k venues as the watch point), prerender page count (~13,000 pages at <code>concurrency: 1</code>), Sheet size (77k rows — Sheets doesn't slow noticeably until well past 200k), and whether past/future award years create structural growth risk (they don't — awards append per venue, venue count grows independently, and the existing 5-year prestige window already handles old awards). <strong>Bottom line: nothing in the current roadmap hits a hard wall.</strong></p>
+        <p><span class="why">Two things worth scheduling deliberately rather than reactively: (1) split <code>venues.json</code> into per-city JSON files loaded per route, ideally <em>before</em> any sister-project data gets merged in; (2) if prerender build times start getting painful, raise concurrency first (cheap) before considering skipping prerender for zero-blurb/minor-award venues. Also flags the same silent-prerender-failure risk noted in the "stale Eat Anywhere build" item above (<code>failOnError: false</code>) as worth fixing on its own merits, independent of scale.</span></p>
+      </div>
+
     </div>
   </section>
 
@@ -979,7 +1083,7 @@
     <div class="tier-head">
       <div class="icon-slot">✦</div>
       <h2>Expansion</h2>
-      <span class="count">7 items</span>
+      <span class="count">8 items</span>
     </div>
     <p class="tier-sub">New surface area. Each one widens what CompassEats does or covers — bigger lifts, but where the product grows.</p>
     <div class="items">
@@ -1041,6 +1145,15 @@
           <div class="pills"><span class="pill larger">Larger</span><span class="pill medium">Data generation + verification</span></div>
         </div>
         <p>Add and verify a website link, and where available Instagram and/or Facebook, for every venue on the site. This is a real data-generation task across ~11,000+ venues, not a UI change — each link needs to be found and confirmed correct (not guessed) before it goes live, since a wrong link is worse than no link for a "trustworthy friend" product. Needs a sourcing plan (a batch web-search + verification pass, likely similar in shape to the Option B sourcing pipeline) before any frontend work to display the links.</p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>"Point Me" — a one-tap random top pick per city (spin the compass)</h3>
+          <div class="pills"><span class="pill larger">Larger</span><span class="pill medium">Flagship idea from the July 3–4 audit</span></div>
+        </div>
+        <p>Direct answer to the core mission — "takes the where-should-we-eat argument out of the discussion." Today a city page hands back a list, which just restarts the argument it's supposed to end. <strong>Point Me</strong> is one button on every city page: tap it, the compass spins, it lands on a single venue — weighted toward higher-prestige awards, with optional quick filters (restaurant/bar, price). Decisive, screenshot-able in a group chat, and it makes the compass brand <em>functional</em> instead of purely decorative.</p>
+        <p><span class="why">No direct competitor (Michelin, Beli, Pearl) has anything like this. Pairs naturally with whichever homepage compass direction gets chosen (see the five options logged in the "Fix the rotating compass" item above) — the needle-tracking "Sextant" concept in particular could double as the actual Point Me mechanism rather than just decoration.</span></p>
       </div>
 
     </div>
@@ -1326,6 +1439,7 @@
     <div class="tw"><table>
       <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
       <tbody>
+        <tr><td><code>2.30</code></td><td>July 4, 2026</td><td><strong>Full site audit folded into the Punch List — 12 new items logged, none shipped yet.</strong> A full-scope audit (codebase review, live-site UX walkthrough, spreadsheet review, scaling check, mobile checklist, trustworthiness pass, plus 5 homepage-compass concepts) turned up three findings serious enough to jump to the top of <strong>Up next — polish</strong>: (1) the <strong>live site is serving a stale "Eat Anywhere" build</strong> — deployed city pages carry a canonical tag pointing at <code>eatanywhere.lovable.app</code> and a stuck loading-state body, while the current source code is correct, traced to <code>vite.config.ts</code>'s <code>failOnError: false</code> prerender setting silently letting failed pages keep serving old output; (2) the homepage's <strong>primary "Find the best →" button has no click handler</strong> — the first action nearly every visitor takes does nothing; (3) <strong>all four footer links (About/Contact/Privacy/Terms) are dead <code>#</code> anchors</strong>, now elevated from a note buried in the "Guides nav link wired" item and expanded to include a fifth page, Methodology. <strong>Six more Up-next items added:</strong> the sitewide OG image lives on a Lovable-internal bucket we don't control; the <code>TrustPoints</code> component is fully written but never rendered on the homepage; the homepage <code>&lt;title&gt;</code> tag drops the brand name; the hero's corner coordinates are permanently hardcoded to Atlanta for every visitor; award badges (OAD, La&nbsp;Liste, etc.) carry no plain-language explanation; the uncharted-city page needs a three-job audit (say nothing's charted yet, surface nearby charted cities, make re-search effortless); and a 15-minute no-code mobile/tablet device checklist was written up. <strong>Two Pipeline items added:</strong> a safe rename-don't-delete archive protocol for 10 stale, zero-reference audit tabs in the 42-tab/77k-row Sheet (plus the 5 completed-2025 OAD/steakhouse tabs); and a scaling headroom review confirming no hard blockers exist before ~20k venues, with two items (per-city JSON splitting, prerender concurrency) flagged to schedule ahead of time rather than reactively. <strong>Existing items extended, not duplicated:</strong> the local-currency price-tier item now also notes the underlying data gap it doesn't fix — 64% of venues (6,781) have no <code>price_tier</code> at all, a candidate for a future Places-enrichment backfill; the compass-fix item now links to five fully-built concepts (<em>Gimbal, Mariner, Cartographer, Wayfinder, Sextant</em>) delivered as a live side-by-side preview file. <strong>One Expansion item added:</strong> <strong>"Point Me"</strong> — a one-tap random top-pick per city, weighted by prestige, that most directly answers the "settle the where-should-we-eat argument" mission and that no direct competitor has; flagged as a natural pairing with the Sextant compass concept's cursor-tracking needle. Up next — polish 29&nbsp;→&nbsp;39 (10 new items — the tier's badge had drifted stale at "22" before this session; recounted and corrected to the real number), Pipeline&nbsp;&amp;&nbsp;data 43&nbsp;→&nbsp;45 (badge similarly corrected from a stale "24"), Expansion 7&nbsp;→&nbsp;8, dashboard Up&nbsp;next 6&nbsp;→&nbsp;9, Queued 42&nbsp;→&nbsp;54. Shipped count unchanged at 55 — nothing above has been built yet, all logged as open work.</td></tr>
         <tr><td><code>2.29</code></td><td>July 3, 2026</td><td><strong>Region-matching auto-suggest tool completed and applied; collision-pin fix + JSON republish (paused at v2.28) finished; Da Vittorio (Sankt Moritz) blurb bug found and fixed.</strong> <strong>Region-matching (new feature, shipped):</strong> finished the tool started last session — a retry pass recovered 12 of the 18 previously-bad regions by adding state/province/wine-region context to the search query (e.g. "Chianti, Italy" → "Chianti wine region, Tuscany, Italy"); 4 of those 12 recovered only to a surrounding state/province rather than the precise area (Chianti→Tuscany, Italian Lakes→Lombardy, Franconia→Bavaria, Yarra Valley→Victoria) and need care during review; Aegean Coast stayed collapsed to Türkiye and Rocky Mountains recovered to a box that fully swallowed the existing Canadian Rockies region (caught by comparing bounding-box corners, manually rejected) — both left REJECTED_WRONG_PLACE. Ben then hand-reviewed all 645 accumulated suggestion rows (66 ACCEPT / 579 REJECT) — correctly caught the Kyoto Prefecture/Kansai duplicate risk, correctly rejected every Mosel row outside Germany, and caught a pre-existing "Bavaria" box overreach unprompted. Ran <code>rgnApplyRegionMatches</code> (66 written, 0 skipped) then <code>generateRegionsTab</code>: regions 111&nbsp;→&nbsp;113 (new: Florida&nbsp;Keys, Wine&nbsp;Country&nbsp;Northern&nbsp;California), 3,146 cities matched, 2,431 venue entries embedded. <strong>JSON republish (closes out the v2.28 pause):</strong> rebuilt all four data files from a fresh export via the faithful Python <code>sync-sheet.ts</code> reproduction, this time pulling the actual live <code>schema.ts</code>/<code>sync-sheet.ts</code> from GitHub rather than reconstructing them from memory. Diffed against the currently-committed JSON before handing anything back: venue count read 10,579&nbsp;→&nbsp;10,564 (net &minus;15) which looked like data loss until traced by stable place&nbsp;ID rather than slug — <strong>zero venues actually lost</strong>; the collision-pin fix (143 re-anchored, 704 <code>canonicalName</code> values blanked) shows up as ~100 venues losing a redundant city-name suffix (e.g. "Hakkasan&nbsp;Abu&nbsp;Dhabi"&nbsp;→&nbsp;"Hakkasan") plus real duplicate-row consolidation; shared-place_id groups measured directly at 364&nbsp;→&nbsp;326. <strong>Da Vittorio (Sankt Moritz) blurb bug:</strong> spot-checking a recently-touched venue turned up Sankt&nbsp;Moritz duplicating Brusaporto's blurb verbatim, including "in the hills outside Bergamo" — describing the wrong restaurant. Root cause: the two rows share the literal slug <code>da-vittorio</code>, and <code>importOptionB</code> matches on slug only, so it can only ever address one of the two rows. Wrote and web-verified a correct, Sankt-Moritz-specific blurb (Carlton Hotel, chef Paolo&nbsp;Rota since 2019), patched it into this cycle's <code>venues.json</code>, and had Ben mirror it into the Sheet. <strong>Also surfaced and logged (not yet fixed):</strong> Da&nbsp;Vittorio St.&nbsp;Moritz is missing its real-world Michelin two-star award; the twin-slug blurb fragility itself remains — needs either city-aware matching in <code>importOptionB</code> or a <code>clearWrongCityBlurbs</code> entry so it can't silently regress; a city record for "Ninjang" is tagged China but sits at Vancouver, BC coordinates (caught via a false-positive region-match, correctly rejected, underlying record still wrong). Shipped 54&nbsp;&rarr;&nbsp;55, Pipeline&nbsp;&amp;&nbsp;data 21&nbsp;&rarr;&nbsp;24, Queued 40&nbsp;&rarr;&nbsp;42.</td></tr>
         <tr><td><code>2.28</code></td><td>July 1, 2026</td><td><strong>Region-page venue dropdown shipped and verified live; price_tier currency normalization shipped and verified live; pin-collision cleanup started, then deliberately paused and handed off to a fresh session.</strong> Delivered the 4-part change needed to unblock the region-page feature from v2.27: <code>generateRegionsTab.gs</code> now embeds a per-city venue list (slug, name, type) sourced from the live <code>venues</code> tab; <code>RegionCitySchema</code> (schema.ts) and the parallel <code>RegionCityEntry</code> interface (sync-sheet.ts) both updated to carry the new optional <code>venues</code> field through without zod silently stripping it; <code>region.$slug.tsx</code> rewritten to a plain list with per-city accordions, matching the Cities-page pattern. <strong>Live-verified</strong> on <code>/region/french-alps</code> — Annecy expands to real, clickable venue names. Caught and documented a run-order trap along the way: running <code>generateRegionsTab</code> standalone (not as part of the full ordered pipeline) silently under-matched venues to cities via a stale <code>cities</code> tab — same output venue_count, no thrown error, just an ~82-venue (3.4%) shortfall that only surfaced by cross-checking the region total against a known reference figure (Kansai's 395). <strong>Separately</strong>, Lovable flagged that <code>data/venues.json</code> and friends weren't committed to the repo, breaking the build — traced to files having stopped being tracked (likely a stray <code>.gitignore</code> change) rather than a real architecture problem; decided to restore the tracked files rather than switch to a sync-on-build or CDN-asset approach, both of which would have introduced new infrastructure and new failure modes for no present benefit. <strong>Price tier:</strong> 2,617 venues carrying non-<code>$</code> currency symbols (€, mostly) were failing schema validation; fixed with a currency-agnostic, symbol-count-based normalizer in <code>sync-sheet.ts</code> (any repeated currency glyph → the same number of <code>$</code>) rather than a €-specific patch, so £, ¥, or any future currency needs no new code. Live-verified via Le Coquillage showing <code>$$$$</code> correctly; Lovable additionally confirmed via SSR HTML inspection that the fix is ingest-side only and doesn't touch how <code>venues.ts</code> or the venue route render the field. Logged a follow-up styling request (price_tier as a bronze pill instead of small hero-line text) rather than doing it inline, since it's a distinct, separable change. <strong>Pin-collision session:</strong> started directly in this chat, but the <code>.xlsx</code> export needed for accurate current-state analysis had aged out of the working directory; rather than proceed on stale data for a task this sensitive, paused and moved to a fresh chat per Ben's preference — <code>handoff-pin-collision-session.md</code> refreshed to reflect everything shipped since it was first written (nothing about the collision analysis itself changed, only the surrounding context). Shipped 52&nbsp;→&nbsp;54, Up next 5&nbsp;→&nbsp;6, Queued 41&nbsp;→&nbsp;40.</td></tr>
         <tr><td><code>2.27</code></td><td>July 1, 2026</td><td><strong>Bar-ingest dropdown repair, Option B source fix confirmed, region-page feature scoped (blocked on data), 12 new punch-list items logged.</strong> Diagnosed the "Europe's 50 Best Bars missing from dropdown" report: the underlying script already had the source registered correctly and Ben's 50 pasted rows were already valid — the dropdown menu itself was just stale (data-validation rules are only set at tab-creation time and don't auto-refresh when the source list changes later). Added a one-time <code>fixBarImportDropdown()</code> repair function to <code>compasseats-bar-ingest.gs</code> that re-applies the dropdown across the whole column without touching pasted data. <strong>Confirmed 319 = 323 − 4</strong> (the 4 safe German-city aliases already shipped in v2.26) — one combined collision-cleanup step going forward, not two. <strong>Region-page city/venue dropdown feature evaluated and blocked:</strong> <code>RegionCitySchema</code> only carries aggregate counts per city, no per-venue names/slugs, so the requested "expand a city to see its venues" UI has no data to render yet — needs <code>generateRegionsTab.gs</code> (not in the GitHub mirror; live-only in Apps Script) extended to embed a slim venue list per city, then schema + JSON-regen + frontend, in that order. Logged as a 4-part blocked item rather than attempted piecemeal. <strong>12 new items added to the punch list</strong> per Ben's direct requests: venue-name search on the homepage, continent-grouping for the Regions index (mirroring the existing Cities accordion), Guide-page visual parity with Region/City pages, Guide-page new-source verification, Cities-page heading font/size fix, homepage mobile condensing, the broken rotating compass, mobile top-destination card sizing, mobile search-bar marquee text, homepage top-destination rotation logic, the region-dropdown feature above, and venue website/Instagram/Facebook links (data-generation task, Expansion tier). <strong>Theme toggle decision closed:</strong> Ben confirmed removal — flagged that the map components' dark/light style-switching logic needs to be hard-coded to light once the toggle is gone, not left listening for a class that will never flip. Up next — polish 10&nbsp;→&nbsp;21, Expansion 6&nbsp;→&nbsp;7, Queued 29&nbsp;→&nbsp;41. <strong>Session ended with a handoff prepared</strong> for a fresh chat to tackle the 319-collision cleanup + Da Vittorio city-label fix as one focused session.</td></tr>
