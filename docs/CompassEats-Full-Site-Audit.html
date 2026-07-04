@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompassEats — Full Site Audit &amp; Action Plan · July 2026</title>
+<style>
+  :root{
+    --ink:#23211E; --paper:#F7F3EB; --brass:#C6A15B; --bronze:#895F2E;
+    --muted:#6a6253; --hair:rgba(35,33,30,.14); --card:#FFFDF8;
+    --red:#9E3B32; --amber:#B07C24; --green:#4E6E4E;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",-apple-system,Segoe UI,sans-serif;line-height:1.55;font-size:15.5px}
+  .wrap{max-width:880px;margin:0 auto;padding:48px 28px 96px}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.01em}
+  h1{font-size:2.3rem;margin:.2em 0 .1em}
+  h1 em{font-style:italic;color:var(--bronze)}
+  h2{font-size:1.55rem;margin:2.6em 0 .5em;padding-top:1.2em;border-top:1px solid var(--hair)}
+  h3{font-size:1.15rem;margin:1.6em 0 .4em;color:var(--bronze)}
+  .kicker{text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:var(--bronze)}
+  .meta{color:var(--muted);font-size:.85rem;margin-bottom:2em}
+  table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.88rem}
+  th{text-align:left;font-weight:600;border-bottom:2px solid var(--brass);padding:8px 10px;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--bronze)}
+  td{border-bottom:1px solid var(--hair);padding:9px 10px;vertical-align:top}
+  .pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.72rem;font-weight:600;letter-spacing:.04em;color:#fff}
+  .p0{background:var(--red)} .p1{background:var(--amber)} .p2{background:var(--green)}
+  .card{background:var(--card);border:1px solid var(--hair);border-radius:10px;padding:18px 22px;margin:1em 0}
+  .card.warn{border-left:4px solid var(--red)}
+  .card.tip{border-left:4px solid var(--brass)}
+  code{background:rgba(198,161,91,.14);padding:1px 6px;border-radius:4px;font-size:.85em;font-family:ui-monospace,Menlo,monospace}
+  pre{background:var(--ink);color:#EDE6D6;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:.82rem;line-height:1.5}
+  pre code{background:none;padding:0;color:inherit}
+  .prompt-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:var(--bronze);margin:1.2em 0 .3em;font-weight:600}
+  ol li, ul li{margin:.35em 0}
+  .small{font-size:.85rem;color:var(--muted)}
+  .check li{list-style:"☐  ";padding-left:4px}
+  hr{border:none;border-top:1px solid var(--hair);margin:2.5em 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="kicker">CompassEats · Living Docs</p>
+<h1>Full Site Audit &amp; <em>Action Plan</em></h1>
+<p class="meta">v1.0 · July 3, 2026 · Covers codebase review, UX report, spreadsheet cleanup, growth blockers, design direction, scaling, mobile, and trust. Compass redesign options delivered separately in <code>CompassEats-Compass-Options.html</code>.</p>
+
+<!-- ================= EXEC SUMMARY ================= -->
+<h2>Executive Summary</h2>
+<p>The foundation is genuinely strong: 10,564 venues across 3,146 cities, a working sheet-to-static pipeline, prerendered venue pages with real editorial voice, correct closed-venue filtering, and a distinctive brand identity. What's holding the site back is not the concept or the design language — it's <strong>a handful of trust-killing bugs on the live site, missing content depth, and no feature that directly settles the "where should we eat tonight" argument.</strong></p>
+<p>Three discoveries need immediate attention: the live city pages are serving <strong>stale prerendered HTML from the old "Eat Anywhere" era</strong> (wrong canonical URLs pointing at <code>eatanywhere.lovable.app</code> — actively hurting your Google rankings), the homepage's primary <strong>"Find the best →" button does nothing when clicked</strong>, and every footer link (About, Contact, Privacy, Terms) is a <strong>dead link</strong>.</p>
+
+<!-- ================= PRIORITY PLAN ================= -->
+<h2>The Action Plan — In Priority Order</h2>
+<table>
+<tr><th>#</th><th>Priority</th><th>Action</th><th>Why</th><th>Effort</th></tr>
+<tr><td>1</td><td><span class="pill p0">P0</span></td><td>Force a full clean rebuild + purge Cloudflare cache to flush stale "Eat Anywhere" pages</td><td>Wrong canonicals are telling Google your pages belong to a dead Lovable subdomain</td><td>1 session</td></tr>
+<tr><td>2</td><td><span class="pill p0">P0</span></td><td>Fix the dead "Find the best →" button</td><td>Primary CTA on homepage does nothing</td><td>1 Lovable prompt</td></tr>
+<tr><td>3</td><td><span class="pill p0">P0</span></td><td>Create real About / Contact / Privacy / Terms pages; fix footer links</td><td>Dead footer links are the #1 trust destroyer</td><td>1–2 sessions</td></tr>
+<tr><td>4</td><td><span class="pill p1">P1</span></td><td>Replace homepage OG image (currently a screenshot hosted on gpt-engineer's servers)</td><td>Fragile external host + unprofessional link previews</td><td>1 Lovable prompt</td></tr>
+<tr><td>5</td><td><span class="pill p1">P1</span></td><td>Render the (already written!) TrustPoints section on the homepage</td><td>Your best trust copy exists in code but is never shown</td><td>1 Lovable prompt</td></tr>
+<tr><td>6</td><td><span class="pill p1">P1</span></td><td>Ship "Point Me" — random top-pick feature (spin the compass)</td><td>Directly serves the "settle the argument" mission; on-brand and memorable</td><td>1–2 sessions</td></tr>
+<tr><td>7</td><td><span class="pill p1">P1</span></td><td>Continue Option B blurbs (1,131 venues still blank)</td><td>Empty venue pages read as thin/untrustworthy</td><td>Ongoing</td></tr>
+<tr><td>8</td><td><span class="pill p1">P1</span></td><td>Finish geo-collision cleanup (313 groups)</td><td>Wrong pins = broken trust at the moment of use</td><td>In progress</td></tr>
+<tr><td>9</td><td><span class="pill p2">P2</span></td><td>Spreadsheet archive protocol (rename, don't delete, 12 stale tabs)</td><td>Sheet is at 42 tabs / 77k rows; navigation friction</td><td>30 min</td></tr>
+<tr><td>10</td><td><span class="pill p2">P2</span></td><td>Homepage compass upgrade (pick from 5 options delivered)</td><td>Signature brand moment</td><td>1 session</td></tr>
+<tr><td>11</td><td><span class="pill p2">P2</span></td><td>Mobile device pass using the checklist in §8</td><td>Verify real-device behavior</td><td>1 hour, no code</td></tr>
+</table>
+
+<!-- ================= ITEM 1 ================= -->
+<h2>1 · Codebase Review — Optimizations &amp; Improvements</h2>
+
+<h3>What's good (keep doing this)</h3>
+<ul>
+<li><strong>Defensive data normalization</strong> in <code>venues.ts</code> — the shape-normalization layer that survived the awards_json drift is exactly right.</li>
+<li><strong>Lazy-loaded map</strong> — <code>VenueMap</code> only loads when needed. Correct.</li>
+<li><strong>Closed venues correctly filtered</strong> — every read path checks <code>status === "active"</code>. Verified in 5 places.</li>
+<li><strong>Prerendered venue pages</strong> — the Don Bravo page serves full content to crawlers. This is your SEO engine.</li></ul>
+
+<h3>Finding 1.1 — Stale deployed pages (the "Eat Anywhere" ghost) <span class="pill p0">P0</span></h3>
+<div class="card warn">
+<p><strong>What I found:</strong> The live <code>/city/tokyo</code> page serves HTML whose canonical URL is <code>https://eatanywhere.lovable.app/city/tokyo</code>, author "Eat Anywhere", Twitter handle @EatAnywhere, and body text stuck on the loading state ("Curating the best spots in Tokyo…"). Your <em>current code is correct</em> — <code>SITE_URL</code> is compasseats.com everywhere. The deployed files are leftovers from an old build.</p>
+<p><strong>Why it matters:</strong> A canonical tag tells Google "the real version of this page lives over there." Right now your city pages are telling Google to credit a dead Lovable subdomain. This can suppress your rankings on your most valuable pages.</p>
+<p><strong>Likely cause:</strong> Your prerender config has <code>failOnError: false</code> — if a page fails during a build, the build succeeds anyway and the old file for that page keeps being served. Failures are silent.</p>
+</div>
+<p><strong>Steps to fix:</strong></p>
+<ol>
+<li>In Lovable, open Chat mode and run the diagnostic prompt below first (diagnostic-first, per our protocol).</li>
+<li>Trigger a full rebuild (any small change + publish, or Lovable's redeploy).</li>
+<li>After deploy, purge cache: Cloudflare dashboard → your site → Caching → Configuration → <strong>Purge Everything</strong>.</li>
+<li>Verify: open <code>view-source:https://www.compasseats.com/city/tokyo</code> in a browser and confirm the canonical line says compasseats.com and the venue list appears in the HTML.</li>
+</ol>
+<p class="prompt-label">Lovable prompt (Chat mode — diagnostic first)</p>
+<pre><code>Investigate only, do not edit. Our deployed /city/tokyo page serves stale HTML with
+canonical https://eatanywhere.lovable.app and a loading-state body, while the source
+code in src/routes/city.$slug.tsx correctly uses https://compasseats.com. Check the
+prerender output for city pages in the last build log: report how many city pages
+prerendered successfully, how many failed (failOnError is false so failures are
+silent), and whether /city/tokyo specifically failed. Report real error messages.</code></pre>
+<p>Then, as a follow-up change: ask Lovable to log a loud per-page failure summary at the end of prerender so silent failures can't recur. Also consider adding an old-domain redirect if <code>eatanywhere.lovable.app</code> still resolves.</p>
+
+<h3>Finding 1.2 — Dead primary CTA <span class="pill p0">P0</span></h3>
+<p>In <code>src/routes/index.tsx</code>, the "Find the best →" button has no <code>onClick</code> and is not part of a form — clicking it does nothing. Users type a city, click the big brass button, and nothing happens (search only works via the autocomplete dropdown or Enter).</p>
+<p class="prompt-label">Lovable prompt</p>
+<pre><code>In src/routes/index.tsx the "Find the best →" button currently has no onClick handler
+— clicking it does nothing. Change it to submit the current CitySearch input: if the
+input text matches a charted city (same matching logic CitySearch already uses for its
+dropdown), navigate to that city page; if there is no match, trigger the same
+"uncharted city" path that pressing Enter in CitySearch triggers. Do not restyle the
+button. Do not modify src/lib/venues.ts.</code></pre>
+
+<h3>Finding 1.3 — Dead code: TrustPoints never renders <span class="pill p1">P1</span></h3>
+<p>The <code>TrustPoints</code> component ("Charted, not crowdsourced" / "Anywhere you land" / "We've done the legwork") is fully written in <code>index.tsx</code> but never included in the page. That's your strongest positioning copy, invisible. Fix in §9 (Trust) below.</p>
+
+<h3>Finding 1.4 — Fragile OG image <span class="pill p1">P1</span></h3>
+<p>The site-wide social-share image in <code>__root.tsx</code> is a screenshot hosted at <code>storage.googleapis.com/gpt-engineer-file-uploads/…</code> — a Lovable-internal bucket you don't control. If they clean that bucket, every share preview breaks. You already have <code>public/og-image.jpg</code> in the repo.</p>
+<p class="prompt-label">Lovable prompt</p>
+<pre><code>In src/routes/__root.tsx, the og:image and twitter:image meta tags point to an
+external storage.googleapis.com/gpt-engineer-file-uploads URL. Change both to
+https://compasseats.com/og-image.jpg (the file already exists in /public).
+Change nothing else in the file.</code></pre>
+
+<h3>Finding 1.5 — Hardcoded Atlanta coordinates</h3>
+<p>The homepage hero corners show <code>33°45′N · 84°23′W · ATL</code> — decorative, but it's Atlanta, permanently, for everyone. A visitor in Tokyo sees "ATL" and wonders if the site is Atlanta-only. Two options: (a) simplest — replace with neutral compass-degree markings (e.g., <code>000° · 090° · N</code>), or (b) nicer — derive from the visitor's approximate location when the near-me hook has coordinates, falling back to neutral markings. Recommend (a) now, (b) later.</p>
+
+<h3>Finding 1.6 — Homepage title tag drops the brand</h3>
+<p>Title is "Top Restaurants &amp; Cocktail Bars in Any City" — no "CompassEats." Google shows the title as your headline; the brand should be in it: <em>"CompassEats — Top Restaurants &amp; Cocktail Bars in Any City"</em>. One-line change in <code>index.tsx</code> head.</p>
+
+<h3>Finding 1.7 — Data-in-memory headroom (fine today, watch it)</h3>
+<p><code>venues.json</code> is 11.5&nbsp;MB and module-imported. Your own code comment says watch past ~20k venues. At 10.5k you're fine. No action now — see §7 Scaling for the plan.</p>
+
+<!-- ================= ITEM 2 ================= -->
+<h2>2 · UX Report — Where Users Get Confused</h2>
+
+<h3>Confusion point A — "I clicked the button and nothing happened"</h3>
+<p>Covered in 1.2. This is the single worst UX moment on the site because it's the very first action every new visitor takes.</p>
+
+<h3>Confusion point B — "What is this site and why should I believe it?"</h3>
+<p>The homepage says "ranked by the guides that matter" but never explains the method: which guides, how venues qualify, how often it's updated. A first-time visitor has to infer everything. Fixes: render TrustPoints (§9), add an About/Methodology page (§9), and add a one-line count under the hero — e.g., <em>"10,500+ venues · 3,100 cities · 18 award sources"</em> — numbers you can generate straight from your data at build time. Concrete scale is instantly credible.</p>
+
+<h3>Confusion point C — Empty-feeling venue pages</h3>
+<p>1,131 venues (10%) have no blurb, 64% have no price tier, 17% no cuisine tags. A venue page with just a name, one award line, and an address feels like a stub — visitors can't tell if the site is half-built or the venue is minor. Mitigations:</p>
+<ul>
+<li>Continue Option B blurbs (already your plan; ~910 remain in the qualifying set).</li>
+<li>For venues that will never get a hand-written blurb, generate a one-line <em>structural</em> sentence from data you already have: "Recognized by OAD Top Restaurants (No. 417, 2025)" — the live Don Bravo page already does this pattern well. Verify it applies to all blurb-less venues, not just some.</li>
+<li>Hide the price row entirely when unknown rather than showing a blank (check current behavior).</li></ul>
+
+<h3>Confusion point D — "Uncharted city" dead end</h3>
+<p>When someone searches a city you don't cover, the uncharted page needs to do three jobs: say clearly this city has no award-recognized venues <em>yet</em>, immediately show the nearest charted cities with distances (the 150&nbsp;km nearby logic already exists — reuse it), and invite them to search another city without going Back. Review <code>/uncharted/$slug</code> against those three jobs; if any is missing, that's the fix list.</p>
+
+<h3>Confusion point E — Award jargon</h3>
+<p>"OAD," "50 Best Discovery," "Bib Gourmand" mean nothing to most diners. Add a hover/tap tooltip on every award badge with a one-sentence plain-language explanation ("OAD — Opinionated About Dining, a ranking voted by frequent fine-diners"), and link the badge to your guide page for that source. The guides page already exists; badges should route into it.</p>
+
+<h3>Confusion point F — No answer to "which one should we pick?"</h3>
+<p>A city page with 120 venues re-creates the original argument. See §4 — the "Point Me" feature is the direct fix.</p>
+
+<!-- ================= ITEM 3 ================= -->
+<h2>3 · Spreadsheet Cleanup — Safe Optimization</h2>
+<p>The workbook is at <strong>42 tabs, ~77,000 rows</strong>. The core is healthy; the bloat is one-off audit tabs from past repair jobs. The golden rule: <strong>never delete, always archive</strong> — several Apps Scripts reference tabs by exact name, and a deleted tab makes a script throw mid-run.</p>
+
+<div class="card tip"><strong>Archive protocol:</strong> rename stale tabs with a <code>z_</code> prefix (e.g., <code>dupe_audit → z_dupe_audit</code>), right-click → Move to end, and color the tab grey. Sheets keeps all data; scripts that reference the old name would fail loudly (good — that tells us it's still live) rather than silently reading stale data. Do them <strong>one at a time</strong> and run nothing in between; if a script errors on next pipeline run, rename back.</p></div>
+
+<h3>Safe to archive now (superseded or one-off jobs, confirmed complete)</h3>
+<table>
+<tr><th>Tab</th><th>Rows</th><th>Why safe</th></tr>
+<tr><td>Blurb Test</td><td>11</td><td>Early experiment, superseded by Option B system</td></tr>
+<tr><td>dupe_audit</td><td>629</td><td>Superseded by collision_review workflow</td></tr>
+<tr><td>collision_audit</td><td>706</td><td>Superseded by collision_review (our active worklist)</td></tr>
+<tr><td>geo_audit</td><td>653</td><td>Old geo pass; collision workflow replaced it</td></tr>
+<tr><td>geo_requery_done</td><td>1,168</td><td>Completion log of a finished job</td></tr>
+<tr><td>merge_review</td><td>561</td><td>Merge pass complete</td></tr>
+<tr><td>enrichment_audit</td><td>1,121</td><td>Superseded by enrichment_review</td></tr>
+<tr><td>alias_proposals</td><td>105</td><td>Alias proposals now flow through collision worklist</td></tr>
+<tr><td>OAD (all 5) 2025 tabs</td><td>~2,590</td><td>2025 ingests complete; 2026 tabs are current. Archive after confirming Restaurant Awards carries the 2025 rows.</td></tr>
+<tr><td>101 Best Steakhouses 2025</td><td>102</td><td>Same — superseded by 2026 tab</td></tr>
+</table>
+
+<h3>Do NOT touch</h3>
+<ul>
+<li><code>Places Enrichment</code> (12,528 rows) — this is the geo-cache keyed by name|city; 10 scripts reference it. Touching it can silently break geo fixes.</li>
+<li><code>venues</code>, <code>cities</code>, <code>regions</code>, <code>city_regions</code>, <code>closed_venues</code>, <code>needs_enrichment</code> — pipeline core.</li>
+<li><code>collision_review</code>, <code>region_match_review</code>, <code>region_geo_cache</code>, <code>closure_triage</code>, <code>enrichment_review</code>, <code>curated_photos</code> — active or referenced by scripts not present in the repo zip (the Region scripts live in the Apps Script project but weren't in this export, so zero-reference here doesn't mean unused).</li>
+<li>Current award source tabs (Michelin Guide, Worlds 50 Best, Bar Awards, Restaurant Awards, etc.).</li></ul>
+
+<h3>Two structural improvements (optional, later)</h3>
+<ol>
+<li><strong>Ingest-year consolidation:</strong> the OAD/steakhouse pattern of one tab per source per year will sprawl (5 OAD tabs already). Long-term: a single <code>ingest_staging</code> tab with a <code>source</code> + <code>year</code> column, which the ingest scripts filter. This needs script changes, so it's a deliberate future project, not a tidy-up.</li>
+<li><strong>Overview tab as dashboard:</strong> it has 5 rows today. Make it earn its position: formulas showing venue count, active vs closed, blurb coverage %, last pipeline run date. Pure formulas, zero risk, and it becomes your at-a-glance health check.</li></ol>
+
+<!-- ================= ITEM 4 ================= -->
+<h2>4 · What's Holding the Site Back</h2>
+<p>Benchmarking against your competitors: Michelin has authority but only its own list; Beli has social energy but crowdsourced noise; Pearl has curation but thin coverage. Your edge is <em>cross-referenced authority at global scale</em>. What's missing is the last step from <strong>reference tool → decision tool</strong>:</p>
+
+<h3>4.1 — "Point Me": settle the argument in one tap <span class="pill p1">P1</span></h3>
+<p>Your entire mission statement is "takes the where-should-we-eat argument out of the discussion." Right now the site gives a <em>list</em>, which restarts the argument. Add one button on every city page: <strong>Point Me</strong>. Tap it → the compass spins → it lands on one venue (weighted toward higher-prestige awards, with optional quick filters: restaurant/bar, price). It's decisive, it's fun, it's screenshot-able, and it makes the compass brand <em>functional</em> instead of decorative. No other competitor has this. This is the feature I'd build next before anything cosmetic.</p>
+
+<h3>4.2 — Context filters people actually use</h3>
+<p>"Open now" (you already have <code>open-now.ts</code> — verify it's surfaced in the city-page filters), "bar vs restaurant" (exists), and price (blocked by 64% missing price data — a Places enrichment field could backfill this since Google returns price level; worth a future enrichment pass).</p>
+
+<h3>4.3 — Shareability</h3>
+<p>The argument-settling moment is a group moment. A "share this venue" button (native share sheet on mobile, copy-link on desktop) costs almost nothing and puts your URLs in group chats — your most likely organic growth channel.</p>
+
+<h3>4.4 — Content depth = return visits</h3>
+<p>Blurbs are what make the site feel like "a well-traveled friend" instead of a database. The Option B program is the moat; keep feeding it.</p>
+
+<!-- ================= ITEM 6 ================= -->
+<h2>6 · Should the Design Change?</h2>
+<p><strong>Keep the identity. Refine the execution.</strong> The warm charcoal + brass + Fraunces system is distinctive and more memorable than any competitor's — Michelin is corporate red, Beli is generic app-gradient. Do not restart. The gap between "good" and "premium" is in details, not direction:</p>
+<ul>
+<li><strong>Photography discipline:</strong> generic Unsplash fallbacks (the Don Bravo OG image is a random stock photo) dilute trust more than no photo. Prefer: real venue photo → tasteful branded placeholder card (compass motif on charcoal) → never unrelated stock.</li>
+<li><strong>Consistency pass:</strong> the city page hardcodes hex colors (<code>PAPER</code>, <code>INK</code>, <code>BRASS</code>…) as constants while the rest of the site uses CSS variables. Works, but it's how theme drift starts. Low priority; fold into the next city-page edit rather than a dedicated change.</li>
+<li><strong>The compass upgrade</strong> (item 5, separate file) is the one visual investment with outsized payoff — it's the first thing every visitor sees.</li>
+<li><strong>Motion restraint:</strong> current animation levels are right. Resist adding parallax/scroll effects; premium reads as calm.</li></ul>
+
+<!-- ================= ITEM 7 ================= -->
+<h2>7 · Scaling Check — Roadblocks Ahead</h2>
+<table>
+<tr><th>Concern</th><th>Today</th><th>Breaks at</th><th>Plan</th></tr>
+<tr><td>Prerender page count</td><td>~13,000 pages, concurrency 1</td><td>Build times get painful as venues grow; Lovable build limits are the ceiling</td><td>When builds exceed ~15 min: raise concurrency first (cheap); if still slow, stop prerendering venues with zero blurb + minor awards, render those on-demand</td></tr>
+<tr><td>venues.json in memory</td><td>11.5 MB, module import</td><td>~20k venues (your own code comment)</td><td>Split per-city JSON files loaded per route — a known pattern, plan it before sister-project data merges in</td></tr>
+<tr><td>Past-year awards</td><td>Awards append per venue; venue count barely grows</td><td>No structural roadblock — file grows ~linearly with award rows</td><td>None needed; the award-prestige 5-year window logic already handles old awards</td></tr>
+<tr><td>Sheet size</td><td>77k rows</td><td>Sheets slows noticeably ~200k+ rows / 10M cell hard limit</td><td>Years of headroom; the archive protocol (§3) keeps it navigable</td></tr>
+<tr><td>Silent prerender failures</td><td><code>failOnError: false</code></td><td>Already bitten you (§1.1)</td><td>Add loud failure summary; check it after every deploy</td></tr>
+<tr><td>Cities index shipped to client</td><td>cities.json 556 KB</td><td>Fine now; grows with city count</td><td>If city search ever feels slow to load, ship a slim search index (slug+display+country only)</td></tr>
+</table>
+<p><strong>Bottom line:</strong> no hard roadblocks for the current roadmap. The two items to schedule deliberately are per-city JSON splitting (before sister projects) and prerender selectivity (when builds get slow).</p>
+
+<!-- ================= ITEM 8 ================= -->
+<h2>8 · Mobile / Tablet Review</h2>
+<p>From code review: responsive breakpoints are used consistently (<code>md:</code> throughout), the nav is only three links so no hamburger is needed yet, and the hero scales its type. I can't operate a real device from here, so here is the 15-minute checklist to run on your phone — screenshot anything that fails and we'll fix each with a targeted Lovable prompt:</p>
+<ul class="check">
+<li>Homepage: does the search input + brass button wrap awkwardly on a narrow screen (they're in a flex-wrap row)? Does the compass leave enough room above the fold to see the search box?</li>
+<li>City page: open the filter controls (the SlidersHorizontal dropdowns) — do dropdown menus stay on-screen? Can you dismiss them easily?</li>
+<li>City page map: does the map pan with one finger and does that fight with page scroll? (Common MapLibre mobile issue — the fix is cooperative gestures: require two fingers to pan the map.)</li>
+<li>Venue page: long addresses (the Don Bravo Japanese address) — do they wrap or overflow?</li>
+<li>Award pages: the ranked tables/rows — readable without horizontal scroll?</li>
+<li>Tap targets: award badges and footer links comfortably tappable (~44px)?</li>
+<li>iPad/tablet width (~768px): city page layout at the exact md: breakpoint — any squeezed middle state?</li>
+<li>Dark/light toggle reachable and correct on mobile?</li></ul>
+
+<!-- ================= ITEM 9 ================= -->
+<h2>9 · Trustworthiness</h2>
+<p>Trust is your entire product — "guides that matter" only works if the site itself feels institutional. Ranked by impact:</p>
+<ol>
+<li><strong>Kill the dead footer links (P0).</strong> About, Contact, Privacy, Terms all go to <code>#</code>. Nothing says "abandoned side project" faster. Minimum viable: an About page (your mission paragraph — the "well-traveled friend" positioning is genuinely good copy, use it), a Contact page with a real email on your domain (e.g., hello@compasseats.com — set up email forwarding in Cloudflare, it's free), and simple Privacy/Terms pages (I can draft all four as ready-to-paste content next session).</li>
+<li><strong>Publish a Methodology page.</strong> One page: the 18+ sources you chart, how a venue qualifies, how often data refreshes, and the honesty rule (facts only from the guides and reputable press). Link it from the footer and from every award badge tooltip. This converts skeptics and it's pure writing — no engineering risk.</li>
+<li><strong>Render TrustPoints on the homepage.</strong> The copy exists; it's just not mounted. Lovable prompt: <em>"In src/routes/index.tsx the TrustPoints component is defined but never rendered. Render it between the TopDestinations section and ExploreByGuide. Do not change its content or styling."</em></li>
+<li><strong>Show scale + freshness.</strong> Venue pages already show "Last verified 2026-07-02" — excellent, keep it. Add the aggregate counts line on the homepage (§2B).</li>
+<li><strong>Finish the data-integrity work.</strong> The collision cleanup and blurb program <em>are</em> trust work — a wrong map pin at 7pm in a foreign city is the most expensive trust failure possible.</li>
+<li><strong>Later:</strong> a short "How we're different" comparison vs. crowdsourced ratings, and structured data expansion (you already emit some Schema.org — good for rich results).</li></ol>
+
+<!-- ================= ITEM 5 pointer ================= -->
+<h2>5 · Compass Redesign — See Companion File</h2>
+<p>Five animated, realistic-but-minimal 3D compass options are in <code>CompassEats-Compass-Options.html</code> — open it in any browser to see them live, side by side, in brand colors, with hover/motion behavior. Each includes a note on feel and a difficulty rating for Lovable implementation. All are pure CSS/SVG (no 3D libraries), so any of them can be dropped into the existing <code>Compass.tsx</code> without new dependencies.</p>
+
+<hr>
+<h2>Suggested Session Order</h2>
+<ol>
+<li><strong>Session A (P0 sweep):</strong> stale-prerender diagnostic + rebuild + cache purge → dead CTA fix → OG image fix → verify live. (All items above include their prompts.)</li>
+<li><strong>Session B (Trust):</strong> I draft About/Contact/Privacy/Terms + Methodology content → one Lovable prompt to add the routes + footer links → render TrustPoints.</li>
+<li><strong>Session C:</strong> pick a compass from the options file → implement.</li>
+<li><strong>Session D:</strong> design + build "Point Me."</li>
+<li><strong>Parallel, ongoing:</strong> collision cleanup (313 groups — 4 safe spelling aliases are still queued and ready) and Option B blurbs.</li>
+<li><strong>Anytime, 30 min:</strong> spreadsheet archive protocol.</li></ol>
+
+<p class="small">Changelog — v1.0 (2026-07-03): Initial full audit. Sources: repo zip (matches github.com/benjamineades/compasseats structure), Culinary_Awards_Database.xlsx (42 tabs / 77,137 rows), live-site fetches of /, /city/tokyo, /venue/tokyo/don-bravo on 2026-07-03.</p>
+
+</div>
+</body>
+</html>
