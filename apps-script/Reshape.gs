@@ -318,6 +318,26 @@ var CITY_ALIASES_ = {
   'washington': 'washington dc',
   'washington dc metro': 'washington dc',
   'wien': 'vienna',
+
+  // Batch 3 — dead-safe spelling-variant folds (verified against geo_audit /
+  // Places Enrichment, July 3, 2026). Each pair is the SAME real city, just a
+  // native-language or full-vs-short spelling — zero risk of merging two
+  // different places. Clears 30 venues across 4 aliases.
+  'munchen': 'munich',
+  'nurnberg': 'nuremberg',
+  'lindau im bodensee': 'lindau',
+  'frankfurt am main': 'frankfurt',
+
+  // Batch 3b — surfaced by re-auditing against LIVE data after Batch 3a (the
+  // prior geo_audit tab this project was working from had gone stale and was
+  // hiding these). Same standard: same real place, different label, verified
+  // parent has far more venues than the variant. July 3, 2026.
+  'brooklyn': 'new york',                 // NYC borough (queens/manhattan already aliased — brooklyn was missing)
+  'cuauhtemoc': 'mexico city',             // Mexico City borough (alcaldía)
+  'miguel hidalgo': 'mexico city',         // Mexico City borough (alcaldía)
+  'alvaro obregon': 'mexico city',         // Mexico City borough (alcaldía)
+  'washington d c': 'washington dc',       // "Washington, D.C." (with periods) normalizes differently than "Washington"
+  'penang': 'george town',                 // Penang = island/state; George Town is the actual city
 };
 
 // Normalizes a city string to its canonical key, applying the alias map.
