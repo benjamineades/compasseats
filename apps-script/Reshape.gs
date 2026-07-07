@@ -338,6 +338,38 @@ var CITY_ALIASES_ = {
   'alvaro obregon': 'mexico city',         // Mexico City borough (alcaldía)
   'washington d c': 'washington dc',       // "Washington, D.C." (with periods) normalizes differently than "Washington"
   'penang': 'george town',                 // Penang = island/state; George Town is the actual city
+
+  // Batch 4 — one-off green folds (verified July 4, 2026 against the live
+  // venues tab: each source label below is carried by EXACTLY ONE venue and
+  // shares that venue's place_id with the target city, so the alias renames
+  // only that single restaurant — zero collateral damage to other venues.
+  // Clears 24 restaurants (26 alias entries; two venues had two stray labels).
+  'schwarzenburg': 'grub',                 // Landgasthaus Bären Grub
+  'utzenstorf': 'grub',                    // Landgasthaus Bären Grub
+  'berghaupten': 'sonnenbuhl',             // Restaurant Hirsch
+  'ellwangen': 'sonnenbuhl',               // Restaurant Hirsch
+  'huelva': 'linares de la sierra',        // Arrieros
+  'gro heubach': 'freiamt',                // Gasthaus Zur Krone
+  'dellach': 'maria worth',                // Gourmet Restaurant Hubert Wallner
+  'sulzbach laufen': 'staufen im breisgau',// Hotel-Restaurant Die Krone
+  'unternberg': 'neufelden',               // Hotel-Restaurant Mühltalhof
+  'westerlo': 'tongerlo',                  // Maison Colette
+  'fohr wyk': 'wyk',                       // Restaurant Alt Wyk
+  'santanna': 'marina di bibbona',         // Restaurant La Pineta
+  'grisons': 'furstenau',                  // Restaurant OZ (Andreas Caminada cluster)
+  'ebersecken': 'wengi bei buren',         // Restaurant Sonne Scheunenberg
+  'ollon': 'crissier',                     // Restaurant de l'Hotel de Ville de Crissier
+  'vernazza': 'marina di gioiosa ionica',  // Ristorante Gambero
+  'santa maria annunziata': 'tavarnelle val di pesa', // Ristorante La Torre
+  'treviglio': 'scorze',                   // Ristorante San Martino
+  'sicily': 'licata',                      // Ristorante la Madia
+  'corral del risco': 'punta de mita',     // Rubra
+  'naurath': 'naurath wald',               // Ruessels Landhaus
+  'halle': 'halle saale',                  // Speiseberg
+  'collingwood': 'creemore',               // The Pine
+  'oudenberg': 'oudenburg',                // Willem Hiele
+  'powys': 'machynlleth',                  // Ynyshir Restaurant & Rooms
+  'rugen': 'ostseebad binz',               // freustil
 };
 
 // Normalizes a city string to its canonical key, applying the alias map.
