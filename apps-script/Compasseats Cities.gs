@@ -6,9 +6,12 @@
  *
  * For each distinct city_slug it:
  *   - takes display name + country from the venues
- *   - computes lat/lng as the CENTROID (average) of that city's venues,
- *     which lands the map pin in the middle of the action rather than on
- *     one arbitrary restaurant
+ *   - computes lat/lng as the MEDIAN of that city's venue coordinates.
+ *     The median ignores mislabeled / cross-city-collision venues (e.g. a
+ *     Singapore venue listed under Los Angeles) that would otherwise drag a
+ *     plain average far off the real city. This keeps the map pin AND the
+ *     city hero-photo lookup (which rejects a photo more than ~80km from the
+ *     city's coordinates) anchored on the true city center.
  *   - counts venues
  *   - guesses country_code from country name (common cases; editable)
  *
@@ -55,7 +58,6 @@ var COUNTRY_CODE = {
   'mexico': 'MX', 'canada': 'CA', 'brazil': 'BR', 'argentina': 'AR', 'chile': 'CL',
   'peru': 'PE', 'colombia': 'CO', 'uruguay': 'UY', 'ecuador': 'EC',
   'south africa': 'ZA', 'morocco': 'MA', 'egypt': 'EG', 'mauritius': 'MU',
-
   // Expanded coverage
   'andorra': 'AD', 'malta': 'MT', 'cyprus': 'CY', 'slovakia': 'SK', 'romania': 'RO',
   'bulgaria': 'BG', 'serbia': 'RS', 'bosnia and herzegovina': 'BA', 'montenegro': 'ME',
@@ -69,7 +71,7 @@ var COUNTRY_CODE = {
   'rwanda': 'RW', 'tunisia': 'TN', 'algeria': 'DZ', 'namibia': 'NA', 'botswana': 'BW',
   'zimbabwe': 'ZW', 'zambia': 'ZM', 'mozambique': 'MZ', 'cameroon': 'CM',
   'seychelles': 'SC', 'maldives': 'MV',
-  'sri lanka': 'LK', 'nepal': 'NP', 'bangladesh': 'BD', 'pakistan': 'PK',
+  'nepal': 'NP', 'bangladesh': 'BD', 'pakistan': 'PK',
   'myanmar': 'MM', 'laos': 'LA', 'brunei': 'BN', 'mongolia': 'MN',
   'costa rica': 'CR', 'panama': 'PA', 'guatemala': 'GT', 'el salvador': 'SV',
   'honduras': 'HN', 'nicaragua': 'NI', 'belize': 'BZ',
@@ -78,6 +80,14 @@ var COUNTRY_CODE = {
   'bolivia': 'BO', 'paraguay': 'PY', 'venezuela': 'VE', 'guyana': 'GY',
   'fiji': 'FJ', 'french polynesia': 'PF', 'new caledonia': 'NC'
 };
+
+/** Median of a numeric array. Robust to outliers, unlike the mean. */
+function median_(arr) {
+  if (!arr.length) return NaN;
+  var a = arr.slice().sort(function (x, y) { return x - y; });
+  var m = Math.floor(a.length / 2);
+  return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2;
+}
 
 function generateCitiesTab() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -92,8 +102,9 @@ function generateCitiesTab() {
     if (col[c] === undefined) throw new Error('venues tab missing column: ' + c);
   });
 
-  // Aggregate per city_slug
-  var agg = {}; // slug -> {display, country, latSum, lngSum, n}
+  // Aggregate per city_slug. Collect every coordinate so we can take the
+  // median (not a running average) — outliers no longer drag the center.
+  var agg = {}; // slug -> { display, country, lats:[], lngs:[] }
   for (var i = 1; i < vals.length; i++) {
     var row = vals[i];
     var slug = row[col['city_slug']];
@@ -104,11 +115,11 @@ function generateCitiesTab() {
       agg[slug] = {
         display: row[col['city_display']] || slug,
         country: row[col['country']] || '',
-        latSum: 0, lngSum: 0, n: 0
+        lats: [], lngs: []
       };
     }
     var a = agg[slug];
-    if (!isNaN(lat) && !isNaN(lng)) { a.latSum += lat; a.lngSum += lng; a.n++; }
+    if (!isNaN(lat) && !isNaN(lng)) { a.lats.push(lat); a.lngs.push(lng); }
     // prefer a non-empty country if the first row lacked one
     if (!a.country && row[col['country']]) a.country = row[col['country']];
   }
@@ -124,11 +135,11 @@ function generateCitiesTab() {
   for (var s = 0; s < slugs.length; s++) {
     var slug = slugs[s];
     var a = agg[slug];
-    var lat = a.n ? +(a.latSum / a.n).toFixed(6) : '';
-    var lng = a.n ? +(a.lngSum / a.n).toFixed(6) : '';
+    var n = a.lats.length;
+    var lat = n ? +(median_(a.lats)).toFixed(6) : '';
+    var lng = n ? +(median_(a.lngs)).toFixed(6) : '';
     var cc = COUNTRY_CODE[String(a.country).toLowerCase().trim()] || '';
     var m = manual[slug] || {};
-
     rows.push([
       slug,
       a.display,
@@ -140,7 +151,7 @@ function generateCitiesTab() {
       m.timezone || '',             // keep manual timezone
       m.blurb || '',                // keep manual blurb
       m.hero_image_url || '',       // keep manual hero
-      a.n
+      n
     ]);
   }
 
@@ -157,7 +168,7 @@ function generateCitiesTab() {
     'cities tab: ' + rows.length + ' cities\n' +
     'country_code auto-filled: ' + withCC + ' / ' + rows.length + '\n' +
     'timezone: BLANK (fill these for "Open Today")\n' +
-    'lat/lng: centroid of each city\'s venues';
+    'lat/lng: MEDIAN of each city\'s venues (robust to outliers)';
   Logger.log(msg);
   SpreadsheetApp.getUi().alert(msg);
 }
