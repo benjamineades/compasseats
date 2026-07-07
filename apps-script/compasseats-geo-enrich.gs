@@ -137,8 +137,22 @@ function geoEnrich() {
     if (prestige < MIN_PRESTIGE) { skippedLowP++; continue; }
 
     var nk = normKeyGeo_(name);
-    if (done[nk]) { skippedDone++; continue; }
-    done[nk] = true; // guard against dup work within this run
+    // FIXED July 1, 2026: this used to be keyed by name ALONE (`done[nk]`),
+    // which meant every city-variant of a shared name (chain branches like
+    // Da Vittorio in Brusaporto/Shanghai/Sankt Moritz, or coincidental
+    // name twins like the several unrelated "Atelier Restaurant"s) collapsed
+    // onto whichever city got searched first — the other cities silently
+    // inherited that first city's placeId and address. Reshape.gs already
+    // prefers a `name|city` composite key over the bare name
+    // (`enrich[nk + '|' + ck] || enrich[nk]`, line ~650) specifically to
+    // support this; geo-enrich just wasn't writing that composite key. Now
+    // it does, using the SAME cityKey_() (with the CITY_ALIASES_ map) that
+    // reshape uses, so the two line up exactly. Old bare-name rows already in
+    // Places Enrichment are untouched and still work as reshape's fallback.
+    var ck = cityKey_(city);
+    var compositeKey = nk + '|' + ck;
+    if (done[compositeKey]) { skippedDone++; continue; }
+    done[compositeKey] = true; // guard against dup work within this run
 
     // --- Places Text Search (New) ---
     var query = city ? (name + ', ' + city) : name;
@@ -174,7 +188,7 @@ function geoEnrich() {
 
     if (matched) {
       enrichRows.push([
-        nk,                       // normalizedKey (queried name's key — what reshape looks up)
+        compositeKey,             // normalizedKey — now name|city, matches reshape's lookup
         retName || name,          // canonicalName
         'geo-enrich',             // sheetName (provenance)
         result.placeId,           // placeId
