@@ -66,7 +66,8 @@ var BAR_SOURCES = {
   'north-america-50-best-bars': true,
   'north-america-50-best-bars-51-100': true,
   'asia-50-best-bars': true,
-  'asia-50-best-bars-51-100': true
+  'asia-50-best-bars-51-100': true,
+  'top-500-bars': true
 };
 
 var ENRICHMENT_TAB = 'Places Enrichment';
