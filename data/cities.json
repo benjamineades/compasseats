@@ -112,9 +112,9 @@
     "display": "Abu Dhabi",
     "country": "United Arab Emirates",
     "country_code": "AE",
-    "lat": 24.476294,
-    "lng": 54.388098,
-    "venue_count": 19
+    "lat": 24.488406,
+    "lng": 54.387984,
+    "venue_count": 20
   },
   {
     "slug": "accra",
@@ -850,9 +850,9 @@
     "display": "Amsterdam",
     "country": "Netherlands",
     "country_code": "NL",
-    "lat": 52.364591,
-    "lng": 4.894016,
-    "venue_count": 39
+    "lat": 52.364509,
+    "lng": 4.894043,
+    "venue_count": 40
   },
   {
     "slug": "amtzell",
@@ -1386,6 +1386,15 @@
     "venue_count": 3
   },
   {
+    "slug": "asheville-and-highlands-north-carolina",
+    "display": "Asheville and Highlands, North Carolina",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 35.557787,
+    "lng": -82.580597,
+    "venue_count": 1
+  },
+  {
     "slug": "asiago",
     "display": "Asiago",
     "country": "Italy",
@@ -1411,6 +1420,15 @@
     "lat": 39.190652,
     "lng": -106.819798,
     "venue_count": 2
+  },
+  {
+    "slug": "aspen-colorado",
+    "display": "Aspen, Colorado",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 39.186382,
+    "lng": -106.817423,
+    "venue_count": 1
   },
   {
     "slug": "asperg",
@@ -1480,9 +1498,9 @@
     "display": "Atlanta, Georgia",
     "country": "United States",
     "country_code": "US",
-    "lat": 33.794603,
-    "lng": -84.427222,
-    "venue_count": 1
+    "lat": 33.817226,
+    "lng": -84.404928,
+    "venue_count": 2
   },
   {
     "slug": "aubenas",
@@ -1609,6 +1627,15 @@
     "lat": 30.271392,
     "lng": -97.732344,
     "venue_count": 29
+  },
+  {
+    "slug": "austin-texas",
+    "display": "Austin, Texas",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 30.261996,
+    "lng": -97.738036,
+    "venue_count": 1
   },
   {
     "slug": "auxerre",
@@ -2227,9 +2254,9 @@
     "display": "Barcelona",
     "country": "Spain",
     "country_code": "ES",
-    "lat": 41.389948,
+    "lat": 41.388622,
     "lng": 2.158219,
-    "venue_count": 62
+    "venue_count": 64
   },
   {
     "slug": "bardez",
@@ -2695,9 +2722,9 @@
     "display": "Berlin",
     "country": "Germany",
     "country_code": "DE",
-    "lat": 52.506199,
-    "lng": 13.397145,
-    "venue_count": 35
+    "lat": 52.5055,
+    "lng": 13.395344,
+    "venue_count": 36
   },
   {
     "slug": "bermicourt",
@@ -3118,9 +3145,9 @@
     "display": "Bogotá",
     "country": "Colombia",
     "country_code": "CO",
-    "lat": 4.647877,
-    "lng": -74.058382,
-    "venue_count": 14
+    "lat": 4.647952,
+    "lng": -74.057071,
+    "venue_count": 15
   },
   {
     "slug": "bois-de-villers",
@@ -3262,9 +3289,9 @@
     "display": "Bordeaux",
     "country": "France",
     "country_code": "FR",
-    "lat": 44.842172,
-    "lng": -0.581775,
-    "venue_count": 17
+    "lat": 44.84285,
+    "lng": -0.579946,
+    "venue_count": 18
   },
   {
     "slug": "borgerhout",
@@ -3330,6 +3357,15 @@
     "venue_count": 11
   },
   {
+    "slug": "boston-massachusetts",
+    "display": "Boston, Massachusetts",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 42.372011,
+    "lng": -71.079069,
+    "venue_count": 2
+  },
+  {
     "slug": "bouchemaine",
     "display": "Bouchemaine",
     "country": "France",
@@ -3364,6 +3400,15 @@
     "lat": 40.01638,
     "lng": -105.272475,
     "venue_count": 3
+  },
+  {
+    "slug": "boulder-colorado",
+    "display": "Boulder, Colorado",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 40.007356,
+    "lng": -105.294527,
+    "venue_count": 1
   },
   {
     "slug": "bouliac",
@@ -4432,9 +4477,9 @@
     "display": "Cancún",
     "country": "Mexico",
     "country_code": "MX",
-    "lat": 21.107278,
-    "lng": -86.7621,
-    "venue_count": 5
+    "lat": 21.121198,
+    "lng": -86.768139,
+    "venue_count": 6
   },
   {
     "slug": "canfranc-estacion",
@@ -4504,9 +4549,9 @@
     "display": "Cape Cod, Massachusetts",
     "country": "United States",
     "country_code": "US",
-    "lat": 41.722828,
-    "lng": -69.99532,
-    "venue_count": 1
+    "lat": 41.684979,
+    "lng": -69.952736,
+    "venue_count": 3
   },
   {
     "slug": "cape-town",
@@ -5440,9 +5485,9 @@
     "display": "Charleston, South Carolina",
     "country": "United States",
     "country_code": "US",
-    "lat": 32.601364,
-    "lng": -80.091435,
-    "venue_count": 1
+    "lat": 32.780379,
+    "lng": -79.936469,
+    "venue_count": 3
   },
   {
     "slug": "charlestown",
@@ -5461,6 +5506,15 @@
     "lat": 35.232108,
     "lng": -80.824125,
     "venue_count": 2
+  },
+  {
+    "slug": "charlottesville-virginia",
+    "display": "Charlottesville, Virginia",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 38.273295,
+    "lng": -78.132011,
+    "venue_count": 1
   },
   {
     "slug": "charmes-sur-rhone",
@@ -5746,9 +5800,9 @@
     "display": "Chicago, Illinois",
     "country": "United States",
     "country_code": "US",
-    "lat": 41.913435,
-    "lng": -87.648055,
-    "venue_count": 1
+    "lat": 41.904729,
+    "lng": -87.636532,
+    "venue_count": 2
   },
   {
     "slug": "chiclana-de-la-frontera",
@@ -6136,6 +6190,15 @@
     "lat": 43.62516,
     "lng": 1.342712,
     "venue_count": 1
+  },
+  {
+    "slug": "colorado-springs-colorado",
+    "display": "Colorado Springs, Colorado",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 38.791056,
+    "lng": -104.849765,
+    "venue_count": 2
   },
   {
     "slug": "coloreto",
@@ -6703,6 +6766,15 @@
     "lat": 32.801308,
     "lng": -96.803691,
     "venue_count": 14
+  },
+  {
+    "slug": "dallas-texas",
+    "display": "Dallas, Texas",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 32.798124,
+    "lng": -96.805262,
+    "venue_count": 2
   },
   {
     "slug": "damme",
@@ -7303,9 +7375,9 @@
     "display": "Dubai",
     "country": "United Arab Emirates",
     "country_code": "AE",
-    "lat": 25.197068,
-    "lng": 55.240627,
-    "venue_count": 74
+    "lat": 25.196829,
+    "lng": 55.240414,
+    "venue_count": 76
   },
   {
     "slug": "dublin",
@@ -10512,6 +10584,15 @@
     "venue_count": 1
   },
   {
+    "slug": "hilton-head-south-carolina",
+    "display": "Hilton Head, South Carolina",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 32.207367,
+    "lng": -80.881211,
+    "venue_count": 1
+  },
+  {
     "slug": "hilversum",
     "display": "Hilversum",
     "country": "Netherlands",
@@ -10705,9 +10786,9 @@
     "display": "Hong Kong",
     "country": "China",
     "country_code": "CN",
-    "lat": 22.282976,
-    "lng": 114.160223,
-    "venue_count": 254
+    "lat": 22.283016,
+    "lng": 114.160207,
+    "venue_count": 259
   },
   {
     "slug": "honolulu",
@@ -10798,6 +10879,15 @@
     "lat": 29.753988,
     "lng": -95.394057,
     "venue_count": 30
+  },
+  {
+    "slug": "houston-texas",
+    "display": "Houston, Texas",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 29.760759,
+    "lng": -95.356845,
+    "venue_count": 1
   },
   {
     "slug": "houten",
@@ -11139,6 +11229,15 @@
     "country_code": "US",
     "lat": 33.976309,
     "lng": -118.363441,
+    "venue_count": 1
+  },
+  {
+    "slug": "inland-empire-california",
+    "display": "Inland Empire, California",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 34.150498,
+    "lng": -117.229242,
     "venue_count": 1
   },
   {
@@ -11970,6 +12069,15 @@
     "venue_count": 1
   },
   {
+    "slug": "knoxville-tennessee",
+    "display": "Knoxville, Tennessee",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 35.692719,
+    "lng": -83.861938,
+    "venue_count": 1
+  },
+  {
     "slug": "ko-samui",
     "display": "Ko Samui",
     "country": "Thailand",
@@ -12004,6 +12112,15 @@
     "lat": 50.361381,
     "lng": 7.581369,
     "venue_count": 3
+  },
+  {
+    "slug": "kohler-wisconsin",
+    "display": "Kohler, Wisconsin",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 43.740296,
+    "lng": -87.780859,
+    "venue_count": 1
   },
   {
     "slug": "kolkata",
@@ -12699,6 +12816,15 @@
     "venue_count": 1
   },
   {
+    "slug": "lanai-hawaii",
+    "display": "Lanai, Hawaii",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 20.741547,
+    "lng": -156.896418,
+    "venue_count": 1
+  },
+  {
     "slug": "lanaye",
     "display": "Lanaye",
     "country": "Belgium",
@@ -12874,9 +13000,9 @@
     "display": "Las Vegas, Nevada",
     "country": "United States",
     "country_code": "US",
-    "lat": 36.129963,
-    "lng": 9.99795,
-    "venue_count": 3
+    "lat": 36.124815,
+    "lng": -115.167379,
+    "venue_count": 15
   },
   {
     "slug": "lasko",
@@ -12928,9 +13054,9 @@
     "display": "Laurel Highlands, Pennsylvania",
     "country": "United States",
     "country_code": "US",
-    "lat": 39.806334,
-    "lng": -79.551519,
-    "venue_count": 1
+    "lat": 39.80391,
+    "lng": -79.545596,
+    "venue_count": 2
   },
   {
     "slug": "lausanne",
@@ -13945,9 +14071,9 @@
     "display": "London",
     "country": "United Kingdom",
     "country_code": "GB",
-    "lat": 51.511782,
-    "lng": -0.132648,
-    "venue_count": 242
+    "lat": 51.511591,
+    "lng": -0.132668,
+    "venue_count": 243
   },
   {
     "slug": "long-beach",
@@ -14035,27 +14161,27 @@
     "display": "Los Angeles",
     "country": "United States",
     "country_code": "US",
-    "lat": 34.064159,
-    "lng": -118.3087,
-    "venue_count": 109
+    "lat": 34.06393,
+    "lng": -118.308625,
+    "venue_count": 110
   },
   {
     "slug": "los-angeles-california",
     "display": "Los Angeles, California",
     "country": "United States",
     "country_code": "US",
-    "lat": 34.083105,
-    "lng": -118.359213,
-    "venue_count": 4
+    "lat": 34.082541,
+    "lng": -118.3884,
+    "venue_count": 9
   },
   {
     "slug": "los-cabos",
     "display": "Los Cabos",
     "country": "Mexico",
     "country_code": "MX",
-    "lat": 20.673731,
-    "lng": -87.023354,
-    "venue_count": 1
+    "lat": 21.7745,
+    "lng": -98.467354,
+    "venue_count": 2
   },
   {
     "slug": "los-gatos",
@@ -14314,9 +14440,9 @@
     "display": "Macau",
     "country": "Macao",
     "country_code": "MO",
-    "lat": 22.150846,
-    "lng": 113.555115,
-    "venue_count": 48
+    "lat": 22.150012,
+    "lng": 113.554918,
+    "venue_count": 55
   },
   {
     "slug": "machilly",
@@ -15205,9 +15331,9 @@
     "display": "Melbourne",
     "country": "Australia",
     "country_code": "AU",
-    "lat": -37.813279,
-    "lng": 144.970641,
-    "venue_count": 21
+    "lat": -37.812663,
+    "lng": 144.970723,
+    "venue_count": 22
   },
   {
     "slug": "melfi",
@@ -15394,9 +15520,9 @@
     "display": "Miami, Florida",
     "country": "United States",
     "country_code": "US",
-    "lat": 25.807274,
-    "lng": -80.123698,
-    "venue_count": 3
+    "lat": 25.830118,
+    "lng": -80.122476,
+    "venue_count": 6
   },
   {
     "slug": "middleburg",
@@ -15430,9 +15556,9 @@
     "display": "Milan",
     "country": "Italy",
     "country_code": "IT",
-    "lat": 45.466147,
+    "lat": 45.465852,
     "lng": 9.189506,
-    "venue_count": 39
+    "venue_count": 41
   },
   {
     "slug": "milas",
@@ -15925,9 +16051,9 @@
     "display": "Monterey, Carmel and Big Sur, California",
     "country": "United States",
     "country_code": "US",
-    "lat": 35.654954,
-    "lng": -120.900861,
-    "venue_count": 1
+    "lat": 36.50091,
+    "lng": -121.765132,
+    "venue_count": 5
   },
   {
     "slug": "monteriggioni",
@@ -16313,8 +16439,8 @@
     "display": "Mumbai",
     "country": "India",
     "country_code": "IN",
-    "lat": 19.003245,
-    "lng": 72.832816,
+    "lat": 19.0221,
+    "lng": 72.833108,
     "venue_count": 14
   },
   {
@@ -16423,6 +16549,15 @@
     "country_code": "US",
     "lat": 41.35442,
     "lng": -71.96748,
+    "venue_count": 1
+  },
+  {
+    "slug": "mystic-connecticut",
+    "display": "Mystic, Connecticut",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 41.354584,
+    "lng": -71.97519,
     "venue_count": 1
   },
   {
@@ -16583,9 +16718,9 @@
     "display": "Napa, California",
     "country": "United States",
     "country_code": "US",
-    "lat": 38.40444,
-    "lng": -122.364971,
-    "venue_count": 1
+    "lat": 38.493429,
+    "lng": -122.406031,
+    "venue_count": 4
   },
   {
     "slug": "naples",
@@ -16628,9 +16763,9 @@
     "display": "Nashville",
     "country": "United States",
     "country_code": "US",
-    "lat": 36.177261,
-    "lng": -86.771287,
-    "venue_count": 15
+    "lat": 36.1776,
+    "lng": -86.767978,
+    "venue_count": 16
   },
   {
     "slug": "nashville-tennessee",
@@ -16916,9 +17051,9 @@
     "display": "New Orleans, Louisiana",
     "country": "United States",
     "country_code": "US",
-    "lat": 29.957328,
-    "lng": -90.068067,
-    "venue_count": 1
+    "lat": 29.953579,
+    "lng": -90.067271,
+    "venue_count": 2
   },
   {
     "slug": "new-york",
@@ -16934,9 +17069,9 @@
     "display": "New York City, New York",
     "country": "United States",
     "country_code": "US",
-    "lat": 40.761422,
-    "lng": -73.981756,
-    "venue_count": 13
+    "lat": 40.761651,
+    "lng": -73.98158,
+    "venue_count": 14
   },
   {
     "slug": "newbury",
@@ -16997,9 +17132,9 @@
     "display": "Newport, Rhode Island",
     "country": "United States",
     "country_code": "US",
-    "lat": 41.484658,
-    "lng": -71.297734,
-    "venue_count": 1
+    "lat": 41.463999,
+    "lng": -71.360791,
+    "venue_count": 3
   },
   {
     "slug": "newquay",
@@ -17114,9 +17249,9 @@
     "display": "Nîmes",
     "country": "France",
     "country_code": "FR",
-    "lat": 43.833042,
-    "lng": 4.35955,
-    "venue_count": 5
+    "lat": 43.834998,
+    "lng": 4.358798,
+    "venue_count": 6
   },
   {
     "slug": "ningbo",
@@ -17341,6 +17476,15 @@
     "country_code": "US",
     "lat": 41.337014,
     "lng": -73.563301,
+    "venue_count": 1
+  },
+  {
+    "slug": "northern-virginia",
+    "display": "Northern Virginia",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 38.97453,
+    "lng": -77.742618,
     "venue_count": 1
   },
   {
@@ -17713,6 +17857,15 @@
     "venue_count": 1
   },
   {
+    "slug": "ojai-california",
+    "display": "Ojai, California",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 34.437497,
+    "lng": -119.256561,
+    "venue_count": 1
+  },
+  {
     "slug": "okinawa",
     "display": "Okinawa",
     "country": "Japan",
@@ -17888,9 +18041,9 @@
     "display": "Orange County, California",
     "country": "United States",
     "country_code": "US",
-    "lat": 50.84867,
-    "lng": 5.699391,
-    "venue_count": 1
+    "lat": 33.588057,
+    "lng": -117.72041,
+    "venue_count": 5
   },
   {
     "slug": "orbetello",
@@ -17951,9 +18104,9 @@
     "display": "Orlando, Florida",
     "country": "United States",
     "country_code": "US",
-    "lat": 36.250606,
-    "lng": -75.349061,
-    "venue_count": 2
+    "lat": 28.41131,
+    "lng": -81.429453,
+    "venue_count": 3
   },
   {
     "slug": "oropesa-del-mar",
@@ -18415,12 +18568,30 @@
     "venue_count": 2
   },
   {
+    "slug": "palm-beach-florida",
+    "display": "Palm Beach, Florida",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 26.618606,
+    "lng": -80.038884,
+    "venue_count": 3
+  },
+  {
     "slug": "palm-springs",
     "display": "Palm Springs",
     "country": "United States",
     "country_code": "US",
     "lat": 33.822812,
     "lng": -116.549896,
+    "venue_count": 1
+  },
+  {
+    "slug": "palm-springs-california",
+    "display": "Palm Springs, California",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 33.814797,
+    "lng": -116.408788,
     "venue_count": 1
   },
   {
@@ -18500,9 +18671,9 @@
     "display": "Paris",
     "country": "France",
     "country_code": "FR",
-    "lat": 48.865184,
-    "lng": 2.330825,
-    "venue_count": 186
+    "lat": 48.865179,
+    "lng": 2.330178,
+    "venue_count": 187
   },
   {
     "slug": "park-city",
@@ -18512,6 +18683,15 @@
     "lat": 40.644783,
     "lng": -111.496354,
     "venue_count": 1
+  },
+  {
+    "slug": "park-city-utah",
+    "display": "Park City, Utah",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 40.630206,
+    "lng": -111.493513,
+    "venue_count": 4
   },
   {
     "slug": "parma",
@@ -18887,9 +19067,9 @@
     "display": "Philadelphia, Pennsylvania",
     "country": "United States",
     "country_code": "US",
-    "lat": 39.956332,
-    "lng": -75.170332,
-    "venue_count": 1
+    "lat": 39.953122,
+    "lng": -75.171988,
+    "venue_count": 2
   },
   {
     "slug": "phnom-penh",
@@ -18908,6 +19088,15 @@
     "lat": 33.465369,
     "lng": -112.070431,
     "venue_count": 9
+  },
+  {
+    "slug": "phoenix-arizona",
+    "display": "Phoenix, Arizona",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 33.266232,
+    "lng": -111.993114,
+    "venue_count": 1
   },
   {
     "slug": "phra-nakhon-si-ayutthaya",
@@ -19603,6 +19792,15 @@
     "venue_count": 18
   },
   {
+    "slug": "portland-oregon",
+    "display": "Portland, Oregon",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 45.299326,
+    "lng": -122.973021,
+    "venue_count": 1
+  },
+  {
     "slug": "porto",
     "display": "Porto",
     "country": "Portugal",
@@ -19940,9 +20138,9 @@
     "display": "Puerto Rico",
     "country": "Puerto Rico",
     "country_code": "PR",
-    "lat": 18.458681,
-    "lng": -66.075862,
-    "venue_count": 1
+    "lat": 18.467182,
+    "lng": -66.188402,
+    "venue_count": 2
   },
   {
     "slug": "puertomingalvo",
@@ -20246,9 +20444,9 @@
     "display": "Raleigh-Durham, North Carolina",
     "country": "United States",
     "country_code": "US",
-    "lat": 35.829479,
-    "lng": -78.76458,
-    "venue_count": 1
+    "lat": 35.815164,
+    "lng": -78.928688,
+    "venue_count": 2
   },
   {
     "slug": "ramatuelle",
@@ -20402,6 +20600,15 @@
     "lat": 48.10833,
     "lng": -1.682808,
     "venue_count": 8
+  },
+  {
+    "slug": "reno-nevada",
+    "display": "Reno, Nevada",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 39.488998,
+    "lng": -119.793767,
+    "venue_count": 1
   },
   {
     "slug": "replonges",
@@ -20647,6 +20854,15 @@
     "venue_count": 1
   },
   {
+    "slug": "riviera-maya",
+    "display": "Riviera Maya",
+    "country": "Mexico",
+    "country_code": "MX",
+    "lat": 20.635394,
+    "lng": -87.066586,
+    "venue_count": 2
+  },
+  {
     "slug": "rivisondoli",
     "display": "Rivisondoli",
     "country": "Italy",
@@ -20813,9 +21029,9 @@
     "display": "Rome",
     "country": "Italy",
     "country_code": "IT",
-    "lat": 41.897889,
-    "lng": 12.475572,
-    "venue_count": 37
+    "lat": 41.897822,
+    "lng": 12.475653,
+    "venue_count": 38
   },
   {
     "slug": "romeno",
@@ -21713,9 +21929,9 @@
     "display": "Saint Moritz",
     "country": "Switzerland",
     "country_code": "CH",
-    "lat": 46.478432,
-    "lng": 9.811677,
-    "venue_count": 2
+    "lat": 46.488469,
+    "lng": 9.826017,
+    "venue_count": 3
   },
   {
     "slug": "saint-nazaire",
@@ -22118,9 +22334,9 @@
     "display": "San Diego, California",
     "country": "United States",
     "country_code": "US",
-    "lat": 23.339628,
-    "lng": -8.327814,
-    "venue_count": 2
+    "lat": 32.941577,
+    "lng": -117.19907,
+    "venue_count": 3
   },
   {
     "slug": "san-donato-in-poggio",
@@ -22154,9 +22370,9 @@
     "display": "San Francisco, California",
     "country": "United States",
     "country_code": "US",
-    "lat": 37.791465,
-    "lng": -122.401173,
-    "venue_count": 7
+    "lat": 37.789071,
+    "lng": -122.403427,
+    "venue_count": 10
   },
   {
     "slug": "san-genesio-atesino",
@@ -22744,6 +22960,15 @@
     "venue_count": 1
   },
   {
+    "slug": "santa-fe-new-mexico",
+    "display": "Santa Fe, New Mexico",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 35.680527,
+    "lng": -105.925397,
+    "venue_count": 1
+  },
+  {
     "slug": "santa-monica",
     "display": "Santa Monica",
     "country": "United States",
@@ -23239,6 +23464,15 @@
     "venue_count": 1
   },
   {
+    "slug": "scottsdale-arizona",
+    "display": "Scottsdale, Arizona",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 33.732196,
+    "lng": -111.853732,
+    "venue_count": 0
+  },
+  {
     "slug": "sculthorpe",
     "display": "Sculthorpe",
     "country": "United Kingdom",
@@ -23246,6 +23480,15 @@
     "lat": 52.837292,
     "lng": 0.808145,
     "venue_count": 1
+  },
+  {
+    "slug": "sea-island-georgia",
+    "display": "Sea Island, Georgia",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 31.15944,
+    "lng": -81.377804,
+    "venue_count": 2
   },
   {
     "slug": "seasalter",
@@ -23302,6 +23545,15 @@
     "venue_count": 1
   },
   {
+    "slug": "sedona-arizona",
+    "display": "Sedona, Arizona",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 34.868379,
+    "lng": -111.759979,
+    "venue_count": 1
+  },
+  {
     "slug": "seesen",
     "display": "Seesen",
     "country": "Germany",
@@ -23351,9 +23603,9 @@
     "display": "Selva di Val Gardena",
     "country": "Italy",
     "country_code": "IT",
-    "lat": 46.556919,
-    "lng": 11.759928,
-    "venue_count": 0
+    "lat": 46.558017,
+    "lng": 11.753372,
+    "venue_count": 1
   },
   {
     "slug": "selva-malvezzi",
@@ -23549,9 +23801,9 @@
     "display": "Shanghai",
     "country": "China",
     "country_code": "CN",
-    "lat": 31.226472,
+    "lat": 31.22525,
     "lng": 121.47326,
-    "venue_count": 95
+    "venue_count": 97
   },
   {
     "slug": "shantou",
@@ -23576,9 +23828,9 @@
     "display": "Shenzhen",
     "country": "China",
     "country_code": "CN",
-    "lat": 22.536116,
-    "lng": 114.057423,
-    "venue_count": 3
+    "lat": 18.136898,
+    "lng": 108.957788,
+    "venue_count": 4
   },
   {
     "slug": "sherman-oaks",
@@ -24013,6 +24265,15 @@
     "venue_count": 3
   },
   {
+    "slug": "sonoma-california",
+    "display": "Sonoma, California",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 38.630464,
+    "lng": -122.86328,
+    "venue_count": 2
+  },
+  {
     "slug": "sopot",
     "display": "Sopot",
     "country": "Poland",
@@ -24044,9 +24305,9 @@
     "display": "Sorrento",
     "country": "Italy",
     "country_code": "IT",
-    "lat": 40.62781,
-    "lng": 14.37538,
-    "venue_count": 4
+    "lat": 40.628333,
+    "lng": 14.375204,
+    "venue_count": 5
   },
   {
     "slug": "sort",
@@ -24074,6 +24335,15 @@
     "lat": 53.89538,
     "lng": -0.534926,
     "venue_count": 1
+  },
+  {
+    "slug": "southwestern-montana",
+    "display": "Southwestern Montana",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 44.181888,
+    "lng": -99.75505,
+    "venue_count": 2
   },
   {
     "slug": "sowerby-bridge",
@@ -25048,6 +25318,24 @@
     "venue_count": 1
   },
   {
+    "slug": "the-adirondacks-new-york",
+    "display": "The Adirondacks, New York",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 43.115126,
+    "lng": -75.587804,
+    "venue_count": 2
+  },
+  {
+    "slug": "the-berkshires-massachusetts",
+    "display": "The Berkshires, Massachusetts",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 42.338736,
+    "lng": -73.281113,
+    "venue_count": 0
+  },
+  {
     "slug": "the-hague",
     "display": "The Hague",
     "country": "Netherlands",
@@ -25286,9 +25574,9 @@
     "display": "Tokyo",
     "country": "Japan",
     "country_code": "JP",
-    "lat": 35.668104,
-    "lng": 139.733333,
-    "venue_count": 584
+    "lat": 35.668081,
+    "lng": 139.733472,
+    "venue_count": 586
   },
   {
     "slug": "toledo",
@@ -25297,6 +25585,15 @@
     "country_code": "ES",
     "lat": 39.861747,
     "lng": -4.046095,
+    "venue_count": 1
+  },
+  {
+    "slug": "toledo-ohio",
+    "display": "Toledo, Ohio",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 41.621114,
+    "lng": -83.545412,
     "venue_count": 1
   },
   {
@@ -25403,9 +25700,9 @@
     "display": "Toronto, Ontario",
     "country": "Canada",
     "country_code": "CA",
-    "lat": 43.66454,
-    "lng": -79.390404,
-    "venue_count": 2
+    "lat": 43.658543,
+    "lng": -79.390943,
+    "venue_count": 4
   },
   {
     "slug": "torquay",
@@ -25783,6 +26080,15 @@
     "country_code": "ES",
     "lat": 39.460317,
     "lng": -5.8839,
+    "venue_count": 1
+  },
+  {
+    "slug": "tucson-arizona",
+    "display": "Tucson, Arizona",
+    "country": "United States",
+    "country_code": "US",
+    "lat": 32.478899,
+    "lng": -111.089247,
     "venue_count": 1
   },
   {
@@ -26297,6 +26603,15 @@
     "lat": 36.124815,
     "lng": -115.167972,
     "venue_count": 1
+  },
+  {
+    "slug": "vancouver-british-columbia",
+    "display": "Vancouver, British Columbia",
+    "country": "Canada",
+    "country_code": "CA",
+    "lat": 49.306031,
+    "lng": -123.139702,
+    "venue_count": 2
   },
   {
     "slug": "vannes",

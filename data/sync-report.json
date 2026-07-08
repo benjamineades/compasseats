@@ -1,10 +1,11 @@
 {
-  "generated_at": "2026-07-03T13:08:20.684760+00:00",
-  "venue_count": 10564,
-  "city_count": 3146,
-  "region_count": 113,
-  "active_venue_count": 10223,
-  "blurb_long_count": 10117,
+  "generated_at": "2026-07-08T13:43:09.124215+00:00",
+  "venue_count": 10680,
+  "city_count": 3184,
+  "region_count": 112,
+  "active_venue_count": 10335,
+  "blurb_long_count": 10126,
+  "blurb_long_count_active": 9800,
   "spot_checks": {
     "restaurant-mirazur": {
       "found": true,
@@ -14,6 +15,5 @@
       "found": true,
       "blurb_long_head": "Nearly everything here is in service of balance — between simplicity and refinem"
     }
-  },
-  "notes": "Da Vittorio (Sankt Moritz) blurb corrected post-build — was duplicating Brusaporto text verbatim (hills outside Bergamo), now describes the actual Carlton Hotel St. Moritz outpost."
+  }
 }
