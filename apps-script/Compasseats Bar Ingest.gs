@@ -25,6 +25,15 @@
  *   europe-50-best-bars / europe-50-best-bars-51-100 from the valid list —
  *   those two would have failed to ingest. Also added top-500-bars.
  *
+ *   SEPARATE BUG FIXED SAME DAY: the dedupe signature was
+ *   source_slug|year|name — no city. Any two venues sharing a brand name in
+ *   the same source+year (chain branches like "Punch Room at Edition" in
+ *   five different cities, or "Salmon Guru" in three) collided and all but
+ *   the first were silently dropped as "duplicates." The restaurant tool
+ *   already included city in its signature; this brings the bar tool in
+ *   line with it. A real run on Top 500 Bars lost exactly 20 branch venues
+ *   this way before the fix (source_slug: top-500-bars, years 2024/2025).
+ *
  * TWO FUNCTIONS
  *   makeBarImportTemplate()  creates a blank "Bar List Import" tab with the
  *                            right columns + a dropdown of valid sources.
@@ -212,14 +221,14 @@ function ingestBarLists() {
   }
 
   // Build a set of award rows we already have, to avoid duplicates.
-  // Signature = source_slug | year | normalized(name)
+  // Signature = source_slug | year | normalized(name) | normalized(city)
   var existing = {};
   var av = awardsSheet.getDataRange().getValues();
   for (var ar = 1; ar < av.length; ar++) {
     var arow = av[ar];
     if (!arow || arow.join('') === '') continue;
     var asig = String(arow[0]).trim() + '|' + (Number(arow[1]) || '') + '|' +
-      normKey2_(arow[3]);
+      normKey2_(arow[3]) + '|' + normKey2_(arow[4]);
     existing[asig] = true;
   }
 
@@ -243,7 +252,7 @@ function ingestBarLists() {
       var country = String(row[5] || '').trim();
       var catOverride = String(row[6] || '').trim();
 
-      var sig = src + '|' + year + '|' + normKey2_(name);
+      var sig = src + '|' + year + '|' + normKey2_(name) + '|' + normKey2_(city);
       if (existing[sig]) { skippedDup++; continue; }
       existing[sig] = true; // guard against dups within this same run
 
