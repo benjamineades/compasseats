@@ -1,114 +1,117 @@
 /**
  * CompassEats — Cross-City Collision Verification Fix (Step B, batch 1)
  * =======================================================================
- * fixCollisionVerificationLabels.gs — July 9, 2026 (rev 2)
+ * fixCollisionVerificationLabels.gs — July 9, 2026 (rev 3)
  *
- * WHAT THIS FIXES
- *   The Cowork verification pass on the merge_review collisions produced 63
- *   ALIAS + 22 PHANTOM decisions for real, single-location venues that carry
- *   a wrong or region-level city label in a source award tab. Tracing those
- *   to source rows gave 72 unique venue+city corrections across 8 tabs.
- *   Fixing the label at the SOURCE row (not the venues tab) is the durable
- *   fix — the venues tab is rebuilt from these tabs on every reshape.
+ * WHY REV 3
+ *   Rev 2 had a real logic bug: it treated a venue as "already done" if ANY
+ *   row for that venue already held the target city. But these venues appear
+ *   under several award sources — e.g. "Herons" has one correct la-liste row
+ *   ("Cary") AND seven wrong Forbes rows ("Raleigh-Durham, North Carolina").
+ *   Rev 2 saw the correct row and skipped the seven wrong ones — exactly the
+ *   rows that make it a collision. Rev 3 fixes EVERY wrong row regardless of
+ *   whether another row is already correct.
  *
- * REV 2 — why this version exists
- *   Rev 1 matched the city cell as an EXACT full string and skipped any
- *   ambiguous/curly-apostrophe/whitespace difference, which caused all 72 to
- *   skip on the live sheet. Rev 2:
- *     - Matches the venue NAME tolerantly (curly vs straight apostrophes and
- *       quotes folded, whitespace collapsed, case-insensitive). Accents are
- *       kept, since they distinguish real cities.
- *     - Updates every row for that venue whose city STILL equals the old
- *       label (venues repeat once per award year — all should change).
- *     - If it changes nothing, it logs WHY using the city the sheet actually
- *       holds right now — so a skip is self-explaining, never a black box.
- *     - Never edits a row that is already the target city.
- *   Nothing is deleted; only the city cell is ever written; only these 8 tabs
- *   are touched.
+ * TWO MATCH MODES (per edit, in the list below)
+ *   mode:'exact'    -> change only rows whose city currently equals oldCity.
+ *                      (63 solid cases where the wrong label is known exactly.)
+ *   mode:'anywrong' -> single-location venue: set EVERY row for this venue in
+ *                      this tab to newCity, except rows already = newCity.
+ *                      (8 cases whose wrong label drifted across earlier fixes
+ *                      — e.g. The French Laundry, where "Napa"/"Napa,
+ *                      California" must become the more specific "Yountville".)
+ *                      Safe because each was verified single-location.
  *
- * HOW TO RUN
- *   1. Extensions → Apps Script → open the fixCollisionVerificationLabels
- *      file → replace its whole contents with this → Save.
- *   2. Run → fixCollisionVerificationLabels. Authorize if prompted.
- *   3. Read the popup, then open "collision_label_fix_log" and skim it.
- *      Paste the log back for review BEFORE running reshape/merge.
+ * SAFETY
+ *   - Only ever writes the city cell. No deletes. Only the 8 named tabs.
+ *   - Tolerant venue-name match (curly vs straight quotes folded, whitespace
+ *     collapsed, case-insensitive; accents kept — they distinguish cities).
+ *   - Every SKIP logs the exact city text the sheet holds now, so nothing is
+ *     a black box.
+ *
+ * RUN
+ *   1. Apps Script → open fixCollisionVerificationLabels → replace all with
+ *      this → Save.
+ *   2. Run → fixCollisionVerificationLabels. Authorize if asked. (If it times
+ *      out, just run again — that's a transient Google hiccup.)
+ *   3. Read popup, open "collision_label_fix_log", paste it back for review
+ *      BEFORE running reshape / merge.
  */
 
 var CVL_LOG_TAB = 'collision_label_fix_log';
 
 var CVL_EDITS = [
-  { tab: 'OAD Europe 2025', name: 'Can Jubany', oldCity: 'Bacoli', newCity: 'Calldetenes' },
-  { tab: 'Michelin Guide', name: 'De Gieser Wildeman', oldCity: 'aachen, Netherlands', newCity: 'Noordeloos' },
-  { tab: 'OAD Europe 2025', name: 'Fagn', oldCity: 'London', newCity: 'Trondheim' },
-  { tab: 'Michelin Guide', name: 'John\'s House', oldCity: 'Dorking, United Kingdom', newCity: 'Loughborough' },
-  { tab: 'OAD Europe 2025', name: 'Kommilfoo', oldCity: 'London', newCity: 'Antwerp' },
-  { tab: 'Best Chef Awards', name: 'La Petite Colombe', oldCity: 'Cape Town, South Africa', newCity: 'Franschhoek' },
-  { tab: 'OAD Europe 2025', name: 'Moments', oldCity: 'Aughton', newCity: 'Barcelona' },
-  { tab: 'OAD Europe 2025', name: 'Mraz & Sohn', oldCity: 'Munich', newCity: 'Vienna' },
-  { tab: 'OAD North America 2026', name: 'Omakase @ Barracks Row', oldCity: 'New York', newCity: 'Washington' },
-  { tab: 'Restaurant Awards', name: 'Manresa', oldCity: 'San Francisco', newCity: 'Los Gatos' },
-  { tab: 'Worlds 50 Best', name: 'Chainaya Tea & Cocktails', oldCity: 'Athens', newCity: 'Moscow' },
-  { tab: 'Restaurant Awards', name: '1919 Restaurant', oldCity: 'Puerto Rico', newCity: 'San Juan' },
-  { tab: 'Worlds 50 Best', name: 'L\'Auberge de l\'Ill', oldCity: 'Alsace', newCity: 'Illhaeusern' },
-  { tab: 'OAD North America 2026', name: 'Blue by Eric Ripert', oldCity: 'Georgetown', newCity: 'Cayman Islands' },
-  { tab: 'OAD North America 2025', name: 'Blue by Eric Ripert', oldCity: 'Georgetown', newCity: 'Cayman Islands' },
-  { tab: 'Restaurant Awards', name: 'Blue by Eric Ripert', oldCity: 'George Town', newCity: 'Cayman Islands' },
-  { tab: 'Restaurant Awards', name: 'Blue Hill at Stone Barns', oldCity: 'Hudson Valley, New York', newCity: 'Tarrytown' },
-  { tab: 'Michelin Guide', name: 'Caruso\'s', oldCity: 'Montecito, CA, United States', newCity: 'Santa Barbara' },
-  { tab: 'Restaurant Awards', name: 'Caruso\'s', oldCity: 'Montecito', newCity: 'Santa Barbara' },
-  { tab: 'Restaurant Awards', name: 'Coast', oldCity: 'Watch Hill, Rhode Island', newCity: 'Westerly' },
-  { tab: 'Restaurant Awards', name: 'Cocina de Autor', oldCity: 'Los Cabos', newCity: 'Cabo San Lucas' },
-  { tab: 'Best Chef Awards', name: 'Conservatorium', oldCity: 'Ciudad Colón, Costa Rica', newCity: 'San José' },
-  { tab: 'Restaurant Awards', name: 'Forge', oldCity: 'Richmond', newCity: 'Middleton Tyas' },
-  { tab: 'Restaurant Awards', name: 'Harrimans Grill', oldCity: 'Northern Virginia', newCity: 'Middleburg' },
-  { tab: 'Restaurant Awards', name: 'Herons', oldCity: 'Raleigh-Durham, North Carolina', newCity: 'Cary' },
-  { tab: 'Michelin Guide', name: 'Ixi\'im', oldCity: 'Merida, Mexico', newCity: 'Chocholá' },
-  { tab: 'Restaurant Awards', name: 'Kai Restaurant', oldCity: 'Phoenix', newCity: 'Chandler' },
-  { tab: 'OAD Japan 2025', name: 'L\'évo', oldCity: 'Nanto', newCity: 'Toyama' },
-  { tab: 'Restaurant Awards', name: 'L\'évo', oldCity: 'Nanto', newCity: 'Toyama' },
-  { tab: 'Restaurant Awards', name: 'L’évo', oldCity: 'Nanto', newCity: 'Toyama' },
-  { tab: 'Restaurant Awards', name: 'La Bòria', oldCity: 'Privas', newCity: 'Veyras' },
-  { tab: 'Michelin Guide', name: 'La Cuisine Rademacher', oldCity: 'Cologne, Germany', newCity: 'Köln' },
-  { tab: 'Restaurant Awards', name: 'La Mer', oldCity: 'Oahu, Hawaii', newCity: 'Honolulu' },
-  { tab: 'Michelin Guide', name: 'La Rei Natura by Michelangelo Mammoliti', oldCity: 'Piedmont, Italy', newCity: 'Serralunga d\'Alba' },
-  { tab: 'Restaurant Awards', name: 'Lautrec', oldCity: 'Laurel Highlands, Pennsylvania', newCity: 'Farmington' },
-  { tab: 'Michelin Guide', name: 'Le Moissonnier Bistro', oldCity: 'Cologne, Germany', newCity: 'Köln' },
-  { tab: 'Restaurant Awards', name: 'Auberge du Père Bise', oldCity: 'Talloires', newCity: 'Talloires-Montmin' },
-  { tab: 'Restaurant Awards', name: 'Madera', oldCity: 'San José', newCity: 'Menlo Park' },
-  { tab: 'Michelin Guide', name: 'Maximo', oldCity: 'Houston, TX, United States', newCity: 'West University Place' },
-  { tab: 'Restaurant Awards', name: 'Mil', oldCity: 'Cusco', newCity: 'Moray' },
-  { tab: 'Restaurant Awards', name: 'Mugen', oldCity: 'Oahu, Hawaii', newCity: 'Honolulu' },
-  { tab: 'Restaurant Awards', name: 'Orchids', oldCity: 'Oahu, Hawaii', newCity: 'Honolulu' },
-  { tab: 'Best Chef Awards', name: 'Ox & Klee', oldCity: 'Cologne, Germany', newCity: 'Köln' },
-  { tab: 'Restaurant Awards', name: 'Ox & Klee', oldCity: 'Cologne', newCity: 'Köln' },
-  { tab: 'Michelin Guide', name: 'Pottkind', oldCity: 'Cologne, Germany', newCity: 'Köln' },
-  { tab: 'Michelin Guide', name: 'La Société', oldCity: 'Cologne, Germany', newCity: 'Köln' },
-  { tab: 'Restaurant Awards', name: 'La Société', oldCity: 'Cologne', newCity: 'Köln' },
-  { tab: 'Michelin Guide', name: 'maximilian lorenz', oldCity: 'Cologne, Germany', newCity: 'Köln' },
-  { tab: 'Michelin Guide', name: 'Don Alfonso 1890', oldCity: 'Sant\'Agata sui Due Golfi, Italy', newCity: 'Massa Lubrense' },
-  { tab: 'Michelin Guide', name: 'Sahila - The Restaurant', oldCity: 'Cologne, Germany', newCity: 'Köln' },
-  { tab: 'Restaurant Awards', name: 'Salt', oldCity: 'Amelia Island', newCity: 'Fernandina Beach' },
-  { tab: 'Restaurant Awards', name: 'Sierra Mar Restaurant', oldCity: 'Monterey, Carmel and Big Sur, California', newCity: 'Big Sur' },
-  { tab: 'Michelin Guide', name: 'Søllerød Kro', oldCity: 'Copenhagen, Denmark', newCity: 'Holte' },
-  { tab: 'Michelin Guide', name: 'taku', oldCity: 'Cologne, Germany', newCity: 'Köln' },
-  { tab: 'Restaurant Awards', name: 'Terre', oldCity: 'Cork', newCity: 'Castlemartyr' },
-  { tab: 'Restaurant Awards', name: 'The Angel at Hetton', oldCity: 'Skipton', newCity: 'Hetton' },
-  { tab: 'Restaurant Awards', name: 'The Elderberry House', oldCity: 'Tahoe and Yosemite, California', newCity: 'Oakhurst' },
-  { tab: 'Restaurant Awards', name: 'The Fearrington House Restaurant', oldCity: 'Raleigh-Durham, North Carolina', newCity: 'Pittsboro' },
-  { tab: 'Restaurant Awards', name: 'The French Laundry', oldCity: 'Napa', newCity: 'Yountville' },
-  { tab: 'Restaurant Awards', name: 'The Inn at Little Washington', oldCity: 'Northern Virginia, District of Columbia', newCity: 'Washington' },
-  { tab: 'Restaurant Awards', name: 'The Ocean Room', oldCity: 'Charleston', newCity: 'Kiawah Island' },
-  { tab: 'Restaurant Awards', name: 'The Pines Modern Steakhouse', oldCity: 'Los Angeles', newCity: 'Inland Empire, California' },
-  { tab: 'Restaurant Awards', name: 'The Restaurant at JUSTIN', oldCity: 'Monterey, Carmel and Big Sur, California', newCity: 'Paso Robles' },
-  { tab: 'Restaurant Awards', name: 'The Village Pub', oldCity: 'San Francisco', newCity: 'Woodside' },
-  { tab: 'Restaurant Awards', name: 'The White Barn Inn Restaurant', oldCity: 'The Kennebunks, Maine', newCity: 'Kennebunk' },
-  { tab: 'Restaurant Awards', name: 'The White Barn Inn Restaurant', oldCity: 'Coastal Maine', newCity: 'Kennebunk' },
-  { tab: 'Restaurant Awards', name: 'Twenty-Eight Atlantic', oldCity: 'Cape Cod, Massachusetts', newCity: 'Harwich' },
-  { tab: 'Restaurant Awards', name: 'Yanagiya', oldCity: 'Mizunami', newCity: 'Gifu' },
-  { tab: 'Michelin Guide', name: 'Zur Tant', oldCity: 'Cologne, Germany', newCity: 'Köln' },
-  { tab: 'Restaurant Awards', name: 'Aubergine at L\'Auberge Carmel', oldCity: 'Monterey, Carmel and Big Sur, California', newCity: 'Carmel by the Sea' },
-  { tab: 'Restaurant Awards', name: 'Restaurante HA\'', oldCity: 'Riviera Maya', newCity: 'Playa del Carmen' },
-  { tab: 'Restaurant Awards', name: 'SingleThread Farms Restaurant', oldCity: 'Sonoma', newCity: 'Healdsburg' },
+  { tab: 'OAD Europe 2025', name: 'Can Jubany', oldCity: 'Bacoli', newCity: 'Calldetenes', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'De Gieser Wildeman', oldCity: 'aachen, Netherlands', newCity: 'Noordeloos', mode: 'exact' },
+  { tab: 'OAD Europe 2025', name: 'Fagn', oldCity: 'London', newCity: 'Trondheim', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'John\'s House', oldCity: 'Dorking, United Kingdom', newCity: 'Loughborough', mode: 'exact' },
+  { tab: 'OAD Europe 2025', name: 'Kommilfoo', oldCity: 'London', newCity: 'Antwerp', mode: 'exact' },
+  { tab: 'Best Chef Awards', name: 'La Petite Colombe', oldCity: 'Cape Town, South Africa', newCity: 'Franschhoek', mode: 'exact' },
+  { tab: 'OAD Europe 2025', name: 'Moments', oldCity: 'Aughton', newCity: 'Barcelona', mode: 'exact' },
+  { tab: 'OAD Europe 2025', name: 'Mraz & Sohn', oldCity: 'Munich', newCity: 'Vienna', mode: 'exact' },
+  { tab: 'OAD North America 2026', name: 'Omakase @ Barracks Row', oldCity: 'New York', newCity: 'Washington', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Manresa', oldCity: 'San Francisco', newCity: 'Los Gatos', mode: 'anywrong' },
+  { tab: 'Worlds 50 Best', name: 'Chainaya Tea & Cocktails', oldCity: 'Athens', newCity: 'Moscow', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: '1919 Restaurant', oldCity: 'Puerto Rico', newCity: 'San Juan', mode: 'exact' },
+  { tab: 'Worlds 50 Best', name: 'L\'Auberge de l\'Ill', oldCity: 'Alsace', newCity: 'Illhaeusern', mode: 'exact' },
+  { tab: 'OAD North America 2026', name: 'Blue by Eric Ripert', oldCity: 'Georgetown', newCity: 'Cayman Islands', mode: 'exact' },
+  { tab: 'OAD North America 2025', name: 'Blue by Eric Ripert', oldCity: 'Georgetown', newCity: 'Cayman Islands', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Blue by Eric Ripert', oldCity: 'George Town', newCity: 'Cayman Islands', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Blue Hill at Stone Barns', oldCity: 'Hudson Valley, New York', newCity: 'Tarrytown', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'Caruso\'s', oldCity: 'Montecito, CA, United States', newCity: 'Santa Barbara', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Caruso\'s', oldCity: 'Montecito', newCity: 'Santa Barbara', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Coast', oldCity: 'Watch Hill, Rhode Island', newCity: 'Westerly', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Cocina de Autor', oldCity: 'Los Cabos', newCity: 'Cabo San Lucas', mode: 'exact' },
+  { tab: 'Best Chef Awards', name: 'Conservatorium', oldCity: 'Ciudad Colón, Costa Rica', newCity: 'San José', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Forge', oldCity: 'Richmond', newCity: 'Middleton Tyas', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Harrimans Grill', oldCity: 'Northern Virginia', newCity: 'Middleburg', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Herons', oldCity: 'Raleigh-Durham, North Carolina', newCity: 'Cary', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'Ixi\'im', oldCity: 'Merida, Mexico', newCity: 'Chocholá', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Kai Restaurant', oldCity: 'Phoenix', newCity: 'Chandler', mode: 'anywrong' },
+  { tab: 'OAD Japan 2025', name: 'L\'évo', oldCity: 'Nanto', newCity: 'Toyama', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'L\'évo', oldCity: 'Nanto', newCity: 'Toyama', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'L’évo', oldCity: 'Nanto', newCity: 'Toyama', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'La Bòria', oldCity: 'Privas', newCity: 'Veyras', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'La Cuisine Rademacher', oldCity: 'Cologne, Germany', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'La Mer', oldCity: 'Oahu, Hawaii', newCity: 'Honolulu', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'La Rei Natura by Michelangelo Mammoliti', oldCity: 'Piedmont, Italy', newCity: 'Serralunga d\'Alba', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Lautrec', oldCity: 'Laurel Highlands, Pennsylvania', newCity: 'Farmington', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'Le Moissonnier Bistro', oldCity: 'Cologne, Germany', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Auberge du Père Bise', oldCity: 'Talloires', newCity: 'Talloires-Montmin', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Madera', oldCity: 'San José', newCity: 'Menlo Park', mode: 'anywrong' },
+  { tab: 'Michelin Guide', name: 'Maximo', oldCity: 'Houston, TX, United States', newCity: 'West University Place', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Mil', oldCity: 'Cusco', newCity: 'Moray', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Mugen', oldCity: 'Oahu, Hawaii', newCity: 'Honolulu', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Orchids', oldCity: 'Oahu, Hawaii', newCity: 'Honolulu', mode: 'exact' },
+  { tab: 'Best Chef Awards', name: 'Ox & Klee', oldCity: 'Cologne, Germany', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Ox & Klee', oldCity: 'Cologne', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'Pottkind', oldCity: 'Cologne, Germany', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'La Société', oldCity: 'Cologne, Germany', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'La Société', oldCity: 'Cologne', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'maximilian lorenz', oldCity: 'Cologne, Germany', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'Don Alfonso 1890', oldCity: 'Sant\'Agata sui Due Golfi, Italy', newCity: 'Massa Lubrense', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'Sahila - The Restaurant', oldCity: 'Cologne, Germany', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Salt', oldCity: 'Amelia Island', newCity: 'Fernandina Beach', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Sierra Mar Restaurant', oldCity: 'Monterey, Carmel and Big Sur, California', newCity: 'Big Sur', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'Søllerød Kro', oldCity: 'Copenhagen, Denmark', newCity: 'Holte', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'taku', oldCity: 'Cologne, Germany', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Terre', oldCity: 'Cork', newCity: 'Castlemartyr', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'The Angel at Hetton', oldCity: 'Skipton', newCity: 'Hetton', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'The Elderberry House', oldCity: 'Tahoe and Yosemite, California', newCity: 'Oakhurst', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'The Fearrington House Restaurant', oldCity: 'Raleigh-Durham, North Carolina', newCity: 'Pittsboro', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'The French Laundry', oldCity: 'Napa', newCity: 'Yountville', mode: 'anywrong' },
+  { tab: 'Restaurant Awards', name: 'The Inn at Little Washington', oldCity: 'Northern Virginia, District of Columbia', newCity: 'Washington', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'The Ocean Room', oldCity: 'Charleston', newCity: 'Kiawah Island', mode: 'anywrong' },
+  { tab: 'Restaurant Awards', name: 'The Pines Modern Steakhouse', oldCity: 'Los Angeles', newCity: 'Inland Empire, California', mode: 'anywrong' },
+  { tab: 'Restaurant Awards', name: 'The Restaurant at JUSTIN', oldCity: 'Monterey, Carmel and Big Sur, California', newCity: 'Paso Robles', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'The Village Pub', oldCity: 'San Francisco', newCity: 'Woodside', mode: 'anywrong' },
+  { tab: 'Restaurant Awards', name: 'The White Barn Inn Restaurant', oldCity: 'The Kennebunks, Maine', newCity: 'Kennebunk', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Twenty-Eight Atlantic', oldCity: 'Cape Cod, Massachusetts', newCity: 'Harwich', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Yanagiya', oldCity: 'Mizunami', newCity: 'Gifu', mode: 'exact' },
+  { tab: 'Michelin Guide', name: 'Zur Tant', oldCity: 'Cologne, Germany', newCity: 'Köln', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Aubergine at L\'Auberge Carmel', oldCity: 'Monterey, Carmel and Big Sur, California', newCity: 'Carmel by the Sea', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'Restaurante HA\'', oldCity: 'Riviera Maya', newCity: 'Playa del Carmen', mode: 'exact' },
+  { tab: 'Restaurant Awards', name: 'SingleThread Farms Restaurant', oldCity: 'Sonoma', newCity: 'Healdsburg', mode: 'anywrong' },
 ];
 
 function fixCollisionVerificationLabels() {
@@ -124,7 +127,7 @@ function fixCollisionVerificationLabels() {
   var editsApplied = 0, rowsChanged = 0, skipped = 0;
 
   for (var tabName in byTab) {
-    var sheet = ss.getSheetByName(tabName);
+    var sheet = resolveSheet_(ss, tabName);
     if (!sheet) {
       byTab[tabName].forEach(function (e) {
         logRows.push(['SKIP (tab not found — check exact tab name)', tabName, e.name, e.oldCity, e.newCity, '']);
@@ -154,7 +157,7 @@ function fixCollisionVerificationLabels() {
       var wantOld = normStr_(e.oldCity);
       var wantNew = normStr_(e.newCity);
 
-      var matchedRows = [];
+      var toChange = [];
       var citiesSeen = {};
       var alreadyTarget = 0;
 
@@ -164,18 +167,22 @@ function fixCollisionVerificationLabels() {
         var rc = normStr_(rcRaw);
         citiesSeen[rcRaw] = (citiesSeen[rcRaw] || 0) + 1;
         if (rc === wantNew) { alreadyTarget++; continue; }
-        if (rc === wantOld) matchedRows.push(r);
+        if (e.mode === 'anywrong') {
+          toChange.push(r);                    // any non-target row for this venue
+        } else if (rc === wantOld) {
+          toChange.push(r);                    // exact old-label rows only
+        }
       }
 
-      if (matchedRows.length > 0) {
+      if (toChange.length > 0) {
         var rowNums = [];
-        for (var mi = 0; mi < matchedRows.length; mi++) {
-          var rr = matchedRows[mi];
+        for (var mi = 0; mi < toChange.length; mi++) {
+          var rr = toChange[mi];
           sheet.getRange(rr + 1, cityCol + 1).setValue(e.newCity);
           rowNums.push(rr + 1);
           rowsChanged++;
         }
-        logRows.push(['APPLIED (' + matchedRows.length + ' row' + (matchedRows.length > 1 ? 's' : '') + ')',
+        logRows.push(['APPLIED (' + toChange.length + ' row' + (toChange.length > 1 ? 's' : '') + ')',
           tabName, e.name, e.oldCity, e.newCity, rowNums.join(', ')]);
         editsApplied++;
         return;
@@ -184,7 +191,7 @@ function fixCollisionVerificationLabels() {
       var seen = Object.keys(citiesSeen);
       if (seen.length === 0) {
         logRows.push(['SKIP (venue not found in this tab)', tabName, e.name, e.oldCity, e.newCity, '']);
-      } else if (alreadyTarget > 0 && seen.length === 1) {
+      } else if (alreadyTarget > 0) {
         logRows.push(['OK (already ' + e.newCity + ')', tabName, e.name, e.oldCity, e.newCity, '']);
       } else {
         logRows.push(['SKIP (sheet city is: ' + seen.join(' | ') + ')', tabName, e.name, e.oldCity, e.newCity, '']);
@@ -205,15 +212,27 @@ function fixCollisionVerificationLabels() {
     'Corrections applied: ' + editsApplied + '\n' +
     'Individual rows changed: ' + rowsChanged + '\n' +
     'Skipped: ' + skipped + '\n\n' +
-    'Open "' + CVL_LOG_TAB + '". Every SKIP now shows the city the sheet\n' +
-    'actually holds for that venue, so mismatches explain themselves.\n\n' +
+    'Open "' + CVL_LOG_TAB + '". SKIP rows show the city the sheet actually\n' +
+    'holds; OK rows were already correct.\n\n' +
     'Paste the log back for review BEFORE running reshape / merge.';
   Logger.log(msg);
   SpreadsheetApp.getUi().alert(msg);
 }
 
-/** Fold curly quotes/apostrophes to straight, collapse whitespace, lowercase.
- *  Accents kept on purpose (they distinguish real cities). */
+/** Find a sheet by name, tolerant of curly/straight apostrophe differences
+ *  (e.g. list says "Worlds 50 Best" but the tab is "World's 50 Best"). */
+function resolveSheet_(ss, tabName) {
+  var direct = ss.getSheetByName(tabName);
+  if (direct) return direct;
+  var target = normStr_(tabName);
+  var all = ss.getSheets();
+  for (var i = 0; i < all.length; i++) {
+    if (normStr_(all[i].getName()) === target) return all[i];
+  }
+  return null;
+}
+
+/** Fold curly quotes/apostrophes to straight, collapse whitespace, lowercase. */
 function normStr_(s) {
   return String(s == null ? '' : s)
     .replace(/[\u2018\u2019\u02BC\u2032]/g, "'")
