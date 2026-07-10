@@ -1,57 +1,37 @@
 /**
  * CompassEats — Cross-City Collision Verification Fix (Step B, batch 1)
  * =======================================================================
- * fixCollisionVerificationLabels.gs — July 9, 2026
+ * fixCollisionVerificationLabels.gs — July 9, 2026 (rev 2)
  *
  * WHAT THIS FIXES
- *   The Cowork verification pass on the 236 merge_review groups (281 far-city
- *   rows) came back with 63 ALIAS + 22 PHANTOM decisions. Tracing each of
- *   those 85 to the exact source award-tab row (not just the venues tab)
- *   turned up 145 individual source rows across 8 different tabs that carry
- *   a wrong or region-label city name for a real, single-location venue.
- *   Every one of these 145 was independently re-verified against BOTH the
- *   venue's real address country AND an exact re-derivation of reshape's own
- *   slugify_() logic, so the "old city" text this script looks for should
- *   match the live sheet exactly.
+ *   The Cowork verification pass on the merge_review collisions produced 63
+ *   ALIAS + 22 PHANTOM decisions for real, single-location venues that carry
+ *   a wrong or region-level city label in a source award tab. Tracing those
+ *   to source rows gave 72 unique venue+city corrections across 8 tabs.
+ *   Fixing the label at the SOURCE row (not the venues tab) is the durable
+ *   fix — the venues tab is rebuilt from these tabs on every reshape.
  *
- * WHAT IT DOES
- *   - For each entry below: finds EVERY row in the named tab whose name AND
- *     city cell match { name, oldCity } EXACTLY, and overwrites ONLY that
- *     city cell with newCity.
- *   - Multiple matches are EXPECTED and correct: award tabs (especially the
- *     Forbes-fed "Restaurant Awards") carry one row per award year, so a
- *     single venue like "Herons / Raleigh-Durham, North Carolina" legitimately
- *     appears 7 times (2020-2026). All of them are the same physical venue and
- *     all should get the same corrected city — so the script updates them all.
- *   - If a row can't be found with that exact (name, oldCity) pair — because
- *     the sheet changed since this list was built (e.g. a prior fix already
- *     renamed it) — it is SKIPPED, not guessed at, and logged for review.
- *   - Logs every successful edit AND every skip to a
- *     "collision_label_fix_log" tab. Nothing is silent.
- *   - Touches NOTHING else: no deletes, no other columns, no other tabs.
- *
- * WHAT IS DELIBERATELY EXCLUDED FROM THIS BATCH (see session notes / the
- * companion worklist for the full list and reasoning):
- *   - 4 cases (Bistro Quellenhof, Masterpiece, Table & Main, SOURCE at
- *     Gilpin Hotel) where every source row already has the CORRECT city —
- *     the duplicate is coming from a stray Places Enrichment/geo-requery-
- *     review row, not a source-tab typo. Needs enrichment-tab cleanup, not
- *     this kind of fix.
- *   - 3 cases (Tales by Chapter, Restaurant Troisgros Le Bois sans
- *     feuilles, Tohru*** - Fine Dining) where automatic name-matching only
- *     found an unrelated same-ish-named venue. Excluded rather than risk a
- *     wrong edit — needs a human look.
- *   - 12 cases where no source row could be traced at all — several
- *     confirmed as live symptoms of the still-open root-cause bug from the
- *     very first handoff (bare-name-key fallback in the enrichment lookup).
+ * REV 2 — why this version exists
+ *   Rev 1 matched the city cell as an EXACT full string and skipped any
+ *   ambiguous/curly-apostrophe/whitespace difference, which caused all 72 to
+ *   skip on the live sheet. Rev 2:
+ *     - Matches the venue NAME tolerantly (curly vs straight apostrophes and
+ *       quotes folded, whitespace collapsed, case-insensitive). Accents are
+ *       kept, since they distinguish real cities.
+ *     - Updates every row for that venue whose city STILL equals the old
+ *       label (venues repeat once per award year — all should change).
+ *     - If it changes nothing, it logs WHY using the city the sheet actually
+ *       holds right now — so a skip is self-explaining, never a black box.
+ *     - Never edits a row that is already the target city.
+ *   Nothing is deleted; only the city cell is ever written; only these 8 tabs
+ *   are touched.
  *
  * HOW TO RUN
- *   1. Extensions → Apps Script → + → Script → name it
- *      fixCollisionVerificationLabels → paste this whole file → Save.
+ *   1. Extensions → Apps Script → open the fixCollisionVerificationLabels
+ *      file → replace its whole contents with this → Save.
  *   2. Run → fixCollisionVerificationLabels. Authorize if prompted.
- *   3. Read the alert; review the "collision_label_fix_log" tab — check the
- *      "skipped / mismatch" rows especially, there should be few or none.
- *   4. THEN run reshapeCompassEats → mergeDuplicateVenues as usual.
+ *   3. Read the popup, then open "collision_label_fix_log" and skim it.
+ *      Paste the log back for review BEFORE running reshape/merge.
  */
 
 var CVL_LOG_TAB = 'collision_label_fix_log';
@@ -134,7 +114,6 @@ var CVL_EDITS = [
 function fixCollisionVerificationLabels() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
 
-  // Group edits by tab so each tab's data is only read once.
   var byTab = {};
   for (var i = 0; i < CVL_EDITS.length; i++) {
     var e = CVL_EDITS[i];
@@ -142,17 +121,18 @@ function fixCollisionVerificationLabels() {
   }
 
   var logRows = [];
-  var editsApplied = 0, rowsChanged = 0, skippedNotFound = 0;
+  var editsApplied = 0, rowsChanged = 0, skipped = 0;
 
   for (var tabName in byTab) {
     var sheet = ss.getSheetByName(tabName);
     if (!sheet) {
       byTab[tabName].forEach(function (e) {
-        logRows.push(['SKIP (tab not found)', tabName, e.name, e.oldCity, e.newCity, '']);
-        skippedNotFound++;
+        logRows.push(['SKIP (tab not found — check exact tab name)', tabName, e.name, e.oldCity, e.newCity, '']);
+        skipped++;
       });
       continue;
     }
+
     var vals = sheet.getDataRange().getValues();
     var headers = vals[0];
     var nameCol = -1, cityCol = -1;
@@ -164,34 +144,52 @@ function fixCollisionVerificationLabels() {
     if (nameCol === -1 || cityCol === -1) {
       byTab[tabName].forEach(function (e) {
         logRows.push(['SKIP (name/city column not found)', tabName, e.name, e.oldCity, e.newCity, '']);
-        skippedNotFound++;
+        skipped++;
       });
       continue;
     }
 
     byTab[tabName].forEach(function (e) {
+      var wantName = normStr_(e.name);
+      var wantOld = normStr_(e.oldCity);
+      var wantNew = normStr_(e.newCity);
+
       var matchedRows = [];
+      var citiesSeen = {};
+      var alreadyTarget = 0;
+
       for (var r = 1; r < vals.length; r++) {
-        var rowName = String(vals[r][nameCol] || '').trim();
-        var rowCity = String(vals[r][cityCol] || '').trim();
-        if (rowName === e.name && rowCity === e.oldCity) matchedRows.push(r);
+        if (normStr_(vals[r][nameCol]) !== wantName) continue;
+        var rcRaw = String(vals[r][cityCol] || '').trim();
+        var rc = normStr_(rcRaw);
+        citiesSeen[rcRaw] = (citiesSeen[rcRaw] || 0) + 1;
+        if (rc === wantNew) { alreadyTarget++; continue; }
+        if (rc === wantOld) matchedRows.push(r);
       }
-      if (matchedRows.length === 0) {
-        logRows.push(['SKIP (not found — may already be fixed)', tabName, e.name, e.oldCity, e.newCity, '']);
-        skippedNotFound++;
+
+      if (matchedRows.length > 0) {
+        var rowNums = [];
+        for (var mi = 0; mi < matchedRows.length; mi++) {
+          var rr = matchedRows[mi];
+          sheet.getRange(rr + 1, cityCol + 1).setValue(e.newCity);
+          rowNums.push(rr + 1);
+          rowsChanged++;
+        }
+        logRows.push(['APPLIED (' + matchedRows.length + ' row' + (matchedRows.length > 1 ? 's' : '') + ')',
+          tabName, e.name, e.oldCity, e.newCity, rowNums.join(', ')]);
+        editsApplied++;
         return;
       }
-      // Update EVERY matching row (same venue repeated across award years).
-      var rowNums = [];
-      for (var mi = 0; mi < matchedRows.length; mi++) {
-        var rr = matchedRows[mi];
-        sheet.getRange(rr + 1, cityCol + 1).setValue(e.newCity);
-        rowNums.push(rr + 1);
-        rowsChanged++;
+
+      var seen = Object.keys(citiesSeen);
+      if (seen.length === 0) {
+        logRows.push(['SKIP (venue not found in this tab)', tabName, e.name, e.oldCity, e.newCity, '']);
+      } else if (alreadyTarget > 0 && seen.length === 1) {
+        logRows.push(['OK (already ' + e.newCity + ')', tabName, e.name, e.oldCity, e.newCity, '']);
+      } else {
+        logRows.push(['SKIP (sheet city is: ' + seen.join(' | ') + ')', tabName, e.name, e.oldCity, e.newCity, '']);
       }
-      logRows.push(['APPLIED (' + matchedRows.length + ' row' + (matchedRows.length > 1 ? 's' : '') + ')',
-        tabName, e.name, e.oldCity, e.newCity, rowNums.join(', ')]);
-      editsApplied++;
+      skipped++;
     });
   }
 
@@ -199,20 +197,28 @@ function fixCollisionVerificationLabels() {
   if (log) log.clear(); else log = ss.insertSheet(CVL_LOG_TAB);
   var logHeaders = ['result', 'tab', 'name', 'old city', 'new city', 'row'];
   log.getRange(1, 1, 1, logHeaders.length).setValues([logHeaders]).setFontWeight('bold');
-  if (logRows.length) {
-    log.getRange(2, 1, logRows.length, logHeaders.length).setValues(logRows);
-  }
+  if (logRows.length) log.getRange(2, 1, logRows.length, logHeaders.length).setValues(logRows);
   log.setFrozenRows(1);
 
   var msg = 'fixCollisionVerificationLabels complete.\n' +
-    'Unique venue-city corrections: ' + CVL_EDITS.length + '\n' +
-    'Corrections applied: ' + editsApplied + ' (expected 72)\n' +
-    'Individual rows changed: ' + rowsChanged + ' (venues repeat across award years)\n' +
-    'Skipped - not found: ' + skippedNotFound + '\n\n' +
-    '(A few "not found" skips are normal — some Forbes rows were already\n' +
-    'relabeled by the earlier fixForbesCityLabels run.)\n\n' +
-    'Full record in the "' + CVL_LOG_TAB + '" tab.\n\n' +
-    'NEXT: run reshapeCompassEats, then mergeDuplicateVenues.';
+    'Unique corrections in list: ' + CVL_EDITS.length + '\n' +
+    'Corrections applied: ' + editsApplied + '\n' +
+    'Individual rows changed: ' + rowsChanged + '\n' +
+    'Skipped: ' + skipped + '\n\n' +
+    'Open "' + CVL_LOG_TAB + '". Every SKIP now shows the city the sheet\n' +
+    'actually holds for that venue, so mismatches explain themselves.\n\n' +
+    'Paste the log back for review BEFORE running reshape / merge.';
   Logger.log(msg);
   SpreadsheetApp.getUi().alert(msg);
+}
+
+/** Fold curly quotes/apostrophes to straight, collapse whitespace, lowercase.
+ *  Accents kept on purpose (they distinguish real cities). */
+function normStr_(s) {
+  return String(s == null ? '' : s)
+    .replace(/[\u2018\u2019\u02BC\u2032]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
 }
