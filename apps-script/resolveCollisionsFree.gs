@@ -19,7 +19,7 @@
  * ----------------------------------------------------------------------------
  */
 
-var COLFREE_DRY_RUN = true;                 // <-- flip to false only after reading the preview log
+var COLFREE_DRY_RUN = false;                 // <-- flip to false only after reading the preview log
 var COLFREE_SPREADSHEET_ID = '1dKJY_woXdbO-j9CEADz28IE-1yik1FqHa0BAp29cI5s';
 var COLFREE_SHEET_NAME = 'venues';
 
