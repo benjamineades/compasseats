@@ -15,7 +15,7 @@
  * ----------------------------------------------------------------------------
  */
 
-var CLEAR_DRY_RUN = true;   // <-- flip to false only after reading the preview log
+var CLEAR_DRY_RUN = false;   // <-- flip to false only after reading the preview log
 
 function clearRequeryTargets() {
   var ss = SpreadsheetApp.getActive();
