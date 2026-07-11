@@ -23,7 +23,7 @@
  * ----------------------------------------------------------------------------
  */
 
-var DUALCAT_DRY_RUN = true;                 // <-- flip to false only after you've read the preview log
+var DUALCAT_DRY_RUN = false;                 // <-- flip to false only after you've read the preview log
 var DUALCAT_SPREADSHEET_ID = '1dKJY_woXdbO-j9CEADz28IE-1yik1FqHa0BAp29cI5s';
 var DUALCAT_SHEET_NAME = 'venues';
 
