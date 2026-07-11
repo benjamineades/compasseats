@@ -210,7 +210,7 @@ function geoEnrich() {
       }
       reviewRows.push([
         '', // decision column — you fill: ACCEPT or REJECT
-        name, city, retName, nk, result.placeId, result.lat, result.lng,
+        name, city, retName, compositeKey, result.placeId, result.lat, result.lng,
         result.address || '', result.status || '', result.photoName || '',
         note, prestige, sources
       ]);
@@ -286,7 +286,7 @@ function acceptReviewRows() {
   if (rv.length < 2) { SpreadsheetApp.getUi().alert('Review tab is empty.'); return; }
 
   // Column positions in REVIEW_HEADERS
-  var D = 0, NAME = 1, RETNAME = 3, NK = 4, PID = 5, LAT = 6, LNG = 7,
+  var D = 0, NAME = 1, CITY = 2, RETNAME = 3, NK = 4, PID = 5, LAT = 6, LNG = 7,
       ADDR = 8, STATUS = 9, PHOTO = 10;
 
   var toEnrich = [];
@@ -297,8 +297,15 @@ function acceptReviewRows() {
     var row = rv[i];
     var decision = String(row[D] || '').trim().toUpperCase();
     if (decision === 'ACCEPT') {
+      // Rebuild the SAME name|city composite key the main geoEnrich loop and
+      // reshape.gs use, so an approved-from-review row can never re-introduce a
+      // bare-name collision. Falls back to the bare name only when there is no
+      // city (matching reshape's `enrich[nk+'|'+ck] || enrich[nk]` fallback).
+      var aNk = normKeyGeo_(String(row[NAME] || ''));
+      var aCk = cityKey_(String(row[CITY] || ''));
+      var aKey = aCk ? (aNk + '|' + aCk) : aNk;
       toEnrich.push([
-        row[NK],                         // normalizedKey
+        aKey,                            // normalizedKey (name|city composite)
         row[RETNAME] || row[NAME],       // canonicalName
         'geo-enrich-reviewed',           // sheetName (provenance)
         row[PID],                        // placeId
@@ -474,14 +481,18 @@ function normKeyGeo_(name) {
 }
 
 function countRemaining_(av, ah, done) {
-  var iName = ah['name'], iReason = ah['reason'];
+  var iName = ah['name'], iCity = ah['city'], iReason = ah['reason'];
   var n = 0;
   for (var i = 1; i < av.length; i++) {
     var reason = String(av[i][iReason] || '');
     if (reason.indexOf('no placeId') !== 0) continue;
     var name = String(av[i][iName] || '').trim();
     if (!name) continue;
-    if (!done[normKeyGeo_(name)]) n++;
+    // Mirror the main loop's dedup key exactly (name|city composite) so the
+    // "already done" count matches what geoEnrich will actually process.
+    var ck = cityKey_(String(av[i][iCity] || '').trim());
+    var key = ck ? (normKeyGeo_(name) + '|' + ck) : normKeyGeo_(name);
+    if (!done[key]) n++;
   }
   return n;
 }
