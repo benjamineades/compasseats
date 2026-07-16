@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass Local — Launch Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#23211E; --panel:#2F2A24; --panel-2:#383229;
+    --brass:#C6A15B; --brass-soft:#DEC68F; --bronze:#895F2E;
+    --cream:#F5F0E6; --cream-dim:#CBC2B0; --cream-dimmer:#988F7E;
+    --clay:#D88A63; --clay-soft:#E8AE8F; --sage:#A4B79F;
+    --line:rgba(216,138,99,.22); --line-soft:rgba(216,138,99,.10);
+    --brassline:rgba(198,161,91,.20);
+    --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:radial-gradient(1100px 640px at 85% -10%, rgba(216,138,99,.10), transparent 60%),
+    radial-gradient(900px 600px at 4% 105%, rgba(198,161,91,.06), transparent 55%), var(--bg);
+    color:var(--cream); font-family:var(--sans); line-height:1.68; -webkit-font-smoothing:antialiased;
+    background-attachment:fixed;}
+  .wrap{max-width:960px;margin:0 auto;padding:64px 28px 96px}
+  header.cov{text-align:center;padding:24px 0 40px;border-bottom:1px solid var(--line);margin-bottom:40px}
+  .badge{display:inline-block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--clay);border:1px solid var(--line);border-radius:100px;padding:6px 16px;margin-bottom:22px}
+  h1{font-family:var(--serif);font-weight:300;font-size:2.7rem;line-height:1.1;letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--clay-soft)}
+  .sub{color:var(--cream-dim);margin-top:14px;font-size:1.02rem;max-width:64ch;margin-left:auto;margin-right:auto}
+  .meta{color:var(--cream-dimmer);font-size:.82rem;margin-top:16px}
+  h2{font-family:var(--serif);font-weight:300;font-size:1.7rem;margin:52px 0 8px;color:var(--cream)}
+  h2 .n{color:var(--clay);font-size:1rem;font-family:var(--sans);font-weight:600;margin-right:10px;letter-spacing:.05em}
+  h3{font-family:var(--serif);font-weight:400;font-size:1.15rem;margin:26px 0 6px;color:var(--clay-soft)}
+  .intro{color:var(--cream-dim);margin-bottom:18px;max-width:74ch}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);
+    border-radius:14px;padding:20px 22px;margin:16px 0}
+  .why{color:var(--cream-dimmer);font-size:.86rem;font-style:italic;margin-bottom:12px}
+  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.9rem}
+  th{text-align:left;color:var(--clay);font-weight:600;font-size:.74rem;letter-spacing:.09em;
+    text-transform:uppercase;padding:8px 12px;border-bottom:1px solid var(--line)}
+  td{padding:9px 12px;border-bottom:1px solid var(--line-soft);color:var(--cream);vertical-align:top}
+  td .dim{color:var(--cream-dimmer);font-size:.85rem}
+  .pill{display:inline-block;font-size:.68rem;padding:2px 9px;border-radius:100px;
+    background:rgba(216,138,99,.12);color:var(--clay-soft);border:1px solid var(--line);white-space:nowrap;margin:1px 0}
+  .pill.brass{background:rgba(198,161,91,.12);color:var(--brass-soft);border-color:var(--brassline)}
+  .pill.sage{background:rgba(164,183,159,.12);color:var(--sage);border-color:rgba(164,183,159,.3)}
+  ul.clean{list-style:none;padding:0;margin:8px 0}
+  ul.clean li{padding:7px 0 7px 22px;position:relative;color:var(--cream-dim);border-bottom:1px solid var(--line-soft)}
+  ul.clean li:before{content:"◆";position:absolute;left:0;color:var(--clay);font-size:.7rem;top:10px}
+  ul.clean li b{color:var(--cream)}
+  .note{background:rgba(216,138,99,.08);border-left:3px solid var(--clay);border-radius:0 10px 10px 0;
+    padding:12px 16px;margin:14px 0;color:var(--cream-dim);font-size:.9rem}
+  .note b{color:var(--clay)}
+  .rule{background:rgba(198,161,91,.07);border-left:3px solid var(--brass);border-radius:0 10px 10px 0;
+    padding:12px 16px;margin:14px 0;color:var(--cream-dim);font-size:.9rem}
+  .rule b{color:var(--brass-soft)}
+  code{background:rgba(216,138,99,.10);color:var(--clay-soft);padding:1px 6px;border-radius:5px;font-size:.85em}
+  pre{background:#1C1A17;border:1px solid var(--line-soft);border-radius:10px;padding:16px 18px;margin:12px 0;
+    white-space:pre-wrap;font-size:.84rem;color:var(--cream-dim);line-height:1.55;font-family:ui-monospace,Menlo,monospace}
+  .tk{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:4px}
+  .tk .tid{font-family:var(--serif);font-style:italic;color:var(--clay-soft);font-size:1.05rem}
+  footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);text-align:center;color:var(--cream-dimmer);font-size:.82rem}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:700px){.two{grid-template-columns:1fr}}
+  .vs{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--brassline);border-radius:14px;padding:18px 20px}
+  .vs.local{border-color:var(--line)}
+  .vs h4{font-family:var(--serif);font-weight:400;font-size:1.05rem;margin-bottom:6px}
+  .vs.flag h4{color:var(--brass-soft)} .vs.local h4{color:var(--clay-soft)}
+  .vs p{color:var(--cream-dim);font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="cov">
+    <div class="badge">🧭 Shelf Document · Activate at Kickoff · Living Doc</div>
+    <h1>Compass <em>Local</em> — Launch Blueprint</h1>
+    <div class="sub">The everyday sister to CompassEats. Award winners highlighted, not required. The great spot near you that you didn't know about.</div>
+    <div class="meta">v1.0 · July 16, 2026 · Written while the flagship punch list is still open — <b style="color:var(--clay)">re-validate every assumption at kickoff</b></div>
+  </header>
+
+  <!-- ============ 01 ============ -->
+  <h2><span class="n">01</span>The refined goal</h2>
+  <p class="intro">CompassEats answers <em>"which of the world's best is worth planning around?"</em> Compass Local answers the argument people actually have most nights:</p>
+  <div class="two">
+    <div class="vs flag">
+      <h4>CompassEats — Charted</h4>
+      <p>The best of the best. Reservations, occasions, trip anchors. Brass, Fraunces, "worth the detour." Every venue backed by a named award. Trust promise: <b style="color:var(--brass-soft)">nothing is here without a citation.</b></p>
+    </div>
+    <div class="vs local">
+      <h4>Compass Local — Loved</h4>
+      <p>No plan, no reservation. "What's good near me? Is it open? Never heard of it — but it's clearly beloved. Let's go." Terracotta, looser voice. Trust promise: <b style="color:var(--clay-soft)">nothing is here by accident — every venue earned its spot, and we tell you how.</b></p>
+    </div>
+  </div>
+  <h3>The Tuesday-night test</h3>
+  <p class="intro">Every product decision gets checked against this scenario: it's 6:40pm, no reservation, you're in your own neighborhood or halfway through a three-week trip across Europe. You want quality without homework. If a feature doesn't serve that moment, it waits.</p>
+  <ul class="clean">
+    <li><b>It is:</b> global from day one · subdomain of the flagship (<code>local.compasseats.com</code>) · lists + map at launch · fast, simple, no accounts.</li>
+    <li><b>It is not:</b> a Yelp clone (no crowd reviews as the ranking engine) · a diluted copy of the flagship · fine dining · a social app.</li>
+    <li><b>Success looks like:</b> a user opens it cold in an unfamiliar city, finds a spot in under a minute, trusts why it's listed, and it's open.</li>
+  </ul>
+
+  <!-- ============ 02 ============ -->
+  <h2><span class="n">02</span>The trust model — two signal classes</h2>
+  <p class="intro">The flagship's strict award-only rule doesn't fit casual dining: a 40-year-old neighborhood pizza joint may be as good as the 50 Top Pizza winner down the street and will never appear on a list. Compass Local admits <b>two clearly-labeled classes</b>, so the honesty promise survives the looser scope.</p>
+  <div class="card">
+    <table>
+      <thead><tr><th>Class</th><th>Badge register</th><th>What earns it</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Charted</b> <span class="pill brass">award-backed</span></td>
+          <td>Brass — same visual language as the flagship</td>
+          <td>Named on an authoritative list or award, cited exactly like the flagship does it</td>
+          <td class="dim">50 Top Pizza · James Beard Outstanding Bakery · GABF / World Beer Cup medals · America's Classics</td>
+        </tr>
+        <tr>
+          <td><b>Institution</b> <span class="pill">beloved</span></td>
+          <td>Terracotta — visually distinct, never imitates an award</td>
+          <td>Meets a written, published rubric (the <b>Institution Standard</b>, task T2) — think longevity, sustained local devotion, recognition in respected editorial sources</td>
+          <td class="dim">The 40-year corner slice shop · the classic café every guidebook to that city mentions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rule"><b>Honesty firewall, extended:</b> the two classes never blur. An Institution badge must never look like an award. Every Charted venue names its source; every Institution venue states which rubric criteria it met. If a venue can't clear either bar, it doesn't exist on the site — "pretty good and nearby" is Google Maps' job, not ours.</div>
+  <div class="note"><b>Open question (do not decide until kickoff):</b> whether public rating floors (e.g., sustained 4.5+ across a large review count) may serve as <em>corroboration</em> inside the Institution rubric. It can never be the sole qualifier — that's the line between "curated" and "scraped Yelp."</div>
+
+  <!-- ============ 03 ============ -->
+  <h2><span class="n">03</span>Lanes &amp; the launch gate</h2>
+  <p class="intro">Six lanes, per the network-architecture doc. Rather than all-or-nothing, each lane ships when it clears a readiness gate — so a thin lane can't drag the launch or embarrass the brand.</p>
+  <div class="rule"><b>Launch gate (proposed):</b> a lane goes live when it has <b>≥150 venues across ≥3 countries</b> (Institutions lane: ≥3 US regions until international rubric sources are proven). Numbers are placeholders to pressure-test at kickoff, not commitments.</div>
+  <div class="card">
+    <table>
+      <thead><tr><th>Lane</th><th>Charted sources (known today)</th><th>Global readiness</th></tr></thead>
+      <tbody>
+        <tr><td>🍕 Pizza</td><td class="dim">50 Top Pizza (World / Italy / USA / regional) — ready-made, ranked, annual</td><td><span class="pill sage">strong</span></td></tr>
+        <tr><td>🍺 Breweries &amp; taprooms</td><td class="dim">GABF medals, World Beer Cup, European Beer Star</td><td><span class="pill sage">strong</span></td></tr>
+        <tr><td>🥐 Bakeries &amp; patisseries</td><td class="dim">James Beard Outstanding Baker/Bakery (US, seed list banked in Sister-Project Backlog §01); international pastry lists need scouting</td><td><span class="pill">medium</span></td></tr>
+        <tr><td>☕ Coffee</td><td class="dim">Specialty coffee guides, barista championship venues — fragmented, needs scouting</td><td><span class="pill">medium</span></td></tr>
+        <tr><td>🏛 Neighborhood institutions</td><td class="dim">America's Classics (2018/19/23 banked; 2022/24/25 need pulling) + Institution Standard rubric carries the global load</td><td><span class="pill">medium</span></td></tr>
+        <tr><td>🍦 Ice cream &amp; gelato</td><td class="dim">Gelato World Tour / thin formal sources — may lean almost entirely on the Institution rubric</td><td><span class="pill" style="opacity:.7">thin</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="intro">Likely launch order based on today's knowledge: <b>pizza and breweries first</b>, bakeries and institutions close behind, coffee and ice cream when their source atlases prove out. Task T1 exists to replace these guesses with facts.</p>
+
+  <!-- ============ 04 ============ -->
+  <h2><span class="n">04</span>Architecture decisions (locked in this session)</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Decision</th><th>Choice</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Where it lives</td><td><code>local.compasseats.com</code> subdomain</td><td class="dim">Shares the brand's trust halo; independent enough to have its own register; splits into its own domain later if the Compass network materializes</td></tr>
+        <tr><td>Infrastructure</td><td><b>Clean clone</b> — new Google Sheet + new repo</td><td class="dim">Flagship Sheet is near 11K venues with scripts wired to exact tab names; a second product bolted on risks cross-contamination and script collisions. Clone the Sheet structure + Apps Script pipeline, rename, re-theme. Same DNA, separate organs. New repo maps to its own Lovable project + Cloudflare deployment</td></tr>
+        <tr><td>Geographic scope</td><td>Global from day one</td><td class="dim">Trip use-case is core ("the casual half of three weeks across Europe")</td></tr>
+        <tr><td>Feature depth at launch</td><td>Lighter than flagship: <b>lists + map, no blurbs</b></td><td class="dim">Speed to a trustworthy v1; blurbs (Option B-style) are a fast-follow once voice is set</td></tr>
+        <tr><td>Working name</td><td><b>Compass Local</b></td><td class="dim">Fits the naming rule (two plain words); final lock at kickoff (T3)</td></tr>
+        <tr><td>One genuinely new capability</td><td><b>"Open now"</b> — hours-aware results</td><td class="dim">It's in the founding scenario ("Is this place open?"). Hours come from the existing Places enrichment pipeline; this is the largest technical delta from the flagship and gets its own task (T9)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============ 05 ============ -->
+  <h2><span class="n">05</span>Phases &amp; task packets</h2>
+  <p class="intro">Each packet names its router — the model or surface best suited, per the established routing rules (Sonnet = mechanical execution · Fable/Opus = judgment · Cowork = high-volume judgment · Claude Design = visual · Lovable = frontend). Ready-to-paste prompts for the shelf-stable tasks live in §06; kickoff-dependent tasks are marked <span class="pill">prompt at kickoff</span> because flagship learnings will change their content.</p>
+
+  <h3>Phase 0 — Preconditions (no Compass Local work starts before these)</h3>
+  <ul class="clean">
+    <li><b>Flagship punch list cleared:</b> residual collisions resolved, Option B bar blurbs done, guides page shipped, award-cycle monitoring running.</li>
+    <li><b>Kickoff review:</b> one Fable chat session re-reading this blueprint against everything learned finishing the flagship. Output: v1.1 of this doc with confirmed gates, lanes, and thresholds.</li>
+  </ul>
+
+  <h3>Phase 1 — Foundation (research &amp; standards)</h3>
+  <div class="card">
+    <div class="tk"><span class="tid">T1 · The Source Atlas</span> <span class="pill brass">Fable · Research feature or Cowork</span> <span class="pill sage">prompt ready — §06</span></div>
+    <div class="why">The single highest-leverage task. Global scouting of authoritative casual-venue sources per lane — the sister equivalent of the flagship's 26-source registry.</div>
+    <table>
+      <tbody>
+        <tr><td>Inputs</td><td class="dim">This blueprint · Sister-Project Backlog · flagship Ingest-Tools doc (for feasibility patterns)</td></tr>
+        <tr><td>Done means</td><td class="dim">A registry table per lane: source name, authority level, geography, update cadence, list size, ingest feasibility (structured page / paste / manual), and a verdict per lane against the launch gate</td></tr>
+        <tr><td>Depends on</td><td class="dim">Nothing — could even run early as background research</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <div class="tk"><span class="tid">T2 · The Institution Standard</span> <span class="pill brass">Fable · chat</span> <span class="pill sage">prompt ready — §06</span></div>
+    <div class="why">The written rubric defining what earns the non-award badge. This document IS the product's integrity — it's what keeps Compass Local from being Yelp with nicer fonts.</div>
+    <table>
+      <tbody>
+        <tr><td>Inputs</td><td class="dim">Trust-model section of this doc · America's Classics criteria as a reference point</td></tr>
+        <tr><td>Done means</td><td class="dim">A one-page standard: qualifying criteria, evidence requirements, the corroboration question resolved, worked examples (3 that qualify, 3 near-misses that don't), and the badge language</td></tr>
+        <tr><td>Depends on</td><td class="dim">Nothing; informs T6 (data model)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <div class="tk"><span class="tid">T3 · Name &amp; domain lock</span> <span class="pill">Sonnet · chat + Ben</span> <span class="pill">prompt at kickoff</span></div>
+    <div class="why">Confirm "Compass Local" (or run the naming exercise if it's gone stale), check trademark collisions, configure the subdomain in Cloudflare. Ben action: DNS + any registrations.</div>
+  </div>
+  <div class="card">
+    <div class="tk"><span class="tid">T4 · Brand extension spec</span> <span class="pill brass">Fable (voice) + Claude Design (visuals)</span> <span class="pill sage">prompt ready — §06</span></div>
+    <div class="why">The terracotta register, formalized: palette + tokens derived from the flagship design system (clay-led instead of brass-led), the compass-mark variant, and a voice guide one notch looser than the flagship's — warm, quick, zero pretension.</div>
+    <table>
+      <tbody>
+        <tr><td>Inputs</td><td class="dim">CompassEats Design System · brand identity doc · network-architecture doc (Tier 3 section)</td></tr>
+        <tr><td>Done means</td><td class="dim">A Compass Local design-tokens doc (dual-mode, contrast-checked like the flagship's brass/bronze lesson) + a 1-page voice guide with 5 sample venue one-liners in the new register</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Phase 2 — Data plumbing</h3>
+  <div class="card">
+    <div class="tk"><span class="tid">T5 · Clone the pipeline</span> <span class="pill">Sonnet · chat</span> <span class="pill">prompt at kickoff</span></div>
+    <div class="why">New Google Sheet cloned from the flagship's structure; Apps Script suite copied and renamed; tab names, script constants, and export targets pointed at Compass Local. Purely mechanical — but gated behind T6 so the schema is right before anything is wired.</div>
+  </div>
+  <div class="card">
+    <div class="tk"><span class="tid">T6 · Data model design</span> <span class="pill brass">Fable · chat</span> <span class="pill">prompt at kickoff</span></div>
+    <div class="why">The venue schema, evolved: a <code>lane</code> field, a <code>signal_class</code> field (charted / institution), evidence citations per class, and hours data as a first-class column (feeding T9). Decides what carries over from the flagship schema untouched and what changes.</div>
+    <table><tbody><tr><td>Depends on</td><td class="dim">T1 (what source data looks like) + T2 (what institution evidence looks like)</td></tr></tbody></table>
+  </div>
+  <div class="card">
+    <div class="tk"><span class="tid">T7 · Seed ingests</span> <span class="pill">Acquisition: Sonnet chat · Volume: Cowork</span> <span class="pill sage">first prompt ready — §06</span></div>
+    <div class="why">In readiness order: (a) America's Classics gap years — 2022, 2024, 2025 — prompt ready now since it's shelf-stable; (b) banked bakery seed list from the Backlog; (c) 50 Top Pizza full ingest; (d) GABF / World Beer Cup medalists. Same discipline as the flagship: acquisition decisions in chat, mechanical consolidation in Cowork, dry-run before live.</div>
+    <table><tbody><tr><td>Depends on</td><td class="dim">T5 + T6 for (b)–(d); task (a) can run any time and park in the Backlog doc</td></tr></tbody></table>
+  </div>
+
+  <h3>Phase 3 — Site build</h3>
+  <div class="card">
+    <div class="tk"><span class="tid">T8 · Site clone &amp; re-theme</span> <span class="pill">Lovable + Claude Design</span> <span class="pill">prompt at kickoff</span></div>
+    <div class="why">New repo from the flagship codebase; strip to launch scope (city lists + map; venue pages minimal, no blurbs); apply T4's tokens. Deploy to the subdomain via its own Cloudflare project. The flagship's hard-won platform lessons (full-file drop-ins, locked files, token rules) carry over as standing constraints in every Lovable prompt.</div>
+  </div>
+  <div class="card">
+    <div class="tk"><span class="tid">T9 · "Open now"</span> <span class="pill brass">Design: Fable · Build: Lovable</span> <span class="pill">prompt at kickoff</span></div>
+    <div class="why">The Tuesday-night feature: hours from Places enrichment surfaced as an open/closed state and an "open now" filter. Needs a design decision on staleness (hours change; static site) — likely a "hours may vary, confirm before you go" honesty line. Biggest technical delta from the flagship; scope it deliberately, not as a Lovable afterthought.</div>
+  </div>
+  <div class="card">
+    <div class="tk"><span class="tid">T10 · Cross-linking &amp; SEO strategy</span> <span class="pill">Sonnet · chat</span> <span class="pill">prompt at kickoff</span></div>
+    <div class="why">How flagship and Local reference each other: nav treatment, city-page cross-links ("planning something special? → CompassEats"), sitemap/canonical hygiene so the subdomain strengthens rather than cannibalizes the flagship's SEO.</div>
+  </div>
+
+  <h3>Phase 4 — QA &amp; launch</h3>
+  <div class="card">
+    <div class="tk"><span class="tid">T11 · Preflight clone</span> <span class="pill">Sonnet · chat</span> · <span class="tid" style="font-size:.95rem">T12 · Launch checklist + monitoring</span> <span class="pill">Sonnet · chat</span></div>
+    <div class="why">Adapt the flagship's <code>preflightPublish</code> discipline to the new schema (T11). Launch-gate verification per lane, and casual-source award-cycle monitoring (50 Top Pizza announces annually; GABF each fall) added to the same watch rhythm as the flagship's (T12).</div>
+  </div>
+
+  <!-- ============ 06 ============ -->
+  <h2><span class="n">06</span>Ready-to-paste prompts (shelf-stable tasks)</h2>
+  <p class="intro">These four survive being shelved because they don't depend on flagship outcomes. Copy, paste, send — each tells the model to ask for whichever project docs it needs.</p>
+
+  <h3>T1 — The Source Atlas <span class="pill brass">send to Fable · Research feature or Cowork</span></h3>
+  <pre>I run CompassEats, a restaurant and cocktail-bar discovery site where every venue is backed by a named culinary award (Michelin, World's 50 Best, James Beard — 26 sources total). I'm planning a sister site, Compass Local, covering casual venues globally in six lanes: pizza, bakeries/patisseries, coffee, breweries/taprooms, ice cream/gelato, and beloved neighborhood institutions. Before building anything I need to know whether authoritative sources actually exist to support each lane worldwide.
+
+Build me a Source Atlas: for each of the six lanes, find the credible award programs, ranked lists, and inspection-based guides that honor individual visitable venues (not producers, not people) anywhere in the world. For each source report: what it is and who runs it, why it's credible, geographic coverage, how many venues per edition, update cadence, and how gettable the data is (structured web pages I could scrape or paste, PDFs, or manual-only). Skip pure crowd-review platforms — the whole premise is authority, not popularity.
+
+Done means: one table per lane, then a verdict per lane — could this lane reach roughly 150 venues across 3+ countries on named sources alone, or will it depend heavily on a curated "local institution" tier we maintain ourselves? Close with a ranked recommendation of which lanes to launch first based purely on source strength. Flag any source whose licensing or terms would make republishing venue names risky. Check the atlas for dead or renamed programs before you finish — casual-food awards come and go faster than Michelin does.</pre>
+
+  <h3>T2 — The Institution Standard <span class="pill brass">send to Fable · chat</span></h3>
+  <pre>I run CompassEats, a discovery site where every restaurant and cocktail bar is backed by a named award. I'm designing its casual sister site, Compass Local, which adds a second class of venue: the "Institution" — the beloved 40-year-old neighborhood spot that's as good as the award winner next door but will never appear on a list. This class needs a written standard rigorous enough that the site never drifts into being a Yelp clone; the standard is the product's integrity.
+
+Draft the Institution Standard as a one-page document I can publish on the site's About page. It must define: the qualifying criteria (think dimensions like operating longevity, sustained local devotion, recognition in respected editorial or cultural sources — you decide the exact bar and defend it), what evidence is required to admit a venue and where that evidence must come from, and whether high public ratings may ever serve as corroboration — take a clear position on that with your reasoning, knowing my worry is that leaning on ratings at all erodes the "curated, not scraped" promise. Use James Beard's America's Classics criteria as a calibration reference for the spirit I'm after.
+
+Include three worked examples of real venues that would qualify and three plausible near-misses that wouldn't, with one line each on why — invent none of them; verify every venue you name actually exists via search. Write the badge language a user sees on a venue page (one sentence, warm but honest, that could never be mistaken for an award citation). Before you finish, stress-test the standard: could a mediocre tourist trap with longevity slip through? If yes, tighten it and say what you changed.</pre>
+
+  <h3>T4 — Brand extension spec <span class="pill brass">Fable for voice · Claude Design for visuals</span></h3>
+  <pre>I'm extending my brand. CompassEats is a restaurant/cocktail-bar discovery site with an editorial travel-journal aesthetic: dark charcoal #23211E and warm paper #F7F3EB dual modes, brass gold #C6A15B for fills, bronze #895F2E for accent text on light surfaces (brass fails contrast there — that lesson is settled, keep it), Fraunces display serif + Hanken Grotesk body, a compass-needle logo mark, voice that's knowledgeable and warm like a well-traveled friend. Its sister site, Compass Local, covers beloved casual spots — pizza, bakeries, coffee, breweries, gelato, neighborhood institutions — and per my brand-architecture plan it lives in a visibly different register: terracotta/clay-led (#D88A63 family) instead of brass-led, same typefaces, same compass mark family, voice one notch looser and quicker. Same compass, different needle: the flagship is "charted," Local is "loved."
+
+Produce two deliverables. First, a design-token spec for Compass Local: dual-mode palette anchored on the clay family, with every text/background pairing contrast-checked to WCAG AA the way the flagship's brass/bronze split was — if clay fails contrast anywhere, derive a darker companion tone and name it, exactly parallel to the brass→bronze solution. Cover primary fills, accent text, both background modes, and state explicitly which flagship tokens carry over unchanged. Second, a one-page voice guide: three adjectives, three never-do rules, and five sample venue one-liners in the new register — one each for a pizza joint, a bakery, a coffee shop, a brewery taproom, and a 40-year diner. The one-liners should sound like a local friend texting you, not a critic filing a review, while never inventing facts about real venues — use fictional venue names.
+
+Ask me to share the flagship design-system and brand-architecture docs before you start, and check every color pairing's contrast ratio arithmetic before you finish.</pre>
+
+  <h3>T7a — America's Classics gap years <span class="pill">send to Sonnet · chat</span></h3>
+  <pre>I maintain a "Sister-Project Backlog" document for a future casual-dining site. It already holds James Beard America's Classics winners for 2018, 2019, and 2023, but the 2022, 2024, and 2025 slates were never pulled. Search jamesbeard.org and reputable coverage to compile the complete America's Classics winner lists for 2022, 2024, and 2025. For each venue give: exact venue name, city, state, and award year. Facts only from what you actually find via search — if a year's list can't be fully verified, say which venues are confirmed and which are uncertain rather than guessing. Output as one clean table sorted by year then venue name, ready for me to paste into the backlog doc, and note the total count per year so I can sanity-check completeness against the announcements.</pre>
+
+  <!-- ============ 07 ============ -->
+  <h2><span class="n">07</span>Open questions — parked for kickoff</h2>
+  <ul class="clean">
+    <li><b>Ratings as corroboration</b> in the Institution Standard — T2 will take a position; Ben makes the final call.</li>
+    <li><b>Launch-gate numbers</b> (150 venues / 3 countries) — pressure-test against the real Source Atlas.</li>
+    <li><b>Ice cream lane viability</b> — may fold into "institutions" if formal sources stay thin.</li>
+    <li><b>Blurb strategy</b> — Option B-style blurbs are a fast-follow, not launch scope; the looser voice (T4) must exist first.</li>
+    <li><b>Hours staleness</b> — how "open now" degrades gracefully on a static site (T9 design decision).</li>
+    <li><b>Whether flagship learnings change the clone</b> — anything discovered finishing the punch list that should alter the pipeline before it's copied.</li>
+  </ul>
+
+  <!-- ============ 08 ============ -->
+  <h2><span class="n">08</span>Changelog</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Version</th><th>Date</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td>1.0</td><td>Jul 16, 2026</td><td class="dim">Blueprint created from the founder interview: goal refined (Tuesday-night test), two-class trust model adopted, subdomain + clean-clone architecture locked, six lanes with readiness gates, 12 task packets routed, 4 shelf-stable prompts written.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>Compass<span style="color:var(--clay)">Local</span> — Launch Blueprint · same compass, different needle.</footer>
+</div>
+</body>
+</html>
