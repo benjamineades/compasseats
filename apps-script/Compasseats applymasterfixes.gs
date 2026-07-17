@@ -245,7 +245,12 @@ function findVenueRow_(venuesData, col, name, city) {
 }
 
 function normalize_(s) {
-  return String(s || '').trim().toLowerCase();
+  var str = String(s || '').trim().toLowerCase();
+  // Strip accents/diacritics (é, í, ü, etc.) so e.g. "Cafe" matches "Café"
+  str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  // Normalize curly/smart quotes and apostrophe variants to a plain '
+  str = str.replace(/[\u2018\u2019\u02BC\u00B4\u0060]/g, "'");
+  return str;
 }
 
 function snapshotRow_(row, col) {
