@@ -2,7 +2,6 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { runSync, DataValidationError, SyncSkipped } from "./scripts/sync-sheet";
-import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
 
 // TanStack Start's preview-server plugin (used by the prerenderer) imports
 // `dist/server/<basename(serverInput)>.js` — with our `server.entry: "server"`
@@ -170,7 +169,7 @@ console.log(`[prerender] ${prerenderPages.length} pages (venues+cities+awards)`)
 
 export default defineConfig({
   vite: {
-    plugins: [syncSheetPlugin(), emitServerJsAlias(), mcpPlugin()],
+    plugins: [syncSheetPlugin(), emitServerJsAlias()],
   },
   tanstackStart: {
     server: { entry: "server" },
