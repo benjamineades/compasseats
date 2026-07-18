@@ -29,7 +29,7 @@ var SHEET_ID   = '1dKJY_woXdbO-j9CEADz28IE-1yik1FqHa0BAp29cI5s';
 var VENUES_TAB = 'venues';
 
 // ----> Leave false for the dry run. Flip to true ONLY to apply. <----
-var CONFIRM_LIVE_RUN = false;
+var CONFIRM_LIVE_RUN = true;
 
 // The approved 46-row worklist (generated directly from the reviewed CSV).
 // Match is by (name + city); apply overwrites 'name' with 'proposed'.
