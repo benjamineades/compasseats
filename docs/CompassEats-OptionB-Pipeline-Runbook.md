@@ -5,7 +5,13 @@ can produce the next batch of Option B blurbs without re-deriving the method.
 Keep this in the Project files. Update it only when the method itself changes.
 
 Last updated: July 11, 2026 · 48 venues live · 968 remaining in the qualifying set.
+**Revised: July 18, 2026 — the `/humanizer` + `/delete-ai-words` skills are now mandatory
+on every blurb. See the new "HUMANIZER LAYER" section. Em dashes are out of all new blurbs.**
 **Bars now have their own method — see the "BARS ADDENDUM" at the end before writing any bar blurb.**
+
+> **STEP ZERO (do this every time):** Before writing a single blurb, read this whole
+> runbook — the base method, the HUMANIZER LAYER, and (for bars) the BARS ADDENDUM.
+> Never start writing from memory. This applies to every batch, in every chat.
 
 ---
 
@@ -41,6 +47,7 @@ Project files. Column `needs_option_b` = NEED vs have. Work top-down by priority
 3. **Verify** — list every concrete claim (chef, dish, year, setting, ranking) and
    confirm each traces to fetched source text. Flag anything that doesn't.
 4. If anything is unverifiable, **soften or cut it** — never ship an unsourced fact.
+5. **Humanize** — run the HUMANIZER LAYER pass on every short and long before shipping.
 
 Throughput is ~8–12 venues per chat turn before quality degrades. Do batches of ~10.
 
@@ -57,9 +64,52 @@ Throughput is ~8–12 venues per chat turn before quality degrades. Do batches o
 - Fond humor sparingly (~1 in 3–4), never at the venue's or guest's expense.
 - Scarcity framed as "beloved, worth the effort," never exclusion.
 - Vary closers (don't cluster "worth the detour"). Michelin spelled in words.
-- Banned vocab: curated, top 10, hidden gem, nestled, boasts, eatery, foodie.
+- Banned vocab: curated, top 10, hidden gem, nestled, boasts, eatery, foodie
+  (plus the full HUMANIZER LAYER banned list below).
 - `chef` column = clean name(s), no title, semicolon-separated for partnerships
   (e.g. "Joan Roca; Josep Roca; Jordi Roca"). Woven into prose only — no UI use yet.
+
+---
+
+## HUMANIZER LAYER (mandatory — every blurb, restaurant and bar)
+
+Every blurb must pass the `/humanizer` and `/delete-ai-words` skills before it ships.
+This is part of the house voice now, not an optional polish. It is the last step of the
+pipeline for each blurb. Where a rule here conflicts with an older instruction above,
+this layer wins — with the single documented exception of the three approved bar
+exemplars (see note at the end of the BARS ADDENDUM).
+
+**No em dashes.** This is the loudest AI tell and it is out of every new blurb.
+Restructure instead: use a period, a comma, a colon, or parentheses for a true aside.
+Do not swap in a spaced hyphen. If a sentence needed a dash, it needed rewriting.
+
+**No negation-pivot / reframe.** Ban "not X, but Y", "isn't about X, it's about Y",
+"less X, more Y", "forget X, focus on Y", and the soft versions ("while X may seem…",
+"at first glance X…"). State the positive claim directly. Allowed contrast only for a
+real factual correction, never for drama or fake depth.
+
+**Banned vocab (merge with the list above).** delve, tapestry, testament, a testament to,
+realm, vibrant, bustling, elevate, unlock, unleash, seamless, robust, leverage, harness,
+crucial, pivotal, must-visit, rich history, hidden gem, nestled, boasts, journey and
+landscape (metaphorical), cutting-edge, curated, top 10, eatery, foodie, mixologist (as
+cliché). Keep a banned word only when it carries literal meaning — an actual hidden
+entrance is fine to describe factually; "bartender" is fine, "mixologist" is not.
+
+**Vary rhythm hard.** Follow a long sentence with a short one. No metronome of
+same-length sentences or same-shaped paragraphs.
+
+**Other tells to kill.** No throat-clearing openers ("In the heart of…", "Nestled in…",
+"Tucked away…"). No closer that only restates the point — the varied action-closer
+("Order the martini.", "Book months out.") is fine and encouraged. Digits for numbers
+where natural (3 stars, 32 seats, 2 days). Contractions on. Specifics over abstractions.
+No rule-of-three padding; use the number of items that's actually true.
+
+**Do not over-correct.** No forced casualness, no slang for its own sake, no fake typos.
+Accuracy and the warm "well-traveled friend" register still win over any single rule.
+
+**System-wide:** these two skills also apply to all other CompassEats prose (site copy,
+journal posts, emails). They do NOT apply to code, structured specs, or reference docs
+(this runbook itself is a reference doc and is intentionally not "humanized").
 
 ## Output format
 
@@ -96,8 +146,9 @@ the embedded `OPTION_B` array (existing rows + new, deduped by slug).
 ## To start a fresh batch in a new chat, say:
 
 "Next 10 Option B blurbs." Upload the latest `venues` export (CSV) and the current
-`importOptionB.gs` if it's changed. Claude reads this runbook + the qualifying list,
-picks the next ~10 by priority, runs the pipeline, and hands back the updated `.gs`.
+`importOptionB.gs` if it's changed. Claude reads this runbook first (base method +
+HUMANIZER LAYER), reads the qualifying list, picks the next ~10 by priority, runs the
+pipeline (including the humanize step), and hands back the updated `.gs`.
 
 ---
 
@@ -106,8 +157,9 @@ picks the next ~10 by priority, runs the pipeline, and hands back the updated `.
 Bars break two assumptions of the restaurant method above: there is **no Michelin spine**
 (bars have no Michelin stars), and the **accolades and the people work differently**.
 Everything in the base runbook still applies — the honesty firewall, the 4-step
-pipeline shape, the output format, the load workflow, the twin-row trap, all of it —
-**except** where this addendum overrides it. Read this whole section before writing any bar.
+pipeline shape, the HUMANIZER LAYER, the output format, the load workflow, the twin-row
+trap, all of it — **except** where this addendum overrides it. Read this whole section
+before writing any bar.
 
 ## The bar qualifying set (defined, do not re-derive)
 
@@ -122,10 +174,14 @@ people actually search for lead. Use the `yrs` count and the `historic` flag as
 tiebreakers toward the more established name. Do NOT go alphabetically; alphabetical
 starts you on "1930 Cocktail Bar" and "28 Hongkong St," which is exactly wrong for a wedge.
 
+Before including a bar, confirm it is still open — several high-`best#` "historic" names
+have closed or rebranded (e.g. Dandelyan became Lyaness; Milk & Honey London is closed).
+Skip closed venues and flag them for the worklist; do not write a live blurb for them.
+
 ## Bar sourcing (replaces step 1 of the pipeline)
 
-Steps 2–4 (write → verify → soften/cut) are unchanged. Replace the *fetch* step with this
-source order. Facts only from fetched text, never memory:
+Steps 2–5 (write → verify → soften/cut → humanize) are unchanged. Replace the *fetch*
+step with this source order. Facts only from fetched text, never memory:
 
 1. The bar's **World's 50 Best Bars profile page** (`theworlds50best.com/bars/…`) — the
    anchor source and the qualifying credential.
@@ -160,7 +216,10 @@ Two facts to respect when using these:
   nothing (the bar may simply never have entered). Only treat a pin it *holds* as a signal.
 - **All these lists reshuffle annually.** Frame rank **structurally** ("a fixture near the
   top of the World's 50 Best Bars," "one of only a handful ever to hold three pins"), never
-  hardcode "#4 in 2024" — same rule as award-holder counts for restaurants.
+  hardcode "#4 in 2024" — same rule as award-holder counts for restaurants. A one-time
+  **#1 / "World's Best Bar" title** is a discrete historical event and may be stated
+  ("topped the World's 50 Best Bars"), but keep it structural and skip the year unless the
+  year itself is the point.
 
 ## Two honesty rules specific to bars (non-negotiable)
 
@@ -176,7 +235,8 @@ Two facts to respect when using these:
 
 ## Bar voice deltas (from the locked restaurant voice)
 
-Everything in the base voice spec carries over. The bar-specific changes:
+Everything in the base voice spec and the HUMANIZER LAYER carries over. The bar-specific
+changes:
 
 - **Accolade placement:** woven **mid-blurb**, never the opener and never a headline. Mix
   by bar (some land it earlier, some later), but it should read as part of the story, not
@@ -189,7 +249,8 @@ Everything in the base voice spec carries over. The bar-specific changes:
   Alex Day & David Kaplan (Death & Co), Ryan "Mr Lyan" Chetiyawardana (Lyaness), Julie
   Reiner, Dale DeGroff, Dave Arnold. If the person doesn't clear it, **make it about the
   team.** Never attach a floating/employed star bartender to one venue (they move between
-  bars — the "Phil Ward problem").
+  bars — the "Phil Ward problem"). Founders and historic figures tied to the venue's origin
+  are safe to name as history even if they've since moved on.
 - **No "Chef" honorific for bar people** — bars don't use it. Just the name and role
   ("founder Lorenzo Antinori," "led by Julia Momosé").
 - **Drinks over dishes, with mandatory technical accuracy.** Reference a signature serve
@@ -209,7 +270,8 @@ Everything in the base voice spec carries over. The bar-specific changes:
 Reuse the same `chef` column. Populate it **only** with a person who clears the icon
 threshold above (e.g. "Julia Momosé", "Lorenzo Antinori", "Giacomo Giannotti"); otherwise
 **leave it blank** and keep the blurb team-centric. Same clean-name, semicolon-separated
-format. No UI use yet — woven into prose only.
+format. No UI use yet — woven into prose only. For an institutional bar with no current
+owner-icon (e.g. the American Bar), leave `chef` blank and carry any legend in the prose.
 
 ## Mechanics unchanged
 
@@ -223,6 +285,12 @@ verify the right row when a slug has twins.
 Three top bars, written and signed off as the reference for register, humor level, and
 name calibration. They show the spectrum: **no name (team)**, **light owner-icon**, and
 **synonymous figure**.
+
+> **Punctuation note (2026-07-18):** these three exemplars predate the HUMANIZER LAYER and
+> still contain em dashes. They are approved as-is and locked — do NOT edit them. Match
+> them for **register, humor, and name calibration only**; match **punctuation to the
+> HUMANIZER LAYER** (no em dashes) for every new blurb. A later cleanup pass may align the
+> exemplars' punctuation once Ben signs off.
 
 **Bar Leone — Hong Kong** (`bar-leone`, chef: `Lorenzo Antinori`) — *owner-icon, cleared on IBOTY*
 - *Short:* Bar Leone runs on a stubborn idea: that a great bar is a *neighborhood* bar —
@@ -275,8 +343,9 @@ name calibration. They show the spectrum: **no name (team)**, **light owner-icon
 ## To start a bar batch in a fresh chat, say:
 
 "Next 10 bar blurbs." Upload the latest `venues` export (CSV) and the current
-`importOptionB.gs`. Claude reads the base runbook + this addendum, picks the next ~10 bars
-**top-down by World's 50 Best Bars `best #`**, runs the bar pipeline (bar sourcing order +
-bar voice), verifies every claim against fetched text, and hands back the updated `.gs`.
-The three exemplars above are not yet in `importOptionB.gs` — include them in the first
-bar batch.
+`importOptionB.gs`. Claude reads the base runbook + the HUMANIZER LAYER + this addendum,
+picks the next ~10 bars **top-down by World's 50 Best Bars `best #`** (skipping any closed
+venue), runs the bar pipeline (bar sourcing order + bar voice + humanize), verifies every
+claim against fetched text, and hands back the updated `.gs`. The three exemplars above are
+already approved; include them in the first bar batch (drop-in as-is) alongside the next
+new bars.
