@@ -24,7 +24,7 @@ export default defineTool({
       venue_count: r.venue_count,
       url: `https://compasseats.com/region/${r.slug}`,
     }));
-    if (q) rows = rows.filter((r) => r.country.toLowerCase().includes(q));
+    if (q) rows = rows.filter((r) => (r.country ?? "").toLowerCase().includes(q));
     rows.sort((a, b) => b.venue_count - a.venue_count);
     return {
       content: [{ type: "text", text: `${rows.length} regions` }],
