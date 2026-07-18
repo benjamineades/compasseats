@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as RegionsRouteImport } from './routes/regions'
-import { Route as McpRouteImport } from './routes/mcp'
 import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as CitiesRouteImport } from './routes/cities'
 import { Route as IndexRouteImport } from './routes/index'
@@ -20,10 +19,7 @@ import { Route as UnchartedSlugRouteImport } from './routes/uncharted/$slug'
 import { Route as RegionSlugRouteImport } from './routes/region.$slug'
 import { Route as CitySlugRouteImport } from './routes/city.$slug'
 import { Route as AwardAwardRouteImport } from './routes/award/$award'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
-import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as VenueCitySlugRouteImport } from './routes/venue/$city/$slug'
-import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -38,11 +34,6 @@ const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
 const RegionsRoute = RegionsRouteImport.update({
   id: '/regions',
   path: '/regions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuidesRoute = GuidesRouteImport.update({
@@ -80,62 +71,36 @@ const AwardAwardRoute = AwardAwardRouteImport.update({
   path: '/award/$award',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const VenueCitySlugRoute = VenueCitySlugRouteImport.update({
   id: '/venue/$city/$slug',
   path: '/venue/$city/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotmcpChar93InvokeToolToolRoute =
-  Char91DotmcpChar93InvokeToolToolRouteImport.update({
-    id: '/.mcp/invoke-tool/$tool',
-    path: '/.mcp/invoke-tool/$tool',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cities': typeof CitiesRoute
   '/guides': typeof GuidesRoute
-  '/mcp': typeof McpRoute
   '/regions': typeof RegionsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/region/$slug': typeof RegionSlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cities': typeof CitiesRoute
   '/guides': typeof GuidesRoute
-  '/mcp': typeof McpRoute
   '/regions': typeof RegionsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/region/$slug': typeof RegionSlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
 export interface FileRoutesById {
@@ -143,17 +108,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cities': typeof CitiesRoute
   '/guides': typeof GuidesRoute
-  '/mcp': typeof McpRoute
   '/regions': typeof RegionsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/award/$award': typeof AwardAwardRoute
   '/city/$slug': typeof CitySlugRoute
   '/region/$slug': typeof RegionSlugRoute
   '/uncharted/$slug': typeof UnchartedSlugRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/venue/$city/$slug': typeof VenueCitySlugRoute
 }
 export interface FileRouteTypes {
@@ -162,51 +123,39 @@ export interface FileRouteTypes {
     | '/'
     | '/cities'
     | '/guides'
-    | '/mcp'
     | '/regions'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/award/$award'
     | '/city/$slug'
     | '/region/$slug'
     | '/uncharted/$slug'
-    | '/.mcp/invoke-tool/$tool'
     | '/venue/$city/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/cities'
     | '/guides'
-    | '/mcp'
     | '/regions'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/award/$award'
     | '/city/$slug'
     | '/region/$slug'
     | '/uncharted/$slug'
-    | '/.mcp/invoke-tool/$tool'
     | '/venue/$city/$slug'
   id:
     | '__root__'
     | '/'
     | '/cities'
     | '/guides'
-    | '/mcp'
     | '/regions'
     | '/robots.txt'
     | '/sitemap.xml'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/award/$award'
     | '/city/$slug'
     | '/region/$slug'
     | '/uncharted/$slug'
-    | '/.mcp/invoke-tool/$tool'
     | '/venue/$city/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -214,17 +163,13 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CitiesRoute: typeof CitiesRoute
   GuidesRoute: typeof GuidesRoute
-  McpRoute: typeof McpRoute
   RegionsRoute: typeof RegionsRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
-  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   AwardAwardRoute: typeof AwardAwardRoute
   CitySlugRoute: typeof CitySlugRoute
   RegionSlugRoute: typeof RegionSlugRoute
   UnchartedSlugRoute: typeof UnchartedSlugRoute
-  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   VenueCitySlugRoute: typeof VenueCitySlugRoute
 }
 
@@ -249,13 +194,6 @@ declare module '@tanstack/react-router' {
       path: '/regions'
       fullPath: '/regions'
       preLoaderRoute: typeof RegionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides': {
@@ -307,32 +245,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AwardAwardRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/venue/$city/$slug': {
       id: '/venue/$city/$slug'
       path: '/venue/$city/$slug'
       fullPath: '/venue/$city/$slug'
       preLoaderRoute: typeof VenueCitySlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/invoke-tool/$tool': {
-      id: '/.mcp/invoke-tool/$tool'
-      path: '/.mcp/invoke-tool/$tool'
-      fullPath: '/.mcp/invoke-tool/$tool'
-      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -342,30 +259,15 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CitiesRoute: CitiesRoute,
   GuidesRoute: GuidesRoute,
-  McpRoute: McpRoute,
   RegionsRoute: RegionsRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
-  Char91DotwellKnownChar93OauthProtectedResourceRoute:
-    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   AwardAwardRoute: AwardAwardRoute,
   CitySlugRoute: CitySlugRoute,
   RegionSlugRoute: RegionSlugRoute,
   UnchartedSlugRoute: UnchartedSlugRoute,
-  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   VenueCitySlugRoute: VenueCitySlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
