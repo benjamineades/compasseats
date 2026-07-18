@@ -24,7 +24,7 @@ export default defineTool({
     }
     const url = `https://compasseats.com/venue/${v.city_slug}/${v.slug}`;
     return {
-      content: [{ type: "text", text: `${v.name} — ${v.city} · ${url}` }],
+      content: [{ type: "text", text: `${v.name} — ${v.city_display} · ${url}` }],
       structuredContent: { venue: { ...v, url } },
     };
   },
