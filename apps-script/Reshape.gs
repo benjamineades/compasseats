@@ -371,7 +371,10 @@ var CITY_ALIASES_ = {
   'oudenberg': 'oudenburg',                // Willem Hiele
   'powys': 'machynlleth',                  // Ynyshir Restaurant & Rooms
   'rugen': 'ostseebad binz',               // freustil
-};
+// Batch 7 (Jul 19) — verified spelling/typo folds, each carried by one venue.
+  'sankt moritz': 'saint moritz',   // Da Vittorio at Carlton Hotel St. Moritz (Michelin: Saint Moritz)
+  'ninjang': 'nanjing',             // 江南小灶 JiangNan Wok — "Ninjang" is a garbled Nanjing
+  };
 
 // Normalizes a city string to its canonical key, applying the alias map.
 function cityKey_(city) {
