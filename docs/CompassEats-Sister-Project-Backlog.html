@@ -61,11 +61,11 @@
     <div class="badge">✦ Deferred Scope · Living Doc</div>
     <h1>The <em>Sister-Project</em> Backlog</h1>
     <div class="sub">A holding pen for venues and award categories that belong to the future casual-dining project — not the flagship guide. So we never lose track of what we set aside.</div>
-    <div class="meta">v1.0 · Created July 1, 2026 · Seeded from the James Beard 2018–2024 ingest pass</div>
+    <div class="meta">v1.1 · Created July 1, 2026 · Updated July 18, 2026 · Seeded from the James Beard 2018–2024 ingest pass</div>
   </header>
 
   <div class="intro" style="max-width:74ch">
-    The flagship CompassEats guide covers serious restaurants and cocktail bars ranked by the world's authoritative lists. The <b>sister project</b> is the eventual home for the more casual end — bakeries, pizza parlors, coffee shops, breweries, and beloved neighborhood institutions. When we're working through an award source and hit something that's real and prestigious but <em>casual</em>, it lands here instead of getting thrown away.
+    The flagship CompassEats guide covers serious restaurants and cocktail bars ranked by the world's authoritative lists. The <b>sister project</b> is the eventual home for the more casual end — bakeries, pizza parlors, coffee shops, breweries, beloved neighborhood institutions, <b>and casual full-service restaurants that don't demand a reservation or an occasion</b> (the Bib Gourmand-equivalent tier: great, dependable, low-ceremony). When we're working through an award source and hit something that's real and prestigious but <em>casual</em>, it lands here instead of getting thrown away.
   </div>
 
   <h2><span class="n">01</span>Bakeries &amp; standalone pastry shops</h2>
@@ -145,15 +145,30 @@
     <li><b>Coffee shops / roasters</b> — specialty coffee guides, Coffee Review.</li>
     <li><b>Breweries &amp; taprooms</b> — GABF / World Beer Cup medalists, RateBeer.</li>
     <li><b>Beloved neighborhood institutions</b> — America's Classics (§02) is a natural spine for this.</li>
-    <li><b>Casual dining generally</b> — the everyday "good, reliable, nearby" tier that sits below the flagship's fine-dining focus.</li>
+    <li><b>Casual full-service restaurants</b> — the Bib Gourmand-equivalent tier: real cooking, don't always need a reservation, the kind of place a local just knows and loves. Sits below the flagship's fine-dining bar but well above "just fine." Wine Spectator's Award of Excellence tier is a confirmed source for this lane — see §06.</li>
   </ul>
 
-  <h2><span class="n">06</span>Changelog</h2>
+  <div class="note"><b>Scope clarified July 18, 2026:</b> the sister project isn't defined only by venue <i>type</i> (bakery, pizza, coffee, brewery). It also covers a casual <i>tier</i> within full-service restaurants — the Bib Gourmand-equivalent level — that doesn't belong in the flagship's higher-ceremony curation but is exactly the kind of place a well-traveled friend would point you to on a Tuesday. Any award source with a clear "very good, dependable, no fuss" tier is worth checking against this lane, not just the four original categories.</div>
+
+  <h2><span class="n">06</span>Wine Spectator — Award of Excellence <span class="pill">confirmed source, not yet pulled</span></h2>
+  <p class="intro">Wine Spectator's 2026 Restaurant Awards run three tiers: Grand Award (99) and Best of Award of Excellence (1,830) are prestigious enough for the flagship guide and are being ingested there. The base <b>Award of Excellence</b> tier (2,083 restaurants) is a different animal — "well-chosen wine list," not "destination restaurant" — and reads as exactly the casual, dependable, no-reservation-needed tier this project exists for.</p>
+  <div class="card">
+    <div class="why">Confirmed during the July 18, 2026 monthly Award Radar review, alongside the decision to keep the top two tiers in the flagship. Not pulled yet — deliberately.</div>
+    <ul class="clean">
+      <li><b>Count:</b> 2,083 restaurants, 2026 edition · all 50 US states + 87 countries/territories</li>
+      <li><b>Source:</b> Wine Spectator Restaurant Search (<code>winespectator.com/restaurants/search</code>), filterable by award level</li>
+      <li><b>Why not pulled now:</b> the list resets annually with real turnover. Scraping 2,083 rows today just to have them sit unused until this project launches means re-verifying stale data later anyway. Better to pull the then-current edition fresh when the Source Atlas phase (Compass Local Blueprint, Phase 1) actually kicks off.</li>
+      <li><b>When it's time:</b> pull via the Restaurant Search tool, same ingest-template shape as other sources (name, city, country, award level). Guide-copy voice should match the "casual, dependable" register — different from the flagship's Wine Spectator Grand Award copy, which already exists in <code>CompassEats-Guide-Descriptions.md</code>.</li>
+    </ul>
+  </div>
+
+  <h2><span class="n">07</span>Changelog</h2>
   <div class="card">
     <table class="cl">
       <thead><tr><th>Version</th><th>Date</th><th>Change</th></tr></thead>
       <tbody>
         <tr><td class="yr">1.0</td><td>Jul 1, 2026</td><td>Doc created. Seeded from the James Beard 2018–2024 ingest pass: bakeries/pastry shops, America's Classics (2018/2019/2023), skipped Outstanding Restaurateurs, beverage producers, and the casual-category roadmap.</td></tr>
+        <tr><td class="yr">1.1</td><td>Jul 18, 2026</td><td>Scope clarified: the sister project also covers a casual <i>tier</i> within full-service restaurants (Bib Gourmand-equivalent, no-reservation-needed), not just the four venue-type lanes — surfaced while scoping Wine Spectator's tiers for the flagship ingest. Added §06: Wine Spectator Award of Excellence (2,083) logged as a confirmed future source, deliberately not pulled yet to avoid the list going stale before this project launches.</td></tr>
       </tbody>
     </table>
   </div>
