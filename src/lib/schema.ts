@@ -73,6 +73,7 @@ export const AWARD_SOURCES = [
   { slug: "gault-millau", name: "Gault & Millau", tier: "regional" },
   { slug: "tabelog", name: "Tabelog", tier: "regional" },
   { slug: "forbes-travel-guide", name: "Forbes Travel Guide", tier: "global" },
+  { slug: "wine-spectator", name: "Wine Spectator Restaurant Awards", tier: "global" },
   { slug: "asia-50-best-restaurants", name: "Asia's 50 Best Restaurants", tier: "regional" },
   { slug: "latin-america-50-best-restaurants", name: "Latin America's 50 Best Restaurants", tier: "regional" },
   { slug: "north-america-50-best-restaurants", name: "North America's 50 Best Restaurants", tier: "regional" },
