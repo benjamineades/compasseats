@@ -14,6 +14,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { VenueMap } from "@/components/VenueMap";
+import {
+  PriceFilter,
+  applyPriceFilter,
+  hasPriceCoverage,
+  type PriceTier,
+} from "@/components/PriceFilter";
 import { getCountries } from "@/lib/cities";
 import { getCitiesWithVenues, getVenuesByCity } from "@/lib/venues";
 import type { City, Venue } from "@/lib/schema";
@@ -155,6 +161,22 @@ export const Route = createFileRoute("/country/$slug")({
 function CountryPage() {
   const data = Route.useLoaderData() as LoaderData;
 
+  const priceCoverage = useMemo(() => hasPriceCoverage(data.allVenues), [data.allVenues]);
+  const [price, setPrice] = useState<PriceTier | undefined>(undefined);
+
+  const filteredVenues = useMemo(
+    () => applyPriceFilter(data.allVenues, price),
+    [data.allVenues, price],
+  );
+  const filteredCities = useMemo(
+    () =>
+      data.cities.map((c) => ({
+        ...c,
+        venues: applyPriceFilter(c.venues, price),
+      })),
+    [data.cities, price],
+  );
+
   const countsLine = useMemo(() => {
     const spots = `${formatNum(data.venueCount)} charted ${data.venueCount === 1 ? "spot" : "spots"}`;
     const cityBit = `${formatNum(data.cityCount)} ${data.cityCount === 1 ? "city" : "cities"}`;
@@ -194,13 +216,18 @@ function CountryPage() {
           >
             On the map
           </p>
+          {priceCoverage && !data.usePinsPerCity && (
+            <div className="mb-4">
+              <PriceFilter value={price} onChange={setPrice} />
+            </div>
+          )}
           <div className="overflow-hidden rounded-xl border" style={{ borderColor: HAIRLINE }}>
             {data.usePinsPerCity ? (
               <CountryCityMap cities={data.cities} center={data.center} />
             ) : (
               <div className="h-[460px] md:h-[560px] w-full">
                 <VenueMap
-                  venues={data.allVenues}
+                  venues={filteredVenues}
                   center={[data.center.lng, data.center.lat]}
                 />
               </div>
@@ -221,12 +248,17 @@ function CountryPage() {
           >
             Sorted by most charted
           </p>
+          {priceCoverage && data.usePinsPerCity && (
+            <div className="mb-4">
+              <PriceFilter value={price} onChange={setPrice} />
+            </div>
+          )}
           <Accordion
             type="multiple"
             className="border-t"
             style={{ borderColor: HAIRLINE }}
           >
-            {data.cities.map((c) => (
+            {filteredCities.map((c) => (
               <AccordionItem
                 key={c.slug}
                 value={c.slug}
