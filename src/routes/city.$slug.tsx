@@ -19,6 +19,12 @@ import { AwardBadgeRow } from "@/components/AwardBadge";
 import { VenuePhoto } from "@/components/VenuePhoto";
 import { CitySpotlight } from "@/components/CitySpotlight";
 import { VenueRankedRow } from "@/components/VenueRankedRow";
+import {
+  PriceFilter,
+  applyPriceFilter,
+  hasPriceCoverage,
+  type PriceTier,
+} from "@/components/PriceFilter";
 import { formatCoord } from "@/lib/format-coords";
 import { awardLabelShort } from "@/lib/award-label";
 import { slugifyCountry } from "@/lib/cities";
@@ -227,6 +233,7 @@ function CityPage() {
 
   const [quick, setQuick] = useState<Set<QuickFilter>>(new Set());
   const [awardFilters, setAwardFilters] = useState<Set<string>>(new Set());
+  const [price, setPrice] = useState<PriceTier | undefined>(undefined);
   const [showAll, setShowAll] = useState(false);
   const [showAllBars, setShowAllBars] = useState(false);
   const [showNearby, setShowNearby] = useState(false);
@@ -235,6 +242,9 @@ function CityPage() {
   // Deferred so the filter pills feel responsive while a large list filters.
   const deferredQuick = useDeferredValue(quick);
   const deferredAwards = useDeferredValue(awardFilters);
+  const deferredPrice = useDeferredValue(price);
+
+  const priceCoverage = useMemo(() => hasPriceCoverage(venues), [venues]);
 
   const distinctSources = useMemo(() => {
     const set = new Set<string>();
@@ -268,9 +278,12 @@ function CityPage() {
         const ok = v.awards.some((a) => deferredAwards.has(a.source));
         if (!ok) return false;
       }
+      if (deferredPrice) {
+        if (v.price_tier !== deferredPrice) return false;
+      }
       return true;
     });
-  }, [sortedVenues, deferredQuick, deferredAwards]);
+  }, [sortedVenues, deferredQuick, deferredAwards, deferredPrice]);
 
   const toggleQuick = (id: QuickFilter) =>
     startTransition(() =>
@@ -294,10 +307,12 @@ function CityPage() {
     startTransition(() => {
       setQuick(new Set());
       setAwardFilters(new Set());
+      setPrice(undefined);
       setShowAll(false);
     });
 
-  const noneSelected = quick.size === 0 && awardFilters.size === 0;
+  const noneSelected =
+    quick.size === 0 && awardFilters.size === 0 && price === undefined;
 
   const restaurants = useMemo(
     () => filtered.filter((v) => v.type !== "bar"),
@@ -441,6 +456,13 @@ function CityPage() {
                 label="Cocktail Bars"
               />
             </div>
+
+            {priceCoverage && (
+              <PriceFilter
+                value={price}
+                onChange={(v) => startTransition(() => setPrice(v))}
+              />
+            )}
 
             {Array.from(awardFilters).map((src) => (
               <button
