@@ -244,6 +244,21 @@ export function CitySearch({ placeholder, actionRef }: Props) {
     else goUncharted(item.data);
   };
 
+  // Imperative submit for an external "Find the best" button. Behaves like
+  // pressing Enter: navigates to the currently active row, or falls back to
+  // the first available result (pinned exact match, then the section order).
+  useImperativeHandle(
+    actionRef,
+    () => ({
+      submit: () => {
+        if (flat.length === 0) return;
+        const idx = active >= 0 && active < flat.length ? active : 0;
+        select(idx);
+      },
+    }),
+    [flat, active],
+  );
+
   const showExplore = debounced.length >= 3 && !geoapifyError;
   const showGlobalEmpty =
     debounced.length >= 1 &&
