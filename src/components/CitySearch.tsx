@@ -244,10 +244,11 @@ export function CitySearch({ placeholder }: Props) {
   const showExplore = debounced.length >= 3 && !geoapifyError;
   const showGlobalEmpty =
     debounced.length >= 1 &&
-    charted.length === 0 &&
-    regions.length === 0 &&
-    countries.length === 0 &&
-    venues.length === 0 &&
+    !pinned &&
+    chartedList.length === 0 &&
+    regionsList.length === 0 &&
+    countriesList.length === 0 &&
+    venuesList.length === 0 &&
     !showExplore;
   const showDropdown =
     flat.length > 0 || showGlobalEmpty || showExplore;
@@ -309,11 +310,51 @@ export function CitySearch({ placeholder }: Props) {
             minHeight: debounced.length >= 1 ? 280 : undefined,
           }}
         >
-          {charted.length > 0 && (
+          {pinned && (
             <>
+              {pinned.kind === "charted" && (
+                <ChartedRow
+                  city={pinned.data}
+                  active={0 === active}
+                  onMouseEnter={() => setActive(0)}
+                  onClick={() => goCharted(pinned.data)}
+                />
+              )}
+              {pinned.kind === "country" && (
+                <CountryRow
+                  country={pinned.data}
+                  active={0 === active}
+                  onMouseEnter={() => setActive(0)}
+                  onClick={() => goCountry(pinned.data)}
+                />
+              )}
+              {pinned.kind === "region" && (
+                <RegionRow
+                  region={pinned.data}
+                  active={0 === active}
+                  onMouseEnter={() => setActive(0)}
+                  onClick={() => goRegion(pinned.data)}
+                />
+              )}
+              {pinned.kind === "venue" && (
+                <VenueRow
+                  venue={pinned.data}
+                  active={0 === active}
+                  onMouseEnter={() => setActive(0)}
+                  onClick={() => goVenue(pinned.data)}
+                />
+              )}
+            </>
+          )}
+
+          {chartedList.length > 0 && (
+            <>
+              {pinned && (
+                <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
+              )}
               <div style={sectionLabelStyle}>Charted</div>
-              {charted.map((c, i) => {
-                const idx = i;
+              {chartedList.map((c, i) => {
+                const idx = (pinned ? 1 : 0) + i;
                 return (
                   <ChartedRow
                     key={`c-${c.slug}`}
@@ -327,14 +368,14 @@ export function CitySearch({ placeholder }: Props) {
             </>
           )}
 
-          {countries.length > 0 && (
+          {countriesList.length > 0 && (
             <>
-              {charted.length > 0 && (
+              {(pinned || chartedList.length > 0) && (
                 <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
               )}
               <div style={sectionLabelStyle}>Countries</div>
-              {countries.map((c, i) => {
-                const idx = charted.length + i;
+              {countriesList.map((c, i) => {
+                const idx = (pinned ? 1 : 0) + chartedList.length + i;
                 return (
                   <CountryRow
                     key={`co-${c.slug}`}
@@ -348,14 +389,15 @@ export function CitySearch({ placeholder }: Props) {
             </>
           )}
 
-          {regions.length > 0 && (
+          {regionsList.length > 0 && (
             <>
-              {(charted.length > 0 || countries.length > 0) && (
+              {(pinned || chartedList.length > 0 || countriesList.length > 0) && (
                 <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
               )}
               <div style={sectionLabelStyle}>Regions</div>
-              {regions.map((r, i) => {
-                const idx = charted.length + countries.length + i;
+              {regionsList.map((r, i) => {
+                const idx =
+                  (pinned ? 1 : 0) + chartedList.length + countriesList.length + i;
                 return (
                   <RegionRow
                     key={`r-${r.slug}`}
@@ -369,15 +411,22 @@ export function CitySearch({ placeholder }: Props) {
             </>
           )}
 
-          {venues.length > 0 && (
+          {venuesList.length > 0 && (
             <>
-              {(charted.length > 0 || countries.length > 0 || regions.length > 0) && (
+              {(pinned ||
+                chartedList.length > 0 ||
+                countriesList.length > 0 ||
+                regionsList.length > 0) && (
                 <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
               )}
               <div style={sectionLabelStyle}>Venues</div>
-              {venues.map((v, i) => {
+              {venuesList.map((v, i) => {
                 const idx =
-                  charted.length + countries.length + regions.length + i;
+                  (pinned ? 1 : 0) +
+                  chartedList.length +
+                  countriesList.length +
+                  regionsList.length +
+                  i;
                 return (
                   <VenueRow
                     key={`v-${v.id}`}
@@ -403,10 +452,11 @@ export function CitySearch({ placeholder }: Props) {
               ) : unchartedFiltered.length > 0 ? (
                 unchartedFiltered.map((u, i) => {
                   const idx =
-                    charted.length +
-                    countries.length +
-                    regions.length +
-                    venues.length +
+                    (pinned ? 1 : 0) +
+                    chartedList.length +
+                    countriesList.length +
+                    regionsList.length +
+                    venuesList.length +
                     i;
                   return (
                     <UnchartedRow
