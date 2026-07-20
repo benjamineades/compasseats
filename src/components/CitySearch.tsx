@@ -117,12 +117,12 @@ export function CitySearch({ placeholder }: Props) {
   const flat = useMemo(
     () => [
       ...charted.map((c) => ({ kind: "charted" as const, data: c })),
-      ...regions.map((r) => ({ kind: "region" as const, data: r })),
       ...countries.map((c) => ({ kind: "country" as const, data: c })),
+      ...regions.map((r) => ({ kind: "region" as const, data: r })),
       ...venues.map((v) => ({ kind: "venue" as const, data: v })),
       ...unchartedFiltered.map((u) => ({ kind: "uncharted" as const, data: u })),
     ],
-    [charted, regions, countries, venues, unchartedFiltered],
+    [charted, countries, regions, venues, unchartedFiltered],
   );
 
   useEffect(() => {
@@ -274,35 +274,14 @@ export function CitySearch({ placeholder }: Props) {
             </>
           )}
 
-          {regions.length > 0 && (
+          {countries.length > 0 && (
             <>
               {charted.length > 0 && (
                 <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
               )}
-              <div style={sectionLabelStyle}>Regions</div>
-              {regions.map((r, i) => {
-                const idx = charted.length + i;
-                return (
-                  <RegionRow
-                    key={`r-${r.slug}`}
-                    region={r}
-                    active={idx === active}
-                    onMouseEnter={() => setActive(idx)}
-                    onClick={() => goRegion(r)}
-                  />
-                );
-              })}
-            </>
-          )}
-
-          {countries.length > 0 && (
-            <>
-              {(charted.length > 0 || regions.length > 0) && (
-                <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
-              )}
               <div style={sectionLabelStyle}>Countries</div>
               {countries.map((c, i) => {
-                const idx = charted.length + regions.length + i;
+                const idx = charted.length + i;
                 return (
                   <CountryRow
                     key={`co-${c.slug}`}
@@ -316,15 +295,36 @@ export function CitySearch({ placeholder }: Props) {
             </>
           )}
 
+          {regions.length > 0 && (
+            <>
+              {(charted.length > 0 || countries.length > 0) && (
+                <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
+              )}
+              <div style={sectionLabelStyle}>Regions</div>
+              {regions.map((r, i) => {
+                const idx = charted.length + countries.length + i;
+                return (
+                  <RegionRow
+                    key={`r-${r.slug}`}
+                    region={r}
+                    active={idx === active}
+                    onMouseEnter={() => setActive(idx)}
+                    onClick={() => goRegion(r)}
+                  />
+                );
+              })}
+            </>
+          )}
+
           {venues.length > 0 && (
             <>
-              {(charted.length > 0 || regions.length > 0 || countries.length > 0) && (
+              {(charted.length > 0 || countries.length > 0 || regions.length > 0) && (
                 <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
               )}
               <div style={sectionLabelStyle}>Venues</div>
               {venues.map((v, i) => {
                 const idx =
-                  charted.length + regions.length + countries.length + i;
+                  charted.length + countries.length + regions.length + i;
                 return (
                   <VenueRow
                     key={`v-${v.id}`}
@@ -351,8 +351,8 @@ export function CitySearch({ placeholder }: Props) {
                 unchartedFiltered.map((u, i) => {
                   const idx =
                     charted.length +
-                    regions.length +
                     countries.length +
+                    regions.length +
                     venues.length +
                     i;
                   return (
