@@ -215,6 +215,12 @@ function CountryPage() {
           >
             Cities in {data.name}
           </p>
+          <p
+            className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em]"
+            style={{ color: INK_MUTED }}
+          >
+            Sorted by most charted
+          </p>
           <Accordion
             type="multiple"
             className="border-t"

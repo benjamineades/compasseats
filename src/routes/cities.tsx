@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ChevronRight } from "lucide-react";
 
 import {
   Accordion,
@@ -7,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { getCitiesWithVenues } from "@/lib/venues";
+import { slugifyCountry } from "@/lib/cities";
 import type { City } from "@/lib/schema";
 
 const SITE_URL = "https://compasseats.com";
@@ -52,11 +54,13 @@ const CONTINENT_BY_CODE: Record<string, string> = {
   AU: "Oceania", NZ: "Oceania",
 };
 
-const CONTINENT_ORDER = [
-  "Europe", "North America", "Asia", "South America", "Africa", "Oceania", "Other",
-];
-
-type CountryGroup = { code: string; name: string; cities: City[]; total: number };
+type CountryGroup = {
+  code: string;
+  name: string;
+  slug: string;
+  cities: City[];
+  total: number;
+};
 type ContinentGroup = {
   continent: string;
   countries: CountryGroup[];
@@ -94,7 +98,7 @@ function buildTree(cities: City[]): ContinentGroup[] {
     }
     g.cities.sort((a, b) => (b.venue_count ?? 0) - (a.venue_count ?? 0));
     const total = g.cities.reduce((s, c) => s + (c.venue_count ?? 0), 0);
-    countries.push({ code, name, cities: g.cities, total });
+    countries.push({ code, name, slug: slugifyCountry(name), cities: g.cities, total });
   }
 
   // 2) group countries by continent
@@ -107,7 +111,7 @@ function buildTree(cities: City[]): ContinentGroup[] {
 
   const result: ContinentGroup[] = [];
   for (const [continent, list] of byCont) {
-    list.sort((a, b) => b.total - a.total);
+    list.sort((a, b) => a.name.localeCompare(b.name));
     result.push({
       continent,
       countries: list,
@@ -115,11 +119,7 @@ function buildTree(cities: City[]): ContinentGroup[] {
       cityCount: list.reduce((s, c) => s + c.cities.length, 0),
     });
   }
-  result.sort((a, b) => {
-    const ai = CONTINENT_ORDER.indexOf(a.continent);
-    const bi = CONTINENT_ORDER.indexOf(b.continent);
-    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
-  });
+  result.sort((a, b) => a.continent.localeCompare(b.continent));
   return result;
 }
 
@@ -219,50 +219,35 @@ function CitiesPage() {
               <AccordionContent className="pb-2">
                 <Accordion type="multiple" className="pl-1">
                   {cont.countries.map((country) => (
-                    <AccordionItem
+                    <div
                       key={country.code}
-                      value={country.code}
                       className="border-b last:border-b-0"
                       style={{ borderColor: HAIRLINE }}
                     >
-                      <AccordionTrigger className="px-1 py-3.5 hover:no-underline">
-                        <div className="flex flex-1 items-baseline justify-between gap-4 pr-3">
-                          <span
-                            className="font-display text-lg font-light italic"
-                            style={{ color: INK }}
-                          >
-                            {country.name}
-                          </span>
+                      <Link
+                        to="/country/$slug"
+                        params={{ slug: country.slug }}
+                        className="group flex items-baseline justify-between gap-4 px-1 py-3.5 no-underline"
+                        style={{ color: INK }}
+                      >
+                        <span
+                          className="font-display text-lg font-light italic transition-colors group-hover:[color:var(--hover)]"
+                          style={{ ["--hover" as never]: BRONZE }}
+                        >
+                          {country.name}
+                        </span>
+                        <span className="flex items-center gap-2 pr-1">
                           <span className="text-xs" style={{ color: INK_MUTED }}>
-                            {formatNum(country.cities.length)} {country.cities.length === 1 ? "city" : "cities"}
+                            {formatNum(country.cities.length)}{" "}
+                            {country.cities.length === 1 ? "city" : "cities"}
                           </span>
-                        </div>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <ul className="grid gap-x-6 gap-y-1.5 px-1 pb-3 pt-1 sm:grid-cols-2 lg:grid-cols-3">
-                          {country.cities.map((c) => (
-                            <li key={c.slug}>
-                              <Link
-                                to="/city/$slug"
-                                params={{ slug: c.slug }}
-                                className="group flex items-baseline justify-between gap-3 py-1 no-underline"
-                                style={{ color: INK }}
-                              >
-                                <span
-                                  className="text-sm transition-colors group-hover:[color:var(--hover)]"
-                                  style={{ ["--hover" as never]: BRONZE }}
-                                >
-                                  {c.display}
-                                </span>
-                                <span className="text-xs" style={{ color: INK_MUTED }}>
-                                  {formatNum(c.venue_count ?? 0)}
-                                </span>
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
+                          <ChevronRight
+                            className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                            style={{ color: INK_MUTED }}
+                          />
+                        </span>
+                      </Link>
+                    </div>
                   ))}
                 </Accordion>
               </AccordionContent>
