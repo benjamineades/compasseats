@@ -11,6 +11,7 @@ export type TopCity = {
 
 import citiesData from "../../data/cities.json";
 import regionsData from "../../data/regions.json";
+import venuesIndexData from "../../data/venues-index.json";
 import type { City, Region } from "./schema";
 import { getCitiesWithVenues } from "./venues";
 
@@ -22,7 +23,7 @@ export type Country = {
   venueCount: number;
 };
 
-function slugifyCountry(name: string): string {
+export function slugifyCountry(name: string): string {
   return foldAccents(name)
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
@@ -83,6 +84,20 @@ const ALL_CITIES = citiesData as unknown as City[];
 /** All regions (from the static data/regions.json artifact). */
 const ALL_REGIONS = regionsData as unknown as Region[];
 
+/** Lightweight per-venue lookup entries (from data/venues-index.json). */
+export type VenueIndexEntry = {
+  id: string;
+  slug: string;
+  name: string;
+  city_slug: string;
+  city_display: string;
+  country: string;
+  type: "restaurant" | "bar";
+  award_count?: number;
+  top_award?: { source: string; category?: string; year?: number };
+};
+const ALL_VENUE_INDEX = venuesIndexData as unknown as VenueIndexEntry[];
+
 /** Search across every charted city by display name or country. */
 export function searchCities(query: string, limit = 8): City[] {
   const q = foldAccents(query.trim());
@@ -128,6 +143,44 @@ export function searchRegions(query: string, limit = 5): Region[] {
     const bp = foldAccents(b.display).startsWith(q) ? 1 : 0;
     if (ap !== bp) return bp - ap;
     return b.venue_count - a.venue_count;
+  });
+  return matches.slice(0, limit);
+}
+
+/** Search across countries derived from charted cities. */
+export function searchCountries(query: string, limit = 5): Country[] {
+  const q = foldAccents(query.trim());
+  if (q.length < 1) return [];
+  const all = getCountries();
+  const matches: Country[] = [];
+  for (const c of all) {
+    if (foldAccents(c.name).includes(q)) matches.push(c);
+  }
+  matches.sort((a, b) => {
+    const ap = foldAccents(a.name).startsWith(q) ? 1 : 0;
+    const bp = foldAccents(b.name).startsWith(q) ? 1 : 0;
+    if (ap !== bp) return bp - ap;
+    return b.venueCount - a.venueCount;
+  });
+  return matches.slice(0, limit);
+}
+
+/** Search individual venue names via the lightweight venues-index artifact. */
+export function searchVenues(query: string, limit = 5): VenueIndexEntry[] {
+  const q = foldAccents(query.trim());
+  if (q.length < 2) return [];
+  const matches: VenueIndexEntry[] = [];
+  for (const v of ALL_VENUE_INDEX) {
+    if (foldAccents(v.name).includes(q)) {
+      matches.push(v);
+      if (matches.length >= limit * 4) break;
+    }
+  }
+  matches.sort((a, b) => {
+    const ap = foldAccents(a.name).startsWith(q) ? 1 : 0;
+    const bp = foldAccents(b.name).startsWith(q) ? 1 : 0;
+    if (ap !== bp) return bp - ap;
+    return (b.award_count ?? 0) - (a.award_count ?? 0);
   });
   return matches.slice(0, limit);
 }

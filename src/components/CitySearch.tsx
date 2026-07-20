@@ -2,7 +2,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Search, Loader2 } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { Input } from "@/components/ui/input";
-import { searchCities, searchRegions } from "@/lib/cities";
+import {
+  searchCities,
+  searchRegions,
+  searchCountries,
+  searchVenues,
+  type Country,
+  type VenueIndexEntry,
+} from "@/lib/cities";
 import {
   geoapifyCitySearch,
   slugifyPlace,
@@ -42,6 +49,16 @@ export function CitySearch({ placeholder }: Props) {
   // Tier 1b: synchronous region matches.
   const regions: Region[] = useMemo(
     () => (debounced.length >= 1 ? searchRegions(debounced, 5) : []),
+    [debounced],
+  );
+
+  // Tier 1c: countries and venues (synchronous, from static artifacts).
+  const countries: Country[] = useMemo(
+    () => (debounced.length >= 1 ? searchCountries(debounced, 4) : []),
+    [debounced],
+  );
+  const venues: VenueIndexEntry[] = useMemo(
+    () => (debounced.length >= 2 ? searchVenues(debounced, 5) : []),
     [debounced],
   );
 
@@ -101,9 +118,11 @@ export function CitySearch({ placeholder }: Props) {
     () => [
       ...charted.map((c) => ({ kind: "charted" as const, data: c })),
       ...regions.map((r) => ({ kind: "region" as const, data: r })),
+      ...countries.map((c) => ({ kind: "country" as const, data: c })),
+      ...venues.map((v) => ({ kind: "venue" as const, data: v })),
       ...unchartedFiltered.map((u) => ({ kind: "uncharted" as const, data: u })),
     ],
-    [charted, regions, unchartedFiltered],
+    [charted, regions, countries, venues, unchartedFiltered],
   );
 
   useEffect(() => {
@@ -126,6 +145,19 @@ export function CitySearch({ placeholder }: Props) {
   const goRegion = (r: Region) => {
     setOpen(false);
     navigate({ to: "/region/$slug", params: { slug: r.slug } });
+  };
+
+  const goCountry = (c: Country) => {
+    setOpen(false);
+    navigate({ to: "/country/$slug", params: { slug: c.slug } });
+  };
+
+  const goVenue = (v: VenueIndexEntry) => {
+    setOpen(false);
+    navigate({
+      to: "/venue/$city/$slug",
+      params: { city: v.city_slug, slug: v.slug },
+    });
   };
 
   const goUncharted = (u: GeoapifyCityResult) => {
@@ -151,12 +183,19 @@ export function CitySearch({ placeholder }: Props) {
     if (!item) return;
     if (item.kind === "charted") goCharted(item.data);
     else if (item.kind === "region") goRegion(item.data);
+    else if (item.kind === "country") goCountry(item.data);
+    else if (item.kind === "venue") goVenue(item.data);
     else goUncharted(item.data);
   };
 
   const showExplore = debounced.length >= 3 && !geoapifyError;
   const showGlobalEmpty =
-    debounced.length >= 1 && charted.length === 0 && regions.length === 0 && !showExplore;
+    debounced.length >= 1 &&
+    charted.length === 0 &&
+    regions.length === 0 &&
+    countries.length === 0 &&
+    venues.length === 0 &&
+    !showExplore;
   const showDropdown =
     flat.length > 0 || showGlobalEmpty || showExplore;
 
@@ -256,6 +295,49 @@ export function CitySearch({ placeholder }: Props) {
             </>
           )}
 
+          {countries.length > 0 && (
+            <>
+              {(charted.length > 0 || regions.length > 0) && (
+                <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
+              )}
+              <div style={sectionLabelStyle}>Countries</div>
+              {countries.map((c, i) => {
+                const idx = charted.length + regions.length + i;
+                return (
+                  <CountryRow
+                    key={`co-${c.slug}`}
+                    country={c}
+                    active={idx === active}
+                    onMouseEnter={() => setActive(idx)}
+                    onClick={() => goCountry(c)}
+                  />
+                );
+              })}
+            </>
+          )}
+
+          {venues.length > 0 && (
+            <>
+              {(charted.length > 0 || regions.length > 0 || countries.length > 0) && (
+                <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
+              )}
+              <div style={sectionLabelStyle}>Venues</div>
+              {venues.map((v, i) => {
+                const idx =
+                  charted.length + regions.length + countries.length + i;
+                return (
+                  <VenueRow
+                    key={`v-${v.id}`}
+                    venue={v}
+                    active={idx === active}
+                    onMouseEnter={() => setActive(idx)}
+                    onClick={() => goVenue(v)}
+                  />
+                );
+              })}
+            </>
+          )}
+
           {showExplore && (
             <>
               <div style={sectionLabelStyle}>Explore further</div>
@@ -267,7 +349,12 @@ export function CitySearch({ placeholder }: Props) {
                 </>
               ) : unchartedFiltered.length > 0 ? (
                 unchartedFiltered.map((u, i) => {
-                  const idx = charted.length + regions.length + i;
+                  const idx =
+                    charted.length +
+                    regions.length +
+                    countries.length +
+                    venues.length +
+                    i;
                   return (
                     <UnchartedRow
                       key={`u-${u.placeId}`}
@@ -530,6 +617,167 @@ function RegionRow({
           {region.country ? `${region.country} · ` : ""}
           {region.venue_count}{" "}
           {region.venue_count === 1 ? "venue" : "venues"}
+        </span>
+      </span>
+    </button>
+  );
+}
+
+function CountryRow({
+  country,
+  active,
+  onClick,
+  onMouseEnter,
+}: {
+  country: Country;
+  active: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onMouseDown={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+      onMouseEnter={onMouseEnter}
+      className="flex w-full items-center gap-3 px-4 py-2.5 text-left"
+      style={{ background: active ? "var(--accent)" : "transparent" }}
+    >
+      <span
+        aria-hidden
+        style={{
+          width: 8,
+          height: 8,
+          borderRadius: 2,
+          background: "var(--primary)",
+          opacity: 0.4,
+          flex: "0 0 auto",
+        }}
+      />
+      <span className="min-w-0 flex-1">
+        <span className="flex items-baseline gap-2">
+          <span
+            className="truncate"
+            style={{
+              fontFamily: "Fraunces, serif",
+              fontWeight: 400,
+              fontStyle: "italic",
+              fontSize: "1.05rem",
+              color: "var(--foreground)",
+            }}
+          >
+            {country.name}
+          </span>
+          <span
+            style={{
+              fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+              fontWeight: 600,
+              fontSize: "0.6rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--primary)",
+              border: "1px solid var(--primary)",
+              borderRadius: 999,
+              padding: "1px 6px",
+              flex: "0 0 auto",
+            }}
+          >
+            Country
+          </span>
+        </span>
+        <span
+          className="block truncate"
+          style={{
+            fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+            fontWeight: 400,
+            fontSize: "0.78rem",
+            color: "var(--muted-foreground)",
+          }}
+        >
+          {country.cityCount} {country.cityCount === 1 ? "city" : "cities"} ·{" "}
+          {country.venueCount} {country.venueCount === 1 ? "venue" : "venues"}
+        </span>
+      </span>
+    </button>
+  );
+}
+
+function VenueRow({
+  venue,
+  active,
+  onClick,
+  onMouseEnter,
+}: {
+  venue: VenueIndexEntry;
+  active: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onMouseDown={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+      onMouseEnter={onMouseEnter}
+      className="flex w-full items-center gap-3 px-4 py-2.5 text-left"
+      style={{ background: active ? "var(--accent)" : "transparent" }}
+    >
+      <span
+        aria-hidden
+        style={{
+          width: 8,
+          height: 8,
+          borderRadius: 999,
+          background: "var(--primary)",
+          opacity: 0.7,
+          flex: "0 0 auto",
+        }}
+      />
+      <span className="min-w-0 flex-1">
+        <span className="flex items-baseline gap-2">
+          <span
+            className="truncate"
+            style={{
+              fontFamily: "Fraunces, serif",
+              fontWeight: 400,
+              fontSize: "1.05rem",
+              color: "var(--foreground)",
+            }}
+          >
+            {venue.name}
+          </span>
+          <span
+            style={{
+              fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+              fontWeight: 600,
+              fontSize: "0.6rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--primary)",
+              border: "1px solid var(--primary)",
+              borderRadius: 999,
+              padding: "1px 6px",
+              flex: "0 0 auto",
+            }}
+          >
+            Venue
+          </span>
+        </span>
+        <span
+          className="block truncate"
+          style={{
+            fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+            fontWeight: 400,
+            fontSize: "0.78rem",
+            color: "var(--muted-foreground)",
+          }}
+        >
+          {venue.city_display}, {venue.country}
+          {venue.type === "bar" ? " · bar" : ""}
         </span>
       </span>
     </button>
