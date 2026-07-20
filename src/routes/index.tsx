@@ -1,10 +1,10 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Loader2, LocateFixed } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ExploreByGuide } from "@/components/ExploreByGuide";
 import { HeroCompass } from "@/components/Compass";
-import { CitySearch } from "@/components/CitySearch";
+import { CitySearch, type CitySearchHandle } from "@/components/CitySearch";
 import { TOP_CITIES, findNearestCity } from "@/lib/cities";
 import { useNearMe } from "@/lib/useNearMe";
 
