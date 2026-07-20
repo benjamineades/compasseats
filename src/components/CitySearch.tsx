@@ -17,6 +17,10 @@ import {
 } from "@/lib/geoapify-search";
 import type { City, Region } from "@/lib/schema";
 
+function foldAccents(s: string): string {
+  return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+}
+
 type Props = {
   placeholder?: string;
 };
@@ -113,16 +117,65 @@ export function CitySearch({ placeholder }: Props) {
     );
   }, [uncharted, charted]);
 
-  // Flat list for keyboard nav (charted + regions + uncharted; skeletons are not selectable).
+  // Exact match pin: if a single result exactly matches the query (case- and
+  // accent-insensitive), pull the FIRST such match to the top. Section order
+  // for the exact-match tiebreak: city, country, region, venue.
+  const pinned = useMemo(() => {
+    const q = foldAccents(debounced);
+    if (!q) return null;
+    const city = charted.find((c) => foldAccents(c.display) === q);
+    if (city) return { kind: "charted" as const, data: city };
+    const country = countries.find((c) => foldAccents(c.name) === q);
+    if (country) return { kind: "country" as const, data: country };
+    const region = regions.find((r) => foldAccents(r.display) === q);
+    if (region) return { kind: "region" as const, data: region };
+    const venue = venues.find((v) => foldAccents(v.name) === q);
+    if (venue) return { kind: "venue" as const, data: venue };
+    return null;
+  }, [debounced, charted, countries, regions, venues]);
+
+  // Filter the pinned item out of its section so it doesn't render twice.
+  const chartedList = useMemo(
+    () =>
+      pinned?.kind === "charted"
+        ? charted.filter((c) => c.slug !== pinned.data.slug)
+        : charted,
+    [charted, pinned],
+  );
+  const countriesList = useMemo(
+    () =>
+      pinned?.kind === "country"
+        ? countries.filter((c) => c.slug !== pinned.data.slug)
+        : countries,
+    [countries, pinned],
+  );
+  const regionsList = useMemo(
+    () =>
+      pinned?.kind === "region"
+        ? regions.filter((r) => r.slug !== pinned.data.slug)
+        : regions,
+    [regions, pinned],
+  );
+  const venuesList = useMemo(
+    () =>
+      pinned?.kind === "venue"
+        ? venues.filter((v) => v.id !== pinned.data.id)
+        : venues,
+    [venues, pinned],
+  );
+
+  // Flat list for keyboard nav (pinned + charted + countries + regions +
+  // venues + uncharted; skeletons are not selectable).
   const flat = useMemo(
     () => [
-      ...charted.map((c) => ({ kind: "charted" as const, data: c })),
-      ...countries.map((c) => ({ kind: "country" as const, data: c })),
-      ...regions.map((r) => ({ kind: "region" as const, data: r })),
-      ...venues.map((v) => ({ kind: "venue" as const, data: v })),
+      ...(pinned ? [pinned] : []),
+      ...chartedList.map((c) => ({ kind: "charted" as const, data: c })),
+      ...countriesList.map((c) => ({ kind: "country" as const, data: c })),
+      ...regionsList.map((r) => ({ kind: "region" as const, data: r })),
+      ...venuesList.map((v) => ({ kind: "venue" as const, data: v })),
       ...unchartedFiltered.map((u) => ({ kind: "uncharted" as const, data: u })),
     ],
-    [charted, countries, regions, venues, unchartedFiltered],
+    [pinned, chartedList, countriesList, regionsList, venuesList, unchartedFiltered],
   );
 
   useEffect(() => {
