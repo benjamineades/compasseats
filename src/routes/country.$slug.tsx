@@ -153,7 +153,7 @@ export const Route = createFileRoute("/country/$slug")({
 });
 
 function CountryPage() {
-  const data = Route.useLoaderData();
+  const data = Route.useLoaderData() as LoaderData;
 
   const countsLine = useMemo(() => {
     const spots = `${formatNum(data.venueCount)} charted ${data.venueCount === 1 ? "spot" : "spots"}`;
