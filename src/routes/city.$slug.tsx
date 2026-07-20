@@ -21,7 +21,6 @@ import { CitySpotlight } from "@/components/CitySpotlight";
 import { VenueRankedRow } from "@/components/VenueRankedRow";
 import {
   PriceFilter,
-  applyPriceFilter,
   hasPriceCoverage,
   type PriceTier,
 } from "@/components/PriceFilter";
