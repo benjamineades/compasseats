@@ -351,8 +351,8 @@ export function CitySearch({ placeholder }: Props) {
                 unchartedFiltered.map((u, i) => {
                   const idx =
                     charted.length +
-                    regions.length +
                     countries.length +
+                    regions.length +
                     venues.length +
                     i;
                   return (
