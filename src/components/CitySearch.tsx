@@ -622,3 +622,164 @@ function RegionRow({
     </button>
   );
 }
+
+function CountryRow({
+  country,
+  active,
+  onClick,
+  onMouseEnter,
+}: {
+  country: Country;
+  active: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onMouseDown={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+      onMouseEnter={onMouseEnter}
+      className="flex w-full items-center gap-3 px-4 py-2.5 text-left"
+      style={{ background: active ? "var(--accent)" : "transparent" }}
+    >
+      <span
+        aria-hidden
+        style={{
+          width: 8,
+          height: 8,
+          borderRadius: 2,
+          background: "var(--primary)",
+          opacity: 0.4,
+          flex: "0 0 auto",
+        }}
+      />
+      <span className="min-w-0 flex-1">
+        <span className="flex items-baseline gap-2">
+          <span
+            className="truncate"
+            style={{
+              fontFamily: "Fraunces, serif",
+              fontWeight: 400,
+              fontStyle: "italic",
+              fontSize: "1.05rem",
+              color: "var(--foreground)",
+            }}
+          >
+            {country.name}
+          </span>
+          <span
+            style={{
+              fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+              fontWeight: 600,
+              fontSize: "0.6rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--primary)",
+              border: "1px solid var(--primary)",
+              borderRadius: 999,
+              padding: "1px 6px",
+              flex: "0 0 auto",
+            }}
+          >
+            Country
+          </span>
+        </span>
+        <span
+          className="block truncate"
+          style={{
+            fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+            fontWeight: 400,
+            fontSize: "0.78rem",
+            color: "var(--muted-foreground)",
+          }}
+        >
+          {country.cityCount} {country.cityCount === 1 ? "city" : "cities"} ·{" "}
+          {country.venueCount} {country.venueCount === 1 ? "venue" : "venues"}
+        </span>
+      </span>
+    </button>
+  );
+}
+
+function VenueRow({
+  venue,
+  active,
+  onClick,
+  onMouseEnter,
+}: {
+  venue: VenueIndexEntry;
+  active: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onMouseDown={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+      onMouseEnter={onMouseEnter}
+      className="flex w-full items-center gap-3 px-4 py-2.5 text-left"
+      style={{ background: active ? "var(--accent)" : "transparent" }}
+    >
+      <span
+        aria-hidden
+        style={{
+          width: 8,
+          height: 8,
+          borderRadius: 999,
+          background: "var(--primary)",
+          opacity: 0.7,
+          flex: "0 0 auto",
+        }}
+      />
+      <span className="min-w-0 flex-1">
+        <span className="flex items-baseline gap-2">
+          <span
+            className="truncate"
+            style={{
+              fontFamily: "Fraunces, serif",
+              fontWeight: 400,
+              fontSize: "1.05rem",
+              color: "var(--foreground)",
+            }}
+          >
+            {venue.name}
+          </span>
+          <span
+            style={{
+              fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+              fontWeight: 600,
+              fontSize: "0.6rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--primary)",
+              border: "1px solid var(--primary)",
+              borderRadius: 999,
+              padding: "1px 6px",
+              flex: "0 0 auto",
+            }}
+          >
+            Venue
+          </span>
+        </span>
+        <span
+          className="block truncate"
+          style={{
+            fontFamily: '"Hanken Grotesk", system-ui, sans-serif',
+            fontWeight: 400,
+            fontSize: "0.78rem",
+            color: "var(--muted-foreground)",
+          }}
+        >
+          {venue.city_display}, {venue.country}
+          {venue.type === "bar" ? " · bar" : ""}
+        </span>
+      </span>
+    </button>
+  );
+}
