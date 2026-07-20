@@ -21,6 +21,7 @@ import { CitySpotlight } from "@/components/CitySpotlight";
 import { VenueRankedRow } from "@/components/VenueRankedRow";
 import { formatCoord } from "@/lib/format-coords";
 import { awardLabelShort } from "@/lib/award-label";
+import { slugifyCountry } from "@/lib/cities";
 
 import {
   getCity,
@@ -319,7 +320,15 @@ function CityPage() {
   const barCount = venues.filter((v) => v.type === "bar").length;
   const crumbs = [
     { label: "Home", to: "/" as const },
-    ...(city.country ? [{ label: city.country }] : []),
+    ...(city.country
+      ? [
+          {
+            label: city.country,
+            to: "/country/$slug" as const,
+            params: { slug: slugifyCountry(city.country) },
+          },
+        ]
+      : []),
     { label: city.display },
   ];
   const counts = { total: venues.length, restaurants: restaurantCount, bars: barCount };
