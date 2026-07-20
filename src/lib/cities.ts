@@ -74,6 +74,21 @@ export function getCountries(): Country[] {
   return out;
 }
 
+/**
+ * Canonical country slug for an ISO country code, matching the slug that
+ * getCountries() produces (which picks the most-common country name variant
+ * per code). Falls back to slugifying the given fallback name when the code
+ * isn't represented in the charted set.
+ */
+export function getCountrySlugByCode(
+  code: string,
+  fallbackName?: string,
+): string {
+  const match = getCountries().find((c) => c.code === code);
+  if (match) return match.slug;
+  return fallbackName ? slugifyCountry(fallbackName) : "";
+}
+
 function foldAccents(s: string): string {
   return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }

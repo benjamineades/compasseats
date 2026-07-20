@@ -26,7 +26,7 @@ import {
 } from "@/components/PriceFilter";
 import { formatCoord } from "@/lib/format-coords";
 import { awardLabelShort } from "@/lib/award-label";
-import { slugifyCountry } from "@/lib/cities";
+import { getCountrySlugByCode } from "@/lib/cities";
 
 import {
   getCity,
@@ -339,7 +339,7 @@ function CityPage() {
           {
             label: city.country,
             to: "/country/$slug" as const,
-            params: { slug: slugifyCountry(city.country) },
+            params: { slug: getCountrySlugByCode(city.country_code, city.country) },
           },
         ]
       : []),

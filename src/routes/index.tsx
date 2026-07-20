@@ -1,10 +1,10 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Loader2, LocateFixed } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ExploreByGuide } from "@/components/ExploreByGuide";
 import { HeroCompass } from "@/components/Compass";
-import { CitySearch } from "@/components/CitySearch";
+import { CitySearch, type CitySearchHandle } from "@/components/CitySearch";
 import { TOP_CITIES, findNearestCity } from "@/lib/cities";
 import { useNearMe } from "@/lib/useNearMe";
 
@@ -41,6 +41,7 @@ function Index() {
   const [placeholder] = useState(pickThreePlaceholder);
   const navigate = useNavigate();
   const nearMe = useNearMe();
+  const searchRef = useRef<CitySearchHandle>(null);
 
   useEffect(() => {
     if (nearMe.requested && nearMe.coords) {
@@ -122,10 +123,11 @@ function Index() {
           <div className="relative z-10 mt-8">
           <div className="flex flex-wrap items-center justify-center gap-3.5">
             <div className="min-w-0 flex-1">
-              <CitySearch placeholder={placeholder} />
+              <CitySearch placeholder={placeholder} actionRef={searchRef} />
             </div>
             <Button
               type="button"
+              onClick={() => searchRef.current?.submit()}
               className="interactive h-12 shrink-0 rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
             >
               Find the best →

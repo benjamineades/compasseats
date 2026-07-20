@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { Search, Loader2 } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import { Input } from "@/components/ui/input";
@@ -21,11 +21,14 @@ function foldAccents(s: string): string {
   return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 }
 
+export type CitySearchHandle = { submit: () => void };
+
 type Props = {
   placeholder?: string;
+  actionRef?: React.Ref<CitySearchHandle>;
 };
 
-export function CitySearch({ placeholder }: Props) {
+export function CitySearch({ placeholder, actionRef }: Props) {
   const [value, setValue] = useState("");
   const [debounced, setDebounced] = useState("");
   const [uncharted, setUncharted] = useState<GeoapifyCityResult[]>([]);
@@ -240,6 +243,21 @@ export function CitySearch({ placeholder }: Props) {
     else if (item.kind === "venue") goVenue(item.data);
     else goUncharted(item.data);
   };
+
+  // Imperative submit for an external "Find the best" button. Behaves like
+  // pressing Enter: navigates to the currently active row, or falls back to
+  // the first available result (pinned exact match, then the section order).
+  useImperativeHandle(
+    actionRef,
+    () => ({
+      submit: () => {
+        if (flat.length === 0) return;
+        const idx = active >= 0 && active < flat.length ? active : 0;
+        select(idx);
+      },
+    }),
+    [flat, active],
+  );
 
   const showExplore = debounced.length >= 3 && !geoapifyError;
   const showGlobalEmpty =
