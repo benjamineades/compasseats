@@ -117,12 +117,12 @@ export function CitySearch({ placeholder }: Props) {
   const flat = useMemo(
     () => [
       ...charted.map((c) => ({ kind: "charted" as const, data: c })),
-      ...regions.map((r) => ({ kind: "region" as const, data: r })),
       ...countries.map((c) => ({ kind: "country" as const, data: c })),
+      ...regions.map((r) => ({ kind: "region" as const, data: r })),
       ...venues.map((v) => ({ kind: "venue" as const, data: v })),
       ...unchartedFiltered.map((u) => ({ kind: "uncharted" as const, data: u })),
     ],
-    [charted, regions, countries, venues, unchartedFiltered],
+    [charted, countries, regions, venues, unchartedFiltered],
   );
 
   useEffect(() => {
