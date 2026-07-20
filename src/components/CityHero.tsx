@@ -13,7 +13,11 @@ type Props = {
   lat?: number;
   lng?: number;
   back: { to: "/"; label?: string } | { onClick: () => void; label?: string };
-  crumbs?: { label: string; to?: "/" }[];
+  crumbs?: Array<
+    | { label: string; to: "/" }
+    | { label: string; to: "/country/$slug"; params: { slug: string } }
+    | { label: string }
+  >;
   counts?: { total: number; restaurants: number; bars: number };
   children?: ReactNode;
 };
@@ -221,9 +225,17 @@ export function CityHero({
             {crumbs.map((seg, i) => (
               <span key={i}>
                 {i > 0 && <span className="mx-1.5 text-white/60">›</span>}
-                {seg.to ? (
+                {"to" in seg && seg.to === "/" ? (
                   <Link
-                    to={seg.to}
+                    to="/"
+                    className="text-accent-strong no-underline hover:text-white"
+                  >
+                    {seg.label}
+                  </Link>
+                ) : "to" in seg && seg.to === "/country/$slug" ? (
+                  <Link
+                    to="/country/$slug"
+                    params={seg.params}
                     className="text-accent-strong no-underline hover:text-white"
                   >
                     {seg.label}
