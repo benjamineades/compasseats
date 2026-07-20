@@ -12,6 +12,66 @@ export type TopCity = {
 import citiesData from "../../data/cities.json";
 import regionsData from "../../data/regions.json";
 import type { City, Region } from "./schema";
+import { getCitiesWithVenues } from "./venues";
+
+export type Country = {
+  code: string;
+  name: string;
+  slug: string;
+  cityCount: number;
+  venueCount: number;
+};
+
+function slugifyCountry(name: string): string {
+  return foldAccents(name)
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/**
+ * Countries derived from charted cities. Groups by country_code and picks the
+ * most-common country name per code (dirty-string neutralization mirroring the
+ * approach used on /cities). Only includes countries with ≥1 charted venue.
+ */
+export function getCountries(): Country[] {
+  const cities = getCitiesWithVenues();
+  const byCode = new Map<
+    string,
+    { names: Map<string, number>; cityCount: number; venueCount: number }
+  >();
+  for (const c of cities) {
+    const code = c.country_code;
+    let g = byCode.get(code);
+    if (!g) {
+      g = { names: new Map(), cityCount: 0, venueCount: 0 };
+      byCode.set(code, g);
+    }
+    g.names.set(c.country, (g.names.get(c.country) ?? 0) + 1);
+    g.cityCount += 1;
+    g.venueCount += c.venue_count ?? 0;
+  }
+  const out: Country[] = [];
+  for (const [code, g] of byCode) {
+    if (g.venueCount <= 0) continue;
+    let name = code;
+    let best = -1;
+    for (const [n, count] of g.names) {
+      if (count > best) {
+        best = count;
+        name = n;
+      }
+    }
+    out.push({
+      code,
+      name,
+      slug: slugifyCountry(name),
+      cityCount: g.cityCount,
+      venueCount: g.venueCount,
+    });
+  }
+  out.sort((a, b) => b.venueCount - a.venueCount);
+  return out;
+}
 
 function foldAccents(s: string): string {
   return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
