@@ -17,6 +17,10 @@ import {
 } from "@/lib/geoapify-search";
 import type { City, Region } from "@/lib/schema";
 
+function foldAccents(s: string): string {
+  return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+}
+
 type Props = {
   placeholder?: string;
 };
@@ -113,16 +117,65 @@ export function CitySearch({ placeholder }: Props) {
     );
   }, [uncharted, charted]);
 
-  // Flat list for keyboard nav (charted + regions + uncharted; skeletons are not selectable).
+  // Exact match pin: if a single result exactly matches the query (case- and
+  // accent-insensitive), pull the FIRST such match to the top. Section order
+  // for the exact-match tiebreak: city, country, region, venue.
+  const pinned = useMemo(() => {
+    const q = foldAccents(debounced);
+    if (!q) return null;
+    const city = charted.find((c) => foldAccents(c.display) === q);
+    if (city) return { kind: "charted" as const, data: city };
+    const country = countries.find((c) => foldAccents(c.name) === q);
+    if (country) return { kind: "country" as const, data: country };
+    const region = regions.find((r) => foldAccents(r.display) === q);
+    if (region) return { kind: "region" as const, data: region };
+    const venue = venues.find((v) => foldAccents(v.name) === q);
+    if (venue) return { kind: "venue" as const, data: venue };
+    return null;
+  }, [debounced, charted, countries, regions, venues]);
+
+  // Filter the pinned item out of its section so it doesn't render twice.
+  const chartedList = useMemo(
+    () =>
+      pinned?.kind === "charted"
+        ? charted.filter((c) => c.slug !== pinned.data.slug)
+        : charted,
+    [charted, pinned],
+  );
+  const countriesList = useMemo(
+    () =>
+      pinned?.kind === "country"
+        ? countries.filter((c) => c.slug !== pinned.data.slug)
+        : countries,
+    [countries, pinned],
+  );
+  const regionsList = useMemo(
+    () =>
+      pinned?.kind === "region"
+        ? regions.filter((r) => r.slug !== pinned.data.slug)
+        : regions,
+    [regions, pinned],
+  );
+  const venuesList = useMemo(
+    () =>
+      pinned?.kind === "venue"
+        ? venues.filter((v) => v.id !== pinned.data.id)
+        : venues,
+    [venues, pinned],
+  );
+
+  // Flat list for keyboard nav (pinned + charted + countries + regions +
+  // venues + uncharted; skeletons are not selectable).
   const flat = useMemo(
     () => [
-      ...charted.map((c) => ({ kind: "charted" as const, data: c })),
-      ...countries.map((c) => ({ kind: "country" as const, data: c })),
-      ...regions.map((r) => ({ kind: "region" as const, data: r })),
-      ...venues.map((v) => ({ kind: "venue" as const, data: v })),
+      ...(pinned ? [pinned] : []),
+      ...chartedList.map((c) => ({ kind: "charted" as const, data: c })),
+      ...countriesList.map((c) => ({ kind: "country" as const, data: c })),
+      ...regionsList.map((r) => ({ kind: "region" as const, data: r })),
+      ...venuesList.map((v) => ({ kind: "venue" as const, data: v })),
       ...unchartedFiltered.map((u) => ({ kind: "uncharted" as const, data: u })),
     ],
-    [charted, countries, regions, venues, unchartedFiltered],
+    [pinned, chartedList, countriesList, regionsList, venuesList, unchartedFiltered],
   );
 
   useEffect(() => {
@@ -191,10 +244,11 @@ export function CitySearch({ placeholder }: Props) {
   const showExplore = debounced.length >= 3 && !geoapifyError;
   const showGlobalEmpty =
     debounced.length >= 1 &&
-    charted.length === 0 &&
-    regions.length === 0 &&
-    countries.length === 0 &&
-    venues.length === 0 &&
+    !pinned &&
+    chartedList.length === 0 &&
+    regionsList.length === 0 &&
+    countriesList.length === 0 &&
+    venuesList.length === 0 &&
     !showExplore;
   const showDropdown =
     flat.length > 0 || showGlobalEmpty || showExplore;
@@ -256,11 +310,51 @@ export function CitySearch({ placeholder }: Props) {
             minHeight: debounced.length >= 1 ? 280 : undefined,
           }}
         >
-          {charted.length > 0 && (
+          {pinned && (
             <>
+              {pinned.kind === "charted" && (
+                <ChartedRow
+                  city={pinned.data}
+                  active={0 === active}
+                  onMouseEnter={() => setActive(0)}
+                  onClick={() => goCharted(pinned.data)}
+                />
+              )}
+              {pinned.kind === "country" && (
+                <CountryRow
+                  country={pinned.data}
+                  active={0 === active}
+                  onMouseEnter={() => setActive(0)}
+                  onClick={() => goCountry(pinned.data)}
+                />
+              )}
+              {pinned.kind === "region" && (
+                <RegionRow
+                  region={pinned.data}
+                  active={0 === active}
+                  onMouseEnter={() => setActive(0)}
+                  onClick={() => goRegion(pinned.data)}
+                />
+              )}
+              {pinned.kind === "venue" && (
+                <VenueRow
+                  venue={pinned.data}
+                  active={0 === active}
+                  onMouseEnter={() => setActive(0)}
+                  onClick={() => goVenue(pinned.data)}
+                />
+              )}
+            </>
+          )}
+
+          {chartedList.length > 0 && (
+            <>
+              {pinned && (
+                <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
+              )}
               <div style={sectionLabelStyle}>Charted</div>
-              {charted.map((c, i) => {
-                const idx = i;
+              {chartedList.map((c, i) => {
+                const idx = (pinned ? 1 : 0) + i;
                 return (
                   <ChartedRow
                     key={`c-${c.slug}`}
@@ -274,14 +368,14 @@ export function CitySearch({ placeholder }: Props) {
             </>
           )}
 
-          {countries.length > 0 && (
+          {countriesList.length > 0 && (
             <>
-              {charted.length > 0 && (
+              {(pinned || chartedList.length > 0) && (
                 <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
               )}
               <div style={sectionLabelStyle}>Countries</div>
-              {countries.map((c, i) => {
-                const idx = charted.length + i;
+              {countriesList.map((c, i) => {
+                const idx = (pinned ? 1 : 0) + chartedList.length + i;
                 return (
                   <CountryRow
                     key={`co-${c.slug}`}
@@ -295,14 +389,15 @@ export function CitySearch({ placeholder }: Props) {
             </>
           )}
 
-          {regions.length > 0 && (
+          {regionsList.length > 0 && (
             <>
-              {(charted.length > 0 || countries.length > 0) && (
+              {(pinned || chartedList.length > 0 || countriesList.length > 0) && (
                 <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
               )}
               <div style={sectionLabelStyle}>Regions</div>
-              {regions.map((r, i) => {
-                const idx = charted.length + countries.length + i;
+              {regionsList.map((r, i) => {
+                const idx =
+                  (pinned ? 1 : 0) + chartedList.length + countriesList.length + i;
                 return (
                   <RegionRow
                     key={`r-${r.slug}`}
@@ -316,15 +411,22 @@ export function CitySearch({ placeholder }: Props) {
             </>
           )}
 
-          {venues.length > 0 && (
+          {venuesList.length > 0 && (
             <>
-              {(charted.length > 0 || countries.length > 0 || regions.length > 0) && (
+              {(pinned ||
+                chartedList.length > 0 ||
+                countriesList.length > 0 ||
+                regionsList.length > 0) && (
                 <div style={{ height: 1, background: "var(--border)", margin: "4px 0" }} />
               )}
               <div style={sectionLabelStyle}>Venues</div>
-              {venues.map((v, i) => {
+              {venuesList.map((v, i) => {
                 const idx =
-                  charted.length + countries.length + regions.length + i;
+                  (pinned ? 1 : 0) +
+                  chartedList.length +
+                  countriesList.length +
+                  regionsList.length +
+                  i;
                 return (
                   <VenueRow
                     key={`v-${v.id}`}
@@ -350,10 +452,11 @@ export function CitySearch({ placeholder }: Props) {
               ) : unchartedFiltered.length > 0 ? (
                 unchartedFiltered.map((u, i) => {
                   const idx =
-                    charted.length +
-                    countries.length +
-                    regions.length +
-                    venues.length +
+                    (pinned ? 1 : 0) +
+                    chartedList.length +
+                    countriesList.length +
+                    regionsList.length +
+                    venuesList.length +
                     i;
                   return (
                     <UnchartedRow

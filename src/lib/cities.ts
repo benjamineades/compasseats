@@ -105,10 +105,7 @@ export function searchCities(query: string, limit = 8): City[] {
   const matches: City[] = [];
   for (const c of ALL_CITIES) {
     if (c.venue_count <= 0) continue;
-    const hay =
-      foldAccents(c.display).includes(q) ||
-      foldAccents(c.country).includes(q);
-    if (hay) {
+    if (foldAccents(c.display).includes(q)) {
       matches.push(c);
       if (matches.length >= limit * 3) break;
     }
