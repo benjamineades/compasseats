@@ -143,15 +143,52 @@ function priceBackfillDryRun() {
   previewSheet.clearContents();
   previewSheet.getRange(1, 1, preview.length, preview[0].length).setValues(preview);
 
-  // Worst-case estimate: assumes no free monthly allowance remains.
+  // Google's priceLevel field bills under the Place Details Enterprise SKU:
+  // $20 per 1,000 requests (10K-100K volume tier), with 1,000 free calls/month
+  // at that tier. Confirmed directly against Google's current pricing docs
+  // July 20, 2026 — this is NOT the cheaper legacy rate.
   var billable = Math.max(0, candidates.length - 1000);
-  var estCost = (billable / 1000) * 5.00;
-  var sampleCost = (sampleSize / 1000) * 5.00;
+  var estCost = (billable / 1000) * 20.00;
+  var sampleCost = (sampleSize / 1000) * 20.00;
 
   Logger.log('=== DRY RUN COMPLETE ===');
   Logger.log('Sample of ' + sampleSize + ' real lookups written to the "price_backfill_preview" tab. Check the mapped_price_tier column before going live.');
   Logger.log('This dry run itself billed ~$' + sampleCost.toFixed(2) + ' for the sample.');
   Logger.log('Estimated cost for the FULL run of ' + candidates.length + ' venues (worst case, no free allowance left): $' + estCost.toFixed(2));
+}
+
+/**
+ * OPTIONAL — run this ONCE if you'd rather not manually click Run on
+ * priceBackfillLive() about 18 times. It sets up an automatic trigger that
+ * runs priceBackfillLive() every 10 minutes on its own, and the trigger
+ * removes itself once every candidate has been processed. You can close
+ * this tab after starting it — check back later, or just watch price_tier
+ * fill in on the venues tab.
+ */
+var BACKFILL_TRIGGER_HANDLER_ = 'priceBackfillLive';
+
+function startAutoBackfill() {
+  removeAutoBackfillTriggers_();
+  ScriptApp.newTrigger(BACKFILL_TRIGGER_HANDLER_)
+    .timeBased()
+    .everyMinutes(10)
+    .create();
+  Logger.log('Auto-backfill started. priceBackfillLive() will now run automatically every 10 minutes until everything is processed, then stop itself.');
+  Logger.log('Full run is roughly 18 batches, so expect this to take a few hours in the background. Safe to close this tab.');
+}
+
+function stopAutoBackfill() {
+  removeAutoBackfillTriggers_();
+  Logger.log('Auto-backfill trigger removed. Nothing further will run automatically — use priceBackfillLive() manually if you want to continue.');
+}
+
+function removeAutoBackfillTriggers_() {
+  var triggers = ScriptApp.getProjectTriggers();
+  triggers.forEach(function (t) {
+    if (t.getHandlerFunction() === BACKFILL_TRIGGER_HANDLER_) {
+      ScriptApp.deleteTrigger(t);
+    }
+  });
 }
 
 /**
@@ -205,5 +242,12 @@ function priceBackfillLive() {
   Logger.log('Skipped — Google has no price data: ' + skippedNoData);
   Logger.log('Errors: ' + errors);
   Logger.log('Remaining candidates after this batch: ' + (candidates.length - batch.length));
-  Logger.log('Run priceBackfillLive() again to continue. When "Processed this run" reads 0, you are done.');
+
+  if (candidates.length - batch.length <= 0) {
+    removeAutoBackfillTriggers_();
+    Logger.log('=== ALL CANDIDATES PROCESSED — DONE ===');
+    Logger.log('Auto-backfill trigger (if any) has been removed automatically.');
+  } else {
+    Logger.log('Run priceBackfillLive() again to continue, or leave startAutoBackfill() running if you started it.');
+  }
 }
