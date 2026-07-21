@@ -18,6 +18,23 @@
  *       reshape's SOURCE_MAP has no 'Restaurant Awards' line, it is OUTDATED
  *       and restaurants will silently disappear. Use this file.
  *
+ * >>> PATCHED July 21, 2026 (handoff section 6): writeTab_() still clears and
+ *     fully rebuilds the venues tab from scratch every run. price_tier now
+ *     comes from the Restaurant Awards tab's price_band column FIRST, and
+ *     falls back to a new "price_level" column on Places Enrichment when the
+ *     award tab has none. This is what lets a Google-Places price backfill
+ *     survive reshape. BEFORE running this version for the first time:
+ *       1. Add a column called "price_level" as the LAST column on the
+ *          "Places Enrichment" tab. As of July 21 2026 the tab's last
+ *          column is "lastVerified" — price_level goes right after that
+ *          one, not after "businessStatus".
+ *       2. Run migratePriceToEnrichment() ONCE (see bottom of this file) to
+ *          copy whatever price_tier values already exist in `venues` (from
+ *          the completed backfill) into that new column.
+ *       3. Only then run reshapeCompassEats() again.
+ *     Skipping steps 1–2 means the fallback column is empty and reshape will
+ *     silently drop the backfilled prices, same as before this patch.
+ *
  * HOW TO RUN
  *   1. Open your Google Sheet.
  *   2. Extensions → Apps Script.
@@ -94,7 +111,9 @@ function normKey_(name) {
   s = s.replace(/[\u00B2\u00B3\u00B9\u2070-\u2079]/g, '');      // ² ³ ¹ ⁰ ⁴-⁹
   s = s.replace(/[^a-z0-9]+/g, ' ');
   return s.replace(/\s+/g, ' ').trim();
-}// City-name aliases — localized spellings + verified typos from source award tabs.
+}
+
+// City-name aliases — localized spellings + verified typos from source award tabs.
 // Maps a normalized variant → canonical normalized city key. Applied in cityKey_.
 // Added June 7, 2026 — resolves localized-name / typo duplicate-key collisions
 // (La Liste / Restaurant Awards use native names; OAD tabs carry typos).
@@ -319,6 +338,11 @@ var CITY_ALIASES_ = {
   'washington': 'washington dc',
   'washington dc metro': 'washington dc',
   'wien': 'vienna',
+  // Batch 7 (Jul 19) — verified spelling/typo folds, each carried by one venue.
+  'sankt moritz': 'saint moritz',   // Da Vittorio at Carlton Hotel St. Moritz (Michelin: Saint Moritz)
+  'ninjang': 'nanjing',             // 江南小灶 JiangNan Wok — "Ninjang" is a garbled Nanjing
+  'koln': 'cologne',
+  'st helena': 'saint helena',      // Press Restaurant (Wine Spectator Grand Award, Napa Valley)
 
   // Batch 3 — dead-safe spelling-variant folds (verified against geo_audit /
   // Places Enrichment, July 3, 2026). Each pair is the SAME real city, just a
@@ -374,6 +398,7 @@ var CITY_ALIASES_ = {
 // Batch 7 (Jul 19) — verified spelling/typo folds, each carried by one venue.
   'sankt moritz': 'saint moritz',   // Da Vittorio at Carlton Hotel St. Moritz (Michelin: Saint Moritz)
   'ninjang': 'nanjing',             // 江南小灶 JiangNan Wok — "Ninjang" is a garbled Nanjing
+ 'koln': 'cologne',
   };
 
 // Normalizes a city string to its canonical key, applying the alias map.
@@ -662,7 +687,13 @@ function reshapeCompassEats() {
       enrich[key] = {
         canonical: er[1], place_id: placeId,
         lat: er[4], lng: er[5], photo: er[6],
-        address: er[7], status: er[8]
+        address: er[7], status: er[8],
+        // ADDED July 21 2026: durable price fallback (see handoff §6).
+        // Places Enrichment columns are: key, canonicalName, sheetName,
+        // placeId, lat, lng, photoName, formattedAddress, businessStatus,
+        // lastVerified (confirmed from live sheet screenshot, July 21 2026).
+        // price_level goes AFTER lastVerified, so it's index 10, not 9.
+        price_level: er[10] || null
       };
     }
   }
@@ -722,7 +753,10 @@ function reshapeCompassEats() {
           name: (geo && geo.canonical) ? geo.canonical : rec.name,
           city: city, country: country, type: vtype,
           cuisine: rec.cuisine || null,
-          price_band: rec.price_band || null,
+          // ADDED July 21 2026: fall back to Places Enrichment's price when the
+          // award tab (Restaurant Awards) has no price_band of its own — this is
+          // what keeps a Google-Places price backfill alive across reshape runs.
+          price_band: rec.price_band || (geo && geo.price_level) || null,
           place_id: geo ? geo.place_id : null,
           lat: (geo && geo.lat !== '') ? geo.lat : null,
           lng: (geo && geo.lng !== '') ? geo.lng : null,
@@ -863,4 +897,92 @@ function writeTab_(ss, name, headers, rows) {
     sheet.getRange(2, 1, rows.length, headers.length).setValues(rows);
   }
   sheet.setFrozenRows(1);
+}
+
+// ---------------------------------------------------------------------------
+// ONE-TIME MIGRATION — run this exactly once, BEFORE the next reshape run
+// ---------------------------------------------------------------------------
+//
+// Copies whatever price_tier values already sit in the `venues` tab (written
+// there by the Google Places price backfill, priceBackfillPhase1.gs) into the
+// new "price_level" column on Places Enrichment, matched by the SAME
+// normKey_(name) + '|' + cityKey_(city) key the reshape lookup already uses.
+// Safe to re-run — it only ever fills in a blank price_level cell, it never
+// overwrites one that already has a value, and it never touches any other
+// column. Does not modify the `venues` tab at all.
+//
+// HOW TO RUN
+//   1. Do the manual step first: add a column named "price_level" as the
+//      LAST column on the "Places Enrichment" tab.
+//   2. Run → migratePriceToEnrichment. Check the alert for a summary.
+//   3. Only after this shows 0 "not found" (or you've reviewed any misses)
+//      should you run reshapeCompassEats() again.
+function migratePriceToEnrichment() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+
+  var venuesSheet = ss.getSheetByName(VENUES_TAB);
+  if (!venuesSheet) throw new Error('Could not find the "' + VENUES_TAB + '" tab.');
+  var venuesVals = venuesSheet.getDataRange().getValues();
+  var vHeaders = venuesVals[0];
+  var nameCol = vHeaders.indexOf('name');
+  var cityDisplayCol = vHeaders.indexOf('city_display');
+  var priceCol = vHeaders.indexOf('price_tier');
+  if (nameCol < 0 || cityDisplayCol < 0 || priceCol < 0) {
+    throw new Error('Expected columns name / city_display / price_tier not found in venues tab.');
+  }
+
+  var enrichSheet = findSheet_(ss, ENRICHMENT_TAB);
+  if (!enrichSheet) throw new Error('Could not find a "' + ENRICHMENT_TAB + '" tab.');
+  var enrichRange = enrichSheet.getDataRange();
+  var enrichVals = enrichRange.getValues();
+  var eHeaders = enrichVals[0];
+  var ePriceCol = eHeaders.indexOf('price_level');
+  if (ePriceCol < 0) {
+    throw new Error('No "price_level" column found on Places Enrichment. ' +
+      'Add it as the last column first, then re-run this function.');
+  }
+
+  // Build key -> row index map for Places Enrichment (1-indexed sheet rows)
+  var enrichRowByKey = {};
+  for (var i = 1; i < enrichVals.length; i++) {
+    var k = enrichVals[i][0];
+    if (k) enrichRowByKey[k] = i; // i = row index within enrichVals (0-based array)
+  }
+
+  var filled = 0, alreadyHadValue = 0, notFound = 0, blankPrice = 0;
+  var updates = []; // [rowIndexInSheet, priceValue]
+
+  for (var r = 1; r < venuesVals.length; r++) {
+    var price = venuesVals[r][priceCol];
+    if (price === '' || price === null || price === undefined) { blankPrice++; continue; }
+
+    var vName = venuesVals[r][nameCol];
+    var vCity = venuesVals[r][cityDisplayCol];
+    var key = normKey_(vName) + '|' + cityKey_(vCity);
+
+    var eIdx = enrichRowByKey[key];
+    if (eIdx === undefined) { notFound++; continue; }
+
+    if (enrichVals[eIdx][ePriceCol]) { alreadyHadValue++; continue; }
+
+    updates.push([eIdx, price]);
+  }
+
+  // Apply updates directly to the sheet (leaves everything else untouched)
+  for (var u = 0; u < updates.length; u++) {
+    var rowIdx = updates[u][0]; // 0-based within enrichVals, so sheet row = rowIdx + 1
+    var val = updates[u][1];
+    enrichSheet.getRange(rowIdx + 1, ePriceCol + 1).setValue(val);
+    filled++;
+  }
+
+  var msg =
+    'Migration done.\n' +
+    'venues rows with a price_tier value: ' + (filled + alreadyHadValue + notFound) + '\n' +
+    'newly copied into Places Enrichment:  ' + filled + '\n' +
+    'Enrichment already had a price:       ' + alreadyHadValue + '\n' +
+    'no matching Enrichment row found:     ' + notFound + '  <-- review these before reshaping\n' +
+    'venues rows with blank price_tier:     ' + blankPrice;
+  Logger.log(msg);
+  SpreadsheetApp.getUi().alert(msg);
 }
