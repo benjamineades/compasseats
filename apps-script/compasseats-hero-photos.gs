@@ -51,8 +51,17 @@ const HERO_COL_PHOTO_SOURCE = 13;  // M  (new: Pexels page link)
  * Named uniquely (onOpen_heroPhotos) so it won't clash with an onOpen in
  * another file. We ALSO call it from a normal onOpen below -- but if your
  * project already has its own onOpen, see the note in the install steps.
+ *
+ * FIX (July 21, 2026): this function's declaration line was missing, leaving
+ * a bare, unnamed block. Apps Script projects share one execution context
+ * across every file, so that bare block was running automatically on EVERY
+ * script execution in this project -- including background/time-driven
+ * triggers, which have no UI for getUi() to attach to. That's what was
+ * crashing the price backfill trigger. Restoring the function name means
+ * this code now only runs when something actually calls onOpen_heroPhotos(),
+ * exactly as originally intended.
  */
- {
+function onOpen_heroPhotos() {
   SpreadsheetApp.getUi()
     .createMenu('CompassEats Photos')
     .addItem('Fill hero photos (batch)', 'fillHeroPhotosBatch')
@@ -65,7 +74,18 @@ const HERO_COL_PHOTO_SOURCE = 13;  // M  (new: Pexels page link)
  * Standard trigger. If your project has NO other onOpen, this builds the menu.
  * If another file already defines onOpen, delete this function and instead add
  * the line  onOpen_heroPhotos();  inside that existing onOpen.
+ *
+ * NOTE: this wrapper appears to be missing from the file as received -- only
+ * the comment describing it survived. If the "CompassEats Photos" menu is
+ * NOT currently showing up when you open the Sheet, that's why: nothing is
+ * actually calling onOpen_heroPhotos(). Uncomment the block below if you
+ * want this file to handle it directly, OR, if another file in this project
+ * already has its own onOpen(), leave this commented out and instead add a
+ * single line  onOpen_heroPhotos();  inside that other onOpen() function.
  */
+// function onOpen() {
+//   onOpen_heroPhotos();
+// }
 
 
 /**
