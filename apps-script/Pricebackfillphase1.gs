@@ -158,6 +158,29 @@ function priceBackfillDryRun() {
 }
 
 /**
+ * FREE, READ-ONLY — run this anytime to check progress. Doesn't call
+ * Google's API and doesn't cost anything, it just counts what's left.
+ */
+function checkBackfillProgress() {
+  var ss = SpreadsheetApp.openById(PRICE_SHEET_ID);
+  var venuesSheet = ss.getSheetByName('venues');
+  var data = venuesSheet.getDataRange().getValues();
+  var header = data[0];
+  var idx = {};
+  header.forEach(function (h, i) { idx[h] = i; });
+
+  var remaining = getBackfillCandidates_(data, idx).length;
+
+  Logger.log('=== BACKFILL PROGRESS ===');
+  Logger.log('Venues still needing a price lookup: ' + remaining);
+  if (remaining === 0) {
+    Logger.log('All done!');
+  } else {
+    Logger.log('Roughly ' + Math.ceil(remaining / PRICE_BATCH_SIZE) + ' more batch(es) of ' + PRICE_BATCH_SIZE + ' remaining.');
+  }
+}
+
+/**
  * OPTIONAL — run this ONCE if you'd rather not manually click Run on
  * priceBackfillLive() about 18 times. It sets up an automatic trigger that
  * runs priceBackfillLive() every 10 minutes on its own, and the trigger
