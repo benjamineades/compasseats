@@ -40,35 +40,51 @@ var PRICE_SHEET_ID = '1dKJY_woXdbO-j9CEADz28IE-1yik1FqHa0BAp29cI5s';
 var PLACES_API_KEY = PropertiesService.getScriptProperties().getProperty('PLACES_API_KEY'); // <-- confirm this property name matches your existing setup
 var PRICE_BATCH_SIZE = 400;
 
-// Google price_level (0-4) -> CompassEats price_tier (1-4).
-// 0 = "Free" is left blank on purpose — essentially never applies to a
-// restaurant or cocktail bar, so a Free result is flagged for a human look
-// rather than guessed into a tier.
-function mapGooglePriceToTier_(level) {
-  if (level === 1 || level === 2 || level === 3 || level === 4) return level;
-  return '';
-}
+// Google's newer Places API returns price as a word, not a number:
+// PRICE_LEVEL_FREE, PRICE_LEVEL_INEXPENSIVE, PRICE_LEVEL_MODERATE,
+// PRICE_LEVEL_EXPENSIVE, PRICE_LEVEL_VERY_EXPENSIVE (or PRICE_LEVEL_UNSPECIFIED
+// / missing entirely if Google has no price data for that place).
+// Mapped the same way as before: Free is left blank for manual review rather
+// than guessed into a tier, since it essentially never applies to a
+// restaurant or cocktail bar.
+var PRICE_LEVEL_MAP_ = {
+  'PRICE_LEVEL_INEXPENSIVE': 1,
+  'PRICE_LEVEL_MODERATE': 2,
+  'PRICE_LEVEL_EXPENSIVE': 3,
+  'PRICE_LEVEL_VERY_EXPENSIVE': 4
+};
 
 function fetchGooglePriceLevel_(placeId) {
-  var url = 'https://maps.googleapis.com/maps/api/place/details/json'
-    + '?place_id=' + encodeURIComponent(placeId)
-    + '&fields=price_level'
-    + '&key=' + PLACES_API_KEY;
+  var url = 'https://places.googleapis.com/v1/places/' + encodeURIComponent(placeId);
+  var options = {
+    method: 'get',
+    headers: {
+      'X-Goog-Api-Key': PLACES_API_KEY,
+      'X-Goog-FieldMask': 'priceLevel'
+    },
+    muteHttpExceptions: true
+  };
 
   try {
-    var resp = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+    var resp = UrlFetchApp.fetch(url, options);
+    var code = resp.getResponseCode();
     var json = JSON.parse(resp.getContentText());
 
-    if (json.status !== 'OK') {
-      return { raw: json.status, mappedTier: '', note: 'Google API status: ' + json.status };
+    if (code !== 200) {
+      var errStatus = (json.error && json.error.status) || ('HTTP ' + code);
+      var errMsg = (json.error && json.error.message) || resp.getContentText();
+      return { raw: errStatus, mappedTier: '', note: errMsg };
     }
-    var level = json.result && json.result.price_level;
-    if (level === undefined || level === null) {
+
+    var level = json.priceLevel;
+    if (!level || level === 'PRICE_LEVEL_UNSPECIFIED') {
       return { raw: '(none)', mappedTier: '', note: 'Google has no price data for this place' };
     }
-    var mapped = mapGooglePriceToTier_(level);
-    var note = (level === 0) ? 'Google returned "Free" — left blank for manual review' : '';
-    return { raw: level, mappedTier: mapped, note: note };
+    if (level === 'PRICE_LEVEL_FREE') {
+      return { raw: level, mappedTier: '', note: 'Google returned "Free" — left blank for manual review' };
+    }
+    var mapped = PRICE_LEVEL_MAP_[level] || '';
+    return { raw: level, mappedTier: mapped, note: mapped === '' ? 'Unrecognized price level value' : '' };
   } catch (e) {
     return { raw: 'ERROR', mappedTier: '', note: e.message };
   }
