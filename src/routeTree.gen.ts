@@ -9,37 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
-import { Route as RegionsRouteImport } from './routes/regions'
-import { Route as GuidesRouteImport } from './routes/guides'
-import { Route as CitiesRouteImport } from './routes/cities'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as UnchartedSlugRouteImport } from './routes/uncharted/$slug'
-import { Route as RegionSlugRouteImport } from './routes/region.$slug'
-import { Route as CountrySlugRouteImport } from './routes/country.$slug'
-import { Route as CitySlugRouteImport } from './routes/city.$slug'
+import { Route as CitiesRouteImport } from './routes/cities'
+import { Route as GuidesRouteImport } from './routes/guides'
+import { Route as RegionsRouteImport } from './routes/regions'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AwardAwardRouteImport } from './routes/award/$award'
+import { Route as CitySlugRouteImport } from './routes/city.$slug'
+import { Route as CountrySlugRouteImport } from './routes/country.$slug'
+import { Route as RegionSlugRouteImport } from './routes/region.$slug'
+import { Route as UnchartedSlugRouteImport } from './routes/uncharted/$slug'
 import { Route as VenueCitySlugRouteImport } from './routes/venue/$city/$slug'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
-  id: '/robots.txt',
-  path: '/robots.txt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RegionsRoute = RegionsRouteImport.update({
-  id: '/regions',
-  path: '/regions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GuidesRoute = GuidesRouteImport.update({
-  id: '/guides',
-  path: '/guides',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CitiesRoute = CitiesRouteImport.update({
@@ -47,24 +32,29 @@ const CitiesRoute = CitiesRouteImport.update({
   path: '/cities',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const GuidesRoute = GuidesRouteImport.update({
+  id: '/guides',
+  path: '/guides',
   getParentRoute: () => rootRouteImport,
 } as any)
-const UnchartedSlugRoute = UnchartedSlugRouteImport.update({
-  id: '/uncharted/$slug',
-  path: '/uncharted/$slug',
+const RegionsRoute = RegionsRouteImport.update({
+  id: '/regions',
+  path: '/regions',
   getParentRoute: () => rootRouteImport,
 } as any)
-const RegionSlugRoute = RegionSlugRouteImport.update({
-  id: '/region/$slug',
-  path: '/region/$slug',
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CountrySlugRoute = CountrySlugRouteImport.update({
-  id: '/country/$slug',
-  path: '/country/$slug',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AwardAwardRoute = AwardAwardRouteImport.update({
+  id: '/award/$award',
+  path: '/award/$award',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CitySlugRoute = CitySlugRouteImport.update({
@@ -72,9 +62,19 @@ const CitySlugRoute = CitySlugRouteImport.update({
   path: '/city/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AwardAwardRoute = AwardAwardRouteImport.update({
-  id: '/award/$award',
-  path: '/award/$award',
+const CountrySlugRoute = CountrySlugRouteImport.update({
+  id: '/country/$slug',
+  path: '/country/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegionSlugRoute = RegionSlugRouteImport.update({
+  id: '/region/$slug',
+  path: '/region/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnchartedSlugRoute = UnchartedSlugRouteImport.update({
+  id: '/uncharted/$slug',
+  path: '/uncharted/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VenueCitySlugRoute = VenueCitySlugRouteImport.update({
@@ -188,32 +188,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/robots.txt': {
-      id: '/robots.txt'
-      path: '/robots.txt'
-      fullPath: '/robots.txt'
-      preLoaderRoute: typeof RobotsDottxtRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/regions': {
-      id: '/regions'
-      path: '/regions'
-      fullPath: '/regions'
-      preLoaderRoute: typeof RegionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/guides': {
-      id: '/guides'
-      path: '/guides'
-      fullPath: '/guides'
-      preLoaderRoute: typeof GuidesRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cities': {
@@ -223,32 +202,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/guides': {
+      id: '/guides'
+      path: '/guides'
+      fullPath: '/guides'
+      preLoaderRoute: typeof GuidesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/uncharted/$slug': {
-      id: '/uncharted/$slug'
-      path: '/uncharted/$slug'
-      fullPath: '/uncharted/$slug'
-      preLoaderRoute: typeof UnchartedSlugRouteImport
+    '/regions': {
+      id: '/regions'
+      path: '/regions'
+      fullPath: '/regions'
+      preLoaderRoute: typeof RegionsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/region/$slug': {
-      id: '/region/$slug'
-      path: '/region/$slug'
-      fullPath: '/region/$slug'
-      preLoaderRoute: typeof RegionSlugRouteImport
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/country/$slug': {
-      id: '/country/$slug'
-      path: '/country/$slug'
-      fullPath: '/country/$slug'
-      preLoaderRoute: typeof CountrySlugRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/award/$award': {
+      id: '/award/$award'
+      path: '/award/$award'
+      fullPath: '/award/$award'
+      preLoaderRoute: typeof AwardAwardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/city/$slug': {
@@ -258,11 +244,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CitySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/award/$award': {
-      id: '/award/$award'
-      path: '/award/$award'
-      fullPath: '/award/$award'
-      preLoaderRoute: typeof AwardAwardRouteImport
+    '/country/$slug': {
+      id: '/country/$slug'
+      path: '/country/$slug'
+      fullPath: '/country/$slug'
+      preLoaderRoute: typeof CountrySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/region/$slug': {
+      id: '/region/$slug'
+      path: '/region/$slug'
+      fullPath: '/region/$slug'
+      preLoaderRoute: typeof RegionSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/uncharted/$slug': {
+      id: '/uncharted/$slug'
+      path: '/uncharted/$slug'
+      fullPath: '/uncharted/$slug'
+      preLoaderRoute: typeof UnchartedSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/venue/$city/$slug': {
@@ -292,13 +292,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

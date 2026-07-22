@@ -22,56 +22,13 @@ import {
 } from "@/lib/venues";
 import type { Venue } from "@/lib/schema";
 import type { AwardSource } from "@/lib/schema";
+import { getGuideDescription } from "@/lib/award-descriptions";
 
 const SITE_URL = "https://compasseats.com";
 const VenueMap = lazy(() =>
   import("@/components/VenueMap").then((module) => ({ default: module.VenueMap })),
 );
 
-// ---------------------------------------------------------------------------
-// Hard-coded editorial blurbs (will move to data later)
-// ---------------------------------------------------------------------------
-
-const AWARD_BLURBS: Record<string, string> = {
-  michelin:
-    "The red guide that set the standard. Every starred restaurant and Bib Gourmand we track, across every edition.",
-  "worlds-50-best-restaurants":
-    "The annual list that reshapes global dining. From No. 1 to the extended 51–100, every ranked restaurant we chart.",
-  "worlds-50-best-bars":
-    "The definitive bar ranking. The world's most influential cocktail destinations, ranked and mapped.",
-  "james-beard":
-    "America's most coveted culinary honors. The chefs, restaurants, and bars that define the national scene.",
-  "best-chef-awards":
-    "The global chef ranking that cuts through noise. The names and kitchens that set the pace worldwide.",
-  "spirited-awards":
-    "The cocktail industry's Academy Awards. The bartenders, bars, and brands shaping what we drink.",
-  "pinnacle-guide":
-    "A new standard for cocktail excellence. The bars that rise above in craft, hospitality, and ambition.",
-  oad:
-    "The discerning diner's alternative ranking. OAD's crowdsourced and jury-vetted top restaurants worldwide.",
-  "101-best-steakhouses":
-    "The carnivore's bible. The steakhouses that earn their place on the global list.",
-  "worlds-50-best-bars-51-100":
-    "The extended bar ranking. The next fifty destinations that belong on any serious drinker's itinerary.",
-  "north-america-50-best-bars":
-    "The continent's best cocktail bars. From Mexico City to Montreal, the fifty that lead North America.",
-  "asia-50-best-bars":
-    "Asia's cocktail elite. From Tokyo to Singapore, the bars defining the region's drinking culture.",
-  "north-america-50-best-bars-51-100":
-    "The extended North America bar ranking. The next fifty worth crossing borders for.",
-  "asia-50-best-bars-51-100":
-    "The extended Asia bar ranking. The next fifty that prove the region's depth.",
-  "la-liste":
-    "The algorithmic global restaurant ranking. The world's best tables, scored across hundreds of sources.",
-  "gault-millau":
-    "The French guide with teeth. The restaurants and chefs that earn Gault & Millau's toques and recognition.",
-  tabelog:
-    "Japan's most trusted restaurant rating. The sushi counters, ramen shops, and kaiseki rooms that top the charts.",
-  "forbes-travel-guide":
-    "The original luxury standard. The five-star restaurants and bars that pass the world's toughest inspections.",
-};
-
-// ---------------------------------------------------------------------------
 // Route
 // ---------------------------------------------------------------------------
 
@@ -280,7 +237,7 @@ function AwardPage() {
     typeFilter.size === 0 && cityFilter.size === 0 && countryFilter.size === 0;
 
   const blurb =
-    AWARD_BLURBS[source.slug] ??
+    getGuideDescription(source.slug)?.description ||
     `Every ${source.name} venue we chart, updated and verified.`;
 
   const yearLabel =
