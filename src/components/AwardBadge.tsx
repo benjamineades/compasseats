@@ -3,14 +3,22 @@
  *
  * Visual match to the inline pill used in VenueMap popups: rounded-full,
  * 1px border, small uppercase letter-spaced text in --accent-strong over a
- * transparent background. Non-interactive label; safe to nest inside an
- * interactive parent (no hover affordance of its own).
+ * transparent background. Wrapped in a tooltip that explains the category
+ * in plain language when copy exists for it; falls back to a plain badge
+ * with no tooltip if no copy is found, rather than showing nothing useful.
  */
 
 import { cn } from "@/lib/utils";
 import type { Award, Venue } from "@/lib/schema";
 import { awardLabel, awardLabelShort } from "@/lib/award-label";
 import { getAwardPrestige } from "@/lib/venues";
+import { getCategoryNote } from "@/lib/award-descriptions";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export function AwardBadge({
   award,
@@ -22,7 +30,9 @@ export function AwardBadge({
   className?: string;
 }) {
   const label = short ? awardLabelShort(award) : awardLabel(award);
-  return (
+  const note = getCategoryNote(award.source, award.category);
+
+  const badge = (
     <span
       className={cn(
         "inline-flex items-center rounded-full border border-border bg-transparent",
@@ -33,6 +43,17 @@ export function AwardBadge({
     >
       {label}
     </span>
+  );
+
+  if (!note) return badge;
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>{badge}</TooltipTrigger>
+      <TooltipContent side="top" className="max-w-xs">
+        <p className="text-sm">{note}</p>
+      </TooltipContent>
+    </Tooltip>
   );
 }
 
@@ -78,10 +99,16 @@ export function AwardBadgeRow({
   if (top.length === 0) return null;
 
   return (
-    <div className={cn("flex flex-wrap items-center gap-1.5", className)}>
-      {top.map((a) => (
-        <AwardBadge key={`${a.source}-${a.year}-${a.category}`} award={a} short={short} />
-      ))}
-    </div>
+    <TooltipProvider>
+      <div className={cn("flex flex-wrap items-center gap-1.5", className)}>
+        {top.map((a) => (
+          <AwardBadge
+            key={`${a.source}-${a.year}-${a.category}`}
+            award={a}
+            short={short}
+          />
+        ))}
+      </div>
+    </TooltipProvider>
   );
 }
