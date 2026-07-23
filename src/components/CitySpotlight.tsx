@@ -11,10 +11,11 @@ import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { RotateCcw } from "lucide-react";
 
-import type { City, Venue } from "@/lib/schema";
+import type { Award, City, Venue } from "@/lib/schema";
 import { getAwardPrestige } from "@/lib/venues";
 import { awardLabelShort } from "@/lib/award-label";
 import { VenuePhoto } from "@/components/VenuePhoto";
+import { AwardTooltip } from "@/components/AwardTooltip";
 
 const INK_3 = "#34312C";
 const PAPER = "#F7F3EB";
@@ -157,20 +158,21 @@ export function CitySpotlight({ city, venues }: { city: City; venues: Venue[] })
 
             {pillAwards.length > 0 && (
               <div className="flex flex-wrap gap-1.5" style={{ marginTop: 15 }}>
-                {pillAwards.map((label, i) => (
-                  <span
-                    key={i}
-                    className="text-xs"
-                    style={{
-                      color: BRASS_SOFT,
-                      border: `1px solid ${LINE}`,
-                      padding: "5px 11px",
-                      borderRadius: 100,
-                      fontWeight: 600,
-                    }}
-                  >
-                    {label}
-                  </span>
+                {pillAwards.map((a, i) => (
+                  <AwardTooltip key={i} source={a.source} category={a.category}>
+                    <span
+                      className="text-xs"
+                      style={{
+                        color: BRASS_SOFT,
+                        border: `1px solid ${LINE}`,
+                        padding: "5px 11px",
+                        borderRadius: 100,
+                        fontWeight: 600,
+                      }}
+                    >
+                      {awardLabelShort(a)}
+                    </span>
+                  </AwardTooltip>
                 ))}
               </div>
             )}
@@ -247,7 +249,7 @@ export function CitySpotlight({ city, venues }: { city: City; venues: Venue[] })
   );
 }
 
-function useMemoAwards(venue: Venue): string[] {
+function useMemoAwards(venue: Venue): Award[] {
   return useMemo(() => {
     const bestBySource = new Map<string, (typeof venue.awards)[number]>();
     for (const a of venue.awards) {
@@ -258,7 +260,6 @@ function useMemoAwards(venue: Venue): string[] {
     }
     return Array.from(bestBySource.values())
       .sort((a, b) => getAwardPrestige(b) - getAwardPrestige(a))
-      .slice(0, 3)
-      .map((a) => awardLabelShort(a));
+      .slice(0, 3);
   }, [venue]);
 }
