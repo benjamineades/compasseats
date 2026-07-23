@@ -228,12 +228,11 @@ export function getVenuesByAward(source: AwardSource): Venue[] {
  *   count if award.year is within PRESTIGE_WINDOW_YEARS, and decay with age.
  */
 const PRESTIGE_WINDOW_YEARS = 5;
-const CURRENT_YEAR = new Date().getFullYear();
 const STATUS_SOURCES = new Set(["michelin", "la-liste", "pinnacle-guide"]);
 
 function recencyMultiplier(year: number | undefined): number {
   if (typeof year !== "number") return 1.0;
-  const age = CURRENT_YEAR - year;
+  const age = new Date().getFullYear() - year;
   if (age <= 1) return 1.0;
   return Math.max(0.5, 1 - 0.08 * (age - 1));
 }
@@ -366,10 +365,12 @@ export function getAwardPrestige(
   },
   isBar: boolean = false,
 ): number {
+  const currentYear = new Date().getFullYear();
+
   // 5-year window for non-status (annual) awards.
   const isStatus = STATUS_SOURCES.has(award.source);
   if (!isStatus && typeof award.year === "number") {
-    if (CURRENT_YEAR - award.year > PRESTIGE_WINDOW_YEARS) return 0;
+    if (currentYear - award.year > PRESTIGE_WINDOW_YEARS) return 0;
   }
 
   const base = isBar ? scoreBarAward(award) : scoreRestaurantAward(award);
