@@ -1,5 +1,5 @@
 import { ClientOnly, createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { lazy, type ReactNode } from "react";
+import { lazy, useMemo, type ReactNode } from "react";
 import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
 
 import { Compass } from "@/components/Compass";
@@ -175,7 +175,10 @@ function VenuePage() {
   );
 
   const { pullQuote, bodyProse } = buildBlurbParts(venue);
-  const groupedAwards = groupAwardsBySourceByPrestige(venue.awards);
+  const groupedAwards = useMemo(
+    () => groupAwardsBySourceByPrestige(venue.awards),
+    [venue.awards],
+  );
   const defaultOpenSource = groupedAwards[0]?.source;
 
   const distinctSources = Array.from(
