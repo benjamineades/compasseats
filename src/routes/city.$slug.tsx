@@ -27,6 +27,7 @@ import {
 import { formatCoord } from "@/lib/format-coords";
 import { awardLabelShort } from "@/lib/award-label";
 import { getCountrySlugByCode } from "@/lib/cities";
+import { AwardTooltip } from "@/components/AwardTooltip";
 
 import {
   getCity,
@@ -1011,18 +1012,20 @@ function WorthTheDetour({ nearby, city, imperial }: { nearby: Venue[]; city: Cit
                         <span className="text-xs" style={{ color: INK_MUTED }}>
                           {typeLabel}
                         </span>
-                        {pill && (
-                          <span
-                            className="text-[11px] font-semibold"
-                            style={{
-                              color: BRONZE,
-                              border: `1px solid rgba(137,95,46,0.3)`,
-                              padding: "2px 9px",
-                              borderRadius: 100,
-                            }}
-                          >
-                            {pill}
-                          </span>
+                        {pill && topAward && (
+                          <AwardTooltip source={topAward.source} category={topAward.category}>
+                            <span
+                              className="text-[11px] font-semibold"
+                              style={{
+                                color: BRONZE,
+                                border: `1px solid rgba(137,95,46,0.3)`,
+                                padding: "2px 9px",
+                                borderRadius: 100,
+                              }}
+                            >
+                              {pill}
+                            </span>
+                          </AwardTooltip>
                         )}
                       </div>
                     </div>
