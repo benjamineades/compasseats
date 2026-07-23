@@ -1,4 +1,4 @@
-import { useState, cloneElement, type ReactElement, type MouseEvent } from "react";
+import { useState, useEffect, cloneElement, type ReactElement, type MouseEvent } from "react";
 import { getCategoryNote } from "@/lib/award-descriptions";
 import { useHoverCapable } from "@/hooks/use-hover-capable";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
@@ -26,6 +26,10 @@ export function AwardTooltip({
   const hoverCapable = useHoverCapable();
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    console.log('[AwardTooltip] open changed to', open, { source, category });
+  }, [open, source, category]);
+
   if (!note) return children;
 
   const childProps = (children.props ?? {}) as Record<string, any>;
@@ -37,10 +41,12 @@ export function AwardTooltip({
     onFocus: () => setOpen(true),
     onBlur: () => setOpen(false),
     onClick: (e: MouseEvent) => {
+      console.log('[AwardTooltip] click fired', { source, category, note });
       childProps.onClick?.(e);
       e.preventDefault();
       e.stopPropagation();
       setOpen((o) => !o);
+      setTimeout(() => console.log('[AwardTooltip] open state after tick:', open), 0);
     },
     style: { ...(childProps.style ?? {}), cursor: "help" },
   } as any);
