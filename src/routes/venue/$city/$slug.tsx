@@ -23,6 +23,7 @@ import {
   buildBreadcrumbStructuredData,
 } from "@/lib/structured-data";
 import { CITIES_BY_SLUG } from "@/lib/cities";
+import { AwardTooltip } from "@/components/AwardTooltip";
 
 const SITE_URL = "https://compasseats.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
@@ -467,7 +468,9 @@ function AccoladeCard({
             {prettyAwardSource(group.source)}
           </span>
           <span className="text-sm" style={{ color: INK_MUTED }}>
-            {distinctionLabel(headline)}
+            <AwardTooltip source={headline.source} category={headline.category}>
+              <span>{distinctionLabel(headline)}</span>
+            </AwardTooltip>
           </span>
           {rest.length > 0 && (
             <ChevronDown
@@ -487,7 +490,11 @@ function AccoladeCard({
                   <span className="w-12 shrink-0" style={{ color: BRONZE }}>
                     {a.year}
                   </span>
-                  <span style={{ color: INK_MUTED }}>{distinctionLabel(a)}</span>
+                  <span style={{ color: INK_MUTED }}>
+                    <AwardTooltip source={a.source} category={a.category}>
+                      <span>{distinctionLabel(a)}</span>
+                    </AwardTooltip>
+                  </span>
                 </li>
               ))}
             </ul>

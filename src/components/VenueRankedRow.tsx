@@ -45,9 +45,7 @@ export function VenueRankedRow({
   const typeLabel = venue.type === "bar" ? "Cocktail bar" : "Restaurant";
 
   return (
-    <Link
-      to="/venue/$city/$slug"
-      params={{ city: venue.city_slug, slug: venue.slug }}
+    <div
       className="group block"
       style={{
         padding: "18px 6px",
@@ -75,6 +73,11 @@ export function VenueRankedRow({
         </div>
 
         <div className="min-w-0">
+          <Link
+            to="/venue/$city/$slug"
+            params={{ city: venue.city_slug, slug: venue.slug }}
+            className="block"
+          >
           <h3
             className="font-display"
             style={{
@@ -103,6 +106,7 @@ export function VenueRankedRow({
               {venue.blurb_short}
             </p>
           )}
+          </Link>
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <AwardBadgeRow
               venue={venue}
@@ -119,6 +123,6 @@ export function VenueRankedRow({
 
         <div />
       </div>
-    </Link>
+    </div>
   );
 }
