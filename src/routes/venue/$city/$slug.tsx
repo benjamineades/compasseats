@@ -441,6 +441,55 @@ function AccoladeCard({
 }) {
   const headline = group.entries[0];
   const rest = group.entries.slice(1);
+  const hasHistory = rest.length > 0;
+
+  const header = (
+    <>
+      <span
+        className="inline-flex h-9 min-w-[3rem] shrink-0 items-center justify-center rounded-md px-2 font-display text-base"
+        style={{
+          color: BRONZE,
+          backgroundColor: "rgba(137,95,46,0.08)",
+        }}
+      >
+        {headline.year}
+      </span>
+      <span className="flex-1 text-sm font-medium" style={{ color: INK }}>
+        {prettyAwardSource(group.source)}
+      </span>
+      <AwardTooltip source={headline.source} category={headline.category}>
+        <span className="text-sm" style={{ color: INK_MUTED }}>
+          {distinctionLabel(headline)}
+        </span>
+      </AwardTooltip>
+      {hasHistory && (
+        <ChevronDown
+          className="h-4 w-4 shrink-0 transition-transform duration-200"
+          style={{ color: INK_MUTED }}
+        />
+      )}
+    </>
+  );
+
+  if (!hasHistory) {
+    return (
+      <div
+        className="rounded-xl"
+        style={{
+          backgroundColor: PAPER_CARD,
+          border: `1px solid ${HAIRLINE}`,
+        }}
+      >
+        <div
+          className="flex w-full items-center gap-4 px-4 py-3.5 text-left"
+          style={{ color: INK }}
+        >
+          {header}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Collapsible defaultOpen={defaultOpen}>
       <div
@@ -450,55 +499,32 @@ function AccoladeCard({
           border: `1px solid ${HAIRLINE}`,
         }}
       >
-        <CollapsibleTrigger
-          className="interactive group flex w-full items-center gap-4 px-4 py-3.5 text-left [&[data-state=open]>svg]:rotate-180"
-          style={{ color: INK }}
-          disabled={rest.length === 0}
-        >
-          <span
-            className="inline-flex h-9 min-w-[3rem] shrink-0 items-center justify-center rounded-md px-2 font-display text-base"
-            style={{
-              color: BRONZE,
-              backgroundColor: "rgba(137,95,46,0.08)",
-            }}
+        <CollapsibleTrigger asChild>
+          <div
+            role="button"
+            tabIndex={0}
+            className="interactive group flex w-full cursor-pointer items-center gap-4 px-4 py-3.5 text-left [&[data-state=open]>svg]:rotate-180"
+            style={{ color: INK }}
           >
-            {headline.year}
-          </span>
-          <span className="flex-1 text-sm font-medium" style={{ color: INK }}>
-            {prettyAwardSource(group.source)}
-          </span>
-          <span className="text-sm" style={{ color: INK_MUTED }}>
-            <AwardTooltip source={headline.source} category={headline.category}>
-              <span>{distinctionLabel(headline)}</span>
-            </AwardTooltip>
-          </span>
-          {rest.length > 0 && (
-            <ChevronDown
-              className="h-4 w-4 shrink-0 transition-transform duration-200"
-              style={{ color: INK_MUTED }}
-            />
-          )}
+            {header}
+          </div>
         </CollapsibleTrigger>
         <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-          {rest.length > 0 && (
-            <ul
-              className="space-y-1.5 px-4 pb-4 pt-3 text-sm"
-              style={{ borderTop: `1px solid ${HAIRLINE}` }}
-            >
-              {rest.map((a, i) => (
-                <li key={i} className="flex items-baseline gap-4">
-                  <span className="w-12 shrink-0" style={{ color: BRONZE }}>
-                    {a.year}
-                  </span>
-                  <span style={{ color: INK_MUTED }}>
-                    <AwardTooltip source={a.source} category={a.category}>
-                      <span>{distinctionLabel(a)}</span>
-                    </AwardTooltip>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
+          <ul
+            className="space-y-1.5 px-4 pb-4 pt-3 text-sm"
+            style={{ borderTop: `1px solid ${HAIRLINE}` }}
+          >
+            {rest.map((a, i) => (
+              <li key={i} className="flex items-baseline gap-4">
+                <span className="w-12 shrink-0" style={{ color: BRONZE }}>
+                  {a.year}
+                </span>
+                <AwardTooltip source={a.source} category={a.category}>
+                  <span style={{ color: INK_MUTED }}>{distinctionLabel(a)}</span>
+                </AwardTooltip>
+              </li>
+            ))}
+          </ul>
         </CollapsibleContent>
       </div>
     </Collapsible>
