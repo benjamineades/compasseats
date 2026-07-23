@@ -236,8 +236,9 @@ function AwardPage() {
   const noneSelected =
     typeFilter.size === 0 && cityFilter.size === 0 && countryFilter.size === 0;
 
+  const guideDescription = getGuideDescription(source.slug);
   const blurb =
-    getGuideDescription(source.slug)?.description ||
+    guideDescription?.description ||
     `Every ${source.name} venue we chart, updated and verified.`;
 
   const yearLabel =
@@ -272,6 +273,26 @@ function AwardPage() {
           <p className="mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">
             {blurb}
           </p>
+
+          {guideDescription && guideDescription.categories.length > 0 && (
+            <div className="mt-10 border-t border-border pt-8">
+              <h2 className="font-display text-2xl font-light italic tracking-tight text-foreground md:text-3xl">
+                About These Categories
+              </h2>
+              <dl className="mt-5 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+                {guideDescription.categories.map((c) => (
+                  <div key={c.category}>
+                    <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-strong">
+                      {c.category}
+                    </dt>
+                    <dd className="mt-1.5 text-sm text-muted-foreground">
+                      {c.note}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
 
           {/* Stat strip */}
           <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border pt-6 sm:grid-cols-4">
