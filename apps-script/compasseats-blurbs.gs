@@ -243,7 +243,7 @@ function testRichOnly() {
   test.clear();
   test.getRange(1,1,out.length,out[0].length).setValues(out);
   test.setFrozenRows(1);
-  SpreadsheetApp.getUi().alert('Rich re-test done — see the "' + SHEET_TEST + '" tab.');
+  Logger.log('Rich re-test done — see the "' + SHEET_TEST + '" tab.');
 }
 
 // ----- PUBLIC: 10-VENUE TEST ------------------------------------------------
@@ -284,7 +284,7 @@ function testTenBlurbs() {
   test.clear();
   test.getRange(1,1,out.length,out[0].length).setValues(out);
   test.setFrozenRows(1);
-  SpreadsheetApp.getUi().alert('Done — see the "' + SHEET_TEST + '" tab.');
+  Logger.log('Done — see the "' + SHEET_TEST + '" tab.');
 }
 
 // ----- PUBLIC: FULL RUN (safe, resumable, batched) --------------------------
@@ -319,8 +319,7 @@ function generateAllBlurbs() {
     Utilities.sleep(600);
   }
   rng.setValues(values);
-  Logger.log('Filled ' + done + ' blurbs this run.');
-  SpreadsheetApp.getUi().alert('Filled ' + done + ' blurbs. Re-run to continue.');
+  Logger.log('Filled ' + done + ' blurbs this run. Re-run to continue.');
 }// ----- STAGE 1: EXPORT venues that need blurbs (for the Batch API run) -------
 function exportVenuesForBatch() {
   var sh = getVenuesSheet_();
@@ -348,8 +347,8 @@ function exportVenuesForBatch() {
   var json = JSON.stringify(out, null, 0);
   var blob = Utilities.newBlob(json, 'application/json', 'venues_for_batch.json');
   var file = DriveApp.createFile(blob);
-  SpreadsheetApp.getUi().alert(
-    'Exported ' + out.length + ' venues.\n\n' +
+  Logger.log(
+    'Exported ' + out.length + ' venues.\n' +
     'A file named "venues_for_batch.json" is now in your Google Drive (top level).\n' +
     'Download it from Drive to your Mac\'s Downloads folder for the next stage.'
   );
@@ -381,5 +380,5 @@ function importBlurbsFromDrive() {
     filled++;
   }
   rng.setValues(values);
-  SpreadsheetApp.getUi().alert('Filled blurbs on ' + filled + ' venue rows.');
+  Logger.log('Filled blurbs on ' + filled + ' venue rows.');
 }
