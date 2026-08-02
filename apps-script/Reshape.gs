@@ -35,6 +35,25 @@
  *     Skipping steps 1–2 means the fallback column is empty and reshape will
  *     silently drop the backfilled prices, same as before this patch.
  *
+ * >>> PATCHED July 23, 2026: splits 7 confirmed real city-name collisions
+ *     (two different real places that happened to share one city_slug) into
+ *     separate slugs — baltimore/baltimore-ie, birmingham/birmingham-al,
+ *     venice/venice-fl, cambridge/cambridge-ma/cambridge-on, cordoba/
+ *     cordoba-ar, la-paz/la-paz-mx, munster/munster-fr. See
+ *     CITY_DISAMBIGUATE_ below for the full list and the country rules.
+ *     generateCitiesTab.gs needs NO changes — it already computes each
+ *     city_slug's centroid independently, so the new slugs get correct
+ *     centroids automatically on its next run. Names, awards, and blurbs
+ *     are untouched by this — it only changes city_slug/city_display and
+ *     each venue's resulting coordinates via the normal per-city centroid.
+ *
+ * >>> THIS IS THE FULLY COMBINED VERSION as of July 23, 2026: the price-
+ *     survival fix (above) PLUS this city-split fix PLUS the migration
+ *     helper fixes at the bottom of the file (v4 — see comments there).
+ *     If you've already run migratePriceToEnrichment() successfully from
+ *     the previous file, you do not need to run it again before reshape —
+ *     just paste this in and run reshapeCompassEats().
+ *
  * HOW TO RUN
  *   1. Open your Google Sheet.
  *   2. Extensions → Apps Script.
@@ -407,6 +426,40 @@ function cityKey_(city) {
   return CITY_ALIASES_[k] ? CITY_ALIASES_[k] : k;
 }
 
+// CITY_DISAMBIGUATE_ — ADDED July 23 2026. For city NAMES that legitimately
+// refer to more than one real place. Only fires for the exact keys listed
+// here; every other city is completely unaffected. Each entry lists country
+// strings that route to a DIFFERENT slug; any country not listed falls
+// through to the default (unchanged) slug, which stays the more prominent /
+// higher-venue-count real city. See CompassEats-City-Identity-Collision-
+// Handoff.md (July 20 2026), section 2b, for the research behind this list.
+// Do NOT add entries here for cities that are just spelling/label variants
+// of ONE real place — that's what CITY_ALIASES_ above is for. This map is
+// only for genuinely different places that happen to share a name.
+var CITY_DISAMBIGUATE_ = {
+  'baltimore':  { 'ireland': 'baltimore-ie' },                        // default: Baltimore, MD (US)
+  'birmingham': { 'united states': 'birmingham-al', 'usa': 'birmingham-al', 'us': 'birmingham-al' }, // default: Birmingham, UK
+  'venice':     { 'united states': 'venice-fl', 'usa': 'venice-fl', 'us': 'venice-fl' },             // default: Venice, Italy
+  'cambridge':  { 'united states': 'cambridge-ma', 'usa': 'cambridge-ma', 'us': 'cambridge-ma',
+                  'canada': 'cambridge-on' },                          // default: Cambridge, UK
+  'cordoba':    { 'argentina': 'cordoba-ar' },                         // default: Córdoba, Spain
+  'la paz':     { 'mexico': 'la-paz-mx' },                             // default: La Paz, Bolivia
+  'munster':    { 'france': 'munster-fr' }                            // default: Münster, Germany
+};
+
+// Given an already-alias-resolved city key and the venue's raw country string,
+// returns a DIFFERENT slug key only for the confirmed collisions above. Every
+// other city passes through unchanged, so this cannot affect any other slug.
+function disambiguateCityKey_(ck, countryRaw) {
+  var rule = CITY_DISAMBIGUATE_[ck];
+  if (!rule) return ck;
+  var c = normKey_(countryRaw || '');
+  for (var variant in rule) {
+    if (c === variant || c.indexOf(variant) !== -1) return rule[variant];
+  }
+  return ck; // country didn't match a listed variant -> stays the default city
+}
+
 var CITY_DISPLAY_ = {
   'aix-en-provence': 'Aix-en-Provence',
   'ambleside': 'Ambleside',
@@ -498,8 +551,10 @@ var CITY_DISPLAY_ = {
   'uriage-les-bains': 'Uriage-les-Bains',
   'valencia': 'Valencia',
   'venice': 'Venice',
+  'venice-fl': 'Venice',        // ADDED July 23 2026 — split from 'venice' (Italy)
   'washington-dc': 'Washington',
   'zurich': 'Zürich',
+  'munster-fr': 'Munster',      // ADDED July 23 2026 — split from 'munster' (Germany); no umlaut, French spelling
 };
 
 // Canonical display label + true town for a venue, given its city_slug and raw source city.
@@ -818,7 +873,7 @@ function reshapeCompassEats() {
       continue;
     }
 
-    var cslug = slugify_(cityKey_(v.city), v.place_id);
+    var cslug = slugify_(disambiguateCityKey_(cityKey_(v.city), v.country), v.place_id);
     var base = slugify_(v.name);
     if (!base) {
       // CJK/Thai/non-Latin name → build a stable, valid slug from city + placeId tail
@@ -900,6 +955,64 @@ function writeTab_(ss, name, headers, rows) {
 }
 
 // ---------------------------------------------------------------------------
+// ONE-TIME CLEANUP — run this once, BEFORE re-running migratePriceToEnrichment
+// ---------------------------------------------------------------------------
+//
+// The July 23 run of migratePriceToEnrichment (the version just above this
+// comment used to be a bug) created some rows it shouldn't have: 2 pairs of
+// duplicate keys (two different venues sharing a name both got the identical
+// plain key instead of being told apart), and ~60 rows with a blank key (from
+// venues rows that have a price but no name at all). This deletes every row
+// that matches that run's exact "I only wrote a key, a name, and a price"
+// signature, confirmed to sit in one contiguous block at the bottom of the
+// sheet. Nothing else is touched -- any row with a placeId, coordinates, an
+// address, a sheetName, or a lastVerified date is left completely alone.
+function cleanupMigrationStubs() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var enrichSheet = findSheet_(ss, ENRICHMENT_TAB);
+  if (!enrichSheet) throw new Error('Could not find a "' + ENRICHMENT_TAB + '" tab.');
+  var vals = enrichSheet.getDataRange().getValues();
+  var headers = vals[0];
+  var placeIdCol = headers.indexOf('placeId');
+  var latCol = headers.indexOf('lat');
+  var lngCol = headers.indexOf('lng');
+  var addrCol = headers.indexOf('formattedAddress');
+  var sheetNameCol = headers.indexOf('sheetName');
+  var statusCol = headers.indexOf('businessStatus');
+  var verifiedCol = headers.indexOf('lastVerified');
+
+  function isStub(r) {
+    return !r[placeIdCol] && !r[latCol] && !r[lngCol] && !r[addrCol] &&
+           !r[sheetNameCol] && !r[statusCol] && !r[verifiedCol];
+  }
+
+  var stubRows = []; // 1-indexed sheet row numbers
+  for (var i = 1; i < vals.length; i++) {
+    if (isStub(vals[i])) stubRows.push(i + 1);
+  }
+
+  if (stubRows.length === 0) {
+    Logger.log('No stub rows found -- nothing to clean up.');
+    return;
+  }
+
+  var minRow = stubRows[0], maxRow = stubRows[stubRows.length - 1];
+  var contiguous = (stubRows.length === (maxRow - minRow + 1));
+
+  if (contiguous) {
+    enrichSheet.deleteRows(minRow, stubRows.length);
+  } else {
+    stubRows.sort(function(a, b) { return b - a; }); // bottom-up so row numbers don't shift
+    for (var d = 0; d < stubRows.length; d++) enrichSheet.deleteRow(stubRows[d]);
+  }
+
+  Logger.log('Deleted ' + stubRows.length + ' stub rows (sheet rows ' + minRow + '-' + maxRow +
+    (contiguous ? ', one contiguous block' : ', scattered') + '). ' +
+    'These only ever held a name key and a price, nothing else, so nothing real was lost. ' +
+    'Run migratePriceToEnrichment again to regenerate them correctly.');
+}
+
+// ---------------------------------------------------------------------------
 // ONE-TIME MIGRATION — run this exactly once, BEFORE the next reshape run
 // ---------------------------------------------------------------------------
 //
@@ -914,9 +1027,29 @@ function writeTab_(ss, name, headers, rows) {
 // HOW TO RUN
 //   1. Do the manual step first: add a column named "price_level" as the
 //      LAST column on the "Places Enrichment" tab.
-//   2. Run → migratePriceToEnrichment. Check the alert for a summary.
-//   3. Only after this shows 0 "not found" (or you've reviewed any misses)
-//      should you run reshapeCompassEats() again.
+//   2. Run → cleanupMigrationStubs (safe no-op if there's nothing to clean).
+//   3. Run → migratePriceToEnrichment. Check the execution log for a summary.
+//   4. Only after "ambiguous / duplicate" is 0 (or you've reviewed the list
+//      logged separately) should you run reshapeCompassEats().
+//
+// FIXED July 23, 2026 (v2): the original version only ever looked up rows by
+// "name|city". Most Places Enrichment rows are keyed by NAME ALONE, so v2
+// added a plain-name fallback and a "create a new row" fallback for venues
+// with no Enrichment row at all.
+//
+// FIXED July 23, 2026 (v3): v2's "create a new row" step didn't check
+// whether ANOTHER venue in the same run already needed a new row under that
+// same plain name -- two different real venues sharing a name (e.g. two
+// different "Temple of Heaven"s) could both get a row with the identical
+// key, which a later lookup can't tell apart. v3 collects every venue that
+// needs a new row first, THEN checks: if a name is only needed once, it gets
+// the plain key same as before; if 2+ venues share a name, every one of them
+// gets a "name|city" key instead, so nothing collides. v3 also skips venues
+// with a blank name (nothing to key them by) instead of creating junk rows
+// under an empty key, and if a name matches 2+ existing rows but exactly one
+// of them already has a price (i.e. someone already resolved it by hand,
+// same as the Le Pavillon NYC case), it uses that one instead of re-flagging
+// it as ambiguous every time this runs.
 function migratePriceToEnrichment() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
 
@@ -937,52 +1070,134 @@ function migratePriceToEnrichment() {
   var enrichVals = enrichRange.getValues();
   var eHeaders = enrichVals[0];
   var ePriceCol = eHeaders.indexOf('price_level');
+  var eCanonicalCol = eHeaders.indexOf('canonicalName');
   if (ePriceCol < 0) {
     throw new Error('No "price_level" column found on Places Enrichment. ' +
       'Add it as the last column first, then re-run this function.');
   }
 
-  // Build key -> row index map for Places Enrichment (1-indexed sheet rows)
-  var enrichRowByKey = {};
+  var exactKeyToRow = {};
+  var nameOnlyToRows = {};
   for (var i = 1; i < enrichVals.length; i++) {
     var k = enrichVals[i][0];
-    if (k) enrichRowByKey[k] = i; // i = row index within enrichVals (0-based array)
+    if (!k) continue;
+    exactKeyToRow[k] = i;
+    var namePart = (String(k).indexOf('|') !== -1) ? String(k).split('|')[0] : k;
+    if (!nameOnlyToRows[namePart]) nameOnlyToRows[namePart] = [];
+    nameOnlyToRows[namePart].push(i);
   }
 
-  var filled = 0, alreadyHadValue = 0, notFound = 0, blankPrice = 0;
-  var updates = []; // [rowIndexInSheet, priceValue]
+  var filled = 0, alreadyHadValue = 0, ambiguous = 0, blankPrice = 0, blankName = 0, rawFallbackCount = 0;
+  var updates = [];
+  var ambiguousLog = [];
+  var toCreate = []; // { nameKey, cityKey, vName, price } -- resolved to real rows in a second pass
 
   for (var r = 1; r < venuesVals.length; r++) {
     var price = venuesVals[r][priceCol];
     if (price === '' || price === null || price === undefined) { blankPrice++; continue; }
 
     var vName = venuesVals[r][nameCol];
+    if (!vName) { blankName++; continue; }
+
     var vCity = venuesVals[r][cityDisplayCol];
-    var key = normKey_(vName) + '|' + cityKey_(vCity);
+    var nameKey = normKey_(vName);
+    if (!nameKey) {
+      // normKey_ strips every character that isn't a-z or 0-9, so a name
+      // written entirely in a non-Latin script (Japanese, Chinese, etc.)
+      // collapses to an empty string -- which would make every such venue
+      // collide with every other one. That's a deeper, separate bug in
+      // normKey_ itself (used everywhere in this file, not just here) and
+      // needs its own careful fix + validation pass, not a same-day patch.
+      // For now: fall back to the trimmed raw name so these venues at least
+      // don't collide with EACH OTHER during this migration.
+      nameKey = String(vName).trim();
+      rawFallbackCount++;
+    }
+    var cKey = cityKey_(vCity);
+    var exactKey = nameKey + '|' + cKey;
 
-    var eIdx = enrichRowByKey[key];
-    if (eIdx === undefined) { notFound++; continue; }
+    var eIdx;
+    if (exactKeyToRow[exactKey] !== undefined) {
+      eIdx = exactKeyToRow[exactKey];
+    } else if (exactKeyToRow[nameKey] !== undefined) {
+      eIdx = exactKeyToRow[nameKey];
+    } else {
+      var candidates = nameOnlyToRows[nameKey];
+      if (candidates && candidates.length === 1) {
+        eIdx = candidates[0];
+      } else if (candidates && candidates.length > 1) {
+        var withPrice = candidates.filter(function(idx) { return !!enrichVals[idx][ePriceCol]; });
+        if (withPrice.length === 1) {
+          eIdx = withPrice[0]; // already resolved by hand -- use it, don't re-flag
+        } else {
+          ambiguous++;
+          ambiguousLog.push(vName + ' (' + vCity + ')');
+          continue;
+        }
+      } else {
+        eIdx = undefined;
+      }
+    }
 
-    if (enrichVals[eIdx][ePriceCol]) { alreadyHadValue++; continue; }
-
-    updates.push([eIdx, price]);
+    if (eIdx !== undefined) {
+      if (enrichVals[eIdx][ePriceCol]) { alreadyHadValue++; continue; }
+      updates.push([eIdx, price]);
+    } else {
+      toCreate.push({ nameKey: nameKey, cityKey: cKey, vName: vName, price: price });
+    }
   }
 
-  // Apply updates directly to the sheet (leaves everything else untouched)
+  // Names needed only once get a plain key; names shared by 2+ new rows get
+  // "name|city" so they never collide with each other.
+  var nameCounts = {};
+  for (var t = 0; t < toCreate.length; t++) {
+    nameCounts[toCreate[t].nameKey] = (nameCounts[toCreate[t].nameKey] || 0) + 1;
+  }
+
+  var newRows = [];
+  var created = 0;
+  var usedKeys = {};
+  for (var t2 = 0; t2 < toCreate.length; t2++) {
+    var item = toCreate[t2];
+    var newKey = (nameCounts[item.nameKey] > 1) ? (item.nameKey + '|' + item.cityKey) : item.nameKey;
+    if (usedKeys[newKey]) {
+      ambiguous++;
+      ambiguousLog.push(item.vName + ' -- same name AND city already queued, review');
+      continue;
+    }
+    usedKeys[newKey] = true;
+    var newRow = new Array(eHeaders.length).fill('');
+    newRow[0] = newKey;
+    if (eCanonicalCol >= 0) newRow[eCanonicalCol] = item.vName;
+    newRow[ePriceCol] = item.price;
+    newRows.push(newRow);
+    created++;
+  }
+
   for (var u = 0; u < updates.length; u++) {
-    var rowIdx = updates[u][0]; // 0-based within enrichVals, so sheet row = rowIdx + 1
+    var rowIdx = updates[u][0];
     var val = updates[u][1];
     enrichSheet.getRange(rowIdx + 1, ePriceCol + 1).setValue(val);
     filled++;
   }
 
+  if (newRows.length > 0) {
+    var startRow = enrichSheet.getLastRow() + 1;
+    enrichSheet.getRange(startRow, 1, newRows.length, eHeaders.length).setValues(newRows);
+  }
+
   var msg =
     'Migration done.\n' +
-    'venues rows with a price_tier value: ' + (filled + alreadyHadValue + notFound) + '\n' +
-    'newly copied into Places Enrichment:  ' + filled + '\n' +
-    'Enrichment already had a price:       ' + alreadyHadValue + '\n' +
-    'no matching Enrichment row found:     ' + notFound + '  <-- review these before reshaping\n' +
-    'venues rows with blank price_tier:     ' + blankPrice;
+    'venues rows with a price_tier value: ' + (filled + alreadyHadValue + created + ambiguous + blankName) + '\n' +
+    'matched an existing Enrichment row, price copied in: ' + filled + '\n' +
+    'Enrichment row already had a price (left alone):     ' + alreadyHadValue + '\n' +
+    'no matching row -- created a new minimal row:        ' + created + '\n' +
+    'ambiguous / duplicate -- SKIPPED, review:             ' + ambiguous + '\n' +
+    'has a price but no name at all -- SKIPPED:            ' + blankName + '\n' +
+    'non-Latin name, used raw-text fallback key (see notes above function): ' + rawFallbackCount + '\n' +
+    'venues rows with blank price_tier:                    ' + blankPrice;
   Logger.log(msg);
-  SpreadsheetApp.getUi().alert(msg);
+  if (ambiguousLog.length) {
+    Logger.log('Ambiguous / duplicate venues, first 40:\n' + ambiguousLog.slice(0, 40).join('\n'));
+  }
 }
