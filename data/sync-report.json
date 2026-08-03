@@ -1,10 +1,9 @@
 {
-  "generated_at": "2026-07-19T00:53:09.639896+00:00",
-  "venue_count": 10844,
-  "city_count": 3141,
+  "generated_at": "2026-08-03T03:01:05.172189+00:00",
+  "venue_count": 10876,
+  "city_count": 3152,
   "region_count": 111,
-  "active_venue_count": 10481,
-  "blurb_long_count": 9955,
+  "active_venue_count": 10515,
   "sample": [
     {
       "slug": "piazza-duomo",
