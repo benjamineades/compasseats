@@ -932,21 +932,21 @@ var OPTION_B = [
     "slug": "bar-leone",
     "city": "Hong Kong",
     "chef": "Lorenzo Antinori",
-    "blurb_short": "Bar Leone runs on a stubborn idea: that a great bar is a *neighborhood* bar — somewhere you drop in for an aperitivo and a warm hello, not a spectacle. Roman bartender Lorenzo Antinori transplanted that idea to Hong Kong's Central district, and it worked so well the place topped the World's 50 Best Bars. Turns out unpretentious is a competitive advantage.",
+    "blurb_short": "A Roman corner bar transplanted to Hong Kong's Central: aperitivo, a warm hello, no spectacle. Unpretentious proved a competitive advantage — it topped the World's 50 Best Bars.",
     "blurb_long": "The cocktail world spends enormous energy on spectacle, which is what makes Bar Leone quietly radical: its entire thesis is *come in, have an aperitivo, feel at home*. Founder Lorenzo Antinori — later named International Bartender of the Year — recreated the corner bars of Rome in the middle of Hong Kong, all easy conviviality and classics poured properly rather than reinvented into oblivion. That warmth, backed by genuinely excellent drinks, carried it to the top of the World's 50 Best Bars, a first for a bar in Asia. Regulars and first-timers get the same welcome, which is rarer than it should be."
   },
   {
     "slug": "paradiso",
     "city": "Barcelona",
     "chef": "Giacomo Giannotti",
-    "blurb_short": "Paradiso's cocktails are full-blown productions — recipes engineered over months, presented with a magician's timing, rebuilt around a new theme every single year. The famous fridge-door entrance and the swooping wooden room are just the frame; the drinks are the show, and a good enough one to top the World's 50 Best Bars. Yes, you get in through a pastrami shop. No, that's not the most interesting thing about it.",
+    "blurb_short": "Cocktails engineered over months and served with a magician's timing, the menu rebuilt around a new theme each year. You get in through a fridge door in a pastrami shop.",
     "blurb_long": "At Paradiso, a cocktail is closer to a small theatrical act — an ever-changing menu built each year around a single theme, drinks developed in a dedicated lab, serves designed to *do something* in front of you. The Supercool Martini is poured tableside and freezes into an iceberg in the glass as you watch. Founder Giacomo Giannotti — a Tuscan who named the place after his family's gelateria — wraps all this in a warm, whale-ribbed room hidden behind a refrigerator door in a pastrami shop in El Born, so the setting amplifies the drinks instead of upstaging them. It topped the World's 50 Best Bars and has stayed near the summit for years; once you've watched a drink assembled like a magic trick, you understand why."
   },
   {
     "slug": "kumiko",
     "city": "Chicago",
     "chef": "Julia Momosé",
-    "blurb_short": "There's no sign outside Kumiko — just a hushed, light-wood room in Chicago's West Loop that feels like it was airlifted from Japan. It's named for a Japanese woodworking style that fits tiny pieces together without a single nail, which tells you plenty about the drinks: restrained, precise, and quietly an explosion of flavor. Julia Momosé's dining bar was named World's Best Bar at the Spirited Awards — and it earns the quiet.",
+    "blurb_short": "No sign out front, just a hushed light-wood room named for Japanese joinery that uses no nails. The drinks are the same: restrained, precise, quietly enormous.",
     "blurb_long": "Kumiko takes its name from the Japanese craft of assembling intricate wooden latticework without nails, and the whole place runs on that same principle: precision you feel more than notice. The room is deliberately calm — light wood, exposed brick, no sign out front, a short corridor that gives you a second to settle before you sit — and the drinks match it, leaning on sake, shochu, and Japanese ingredients to land big, complex flavors without ever raising their voice. Even the alcohol-free \"spiritfrees\" get the same serious treatment. Julia Momosé — a multiple James Beard Award winner for both the bar and her cocktail book — treats food and drinks as equals here, which is part of how Kumiko was named World's Best Bar at the Spirited Awards and became one of the rare few to earn three pins from the Pinnacle Guide, a Michelin-style rating system for bars. Come for a drink, stay for dinner, leave calmer than you arrived."
   },
   {
@@ -967,14 +967,14 @@ var OPTION_B = [
     "slug": "please-don-t-tell",
     "city": "New York",
     "chef": "",
-    "blurb_short": "You get in through a phone booth inside a hot-dog shop. Pick up the receiver, wait for the secret door, and try not to feel too pleased with yourself. The drinks earn the theatrics.",
+    "blurb_short": "You get in through a phone booth inside a hot-dog shop. Pick up the receiver and wait for the door to click. The drinks earn the theatrics.",
     "blurb_long": "Getting into PDT is half the fun: you walk into Crif Dogs, a hot-dog joint on St. Marks, squeeze into a vintage phone booth, and pick up the receiver until a hidden door clicks open. Jim Meehan opened it this way in 2007 and the trick got copied so hard that PDT basically gets blamed for every speakeasy you've been to since. But the booth is just the doorway. Under all the taxidermy you can get a Benton's Old Fashioned, made with bacon-fat-washed bourbon, one of those drinks people still talk about, and a genuinely great Crif Dogs hot dog to go with it because why not. The World's 50 Best Bars once put it at number one in the world, and the bar's taken a James Beard Award. Get the Old Fashioned, get the hot dog, tell no one."
   },
   {
     "slug": "artesian",
     "city": "London",
     "chef": "",
-    "blurb_short": "Walk into the Langham and there's this gorgeous, slightly show-offy room with purple velvet and towering brass chandeliers. Four years running it was the best bar on the planet, and it still knows how to put on a show.",
+    "blurb_short": "Purple velvet, towering brass chandeliers, and a room that knows it. Four years running it was the best bar on the planet, and it still puts on a show.",
     "blurb_long": "Some bars you feel before you order, and Artesian is one of them: high ceilings, big bay windows, tiered brass chandeliers, deep purple seats, art deco done with a wink instead of a straight face. It lives inside the Langham on Regent Street, and for four straight years the World's 50 Best Bars named it the World's Best Bar, which almost nobody manages. The team behind that streak has moved on since, and the bar leaned into playful, sustainability-minded menus that sneak oddballs like chicory, daikon and marshmallow into drinks that still taste familiar. Come for a cocktail and let the room do the entertaining. It's very good at it."
   },
   {
