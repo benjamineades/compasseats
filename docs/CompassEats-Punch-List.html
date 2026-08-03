@@ -763,7 +763,7 @@
     <div class="tier-head">
       <div class="icon-slot">◆</div>
       <h2>Pipeline &amp; data improvements</h2>
-      <span class="count">53 items</span>
+      <span class="count">59 items</span>
     </div>
     <p class="tier-sub">Structural and infrastructure work. Less visible, but durable — each one prevents future drift.</p>
     <div class="items">
@@ -1247,6 +1247,60 @@
         <p><span class="why">Two things worth scheduling deliberately rather than reactively: (1) split <code>venues.json</code> into per-city JSON files loaded per route, ideally <em>before</em> any sister-project data gets merged in; (2) if prerender build times start getting painful, raise concurrency first (cheap) before considering skipping prerender for zero-blurb/minor-award venues. Also flags the same silent-prerender-failure risk noted in the "stale Eat Anywhere build" item above (<code>failOnError: false</code>) as worth fixing on its own merits, independent of scale.</span></p>
       </div>
 
+      <div class="item">
+        <div class="top">
+          <h3>Restaurant Guy Savoy shows Paris's address under a phantom "Las Vegas" listing</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Sheet-side, one field per row</span></div>
+        </div>
+        <p><strong>Found August 2, live on the site post-publish.</strong> Three rows exist for this name. The real Paris flagship (active, correct address) and the real historical Caesars Palace location (correctly marked closed since its 2021 closure) are both fine. The problem is a third row: <code>las-vegas/restaurant-guy-savoy</code>, active, carrying the Paris row's exact address, coordinates, and Google place_id. Root cause: OAD's own source data lists "Restaurant Guy Savoy" with city = Las&nbsp;Vegas (No.&nbsp;31 in 2026, No.&nbsp;28 in 2025) — an OAD data error, since only Paris still operates. Enrichment correctly matched it to the real Paris place by name, but kept OAD's wrong city label.</p>
+        <p><span class="why">Fix: in the <strong>OAD North America 2026</strong> and <strong>OAD North America 2025</strong> source tabs, change City → Paris and Country → France for the Restaurant&nbsp;Guy&nbsp;Savoy row in each. Next full pipeline run folds the OAD placements into the single correct Paris listing and this place_id drops out of <code>merge_review</code>. This is also the first concretely-solved case from the <code>merge_review</code> backlog below — same pattern likely explains a chunk of the other 27 "different name across cities" entries.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3><code>merge_review</code> backlog — 176 cross-city place_id collisions, now characterized</h3>
+          <div class="pills"><span class="pill larger">Larger</span><span class="pill medium">Needs its own session</span></div>
+        </div>
+        <p>Flagged by <code>mergeDuplicateVenues</code> every run, previously an unexamined number. On August 2, pulled the actual tab and split it: <strong>148 rows share an identical venue name across cities</strong> — almost certainly real multi-location chains (Da&nbsp;Vittorio in Brusaporto and Saint-Moritz, IGNIV by Andreas&nbsp;Caminada across three cities, Tschuggen Grand Hotel across Arosa/Ascona) whose separate physical branches are incorrectly sharing one Google place_id, most likely from name-only enrichment matching with no per-branch disambiguation. <strong>28 rows have two different names attached to one place_id</strong> — the Guy&nbsp;Savoy pattern: a source tab mislabeled the city, enrichment matched the real place by name, the city label stuck. Two of the 28 were independently found and blurb-patched earlier tonight from a different angle (Sushi&nbsp;Saito&nbsp;Thailand under Tokyo instead of Bangkok; Gucci&nbsp;Osteria under Florence colliding with the "da Massimo Bottura" branded locations) — worth revisiting now that the actual mechanism is understood.</p>
+        <p><span class="why">Prior cleanup sessions got a related-but-different collision count down from 200+ into the 30s, so 176 reappearing after a full reshape is not necessarily regression — reshape rebuilds venues from source tabs every run, so any of these that trace to source data (like Guy&nbsp;Savoy) will keep reappearing until fixed at the source, not the output. Recommend: work the 28 name-mismatch cases first (each is a one-field source-tab fix, same shape as Guy&nbsp;Savoy), then scope the 148 same-name cases separately since those likely need per-branch Places re-geocoding, not a Sheet edit. Route to chat for the judgment-heavy triage, Cowork for any resulting batch geocoding.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3><code>normKey_</code> can't distinguish venues named entirely in non-Latin script</h3>
+          <div class="pills"><span class="pill larger">Larger</span><span class="pill medium">Touches shared matching logic</span></div>
+        </div>
+        <p><strong>Found August 2</strong> while debugging why the price-migration script's ambiguous-match count jumped unexpectedly. <code>normKey_</code>, the name-matching function used throughout <code>Reshape.gs</code> (city aliasing, venue dedup, and now price migration), strips every character that isn't a-z or 0-9. A venue named entirely in Japanese or Chinese collapses to a blank string, indistinguishable from every other such venue. Affects 101 venues total; 27 currently carry an at-risk backfilled price. Worked around narrowly and safely inside <code>migratePriceToEnrichment</code> for the August&nbsp;2 run (falls back to the raw trimmed name so these venues at least don't collide with <em>each other</em>), but the underlying function is untouched and the same blind spot exists everywhere else it's used.</p>
+        <p><span class="why">Proper fix means making <code>normKey_</code> Unicode-aware (e.g. matching on Unicode letter/number categories instead of a-z0-9) and validating that change against venue dedup and city aliasing too, not just price — a shared, load-bearing function, so this needs its own careful session with a fresh export to validate against, not a same-night patch.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Venice, Florida is geocoded to Venice Beach, Los Angeles</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">One venue</span></div>
+        </div>
+        <p><strong>Found August 2</strong> while verifying the city-collision split shipped this session. The <code>venice-fl</code> city split itself worked correctly (separated cleanly from Venice, Italy, correct label, correct country), but its one venue's actual lat/lng resolve to 33.99°N&nbsp;-118.45°W — Venice Beach, LA — not Venice, Florida. A Places enrichment mismatch, unrelated to the split logic itself.</p>
+        <p><span class="why">One venue, one wrong pin. Low urgency, real fix.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Sexy Fish — three locations wrongly named "Sexy Fish Dubai"</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Naming, not blurb</span></div>
+        </div>
+        <p><strong>Found July 23</strong> while chasing wrong-city blurb keys. The actual Dubai location is correctly named "Sexy Fish." The London, Manchester, and Miami locations are all literally named "Sexy Fish Dubai" in the data — should read "Sexy Fish London," "Sexy Fish Manchester," "Sexy Fish Miami."</p>
+        <p><span class="why">Name field only, not blurb or geography — safe to batch-correct in the source tab whenever convenient.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>"Sankt Moritz" in <code>city_regions</code> doesn't match the Sheet's "Saint Moritz"</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">One cell</span></div>
+        </div>
+        <p><strong>Found July 23.</strong> One of the cities <code>generateRegionsTab</code> reports as unmatched every run. The Sheet's actual display name is "Saint Moritz" (English spelling); the <code>city_regions</code> mapping tab has "Sankt Moritz" (German). Distinct from the separate, already-queued "Sankt Moritz missing its Michelin 2-star" item — that one's a missing award; this one's a region-matching spelling mismatch.</p>
+        <p><span class="why">Change the cell in <code>city_regions</code> to "Saint Moritz" and it'll pick up Swiss Alps on the next <code>generateRegionsTab</code> run.</span></p>
+      </div>
+
     </div>
   </section>
 
@@ -1629,6 +1683,48 @@
     <div class="tw"><table>
       <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
       <tbody>
+        <tr><td><code>2.41</code></td><td>Aug 2, 2026</td><td>
+          <strong>City-identity collision fix shipped + full pipeline error-handling cleanup.</strong>
+          Split 7 confirmed same-name-different-place city collisions into 15 distinct
+          city_slugs with distinct display names: Baltimore/<em>Baltimore, Ireland</em>,
+          Birmingham/<em>Birmingham, Alabama</em>, Venice/<em>Venice, Florida</em>,
+          Cambridge (UK)/<em>Cambridge, Massachusetts</em>/<em>Cambridge, Ontario</em>,
+          Córdoba/<em>Córdoba, Argentina</em>, La&nbsp;Paz/<em>La&nbsp;Paz, Mexico</em>,
+          Münster/<em>Munster, France</em> — no more one pin averaging two countries
+          into the ocean, no more two cities both reading "Venice" with no way to
+          tell them apart. <strong>Price backfill fully migrated</strong> to durable
+          storage (new <code>price_level</code> column on Places&nbsp;Enrichment); 5,979
+          venues fully accounted for, including a raw-text fallback key for the 60
+          Japanese/Chinese-named venues that <code>normKey_</code> can't key normally
+          (see new Pipeline item). <strong>Fixed the <code>SpreadsheetApp.getUi()</code>
+          popup bug across all 7 pipeline scripts</strong> (<code>reshapeCompassEats</code>,
+          <code>mergeDuplicateVenues</code>, <code>migratePriceToEnrichment</code>,
+          <code>generateCitiesTab</code>, <code>generateRegionsTab</code>,
+          <code>importOptionB</code>, <code>compasseats-blurbs</code>) — every one was
+          completing its real work and then throwing on a popup call that only works
+          from a spreadsheet-bound menu, showing as a false "Failed" status. All now
+          log cleanly. <code>clearWrongCityBlurbs</code> key list repaired (11 stale
+          slugs corrected against live data, all 118 flagged venues resolved).
+          <strong>5 Option B bar blurbs caught over the 180-char <code>blurb_short</code>
+          schema limit pre-publish</strong> (would have failed the entire build, not
+          just those 5 rows) — trimmed with voice preserved, fixed at the source in
+          <code>importOptionB.gs</code> so it doesn't recur. Full publish shipped:
+          <strong>venues.json 10,876 / cities.json 3,152 / venues-index.json 10,515 /
+          regions.json 111</strong>, 0 duplicate keys, 0 orphan city_slugs. Verified
+          live: Veneto region page now correctly attaches Venice, Italy (was silently
+          losing it to Venice, Florida via a display-name collision); Andalusia
+          correctly attaches Córdoba, Spain. <strong>One live bug found post-publish
+          and root-caused, fix pending in the Sheet:</strong> Restaurant&nbsp;Guy&nbsp;Savoy
+          shows Paris's real address under a phantom "Las Vegas" listing — traced to
+          an OAD source-data city mislabel, not a pipeline bug (see new Pipeline item).
+          That investigation surfaced the real shape of the 176-item <code>merge_review</code>
+          backlog for the first time: 148 likely genuine multi-branch chains sharing
+          one place_id, 28 source-data city mismatches of the Guy&nbsp;Savoy pattern
+          (two already independently blurb-patched tonight: Sushi&nbsp;Saito&nbsp;Thailand,
+          Gucci&nbsp;Osteria). Pipeline&nbsp;&amp;&nbsp;data 53&nbsp;→&nbsp;59 (6 new items).
+          <em>Dashboard Shipped/Queued totals not recounted against the full doc this
+          pass — worth a sanity check next time it's opened, per the v2.40 note.</em>
+        </td></tr>
         <tr><td><code>2.40</code></td><td>July 22, 2026</td><td><strong>Award-badge tooltips shipped live on every surface, two real hydration bugs found and fixed, two July&nbsp;3–4 audit items confirmed fixed, four new bugs/tasks logged.</strong> The paired "award badge jargon" and "guide descriptions" items (open since July&nbsp;5 at v1.2.3) both shipped: every award badge now opens a plain-language tooltip on hover or tap, and every <code>/award/$award</code> guide page shows an "About These Categories" section reading from the same source. Built as <code>AwardTooltip</code> (Radix Popover, not Tooltip — Tooltip doesn't support touch) with a <code>useHoverCapable</code> hook deciding hover-vs-tap behavior, and <code>getCategoryNote()</code> in the new <code>src/lib/award-descriptions.ts</code>. <code>CompassEats-Guide-Descriptions.md</code> superseded to <strong>v1.3</strong>: Part&nbsp;1 (28 live slugs) fully humanized, Top&nbsp;500&nbsp;Bars copy added (was missing despite being live), World's&nbsp;101&nbsp;Best&nbsp;Steak&nbsp;Restaurants renamed with a new Hall&nbsp;of&nbsp;Fire category, Part&nbsp;2 expanded 7&nbsp;→&nbsp;30 sources via a research pass against the Award-Source Watch List, Part&nbsp;3 lists 32 sources still needing research. Cowork transcribed Part&nbsp;1 into <code>award-descriptions.ts</code>; testing the transcription against all 2,219 distinct source+category strings actually in <code>data/venues.json</code> found only 43% would resolve to a tooltip (most sheet categories are ranks/scores/shorthand, not the doc's prose labels) — built a resolver with alias maps and pattern matching plus 61 new category notes, reaching 99.99% coverage (21,869/21,872 real entries; the 3 that don't are a confirmed data bug, logged in Pipeline). <strong>Two real bugs found and fixed while wiring this in, both confirmed via live browser testing:</strong> a disabled-<code>&lt;button&gt;</code>-blocks-all-children bug in <code>AccoladeCard</code> (single-award-year case) and a stale module-scope <code>CURRENT_YEAR</code> in <code>venues.ts</code> causing a real, reproducible React hydration failure on every venue page (server/client prestige-sort disagreement from a Cloudflare-Worker-cold-start date drift). <strong>Mobile fix:</strong> <code>VenueRankedRow</code> restructured so only the venue name/blurb sit inside its <code>&lt;Link&gt;</code>, badges moved outside it, so tapping a badge shows its tooltip instead of navigating. <strong>Two July&nbsp;3–4 audit items confirmed fixed</strong> (not re-tested this session, confirmed via direct verification): the stale "Eat Anywhere" canonical-tag build, and the dead "Find the best →" button. <strong>Four new items logged:</strong> World's&nbsp;101&nbsp;Best&nbsp;Steak&nbsp;Restaurants' new copy hasn't been pushed to the actual <code>name</code> field on site yet; "Worth the detour" renders completely empty on every tested city (Tokyo, Florence, Kyoto) — meaning the tooltip wiring added to that section is unverified, not confirmed working; <code>CitySpotlight</code> has its own separate, pre-existing hydration bug (a randomized headline, at least three variants observed); a recurring MapLibre <code>getLayer</code> console error fires on every page with a map. <strong>Footer trust pages bumped a second time</strong> in favor of this work — <code>handoff-footer-pages.md</code> written to kick it off cleanly next session. Up&nbsp;next&nbsp;—&nbsp;polish 40&nbsp;→&nbsp;44 (4 new items; the 2 shipped items marked in place per convention, don't reduce the count), Pipeline&nbsp;&amp;&nbsp;data 50&nbsp;→&nbsp;53 (3 new items: cross-contaminated award rows, remaining research pass, Watch List edits), Recently&nbsp;Shipped 22&nbsp;→&nbsp;24&nbsp;wins. Shipped 59&nbsp;→&nbsp;65. <em>Counts in this entry were reconstructed from the session transcript rather than a live document edit pass — worth a quick sanity check against the full doc next time it's opened.</em></td></tr>
         <tr><td><code>2.39</code></td><td>July 19, 2026</td><td><strong>Final 3 identity-collision splits resolved live — preflightPublish gate cleared 0/0, full publish sequence completed and live-verified.</strong> Picked up the July&nbsp;18 handoff's opening move: River&nbsp;Café, MIURA, and Amano each had two real, different venues sharing one row. <strong>No paid API spend needed</strong> — all three looked up for free via a Places tool already available in chat (place_ids are global, not tied to the requesting key), which closed out the ~$0.10 spend the prior handoff had flagged as a blocker. A read-only Apps Script audit (<code>dumpCollisionRows</code>) confirmed each clone row was contaminated with its twin's full location identity (id, coordinates, address, blurb) while keeping only a few of its own fields. <strong>River&nbsp;Café</strong> re-pinned to Brooklyn, folded into <code>new-york</code>. <strong>MIURA</strong> re-pinned to Beverly&nbsp;Hills, folded into <code>los-angeles</code>, cuisine corrected to Japanese. <strong>Amano</strong> resolved differently than expected: web research confirmed New&nbsp;Zealand's first-ever Michelin Guide (published July&nbsp;1, 2026, after Claude's training cutoff) awarded its Bib&nbsp;Gourmand to <strong>A'mano in Christchurch</strong>, not Auckland's unrelated Amano — a substring mis-match, the same failure class as the earlier Aoyama&nbsp;Sushi&nbsp;Umi bug. Since Auckland's Amano carries no real accolade, the row was <strong>reattributed</strong> to Christchurch's A'mano (Ben's call) rather than relocated, correctly crediting the real awardee. A second read-only audit (<code>auditTargetCities</code>) confirmed existing city_slug conventions before the fix landed, avoiding a second orphan-city break. Applied via dry-run-then-live script (0 blocked, 0 collisions on both runs) — <code>preflightPublish</code> then read <strong>0 duplicate keys, 0 orphan cities, clean</strong> for the first time this entire collision-cleanup arc. <strong>Full publish sequence completed:</strong> all four JSON files regenerated via a faithful Python reproduction of the live <code>sync-sheet.ts</code>/<code>schema.ts</code> (pulled fresh from GitHub, including the interim price_tier euro→dollar normalizer), 0 validation errors on 10,844 venues; committed to GitHub; published in Lovable; all three venues live-verified on their actual pages by Ben. <strong>Blurb coverage gap quantified:</strong> regenerating surfaced <code>blurb_long</code> coverage at 9,955/10,844 (91.8%), down from 10,126/10,680 (94.8%) previously committed — traced to the already-logged <code>clearWrongCityBlurbs</code> stale-key issue (72/119) compounding with the July&nbsp;17 rename batch breaking slug-keyed blurb matches; not a new regression, but now measured. <strong>Also fixed in this doc:</strong> the v2.38 changelog row had been misfiled mid-June in a previous session's edit — moved to its correct chronological position. Pipeline&nbsp;&amp;&nbsp;data 49&nbsp;→&nbsp;50 (new: blurb copy needed for the 3 split venues; extended: blurb-coverage item with hard numbers). In&nbsp;motion 11&nbsp;→&nbsp;11 (item marked SHIPPED in place, per convention). Shipped 58&nbsp;→&nbsp;59.</td></tr>
         <tr><td><code>2.38</code></td><td>July 18, 2026</td><td><strong>46 city-in-name renames shipped; publish sequence run through to the preflight gate; 7 of 10 gate-blocking duplicates resolved live.</strong> Re-scanned the venues tab beyond the known 22 wrong-city names (Nobu&nbsp;London mid-name pattern the old heuristic missed) and shipped all 46, dry-run verified against a fresh export. Ran <code>importBlurbsFromDrive</code> (10,154 filled) → <code>clearWrongCityBlurbs</code> (47/119 keys still resolve — 72 are stale, logged) → <code>importOptionB</code> (131/131) → <code>generateCitiesTab</code> (3,141 cities; caught Turks&nbsp;and&nbsp;Caicos missing <code>country_code</code>, third occurrence of that bug) → <code>generateRegionsTab</code> (111 regions, 15 unmatched cities, non-blocking). <strong><code>preflightPublish</code> then failed on 10 duplicate city/slug keys.</strong> Investigation found 3 were true duplicates (merged live, awards unioned with conflict resolution), 3 were plain data errors (fixed live — a misattributed Latin America 50 Best award, a phantom US row, a stale Michelin rating corrected against Michelin's own 2026 announcement), and <strong>3 are a newly-discovered root-cause bug</strong>: reshape's name-only geo fallback merging two different real venues that share a name (The River Café, Miura, Amano — each confirmed via web search against primary sources). That's the next session's opening move. Row count 10,851&nbsp;→&nbsp;10,844 across the two live-verified fix batches. In&nbsp;motion 7&nbsp;→&nbsp;11.</td></tr>
