@@ -26,6 +26,14 @@
  * Requires a matching update to RegionCitySchema in src/lib/schema.ts (see
  * handoff notes) or the website's build step will silently discard this
  * field — zod strips unrecognized object keys by default.
+ *
+ * FIXED August 2, 2026: the summary used to be shown with
+ * SpreadsheetApp.getUi().alert(), which only works when the script is run
+ * from a menu inside the open spreadsheet. Run from the Apps Script editor
+ * it throws "Cannot call SpreadsheetApp.getUi() from this context" AFTER all
+ * the real work has already finished — so the run was marked Failed even
+ * though the regions tab wrote correctly. The summary now goes to
+ * Logger.log() only, which works in every context.
  */
 
 var CITY_REGIONS_TAB   = 'city_regions';   // source: your city→region mapping
@@ -170,7 +178,6 @@ function generateRegionsTab() {
     (unmatched.length ? 'Unmatched cities (' + unmatched.length + '):\n  ' + unmatched.slice(0, 20).join('\n  ') : 'All cities matched OK.');
 
   Logger.log(msg);
-  SpreadsheetApp.getUi().alert(msg);
 }
 
 // ---------------------------------------------------------------------------
