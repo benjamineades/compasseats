@@ -551,10 +551,34 @@ var CITY_DISPLAY_ = {
   'uriage-les-bains': 'Uriage-les-Bains',
   'valencia': 'Valencia',
   'venice': 'Venice',
-  'venice-fl': 'Venice',        // ADDED July 23 2026 — split from 'venice' (Italy)
+  'venice-fl': 'Venice, Florida',        // ADDED July 23 2026 — split from 'venice' (Italy)
   'washington-dc': 'Washington',
   'zurich': 'Zürich',
-  'munster-fr': 'Munster',      // ADDED July 23 2026 — split from 'munster' (Germany); no umlaut, French spelling
+  // ADDED August 2 2026 — the seven city-collision splits need DISTINCT display
+  // names, not just distinct slugs. Two reasons: (1) generateRegionsTab matches
+  // cities to regions by DISPLAY NAME, so two cities sharing one name silently
+  // collide there and the region gets whichever sorts last (this actually
+  // happened: Veneto picked up Venice, Florida). (2) Without distinct labels the
+  // split is invisible to visitors — two separate city pages both reading
+  // "Venice". The more prominent / higher-venue-count city keeps the plain name;
+  // the split side carries the qualifier.
+  'baltimore-ie': 'Baltimore, Ireland',
+  'birmingham-al': 'Birmingham, Alabama',
+  'cambridge-ma': 'Cambridge, Massachusetts',
+  'cambridge-on': 'Cambridge, Ontario',
+  'cordoba-ar': 'Córdoba, Argentina',
+  'la-paz-mx': 'La Paz, Mexico',
+  'munster-fr': 'Munster, France',
+};
+
+// Slugs whose CITY_DISPLAY_ value is DELIBERATELY a qualified form of the raw
+// city name ("Venice, Florida" for raw "Venice"). Without this, cityDisplay_
+// sees display != raw and helpfully derives a neighborhood — so every venue in
+// Venice FL would get a neighborhood of "Venice". These are the only slugs
+// where that inference should be skipped; the general logic is untouched.
+var CITY_DISPLAY_QUALIFIED_ = {
+  'baltimore-ie': 1, 'birmingham-al': 1, 'venice-fl': 1, 'cambridge-ma': 1,
+  'cambridge-on': 1, 'cordoba-ar': 1, 'la-paz-mx': 1, 'munster-fr': 1
 };
 
 // Canonical display label + true town for a venue, given its city_slug and raw source city.
@@ -563,6 +587,9 @@ var CITY_DISPLAY_ = {
 function cityDisplay_(cslug, rawCity) {
   var canon = CITY_DISPLAY_[cslug];
   if (!canon) return { display: rawCity || '', neighborhood: '' };
+  // Deliberately-qualified split cities ("Venice, Florida" for raw "Venice"):
+  // the difference is intentional, not a neighborhood signal.
+  if (CITY_DISPLAY_QUALIFIED_[cslug]) return { display: canon, neighborhood: '' };
   var a = normKey_(canon), b = normKey_(rawCity || '');
   // Suppress pseudo-neighborhoods that are just the canonical name with a generic
   // suffix/prefix (e.g. "New York City" vs "New York", "Dublin City" vs "Dublin",
@@ -940,7 +967,6 @@ var msg =
     'closed excluded:      ' + closedExcluded;
   Logger.log(log.join('\n'));
   Logger.log(msg);
-  SpreadsheetApp.getUi().alert(msg);
 }
 
 function writeTab_(ss, name, headers, rows) {
