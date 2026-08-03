@@ -36,13 +36,22 @@
  *   1. Make a backup copy of the Sheet first (File → Make a copy).
  *   2. Extensions → Apps Script → new file → paste this whole file → Save.
  *   3. Run → mergeDuplicateVenues. Authorize if prompted.
- *   4. Read the summary alert; review the new `merge_review` tab.
+ *   4. Read the summary in the execution log; review the new `merge_review` tab.
  *
  * RUN ORDER (every publish cycle):
- *   reshapeCompassEats → mergeDuplicateVenues → importBlurbsFromDrive →
- *   importOptionB → deploy.
+ *   reshapeCompassEats → mergeDuplicateVenues → resolveDualCategoryVenues →
+ *   importBlurbsFromDrive → clearWrongCityBlurbs → importOptionB →
+ *   generateCitiesTab → generateRegionsTab → preflightPublish → deploy.
  *   (Reshape rebuilds the dupes from sources each run, so this must re-run
  *   after every reshape — same pattern as the blurb imports.)
+ *
+ * FIXED August 2, 2026: the summary used to be shown with
+ * SpreadsheetApp.getUi().alert(), which only works when the script is run
+ * from a menu inside the open spreadsheet. Run from the Apps Script editor
+ * it throws "Cannot call SpreadsheetApp.getUi() from this context" AFTER the
+ * merge and both tab writes have already completed — so the run was marked
+ * Failed even though everything succeeded. The summary now goes to
+ * Logger.log() only, which works in every context.
  */
 
 var MV_VENUES_TAB = 'venues';
@@ -179,5 +188,4 @@ function mergeDuplicateVenues() {
     'cross-city place_ids needing review: ' + reviewRows.length +
     ' (see "' + MV_REVIEW_TAB + '" tab)';
   Logger.log(msg);
-  SpreadsheetApp.getUi().alert(msg);
 }
