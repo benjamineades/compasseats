@@ -30,6 +30,14 @@
  *
  * Idempotent: existing manual edits to country_code/timezone/blurb are
  * PRESERVED on re-run by matching on slug (see preserveManual_).
+ *
+ * FIXED August 2, 2026: the summary used to be shown with
+ * SpreadsheetApp.getUi().alert(), which only works when the script is run
+ * from a menu inside the open spreadsheet. Run from the Apps Script editor
+ * it throws "Cannot call SpreadsheetApp.getUi() from this context" AFTER all
+ * the real work has already finished — so the run was marked Failed even
+ * though the cities tab wrote correctly. The summary now goes to
+ * Logger.log() only, which works in every context.
  */
 
 var CITIES_TAB = 'cities';
@@ -170,7 +178,6 @@ function generateCitiesTab() {
     'timezone: BLANK (fill these for "Open Today")\n' +
     'lat/lng: MEDIAN of each city\'s venues (robust to outliers)';
   Logger.log(msg);
-  SpreadsheetApp.getUi().alert(msg);
 }
 
 /** Read existing cities tab (if any) so re-runs don't wipe manual columns. */
