@@ -891,42 +891,42 @@ var OPTION_B = [
     "city": "Baiersbronn",
     "chef": "Claus-Peter Lumpp",
     "blurb_short": "In a Black Forest village improbably stacked with three-star kitchens, Chef Claus-Peter Lumpp has held his trio since 2007 — with sauce work that’s the stuff of legend.",
-    "blurb_long": "Baiersbronn is a tiny Black Forest village with a wildly outsized food reputation — more than one three-star kitchen calls it home — and Restaurant Bareiss is right at the heart of it. Chef Claus-Peter Lumpp has run this dining room inside the Hotel Bareiss since 1992, cooking classic French sharpened with local touches like venison from the estate’s own hunt. Across just a handful of tables, the meal rolls toward a gloriously old-school grand finale of cheese and praline trolleys. Trained under Eckart Witzigmann and Alain Ducasse, Chef Lumpp bets on timeless over trendy every time — and three Michelin stars since 2007 say the bet keeps paying off."
+    "blurb_long": "Baiersbronn is a tiny Black Forest village with a wildly outsized food reputation — more than one three-star kitchen calls it home — and Restaurant Bareiss is right at the heart of it. Chef Claus-Peter Lumpp has run this dining room inside the Hotel Bareiss since 1992, cooking classic French sharpened with local touches like venison from the estate's own hunt. Across just a handful of tables, the meal rolls toward a gloriously old-school grand finale of cheese and praline trolleys. Trained under Eckart Witzigmann and Alain Ducasse, Chef Lumpp bets on timeless over trendy every time — and three Michelin stars since 2007 say the bet keeps paying off."
   },
   {
     "slug": "restaurant-de-l-hotel-de-ville-de-crissier",
     "city": "Crissier",
     "chef": "Franck Giovannini",
     "blurb_short": "Regulars just call it “Crissier” — a Swiss cathedral of classic French cooking that has passed three Michelin stars down a near-mythic line of chefs since 1994.",
-    "blurb_long": "Not many restaurants come with a dynasty attached, but Crissier, just outside Lausanne, does. The legend started with the great Frédy Girardet and carried through Philippe Rochat and Benoît Violier; today Chef Franck Giovannini works the pass, having cooked beside every one of them. He keeps Girardet’s golden rule — rarely more than three flavors on a plate — and sends out classical French so clean and so à la minute it feels almost defiant. The dining rooms are named after the chefs who built the place, in case you forget you’re eating inside history. Three Michelin stars, not dropped once since 1994."
+    "blurb_long": "Not many restaurants come with a dynasty attached, but Crissier, just outside Lausanne, does. The legend started with the great Frédy Girardet and carried through Philippe Rochat and Benoît Violier; today Chef Franck Giovannini works the pass, having cooked beside every one of them. He keeps Girardet's golden rule — rarely more than three flavors on a plate — and sends out classical French so clean and so à la minute it feels almost defiant. The dining rooms are named after the chefs who built the place, in case you forget you're eating inside history. Three Michelin stars, not dropped once since 1994."
   },
   {
     "slug": "restaurant-es-senz",
     "city": "Grassau",
     "chef": "Edip Sigl",
     "blurb_short": "Chef Edip Sigl went from opening night to three Michelin stars in under three years — Bavarian Alpine cooking boiled down to its pure essence.",
-    "blurb_long": "ES:SENZ — a wink at Chef Edip Sigl’s initials and at the idea of essence — sits inside the Das Achental resort near the Chiemsee, and its climb has been almost suspiciously fast: open in 2021, three Michelin stars by 2024. Chef Sigl, who learned plenty under Chef Juan Amador, builds each dish from just a few flawless components, served as either an all-local “Chiemgau pur” menu or a more well-travelled cousin. The cooking is refined but never stuffy — they leave the sauces on your table so you can sneak seconds — and a saffron ice cream waits at the finish. For a slice of Bavaria better known for lakes and ski lifts, that’s quite the plot twist."
+    "blurb_long": "ES:SENZ — a wink at Chef Edip Sigl's initials and at the idea of essence — sits inside the Das Achental resort near the Chiemsee, and its climb has been almost suspiciously fast: open in 2021, three Michelin stars by 2024. Chef Sigl, who learned plenty under Chef Juan Amador, builds each dish from just a few flawless components, served as either an all-local “Chiemgau pur” menu or a more well-travelled cousin. The cooking is refined but never stuffy — they leave the sauces on your table so you can sneak seconds — and a saffron ice cream waits at the finish. For a slice of Bavaria better known for lakes and ski lifts, that's quite the plot twist."
   },
   {
     "slug": "restaurant-gordon-ramsay",
     "city": "London",
     "chef": "Matt Abé",
-    "blurb_short": "Forget the television persona — Chef Gordon Ramsay’s first and finest restaurant has quietly held three Michelin stars since 2001, with chef patron Matt Abé at the controls.",
-    "blurb_long": "On a hushed corner of Royal Hospital Road in Chelsea is where the whole Gordon Ramsay story began, back in 1998 — and where it’s still at its most grown-up. The famous TV chef is rarely behind the pass these days; Chef Matt Abé runs the kitchen, turning out modern French cooking of almost unnerving consistency, including the lobster, langoustine and salmon ravioli that’s been on the menu since day one. The room is small, the decor understated, the service warm rather than starchy — proof that three-star dining doesn’t have to come with a side of intimidation. Three Michelin stars held since 2001 make this one of London’s longest-running greats."
+    "blurb_short": "Forget the television persona — Chef Gordon Ramsay's first and finest restaurant has quietly held three Michelin stars since 2001, with chef patron Matt Abé at the controls.",
+    "blurb_long": "On a hushed corner of Royal Hospital Road in Chelsea is where the whole Gordon Ramsay story began, back in 1998 — and where it's still at its most grown-up. The famous TV chef is rarely behind the pass these days; Chef Matt Abé runs the kitchen, turning out modern French cooking of almost unnerving consistency, including the lobster, langoustine and salmon ravioli that's been on the menu since day one. The room is small, the decor understated, the service warm rather than starchy — proof that three-star dining doesn't have to come with a side of intimidation. Three Michelin stars held since 2001 make this one of London's longest-running greats."
   },
   {
     "slug": "eatrenalin",
     "city": "Rust",
     "chef": "Peter Hagen-Wiest",
     "blurb_short": "Half tasting menu, half theme-park ride: at Europa-Park you glide through themed rooms over eight courses — and in 2026 the food picked up a Michelin star.",
-    "blurb_long": "There is, truly, nothing else like Eatrenalin. Inside Germany’s Europa-Park you sink into a patented “floating chair” and drift through a string of wildly themed rooms — an ocean here, an umami-drenched hall there — while eight courses arrive perfectly in step with the scenery, scents and soundtrack. It had every right to be a gimmick; instead, under culinary director Chef Peter Hagen-Wiest, it went and earned a Michelin star in 2026. Pick the meat-and-fish “Red Dimensions” or the vegetarian “Green Dimensions,” clear about two hours, and let yourself be carried — literally — through one of the most gleefully original dinners on earth. Best part: you don’t even need a park ticket."
+    "blurb_long": "There is, truly, nothing else like Eatrenalin. Inside Germany's Europa-Park you sink into a patented “floating chair” and drift through a string of wildly themed rooms — an ocean here, an umami-drenched hall there — while eight courses arrive perfectly in step with the scenery, scents and soundtrack. It had every right to be a gimmick; instead, under culinary director Chef Peter Hagen-Wiest, it went and earned a Michelin star in 2026. Pick the meat-and-fish “Red Dimensions” or the vegetarian “Green Dimensions,” clear about two hours, and let yourself be carried — literally — through one of the most gleefully original dinners on earth. Best part: you don't even need a park ticket."
   },
   {
     "slug": "kimball-house",
     "city": "Atlanta",
     "chef": "Miles Macquarrie",
-    "blurb_short": "A converted Decatur train depot with metro Atlanta’s best oyster program and a Michelin-honored bar — cocktails built from the restaurant’s own garden and local farms.",
-    "blurb_long": "Set inside a lovingly restored rail depot in Decatur, Kimball House borrows its name — and a bit of its swagger — from a grand 19th-century Atlanta hotel, reviving that era’s habit of pairing fresh oysters with a proper cocktail. The raw bar is the best in the city, twenty-plus varieties from both coasts (a few grown on the restaurant’s own Florida oyster farm). But the bar is the real headliner: beverage director Miles Macquarrie lets the seasons, local farms and an on-site garden run the menu, from house-made bitters and preserves to terroir-driven martinis built around a single herb grown out back. The drinks earned the Michelin Guide’s Exceptional Cocktails Award for Atlanta in 2024 — though for a first visit the move is simple: a dozen oysters and the house martini, the Kimball House, and settle in."
+    "blurb_short": "A converted Decatur train depot with metro Atlanta's best oyster program and a Michelin-honored bar — cocktails built from the restaurant's own garden and local farms.",
+    "blurb_long": "Set inside a lovingly restored rail depot in Decatur, Kimball House borrows its name — and a bit of its swagger — from a grand 19th-century Atlanta hotel, reviving that era's habit of pairing fresh oysters with a proper cocktail. The raw bar is the best in the city, twenty-plus varieties from both coasts (a few grown on the restaurant's own Florida oyster farm). But the bar is the real headliner: beverage director Miles Macquarrie lets the seasons, local farms and an on-site garden run the menu, from house-made bitters and preserves to terroir-driven martinis built around a single herb grown out back. The drinks earned the Michelin Guide's Exceptional Cocktails Award for Atlanta in 2024 — though for a first visit the move is simple: a dozen oysters and the house martini, the Kimball House, and settle in."
   },
   {
     "slug": "bar-leone",
@@ -1003,7 +1003,7 @@ var OPTION_B = [
 function importOptionB() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sh = ss.getSheetByName('venues');
-  if (!sh) { SpreadsheetApp.getUi().alert('Sheet "venues" not found.'); return; }
+  if (!sh) { throw new Error('Sheet "venues" not found.'); }
 
   var data = sh.getDataRange().getValues();
   var header = data[0];
@@ -1058,5 +1058,5 @@ function importOptionB() {
   if (!notFound.length && !ambiguous.length) msg += ', all slugs matched.';
   if (notFound.length)  msg += '\n\nNOT FOUND (' + notFound.length + '): ' + notFound.join(', ');
   if (ambiguous.length) msg += '\n\nAMBIGUOUS – add/fix city (' + ambiguous.length + '): ' + ambiguous.join(', ');
-  SpreadsheetApp.getUi().alert(msg);
+  Logger.log(msg);
 }
