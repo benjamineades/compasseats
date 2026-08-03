@@ -1,7 +1,7 @@
 /**
  * CompassEats — Clear Wrong-City Blurbs (one-shot)
  * =================================================
- * Blanks blurb_short + blurb_long for 119 venues whose bulk (Option A)
+ * Blanks blurb_short + blurb_long for venues whose bulk (Option A)
  * blurbs describe a DIFFERENT city than the venue's own — same-name venue
  * confusion from the batch generation (e.g. Restaurant Guy Savoy in PARIS
  * carrying the Las Vegas blurb; Aqua in WOLFSBURG carrying a Hong Kong blurb;
@@ -12,7 +12,7 @@
  * Full list with excerpts: wrong_city_blurb_audit.csv.
  *
  * Blanking restores the honest "A charted favorite in {city}" fallback
- * until these 119 get regenerated with a city-anchored prompt in the
+ * until these get regenerated with a city-anchored prompt in the
  * next blurb batch.
  *
  * RUN ORDER: after reshape + mergeDuplicateVenues + importBlurbsFromDrive
@@ -21,6 +21,22 @@
  * import until then).
  *
  * HOW TO RUN: Apps Script → paste → Run clearWrongCityBlurbs.
+ *
+ * FIXED August 2, 2026: the original list keyed each venue by
+ * city_slug + slug AS OF the original audit. Since then, mergeDuplicateVenues
+ * and city-label corrections have shifted several of those keys (a "-2"
+ * duplicate slug collapsing into its clean base slug, "manhattan" folding
+ * into "new-york", "miami-beach" into "miami", "washington" into
+ * "washington-dc"), so 13 of the original 119 keys no longer matched
+ * anything and were silently skipped, even though 11 of those 13 still had
+ * their wrong-city blurb sitting live and untouched. This run found and
+ * fixed 12 of those 13 keys against the current venues export (10 simple
+ * key drift, plus "ivy Sydney" and "Sushi Saito Thailand" which the
+ * original list had guessed the WRONG city for in the first place, going
+ * by the venue's name instead of its real city_slug — both have always
+ * lived under a different city_slug than the list assumed). One entry
+ * (washington/washington) didn't correspond to any identifiable venue and
+ * was dropped rather than guessed at.
  */
 
 var WRONG_CITY_KEYS = [
@@ -32,13 +48,13 @@ var WRONG_CITY_KEYS = [
   'atlanta/bacchanalia',
   'auchterarder/the-american-bar',
   'bad-gleichenberg/geschwister-rauch',
-  'bangkok/sushi-saito-thailand',
+  'tokyo/sushi-saito-thailand',                 // FIXED — was 'bangkok/sushi-saito-thailand'; venue's own city_slug has always been tokyo
   'beijing/xinrongji',
   'benicarlo/restaurant-raul-resino',
   'berlin/coda',
   'berlin/hugos',
   'los-angeles/spago',
-  'blois/restaurant-christophe-hay-2',
+  'blois/restaurant-christophe-hay',            // FIXED — was '...-2'; mergeDuplicateVenues dropped the suffix
   'bordeaux/racines',
   'brampton/cedar-tree-by-hrishikesh-desai',
   'bry/restaurant-le-camelia',
@@ -52,13 +68,13 @@ var WRONG_CITY_KEYS = [
   'dieppe/les-voiles-d-or',
   'doha/cut-by-wolfgang-puck',
   'dubai/la-petite-maison-lpm-dubai',
-  'dubai/sexy-fish-dubai',
+  'dubai/sexy-fish',                            // FIXED — was 'dubai/sexy-fish-dubai'; name was cleaned up, already blank, kept for list accuracy
   'edinburgh/lyla-restaurant-rooms',
-  'florence/gucci-osteria-da-massimo-bottura',
+  'florence/gucci-osteria',                     // FIXED — was 'florence/gucci-osteria-da-massimo-bottura'; name was cleaned up, already blank, kept for list accuracy
   'fukui/sushi-jubei',
   'fukuoka/sushi-osamu',
   'guangzhou/imperial-treasure-fine-chinese-cuisine-tsim-sha-tsui',
-  'guangzhou/lei-garden-restaurant-2',
+  'guangzhou/lei-garden',                       // FIXED — was '...-restaurant-2'; name+slug both cleaned up by merge
   'guangzhou/taotaoju',
   'hong-kong/ichu-hong-kong',
   'hong-kong/sushi-shin',
@@ -83,14 +99,15 @@ var WRONG_CITY_KEYS = [
   'london/hakkasan',
   'london/the-araki',
   'los-angeles/death-co-los-angeles',
+  'los-angeles/ivy-sydney',                     // FIXED — was 'sydney/ivy-sydney'; venue's own city_slug has always been los-angeles
   'los-angeles/sushi-sasabune',
   'maastricht/prix-de-rome',
   'madrid/restaurante-pabu',
   'madrid/smoked-room-madrid-fire-omakase-by-dani-garcia',
   'malaga/blossom-restaurant',
-  'manhattan/roscioli-nyc',
+  'new-york/roscioli-nyc',                      // FIXED — was 'manhattan/roscioli-nyc'; city label folded into new-york
   'mexico-city/au-pied-de-cochon',
-  'miami-beach/the-bazaar-by-jose-andres',
+  'miami/the-bazaar-by-jose-andres',            // FIXED — was 'miami-beach/...'; city label folded into miami
   'milan/contraste',
   'millinge/falsled-kro-1744-relais-chateaux',
   'montcy-notre-dame/l-auberge-du-laminak',
@@ -111,12 +128,12 @@ var WRONG_CITY_KEYS = [
   'osaka/la-kanro',
   'osaka/matsuzushi',
   'osaka/yamada',
-  'paris/il-ristorante-niko-romito-2',
+  'paris/il-ristorante-niko-romito',             // FIXED — was '...-2'; mergeDuplicateVenues dropped the suffix
   'paris/restaurant-guy-savoy',
   'paris/sola',
-  'reijmerstok/brut172-by-hans-van-wolde-2',
+  'reijmerstok/brut172-by-hans-van-wolde',       // FIXED — was '...-2'; mergeDuplicateVenues dropped the suffix
   'saint-germain/hostel-de-montfleury',
-  'salamanca/tayta-by-victor-gutierrez-2',
+  'salamanca/tayta-by-victor-gutierrez',         // FIXED — was '...-2'; mergeDuplicateVenues dropped the suffix
   'san-francisco/acquerello',
   'san-francisco/kiln',
   'san-mateo/wakuriya',
@@ -129,7 +146,6 @@ var WRONG_CITY_KEYS = [
   'shizuoka/seika-kobayashi',
   'shizuoka/seirin',
   'stuttgart/wielandshohe',
-  'sydney/ivy-sydney',
   'tata/platan-bistro',
   'tokyo/kikunoi',
   'tokyo/ryuzu',
@@ -138,11 +154,11 @@ var WRONG_CITY_KEYS = [
   'ubon-ratchathani/mok',
   'udon-thani/khao-soi-thai-yai-restaurant-ua-udon',
   'udon-thani/red-lotus-pad-thai',
-  'vancouver/st-lawrence-restaurant-2',
+  'vancouver/st-lawrence-restaurant',            // FIXED — was '...-2'; mergeDuplicateVenues dropped the suffix
   'vichy/maison-decoret',
-  'washington/sushi-nakazawa',
-  'washington/washington',
+  'washington-dc/sushi-nakazawa',                // FIXED — was 'washington/sushi-nakazawa'; city label corrected to washington-dc
   'wolfsburg/aqua'
+  // REMOVED: 'washington/washington' — no identifiable matching venue found; likely a bad entry in the original audit
 ];
 
 function clearWrongCityBlurbs() {
@@ -158,16 +174,24 @@ function clearWrongCityBlurbs() {
   for (var i = 0; i < WRONG_CITY_KEYS.length; i++) want[WRONG_CITY_KEYS[i]] = true;
 
   var cleared = 0;
+  var alreadyBlank = 0;
+  var stillMissing = [];
+  var seen = {};
   for (var r = 1; r < vals.length; r++) {
     var key = vals[r][col.city_slug] + '/' + vals[r][col.slug];
     if (!want[key]) continue;
+    seen[key] = true;
     var touched = false;
     if (vals[r][col.blurb_short]) { vals[r][col.blurb_short] = ''; touched = true; }
     if (vals[r][col.blurb_long])  { vals[r][col.blurb_long]  = ''; touched = true; }
-    if (touched) cleared++;
+    if (touched) cleared++; else alreadyBlank++;
   }
+  for (var k in want) { if (!seen[k]) stillMissing.push(k); }
+
   sheet.getRange(1, 1, vals.length, headers.length).setValues(vals);
-  var msg = 'Cleared blurbs on ' + cleared + ' of ' + WRONG_CITY_KEYS.length + ' flagged venues.';
-  Logger.log(msg);
-  SpreadsheetApp.getUi().alert(msg);
+  Logger.log('Cleared blurbs on ' + cleared + ' of ' + WRONG_CITY_KEYS.length + ' flagged venues.');
+  Logger.log('Already blank (nothing to clear): ' + alreadyBlank);
+  if (stillMissing.length) {
+    Logger.log('Key still not found in venues tab (' + stillMissing.length + '): \n' + stillMissing.join('\n'));
+  }
 }
