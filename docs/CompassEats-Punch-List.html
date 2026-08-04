@@ -209,9 +209,9 @@
   <p class="tag">Charting what's next. Updated each session as work ships and new work appears.</p>
   <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
   <div class="meta-row">
-    <span class="m">Version <b>2.42</b></span>
-    <span class="m">Updated <b>August 3, 2026</b></span>
-    <span class="m">RestoMojo competitor teardown · two new items: sharpen the homepage positioning and problem statement (Up next), and a four-phase reservation-intelligence roadmap — booking links, drop times, "Tonight" mode, and why we will never build a booking bot (On the horizon)</span>
+    <span class="m">Version <b>2.43</b></span>
+    <span class="m">Updated <b>August 4, 2026</b></span>
+    <span class="m">Footer trust pages (About/Contact/Privacy/Terms/Methodology) shipped and wired live · award-badge tooltip hardened for mouse/touch/keyboard and now links to the specific award's own page · Cloudflare email forwarding logged as the one loose thread left</span>
   </div>
 </header>
 
@@ -220,19 +220,19 @@
   <!-- DASHBOARD -->
   <section class="dash">
     <div class="dcard done">
-      <div class="dnum">65</div>
+      <div class="dnum">67</div>
       <div class="dlabel">Shipped</div>
-      <div class="dsub">Static architecture, sitemap live · ingest + geo-enrichment · live deploy · core pages redesigned · award-collision fix · mobile accolade distinctions · Cities + Guides index + header nav · city page fixed-hex redesign · bulk blurbs (11k) live · Option B blurbs (48) live · country-string corruption fixed · cross-city bleed verified clean · city-label canonicalization (93→0) · W50 regional award history (+254 rows) · type:bar mislabel fix · single-venue city photos live · city hero photos · city coordinates fixed (mean→median) · collision cleanup batch 1 (337→281) · Regions feature (113 regions, /regions index + /region/$slug pages, map + city cards, search integration, accent-folding fix) · region-page per-city venue dropdown (July 1) · multi-currency price_tier normalization, symbol-count based (July 1) · region-matching auto-suggest tool (geocode → match → cleanup → retry → review → apply, July&nbsp;3) · collision-pin fix batch 2 + Da&nbsp;Vittorio blurb bug fixed, republished (July&nbsp;3) · collision cleanup batches 4–5 (266→204) + OAD tab decontamination, 655 mis-pasted rows purged (July&nbsp;4–6) · mislocation bug root-caused + Batch A re-geocode, 393→285 collisions (July&nbsp;8) · Forbes city-label bug fixed at source (42 labels, 676 rows, permanent) · collision verification Batch 1 — 71 ALIAS/PHANTOM venues corrected at source across 8 tabs, 285→236→183 collisions (July&nbsp;9) · 46 city-in-name renames + preflightPublish gate cleared 0/0, final 3 identity-collision venues split and re-attributed (July&nbsp;19) · <strong>stale Eat Anywhere build confirmed fixed, dead Find-the-best button confirmed fixed, award-badge tooltips live on every surface (mobile-safe), guide-description "About These Categories" live, and two real hydration bugs (disabled-button-blocks-children, stale CURRENT_YEAR) found and fixed on venue pages, all July&nbsp;22 — see Up next and Recently Shipped for detail</strong></div>
+      <div class="dsub">Static architecture, sitemap live · ingest + geo-enrichment · live deploy · core pages redesigned · award-collision fix · mobile accolade distinctions · Cities + Guides index + header nav · city page fixed-hex redesign · bulk blurbs (11k) live · Option B blurbs (48) live · country-string corruption fixed · cross-city bleed verified clean · city-label canonicalization (93→0) · W50 regional award history (+254 rows) · type:bar mislabel fix · single-venue city photos live · city hero photos · city coordinates fixed (mean→median) · collision cleanup batch 1 (337→281) · Regions feature (113 regions, /regions index + /region/$slug pages, map + city cards, search integration, accent-folding fix) · region-page per-city venue dropdown (July 1) · multi-currency price_tier normalization, symbol-count based (July 1) · region-matching auto-suggest tool (geocode → match → cleanup → retry → review → apply, July&nbsp;3) · collision-pin fix batch 2 + Da&nbsp;Vittorio blurb bug fixed, republished (July&nbsp;3) · collision cleanup batches 4–5 (266→204) + OAD tab decontamination, 655 mis-pasted rows purged (July&nbsp;4–6) · mislocation bug root-caused + Batch A re-geocode, 393→285 collisions (July&nbsp;8) · Forbes city-label bug fixed at source (42 labels, 676 rows, permanent) · collision verification Batch 1 — 71 ALIAS/PHANTOM venues corrected at source across 8 tabs, 285→236→183 collisions (July&nbsp;9) · 46 city-in-name renames + preflightPublish gate cleared 0/0, final 3 identity-collision venues split and re-attributed (July&nbsp;19) · stale Eat Anywhere build confirmed fixed, dead Find-the-best button confirmed fixed, award-badge tooltips live on every surface (mobile-safe), guide-description "About These Categories" live, and two real hydration bugs (disabled-button-blocks-children, stale CURRENT_YEAR) found and fixed on venue pages, all July&nbsp;22 · <strong>footer trust pages (About/Contact/Privacy/Terms/Methodology) built, wired into the footer, and verified live, plus the award-badge tooltip hardened to survive mouse/touch/keyboard and pointed at each award's own page instead of a generic link, both Aug&nbsp;4 — see Up next and Recently Shipped for detail</strong></div>
     </div>
     <div class="dcard active">
       <div class="dnum">0</div>
       <div class="dlabel">In motion</div>
-      <div class="dsub"><strong>Nothing currently active.</strong> The publish-pipeline run-through that spanned July&nbsp;16–19 closed out clean: all 10 <code>preflightPublish</code> duplicate-key failures resolved, gate passed 0/0, JSON regenerated (faithful Python reproduction of the live <code>sync-sheet.ts</code>/<code>schema.ts</code>), committed to GitHub, published in Lovable, and live-verified on all three fixed venue pages. See Shipped. Next session opens fresh — two small blurb-copy items queued in Pipeline.</div>
+      <div class="dsub"><strong>Nothing currently active.</strong> Footer trust pages and the award-badge tooltip hardening (Aug&nbsp;4) closed out clean and verified live — see Shipped. Next session opens fresh with <code>handoff-collision-worklist.md</code> pointed at <code>CompassEatsCityCollisionsWorklist.xlsx</code>.</div>
     </div>
     <div class="dcard next">
-      <div class="dnum">14</div>
+      <div class="dnum">15</div>
       <div class="dlabel">Up next</div>
-      <div class="dsub"><strong>New (July 22):</strong> ship real About/Contact/Privacy/Terms/Methodology pages — bumped a second time in favor of the tooltip work, now has its own handoff doc (<code>handoff-footer-pages.md</code>) · rename World's 101 Best Steak Restaurants on-site (copy done, <code>name</code> field not yet changed) · fix "Worth the detour" rendering empty on every tested city · CitySpotlight's own pre-existing hydration mismatch (randomized headline) · recurring MapLibre <code>getLayer</code> console error. Plus the existing short list: rewrite the 131 existing restaurant blurbs with the Humanizer Layer · Dukes Bar re-enrich · curated top-city hero photos · multi-venue card photos · card polish · prestige reweighting · price_tier display as a bronze pill.</div>
+      <div class="dsub"><strong>New (Aug&nbsp;4):</strong> Cloudflare email forwarding for <code>hello@compasseats.com</code> — the Contact page's mailto link is live, but mail won't arrive until this is wired up (five-minute dashboard job, Ben's side) · rename World's 101 Best Steak Restaurants on-site (copy done, <code>name</code> field not yet changed) · fix "Worth the detour" rendering empty on every tested city · CitySpotlight's own pre-existing hydration mismatch (randomized headline) · recurring MapLibre <code>getLayer</code> console error. Plus the existing short list: rewrite the 131 existing restaurant blurbs with the Humanizer Layer · Dukes Bar re-enrich · curated top-city hero photos · multi-venue card photos · card polish · prestige reweighting · price_tier display as a bronze pill.</div>
     </div>
     <div class="dcard later">
       <div class="dnum">57</div>
@@ -364,7 +364,7 @@
     <div class="tier-head">
       <div class="icon-slot">▸</div>
       <h2>Up next — polish</h2>
-      <span class="count">45 items</span>
+      <span class="count">46 items</span>
     </div>
     <p class="tier-sub">Visible UX wins on the live site. None block anything; all noticeably improve the product. Start here when picking up work.</p>
     <div class="items">
@@ -398,12 +398,21 @@
 
       <div class="item">
         <div class="top">
-          <h3>Footer trust pages — About / Contact / Privacy / Terms all point to <code>#</code></h3>
-          <div class="pills"><span class="pill larger">Critical — trust</span><span class="pill medium">Content + 1 Lovable prompt</span></div>
+          <h3>✓ SHIPPED — Footer trust pages — About / Contact / Privacy / Terms / Methodology, all live</h3>
+          <div class="pills"><span class="pill done">Shipped</span><span class="pill quick">Aug 4</span></div>
         </div>
-        <p><strong>Elevated from the note logged under "Guides nav link wired" below</strong> — the July 3–4 audit flagged this as the single biggest trust problem on the live site: every footer link is a dead <code>#</code> anchor. Scope now includes a fifth page, <strong>Methodology</strong> (the sources CompassEats charts from, how a venue qualifies, how often data refreshes) — pure writing, no engineering risk, and it directly answers "why should I believe this."</p>
-        <p><span class="why"><strong>Plan:</strong> Claude drafts About / Contact / Privacy / Terms / Methodology copy (using the existing "well-traveled friend" positioning language for About) → one Lovable prompt adds the routes and wires the footer + award-badge links to Methodology → a real inbox via Cloudflare email forwarding (free) for the Contact address.</span></p>
-        <p><span class="why"><strong>Bumped a second time (July 22)</strong> in favor of the award-badge tooltip work below — <code>handoff-footer-pages.md</code> written to kick off this item cleanly next session, including a diagnostic-first Lovable prompt to find the real footer component before drafting anything.</span></p>
+        <p><strong>Picked up straight from <code>handoff-footer-pages.md</code>.</strong> Found the footer's four dead <code>#</code> anchors live inline in <code>src/routes/__root.tsx</code> — no separate Footer.tsx, so the handoff's diagnostic-first Lovable step wasn't needed, found directly by reading the repo. Modeled all five new routes (<code>about.tsx</code>, <code>contact.tsx</code>, <code>privacy.tsx</code>, <code>terms.tsx</code>, <code>methodology.tsx</code>) on the existing <code>guides.tsx</code> light-paper pattern (PAPER/INK/INK_MUTED/BRONZE tokens, Fraunces headline). Copy drafted in chat and signed off before any Lovable prompt, per the handoff's plan. One Lovable prompt shipped all five pages, rewired the four footer links off <code>#</code> and onto real routes, added a fifth Methodology footer link, and added a "Learn more →" link to the award-badge tooltip popover (<code>AwardTooltip.tsx</code>).</p>
+        <p><span class="why"><strong>Two real bugs found and fixed post-ship, both confirmed via live testing:</strong> (1) the tooltip popover closed the instant the mouse left the badge, before a click could land on the new link — fixed with a 150ms close delay that cancels if the mouse or focus moves onto the popover content, covering mouse, touch, and keyboard the same way; (2) the "Learn more" link initially pointed at the general Methodology page for every badge — corrected to link each badge to its own award's page (<code>/award/$award</code>) using the <code>source</code> slug already passed into the component, so a Michelin badge now links to the Michelin guide page specifically, not a generic explainer.</span></p>
+        <p><span class="why"><strong>Not yet done:</strong> Cloudflare email forwarding for <code>hello@compasseats.com</code> — the Contact page's mailto link is live, but the address doesn't receive mail until forwarding is set up in the Cloudflare dashboard. Logged as its own item below.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Cloudflare email forwarding for hello@compasseats.com — Contact page link is live, address doesn't receive mail yet</h3>
+          <div class="pills"><span class="pill quick">Quick — Ben's dashboard, ~5 min</span><span class="pill quick">Aug 4, new</span></div>
+        </div>
+        <p>The new Contact page (see Footer trust pages above) links <code>hello@compasseats.com</code> as a real mailto address, but nothing is listening on that inbox yet. Free fix in the Cloudflare dashboard: open the <code>compasseats.com</code> zone's Email Routing, add a forwarding rule for <code>hello@</code> pointed at Ben's real inbox, verify the destination address. No code, no Lovable prompt — entirely on Ben's side.</p>
+        <p><span class="why">Non-blocking — nothing else depends on this shipping. Flagged at the top of Up next since it's the one open thread left from the footer-pages push.</span></p>
       </div>
 
       <div class="item">
@@ -1496,10 +1505,19 @@
     <div class="tier-head">
       <div class="icon-slot" style="color:var(--sage);border-color:rgba(164,183,159,.4)">✓</div>
       <h2>Recently shipped</h2>
-      <span class="count">24 wins</span>
+      <span class="count">25 wins</span>
     </div>
     <p class="tier-sub">The arc from cost-cutting sprint through static-page architecture and the core-page redesign. Worth keeping visible.</p>
     <div class="items">
+
+      <div class="item">
+        <div class="top">
+          <h3 class="check">Footer trust pages shipped + award-badge tooltip hardened and linked per-source</h3>
+          <div class="pills"><span class="pill active">August 4, 2026</span></div>
+        </div>
+        <p>About, Contact, Privacy, Terms, and Methodology pages built and live, footer's four dead <code>#</code> links rewired to real routes plus a new fifth Methodology link. Award-badge tooltip popover gained a "Learn more →" link into the relevant award's own guide page. Along the way, fixed the popover closing before the new link could be clicked (now holds open across mouse, touch, and keyboard) and corrected the link to point at each specific award source rather than a generic page.</p>
+        <p><span class="why">Closes out <code>handoff-footer-pages.md</code>, open since July&nbsp;22. Only remaining thread: Cloudflare email forwarding for <code>hello@compasseats.com</code>, logged in Up next.</span></p>
+      </div>
 
       <div class="item">
         <div class="top">
@@ -1706,6 +1724,10 @@
     <div class="tw"><table>
       <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
       <tbody>
+        <tr><td><code>2.43</code></td><td>Aug 4, 2026</td><td>
+          <strong>Footer trust pages shipped live; award-badge tooltip hardened and linked per-source; two real bugs found and fixed post-ship.</strong>
+          Closed out <code>handoff-footer-pages.md</code> (open since July&nbsp;22): found the footer's four dead <code>#</code> anchors inline in <code>src/routes/__root.tsx</code> (no separate Footer.tsx — the handoff's diagnostic-first Lovable step wasn't needed, found directly by reading the repo). Built five new routes — <code>about.tsx</code>, <code>contact.tsx</code>, <code>privacy.tsx</code>, <code>terms.tsx</code>, <code>methodology.tsx</code> — modeled on the existing <code>guides.tsx</code> light-paper pattern. Copy drafted and signed off in chat before any Lovable prompt, per the handoff's plan; one Lovable prompt shipped all five pages, rewired the footer's four links off <code>#</code>, added a fifth Methodology link, and added a "Learn more →" link to the <code>AwardTooltip</code> popover. <strong>Two real bugs found and fixed via live testing after shipping:</strong> the tooltip popover was closing before the new link could be clicked — first on mouse (moving off the badge before reaching the link), and once that was fixed, the same symptom reappeared on touch/keyboard via a second cause (an unconditional <code>onBlur</code> closing the instant focus moved from badge to link) — both fixed with a 150ms close delay that cancels on mouse-enter or focus landing on the popover content; and the link initially pointed at the general Methodology page for every badge, corrected to link each badge to its own award's page (<code>/award/$award</code>) via the <code>source</code> slug already passed into the component. <strong>Not yet done:</strong> Cloudflare email forwarding for <code>hello@compasseats.com</code> — logged as a new Quick item in Up next, entirely on Ben's side (Cloudflare dashboard, ~5&nbsp;min), non-blocking. Up&nbsp;next&nbsp;—&nbsp;polish 45&nbsp;→&nbsp;46 (1 new item; the shipped item marked in place per convention, don't reduce the count). Recently&nbsp;Shipped 24&nbsp;→&nbsp;25&nbsp;wins. Shipped 65&nbsp;→&nbsp;67. Session closed with <code>handoff-collision-worklist.md</code> written to pick up <code>CompassEatsCityCollisionsWorklist.xlsx</code> next.
+        </td></tr>
         <tr><td><code>2.42</code></td><td>Aug 3, 2026</td><td>
           <strong>RestoMojo competitor teardown — two new items logged, no code changed.</strong>
           RestoMojo (Wyoming LLC, live since roughly Oct 2025, iOS-first, effectively
