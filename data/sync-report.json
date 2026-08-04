@@ -1,41 +1,9 @@
 {
-  "generated_at": "2026-08-03T03:01:05.172189+00:00",
+  "generated_at": "2026-08-04T04:22:10.757451+00:00",
   "venue_count": 10876,
   "city_count": 3152,
   "region_count": 111,
   "active_venue_count": 10515,
-  "sample": [
-    {
-      "slug": "piazza-duomo",
-      "city_slug": "alba",
-      "name": "Piazza Duomo",
-      "blurb_long_head": "Up the stair, past a Francesco Clemente fresco, Chef Enrico Crippa builds menus "
-    },
-    {
-      "slug": "le-clos-des-sens",
-      "city_slug": "annecy",
-      "name": "Le Clos Des Sens",
-      "blurb_long_head": "Le Clos des Sens built its name on a radical idea: a near-total commitment to th"
-    },
-    {
-      "slug": "zilte",
-      "city_slug": "antwerp",
-      "name": "Zilte",
-      "blurb_long_head": "Antwerp's most ambitious table holds three Michelin stars and a spot on the glob"
-    },
-    {
-      "slug": "casa-marcial",
-      "city_slug": "arriondas",
-      "name": "Casa Marcial",
-      "blurb_long_head": "Casa Marcial sits in a remote hamlet outside Arriondas, ringed by mountains — an"
-    },
-    {
-      "slug": "moor-hall-restaurant-with-rooms",
-      "city_slug": "aughton",
-      "name": "Moor Hall Restaurant with Rooms",
-      "blurb_long_head": "Chef Mark Birchall cooked at L'Enclume before taking the kitchen at Moor Hall, a"
-    }
-  ],
   "spot_checks": {
     "restaurant-mirazur": {
       "found": true,
