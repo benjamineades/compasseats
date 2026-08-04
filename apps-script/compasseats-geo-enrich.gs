@@ -25,21 +25,43 @@
  *   run at ~6 min; with a per-call delay that's comfortably under BATCH_LIMIT.
  *
  * ── SAFETY GATE ────────────────────────────────────────────────────────────
- *   Places "Text Search" usually returns the right venue first, but not
- *   always (common names, moved/closed spots, ambiguous cities). A wrong
- *   match = a wrong pin on the live map. So:
+ *   Places lookups usually return the right venue first, but not always
+ *   (common names, moved/closed spots, ambiguous cities). A wrong match =
+ *   a wrong pin on the live map. So:
  *     - If the returned displayName normalizes to (or closely contains) the
  *       queried name  →  written straight to Places Enrichment.
  *     - Otherwise  →  written to enrichment_review with both names side by
  *       side, for you to accept or reject manually. Nothing ambiguous is
  *       trusted silently.
  *
- * ── COST ───────────────────────────────────────────────────────────────────
- *   Text Search (New) with a field mask bills ~ $32 / 1,000 requests (often
- *   inside the monthly free credit). One request per venue. Use BATCH_LIMIT +
- *   MAX_TO_PROCESS to cap a run. Recommended first run: MAX_TO_PROCESS = 200
- *   to verify match quality on your highest-prestige venues before spending
- *   the full amount.
+ * ── COST (UPDATED August 4, 2026) ───────────────────────────────────────────
+ *   Old approach: one Text Search (New) call per venue, requesting
+ *   name/address/location/status/PHOTOS in a single field mask. Because
+ *   `photos` is an Atmosphere-tier field, that pulled every call into
+ *   Google's most expensive Text Search SKU — roughly $32–40 per 1,000
+ *   requests — even though the photo data was never used anywhere. Your
+ *   live site gets photos from a completely separate system (the
+ *   owner-filtered Places photo Worker, `compasseats-venue-photo`), which
+ *   fetches a photo fresh at view time using only the venue's placeId. Photos
+ *   captured here never reached that pipeline — it was paying premium
+ *   pricing for a field nothing downstream read.
+ *
+ *   New approach: two cheap calls per venue instead of one expensive one.
+ *     1. Text Search, field mask `places.id` ONLY — this is Google's
+ *        IDs-only SKU, free/near-free, just resolves the query to a place_id.
+ *     2. Place Details, field mask limited to Basic Data
+ *        (`id,displayName,formattedAddress,location,businessStatus`) — no
+ *        photos, no ratings/reviews. Bills at the low Basic/Essentials tier,
+ *        roughly $5 per 1,000 requests.
+ *   Net effect: same name, address, coordinates, and business status as
+ *   before, same accuracy (the field mask doesn't change which place Google
+ *   considers the best match — only what data comes back about it), same
+ *   safety-gate logic — at roughly 85% less cost. Nothing downstream needs
+ *   to change: new venues still get a placeId, so the photo Worker still
+ *   finds photos for them automatically.
+ *
+ *   Recommended first run after this change: MAX_TO_PROCESS = 200 to spot-
+ *   check match quality before running the full backlog.
  *
  * ── HOW TO RUN ─────────────────────────────────────────────────────────────
  *   1. Store PLACES_API_KEY in Script Properties (see above).
@@ -154,9 +176,9 @@ function geoEnrich() {
     if (done[compositeKey]) { skippedDone++; continue; }
     done[compositeKey] = true; // guard against dup work within this run
 
-    // --- Places Text Search (New) ---
+    // --- cheap two-step lookup: free/near-free ID search, then Basic-data Details ---
     var query = city ? (name + ', ' + city) : name;
-    var result = placesTextSearch_(query, key);
+    var result = placesLookupCheap_(query, key);
     looked++;
     Utilities.sleep(CALL_DELAY_MS);
 
@@ -194,7 +216,8 @@ function geoEnrich() {
         result.placeId,           // placeId
         result.lat,               // lat
         result.lng,               // lng
-        result.photoName || '',   // photoName
+        result.photoName || '',   // photoName — intentionally always blank now, see cost note above;
+                                   // the live photo Worker resolves photos separately by placeId
         result.address || '',     // formattedAddress
         result.status || '',      // businessStatus
         TODAY_GEO                 // lastVerified
@@ -420,18 +443,15 @@ function tokenOverlap_(a, b) {
   return shared / Math.min(ta.length, tb.length);
 }
 
-function placesTextSearch_(query, key) {
+// ── Places lookup (UPDATED August 4, 2026 — cheap two-step version) ────────
+// Step 1: Text Search, field mask `places.id` only. This is Google's IDs-only
+// SKU — free/near-free — and just resolves the query to the best-matching
+// place_id. Requesting fewer fields does NOT change which place Google picks
+// as the top match, only what data comes back about it, so match quality is
+// identical to the old single-call approach.
+function placesTextSearchIdOnly_(query, key) {
   var url = 'https://places.googleapis.com/v1/places:searchText';
   var payload = { textQuery: query, maxResultCount: 1 };
-  var fieldMask = [
-    'places.id',
-    'places.displayName',
-    'places.location',
-    'places.formattedAddress',
-    'places.businessStatus',
-    'places.photos'
-  ].join(',');
-
   var resp;
   try {
     resp = UrlFetchApp.fetch(url, {
@@ -441,21 +461,45 @@ function placesTextSearch_(query, key) {
       muteHttpExceptions: true,
       headers: {
         'X-Goog-Api-Key': key,
+        'X-Goog-FieldMask': 'places.id'
+      }
+    });
+  } catch (e) {
+    return null;
+  }
+  if (resp.getResponseCode() !== 200) return null;
+  var data;
+  try { data = JSON.parse(resp.getContentText()); } catch (e) { return null; }
+  if (!data.places || !data.places.length) return null;
+  return data.places[0].id || null;
+}
+
+// Step 2: Place Details, field mask limited to Basic Data — name, address,
+// coordinates, business status. No photos, no ratings/reviews (those are
+// Atmosphere-tier and bill much higher). Bills at the low Basic/Essentials
+// tier, roughly $5/1,000 instead of the old $32–40/1,000.
+function placeDetailsBasic_(placeId, key) {
+  var url = 'https://places.googleapis.com/v1/places/' + encodeURIComponent(placeId);
+  var fieldMask = 'id,displayName,formattedAddress,location,businessStatus';
+  var resp;
+  try {
+    resp = UrlFetchApp.fetch(url, {
+      method: 'get',
+      muteHttpExceptions: true,
+      headers: {
+        'X-Goog-Api-Key': key,
         'X-Goog-FieldMask': fieldMask
       }
     });
   } catch (e) {
     return null;
   }
-
   if (resp.getResponseCode() !== 200) return null;
-  var data;
-  try { data = JSON.parse(resp.getContentText()); } catch (e) { return null; }
-  if (!data.places || !data.places.length) return null;
+  var p;
+  try { p = JSON.parse(resp.getContentText()); } catch (e) { return null; }
+  if (!p || !p.id) return null;
 
-  var p = data.places[0];
   var loc = p.location || {};
-  var photoName = (p.photos && p.photos.length) ? p.photos[0].name : '';
   return {
     placeId: p.id || '',
     displayName: (p.displayName && p.displayName.text) ? p.displayName.text : '',
@@ -463,8 +507,18 @@ function placesTextSearch_(query, key) {
     lng: (loc.longitude !== undefined) ? loc.longitude : '',
     address: p.formattedAddress || '',
     status: p.businessStatus || '',
-    photoName: photoName
+    photoName: ''   // intentionally never fetched — see cost note at top of file
   };
+}
+
+// Combines the two cheap calls into the exact same shape the old single-call
+// placesTextSearch_() used to return, so the rest of geoEnrich() needed no
+// other changes. Returns null if either step fails or finds nothing.
+function placesLookupCheap_(query, key) {
+  var placeId = placesTextSearchIdOnly_(query, key);
+  if (!placeId) return null;
+  Utilities.sleep(CALL_DELAY_MS);
+  return placeDetailsBasic_(placeId, key);
 }
 
 // ── helpers ──────────────────────────────────────────────────────────────
