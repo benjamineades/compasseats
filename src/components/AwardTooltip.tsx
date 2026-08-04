@@ -88,7 +88,8 @@ export function AwardTooltip({
         <div>{note}</div>
         <div className="mt-2 border-t border-border pt-2">
           <Link
-            to="/methodology"
+            to="/award/$award"
+            params={{ award: source }}
             className="text-xs text-muted-foreground hover:text-foreground"
             onClick={() => {
               clearCloseTimer();
