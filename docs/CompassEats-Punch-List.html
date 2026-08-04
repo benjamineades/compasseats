@@ -209,9 +209,9 @@
   <p class="tag">Charting what's next. Updated each session as work ships and new work appears.</p>
   <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
   <div class="meta-row">
-    <span class="m">Version <b>2.40</b></span>
-    <span class="m">Updated <b>July 22, 2026</b></span>
-    <span class="m">Award-badge tooltips + guide-description "About These Categories" shipped live · two real hydration bugs found and fixed on venue pages · stale Eat Anywhere build and dead Find-the-best button confirmed fixed · Worth the Detour empty-section bug and CitySpotlight's own hydration bug newly found</span>
+    <span class="m">Version <b>2.42</b></span>
+    <span class="m">Updated <b>August 3, 2026</b></span>
+    <span class="m">RestoMojo competitor teardown · two new items: sharpen the homepage positioning and problem statement (Up next), and a four-phase reservation-intelligence roadmap — booking links, drop times, "Tonight" mode, and why we will never build a booking bot (On the horizon)</span>
   </div>
 </header>
 
@@ -364,10 +364,21 @@
     <div class="tier-head">
       <div class="icon-slot">▸</div>
       <h2>Up next — polish</h2>
-      <span class="count">44 items</span>
+      <span class="count">45 items</span>
     </div>
     <p class="tier-sub">Visible UX wins on the live site. None block anything; all noticeably improve the product. Start here when picking up work.</p>
     <div class="items">
+
+      <div class="item">
+        <div class="top">
+          <h3>Sharpen the positioning and the problem statement — homepage says what we are, not what's wrong with everything else</h3>
+          <div class="pills"><span class="pill larger">Critical — conversion</span><span class="pill medium">Copy + 1 Lovable prompt</span><span class="pill quick">Aug 3, new</span></div>
+        </div>
+        <p><strong>Raised in the Aug 3 RestoMojo competitor teardown.</strong> RestoMojo is a much weaker product than CompassEats with a fraction of the data, but its homepage converts harder because it names an enemy before it sells anything. Its argument runs in four beats: notify-me alerts are too slow, premium credit cards don't actually get you in, member concierge services demand minimum spends, so here's the fair alternative. One promise, one sentence, one job.</p>
+        <p>CompassEats currently opens by explaining <em>what it is</em> and asks the visitor to work out for themselves why that matters. We have a stronger enemy available and we aren't naming it: <strong>crowd reviews are gamed, influencer lists are paid for, and cross-referencing six guides yourself is a chore nobody wants to do on holiday.</strong> That's the whole reason the product exists and it never appears above the fold.</p>
+        <p><span class="why"><strong>Scope:</strong> rewrite the hero headline, subhead, and add a short problem block on the homepage. Target shape: one-line promise → three-beat problem → the CompassEats answer (26 real award guides, one map, no opinions for sale). Keep the "well-travelled friend" voice already agreed for the About page so the two don't drift. Run <code>/humanizer</code> and <code>/delete-ai-words</code> over every line. Deliver as one scoped Lovable prompt once the copy is signed off in chat.</span></p>
+        <p><span class="why"><strong>Sequencing note:</strong> this is copy work on the current site and does <em>not</em> depend on the v4 paper-globe redesign. Doing it first means the redesign inherits messaging that already works rather than re-litigating it later.</span></p>
+      </div>
 
       <div class="item">
         <div class="top">
@@ -1437,6 +1448,18 @@
 
       <div class="item">
         <div class="top">
+          <h3>Reservation intelligence — booking links, drop times, and a "Tonight" mode (NOT a booking service)</h3>
+          <div class="pills"><span class="pill larger">Larger</span><span class="pill quick">Aug 3, new</span></div>
+        </div>
+        <p><strong>From the Aug 3 RestoMojo teardown.</strong> RestoMojo is a Resy/OpenTable sniping bot, which is a business we will never be in — New York's Restaurant Reservation Anti-Piracy Act (effective Feb 2025) bans third-party services from arranging reservations without a written agreement, Illinois has followed, and Resy actively blocks and deactivates bot traffic. But its city pages are quietly a directory of <strong>when reservations drop</strong> (Lilia 10am / 28 days out, Tatiana noon / 28 days, Golden Diner midnight / 30 days, Penny walk-in first). That is a fact about a restaurant, like an address, and it is exactly what a well-travelled friend tells you. Four phases, in order:</p>
+        <p><span class="why"><strong>Phase 1 — booking links.</strong> Two new Sheet columns, <code>booking_platform</code> and <code>booking_url</code>. Venue card gets a "Check availability" button. Pure data, no new infrastructure, no legal exposure.</span></p>
+        <p><span class="why"><strong>Phase 2 — drop times.</strong> New <code>reservation_drop</code> free-text field, populated for high-demand venues only, sourced from each restaurant's own booking page. Honesty firewall applies exactly as with blurbs — never from RestoMojo, never from memory. Renders as a short line in Caveat, since it's the kind of note a friend scribbles down.</span></p>
+        <p><span class="why"><strong>Phase 3 — "Tonight" mode.</strong> Map filtered to open now / walk-in friendly / no reservation needed. Arguably a better night-out feature than availability checking, and we already own the data for most of it. Subsumes the walk-in heat map previously logged here.</span></p>
+        <p><span class="why"><strong>Phase 4 — real live availability, only if it ever makes sense.</strong> There is no legitimate consumer API for Resy or Tock. OpenTable's affiliate/partner programme is the only lawful route and is approval-gated, one platform at a time. Scraping is off the table: rate limits, bans, terms violations, constant breakage across 10,876 venues, and cost that scales with traffic rather than dataset size. <strong>Deep links get roughly 80% of the value at near-zero cost.</strong></span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
           <h3>Lightweight blog / journal — "The Journal"</h3>
           <div class="pills"><span class="pill larger">Larger</span></div>
         </div>
@@ -1683,6 +1706,28 @@
     <div class="tw"><table>
       <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
       <tbody>
+        <tr><td><code>2.42</code></td><td>Aug 3, 2026</td><td>
+          <strong>RestoMojo competitor teardown — two new items logged, no code changed.</strong>
+          RestoMojo (Wyoming LLC, live since roughly Oct 2025, iOS-first, effectively
+          New-York-only) is a Resy/OpenTable cancellation-sniping bot on a subscription
+          plus success fee. <strong>Assessed as a category we will never enter:</strong>
+          New York's Restaurant Reservation Anti-Piracy Act took effect Feb 17 2025 and
+          bans third-party services from listing or arranging reservations without a
+          written agreement with the restaurant; Illinois has passed its own version;
+          Resy publicly blocks bot traffic and deactivates rogue accounts. It also
+          requires users to hand over their Resy credentials, which is fatal to a
+          trust-first brand. <strong>What is worth taking:</strong> its city pages are
+          really a directory of reservation <em>drop times</em>, which is a static fact
+          about a venue, fits our Sheet-first architecture as one more column, and is
+          precisely the "well-travelled friend" move. Logged as a four-phase horizon
+          item (booking links → drop times → "Tonight" mode → OpenTable affiliate only
+          if ever warranted), with live cross-platform availability checking explicitly
+          ruled out for now on cost, terms, and breakage grounds. Separately logged in
+          Up next: <strong>sharpen the homepage positioning and problem statement</strong>
+          — we currently explain what we are without naming the enemy (gamed crowd
+          reviews, paid influencer lists, the chore of cross-referencing six guides),
+          which is the single clearest conversion gap versus a far weaker competitor.
+        </td></tr>
         <tr><td><code>2.41</code></td><td>Aug 2, 2026</td><td>
           <strong>City-identity collision fix shipped + full pipeline error-handling cleanup.</strong>
           Split 7 confirmed same-name-different-place city collisions into 15 distinct
