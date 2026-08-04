@@ -166,13 +166,15 @@ function RootComponent() {
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent-strong">compasseats.com</p>
           <p className="text-sm text-muted-foreground">The world's best, wherever you are.</p>
           <nav className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-            <a href="#" className="hover:text-accent-strong">About</a>
+            <Link to="/about" className="hover:text-accent-strong">About</Link>
             <span aria-hidden>·</span>
-            <a href="#" className="hover:text-accent-strong">Contact</a>
+            <Link to="/methodology" className="hover:text-accent-strong">Methodology</Link>
             <span aria-hidden>·</span>
-            <a href="#" className="hover:text-accent-strong">Privacy</a>
+            <Link to="/contact" className="hover:text-accent-strong">Contact</Link>
             <span aria-hidden>·</span>
-            <a href="#" className="hover:text-accent-strong">Terms</a>
+            <Link to="/privacy" className="hover:text-accent-strong">Privacy</Link>
+            <span aria-hidden>·</span>
+            <Link to="/terms" className="hover:text-accent-strong">Terms</Link>
           </nav>
           <p className="text-xs text-muted-foreground">© 2026 CompassEats. All rights reserved.</p>
         </div>
