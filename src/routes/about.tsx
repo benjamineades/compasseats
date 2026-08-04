@@ -6,7 +6,6 @@ const PAPER = "#F7F3EB";
 const INK = "#23211E";
 const INK_MUTED = "#6a6253";
 const BRONZE = "#895F2E";
-const HAIRLINE = "rgba(35,33,30,0.12)";
 
 export const Route = createFileRoute("/about")({
   staticData: { prerender: true },
