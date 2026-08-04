@@ -1,4 +1,5 @@
 import { useState, cloneElement, type ReactElement, type MouseEvent } from "react";
+import { Link } from "@tanstack/react-router";
 import { getCategoryNote } from "@/lib/award-descriptions";
 import { useHoverCapable } from "@/hooks/use-hover-capable";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
@@ -48,7 +49,18 @@ export function AwardTooltip({
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>{trigger}</PopoverTrigger>
-      <PopoverContent className="w-72 text-sm">{note}</PopoverContent>
+      <PopoverContent className="w-72 text-sm">
+        <div>{note}</div>
+        <div className="mt-2 border-t pt-2">
+          <Link
+            to="/methodology"
+            className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+            onClick={() => setOpen(false)}
+          >
+            Learn more →
+          </Link>
+        </div>
+      </PopoverContent>
     </Popover>
   );
 }
