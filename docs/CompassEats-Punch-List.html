@@ -209,9 +209,9 @@
   <p class="tag">Charting what's next. Updated each session as work ships and new work appears.</p>
   <div class="rule-orn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
   <div class="meta-row">
-    <span class="m">Version <b>2.43</b></span>
-    <span class="m">Updated <b>August 4, 2026</b></span>
-    <span class="m">Footer trust pages (About/Contact/Privacy/Terms/Methodology) shipped and wired live · award-badge tooltip hardened for mouse/touch/keyboard and now links to the specific award's own page · Cloudflare email forwarding logged as the one loose thread left</span>
+    <span class="m">Version <b>2.45</b></span>
+    <span class="m">Updated <b>August 5, 2026</b></span>
+    <span class="m"><code>needs_enrichment</code> worked from 132 down to 59 via the new cheap two-step <code>geoEnrich</code> · 67 venues added to the map, 5 closed venues retired · published live and spot-checked · <code>acceptReviewRows</code> caught silently renaming venues to Google's business-listing names — logged as the session's one real find</span>
   </div>
 </header>
 
@@ -220,7 +220,7 @@
   <!-- DASHBOARD -->
   <section class="dash">
     <div class="dcard done">
-      <div class="dnum">67</div>
+      <div class="dnum">68</div>
       <div class="dlabel">Shipped</div>
       <div class="dsub">Static architecture, sitemap live · ingest + geo-enrichment · live deploy · core pages redesigned · award-collision fix · mobile accolade distinctions · Cities + Guides index + header nav · city page fixed-hex redesign · bulk blurbs (11k) live · Option B blurbs (48) live · country-string corruption fixed · cross-city bleed verified clean · city-label canonicalization (93→0) · W50 regional award history (+254 rows) · type:bar mislabel fix · single-venue city photos live · city hero photos · city coordinates fixed (mean→median) · collision cleanup batch 1 (337→281) · Regions feature (113 regions, /regions index + /region/$slug pages, map + city cards, search integration, accent-folding fix) · region-page per-city venue dropdown (July 1) · multi-currency price_tier normalization, symbol-count based (July 1) · region-matching auto-suggest tool (geocode → match → cleanup → retry → review → apply, July&nbsp;3) · collision-pin fix batch 2 + Da&nbsp;Vittorio blurb bug fixed, republished (July&nbsp;3) · collision cleanup batches 4–5 (266→204) + OAD tab decontamination, 655 mis-pasted rows purged (July&nbsp;4–6) · mislocation bug root-caused + Batch A re-geocode, 393→285 collisions (July&nbsp;8) · Forbes city-label bug fixed at source (42 labels, 676 rows, permanent) · collision verification Batch 1 — 71 ALIAS/PHANTOM venues corrected at source across 8 tabs, 285→236→183 collisions (July&nbsp;9) · 46 city-in-name renames + preflightPublish gate cleared 0/0, final 3 identity-collision venues split and re-attributed (July&nbsp;19) · stale Eat Anywhere build confirmed fixed, dead Find-the-best button confirmed fixed, award-badge tooltips live on every surface (mobile-safe), guide-description "About These Categories" live, and two real hydration bugs (disabled-button-blocks-children, stale CURRENT_YEAR) found and fixed on venue pages, all July&nbsp;22 · footer trust pages (About/Contact/Privacy/Terms/Methodology) built, wired into the footer, and verified live, plus the award-badge tooltip hardened to survive mouse/touch/keyboard and pointed at each award's own page instead of a generic link, both Aug&nbsp;4 · <strong>Michelin price-parser root-cause fix, price coverage 47%→65% at $0 spend, plus live-verified city-collision split (Veneto/Andalusia), Aug&nbsp;3–4 — see Up next and Recently Shipped for detail</strong></div>
     </div>
@@ -235,9 +235,9 @@
       <div class="dsub"><strong>New (Aug&nbsp;4):</strong> Cloudflare email forwarding for <code>hello@compasseats.com</code> — the Contact page's mailto link is live, but mail won't arrive until this is wired up (five-minute dashboard job, Ben's side) · rename World's 101 Best Steak Restaurants on-site (copy done, <code>name</code> field not yet changed) · fix "Worth the detour" rendering empty on every tested city · CitySpotlight's own pre-existing hydration mismatch (randomized headline) · recurring MapLibre <code>getLayer</code> console error. Plus the existing short list: rewrite the 131 existing restaurant blurbs with the Humanizer Layer · Dukes Bar re-enrich · curated top-city hero photos · multi-venue card photos · card polish · prestige reweighting · price_tier display as a bronze pill.</div>
     </div>
     <div class="dcard later">
-      <div class="dnum">57</div>
+      <div class="dnum">62</div>
       <div class="dlabel">Queued</div>
-      <div class="dsub">NY city-split · district alias map · shared-pin geo collision (<strong>183 cross-city collisions remaining, down from 393 — now almost entirely genuine multi-branch venues, see Pipeline</strong>) · <strong>root-cause composite-key bug in <code>compasseats-geo-enrich.gs</code> (July&nbsp;9, new) — fix before the branch re-geocode batch</strong> · Sankt&nbsp;Moritz missing its Michelin 2-star (award-import task) · OPTION_B twin-slug hardening · Ninjang mislabeled-country data bug · scheduled award-source monitoring via Cowork (July&nbsp;8) · <strong>3 cross-contaminated award rows on asia-50-best-restaurants (July&nbsp;22, new)</strong> · <strong>32-source award research pass to finish (July&nbsp;22, new)</strong> · <strong>Watch List needs 2 manual edits — Le Fooding OUT, Good Food Guide ingest-ready (July&nbsp;22, new)</strong> · 12 new UX/polish items (July 1) · 12 new items from the July 3–4 full-site audit (OG image, TrustPoints render, homepage title tag, hardcoded ATL coords, uncharted-city page review, mobile QA checklist, spreadsheet archive protocol, scaling headroom review, "Point Me" flagship feature) · <strong>10 UNSURE collision cases parked for review (July&nbsp;9, see Pipeline)</strong> · pipeline · expansion · horizon</div>
+      <div class="dsub">NY city-split · district alias map · shared-pin geo collision (<strong>183 cross-city collisions remaining, down from 393 — now almost entirely genuine multi-branch venues, see Pipeline</strong>) · <strong>root-cause composite-key bug in <code>compasseats-geo-enrich.gs</code> (July&nbsp;9, new) — fix before the branch re-geocode batch</strong> · Sankt&nbsp;Moritz missing its Michelin 2-star (award-import task) · OPTION_B twin-slug hardening · Ninjang mislabeled-country data bug · scheduled award-source monitoring via Cowork (July&nbsp;8) · <strong>3 cross-contaminated award rows on asia-50-best-restaurants (July&nbsp;22, new)</strong> · <strong>32-source award research pass to finish (July&nbsp;22, new)</strong> · <strong>Watch List needs 2 manual edits — Le Fooding OUT, Good Food Guide ingest-ready (July&nbsp;22, new)</strong> · 12 new UX/polish items (July 1) · 12 new items from the July 3–4 full-site audit (OG image, TrustPoints render, homepage title tag, hardcoded ATL coords, uncharted-city page review, mobile QA checklist, spreadsheet archive protocol, scaling headroom review, "Point Me" flagship feature) · <strong>10 UNSURE collision cases parked for review (July&nbsp;9, see Pipeline)</strong> · pipeline · expansion · horizon · <strong>needs_enrichment backlog 132&nbsp;→&nbsp;59, 67 venues added to the map, 5 confirmed-closed venues retired (Aug&nbsp;5)</strong></div>
     </div>
   </section>
 
@@ -783,10 +783,66 @@
     <div class="tier-head">
       <div class="icon-slot">◆</div>
       <h2>Pipeline &amp; data improvements</h2>
-      <span class="count">63 items</span>
+      <span class="count">68 items</span>
     </div>
     <p class="tier-sub">Structural and infrastructure work. Less visible, but durable — each one prevents future drift.</p>
     <div class="items">
+
+      <div class="item">
+        <div class="top">
+          <h3><code>acceptReviewRows</code> silently renames venues to Google's business-listing name</h3>
+          <div class="pills"><span class="pill active">Real bug</span><span class="pill larger">Aug&nbsp;5 · fix before next enrichment round</span></div>
+        </div>
+        <p><strong>The single real find of the Aug&nbsp;5 session.</strong> When a parked <code>enrichment_review</code> row is accepted, <code>acceptReviewRows</code> writes the <em>returned</em> Google name into <code>Places&nbsp;Enrichment.canonicalName</code>, and <code>reshapeCompassEats</code> then uses that as the venue's display name. <strong>13 of the 14 venues accepted this session came out under a different name than the award source gave them.</strong> Most were cosmetic (casing, "Farms"→"Farm"), but several were materially wrong:</p>
+        <div class="tw"><table>
+          <thead><tr><th>Award source calls it</th><th>Site now calls it</th></tr></thead>
+          <tbody>
+            <tr><td>Genießerstube im Alpenhof</td><td>Hotel Alpenhof</td></tr>
+            <tr><td>Schankkuchl</td><td>Wirtshaus Steirereck</td></tr>
+            <tr><td>Bar Fouquet's</td><td>Bar du Majestic</td></tr>
+            <tr><td>Köhles Chefs Table</td><td>KÖHLES KULINARIUM Restaurant &amp; Pizzeria</td></tr>
+            <tr><td>SICHER RESTAURANT</td><td>Fischrestaurant Sicher - Sicher Kärnten Kaviar</td></tr>
+            <tr><td>Dirty Milano</td><td>DIRTY FELLAS MILANO</td></tr>
+          </tbody>
+        </table></div>
+        <p><span class="why"><strong>Why the first two matter most:</strong> Gault&nbsp;&amp;&nbsp;Millau awarded <em>Schankkuchl</em> specifically — a separate chef's-table concept with its own menu and its own score, deliberately kept distinct from the Wirtshaus at the same Pogusch estate. Same shape with the Genießerstube, which is the restaurant inside the Alpenhof, not the hotel. <strong>Showing the hotel's name where the award belongs to the restaurant attacks the exact claim CompassEats makes.</strong></span></p>
+        <p><span class="why"><strong>This also violates a rule already written down here:</strong> geo fixes may only change coordinates, never venue names — names drive slugs, and slugs key the blurbs. A rename silently orphans any blurb attached to the old slug. <strong>Fix:</strong> patch <code>acceptReviewRows</code> so it stops writing <code>canonicalName</code> (keep placeId/lat/lng/address only), then correct the six names above at the <code>Places&nbsp;Enrichment</code> level and reshape. Left live on Aug&nbsp;5 as a deliberate call — 6 venues out of 10,921, coordinates all correct — but it compounds with every enrichment round, so it should not survive two sessions.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Manual <code>Places Enrichment</code> rows can omit <code>formattedAddress</code> and break the build</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Aug&nbsp;5 · one row, pattern is general</span></div>
+        </div>
+        <p><strong>Imperial Treasure Fine Chinese Cuisine (Shanghai) failed schema validation during JSON regeneration</strong> — <code>VenueSchema</code> requires <code>address</code> to be at least one character, and the hand-added <code>manual-fix</code> row carried <code>placeId</code>&nbsp;+&nbsp;lat/lng but left <code>formattedAddress</code> blank. Patched at generation time from the venue's own MICHELIN Guide listing so the publish could proceed: <code>L402-403, 4F, Yi Feng Galleria, 99 East Beijing Road, Huangpu, Shanghai, China</code>.</p>
+        <p><span class="why"><strong>Still to do at the Sheet level</strong> — put that address into the <code>formattedAddress</code> cell for normalizedKey <code>imperial treasure fine chinese cuisine|shanghai</code>, or the next regeneration hits the same wall. <strong>General rule worth encoding:</strong> a manual Places Enrichment row needs <em>four</em> fields, not two — placeId, lat, lng, <em>and</em> formattedAddress. An automated <code>geoEnrich</code> row always supplies all four; a hand-typed one is the only place this gap appears.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Restaurant Guy Savoy (Paris) still unenriched — #1 by prestige</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill larger">High visibility</span></div>
+        </div>
+        <p>Sits at <strong>priority 1 in <code>enrichment_audit</code></strong> (prestige 63, 8 awards: Michelin Two Stars, four W50 placements including No.&nbsp;6 in 2004, Best Chef 2-Knife ×2, La&nbsp;Liste 99.5, Gault&nbsp;&amp;&nbsp;Millau Five Toques) and <code>clearWrongCityBlurbs</code> flagged <code>paris/restaurant-guy-savoy</code> as a key it could not find in <code>venues</code>. Reason is <code>no placeId</code> — the Paris flagship has no <code>Places&nbsp;Enrichment</code> row, while the Las&nbsp;Vegas second location (Caesars Palace, confirmed a real separate venue Aug&nbsp;4) does.</p>
+        <p><span class="why">Needs a hand-added row keyed on the exact raw source-tab spelling, not the polished display name — the Aug&nbsp;4 session established that <code>reshapeCompassEats</code> builds its lookup key from the award tab's spelling via <code>normKey_</code>/<code>cityKey_</code>. Check for a shadowing duplicate key before assuming a new row failed.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3>Jean-Georges / Three on the Bund — same venue, two award-source names</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Merge</span></div>
+        </div>
+        <p>Two rows in <code>needs_enrichment</code> — <em>Jean-Georges Shanghai</em> (Forbes, prestige 30) and <em>Three on the Bund by Jean Georges</em> (La&nbsp;Liste, prestige 8) — are the same restaurant: the French fine-dining room on the 4th floor of Three&nbsp;on&nbsp;the&nbsp;Bund, listed simply as <strong>Jean-Georges</strong>. Opened 2004, renovated and reopened April&nbsp;2016, one Michelin star 2018–2024, <strong>dropped to MICHELIN Selected in the 2025 Shanghai guide</strong>.</p>
+        <p><span class="why"><strong>Why auto-enrichment keeps failing on it:</strong> Google returns <em>Mercato</em> for both queries — a genuinely separate Italian restaurant by the same chef two floors up in the same building. Both rows correctly rejected Aug&nbsp;5. Fix is one Places Enrichment row for the real Jean-Georges keyed to both source spellings, plus a merge so the 38 combined prestige points land on one venue.</span></p>
+      </div>
+
+      <div class="item">
+        <div class="top">
+          <h3><code>restaurant-guatzessen</code> duplicated across two city slugs</h3>
+          <div class="pills"><span class="pill quick">Quick</span><span class="pill quick">Residual collision</span></div>
+        </div>
+        <p>Same slug, same identical coordinates, two <code>city_slug</code> values — <strong>Stumm</strong> and <strong>Stumm im Zillertal</strong>. Passes <code>preflightPublish</code> (which only tests <code>city_slug/slug</code> uniqueness, and these differ) so it ships silently. Same shape as <code>l-orangerie-restaurant-menton</code> appearing under both Menton and Pornic. <strong>Fix:</strong> a <code>CITY_ALIASES_</code> entry folding the verbose form into the canonical one — keys must be space-form lowercase and must not contain region or country names.</p>
+      </div>
 
       <div class="item">
         <div class="top">
@@ -1770,6 +1826,16 @@
     <div class="tw"><table>
       <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
       <tbody>
+        <tr><td><code>2.45</code></td><td>Aug 4–5, 2026</td><td>
+          <strong>The 132-row <code>needs_enrichment</code> backlog worked down to 59 and published live; the new cheap two-step <code>geoEnrich</code> proven on real data; <code>acceptReviewRows</code> caught silently renaming venues.</strong>
+          Opened per the collision-cleanup handoff with the collision work already confirmed durable in production. Ran <code>auditEnrichment</code> (132 rows, all in the tractable <code>no placeId</code> bucket, 0 in <code>no placeId + no city</code>) → <code>geoEnrich</code> with <code>MAX_TO_PROCESS&nbsp;=&nbsp;200</code>, which exhausted the worklist in one pass: <strong>54 auto-accepted, 49 parked, 2 closed, 25 no Places result, 2 already done.</strong> The <code>SpreadsheetApp.getUi()</code> exception at the end is cosmetic — it fires after the work is written and only when running from the editor rather than a Sheet menu.
+          <strong>The 49 parked rows were verified individually against real sources rather than eyeballed</strong> — restaurant sites, MICHELIN Guide pages, closure reporting — which flipped <strong>9 of <code>suggestReviewDecisions</code>' own suggestions</strong>. Seven false accepts caught, including <em>Superman</em> (New&nbsp;Taipei) matched to "Superman: Ultimate Flight," a roller coaster in Jackson Township, New&nbsp;Jersey; <em>Gu Jia Bao Zi</em> (Nanjing) matched to a Shanghai business; <em>Jin Hong Lao Zi Hao Zhu Zang Fen</em> (Wenzhou) matched to a biscuit shop in Kedah, Malaysia. Two false rejects rescued (Köhles, Schankkuchl). Final: 13 accepted, 36 rejected, 0 undecided.
+          <strong>Five venues confirmed permanently closed and retired to <code>closed_venues</code></strong> rather than left cycling through enrichment: Chef&nbsp;Mavro (Oahu — closed March&nbsp;2022 as M by Jeremy Shigekane), Orchids at Palm&nbsp;Court (Cincinnati — never reopened post-pandemic; the space is now The&nbsp;1931), Menton (Boston — closed January&nbsp;2024 with Sportello and Drink), Günter&nbsp;Seeger&nbsp;NY (closed 2019), Susar (Toronto — long-suspected, now confirmed).
+          <strong>Full pipeline run:</strong> <code>reshapeCompassEats</code> (11,779 / 1,064 bars / <strong>needs_enrichment 132&nbsp;→&nbsp;59</strong> / 3,167 cities / 186 unmatched / 98 closed-excluded) → <code>mergeDuplicateVenues</code> → <code>importBlurbsFromDrive</code> (10,170) → <code>clearWrongCityBlurbs</code> (55/118) → <code>importOptionB</code> (141/141) → <code>generateCitiesTab</code> → <code>generateRegionsTab</code> → <code>preflightPublish</code> <strong>0/0</strong>. JSON regenerated against <code>sync-sheet.ts</code>/<code>schema.ts</code> pulled fresh from GitHub: <strong>venues 10,921 · cities 3,167 · index 10,560 active · regions 111</strong>, zero validation errors. Published and spot-checked live (SingleThread Healdsburg, Palais&nbsp;Coburg Vienna both confirmed on-site).
+          <strong>The stale price caveat retired.</strong> The standing "do not reshape until <code>migratePriceToEnrichment()</code> runs" warning was checked against the data rather than obeyed on faith: <code>Places&nbsp;Enrichment.price_level</code> already holds 5,952 values and <code>venues.price_tier</code> came through reshape at 7,095 (65%), higher than enrichment alone supplies, because MICHELIN's own Price column feeds ~7,200 rows directly. Nothing was being wiped. Warning is obsolete.
+          <strong>Five new Pipeline items logged</strong> (63&nbsp;→&nbsp;68): the <code>acceptReviewRows</code> renaming bug; manual Places Enrichment rows omitting <code>formattedAddress</code> and breaking schema validation (Imperial&nbsp;Treasure Shanghai, patched at generation, still to fix Sheet-side); Restaurant&nbsp;Guy&nbsp;Savoy Paris still unenriched at priority&nbsp;1; the Jean-Georges / Three&nbsp;on&nbsp;the&nbsp;Bund duplicate; and <code>restaurant-guatzessen</code> living under two city slugs.
+          <strong>Correction logged against this session's own work:</strong> predicted <code>needs_enrichment</code> would land at 25–30 post-reshape; actual was 59. The prediction wrongly assumed rejected rows leave the queue — rejecting a bad match declines a wrong pin, it does not supply coordinates. Remaining 59 = 25 no-result + 36 rejected-match, which is the correct floor, not a shortfall.
+        </td></tr>
         <tr><td><code>2.44</code></td><td>Aug 3–4, 2026</td><td>
           <strong>Michelin price-parser root-cause fix shipped and verified live; 4 new Pipeline items logged; a discrepancy with v2.41's price claim surfaced and reconciled.</strong>
           Opened against a fresh handoff (Aug&nbsp;3) reporting the one-line <code>reshape.gs</code> Michelin-Price-column patch as written but not yet applied. Applied it, then ran the full sequence live: <code>reshapeCompassEats</code> (11,712 rows, pre-merge) → <code>mergeDuplicateVenues</code> (743 groups collapsed, 829 duplicates removed → 10,883) → <code>importBlurbsFromDrive</code> (10,177 matched) → <code>clearWrongCityBlurbs</code> (56/118 cleared) → <code>importOptionB</code> (141/141) → <code>generateCitiesTab</code> (3,152) → <code>generateRegionsTab</code> (111 regions, 3,136/3,152 matched) → <code>preflightPublish</code> (0 duplicates, 0 orphans). JSON regenerated via a faithful Python reproduction of the live <code>sync-sheet.ts</code>/<code>schema.ts</code> (pulled fresh from GitHub) — normalizing not just euros but pounds, yen, baht, won, dong, pesos, lira, and riyal symbols plus stray leftover integer values, none of which the real committed script actually handles (see new Pipeline item). Committed to GitHub, published in Lovable.
