@@ -228,7 +228,7 @@ function CountryPage() {
               <div className="h-[460px] md:h-[560px] w-full">
                 <VenueMap
                   venues={filteredVenues}
-                  center={[data.center.lng, data.center.lat]}
+                  center={[data.center.lat, data.center.lng]}
                 />
               </div>
             )}
