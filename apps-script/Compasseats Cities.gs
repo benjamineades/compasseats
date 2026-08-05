@@ -86,8 +86,51 @@ var COUNTRY_CODE = {
   'cuba': 'CU', 'dominican republic': 'DO', 'puerto rico': 'PR', 'jamaica': 'JM',
   'trinidad and tobago': 'TT', 'barbados': 'BB', 'bahamas': 'BS',
   'bolivia': 'BO', 'paraguay': 'PY', 'venezuela': 'VE', 'guyana': 'GY',
-  'fiji': 'FJ', 'french polynesia': 'PF', 'new caledonia': 'NC'
+  'fiji': 'FJ', 'french polynesia': 'PF', 'new caledonia': 'NC',
+
+  // ADDED Aug 4 2026 — durable territory/dependency fallback (punch-list
+  // item logged July 17: Cayman Islands and Jersey had been hand-patched
+  // twice before; Turks and Caicos was the third recurrence). Verified
+  // against the live cities tab, not guessed: these 6 entries close every
+  // real gap found there today (Cayman Islands, Jersey, Turks and Caicos,
+  // Antigua & Barbuda, Faroe Islands, Italia). A handful of same-category
+  // territories are added alongside them since they're the same recurring
+  // pattern (small islands/dependencies in luxury travel guides) and cost
+  // nothing to cover now rather than hand-patching a fourth and fifth time.
+  'cayman islands': 'KY',
+  'jersey': 'JE',
+  'turks and caicos': 'TC',
+  'antigua and barbuda': 'AG',
+  'faroe islands': 'FO',
+  'italia': 'IT',            // Italian-language label for Italy, seen once in source data
+  'bermuda': 'BM',
+  'guernsey': 'GG',
+  'isle of man': 'IM',
+  'british virgin islands': 'VG',
+  'us virgin islands': 'VI',
+  'u s virgin islands': 'VI',
+  'aruba': 'AW',
+  'curacao': 'CW',
+  'sint maarten': 'SX',
+  'anguilla': 'AI',
+  'montserrat': 'MS',
+  'greenland': 'GL'
 };
+
+// ADDED Aug 4 2026 — normalizes a country string before the COUNTRY_CODE
+// lookup: lowercases, trims, and folds "&" to "and" so "Turks & Caicos" and
+// "Turks and Caicos" resolve identically (the recurring gap was partly an
+// ampersand-vs-"and" mismatch, not just a missing entry). Does not touch the
+// `country` value actually written to the cities tab — display text is left
+// exactly as it appears in the source data; this only affects the code
+// lookup.
+function normCountryForLookup_(country) {
+  return String(country || '')
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
 /** Median of a numeric array. Robust to outliers, unlike the mean. */
 function median_(arr) {
@@ -146,7 +189,7 @@ function generateCitiesTab() {
     var n = a.lats.length;
     var lat = n ? +(median_(a.lats)).toFixed(6) : '';
     var lng = n ? +(median_(a.lngs)).toFixed(6) : '';
-    var cc = COUNTRY_CODE[String(a.country).toLowerCase().trim()] || '';
+    var cc = COUNTRY_CODE[normCountryForLookup_(a.country)] || '';
     var m = manual[slug] || {};
     rows.push([
       slug,
@@ -171,10 +214,16 @@ function generateCitiesTab() {
   sheet.setFrozenRows(1);
 
   var withCC = rows.filter(function (r) { return r[3]; }).length;
+  var missingCC = rows.filter(function (r) { return !r[3]; });
   var msg =
     'Done.\n' +
     'cities tab: ' + rows.length + ' cities\n' +
     'country_code auto-filled: ' + withCC + ' / ' + rows.length + '\n' +
+    (missingCC.length
+      ? 'still blank (' + missingCC.length + '): ' +
+        missingCC.slice(0, 15).map(function (r) { return r[2] + ' (' + r[0] + ')'; }).join(', ') +
+        (missingCC.length > 15 ? ', ...' : '')
+      : 'no blank country_code rows') + '\n' +
     'timezone: BLANK (fill these for "Open Today")\n' +
     'lat/lng: MEDIAN of each city\'s venues (robust to outliers)';
   Logger.log(msg);
