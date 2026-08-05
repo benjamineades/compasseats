@@ -329,7 +329,17 @@ function acceptReviewRows() {
       var aKey = aCk ? (aNk + '|' + aCk) : aNk;
       toEnrich.push([
         aKey,                            // normalizedKey (name|city composite)
-        row[RETNAME] || row[NAME],       // canonicalName
+        // FIXED Aug 5 2026: this used to write row[RETNAME] (Google's returned
+        // business-listing name) here, which reshape.gs then used to REPLACE
+        // the award-source venue name on the live site (see Reshape.gs line
+        // ~836: `name: (geo && geo.canonical) ? geo.canonical : rec.name`).
+        // A parked review row only exists because the name and/or city DIDN'T
+        // cleanly match — so trusting Google's name for these is exactly
+        // backwards. Leaving canonicalName blank makes reshape fall back to
+        // rec.name (the award-source spelling), which is what we always want
+        // for a manually-reviewed accept. We're only confirming the PLACE
+        // (location/placeId/address) here, never the display name.
+        '',                               // canonicalName — intentionally blank, see note above
         'geo-enrich-reviewed',           // sheetName (provenance)
         row[PID],                        // placeId
         row[LAT], row[LNG],              // lat, lng
