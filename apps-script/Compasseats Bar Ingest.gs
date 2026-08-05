@@ -1,5 +1,5 @@
 /**
- * CompassEats — Bar List Ingestion (Google Apps Script) v2
+ * CompassEats — Bar List Ingestion (Google Apps Script) v3
  * =========================================================
  * CHANGED IN v2 (June 3, 2026):
  *   Bar ingest NO LONGER writes into the "venues" tab. Reshape rebuilds
@@ -34,6 +34,22 @@
  *   line with it. A real run on Top 500 Bars lost exactly 20 branch venues
  *   this way before the fix (source_slug: top-500-bars, years 2024/2025).
  *
+ * ADDED IN v3 (August 4, 2026) — standing price-capture rule:
+ *   Two new OPTIONAL columns: price_symbol_raw, price_source_url. Same rule
+ *   as the restaurant tool: whenever a bar/cocktail source shows a
+ *   per-venue price indicator, capture it here exactly as displayed, plus
+ *   the exact URL you saw it on. Do not interpret or normalize it — this is
+ *   a raw record, not a CompassEats price tier. Bars have no price_band
+ *   equivalent today and reshape does not currently read a price field from
+ *   Bar Awards at all, so these two columns don't feed venues.price_tier
+ *   yet — that's separate, larger work (would need its own reshape.gs
+ *   change) and isn't part of this addition. Think of this as banking the
+ *   raw data now so it's there if/when that work happens, instead of
+ *   needing to go re-source it later.
+ *   Appended at the very END of the column list on purpose — reshape's
+ *   parser reads Bar Awards by column position, so nothing already in
+ *   production shifts.
+ *
  * TWO FUNCTIONS
  *   makeBarImportTemplate()  creates a blank "Bar List Import" tab with the
  *                            right columns + a dropdown of valid sources.
@@ -46,9 +62,15 @@
  *   1. Run makeBarImportTemplate() once (skip if the tab already exists).
  *   2. Find a published list (e.g. North America's 50 Best Bars 51-100).
  *   3. Paste rows into the template: source_slug, year, rank, name, city,
- *      country, category_override. One row per bar per year.
+ *      country, category_override, [price_symbol_raw], [price_source_url].
+ *      One row per bar per year.
  *   4. Run ingestBarLists().        <-- fills "Bar Awards"
  *   5. Run reshapeCompassEats().    <-- folds Bar Awards into venues
+ *
+ * ONE-TIME MANUAL STEP (do this before running v3 for the first time):
+ *   Your live "Bar Awards" tab already exists, so the "create tab with
+ *   headers" branch below won't fire for it. Add the two new headers by
+ *   hand: cell H1 = price_symbol_raw, cell I1 = price_source_url.
  *
  * VALID SOURCE SLUGS (must match schema.ts AWARD_SOURCES and reshape):
  *   worlds-50-best-bars, worlds-50-best-bars-51-100,
@@ -121,7 +143,8 @@ function resolveSourceB_(raw) {
 
 // Column shape of the "Bar Awards" tab (reshape's parser reads these positions)
 var BAR_AWARDS_HEADERS =
-  ['source_slug', 'year', 'rank', 'name', 'city', 'country', 'category_override'];
+  ['source_slug', 'year', 'rank', 'name', 'city', 'country', 'category_override',
+   'price_symbol_raw', 'price_source_url'];
 
 // ---------------------------------------------------------------------------
 function makeBarImportTemplate() {
@@ -134,7 +157,8 @@ function makeBarImportTemplate() {
     return;
   }
   sheet = ss.insertSheet(name);
-  var headers = ['source_slug', 'year', 'rank', 'name', 'city', 'country', 'category_override'];
+  var headers = ['source_slug', 'year', 'rank', 'name', 'city', 'country', 'category_override',
+    'price_symbol_raw', 'price_source_url'];
   sheet.getRange(1, 1, 1, headers.length).setValues([headers]).setFontWeight('bold');
   sheet.setFrozenRows(1);
 
@@ -148,9 +172,9 @@ function makeBarImportTemplate() {
 
   // Example rows (delete before importing your real data)
   var examples = [
-    ['north-america-50-best-bars', 2026, 1, 'Sip & Guzzle', 'New York', 'United States', ''],
-    ['north-america-50-best-bars', 2026, 2, 'Handshake Speakeasy', 'Mexico City', 'Mexico', ''],
-    ['worlds-50-best-bars-51-100', 2025, 54, 'Bar Mauro', 'Mexico City', 'Mexico', '']
+    ['north-america-50-best-bars', 2026, 1, 'Sip & Guzzle', 'New York', 'United States', '', '', ''],
+    ['north-america-50-best-bars', 2026, 2, 'Handshake Speakeasy', 'Mexico City', 'Mexico', '', '', ''],
+    ['worlds-50-best-bars-51-100', 2025, 54, 'Bar Mauro', 'Mexico City', 'Mexico', '', '', '']
   ];
   sheet.getRange(2, 1, examples.length, headers.length).setValues(examples)
     .setFontColor('#999999').setFontStyle('italic');
@@ -161,14 +185,22 @@ function makeBarImportTemplate() {
     'year: award year (e.g. 2026)\n' +
     'rank: numeric rank (blank if unranked award)\n' +
     'name/city/country: the venue\n' +
-    'category_override: optional — leave blank to auto-build "No. {rank}"';
+    'category_override: optional — leave blank to auto-build "No. {rank}"\n\n' +
+    'OPTIONAL (blank is fine):\n' +
+    'price_symbol_raw: the price EXACTLY as the source displayed it\n' +
+    '   e.g. "$$", "£30 avg cocktail" -- do not normalize this yourself,\n' +
+    '   just copy what the source said. Provenance only.\n' +
+    'price_source_url: the exact page you saw that price on';
   sheet.getRange('A1').setNote(note);
   sheet.setColumnWidth(4, 220);
+  sheet.setColumnWidth(9, 260);
 
   SpreadsheetApp.getUi().alert(
     'Created "' + name + '".\n\n' +
     'Grey example rows show the format — delete them, paste your real list, ' +
     'then run ingestBarLists.\n\n' +
+    'price_symbol_raw / price_source_url are new: capture the source\'s own ' +
+    'price text and the page it came from, as-is, whenever you see it.\n\n' +
     'For multiple lists, duplicate this tab as "' + name + ' 2", etc.');
 }
 
@@ -251,12 +283,15 @@ function ingestBarLists() {
       var city = String(row[4] || '').trim();
       var country = String(row[5] || '').trim();
       var catOverride = String(row[6] || '').trim();
+      var priceSymbolRaw = String(row[7] || '').trim();
+      var priceSourceUrl = String(row[8] || '').trim();
 
       var sig = src + '|' + year + '|' + normKey2_(name) + '|' + normKey2_(city);
       if (existing[sig]) { skippedDup++; continue; }
       existing[sig] = true; // guard against dups within this same run
 
-      newRows.push([src, year, rank, name, city, country, catOverride]);
+      newRows.push([src, year, rank, name, city, country, catOverride,
+                    priceSymbolRaw, priceSourceUrl]);
       added++;
     }
   }
@@ -268,7 +303,7 @@ function ingestBarLists() {
   }
 
   var msg =
-    'Bar ingestion complete (v2 — writes to "Bar Awards").\n' +
+    'Bar ingestion complete (v3 — writes to "Bar Awards").\n' +
     'award rows added to "Bar Awards": ' + added + '\n' +
     'duplicate rows skipped: ' + skippedDup + '\n' +
     'invalid source_slug rows skipped: ' + bad + '\n' +
