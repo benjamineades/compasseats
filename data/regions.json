@@ -2,10 +2,9 @@
   {
     "slug": "kansai",
     "display": "Kansai",
-    "country": "Japan",
-    "center_lat": 34.839644,
-    "center_lng": 135.565869,
-    "venue_count": 397,
+    "center_lat": 34.839614,
+    "center_lng": 135.565875,
+    "venue_count": 396,
     "city_count": 6,
     "cities": [
       {
@@ -13,9 +12,9 @@
         "display": "Kyoto",
         "country": "Japan",
         "country_code": "JP",
-        "venue_count": 198,
-        "lat": 35.006441,
-        "lng": 135.766842,
+        "venue_count": 197,
+        "lat": 35.006256,
+        "lng": 135.766878,
         "venues": [
           {
             "slug": "ajiro",
@@ -275,11 +274,6 @@
           {
             "slug": "iwasaki",
             "name": "Iwasaki",
-            "type": "restaurant"
-          },
-          {
-            "slug": "iwasaki-restaurante-japones",
-            "name": "IWASAKI Restaurante Japonés",
             "type": "restaurant"
           },
           {
@@ -2054,12 +2048,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Japan"
   },
   {
     "slug": "catalonia",
     "display": "Catalonia",
-    "country": "Spain",
     "center_lat": 41.669344,
     "center_lng": 1.676236,
     "venue_count": 126,
@@ -3143,12 +3137,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Spain"
   },
   {
     "slug": "bavaria",
     "display": "Bavaria",
-    "country": "Germany",
     "center_lat": 48.56003,
     "center_lng": 11.836699,
     "venue_count": 85,
@@ -4129,12 +4123,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Germany"
   },
   {
     "slug": "provence",
     "display": "Provence",
-    "country": "France",
     "center_lat": 43.763507,
     "center_lng": 5.382485,
     "venue_count": 73,
@@ -4989,12 +4983,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "brittany",
     "display": "Brittany",
-    "country": "France",
     "center_lat": 48.233937,
     "center_lng": -2.894114,
     "venue_count": 69,
@@ -5845,12 +5839,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "french-alps",
     "display": "French Alps",
-    "country": "France",
     "center_lat": 45.645813,
     "center_lng": 6.350566,
     "venue_count": 69,
@@ -6597,12 +6591,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "tuscany",
     "display": "Tuscany",
-    "country": "Italy",
     "center_lat": 43.438559,
     "center_lng": 11.034301,
     "venue_count": 69,
@@ -7316,12 +7310,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "andalusia",
     "display": "Andalusia",
-    "country": "Spain",
     "center_lat": 37.161277,
     "center_lng": -4.797828,
     "venue_count": 68,
@@ -8004,12 +7998,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Spain"
   },
   {
     "slug": "piedmont",
     "display": "Piedmont",
-    "country": "Italy",
     "center_lat": 44.903758,
     "center_lng": 3.982342,
     "venue_count": 67,
@@ -8828,15 +8822,15 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "french-riviera",
     "display": "French Riviera",
-    "country": "France",
-    "center_lat": 43.596153,
-    "center_lng": 7.063818,
-    "venue_count": 55,
+    "center_lat": 43.596195,
+    "center_lng": 7.063768,
+    "venue_count": 56,
     "city_count": 24,
     "cities": [
       {
@@ -8982,6 +8976,32 @@
         ]
       },
       {
+        "slug": "cannes",
+        "display": "Cannes",
+        "country": "France",
+        "country_code": "FR",
+        "venue_count": 3,
+        "lat": 43.551016,
+        "lng": 7.020234,
+        "venues": [
+          {
+            "slug": "aux-bons-enfants",
+            "name": "Aux Bons Enfants",
+            "type": "restaurant"
+          },
+          {
+            "slug": "bar-du-majestic",
+            "name": "Bar du Majestic",
+            "type": "bar"
+          },
+          {
+            "slug": "restaurant-la-palme-d-or",
+            "name": "Restaurant La Palme d'Or",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
         "slug": "antibes",
         "display": "Antibes",
         "country": "France",
@@ -8998,27 +9018,6 @@
           {
             "slug": "restaurant-gastronomique-les-pecheurs-antibes",
             "name": "Restaurant Gastronomique Les Pêcheurs Antibes",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "cannes",
-        "display": "Cannes",
-        "country": "France",
-        "country_code": "FR",
-        "venue_count": 2,
-        "lat": 43.55001,
-        "lng": 7.021431,
-        "venues": [
-          {
-            "slug": "aux-bons-enfants",
-            "name": "Aux Bons Enfants",
-            "type": "restaurant"
-          },
-          {
-            "slug": "restaurant-la-palme-d-or",
-            "name": "Restaurant La Palme d'Or",
             "type": "restaurant"
           }
         ]
@@ -9378,12 +9377,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "swiss-alps",
     "display": "Swiss Alps",
-    "country": "Switzerland",
     "center_lat": 46.520292,
     "center_lng": 8.586585,
     "venue_count": 54,
@@ -9931,12 +9930,657 @@
         "lng": 7.224333,
         "venues": []
       }
-    ]
+    ],
+    "country": "Switzerland"
+  },
+  {
+    "slug": "veneto",
+    "display": "Veneto",
+    "center_lat": 45.597324,
+    "center_lng": 11.692888,
+    "venue_count": 53,
+    "city_count": 34,
+    "cities": [
+      {
+        "slug": "venice",
+        "display": "Venice",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 13,
+        "lat": 45.436777,
+        "lng": 12.335477,
+        "venues": [
+          {
+            "slug": "aman-venice",
+            "name": "Aman Venice",
+            "type": "restaurant"
+          },
+          {
+            "slug": "arts-bar",
+            "name": "Arts Bar",
+            "type": "bar"
+          },
+          {
+            "slug": "dama-restaurant-venezia",
+            "name": "Dama Restaurant Venezia",
+            "type": "restaurant"
+          },
+          {
+            "slug": "harry-s-bar",
+            "name": "Harry's Bar",
+            "type": "bar"
+          },
+          {
+            "slug": "il-mercante",
+            "name": "Il Mercante",
+            "type": "bar"
+          },
+          {
+            "slug": "oro-restaurant",
+            "name": "Oro Restaurant",
+            "type": "restaurant"
+          },
+          {
+            "slug": "osteria-alle-testiere",
+            "name": "Osteria alle Testiere",
+            "type": "restaurant"
+          },
+          {
+            "slug": "ristorante-glam",
+            "name": "Ristorante Glam",
+            "type": "restaurant"
+          },
+          {
+            "slug": "ristorante-local",
+            "name": "Ristorante Local",
+            "type": "restaurant"
+          },
+          {
+            "slug": "ristorante-quadri",
+            "name": "Ristorante Quadri",
+            "type": "restaurant"
+          },
+          {
+            "slug": "ristorante-wisteria",
+            "name": "Ristorante Wistèria",
+            "type": "restaurant"
+          },
+          {
+            "slug": "venissa",
+            "name": "Venissa",
+            "type": "restaurant"
+          },
+          {
+            "slug": "zanze-xvi",
+            "name": "Zanze XVI",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "verona",
+        "display": "Verona",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 7,
+        "lat": 45.441698,
+        "lng": 10.998013,
+        "venues": [
+          {
+            "slug": "antica-bottega-del-vino",
+            "name": "Antica Bottega del Vino",
+            "type": "restaurant"
+          },
+          {
+            "slug": "casa-perbellini-12-apostoli",
+            "name": "Casa Perbellini 12 Apostoli",
+            "type": "restaurant"
+          },
+          {
+            "slug": "iris-ristorante-a-palazzo-soave",
+            "name": "Iris Ristorante a Palazzo Soave",
+            "type": "restaurant"
+          },
+          {
+            "slug": "osteria-mondo-d-oro",
+            "name": "Osteria Mondo d'Oro",
+            "type": "restaurant"
+          },
+          {
+            "slug": "ristorante-il-desco",
+            "name": "Ristorante Il Desco",
+            "type": "restaurant"
+          },
+          {
+            "slug": "the-soda-jerk",
+            "name": "The Soda Jerk",
+            "type": "bar"
+          },
+          {
+            "slug": "trattoria-al-bersagliere",
+            "name": "Trattoria Al Bersagliere",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "asiago",
+        "display": "Asiago",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 2,
+        "lat": 45.852897,
+        "lng": 11.495341,
+        "venues": [
+          {
+            "slug": "osteria-della-tana",
+            "name": "Osteria della Tana",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "altissimo",
+        "display": "Altissimo",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.620338,
+        "lng": 11.258324,
+        "venues": [
+          {
+            "slug": "ristorante-casin-del-gamba",
+            "name": "Ristorante Casin Del Gamba",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "arzignano",
+        "display": "Arzignano",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.51672,
+        "lng": 11.336317,
+        "venues": [
+          {
+            "slug": "damini-macelleria-affini",
+            "name": "Damini Macelleria & Affini",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "barbarano-vicentino",
+        "display": "Barbarano Vicentino",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.409686,
+        "lng": 11.540929,
+        "venues": [
+          {
+            "slug": "aqua-crua",
+            "name": "Aqua Crua",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "bassano-del-grappa",
+        "display": "Bassano del Grappa",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.766924,
+        "lng": 11.734555,
+        "venues": [
+          {
+            "slug": "cucu",
+            "name": "CuCù",
+            "type": "bar"
+          }
+        ]
+      },
+      {
+        "slug": "bigolino",
+        "display": "Bigolino",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.875131,
+        "lng": 12.016942,
+        "venues": [
+          {
+            "slug": "tre-noghere",
+            "name": "Tre Noghere",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "borgoricco",
+        "display": "Borgoricco",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.537592,
+        "lng": 11.929609,
+        "venues": [
+          {
+            "slug": "ristorante-storie-d-amore",
+            "name": "Ristorante Storie D'Amore",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "caldogno",
+        "display": "Caldogno",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.610306,
+        "lng": 11.51526,
+        "venues": [
+          {
+            "slug": "trattoria-molin-vecio",
+            "name": "Trattoria Molin Vecio",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "col-san-martino",
+        "display": "Col San Martino",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.896944,
+        "lng": 12.088611,
+        "venues": [
+          {
+            "slug": "locanda-da-condo",
+            "name": "Locanda da Condo",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "corrubbio",
+        "display": "Corrubbio",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.489666,
+        "lng": 10.899567,
+        "venues": [
+          {
+            "slug": "ristorante-amista",
+            "name": "Ristorante Amistà",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "galliera-veneta",
+        "display": "Galliera Veneta",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.673611,
+        "lng": 11.811389,
+        "venues": [
+          {
+            "slug": "ristorante-al-palazzon",
+            "name": "Ristorante Al Palazzon",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "lonigo",
+        "display": "Lonigo",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.384904,
+        "lng": 11.399066,
+        "venues": [
+          {
+            "slug": "la-peca",
+            "name": "La Peca",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "lughetto",
+        "display": "Lughetto",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.387939,
+        "lng": 12.130286,
+        "venues": [
+          {
+            "slug": "antica-osteria-cera",
+            "name": "Antica Osteria Cera",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "malo",
+        "display": "Malo",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.623162,
+        "lng": 11.397129,
+        "venues": [
+          {
+            "slug": "ristorante-la-favellina",
+            "name": "Ristorante La Favellina",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "marostica",
+        "display": "Marostica",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.744856,
+        "lng": 11.65479,
+        "venues": [
+          {
+            "slug": "osteria-madonnetta",
+            "name": "Osteria Madonnetta",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "mirano",
+        "display": "Mirano",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.490901,
+        "lng": 12.114615,
+        "venues": [
+          {
+            "slug": "ristorante-da-flavio-e-fabrizio",
+            "name": "Ristorante da Flavio e Fabrizio",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "negrar",
+        "display": "Negrar",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.569879,
+        "lng": 10.956563,
+        "venues": [
+          {
+            "slug": "trattoria-alla-ruota",
+            "name": "Trattoria Alla Ruota",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "oderzo",
+        "display": "Oderzo",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.78277,
+        "lng": 12.494484,
+        "venues": [
+          {
+            "slug": "ristorante-gellivs",
+            "name": "Ristorante Gellivs",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "oppeano",
+        "display": "Oppeano",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.314339,
+        "lng": 11.11925,
+        "venues": [
+          {
+            "slug": "ristorante-famiglia-rana",
+            "name": "Ristorante Famiglia Rana",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "pianiga",
+        "display": "Pianiga",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.469302,
+        "lng": 12.035614,
+        "venues": [
+          {
+            "slug": "trattoria-da-paeto-baccala",
+            "name": "Trattoria \"da Paeto\" Baccalà",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "pontelongo",
+        "display": "Pontelongo",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.250063,
+        "lng": 12.020302,
+        "venues": [
+          {
+            "slug": "lazzaro-1915",
+            "name": "Lazzaro 1915",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "padua",
+        "display": "Rubano",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.421743,
+        "lng": 11.809634,
+        "venues": [
+          {
+            "slug": "le-calandr",
+            "name": "Le Calandrе",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "san-giorgio-di-valpolicella",
+        "display": "San Giorgio di Valpolicella",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.534397,
+        "lng": 10.849695,
+        "venues": [
+          {
+            "slug": "trattoria-dalla-rosa-alda",
+            "name": "Trattoria Dalla Rosa Alda",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "san-polo-di-piave",
+        "display": "San Polo di Piave",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.796793,
+        "lng": 12.38886,
+        "venues": [
+          {
+            "slug": "gambrinus",
+            "name": "Gambrinus",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "sandrigo",
+        "display": "Sandrigo",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.661899,
+        "lng": 11.620297,
+        "venues": [
+          {
+            "slug": "palmerino-il-bacala-a-sandrigo",
+            "name": "Palmerino - Il Bacalà a Sandrigo",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "schio",
+        "display": "Schio",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.747246,
+        "lng": 11.335327,
+        "venues": [
+          {
+            "slug": "spinechile-resort",
+            "name": "Spinechile Resort",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "scorze",
+        "display": "Scorzè",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.58929,
+        "lng": 12.110557,
+        "venues": [
+          {
+            "slug": "ristorante-san-martino",
+            "name": "Ristorante San Martino",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "sernaglia-della-battaglia",
+        "display": "Sernaglia della Battaglia",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.877681,
+        "lng": 12.13191,
+        "venues": [
+          {
+            "slug": "trattoria-dalla-libera",
+            "name": "Trattoria Dalla Libera",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "velo-veronese",
+        "display": "Velo Veronese",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.605411,
+        "lng": 11.095719,
+        "venues": [
+          {
+            "slug": "velo-veronese-rsjwpy",
+            "name": "13 Comuni Ristorante e ApartHotel",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "vetrego",
+        "display": "Vetrego",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.466273,
+        "lng": 12.099672,
+        "venues": [
+          {
+            "slug": "trattoria-il-sogno",
+            "name": "Trattoria Il Sogno",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "vittorio-veneto",
+        "display": "Vittorio Veneto",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.986818,
+        "lng": 12.298062,
+        "venues": [
+          {
+            "slug": "squisi",
+            "name": "Squisi",
+            "type": "bar"
+          }
+        ]
+      },
+      {
+        "slug": "lapio",
+        "display": "Lapio",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 1,
+        "lat": 45.475076,
+        "lng": 11.53601,
+        "venues": [
+          {
+            "slug": "trattoria-zamboni",
+            "name": "Trattoria Zamboni",
+            "type": "restaurant"
+          }
+        ]
+      }
+    ],
+    "country": "Italy"
   },
   {
     "slug": "loire-valley",
     "display": "Loire Valley",
-    "country": "France",
     "center_lat": 47.384811,
     "center_lng": 0.792914,
     "venue_count": 52,
@@ -10576,652 +11220,12 @@
           }
         ]
       }
-    ]
-  },
-  {
-    "slug": "veneto",
-    "display": "Veneto",
-    "country": "Italy",
-    "center_lat": 45.59733,
-    "center_lng": 11.692915,
-    "venue_count": 52,
-    "city_count": 34,
-    "cities": [
-      {
-        "slug": "venice",
-        "display": "Venice",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 13,
-        "lat": 45.436777,
-        "lng": 12.335477,
-        "venues": [
-          {
-            "slug": "aman-venice",
-            "name": "Aman Venice",
-            "type": "restaurant"
-          },
-          {
-            "slug": "arts-bar",
-            "name": "Arts Bar",
-            "type": "bar"
-          },
-          {
-            "slug": "dama-restaurant-venezia",
-            "name": "Dama Restaurant Venezia",
-            "type": "restaurant"
-          },
-          {
-            "slug": "harry-s-bar",
-            "name": "Harry's Bar",
-            "type": "bar"
-          },
-          {
-            "slug": "il-mercante",
-            "name": "Il Mercante",
-            "type": "bar"
-          },
-          {
-            "slug": "oro-restaurant",
-            "name": "Oro Restaurant",
-            "type": "restaurant"
-          },
-          {
-            "slug": "osteria-alle-testiere",
-            "name": "Osteria alle Testiere",
-            "type": "restaurant"
-          },
-          {
-            "slug": "ristorante-glam",
-            "name": "Ristorante Glam",
-            "type": "restaurant"
-          },
-          {
-            "slug": "ristorante-local",
-            "name": "Ristorante Local",
-            "type": "restaurant"
-          },
-          {
-            "slug": "ristorante-quadri",
-            "name": "Ristorante Quadri",
-            "type": "restaurant"
-          },
-          {
-            "slug": "ristorante-wisteria",
-            "name": "Ristorante Wistèria",
-            "type": "restaurant"
-          },
-          {
-            "slug": "venissa",
-            "name": "Venissa",
-            "type": "restaurant"
-          },
-          {
-            "slug": "zanze-xvi",
-            "name": "Zanze XVI",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "verona",
-        "display": "Verona",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 6,
-        "lat": 45.44189,
-        "lng": 10.998939,
-        "venues": [
-          {
-            "slug": "casa-perbellini-12-apostoli",
-            "name": "Casa Perbellini 12 Apostoli",
-            "type": "restaurant"
-          },
-          {
-            "slug": "iris-ristorante-a-palazzo-soave",
-            "name": "Iris Ristorante a Palazzo Soave",
-            "type": "restaurant"
-          },
-          {
-            "slug": "osteria-mondo-d-oro",
-            "name": "Osteria Mondo d'Oro",
-            "type": "restaurant"
-          },
-          {
-            "slug": "ristorante-il-desco",
-            "name": "Ristorante Il Desco",
-            "type": "restaurant"
-          },
-          {
-            "slug": "the-soda-jerk",
-            "name": "The Soda Jerk",
-            "type": "bar"
-          },
-          {
-            "slug": "trattoria-al-bersagliere",
-            "name": "Trattoria Al Bersagliere",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "asiago",
-        "display": "Asiago",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 2,
-        "lat": 45.852897,
-        "lng": 11.495341,
-        "venues": [
-          {
-            "slug": "osteria-della-tana",
-            "name": "Osteria della Tana",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "altissimo",
-        "display": "Altissimo",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.620338,
-        "lng": 11.258324,
-        "venues": [
-          {
-            "slug": "ristorante-casin-del-gamba",
-            "name": "Ristorante Casin Del Gamba",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "arzignano",
-        "display": "Arzignano",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.51672,
-        "lng": 11.336317,
-        "venues": [
-          {
-            "slug": "damini-macelleria-affini",
-            "name": "Damini Macelleria & Affini",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "barbarano-vicentino",
-        "display": "Barbarano Vicentino",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.409686,
-        "lng": 11.540929,
-        "venues": [
-          {
-            "slug": "aqua-crua",
-            "name": "Aqua Crua",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "bassano-del-grappa",
-        "display": "Bassano del Grappa",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.766924,
-        "lng": 11.734555,
-        "venues": [
-          {
-            "slug": "cucu",
-            "name": "CuCù",
-            "type": "bar"
-          }
-        ]
-      },
-      {
-        "slug": "bigolino",
-        "display": "Bigolino",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.875131,
-        "lng": 12.016942,
-        "venues": [
-          {
-            "slug": "tre-noghere",
-            "name": "Tre Noghere",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "borgoricco",
-        "display": "Borgoricco",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.537592,
-        "lng": 11.929609,
-        "venues": [
-          {
-            "slug": "ristorante-storie-d-amore",
-            "name": "Ristorante Storie D'Amore",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "caldogno",
-        "display": "Caldogno",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.610306,
-        "lng": 11.51526,
-        "venues": [
-          {
-            "slug": "trattoria-molin-vecio",
-            "name": "Trattoria Molin Vecio",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "col-san-martino",
-        "display": "Col San Martino",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.896944,
-        "lng": 12.088611,
-        "venues": [
-          {
-            "slug": "locanda-da-condo",
-            "name": "Locanda da Condo",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "corrubbio",
-        "display": "Corrubbio",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.489666,
-        "lng": 10.899567,
-        "venues": [
-          {
-            "slug": "ristorante-amista",
-            "name": "Ristorante Amistà",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "galliera-veneta",
-        "display": "Galliera Veneta",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.673611,
-        "lng": 11.811389,
-        "venues": [
-          {
-            "slug": "ristorante-al-palazzon",
-            "name": "Ristorante Al Palazzon",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "lonigo",
-        "display": "Lonigo",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.384904,
-        "lng": 11.399066,
-        "venues": [
-          {
-            "slug": "la-peca",
-            "name": "La Peca",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "lughetto",
-        "display": "Lughetto",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.387939,
-        "lng": 12.130286,
-        "venues": [
-          {
-            "slug": "antica-osteria-cera",
-            "name": "Antica Osteria Cera",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "malo",
-        "display": "Malo",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.623162,
-        "lng": 11.397129,
-        "venues": [
-          {
-            "slug": "ristorante-la-favellina",
-            "name": "Ristorante La Favellina",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "marostica",
-        "display": "Marostica",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.744856,
-        "lng": 11.65479,
-        "venues": [
-          {
-            "slug": "osteria-madonnetta",
-            "name": "Osteria Madonnetta",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "mirano",
-        "display": "Mirano",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.490901,
-        "lng": 12.114615,
-        "venues": [
-          {
-            "slug": "ristorante-da-flavio-e-fabrizio",
-            "name": "Ristorante da Flavio e Fabrizio",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "negrar",
-        "display": "Negrar",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.569879,
-        "lng": 10.956563,
-        "venues": [
-          {
-            "slug": "trattoria-alla-ruota",
-            "name": "Trattoria Alla Ruota",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "oderzo",
-        "display": "Oderzo",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.78277,
-        "lng": 12.494484,
-        "venues": [
-          {
-            "slug": "ristorante-gellivs",
-            "name": "Ristorante Gellivs",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "oppeano",
-        "display": "Oppeano",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.314339,
-        "lng": 11.11925,
-        "venues": [
-          {
-            "slug": "ristorante-famiglia-rana",
-            "name": "Ristorante Famiglia Rana",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "pianiga",
-        "display": "Pianiga",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.469302,
-        "lng": 12.035614,
-        "venues": [
-          {
-            "slug": "trattoria-da-paeto-baccala",
-            "name": "Trattoria \"da Paeto\" Baccalà",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "pontelongo",
-        "display": "Pontelongo",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.250063,
-        "lng": 12.020302,
-        "venues": [
-          {
-            "slug": "lazzaro-1915",
-            "name": "Lazzaro 1915",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "padua",
-        "display": "Rubano",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.421743,
-        "lng": 11.809634,
-        "venues": [
-          {
-            "slug": "le-calandr",
-            "name": "Le Calandrе",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "san-giorgio-di-valpolicella",
-        "display": "San Giorgio di Valpolicella",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.534397,
-        "lng": 10.849695,
-        "venues": [
-          {
-            "slug": "trattoria-dalla-rosa-alda",
-            "name": "Trattoria Dalla Rosa Alda",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "san-polo-di-piave",
-        "display": "San Polo di Piave",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.796793,
-        "lng": 12.38886,
-        "venues": [
-          {
-            "slug": "gambrinus",
-            "name": "Gambrinus",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "sandrigo",
-        "display": "Sandrigo",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.661899,
-        "lng": 11.620297,
-        "venues": [
-          {
-            "slug": "palmerino-il-bacala-a-sandrigo",
-            "name": "Palmerino - Il Bacalà a Sandrigo",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "schio",
-        "display": "Schio",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.747246,
-        "lng": 11.335327,
-        "venues": [
-          {
-            "slug": "spinechile-resort",
-            "name": "Spinechile Resort",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "scorze",
-        "display": "Scorzè",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.58929,
-        "lng": 12.110557,
-        "venues": [
-          {
-            "slug": "ristorante-san-martino",
-            "name": "Ristorante San Martino",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "sernaglia-della-battaglia",
-        "display": "Sernaglia della Battaglia",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.877681,
-        "lng": 12.13191,
-        "venues": [
-          {
-            "slug": "trattoria-dalla-libera",
-            "name": "Trattoria Dalla Libera",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "velo-veronese",
-        "display": "Velo Veronese",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.605411,
-        "lng": 11.095719,
-        "venues": [
-          {
-            "slug": "velo-veronese-rsjwpy",
-            "name": "13 Comuni Ristorante e ApartHotel",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "vetrego",
-        "display": "Vetrego",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.466273,
-        "lng": 12.099672,
-        "venues": [
-          {
-            "slug": "trattoria-il-sogno",
-            "name": "Trattoria Il Sogno",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "vittorio-veneto",
-        "display": "Vittorio Veneto",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.986818,
-        "lng": 12.298062,
-        "venues": [
-          {
-            "slug": "squisi",
-            "name": "Squisi",
-            "type": "bar"
-          }
-        ]
-      },
-      {
-        "slug": "lapio",
-        "display": "Lapio",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 1,
-        "lat": 45.475076,
-        "lng": 11.53601,
-        "venues": [
-          {
-            "slug": "trattoria-zamboni",
-            "name": "Trattoria Zamboni",
-            "type": "restaurant"
-          }
-        ]
-      }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "languedoc",
     "display": "Languedoc",
-    "country": "France",
     "center_lat": 43.480942,
     "center_lng": 3.594363,
     "venue_count": 47,
@@ -11765,12 +11769,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "alsace",
     "display": "Alsace",
-    "country": "France",
     "center_lat": 48.262681,
     "center_lng": 7.416868,
     "venue_count": 45,
@@ -12342,12 +12346,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "black-forest",
     "display": "Black Forest",
-    "country": "Germany",
     "center_lat": 48.16057,
     "center_lng": 8.071006,
     "venue_count": 44,
@@ -12870,12 +12874,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Germany"
   },
   {
     "slug": "normandy",
     "display": "Normandy",
-    "country": "France",
     "center_lat": 49.133949,
     "center_lng": -0.11435,
     "venue_count": 42,
@@ -13459,15 +13463,15 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "burgundy",
     "display": "Burgundy",
-    "country": "France",
-    "center_lat": 46.991201,
-    "center_lng": 4.508036,
-    "venue_count": 40,
+    "center_lat": 46.991138,
+    "center_lng": 4.508068,
+    "venue_count": 41,
     "city_count": 28,
     "cities": [
       {
@@ -13526,9 +13530,9 @@
         "display": "Beaune",
         "country": "France",
         "country_code": "FR",
-        "venue_count": 3,
-        "lat": 47.02639,
-        "lng": 4.835907,
+        "venue_count": 4,
+        "lat": 47.024607,
+        "lng": 4.836807,
         "venues": [
           {
             "slug": "clos-du-cedre",
@@ -13538,6 +13542,11 @@
           {
             "slug": "la-table-du-square",
             "name": "La Table du Square",
+            "type": "restaurant"
+          },
+          {
+            "slug": "le-bistro-de-l-hotel",
+            "name": "Le Bistro de L'Hôtel",
             "type": "restaurant"
           },
           {
@@ -13972,12 +13981,394 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
+  },
+  {
+    "slug": "basque-country",
+    "display": "Basque Country",
+    "center_lat": 42.965805,
+    "center_lng": -2.70941,
+    "venue_count": 39,
+    "city_count": 16,
+    "cities": [
+      {
+        "slug": "san-sebastian",
+        "display": "San Sebastián",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 10,
+        "lat": 43.315725,
+        "lng": -1.983871,
+        "venues": [
+          {
+            "slug": "akelarre-restaurant-pedro-subijana",
+            "name": "Akelarre Restaurant | Pedro Subijana",
+            "type": "restaurant"
+          },
+          {
+            "slug": "amelia-by-paulo-airaudo",
+            "name": "Amelia by Paulo Airaudo",
+            "type": "restaurant"
+          },
+          {
+            "slug": "arzak",
+            "name": "Arzak",
+            "type": "restaurant"
+          },
+          {
+            "slug": "ibai-by-paulo-airaudo",
+            "name": "IBAI by Paulo Airaudo",
+            "type": "restaurant"
+          },
+          {
+            "slug": "kokotxa-jatetxea",
+            "name": "Kokotxa Jatetxea",
+            "type": "restaurant"
+          },
+          {
+            "slug": "martin-berasategui",
+            "name": "Martin Berasategui",
+            "type": "restaurant"
+          },
+          {
+            "slug": "motelombroso",
+            "name": "Motelombroso",
+            "type": "restaurant"
+          },
+          {
+            "slug": "mugaritz",
+            "name": "Mugaritz",
+            "type": "restaurant"
+          },
+          {
+            "slug": "rekondo",
+            "name": "Rekondo",
+            "type": "restaurant"
+          },
+          {
+            "slug": "restaurante-itzuli-inigo-lavado",
+            "name": "Restaurante Itzuli - Iñigo Lavado",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "bilbao",
+        "display": "Bilbao",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 9,
+        "lat": 43.262912,
+        "lng": -2.932571,
+        "venues": [
+          {
+            "slug": "al-margen",
+            "name": "Al Margen",
+            "type": "restaurant"
+          },
+          {
+            "slug": "etxanobe",
+            "name": "ETXANOBE",
+            "type": "restaurant"
+          },
+          {
+            "slug": "islares-restaurant",
+            "name": "Islares Restaurant",
+            "type": "restaurant"
+          },
+          {
+            "slug": "kimtxu",
+            "name": "Kimtxu",
+            "type": "restaurant"
+          },
+          {
+            "slug": "los-fueros",
+            "name": "Los Fueros",
+            "type": "restaurant"
+          },
+          {
+            "slug": "nerua-guggenheim-bilbao",
+            "name": "Nerua Guggenheim Bilbao",
+            "type": "restaurant"
+          },
+          {
+            "slug": "restaurante-amaren",
+            "name": "Restaurante Amaren",
+            "type": "restaurant"
+          },
+          {
+            "slug": "restaurante-mina",
+            "name": "Restaurante Mina",
+            "type": "restaurant"
+          },
+          {
+            "slug": "zarate-jatetxea",
+            "name": "Zarate jatetxea",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "tolosa",
+        "display": "Tolosa",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 3,
+        "lat": 43.135241,
+        "lng": -2.073542,
+        "venues": [
+          {
+            "slug": "ama-tolosa",
+            "name": "AMA Tolosa",
+            "type": "restaurant"
+          },
+          {
+            "slug": "casa-julian",
+            "name": "Casa Julián",
+            "type": "restaurant"
+          },
+          {
+            "slug": "casa-nicolas-de-tolosa",
+            "name": "Casa Nicolás de Tolosa",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "amorebieta-etxano",
+        "display": "Amorebieta - Etxano",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 2,
+        "lat": 43.252486,
+        "lng": -2.751407,
+        "venues": [
+          {
+            "slug": "boroa",
+            "name": "Boroa",
+            "type": "restaurant"
+          },
+          {
+            "slug": "restaurante-la-revelia",
+            "name": "Restaurante La Revelia",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "axpe",
+        "display": "Axpe",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 2,
+        "lat": 43.115184,
+        "lng": -2.600455,
+        "venues": [
+          {
+            "slug": "asador-etxebarri",
+            "name": "Asador Etxebarri",
+            "type": "restaurant"
+          },
+          {
+            "slug": "txispa",
+            "name": "Txispa",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "hondarribia",
+        "display": "Hondarribia",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 2,
+        "lat": 40.186883,
+        "lng": -4.866587,
+        "venues": [
+          {
+            "slug": "laia-erretegia-jatetxea",
+            "name": "Laia Erretegia Jatetxea",
+            "type": "restaurant"
+          },
+          {
+            "slug": "restaurante-alameda",
+            "name": "Restaurante Alameda",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "larrabetzu",
+        "display": "Larrabetzu",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 2,
+        "lat": 43.2607,
+        "lng": -2.815487,
+        "venues": [
+          {
+            "slug": "azurmendi-jatetxea",
+            "name": "Azurmendi jatetxea",
+            "type": "restaurant"
+          },
+          {
+            "slug": "restaurante-eneko",
+            "name": "Restaurante ENEKO",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "dima",
+        "display": "Dima",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 1,
+        "lat": 43.129261,
+        "lng": -2.76587,
+        "venues": [
+          {
+            "slug": "garena",
+            "name": "Garena",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "galdakao",
+        "display": "Galdakao",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 1,
+        "lat": 43.234971,
+        "lng": -2.832491,
+        "venues": [
+          {
+            "slug": "restaurante-andra-mari-galdakao",
+            "name": "Restaurante Andra Mari Galdakao",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "getaria",
+        "display": "Getaria",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 1,
+        "lat": 43.303045,
+        "lng": -2.204978,
+        "venues": [
+          {
+            "slug": "elkano",
+            "name": "ELKANO",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "getxo",
+        "display": "Getxo",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 1,
+        "lat": 43.359269,
+        "lng": -3.011277,
+        "venues": [
+          {
+            "slug": "iwasaki-restaurante-japones",
+            "name": "IWASAKI Restaurante Japonés",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "mondragon",
+        "display": "Mondragón",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 1,
+        "lat": 43.072526,
+        "lng": -2.517738,
+        "venues": [
+          {
+            "slug": "restaurante-arteaga-landetxea",
+            "name": "Restaurante Arteaga Landetxea",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "mungia",
+        "display": "Mungia",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 1,
+        "lat": 43.357637,
+        "lng": -2.850607,
+        "venues": [
+          {
+            "slug": "bakea",
+            "name": "Bakea",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "santa-cruz-de-campezo",
+        "display": "Santa Cruz de Campezo",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 1,
+        "lat": 42.668901,
+        "lng": -2.350497,
+        "venues": [
+          {
+            "slug": "arrea-jatetxea",
+            "name": "ARREA! Jatetxea",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "zarautz",
+        "display": "Zarautz",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 1,
+        "lat": 43.286557,
+        "lng": -2.175424,
+        "venues": [
+          {
+            "slug": "masta",
+            "name": "Masta",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "elciego",
+        "display": "Elciego",
+        "country": "Spain",
+        "country_code": "ES",
+        "venue_count": 1,
+        "lat": 42.511588,
+        "lng": -2.617757,
+        "venues": [
+          {
+            "slug": "restaurante-marques-de-riscal",
+            "name": "Restaurante Marqués de Riscal",
+            "type": "restaurant"
+          }
+        ]
+      }
+    ],
+    "country": "Spain"
   },
   {
     "slug": "galicia",
     "display": "Galicia",
-    "country": "Spain",
     "center_lat": 42.820832,
     "center_lng": -8.568735,
     "venue_count": 39,
@@ -14327,389 +14718,12 @@
           }
         ]
       }
-    ]
-  },
-  {
-    "slug": "basque-country",
-    "display": "Basque Country",
-    "country": "Spain",
-    "center_lat": 42.965967,
-    "center_lng": -2.709207,
-    "venue_count": 38,
-    "city_count": 16,
-    "cities": [
-      {
-        "slug": "bilbao",
-        "display": "Bilbao",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 9,
-        "lat": 43.262912,
-        "lng": -2.932571,
-        "venues": [
-          {
-            "slug": "al-margen",
-            "name": "Al Margen",
-            "type": "restaurant"
-          },
-          {
-            "slug": "etxanobe",
-            "name": "ETXANOBE",
-            "type": "restaurant"
-          },
-          {
-            "slug": "islares-restaurant",
-            "name": "Islares Restaurant",
-            "type": "restaurant"
-          },
-          {
-            "slug": "kimtxu",
-            "name": "Kimtxu",
-            "type": "restaurant"
-          },
-          {
-            "slug": "los-fueros",
-            "name": "Los Fueros",
-            "type": "restaurant"
-          },
-          {
-            "slug": "nerua-guggenheim-bilbao",
-            "name": "Nerua Guggenheim Bilbao",
-            "type": "restaurant"
-          },
-          {
-            "slug": "restaurante-amaren",
-            "name": "Restaurante Amaren",
-            "type": "restaurant"
-          },
-          {
-            "slug": "restaurante-mina",
-            "name": "Restaurante Mina",
-            "type": "restaurant"
-          },
-          {
-            "slug": "zarate-jatetxea",
-            "name": "Zarate jatetxea",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "san-sebastian",
-        "display": "San Sebastián",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 9,
-        "lat": 43.318312,
-        "lng": -1.980629,
-        "venues": [
-          {
-            "slug": "akelarre-restaurant-pedro-subijana",
-            "name": "Akelarre Restaurant | Pedro Subijana",
-            "type": "restaurant"
-          },
-          {
-            "slug": "amelia-by-paulo-airaudo",
-            "name": "Amelia by Paulo Airaudo",
-            "type": "restaurant"
-          },
-          {
-            "slug": "arzak",
-            "name": "Arzak",
-            "type": "restaurant"
-          },
-          {
-            "slug": "ibai-by-paulo-airaudo",
-            "name": "IBAI by Paulo Airaudo",
-            "type": "restaurant"
-          },
-          {
-            "slug": "kokotxa-jatetxea",
-            "name": "Kokotxa Jatetxea",
-            "type": "restaurant"
-          },
-          {
-            "slug": "martin-berasategui",
-            "name": "Martin Berasategui",
-            "type": "restaurant"
-          },
-          {
-            "slug": "motelombroso",
-            "name": "Motelombroso",
-            "type": "restaurant"
-          },
-          {
-            "slug": "mugaritz",
-            "name": "Mugaritz",
-            "type": "restaurant"
-          },
-          {
-            "slug": "restaurante-itzuli-inigo-lavado",
-            "name": "Restaurante Itzuli - Iñigo Lavado",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "tolosa",
-        "display": "Tolosa",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 3,
-        "lat": 43.135241,
-        "lng": -2.073542,
-        "venues": [
-          {
-            "slug": "ama-tolosa",
-            "name": "AMA Tolosa",
-            "type": "restaurant"
-          },
-          {
-            "slug": "casa-julian",
-            "name": "Casa Julián",
-            "type": "restaurant"
-          },
-          {
-            "slug": "casa-nicolas-de-tolosa",
-            "name": "Casa Nicolás de Tolosa",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "amorebieta-etxano",
-        "display": "Amorebieta - Etxano",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 2,
-        "lat": 43.252486,
-        "lng": -2.751407,
-        "venues": [
-          {
-            "slug": "boroa",
-            "name": "Boroa",
-            "type": "restaurant"
-          },
-          {
-            "slug": "restaurante-la-revelia",
-            "name": "Restaurante La Revelia",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "axpe",
-        "display": "Axpe",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 2,
-        "lat": 43.115184,
-        "lng": -2.600455,
-        "venues": [
-          {
-            "slug": "asador-etxebarri",
-            "name": "Asador Etxebarri",
-            "type": "restaurant"
-          },
-          {
-            "slug": "txispa",
-            "name": "Txispa",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "hondarribia",
-        "display": "Hondarribia",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 2,
-        "lat": 40.186883,
-        "lng": -4.866587,
-        "venues": [
-          {
-            "slug": "laia-erretegia-jatetxea",
-            "name": "Laia Erretegia Jatetxea",
-            "type": "restaurant"
-          },
-          {
-            "slug": "restaurante-alameda",
-            "name": "Restaurante Alameda",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "larrabetzu",
-        "display": "Larrabetzu",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 2,
-        "lat": 43.2607,
-        "lng": -2.815487,
-        "venues": [
-          {
-            "slug": "azurmendi-jatetxea",
-            "name": "Azurmendi jatetxea",
-            "type": "restaurant"
-          },
-          {
-            "slug": "restaurante-eneko",
-            "name": "Restaurante ENEKO",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "dima",
-        "display": "Dima",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 1,
-        "lat": 43.129261,
-        "lng": -2.76587,
-        "venues": [
-          {
-            "slug": "garena",
-            "name": "Garena",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "galdakao",
-        "display": "Galdakao",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 1,
-        "lat": 43.234971,
-        "lng": -2.832491,
-        "venues": [
-          {
-            "slug": "restaurante-andra-mari-galdakao",
-            "name": "Restaurante Andra Mari Galdakao",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "getaria",
-        "display": "Getaria",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 1,
-        "lat": 43.303045,
-        "lng": -2.204978,
-        "venues": [
-          {
-            "slug": "elkano",
-            "name": "ELKANO",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "getxo",
-        "display": "Getxo",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 1,
-        "lat": 43.359269,
-        "lng": -3.011277,
-        "venues": [
-          {
-            "slug": "iwasaki-restaurante-japones",
-            "name": "IWASAKI Restaurante Japonés",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "mondragon",
-        "display": "Mondragón",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 1,
-        "lat": 43.072526,
-        "lng": -2.517738,
-        "venues": [
-          {
-            "slug": "restaurante-arteaga-landetxea",
-            "name": "Restaurante Arteaga Landetxea",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "mungia",
-        "display": "Mungia",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 1,
-        "lat": 43.357637,
-        "lng": -2.850607,
-        "venues": [
-          {
-            "slug": "bakea",
-            "name": "Bakea",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "santa-cruz-de-campezo",
-        "display": "Santa Cruz de Campezo",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 1,
-        "lat": 42.668901,
-        "lng": -2.350497,
-        "venues": [
-          {
-            "slug": "arrea-jatetxea",
-            "name": "ARREA! Jatetxea",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "zarautz",
-        "display": "Zarautz",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 1,
-        "lat": 43.286557,
-        "lng": -2.175424,
-        "venues": [
-          {
-            "slug": "masta",
-            "name": "Masta",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "elciego",
-        "display": "Elciego",
-        "country": "Spain",
-        "country_code": "ES",
-        "venue_count": 1,
-        "lat": 42.511588,
-        "lng": -2.617757,
-        "venues": [
-          {
-            "slug": "restaurante-marques-de-riscal",
-            "name": "Restaurante Marqués de Riscal",
-            "type": "restaurant"
-          }
-        ]
-      }
-    ]
+    ],
+    "country": "Spain"
   },
   {
     "slug": "sicily",
     "display": "Sicily",
-    "country": "Italy",
     "center_lat": 37.543127,
     "center_lng": 14.523466,
     "venue_count": 38,
@@ -15098,12 +15112,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "bordeaux",
     "display": "Bordeaux",
-    "country": "France",
     "center_lat": 44.740383,
     "center_lng": -0.33116,
     "venue_count": 37,
@@ -15442,12 +15456,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "franconia",
     "display": "Franconia",
-    "country": "Germany",
     "center_lat": 49.768227,
     "center_lng": 10.431386,
     "venue_count": 37,
@@ -15912,12 +15926,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Germany"
   },
   {
     "slug": "italian-lakes",
     "display": "Italian Lakes",
-    "country": "Italy",
     "center_lat": 45.799907,
     "center_lng": 9.279757,
     "venue_count": 37,
@@ -16371,12 +16385,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "amalfi-coast",
     "display": "Amalfi Coast",
-    "country": "Italy",
     "center_lat": 40.644909,
     "center_lng": 14.395356,
     "venue_count": 34,
@@ -16778,12 +16792,372 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
+  },
+  {
+    "slug": "tyrol",
+    "display": "Tyrol",
+    "center_lat": 47.111033,
+    "center_lng": 11.517377,
+    "venue_count": 32,
+    "city_count": 21,
+    "cities": [
+      {
+        "slug": "sankt-anton-am-arlberg",
+        "display": "Sankt Anton am Arlberg",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 4,
+        "lat": 47.139565,
+        "lng": 10.27711,
+        "venues": [
+          {
+            "slug": "alpin-gourmet-stube",
+            "name": "Alpin Gourmet Stube",
+            "type": "restaurant"
+          },
+          {
+            "slug": "hotel-tannenhof",
+            "name": "Hotel Tannenhof",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "ischgl",
+        "display": "Ischgl",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 3,
+        "lat": 47.008562,
+        "lng": 10.287862,
+        "venues": [
+          {
+            "slug": "gourmet-restaurant-stuva",
+            "name": "Gourmet Restaurant Stüva",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "kitzbuhel",
+        "display": "Kitzbühel",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 3,
+        "lat": 47.445662,
+        "lng": 12.389476,
+        "venues": [
+          {
+            "slug": "les-deux-kitzbuhel-brasserie-bar",
+            "name": "Les Deux Kitzbühel - Brasserie & Bar",
+            "type": "restaurant"
+          },
+          {
+            "slug": "mocking-das-wirtshaus",
+            "name": "Mocking - Das Wirtshaus",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "achenkirch",
+        "display": "Achenkirch",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 2,
+        "lat": 47.503247,
+        "lng": 11.706138,
+        "venues": [
+          {
+            "slug": "grundlers-genie-er-wirtshaus",
+            "name": "Gründlers Genießer-Wirtshaus",
+            "type": "restaurant"
+          },
+          {
+            "slug": "grundlers-gourmetstuberl",
+            "name": "Gründlers Gourmetstuberl",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "fiss",
+        "display": "Fiss",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 2,
+        "lat": 47.054391,
+        "lng": 10.616824,
+        "venues": []
+      },
+      {
+        "slug": "hall-in-tirol",
+        "display": "Hall in Tirol",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 2,
+        "lat": 47.281213,
+        "lng": 11.508364,
+        "venues": [
+          {
+            "slug": "schwarzer-adler-restaurant",
+            "name": "Schwarzer Adler Restaurant",
+            "type": "restaurant"
+          },
+          {
+            "slug": "secco-bistro",
+            "name": "SECCO Bistro",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "tux",
+        "display": "Tux",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 2,
+        "lat": 47.13517,
+        "lng": 11.704439,
+        "venues": [
+          {
+            "slug": "hotel-alpenhof",
+            "name": "Hotel Alpenhof",
+            "type": "restaurant"
+          },
+          {
+            "slug": "hotel-bergfried",
+            "name": "Hotel Bergfried",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "anras",
+        "display": "Anras",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 46.771922,
+        "lng": 12.557132,
+        "venues": [
+          {
+            "slug": "hotel-pfleger",
+            "name": "Hotel Pfleger",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "innervillgraten",
+        "display": "Innervillgraten",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 46.806502,
+        "lng": 12.375532,
+        "venues": [
+          {
+            "slug": "der-gannerhof",
+            "name": "Der Gannerhof",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "lienz",
+        "display": "Lienz",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 46.831781,
+        "lng": 12.761117,
+        "venues": [
+          {
+            "slug": "ansitz12",
+            "name": "Ansitz12",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "matrei-in-osttirol",
+        "display": "Matrei in Osttirol",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 46.996227,
+        "lng": 12.534215,
+        "venues": [
+          {
+            "slug": "saluti-cafe-pizzeria",
+            "name": "Saluti Cafe-Pizzeria",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "obermieming",
+        "display": "Mieming",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 47.307148,
+        "lng": 10.986114,
+        "venues": [
+          {
+            "slug": "restaurant-141-by-joachim-jaud",
+            "name": "Restaurant 141 | by Joachim Jaud",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "nauders",
+        "display": "Nauders",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 46.890588,
+        "lng": 10.501112,
+        "venues": [
+          {
+            "slug": "s-kammerli",
+            "name": "s’kammerli",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "neustift-im-stubaital",
+        "display": "Neustift im Stubaital",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 47.107929,
+        "lng": 11.300056,
+        "venues": [
+          {
+            "slug": "gourmetrestaurant-hubertusstube",
+            "name": "Gourmetrestaurant Hubertusstube",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "obergurgl",
+        "display": "Obergurgl",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 46.871066,
+        "lng": 11.028611,
+        "venues": [
+          {
+            "slug": "austria-stuben-kulinarik-auf-1930m-a-michelin-star-restaurant",
+            "name": "Austria Stuben - Kulinarik auf 1930m - a Michelin Star Restaurant",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "obertilliach",
+        "display": "Obertilliach",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 46.7095,
+        "lng": 12.609509,
+        "venues": [
+          {
+            "slug": "almfamilyhotel-scherer",
+            "name": "Almfamilyhotel Scherer",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "stumm",
+        "display": "Stumm",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 47.296833,
+        "lng": 11.88665,
+        "venues": [
+          {
+            "slug": "restaurant-guatzessen",
+            "name": "Restaurant GuatzEssen",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "solden",
+        "display": "Sölden",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 46.966766,
+        "lng": 11.009098,
+        "venues": []
+      },
+      {
+        "slug": "telfs",
+        "display": "Telfs",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 47.330314,
+        "lng": 11.124339,
+        "venues": [
+          {
+            "slug": "interalpen-hotel-tyrol",
+            "name": "Interalpen-Hotel Tyrol",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "westendorf",
+        "display": "Westendorf",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 47.369255,
+        "lng": 12.22122,
+        "venues": [
+          {
+            "slug": "gasthaus-steinberg",
+            "name": "Gasthaus Steinberg",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "zoblen",
+        "display": "Zöblen",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 1,
+        "lat": 47.508056,
+        "lng": 10.48,
+        "venues": [
+          {
+            "slug": "s-morent",
+            "name": "s'Morent",
+            "type": "restaurant"
+          }
+        ]
+      }
+    ],
+    "country": "Austria"
   },
   {
     "slug": "auvergne",
     "display": "Auvergne",
-    "country": "France",
     "center_lat": 45.317764,
     "center_lng": 3.177274,
     "venue_count": 31,
@@ -17136,375 +17510,15 @@
         "lng": 3.419016,
         "venues": []
       }
-    ]
-  },
-  {
-    "slug": "tyrol",
-    "display": "Tyrol",
-    "country": "Austria",
-    "center_lat": 47.110967,
-    "center_lng": 11.517337,
-    "venue_count": 31,
-    "city_count": 21,
-    "cities": [
-      {
-        "slug": "sankt-anton-am-arlberg",
-        "display": "Sankt Anton am Arlberg",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 4,
-        "lat": 47.139565,
-        "lng": 10.27711,
-        "venues": [
-          {
-            "slug": "alpin-gourmet-stube",
-            "name": "Alpin Gourmet Stube",
-            "type": "restaurant"
-          },
-          {
-            "slug": "hotel-tannenhof",
-            "name": "Hotel Tannenhof",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "ischgl",
-        "display": "Ischgl",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 3,
-        "lat": 47.008562,
-        "lng": 10.287862,
-        "venues": [
-          {
-            "slug": "gourmet-restaurant-stuva",
-            "name": "Gourmet Restaurant Stüva",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "achenkirch",
-        "display": "Achenkirch",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 2,
-        "lat": 47.503247,
-        "lng": 11.706138,
-        "venues": [
-          {
-            "slug": "grundlers-genie-er-wirtshaus",
-            "name": "Gründlers Genießer-Wirtshaus",
-            "type": "restaurant"
-          },
-          {
-            "slug": "grundlers-gourmetstuberl",
-            "name": "Gründlers Gourmetstuberl",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "fiss",
-        "display": "Fiss",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 2,
-        "lat": 47.054391,
-        "lng": 10.616824,
-        "venues": []
-      },
-      {
-        "slug": "hall-in-tirol",
-        "display": "Hall in Tirol",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 2,
-        "lat": 47.281213,
-        "lng": 11.508364,
-        "venues": [
-          {
-            "slug": "schwarzer-adler-restaurant",
-            "name": "Schwarzer Adler Restaurant",
-            "type": "restaurant"
-          },
-          {
-            "slug": "secco-bistro",
-            "name": "SECCO Bistro",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "kitzbuhel",
-        "display": "Kitzbühel",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 2,
-        "lat": 47.444279,
-        "lng": 12.388643,
-        "venues": [
-          {
-            "slug": "les-deux-kitzbuhel-brasserie-bar",
-            "name": "Les Deux Kitzbühel - Brasserie & Bar",
-            "type": "restaurant"
-          },
-          {
-            "slug": "mocking-das-wirtshaus",
-            "name": "Mocking - Das Wirtshaus",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "tux",
-        "display": "Tux",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 2,
-        "lat": 47.13517,
-        "lng": 11.704439,
-        "venues": [
-          {
-            "slug": "hotel-alpenhof",
-            "name": "Hotel Alpenhof",
-            "type": "restaurant"
-          },
-          {
-            "slug": "hotel-bergfried",
-            "name": "Hotel Bergfried",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "anras",
-        "display": "Anras",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 46.771922,
-        "lng": 12.557132,
-        "venues": [
-          {
-            "slug": "hotel-pfleger",
-            "name": "Hotel Pfleger",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "innervillgraten",
-        "display": "Innervillgraten",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 46.806502,
-        "lng": 12.375532,
-        "venues": [
-          {
-            "slug": "der-gannerhof",
-            "name": "Der Gannerhof",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "lienz",
-        "display": "Lienz",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 46.831781,
-        "lng": 12.761117,
-        "venues": [
-          {
-            "slug": "ansitz12",
-            "name": "Ansitz12",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "matrei-in-osttirol",
-        "display": "Matrei in Osttirol",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 46.996227,
-        "lng": 12.534215,
-        "venues": [
-          {
-            "slug": "saluti-cafe-pizzeria",
-            "name": "Saluti Cafe-Pizzeria",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "obermieming",
-        "display": "Mieming",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 47.307148,
-        "lng": 10.986114,
-        "venues": [
-          {
-            "slug": "restaurant-141-by-joachim-jaud",
-            "name": "Restaurant 141 | by Joachim Jaud",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "nauders",
-        "display": "Nauders",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 46.890588,
-        "lng": 10.501112,
-        "venues": [
-          {
-            "slug": "s-kammerli",
-            "name": "s’kammerli",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "neustift-im-stubaital",
-        "display": "Neustift im Stubaital",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 47.107929,
-        "lng": 11.300056,
-        "venues": [
-          {
-            "slug": "gourmetrestaurant-hubertusstube",
-            "name": "Gourmetrestaurant Hubertusstube",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "obergurgl",
-        "display": "Obergurgl",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 46.871066,
-        "lng": 11.028611,
-        "venues": [
-          {
-            "slug": "austria-stuben-kulinarik-auf-1930m-a-michelin-star-restaurant",
-            "name": "Austria Stuben - Kulinarik auf 1930m - a Michelin Star Restaurant",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "obertilliach",
-        "display": "Obertilliach",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 46.7095,
-        "lng": 12.609509,
-        "venues": [
-          {
-            "slug": "almfamilyhotel-scherer",
-            "name": "Almfamilyhotel Scherer",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "stumm",
-        "display": "Stumm",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 47.296833,
-        "lng": 11.88665,
-        "venues": [
-          {
-            "slug": "restaurant-guatzessen",
-            "name": "Restaurant GuatzEssen",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "solden",
-        "display": "Sölden",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 46.966766,
-        "lng": 11.009098,
-        "venues": []
-      },
-      {
-        "slug": "telfs",
-        "display": "Telfs",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 47.330314,
-        "lng": 11.124339,
-        "venues": [
-          {
-            "slug": "interalpen-hotel-tyrol",
-            "name": "Interalpen-Hotel Tyrol",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "westendorf",
-        "display": "Westendorf",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 47.369255,
-        "lng": 12.22122,
-        "venues": [
-          {
-            "slug": "gasthaus-steinberg",
-            "name": "Gasthaus Steinberg",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "zoblen",
-        "display": "Zöblen",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 47.508056,
-        "lng": 10.48,
-        "venues": [
-          {
-            "slug": "s-morent",
-            "name": "s'Morent",
-            "type": "restaurant"
-          }
-        ]
-      }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "austrian-alps",
     "display": "Austrian Alps",
-    "country": "Austria",
-    "center_lat": 47.383617,
-    "center_lng": 12.118663,
-    "venue_count": 29,
+    "center_lat": 47.383631,
+    "center_lng": 12.119591,
+    "venue_count": 30,
     "city_count": 22,
     "cities": [
       {
@@ -17576,6 +17590,27 @@
           {
             "slug": "krone-hittisau-hotel-restaurant-im-bregenzerwald",
             "name": "Krone Hittisau - Hotel & Restaurant im Bregenzerwald",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "leogang",
+        "display": "Leogang",
+        "country": "Austria",
+        "country_code": "AT",
+        "venue_count": 2,
+        "lat": 47.438516,
+        "lng": 12.740272,
+        "venues": [
+          {
+            "slug": "der-kirchenwirt-seit-1326-gourmetwirtshaus-hotel",
+            "name": "Der Kirchenwirt seit 1326 - Gourmetwirtshaus & Hotel",
+            "type": "restaurant"
+          },
+          {
+            "slug": "gourmetrestaurant-dahoam-by-andreas-herbst-leogang",
+            "name": "Gourmetrestaurant dahoam by Andreas Herbst Leogang",
             "type": "restaurant"
           }
         ]
@@ -17698,22 +17733,6 @@
           {
             "slug": "gasthof-rossle",
             "name": "Gasthof Rössle",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "leogang",
-        "display": "Leogang",
-        "country": "Austria",
-        "country_code": "AT",
-        "venue_count": 1,
-        "lat": 47.438195,
-        "lng": 12.719856,
-        "venues": [
-          {
-            "slug": "gourmetrestaurant-dahoam-by-andreas-herbst-leogang",
-            "name": "Gourmetrestaurant dahoam by Andreas Herbst Leogang",
             "type": "restaurant"
           }
         ]
@@ -17894,12 +17913,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Austria"
   },
   {
     "slug": "dolomites",
     "display": "Dolomites",
-    "country": "Italy",
     "center_lat": 46.525501,
     "center_lng": 11.75437,
     "venue_count": 29,
@@ -18222,12 +18241,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "kyushu",
     "display": "Kyushu",
-    "country": "Japan",
     "center_lat": 33.17407,
     "center_lng": 130.568414,
     "venue_count": 29,
@@ -18472,12 +18491,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Japan"
   },
   {
     "slug": "phuket",
     "display": "Phuket",
-    "country": "Thailand",
     "center_lat": 8.241094,
     "center_lng": 98.319066,
     "venue_count": 29,
@@ -18645,12 +18664,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Thailand"
   },
   {
     "slug": "canary-islands",
     "display": "Canary Islands",
-    "country": "Spain",
     "center_lat": 28.262239,
     "center_lng": -16.316879,
     "venue_count": 26,
@@ -18962,12 +18981,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Spain"
   },
   {
     "slug": "aegean-coast",
     "display": "Aegean Coast",
-    "country": "Turkey",
     "center_lat": 37.5023,
     "center_lng": 27.173896,
     "venue_count": 23,
@@ -19154,12 +19173,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Turkey"
   },
   {
     "slug": "puglia",
     "display": "Puglia",
-    "country": "Italy",
     "center_lat": 40.906707,
     "center_lng": 16.960448,
     "venue_count": 20,
@@ -19452,12 +19471,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "dordogne",
     "display": "Dordogne",
-    "country": "France",
     "center_lat": 44.773162,
     "center_lng": 1.05325,
     "venue_count": 19,
@@ -19734,12 +19753,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "italian-riviera",
     "display": "Italian Riviera",
-    "country": "Italy",
     "center_lat": 44.08229,
     "center_lng": 8.561136,
     "venue_count": 19,
@@ -19994,12 +20013,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "riviera-maya",
     "display": "Riviera Maya",
-    "country": "Mexico",
     "center_lat": 20.657686,
     "center_lng": -87.071833,
     "venue_count": 19,
@@ -20139,12 +20158,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Mexico"
   },
   {
     "slug": "bavarian-alps",
     "display": "Bavarian Alps",
-    "country": "Germany",
     "center_lat": 47.625541,
     "center_lng": 11.665609,
     "venue_count": 18,
@@ -20383,12 +20402,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Germany"
   },
   {
     "slug": "chiang-mai-region",
     "display": "Chiang Mai Region",
-    "country": "Thailand",
     "center_lat": 18.799429,
     "center_lng": 98.995074,
     "venue_count": 18,
@@ -20495,12 +20514,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Thailand"
   },
   {
     "slug": "mosel",
     "display": "Mosel",
-    "country": "Germany",
     "center_lat": 49.631989,
     "center_lng": 6.933708,
     "venue_count": 18,
@@ -20761,12 +20780,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Germany"
   },
   {
     "slug": "french-basque-country",
     "display": "French Basque Country",
-    "country": "France",
     "center_lat": 43.344145,
     "center_lng": -1.423118,
     "venue_count": 17,
@@ -21006,12 +21025,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "friuli-venezia-giulia",
     "display": "Friuli-Venezia Giulia",
-    "country": "Italy",
     "center_lat": 46.02231,
     "center_lng": 13.285373,
     "venue_count": 17,
@@ -21272,12 +21291,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "rocky-mountains",
     "display": "Rocky Mountains",
-    "country": "United States",
     "center_lat": 38.391559,
     "center_lng": -103.407979,
     "venue_count": 17,
@@ -21435,12 +21454,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United States"
   },
   {
     "slug": "asturias",
     "display": "Asturias",
-    "country": "Spain",
     "center_lat": 43.472109,
     "center_lng": -5.735761,
     "venue_count": 16,
@@ -21625,12 +21644,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Spain"
   },
   {
     "slug": "baja-california",
     "display": "Baja California",
-    "country": "Mexico",
     "center_lat": 32.082051,
     "center_lng": -116.717806,
     "venue_count": 16,
@@ -21771,12 +21790,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Mexico"
   },
   {
     "slug": "balearic-islands",
     "display": "Balearic Islands",
-    "country": "Spain",
     "center_lat": 39.469515,
     "center_lng": 2.497847,
     "venue_count": 16,
@@ -21994,12 +22013,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Spain"
   },
   {
     "slug": "umbria",
     "display": "Umbria",
-    "country": "Italy",
     "center_lat": 41.993898,
     "center_lng": 5.639851,
     "venue_count": 15,
@@ -22234,12 +22253,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "charleston-lowcountry",
     "display": "Charleston Lowcountry",
-    "country": "United States",
     "center_lat": 32.697069,
     "center_lng": -80.018562,
     "venue_count": 14,
@@ -22327,12 +22346,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United States"
   },
   {
     "slug": "hokkaido",
     "display": "Hokkaido",
-    "country": "Japan",
     "center_lat": 42.666093,
     "center_lng": 140.945014,
     "venue_count": 14,
@@ -22436,12 +22455,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Japan"
   },
   {
     "slug": "lake-district",
     "display": "Lake District",
-    "country": "United Kingdom",
     "center_lat": 53.777721,
     "center_lng": -3.088541,
     "venue_count": 13,
@@ -22567,12 +22586,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United Kingdom"
   },
   {
     "slug": "sonoma-county",
     "display": "Sonoma County",
-    "country": "United States",
     "center_lat": 38.444757,
     "center_lng": -122.731313,
     "venue_count": 13,
@@ -22720,12 +22739,133 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United States"
+  },
+  {
+    "slug": "napa-valley",
+    "display": "Napa Valley",
+    "center_lat": 38.471493,
+    "center_lng": -122.434507,
+    "venue_count": 12,
+    "city_count": 5,
+    "cities": [
+      {
+        "slug": "napa",
+        "display": "Napa",
+        "country": "United States",
+        "country_code": "US",
+        "venue_count": 6,
+        "lat": 38.398798,
+        "lng": -122.370553,
+        "venues": [
+          {
+            "slug": "farm-restaurant-bar",
+            "name": "FARM Restaurant + Bar",
+            "type": "restaurant"
+          },
+          {
+            "slug": "kenzo",
+            "name": "Kenzo",
+            "type": "restaurant"
+          },
+          {
+            "slug": "la-toque",
+            "name": "La Toque",
+            "type": "restaurant"
+          },
+          {
+            "slug": "solbar",
+            "name": "Solbar",
+            "type": "restaurant"
+          },
+          {
+            "slug": "the-restaurant",
+            "name": "The Restaurant",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "rutherford",
+        "display": "Rutherford",
+        "country": "United States",
+        "country_code": "US",
+        "venue_count": 2,
+        "lat": 38.47942,
+        "lng": -122.417505,
+        "venues": [
+          {
+            "slug": "auberge-du-soleil",
+            "name": "Auberge du Soleil",
+            "type": "restaurant"
+          },
+          {
+            "slug": "grgich-hills-estate",
+            "name": "Grgich Hills Estate",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "yountville",
+        "display": "Yountville",
+        "country": "United States",
+        "country_code": "US",
+        "venue_count": 2,
+        "lat": 38.405514,
+        "lng": -122.365907,
+        "venues": [
+          {
+            "slug": "ciccio",
+            "name": "Ciccio",
+            "type": "restaurant"
+          },
+          {
+            "slug": "the-french-laundry",
+            "name": "The French Laundry",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "calistoga",
+        "display": "Calistoga",
+        "country": "United States",
+        "country_code": "US",
+        "venue_count": 1,
+        "lat": 38.584846,
+        "lng": -122.56791,
+        "venues": [
+          {
+            "slug": "auro",
+            "name": "Auro",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "saint-helena",
+        "display": "Saint Helena",
+        "country": "United States",
+        "country_code": "US",
+        "venue_count": 1,
+        "lat": 38.488889,
+        "lng": -122.45066,
+        "venues": [
+          {
+            "slug": "press-restaurant",
+            "name": "PRESS Restaurant",
+            "type": "restaurant"
+          }
+        ]
+      }
+    ],
+    "country": "United States"
   },
   {
     "slug": "queenstown-lakes-district",
     "display": "Queenstown-Lakes District",
-    "country": "New Zealand",
     "center_lat": -44.887033,
     "center_lng": 168.876381,
     "venue_count": 12,
@@ -22819,12 +22959,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "New Zealand"
   },
   {
     "slug": "baltic-coast",
     "display": "Baltic Coast",
-    "country": "Germany",
     "center_lat": 54.256432,
     "center_lng": 11.39705,
     "venue_count": 11,
@@ -23006,12 +23146,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Germany"
   },
   {
     "slug": "cornwall",
     "display": "Cornwall",
-    "country": "United Kingdom",
     "center_lat": 50.419467,
     "center_lng": -4.846378,
     "venue_count": 11,
@@ -23149,12 +23289,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United Kingdom"
   },
   {
     "slug": "costa-brava",
     "display": "Costa Brava",
-    "country": "Spain",
     "center_lat": 42.194684,
     "center_lng": 3.090397,
     "venue_count": 11,
@@ -23303,12 +23443,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Spain"
   },
   {
     "slug": "lake-constance",
     "display": "Lake Constance",
-    "country": "Germany",
     "center_lat": 47.62708,
     "center_lng": 9.356902,
     "venue_count": 11,
@@ -23479,128 +23619,12 @@
           }
         ]
       }
-    ]
-  },
-  {
-    "slug": "napa-valley",
-    "display": "Napa Valley",
-    "country": "United States",
-    "center_lat": 38.49042,
-    "center_lng": -122.441603,
-    "venue_count": 11,
-    "city_count": 5,
-    "cities": [
-      {
-        "slug": "napa",
-        "display": "Napa",
-        "country": "United States",
-        "country_code": "US",
-        "venue_count": 5,
-        "lat": 38.493429,
-        "lng": -122.406031,
-        "venues": [
-          {
-            "slug": "farm-restaurant-bar",
-            "name": "FARM Restaurant + Bar",
-            "type": "restaurant"
-          },
-          {
-            "slug": "kenzo",
-            "name": "Kenzo",
-            "type": "restaurant"
-          },
-          {
-            "slug": "solbar",
-            "name": "Solbar",
-            "type": "restaurant"
-          },
-          {
-            "slug": "the-restaurant",
-            "name": "The Restaurant",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "rutherford",
-        "display": "Rutherford",
-        "country": "United States",
-        "country_code": "US",
-        "venue_count": 2,
-        "lat": 38.47942,
-        "lng": -122.417505,
-        "venues": [
-          {
-            "slug": "auberge-du-soleil",
-            "name": "Auberge du Soleil",
-            "type": "restaurant"
-          },
-          {
-            "slug": "grgich-hills-estate",
-            "name": "Grgich Hills Estate",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "yountville",
-        "display": "Yountville",
-        "country": "United States",
-        "country_code": "US",
-        "venue_count": 2,
-        "lat": 38.405514,
-        "lng": -122.365907,
-        "venues": [
-          {
-            "slug": "ciccio",
-            "name": "Ciccio",
-            "type": "restaurant"
-          },
-          {
-            "slug": "the-french-laundry",
-            "name": "The French Laundry",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "calistoga",
-        "display": "Calistoga",
-        "country": "United States",
-        "country_code": "US",
-        "venue_count": 1,
-        "lat": 38.584846,
-        "lng": -122.56791,
-        "venues": [
-          {
-            "slug": "auro",
-            "name": "Auro",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "saint-helena",
-        "display": "Saint Helena",
-        "country": "United States",
-        "country_code": "US",
-        "venue_count": 1,
-        "lat": 38.488889,
-        "lng": -122.45066,
-        "venues": [
-          {
-            "slug": "press-restaurant",
-            "name": "PRESS Restaurant",
-            "type": "restaurant"
-          }
-        ]
-      }
-    ]
+    ],
+    "country": "Germany"
   },
   {
     "slug": "rhine-valley",
     "display": "Rhine Valley",
-    "country": "Germany",
     "center_lat": 50.196781,
     "center_lng": 7.348846,
     "venue_count": 11,
@@ -23711,12 +23735,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Germany"
   },
   {
     "slug": "champagne",
     "display": "Champagne",
-    "country": "France",
     "center_lat": 48.954924,
     "center_lng": 4.097387,
     "venue_count": 10,
@@ -23827,12 +23851,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "corsica",
     "display": "Corsica",
-    "country": "France",
     "center_lat": 42.054323,
     "center_lng": 8.891097,
     "venue_count": 10,
@@ -23982,12 +24006,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "France"
   },
   {
     "slug": "dalmatia",
     "display": "Dalmatia",
-    "country": "Croatia",
     "center_lat": 43.615327,
     "center_lng": 16.237975,
     "venue_count": 10,
@@ -24120,12 +24144,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Croatia"
   },
   {
     "slug": "la-rioja",
     "display": "La Rioja",
-    "country": "Spain",
     "center_lat": 42.427622,
     "center_lng": -2.573745,
     "venue_count": 10,
@@ -24258,12 +24282,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Spain"
   },
   {
     "slug": "sardinia",
     "display": "Sardinia",
-    "country": "Italy",
     "center_lat": 40.274652,
     "center_lng": 9.33062,
     "venue_count": 10,
@@ -24407,12 +24431,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "bali",
     "display": "Bali",
-    "country": "Indonesia",
     "center_lat": -8.654736,
     "center_lng": 115.192829,
     "venue_count": 9,
@@ -24490,12 +24514,12 @@
         "lng": 115.163119,
         "venues": []
       }
-    ]
+    ],
+    "country": "Indonesia"
   },
   {
     "slug": "istria",
     "display": "Istria",
-    "country": "Croatia",
     "center_lat": 45.150691,
     "center_lng": 13.964766,
     "venue_count": 9,
@@ -24623,12 +24647,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Croatia"
   },
   {
     "slug": "mendoza",
     "display": "Mendoza",
-    "country": "Argentina",
     "center_lat": -32.969845,
     "center_lng": -68.879092,
     "venue_count": 9,
@@ -24701,12 +24725,112 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Argentina"
+  },
+  {
+    "slug": "monterey-peninsula",
+    "display": "Monterey Peninsula",
+    "center_lat": 35.806184,
+    "center_lng": -117.394537,
+    "venue_count": 9,
+    "city_count": 4,
+    "cities": [
+      {
+        "slug": "carmel-by-the-sea",
+        "display": "Carmel by the Sea",
+        "country": "United States",
+        "country_code": "US",
+        "venue_count": 4,
+        "lat": 36.556349,
+        "lng": -121.921708,
+        "venues": [
+          {
+            "slug": "aubergine-the-restaurant-at-l-auberge-carmel",
+            "name": "Aubergine the restaurant at L'Auberge Carmel",
+            "type": "restaurant"
+          },
+          {
+            "slug": "chez-noir",
+            "name": "Chez Noir",
+            "type": "restaurant"
+          },
+          {
+            "slug": "grasings",
+            "name": "Grasings",
+            "type": "restaurant"
+          },
+          {
+            "slug": "yafa",
+            "name": "Yafa",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "big-sur",
+        "display": "Big Sur",
+        "country": "United States",
+        "country_code": "US",
+        "venue_count": 2,
+        "lat": 36.225864,
+        "lng": -121.762211,
+        "venues": [
+          {
+            "slug": "nepenthe",
+            "name": "Nepenthe",
+            "type": "restaurant"
+          },
+          {
+            "slug": "sierra-mar",
+            "name": "Sierra Mar",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "seaside",
+        "display": "Seaside",
+        "country": "United States",
+        "country_code": "US",
+        "venue_count": 2,
+        "lat": 33.464476,
+        "lng": -103.99454,
+        "venues": [
+          {
+            "slug": "maligne",
+            "name": "Maligne",
+            "type": "restaurant"
+          },
+          {
+            "slug": "the-daytrader-tiki-bar-and-restaurant",
+            "name": "The Daytrader Tiki Bar and Restaurant",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "aptos",
+        "display": "Aptos",
+        "country": "United States",
+        "country_code": "US",
+        "venue_count": 1,
+        "lat": 36.978045,
+        "lng": -121.899688,
+        "venues": [
+          {
+            "slug": "mentone",
+            "name": "Mentone",
+            "type": "restaurant"
+          }
+        ]
+      }
+    ],
+    "country": "United States"
   },
   {
     "slug": "chianti",
     "display": "Chianti",
-    "country": "Italy",
     "center_lat": 43.491745,
     "center_lng": 11.326541,
     "venue_count": 8,
@@ -24807,12 +24931,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "hudson-valley",
     "display": "Hudson Valley",
-    "country": "United States",
     "center_lat": 41.50357,
     "center_lng": -73.834493,
     "venue_count": 8,
@@ -24946,107 +25070,12 @@
           }
         ]
       }
-    ]
-  },
-  {
-    "slug": "monterey-peninsula",
-    "display": "Monterey Peninsula",
-    "country": "United States",
-    "center_lat": 35.80633,
-    "center_lng": -117.394692,
-    "venue_count": 8,
-    "city_count": 4,
-    "cities": [
-      {
-        "slug": "carmel-by-the-sea",
-        "display": "Carmel by the Sea",
-        "country": "United States",
-        "country_code": "US",
-        "venue_count": 3,
-        "lat": 36.556935,
-        "lng": -121.922331,
-        "venues": [
-          {
-            "slug": "aubergine-the-restaurant-at-l-auberge-carmel",
-            "name": "Aubergine the restaurant at L'Auberge Carmel",
-            "type": "restaurant"
-          },
-          {
-            "slug": "chez-noir",
-            "name": "Chez Noir",
-            "type": "restaurant"
-          },
-          {
-            "slug": "yafa",
-            "name": "Yafa",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "big-sur",
-        "display": "Big Sur",
-        "country": "United States",
-        "country_code": "US",
-        "venue_count": 2,
-        "lat": 36.225864,
-        "lng": -121.762211,
-        "venues": [
-          {
-            "slug": "nepenthe",
-            "name": "Nepenthe",
-            "type": "restaurant"
-          },
-          {
-            "slug": "sierra-mar",
-            "name": "Sierra Mar",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "seaside",
-        "display": "Seaside",
-        "country": "United States",
-        "country_code": "US",
-        "venue_count": 2,
-        "lat": 33.464476,
-        "lng": -103.99454,
-        "venues": [
-          {
-            "slug": "maligne",
-            "name": "Maligne",
-            "type": "restaurant"
-          },
-          {
-            "slug": "the-daytrader-tiki-bar-and-restaurant",
-            "name": "The Daytrader Tiki Bar and Restaurant",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
-        "slug": "aptos",
-        "display": "Aptos",
-        "country": "United States",
-        "country_code": "US",
-        "venue_count": 1,
-        "lat": 36.978045,
-        "lng": -121.899688,
-        "venues": [
-          {
-            "slug": "mentone",
-            "name": "Mentone",
-            "type": "restaurant"
-          }
-        ]
-      }
-    ]
+    ],
+    "country": "United States"
   },
   {
     "slug": "algarve",
     "display": "Algarve",
-    "country": "Portugal",
     "center_lat": 37.088648,
     "center_lng": -8.188589,
     "venue_count": 7,
@@ -25164,12 +25193,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Portugal"
   },
   {
     "slug": "cape-winelands",
     "display": "Cape Winelands",
-    "country": "South Africa",
     "center_lat": -33.91193,
     "center_lng": 18.990539,
     "venue_count": 7,
@@ -25227,12 +25256,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "South Africa"
   },
   {
     "slug": "cotswolds",
     "display": "Cotswolds",
-    "country": "United Kingdom",
     "center_lat": 51.728722,
     "center_lng": -2.089497,
     "venue_count": 7,
@@ -25339,12 +25368,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United Kingdom"
   },
   {
     "slug": "los-cabos",
     "display": "Los Cabos",
-    "country": "Mexico",
     "center_lat": 23.121023,
     "center_lng": -109.909551,
     "venue_count": 7,
@@ -25418,12 +25447,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Mexico"
   },
   {
     "slug": "val-dorcia",
     "display": "Val d'Orcia",
-    "country": "Italy",
     "center_lat": 43.078399,
     "center_lng": 11.628396,
     "venue_count": 7,
@@ -25508,12 +25537,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "cappadocia",
     "display": "Cappadocia",
-    "country": "Turkey",
     "center_lat": 38.437164,
     "center_lng": 34.824901,
     "venue_count": 6,
@@ -25593,12 +25622,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Turkey"
   },
   {
     "slug": "goa",
     "display": "Goa",
-    "country": "India",
     "center_lat": 15.541905,
     "center_lng": 73.76767,
     "venue_count": 6,
@@ -25656,12 +25685,12 @@
         "lng": 73.766202,
         "venues": []
       }
-    ]
+    ],
+    "country": "India"
   },
   {
     "slug": "maui",
     "display": "Maui",
-    "country": "United States",
     "center_lat": 20.9746,
     "center_lng": -156.651345,
     "venue_count": 6,
@@ -25730,12 +25759,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United States"
   },
   {
     "slug": "slovenian-alps",
     "display": "Slovenian Alps",
-    "country": "Slovenia",
     "center_lat": 46.365844,
     "center_lng": 13.849254,
     "venue_count": 6,
@@ -25826,12 +25855,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Slovenia"
   },
   {
     "slug": "japanese-alps",
     "display": "Japanese Alps",
-    "country": "Japan",
     "center_lat": 36.140057,
     "center_lng": 138.272261,
     "venue_count": 5,
@@ -25895,12 +25924,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Japan"
   },
   {
     "slug": "lake-como",
     "display": "Lake Como",
-    "country": "Italy",
     "center_lat": 45.806392,
     "center_lng": 9.09615,
     "venue_count": 5,
@@ -25986,12 +26015,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Italy"
   },
   {
     "slug": "sacred-valley",
     "display": "Sacred Valley",
-    "country": "Peru",
     "center_lat": 4.286703,
     "center_lng": -54.849771,
     "venue_count": 5,
@@ -26044,12 +26073,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Peru"
   },
   {
     "slug": "scottish-highlands",
     "display": "Scottish Highlands",
-    "country": "United Kingdom",
     "center_lat": 56.649013,
     "center_lng": -4.640252,
     "venue_count": 5,
@@ -26129,12 +26158,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United Kingdom"
   },
   {
     "slug": "yucatan-peninsula",
     "display": "Yucatán Peninsula",
-    "country": "Mexico",
     "center_lat": 20.731708,
     "center_lng": -89.853607,
     "venue_count": 5,
@@ -26198,12 +26227,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Mexico"
   },
   {
     "slug": "alentejo",
     "display": "Alentejo",
-    "country": "Portugal",
     "center_lat": 38.772727,
     "center_lng": -7.740438,
     "venue_count": 4,
@@ -26262,12 +26291,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Portugal"
   },
   {
     "slug": "aspen-and-roaring-fork-valley",
     "display": "Aspen and Roaring Fork Valley",
-    "country": "United States",
     "center_lat": 39.189616,
     "center_lng": -106.819622,
     "venue_count": 4,
@@ -26299,12 +26328,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United States"
   },
   {
     "slug": "baltics",
     "display": "Baltics",
-    "country": "Lithuania",
     "center_lat": 54.946452,
     "center_lng": 24.285521,
     "venue_count": 4,
@@ -26363,12 +26392,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Lithuania"
   },
   {
     "slug": "madeira",
     "display": "Madeira",
-    "country": "Portugal",
     "center_lat": 32.641819,
     "center_lng": -16.921677,
     "venue_count": 4,
@@ -26405,12 +26434,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Portugal"
   },
   {
     "slug": "canadian-rockies",
     "display": "Canadian Rockies",
-    "country": "Canada",
     "center_lat": 51.292254,
     "center_lng": -115.871132,
     "venue_count": 3,
@@ -26448,12 +26477,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Canada"
   },
   {
     "slug": "isle-of-skye",
     "display": "Isle of Skye",
-    "country": "United Kingdom",
     "center_lat": 57.469007,
     "center_lng": -6.514925,
     "venue_count": 3,
@@ -26496,12 +26525,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United Kingdom"
   },
   {
     "slug": "norfolk-coast",
     "display": "Norfolk Coast",
-    "country": "United Kingdom",
     "center_lat": 52.904622,
     "center_lng": 0.975738,
     "venue_count": 3,
@@ -26555,12 +26584,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United Kingdom"
   },
   {
     "slug": "niagara-peninsula",
     "display": "Niagara Peninsula",
-    "country": "Canada",
     "center_lat": 43.158842,
     "center_lng": -79.298036,
     "venue_count": 2,
@@ -26598,12 +26627,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Canada"
   },
   {
     "slug": "santa-ynez-valley",
     "display": "Santa Ynez Valley",
-    "country": "United States",
     "center_lat": 34.669764,
     "center_lng": -120.210801,
     "venue_count": 2,
@@ -26641,12 +26670,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United States"
   },
   {
     "slug": "setouchi-region",
     "display": "Setouchi Region",
-    "country": "Japan",
     "center_lat": 34.361062,
     "center_lng": 132.385413,
     "venue_count": 2,
@@ -26673,12 +26702,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Japan"
   },
   {
     "slug": "western-norway",
     "display": "Western Norway",
-    "country": "Norway",
     "center_lat": 53.932827,
     "center_lng": 5.267144,
     "venue_count": 2,
@@ -26705,12 +26734,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Norway"
   },
   {
     "slug": "yorkshire-dales",
     "display": "Yorkshire Dales",
-    "country": "United Kingdom",
     "center_lat": 54.242152,
     "center_lng": -1.860018,
     "venue_count": 2,
@@ -26748,12 +26777,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United Kingdom"
   },
   {
     "slug": "barossa-valley",
     "display": "Barossa Valley",
-    "country": "Australia",
     "center_lat": -34.493532,
     "center_lng": 138.910585,
     "venue_count": 1,
@@ -26775,12 +26804,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Australia"
   },
   {
     "slug": "cape-cod",
     "display": "Cape Cod",
-    "country": "United States",
     "center_lat": 41.722828,
     "center_lng": -69.99532,
     "venue_count": 1,
@@ -26802,12 +26831,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United States"
   },
   {
     "slug": "douro-valley",
     "display": "Douro Valley",
-    "country": "Portugal",
     "center_lat": 41.154971,
     "center_lng": -7.769449,
     "venue_count": 1,
@@ -26829,12 +26858,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Portugal"
   },
   {
     "slug": "galapagos-islands",
     "display": "Galápagos Islands",
-    "country": "Ecuador",
     "center_lat": -0.645522,
     "center_lng": -90.279365,
     "venue_count": 1,
@@ -26856,12 +26885,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Ecuador"
   },
   {
     "slug": "greek-islands",
     "display": "Greek Islands",
-    "country": "Greece",
     "center_lat": 39.689141,
     "center_lng": 19.834903,
     "venue_count": 1,
@@ -26883,12 +26912,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Greece"
   },
   {
     "slug": "maldives",
     "display": "Maldives",
-    "country": "Maldives",
     "center_lat": 5.828854,
     "center_lng": 73.211551,
     "venue_count": 1,
@@ -26910,12 +26939,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Maldives"
   },
   {
     "slug": "margaret-river",
     "display": "Margaret River",
-    "country": "Australia",
     "center_lat": -33.716842,
     "center_lng": 115.045935,
     "venue_count": 1,
@@ -26937,12 +26966,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Australia"
   },
   {
     "slug": "nantucket",
     "display": "Nantucket",
-    "country": "United States",
     "center_lat": 41.329338,
     "center_lng": -69.99693,
     "venue_count": 1,
@@ -26964,12 +26993,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United States"
   },
   {
     "slug": "northern-norway",
     "display": "Northern Norway",
-    "country": "Norway",
     "center_lat": 68.576168,
     "center_lng": 15.229007,
     "venue_count": 1,
@@ -26991,12 +27020,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Norway"
   },
   {
     "slug": "okinawa",
     "display": "Okinawa",
-    "country": "Japan",
     "center_lat": 26.218799,
     "center_lng": 127.694219,
     "venue_count": 1,
@@ -27018,12 +27047,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Japan"
   },
   {
     "slug": "santorini",
     "display": "Santorini",
-    "country": "Greece",
     "center_lat": 36.421496,
     "center_lng": 25.430777,
     "venue_count": 1,
@@ -27045,12 +27074,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Greece"
   },
   {
     "slug": "saxon-switzerland",
     "display": "Saxon Switzerland",
-    "country": "Germany",
     "center_lat": 50.963195,
     "center_lng": 13.943261,
     "venue_count": 1,
@@ -27072,12 +27101,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Germany"
   },
   {
     "slug": "tasmania",
     "display": "Tasmania",
-    "country": "Australia",
     "center_lat": -42.785454,
     "center_lng": 147.064346,
     "venue_count": 1,
@@ -27099,12 +27128,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Australia"
   },
   {
     "slug": "ubud",
     "display": "Ubud",
-    "country": "Indonesia",
     "center_lat": -8.542275,
     "center_lng": 115.25733,
     "venue_count": 1,
@@ -27126,12 +27155,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "Indonesia"
   },
   {
     "slug": "wine-country-northern-california",
     "display": "Wine Country (Northern California)",
-    "country": "United States",
     "center_lat": 39.135597,
     "center_lng": -123.719577,
     "venue_count": 1,
@@ -27153,12 +27182,12 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United States"
   },
   {
     "slug": "florida-keys",
     "display": "Florida Keys",
-    "country": "United States",
     "center_lat": 24.551572,
     "center_lng": -81.801121,
     "venue_count": 1,
@@ -27180,6 +27209,7 @@
           }
         ]
       }
-    ]
+    ],
+    "country": "United States"
   }
 ]
