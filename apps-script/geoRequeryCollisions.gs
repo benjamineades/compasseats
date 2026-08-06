@@ -14,11 +14,33 @@
  * 'geo_requery_done'. A result is only ACCEPTED when the returned address
  * actually contains the target city (so it can't grab another wrong pin).
  *
- * RUN:  clearRequeryTargets (once)  ->  geoRequeryCollisions  (repeat until 0)
+ * RUN:  clearRequeryTargets (once)  ->  geoRequeryCollisionsPreview (dry run,
+ *       new, no cost)  ->  geoRequeryCollisions  (repeat until 0)
  *       -> then reshapeCompassEats.
+ *
+ * PATCH Aug 6, 2026: fixed a matching bug — the target-pair check compared
+ * against each row's SLUG, but the pair list is keyed by NAME. Since a slug
+ * (e.g. "taian-table") never equals a name (e.g. "Taian Table"), the live run
+ * would have matched none of the 12 target pairs and silently done nothing.
+ * Now matches on name, same as targetPairSet_() builds it. Also added
+ * geoRequeryCollisionsPreview(), a read-only dry run with no API calls and no
+ * writes, so this can be verified before it's ever run live.
  */
 
-var TARGET_PAIRS = JSON.parse(`[["agave-restaurante","Ubon Ratchathani"],["alto-ristorante","Caracas"],["alto-ristorante","Cervia"],["alto-ristorante","Hong Kong"],["amano-mexican","Christchurch"],["amelia-by-paulo-airaudo","Dubai"],["ancestral-restaurante","La Paz"],["anima-milano-enrico-bartolini","Tuttlingen"],["aoyama-sushi-umi","Panama City"],["aria-restaurant","Atlanta"],["armani-ristorante-paris","Dubai"],["armani-ristorante-paris","New York"],["atelier-restaurant","Auckland"],["atelier-restaurant","Domodossola"],["atelier-restaurant","Ottawa"],["auberge-de-l-ill","Sapporo"],["aulis-london","Phang-Nga"],["avant","Shenzhen"],["bagatelle","Dole"],["beefbar-hong-kong","Monaco"],["beluga-mediterranean-restaurant","Maastricht"],["berenjak-dubai","London"],["bistro-quellenhof","Noordeloos"],["blossom-restaurant","Las Vegas"],["blossom-restaurant","Shanghai"],["boucherie-august","Augsburg"],["boucherie-august","Jakarta"],["boucherie-august","New Orleans"],["cafe-boulud-at-maison-barnes","Palm Beach"],["cafe-boulud-at-maison-barnes","Toronto"],["carbone-new-york","Hong Kong"],["carbone-new-york","Las Vegas"],["cheval-blanc-restaurant","Basel"],["cheval-blanc-restaurant","Illschwang"],["chez-philippe-bar-grill","Memphis"],["coa","Shanghai"],["coro-restaurant","Orvieto"],["crystal-jade-restaurant","Hong Kong"],["cut-by-wolfgang-puck","Las Vegas"],["cut-by-wolfgang-puck","Los Angeles"],["cut-by-wolfgang-puck","New York"],["da-terra-restaurant","Nara"],["da-vittorio","Sankt Moritz"],["dadong-roast-duck-restaurant","Shanghai"],["dialog-in-the-dark-japan","Los Angeles"],["dill-restaurant","Lewes"],["doma-cuisine-d-humeur-vins-chines","Miami"],["dry-martini-barcelona","Sorrento"],["eau-de-vie-sydney","Melbourne"],["edo-restaurant","Crans Montana"],["el-gato-negro-tapas-manchester","Vilnius"],["elcielo-restaurant-washington-d-c","Bogotá"],["elements-deli-restaurant-lounge","Princeton"],["esplanade-saarbrucken","Desenzano del Garda"],["estiatorio-milos-las-vegas","Miami"],["estiatorio-milos-las-vegas","New York"],["flower-drum-restaurant-melbourne","Hong Kong"],["ginza-sushi-ichi-singapore","Tokyo"],["goat-bangkok","Auckland"],["gourmetrestaurant-le-pavillon-martin-herrmann","New York"],["gucci-osteria-da-massimo-bottura","Los Angeles"],["guido-restaurant","Fontanafredda"],["hangzhou-at-west-lake-four-seasons-hotel-chinese-food-restaurant","Tokyo"],["hangzhou-at-west-lake-four-seasons-hotel-chinese-food-restaurant","Vught"],["hangzhou-at-west-lake-four-seasons-hotel-chinese-food-restaurant","Waasmunster"],["harmonie-restaurant","Lichtenberg"],["harry-s-piccolo-trieste","Porec"],["hong-kong-uc7ud0","Hong Kong"],["hoppers-doha","London"],["hoppers-doha","Tokyo"],["hotel-restaurant-adler-daniel-otto-fehrenbacher","Ried Muotathal"],["howard-s-gourmet","Beijing"],["hutong-new-york","London"],["igniv-andermatt-by-andreas-caminada","Bad Ragaz"],["igniv-bangkok","Bad Ragaz"],["igniv-bangkok","Zürich"],["imperial-treasure-fine-chinese-cuisine","Shanghai"],["imperial-treasure-fine-chinese-cuisine-tsim-sha-tsui","Guangzhou"],["imperial-treasure-fine-chinese-cuisine-tsim-sha-tsui","Shanghai"],["imperial-treasure-fine-teochew-cuisine","Guangzhou"],["inaba-japanese-restaurant","Honolulu"],["indochine-restaurant","Stellenbosch"],["isshisouden-nakamura","Tokyo"],["ivy-sydney","Los Angeles"],["iwasaki-restaurante-japones","Kyoto"],["jamavar-doha","Bengaluru"],["jamavar-doha","Dubai"],["jamavar-doha","London"],["joel-robuchon","Paris"],["joel-robuchon","Taipei"],["julia-restaurante","Tokyo"],["kabuto-edomae-sushi","San Francisco"],["kaiten-sushi-ginza-onodera-kyoto","Tokyo"],["kalustyan-s","Doha"],["kappo-japanese-cuisine","Madrid"],["l-amitie-cheongdam","Tokyo"],["l-aparte","Montrabé"],["l-echappee-belle-hotel-restaurant","Lanaye"],["l-epicurien","Herve"],["l-orangerie-restaurant-menton","Paris"],["l-orangerie-restaurant-menton","Pornic"],["la-becasse-aachen","Osaka"],["la-mar-cevicheria-peruana","Miami"],["la-villa-restaurant","Melfi"],["labs-house","Taipei"],["lyla-restaurant-rooms","Tokyo"],["macau-3bt2d8","Macau"],["man-ho-chinese-restaurant","Hangzhou"],["meta-restaurant","Lugano"],["mirabelle-salle-a-manger","Bekkjarvik"],["mirabelle-salle-a-manger","Vail and Beaver Creek, Colorado"],["miura-hotel","Los Angeles"],["molino-de-urdaniz","Urdániz"],["morimoto-maui","Las Vegas"],["morimoto-maui","Philadelphia"],["mother-bakery-cafe-south-slope","Toronto"],["mott-32-las-vegas","Hong Kong"],["mott-32-las-vegas","Toronto"],["mott-32-las-vegas","Vancouver"],["nara-prison-museum-by-hoshino-resorts","Tokyo"],["narisawa","Shanghai"],["nikuya-tanaka-ginza","Singapore"],["nobu-london-old-park-lane","New York"],["nub-restaurante","Nakhon Ratchasima"],["ox-belfast","Darmstadt"],["ox-belfast","Portland"],["ox-belfast","Reykjavík"],["oxalis","Schluchsee"],["pco-bar","Mumbai"],["perilla-korean-steakhouse","London"],["poggio-rosso-ristorante","Milan"],["primo-restaurant","Orlando"],["putien-kitchener-road","Hong Kong"],["restaurant-allium-quimper","Penrith"],["restaurant-apicius","Bad Zwischenahn"],["restaurant-apicius","Clermont-Ferrand"],["restaurant-apicius","Paris"],["restaurant-apicius","Tokyo"],["restaurant-belveder","Osaka"],["restaurant-demo","Santiago"],["restaurant-demo","Vilnius"],["restaurant-ergo","Dubai"],["restaurant-est","Tokyo"],["restaurant-fleur-de-sel","Honfleur"],["restaurant-focus-atelier","Canterbury"],["restaurant-guy-savoy","Las Vegas"],["restaurant-jan-jan-hartwig","Nice"],["restaurant-marie","Amsterdam"],["restaurant-nuance","Plomeur"],["restaurant-petrus","London"],["restaurante-alameda","Hondarribia"],["restaurante-carmen","Lima"],["restaurante-montia","Desenzano del Garda"],["restaurante-pabu","San Francisco"],["restaurante-toki","Tokyo"],["ristorante-agora","London"],["ristorante-il-moro","Los Angeles"],["salmon-guru-a-contracorriente","Dubai"],["salmon-guru-a-contracorriente","Milan"],["schwarzer-adler-restaurant","Vogtsburg im Kaiserstuhl"],["seed-library-nyc","London"],["sexy-fish-dubai","London"],["sexy-fish-dubai","Manchester"],["sexy-fish-dubai","Miami"],["smoked-room-madrid-fire-omakase-by-dani-garcia","Dubai"],["sorrel-restaurant","San Francisco"],["spago","Maui"],["sublime-restaurante","Tokyo"],["sundays-restaurant","Queenstown"],["sushi-kanesaka-palace-hotel-tokyo","London"],["sushi-kanesaka-palace-hotel-tokyo","Seoul"],["sushi-saito-thailand","Tokyo"],["sushi-zo","New York"],["sushiyoshi-taipei","Hong Kong"],["taian-men","Guangzhou"],["tan","Beijing"],["tea-cocktails","Athens"],["temple-of-heaven","Kyoto"],["terra-sg","Sarentino"],["the-bazaar-by-jose-andres","New York"],["the-bulgari-bar","Milan"],["the-bulgari-bar","Rome"],["the-diplomat-hong-kong","Milwaukee"],["the-river-cafe","Calgary"],["the-river-cafe","New York"],["traube-blansingen","Trimbach"],["tschuggen-grand-hotel-arosa","Ascona"],["u-s-embassy-consulate-in-the-republic-of-korea","Busan"],["uchi-austin","Miami"],["vetri-cucina-las-vegas","Philadelphia"],["wagyumafia-hong-kong","Tokyo"],["xinrongji","Hong Kong"],["yong-fu-hong-kong","Shanghai"],["yoshino-new-york","Tokyo"],["yu-zhi-lan","Chengdu"],["yunico-japanese-fine-dining","Osaka"],["yuzhilan-fabrics","Hangzhou"]]`);   // [[slug, city], ...] — the mispinned rows to re-pin
+var TARGET_PAIRS = [
+  ['Taian Table',                                    'Guangzhou'],
+  ['Imperial Treasure Fine Chinese Cuisine Guangzhou','Guangzhou'],
+  ['Imperial Treasure Fine Teochew Cuisine',          'Guangzhou'],
+  ['La Mar',                                          'Miami'],
+  ['Sexy Fish',                                       'London'],
+  ['Sexy Fish',                                       'Manchester'],
+  ['Sexy Fish',                                       'Miami'],
+  ['The Ivy',                                         'Los Angeles'],
+  ['Avant',                                           'Shenzhen'],
+  ["L'Aparté",                                        'Montrabé'],
+  ['Sublime',                                         'Tokyo'],
+  ['Spice Market',                                    'Doha']
+];
 function targetPairSet_() {
   var m = {}; TARGET_PAIRS.forEach(function (p) { m[p[0] + '||' + String(p[1]).trim().toLowerCase()] = true; });
   return m;
@@ -27,6 +49,82 @@ function targetPairSet_() {
 var MAX_REQUERY   = 400;   // lookups per run (cost + 6-min-limit control)
 var REQUERY_DELAY = 120;   // ms between API calls
 var REQUERY_LOG_TAB = 'geo_requery_done';
+
+/**
+ * PREVIEW ONLY. No API calls. No writes. Tells you exactly what the live run
+ * would do: which of the 12 pairs it actually finds in the venues tab, which
+ * ones it can't find at all (name/spelling mismatch — needs a look before
+ * spending anything), and which it would skip because they're already done.
+ */
+function geoRequeryCollisionsPreview() {
+  var ss = SpreadsheetApp.getActive();
+
+  var v = ss.getSheetByName('venues');
+  if (!v) throw new Error('No venues tab.');
+  var vv = v.getDataRange().getValues();
+  var H = {}; vv[0].forEach(function (h, i) { H[String(h).toLowerCase()] = i; });
+  var iSlug = H['slug'], iName = H['name'], iCityDisp = H['city_display'];
+
+  var pairSet = targetPairSet_();
+
+  var esheet = ss.getSheetByName('Places Enrichment');
+  if (!esheet) throw new Error('No Places Enrichment tab.');
+  var done = {};
+  var ev = esheet.getDataRange().getValues();
+  for (var er = 1; er < ev.length; er++) { var k = ev[er][0]; if (k) done[String(k)] = true; }
+
+  var logSheet = ss.getSheetByName(REQUERY_LOG_TAB);
+  if (logSheet) {
+    var lv = logSheet.getDataRange().getValues();
+    for (var lr = 1; lr < lv.length; lr++) { var lk = lv[lr][0]; if (lk) done[String(lk)] = true; }
+  }
+
+  var foundPairs = {};
+  var targets = {};
+
+  for (var rr = 1; rr < vv.length; rr++) {
+    var slug = String(vv[rr][iSlug] || '').trim(); if (!slug) continue;
+    var cd = String(vv[rr][iCityDisp] || '').trim();
+    var nm = String(vv[rr][iName] || '').trim();
+    if (!nm || !cd) continue;
+    var pk = nm + '||' + cd.toLowerCase();
+    if (!pairSet[pk]) continue;
+
+    foundPairs[pk] = true;
+    var keyNC = normKey_(nm) + '|' + cityKey_(cd);
+    if (!targets[keyNC]) targets[keyNC] = { name: nm, city: cd, row: rr + 1, willSkip: !!done[keyNC] };
+  }
+
+  var lines = [];
+  lines.push('=== PREVIEW ONLY — no API calls made, nothing written ===\n');
+
+  TARGET_PAIRS.forEach(function (p) {
+    var pk = p[0] + '||' + String(p[1]).trim().toLowerCase();
+    if (!foundPairs[pk]) {
+      lines.push('NO MATCH IN venues TAB: "' + p[0] + '" / "' + p[1] + '" — check exact spelling, accents, or apostrophe type against the venues tab name column.');
+    }
+  });
+
+  var keys = Object.keys(targets);
+  var toQuery = keys.filter(function (k) { return !targets[k].willSkip; });
+  var alreadyDone = keys.filter(function (k) { return targets[k].willSkip; });
+
+  lines.push('\nMatched venue rows: ' + keys.length + ' (out of ' + TARGET_PAIRS.length + ' pairs in TARGET_PAIRS)');
+  lines.push('Would query (paid call) this run: ' + toQuery.length);
+  lines.push('Already have an enrichment/log entry, would be skipped: ' + alreadyDone.length);
+
+  lines.push('\n--- Would query ---');
+  toQuery.forEach(function (k) { lines.push('  ' + targets[k].name + ' / ' + targets[k].city + '  (row ' + targets[k].row + ')'); });
+
+  if (alreadyDone.length) {
+    lines.push('\n--- Already done, would be skipped ---');
+    alreadyDone.forEach(function (k) { lines.push('  ' + targets[k].name + ' / ' + targets[k].city + '  (row ' + targets[k].row + ')'); });
+  }
+
+  var msg = lines.join('\n');
+  Logger.log(msg);
+  SpreadsheetApp.getUi().alert(msg);
+}
 
 function geoRequeryCollisions() {
   var ss = SpreadsheetApp.getActive();
@@ -42,7 +140,6 @@ function geoRequeryCollisions() {
   var pairSet = targetPairSet_();
   var useTargets = TARGET_PAIRS.length > 0;
 
-  // "done" = keys already in Places Enrichment + keys already attempted (log tab).
   var esheet = ss.getSheetByName('Places Enrichment');
   if (!esheet) throw new Error('No Places Enrichment tab.');
   var done = {};
@@ -59,14 +156,13 @@ function geoRequeryCollisions() {
     for (var lr = 1; lr < lv.length; lr++) { var lk = lv[lr][0]; if (lk) done[String(lk)] = true; }
   }
 
-  // Build unique remaining targets (only the mispinned pairs).
-  var targets = {}; // key -> {name, city}
+  var targets = {};
   for (var rr = 1; rr < vv.length; rr++) {
     var slug = String(vv[rr][iSlug] || '').trim(); if (!slug) continue;
     var cd = String(vv[rr][iCityDisp] || '').trim();
-    if (useTargets) { if (!pairSet[slug + '||' + cd.toLowerCase()]) continue; }
     var nm = String(vv[rr][iName] || '').trim();
     if (!nm || !cd) continue;
+    if (useTargets) { if (!pairSet[nm + '||' + cd.toLowerCase()]) continue; }
     var keyNC = normKey_(nm) + '|' + cityKey_(cd);
     if (done[keyNC]) continue;
     if (!targets[keyNC]) targets[keyNC] = { name: nm, city: cd };
@@ -93,7 +189,6 @@ function geoRequeryCollisions() {
     var cityMatch = !cityNorm || normKey_(res.address || '').indexOf(cityNorm) >= 0;
 
     if (nameMatch && cityMatch) {
-      // Store the venue's OWN name — never Google's displayName.
       enrichRows.push([keys[t], tg.name, 'geo-requery', res.placeId,
         res.lat, res.lng, res.photoName || '', res.address || '', res.status || '', today]);
       logRows.push([keys[t], 'ACCEPT', today]);
