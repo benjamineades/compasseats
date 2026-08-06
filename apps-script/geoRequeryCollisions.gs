@@ -14,17 +14,27 @@
  * 'geo_requery_done'. A result is only ACCEPTED when the returned address
  * actually contains the target city (so it can't grab another wrong pin).
  *
- * RUN:  clearRequeryTargets (once)  ->  geoRequeryCollisionsPreview (dry run,
- *       new, no cost)  ->  geoRequeryCollisions  (repeat until 0)
+ * RUN:  clearRequeryTargets (once)  ->  geoRequeryDiagnose (read-only, check
+ *       real name/city text first)  ->  geoRequeryCollisionsPreview (dry run,
+ *       no cost)  ->  geoRequeryCollisions  (repeat until 0)
  *       -> then reshapeCompassEats.
  *
- * PATCH Aug 6, 2026: fixed a matching bug — the target-pair check compared
+ * PATCH Aug 6, 2026 (a): fixed a matching bug — the target-pair check compared
  * against each row's SLUG, but the pair list is keyed by NAME. Since a slug
  * (e.g. "taian-table") never equals a name (e.g. "Taian Table"), the live run
  * would have matched none of the 12 target pairs and silently done nothing.
- * Now matches on name, same as targetPairSet_() builds it. Also added
+ * Now matches on name, same as targetPairSet_() builds it. Added
  * geoRequeryCollisionsPreview(), a read-only dry run with no API calls and no
- * writes, so this can be verified before it's ever run live.
+ * writes.
+ *
+ * PATCH Aug 6, 2026 (b): preview run found 11 of 12 pairs have NO matching row
+ * in venues at all by exact name+city — added geoRequeryDiagnose(), a read-only
+ * scan that reports the real name/city_display text for anything resembling
+ * the 12 target venues, so the mismatch (spelling, accents, or the row not
+ * existing yet) can be seen directly instead of guessed at. Also wrapped the
+ * alert() popups in try/catch since running from the editor without the Sheet
+ * open in a tab throws "Cannot call SpreadsheetApp.getUi()" — harmless, the
+ * Logger.log output is unaffected and is what matters.
  */
 
 var TARGET_PAIRS = [
@@ -50,12 +60,53 @@ var MAX_REQUERY   = 400;   // lookups per run (cost + 6-min-limit control)
 var REQUERY_DELAY = 120;   // ms between API calls
 var REQUERY_LOG_TAB = 'geo_requery_done';
 
+function safeAlert_(msg) {
+  try { SpreadsheetApp.getUi().alert(msg); } catch (e) { /* no UI in this run context — Logger.log already has it */ }
+}
+
 /**
- * PREVIEW ONLY. No API calls. No writes. Tells you exactly what the live run
- * would do: which of the 12 pairs it actually finds in the venues tab, which
- * ones it can't find at all (name/spelling mismatch — needs a look before
- * spending anything), and which it would skip because they're already done.
+ * READ-ONLY DIAGNOSTIC. No writes, no API calls. Scans the venues tab for any
+ * row whose name loosely resembles one of the 12 target venues, and prints out
+ * exactly what's stored: name, city_display, city_slug, slug, id. Use this to
+ * see the REAL text before trying to match it exactly.
  */
+function geoRequeryDiagnose() {
+  var ss = SpreadsheetApp.getActive();
+  var v = ss.getSheetByName('venues');
+  if (!v) throw new Error('No venues tab.');
+  var vv = v.getDataRange().getValues();
+  var H = {}; vv[0].forEach(function (h, i) { H[String(h).toLowerCase()] = i; });
+  var iSlug = H['slug'], iName = H['name'], iCityDisp = H['city_display'], iCitySlug = H['city_slug'], iId = H['id'];
+
+  var needles = [
+    'taian table', 'imperial treasure', 'la mar', 'sexy fish',
+    'the ivy', 'avant', 'apart', 'sublime', 'spice market'
+  ];
+
+  var lines = [];
+  for (var rr = 1; rr < vv.length; rr++) {
+    var nm = String(vv[rr][iName] || '');
+    var nmLower = nm.toLowerCase();
+    for (var n = 0; n < needles.length; n++) {
+      if (nmLower.indexOf(needles[n]) >= 0) {
+        lines.push(
+          'row ' + (rr + 1) +
+          ' | name: "' + nm + '"' +
+          ' | city_display: "' + String(vv[rr][iCityDisp] || '') + '"' +
+          ' | city_slug: "' + String(vv[rr][iCitySlug] || '') + '"' +
+          ' | slug: "' + String(vv[rr][iSlug] || '') + '"' +
+          ' | id: "' + String(vv[rr][iId] || '') + '"'
+        );
+        break;
+      }
+    }
+  }
+
+  var msg = lines.length ? lines.join('\n') : 'No rows found containing any of the target names — none of these venues currently exist in venues at all under a recognizable name.';
+  Logger.log(msg);
+  safeAlert_(msg.length > 1500 ? (msg.slice(0, 1500) + '\n... (see Execution log for full list)') : msg);
+}
+
 function geoRequeryCollisionsPreview() {
   var ss = SpreadsheetApp.getActive();
 
@@ -123,7 +174,7 @@ function geoRequeryCollisionsPreview() {
 
   var msg = lines.join('\n');
   Logger.log(msg);
-  SpreadsheetApp.getUi().alert(msg);
+  safeAlert_(msg);
 }
 
 function geoRequeryCollisions() {
@@ -217,5 +268,5 @@ function geoRequeryCollisions() {
     (remainingAfter > 0 ? 'Run geoRequeryCollisions AGAIN to continue.'
                         : 'Done - all targets attempted. NEXT: run reshapeCompassEats.');
   Logger.log(msg);
-  SpreadsheetApp.getUi().alert(msg);
+  safeAlert_(msg);
 }
