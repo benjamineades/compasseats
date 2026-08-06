@@ -1462,9 +1462,9 @@
     "display": "Athens",
     "country": "Greece",
     "country_code": "GR",
-    "lat": 37.97561,
-    "lng": 23.732815,
-    "venue_count": 27
+    "lat": 37.975603,
+    "lng": 23.732593,
+    "venue_count": 26
   },
   {
     "slug": "athlone",
@@ -1822,9 +1822,9 @@
     "display": "Bad Ragaz",
     "country": "Switzerland",
     "country_code": "CH",
-    "lat": 46.819065,
-    "lng": 9.504001,
-    "venue_count": 4
+    "lat": 46.999515,
+    "lng": 9.504144,
+    "venue_count": 3
   },
   {
     "slug": "bad-rippoldsau",
@@ -7150,9 +7150,9 @@
     "display": "Doha",
     "country": "Qatar",
     "country_code": "QA",
-    "lat": 25.37659,
-    "lng": 51.531581,
-    "venue_count": 12
+    "lat": 25.347576,
+    "lng": 51.531971,
+    "venue_count": 11
   },
   {
     "slug": "dol-pri-vogljah",
@@ -14125,9 +14125,9 @@
     "display": "London",
     "country": "United Kingdom",
     "country_code": "GB",
-    "lat": 51.511782,
-    "lng": -0.132648,
-    "venue_count": 247
+    "lat": 51.5119,
+    "lng": -0.132668,
+    "venue_count": 246
   },
   {
     "slug": "long-beach",
@@ -14215,9 +14215,9 @@
     "display": "Los Angeles",
     "country": "United States",
     "country_code": "US",
-    "lat": 34.06393,
-    "lng": -118.308862,
-    "venue_count": 117
+    "lat": 34.063701,
+    "lng": -118.308951,
+    "venue_count": 116
   },
   {
     "slug": "los-cabos",
@@ -17024,9 +17024,9 @@
     "display": "New York",
     "country": "United States",
     "country_code": "US",
-    "lat": 40.733085,
-    "lng": -73.986992,
-    "venue_count": 348
+    "lat": 40.733074,
+    "lng": -73.987071,
+    "venue_count": 347
   },
   {
     "slug": "newbury",
@@ -23567,9 +23567,9 @@
     "display": "Serralunga d'Alba",
     "country": "Italy",
     "country_code": "IT",
-    "lat": 44.594311,
-    "lng": 7.999737,
-    "venue_count": 3
+    "lat": 44.616343,
+    "lng": 7.9943,
+    "venue_count": 2
   },
   {
     "slug": "serravalle-pistoiese",
@@ -26078,7 +26078,7 @@
     "display": "Tux",
     "country": "Austria",
     "country_code": "AT",
-    "lat": 47.13517,
+    "lat": 47.135171,
     "lng": 11.704439,
     "venue_count": 2
   },
@@ -26195,9 +26195,9 @@
     "display": "Urdániz",
     "country": "Spain",
     "country_code": "ES",
-    "lat": 33.979943,
-    "lng": 60.001564,
-    "venue_count": 2
+    "lat": 42.909185,
+    "lng": -1.533997,
+    "venue_count": 1
   },
   {
     "slug": "urgup",
@@ -28481,9 +28481,9 @@
     "display": "Zürich",
     "country": "Switzerland",
     "country_code": "CH",
-    "lat": 47.372218,
-    "lng": 8.53989,
-    "venue_count": 34
+    "lat": 47.372223,
+    "lng": 8.539867,
+    "venue_count": 33
   },
   {
     "slug": "zweiflingen",

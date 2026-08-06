@@ -8004,9 +8004,9 @@
   {
     "slug": "piedmont",
     "display": "Piedmont",
-    "center_lat": 44.903758,
-    "center_lng": 3.982342,
-    "venue_count": 67,
+    "center_lat": 44.904259,
+    "center_lng": 3.982218,
+    "venue_count": 66,
     "city_count": 44,
     "cities": [
       {
@@ -8137,32 +8137,6 @@
         ]
       },
       {
-        "slug": "serralunga-dalba",
-        "display": "Serralunga d'Alba",
-        "country": "Italy",
-        "country_code": "IT",
-        "venue_count": 3,
-        "lat": 44.594311,
-        "lng": 7.999737,
-        "venues": [
-          {
-            "slug": "guido-restaurant",
-            "name": "Guido Restaurant",
-            "type": "restaurant"
-          },
-          {
-            "slug": "guido-ristorante",
-            "name": "Guido Ristorante",
-            "type": "restaurant"
-          },
-          {
-            "slug": "la-rei-natura-by-michelangelo-mammoliti",
-            "name": "La Rei Natura by Michelangelo Mammoliti",
-            "type": "restaurant"
-          }
-        ]
-      },
-      {
         "slug": "alba",
         "display": "Alba",
         "country": "Italy",
@@ -8200,6 +8174,27 @@
           {
             "slug": "ristorante-borgo-sant-anna",
             "name": "Ristorante Borgo Sant'Anna",
+            "type": "restaurant"
+          }
+        ]
+      },
+      {
+        "slug": "serralunga-dalba",
+        "display": "Serralunga d'Alba",
+        "country": "Italy",
+        "country_code": "IT",
+        "venue_count": 2,
+        "lat": 44.616343,
+        "lng": 7.9943,
+        "venues": [
+          {
+            "slug": "guido-ristorante",
+            "name": "Guido Ristorante",
+            "type": "restaurant"
+          },
+          {
+            "slug": "la-rei-natura-by-michelangelo-mammoliti",
+            "name": "La Rei Natura by Michelangelo Mammoliti",
             "type": "restaurant"
           }
         ]
@@ -8990,8 +8985,8 @@
             "type": "restaurant"
           },
           {
-            "slug": "bar-du-majestic",
-            "name": "Bar du Majestic",
+            "slug": "bar-fouquet-s",
+            "name": "Bar Fouquet's",
             "type": "bar"
           },
           {
@@ -9383,9 +9378,9 @@
   {
     "slug": "swiss-alps",
     "display": "Swiss Alps",
-    "center_lat": 46.520292,
-    "center_lng": 8.586585,
-    "venue_count": 54,
+    "center_lat": 46.526307,
+    "center_lng": 8.58659,
+    "venue_count": 53,
     "city_count": 30,
     "cities": [
       {
@@ -9471,15 +9466,10 @@
         "display": "Bad Ragaz",
         "country": "Switzerland",
         "country_code": "CH",
-        "venue_count": 4,
-        "lat": 46.819065,
-        "lng": 9.504001,
+        "venue_count": 3,
+        "lat": 46.999515,
+        "lng": 9.504144,
         "venues": [
-          {
-            "slug": "igniv-andermatt-by-andreas-caminada",
-            "name": "IGNIV Andermatt by Andreas Caminada",
-            "type": "restaurant"
-          },
           {
             "slug": "igniv-bangkok",
             "name": "IGNIV Bangkok อิกนีฟ แบงค็อก",
@@ -16919,12 +16909,12 @@
         "country": "Austria",
         "country_code": "AT",
         "venue_count": 2,
-        "lat": 47.13517,
+        "lat": 47.135171,
         "lng": 11.704439,
         "venues": [
           {
-            "slug": "hotel-alpenhof",
-            "name": "Hotel Alpenhof",
+            "slug": "geniesserstube-im-alpenhof",
+            "name": "Geniesserstube im Alpenhof",
             "type": "restaurant"
           },
           {
