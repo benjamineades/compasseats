@@ -52,6 +52,23 @@
  * merge and both tab writes have already completed — so the run was marked
  * Failed even though everything succeeded. The summary now goes to
  * Logger.log() only, which works in every context.
+ *
+ * FIXED August 5, 2026 — the all-or-nothing rewrite bug:
+ * This used to clearContents() the ENTIRE venues tab, then write it all back
+ * in a single giant setValues() call (~11,700 rows × every column). On a tab
+ * this size, that one write occasionally hit "Service Spreadsheets timed out"
+ * PARTWAY THROUGH — and because the tab had already been cleared first, a
+ * timeout mid-write left venues holding only whatever fraction the Sheets
+ * service managed to save (this is exactly what caused the Aug 5 incident
+ * where venues silently dropped from 11,774 rows to 9,166).
+ *
+ * Now the script never clears the tab. Each merge group writes its one
+ * "keep" row back individually the moment it's computed, and duplicate rows
+ * are removed with targeted deleteRows() calls afterward, batched into
+ * contiguous runs for speed. If a run times out partway through, whatever
+ * was already written or deleted stays correct — nothing untouched can be
+ * lost — and a re-run simply picks up the remaining duplicate groups (they
+ * won't have been deleted yet, so they're found again automatically).
  */
 
 var MV_VENUES_TAB = 'venues';
@@ -70,6 +87,8 @@ function mergeDuplicateVenues() {
     if (!(c in col)) throw new Error('venues tab is missing column: ' + c);
   });
 
+  var originalCount = vals.length - 1;
+
   // ---- 1) Group rows: place_id + city_slug + type ----
   var groups = {};            // mergeKey -> [rowIndex...]
   var cityByPid = {};         // place_id -> { city_slug: true }
@@ -85,11 +104,11 @@ function mergeDuplicateVenues() {
     cityByPid[pid][cs] = true;
   }
 
-  // ---- 2) Merge each multi-row group ----
+  // ---- 2) Merge each multi-row group, writing the kept row back IMMEDIATELY ----
   var FILL_COLS = ['blurb_short', 'blurb_long', 'chef', 'cuisine_tags',
                    'price_tier', 'photo_url', 'address', 'website',
                    'reservation_url', 'phone', 'neighborhood'];
-  var deleteRows = {};        // rowIndex -> true
+  var deleteRows = {};        // rowIndex (0-based, into vals) -> true
   var mergedGroups = 0, mergedAway = 0;
 
   for (var key2 in groups) {
@@ -134,10 +153,20 @@ function mergeDuplicateVenues() {
       }
     }
 
+    // Write the merged "keep" row back to the sheet right now — small,
+    // single-row write. If the script dies later, this row is already safe.
+    sheet.getRange(keep + 1, 1, 1, headers.length).setValues([vals[keep]]);
+
     for (var d = 1; d < idxs.length; d++) deleteRows[idxs[d]] = true;
     mergedGroups++;
     mergedAway += idxs.length - 1;
+
+    if (mergedGroups % 100 === 0) {
+      SpreadsheetApp.flush();
+      Logger.log('  ...merged ' + mergedGroups + ' groups so far (' + mergedAway + ' rows queued for deletion)');
+    }
   }
+  SpreadsheetApp.flush();
 
   // ---- 3) Build the review list: place_ids spanning multiple cities ----
   var reviewRows = [];
@@ -161,15 +190,33 @@ function mergeDuplicateVenues() {
     ]);
   }
 
-  // ---- 4) Rewrite the venues tab without the merged-away rows ----
-  var out = [headers];
-  for (var k = 1; k < vals.length; k++) {
-    if (!deleteRows[k]) out.push(vals[k]);
+  // ---- 4) Delete the merged-away rows — bottom-up, batched into contiguous runs ----
+  // (See the FIXED August 5, 2026 note at the top of this file for why this
+  // replaced the old clearContents()+setValues(everything) approach.)
+  var deleteRowNums = [];
+  for (var dr in deleteRows) deleteRowNums.push(Number(dr) + 1); // 0-based vals index -> 1-based sheet row
+  deleteRowNums.sort(function (a, b) { return b - a; }); // descending
+
+  var di = 0, deletedSoFar = 0;
+  while (di < deleteRowNums.length) {
+    var runEnd = deleteRowNums[di];
+    var runStart = runEnd;
+    var dj = di;
+    while (dj + 1 < deleteRowNums.length && deleteRowNums[dj + 1] === runStart - 1) {
+      runStart = deleteRowNums[dj + 1];
+      dj++;
+    }
+    var runLength = runEnd - runStart + 1;
+    sheet.deleteRows(runStart, runLength);
+    deletedSoFar += runLength;
+    di = dj + 1;
+
+    if (deletedSoFar % 200 < runLength) {
+      SpreadsheetApp.flush();
+      Logger.log('  ...deleted ' + deletedSoFar + ' of ' + deleteRowNums.length + ' duplicate rows so far');
+    }
   }
-  sheet.clearContents();
-  sheet.getRange(1, 1, out.length, headers.length).setValues(out);
-  sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
-  sheet.setFrozenRows(1);
+  SpreadsheetApp.flush();
 
   // ---- 5) Write the review tab ----
   var rev = ss.getSheetByName(MV_REVIEW_TAB);
@@ -182,7 +229,7 @@ function mergeDuplicateVenues() {
   rev.setFrozenRows(1);
 
   var msg = 'Merge done.\n' +
-    'venues rows: ' + (vals.length - 1) + ' → ' + (out.length - 1) + '\n' +
+    'venues rows: ' + originalCount + ' → ' + (originalCount - mergedAway) + '\n' +
     'merge groups collapsed: ' + mergedGroups + '\n' +
     'duplicate rows removed: ' + mergedAway + '\n' +
     'cross-city place_ids needing review: ' + reviewRows.length +
