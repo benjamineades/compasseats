@@ -1,76 +1,102 @@
 /**
- * CompassEats — Bar List Ingestion (Google Apps Script) v3
+ * CompassEats — Bar List Ingestion (Google Apps Script) v4
  * =========================================================
  * CHANGED IN v2 (June 3, 2026):
  *   Bar ingest NO LONGER writes into the "venues" tab. Reshape rebuilds
  *   "venues" from scratch on every run and was wiping every bar this tool
- *   added. Instead, ingest now folds your pasted bar lists into a single
- *   "Bar Awards" tab — which reshape reads as a normal award source (just
- *   like Michelin, OAD, etc.). Bars now survive reshape and get the same
- *   name -> "Places Enrichment" geo matching as every other venue.
+ *   added. Instead, ingest folds your pasted bar lists into a single
+ *   "Bar Awards" tab — which reshape reads as a normal award source.
  *
  * ADDED July 1, 2026:
  *   fixBarImportDropdown() — one-time repair tool. Re-applies the source_slug
  *   dropdown across the WHOLE "Bar List Import" tab using the current
- *   VALID_BAR_SLUGS list, without touching any pasted data. Run this any
- *   time VALID_BAR_SLUGS changes (like when Europe's 50 Best Bars was added)
- *   and the tab already existed — the dropdown only gets set at tab
- *   creation time otherwise, so it goes stale.
+ *   VALID_BAR_SLUGS list, without touching any pasted data. Run this any time
+ *   VALID_BAR_SLUGS changes and the tab already existed — the dropdown only
+ *   gets set at tab creation time otherwise, so it goes stale.
  *
  * FIXED July 7, 2026:
  *   Removed a duplicate copy of this entire file's variables and functions
- *   that had been appended below the originals. JS keeps the LAST
- *   declaration of a var/function, so the second (stale) copy of
- *   VALID_BAR_SLUGS was silently overriding the first and had dropped
- *   europe-50-best-bars / europe-50-best-bars-51-100 from the valid list —
- *   those two would have failed to ingest. Also added top-500-bars.
+ *   that had been appended below the originals. JS keeps the LAST declaration
+ *   of a var/function, so the second (stale) copy of VALID_BAR_SLUGS was
+ *   silently overriding the first and had dropped europe-50-best-bars /
+ *   europe-50-best-bars-51-100 from the valid list. Also added top-500-bars.
  *
  *   SEPARATE BUG FIXED SAME DAY: the dedupe signature was
  *   source_slug|year|name — no city. Any two venues sharing a brand name in
- *   the same source+year (chain branches like "Punch Room at Edition" in
- *   five different cities, or "Salmon Guru" in three) collided and all but
- *   the first were silently dropped as "duplicates." The restaurant tool
- *   already included city in its signature; this brings the bar tool in
- *   line with it. A real run on Top 500 Bars lost exactly 20 branch venues
- *   this way before the fix (source_slug: top-500-bars, years 2024/2025).
+ *   the same source+year (chain branches like "Punch Room at Edition" in five
+ *   different cities, or "Salmon Guru" in three) collided and all but the
+ *   first were silently dropped as "duplicates." A real run on Top 500 Bars
+ *   lost exactly 20 branch venues this way before the fix.
  *
  * ADDED IN v3 (August 4, 2026) — standing price-capture rule:
- *   Two new OPTIONAL columns: price_symbol_raw, price_source_url. Same rule
- *   as the restaurant tool: whenever a bar/cocktail source shows a
- *   per-venue price indicator, capture it here exactly as displayed, plus
- *   the exact URL you saw it on. Do not interpret or normalize it — this is
- *   a raw record, not a CompassEats price tier. Bars have no price_band
- *   equivalent today and reshape does not currently read a price field from
- *   Bar Awards at all, so these two columns don't feed venues.price_tier
- *   yet — that's separate, larger work (would need its own reshape.gs
- *   change) and isn't part of this addition. Think of this as banking the
- *   raw data now so it's there if/when that work happens, instead of
- *   needing to go re-source it later.
- *   Appended at the very END of the column list on purpose — reshape's
- *   parser reads Bar Awards by column position, so nothing already in
- *   production shifts.
+ *   price_symbol_raw, price_source_url. Capture the source's own price text
+ *   exactly as displayed, plus the URL. Provenance only.
+ *
+ * ADDED IN v4 (August 8, 2026) — standing GEO-capture rule. READ THIS:
+ *   Three new OPTIONAL columns: address_raw, coords_raw, geo_source_url.
+ *
+ *   WHY THIS EXISTS. Every address and coordinate in CompassEats today came
+ *   from Google Places, matched on name + city. That has to go: Google's
+ *   terms prohibit storing Places content, prohibit showing it on a
+ *   non-Google map (CompassEats renders MapLibre), and prohibit using it to
+ *   build a competing local-discovery product.
+ *
+ *   The replacement was going to be open geodata. Testing on a 200-venue
+ *   stratified sample killed that as a standalone answer: measured against
+ *   known coordinates at a 150 m bar, Overture resolved 57%, Geoapify 40%,
+ *   either source 64%. It fails worst exactly where CompassEats is strongest.
+ *
+ *   Bars matter here specifically. They are CompassEats' deliberate wedge,
+ *   and they are typically smaller and newer than starred restaurants, so
+ *   open datasets know them less well. Capturing the address at ingest, from
+ *   the list you are already reading, is by far the cheapest fix.
+ *
+ *   WHAT TO PUT IN THEM
+ *     address_raw    — the street address EXACTLY as the source printed it.
+ *                      Do not reformat, translate, or strip the floor,
+ *                      building or ward.
+ *     coords_raw     — latitude and longitude if the source publishes them,
+ *                      as "lat, lng" in one cell, e.g. "22.281463, 114.158670".
+ *                      Blank if the source doesn't show them.
+ *     geo_source_url — the exact page you read the address off.
+ *
+ *   WHAT NOT TO DO
+ *     Do not paste coordinates from Google Maps, or from any geocoder, into
+ *     coords_raw. This column means "the award source published this."
+ *     Mixing in other sources destroys the provenance that makes the column
+ *     worth having, and in Google's case reintroduces the exact problem being
+ *     removed. Blank is a perfectly good answer.
+ *
+ *   These three columns do NOT feed venues.lat / venues.lng yet. That is a
+ *   separate, deliberate step in the wider re-architecture. This is capture
+ *   only, so the backfill problem stops growing while the rest is designed.
+ *   Appended at the very END of the column list on purpose — reshape's parser
+ *   reads Bar Awards by column position, so nothing in production shifts.
  *
  * TWO FUNCTIONS
  *   makeBarImportTemplate()  creates a blank "Bar List Import" tab with the
  *                            right columns + a dropdown of valid sources.
  *   ingestBarLists()         reads ALL tabs whose name starts with
- *                            "Bar List Import", de-dupes against the
- *                            "Bar Awards" tab, and appends new award rows
- *                            to "Bar Awards". Then you run reshape.
+ *                            "Bar List Import", de-dupes against "Bar Awards",
+ *                            and appends new award rows to it.
  *
  * WORKFLOW
  *   1. Run makeBarImportTemplate() once (skip if the tab already exists).
  *   2. Find a published list (e.g. North America's 50 Best Bars 51-100).
- *   3. Paste rows into the template: source_slug, year, rank, name, city,
- *      country, category_override, [price_symbol_raw], [price_source_url].
- *      One row per bar per year.
+ *   3. Paste rows: source_slug, year, rank, name, city, country,
+ *      category_override, [price_symbol_raw], [price_source_url],
+ *      [address_raw], [coords_raw], [geo_source_url].
  *   4. Run ingestBarLists().        <-- fills "Bar Awards"
  *   5. Run reshapeCompassEats().    <-- folds Bar Awards into venues
  *
- * ONE-TIME MANUAL STEP (do this before running v3 for the first time):
+ * ONE-TIME MANUAL STEP (do this before running v4 for the first time):
  *   Your live "Bar Awards" tab already exists, so the "create tab with
- *   headers" branch below won't fire for it. Add the two new headers by
- *   hand: cell H1 = price_symbol_raw, cell I1 = price_source_url.
+ *   headers" branch below won't fire for it. Add three headers by hand:
+ *     cell J1 = address_raw
+ *     cell K1 = coords_raw
+ *     cell L1 = geo_source_url
+ *   (H1 and I1 should already hold price_symbol_raw and price_source_url from
+ *   the v3 step. If they don't, add those first.)
  *
  * VALID SOURCE SLUGS (must match schema.ts AWARD_SOURCES and reshape):
  *   worlds-50-best-bars, worlds-50-best-bars-51-100,
@@ -144,7 +170,8 @@ function resolveSourceB_(raw) {
 // Column shape of the "Bar Awards" tab (reshape's parser reads these positions)
 var BAR_AWARDS_HEADERS =
   ['source_slug', 'year', 'rank', 'name', 'city', 'country', 'category_override',
-   'price_symbol_raw', 'price_source_url'];
+   'price_symbol_raw', 'price_source_url',
+   'address_raw', 'coords_raw', 'geo_source_url'];
 
 // ---------------------------------------------------------------------------
 function makeBarImportTemplate() {
@@ -157,8 +184,9 @@ function makeBarImportTemplate() {
     return;
   }
   sheet = ss.insertSheet(name);
-  var headers = ['source_slug', 'year', 'rank', 'name', 'city', 'country', 'category_override',
-    'price_symbol_raw', 'price_source_url'];
+  var headers = ['source_slug', 'year', 'rank', 'name', 'city', 'country',
+    'category_override', 'price_symbol_raw', 'price_source_url',
+    'address_raw', 'coords_raw', 'geo_source_url'];
   sheet.getRange(1, 1, 1, headers.length).setValues([headers]).setFontWeight('bold');
   sheet.setFrozenRows(1);
 
@@ -172,9 +200,13 @@ function makeBarImportTemplate() {
 
   // Example rows (delete before importing your real data)
   var examples = [
-    ['north-america-50-best-bars', 2026, 1, 'Sip & Guzzle', 'New York', 'United States', '', '', ''],
-    ['north-america-50-best-bars', 2026, 2, 'Handshake Speakeasy', 'Mexico City', 'Mexico', '', '', ''],
-    ['worlds-50-best-bars-51-100', 2025, 54, 'Bar Mauro', 'Mexico City', 'Mexico', '', '', '']
+    ['north-america-50-best-bars', 2026, 1, 'Sip & Guzzle', 'New York',
+     'United States', '', '', '', '', '', ''],
+    ['north-america-50-best-bars', 2026, 2, 'Handshake Speakeasy', 'Mexico City',
+     'Mexico', '', '', '', '', '', ''],
+    ['worlds-50-best-bars-51-100', 2025, 54, 'Bar Mauro', 'Mexico City',
+     'Mexico', '', '', '', 'Calle Example 123, Roma Norte, 06700',
+     '19.419444, -99.161944', 'https://www.theworlds50best.com/bars/...']
   ];
   sheet.getRange(2, 1, examples.length, headers.length).setValues(examples)
     .setFontColor('#999999').setFontStyle('italic');
@@ -186,29 +218,39 @@ function makeBarImportTemplate() {
     'rank: numeric rank (blank if unranked award)\n' +
     'name/city/country: the venue\n' +
     'category_override: optional — leave blank to auto-build "No. {rank}"\n\n' +
-    'OPTIONAL (blank is fine):\n' +
+    'OPTIONAL price capture (blank is fine):\n' +
     'price_symbol_raw: the price EXACTLY as the source displayed it\n' +
-    '   e.g. "$$", "£30 avg cocktail" -- do not normalize this yourself,\n' +
-    '   just copy what the source said. Provenance only.\n' +
-    'price_source_url: the exact page you saw that price on';
+    '   e.g. "$$", "£30 avg cocktail". Do not normalize it yourself.\n' +
+    'price_source_url: the exact page you saw that price on\n\n' +
+    'OPTIONAL geo capture (NEW — please fill these in whenever the source\n' +
+    'shows them, it saves a great deal of work later):\n' +
+    'address_raw: the street address EXACTLY as printed. Keep the floor,\n' +
+    '   building and ward. Do not reformat or translate.\n' +
+    'coords_raw: "lat, lng" in one cell if the source publishes coordinates.\n' +
+    '   ONLY from the award source itself — never from Google Maps or any\n' +
+    '   other geocoder. Blank is fine.\n' +
+    'geo_source_url: the page you read the address off';
   sheet.getRange('A1').setNote(note);
   sheet.setColumnWidth(4, 220);
   sheet.setColumnWidth(9, 260);
+  sheet.setColumnWidth(10, 320);
+  sheet.setColumnWidth(12, 260);
 
   SpreadsheetApp.getUi().alert(
     'Created "' + name + '".\n\n' +
     'Grey example rows show the format — delete them, paste your real list, ' +
     'then run ingestBarLists.\n\n' +
-    'price_symbol_raw / price_source_url are new: capture the source\'s own ' +
-    'price text and the page it came from, as-is, whenever you see it.\n\n' +
+    'NEW in v4: address_raw / coords_raw / geo_source_url. Fill these in ' +
+    'whenever the award source shows an address. Coordinates ONLY if the ' +
+    'source itself publishes them, never from Google Maps.\n\n' +
     'For multiple lists, duplicate this tab as "' + name + ' 2", etc.');
 }
 
 // ---------------------------------------------------------------------------
 // ONE-TIME REPAIR: re-applies the dropdown to the WHOLE column using the
 // current VALID_BAR_SLUGS list, without touching any pasted values. Safe to
-// run any time — it never deletes or changes cell contents, only the
-// dropdown menu attached to the column.
+// run any time — it never deletes or changes cell contents, only the dropdown
+// menu attached to the column.
 // ---------------------------------------------------------------------------
 function fixBarImportDropdown() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -264,7 +306,7 @@ function ingestBarLists() {
     existing[asig] = true;
   }
 
-  var added = 0, skippedDup = 0, bad = 0, blank = 0;
+  var added = 0, skippedDup = 0, bad = 0, blank = 0, withGeo = 0, withCoords = 0;
   var newRows = [];
 
   for (var si = 0; si < importSheets.length; si++) {
@@ -285,13 +327,20 @@ function ingestBarLists() {
       var catOverride = String(row[6] || '').trim();
       var priceSymbolRaw = String(row[7] || '').trim();
       var priceSourceUrl = String(row[8] || '').trim();
+      var addressRaw = String(row[9] || '').trim();
+      var coordsRaw = String(row[10] || '').trim();
+      var geoSourceUrl = String(row[11] || '').trim();
 
       var sig = src + '|' + year + '|' + normKey2_(name) + '|' + normKey2_(city);
       if (existing[sig]) { skippedDup++; continue; }
       existing[sig] = true; // guard against dups within this same run
 
+      if (addressRaw) withGeo++;
+      if (coordsRaw) withCoords++;
+
       newRows.push([src, year, rank, name, city, country, catOverride,
-                    priceSymbolRaw, priceSourceUrl]);
+                    priceSymbolRaw, priceSourceUrl,
+                    addressRaw, coordsRaw, geoSourceUrl]);
       added++;
     }
   }
@@ -303,12 +352,19 @@ function ingestBarLists() {
   }
 
   var msg =
-    'Bar ingestion complete (v3 — writes to "Bar Awards").\n' +
+    'Bar ingestion complete (v4 — writes to "Bar Awards").\n' +
     'award rows added to "Bar Awards": ' + added + '\n' +
     'duplicate rows skipped: ' + skippedDup + '\n' +
     'invalid source_slug rows skipped: ' + bad + '\n' +
     'blank/partial rows skipped: ' + blank + '\n\n' +
-    'NEXT: run reshapeCompassEats to fold these into the venues tab.';
+    'GEO CAPTURE (new in v4)\n' +
+    '  rows carrying a street address:   ' + withGeo + ' of ' + added + '\n' +
+    '  rows carrying source coordinates: ' + withCoords + ' of ' + added + '\n' +
+    (added > 0 && withGeo === 0
+      ? '  NOTE: no addresses captured this run. If the source publishes them,\n' +
+        '  going back for them later is far more work than doing it now.\n'
+      : '') +
+    '\nNEXT: run reshapeCompassEats to fold these into the venues tab.';
   Logger.log(msg);
   SpreadsheetApp.getUi().alert(msg);
 }
