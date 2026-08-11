@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompassEats — Re-Architecture &amp; Migration Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#211F1C; --bg-2:#28241F; --panel:#2F2A24; --panel-2:#383229;
+    --brass:#C6A15B; --brass-soft:#DEC68F; --cream:#F5F0E6; --cream-dim:#CBC2B0;
+    --cream-dimmer:#988F7E; --clay:#D88A63; --sage:#A4B79F;
+    --line:rgba(198,161,91,.20); --line-soft:rgba(198,161,91,.10);
+    --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,sans-serif;
+    --shadow:0 18px 40px -24px rgba(0,0,0,.7);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:radial-gradient(1100px 640px at 85% -10%, rgba(198,161,91,.10), transparent 60%), var(--bg);
+    color:var(--cream); font-family:var(--sans); font-weight:400; line-height:1.65; padding:56px 22px 100px;
+    -webkit-font-smoothing:antialiased; background-attachment:fixed;}
+  .wrap{max-width:920px;margin:0 auto}
+  .eyebrow{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--brass);font-weight:600;margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.5vw,3rem);letter-spacing:-.02em;line-height:1.05}
+  h1 em{font-style:italic;color:var(--brass-soft)}
+  .meta{margin:18px 0 40px;display:flex;flex-wrap:wrap;gap:10px}
+  .m{font-size:.74rem;color:var(--cream-dim);border:1px solid var(--line);border-radius:100px;padding:5px 13px}
+  .m b{color:var(--brass-soft);font-weight:600}
+  h2{font-family:var(--serif);font-weight:400;font-size:1.55rem;margin:52px 0 6px;color:var(--cream)}
+  h2 .n{color:var(--brass);font-size:1rem;font-weight:600;font-family:var(--sans);margin-right:10px;letter-spacing:.05em}
+  h3{font-size:1rem;font-weight:600;color:var(--brass-soft);margin:22px 0 8px}
+  .lead{color:var(--cream-dim);font-weight:300;margin-bottom:18px;font-size:.96rem}
+  .card{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:13px;padding:22px 24px;margin:16px 0;box-shadow:var(--shadow)}
+  p{margin:9px 0;font-size:.92rem;color:var(--cream-dim);font-weight:300}
+  p strong,li strong,td strong{color:var(--cream);font-weight:600}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:.82em;background:rgba(198,161,91,.12);color:var(--brass-soft);padding:1px 6px;border-radius:5px}
+  ol,ul{margin:10px 0 10px 4px;padding-left:22px}
+  li{font-size:.92rem;color:var(--cream-dim);font-weight:300;margin:7px 0}
+  .flow{font-family:ui-monospace,Menlo,monospace;font-size:.8rem;line-height:1.9;color:var(--cream-dim)}
+  .flow b{color:var(--brass-soft)} .flow .x{color:var(--clay)} .flow .g{color:var(--sage)}
+  .flag{border-left:3px solid var(--clay);background:rgba(216,138,99,.07);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0}
+  .flag b{color:var(--clay)}
+  .ok{border-left:3px solid var(--sage);background:rgba(164,183,159,.07);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0}
+  .ok b{color:var(--sage)}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+  th{color:var(--brass-soft);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+  td{padding:9px 10px;border-bottom:1px solid var(--line-soft);color:var(--cream-dim);font-weight:300;vertical-align:top}
+  .divider{height:1px;background:var(--line);margin:46px 0}
+  footer{margin-top:50px;color:var(--cream-dimmer);font-size:.78rem;font-weight:300;text-align:center}
+  .tag{display:inline-block;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:3px 9px;border-radius:100px;margin-left:8px;vertical-align:middle}
+  .tag.sage{background:rgba(164,183,159,.15);color:var(--sage)}
+  .tag.clay{background:rgba(216,138,99,.15);color:var(--clay)}
+  .tag.brass{background:rgba(198,161,91,.15);color:var(--brass-soft)}
+  .phase-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0}
+  .pm{border:1px solid var(--line-soft);border-radius:9px;padding:10px 14px;font-size:.82rem}
+  .pm b{display:block;color:var(--brass);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Living doc · Architecture</div>
+  <h1>Re-Architecture <em>&amp; Migration Plan</em></h1>
+  <div class="meta">
+    <span class="m">Version <b>1.5</b></span>
+    <span class="m">Updated <b>August 11, 2026</b></span>
+    <span class="m">Author <b>Claude Fable 5</b></span>
+    <span class="m">Status <b>10 of 11 ratified · D6 rejected · in execution</b></span>
+    <span class="m">Responds to <b>handoff-fable-rearchitecture.md (rev. Aug 10)</b></span>
+  </div>
+
+  <p class="lead">A phased plan to rebuild CompassEats, and later Compass Local, on a licence-compliant, automated foundation that one non-technical operator runs alone. It is a design, not code. Every phase names its model and surface, the decisions that need Ben's judgment, effort in Ben's hours, and its rollback position. The decision register in §1 is the work to finish before August 18.</p>
+
+  <div class="card">
+    <h3>The shape of the change, in one look</h3>
+    <p class="flow">
+      <span class="x">Today:</span> Google Sheet (truth) → Apps Script (9-step manual order) → JSON → GitHub drag-drop → Lovable → Lovable's Cloudflare account → compasseats.com<br>
+      <span class="g">After:</span> <b>Postgres (truth, constrained)</b> → <b>jobs in GitHub Actions</b> (staging → report → Ben approves → promote) → <b>versioned, sharded JSON artifacts</b> → <b>Ben's Cloudflare account</b> → compasseats.com<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Google Sheets survive only as disposable <b>review surfaces</b>. Nothing Google-derived is stored except <code>placeId</code> for the photo Worker.
+    </p>
+    <p>Four structural moves carry the whole design. <strong>One:</strong> venue identity moves from names and slugs to immutable internal IDs, which kills the collision class and the orphaned-content class permanently. <strong>Two:</strong> every data mutation becomes a staged job that produces a diff report and cannot promote without Ben's explicit approval — the silent-failure class dies because nothing writes in place. <strong>Three:</strong> the publish is a versioned artifact with a one-click "promote previous version" rollback, so a bad publish is a two-minute problem, not a forensic one. <strong>Four:</strong> every field knows which publisher it came from, so exposure per publisher is a live number with a cap, any publisher's data can be switched off cleanly on request, and no single guide is ever a structural dependency — the architecture's answer to a legal question it cannot itself resolve.</p>
+  </div>
+
+  <h2><span class="n">01</span>Decision register — front-load before August 18</h2>
+  <p class="lead">Ten decisions were ratified by Ben on August 10, 2026, via the formal response doc. D5 carries a rider, recorded in its row. <strong>D6 was rejected</strong> — the rejection, the reasoning, and the replacement rule are recorded in its row, and the auto-accept impact is quantified in §6. From here the plan runs on approvals, not decisions.</p>
+
+  <table>
+    <tr><th style="width:44px">#</th><th>Decision</th><th>Recommendation</th><th style="width:120px">Ben's call</th></tr>
+    <tr><td><strong>D1</strong></td><td><strong>Canonical store.</strong> Supabase Postgres becomes the single source of truth, replacing the Sheet. Alternative: keep the Sheet canonical and only move compute to GitHub Actions.</td><td><strong>Supabase.</strong> The Sheet cannot enforce anything — no uniqueness, no required fields, no transactions. Every silent-corruption incident in §5 traces to that. Postgres makes those failures impossible to commit, not merely discouraged. See §3 for the editing interface.</td><td><b>Yes</b></td></tr>
+    <tr><td><strong>D2</strong></td><td><strong>Operating pattern.</strong> All mutations run as jobs Ben triggers with a "Run workflow" button on GitHub, each producing a report he approves before anything promotes. Sheets are demoted to disposable review surfaces (export a queue, mark accept/reject, import decisions).</td><td><strong>Yes.</strong> This is "approve rather than execute" made literal. It keeps Ben's most fluent motion — reviewing rows in a spreadsheet — without the spreadsheet ever being the truth.</td><td><b>Yes</b></td></tr>
+    <tr><td><strong>D3</strong></td><td><strong>Frontend control &amp; hosting.</strong> Move deployment to Ben's own Cloudflare account. Frontend work moves to Claude Code (run through Cowork) on the GitHub repo, with preview URLs per change. Lovable retires after the swap. Alternative: keep Lovable as the control plane.</td><td><strong>Move.</strong> Today Lovable's account owns production and the domain — "Lovable is replaceable" is only true once that changes. Claude Code with schema validation in CI also removes the default-to-empty edit risk documented in the constraints doc. Keep the Lovable subscription until the swap completes, then cancel.</td><td><b>Yes</b></td></tr>
+    <tr><td><strong>D4</strong></td><td><strong>Missing-geo policy.</strong> No venue is ever dropped or hidden for missing coordinates. Venues resolve to a precision tier (venue / street / neighbourhood / city); low tiers render with an honest "approximate location" treatment. A fifth tier, <code>venue_low</code>, was added Aug 10 for gate-C acceptances — it renders identically to <code>venue</code> and exists only as a queryable set (§6).</td><td><strong>Yes.</strong> This is the release valve that lets the new site launch before geo is 100% solved, and it is the "creative, not cut" answer to the hardest markets.</td><td><b>Yes</b></td></tr>
+    <tr><td><strong>D5</strong></td><td><strong>Google-derived price data is dropped, and the paused price backfill is cancelled</strong> — do not resume it in August. Price rebuilds only from award-source capture (<code>price_symbol_raw</code>, live since ingest v3). <em>Ben’s rider at ratification: price coverage must be rebuilt through free, legally safe channels — venue-website capture explicitly included. The price program in §6 answers this.</em></td><td><strong>Yes.</strong> The 2,253 resolved price points came from the Places API. "Zero stored Google content except placeId" includes them. Resuming the backfill would spend money adding data the migration must delete.</td><td><b>Yes + rider</b></td></tr>
+    <tr><td><strong>D6</strong></td><td><strong>Transitional use of legacy Google coordinates — REJECTED by Ben, Aug 10.</strong> The feasibility tests used the legacy pins to <em>measure</em> the alternatives; D6 would have used them to <em>decide which candidate wins</em>, which derives the production dataset from Maps Platform content and forfeits the clean-provenance claim that is the point of the migration. The purge gate answered storing; it never answered deriving.</td><td><strong>Replacement rule, now permanent:</strong> no Google-derived signal touches any per-venue decision, and resolution jobs have no code path that reads legacy pins. Assessment of the system with legacy pins stays permitted, exactly as in the tests; per-venue derivation never is. <strong>The gate set was measured on Aug 10 and settled by Ben: Gates A + B + C</strong> — agreement, strong-POI, and Overture exact-name in its loose form — all Google-free. With Gate C admitted, the rejection costs nothing: the measured composite out-covers the Google-assisted union (§6).</td><td><b>Rejected</b></td></tr>
+    <tr><td><strong>D7</strong></td><td><strong>Design direction.</strong> Evolve the existing brand (warm charcoal, brass, Fraunces, compass mark) with a restarted layout and UX. Alternative: fresh visual direction from zero.</td><td><strong>Evolve.</strong> The brand system is documented, tested, and matches the "well-travelled friend" promise. Restarting layout while keeping the brand halves the number of taste decisions Phase 4 needs from Ben's weekends.</td><td><b>Evolve</b></td></tr>
+    <tr><td><strong>D8</strong></td><td><strong>Repo goes private now</strong>, after a one-time check that nothing on the live site fetches from <code>raw.githubusercontent.com</code> at runtime (the build imports data at build time per the constraints doc, so this is expected to pass).</td><td><strong>Yes.</strong> A public <code>venues.json</code> full of stored Google coordinates is the most exposed artefact of the licensing issue. Note: after this, Claude sessions read repo data through exports or Actions artifacts instead of raw URLs — a workflow change on our side, covered in Phase 0.</td><td><b>Done Aug 11</b></td></tr>
+    <tr><td><strong>D9</strong></td><td><strong>Data model built for N properties, not two.</strong> The Compass Network doc sketches Stays, Cellars, Roasters beyond Eats and Local. A <code>properties</code> table plus per-property listings costs nothing extra now.</td><td><strong>Yes.</strong> This also supersedes the Compass Local blueprint's "clean clone" infrastructure note — the confirmed decision is one shared framework, and the blueprint gets a one-line update to say so.</td><td><b>Yes</b></td></tr>
+    <tr><td><strong>D10</strong></td><td><strong>Publisher exposure governance.</strong> Every publish report includes a per-publisher exposure table — the share of addresses, coordinates, price, and awards sourced from each guide — tracked <em>cumulatively over all time</em>, not just as a snapshot. A conservative per-publisher cap on guide-sourced backfill data warns in the report and needs a typed override to exceed. <code>award_sources</code> gains two switches: a <strong>suspension flag</strong> that cleanly unpublishes a publisher's data on request (the takedown-ready posture), and a <strong>capture-permission flag</strong> that is the only thing that can turn guide backfill on for that publisher.</td><td><strong>Yes.</strong> This is the new source-diversity requirement made structural. The cumulative ledger, the cap number itself, and the diversification theory all go to the EU IP specialist for confirmation (§6) — the mechanism costs nothing either way.</td><td><b>Yes</b></td></tr>
+    <tr><td><strong>D11</strong></td><td><strong>Residual geo cascade order.</strong> After the open-data pass, the primary residual channel becomes <strong>the venue's own website</strong> — each venue publishes its own single address, so no publisher's compilation is extracted at all. Then Tabelog for Japan (its own terms question), then guide capture spread across publishers (off by default per D10), then manual review, then honest precision labels.</td><td><strong>Yes.</strong> This reorders v1.0's cascade. It shrinks the legally sensitive component to its smallest possible size and works entirely within search-and-verify.</td><td><b>Yes</b></td></tr>
+  </table>
+
+  <h2><span class="n">02</span>Where this plan pushes back on the brief</h2>
+  <div class="card">
+    <p><strong>1 · The three-month clock is realistic for foundation plus swap, with one honest caveat.</strong> The long pole after August 18 is not build time — Claude Code and Cowork carry that — it is Ben's design-review time, which lives in weekend hours. The plan protects the clock two ways: D7 halves the taste decisions, and Phase 4 reviews are batched into three structured weekend sessions rather than a drip. If reviews slip, the swap date slips; scope does not.</p>
+    <p><strong>2 · The diversification theory needs one stress test before the plan leans on it.</strong> The brief's reading — insubstantial extraction from each of several databases breaches none of them — is the standard one. But the same directive also prohibits <em>repeated and systematic</em> extraction of insubstantial parts where it cumulates toward a substantial one (Article 7(5); the BHB ruling read this as cumulation toward reconstitution). Ten years of ingest could cumulate against one publisher even while every snapshot looks diversified. That is why D10's ledger is cumulative over all time, not a current ratio. Whether diversification holds as the primary mitigation is a question for the specialist, not a conclusion from here — the design costs nothing either way. (v1.0's flag on small-batch capture is retired: the assumption was withdrawn and the specialist is being retained, which is the right response.)</p>
+    <p><strong>3 · Permission-then-capture, never capture-then-ask.</strong> With a Michelin conversation opening, sequencing is strategy. Per-publisher guide capture stays off until that publisher's permission or the specialist's clearance arrives, whichever comes first. Capturing first would poison the exact negotiation the brief correctly calls the clean exit — and the non-commercial, full-credit, traffic-back posture is only worth its negotiating weight if the conduct matches it on the day the conversation starts.</p>
+    <p><strong>4 · The brief says the Sheet is replaceable. This plan replaces it as truth but deliberately keeps spreadsheets in the loop as review surfaces.</strong> Reviewing a queue of rows is Ben's fastest, most reliable motion. A pure database review UI would be slower for him and more to build. The line that matters: a spreadsheet may hold a copy for review; it may never again be the record.</p>
+    <p><strong>5 · One survivor list correction.</strong> "What survives" should explicitly include the <strong>slug → venue mapping for every currently indexed URL</strong>. It is implied by "existing URLs unchanged," but it is a migration input that must be extracted and verified, not an emergent property. Phase 1 treats it as first-class data.</p>
+    <p><strong>6 · Days-open stays in the model, unblocked and unblocking.</strong> The venue schema carries <code>days_open</code> with provenance and a confidence flag from day one, populated opportunistically at ingest. Nothing waits on it, and Tonight mode's honest version ("open days confirmed / hours not tracked — call ahead") has a home when its pilot starts.</p>
+  </div>
+
+  <h2><span class="n">03</span>Target architecture</h2>
+
+  <h3>Where the data lives, and how Ben edits it</h3>
+  <div class="card">
+    <p><strong>Canonical store: Supabase (managed Postgres), Pro plan, $25/month.</strong> Chosen over alternatives for four properties that map directly onto this project's scar tissue: real constraints (a write that would orphan or collapse data fails loudly instead of succeeding quietly), real transactions (a timed-out job leaves zero rows changed, never 9,166 of 11,774), daily backups included, and a built-in spreadsheet-style Table Editor.</p>
+    <p><strong>Ben's editing interface, concretely.</strong> For a point fix — a typo, a closed venue, a wrong city — the path is: <em>supabase.com → project → Table Editor → pick the table → filter by name → click the cell → type → save.</em> It looks and feels like a locked-down spreadsheet. For anything touching more than a handful of rows, Ben never edits by hand: he asks Claude, Claude prepares the job, the job produces a report, Ben approves. That split — hand edits for ones, jobs for many — is itself a guard.</p>
+    <p><strong>Review surfaces.</strong> When a batch needs human eyes (geo review queue, merge candidates, ingest anomalies), the job exports a CSV, Ben reviews it in Google Sheets exactly as today, marks accept/reject, and the decisions import back. The Sheet copy is disposable; the record never leaves Postgres.</p>
+    <p><strong>Why not the alternatives.</strong> Keeping the Sheet canonical keeps the disease (no constraints, silent partial writes) under new plumbing. Airtable adds a friendlier UI but weaker guarantees and a new proprietary dependency. Cloudflare D1 is native to the stack but pairs a thinner admin UI with a weaker backup story — the wrong trade for a solo non-technical operator.</p>
+  </div>
+
+  <h3>The pipeline: jobs, reports, approvals</h3>
+  <div class="card">
+    <p>Every transformation the Apps Script suite does today becomes a script in the repo, run by GitHub Actions. Ben's interface is the <strong>Actions tab → pick a workflow → "Run workflow" button</strong>. Three properties are non-negotiable in every job:</p>
+    <ul>
+      <li><strong>Staging first.</strong> Jobs write to staging tables, never live ones. A promote step moves staged data live inside a single transaction.</li>
+      <li><strong>Report before promote.</strong> Every run emits a plain-language report: rows in, rows out, counts by table before/after, invariant results, and a sample of changes. Promotion requires Ben to run the promote workflow and type <code>PUBLISH</code> into a confirmation field. Nothing promotes on its own.</li>
+      <li><strong>Idempotent by batch ID.</strong> Re-running a job with the same batch ID is a no-op, which retires the "report timed out so I ran it twice and duplicated the work" class.</li>
+    </ul>
+    <p>The nine-step manual run order collapses to: <em>run ingest or fix job → read report → approve → run publish → read diff → approve</em>. Order-dependence is enforced in code, not memory.</p>
+  </div>
+
+  <h3>The publish: versioned, sharded, app-ready</h3>
+  <div class="card">
+    <p>The site stays static — that model is cheap, fast, and right. Two changes future-proof it:</p>
+    <ul>
+      <li><strong>Sharded artifacts.</strong> One <code>index.json</code> plus per-city venue files replace the 11&nbsp;MB monolith. This clears the 25&nbsp;MB Worker-bundle ceiling well past 15,000 venues, speeds builds, and — because a mobile app can read the exact same files — is the "mobile-app-ready" answer without running a server. If the app later needs live queries, Supabase's API is already sitting under everything.</li>
+      <li><strong>Versioned with one-click rollback.</strong> Each publish writes to a dated version folder plus a manifest pointer. Rollback is a workflow called <code>promote-previous-version</code>: one click, live in about two minutes, no forensics required first.</li>
+    </ul>
+  </div>
+
+  <h3>Frontend and hosting</h3>
+  <div class="card">
+    <p>Same stack — TanStack Start, React 19, Tailwind v4, MapLibre/MapTiler — deployed from GitHub to <strong>Ben's own Cloudflare account</strong>. Every change is a pull request with a preview URL; Ben reviews the preview on his phone or laptop and clicks merge. Production deploys only from approved merges. The frontend is rebuilt (layout and UX restarted, brand evolved per D7) against the new artifacts by Claude Code, with the existing Lovable-hosted site serving traffic untouched until the swap in Phase 5.</p>
+    <p><strong>Non-commercial by construction.</strong> No ad slots, no sponsored-placement fields in the data model, no affiliate parameters anywhere in the codebase — when reservation deep links arrive on the roadmap, they ship as plain URLs, and the brief's specific trap (booking-platform commission) is named in the frontend's contribution notes so no future session reintroduces it. A Sources &amp; credits page, generated from <code>award_sources</code>, names and links every guide — the traffic-back posture made visible. The published JSON artifacts exist to serve the site, not as a dataset offering: no export or download surface, ever.</p>
+  </div>
+
+  <h2><span class="n">04</span>Data model</h2>
+  <p class="lead">Enough detail to see how identity, awards, provenance, geo, and tenancy fit together. Column-level DDL is a Phase 1 deliverable that Ben reviews as a plain-language summary, not as SQL.</p>
+  <div class="card">
+    <table>
+      <tr><th style="width:190px">Table</th><th>What it holds, and the load-bearing rules</th></tr>
+      <tr><td><code>venues</code></td><td>The venue itself: immutable <code>id</code> (e.g. <code>ve_8fk2xq7d</code>, minted once, never derived from the name), name, native-script name, category, city, status, <code>gers_id</code> (Overture's stable ID as the external join key, where matched). <strong>Rule:</strong> names change only through an explicit rename job that shows downstream impact first — a database trigger blocks casual renames, which retires the <code>acceptReviewRows</code> incident class.</td></tr>
+      <tr><td><code>awards</code> · <code>award_sources</code></td><td>The irreplaceable asset: venue, source, year, rank, category, distinction, source URL. <code>award_sources</code> holds the 26 registered guides plus each source's attribution requirements, its geo/price capability flags from Award Radar, and the two D10 switches: <code>status</code> (active / suspended — the publish builder excludes suspended publishers entirely, the takedown-ready posture) and <code>capture_permission</code> (the only gate that can enable guide backfill for that publisher). <strong>Rule:</strong> an award must reference a registered source — a typo'd source cannot enter the table.</td></tr>
+      <tr><td><code>properties</code> · <code>listings</code></td><td>Multi-tenancy for N properties (D9). A listing joins a venue to a property with per-property fields (Compass Local's trust tier lives here: charted / institution). One venue can appear in more than one property without duplication.</td></tr>
+      <tr><td><code>geo</code></td><td>Coordinates plus <strong>precision tier</strong> (venue / venue_low / street / neighbourhood / city — <code>venue_low</code> renders identically to <code>venue</code> and exists as a queryable lower-confidence set for gate-C acceptances), <strong>accept gate</strong> (<code>agreement</code> / <code>strong_poi</code> / <code>exact_name</code> / <code>ingest</code> / <code>manual</code> — so "which venues came in on which gate" is a query, never a re-derivation), source (<code>venue_site</code> / <code>guide_ingest</code> / <code>overture</code> / <code>geoapify</code> / <code>tomtom</code> / <code>manual</code>), source URL, publisher where a guide is the source, capture date, confidence, and a cross-source-agreement flag. <strong>Provenance is per field, not per venue:</strong> one venue's street address, coordinates, and price can each carry a different source, and the schema records all three independently. <strong>Rule:</strong> a database check constraint makes <code>google</code> an impossible value — the compliance line is enforced by the schema, not by discipline.</td></tr>
+      <tr><td><code>addresses</code></td><td>Raw and structured address, native-script variant where captured, with the same provenance fields and the same no-Google constraint.</td></tr>
+      <tr><td><code>price</code></td><td>Price tier (1–4), source (<code>guide_ingest</code> / <code>venue_site</code> / <code>manual</code> — no Google, and no open-data channel exists for price), source URL, capture date, method (<code>published_symbol</code> or <code>menu_derived</code>), and confidence. <strong>Rule:</strong> the same check constraint pattern — <code>google</code> is an impossible value. The 2,253 Google-derived price points do not migrate.</td></tr>
+      <tr><td><code>slugs</code> · <code>redirects</code></td><td>Slug becomes a display concern: <code>slugs</code> maps (property, city, slug) → venue ID with uniqueness enforced, so a collision cannot be created again. Every currently indexed URL imports as a canonical row — existing URLs unchanged. Where two venues genuinely share a live URL today, the incumbent keeps it, the other gets a disambiguated slug, and a redirect row covers history. Blurbs and all content key on venue ID, never slug — the 351-collision / 776-venue class ends here, permanently, at zero SEO cost.</td></tr>
+      <tr><td><code>blurbs</code></td><td>Short and long text, method (Option B), version, status, and the fetched sources behind each fact. The 141 existing Option B blurbs import as records flagged for rewrite; the ~10,000 generated blurbs do not migrate.</td></tr>
+      <tr><td><code>photo_refs</code></td><td>The <strong>only</strong> table permitted to contain a Google value: <code>place_id</code> for the live photo Worker. Open-licensed alternatives store URL, credit, credit URL, and licence — matching the rebuilt <code>VenuePhoto.tsx</code> props. Quarantining placeId here makes the "zero Google content" claim auditable in one query. <strong>Rule:</strong> a placeId shown to be wrong is dropped, never re-looked-up — the venue falls back to the compass mark.</td></tr>
+      <tr><td><code>ingest_batches</code> · <code>ingest_rows</code></td><td>Staging for every award-list import: raw rows, validation results, dedupe verdicts (signature includes city — the Top 500 Bars branch-collapse cannot recur), and the approval record. Provenance is born here, not bolted on.</td></tr>
+      <tr><td><code>hours</code></td><td><code>days_open</code> with provenance and confidence, per §2 item 5. Structured per-day hours stay out of scope.</td></tr>
+      <tr><td><code>audit_log</code></td><td>Trigger-written record of every row change: table, row, before/after, job or hand-edit, timestamp. Silent mutation becomes a contradiction in terms.</td></tr>
+      <tr><td><code>source_exposure</code> (view)</td><td>The brief's "how much of our address data came from any one publisher" as a live query: per publisher, the current share of each field type <em>and</em> the cumulative count of fields ever captured from that publisher. Rendered in every publish report and checked against the D10 caps. This view is also the honest cost estimate of any suspension — it shows exactly which venues would drop if a publisher asked out.</td></tr>
+    </table>
+  </div>
+
+  <h2><span class="n">05</span>Structural guards — every past incident, and what now makes it impossible</h2>
+  <div class="card">
+    <table>
+      <tr><th>The incident</th><th>The structural counter (not a convention)</th></tr>
+      <tr><td><code>reshapeCompassEats</code> wipes blurbs and price by design; nine-step order is load-bearing</td><td>No in-place rebuilds exist. Jobs write to staging and promote transactionally; content keys on venue ID so no rebuild can orphan it. The run order is enforced in code.</td></tr>
+      <tr><td><code>mergeDuplicateVenues</code> timed out mid-write, silently leaving 9,166 of 11,774 rows</td><td>Transactions: the whole write lands or none of it does. Plus a hard invariant — active venue count cannot drop more than 0.5% in one promote without a typed override.</td></tr>
+      <tr><td><code>acceptReviewRows</code> silently renamed venues, orphaning blurbs downstream</td><td>Names are trigger-protected; renames go through a job that reports downstream impact first. Content keys on ID anyway, so even an approved rename orphans nothing.</td></tr>
+      <tr><td>Bar dedupe signature omitted city; 20 chain branches collapsed silently</td><td>Dedupe identity is a database uniqueness rule scoped by city, not a script convention.</td></tr>
+      <tr><td>Duplicate variable declarations silently dropped two award sources</td><td>Pipeline code lives in a repo with linting and tests in CI; duplicate declarations fail the build. Award sources are rows with referential integrity, not arrays in script files.</td></tr>
+      <tr><td>351 slugs shared across 776 venues; blurbs keyed on slug alone</td><td>Slug uniqueness enforced per (property, city); all content keyed on venue ID. The class is extinct.</td></tr>
+      <tr><td>Constructed guide URL returned a valid-looking wrong restaurant 700&nbsp;km away</td><td>Search-and-verify is encoded in ingest tooling: a fetched page must fuzzy-match expected name and city before any field saves. Constructed URLs have no code path.</td></tr>
+      <tr><td>Bundled regex change broke 700+ matches</td><td>Matching changes run against staging with a delta report (matches gained/lost, sampled) and a gate threshold before they can promote. One change per patch stays the rule; now the report proves it.</td></tr>
+      <tr><td>Report writes time out; re-runs duplicate work</td><td>Jobs are idempotent by batch ID; reports are build artifacts on GitHub, not tab writes that can time out.</td></tr>
+      <tr><td>$370 + $200 runaway API spend</td><td>Three independent layers: provider-side hard quotas (Google already capped at 500/day, $10 budget), job-side max-call parameters with abort-on-cap circuit breakers, and Geoapify kept on the card-less free tier so overage is structurally impossible. No scheduled job can call a pay-per-use API without a cap parameter.</td></tr>
+      <tr><td>Attribution as a thing someone remembers</td><td>The publish builder generates an attribution manifest from actual data provenance in each artifact. A CI check fails the publish if any rendered surface omits a required attribution for sources present. Map and photo components take attribution as required inputs. Omission = red build = no publish.</td></tr>
+      <tr><td>A single publisher's database quietly becomes a load-bearing dependency</td><td>Per-field provenance with a publisher column; the <code>source_exposure</code> view in every publish report; cumulative per-publisher caps that warn and require a typed override; guide capture off by default per publisher until permission or clearance; a suspension switch that unpublishes any publisher's data in one gated job. Exposure is a number Ben reads monthly, not a surprise a letter delivers.</td></tr>
+    </table>
+  </div>
+
+  <h2><span class="n">06</span>The geo &amp; price program</h2>
+  <div class="card">
+    <p>Roughly 10,900 venues need Google-free locations. The program runs in confidence-ordered stages, and D4 means no stage blocks the launch.</p>
+    <ol>
+      <li><strong>Ingest capture (live now, v4).</strong> New venues arrive with geo from their award source. The problem stopped growing on August 8.</li>
+      <li><strong>Open-data pass — start immediately, zero legal risk.</strong> One-time Overture bulk match (Colab or Cowork; the 42-minute DuckDB pattern is fine as a one-off) plus a Geoapify pass across all venues, paced inside the free tier over a few days. <strong>Auto-accept gates — measured Aug 10 by Ben from the two test CSVs, n=200, final.</strong> Precision is scored against the pin each gate actually publishes — a permanent pipeline rule from this measurement. Gates A and C publish Overture's pin (chosen because it carries the GERS join key; Gate A measures 90.0% scored by either pin, so the choice is free); Gate B publishes Geoapify's.
+        <table>
+          <tr><th>Gate</th><th>Definition</th><th>Size</th><th>Precision</th><th>Projected (10,551 active)</th></tr>
+          <tr><td><strong>A</strong></td><td>Overture and Geoapify agree within 150&nbsp;m</td><td>70 (35.0%)</td><td>90.0%</td><td>~3,693</td></tr>
+          <tr><td><strong>B</strong></td><td>Geoapify strong-POI tier</td><td>63 (31.5%)</td><td>87.3%</td><td>~3,324</td></tr>
+          <tr><td><strong>A∪B</strong></td><td>The two originally ratified gates</td><td>82 (41.0%)</td><td>87.8%</td><td>~4,326</td></tr>
+          <tr><td><strong>C</strong></td><td>Overture exact-name match, loose form</td><td>117 (58.5%)</td><td>84.6%</td><td>~6,172</td></tr>
+          <tr><td><strong>A∪B∪C</strong></td><td><strong>The settled composite</strong></td><td><strong>137 (68.5%)</strong></td><td><strong>83.2%</strong></td><td><strong>~7,227 · residual ~3,300</strong></td></tr>
+          <tr><td>ref</td><td>Google-assisted union (the D6 route)</td><td>128 (64.0%)</td><td>legacy-confirmed</td><td>~6,753</td></tr>
+        </table>
+        <strong>The D6 impact, restated with measured numbers:</strong> without Gate C, the rejection costs 46 venues of 200 — 23.0 points, roughly 2,427 venues pushed into the residual. <strong>With Gate C admitted, the rejection costs nothing:</strong> a gate set that uses no Google data at any point out-covers the Google-assisted union by roughly 475 venues. Gate C is admitted in its <em>loose</em> form — the Overture city flag measured as a formatting artefact (strict form: 97 rows at <em>lower</em> precision, 83.5%) and is banned as a gate condition anywhere. <strong>The honest cost:</strong> composite precision drops to 83.2%, roughly 1,200 auto-accepted venues with a pin more than 150&nbsp;m off and no human look. The mitigation uses D4's own machinery: gate-C rows land in the <code>venue_low</code> tier — identical rendering, queryable as its own set — and every geo row records its <code>accept_gate</code>, so that population stays findable for spot-checks, a review queue, or a re-run under a better matcher, with no re-derivation. <strong>Japan holds at roughly 22% auto-accept under any gate mix</strong> — a matching-methodology limit on short romanised names, not a coverage gap; the venue-website channel and Tabelog remain the Japan answer, and the Japan residual plan is not re-scoped on these numbers. <code>geoGateCounts.gs</code> is retired: the numbers above are final, and the gate logic's real home is the Phase 3 pipeline code, with tests.</li>
+      <li><strong>Residual channels, in D11 order:</strong>
+        <ul>
+          <li><strong>The venue's own website — the primary residual channel.</strong> A restaurant publishes its own single address; capturing it extracts no publisher's compilation at all, which places this channel outside the database-right question entirely. Mechanics: web-search the venue by name and city, fuzzy-verify the site actually belongs to it, read the address from schema.org markup or the contact page — search-and-verify throughout, run as slow Cowork browsing batches. The same visit reads the menu, so price capture rides along at zero extra cost (the D5 rider). Strongest exactly at the award tier, where official sites are near-universal; weakest in China, where official web presence is thin.</li>
+          <li><strong>Tabelog for Japan.</strong> Japan is the worst open-data market (40%) and Tabelog is already a registered award source with per-venue pages. Japanese law, not EU database right — its own terms question, on the specialist's list below.</li>
+          <li><strong>Guide structured-data backfill — the swappable component, off by default per publisher (D10).</strong> Browser-based capture (Claude in Chrome / Cowork browsing, since datacentre IPs are blocked), search-and-verify always, and <em>spread across every guide that covers the venue</em> rather than defaulting to Michelin — each accepted field writes its publisher to the exposure ledger, and the caps govern the spread. A publisher's flag flips on only with its permission or the specialist's clearance. Because the earlier channels shrink the residual first, this component covers a few thousand venues at most — the smallest possible extraction footprint if it proceeds at all.</li>
+          <li><strong>Manual review queue</strong> for head cities: exported CSV, Ben's 15-minute review sessions, decisions imported. TomTom fuzzy search assists candidates.</li>
+          <li><strong>Honest precision labels</strong> for whatever remains: neighbourhood- or city-tier pins, visually distinct, clearly marked approximate. Present, honest, never dropped.</li>
+        </ul>
+      </li>
+    </ol>
+    <p><strong>Whichever way the legal answer lands, the architecture holds.</strong> A "no" leaves the guide-backfill flags off: the venue-website channel, Tabelog on its own terms, direct venue outreach, and the precision-label tier carry the residual indefinitely with honesty. A "yes," or a Michelin permission, flips exactly one publisher's flag — nothing else moves. Per-publisher permission is now a first-class outcome, not an afterthought: the conversation the brief is opening plugs straight into the <code>capture_permission</code> switch.</p>
+    <h3>Price rides the same rails — the D5 rider</h3>
+    <p>Price is a field in the same cascade, governed by the same provenance and exposure rules, at zero external cost. Its channels: <strong>award-source capture at ingest</strong> (<code>price_symbol_raw</code>, live since v3, exposure-governed like every guide field); <strong>the venue’s own website</strong>, where the capture job maps menu prices to a tier through a documented per-currency band table, recorded as <code>menu_derived</code>; and <strong>manual entry</strong> for hand-picks. No open-data source carries price, so no channel is invented for it. Display is honest: no confirmed source, no price shown — never inferred from cuisine, awards, or neighbourhood. No pay-per-call API touches the price path.</p>
+    <h3>To the EU IP specialist — five questions this design wants answered</h3>
+    <ol>
+      <li>Does per-publisher diversification hold as the primary mitigation given Article 7(5) on repeated, systematic extraction of insubstantial parts — and what cumulative per-publisher ledger level is prudent as the D10 cap?</li>
+      <li>What posture for continuous small-batch capture at ingest, post-Directmedia — acceptable with diversification, or does it need per-publisher limits of its own?</li>
+      <li>Under the obtained-versus-created inversion: do a guide's <em>coordinates</em> (plausibly created by the guide's own geocoding) sit differently from its <em>street addresses</em> (obtained from the venue)?</li>
+      <li>Tabelog specifically: what does Japanese law and Tabelog's own terms permit for the same activity?</li>
+      <li>Confirm the working assumption that capturing a venue's address from the venue's own website sits outside the frame entirely.</li>
+    </ol>
+  </div>
+
+  <h2><span class="n">07</span>Phases</h2>
+
+  <div class="card">
+    <h3>Phase 0 — Ratify and unblock <span class="tag brass">Aug 10–13</span></h3>
+    <p><strong>Produces:</strong> all eleven decisions made; repo private after the runtime-fetch check; price backfill formally cancelled; Sheet mutation freeze (ingest and emergencies only); Claude's post-private data-access path switched to exports/artifacts; the specialist briefing sent (the five questions in §6); the Michelin conversation briefing (next card) read and owned by Ben. The conversation itself runs as Ben's parallel track — its outcome flips one <code>capture_permission</code> flag and touches nothing else in the plan.</p>
+    <p><strong>Why first:</strong> every later phase consumes these answers. <strong>If skipped:</strong> Phase 1 builds on guesses and the August 18 cliff arrives with judgment work still open.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>D1–D9 — all front-loadable, all binary</div>
+      <div class="pm"><b>Model &amp; surface</b>Fable in chat</div>
+      <div class="pm"><b>Ben's hours</b>3–4</div>
+      <div class="pm"><b>Rollback</b>Nothing changes yet except repo visibility, which is reversible in one click</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Michelin conversation — briefing note <span class="tag brass">Phase 0 deliverable</span></h3>
+    <p><strong>What to say.</strong> Solo-built and non-commercial by decision, not circumstance: no ads, no affiliate links, no paid placement, no dataset licensing or resale, cost recovery only. Every listing names Michelin and links back to the guide; a Sources &amp; credits page does the same site-wide. The site carries only the fact of recognition — award, year, distinction — never inspector text or a substitute for the guide, and it sends readers <em>to</em> Michelin. The ask: permission to reference the street address and map coordinates published on Michelin's public venue pages, for venues Michelin recognises, with attribution in whatever form Michelin prefers. The offer: attribution their way, a volume cap, a standing contact, and takedown honoured structurally — one switch unpublishes every Michelin-sourced field (§4, <code>award_sources.status</code>).</p>
+    <p><strong>What not to say.</strong> No mention of what happens if they decline, and no mention of capture capability — the position is a request, not a notice. No legal framing: do not cite the database directive, do not ask for waivers; ask for permission like a neighbour, not a settlement like a counterparty. No other guides' names or terms. No traffic projections or growth commitments. No unprompted tour of internal compliance history.</p>
+    <p><strong>What a good outcome looks like.</strong> Good: written permission — an email suffices — to use address data with attribution, which flips Michelin's <code>capture_permission</code> flag and nothing else. Great: a data contact or feed. Acceptable: a friendly no — the D11 channels carry the residual and the relationship survives intact. The meta-goal either way is a precedent and a tone for the other 25 sources. Timing: send after the specialist has glanced at the wording of the ask — one small check, not a delay.</p>
+  </div>
+
+  <div class="card">
+    <h3>Phase 1a — Reconciliation dry run <span class="tag sage">COMPLETE — both passes clean, Aug 11</span></h3>
+    <p><strong>Why it exists (per the Aug 10 response):</strong> Phase 1 lands a constrained schema against the availability cliff, and a constrained schema surfaces every latent judgment call at once. So the constraints ran against the data first, read-only, and Phase 1's dates stay provisional until the number is complete. <strong>First pass ran August 10 against the published dataset</strong> (venues.json + cities.json + regions.json, the faithful projection of the live venues tab). Findings, grouped by resolution class:</p>
+    <table>
+      <tr><th style="width:150px">Class</th><th>Finding</th></tr>
+      <tr><td>Passes clean</td><td>Zero missing required fields across 10,912 rows (10,551 active / 361 closed). Zero orphaned city links. Zero malformed awards or bad years. Zero unparsable or out-of-range coordinates. <strong>Zero real URL collisions</strong> — no two venues share a city + slug path, so the slug table imports with no disambiguation at all. The remembered 351-slug problem measures today at 318 slugs / 710 venues shared <em>across</em> cities — the blurb-keying class, which ID-keying retires automatically.</td></tr>
+      <tr><td>Mechanical</td><td>Mint internal IDs for all rows (10,911 of 10,912 current IDs are Google placeIds used as the public primary key — they move to <code>photo_refs</code> quarantine). Convert string lat/lng to numbers. Drop Google-derived address, price, and coordinate fields by design. Source-registry reconciliation, now measured: the frontend registry holds <strong>28</strong> sources; published data carries <strong>24</strong>; the four absent are named with causes, and <strong>none is silent loss</strong>. <code>tabelog</code> — registered ahead of ingest (the geo-capture calibration run is the preparation). <code>africa-50-best-restaurants</code> — registered ahead, roadmap entry, nothing ingested. <code>worlds-50-best-restaurants-51-100</code> — the list exists publicly but was never ingested under any slug: a backlog item for Award Radar, not a defect. <code>worlds-50-best-bars-51-100</code> — a naming-convention artefact: 149 awards with ranks 51–100 already live under the parent <code>worlds-50-best-bars</code> slug. Bonus finding: the extended-list convention is inconsistent (World's bars = parent slug + rank; NA and Asia bars = separate -51-100 slugs) — the <code>award_sources</code> migration picks one convention for all.</td></tr>
+      <tr><td>Correctness defect<br><span style="font-size:.72rem;color:var(--clay)">reclassified Aug 10</span></td><td><strong>The 174 placeId groups are a live production bug first and a duplicate question second</strong> — a placeId names one physical place, so cross-city sharing can never mean "branches." The discriminator screen ran Aug 10, measured: <strong>7 same-city groups (14 rows)</strong> — true duplicates, routed to merge_review. <strong>2 cross-city groups with plainly different venues (4 rows)</strong> — wrong placeId confirmed (Tai'an Table Shanghai / Taian Men Guangzhou; The Ivy Sydney / ivy Sydney "Los Angeles"). <strong>165 cross-city groups with matching names (367 rows)</strong> — the dominant pattern is a multi-location venue whose branches all carry the flagship's placeId (Da Vittorio Brusaporto/Saint-Moritz, both Bombana rows, JAN Munich/Nice), meaning <em>at least one row's placeId is wrong in every group</em>, whether or not the rows are duplicates. Live consequence today: a wrong placeId feeds the photo Worker, so those venues can show another restaurant's photograph on the current site. Triage: correctness defect first (batch screen with citations, per the merge_review rule), duplicates routed onward; <strong>resolved before the photo Worker carries into the rebuild</strong>. <strong>Rule, now permanent: a wrong placeId is dropped, never corrected</strong> — correcting means returning to Google, the dependency this migration removes. The venue falls back to the compass mark: honest, and D4's logic applied to photos. Separately: 508 venues share 233 exactly-identical pins — overlaps this class; many are legitimate multi-venue buildings.</td></tr>
+      <tr><td>Individual judgment</td><td><strong>15 same-city duplicate-name groups (30 venues)</strong>, including both Bombana pairs (Hong Kong and Macau) — the 7 same-city placeId groups sit largely inside these. A name-contamination screen list of <strong>322 heuristic candidates</strong> — the true subset is smaller (spot checks show many legitimate official names); a fast batch screen shrinks it before any row-level work.</td></tr>
+      <tr><td>Remaining, non-blocking</td><td>Sheet-only tabs: the 59 <code>needs_enrichment</code> rows (confirmed not a <code>venues</code>-tab column — they live in another tab, located at Phase 1 kickoff), review queues, <code>closed_venues</code> logic, Places Enrichment. <strong>Pass one validated the publish path; pass two validates the source.</strong> Method pinned per the Aug 10 response: read the raw <code>venues</code> tab directly with <code>getDataRange().getValues()</code> — never an export of an export, which inherits whatever the first export dropped. The script is delivered: <code>phase1aPassTwo.gs</code>, read-only, with the published expectations embedded for comparison, and the absent-source scan built in as the definitive lost-vs-never-ingested check.</td></tr>
+      <tr><td>Pass two result<br><span style="font-size:.72rem;color:var(--sage)">Aug 11</span></td><td><strong>Clean — the raw tab and the published dataset are the same dataset, row for row.</strong> 10,912 rows both sides; statuses identical (10,551 active / 361 closed); zero blank rows; zero blank required fields. The nine flagged cities reconciled exactly: each raw count equals published active + closed, and each delta equals that city's closed count — the flags were an expectation-spec bug (active-only counts embedded, all statuses counted), not data loss. The raw duplicate figure (32 groups / 118 rows) reproduces identically on published data under the same method; 18 of those groups (90 rows) are the non-Latin name-collapse artefact, and the real set remains the known 15 / 30 — zero raw-only duplicates. All four absent sources returned 0 at source: never ingested is now definitive, since a whole-row scan can only over-count and found nothing. <strong>No silent drop exists anywhere between source and publish.</strong></td></tr>
+    </table>
+    <p><strong>Sizing verdict:</strong> judgment-class volume is in the low hundreds and mostly batchable — the 200-row shape, not the 2,000-row shape. The existing Phase 1 estimate (4–6 Ben-hours) holds. Dates firm the moment the second pass confirms the Sheet-only tabs add nothing structural. <strong>Both passes completed Aug 11 and reconciled row-for-row: Phase 1 dates are firm.</strong></p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>Read this inventory; make the sizing call after the second pass</div>
+      <div class="pm"><b>Model &amp; surface</b>Sonnet-grade mechanical, run from chat; second pass needs one Apps Script run by Ben</div>
+      <div class="pm"><b>Ben's hours</b>~0.5</div>
+      <div class="pm"><b>Rollback</b>Read-only throughout — nothing to roll back</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Phase 1 — Canonical store and migration <span class="tag brass">Aug 12–18 — FIRM (Phase 1a clean)</span></h3>
+    <p><strong>Produces:</strong> Supabase project with the §4 schema, constraints, and audit triggers; a one-time migration of the Sheet into staging with a verification report (row counts per table vs the Sheet, award totals per source, checksum samples); internal IDs minted; the slug map extracted from live URLs and imported; the collision list resolved under the §4 slug policy with Ben reviewing a sample plus every head-city case; Google-derived coordinate and price values excluded from the migration (they remain only in the legacy Sheet ahead of the Phase 5 purge); Sheet marked read-only legacy with a banner.</p>
+    <p><strong>Why here:</strong> everything downstream keys on IDs and the store. <strong>If skipped or deferred:</strong> the pipeline and frontend would build against a moving target and re-key later — the exact foundation-rework this brief exists to prevent.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>Schema sign-off (plain-language summary), collision-sample review — both before Aug 18</div>
+      <div class="pm"><b>Model &amp; surface</b>Opus/Fable for schema; Claude Code via Cowork for migration scripts; Sonnet for mechanical export</div>
+      <div class="pm"><b>Ben's hours</b>4–6</div>
+      <div class="pm"><b>Rollback</b>Fully additive — the Sheet remains untouched truth until Phase 5 cutover</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Phase 2 — Pipeline jobs and guards <span class="tag brass">Aug 15–25</span></h3>
+    <p><strong>Produces:</strong> the ingest importer (Award Radar CSV → staging → validation report → approve → promote); the publish builder (Postgres → sharded, versioned artifacts + attribution manifest + the <code>source_exposure</code> report in every publish diff); the invariant suite from §5, now with the D10 exposure caps; <code>promote-previous-version</code> rollback; the typed-confirmation promote gate; two supervised end-to-end runs with Ben. The Apps Script suite stays installed but idle as a fallback until decommission.</p>
+    <p><strong>Why here:</strong> guards must exist before any real data operation runs on the new store. <strong>If skipped:</strong> the new store inherits the old operating risk — the outcome D2 exists to prevent.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>None new — walkthrough and approvals only</div>
+      <div class="pm"><b>Model &amp; surface</b>Claude Code via Cowork builds; Opus reviews the invariant suite; Ben approves in GitHub</div>
+      <div class="pm"><b>Ben's hours</b>3–4</div>
+      <div class="pm"><b>Rollback</b>Versioned artifacts make every publish reversible in one click; legacy pipeline still runnable</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Phase 3 — Geo &amp; price resolution program <span class="tag brass">Aug 15 → rolling</span></h3>
+    <p><strong>Produces:</strong> the open-data pass complete; auto-accepts promoted; the residual quantified per market (which finally sizes the legal-dependent module precisely); the review-queue loop live in Ben's 15-minute format; the venue-website channel live, reading address and price in one visit; precision tiers populated for every venue and price tiers wherever a confirmed source exists.</p>
+    <p><strong>Hard checkpoint (per the Aug 10 response):</strong> when the full open-data pass completes, if the measured residual lands materially outside ≈&nbsp;3,300 (the A∪B∪C projection), the residual channels are re-planned <em>before</em> any Phase 4 design work starts, not after.</p>
+    <p><strong>Why here:</strong> runs in parallel the moment the store exists; the frontend needs precision tiers to design the pin states. <strong>If deferred:</strong> launch quality drops in exactly the markets that matter most, or the swap waits on geo — D4 exists so neither has to happen.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>None open — the gate set (A+B+C) was measured and settled Aug 10; gate-C output carries the <code>venue_low</code> tier</div>
+      <div class="pm"><b>Model &amp; surface</b>Cowork + Colab for Overture one-off; Sonnet jobs for Geoapify; Cowork browsing for venue-website capture; Claude in Chrome for guide capture only per-publisher, on permission or clearance</div>
+      <div class="pm"><b>Ben's hours</b>~2 up front, then ~15 min/week triage</div>
+      <div class="pm"><b>Rollback</b>All staged; nothing reaches the site except through gated publishes</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Phase 4 — Frontend rebuild <span class="tag brass">Sept, weekends</span></h3>
+    <p><strong>Produces:</strong> the restarted site on the new artifacts under D7's evolved brand: same routes, redirect handling, sharded data loading, required-attribution components, live photo Worker (wired only after the wrong-placeId triage from Phase 1a clears), honest-geo pin states, days-open display where confident, the Sources &amp; credits page generated from <code>award_sources</code>, and component slots that leave room for Tonight mode and save-to-list without building them — all non-commercial by construction per §3. Reviewed through preview URLs in <strong>three structured weekend sessions</strong>: (1) direction — home, city page, venue page; (2) full walkthrough; (3) polish and sign-off.</p>
+    <p><strong>Why here:</strong> building against real, final-shaped artifacts prevents rework. <strong>If rushed earlier:</strong> the frontend chases a moving data shape — a rerun of history.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>D7 now; then taste calls inside the three sessions</div>
+      <div class="pm"><b>Model &amp; surface</b>Claude Code via Cowork with the frontend-design skill; Ben reviews previews</div>
+      <div class="pm"><b>Ben's hours</b>8–10, across weekends</div>
+      <div class="pm"><b>Rollback</b>The live Lovable site serves production untouched throughout; the rebuild lives on branches</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Phase 5 — Parallel run and swap <span class="tag brass">Late Sept – mid Oct</span></h3>
+    <p><strong>Produces:</strong> a URL-parity report (every indexed URL old vs new, redirects verified); Search Console readiness; the DNS cutover runbook executed click-by-click (domain moves from Lovable's settings to Ben's Cloudflare); 30 days of the Lovable deployment kept warm; then decommission — Apps Script retired, Sheet archived, <strong>legacy Google coordinate and price columns purged with a verified deletion report (the legacy-purge gate)</strong>, Lovable cancelled.</p>
+    <p><strong>Why here:</strong> the swap is the point of everything before it. <strong>If skipped:</strong> two systems forever, and the compliance exposure never actually closes.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>Go/no-go on the parity report — a 20-minute read and one call</div>
+      <div class="pm"><b>Model &amp; surface</b>Sonnet for parity tooling; chat for the runbook; Ben clicks the cutover steps</div>
+      <div class="pm"><b>Ben's hours</b>2–3</div>
+      <div class="pm"><b>Rollback</b>Repoint DNS back to Lovable within minutes for 30 days; artifact rollback covers data</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Phase 6 — Compass Local instantiation <span class="tag sage">Nov onward</span></h3>
+    <p><strong>Produces:</strong> a second <code>properties</code> row, its ingest configuration, its theme tokens (terracotta register per the network doc), and a skeleton site on the shared framework — proving multi-property with near-zero new architecture. Content becomes the real work, on Local's own clock.</p>
+    <div class="flag"><p><b>Conscious deviation from the brief, flagged per the Aug 10 response:</b> the brief confirmed both properties built together inside the three-month target; this plan lands Local's skeleton in November, after the flagship swap. The data model carries Local from day one (D9), so the deviation is sequencing only — but it is a decision on the record, not an assumption that slid through.</p></div>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>Naming and register confirmations, on Local's timeline</div>
+      <div class="pm"><b>Model &amp; surface</b>Claude Code via Cowork</div>
+      <div class="pm"><b>Ben's hours</b>~2 for the skeleton</div>
+      <div class="pm"><b>Rollback</b>A property row that simply is not published</div>
+    </div>
+  </div>
+
+  <div class="ok"><p><b>Parallel content track — not a phase, but with a stated launch target (per the Aug 10 response).</b> Venue pages ship gracefully blurb-less (awards, map, address, photo carry the page), and the Option B program runs alongside everything via Cowork batches per the runbook: hand-picks first, then head cities, the 141 rewrites folded in. <strong>Launch blurb-coverage target: 100% of hand-picks plus every active venue in the top 10 cities — 2,433 venues today</strong> (Tokyo 587, New York 347, Hong Kong 262, London 246, Paris 200, Singapore 198, Kyoto 196, Osaka 154, Seoul 124, Bangkok 119). <strong>Floor: top 5 cities, 1,642 venues</strong>, invoked at the Phase 5 go/no-go if the measured weekly run-rate misses. The assumption behind the target — roughly 40 blurbs/day of Cowork throughput from mid-August — is stated so it can fail loudly. Coverage % appears in every publish report; Ben's tone reviews stay optional weekend half-hours and never block a launch date. <strong>Read the target as optimistic, not expected (per the Aug 10 response):</strong> 2,433 at ~40/day from Aug 15 lands ~Oct 15 — the far edge of the swap window, zero slack — while the floor lands ~Sep 25 with real room. <strong>Early trigger:</strong> if the measured run-rate through the first two weeks of September sits under ~40/day, the floor is invoked then, not discovered at the gate.</p></div>
+
+  <h2><span class="n">08</span>The next eight days</h2>
+  <div class="card">
+    <p class="flow">
+      <b>Aug 10–11</b> &nbsp;D-calls done · D6 rejection designed in · gates measured, C admitted · Phase 1a first pass done · repo flip · specialist briefing sent<br>
+      <b>Aug 11–13</b> &nbsp;Phase 1a second pass · Phase 1 dates firmed · schema plain-language review · Supabase project up · migration dry run 1<br>
+      <b>Aug 13–15</b> &nbsp;Migration verification report · collision-sample review · slug map verified<br>
+      <b>Aug 15–17</b> &nbsp;Pipeline guard walkthrough (supervised runs) · open-data geo pass kicked off · D7 design-direction session<br>
+      <b>Aug 18</b> &nbsp;&nbsp;&nbsp;&nbsp;Checkpoint doc: state, open approvals, the weekend cadence begins
+    </p>
+    <p><strong>Ben's total through the swap: roughly 22–30 hours, of which 12–15 land before August 18.</strong> After the cliff, the plan asks for approvals measured in minutes and three structured weekend design sessions — nothing else.</p>
+  </div>
+
+  <h2><span class="n">09</span>Budget</h2>
+  <div class="card">
+    <table>
+      <tr><th>Line</th><th>Monthly</th><th>Notes</th></tr>
+      <tr><td>Supabase Pro</td><td>$25</td><td>Canonical store, daily backups, Table Editor</td></tr>
+      <tr><td>Cloudflare Workers (Ben's account)</td><td>$5</td><td>Hosting after the swap</td></tr>
+      <tr><td>MapTiler</td><td>current plan</td><td>Unchanged</td></tr>
+      <tr><td>Geoapify</td><td>$0</td><td>Card-less free tier — the structural cap</td></tr>
+      <tr><td>Google Places (photo Worker)</td><td>≤$10</td><td>Hard-capped and budget-alerted already</td></tr>
+      <tr><td>GitHub, Overture</td><td>$0</td><td>Actions minutes within free allowance at this scale</td></tr>
+      <tr><td>Lovable</td><td>$25 → $0</td><td>Kept only until Phase 5 completes</td></tr>
+      <tr><td><strong>Steady state</strong></td><td><strong>≈ $45–70</strong></td><td>Comfortably inside the $200 ceiling — headroom stays unspent on purpose</td></tr>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+  <div class="card">
+    <table>
+      <tr><th>Version</th><th>Date</th><th>Notes</th></tr>
+      <tr><td>1.0</td><td>August 10, 2026</td><td>First version, responding to handoff-fable-rearchitecture.md (Aug 8). Nine decisions.</td></tr>
+      <tr><td>1.1</td><td>August 10, 2026</td><td>Responds to the revised brief: non-commercial as a design constraint (§3), source diversity and the exposure ledger as structure (D10, §4, §5), venue-website channel promoted to primary residual (D11, §6), specialist question list added (§6), pushbacks rewritten (§2). Awaiting ratification of D1–D11.</td></tr>
+      <tr><td>1.2</td><td>August 10, 2026</td><td>Formal response incorporated. D1–D5 + D7–D11 ratified; D5 rider designed in (price program §6, <code>price</code> table §4). <strong>D6 rejected and removed</strong>; replacement rule recorded; auto-accept impact quantified with the residual checkpoint updated (§6, Phase 3). Phase 1a reconciliation gate added — first pass complete with inventory; Phase 1 dates provisional. Michelin briefing note added (Phase 0). Compass Local’s November position flagged as a conscious deviation (Phase 6). Launch blurb-coverage target stated (content track).</td></tr>
+      <tr><td>1.3</td><td>August 10, 2026</td><td>Gate measurement incorporated (Ben's numbers, n=200, final). Gate C admitted in loose form; composite A∪B∪C 68.5% at 83.2%; D6 impact restated — with Gate C the rejection costs nothing. <code>venue_low</code> tier and <code>accept_gate</code> column added (§4, D4). Phase 3 residual checkpoint updated to ≈3,300. <code>geoGateCounts.gs</code> retired; publish-pin scoring recorded as a permanent pipeline rule.</td></tr>
+      <tr><td>1.4</td><td>August 10, 2026</td><td>Phase 1a placeId finding reclassified per Ben's response and measured: 7 duplicate groups / 165 mixed cross-city groups / 2 confirmed wrong-placeId groups; treated as a live correctness defect resolved before the photo Worker carries forward; wrong placeIds dropped, never corrected. Pass-two method pinned to a direct raw-tab read; <code>phase1aPassTwo.gs</code> delivered. Four absent sources named with causes — none silent loss; extended-list convention inconsistency flagged for the <code>award_sources</code> migration. Blurb target framed optimistic with an early-September floor trigger.</td></tr>
+      <tr><td>1.5</td><td>August 11, 2026</td><td>Phase 1a closed: pass two ran against the raw <code>venues</code> tab and reconciled row-for-row with the published dataset — zero silent drops, city flags fully explained by closed-venue counts, absent sources confirmed never-ingested at source. Phase 1 dates firm (Aug 12–18). D8 done: repo private.</td></tr>
+    </table>
+  </div>
+  <footer>CompassEats · Re-Architecture &amp; Migration Plan · v1.0 — Aug 10, 2026<br>Save to <code>docs/</code> in the repo and re-upload to Project Knowledge after ratification. Update version + date on any change.</footer>
+</div>
+</body>
+</html>
