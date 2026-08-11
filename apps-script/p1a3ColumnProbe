@@ -1,0 +1,89 @@
+/**
+ * p1a3ColumnProbe.gs — CompassEats · Phase 1a column probe
+ * ------------------------------------------------------------------
+ * Answers the photo_url and hours_json questions from the Aug 11
+ * response AT THE SOURCE. These columns do not survive into the
+ * published JSON (verified against the published field list), so no
+ * local copy can answer them — only the raw tab can.
+ *
+ * READ-ONLY. Writes nothing. Safe to run any number of times.
+ *
+ * WHAT IT PRINTS, for the six publish-stripped columns
+ * (phone, website, reservation_url, hours_json, chef, photo_url):
+ *   1. Non-empty count per column
+ *   2. For photo_url and website: top hosts + a Google-host count
+ *      (googleusercontent / googleapis / gstatic / ggpht / maps.google)
+ *   3. For hours_json: one sample value, truncated
+ *
+ * HOW TO RUN
+ *   Extensions -> Apps Script -> new Script file -> paste -> save ->
+ *   select p1a3ColumnProbe -> Run -> paste the execution log.
+ * ------------------------------------------------------------------
+ */
+
+var P1A3_TAB_ = 'venues';
+var P1A3_COLS_ = ['phone', 'website', 'reservation_url', 'hours_json', 'chef', 'photo_url'];
+var P1A3_GOOGLE_ = /googleusercontent\.com|googleapis\.com|gstatic\.com|ggpht\.com|maps\.google/i;
+
+function p1a3ColumnProbe() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName(P1A3_TAB_);
+  if (!sh) {
+    Logger.log('STOP: no tab named "' + P1A3_TAB_ + '".');
+    return;
+  }
+  var values = sh.getDataRange().getValues();
+  var head = values[0].map(function (h) { return String(h).trim().toLowerCase(); });
+
+  var idx = {};
+  P1A3_COLS_.forEach(function (c) { idx[c] = head.indexOf(c); });
+  Logger.log('=== PHASE 1a COLUMN PROBE — raw venues tab, read-only ===');
+  P1A3_COLS_.forEach(function (c) {
+    if (idx[c] < 0) Logger.log('NOTE: column "' + c + '" not found in headers.');
+  });
+
+  var nonEmpty = {}, hosts = { photo_url: {}, website: {} }, googleHits = { photo_url: 0, website: 0 };
+  var hoursSample = '', photoGoogleSample = '';
+  P1A3_COLS_.forEach(function (c) { nonEmpty[c] = 0; });
+
+  for (var r = 1; r < values.length; r++) {
+    var row = values[r];
+    P1A3_COLS_.forEach(function (c) {
+      if (idx[c] < 0) return;
+      var v = String(row[idx[c]] || '').trim();
+      if (v === '' || v === '{}' || v === '[]' || v.toLowerCase() === 'null') return;
+      nonEmpty[c]++;
+      if (c === 'hours_json' && hoursSample === '') hoursSample = v.substring(0, 120);
+      if (c === 'photo_url' || c === 'website') {
+        var m = v.match(/https?:\/\/([^\/]+)/);
+        var host = m ? m[1].toLowerCase() : '(no host)';
+        hosts[c][host] = (hosts[c][host] || 0) + 1;
+        if (P1A3_GOOGLE_.test(v)) {
+          googleHits[c]++;
+          if (c === 'photo_url' && photoGoogleSample === '') photoGoogleSample = v.substring(0, 110);
+        }
+      }
+    });
+  }
+
+  Logger.log('');
+  Logger.log('Non-empty counts of ' + (values.length - 1) + ' rows:');
+  P1A3_COLS_.forEach(function (c) {
+    if (idx[c] >= 0) Logger.log('  ' + c + ': ' + nonEmpty[c]);
+  });
+
+  ['photo_url', 'website'].forEach(function (c) {
+    if (idx[c] < 0 || nonEmpty[c] === 0) { Logger.log(''); Logger.log(c + ': empty — nothing to classify.'); return; }
+    Logger.log('');
+    Logger.log(c + ' — GOOGLE-HOSTED: ' + googleHits[c] + ' of ' + nonEmpty[c] + '. Top hosts:');
+    var ks = Object.keys(hosts[c]).sort(function (a, b) { return hosts[c][b] - hosts[c][a]; });
+    ks.slice(0, 6).forEach(function (h) { Logger.log('  ' + hosts[c][h] + '  ' + h); });
+    if (ks.length > 6) Logger.log('  ... plus ' + (ks.length - 6) + ' more hosts');
+  });
+
+  if (photoGoogleSample) { Logger.log(''); Logger.log('photo_url Google sample: ' + photoGoogleSample); }
+  Logger.log('');
+  Logger.log('hours_json sample: ' + (hoursSample === '' ? '(all empty)' : hoursSample));
+  Logger.log('');
+  Logger.log('Done. Nothing was written. Paste this log back to Claude.');
+}
