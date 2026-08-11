@@ -2,7 +2,65 @@
 
 **What this is:** a build + decision spec for a small Cloudflare Worker that serves a real, owner-uploaded Google Places photo for venues that don't have a curated photo of their own — live, at request time. Hand this to a developer or to Lovable.
 
-**Status: BUILT & LIVE (June 18, 2026).** Read the AS-BUILT section first. The build diverged from the original plan below in several important ways; where they conflict, **AS-BUILT wins**.
+**Status: BUILT & GUARDED. PHOTOS CURRENTLY OFF BY CHOICE (August 11, 2026).** Read the AS-BUILT section first, then GUARDS, then CURRENT STATE. The build diverged from the original plan below in several important ways; where they conflict, **AS-BUILT wins**.
+
+---
+
+## CURRENT STATE (August 11, 2026) — read before touching anything
+
+**Photos are off.** Both Places quotas are set to **0 per day** in Google Cloud (`GetPlaceRequest`, `GetPhotoMediaRequest`, project CompassEats). Google returns HTTP 429 `RESOURCE_EXHAUSTED`, the Worker treats that as a miss, and every venue shows the compass. Verified live on the Plénitude venue page: exactly one `venue-photo` request per venue page, response `{"ok": false, "detailsStatus": 429}`, compass rendered, no broken image.
+
+**This is deliberate, not a fault.** Photos stay off through the Google migration. Turning them back on is one number change in the Cloud console.
+
+**Cost per visit, measured Aug 11:** venue detail page = 1 Worker call = **2 billable events**. City page = 1 Worker call (`CitySpotlight` only) = **2 billable events**. Venue cards on city pages carry no photos today. Against the 1,000-event monthly free cap that is **500 page views per month free**, site-wide.
+
+**Why it went off.** August 1–11 billed **$5.80**, entirely under SKU `Places API Place Details Photos` (`DCD1-FE97-8C71`), with every other SKU at $0.00. Cloudflare confirmed the cause: about 1,000 Worker invocations producing about 2,000 Google subrequests, 85% of them from two US cities (Atlanta 603, Miami 451) across two spike days, Aug 7 and Aug 11. That traffic shape is one operator plus probable crawler activity, not an audience. Ordinary days (Aug 9, Aug 10) ran about 30 invocations, comfortably inside the free tier.
+
+**Ruled out as causes**, each of which would bill under a different SKU that read $0.00: the Fable re-architecture work, the paused price backfill, the Overture and Geoapify tests, `geoEnrich` / Text Search, and any Apps Script schedule (the Sheet's Triggers list is empty, verified Aug 11).
+
+### The free-tier fact that caused the surprise
+
+`Places API Place Details Photos` is an **Enterprise-tier** SKU. Its free cap is **1,000 billable events per month**, not the 10,000 that Essentials SKUs get. At two calls per photo that is **500 photo views per month, free**. After that it is $7.00 per 1,000, so $0.007 per call and **$0.014 per photo view**.
+
+This resolves the "confirm the billing tier" open question at the bottom of the original spec. **It bills at Enterprise. 1,000 free events. Confirmed against Google's published SKU list and against the real invoice.**
+
+### Quota ladder for re-enabling
+
+Set both `GetPlaceRequest per day` and `GetPhotoMediaRequest per day` to the same number. Read the result as **half that many photo views**, because each view costs one of each.
+
+| Quota (each) | Photo views/day | Approx. cost/month |
+|---|---|---|
+| 0 | 0 | $0 (current state) |
+| 40 | 20 | ~$4 (test setting) |
+| 80 | 40 | ~$8 |
+| 250 | 125 | ~$25 |
+| 500 | 250 | ~$105 (the old setting) |
+
+**CAUTION:** the $10 monthly budget alert only sends email. It does not stop spend. The daily quota is the only hard stop. The old 500/day cap was a $105/month ceiling, not a $10 one.
+
+**Re-enable order, non-negotiable:** confirm the guarded Worker is deployed **first**, then raise the quota. Reversing this spends at full rate until the deploy lands.
+
+---
+
+## GUARDS (added August 11, 2026)
+
+The Worker originally served any request carrying a valid `placeId`. Since `data/venues.json` is public and holds every `placeId`, anyone could loop the whole file at your expense. Two guards now run **before** any Google call, so a blocked request costs nothing.
+
+**1. Origin test.** The request's `Origin` or `Referer` host must match `ALLOWED_HOSTS` (`compasseats.com`, `lovable.app`, `lovableproject.com`, `lovable.dev`, plus subdomains). A request with neither header is blocked, which covers `curl`, scripts, and most scrapers. Governed by `ALLOW_MISSING_ORIGIN`, which is `false` and must stay `false` — setting it `true` disables the guard.
+
+**2. User-agent test.** `BLOCKED_AGENTS` rejects search crawlers, SEO scanners, AI crawlers, headless browsers, and HTTP client libraries. `ALLOWED_AGENTS` is an override list, checked first.
+
+**Social preview crawlers are blocked by default** (Facebook, X, Slack, LinkedIn, WhatsApp, Discord), all commented out in `ALLOWED_AGENTS`. Consequence: a shared CompassEats link shows no image in previews. Each preview fetch costs two billable events. Uncomment individually once real photo volume is known.
+
+**New endpoint: `/{placeId}?guard=1`.** Returns JSON diagnostics — `origin`, `referer`, `userAgent`, `originAllowed`, `agentAllowed`, `wouldServe`. **Makes no Google call**, so it works and stays free even at quota 0. This is the test tool for any future guard change.
+
+**CORS tightened.** `Access-Control-Allow-Origin` was `*`. It now echoes the request origin when allowed, and otherwise defaults to `https://compasseats.com`, with `Vary: Origin`.
+
+**Blocked responses:** `403` for a plain request, `{ ok: false, blocked: "<reason>" }` for `?meta=1` and `?debug=1`. Reasons are `origin`, `agent`, `method`.
+
+**Verified August 11.** A direct browser hit on a Worker URL returned `originAllowed: false, wouldServe: false` and made no Google call. A real page load from compasseats.com passed both guards and reached Google, proving `VenuePhoto.tsx` sends a usable `Origin` header.
+
+**Deliberately not built: a per-day counter inside the Worker.** It needs a KV namespace and binding, and KV is eventually consistent so it can overshoot under a burst. The Google daily quota is a harder stop. Revisit only if traffic grows past what the quota ladder handles comfortably.
 
 ---
 
@@ -23,9 +81,20 @@
 
 **Site integration.** `src/components/VenuePhoto.tsx` resolves the cascade client-side: curated `photo_url` (from the `curated_photos` tab via `sync-sheet.ts`) → else fetch `?meta=1` by `venue.id` → else compass; with an `onError` compass fallback and the credit line. **No `sync-sheet.ts` worker-route bake** (the original plan) — the component derives the Worker URL from the placeId it already has. Callers pass `placeId={venue.id}` (venue route + `CitySpotlight`).
 
-**Cost & caps.** Every photo view = 1 Place Details + 1 Place Photo, uncacheable (as in the spec). Hard daily quota caps set: `GetPlaceRequest` and `GetPhotoMediaRequest` = **500/day** each; a cap hit falls back to compass.
+**Cost & caps.** Every photo view = 1 Place Details + 1 Place Photo, uncacheable (as in the spec). **Superseded August 11:** the original 500/day caps were a ~$105/month ceiling, not the intended small number. Both quotas now sit at **0**. See CURRENT STATE above for the corrected cost model and the quota ladder.
 
-**Known follow-up.** The visitor auto-pick can surface a food close-up over the room. Override per-venue today via the `curated_photos` tab; a "photo picker" tool is on the punch list.
+**Known follow-ups.**
+- The visitor auto-pick can surface a food close-up over the room. Override per-venue today via the `curated_photos` tab; a "photo picker" tool is on the punch list.
+- **City-page multiplier — MEASURED Aug 11. It does not exist today.** A venue detail page makes exactly **1** Worker call. A city page also makes exactly **1**, from `CitySpotlight` only; the ranked venue cards carry no photos. Measured on `/city/paris`: 1 `venue-photo` request out of 47 total, with 20 of 200 venues rendered on screen. **Both page types cost 2 billable events per visit.** Nothing to fix.
+
+  **The risk lives in the queued feature, not the current build.** "Multi-venue card photos" sits in Up next. Shipping it as written turns a Paris visit from 1 Worker call into **20**, i.e. **40 billable events per visit**, which exhausts the whole 1,000-event monthly free tier in **25 city-page visits**.
+
+  **Standing rule, added Aug 11: multi-venue card photos must not ship without a cost design.** Minimum requirements before that feature is built:
+  1. **Lazy loading**, so only cards scrolled into view fetch a photo. On a 20-card list where most visitors see the first four, this alone cuts cost by roughly 80%.
+  2. **A hard cap on photo cards per page**, independent of how many venues are listed.
+  3. **A recomputed quota ladder**, since cost per visit changes by an order of magnitude.
+
+  Build it in **Phase 4**, not against Lovable — Phase 4 rebuilds the frontend and any Lovable-side work would be discarded.
 
 ---
 
@@ -289,7 +358,7 @@ The universal $200/month Google Maps credit **no longer exists** in 2026.
 
 ## Open decisions / things to confirm
 
-- **Confirm the `photos` Place Details billing tier** (Pro vs Enterprise) with live calls before relying on the cost table.
+- ~~**Confirm the `photos` Place Details billing tier** (Pro vs Enterprise) with live calls before relying on the cost table.~~ **RESOLVED Aug 11, 2026.** It bills as `Places API Place Details Photos`, an **Enterprise** SKU: **1,000 free events/month, $7.00 per 1,000 after.** Confirmed against Google's published SKU list and the real August invoice. Note this is *cheaper per call* than the cost table below assumed ($7/1K, not $20/1K), but the free cap is the small one (1,000, not 5,000). The cost table in this doc's original section is therefore **too pessimistic on rate and correct on shape** — use the CURRENT STATE table at the top instead.
 - **Where to deploy it:** everywhere with a placeId, or only on a subset (e.g., venues that actually get traffic, or only below the curated marquee tier)? Selective deployment is the main cost lever.
 - **`maxWidthPx`:** 1600 is a good hero size; drop to ~1200 if you want smaller payloads (doesn't change API cost).
 - **Per-photographer attribution:** only needed if you ever serve user photos; the empty-attribution filter avoids it for now.
