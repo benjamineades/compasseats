@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompassEats — Phase 1 Schema Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#211F1C; --bg-2:#28241F; --panel:#2F2A24;
+    --brass:#C6A15B; --brass-soft:#DEC68F; --cream:#F5F0E6; --cream-dim:#CBC2B0;
+    --cream-dimmer:#988F7E; --clay:#D88A63; --sage:#A4B79F;
+    --line:rgba(198,161,91,.20); --line-soft:rgba(198,161,91,.10);
+    --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,sans-serif;
+    --shadow:0 18px 40px -24px rgba(0,0,0,.7);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:radial-gradient(1100px 640px at 85% -10%, rgba(198,161,91,.10), transparent 60%), var(--bg);
+    color:var(--cream); font-family:var(--sans); font-weight:400; line-height:1.65; padding:56px 22px 100px;
+    -webkit-font-smoothing:antialiased; background-attachment:fixed;}
+  .wrap{max-width:920px;margin:0 auto}
+  .eyebrow{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--brass);font-weight:600;margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.5vw,3rem);letter-spacing:-.02em;line-height:1.05}
+  h1 em{font-style:italic;color:var(--brass-soft)}
+  .meta{margin:18px 0 40px;display:flex;flex-wrap:wrap;gap:10px}
+  .m{font-size:.74rem;color:var(--cream-dim);border:1px solid var(--line);border-radius:100px;padding:5px 13px}
+  .m b{color:var(--brass-soft);font-weight:600}
+  h2{font-family:var(--serif);font-weight:400;font-size:1.55rem;margin:52px 0 6px;color:var(--cream)}
+  h2 .n{color:var(--brass);font-size:1rem;font-weight:600;font-family:var(--sans);margin-right:10px;letter-spacing:.05em}
+  h3{font-size:1rem;font-weight:600;color:var(--brass-soft);margin:22px 0 8px}
+  .lead{color:var(--cream-dim);font-weight:300;margin-bottom:18px;font-size:.96rem}
+  .card{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:13px;padding:22px 24px;margin:16px 0;box-shadow:var(--shadow)}
+  p{margin:9px 0;font-size:.92rem;color:var(--cream-dim);font-weight:300}
+  p strong,li strong,td strong{color:var(--cream);font-weight:600}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:.82em;background:rgba(198,161,91,.12);color:var(--brass-soft);padding:1px 6px;border-radius:5px}
+  ol,ul{margin:10px 0 10px 4px;padding-left:22px}
+  li{font-size:.92rem;color:var(--cream-dim);font-weight:300;margin:7px 0}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.85rem}
+  th{color:var(--brass-soft);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+  td{padding:8px 10px;border-bottom:1px solid var(--line-soft);color:var(--cream-dim);font-weight:300;vertical-align:top}
+  .v{font-weight:600;white-space:nowrap}
+  .v.keep{color:var(--sage)} .v.drop{color:var(--cream-dimmer)} .v.google{color:var(--clay)} .v.transform{color:var(--brass-soft)} .v.call{color:var(--clay)}
+  .flag{border-left:3px solid var(--clay);background:rgba(216,138,99,.07);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0}
+  .flag b{color:var(--clay)}
+  .ok{border-left:3px solid var(--sage);background:rgba(164,183,159,.07);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0}
+  .ok b{color:var(--sage)}
+  footer{margin-top:50px;color:var(--cream-dimmer);font-size:.78rem;font-weight:300;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Living doc · Phase 1</div>
+  <h1>Phase 1 <em>Schema Map</em></h1>
+  <div class="meta">
+    <span class="m">Version <b>1.0</b></span>
+    <span class="m">Written <b>August 11, 2026</b></span>
+    <span class="m">Status <b>For Ben's sign-off — three open calls</b></span>
+    <span class="m">Companion to <b>Re-Architecture Plan v1.7 §4</b></span>
+  </div>
+
+  <p class="lead">What happens to every piece of current data, in plain language. Part 1 gives a verdict for each of the 24 columns on the raw <code>venues</code> tab, using the measured fill counts from the Aug 11 column probe. Part 2 walks the new tables at review depth. Part 3 is the sign-off list — three one-line calls and one confirmation, then the Supabase build starts.</p>
+
+  <h2><span class="n">01</span>The 24 columns — verdict by verdict</h2>
+  <div class="card">
+    <table>
+      <tr><th>Column</th><th style="width:120px">Verdict</th><th>What happens, and why</th></tr>
+      <tr><td><code>id</code></td><td class="v transform">Transform</td><td>10,911 of 10,912 are Google placeIds used as the public key. Every venue gets a fresh internal ID (<code>ve_</code> + random, minted once, never derived from the name). The placeId value moves to <code>photo_refs</code> — the one quarantine table allowed to hold a Google value — except rows the wrong-placeId triage marks bad, whose placeId is dropped, never re-looked-up.</td></tr>
+      <tr><td><code>slug</code></td><td class="v keep">Migrate</td><td>Becomes a row in the <code>slugs</code> table (property = eats), keyed to the venue ID. Zero real URL collisions measured, so every current URL imports unchanged with no disambiguation.</td></tr>
+      <tr><td><code>name</code></td><td class="v keep">Migrate</td><td>Into <code>venues.name</code>, rename-protected by trigger. The 322-candidate contamination screen runs as a Phase 1 batch before names freeze.</td></tr>
+      <tr><td><code>city_slug</code></td><td class="v transform">Transform</td><td>Becomes a foreign key to the <code>cities</code> table. A venue can no longer point at a city that does not exist — the wrong-city class gets a structural wall.</td></tr>
+      <tr><td><code>city_display</code></td><td class="v keep">Migrate</td><td>City-level data, stored once per city in <code>cities</code>, not repeated per venue.</td></tr>
+      <tr><td><code>country</code></td><td class="v keep">Migrate</td><td>Into <code>cities.country</code>, with an ISO code added beside the display name.</td></tr>
+      <tr><td><code>neighborhood</code></td><td class="v call">Open call #1</td><td>Populated in published data, provenance unrecorded. If Places enrichment wrote it, it is Google-derived and must drop (re-derivable later from open geodata). If it came from award pages or hand entry, it migrates with legacy provenance. <strong>Ben's call: attest the origin, or default to drop.</strong> Under zero-Google, uncertain provenance defaults out.</td></tr>
+      <tr><td><code>type</code></td><td class="v keep">Migrate</td><td>Into <code>venues.category</code> (restaurant / bar). Dual-category resolution already ran upstream.</td></tr>
+      <tr><td><code>lat</code> · <code>lng</code></td><td class="v google">Drop — Google</td><td>The reason this migration exists. The new <code>geo</code> table fills only through the measured gates and channels, with <code>google</code> an impossible source value. Legacy values stay in the Sheet until the Phase 5 verified purge.</td></tr>
+      <tr><td><code>address</code></td><td class="v google">Drop — Google</td><td>Same regime. The <code>addresses</code> table refills through the cascade: venue website, open data, gated guide capture — provenance on every row.</td></tr>
+      <tr><td><code>phone</code></td><td class="v drop">Drop — empty</td><td>0 rows. A stub that was never filled. If phone numbers ever matter, they arrive through the venue-website channel with provenance.</td></tr>
+      <tr><td><code>website</code></td><td class="v drop">Drop — empty</td><td>0 rows. Also good news twice over: no stored Google website data exists, and the D11 channel keeps its search-and-verify discovery design — there never was a seed list.</td></tr>
+      <tr><td><code>reservation_url</code></td><td class="v drop">Drop — empty</td><td>0 rows. When reservation links arrive on the roadmap they are plain non-affiliate URLs in a new, provenance-carrying column, per the non-commercial constraint.</td></tr>
+      <tr><td><code>hours_json</code></td><td class="v drop">Drop — empty</td><td>0 rows. Vestigial. Tonight mode's constraint is exactly as assumed: <code>hours.days_open</code> starts empty and fills at ingest with provenance and confidence.</td></tr>
+      <tr><td><code>price_tier</code></td><td class="v google">Drop — Google</td><td>Per D5. The <code>price</code> table refills through the price program only: award-source capture and menu-derived tiers from venue websites, never inferred, never Google.</td></tr>
+      <tr><td><code>cuisine_tags</code></td><td class="v call">Open call #2</td><td>Same provenance question as neighborhood: Places "types" are Google content, hand or award-derived tags are not. <strong>Ben's call: attest the origin, or default to drop</strong> — re-derivable later from award categories and the blurb program.</td></tr>
+      <tr><td><code>blurb_short</code> · <code>blurb_long</code></td><td class="v transform">Transform</td><td>Only the 141 Option B records migrate, into the <code>blurbs</code> table keyed by venue ID and flagged for rewrite. The ~10,000 generated blurbs do not migrate, per the confirmed decision.</td></tr>
+      <tr><td><code>chef</code></td><td class="v keep">Migrate</td><td>137 rows, the only populated stripped column. Not Google-shaped; carries into <code>venues.chef</code> (nullable) with legacy provenance. Feeds the crediting rules in the blurb runbook.</td></tr>
+      <tr><td><code>awards_json</code></td><td class="v transform">Transform</td><td>The crown jewels. Unpacked into <code>awards</code> rows — venue, source, year, rank, category, distinction, source URL — with referential integrity to <code>award_sources</code>. One convention question rides along: see confirmation #3 below.</td></tr>
+      <tr><td><code>photo_url</code></td><td class="v drop">Drop — empty</td><td>0 rows, measured Aug 11. The stored-Places-photo question closes with nothing to purge. Photos remain live-fetched by placeId through the Worker, plus open-licensed entries in <code>photo_refs</code> with credit and licence fields.</td></tr>
+      <tr><td><code>status</code></td><td class="v keep">Migrate</td><td>Into <code>venues.status</code>. The <code>closed_venues</code> tab logic folds into this one field with the audit log recording every change.</td></tr>
+      <tr><td><code>last_verified</code></td><td class="v keep">Migrate</td><td>Into <code>venues.last_verified</code>. Cheap, honest freshness metadata.</td></tr>
+    </table>
+    <p><strong>Net effect:</strong> ten columns migrate or transform, four drop as Google-derived (the point of the exercise), six drop as empty stubs, two await a one-line provenance call, and one placeId column splits between quarantine and the drop rule. Nothing with clean provenance is lost.</p>
+  </div>
+
+  <h2><span class="n">02</span>The new tables, in plain words</h2>
+  <div class="card">
+    <table>
+      <tr><th style="width:190px">Table</th><th>Plain-language contents</th></tr>
+      <tr><td><code>venues</code></td><td>One row per venue: new internal ID, name (rename-protected), category, city link, status, chef, GERS ID where matched, last-verified date, and the stored <code>norm_key</code> that powers duplicate gating.</td></tr>
+      <tr><td><code>cities</code> · <code>regions</code></td><td>One row per city with slug, display name, country + ISO code, region link, and aliases. Regions unchanged in concept from today's 111.</td></tr>
+      <tr><td><code>award_sources</code></td><td>The registry — 28 entries today — with attribution requirements, geo/price capability flags, the suspension switch, and the capture-permission switch per publisher.</td></tr>
+      <tr><td><code>awards</code></td><td>Every award as its own row with source, year, rank, category, distinction, and source URL. An award cannot reference an unregistered source.</td></tr>
+      <tr><td><code>properties</code> · <code>listings</code></td><td>The multi-property layer: CompassEats now, Compass Local in November, room for more. A listing joins a venue to a property with per-property fields like Local's trust tier.</td></tr>
+      <tr><td><code>slugs</code> · <code>redirects</code></td><td>Every URL the site has ever answered, keyed to venue IDs, unique per property + city. Redirects cover any future slug change so no link ever dies.</td></tr>
+      <tr><td><code>geo</code></td><td>Coordinates with precision tier (including <code>venue_low</code>), accept gate, source, source URL, publisher, capture date, confidence, agreement flag. <code>google</code> is an impossible source value by check constraint.</td></tr>
+      <tr><td><code>addresses</code></td><td>Raw and structured address with native-script variant, same provenance fields, same no-Google constraint.</td></tr>
+      <tr><td><code>price</code></td><td>Tier 1–4, source, method (published symbol or menu-derived), source URL, confidence. Same no-Google constraint. No confirmed source, no price shown.</td></tr>
+      <tr><td><code>hours</code></td><td><code>days_open</code> with provenance and confidence. Starts empty. Fills opportunistically at ingest.</td></tr>
+      <tr><td><code>blurbs</code></td><td>Short and long text keyed by venue ID, method, version, status, and the fetched sources behind each fact. The 141 imports live here flagged for rewrite.</td></tr>
+      <tr><td><code>photo_refs</code></td><td>The single Google quarantine: placeId for the Worker. Open-licensed photos sit beside it with URL, credit, credit URL, and licence. Wrong placeIds were dropped before arrival.</td></tr>
+      <tr><td><code>ingest_batches</code> · <code>ingest_rows</code></td><td>The staging ground for every future award-list import: raw rows, validation results, dedupe verdicts, approval record. Provenance is born here.</td></tr>
+      <tr><td><code>audit_log</code></td><td>Every row change, recorded by trigger: what, when, by which job or hand edit. Silent mutation becomes impossible by definition.</td></tr>
+      <tr><td><code>source_exposure</code> (view)</td><td>The live answer to "how much came from any one publisher," current and cumulative, checked against the D10 caps in every publish report.</td></tr>
+    </table>
+  </div>
+
+  <h2><span class="n">03</span>Sign-off — three calls and one confirmation</h2>
+  <div class="card">
+    <ol>
+      <li><strong>Call #1 — <code>neighborhood</code>:</strong> attest a non-Google origin, or it drops. Default: drop.</li>
+      <li><strong>Call #2 — <code>cuisine_tags</code>:</strong> attest a non-Google origin, or it drops. Default: drop.</li>
+      <li><strong>Call #3 — extended-list convention:</strong> recommendation is <strong>parent slug + rank for all sources</strong> — the NA and Asia <code>-51-100</code> award rows fold into their parent slugs with ranks 51–100, matching how World's Bars already works, and the four <code>-51-100</code> registry slugs retire. Display stays natural ("World's 50 Best Bars — No. 63") and attribution stays per-publisher. Confirm or reverse in one line.</li>
+      <li><strong>Confirmation — the rest of this map as written.</strong> One line covers it.</li>
+    </ol>
+    <p>With those four lines, the Supabase build starts: project setup steps first, then the migration dry run with its verification report.</p>
+  </div>
+
+  <div class="ok"><p><b>What this map already banked:</b> zero URL collisions to resolve, zero stored Google photos, zero stored Google websites or phones, the duplicate rule settled at 15 groups / 30 rows, and a source that matches publish row for row. Phase 1 starts from the cleanest position this project has ever measured.</p></div>
+
+  <footer>CompassEats · Phase 1 Schema Map · v1.0 — Aug 11, 2026<br>Save to <code>docs/</code> and Project Knowledge beside the Re-Architecture Plan. Update version + date on any change.</footer>
+</div>
+</body>
+</html>
