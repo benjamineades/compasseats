@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["scripts/ingest/**/*.ts"],
+  "compilerOptions": {
+    "types": ["bun"],
+    "lib": ["ES2022"],
+    "noEmit": true
+  }
+}

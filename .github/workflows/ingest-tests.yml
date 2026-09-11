@@ -1,0 +1,53 @@
+name: Ingest — tests
+
+# Runs the ingest suite against a throwaway Postgres built from this repo's own
+# canonical schema plus the Phase 2 migrations. It never touches the live
+# project: the live connection string is not even available to this workflow.
+
+on:
+  push:
+    paths:
+      - "scripts/ingest/**"
+      - "supabase/migrations/**"
+      - "fixtures/ingest/**"
+      - "docs/compass-schema-v1.sql"
+      - ".github/workflows/ingest-tests.yml"
+  pull_request:
+    paths:
+      - "scripts/ingest/**"
+      - "supabase/migrations/**"
+      - "fixtures/ingest/**"
+      - "docs/compass-schema-v1.sql"
+      - ".github/workflows/ingest-tests.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        # The unaccent extension the schema needs ships with the stock image.
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: compass_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Run the ingest tests
+        env:
+          INGEST_TEST_DB_URL: postgres://postgres:postgres@127.0.0.1:5432/compass_test
+        run: bun test scripts/ingest/ingest.test.ts

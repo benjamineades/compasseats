@@ -1,0 +1,7 @@
+line,verdict,reason,source_id,year,rank,category,distinction,venue_name,city_label,country_label,resolved_city,candidates,decision
+8,review_city,city_not_found,michelin,2026,,One Star,,Lost Kitchen,Atlantis,,,,skip
+9,review_venue,venue_ambiguous_in_city,worlds-50-best-bars,2026,7,No. 7,,Brine,London,United Kingdom,london,,new
+14,review_venue,norm_key_too_short,michelin,2026,,One Star,,Ao,London,United Kingdom,london,,new
+16,review_city,city_ambiguous,michelin,2026,,One Star,,Twin Peak,San Jose,,,,city:ci_4444444444
+19,review_venue,same_key_other_city,michelin,2026,,One Star,,Aurum,London,United Kingdom,london,,new
+20,review_city,country_label_disagrees,michelin,2026,,One Star,,Wrong Country,London,France,,,skip

@@ -1,0 +1,101 @@
+name: Ingest — stage
+
+# Reads an Award Radar CSV, writes it to the staging tables, validates every
+# row and publishes a plain-language report. It cannot touch a live table.
+#
+# Actions tab -> "Ingest — stage" -> Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      csv_path:
+        description: "CSV path in this repo (e.g. fixtures/ingest/first-batch-2026-09.csv)"
+        required: true
+        type: string
+      batch_key:
+        description: "Batch key — the same value on every row of the CSV"
+        required: true
+        type: string
+      decisions_path:
+        description: "Optional: a filled review CSV, to apply decisions to a batch already staged"
+        required: false
+        default: ""
+        type: string
+      note:
+        description: "Optional: a note stored on the batch"
+        required: false
+        default: ""
+        type: string
+
+# One run at a time per batch key. Two people (or two impatient clicks) cannot
+# stage the same batch twice at once.
+concurrency:
+  group: ingest-${{ inputs.batch_key }}
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # No `bun install`: the ingest scripts have no dependencies.
+
+      # Every input goes through env, never spliced into the shell. A value
+      # like `x" --something "y` must stay one argument, not become two.
+      - name: Stage the batch
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          CSV_PATH: ${{ inputs.csv_path }}
+          BATCH_KEY: ${{ inputs.batch_key }}
+          DECISIONS_PATH: ${{ inputs.decisions_path }}
+          BATCH_NOTE: ${{ inputs.note }}
+        run: |
+          set -euo pipefail
+          ARGS=(--csv "$CSV_PATH" --batch-key "$BATCH_KEY")
+          if [ -n "$DECISIONS_PATH" ]; then
+            ARGS+=(--decisions "$DECISIONS_PATH")
+          fi
+          if [ -n "$BATCH_NOTE" ]; then
+            ARGS+=(--note "$BATCH_NOTE")
+          fi
+          bun run scripts/ingest/stage.ts "${ARGS[@]}" | tee /tmp/stage.out
+
+      - name: Put the report in the run summary
+        if: always()
+        run: |
+          if [ -f /tmp/stage.out ]; then
+            cat /tmp/stage.out >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "The stage step failed before it wrote a report. See the log above." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload the report and the review CSV
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ingest-stage-${{ inputs.batch_key }}
+          path: reports/
+          if-no-files-found: ignore
+
+      - name: Commit the report to the repo
+        if: always()
+        env:
+          BATCH_KEY: ${{ inputs.batch_key }}
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain reports/)" ]; then
+            echo "No report changes to commit."
+            exit 0
+          fi
+          git config user.name  "compasseats-ingest"
+          git config user.email "ingest@users.noreply.github.com"
+          git add reports/
+          git commit -m "ingest: stage report for $BATCH_KEY"
+          git push

@@ -1,0 +1,22 @@
+batch_key,source_id,year,rank,category,distinction,source_url,venue_name,city_label,country_label,venue_category,venue_status,price_symbol_raw,note
+cases-2026-09,not-a-guide,2026,3,,,https://example.com/list,Nowhere,London,United Kingdom,restaurant,,,line 1 reject source_not_registered
+cases-2026-09,suspended-guide,2026,3,,,https://example.com/list,Nowhere Too,London,United Kingdom,restaurant,,,line 2 reject source_suspended
+cases-2026-09,michelin,2026,,One Star,,,No Url,London,United Kingdom,restaurant,,,line 3 reject missing_source_url
+cases-2026-09,worlds-50-best-restaurants,2004,9,,,https://joinpearl.co/lists/2004-worlds-50-best-restaurants,Competitor Sourced,London,United Kingdom,restaurant,,,line 4 reject competitor_source_url
+cases-2026-09,michelin,1899,,One Star,,https://guide.michelin.com/x,Too Old,London,United Kingdom,restaurant,,,line 5 reject year_out_of_range
+cases-2026-09,michelin,2026,0,One Star,,https://guide.michelin.com/x,Rank Zero,London,United Kingdom,restaurant,,,line 6 reject rank_not_positive
+cases-2026-09,michelin,2026,,Two Stars,,https://guide.michelin.com/x,Unknown Cat,London,United Kingdom,restaurant,,,line 7 reject unknown_category
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Lost Kitchen,Atlantis,,restaurant,,,line 8 review_city
+cases-2026-09,worlds-50-best-bars,2026,7,No. 7,,https://www.the50.com/bars,Brine,London,United Kingdom,bar,,,line 9 review_venue same key in New York
+cases-2026-09,worlds-50-best-restaurants,2024,12,No. 12,,https://www.the50.com/restaurants,Tallow,London,United Kingdom,restaurant,,,line 10 duplicate of an existing award
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Tallow,London,United Kingdom,restaurant,,,line 11 match and a genuinely new award
+cases-2026-09,pinnacle-guide,2026,,Listed,,https://www.pinnacleguide.com/,Pinnacle Room,London,United Kingdom,restaurant,,,line 12 subsumed by the existing 3-Pin
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Sea Fret,London,United Kingdom,restaurant,,,line 13 plain new_venue
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Ao,London,United Kingdom,restaurant,,,line 14 review_venue norm_key_too_short
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Sea Fret,London,United Kingdom,restaurant,,,line 15 duplicate_in_batch of line 13
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Twin Peak,San Jose,,restaurant,,,line 16 review_city two San Joses and no country given
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Twin Peak,San Jose,Costa Rica,restaurant,,,line 17 the country hint resolves it
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Shuttered Place,London,United Kingdom,restaurant,closed,$$$,line 18 closed venue lands unpublished; price skipped, michelin is not price_capable
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Aurum,London,United Kingdom,restaurant,,,line 19 review_venue same key only in another city
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Wrong Country,London,France,restaurant,,,line 20 review_city the country label disagrees with the matched city
+cases-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,,London,United Kingdom,restaurant,,,line 21 reject missing_venue_name
