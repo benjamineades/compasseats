@@ -1,0 +1,2 @@
+source_slug,year,rank,name,city,country,category_override,award_source_url,price_symbol_raw,price_source_url,address_raw,coords_raw,geo_source_url
+michelin,2026,,Legacy Shaped,London,United Kingdom,One Star,https://guide.michelin.com/legacy,,,12 Some Street,"51.5,-0.1",https://example.com/geo

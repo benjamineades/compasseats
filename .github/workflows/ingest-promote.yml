@@ -1,0 +1,93 @@
+name: Ingest — promote
+
+# Moves a staged batch into the live tables, in one transaction.
+#
+# It will not run unless the confirmation field reads exactly
+#   PROMOTE <batch key>
+# and every review row in the batch has a decision.
+#
+# Actions tab -> "Ingest — promote" -> Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_key:
+        description: "Batch key — the one from the stage report"
+        required: true
+        type: string
+      confirmation:
+        description: "Type: PROMOTE <batch key>"
+        required: true
+        type: string
+      dry_run:
+        description: "Dry run — do everything, check every invariant, then roll it all back"
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: ingest-${{ inputs.batch_key }}
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # Every input goes through env, never spliced into the shell. Splicing
+      # would let a crafted batch_key smuggle a second --confirm past the
+      # typed-confirmation gate, which is the one gate that must not be
+      # bypassable.
+      - name: Promote the batch
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          BATCH_KEY: ${{ inputs.batch_key }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          ARGS=(--batch-key "$BATCH_KEY" --confirm "$CONFIRMATION")
+          if [ "$DRY_RUN" = "true" ]; then
+            ARGS+=(--dry-run)
+          fi
+          bun run scripts/ingest/promote.ts "${ARGS[@]}" | tee /tmp/promote.out
+
+      - name: Put the report in the run summary
+        if: always()
+        run: |
+          if [ -f /tmp/promote.out ]; then
+            cat /tmp/promote.out >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Nothing was promoted. See the log above for why." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ingest-promote-${{ inputs.batch_key }}
+          path: reports/
+          if-no-files-found: ignore
+
+      - name: Commit the report to the repo
+        if: always()
+        env:
+          BATCH_KEY: ${{ inputs.batch_key }}
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain reports/)" ]; then
+            echo "No report changes to commit."
+            exit 0
+          fi
+          git config user.name  "compasseats-ingest"
+          git config user.email "ingest@users.noreply.github.com"
+          git add reports/
+          git commit -m "ingest: promote report for $BATCH_KEY"
+          git push
