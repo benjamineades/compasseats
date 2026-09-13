@@ -117,6 +117,14 @@ export const COUNTED_TABLES = [
   "source_capture_ledger",
 ] as const;
 
+/**
+ * The undo report states one more: `cities`. Promote never creates a city
+ * (docs/ingest-job.md, "Things this job will never do"), so the undo's city
+ * delta is always 0 - and a report that prints the number is how that stays
+ * true rather than merely asserted.
+ */
+export const UNDO_COUNTED_TABLES = [...COUNTED_TABLES, "cities"] as const;
+
 export type TableCounts = Record<string, number> & { venues_active: number };
 
 export async function readCounts(db: Db): Promise<TableCounts> {
@@ -129,6 +137,7 @@ export async function readCounts(db: Db): Promise<TableCounts> {
     union all select 'city_label_source', count(*)::text from city_label_source
     union all select 'price', count(*)::text from price
     union all select 'source_capture_ledger', count(*)::text from source_capture_ledger
+    union all select 'cities', count(*)::text from cities
   `);
   const out: Record<string, number> = {};
   for (const r of rows) out[r.k] = Number(r.n);

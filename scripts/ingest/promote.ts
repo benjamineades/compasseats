@@ -14,7 +14,6 @@ import { dirname, join } from "node:path";
 import {
   COUNTED_TABLES,
   Params,
-  asJson,
   chunk,
   connect,
   readCounts,
@@ -23,8 +22,9 @@ import {
   type TableCounts,
 } from "./lib/db.ts";
 import { Args } from "./lib/args.ts";
-import { loadReference, type Reference, type RowResult } from "./lib/stageLogic.ts";
+import { loadReference, type Reference } from "./lib/stageLogic.ts";
 import { buildPlan, loadPlanState, type Plan } from "./lib/plan.ts";
+import { readStagedRows, toRowResults } from "./lib/staged.ts";
 
 interface PromoteArgs {
   batchKey: string;
@@ -57,57 +57,6 @@ function mdTable(headers: string[], rows: string[][]): string {
   const out = [`| ${headers.join(" | ")} |`, `|${headers.map(() => "---").join("|")}|`];
   for (const r of rows) out.push(`| ${r.join(" | ")} |`);
   return out.join("\n");
-}
-
-/* ------------------------------------------------------- staged rows ----- */
-
-interface StagedRow {
-  id: string;
-  verdict: string;
-  validation: {
-    line: number;
-    input: RowResult["input"];
-    city_id: string | null;
-    city_slug: string | null;
-    venue_id: string | null;
-    new_venue_group: string | null;
-    venue_category: "restaurant" | "bar" | null;
-    venue_status: "active" | "closed" | null;
-    candidates?: RowResult["candidates"];
-  } | null;
-}
-
-/**
- * Rebuild the promote plan from what stage wrote. Promote re-resolves nothing:
- * the verdicts Ben approved are the verdicts that run.
- */
-function toRowResults(rows: StagedRow[]): RowResult[] {
-  return rows
-    .filter((r) => r.validation !== null)
-    .map((r) => {
-      const v = r.validation as NonNullable<StagedRow["validation"]>;
-      return {
-        line: v.line,
-        input: v.input,
-        checks: [],
-        verdict: r.verdict as RowResult["verdict"],
-        reason: null,
-        detail: null,
-        city_id: v.city_id,
-        city_slug: v.city_slug,
-        venue_id: v.venue_id,
-        new_venue_group: v.new_venue_group,
-        venue_category: v.venue_category,
-        venue_status: v.venue_status,
-        venue_category_derived: false,
-        candidates: v.candidates ?? { cities: [], venues: [] },
-        collides_with: [],
-        supersedes: [],
-        rank_held_by: [],
-        decision: null,
-      } satisfies RowResult;
-    })
-    .sort((a, b) => a.line - b.line);
 }
 
 /* ---------------------------------------------------------- the writes --- */
@@ -509,18 +458,7 @@ async function main(): Promise<void> {
       );
     }
 
-    const { rows: rawStaged } = await db.query<{
-      id: string;
-      verdict: string;
-      validation: unknown;
-    }>(`select id::text, verdict, validation from ingest_rows where batch_id = $1 order by id`, [
-      batch.id,
-    ]);
-    const staged: StagedRow[] = rawStaged.map((r) => ({
-      id: r.id,
-      verdict: r.verdict,
-      validation: asJson<StagedRow["validation"]>(r.validation, null),
-    }));
+    const staged = await readStagedRows(db, batch.id);
 
     const reviews = staged.filter(
       (r) => r.verdict === "review_city" || r.verdict === "review_venue",
@@ -734,10 +672,13 @@ function buildReport(i: ReportInput): string {
 
   p(`## Undo`);
   p();
+  p(`Reversible with one button: **Ingest - undo**, with the confirmation`);
+  p(`\`UNDO ${args.batchKey}\`. Dry-run it first - that box starts ticked.`);
+  p();
   p(`This batch is keyed everywhere it wrote: \`city_label_source.note\` and`);
   p(`\`source_capture_ledger.job\` both carry \`${args.batchKey}\`, and \`audit_log\` holds`);
-  p(`every row with its timestamp. A reversal job is a separate piece of work - there is`);
-  p(`no undo button here.`);
+  p(`every row this transaction wrote under one timestamp. The undo reads all three and`);
+  p(`refuses unless they agree. See docs/ingest-job.md, "Button three".`);
   p();
   return out.join("\n");
 }
