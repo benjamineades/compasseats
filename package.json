@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "ingest:stage": "bun run scripts/ingest/stage.ts",
     "ingest:promote": "bun run scripts/ingest/promote.ts",
+    "ingest:undo": "bun run scripts/ingest/undo.ts",
     "test:ingest": "bun test scripts/ingest/ingest.test.ts",
     "typecheck:ingest": "tsc -p tsconfig.scripts.json",
     "format": "prettier --write ."
