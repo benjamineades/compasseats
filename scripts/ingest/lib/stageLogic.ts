@@ -275,8 +275,27 @@ export function runRowChecks(row: InputRow, ref: Reference): RowResult {
 }
 
 /* ------------------------------------------------------------------------ */
-/* City and venue resolution - done in SQL so the normalisation is the       */
-/* database's own (f_unaccent, norm_key), never a re-implementation.         */
+/* City and venue resolution, in SQL.                                        */
+/*                                                                           */
+/* THIS IS THE REFERENCE IMPLEMENTATION, NOT THE ONE THE JOB RUNS.           */
+/*                                                                           */
+/* It is correct and it is quadratic: `norm_label(c.slug) in (n_full,        */
+/* n_head)` puts a function on the column, so no index can be used, Postgres */
+/* picks a nested loop, and every city is re-normalised once per CSV row.    */
+/* Measured at live scale (3,177 cities) with the 1,071-row Michelin         */
+/* fixture: 6.8 million calls to f_unaccent and 24.6s of the run's 24.8s of  */
+/* database time, in `resolveCities` alone.                                  */
+/*                                                                           */
+/* `lib/resolve.ts` replaced it: same normalisation, still the database's    */
+/* own (f_unaccent and norm_key are never re-implemented in TypeScript),     */
+/* but computed once per city and once per row instead of once per pair.     */
+/* These functions stay because `ingest.test.ts` runs both paths over the    */
+/* fixtures and diffs every verdict - a rewrite of matching rules is worth   */
+/* very little without something to diff it against. Stage reaches them only */
+/* under INGEST_STAGE_RESOLVER=sql, which exists for that test.              */
+/*                                                                           */
+/* createStageTemp is used by both paths: it is how the batch gets into the  */
+/* database so that the database can do the normalising.                     */
 /* ------------------------------------------------------------------------ */
 
 export async function createStageTemp(db: Db, results: RowResult[]): Promise<void> {
