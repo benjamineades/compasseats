@@ -33,20 +33,16 @@ import {
   type TableCounts,
 } from "./lib/db.ts";
 import {
+  applyCityResolution,
   applyDedupe,
+  applyVenueResolution,
   createStageTemp,
   loadExistingAwards,
   loadReference,
   flagRankConflicts,
-  normKeys,
-  resolveCities,
-  resolveVenues,
   runRowChecks,
-  setResolvedCities,
-  type CityResolution,
   type RowResult,
   type Verdict,
-  type VenueCandidate,
 } from "./lib/stageLogic.ts";
 import { buildPlan, loadPlanState, type Plan } from "./lib/plan.ts";
 import {
@@ -55,7 +51,6 @@ import {
   loadVenueIndex,
   resolveCitiesInMemory,
   resolveVenuesInMemory,
-  type RowKeys,
 } from "./lib/resolve.ts";
 import { Progress, writeFile } from "./lib/progress.ts";
 
@@ -311,67 +306,6 @@ async function writeVerdicts(
   }
 }
 
-/* ------------------------------------------------------------ resolving --- */
-
-/**
- * City and venue resolution has two implementations and they must agree.
- *
- * `memory` is the one this job runs: a few set-based queries, then the
- * matching in memory. `sql` is the original, which did the matching inside one
- * statement and re-normalised every city once per CSV row - it is kept solely
- * so `ingest.test.ts` can run both over the same fixtures and diff every
- * verdict, and is selected with INGEST_STAGE_RESOLVER=sql. It is not a
- * supported way to run the job: on a real batch it is the thing this change
- * fixed.
- */
-interface Resolution {
-  /** city candidates per line, before any decision is applied */
-  cities: Map<number, CityResolution>;
-  /** norm_key(venue_name) per line */
-  keys: Map<number, string | null>;
-  /** venue candidates per line, once each row has settled on a city */
-  venues(live: RowResult[]): Promise<Map<number, VenueCandidate[]>>;
-}
-
-function resolverName(): "memory" | "sql" {
-  return process.env.INGEST_STAGE_RESOLVER === "sql" ? "sql" : "memory";
-}
-
-async function sqlResolution(db: Db): Promise<Resolution> {
-  const cities = await resolveCities(db);
-  const keys = await normKeys(db);
-  return {
-    cities,
-    keys,
-    async venues(live) {
-      // the SQL path reads the resolved city back out of the temp table
-      await setResolvedCities(db, live);
-      return resolveVenues(db);
-    },
-  };
-}
-
-async function memoryResolution(db: Db, progress: Progress): Promise<Resolution> {
-  const rowKeys: RowKeys[] = await loadRowKeys(db);
-  progress.phase("normalised the batch", `${rowKeys.length} rows, in the database`);
-
-  const cityIndex = await loadCityIndex(db, rowKeys);
-  progress.phase("loaded the candidate cities", `${cityIndex.byId.size} cities`);
-
-  const venueIndex = await loadVenueIndex(db, rowKeys);
-  const nVenues = [...venueIndex.values()].reduce((a, v) => a + v.length, 0);
-  progress.phase("loaded the candidate venues", `${nVenues} venues`);
-
-  return {
-    cities: resolveCitiesInMemory(rowKeys, cityIndex),
-    keys: new Map(rowKeys.map((r) => [r.line, r.nk])),
-    async venues(live) {
-      const cityIdByLine = new Map(live.map((r) => [r.line, r.city_id]));
-      return resolveVenuesInMemory(rowKeys, cityIdByLine, venueIndex);
-    },
-  };
-}
-
 /* ---------------------------------------------------------------- main --- */
 
 /** The review CSV, written whenever there is anything to review. */
@@ -519,121 +453,37 @@ async function main(): Promise<void> {
       await createStageTemp(db, live);
       progress.phase("loaded the live rows into the resolver", `${live.length} rows`);
 
-      const resolver = resolverName();
-      const resolution =
-        resolver === "sql" ? await sqlResolution(db) : await memoryResolution(db, progress);
-      if (resolver === "sql") {
-        progress.phase("resolved cities (sql reference path)", `${resolution.cities.size} matched`);
-      }
+      const rowKeys = await loadRowKeys(db);
+      progress.phase("normalised the batch", `${rowKeys.length} rows, in the database`);
 
-      // city resolution
-      live.forEach((r, i) => {
-        const res = resolution.cities.get(r.line);
-        const cands = res?.candidates ?? [];
-        r.candidates.cities = cands;
+      const cityIndex = await loadCityIndex(db, rowKeys);
+      progress.phase("loaded the candidate cities", `${cityIndex.byId.size} cities`);
 
-        if (res?.countryDisagrees) {
-          // The publisher says one country, the matched city is in another. Given
-          // this project's history with wrong city labels, that goes to review.
-          r.verdict = "review_city";
-          r.reason = "country_label_disagrees";
-          r.detail = `"${r.input.city_label}" / "${r.input.country_label}" matched ${cands
-            .map((c) => `${c.display} (${c.country ?? "?"})`)
-            .join(", ")}`;
-          r.checks.push({
-            check: "city_resolved",
-            pass: false,
-            reason: r.reason,
-            detail: r.detail,
-          });
-        } else if (cands.length === 1) {
-          r.city_id = cands[0].city_id;
-          r.city_slug = cands[0].city_slug;
-          r.checks.push({
-            check: "city_resolved",
-            pass: true,
-            detail: `${cands[0].city_slug} via ${cands[0].via}`,
-          });
-        } else {
-          r.verdict = "review_city";
-          r.reason = cands.length === 0 ? "city_not_found" : "city_ambiguous";
-          r.detail = cands.length === 0 ? r.input.city_label : `${cands.length} candidates`;
-          r.checks.push({
-            check: "city_resolved",
-            pass: false,
-            reason: r.reason,
-            detail: r.detail,
-          });
-        }
-        progress.tick("cities", i + 1, live.length);
-      });
+      const venueIndex = await loadVenueIndex(db, rowKeys);
+      const nVenues = [...venueIndex.values()].reduce((a, v) => a + v.length, 0);
+      progress.phase("loaded the candidate venues", `${nVenues} venues`);
+
+      const keys = new Map(rowKeys.map((r) => [r.line, r.nk]));
+
+      applyCityResolution(live, resolveCitiesInMemory(rowKeys, cityIndex), (done, total) =>
+        progress.tick("cities", done, total),
+      );
       progress.phase(
         "resolved cities",
         `${live.filter((r) => r.city_id).length} of ${live.length} settled on one city`,
       );
 
-      // city decisions, applied before venue resolution
+      // city decisions, applied before venue resolution: the city a row ends
+      // up in is what makes a venue candidate a match
       if (decisions) await applyCityDecisions(db, live, decisions);
 
-      // venue resolution
-      const venueCands = await resolution.venues(live);
-      const keys = resolution.keys;
-      progress.phase("loaded venue candidates", `${venueCands.size} rows have one`);
-
-      live.forEach((r, i) => {
-        progress.tick("venues", i + 1, live.length);
-        if (r.verdict === "review_city") return;
-        const cands = venueCands.get(r.line) ?? [];
-        r.candidates.venues = cands;
-        const nk = keys.get(r.line) ?? null;
-
-        if (nk === null) {
-          // the database's own rule: a key under three characters never
-          // auto-groups. Every all-CJK name lands here, by design.
-          r.verdict = "review_venue";
-          r.reason = "norm_key_too_short";
-          r.detail = r.input.venue_name;
-          r.checks.push({ check: "venue_resolved", pass: false, reason: r.reason });
-          return;
-        }
-
-        const sameCity = cands.filter((c) => c.same_city);
-        const elsewhere = cands.filter((c) => !c.same_city);
-
-        if (sameCity.length === 1) {
-          // The city IS the disambiguator. One exact key in the resolved city is
-          // the match, even when the same name exists in other cities - that is
-          // what including the city in the signature is for.
-          r.verdict = "match";
-          r.venue_id = sameCity[0].venue_id;
-          r.checks.push({
-            check: "venue_resolved",
-            pass: true,
-            detail:
-              elsewhere.length === 0
-                ? `exact key in ${r.city_slug}`
-                : `exact key in ${r.city_slug}; the same name also exists in ${elsewhere
-                    .map((c) => c.city_display)
-                    .join(", ")}, which is not a reason to merge`,
-          });
-        } else if (cands.length === 0) {
-          r.verdict = "new_venue";
-          r.new_venue_group = `${r.city_id}::${nk}`;
-          r.checks.push({ check: "venue_resolved", pass: true, detail: "no candidate anywhere" });
-        } else {
-          // Several in this city, or the same key only in other cities.
-          // Under-merge beats over-merge: no auto-merge, ever.
-          r.verdict = "review_venue";
-          r.reason = sameCity.length > 1 ? "venue_ambiguous_in_city" : "same_key_other_city";
-          r.detail = cands.map((c) => `${c.venue_id} (${c.name}, ${c.city_display})`).join("; ");
-          r.checks.push({
-            check: "venue_resolved",
-            pass: false,
-            reason: r.reason,
-            detail: r.detail,
-          });
-        }
-      });
+      const cityIdByLine = new Map(live.map((r) => [r.line, r.city_id]));
+      applyVenueResolution(
+        live,
+        resolveVenuesInMemory(rowKeys, cityIdByLine, venueIndex),
+        keys,
+        (done, total) => progress.tick("venues", done, total),
+      );
       progress.phase(
         "resolved venues",
         `${live.filter((r) => r.venue_id).length} matched an existing venue`,
@@ -693,7 +543,6 @@ async function main(): Promise<void> {
         reviewPath,
         reStaged: Boolean(existing),
         decisionsApplied: decisions ? [...decisions.keys()].length : 0,
-        resolver,
         timings: progress.timingRows(),
       });
       progress.done();
@@ -902,8 +751,6 @@ interface ReportInput {
   reviewPath: string;
   reStaged: boolean;
   decisionsApplied: number;
-  /** which resolution path ran; "memory" unless a test asked for the reference */
-  resolver: "memory" | "sql";
   /** one row per completed phase, for the "Timings" section */
   timings: string[][];
 }
@@ -1246,12 +1093,6 @@ function buildReport(i: ReportInput): string {
   p();
   p(mdTable(["#", "phase", "took", "elapsed", "detail"], i.timings));
   p();
-  if (i.resolver === "sql") {
-    p(`> Resolution ran on the **sql reference path** (INGEST_STAGE_RESOLVER=sql). That`);
-    p(`> path re-normalises every city once per CSV row and is kept only so the tests`);
-    p(`> can diff it against the path this job normally uses.`);
-    p();
-  }
   return out.join("\n");
 }
 

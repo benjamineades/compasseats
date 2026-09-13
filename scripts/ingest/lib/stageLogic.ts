@@ -274,6 +274,119 @@ export function runRowChecks(row: InputRow, ref: Reference): RowResult {
   return result;
 }
 
+/**
+ * Turn city candidates into a verdict.
+ *
+ * This is the half of resolution that decides, as opposed to the half that
+ * looks things up, and it is deliberately separate from both. There are two
+ * implementations of the lookup - the set-based one in `resolve.ts` that the
+ * job runs, and the SQL one below that it replaced - and the whole point of
+ * keeping the second is to be able to show they agree. They can only be shown
+ * to agree if the deciding happens in one place, fed by either; otherwise the
+ * comparison is between two copies of the rules and proves nothing.
+ *
+ * `onRow` is how the caller reports progress without this file knowing what
+ * progress is.
+ */
+export function applyCityResolution(
+  live: RowResult[],
+  cities: Map<number, CityResolution>,
+  onRow: (done: number, total: number) => void = () => {},
+): void {
+  live.forEach((r, i) => {
+    const res = cities.get(r.line);
+    const cands = res?.candidates ?? [];
+    r.candidates.cities = cands;
+
+    if (res?.countryDisagrees) {
+      // The publisher says one country, the matched city is in another. Given
+      // this project's history with wrong city labels, that goes to review.
+      r.verdict = "review_city";
+      r.reason = "country_label_disagrees";
+      r.detail = `"${r.input.city_label}" / "${r.input.country_label}" matched ${cands
+        .map((c) => `${c.display} (${c.country ?? "?"})`)
+        .join(", ")}`;
+      r.checks.push({ check: "city_resolved", pass: false, reason: r.reason, detail: r.detail });
+    } else if (cands.length === 1) {
+      r.city_id = cands[0].city_id;
+      r.city_slug = cands[0].city_slug;
+      r.checks.push({
+        check: "city_resolved",
+        pass: true,
+        detail: `${cands[0].city_slug} via ${cands[0].via}`,
+      });
+    } else {
+      r.verdict = "review_city";
+      r.reason = cands.length === 0 ? "city_not_found" : "city_ambiguous";
+      r.detail = cands.length === 0 ? r.input.city_label : `${cands.length} candidates`;
+      r.checks.push({ check: "city_resolved", pass: false, reason: r.reason, detail: r.detail });
+    }
+    onRow(i + 1, live.length);
+  });
+}
+
+/**
+ * Turn venue candidates into a verdict. Runs after the cities are settled -
+ * including after any city decision - because `same_city` is what makes a
+ * candidate a match, and a row still in review_city has no city to be in.
+ */
+export function applyVenueResolution(
+  live: RowResult[],
+  venues: Map<number, VenueCandidate[]>,
+  keys: Map<number, string | null>,
+  onRow: (done: number, total: number) => void = () => {},
+): void {
+  live.forEach((r, i) => {
+    onRow(i + 1, live.length);
+    if (r.verdict === "review_city") return;
+    const cands = venues.get(r.line) ?? [];
+    r.candidates.venues = cands;
+    const nk = keys.get(r.line) ?? null;
+
+    if (nk === null) {
+      // the database's own rule: a key under three characters never
+      // auto-groups. Every all-CJK name lands here, by design.
+      r.verdict = "review_venue";
+      r.reason = "norm_key_too_short";
+      r.detail = r.input.venue_name;
+      r.checks.push({ check: "venue_resolved", pass: false, reason: r.reason });
+      return;
+    }
+
+    const sameCity = cands.filter((c) => c.same_city);
+    const elsewhere = cands.filter((c) => !c.same_city);
+
+    if (sameCity.length === 1) {
+      // The city IS the disambiguator. One exact key in the resolved city is
+      // the match, even when the same name exists in other cities - that is
+      // what including the city in the signature is for.
+      r.verdict = "match";
+      r.venue_id = sameCity[0].venue_id;
+      r.checks.push({
+        check: "venue_resolved",
+        pass: true,
+        detail:
+          elsewhere.length === 0
+            ? `exact key in ${r.city_slug}`
+            : `exact key in ${r.city_slug}; the same name also exists in ${elsewhere
+                .map((c) => c.city_display)
+                .join(", ")}, which is not a reason to merge`,
+      });
+    } else if (cands.length === 0) {
+      r.verdict = "new_venue";
+      r.new_venue_group = `${r.city_id}::${nk}`;
+      r.checks.push({ check: "venue_resolved", pass: true, detail: "no candidate anywhere" });
+    } else {
+      // Several in this city, or the same key only in other cities.
+      // Under-merge beats over-merge: no auto-merge, ever.
+      r.verdict = "review_venue";
+      r.reason = sameCity.length > 1 ? "venue_ambiguous_in_city" : "same_key_other_city";
+      r.detail = cands.map((c) => `${c.venue_id} (${c.name}, ${c.city_display})`).join("; ");
+      r.checks.push({ check: "venue_resolved", pass: false, reason: r.reason, detail: r.detail });
+    }
+  });
+}
+
 /* ------------------------------------------------------------------------ */
 /* City and venue resolution, in SQL.                                        */
 /*                                                                           */
@@ -289,10 +402,12 @@ export function runRowChecks(row: InputRow, ref: Reference): RowResult {
 /* `lib/resolve.ts` replaced it: same normalisation, still the database's    */
 /* own (f_unaccent and norm_key are never re-implemented in TypeScript),     */
 /* but computed once per city and once per row instead of once per pair.     */
-/* These functions stay because `ingest.test.ts` runs both paths over the    */
-/* fixtures and diffs every verdict - a rewrite of matching rules is worth   */
-/* very little without something to diff it against. Stage reaches them only */
-/* under INGEST_STAGE_RESOLVER=sql, which exists for that test.              */
+/*                                                                           */
+/* These functions stay because `ingest.test.ts` drives both paths over the  */
+/* fixtures, feeds each one's output to the shared applyCityResolution and   */
+/* applyVenueResolution above, and diffs the verdicts - a rewrite of         */
+/* matching rules is worth very little without something to diff it against. */
+/* Nothing in stage.ts calls them; the test imports them directly.           */
 /*                                                                           */
 /* createStageTemp is used by both paths: it is how the batch gets into the  */
 /* database so that the database can do the normalising.                     */

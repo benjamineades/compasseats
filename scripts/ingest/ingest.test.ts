@@ -4,10 +4,32 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
 import { TEST_DB_URL, buildTestDb, counts, verdicts } from "./test/harness.ts";
-import { asJson, type Db } from "./lib/db.ts";
-import type { CityCandidate, VenueCandidate } from "./lib/stageLogic.ts";
+import { connectTo, type Db } from "./lib/db.ts";
 import { parseCsv, parseCsvRecords, toCsv } from "./lib/csv.ts";
 import { disambiguate, mintVenueId, slugify } from "./lib/slug.ts";
+import { buildMapping, toInputRow } from "./lib/columns.ts";
+import {
+  applyCityResolution,
+  applyDedupe,
+  applyVenueResolution,
+  createStageTemp,
+  flagRankConflicts,
+  loadExistingAwards,
+  loadReference,
+  normKeys,
+  resolveCities,
+  resolveVenues,
+  runRowChecks,
+  setResolvedCities,
+  type RowResult,
+} from "./lib/stageLogic.ts";
+import {
+  loadCityIndex,
+  loadRowKeys,
+  loadVenueIndex,
+  resolveCitiesInMemory,
+  resolveVenuesInMemory,
+} from "./lib/resolve.ts";
 
 const REPO = resolve(import.meta.dir, "../..");
 const OUT = mkdtempSync(join(tmpdir(), "ingest-reports-"));
@@ -1038,22 +1060,6 @@ describe.skipIf(skip)("resolution parity", () => {
     await close();
   });
 
-  /** The slice of the stored validation document this diff reads. */
-  interface Validation {
-    line: number;
-    reason: string | null;
-    city_id: string | null;
-    city_slug: string | null;
-    venue_id: string | null;
-    new_venue_group: string | null;
-    venue_category: string | null;
-    venue_status: string | null;
-    candidates?: { cities: CityCandidate[]; venues: VenueCandidate[] };
-    collides_with?: number[];
-    supersedes?: number[];
-    rank_held_by?: { award_id: number }[];
-  }
-
   /** Everything a verdict is made of, order-independent. */
   interface Shape {
     line: number;
@@ -1072,99 +1078,113 @@ describe.skipIf(skip)("resolution parity", () => {
     rank_held_by: number[];
   }
 
-  async function shapes(batchKey: string): Promise<Shape[]> {
-    const { rows } = await db.query<{ verdict: string; validation: unknown }>(
-      `select r.verdict, r.validation
-         from ingest_rows r join ingest_batches b on b.id = r.batch_id
-        where b.batch_key = $1`,
-      [batchKey],
-    );
-    const nums = (a: number[]) => [...a].sort((x, y) => x - y);
-    const strs = (a: string[]) => [...a].sort();
+  const nums = (a: number[]) => [...a].sort((x, y) => x - y);
+  const strs = (a: string[]) => [...a].sort();
 
-    return rows
-      .map(({ verdict, validation }) => {
-        const v = asJson<Validation | null>(validation, null);
-        if (v === null) throw new Error(`a row of batch "${batchKey}" has no validation`);
-        return {
-          line: Number(v.line),
-          verdict,
-          reason: v.reason ?? null,
-          city_id: v.city_id ?? null,
-          city_slug: v.city_slug ?? null,
-          venue_id: v.venue_id ?? null,
-          new_venue_group: v.new_venue_group ?? null,
-          venue_category: v.venue_category ?? null,
-          venue_status: v.venue_status ?? null,
-          cities: strs((v.candidates?.cities ?? []).map((c) => `${c.city_id}|${c.via}`)),
-          venues: strs((v.candidates?.venues ?? []).map((x) => `${x.venue_id}|${x.same_city}`)),
-          collides_with: nums(v.collides_with ?? []),
-          supersedes: nums(v.supersedes ?? []),
-          rank_held_by: nums((v.rank_held_by ?? []).map((h) => Number(h.award_id))),
-        } satisfies Shape;
-      })
-      .sort((a, b) => a.line - b.line);
+  const toShape = (r: RowResult): Shape => ({
+    line: r.line,
+    verdict: r.verdict,
+    reason: r.reason,
+    city_id: r.city_id,
+    city_slug: r.city_slug,
+    venue_id: r.venue_id,
+    new_venue_group: r.new_venue_group,
+    venue_category: r.venue_category,
+    venue_status: r.venue_status,
+    cities: strs(r.candidates.cities.map((c) => `${c.city_id}|${c.via}`)),
+    venues: strs(r.candidates.venues.map((v) => `${v.venue_id}|${v.same_city}`)),
+    collides_with: nums(r.collides_with),
+    supersedes: nums(r.supersedes),
+    rank_held_by: nums(r.rank_held_by.map((h) => h.award_id)),
+  });
+
+  /**
+   * The batch's rows, built the way stage builds them and from the same
+   * exported pieces. A fresh set every call: resolution mutates the results in
+   * place, so the two paths must never be handed the same objects.
+   */
+  async function freshResults(csv: string): Promise<RowResult[]> {
+    const { header, records } = parseCsvRecords(readFileSync(csv, "utf8"));
+    const mapping = buildMapping(header);
+    const ref = await loadReference(db);
+    return records.map((rec, i) => runRowChecks(toInputRow(rec, mapping, i + 1, "parity"), ref));
   }
 
   /**
-   * Both fixtures carry their own batch_key column, and stage refuses a run
-   * whose rows disagree with the key it was given. Each path therefore gets
-   * its own copy of the file with the key rewritten - same rows, same order,
-   * two batches to diff.
+   * Drive one resolution path over a fixture and return what it decided.
+   *
+   * Both paths get the same staged rows, the same temp table, and - this is
+   * the part that makes the diff mean something - the same deciding code in
+   * applyCityResolution and applyVenueResolution. The only thing that differs
+   * is which implementation produced the candidates they are fed.
+   *
+   * `stage_rows` is `on commit drop`, so this runs inside a transaction; the
+   * ROLLBACK closes the temp table and leaves the database untouched. Nothing
+   * is staged and no batch row is written, which is why this can run the whole
+   * 1,071-row fixture through both paths in seconds.
    */
-  function csvWithKey(src: string, key: string): string {
-    const { header, records } = parseCsvRecords(readFileSync(src, "utf8"));
-    const path = join(OUT, `${key}.csv`);
-    writeFileSync(
-      path,
-      toCsv(
-        header,
-        records.map((r) => ({ ...r, batch_key: key })),
-      ),
-    );
-    return path;
+  async function resolveVia(path: "sql" | "memory", csv: string): Promise<Shape[]> {
+    const results = await freshResults(csv);
+    const live = results.filter((r) => r.verdict !== "reject");
+
+    await db.query("BEGIN");
+    try {
+      await createStageTemp(db, live);
+
+      if (path === "sql") {
+        const keys = await normKeys(db);
+        applyCityResolution(live, await resolveCities(db));
+        // the SQL path reads the resolved city back out of the temp table
+        await setResolvedCities(db, live);
+        applyVenueResolution(live, await resolveVenues(db), keys);
+      } else {
+        const rowKeys = await loadRowKeys(db);
+        const cityIndex = await loadCityIndex(db, rowKeys);
+        const venueIndex = await loadVenueIndex(db, rowKeys);
+        const keys = new Map(rowKeys.map((r) => [r.line, r.nk]));
+        applyCityResolution(live, resolveCitiesInMemory(rowKeys, cityIndex));
+        const cityIdByLine = new Map(live.map((r) => [r.line, r.city_id]));
+        applyVenueResolution(live, resolveVenuesInMemory(rowKeys, cityIdByLine, venueIndex), keys);
+      }
+    } finally {
+      await db.query("ROLLBACK");
+    }
+
+    // Everything downstream of resolution, so the diff covers the whole
+    // verdict surface rather than just the two lookups.
+    const matchedIds = [
+      ...new Set(live.filter((r) => r.venue_id).map((r) => r.venue_id as string)),
+    ];
+    applyDedupe(results, await loadExistingAwards(db, matchedIds));
+    await flagRankConflicts(db, results);
+
+    return results.map(toShape).sort((a, b) => a.line - b.line);
   }
 
-  async function stageBoth(csv: string, key: string): Promise<[Shape[], Shape[]]> {
-    const memo = await run("stage", [
-      "--csv",
-      csvWithKey(csv, `${key}-memory`),
-      "--batch-key",
-      `${key}-memory`,
-    ]);
-    expect(memo.stderr).toBe("");
-    expect(memo.ok).toBe(true);
+  async function bothPaths(csv: string): Promise<[Shape[], Shape[]]> {
+    return [await resolveVia("memory", csv), await resolveVia("sql", csv)];
+  }
 
-    const sql = await run(
-      "stage",
-      ["--csv", csvWithKey(csv, `${key}-sql`), "--batch-key", `${key}-sql`],
-      { INGEST_STAGE_RESOLVER: "sql" },
-    );
-    expect(sql.stderr).toBe("");
-    expect(sql.ok).toBe(true);
-
-    return [await shapes(`${key}-memory`), await shapes(`${key}-sql`)];
+  /** Names the first disagreement rather than dumping a thousand rows. */
+  function expectIdentical(memory: Shape[], sql: Shape[]): void {
+    const byLine = new Map(sql.map((s) => [s.line, s]));
+    const first = memory.find((m) => JSON.stringify(m) !== JSON.stringify(byLine.get(m.line)));
+    expect(
+      first === undefined
+        ? "identical"
+        : `line ${first.line}: memory ${JSON.stringify(first)} vs sql ${JSON.stringify(
+            byLine.get(first.line),
+          )}`,
+    ).toBe("identical");
+    expect(memory).toEqual(sql);
   }
 
   test("1,071 Michelin rows resolve identically on both paths", async () => {
-    const [memory, sql] = await stageBoth(
-      join(REPO, "fixtures/ingest/michelin-2026-france.csv"),
-      "parity-michelin",
-    );
+    const [memory, sql] = await bothPaths(join(REPO, "fixtures/ingest/michelin-2026-france.csv"));
 
     expect(memory).toHaveLength(1071);
     expect(sql).toHaveLength(1071);
-
-    // Name the first disagreement rather than dumping 1,071 rows.
-    const differing = memory.filter((m, i) => JSON.stringify(m) !== JSON.stringify(sql[i]));
-    expect(
-      differing.length === 0
-        ? "identical"
-        : `line ${differing[0].line}: memory ${JSON.stringify(
-            differing[0],
-          )} vs sql ${JSON.stringify(sql.find((s) => s.line === differing[0].line))}`,
-    ).toBe("identical");
-    expect(memory).toEqual(sql);
+    expectIdentical(memory, sql);
 
     // A diff of two empty sets proves nothing: the fixture has to exercise
     // the branches. These are the counts the seeding above is built to give.
@@ -1212,13 +1232,11 @@ describe.skipIf(skip)("resolution parity", () => {
       // no hint at all, so every candidate is kept
       ["No Hint Grill", "Nullcountry", ""],
     ];
-    const key = "parity-corners";
-    const path = join(OUT, `${key}.csv`);
+    const path = join(OUT, "parity-corners.csv");
     writeFileSync(
       path,
       toCsv(
         [
-          "batch_key",
           "source_id",
           "year",
           "category",
@@ -1228,7 +1246,6 @@ describe.skipIf(skip)("resolution parity", () => {
           "country_label",
         ],
         rows.map(([venue, city, country]) => ({
-          batch_key: key,
           source_id: "michelin",
           year: "2026",
           category: "One Star",
@@ -1240,8 +1257,8 @@ describe.skipIf(skip)("resolution parity", () => {
       ),
     );
 
-    const [memory, sql] = await stageBoth(path, key);
-    expect(memory).toEqual(sql);
+    const [memory, sql] = await bothPaths(path);
+    expectIdentical(memory, sql);
 
     const at = (n: number) => memory[n - 1];
     expect(at(1).city_slug).toBe("paris"); // the comma form resolved
@@ -1256,11 +1273,11 @@ describe.skipIf(skip)("resolution parity", () => {
   }, 180_000);
 
   test("the hand-built edge cases resolve identically on both paths", async () => {
-    const [memory, sql] = await stageBoth(fixture("cases.csv"), "parity-cases");
-    expect(memory).toEqual(sql);
+    const [memory, sql] = await bothPaths(fixture("cases.csv"));
+    expectIdentical(memory, sql);
     // cases.csv is the file that carries country_label_disagrees, the
-    // ambiguous city and the short norm_key, so the three-valued country
-    // logic and the NULL-key rule are both inside this diff.
+    // ambiguous city and the short norm_key, so the country-hint rule and
+    // the NULL-key rule are both inside this diff.
     const reasons = new Set(memory.map((m) => m.reason).filter(Boolean));
     expect(reasons).toContain("country_label_disagrees");
     expect(reasons).toContain("city_ambiguous");
@@ -1342,40 +1359,56 @@ describe.skipIf(skip)("a run that does not finish", () => {
       ),
     );
 
-    // The SQL reference path is slow enough to interrupt on purpose. The
-    // signal is sent on a line of output, not on a timer, so this does not
-    // race: by the time that phase has printed, the next one has started.
-    const proc = Bun.spawn(
-      [
-        "bun",
-        "run",
-        join(REPO, "scripts/ingest/stage.ts"),
-        "--csv",
-        csv,
-        "--batch-key",
-        key,
-        "--out",
-        OUT,
-      ],
-      {
-        cwd: REPO,
-        env: { ...process.env, SUPABASE_DB_URL: TEST_DB_URL, INGEST_STAGE_RESOLVER: "sql" },
-        stdout: "pipe",
-        stderr: "pipe",
-      },
-    );
+    // Interrupting a run that finishes in a third of a second is a race, and a
+    // test that sometimes signals a dead process is worse than no test. So the
+    // run is held still rather than raced: a second connection takes an
+    // ACCESS EXCLUSIVE lock on `cities`, which every resolution path has to
+    // read, and stage blocks there until it is signalled. Nothing here depends
+    // on timing.
+    const blocker = await connectTo(TEST_DB_URL);
+    await blocker.client.query("BEGIN");
+    await blocker.client.query("LOCK TABLE cities IN ACCESS EXCLUSIVE MODE");
 
-    let seen = "";
-    const reader = proc.stdout.getReader();
-    const decoder = new TextDecoder();
-    while (!seen.includes("loaded the live rows into the resolver")) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      seen += decoder.decode(value, { stream: true });
+    try {
+      const proc = Bun.spawn(
+        [
+          "bun",
+          "run",
+          join(REPO, "scripts/ingest/stage.ts"),
+          "--csv",
+          csv,
+          "--batch-key",
+          key,
+          "--out",
+          OUT,
+        ],
+        {
+          cwd: REPO,
+          env: { ...process.env, SUPABASE_DB_URL: TEST_DB_URL },
+          stdout: "pipe",
+          stderr: "pipe",
+        },
+      );
+
+      // Wait for a line of its output, which is proof the process is up and
+      // its signal handlers are installed. Where exactly it has got to by then
+      // does not matter: the lock guarantees it cannot have finished.
+      let seen = "";
+      const reader = proc.stdout.getReader();
+      const decoder = new TextDecoder();
+      while (!seen.includes("read the CSV")) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        seen += decoder.decode(value, { stream: true });
+      }
+      expect(seen).toContain("read the CSV");
+
+      proc.kill("SIGINT");
+      expect(await proc.exited).not.toBe(0);
+    } finally {
+      await blocker.client.query("ROLLBACK");
+      await blocker.close();
     }
-    expect(seen).toContain("loaded the live rows into the resolver");
-    proc.kill("SIGINT");
-    await proc.exited;
 
     const md = report(`${key}-stage.md`);
     expect(md).toContain("(INCOMPLETE)");
@@ -1383,6 +1416,7 @@ describe.skipIf(skip)("a run that does not finish", () => {
     expect(md).toContain("| 1 | read the CSV |");
     expect(md).toContain("It stopped **after**");
 
+    // the transaction took nothing with it
     const { rows } = await db.query<{ n: string }>(
       `select count(*)::text n from ingest_batches where batch_key = $1`,
       [key],
