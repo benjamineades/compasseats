@@ -67,10 +67,18 @@ jobs:
           fi
           bun run scripts/ingest/stage.ts "${ARGS[@]}" | tee /tmp/stage.out
 
+      # The report file is rewritten as each phase completes, so it exists even
+      # when the run was cancelled or failed - and unlike the captured stdout it
+      # carries no per-100-row progress lines. Prefer it; fall back to stdout.
       - name: Put the report in the run summary
         if: always()
+        env:
+          BATCH_KEY: ${{ inputs.batch_key }}
         run: |
-          if [ -f /tmp/stage.out ]; then
+          REPORT="reports/$BATCH_KEY-stage.md"
+          if [ -f "$REPORT" ]; then
+            cat "$REPORT" >> "$GITHUB_STEP_SUMMARY"
+          elif [ -f /tmp/stage.out ]; then
             cat /tmp/stage.out >> "$GITHUB_STEP_SUMMARY"
           else
             echo "The stage step failed before it wrote a report. See the log above." >> "$GITHUB_STEP_SUMMARY"

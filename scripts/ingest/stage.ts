@@ -9,8 +9,8 @@
  *                                   [--decisions <path>] [--note <text>]
  *                                   [--out reports]
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 import { Args } from "./lib/args.ts";
 import { parseCsvRecords, toCsv, type CsvRecord } from "./lib/csv.ts";
@@ -33,20 +33,26 @@ import {
   type TableCounts,
 } from "./lib/db.ts";
 import {
+  applyCityResolution,
   applyDedupe,
+  applyVenueResolution,
   createStageTemp,
   loadExistingAwards,
   loadReference,
   flagRankConflicts,
-  normKeys,
-  resolveCities,
-  resolveVenues,
   runRowChecks,
-  setResolvedCities,
   type RowResult,
   type Verdict,
 } from "./lib/stageLogic.ts";
 import { buildPlan, loadPlanState, type Plan } from "./lib/plan.ts";
+import {
+  loadCityIndex,
+  loadRowKeys,
+  loadVenueIndex,
+  resolveCitiesInMemory,
+  resolveVenuesInMemory,
+} from "./lib/resolve.ts";
+import { Progress, writeFile } from "./lib/progress.ts";
 
 /* ---------------------------------------------------------------- args --- */
 
@@ -82,11 +88,6 @@ const REQUIRED_COLUMNS = ["source_id", "year", "source_url", "venue_name", "city
  * text first makes the cast explicit and driver-independent.
  */
 const JSONB = "text::jsonb";
-
-function writeFile(path: string, body: string): void {
-  mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(path, body, "utf8");
-}
 
 function tallyBy<T>(items: T[], key: (t: T) => string): Map<string, number> {
   const m = new Map<string, number>();
@@ -307,251 +308,261 @@ async function writeVerdicts(
 
 /* ---------------------------------------------------------------- main --- */
 
+/** The review CSV, written whenever there is anything to review. */
+function writeReviewCsv(path: string, results: RowResult[]): number {
+  const rows = results.filter((r) => r.verdict === "review_city" || r.verdict === "review_venue");
+  if (rows.length > 0) writeFile(path, buildReviewCsv(rows));
+  return rows.length;
+}
+
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
-  const { client: db, close } = await connect();
+  const reportPath = join(args.out, `${args.batchKey}-stage.md`);
+  const reviewPath = join(args.out, `${args.batchKey}-review.csv`);
+  const progress = new Progress(reportPath, args.batchKey);
 
+  // A cancelled run has to leave evidence. `results` is reassigned as soon as
+  // the verdicts exist, so both the signal handler and the catch below can
+  // write out the review CSV for whatever was resolved before the end came.
+  let results: RowResult[] = [];
+  const flush = (reason: string) => {
+    progress.failed(reason);
+    try {
+      writeReviewCsv(reviewPath, results);
+    } catch {
+      /* the report is the thing that matters; never fail inside a failure */
+    }
+  };
+
+  // GitHub cancels a job with SIGINT, then SIGTERM. Both get the same
+  // treatment, and the handler is synchronous because nothing asynchronous is
+  // guaranteed to run before the process goes.
+  for (const sig of ["SIGINT", "SIGTERM"] as const) {
+    process.on(sig, () => {
+      console.log(`\n${sig} - writing what this run knows so far to ${reportPath}`);
+      flush(`cancelled (${sig})`);
+      process.exit(130);
+    });
+  }
+
+  // Everything from here can fail - a missing CSV, a refused connection, a
+  // statement that errors mid-transaction - and every one of those has to
+  // leave the same evidence behind: the report, naming the phase it stopped
+  // after, and the review CSV if the verdicts had got that far.
   try {
     const loaded = loadCsv(args.csv, args.batchKey);
+    progress.phase("read the CSV", `${loaded.rows.length} rows from ${args.csv}`);
     const batchKeyNote = assertBatchKey(loaded.rows, loaded.mapping, args.batchKey);
 
-    const existing = await findBatch(db, args.batchKey);
-    const decisions = args.decisions ? loadDecisions(args.decisions) : null;
+    const { client: db, close } = await connect();
+    progress.phase("opened the database connection");
 
-    /* --- idempotency: same key, no decisions file => no-op ---------------- */
-    if (existing && !decisions) {
-      const body =
-        `# Ingest stage - no-op\n\n` +
-        `Batch key **${args.batchKey}** already exists.\n\n` +
-        mdTable(
-          ["field", "value"],
-          [
-            ["batch id", existing.id],
-            ["status", existing.status],
-            ["source", existing.source_id ?? "(multi-source)"],
-            ["list year", existing.list_year?.toString() ?? "(multi-year)"],
-            ["staged rows", existing.n_rows],
-            ["created", existing.created_at],
-          ],
-        ) +
-        `\n\nNothing was staged and nothing was changed. This is what idempotency ` +
-        `looks like: if a run timed out, the work is already here.\n\n` +
-        `To apply review decisions to this batch, re-run stage with the same CSV ` +
-        `plus \`--decisions <filled review csv>\`.\n`;
-      writeFile(join(args.out, `${args.batchKey}-stage.md`), body);
-      console.log(body);
-      return;
-    }
-    if (!existing && decisions) {
-      throw new Error(
-        `No batch with key "${args.batchKey}" exists, so there is nothing to apply ` +
-          `decisions to. Stage the batch first.`,
-      );
-    }
-    if (existing && decisions && existing.status !== "staged") {
-      throw new Error(
-        `Batch "${args.batchKey}" is ${existing.status}, not staged. Decisions can only ` +
-          `be applied to a staged batch.`,
-      );
-    }
-
-    /* --- one transaction: stage is atomic too --------------------------- */
-    await db.query("BEGIN");
-
-    /* --- batch + rows ----------------------------------------------------- */
-    const ref = await loadReference(db);
-
-    const sourceIds = [...new Set(loaded.rows.map((r) => r.source_id))].sort();
-    const years = [...new Set(loaded.rows.map((r) => r.year))].sort();
-    // ingest_batches.source_id is a foreign key to award_sources. An unregistered
-    // slug has to reach runRowChecks and come back as a reported reject, not
-    // blow up the insert before a single row has been looked at.
-    const singleSource =
-      sourceIds.length === 1 && ref.sources.has(sourceIds[0]) ? sourceIds[0] : null;
-    const singleYear = years.length === 1 && /^\d{4}$/.test(years[0]) ? Number(years[0]) : null;
-
-    let batchId: string;
-    let idByLine: Map<number, string>;
-
-    if (existing) {
-      batchId = existing.id;
-      const { rows } = await db.query<{ id: string; line: number; raw: unknown }>(
-        `select id::text, (raw->>'_line')::int as line, raw from ingest_rows where batch_id = $1`,
-        [batchId],
-      );
-      idByLine = new Map(rows.map((r) => [Number(r.line), r.id]));
-      assertSameCsv(args.batchKey, rows, loaded.records);
-    } else {
-      const created = await insertBatch(
-        db,
-        args.batchKey,
-        singleSource,
-        singleYear,
-        args.note ?? null,
-        loaded.records,
-      );
-      batchId = created.batchId;
-      idByLine = created.idByLine;
-    }
-
-    /* --- validate --------------------------------------------------------- */
-    const results = loaded.rows.map((row) => runRowChecks(row, ref));
-    const live = results.filter((r) => r.verdict !== "reject");
-
-    await createStageTemp(db, live);
-
-    // city resolution
-    const cityCands = await resolveCities(db);
-    for (const r of live) {
-      const resolution = cityCands.get(r.line);
-      const cands = resolution?.candidates ?? [];
-      r.candidates.cities = cands;
-
-      if (resolution?.countryDisagrees) {
-        // The publisher says one country, the matched city is in another. Given
-        // this project's history with wrong city labels, that goes to review.
-        r.verdict = "review_city";
-        r.reason = "country_label_disagrees";
-        r.detail = `"${r.input.city_label}" / "${r.input.country_label}" matched ${cands
-          .map((c) => `${c.display} (${c.country ?? "?"})`)
-          .join(", ")}`;
-        r.checks.push({ check: "city_resolved", pass: false, reason: r.reason, detail: r.detail });
-      } else if (cands.length === 1) {
-        r.city_id = cands[0].city_id;
-        r.city_slug = cands[0].city_slug;
-        r.checks.push({
-          check: "city_resolved",
-          pass: true,
-          detail: `${cands[0].city_slug} via ${cands[0].via}`,
-        });
-      } else {
-        r.verdict = "review_city";
-        r.reason = cands.length === 0 ? "city_not_found" : "city_ambiguous";
-        r.detail = cands.length === 0 ? r.input.city_label : `${cands.length} candidates`;
-        r.checks.push({ check: "city_resolved", pass: false, reason: r.reason, detail: r.detail });
-      }
-    }
-
-    // city decisions, applied before venue resolution
-    if (decisions) await applyCityDecisions(db, live, decisions);
-
-    await setResolvedCities(db, live);
-
-    // venue resolution
-    const venueCands = await resolveVenues(db);
-    const keys = await normKeys(db);
-
-    for (const r of live) {
-      if (r.verdict === "review_city") continue;
-      const cands = venueCands.get(r.line) ?? [];
-      r.candidates.venues = cands;
-      const nk = keys.get(r.line) ?? null;
-
-      if (nk === null) {
-        // the database's own rule: a key under three characters never
-        // auto-groups. Every all-CJK name lands here, by design.
-        r.verdict = "review_venue";
-        r.reason = "norm_key_too_short";
-        r.detail = r.input.venue_name;
-        r.checks.push({ check: "venue_resolved", pass: false, reason: r.reason });
-        continue;
-      }
-
-      const sameCity = cands.filter((c) => c.same_city);
-      const elsewhere = cands.filter((c) => !c.same_city);
-
-      if (sameCity.length === 1) {
-        // The city IS the disambiguator. One exact key in the resolved city is
-        // the match, even when the same name exists in other cities - that is
-        // what including the city in the signature is for.
-        r.verdict = "match";
-        r.venue_id = sameCity[0].venue_id;
-        r.checks.push({
-          check: "venue_resolved",
-          pass: true,
-          detail:
-            elsewhere.length === 0
-              ? `exact key in ${r.city_slug}`
-              : `exact key in ${r.city_slug}; the same name also exists in ${elsewhere
-                  .map((c) => c.city_display)
-                  .join(", ")}, which is not a reason to merge`,
-        });
-      } else if (cands.length === 0) {
-        r.verdict = "new_venue";
-        r.new_venue_group = `${r.city_id}::${nk}`;
-        r.checks.push({ check: "venue_resolved", pass: true, detail: "no candidate anywhere" });
-      } else {
-        // Several in this city, or the same key only in other cities.
-        // Under-merge beats over-merge: no auto-merge, ever.
-        r.verdict = "review_venue";
-        r.reason = sameCity.length > 1 ? "venue_ambiguous_in_city" : "same_key_other_city";
-        r.detail = cands.map((c) => `${c.venue_id} (${c.name}, ${c.city_display})`).join("; ");
-        r.checks.push({ check: "venue_resolved", pass: false, reason: r.reason, detail: r.detail });
-      }
-    }
-
-    // venue decisions
-    if (decisions) await applyVenueDecisions(db, live, decisions, keys);
-
-    /* --- dedupe and subsume ----------------------------------------------- */
-    const matchedIds = [
-      ...new Set(live.filter((r) => r.venue_id).map((r) => r.venue_id as string)),
-    ];
-    applyDedupe(results, await loadExistingAwards(db, matchedIds));
-    await flagRankConflicts(db, results);
-
-    /* --- plan and expected counts ----------------------------------------- */
-    const citySlugs = [...new Set(live.map((r) => r.city_slug).filter(Boolean) as string[])];
-    const planState = await loadPlanState(db, citySlugs, matchedIds);
-    const plan = buildPlan({
-      batchKey: args.batchKey,
-      results,
-      sources: ref.sources,
-      ...planState,
-    });
-    const before = await readCounts(db);
-
-    /* --- persist verdicts -------------------------------------------------- */
-    await writeVerdicts(db, idByLine, results);
-
-    await db.query("COMMIT");
-
-    /* --- report and review CSV --------------------------------------------- */
-    const reviewRows = results.filter(
-      (r) => r.verdict === "review_city" || r.verdict === "review_venue",
-    );
-    const reviewPath = join(args.out, `${args.batchKey}-review.csv`);
-    if (reviewRows.length > 0) writeFile(reviewPath, buildReviewCsv(reviewRows));
-
-    const report = buildReport({
-      args,
-      batchId,
-      loaded,
-      batchKeyNote,
-      sourceIds,
-      years,
-      results,
-      plan,
-      before,
-      ref,
-      reviewRows: reviewRows.length,
-      reviewPath,
-      reStaged: Boolean(existing),
-      decisionsApplied: decisions ? [...decisions.keys()].length : 0,
-    });
-    writeFile(join(args.out, `${args.batchKey}-stage.md`), report);
-    console.log(report);
-  } catch (err) {
-    // Nothing half-staged: the batch row and its ingest_rows land together or
-    // not at all.
     try {
-      await db.query("ROLLBACK");
-    } catch {
-      /* not inside a transaction */
+      const existing = await findBatch(db, args.batchKey);
+      const decisions = args.decisions ? loadDecisions(args.decisions) : null;
+
+      /* --- idempotency: same key, no decisions file => no-op ---------------- */
+      if (existing && !decisions) {
+        const body =
+          `# Ingest stage - no-op\n\n` +
+          `Batch key **${args.batchKey}** already exists.\n\n` +
+          mdTable(
+            ["field", "value"],
+            [
+              ["batch id", existing.id],
+              ["status", existing.status],
+              ["source", existing.source_id ?? "(multi-source)"],
+              ["list year", existing.list_year?.toString() ?? "(multi-year)"],
+              ["staged rows", existing.n_rows],
+              ["created", existing.created_at],
+            ],
+          ) +
+          `\n\nNothing was staged and nothing was changed. This is what idempotency ` +
+          `looks like: if a run timed out, the work is already here.\n\n` +
+          `To apply review decisions to this batch, re-run stage with the same CSV ` +
+          `plus \`--decisions <filled review csv>\`.\n`;
+        progress.done();
+        writeFile(reportPath, body);
+        console.log(body);
+        return;
+      }
+      if (!existing && decisions) {
+        throw new Error(
+          `No batch with key "${args.batchKey}" exists, so there is nothing to apply ` +
+            `decisions to. Stage the batch first.`,
+        );
+      }
+      if (existing && decisions && existing.status !== "staged") {
+        throw new Error(
+          `Batch "${args.batchKey}" is ${existing.status}, not staged. Decisions can only ` +
+            `be applied to a staged batch.`,
+        );
+      }
+
+      /* --- one transaction: stage is atomic too --------------------------- */
+      await db.query("BEGIN");
+
+      /* --- batch + rows ----------------------------------------------------- */
+      const ref = await loadReference(db);
+      progress.phase("read the source vocabulary", `${ref.sources.size} sources`);
+
+      const sourceIds = [...new Set(loaded.rows.map((r) => r.source_id))].sort();
+      const years = [...new Set(loaded.rows.map((r) => r.year))].sort();
+      // ingest_batches.source_id is a foreign key to award_sources. An unregistered
+      // slug has to reach runRowChecks and come back as a reported reject, not
+      // blow up the insert before a single row has been looked at.
+      const singleSource =
+        sourceIds.length === 1 && ref.sources.has(sourceIds[0]) ? sourceIds[0] : null;
+      const singleYear = years.length === 1 && /^\d{4}$/.test(years[0]) ? Number(years[0]) : null;
+
+      let batchId: string;
+      let idByLine: Map<number, string>;
+
+      if (existing) {
+        batchId = existing.id;
+        const { rows } = await db.query<{ id: string; line: number; raw: unknown }>(
+          `select id::text, (raw->>'_line')::int as line, raw from ingest_rows where batch_id = $1`,
+          [batchId],
+        );
+        idByLine = new Map(rows.map((r) => [Number(r.line), r.id]));
+        assertSameCsv(args.batchKey, rows, loaded.records);
+        progress.phase("re-read the staged rows", `batch ${batchId}, ${rows.length} rows`);
+      } else {
+        const created = await insertBatch(
+          db,
+          args.batchKey,
+          singleSource,
+          singleYear,
+          args.note ?? null,
+          loaded.records,
+        );
+        batchId = created.batchId;
+        idByLine = created.idByLine;
+        progress.phase("staged the raw rows", `batch ${batchId}, ${idByLine.size} rows`);
+      }
+
+      /* --- validate --------------------------------------------------------- */
+      results = loaded.rows.map((row, i) => {
+        const r = runRowChecks(row, ref);
+        progress.tick("checked", i + 1, loaded.rows.length);
+        return r;
+      });
+      const live = results.filter((r) => r.verdict !== "reject");
+      progress.phase("row checks", `${live.length} of ${results.length} rows still live`);
+
+      await createStageTemp(db, live);
+      progress.phase("loaded the live rows into the resolver", `${live.length} rows`);
+
+      const rowKeys = await loadRowKeys(db);
+      progress.phase("normalised the batch", `${rowKeys.length} rows, in the database`);
+
+      const cityIndex = await loadCityIndex(db, rowKeys);
+      progress.phase("loaded the candidate cities", `${cityIndex.byId.size} cities`);
+
+      const venueIndex = await loadVenueIndex(db, rowKeys);
+      const nVenues = [...venueIndex.values()].reduce((a, v) => a + v.length, 0);
+      progress.phase("loaded the candidate venues", `${nVenues} venues`);
+
+      const keys = new Map(rowKeys.map((r) => [r.line, r.nk]));
+
+      applyCityResolution(live, resolveCitiesInMemory(rowKeys, cityIndex), (done, total) =>
+        progress.tick("cities", done, total),
+      );
+      progress.phase(
+        "resolved cities",
+        `${live.filter((r) => r.city_id).length} of ${live.length} settled on one city`,
+      );
+
+      // city decisions, applied before venue resolution: the city a row ends
+      // up in is what makes a venue candidate a match
+      if (decisions) await applyCityDecisions(db, live, decisions);
+
+      const cityIdByLine = new Map(live.map((r) => [r.line, r.city_id]));
+      applyVenueResolution(
+        live,
+        resolveVenuesInMemory(rowKeys, cityIdByLine, venueIndex),
+        keys,
+        (done, total) => progress.tick("venues", done, total),
+      );
+      progress.phase(
+        "resolved venues",
+        `${live.filter((r) => r.venue_id).length} matched an existing venue`,
+      );
+
+      // venue decisions
+      if (decisions) await applyVenueDecisions(db, live, decisions, keys);
+
+      /* --- dedupe and subsume ----------------------------------------------- */
+      const matchedIds = [
+        ...new Set(live.filter((r) => r.venue_id).map((r) => r.venue_id as string)),
+      ];
+      applyDedupe(results, await loadExistingAwards(db, matchedIds));
+      await flagRankConflicts(db, results);
+      progress.phase("dedupe, subsume and rank conflicts");
+
+      // The verdicts are final from here, so the review CSV can be written now
+      // rather than after the commit. If the run dies in the next few seconds,
+      // the file Ben needs is already on disk.
+      const reviewCount = writeReviewCsv(reviewPath, results);
+
+      /* --- plan and expected counts ----------------------------------------- */
+      const citySlugs = [...new Set(live.map((r) => r.city_slug).filter(Boolean) as string[])];
+      const planState = await loadPlanState(db, citySlugs, matchedIds);
+      const plan = buildPlan({
+        batchKey: args.batchKey,
+        results,
+        sources: ref.sources,
+        ...planState,
+      });
+      const before = await readCounts(db);
+      progress.phase(
+        "built the promote plan",
+        `${plan.venues.length} venues, ${plan.awards.length} awards`,
+      );
+
+      /* --- persist verdicts -------------------------------------------------- */
+      await writeVerdicts(db, idByLine, results);
+      progress.phase("wrote the verdicts", `${results.length} rows`);
+
+      await db.query("COMMIT");
+      progress.phase("committed");
+
+      /* --- report and review CSV --------------------------------------------- */
+      const report = buildReport({
+        args,
+        batchId,
+        loaded,
+        batchKeyNote,
+        sourceIds,
+        years,
+        results,
+        plan,
+        before,
+        ref,
+        reviewRows: reviewCount,
+        reviewPath,
+        reStaged: Boolean(existing),
+        decisionsApplied: decisions ? [...decisions.keys()].length : 0,
+        timings: progress.timingRows(),
+      });
+      progress.done();
+      writeFile(reportPath, report);
+      console.log(report);
+    } catch (err) {
+      // Nothing half-staged: the batch row and its ingest_rows land together or
+      // not at all.
+      try {
+        await db.query("ROLLBACK");
+      } catch {
+        /* not inside a transaction */
+      }
+      throw err;
+    } finally {
+      await close();
     }
+  } catch (err) {
+    flush(err instanceof Error ? err.message : String(err));
     throw err;
-  } finally {
-    await close();
   }
 }
 
@@ -740,6 +751,8 @@ interface ReportInput {
   reviewPath: string;
   reStaged: boolean;
   decisionsApplied: number;
+  /** one row per completed phase, for the "Timings" section */
+  timings: string[][];
 }
 
 export function expectedCounts(before: TableCounts, plan: Plan): Record<string, number> {
@@ -1069,6 +1082,16 @@ function buildReport(i: ReportInput): string {
   } else {
     p(`There is nothing to promote in this batch.`);
   }
+  p();
+
+  /* --- timings --- */
+  p(`## Timings`);
+  p();
+  p(`Where this run's wall clock went, phase by phase. The same table is written`);
+  p(`to this file as each phase completes, so a run that is cancelled or fails`);
+  p(`still says how far it got.`);
+  p();
+  p(mdTable(["#", "phase", "took", "elapsed", "detail"], i.timings));
   p();
   return out.join("\n");
 }

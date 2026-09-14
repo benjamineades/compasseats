@@ -114,6 +114,20 @@ When the run finishes, the report is in three places: the **run summary** (scrol
 down on the run page — easiest on a phone), an artifact you can download, and
 committed into the repo at `reports/<batch key>-stage.md`.
 
+### While it is running
+
+The log prints a line at every phase and every 100 rows, so you can tell a slow
+run from a stuck one without guessing. A batch of 1,000–1,500 rows takes a few
+seconds against the live database.
+
+The report file is rewritten as each phase completes, so it is never only
+written at the end. If a run is cancelled or fails part way, the file at
+`reports/<batch key>-stage.md` is still there, marked **INCOMPLETE**, naming the
+phase it stopped after — and the review CSV is there too if the run got as far
+as deciding the verdicts. Nothing is staged in that case: the whole run is one
+transaction, so a batch that did not finish left no batch row behind and the
+same key can simply be run again.
+
 ### What the CSV needs in it
 
 One row per (venue, award). These columns:
