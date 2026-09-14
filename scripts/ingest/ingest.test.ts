@@ -11,6 +11,7 @@ import { buildMapping, toInputRow } from "./lib/columns.ts";
 import {
   applyCityResolution,
   applyDedupe,
+  applyLooseReview,
   applyVenueResolution,
   createStageTemp,
   flagRankConflicts,
@@ -25,6 +26,7 @@ import {
 } from "./lib/stageLogic.ts";
 import {
   loadCityIndex,
+  loadLooseCandidates,
   loadRowKeys,
   loadVenueIndex,
   resolveCitiesInMemory,
@@ -158,10 +160,10 @@ describe.skipIf(skip)("stage and promote", () => {
     expect(await verdicts(db, key)).toEqual({ new_venue: 10 });
 
     const md = report(`${key}-stage.md`);
-    expect(md).toContain("| venues | 7 | 15 | +8 |");
+    expect(md).toContain("| venues | 9 | 17 | +8 |");
     expect(md).toContain("| awards | 3 | 13 | +10 |");
-    expect(md).toContain("| listings | 7 | 15 | +8 |");
-    expect(md).toContain("| slugs | 7 | 15 | +8 |");
+    expect(md).toContain("| listings | 9 | 17 | +8 |");
+    expect(md).toContain("| slugs | 9 | 17 | +8 |");
     // 8 new venues x (city_display + country)
     expect(md).toContain("| city_label_source | 0 | 16 | +16 |");
     expect(md).toContain("| price | 0 | 0 | +0 |");
@@ -172,7 +174,7 @@ describe.skipIf(skip)("stage and promote", () => {
 
     // nothing touched the live tables
     const c = await counts(db);
-    expect(c.venues).toBe(7);
+    expect(c.venues).toBe(9);
     expect(c.awards).toBe(3);
     expect(c.ingest_rows).toBe(10);
   });
@@ -198,7 +200,7 @@ describe.skipIf(skip)("stage and promote", () => {
       expect(r.stderr).toContain("Nothing was promoted");
     }
     const c = await counts(db);
-    expect(c.venues).toBe(7);
+    expect(c.venues).toBe(9);
   });
 
   test("a dry run checks every invariant and changes nothing", async () => {
@@ -217,7 +219,7 @@ describe.skipIf(skip)("stage and promote", () => {
     const md = report(`${key}-promote.md`);
     expect(md).toContain("Dry run - rolled back");
     expect(md).not.toContain("**FAIL**");
-    expect(md).toContain("| venues | 7 | 15 | 15 |");
+    expect(md).toContain("| venues | 9 | 17 | 17 |");
     expect(md).toContain("| awards | 3 | 13 | 13 |");
 
     expect(await counts(db)).toEqual(before);
@@ -230,10 +232,10 @@ describe.skipIf(skip)("stage and promote", () => {
     expect(r.ok).toBe(true);
 
     const c = await counts(db);
-    expect(c.venues).toBe(15);
+    expect(c.venues).toBe(17);
     expect(c.awards).toBe(13);
-    expect(c.listings).toBe(15);
-    expect(c.slugs).toBe(15);
+    expect(c.listings).toBe(17);
+    expect(c.slugs).toBe(17);
     expect(c.city_label_source).toBe(16);
     expect(c.price).toBe(0);
     expect(c.source_capture_ledger).toBe(10);
@@ -325,6 +327,70 @@ describe.skipIf(skip)("stage and promote", () => {
     expect(records.map((x) => x.line).sort()).toEqual(["14", "16", "19", "20", "8", "9"]);
     expect(records.find((x) => x.line === "9")?.candidates).toContain("use:ve_bbbbbbbbb2");
     expect(records.find((x) => x.line === "19")?.candidates).toContain("use:ve_ggggggggg7");
+  });
+
+  /**
+   * The name shape that made 152 rows of the France 2026 list look new: the
+   * snapshot says "Restaurant Kei", the Michelin card says "Kei". Under-merge
+   * still beats over-merge, so the answer is review, never a merge.
+   */
+  test("a name the city already holds loosely goes to review, not to new_venue", async () => {
+    const key = "loose-2026-09";
+    const r = await run("stage", ["--csv", fixture("loose-key.csv"), "--batch-key", key]);
+    expect(r.stderr).toBe("");
+    expect(r.ok).toBe(true);
+
+    const { rows } = await db.query<{ line: number; verdict: string; reason: string | null }>(
+      `select (r.raw->>'_line')::int as line, r.verdict, r.validation->>'reason' as reason
+         from ingest_rows r join ingest_batches b on b.id = r.batch_id
+        where b.batch_key = $1 order by 1`,
+      [key],
+    );
+    const at = (n: number) => rows.find((x) => Number(x.line) === n) as (typeof rows)[number];
+
+    expect(at(1)).toMatchObject({ verdict: "review_venue", reason: "loose_key_candidate_in_city" });
+    expect(at(2)).toMatchObject({ verdict: "review_venue", reason: "loose_key_candidate_in_city" });
+    expect(at(3).verdict).toBe("match");
+    expect(at(4).verdict).toBe("new_venue");
+    expect(at(5).verdict).toBe("new_venue");
+
+    // the review CSV carries the decision the operator would paste back
+    const { records } = parseCsvRecords(readFileSync(join(OUT, `${key}-review.csv`), "utf8"));
+    expect(records.map((x) => x.line).sort()).toEqual(["1", "2"]);
+    expect(records.find((x) => x.line === "1")?.candidates).toContain("use:ve_hhhhhhhhh8");
+    expect(records.find((x) => x.line === "1")?.candidates).toContain("Restaurant Kei");
+    expect(records.find((x) => x.line === "2")?.candidates).toContain("use:ve_iiiiiiiii9");
+
+    // and nothing was merged: line 1 has no venue_id, it has a question
+    const { rows: v } = await db.query<{ venue_id: string | null }>(
+      `select r.validation->>'venue_id' as venue_id
+         from ingest_rows r join ingest_batches b on b.id = r.batch_id
+        where b.batch_key = $1 and (r.raw->>'_line')::int = 1`,
+      [key],
+    );
+    expect(v[0].venue_id).toBeNull();
+  });
+
+  /** And the operator's answer still wins, in both directions. */
+  test("a loose review row takes use: or new, whichever the operator says", async () => {
+    const key = "loose-2026-09";
+    const decisions = join(OUT, "loose-decisions.csv");
+    writeFileSync(decisions, "line,decision\n1,use:ve_hhhhhhhhh8\n2,new\n", "utf8");
+    const r = await run("stage", [
+      "--csv",
+      fixture("loose-key.csv"),
+      "--batch-key",
+      key,
+      "--decisions",
+      decisions,
+    ]);
+    expect(r.stderr).toBe("");
+    expect(r.ok).toBe(true);
+
+    const v = await verdicts(db, key);
+    expect(v.review_venue ?? 0).toBe(0);
+    expect(v.match).toBe(2); // line 3, plus line 1 by decision
+    expect(v.new_venue).toBe(3); // lines 4 and 5, plus line 2 by decision
   });
 
   test("promote refuses while any review row remains", async () => {
@@ -609,10 +675,10 @@ describe.skipIf(skip)("undo", () => {
     expect(md).not.toContain("**FAIL**");
     expect(md).toContain("Population: whole table");
     // before -> expected -> actual, all three agreeing, on the rolled-back run
-    expect(md).toContain("| venues | 15 | 7 | 7 |");
+    expect(md).toContain("| venues | 17 | 9 | 9 |");
     expect(md).toContain("| awards | 13 | 3 | 3 |");
-    expect(md).toContain("| listings | 15 | 7 | 7 |");
-    expect(md).toContain("| slugs | 15 | 7 | 7 |");
+    expect(md).toContain("| listings | 17 | 9 | 9 |");
+    expect(md).toContain("| slugs | 17 | 9 | 9 |");
     expect(md).toContain("| city_label_source | 16 | 0 | 0 |");
     expect(md).toContain("| source_capture_ledger | 10 | 0 | 0 |");
     // the job never creates a city, so a clean undo never removes one
@@ -731,11 +797,12 @@ describe.skipIf(skip)("undo", () => {
     expect(after.source_capture_ledger - before.source_capture_ledger).toBe(-10);
     expect(after.price).toBe(0);
 
-    // back to exactly the seed
-    expect(after.venues).toBe(7);
+    // back to exactly the seed: 9 venues, the 7 rule shapes plus the two
+    // Google-style names the loose-key rule is built on
+    expect(after.venues).toBe(9);
     expect(after.awards).toBe(3);
-    expect(after.listings).toBe(7);
-    expect(after.slugs).toBe(7);
+    expect(after.listings).toBe(9);
+    expect(after.slugs).toBe(9);
     expect(after.city_label_source).toBe(0);
     expect(after.source_capture_ledger).toBe(0);
 
@@ -790,7 +857,7 @@ describe.skipIf(skip)("undo", () => {
     const md = report(`${KEY}-undo.md`);
     expect(md).toContain("One transaction, all of it or none of it");
     expect(md).not.toContain("**FAIL**");
-    expect(md).toContain("| venues | 15 | 7 | 7 |");
+    expect(md).toContain("| venues | 17 | 9 | 9 |");
   });
 
   test("a second undo of the same key is an error, not a no-op", async () => {
@@ -1146,6 +1213,25 @@ describe.skipIf(skip)("resolution parity", () => {
         const cityIdByLine = new Map(live.map((r) => [r.line, r.city_id]));
         applyVenueResolution(live, resolveVenuesInMemory(rowKeys, cityIdByLine, venueIndex), keys);
       }
+
+      // The loose-name pass has one implementation, not two - there is no
+      // older SQL version of it to diff against. It runs on both paths anyway
+      // so that the shapes being compared are the ones stage actually writes,
+      // and so a change to it cannot pass unnoticed because the parity test
+      // stopped one step short of the verdicts.
+      applyLooseReview(
+        live,
+        await loadLooseCandidates(
+          db,
+          live
+            .filter((r) => r.verdict === "new_venue" && r.city_id)
+            .map((r) => ({
+              line: r.line,
+              venue_name: r.input.venue_name,
+              city_id: r.city_id as string,
+            })),
+        ),
+      );
     } finally {
       await db.query("ROLLBACK");
     }
@@ -1197,6 +1283,12 @@ describe.skipIf(skip)("resolution parity", () => {
     expect(reasons).toContain("city_not_found");
     expect(reasons).toContain("same_key_other_city");
     expect(reasons).toContain("venue_ambiguous_in_city");
+    // `loose_key_candidate_in_city` is deliberately NOT expected here: this
+    // test seeds Paris with the Michelin card names themselves ("Kei",
+    // "Plénitude - Cheval Blanc Paris"), so those rows match on the exact key
+    // and never reach the loose pass. The pass still runs over both paths
+    // above, so the shapes being diffed are the ones stage writes; the rule
+    // itself is covered by the loose-key test with its own fixture.
     // and the city route that only an alias or a display can reach
     expect(memory.some((m) => m.cities.some((c) => c.endsWith("|display")))).toBe(true);
   }, 180_000);

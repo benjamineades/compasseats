@@ -1,0 +1,6 @@
+batch_key,source_id,year,rank,category,distinction,source_url,venue_name,city_label,country_label,venue_category,venue_status,price_symbol_raw,note
+loose-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Kei,Paris,France,restaurant,,,line 1 review_venue - "Restaurant Kei" is already in Paris
+loose-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Plénitude - Cheval Blanc Paris,Paris,France,restaurant,,,line 2 review_venue - the card's hotel suffix is cut before comparing
+loose-2026-09,michelin,2025,,One Star,,https://guide.michelin.com/x,Restaurant Kei,Paris,France,restaurant,,,line 3 match - the exact norm_key path is untouched (a different year so it cannot dedupe against line 1)
+loose-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Sea Fret,Paris,France,restaurant,,,line 4 new_venue - nothing in Paris reduces to this
+loose-2026-09,michelin,2026,,One Star,,https://guide.michelin.com/x,Kei,London,United Kingdom,restaurant,,,line 5 new_venue - the loose candidate is in Paris; same city only

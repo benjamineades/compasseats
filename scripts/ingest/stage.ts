@@ -35,6 +35,7 @@ import {
 import {
   applyCityResolution,
   applyDedupe,
+  applyLooseReview,
   applyVenueResolution,
   createStageTemp,
   loadExistingAwards,
@@ -47,6 +48,7 @@ import {
 import { buildPlan, loadPlanState, type Plan } from "./lib/plan.ts";
 import {
   loadCityIndex,
+  loadLooseCandidates,
   loadRowKeys,
   loadVenueIndex,
   resolveCitiesInMemory,
@@ -487,6 +489,25 @@ async function main(): Promise<void> {
       progress.phase(
         "resolved venues",
         `${live.filter((r) => r.venue_id).length} matched an existing venue`,
+      );
+
+      // The loose-name pass, over the rows the exact pass would have created a
+      // venue for. It can only send a row to review, never merge it - but a
+      // guide that renames "Restaurant Kei" to "Kei" must not quietly land a
+      // second Kei in Paris.
+      const wouldCreate = live
+        .filter((r) => r.verdict === "new_venue" && r.city_id)
+        .map((r) => ({
+          line: r.line,
+          venue_name: r.input.venue_name,
+          city_id: r.city_id as string,
+        }));
+      const loose = await loadLooseCandidates(db, wouldCreate);
+      applyLooseReview(live, loose);
+      progress.phase(
+        "loose-name pass",
+        `${wouldCreate.length} would-be new venues checked, ` +
+          `${live.filter((r) => r.reason === "loose_key_candidate_in_city").length} sent to review`,
       );
 
       // venue decisions
