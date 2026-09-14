@@ -387,6 +387,47 @@ export function applyVenueResolution(
   });
 }
 
+/**
+ * The loose-name pass, run after `applyVenueResolution` and only over the rows
+ * it left as `new_venue`.
+ *
+ * The exact `norm_key` is the only thing that can produce a `match`, and that
+ * has not changed. What changed is what happens when it produces nothing: if
+ * the resolved city already holds a venue whose name reduces to the same loose
+ * key (see `looseKey.ts` - "Restaurant Kei" and "Kei"), creating a second one
+ * is almost certainly wrong, so the row goes to the operator with that venue
+ * named instead.
+ *
+ * This never merges. `review_venue` is the most it can do, exactly as
+ * `venue_ambiguous_in_city` and `same_key_other_city` are: no auto-merge,
+ * ever. If Ben looks at the candidate and still says `new`, `plan.ts` records
+ * that he was shown it.
+ *
+ * The candidates land in `r.candidates.venues` so the review CSV prints them
+ * as `use:ve_...` and the decision can be pasted straight back.
+ */
+export function applyLooseReview(live: RowResult[], loose: Map<number, VenueCandidate[]>): void {
+  for (const r of live) {
+    if (r.verdict !== "new_venue") continue;
+    const cands = loose.get(r.line) ?? [];
+    if (cands.length === 0) continue;
+
+    r.candidates.venues = cands;
+    r.verdict = "review_venue";
+    r.reason = "loose_key_candidate_in_city";
+    r.detail = cands.map((c) => `${c.venue_id} (${c.name}, ${c.city_display})`).join("; ");
+    r.new_venue_group = null;
+    r.checks.push({
+      check: "venue_resolved",
+      pass: false,
+      reason: r.reason,
+      detail:
+        `${r.detail} - no exact key match in ${r.city_slug}, but the same name ` +
+        `without its leading article or its hotel suffix is already there`,
+    });
+  }
+}
+
 /* ------------------------------------------------------------------------ */
 /* City and venue resolution, in SQL.                                        */
 /*                                                                           */

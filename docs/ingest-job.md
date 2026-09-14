@@ -274,6 +274,7 @@ review CSV. You can go round as many times as you like.
 | `country_label_disagrees` | The label says one country, every matching city is in another — "London, France". Worth a look before it becomes a wrong city label.            |
 | `venue_ambiguous_in_city` | Two venues with that name already in that city.                                                                                                 |
 | `same_key_other_city`     | Nothing with that name in this city, but there is one elsewhere. Usually a genuinely different venue; occasionally the city label is wrong.     |
+| `loose_key_candidate_in_city` | Nothing with that exact name in the city, but something close enough to be worth your eyes: the same name without its leading `Restaurant`/`Le`/`La`/`Hôtel`, or without the hotel or chef the publisher prints after a dash. See below. |
 | `norm_key_too_short`      | The name reduces to fewer than three letters or digits — every all-CJK name does. The database's own rule says these never group automatically. |
 
 **Under-merge beats over-merge.** The job matches automatically only on an exact
@@ -281,6 +282,34 @@ name key **in the resolved city** — that's what including the city in the
 signature is for. The same name in another city does not stop that match and
 does not merge anything; two venues of that name in one city always come to you.
 It will never quietly merge two venues, and it will never create a city.
+
+### The loose-name pass
+
+Two publishers rarely print a restaurant's name the same way. The venues
+already in the database mostly carry Google-style names — "Restaurant Kei",
+"Restaurant Le Gabriel", "Restaurant Paul Bocuse". Michelin's own cards carry
+the card name, and after a spaced dash the hotel or the chef — "Kei",
+"Le Gabriel - La Réserve Paris", "Plénitude - Cheval Blanc Paris". The exact
+name key sees none of those as the same venue, so the 2026 France list came
+back with 458 `new_venue` rows, 152 of which are already in the database in the
+same city under the other spelling.
+
+So there is one more pass, and it runs **only over the rows that were about to
+create a venue**. It compares the incoming name to the names already in the
+resolved city after cutting the incoming name at the first " - " and dropping a
+leading `Restaurant`, `Le`, `La`, `Les`, `L'`, `Hôtel`. If something is there,
+the row comes to you as `loose_key_candidate_in_city` with that venue named.
+
+Three things it does not do:
+
+- **It never matches.** The most it can do is turn `new_venue` into
+  `review_venue`. Every one of these is your call, and `new` is a perfectly
+  good answer — a hotel's two restaurants share a building and sometimes half a
+  name, and they are two venues.
+- **It never looks in another city.** Loose names collide far too easily for
+  that; the city stays part of the signature.
+- **It never changes an exact match.** A row that matched on the exact key
+  never reaches this pass.
 
 ---
 

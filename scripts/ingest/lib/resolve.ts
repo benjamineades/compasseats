@@ -1,5 +1,6 @@
 import type { Db } from "./db.ts";
 import { Params, chunk, normLabel, rowsPerStatement } from "./db.ts";
+import { looseKeyIncoming, looseKeyStored } from "./looseKey.ts";
 import type { CityCandidate, CityResolution, VenueCandidate } from "./stageLogic.ts";
 
 /**
@@ -50,6 +51,9 @@ import type { CityCandidate, CityResolution, VenueCandidate } from "./stageLogic
  * reference implementation, and `ingest.test.ts` runs both paths over the
  * fixtures and diffs the results row by row.
  */
+
+/** Field separator for composite in-memory keys. Never appears in the data. */
+const SEP = "\u0001";
 
 /** The database's normalisation of one staged row, computed once. */
 export interface RowKeys {
@@ -252,6 +256,97 @@ export async function loadVenueIndex(db: Db, rows: RowKeys[]): Promise<VenueInde
     }
   }
   return index;
+}
+
+/**
+ * The loose candidates for the rows that are otherwise about to create a venue.
+ *
+ * Called AFTER the exact pass, and only with the lines it left as `new_venue`,
+ * which is what keeps this cheap: the cities it has to look at are the cities
+ * of those rows and no others, rather than every city in the batch. On the
+ * France 2026 list that is 458 rows instead of 1,071, and it stays one round
+ * trip per chunk either way.
+ *
+ * Both sides are normalised by the database, once each - the same bargain
+ * `loadCityIndex` makes above - and the comparison happens in memory. The
+ * venue side is fetched by `city_id`, which is indexed, so the loose
+ * expression is evaluated only for venues in a city some row resolved to.
+ *
+ * Only same-city candidates exist here by construction. The same loose name in
+ * another city is not evidence of anything: `same_key_other_city` already
+ * covers the exact form of that, and widening it to loose keys would put half
+ * a national guide into review.
+ */
+export async function loadLooseCandidates(
+  db: Db,
+  rows: { line: number; venue_name: string; city_id: string }[],
+): Promise<Map<number, VenueCandidate[]>> {
+  const out = new Map<number, VenueCandidate[]>();
+  if (rows.length === 0) return out;
+
+  const cityIds = [...new Set(rows.map((r) => r.city_id))];
+
+  // stored side: every venue in a city some row resolved to, keyed loosely
+  const byCityKey = new Map<string, VenueRow[]>();
+  for (const part of chunk(cityIds, rowsPerStatement(1))) {
+    const p = new Params();
+    const { rows: found } = await db.query<VenueRow & { lk: string | null }>(
+      `select v.id as venue_id, v.name, v.city_id, v.norm_key,
+              c.slug as city_slug, c.display as city_display, v.status::text as status,
+              ${looseKeyStored("v.name")} as lk
+         from venues v
+         join cities c on c.id = v.city_id
+        where v.city_id in (${p.list(part, "text")})`,
+      p.values,
+    );
+    for (const r of found) {
+      if (r.lk === null) continue;
+      const k = `${r.city_id}${r.lk}`;
+      const at = byCityKey.get(k);
+      if (at) at.push(r);
+      else byCityKey.set(k, [r]);
+    }
+  }
+
+  // incoming side: one loose key per row, computed by the database too
+  const lkByLine = new Map<number, string | null>();
+  for (const part of chunk(rows, rowsPerStatement(2))) {
+    const p = new Params();
+    const values = p.rows(
+      part.map((r) => [r.line, r.venue_name]),
+      ["int", "text"],
+    );
+    const { rows: keyed } = await db.query<{ line: number; lk: string | null }>(
+      `select t.line, ${looseKeyIncoming("t.venue_name")} as lk
+         from (values ${values}) as t(line, venue_name)`,
+      p.values,
+    );
+    for (const r of keyed) lkByLine.set(Number(r.line), r.lk);
+  }
+
+  for (const row of rows) {
+    const lk = lkByLine.get(row.line) ?? null;
+    if (lk === null) continue;
+    const found = byCityKey.get(`${row.city_id}${lk}`) ?? [];
+    // A venue whose exact norm_key already matched is not a loose candidate;
+    // it would have produced a `match` and never reached this function.
+    if (found.length === 0) continue;
+    out.set(
+      row.line,
+      found
+        .map((v) => ({
+          venue_id: v.venue_id,
+          name: v.name,
+          city_id: v.city_id,
+          city_slug: v.city_slug,
+          city_display: v.city_display,
+          status: v.status,
+          same_city: true,
+        }))
+        .sort((a, b) => (a.venue_id < b.venue_id ? -1 : a.venue_id > b.venue_id ? 1 : 0)),
+    );
+  }
+  return out;
 }
 
 /* ---------------------------------------------------------- resolution --- */

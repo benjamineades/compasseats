@@ -31,8 +31,12 @@ INSERT INTO city_aliases (alias, city_id) VALUES
 -- Aurum (NY)    : a name that exists ONLY in another city
 -- The Anchor    : owns a slug, for the incumbent rule
 -- Pinnacle Room : holds a 3-Pin, for the subsume rule
+-- Restaurant Kei: the Google-style name a Michelin card calls "Kei"
+-- Plénitude     : and the other half of it - the card carries a hotel suffix
 INSERT INTO venues (id, name, category, city_id, status) VALUES
   ('ve_aaaaaaaaa1', 'Tallow',        'restaurant', 'ci_2222222222', 'active'),
+  ('ve_hhhhhhhhh8', 'Restaurant Kei', 'restaurant', 'ci_ccbee73cd8', 'active'),
+  ('ve_iiiiiiiii9', 'Plénitude',     'restaurant', 'ci_ccbee73cd8', 'active'),
   ('ve_bbbbbbbbb2', 'Brine',         'bar',        'ci_2222222222', 'active'),
   ('ve_fffffffff6', 'Brine',         'bar',        'ci_2222222222', 'active'),
   ('ve_ccccccccc3', 'Brine',         'bar',        'ci_3333333333', 'active'),
@@ -42,6 +46,8 @@ INSERT INTO venues (id, name, category, city_id, status) VALUES
 
 INSERT INTO listings (venue_id, property_id, published) VALUES
   ('ve_aaaaaaaaa1', 'eats', true),
+  ('ve_hhhhhhhhh8', 'eats', true),
+  ('ve_iiiiiiiii9', 'eats', true),
   ('ve_bbbbbbbbb2', 'eats', true),
   ('ve_fffffffff6', 'eats', true),
   ('ve_ccccccccc3', 'eats', true),
@@ -51,6 +57,8 @@ INSERT INTO listings (venue_id, property_id, published) VALUES
 
 INSERT INTO slugs (property_id, city_slug, slug, venue_id, is_canonical) VALUES
   ('eats', 'london',   'tallow',        've_aaaaaaaaa1', true),
+  ('eats', 'paris',    'restaurant-kei', 've_hhhhhhhhh8', true),
+  ('eats', 'paris',    'plenitude',      've_iiiiiiiii9', true),
   ('eats', 'london',   'brine',         've_bbbbbbbbb2', true),
   ('eats', 'london',   'brine-2',       've_fffffffff6', true),
   ('eats', 'new-york', 'brine',         've_ccccccccc3', true),
