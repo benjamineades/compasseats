@@ -1,516 +1,516 @@
 line,verdict,stage_reason,csv_name,csv_city,candidate_id,candidate_name,candidate_city,candidate_michelin_2025,proposed,confidence,reason,decision
-2,review_city,city_not_found,La Marine,L'Herbaudière,ve_07fc048900,La Marine,noirmoutier-en-lile (other city),Three Stars,use:ve_07fc048900,medium,"city differs: db noirmoutier-en-lile, michelin L'Herbaudière (no city row for the michelin label); the venue is not moved; the discrepancy is recorded here",
-8,new_venue,,Le Gabriel - La Réserve Paris,Paris,ve_ea838a498e,Restaurant Le Gabriel,paris,Three Stars,use:ve_ea838a498e,high,same tier both years: 3 stars,
-10,new_venue,,Alléno Paris au Pavillon Ledoyen,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-11,new_venue,,Kei,Paris,ve_eeded0c3ef,Restaurant Kei,paris,Three Stars,use:ve_eeded0c3ef,high,same tier both years: 3 stars,
-12,new_venue,,Plénitude - Cheval Blanc Paris,Paris,ve_c2aeca7793,Plénitude,paris,Three Stars,use:ve_c2aeca7793,high,same tier both years: 3 stars,
-13,new_venue,,Les Prés d'Eugénie - Michel Guérard,Eugénie-les-Bains,,,,,new,high,"no candidate in eugenie-les-bains, nor anywhere in France holding a Michelin 2025 row",
-14,new_venue,,Assiette Champenoise,Reims,ve_5a67e55a7a,Hôtel L' Assiette Champenoise,reims,Three Stars,use:ve_5a67e55a7a,high,same tier both years: 3 stars,
-19,new_venue,,Pic,Valence,,,,,new,high,"no candidate in valence, nor anywhere in France holding a Michelin 2025 row",
-20,new_venue,,Les Morainières,Jongieux,ve_b93b8941db,Restaurant Les Morainières,jongieux,Three Stars,use:ve_b93b8941db,high,same tier both years: 3 stars,
-22,new_venue,,L'Oustau de Baumanière,Les Baux-de-Provence,ve_0dbdcc762c,Restaurant L'Oustau de Baumanière***,les-baux-de-provence,Three Stars,use:ve_0dbdcc762c,high,same tier both years: 3 stars,
-25,new_venue,,Le Petit Nice,Marseille,,,,,new,high,"no candidate in marseille, nor anywhere in France holding a Michelin 2025 row",
-29,new_venue,,La Vague d'Or - Cheval Blanc St-Tropez,Saint-Tropez,ve_500702a2cd,La Vague d'Or,saint-tropez,Three Stars,use:ve_500702a2cd,high,same tier both years: 3 stars,
-30,new_venue,,Mirazur,Menton,ve_5a2faf7397,Restaurant Mirazur,menton,Three Stars,use:ve_5a2faf7397,high,same tier both years: 3 stars,
-31,new_venue,,L'Auberge des Glazicks,Plomodiern,ve_0c4e0915ee,Auberge des Glazicks,plomodiern,,use:ve_0c4e0915ee,medium,"the venue is in plomodiern already but holds no Michelin 2025 row, so it is outside the candidate search - there is no 2025 tier to compare against the 2026 2 stars",
-32,new_venue,,Maison Ronan Kervarrec,Saint-Grégoire,,,,,new,high,"no candidate in saint-gregoire, nor anywhere in France holding a Michelin 2025 row",
-33,new_venue,,Anne de Bretagne,La Plaine-sur-Mer,,,,,new,high,"no candidate in la-plaine-sur-mer, nor anywhere in France holding a Michelin 2025 row",
-37,new_venue,,La Table de Christophe Dufossé,Busnes,,,,,new,high,"no candidate in busnes, nor anywhere in France holding a Michelin 2025 row",
-40,new_venue,,La Grand'Vigne - Les Sources de Caudalie,Martillac,,,,,new,high,"no candidate in martillac, nor anywhere in France holding a Michelin 2025 row",
-42,new_venue,,Christophe Hay - Fleur de Loire,Blois,ve_c09c6dfd4d,Restaurant Christophe Hay,blois,Two Stars,use:ve_c09c6dfd4d,high,same tier both years: 2 stars,
-43,new_venue,,Lalique,Bommes,,,,,new,high,"no candidate in bommes, nor anywhere in France holding a Michelin 2025 row",
-45,new_venue,,Le Corot,Ville-d'Avray,,,,,new,high,"no candidate in ville-davray, nor anywhere in France holding a Michelin 2025 row",
-51,new_venue,,Le Jules Verne,Paris,ve_baeae630ab,Jules Verne,paris,Two Stars,use:ve_baeae630ab,high,same tier both years: 2 stars,
-56,new_venue,,David Toutain,Paris,ve_48912b20f9,Restaurant David Toutain,paris,Two Stars,use:ve_48912b20f9,high,same tier both years: 2 stars,
-57,new_venue,,L'Abysse Paris,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-58,new_venue,,Marsan par Hélène Darroze,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-68,new_venue,,Le Parc Les Crayères,Reims,,,,,new,high,"no candidate in reims, nor anywhere in France holding a Michelin 2025 row",
-69,new_venue,,La Côte Saint-Jacques,Joigny,,,,,new,high,"no candidate in joigny, nor anywhere in France holding a Michelin 2025 row",
-71,new_venue,,Le Pré - Xavier Beaudiment,Clermont-Ferrand,ve_12e5bf15ad,Restaurant Le Pré,clermont-ferrand,Two Stars,use:ve_12e5bf15ad,high,same tier both years: 2 stars,
-72,new_venue,,La Côte d'Or,Saulieu,,,,,new,high,"no candidate in saulieu, nor anywhere in France holding a Michelin 2025 row",
-73,new_venue,,Serge Vieira,Chaudes-Aigues,,,,,new,high,"no candidate in chaudes-aigues, nor anywhere in France holding a Michelin 2025 row",
-74,new_venue,,Frédéric Doucet,Charolles,ve_10b8eaf5ef,Restaurant Frédéric Doucet,charolles,Two Stars,use:ve_10b8eaf5ef,high,same tier both years: 2 stars,
-75,new_venue,,La Table de Franck Putelat,Carcassonne,,,,,new,high,"no candidate in carcassonne, nor anywhere in France holding a Michelin 2025 row",
-76,new_venue,,Cyril Attrazic,Aumont-Aubrac,ve_9e5a1fe04b,Restaurant Cyril Attrazic,peyre-en-aubrac,Two Stars,use:ve_9e5a1fe04b,high,same tier both years: 2 stars,
-77,new_venue,,Bulle d'Osier,Langres,,,,,new,high,"no candidate in langres, nor anywhere in France holding a Michelin 2025 row",
-79,new_venue,,Cédric Burtin,Saint-Rémy,ve_023efa5fc2,Restaurant Cédric Burtin,saint-remy,Two Stars,use:ve_023efa5fc2,high,same tier both years: 2 stars,
-80,new_venue,,La Table Lionel Giraud,Narbonne,,,,,new,high,"no candidate in narbonne, nor anywhere in France holding a Michelin 2025 row",
-81,new_venue,,Georges Blanc,Vonnas,,,,,new,high,"no candidate in vonnas, nor anywhere in France holding a Michelin 2025 row",
-82,review_city,city_not_found,Paul Bocuse,Collonges-au-Mont-d'Or,ve_2332f48c17,Restaurant Paul Bocuse,lyon (other city),Two Stars,use:ve_2332f48c17,medium,"city differs: db lyon, michelin Collonges-au-Mont-d'Or (no city row for the michelin label); the venue is not moved; the discrepancy is recorded here",
-83,new_venue,,Mère Brazier,Lyon,ve_d2820ac4f5,La Mère Brazier,lyon,,use:ve_d2820ac4f5,medium,"the venue is in lyon already but holds no Michelin 2025 row, so it is outside the candidate search - there is no 2025 tier to compare against the 2026 2 stars",
-84,new_venue,,Takao Takano,Lyon,ve_726a22f45a,RESTAURANT Takao Takano,lyon,Two Stars,use:ve_726a22f45a,high,same tier both years: 2 stars,
-86,new_venue,,La Pyramide - Maison Henriroux,Vienne,,,,,new,high,"no candidate in vienne, nor anywhere in France holding a Michelin 2025 row",
-88,new_venue,,La Merise,Laubach,ve_95f52c5e5a,Restaurant La Merise,laubach,Two Stars,use:ve_95f52c5e5a,high,same tier both years: 2 stars,
-90,new_venue,,La Fourchette des Ducs,Obernai,,,,,new,high,"no candidate in obernai, nor anywhere in France holding a Michelin 2025 row",
-92,new_venue,,Michel Kayser - Restaurant Alexandre,Garons,,,,,new,high,"no candidate in garons, nor anywhere in France holding a Michelin 2025 row",
-95,new_venue,,Maison Benoît Vidal,Annecy,,,,,new,high,"no candidate in annecy, nor anywhere in France holding a Michelin 2025 row",
-97,new_venue,,L'Auberge de Saint-Rémy - Fanny Rey & Jonathan Wahid,Saint-Rémy-de-Provence,ve_4e77c0295c,L’Auberge De Saint-Rémy,saint-remy,,use:ve_4e77c0295c,medium,"the venue is in saint-remy already but holds no Michelin 2025 row, so it is outside the candidate search - there is no 2025 tier to compare against the 2026 2 stars",
-98,new_venue,,Jean Sulpice,Talloires-Montmin,,,,,new,high,"no candidate in talloires-montmin, nor anywhere in France holding a Michelin 2025 row",
-100,new_venue,,Maison Aribert,Uriage-les-Bains,,,,,new,high,"no candidate in uriage-les-bains, nor anywhere in France holding a Michelin 2025 row",
-101,new_venue,,La Table des Amis,Bonnieux,,,,,new,high,"no candidate in bonnieux, nor anywhere in France holding a Michelin 2025 row",
-102,new_venue,,René et Maxime Meilleur,Saint-Martin-de-Belleville,,,,,new,high,"no candidate in saint-martin-de-belleville, nor anywhere in France holding a Michelin 2025 row",
-103,new_venue,,Slalom 1850,Courchevel,,,,,new,high,"no candidate in courchevel, nor anywhere in France holding a Michelin 2025 row",
-104,new_venue,,Sylvestre Wahid - Les Grandes Alpes,Courchevel,,,,,new,high,"no candidate in courchevel, nor anywhere in France holding a Michelin 2025 row",
-105,new_venue,,La Voile - La Réserve Ramatuelle,Ramatuelle,ve_8a8e59f190,La Voile,ramatuelle,,use:ve_8a8e59f190,medium,"the venue is in ramatuelle already but holds no Michelin 2025 row, so it is outside the candidate search - there is no 2025 tier to compare against the 2026 2 stars",
-106,new_venue,,La Villa Archange,Le Cannet,,,,,new,high,"no candidate in le-cannet, nor anywhere in France holding a Michelin 2025 row",
-108,new_venue,,La Chèvre d'Or,Èze,,,,,new,high,"no candidate in eze, nor anywhere in France holding a Michelin 2025 row",
-109,new_venue,,Casadelmar,Porto-Vecchio,ve_39ac1adc6c,Hôtel Casadelmar,porto-vecchio,Two Stars,use:ve_39ac1adc6c,high,same tier both years: 2 stars,
-113,new_venue,,Nori,Roscoff,,,,,new,high,"no candidate in roscoff, nor anywhere in France holding a Michelin 2025 row",
-114,new_venue,,La Pomme d'Api,Saint-Pol-de-Léon,,,,,new,high,"no candidate in saint-pol-de-leon, nor anywhere in France holding a Michelin 2025 row",
-116,new_venue,,Nicolas Carro - Hôtel de Carantec,Carantec,ve_30501b82cb,Restaurant Nicolas Carro,carantec,One Star,use:ve_30501b82cb,high,same tier both years: 1 star,
-117,new_venue,,Allium,Quimper,,,,,new,high,"no candidate in quimper, nor anywhere in France holding a Michelin 2025 row",
-121,new_venue,,Ar Men Du,Névez,,,,,new,high,"no candidate in nevez, nor anywhere in France holding a Michelin 2025 row",
-122,new_venue,,Rosmadec Le Moulin,Pont-Aven,,,,,new,high,"no candidate in pont-aven, nor anywhere in France holding a Michelin 2025 row",
-123,review_venue,same_key_other_city,Louise,Lorient,,,,,new,high,"no candidate in lorient, nor anywhere in France holding a Michelin 2025 row",
-124,new_venue,,Avel Vor,Port-Louis,,,,,new,high,"no candidate in port-louis, nor anywhere in France holding a Michelin 2025 row",
-125,new_venue,,L'Inattendu - Domaine de Locguénolé,Kervignac,,,,,new,high,"no candidate in kervignac, nor anywhere in France holding a Michelin 2025 row",
-126,review_city,city_not_found,La Table d'Asten,Binic,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Binic, France",
-128,new_venue,,Aux Pesked,Saint-Brieuc,,,,,new,high,"no candidate in saint-brieuc, nor anywhere in France holding a Michelin 2025 row",
-131,new_venue,,Le Gavrinis,Baden,ve_fd6cd0318d,Restaurant Le Gavrinis,baden,One Star,use:ve_fd6cd0318d,high,same tier both years: 1 star,
-132,new_venue,,Le Pressoir,Saint-Avé,ve_d6372fa061,Restaurant Le Pressoir,saint-ave,One Star,use:ve_d6372fa061,high,same tier both years: 1 star,
-133,new_venue,,La Tête en l'air,Vannes,ve_cb6c037c7c,Restaurant La Tête en l'air,vannes,One Star,use:ve_cb6c037c7c,high,same tier both years: 1 star,
-134,new_venue,,La Table - Domaine du Liziec,Vannes,,,,,new,high,"no candidate in vannes, nor anywhere in France holding a Michelin 2025 row",
-136,new_venue,,Pourquoi Pas,Dinard,,,,,new,high,"no candidate in dinard, nor anywhere in France holding a Michelin 2025 row",
-137,new_venue,,Le Saint Placide,Saint-Malo,ve_4d254317ea,Saint-Placide,saint-malo,One Star,use:ve_4d254317ea,high,same tier both years: 1 star,
-138,new_venue,,La Table Breizh Café,Cancale,,,,,new,high,"no candidate in cancale, nor anywhere in France holding a Michelin 2025 row",
-139,new_venue,,Le Mascaret,Blainville-sur-Mer,,,,,new,high,"no candidate in blainville-sur-mer, nor anywhere in France holding a Michelin 2025 row",
-140,new_venue,,Maison Tiegezh,Guer,ve_c29125ac38,Hôtel Restaurant Maison Tiegezh,guer,Bib Gourmand + One Star,use:ve_c29125ac38,high,same tier both years: 1 star,
-141,new_venue,,La Mare aux Oiseaux,Saint-Joachim,,,,,new,high,"no candidate in saint-joachim, nor anywhere in France holding a Michelin 2025 row",
-146,review_city,city_not_found,Auberge du Pont d'Acigné,Noyal-sur-Vilaine,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Noyal-sur-Vilaine, France",
-147,review_city,city_not_found,La Table des Pères - Domaine du Château des Pères,Piré-Chancé,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Piré-Chancé, France",
-149,new_venue,,Jean-Marc Pérochon,Bretignolles-sur-Mer,,,,,new,high,"no candidate in bretignolles-sur-mer, nor anywhere in France holding a Michelin 2025 row",
-150,new_venue,,Omija,Nantes,ve_8e0adfebb4,Restaurant Omija,nantes,One Star,use:ve_8e0adfebb4,high,same tier both years: 1 star,
-156,new_venue,,Le 1201 - Abbaye de Villeneuve,Les Sorinières,,,,,new,high,"no candidate in les-sorinieres, nor anywhere in France holding a Michelin 2025 row",
-161,review_city,city_not_found,L'Éveil des Sens,Mayenne,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Mayenne, France",
-163,new_venue,,Le Manoir du Lys,Bagnoles-de-l'Orne,,,,,new,high,"no candidate in bagnoles-de-lorne, nor anywhere in France holding a Michelin 2025 row",
-164,new_venue,,Les Reflets,La Roche-sur-Yon,ve_bbb2e26803,Restaurant les Reflets,la-roche-sur-yon,One Star,use:ve_bbb2e26803,high,same tier both years: 1 star,
-165,new_venue,,Maximin Hellio,Deauville,ve_7c32575d62,Restaurant Maximin Hellio,deauville,One Star,use:ve_7c32575d62,high,same tier both years: 1 star,
-166,review_venue,same_key_other_city,L'Essentiel,Deauville,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_0cc3262ff1 (L'Essentiel, Saumur) is already spoken for by line 735 (L'Essentiel, match); dropped: ve_765c1b6aa3 (L'Essentiel, Périgueux) is already spoken for by line 356 (L'Essentiel, match)",
-168,new_venue,,La Renaissance,Argentan,,,,,new,high,"no candidate in argentan, nor anywhere in France holding a Michelin 2025 row",
-169,new_venue,,Maison Desamy,Mareuil-sur-Lay-Dissais,ve_867311bd99,Restaurant Maison Desamy,mareuil-sur-lay-dissais,One Star,use:ve_867311bd99,high,same tier both years: 1 star,
-173,review_city,city_not_found,La Table de la Bergerie,Bellevigne-en-Layon,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Bellevigne-en-Layon, France",
-174,new_venue,,G.a. au Manoir de Rétival,Rives-en-Seine,,,,,new,high,"no candidate in rives-en-seine, nor anywhere in France holding a Michelin 2025 row",
-175,new_venue,,Le Pavillon - Hôtel Westminster,Le Touquet-Paris-Plage,ve_8dccaaf452,Le Pavillon,le-touquet-paris-plage,One Star,use:ve_8dccaaf452,high,same tier both years: 1 star,
-176,review_city,city_not_found,L'Auberge de Bagatelle,Le Mans,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Le Mans, France",
-178,review_city,city_not_found,Fontevraud L'Ermitage,Fontevraud-l'Abbaye,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Fontevraud-l'Abbaye, France",
-179,new_venue,,Bacôve,Saint-Omer,ve_a74e9ee3a3,Restaurant Bacôve,saint-omer,One Star,use:ve_a74e9ee3a3,high,same tier both years: 1 star,
-181,new_venue,,Nacre,Arès,,,,,new,high,"no candidate in ares, nor anywhere in France holding a Michelin 2025 row",
-182,review_city,city_not_found,Le Patio,Arcachon,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Arcachon, France",
-183,review_city,city_not_found,Haut Bonheur de la Table,Cassel,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Cassel, France",
-187,new_venue,,Notes,Cognac,,,,,new,high,"no candidate in cognac, nor anywhere in France holding a Michelin 2025 row",
-190,new_venue,,La Table d'Aurélien Largeau,Biarritz,,,,,new,high,"no candidate in biarritz, nor anywhere in France holding a Michelin 2025 row",
-192,new_venue,,Les Frères Ibarboure,Bidart,,,,,new,high,"no candidate in bidart, nor anywhere in France holding a Michelin 2025 row",
-193,new_venue,,Auberge du XIIème Siècle,Saché,,,,,new,high,"no candidate in sache, nor anywhere in France holding a Michelin 2025 row",
-194,new_venue,,L'Impertinent,Biarritz,ve_9fd9ef0dbb,Restaurant L'Impertinent,biarritz,One Star,use:ve_9fd9ef0dbb,high,same tier both years: 1 star,
-195,new_venue,,Le Panoramique - Domaine de la Corniche,Rolleboise,,,,,new,high,"no candidate in rolleboise, nor anywhere in France holding a Michelin 2025 row",
-196,review_city,city_not_found,La Table de Cédric Béchade - L'Auberge Basque,Saint-Pée-sur-Nivelle,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Saint-Pée-sur-Nivelle, France",
-199,new_venue,,Villa de l'Étang Blanc,Seignosse,ve_0cb1664757,Hotel-Restaurant Villa de l'Etang Blanc,seignosse,One Star,use:ve_0cb1664757,high,same tier both years: 1 star,
-200,new_venue,,La Ribaudière,Bourg-Charente,,,,,new,high,"no candidate in bourg-charente, nor anywhere in France holding a Michelin 2025 row",
-201,review_city,city_not_found,L'Évidence,Montbazon,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Montbazon, France",
-202,new_venue,,Ithurria,Ainhoa,ve_f74a315a56,Restaurant Ithurria,ainhoa,One Star,use:ve_f74a315a56,high,same tier both years: 1 star,
-205,new_venue,,Choko Ona,Espelette,,,,,new,high,"no candidate in espelette, nor anywhere in France holding a Michelin 2025 row",
-206,new_venue,,Soléna,Bordeaux,ve_3cb99fd3d6,Restaurant Soléna,bordeaux,One Star,use:ve_3cb99fd3d6,high,same tier both years: 1 star,
-207,new_venue,,Ruche,Gambais,,,,,new,high,"no candidate in gambais, nor anywhere in France holding a Michelin 2025 row",
-208,review_city,city_not_found,Le Georges,Chartres,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Chartres, France",
-210,new_venue,,Cent33,Bordeaux,ve_f952760b96,Le Cent 33,bordeaux,One Star,use:ve_f952760b96,high,same tier both years: 1 star,
-212,new_venue,,Tentazioni,Bordeaux,,,,,new,high,"no candidate in bordeaux, nor anywhere in France holding a Michelin 2025 row",
-214,new_venue,,Le Prince Noir - Vivien Durand,Lormont,,,,,new,high,"no candidate in lormont, nor anywhere in France holding a Michelin 2025 row",
-216,new_venue,,La Table d'Hôtes - Le Quatrième Mur,Bordeaux,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_a71d3afafa (La table d'hôtes, Ouistreham) is already spoken for by line 705 (La Table d'Hôtes, match)",
-218,new_venue,,Le Saint-James,Bouliac,ve_e998bbe81d,Hôtel & Restaurant Le Saint-James,bouliac,One Star,use:ve_e998bbe81d,high,same tier both years: 1 star,
-219,new_venue,,Lore Ttipia - Auberge Ostape,Bidarray,,,,,new,high,"no candidate in bidarray, nor anywhere in France holding a Michelin 2025 row",
-224,new_venue,,Pureté,Lille,ve_10e5b8d3d7,Restaurant PURETÉ,lille,One Star,use:ve_10e5b8d3d7,high,same tier both years: 1 star,
-226,new_venue,,La Grange de Belle-Église,Belle-Église,,,,,new,high,"no candidate in belle-eglise, nor anywhere in France holding a Michelin 2025 row",
-228,new_venue,,La Promenade - Maison Dallais,Le Petit-Pressigny,,,,,new,high,"no candidate in le-petit-pressigny, nor anywhere in France holding a Michelin 2025 row",
-234,new_venue,,Ducasse au Château de Versailles - Le Grand Contrôle,Versailles,,,,,new,high,"no candidate in versailles, nor anywhere in France holding a Michelin 2025 row",
-235,new_venue,,Ochre,Rueil-Malmaison,ve_0b86351c11,Restaurant Ochre,rueil-malmaison,One Star,use:ve_0b86351c11,high,same tier both years: 1 star,
-241,new_venue,,Les Belles Perdrix de Troplong Mondot,Saint-Emilion,,,,,new,high,"no candidate in saint-emilion, nor anywhere in France holding a Michelin 2025 row",
-242,new_venue,,L'Auberge Saint Jean,Saint-Jean-de-Blaignac,ve_9e77c9e379,Auberge Saint Jean,saint-jean-de-blaignac,One Star,use:ve_9e77c9e379,high,same tier both years: 1 star,
-245,new_venue,,Le Favori - Les Sources de Cheverny,Cheverny,,,,,new,high,"no candidate in cheverny, nor anywhere in France holding a Michelin 2025 row",
-246,new_venue,,Le Verbois,Chantilly,,,,,new,high,"no candidate in chantilly, nor anywhere in France holding a Michelin 2025 row",
-247,new_venue,,Bellefeuille - Saint James Paris,Paris,ve_9c2e7e5cf0,Bellefeuille,paris,One Star,use:ve_9c2e7e5cf0,high,same tier both years: 1 star,
-251,new_venue,,Le Faham,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-257,new_venue,,Frédéric Simonin,Paris,ve_974d97d7f9,Restaurant Frederic Simonin,paris,One Star,use:ve_974d97d7f9,high,same tier both years: 1 star,
-259,new_venue,,Agapé,Paris,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_80d1bf1939 (L'Agape, Avignon) is already spoken for by line 1019 (L'Agape, match)",
-262,new_venue,,Onor,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-266,new_venue,,Oxte,Paris,ve_fd4687ea75,Restaurant OXTE,paris,One Star,use:ve_fd4687ea75,high,same tier both years: 1 star,
-267,new_venue,,Alan Geaam,Paris,ve_1d45b90d41,Restaurant Alan Geaam,paris,One Star,use:ve_1d45b90d41,high,same tier both years: 1 star,
-268,new_venue,,Don Juan II,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-271,new_venue,,Trente-Trois,Paris,ve_9b272faa8a,Restaurant Trente-Trois,paris,One Star,use:ve_9b272faa8a,high,same tier both years: 1 star,
-273,new_venue,,La Grande Table du Plaza Athénée,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-276,new_venue,,Origines Restaurant,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-277,new_venue,,Gaya par Pierre Gagnaire,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-278,new_venue,,Pilgrim,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-280,new_venue,,Anona,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-287,new_venue,,114 Faubourg,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-289,new_venue,,Espadon,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-292,new_venue,,Pavyllon Paris,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-295,new_venue,,Divellec,Paris,ve_598810e8fe,Restaurant Divellec,paris,One Star,use:ve_598810e8fe,high,same tier both years: 1 star,
-296,review_venue,norm_key_too_short,ES,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-297,new_venue,,Akrame,Paris,ve_7c2f54f0ab,Restaurant Akrame,paris,One Star,use:ve_7c2f54f0ab,high,same tier both years: 1 star,
-302,new_venue,,Pantagruel,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-305,new_venue,,Nakatani,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-311,new_venue,,Omar Dhiab,Paris,ve_829f7fd32b,Restaurant Omar Dhiab,paris,One Star,use:ve_829f7fd32b,high,same tier both years: 1 star,
-312,new_venue,,Accents Table Bourse,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-318,new_venue,,MoSuke,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-325,new_venue,,Anne,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-328,new_venue,,Restaurant H,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-329,new_venue,,Mavrommatis,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-332,new_venue,,FIEF,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-333,new_venue,,Amâlia,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-336,review_venue,norm_key_too_short,AT,Paris,ve_c844edd53f,AT,paris,,use:ve_c844edd53f,medium,"the name reduces to under three characters, so no key can match it automatically (norm_key_too_short); ""AT"" in paris is the same name written out; the venue is in paris already but holds no Michelin 2025 row, so it is outside the candidate search - there is no 2025 tier to compare against the 2026 1 star",
-338,new_venue,,Tour d'Argent,Paris,ve_6522e4fb4b,La Tour d'Argent,paris,One Star,use:ve_6522e4fb4b,high,same tier both years: 1 star,
-342,new_venue,,La Table Mirasol,Mont-de-Marsan,,,,,new,high,"no candidate in mont-de-marsan, nor anywhere in France holding a Michelin 2025 row",
-343,new_venue,,Villa9Trois,Montreuil,,,,,new,high,"no candidate in montreuil, nor anywhere in France holding a Michelin 2025 row",
-345,review_city,city_not_found,L'Ours,Vincennes,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Vincennes, France",
-346,new_venue,,La Table - Christophe Hay,Ardon,,,,,new,high,"no candidate in ardon, nor anywhere in France holding a Michelin 2025 row",
-348,review_venue,same_key_other_city,L'Orangerie,Eugénie-les-Bains,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_754e0eb50d (L'Orangerie, Pornic) is already spoken for by line 693 (L'Orangerie, match); dropped: ve_ae34100f94 (L'Orangerie, Menton) is already spoken for by line 1068 (L'Orangerie, match)",
-349,new_venue,,Les Fresques - Château des Vigiers,Monestier,ve_3a24173df2,Fresques,evian-les-bains (other city),One Star,,,"blank on purpose: line 562 proposes the same venue ve_3a24173df2. Two rows cannot be one venue - pick the one that is it and make the other new. (city differs: db evian-les-bains, michelin Monestier; the venue is not moved; the discrepancy is recorded here)",
-351,new_venue,,Le Camélia,Bry,ve_d8f2845af8,Restaurant Le Camélia,bry,One Star,use:ve_d8f2845af8,high,same tier both years: 1 star,
-352,new_venue,,Auberge de la Grive,Trosly-Loire,,,,,new,high,"no candidate in trosly-loire, nor anywhere in France holding a Michelin 2025 row",
-358,new_venue,,L'Axel,Fontainebleau,,,,,new,high,"no candidate in fontainebleau, nor anywhere in France holding a Michelin 2025 row",
-359,new_venue,,Le Vieux Logis,Trémolat,,,,,new,high,"no candidate in tremolat, nor anywhere in France holding a Michelin 2025 row",
-360,new_venue,,La Table de Courcelles - Château de Courcelles,Courcelles-sur-Vesle,,,,,new,high,"no candidate in courcelles-sur-vesle, nor anywhere in France holding a Michelin 2025 row",
-362,new_venue,,Le 1862 - Les Glycines,Les Eyzies-de-Tayac-Sireuil,ve_ec51bda29b,Le 1862,les-eyzies-de-tayac-sireuil,One Star,use:ve_ec51bda29b,high,same tier both years: 1 star,
-365,new_venue,,Auberge Le Prieuré,Moirax,ve_b9609849ac,L'Auberge le Prieuré,moirax,One Star,use:ve_b9609849ac,high,same tier both years: 1 star,
-369,new_venue,,La Pomme d'Or,Sancerre,ve_aa7b4e7c78,Restaurant La Pomme d'Or,sancerre,One Star,use:ve_aa7b4e7c78,high,same tier both years: 1 star,
-370,new_venue,,La Table d'Olivier,Brive-la-Gaillarde,,,,,new,high,"no candidate in brive-la-gaillarde, nor anywhere in France holding a Michelin 2025 row",
-371,review_city,city_not_found,Alcôve,Vinay,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; needs city: Vinay, France; dropped: ve_f3183e93d3 (L'Alcôve, Bayeux) is already spoken for by line 696 (L'Alcôve, match)",
-373,new_venue,,Holodeck,Floressas,ve_9e18c5ab0b,Restaurant Holodeck,floressas,One Star,use:ve_9e18c5ab0b,high,same tier both years: 1 star,
-375,new_venue,,Erre,Chassy,ve_d6cfed208f,Restaurant ERRE,chassy,One Star,use:ve_d6cfed208f,high,same tier both years: 1 star,
-376,new_venue,,Le Gindreau,Saint-Médard,ve_8b0411fd68,Restaurant Le Gindreau,saint-medard,One Star,use:ve_8b0411fd68,high,same tier both years: 1 star,
-377,review_city,city_not_found,Les Jardins,Parnac,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Parnac, France",
-379,new_venue,,La Chapelle - Château Saint-Jean,Montluçon,,,,,new,high,"no candidate in montlucon, nor anywhere in France holding a Michelin 2025 row",
-381,new_venue,,Jérôme Feck,Châlons-en-Champagne,ve_0eba909fa4,Restaurant Jérôme Feck,chalons-en-champagne,One Star,use:ve_0eba909fa4,high,same tier both years: 1 star,
-387,new_venue,,Michel Sarran,Toulouse,ve_ebd63723cc,Restaurant Michel Sarran,toulouse,One Star,use:ve_ebd63723cc,high,same tier both years: 1 star,
-388,new_venue,,Stéphane Tournié - Les Jardins de l'Opéra,Toulouse,,,,,new,high,"no candidate in toulouse, nor anywhere in France holding a Michelin 2025 row",
-391,new_venue,,Le Valucien - Château de Vault-de-Lugny,Vault-de-Lugny,,,,,new,high,"no candidate in vault-de-lugny, nor anywhere in France holding a Michelin 2025 row",
-395,new_venue,,En Pleine Nature,Quint-Fonsegrives,ve_1f9d04e96f,Restaurant En Pleine Nature,quint-fonsegrives,One Star,use:ve_1f9d04e96f,high,same tier both years: 1 star,
-396,new_venue,,Auberge de la Forge,Lavalette,ve_c4d2d655db,L'Auberge de la Forge,lavalette,One Star,use:ve_c4d2d655db,high,same tier both years: 1 star,
-397,new_venue,,Le Puy Tilleul,Tournemire,,,,,new,high,"no candidate in tournemire, nor anywhere in France holding a Michelin 2025 row",
-399,review_venue,same_key_other_city,Radio,Chamalières,ve_55d4d282cc,Hôtel Radio,chamalieres,One Star,use:ve_55d4d282cc,high,same tier both years: 1 star,
-400,new_venue,,Jean-Claude Leclerc,Clermont-Ferrand,,,,,new,high,"no candidate in clermont-ferrand, nor anywhere in France holding a Michelin 2025 row",
-403,new_venue,,Émilie & Thomas - Moulin de Cambelong,Conques-en-Rouergue,,,,,new,high,"no candidate in conques-en-rouergue, nor anywhere in France holding a Michelin 2025 row",
-405,new_venue,,Vieux Pont,Belcastel,,,,,new,high,"no candidate in belcastel, nor anywhere in France holding a Michelin 2025 row",
-406,review_city,city_not_found,Auberge du Pont,Pont-du-Château,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Pont-du-Château, France",
-408,new_venue,,Château de Courban,Courban,,,,,new,high,"no candidate in courban, nor anywhere in France holding a Michelin 2025 row",
-409,review_city,city_not_found,Origines,Le Broc,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; needs city: Le Broc, France; dropped: ve_bf76d7e634 (Origines, Paris) is already spoken for by line 276 (Origines Restaurant, new_venue, same city)",
-411,new_venue,,Le Suquet - Sébastien Bras,Laguiole,,,,,new,high,"no candidate in laguiole, nor anywhere in France holding a Michelin 2025 row",
-413,new_venue,,Restaurant de la Loire,Pouilly-sous-Charlieu,,,,,new,high,"no candidate in pouilly-sous-charlieu, nor anywhere in France holding a Michelin 2025 row",
-418,new_venue,,Alexis Baudin,Malling,ve_2f2b83b250,Restaurant Alexis Baudin,malling,One Star,use:ve_2f2b83b250,high,same tier both years: 1 star,
-419,review_city,city_not_found,Le K,Montenach,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Montenach, France",
-420,new_venue,,Ed.Em,Chassagne-Montrachet,ve_540fbdb0db,Restaurant Ed.Em,chassagne-montrachet,One Star,use:ve_540fbdb0db,high,same tier both years: 1 star,
-425,new_venue,,La Table d'Hôtes - La Rôtisserie du Chambertin,Gevrey-Chambertin,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_a71d3afafa (La table d'hôtes, Ouistreham) is already spoken for by line 705 (La Table d'Hôtes, match)",
-427,new_venue,,Le Carmin,Beaune,ve_8457b128d6,Restaurant Le Carmin,beaune,One Star,use:ve_8457b128d6,high,same tier both years: 1 star,
-429,new_venue,,CIBO,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",
-430,new_venue,,L'Aspérule,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",
-431,new_venue,,Origine,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",
-432,new_venue,,La Maison des Cariatides,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",
-433,review_city,city_not_found,Table de Levernois,Levernois,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Levernois, France",
-434,review_city,city_not_found,Le Haut-Allier,Alleyras,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Alleyras, France",
-436,new_venue,,Burnel,Rouvres-en-Xaintois,,,,,new,high,"no candidate in rouvres-en-xaintois, nor anywhere in France holding a Michelin 2025 row",
-438,new_venue,,L'Écrin de Yohann Chapuis,Tournus,,,,,new,high,"no candidate in tournus, nor anywhere in France holding a Michelin 2025 row",
-440,new_venue,,Auberge de Clochemerle,Vaux-en-Beaujolais,,,,,new,high,"no candidate in vaux-en-beaujolais, nor anywhere in France holding a Michelin 2025 row",
-442,new_venue,,Aux Terrasses,Tournus,,,,,new,high,"no candidate in tournus, nor anywhere in France holding a Michelin 2025 row",
-445,new_venue,,Granit - La Mécanique des Frères Bonano,Colombières-sur-Orb,,,,,new,high,"no candidate in colombieres-sur-orb, nor anywhere in France holding a Michelin 2025 row",
-447,review_city,city_not_found,La Table de Chaintré,Chaintré,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Chaintré, France",
-448,new_venue,,Château Blanchard,Chazelles-sur-Lyon,,,,,new,high,"no candidate in chazelles-sur-lyon, nor anywhere in France holding a Michelin 2025 row",
-450,new_venue,,La Huchette,Replonges,,,,,new,high,"no candidate in replonges, nor anywhere in France holding a Michelin 2025 row",
-451,new_venue,,Château du Mont Joly,Sampans,,,,,new,high,"no candidate in sampans, nor anywhere in France holding a Michelin 2025 row",
-453,review_venue,same_key_other_city,La Chaumière,Dole,,,,,new,high,"no candidate in dole, nor anywhere in France holding a Michelin 2025 row",
-454,new_venue,,Guy Lassausaie,Chasselay,ve_03cccc1eff,Restaurant Guy Lassausaie,chasselay,One Star,use:ve_03cccc1eff,high,same tier both years: 1 star,
-455,new_venue,,Saisons,Écully,ve_f49862e401,Restaurant Saisons,ecully,One Star,use:ve_f49862e401,high,same tier both years: 1 star,
-456,new_venue,,Auberge Saint-Walfrid,Sarreguemines,,,,,new,high,"no candidate in sarreguemines, nor anywhere in France holding a Michelin 2025 row",
-460,new_venue,,Les Loges,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-461,new_venue,,L'Atelier des Augustins,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-462,new_venue,,Têtedoie,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-463,new_venue,,Ombellule,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-465,new_venue,,Burgundy by Matthieu,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-466,new_venue,,Rustique,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-469,new_venue,,Prairial,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-471,new_venue,,Circle,Lyon,ve_21cd5c1365,Restaurant Circle,lyon,One Star,use:ve_21cd5c1365,high,same tier both years: 1 star,
-472,new_venue,,Miraflores,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-474,new_venue,,Restaurant De Lauzun,Pézenas,,,,,new,high,"no candidate in pezenas, nor anywhere in France holding a Michelin 2025 row",
-479,new_venue,,L'Almandin,Saint-Cyprien,,,,,new,high,"no candidate in saint-cyprien, nor anywhere in France holding a Michelin 2025 row",
-480,new_venue,,Le Saint Hilaire,Saint-Hilaire-de-Brethmas,,,,,new,high,"no candidate in saint-hilaire-de-brethmas, nor anywhere in France holding a Michelin 2025 row",
-481,new_venue,,La Balette,Collioure,ve_603d4413f2,Restaurant La Balette,collioure,One Star,use:ve_603d4413f2,high,same tier both years: 1 star,
-487,new_venue,,Auberge de Montfleury,Saint-Germain,,,,,new,high,"no candidate in saint-germain, nor anywhere in France holding a Michelin 2025 row",
-488,new_venue,,Leclère,Montpellier,,,,,new,high,"no candidate in montpellier, nor anywhere in France holding a Michelin 2025 row",
-491,new_venue,,L'Émulsion,Saint-Alban-de-Roche,ve_13f86693b1,Restaurant l'émulsion,saint-alban-de-roche,One Star,use:ve_13f86693b1,high,same tier both years: 1 star,
-493,new_venue,,Kasbür,Monswiller,ve_6ad9c595f7,Restaurant Kasbur,monswiller,One Star,use:ve_6ad9c595f7,high,same tier both years: 1 star,
-494,new_venue,,La Cheneaudière - Le Feuillage,Colroy-la-Roche,,,,,new,high,"no candidate in colroy-la-roche, nor anywhere in France holding a Michelin 2025 row",
-495,new_venue,,Le M - Domaine de Montagne,Ventron,,,,,new,high,"no candidate in ventron, nor anywhere in France holding a Michelin 2025 row",
-496,new_venue,,La Cachette,Valence,,,,,new,high,"no candidate in valence, nor anywhere in France holding a Michelin 2025 row",
-498,new_venue,,Le Carré d'Alethius,Charmes-sur-Rhône,,,,,new,high,"no candidate in charmes-sur-rhone, nor anywhere in France holding a Michelin 2025 row",
-499,new_venue,,Les Cèdres,Granges-les-Beaumont,,,,,new,high,"no candidate in granges-les-beaumont, nor anywhere in France holding a Michelin 2025 row",
-504,review_city,city_not_found,La Table d'Uzès,Uzès,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Uzès, France",
-505,review_city,city_not_found,Cheval Blanc,Lembach,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Lembach, France",
-506,new_venue,,Auberge Frankenbourg,La Vancelle,,,,,new,high,"no candidate in la-vancelle, nor anywhere in France holding a Michelin 2025 row",
-507,new_venue,,Le Kléber - La Maison Bonnet,Grane,,,,,new,high,"no candidate in grane, nor anywhere in France holding a Michelin 2025 row",
-508,review_city,city_not_found,Le Bon Accueil,Malbuisson,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Malbuisson, France",
-509,new_venue,,Le Colombier,Malataverne,,,,,new,high,"no candidate in malataverne, nor anywhere in France holding a Michelin 2025 row",
-510,new_venue,,Le Pot d'Étain,Danjoutin,,,,,new,high,"no candidate in danjoutin, nor anywhere in France holding a Michelin 2025 row",
-511,new_venue,,Thierry Schwartz - Table Naturelle,Obernai,,,,,new,high,"no candidate in obernai, nor anywhere in France holding a Michelin 2025 row",
-512,new_venue,,Rouge,Nîmes,,,,,new,high,"no candidate in nimes, nor anywhere in France holding a Michelin 2025 row",
-513,new_venue,,Le Cèdre de Montcaud,Sabran,,,,,new,high,"no candidate in sabran, nor anywhere in France holding a Michelin 2025 row",
-514,review_city,city_not_found,Ambroisie,Saint-Didier-de-la-Tour,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; needs city: Saint-Didier-de-la-Tour, France; dropped: ve_68a6950342 (L'Ambroisie, Paris) is already spoken for by line 64 (L'Ambroisie, match)",
-515,new_venue,,Skab,Nîmes,ve_f667ce2a30,Restaurant Skab,nimes,One Star,use:ve_f667ce2a30,high,same tier both years: 1 star,
-516,new_venue,,Alchémille,Kaysersberg,ve_8c25148528,L'Alchémille,kaysersberg,One Star,use:ve_8c25148528,high,same tier both years: 1 star,
-519,review_city,city_not_found,Restaurant Julien Binz,Ammerschwihr,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Ammerschwihr, France",
-520,review_city,city_not_found,La Table du Gourmet,Riquewihr,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Riquewihr, France",
-521,new_venue,,Jérôme Nutile,Nîmes,,,,,new,high,"no candidate in nimes, nor anywhere in France holding a Michelin 2025 row",
-522,review_city,city_not_found,Lavandin - Château Les Oliviers de Salettes,Charols,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Charols, France",
-523,new_venue,,L'Étang du Moulin,Bonnétage,,,,,new,high,"no candidate in bonnetage, nor anywhere in France holding a Michelin 2025 row",
-524,new_venue,,L'Atelier du Peintre,Colmar,,,,,new,high,"no candidate in colmar, nor anywhere in France holding a Michelin 2025 row",
-525,new_venue,,La Belle Vie,Saint-Hilaire-d'Ozilhan,,,,,new,high,"no candidate in saint-hilaire-dozilhan, nor anywhere in France holding a Michelin 2025 row",
-526,new_venue,,Restaurant Girardin,Colmar,,,,,new,high,"no candidate in colmar, nor anywhere in France holding a Michelin 2025 row",
-528,new_venue,,1741,Strasbourg,ve_cc24331b57,Restaurant 1741,strasbourg,One Star,use:ve_cc24331b57,high,same tier both years: 1 star,
-529,new_venue,,Le Clair de la Plume,Grignan,,,,,new,high,"no candidate in grignan, nor anywhere in France holding a Michelin 2025 row",
-530,new_venue,,Umami,Strasbourg,ve_f9e34945bd,Restaurant Umami,strasbourg,One Star,use:ve_f9e34945bd,high,same tier both years: 1 star,
-531,new_venue,,Le Jardin Secret,La Wantzenau,,,,,new,high,"no candidate in la-wantzenau, nor anywhere in France holding a Michelin 2025 row",
-532,new_venue,,Le Relais de la Poste,La Wantzenau,ve_16bdd233b0,Hôtel-Restaurant Le Relais de la Poste,la-wantzenau,One Star,use:ve_16bdd233b0,high,"same tier both years: 1 star; dropped: ve_8859261736 (Relais De La Poste, Magescq) is already spoken for by line 204 (Relais de la Poste, match)",
-533,new_venue,,Guillaume Scheer - Les Plaisirs Gourmands,Strasbourg,,,,,new,high,"no candidate in strasbourg, nor anywhere in France holding a Michelin 2025 row",
-535,new_venue,,de:ja,Strasbourg,ve_a8213a9418,Restaurant DEJA,strasbourg,One Star,use:ve_a8213a9418,high,same tier both years: 1 star,
-537,new_venue,,L'Orchidée,Ensisheim,,,,,new,high,"no candidate in ensisheim, nor anywhere in France holding a Michelin 2025 row",
-539,new_venue,,Lamartine,Le Bourget-du-Lac,,,,,new,high,"no candidate in le-bourget-du-lac, nor anywhere in France holding a Michelin 2025 row",
-542,review_city,city_not_found,Maison Chenet - Entre Vigne et Garrigue,Pujaut,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Pujaut, France",
-544,review_city,city_not_found,La Table de L'Incomparable,Tresserve,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Tresserve, France",
-545,new_venue,,Ineffable,Barbentane,ve_9aa71bbec8,Restaurant Ineffable,barbentane,One Star,use:ve_9aa71bbec8,high,same tier both years: 1 star,
-546,new_venue,,Il Cortile,Mulhouse,,,,,new,high,"no candidate in mulhouse, nor anywhere in France holding a Michelin 2025 row",
-548,new_venue,,Pollen,Avignon,ve_42a5fc32bc,Restaurant Pollen,avignon,One Star,use:ve_42a5fc32bc,high,same tier both years: 1 star,
-549,review_city,city_not_found,Le Prieuré,Villeneuve-lès-Avignon,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Villeneuve-lès-Avignon, France",
-550,new_venue,,Le Refuge des Gourmets,Machilly,ve_b279522a5e,REFUGE DES GOURMETS,machilly,One Star,use:ve_b279522a5e,high,same tier both years: 1 star,
-551,new_venue,,Asterales,Corrençon-en-Vercors,,,,,new,high,"no candidate in correncon-en-vercors, nor anywhere in France holding a Michelin 2025 row",
-552,review_city,city_not_found,L'Auberge de Lucinges,Lucinges,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Lucinges, France",
-556,new_venue,,L'Oustalet,Gigondas,,,,,new,high,"no candidate in gigondas, nor anywhere in France holding a Michelin 2025 row",
-559,new_venue,,La Table de Tourrel,Saint-Rémy-de-Provence,,,,,new,high,"no candidate in saint-remy, nor anywhere in France holding a Michelin 2025 row",
-560,new_venue,,L'Aupiho - Domaine de Manville,Les Baux-de-Provence,,,,,new,high,"no candidate in les-baux-de-provence, nor anywhere in France holding a Michelin 2025 row",
-561,new_venue,,Auberge Saint-Laurent,Sierentz,,,,,new,high,"no candidate in sierentz, nor anywhere in France holding a Michelin 2025 row",
-562,new_venue,,Les Fresques - Hôtel Royal,Évian-les-Bains,ve_3a24173df2,Fresques,evian-les-bains,One Star,,,blank on purpose: line 349 proposes the same venue ve_3a24173df2. Two rows cannot be one venue - pick the one that is it and make the other new. (same tier both years: 1 star),
-563,new_venue,,Frédéric Molina à Forêt Ivre,Vailly,ve_a4aa7cb9ba,Restaurant Frédéric Molina à Forêt Ivre,vailly,One Star,use:ve_a4aa7cb9ba,high,same tier both years: 1 star,
-564,new_venue,,Le Vivier,L'Isle-sur-la-Sorgue,,,,,new,high,"no candidate in lisle-sur-la-sorgue, nor anywhere in France holding a Michelin 2025 row",
-566,new_venue,,Kern,Seytroux,,,,,new,high,"no candidate in seytroux, nor anywhere in France holding a Michelin 2025 row",
-567,new_venue,,Le Cin5 - Au Cœur du Village,La Clusaz,ve_a0adf5e745,Restaurant Le Cin5,la-clusaz,One Star,use:ve_a0adf5e745,high,same tier both years: 1 star,
-571,new_venue,,Vous,Megève,,,,,new,high,"no candidate in megeve, nor anywhere in France holding a Michelin 2025 row",
-573,new_venue,,Mont Blanc Restaurant & Goûter,Hauteluce,,,,,new,high,"no candidate in hauteluce, nor anywhere in France holding a Michelin 2025 row",
-577,new_venue,,Le Goût du Bonheur - La Fenière,Cadenet,,,,,new,high,"no candidate in cadenet, nor anywhere in France holding a Michelin 2025 row",
-579,new_venue,,Albert 1er,Chamonix-Mont-Blanc,ve_9a31afe9f5,Restaurant Albert 1er,chamonix-mont-blanc,One Star,use:ve_9a31afe9f5,high,same tier both years: 1 star,
-581,new_venue,,Dan B.,Ventabren,ve_238989dcec,Restaurant Dan B.,ventabren,One Star,use:ve_238989dcec,high,same tier both years: 1 star,
-582,new_venue,,L'Oursin,Carry-le-Rouet,,,,,new,high,"no candidate in carry-le-rouet, nor anywhere in France holding a Michelin 2025 row",
-584,new_venue,,L'Ekrin by Laurent Azoulay,Méribel,,,,,new,high,"no candidate in meribel, nor anywhere in France holding a Michelin 2025 row",
-585,new_venue,,Le Farçon,Courchevel,ve_1e0a5a501f,Restaurant le Farçon,courchevel,One Star,use:ve_1e0a5a501f,high,same tier both years: 1 star,
-586,new_venue,,Le Chabichou by Stéphane Buron,Courchevel,,,,,new,high,"no candidate in courchevel, nor anywhere in France holding a Michelin 2025 row",
-587,new_venue,,Alpage,Courchevel,ve_e643c85d2a,Restaurant Alpage,courchevel,One Star,use:ve_e643c85d2a,high,same tier both years: 1 star,
-588,new_venue,,L'Altitude,Courchevel,ve_c240b986ce,Restaurant L'Altitude*,courchevel,One Star,use:ve_c240b986ce,high,same tier both years: 1 star,
-589,new_venue,,La Table de l'Orangerie - Château de Fonscolombe,Le Puy-Sainte-Réparade,,,,,new,high,"no candidate in le-puy-sainte-reparade, nor anywhere in France holding a Michelin 2025 row",
-590,new_venue,,Les Explorateurs - Hôtel Pashmina,Val-Thorens,,,,,new,high,"no candidate in val-thorens, nor anywhere in France holding a Michelin 2025 row",
-591,new_venue,,La Bastide Bourrelly - Mathias Dandine,Calas-Cabriès,,,,,new,high,"no candidate in calas-cabries, nor anywhere in France holding a Michelin 2025 row",
-593,new_venue,,Le Art - Château de la Gaude,Aix-en-Provence,ve_d61dd48136,Le Art,aix-en-provence,One Star,use:ve_d61dd48136,high,same tier both years: 1 star,
-596,new_venue,,Le Feuillée - Le Couvent des Minimes,Mane,ve_74b0053f51,Le Feuillée,mane,One Star,use:ve_74b0053f51,high,same tier both years: 1 star,
-599,new_venue,,Ursus,Tignes,ve_ef57492a00,Restaurant URSUS,tignes,One Star,use:ve_ef57492a00,high,same tier both years: 1 star,
-603,new_venue,,La Magdeleine - Mathias Dandine,Gémenos,,,,,new,high,"no candidate in gemenos, nor anywhere in France holding a Michelin 2025 row",
-605,new_venue,,La Table de Nans,La Ciotat,,,,,new,high,"no candidate in la-ciotat, nor anywhere in France holding a Michelin 2025 row",
-606,new_venue,,Les Oliviers,Bandol,,,,,new,high,"no candidate in bandol, nor anywhere in France holding a Michelin 2025 row",
-607,new_venue,,La Bastide de Moustiers,Moustiers-Sainte-Marie,,,,,new,high,"no candidate in moustiers-sainte-marie, nor anywhere in France holding a Michelin 2025 row",
-611,new_venue,,Bruno,Lorgues,,,,,new,high,"no candidate in lorgues, nor anywhere in France holding a Michelin 2025 row",
-614,review_city,city_not_found,L'Oursin - Hôtel Les Roches,Le Lavandou,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Le Lavandou, France",
-615,new_venue,,Faventia,Tourrettes,ve_69934b07bd,Restaurant Le FAVENTIA,tourrettes,One Star,use:ve_69934b07bd,high,same tier both years: 1 star,
-616,new_venue,,La Palmeraie - Château de Valmer,La Croix-Valmer,,,,,new,high,"no candidate in la-croix-valmer, nor anywhere in France holding a Michelin 2025 row",
-617,new_venue,,Arnaud Donckele & Maxime Frédéric at Louis Vuitton,Saint-Tropez,ve_65591e378b,Restaurant Arnaud Donckele & Maxime Frédéric at Louis Vuitton,saint-tropez,One Star,use:ve_65591e378b,high,same tier both years: 1 star,
-618,new_venue,,La Terrasse - Cheval Blanc St-Tropez,Saint-Tropez,,,,,new,high,"no candidate in saint-tropez, nor anywhere in France holding a Michelin 2025 row",
-619,new_venue,,Auberge de la Roche,Valdeblore,,,,,new,high,"no candidate in valdeblore, nor anywhere in France holding a Michelin 2025 row",
-620,new_venue,,Colette,Saint-Tropez,,,,,new,high,"no candidate in saint-tropez, nor anywhere in France holding a Michelin 2025 row",
-621,new_venue,,Bessem,Mandelieu-la-Napoule,,,,,new,high,"no candidate in mandelieu-la-napoule, nor anywhere in France holding a Michelin 2025 row",
-624,new_venue,,Alain Llorca,La Colle-sur-Loup,ve_b4babd7276,Restaurant @ Alain llorca,la-colle-sur-loup,One Star,use:ve_b4babd7276,high,same tier both years: 1 star,
-625,new_venue,,La Palme d'Or,Cannes,ve_72bc10551e,Restaurant La Palme d'Or,cannes,One Star,use:ve_72bc10551e,high,same tier both years: 1 star,
-626,review_city,city_not_found,La Table de Pierre,Saint-Paul-de-Vence,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Saint-Paul-de-Vence, France",
-627,new_venue,,Les Terraillers,Biot,ve_9c646fdf2a,Restaurant Les Terraillers,biot,One Star,use:ve_9c646fdf2a,high,same tier both years: 1 star,
-628,new_venue,,La Passagère - Hôtel Belles Rives,Juan-les-Pins,,,,,new,high,"no candidate in juan-les-pins, nor anywhere in France holding a Michelin 2025 row",
-629,new_venue,,Les Pêcheurs,Antibes,,,,,new,high,"no candidate in antibes, nor anywhere in France holding a Michelin 2025 row",
-630,new_venue,,Louroc - Hôtel du Cap-Eden-Roc,Antibes,,,,,new,high,"no candidate in antibes, nor anywhere in France holding a Michelin 2025 row",
-632,new_venue,,Racines - Bruno Cirino,Nice,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_8234491228 (Racines, Bordeaux) is already spoken for by line 760 (Racines by Daniel Gallacher, new_venue, same city); dropped: ve_bde02da00e (Racines, Étaples) is already spoken for by line 730 (Racines, match); dropped: ve_bfcef785d1 (Racines, Annecy) is already spoken for by line 1022 (Racines, match)",
-633,new_venue,,L'Aromate,Nice,,,,,new,high,"no candidate in nice, nor anywhere in France holding a Michelin 2025 row",
-634,new_venue,,Épicentre,Nice,,,,,new,high,"no candidate in nice, nor anywhere in France holding a Michelin 2025 row",
-635,new_venue,,Les Agitateurs,Nice,,,,,new,high,"no candidate in nice, nor anywhere in France holding a Michelin 2025 row",
-639,new_venue,,Le Restaurant des Rois - La Réserve de Beaulieu,Beaulieu-sur-Mer,ve_6b022b029a,Le Restaurant des Rois,beaulieu-sur-mer,One Star,use:ve_6b022b029a,high,same tier both years: 1 star,
-641,review_city,city_not_found,La Table du Cap Estel,Èze-Bord-de-Mer,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Èze-Bord-de-Mer, France",
-642,new_venue,,A Casa di Mà,Lumio,,,,,new,high,"no candidate in lumio, nor anywhere in France holding a Michelin 2025 row",
-645,new_venue,,La Table de la Ferme,Sartène,,,,,new,high,"no candidate in sartene, nor anywhere in France holding a Michelin 2025 row",
-646,new_venue,,Finestra by Italo Bassi,Bonifacio,,,,,new,high,"no candidate in bonifacio, nor anywhere in France holding a Michelin 2025 row",
-650,new_venue,,La Maison de Kerdiès,Plougasnou,ve_5c38471ed5,Restaurant La Maison de Kerdiès,plougasnou,Bib Gourmand,use:ve_5c38471ed5,high,same tier both years: Bib,
-652,new_venue,,Ti-Coz,Quimper,,,,,new,high,"no candidate in quimper, nor anywhere in France holding a Michelin 2025 row",
-656,new_venue,,Erasmo,Carhaix-Plouguer,ve_8294ea6255,Restaurant Erasmo,carhaix-plouguer,Bib Gourmand,use:ve_8294ea6255,high,same tier both years: Bib,
-660,new_venue,,Hyacinthe & Robert,Pontivy,ve_6d59eb76a1,Restaurant Hyacinthe & Robert,pontivy,Bib Gourmand,use:ve_6d59eb76a1,high,same tier both years: Bib,
-662,new_venue,,Le Biniou,Pléneuf-Val-André,,,,,new,high,"no candidate in pleneuf-val-andre, nor anywhere in France holding a Michelin 2025 row",
-663,new_venue,,La Chebaudière,Auray,ve_4a55e63127,Restaurant La Chebaudière,auray,Bib Gourmand,use:ve_4a55e63127,high,same tier both years: Bib,
-665,new_venue,,Boma,Vannes,ve_6a9bd70b49,Restaurant Boma,vannes,Bib Gourmand,use:ve_6a9bd70b49,high,same tier both years: Bib,
-667,new_venue,,Le Restaurant des Isles,Barneville-Carteret,ve_a6861367dd,Hôtel des Isles,barneville-carteret,Bib Gourmand,use:ve_a6861367dd,high,same tier both years: Bib,
-669,new_venue,,Le Comptoir Breizh Café,Saint-Malo,,,,,new,high,"no candidate in saint-malo, nor anywhere in France holding a Michelin 2025 row",
-674,new_venue,,Breizh Café Cancale,Cancale,,,,,new,high,"no candidate in cancale, nor anywhere in France holding a Michelin 2025 row",
-675,new_venue,,Maison Cachée,Rochefort-en-Terre,ve_1577ca7b7e,Restaurant Maison Cachée,rochefort-en-terre,Bib Gourmand,use:ve_1577ca7b7e,high,same tier both years: Bib,
-677,new_venue,,Bistrot de la Maison Tiegezh,Guer,,,,,new,high,"no candidate in guer, nor anywhere in France holding a Michelin 2025 row",
-679,new_venue,,Bris'Art Culinaire,La Baule,,,,,new,high,"no candidate in la-baule, nor anywhere in France holding a Michelin 2025 row",
-682,new_venue,,Topaze,Saint-Nazaire,ve_1cc58df978,Restaurant TOPAZE,saint-nazaire,Bib Gourmand,use:ve_1cc58df978,high,same tier both years: Bib,
-684,new_venue,,Auberge de l'Abbaye,Hambye,,,,,new,high,"no candidate in hambye, nor anywhere in France holding a Michelin 2025 row",
-687,new_venue,,Breizh Café Rennes,Rennes,,,,,new,high,"no candidate in rennes, nor anywhere in France holding a Michelin 2025 row",
-688,new_venue,,La Petite Ourse,Rennes,ve_5d0a495512,Restaurant La Petite Ourse,rennes,Bib Gourmand,use:ve_5d0a495512,high,same tier both years: Bib,
-699,new_venue,,OBBO,Nantes,,,,,new,high,"no candidate in nantes, nor anywhere in France holding a Michelin 2025 row",
-700,new_venue,,La Mandale,Nantes,,,,,new,high,"no candidate in nantes, nor anywhere in France holding a Michelin 2025 row",
-704,new_venue,,"Alice, le bistrot - Manoir de la Mortière",Les Sables-d'Olonne,ve_754eff4295,"Alice, le bistrot",les-sables-dolonne,Bib Gourmand,use:ve_754eff4295,high,same tier both years: Bib,
-707,new_venue,,Le Café des Arts,Beaulieu-sous-la-Roche,ve_8c4a5d6040,Restaurant Le Café des Arts,beaulieu-sous-la-roche,Bib Gourmand,use:ve_8c4a5d6040,high,same tier both years: Bib,
-709,new_venue,,L'Éden,Houlgate,,,,,new,high,"no candidate in houlgate, nor anywhere in France holding a Michelin 2025 row",
-710,review_venue,same_key_other_city,L'Atelier,Montaigu,ve_101f57b1dc,Restaurant L'Atelier,issigeac (other city),Bib Gourmand,,,"blank on purpose: line 844 proposes the same venue ve_101f57b1dc. Two rows cannot be one venue - pick the one that is it and make the other new. (city differs: db issigeac, michelin Montaigu; the venue is not moved; the discrepancy is recorded here)",
-714,new_venue,,SaQuaNa,Honfleur,ve_5185174abe,Restaurant SaQuaNa,honfleur,Bib Gourmand,use:ve_5185174abe,high,same tier both years: Bib,
-715,new_venue,,L'Envers du Décor,Les Herbiers,,,,,new,high,"no candidate in les-herbiers, nor anywhere in France holding a Michelin 2025 row",
-717,new_venue,,La P'tite Patte,Cholet,,,,,new,high,"no candidate in cholet, nor anywhere in France holding a Michelin 2025 row",
-718,new_venue,,Le Jour du Poisson,Saint-Denis-d'Oléron,ve_ba565e3a5e,Jour Du Poisson,saint-denis-doleron,Bib Gourmand,use:ve_ba565e3a5e,high,same tier both years: Bib,
-722,new_venue,,Sillage,Saint-Pierre-d'Oléron,ve_ede8b18173,Restaurant Sillage,saint-pierre-doleron,Bib Gourmand,use:ve_ede8b18173,high,same tier both years: Bib,
-725,new_venue,,La Plage,Audresselles,,,,,new,high,"no candidate in audresselles, nor anywhere in France holding a Michelin 2025 row",
-726,new_venue,,Bistrot du Pollet,Dieppe,ve_503267190f,Le Bistrot du Pollet,dieppe,Bib Gourmand,use:ve_503267190f,high,same tier both years: Bib,
-728,new_venue,,La Ferme du Vert,Wierre-Effroy,,,,,new,high,"no candidate in wierre-effroy, nor anywhere in France holding a Michelin 2025 row",
-731,new_venue,,Les Pieds Dans l'Eau,Saint-Langis-lès-Mortagne,ve_0320deb2e1,"Restaurant ""Les Pieds dans l’eau""",saint-langis-les-mortagne,Bib Gourmand,use:ve_0320deb2e1,high,same tier both years: Bib,
-736,new_venue,,La Clé des Champs,Favières,,,,,new,high,"no candidate in favieres, nor anywhere in France holding a Michelin 2025 row",
-739,new_venue,,Restaurant du Dauphin,La Ferté-Bernard,,,,,new,high,"no candidate in la-ferte-bernard, nor anywhere in France holding a Michelin 2025 row",
-740,new_venue,,Renée,Dunkirk,,,,,new,high,"no candidate in dunkirk, nor anywhere in France holding a Michelin 2025 row",
-743,new_venue,,L'IØDE,Saintes,ve_25fc60c8fe,Restaurant l'IØDE,saintes,Bib Gourmand,use:ve_25fc60c8fe,high,same tier both years: Bib,
-748,new_venue,,L'Épine,Azay-le-Rideau,,,,,new,high,"no candidate in azay-le-rideau, nor anywhere in France holding a Michelin 2025 row",
-750,new_venue,,Briket' Bistrot,Guéthary,,,,,new,high,"no candidate in guethary, nor anywhere in France holding a Michelin 2025 row",
-752,new_venue,,Léonie,Biarritz,,,,,new,high,"no candidate in biarritz, nor anywhere in France holding a Michelin 2025 row",
-754,new_venue,,Auberge Le Centre Poitou,Coulombiers,,,,,new,high,"no candidate in coulombiers, nor anywhere in France holding a Michelin 2025 row",
-757,new_venue,,Madame B,Bordeaux,ve_379053fb48,Restaurant Madame B,bordeaux,Bib Gourmand,use:ve_379053fb48,high,same tier both years: Bib,
-758,new_venue,,Mets Mots,Bordeaux,,,,,new,high,"no candidate in bordeaux, nor anywhere in France holding a Michelin 2025 row",
-759,new_venue,,Panaille,Bordeaux,,,,,new,high,"no candidate in bordeaux, nor anywhere in France holding a Michelin 2025 row",
-760,new_venue,,Racines by Daniel Gallacher,Bordeaux,,,,,new,high,"no candidate in bordeaux, nor anywhere in France holding a Michelin 2025 row",
-761,new_venue,,La Conciergerie,Sailly-sur-la-Lys,ve_c5c9e9cfed,Restaurant La Conciergerie,sailly-sur-la-lys,Bib Gourmand,use:ve_c5c9e9cfed,high,same tier both years: Bib,
-763,new_venue,,Kedem,Bordeaux,ve_c9006ee0d1,Restaurant Kedem,bordeaux,Bib Gourmand,use:ve_c9006ee0d1,high,same tier both years: Bib,
-765,new_venue,,La Table d'Inomoto,Saint-André-de-Cubzac,,,,,new,high,"no candidate in saint-andre-de-cubzac, nor anywhere in France holding a Michelin 2025 row",
-767,new_venue,,Les Arpents,Amboise,ve_e75d63b3fb,Restaurant Les Arpents,amboise,Bib Gourmand,use:ve_e75d63b3fb,high,same tier both years: Bib,
-768,new_venue,,Le Gantxo,Guiche,,,,,new,high,"no candidate in guiche, nor anywhere in France holding a Michelin 2025 row",
-769,new_venue,,Ô en Couleur,Oucques,,,,,new,high,"no candidate in oucques, nor anywhere in France holding a Michelin 2025 row",
-770,new_venue,,Le Mana,Saint-André-lez-Lille,,,,,new,high,"no candidate in saint-andre-lez-lille, nor anywhere in France holding a Michelin 2025 row",
-771,new_venue,,La Croix Blanche,Veuzain-sur-Loire,,,,,new,high,"no candidate in veuzain-sur-loire, nor anywhere in France holding a Michelin 2025 row",
-772,new_venue,,Balsamique,Wambrechies,,,,,new,high,"no candidate in wambrechies, nor anywhere in France holding a Michelin 2025 row",
-773,new_venue,,Jarapea,Irouléguy,ve_049080c2ad,Restaurant Jarapea,irouleguy,Bib Gourmand,use:ve_049080c2ad,high,same tier both years: Bib,
-774,new_venue,,Art'zain,Irissarry,,,,,new,high,"no candidate in irissarry, nor anywhere in France holding a Michelin 2025 row",
-778,new_venue,,La Bistronomie,Angoulême,,,,,new,high,"no candidate in angouleme, nor anywhere in France holding a Michelin 2025 row",
-783,new_venue,,Avarum,Fougères-sur-Bièvre,,,,,new,high,"no candidate in fougeres-sur-bievre, nor anywhere in France holding a Michelin 2025 row",
-785,new_venue,,Domus,Mont-près-Chambord,,,,,new,high,"no candidate in mont-pres-chambord, nor anywhere in France holding a Michelin 2025 row",
-786,new_venue,,Baca'v - Boulogne,Boulogne-Billancourt,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_fe36d30da6 (Baca'v, Paris) is already spoken for by line 823 (Baca'v par Gilles Choukroun, new_venue, same city)",
-788,new_venue,,La Chatellenie,Availles-Limouzine,,,,,new,high,"no candidate in availles-limouzine, nor anywhere in France holding a Michelin 2025 row",
-790,review_city,city_not_found,Charnu,Lamorlaye,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Lamorlaye, France",
-791,review_city,city_not_found,Rosette,Clichy,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Clichy, France",
-792,new_venue,,Bistrot des Fables,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-793,new_venue,,Mova,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-794,new_venue,,Le Radis Beurre,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-795,new_venue,,20 Eiffel,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-796,new_venue,,BRU,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-797,new_venue,,Adami,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-798,new_venue,,Le CasseNoix,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-799,new_venue,,Mandoobar,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-800,new_venue,,Kisin,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-801,new_venue,,L'Antre Amis,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-802,new_venue,,Les Canailles Pigalle,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-806,new_venue,,La Table de Mee,Paris,ve_38c864a72f,Table de MEE,paris,Bib Gourmand,use:ve_38c864a72f,high,same tier both years: Bib,
-808,new_venue,,Farouche,Montrouge,ve_c199298031,Restaurant Farouche,montrouge,Bib Gourmand,use:ve_c199298031,high,same tier both years: Bib,
-811,new_venue,,Capsule,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-823,new_venue,,Baca'v par Gilles Choukroun,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-825,new_venue,,Jip,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",
-832,new_venue,,Villa Mirasol - Bistrot 1912,Mont-de-Marsan,ve_0500893ff4,Villa Mirasol,mont-de-marsan,Bib Gourmand,use:ve_0500893ff4,high,same tier both years: Bib,
-833,new_venue,,Etchemaite,Larrau,,,,,new,high,"no candidate in larrau, nor anywhere in France holding a Michelin 2025 row",
-834,review_venue,same_key_other_city,Bird,Yerres,,,,,new,high,"no candidate in yerres, nor anywhere in France holding a Michelin 2025 row",
-837,new_venue,,Côté Bastide,Sainte-Foy-la-Grande,ve_ccea7da354,Restaurant Côté Bastide,sainte-foy-la-grande,Bib Gourmand,use:ve_ccea7da354,high,same tier both years: Bib,
-840,new_venue,,Café Louise,Périgueux,,,,,new,high,"no candidate in perigueux, nor anywhere in France holding a Michelin 2025 row",
-844,review_venue,same_key_other_city,L'Atelier,Issigeac,ve_101f57b1dc,Restaurant L'Atelier,issigeac,Bib Gourmand,,,blank on purpose: line 710 proposes the same venue ve_101f57b1dc. Two rows cannot be one venue - pick the one that is it and make the other new. (same tier both years: Bib),
-845,new_venue,,L'Attanum,Saint-Yrieix-la-Perche,,,,,new,high,"no candidate in saint-yrieix-la-perche, nor anywhere in France holding a Michelin 2025 row",
-850,new_venue,,Monsieur Robert,Saint-Robert,ve_4b86bdb91b,Restaurant monsieur Robert,saint-robert,Bib Gourmand,use:ve_4b86bdb91b,high,same tier both years: Bib,
-853,new_venue,,La Table du Cinq,Bagnères-de-Bigorre,ve_9c40a9dbe3,Restaurant La Table du Cinq,bagneres-de-bigorre,Bib Gourmand,use:ve_9c40a9dbe3,high,same tier both years: Bib,
-861,new_venue,,Auberge des Aryelets,Aulon,,,,,new,high,"no candidate in aulon, nor anywhere in France holding a Michelin 2025 row",
-864,review_venue,same_key_other_city,Le Bouche à Oreille,Tulle,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_2304caab1b (Le Bouche à Oreille, Le Havre) is already spoken for by line 711 (Le Bouche à Oreille, match)",
-868,new_venue,,L'Ô à la Bouche,Cahors,,,,,new,high,"no candidate in cahors, nor anywhere in France holding a Michelin 2025 row",
-873,new_venue,,Bistrot DuPont,Pont-Sainte-Marie,,,,,new,high,"no candidate in pont-sainte-marie, nor anywhere in France holding a Michelin 2025 row",
-879,new_venue,,Une Table à Deux,Toulouse,ve_53f4614426,Restaurant Une Table à Deux,toulouse,Bib Gourmand,use:ve_53f4614426,high,same tier both years: Bib,
-880,new_venue,,Le Carré de l'Ange,Saint-Lizier,,,,,new,high,"no candidate in saint-lizier, nor anywhere in France holding a Michelin 2025 row",
-895,new_venue,,L'Auberge des Montagnes,Pailherols,ve_63beffdf34,Auberge des Montagnes,pailherols,Bib Gourmand,use:ve_63beffdf34,high,same tier both years: Bib,
-898,new_venue,,Le Boudes La Vigne,Boudes,ve_b2c8a6b932,"Restaurant ""Le Boudes La Vigne""",boudes,Bib Gourmand,use:ve_b2c8a6b932,high,same tier both years: Bib,
-899,new_venue,,Sodade,Chaudes-Aigues,ve_7e93feef0e,Hôtel & Restaurant Sodade,chaudes-aigues,Bib Gourmand,use:ve_7e93feef0e,high,same tier both years: Bib,
-900,new_venue,,Bistrot Saveurs,Castres,,,,,new,high,"no candidate in castres, nor anywhere in France holding a Michelin 2025 row",
-903,new_venue,,Colette - Domaine de la Plagnette,Les Salles,,,,,new,high,"no candidate in les-salles, nor anywhere in France holding a Michelin 2025 row",
-905,new_venue,,Aux 3 Capitaines,Malroy,,,,,new,high,"no candidate in malroy, nor anywhere in France holding a Michelin 2025 row",
-906,new_venue,,L'Ouillette,Santenay,ve_e4010e1996,Hôtel-Restaurant l'Ouillette,santenay,Bib Gourmand,use:ve_e4010e1996,high,same tier both years: Bib,
-907,new_venue,,La Gabale,Aumont-Aubrac,,,,,new,high,"no candidate in peyre-en-aubrac, nor anywhere in France holding a Michelin 2025 row",
-910,new_venue,,Bistrot Lucien,Gevrey-Chambertin,,,,,new,high,"no candidate in gevrey-chambertin, nor anywhere in France holding a Michelin 2025 row",
-912,new_venue,,Spica,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",
-913,new_venue,,L'Évidence,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",
-914,review_venue,norm_key_too_short,So,Dijon,ve_1986da12de,SO,dijon,Bib Gourmand,use:ve_1986da12de,high,"the name reduces to under three characters, so no key can match it automatically (norm_key_too_short); ""SO"" in dijon is the same name written out; same tier both years: Bib",
-915,new_venue,,L'Alicanta,Le Rozier,,,,,new,high,"no candidate in le-rozier, nor anywhere in France holding a Michelin 2025 row",
-916,new_venue,,Hostellerie d'Héloïse,Cluny,,,,,new,high,"no candidate in cluny, nor anywhere in France holding a Michelin 2025 row",
-918,new_venue,,L'Ermitage,Espaly-Saint-Marcel,ve_87ca1da3d6,restaurant l'Ermitage,espaly-saint-marcel,Bib Gourmand,use:ve_87ca1da3d6,high,same tier both years: Bib,
-920,new_venue,,Le Bouchon Bourguignon,Tournus,,,,,new,high,"no candidate in tournus, nor anywhere in France holding a Michelin 2025 row",
-921,new_venue,,L'Auberge des Gourmets,Le Villars,ve_b2691cae1e,Auberge des Gourmets,le-villars,Bib Gourmand,use:ve_b2691cae1e,high,same tier both years: Bib,
-923,new_venue,,Le Beaujolais,Belleville-en-Beaujolais,ve_156553c418,Restaurant Le Beaujolais,belleville-en-beaujolais,Bib Gourmand,use:ve_156553c418,high,same tier both years: Bib,
-924,new_venue,,Maison Vidal - Le Bistrot de Justin,Saint-Julien-Chapteuil,ve_4dd54878f0,Maison vidal,saint-julien-chapteuil,Bib Gourmand,use:ve_4dd54878f0,high,same tier both years: Bib,
-925,new_venue,,L'Abbaye Caladoise,Villefranche-sur-Saône,,,,,new,high,"no candidate in villefranche-sur-saone, nor anywhere in France holding a Michelin 2025 row",
-928,new_venue,,Bellavista,Prats-de-Mollo-la-Preste,,,,,new,high,"no candidate in prats-de-mollo-la-preste, nor anywhere in France holding a Michelin 2025 row",
-930,new_venue,,Le Balcon,Combeaufontaine,,,,,new,high,"no candidate in combeaufontaine, nor anywhere in France holding a Michelin 2025 row",
-931,new_venue,,Grain de Sel,Dole,ve_be663c0406,Restaurant Grain de Sel,dole,Bib Gourmand,use:ve_be663c0406,high,same tier both years: Bib,
-933,new_venue,,Cave à Vin & à Manger - Maison Saint-Crescent,Narbonne,,,,,new,high,"no candidate in narbonne, nor anywhere in France holding a Michelin 2025 row",
-934,new_venue,,L'Ogustin,La Vacquerie-et-Saint-Martin-de-Castries,ve_8d0beae410,Restaurant l'ogustin,la-vacquerie-et-saint-martin-de-castries,Bib Gourmand,use:ve_8d0beae410,high,same tier both years: Bib,
-940,new_venue,,Téjérina - Hôtel de la Place,Polliat,ve_82af616d87,Le Restaurant Téjérina,polliat,Bib Gourmand,use:ve_82af616d87,high,same tier both years: Bib,
-941,new_venue,,Agastache,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-946,new_venue,,La Virée,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-947,new_venue,,Lazare Escarguel,Perpignan,,,,,new,high,"no candidate in perpignan, nor anywhere in France holding a Michelin 2025 row",
-948,new_venue,,La Meunière,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-953,new_venue,,Accentué,Lyon,ve_aa93720dd2,Restaurant Accentué,lyon,Bib Gourmand,use:ve_aa93720dd2,high,same tier both years: Bib,
-954,new_venue,,Le Kitchen,Lyon,ve_e83ea265c3,Restaurant Le Kitchen,lyon,Bib Gourmand,use:ve_e83ea265c3,high,same tier both years: Bib,
-955,new_venue,,Danton,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-956,new_venue,,Siprès,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",
-959,new_venue,,Bergamote,Lyon,ve_76d0e682fb,Restaurant Bergamote,lyon,Bib Gourmand,use:ve_76d0e682fb,high,same tier both years: Bib,
-960,new_venue,,Le Pré Saint Jean,Pézenas,ve_4e73948e8f,Restaurant Pré Saint Jean,pezenas,Bib Gourmand,use:ve_4e73948e8f,high,same tier both years: Bib,
-961,new_venue,,Vertfeuille,Arc-et-Senans,,,,,new,high,"no candidate in arc-et-senans, nor anywhere in France holding a Michelin 2025 row",
-963,new_venue,,Les Nymphéas,Chasse-sur-Rhône,,,,,new,high,"no candidate in chasse-sur-rhone, nor anywhere in France holding a Michelin 2025 row",
-968,new_venue,,Bistrot Brioude,Neyrac-les-Bains,,,,,new,high,"no candidate in neyrac-les-bains, nor anywhere in France holding a Michelin 2025 row",
-969,new_venue,,Le Cottage,Chonas-l'Amballan,,,,,new,high,"no candidate in chonas-lamballan, nor anywhere in France holding a Michelin 2025 row",
-970,new_venue,,Le Bistronôme,Arbois,,,,,new,high,"no candidate in arbois, nor anywhere in France holding a Michelin 2025 row",
-977,new_venue,,Le Saisonnier,Roye,,,,,new,high,"no candidate in roye, nor anywhere in France holding a Michelin 2025 row",
-979,new_venue,,Le Temps d'Aime,Lattes,ve_6db828084a,Temps d'Aime,lattes,Bib Gourmand,use:ve_6db828084a,high,same tier both years: Bib,
-982,new_venue,,Julien,Fouday,,,,,new,high,"no candidate in fouday, nor anywhere in France holding a Michelin 2025 row",
-983,new_venue,,Le Saint-Georges,Palavas-les-Flots,ve_05c971ee12,Restaurant Le Saint Georges,palavas-les-flots,Bib Gourmand,use:ve_05c971ee12,high,same tier both years: Bib,
-987,new_venue,,Epona,Baix,,,,,new,high,"no candidate in baix, nor anywhere in France holding a Michelin 2025 row",
-988,new_venue,,Le Cygne,Gundershoffen,ve_1990fd1147,Restaurant Le Cygne,gundershoffen,Bib Gourmand,use:ve_1990fd1147,high,same tier both years: Bib,
-989,new_venue,,La Châtaigneraie - Perle des Vosges,Muhlbach-sur-Munster,,,,,new,high,"no candidate in muhlbach-sur-munster, nor anywhere in France holding a Michelin 2025 row",
-990,new_venue,,L'Auberge du Pont des Pierres,Montanges,ve_a86b721c0e,Auberge du pont des pierres,montanges,Bib Gourmand,use:ve_a86b721c0e,high,same tier both years: Bib,
-991,review_city,country_label_disagrees,L'Olivier,Munster,ve_120e307eb0,Restaurant L'Olivier,munster-fr (other city),Bib Gourmand,use:ve_120e307eb0,medium,"city differs: db munster-fr, michelin Munster - the same commune, stored under a split slug (""Munster, France"") that the label cannot reach; the venue is not moved; the discrepancy is recorded here",
-992,review_city,country_label_disagrees,Les Grands Arbres - Verte Vallée,Munster,,,,,city:ci_aafc2b6136,high,"the city is not missing: cities holds munster-fr (display ""Munster, France""), which no normalisation of ""Munster"" reaches - so this needs a city, not a new one created",
-993,new_venue,,Le Bistrot 270,Malataverne,ve_40366c0dda,Restaurant Le Bistrot 270,malataverne,Bib Gourmand,use:ve_40366c0dda,high,same tier both years: Bib,
-994,new_venue,,La Rochette,Labaroche,,,,,new,high,"no candidate in labaroche, nor anywhere in France holding a Michelin 2025 row",
-995,new_venue,,Len'K - La Maison Bonnet,Grane,,,,,new,high,"no candidate in grane, nor anywhere in France holding a Michelin 2025 row",
-996,new_venue,,La Vieille Forge,Kaysersberg,,,,,new,high,"no candidate in kaysersberg, nor anywhere in France holding a Michelin 2025 row",
-997,new_venue,,Winstub du Chambard,Kaysersberg,,,,,new,high,"no candidate in kaysersberg, nor anywhere in France holding a Michelin 2025 row",
-998,new_venue,,Le Bistr'AU - Le Mas de Boudan,Nîmes,,,,,new,high,"no candidate in nimes, nor anywhere in France holding a Michelin 2025 row",
-1000,new_venue,,L'AO - L'Aigle d'Or,Rimbach-près-Guebwiller,,,,,new,high,"no candidate in rimbach-pres-guebwiller, nor anywhere in France holding a Michelin 2025 row",
-1001,new_venue,,La Taverne Alsacienne,Ingersheim,ve_cdbc14778f,Taverne Alsacienne,ingersheim,Bib Gourmand,use:ve_cdbc14778f,high,same tier both years: Bib,
-1003,new_venue,,Auberge du Pont de la Zorn,Weyersheim,,,,,new,high,"no candidate in weyersheim, nor anywhere in France holding a Michelin 2025 row",
-1006,new_venue,,Chez Yvonne - S'Burjerstuewel,Strasbourg,ve_b4a6a34762,Chez Yvonne,strasbourg,Bib Gourmand,use:ve_b4a6a34762,high,same tier both years: Bib,
-1007,new_venue,,Au Pont Corbeau,Strasbourg,ve_3d9ae68450,Restaurant Au Pont Corbeau,strasbourg,Bib Gourmand,use:ve_3d9ae68450,high,same tier both years: Bib,
-1008,new_venue,,L'Arbre Vert,Berrwiller,,,,,new,high,"no candidate in berrwiller, nor anywhere in France holding a Michelin 2025 row",
-1013,new_venue,,Le Bourgeon,Alby-sur-Chéran,ve_a58543d5a3,Restaurant Le Bourgeon,alby-sur-cheran,Bib Gourmand,use:ve_a58543d5a3,high,same tier both years: Bib,
-1028,new_venue,,Le Muratore,Évian-les-Bains,,,,,new,high,"no candidate in evian-les-bains, nor anywhere in France holding a Michelin 2025 row",
-1030,new_venue,,Au Lion d'Or - Chez Théo,Rosenau,ve_f8977eb5ab,AU LION D'OR,rosenau,Bib Gourmand,use:ve_f8977eb5ab,high,same tier both years: Bib,
-1033,review_city,city_not_found,L'Atelier L'Art des Mets,Taillades,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Taillades, France",
-1034,review_city,city_not_found,La Chartreuse,Le Reposoir,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Le Reposoir, France",
-1036,new_venue,,Atelier Salone,Salon-de-Provence,,,,,new,high,"no candidate in salon-de-provence, nor anywhere in France holding a Michelin 2025 row",
-1038,new_venue,,La Ferme de Victorine,Notre-Dame-de-Bellecombe,ve_900c668573,Restaurant La Ferme de Victorine,notre-dame-de-bellecombe,Bib Gourmand,use:ve_900c668573,high,same tier both years: Bib,
-1039,new_venue,,Le Lodge,Samoëns,,,,,new,high,"no candidate in samoens, nor anywhere in France holding a Michelin 2025 row",
-1040,new_venue,,Breizh Café Megève,Megève,,,,,new,high,"no candidate in megeve, nor anywhere in France holding a Michelin 2025 row",
-1042,review_city,city_not_found,La Table de Pablo,Villars,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Villars, France",
-1043,new_venue,,Simple et Meilleur,Saint-Martin-de-Belleville,,,,,new,high,"no candidate in saint-martin-de-belleville, nor anywhere in France holding a Michelin 2025 row",
-1045,new_venue,,Akashon,Chamonix-Mont-Blanc,ve_152fb62579,Restaurant Akashon,chamonix-mont-blanc,Bib Gourmand,use:ve_152fb62579,high,same tier both years: Bib,
-1047,new_venue,,La Petite Verrière,Le Puy-Sainte-Réparade,,,,,new,high,"no candidate in le-puy-sainte-reparade, nor anywhere in France holding a Michelin 2025 row",
-1048,new_venue,,Les Galinas,Aix-en-Provence,,,,,new,high,"no candidate in aix-en-provence, nor anywhere in France holding a Michelin 2025 row",
-1054,new_venue,,Le Saint Gabriel,Toulon,ve_b4e1d36194,Restaurant Le Saint Gabriel,toulon,Bib Gourmand,use:ve_b4e1d36194,high,same tier both years: Bib,
-1055,new_venue,,Le Pastel,Toulon,,,,,new,high,"no candidate in toulon, nor anywhere in France holding a Michelin 2025 row",
-1056,new_venue,,La Table,Tourtour,,,,,new,high,"no candidate in tourtour, nor anywhere in France holding a Michelin 2025 row",
-1058,new_venue,,Bistrot des Anges,Le Cannet,,,,,new,high,"no candidate in le-cannet, nor anywhere in France holding a Michelin 2025 row",
-1062,new_venue,,Chez Davia,Nice,ve_c5a935d49e,Restaurant Chez Davia,nice,Bib Gourmand,use:ve_c5a935d49e,high,same tier both years: Bib,
-1063,new_venue,,L'Alchimie,Nice,,,,,new,high,"no candidate in nice, nor anywhere in France holding a Michelin 2025 row",
-1069,review_city,city_not_found,A Mandria di Pigna,Pigna,ve_6abba077f0,A Mandria di Pigna,pigna (other city),Bib Gourmand,skip,high,"slug-split city; cities holds pigna (display ""Pigna"") with no country at all, so the row's ""France"" hint drops it; ve_6abba077f0 (A Mandria di Pigna) sits in that same city. Settle the city row first - this batch should not decide which Pigna it is",
-1071,new_venue,,U Licettu,Cuttoli,,,,,new,high,"no candidate in cuttoli, nor anywhere in France holding a Michelin 2025 row",
+2,review_city,city_not_found,La Marine,L'Herbaudière,ve_07fc048900,La Marine,noirmoutier-en-lile (other city),Three Stars,use:ve_07fc048900,medium,"city differs: db noirmoutier-en-lile, michelin L'Herbaudière (no city row for the michelin label); the venue is not moved; the discrepancy is recorded here",use:ve_07fc048900
+8,new_venue,,Le Gabriel - La Réserve Paris,Paris,ve_ea838a498e,Restaurant Le Gabriel,paris,Three Stars,use:ve_ea838a498e,high,same tier both years: 3 stars,use:ve_ea838a498e
+10,new_venue,,Alléno Paris au Pavillon Ledoyen,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+11,new_venue,,Kei,Paris,ve_eeded0c3ef,Restaurant Kei,paris,Three Stars,use:ve_eeded0c3ef,high,same tier both years: 3 stars,use:ve_eeded0c3ef
+12,new_venue,,Plénitude - Cheval Blanc Paris,Paris,ve_c2aeca7793,Plénitude,paris,Three Stars,use:ve_c2aeca7793,high,same tier both years: 3 stars,use:ve_c2aeca7793
+13,new_venue,,Les Prés d'Eugénie - Michel Guérard,Eugénie-les-Bains,,,,,new,high,"no candidate in eugenie-les-bains, nor anywhere in France holding a Michelin 2025 row",new
+14,new_venue,,Assiette Champenoise,Reims,ve_5a67e55a7a,Hôtel L' Assiette Champenoise,reims,Three Stars,use:ve_5a67e55a7a,high,same tier both years: 3 stars,use:ve_5a67e55a7a
+19,new_venue,,Pic,Valence,,,,,new,high,"no candidate in valence, nor anywhere in France holding a Michelin 2025 row",new
+20,new_venue,,Les Morainières,Jongieux,ve_b93b8941db,Restaurant Les Morainières,jongieux,Three Stars,use:ve_b93b8941db,high,same tier both years: 3 stars,use:ve_b93b8941db
+22,new_venue,,L'Oustau de Baumanière,Les Baux-de-Provence,ve_0dbdcc762c,Restaurant L'Oustau de Baumanière***,les-baux-de-provence,Three Stars,use:ve_0dbdcc762c,high,same tier both years: 3 stars,use:ve_0dbdcc762c
+25,new_venue,,Le Petit Nice,Marseille,,,,,new,high,"no candidate in marseille, nor anywhere in France holding a Michelin 2025 row",new
+29,new_venue,,La Vague d'Or - Cheval Blanc St-Tropez,Saint-Tropez,ve_500702a2cd,La Vague d'Or,saint-tropez,Three Stars,use:ve_500702a2cd,high,same tier both years: 3 stars,use:ve_500702a2cd
+30,new_venue,,Mirazur,Menton,ve_5a2faf7397,Restaurant Mirazur,menton,Three Stars,use:ve_5a2faf7397,high,same tier both years: 3 stars,use:ve_5a2faf7397
+31,new_venue,,L'Auberge des Glazicks,Plomodiern,ve_0c4e0915ee,Auberge des Glazicks,plomodiern,,use:ve_0c4e0915ee,medium,"the venue is in plomodiern already but holds no Michelin 2025 row, so it is outside the candidate search - there is no 2025 tier to compare against the 2026 2 stars",use:ve_0c4e0915ee
+32,new_venue,,Maison Ronan Kervarrec,Saint-Grégoire,,,,,new,high,"no candidate in saint-gregoire, nor anywhere in France holding a Michelin 2025 row",new
+33,new_venue,,Anne de Bretagne,La Plaine-sur-Mer,,,,,new,high,"no candidate in la-plaine-sur-mer, nor anywhere in France holding a Michelin 2025 row",new
+37,new_venue,,La Table de Christophe Dufossé,Busnes,,,,,new,high,"no candidate in busnes, nor anywhere in France holding a Michelin 2025 row",new
+40,new_venue,,La Grand'Vigne - Les Sources de Caudalie,Martillac,,,,,new,high,"no candidate in martillac, nor anywhere in France holding a Michelin 2025 row",new
+42,new_venue,,Christophe Hay - Fleur de Loire,Blois,ve_c09c6dfd4d,Restaurant Christophe Hay,blois,Two Stars,use:ve_c09c6dfd4d,high,same tier both years: 2 stars,use:ve_c09c6dfd4d
+43,new_venue,,Lalique,Bommes,,,,,new,high,"no candidate in bommes, nor anywhere in France holding a Michelin 2025 row",new
+45,new_venue,,Le Corot,Ville-d'Avray,,,,,new,high,"no candidate in ville-davray, nor anywhere in France holding a Michelin 2025 row",new
+51,new_venue,,Le Jules Verne,Paris,ve_baeae630ab,Jules Verne,paris,Two Stars,use:ve_baeae630ab,high,same tier both years: 2 stars,use:ve_baeae630ab
+56,new_venue,,David Toutain,Paris,ve_48912b20f9,Restaurant David Toutain,paris,Two Stars,use:ve_48912b20f9,high,same tier both years: 2 stars,use:ve_48912b20f9
+57,new_venue,,L'Abysse Paris,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+58,new_venue,,Marsan par Hélène Darroze,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+68,new_venue,,Le Parc Les Crayères,Reims,,,,,new,high,"no candidate in reims, nor anywhere in France holding a Michelin 2025 row",new
+69,new_venue,,La Côte Saint-Jacques,Joigny,,,,,new,high,"no candidate in joigny, nor anywhere in France holding a Michelin 2025 row",new
+71,new_venue,,Le Pré - Xavier Beaudiment,Clermont-Ferrand,ve_12e5bf15ad,Restaurant Le Pré,clermont-ferrand,Two Stars,use:ve_12e5bf15ad,high,same tier both years: 2 stars,use:ve_12e5bf15ad
+72,new_venue,,La Côte d'Or,Saulieu,,,,,new,high,"no candidate in saulieu, nor anywhere in France holding a Michelin 2025 row",new
+73,new_venue,,Serge Vieira,Chaudes-Aigues,,,,,new,high,"no candidate in chaudes-aigues, nor anywhere in France holding a Michelin 2025 row",new
+74,new_venue,,Frédéric Doucet,Charolles,ve_10b8eaf5ef,Restaurant Frédéric Doucet,charolles,Two Stars,use:ve_10b8eaf5ef,high,same tier both years: 2 stars,use:ve_10b8eaf5ef
+75,new_venue,,La Table de Franck Putelat,Carcassonne,,,,,new,high,"no candidate in carcassonne, nor anywhere in France holding a Michelin 2025 row",new
+76,new_venue,,Cyril Attrazic,Aumont-Aubrac,ve_9e5a1fe04b,Restaurant Cyril Attrazic,peyre-en-aubrac,Two Stars,use:ve_9e5a1fe04b,high,same tier both years: 2 stars,use:ve_9e5a1fe04b
+77,new_venue,,Bulle d'Osier,Langres,,,,,new,high,"no candidate in langres, nor anywhere in France holding a Michelin 2025 row",new
+79,new_venue,,Cédric Burtin,Saint-Rémy,ve_023efa5fc2,Restaurant Cédric Burtin,saint-remy,Two Stars,use:ve_023efa5fc2,high,same tier both years: 2 stars,use:ve_023efa5fc2
+80,new_venue,,La Table Lionel Giraud,Narbonne,,,,,new,high,"no candidate in narbonne, nor anywhere in France holding a Michelin 2025 row",new
+81,new_venue,,Georges Blanc,Vonnas,,,,,new,high,"no candidate in vonnas, nor anywhere in France holding a Michelin 2025 row",new
+82,review_city,city_not_found,Paul Bocuse,Collonges-au-Mont-d'Or,ve_2332f48c17,Restaurant Paul Bocuse,lyon (other city),Two Stars,use:ve_2332f48c17,medium,"city differs: db lyon, michelin Collonges-au-Mont-d'Or (no city row for the michelin label); the venue is not moved; the discrepancy is recorded here",use:ve_2332f48c17
+83,new_venue,,Mère Brazier,Lyon,ve_d2820ac4f5,La Mère Brazier,lyon,,use:ve_d2820ac4f5,medium,"the venue is in lyon already but holds no Michelin 2025 row, so it is outside the candidate search - there is no 2025 tier to compare against the 2026 2 stars",use:ve_d2820ac4f5
+84,new_venue,,Takao Takano,Lyon,ve_726a22f45a,RESTAURANT Takao Takano,lyon,Two Stars,use:ve_726a22f45a,high,same tier both years: 2 stars,use:ve_726a22f45a
+86,new_venue,,La Pyramide - Maison Henriroux,Vienne,,,,,new,high,"no candidate in vienne, nor anywhere in France holding a Michelin 2025 row",new
+88,new_venue,,La Merise,Laubach,ve_95f52c5e5a,Restaurant La Merise,laubach,Two Stars,use:ve_95f52c5e5a,high,same tier both years: 2 stars,use:ve_95f52c5e5a
+90,new_venue,,La Fourchette des Ducs,Obernai,,,,,new,high,"no candidate in obernai, nor anywhere in France holding a Michelin 2025 row",new
+92,new_venue,,Michel Kayser - Restaurant Alexandre,Garons,,,,,new,high,"no candidate in garons, nor anywhere in France holding a Michelin 2025 row",new
+95,new_venue,,Maison Benoît Vidal,Annecy,,,,,new,high,"no candidate in annecy, nor anywhere in France holding a Michelin 2025 row",new
+97,new_venue,,L'Auberge de Saint-Rémy - Fanny Rey & Jonathan Wahid,Saint-Rémy-de-Provence,ve_4e77c0295c,L’Auberge De Saint-Rémy,saint-remy,,use:ve_4e77c0295c,medium,"the venue is in saint-remy already but holds no Michelin 2025 row, so it is outside the candidate search - there is no 2025 tier to compare against the 2026 2 stars",use:ve_4e77c0295c
+98,new_venue,,Jean Sulpice,Talloires-Montmin,,,,,new,high,"no candidate in talloires-montmin, nor anywhere in France holding a Michelin 2025 row",new
+100,new_venue,,Maison Aribert,Uriage-les-Bains,,,,,new,high,"no candidate in uriage-les-bains, nor anywhere in France holding a Michelin 2025 row",new
+101,new_venue,,La Table des Amis,Bonnieux,,,,,new,high,"no candidate in bonnieux, nor anywhere in France holding a Michelin 2025 row",new
+102,new_venue,,René et Maxime Meilleur,Saint-Martin-de-Belleville,,,,,new,high,"no candidate in saint-martin-de-belleville, nor anywhere in France holding a Michelin 2025 row",new
+103,new_venue,,Slalom 1850,Courchevel,,,,,new,high,"no candidate in courchevel, nor anywhere in France holding a Michelin 2025 row",new
+104,new_venue,,Sylvestre Wahid - Les Grandes Alpes,Courchevel,,,,,new,high,"no candidate in courchevel, nor anywhere in France holding a Michelin 2025 row",new
+105,new_venue,,La Voile - La Réserve Ramatuelle,Ramatuelle,ve_8a8e59f190,La Voile,ramatuelle,,use:ve_8a8e59f190,medium,"the venue is in ramatuelle already but holds no Michelin 2025 row, so it is outside the candidate search - there is no 2025 tier to compare against the 2026 2 stars",use:ve_8a8e59f190
+106,new_venue,,La Villa Archange,Le Cannet,,,,,new,high,"no candidate in le-cannet, nor anywhere in France holding a Michelin 2025 row",new
+108,new_venue,,La Chèvre d'Or,Èze,,,,,new,high,"no candidate in eze, nor anywhere in France holding a Michelin 2025 row",new
+109,new_venue,,Casadelmar,Porto-Vecchio,ve_39ac1adc6c,Hôtel Casadelmar,porto-vecchio,Two Stars,use:ve_39ac1adc6c,high,same tier both years: 2 stars,use:ve_39ac1adc6c
+113,new_venue,,Nori,Roscoff,,,,,new,high,"no candidate in roscoff, nor anywhere in France holding a Michelin 2025 row",new
+114,new_venue,,La Pomme d'Api,Saint-Pol-de-Léon,,,,,new,high,"no candidate in saint-pol-de-leon, nor anywhere in France holding a Michelin 2025 row",new
+116,new_venue,,Nicolas Carro - Hôtel de Carantec,Carantec,ve_30501b82cb,Restaurant Nicolas Carro,carantec,One Star,use:ve_30501b82cb,high,same tier both years: 1 star,use:ve_30501b82cb
+117,new_venue,,Allium,Quimper,,,,,new,high,"no candidate in quimper, nor anywhere in France holding a Michelin 2025 row",new
+121,new_venue,,Ar Men Du,Névez,,,,,new,high,"no candidate in nevez, nor anywhere in France holding a Michelin 2025 row",new
+122,new_venue,,Rosmadec Le Moulin,Pont-Aven,,,,,new,high,"no candidate in pont-aven, nor anywhere in France holding a Michelin 2025 row",new
+123,review_venue,same_key_other_city,Louise,Lorient,,,,,new,high,"no candidate in lorient, nor anywhere in France holding a Michelin 2025 row",new
+124,new_venue,,Avel Vor,Port-Louis,,,,,new,high,"no candidate in port-louis, nor anywhere in France holding a Michelin 2025 row",new
+125,new_venue,,L'Inattendu - Domaine de Locguénolé,Kervignac,,,,,new,high,"no candidate in kervignac, nor anywhere in France holding a Michelin 2025 row",new
+126,review_city,city_not_found,La Table d'Asten,Binic,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Binic, France",new
+128,new_venue,,Aux Pesked,Saint-Brieuc,,,,,new,high,"no candidate in saint-brieuc, nor anywhere in France holding a Michelin 2025 row",new
+131,new_venue,,Le Gavrinis,Baden,ve_fd6cd0318d,Restaurant Le Gavrinis,baden,One Star,use:ve_fd6cd0318d,high,same tier both years: 1 star,use:ve_fd6cd0318d
+132,new_venue,,Le Pressoir,Saint-Avé,ve_d6372fa061,Restaurant Le Pressoir,saint-ave,One Star,use:ve_d6372fa061,high,same tier both years: 1 star,use:ve_d6372fa061
+133,new_venue,,La Tête en l'air,Vannes,ve_cb6c037c7c,Restaurant La Tête en l'air,vannes,One Star,use:ve_cb6c037c7c,high,same tier both years: 1 star,use:ve_cb6c037c7c
+134,new_venue,,La Table - Domaine du Liziec,Vannes,,,,,new,high,"no candidate in vannes, nor anywhere in France holding a Michelin 2025 row",new
+136,new_venue,,Pourquoi Pas,Dinard,,,,,new,high,"no candidate in dinard, nor anywhere in France holding a Michelin 2025 row",new
+137,new_venue,,Le Saint Placide,Saint-Malo,ve_4d254317ea,Saint-Placide,saint-malo,One Star,use:ve_4d254317ea,high,same tier both years: 1 star,use:ve_4d254317ea
+138,new_venue,,La Table Breizh Café,Cancale,,,,,new,high,"no candidate in cancale, nor anywhere in France holding a Michelin 2025 row",new
+139,new_venue,,Le Mascaret,Blainville-sur-Mer,,,,,new,high,"no candidate in blainville-sur-mer, nor anywhere in France holding a Michelin 2025 row",new
+140,new_venue,,Maison Tiegezh,Guer,ve_c29125ac38,Hôtel Restaurant Maison Tiegezh,guer,Bib Gourmand + One Star,use:ve_c29125ac38,high,same tier both years: 1 star,use:ve_c29125ac38
+141,new_venue,,La Mare aux Oiseaux,Saint-Joachim,,,,,new,high,"no candidate in saint-joachim, nor anywhere in France holding a Michelin 2025 row",new
+146,review_city,city_not_found,Auberge du Pont d'Acigné,Noyal-sur-Vilaine,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Noyal-sur-Vilaine, France",new
+147,review_city,city_not_found,La Table des Pères - Domaine du Château des Pères,Piré-Chancé,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Piré-Chancé, France",new
+149,new_venue,,Jean-Marc Pérochon,Bretignolles-sur-Mer,,,,,new,high,"no candidate in bretignolles-sur-mer, nor anywhere in France holding a Michelin 2025 row",new
+150,new_venue,,Omija,Nantes,ve_8e0adfebb4,Restaurant Omija,nantes,One Star,use:ve_8e0adfebb4,high,same tier both years: 1 star,use:ve_8e0adfebb4
+156,new_venue,,Le 1201 - Abbaye de Villeneuve,Les Sorinières,,,,,new,high,"no candidate in les-sorinieres, nor anywhere in France holding a Michelin 2025 row",new
+161,review_city,city_not_found,L'Éveil des Sens,Mayenne,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Mayenne, France",new
+163,new_venue,,Le Manoir du Lys,Bagnoles-de-l'Orne,,,,,new,high,"no candidate in bagnoles-de-lorne, nor anywhere in France holding a Michelin 2025 row",new
+164,new_venue,,Les Reflets,La Roche-sur-Yon,ve_bbb2e26803,Restaurant les Reflets,la-roche-sur-yon,One Star,use:ve_bbb2e26803,high,same tier both years: 1 star,use:ve_bbb2e26803
+165,new_venue,,Maximin Hellio,Deauville,ve_7c32575d62,Restaurant Maximin Hellio,deauville,One Star,use:ve_7c32575d62,high,same tier both years: 1 star,use:ve_7c32575d62
+166,review_venue,same_key_other_city,L'Essentiel,Deauville,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_0cc3262ff1 (L'Essentiel, Saumur) is already spoken for by line 735 (L'Essentiel, match); dropped: ve_765c1b6aa3 (L'Essentiel, Périgueux) is already spoken for by line 356 (L'Essentiel, match)",new
+168,new_venue,,La Renaissance,Argentan,,,,,new,high,"no candidate in argentan, nor anywhere in France holding a Michelin 2025 row",new
+169,new_venue,,Maison Desamy,Mareuil-sur-Lay-Dissais,ve_867311bd99,Restaurant Maison Desamy,mareuil-sur-lay-dissais,One Star,use:ve_867311bd99,high,same tier both years: 1 star,use:ve_867311bd99
+173,review_city,city_not_found,La Table de la Bergerie,Bellevigne-en-Layon,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Bellevigne-en-Layon, France",new
+174,new_venue,,G.a. au Manoir de Rétival,Rives-en-Seine,,,,,new,high,"no candidate in rives-en-seine, nor anywhere in France holding a Michelin 2025 row",new
+175,new_venue,,Le Pavillon - Hôtel Westminster,Le Touquet-Paris-Plage,ve_8dccaaf452,Le Pavillon,le-touquet-paris-plage,One Star,use:ve_8dccaaf452,high,same tier both years: 1 star,use:ve_8dccaaf452
+176,review_city,city_not_found,L'Auberge de Bagatelle,Le Mans,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Le Mans, France",new
+178,review_city,city_not_found,Fontevraud L'Ermitage,Fontevraud-l'Abbaye,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Fontevraud-l'Abbaye, France",new
+179,new_venue,,Bacôve,Saint-Omer,ve_a74e9ee3a3,Restaurant Bacôve,saint-omer,One Star,use:ve_a74e9ee3a3,high,same tier both years: 1 star,use:ve_a74e9ee3a3
+181,new_venue,,Nacre,Arès,,,,,new,high,"no candidate in ares, nor anywhere in France holding a Michelin 2025 row",new
+182,review_city,city_not_found,Le Patio,Arcachon,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Arcachon, France",new
+183,review_city,city_not_found,Haut Bonheur de la Table,Cassel,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Cassel, France",new
+187,new_venue,,Notes,Cognac,,,,,new,high,"no candidate in cognac, nor anywhere in France holding a Michelin 2025 row",new
+190,new_venue,,La Table d'Aurélien Largeau,Biarritz,,,,,new,high,"no candidate in biarritz, nor anywhere in France holding a Michelin 2025 row",new
+192,new_venue,,Les Frères Ibarboure,Bidart,,,,,new,high,"no candidate in bidart, nor anywhere in France holding a Michelin 2025 row",new
+193,new_venue,,Auberge du XIIème Siècle,Saché,,,,,new,high,"no candidate in sache, nor anywhere in France holding a Michelin 2025 row",new
+194,new_venue,,L'Impertinent,Biarritz,ve_9fd9ef0dbb,Restaurant L'Impertinent,biarritz,One Star,use:ve_9fd9ef0dbb,high,same tier both years: 1 star,use:ve_9fd9ef0dbb
+195,new_venue,,Le Panoramique - Domaine de la Corniche,Rolleboise,,,,,new,high,"no candidate in rolleboise, nor anywhere in France holding a Michelin 2025 row",new
+196,review_city,city_not_found,La Table de Cédric Béchade - L'Auberge Basque,Saint-Pée-sur-Nivelle,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Saint-Pée-sur-Nivelle, France",new
+199,new_venue,,Villa de l'Étang Blanc,Seignosse,ve_0cb1664757,Hotel-Restaurant Villa de l'Etang Blanc,seignosse,One Star,use:ve_0cb1664757,high,same tier both years: 1 star,use:ve_0cb1664757
+200,new_venue,,La Ribaudière,Bourg-Charente,,,,,new,high,"no candidate in bourg-charente, nor anywhere in France holding a Michelin 2025 row",new
+201,review_city,city_not_found,L'Évidence,Montbazon,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Montbazon, France",new
+202,new_venue,,Ithurria,Ainhoa,ve_f74a315a56,Restaurant Ithurria,ainhoa,One Star,use:ve_f74a315a56,high,same tier both years: 1 star,use:ve_f74a315a56
+205,new_venue,,Choko Ona,Espelette,,,,,new,high,"no candidate in espelette, nor anywhere in France holding a Michelin 2025 row",new
+206,new_venue,,Soléna,Bordeaux,ve_3cb99fd3d6,Restaurant Soléna,bordeaux,One Star,use:ve_3cb99fd3d6,high,same tier both years: 1 star,use:ve_3cb99fd3d6
+207,new_venue,,Ruche,Gambais,,,,,new,high,"no candidate in gambais, nor anywhere in France holding a Michelin 2025 row",new
+208,review_city,city_not_found,Le Georges,Chartres,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Chartres, France",new
+210,new_venue,,Cent33,Bordeaux,ve_f952760b96,Le Cent 33,bordeaux,One Star,use:ve_f952760b96,high,same tier both years: 1 star,use:ve_f952760b96
+212,new_venue,,Tentazioni,Bordeaux,,,,,new,high,"no candidate in bordeaux, nor anywhere in France holding a Michelin 2025 row",new
+214,new_venue,,Le Prince Noir - Vivien Durand,Lormont,,,,,new,high,"no candidate in lormont, nor anywhere in France holding a Michelin 2025 row",new
+216,new_venue,,La Table d'Hôtes - Le Quatrième Mur,Bordeaux,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_a71d3afafa (La table d'hôtes, Ouistreham) is already spoken for by line 705 (La Table d'Hôtes, match)",new
+218,new_venue,,Le Saint-James,Bouliac,ve_e998bbe81d,Hôtel & Restaurant Le Saint-James,bouliac,One Star,use:ve_e998bbe81d,high,same tier both years: 1 star,use:ve_e998bbe81d
+219,new_venue,,Lore Ttipia - Auberge Ostape,Bidarray,,,,,new,high,"no candidate in bidarray, nor anywhere in France holding a Michelin 2025 row",new
+224,new_venue,,Pureté,Lille,ve_10e5b8d3d7,Restaurant PURETÉ,lille,One Star,use:ve_10e5b8d3d7,high,same tier both years: 1 star,use:ve_10e5b8d3d7
+226,new_venue,,La Grange de Belle-Église,Belle-Église,,,,,new,high,"no candidate in belle-eglise, nor anywhere in France holding a Michelin 2025 row",new
+228,new_venue,,La Promenade - Maison Dallais,Le Petit-Pressigny,,,,,new,high,"no candidate in le-petit-pressigny, nor anywhere in France holding a Michelin 2025 row",new
+234,new_venue,,Ducasse au Château de Versailles - Le Grand Contrôle,Versailles,,,,,new,high,"no candidate in versailles, nor anywhere in France holding a Michelin 2025 row",new
+235,new_venue,,Ochre,Rueil-Malmaison,ve_0b86351c11,Restaurant Ochre,rueil-malmaison,One Star,use:ve_0b86351c11,high,same tier both years: 1 star,use:ve_0b86351c11
+241,new_venue,,Les Belles Perdrix de Troplong Mondot,Saint-Emilion,,,,,new,high,"no candidate in saint-emilion, nor anywhere in France holding a Michelin 2025 row",new
+242,new_venue,,L'Auberge Saint Jean,Saint-Jean-de-Blaignac,ve_9e77c9e379,Auberge Saint Jean,saint-jean-de-blaignac,One Star,use:ve_9e77c9e379,high,same tier both years: 1 star,use:ve_9e77c9e379
+245,new_venue,,Le Favori - Les Sources de Cheverny,Cheverny,,,,,new,high,"no candidate in cheverny, nor anywhere in France holding a Michelin 2025 row",new
+246,new_venue,,Le Verbois,Chantilly,,,,,new,high,"no candidate in chantilly, nor anywhere in France holding a Michelin 2025 row",new
+247,new_venue,,Bellefeuille - Saint James Paris,Paris,ve_9c2e7e5cf0,Bellefeuille,paris,One Star,use:ve_9c2e7e5cf0,high,same tier both years: 1 star,use:ve_9c2e7e5cf0
+251,new_venue,,Le Faham,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+257,new_venue,,Frédéric Simonin,Paris,ve_974d97d7f9,Restaurant Frederic Simonin,paris,One Star,use:ve_974d97d7f9,high,same tier both years: 1 star,use:ve_974d97d7f9
+259,new_venue,,Agapé,Paris,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_80d1bf1939 (L'Agape, Avignon) is already spoken for by line 1019 (L'Agape, match)",new
+262,new_venue,,Onor,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+266,new_venue,,Oxte,Paris,ve_fd4687ea75,Restaurant OXTE,paris,One Star,use:ve_fd4687ea75,high,same tier both years: 1 star,use:ve_fd4687ea75
+267,new_venue,,Alan Geaam,Paris,ve_1d45b90d41,Restaurant Alan Geaam,paris,One Star,use:ve_1d45b90d41,high,same tier both years: 1 star,use:ve_1d45b90d41
+268,new_venue,,Don Juan II,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+271,new_venue,,Trente-Trois,Paris,ve_9b272faa8a,Restaurant Trente-Trois,paris,One Star,use:ve_9b272faa8a,high,same tier both years: 1 star,use:ve_9b272faa8a
+273,new_venue,,La Grande Table du Plaza Athénée,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+276,new_venue,,Origines Restaurant,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+277,new_venue,,Gaya par Pierre Gagnaire,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+278,new_venue,,Pilgrim,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+280,new_venue,,Anona,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+287,new_venue,,114 Faubourg,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+289,new_venue,,Espadon,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+292,new_venue,,Pavyllon Paris,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+295,new_venue,,Divellec,Paris,ve_598810e8fe,Restaurant Divellec,paris,One Star,use:ve_598810e8fe,high,same tier both years: 1 star,use:ve_598810e8fe
+296,review_venue,norm_key_too_short,ES,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+297,new_venue,,Akrame,Paris,ve_7c2f54f0ab,Restaurant Akrame,paris,One Star,use:ve_7c2f54f0ab,high,same tier both years: 1 star,use:ve_7c2f54f0ab
+302,new_venue,,Pantagruel,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+305,new_venue,,Nakatani,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+311,new_venue,,Omar Dhiab,Paris,ve_829f7fd32b,Restaurant Omar Dhiab,paris,One Star,use:ve_829f7fd32b,high,same tier both years: 1 star,use:ve_829f7fd32b
+312,new_venue,,Accents Table Bourse,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+318,new_venue,,MoSuke,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+325,new_venue,,Anne,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+328,new_venue,,Restaurant H,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+329,new_venue,,Mavrommatis,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+332,new_venue,,FIEF,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+333,new_venue,,Amâlia,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+336,review_venue,norm_key_too_short,AT,Paris,ve_c844edd53f,AT,paris,,use:ve_c844edd53f,medium,"the name reduces to under three characters, so no key can match it automatically (norm_key_too_short); ""AT"" in paris is the same name written out; the venue is in paris already but holds no Michelin 2025 row, so it is outside the candidate search - there is no 2025 tier to compare against the 2026 1 star",use:ve_c844edd53f
+338,new_venue,,Tour d'Argent,Paris,ve_6522e4fb4b,La Tour d'Argent,paris,One Star,use:ve_6522e4fb4b,high,same tier both years: 1 star,use:ve_6522e4fb4b
+342,new_venue,,La Table Mirasol,Mont-de-Marsan,,,,,new,high,"no candidate in mont-de-marsan, nor anywhere in France holding a Michelin 2025 row",new
+343,new_venue,,Villa9Trois,Montreuil,,,,,new,high,"no candidate in montreuil, nor anywhere in France holding a Michelin 2025 row",new
+345,review_city,city_not_found,L'Ours,Vincennes,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Vincennes, France",new
+346,new_venue,,La Table - Christophe Hay,Ardon,,,,,new,high,"no candidate in ardon, nor anywhere in France holding a Michelin 2025 row",new
+348,review_venue,same_key_other_city,L'Orangerie,Eugénie-les-Bains,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_754e0eb50d (L'Orangerie, Pornic) is already spoken for by line 693 (L'Orangerie, match); dropped: ve_ae34100f94 (L'Orangerie, Menton) is already spoken for by line 1068 (L'Orangerie, match)",new
+349,new_venue,,Les Fresques - Château des Vigiers,Monestier,ve_3a24173df2,Fresques,evian-les-bains (other city),One Star,,,"Ben's call: the candidate's city matches one row exactly and not the other. blank on purpose: line 562 proposes the same venue ve_3a24173df2. Two rows cannot be one venue - pick the one that is it and make the other new. (city differs: db evian-les-bains, michelin Monestier; the venue is not moved; the discrepancy is recorded here)",new
+351,new_venue,,Le Camélia,Bry,ve_d8f2845af8,Restaurant Le Camélia,bry,One Star,use:ve_d8f2845af8,high,same tier both years: 1 star,use:ve_d8f2845af8
+352,new_venue,,Auberge de la Grive,Trosly-Loire,,,,,new,high,"no candidate in trosly-loire, nor anywhere in France holding a Michelin 2025 row",new
+358,new_venue,,L'Axel,Fontainebleau,,,,,new,high,"no candidate in fontainebleau, nor anywhere in France holding a Michelin 2025 row",new
+359,new_venue,,Le Vieux Logis,Trémolat,,,,,new,high,"no candidate in tremolat, nor anywhere in France holding a Michelin 2025 row",new
+360,new_venue,,La Table de Courcelles - Château de Courcelles,Courcelles-sur-Vesle,,,,,new,high,"no candidate in courcelles-sur-vesle, nor anywhere in France holding a Michelin 2025 row",new
+362,new_venue,,Le 1862 - Les Glycines,Les Eyzies-de-Tayac-Sireuil,ve_ec51bda29b,Le 1862,les-eyzies-de-tayac-sireuil,One Star,use:ve_ec51bda29b,high,same tier both years: 1 star,use:ve_ec51bda29b
+365,new_venue,,Auberge Le Prieuré,Moirax,ve_b9609849ac,L'Auberge le Prieuré,moirax,One Star,use:ve_b9609849ac,high,same tier both years: 1 star,use:ve_b9609849ac
+369,new_venue,,La Pomme d'Or,Sancerre,ve_aa7b4e7c78,Restaurant La Pomme d'Or,sancerre,One Star,use:ve_aa7b4e7c78,high,same tier both years: 1 star,use:ve_aa7b4e7c78
+370,new_venue,,La Table d'Olivier,Brive-la-Gaillarde,,,,,new,high,"no candidate in brive-la-gaillarde, nor anywhere in France holding a Michelin 2025 row",new
+371,review_city,city_not_found,Alcôve,Vinay,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; needs city: Vinay, France; dropped: ve_f3183e93d3 (L'Alcôve, Bayeux) is already spoken for by line 696 (L'Alcôve, match)",new
+373,new_venue,,Holodeck,Floressas,ve_9e18c5ab0b,Restaurant Holodeck,floressas,One Star,use:ve_9e18c5ab0b,high,same tier both years: 1 star,use:ve_9e18c5ab0b
+375,new_venue,,Erre,Chassy,ve_d6cfed208f,Restaurant ERRE,chassy,One Star,use:ve_d6cfed208f,high,same tier both years: 1 star,use:ve_d6cfed208f
+376,new_venue,,Le Gindreau,Saint-Médard,ve_8b0411fd68,Restaurant Le Gindreau,saint-medard,One Star,use:ve_8b0411fd68,high,same tier both years: 1 star,use:ve_8b0411fd68
+377,review_city,city_not_found,Les Jardins,Parnac,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Parnac, France",new
+379,new_venue,,La Chapelle - Château Saint-Jean,Montluçon,,,,,new,high,"no candidate in montlucon, nor anywhere in France holding a Michelin 2025 row",new
+381,new_venue,,Jérôme Feck,Châlons-en-Champagne,ve_0eba909fa4,Restaurant Jérôme Feck,chalons-en-champagne,One Star,use:ve_0eba909fa4,high,same tier both years: 1 star,use:ve_0eba909fa4
+387,new_venue,,Michel Sarran,Toulouse,ve_ebd63723cc,Restaurant Michel Sarran,toulouse,One Star,use:ve_ebd63723cc,high,same tier both years: 1 star,use:ve_ebd63723cc
+388,new_venue,,Stéphane Tournié - Les Jardins de l'Opéra,Toulouse,,,,,new,high,"no candidate in toulouse, nor anywhere in France holding a Michelin 2025 row",new
+391,new_venue,,Le Valucien - Château de Vault-de-Lugny,Vault-de-Lugny,,,,,new,high,"no candidate in vault-de-lugny, nor anywhere in France holding a Michelin 2025 row",new
+395,new_venue,,En Pleine Nature,Quint-Fonsegrives,ve_1f9d04e96f,Restaurant En Pleine Nature,quint-fonsegrives,One Star,use:ve_1f9d04e96f,high,same tier both years: 1 star,use:ve_1f9d04e96f
+396,new_venue,,Auberge de la Forge,Lavalette,ve_c4d2d655db,L'Auberge de la Forge,lavalette,One Star,use:ve_c4d2d655db,high,same tier both years: 1 star,use:ve_c4d2d655db
+397,new_venue,,Le Puy Tilleul,Tournemire,,,,,new,high,"no candidate in tournemire, nor anywhere in France holding a Michelin 2025 row",new
+399,review_venue,same_key_other_city,Radio,Chamalières,ve_55d4d282cc,Hôtel Radio,chamalieres,One Star,use:ve_55d4d282cc,high,same tier both years: 1 star,use:ve_55d4d282cc
+400,new_venue,,Jean-Claude Leclerc,Clermont-Ferrand,,,,,new,high,"no candidate in clermont-ferrand, nor anywhere in France holding a Michelin 2025 row",new
+403,new_venue,,Émilie & Thomas - Moulin de Cambelong,Conques-en-Rouergue,,,,,new,high,"no candidate in conques-en-rouergue, nor anywhere in France holding a Michelin 2025 row",new
+405,new_venue,,Vieux Pont,Belcastel,,,,,new,high,"no candidate in belcastel, nor anywhere in France holding a Michelin 2025 row",new
+406,review_city,city_not_found,Auberge du Pont,Pont-du-Château,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Pont-du-Château, France",new
+408,new_venue,,Château de Courban,Courban,,,,,new,high,"no candidate in courban, nor anywhere in France holding a Michelin 2025 row",new
+409,review_city,city_not_found,Origines,Le Broc,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; needs city: Le Broc, France; dropped: ve_bf76d7e634 (Origines, Paris) is already spoken for by line 276 (Origines Restaurant, new_venue, same city)",new
+411,new_venue,,Le Suquet - Sébastien Bras,Laguiole,,,,,new,high,"no candidate in laguiole, nor anywhere in France holding a Michelin 2025 row",new
+413,new_venue,,Restaurant de la Loire,Pouilly-sous-Charlieu,,,,,new,high,"no candidate in pouilly-sous-charlieu, nor anywhere in France holding a Michelin 2025 row",new
+418,new_venue,,Alexis Baudin,Malling,ve_2f2b83b250,Restaurant Alexis Baudin,malling,One Star,use:ve_2f2b83b250,high,same tier both years: 1 star,use:ve_2f2b83b250
+419,review_city,city_not_found,Le K,Montenach,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Montenach, France",new
+420,new_venue,,Ed.Em,Chassagne-Montrachet,ve_540fbdb0db,Restaurant Ed.Em,chassagne-montrachet,One Star,use:ve_540fbdb0db,high,same tier both years: 1 star,use:ve_540fbdb0db
+425,new_venue,,La Table d'Hôtes - La Rôtisserie du Chambertin,Gevrey-Chambertin,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_a71d3afafa (La table d'hôtes, Ouistreham) is already spoken for by line 705 (La Table d'Hôtes, match)",new
+427,new_venue,,Le Carmin,Beaune,ve_8457b128d6,Restaurant Le Carmin,beaune,One Star,use:ve_8457b128d6,high,same tier both years: 1 star,use:ve_8457b128d6
+429,new_venue,,CIBO,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",new
+430,new_venue,,L'Aspérule,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",new
+431,new_venue,,Origine,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",new
+432,new_venue,,La Maison des Cariatides,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",new
+433,review_city,city_not_found,Table de Levernois,Levernois,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Levernois, France",new
+434,review_city,city_not_found,Le Haut-Allier,Alleyras,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Alleyras, France",new
+436,new_venue,,Burnel,Rouvres-en-Xaintois,,,,,new,high,"no candidate in rouvres-en-xaintois, nor anywhere in France holding a Michelin 2025 row",new
+438,new_venue,,L'Écrin de Yohann Chapuis,Tournus,,,,,new,high,"no candidate in tournus, nor anywhere in France holding a Michelin 2025 row",new
+440,new_venue,,Auberge de Clochemerle,Vaux-en-Beaujolais,,,,,new,high,"no candidate in vaux-en-beaujolais, nor anywhere in France holding a Michelin 2025 row",new
+442,new_venue,,Aux Terrasses,Tournus,,,,,new,high,"no candidate in tournus, nor anywhere in France holding a Michelin 2025 row",new
+445,new_venue,,Granit - La Mécanique des Frères Bonano,Colombières-sur-Orb,,,,,new,high,"no candidate in colombieres-sur-orb, nor anywhere in France holding a Michelin 2025 row",new
+447,review_city,city_not_found,La Table de Chaintré,Chaintré,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Chaintré, France",new
+448,new_venue,,Château Blanchard,Chazelles-sur-Lyon,,,,,new,high,"no candidate in chazelles-sur-lyon, nor anywhere in France holding a Michelin 2025 row",new
+450,new_venue,,La Huchette,Replonges,,,,,new,high,"no candidate in replonges, nor anywhere in France holding a Michelin 2025 row",new
+451,new_venue,,Château du Mont Joly,Sampans,,,,,new,high,"no candidate in sampans, nor anywhere in France holding a Michelin 2025 row",new
+453,review_venue,same_key_other_city,La Chaumière,Dole,,,,,new,high,"no candidate in dole, nor anywhere in France holding a Michelin 2025 row",new
+454,new_venue,,Guy Lassausaie,Chasselay,ve_03cccc1eff,Restaurant Guy Lassausaie,chasselay,One Star,use:ve_03cccc1eff,high,same tier both years: 1 star,use:ve_03cccc1eff
+455,new_venue,,Saisons,Écully,ve_f49862e401,Restaurant Saisons,ecully,One Star,use:ve_f49862e401,high,same tier both years: 1 star,use:ve_f49862e401
+456,new_venue,,Auberge Saint-Walfrid,Sarreguemines,,,,,new,high,"no candidate in sarreguemines, nor anywhere in France holding a Michelin 2025 row",new
+460,new_venue,,Les Loges,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+461,new_venue,,L'Atelier des Augustins,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+462,new_venue,,Têtedoie,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+463,new_venue,,Ombellule,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+465,new_venue,,Burgundy by Matthieu,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+466,new_venue,,Rustique,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+469,new_venue,,Prairial,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+471,new_venue,,Circle,Lyon,ve_21cd5c1365,Restaurant Circle,lyon,One Star,use:ve_21cd5c1365,high,same tier both years: 1 star,use:ve_21cd5c1365
+472,new_venue,,Miraflores,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+474,new_venue,,Restaurant De Lauzun,Pézenas,,,,,new,high,"no candidate in pezenas, nor anywhere in France holding a Michelin 2025 row",new
+479,new_venue,,L'Almandin,Saint-Cyprien,,,,,new,high,"no candidate in saint-cyprien, nor anywhere in France holding a Michelin 2025 row",new
+480,new_venue,,Le Saint Hilaire,Saint-Hilaire-de-Brethmas,,,,,new,high,"no candidate in saint-hilaire-de-brethmas, nor anywhere in France holding a Michelin 2025 row",new
+481,new_venue,,La Balette,Collioure,ve_603d4413f2,Restaurant La Balette,collioure,One Star,use:ve_603d4413f2,high,same tier both years: 1 star,use:ve_603d4413f2
+487,new_venue,,Auberge de Montfleury,Saint-Germain,,,,,new,high,"no candidate in saint-germain, nor anywhere in France holding a Michelin 2025 row",new
+488,new_venue,,Leclère,Montpellier,,,,,new,high,"no candidate in montpellier, nor anywhere in France holding a Michelin 2025 row",new
+491,new_venue,,L'Émulsion,Saint-Alban-de-Roche,ve_13f86693b1,Restaurant l'émulsion,saint-alban-de-roche,One Star,use:ve_13f86693b1,high,same tier both years: 1 star,use:ve_13f86693b1
+493,new_venue,,Kasbür,Monswiller,ve_6ad9c595f7,Restaurant Kasbur,monswiller,One Star,use:ve_6ad9c595f7,high,same tier both years: 1 star,use:ve_6ad9c595f7
+494,new_venue,,La Cheneaudière - Le Feuillage,Colroy-la-Roche,,,,,new,high,"no candidate in colroy-la-roche, nor anywhere in France holding a Michelin 2025 row",new
+495,new_venue,,Le M - Domaine de Montagne,Ventron,,,,,new,high,"no candidate in ventron, nor anywhere in France holding a Michelin 2025 row",new
+496,new_venue,,La Cachette,Valence,,,,,new,high,"no candidate in valence, nor anywhere in France holding a Michelin 2025 row",new
+498,new_venue,,Le Carré d'Alethius,Charmes-sur-Rhône,,,,,new,high,"no candidate in charmes-sur-rhone, nor anywhere in France holding a Michelin 2025 row",new
+499,new_venue,,Les Cèdres,Granges-les-Beaumont,,,,,new,high,"no candidate in granges-les-beaumont, nor anywhere in France holding a Michelin 2025 row",new
+504,review_city,city_not_found,La Table d'Uzès,Uzès,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Uzès, France",new
+505,review_city,city_not_found,Cheval Blanc,Lembach,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Lembach, France",new
+506,new_venue,,Auberge Frankenbourg,La Vancelle,,,,,new,high,"no candidate in la-vancelle, nor anywhere in France holding a Michelin 2025 row",new
+507,new_venue,,Le Kléber - La Maison Bonnet,Grane,,,,,new,high,"no candidate in grane, nor anywhere in France holding a Michelin 2025 row",new
+508,review_city,city_not_found,Le Bon Accueil,Malbuisson,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Malbuisson, France",new
+509,new_venue,,Le Colombier,Malataverne,,,,,new,high,"no candidate in malataverne, nor anywhere in France holding a Michelin 2025 row",new
+510,new_venue,,Le Pot d'Étain,Danjoutin,,,,,new,high,"no candidate in danjoutin, nor anywhere in France holding a Michelin 2025 row",new
+511,new_venue,,Thierry Schwartz - Table Naturelle,Obernai,,,,,new,high,"no candidate in obernai, nor anywhere in France holding a Michelin 2025 row",new
+512,new_venue,,Rouge,Nîmes,,,,,new,high,"no candidate in nimes, nor anywhere in France holding a Michelin 2025 row",new
+513,new_venue,,Le Cèdre de Montcaud,Sabran,,,,,new,high,"no candidate in sabran, nor anywhere in France holding a Michelin 2025 row",new
+514,review_city,city_not_found,Ambroisie,Saint-Didier-de-la-Tour,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; needs city: Saint-Didier-de-la-Tour, France; dropped: ve_68a6950342 (L'Ambroisie, Paris) is already spoken for by line 64 (L'Ambroisie, match)",new
+515,new_venue,,Skab,Nîmes,ve_f667ce2a30,Restaurant Skab,nimes,One Star,use:ve_f667ce2a30,high,same tier both years: 1 star,use:ve_f667ce2a30
+516,new_venue,,Alchémille,Kaysersberg,ve_8c25148528,L'Alchémille,kaysersberg,One Star,use:ve_8c25148528,high,same tier both years: 1 star,use:ve_8c25148528
+519,review_city,city_not_found,Restaurant Julien Binz,Ammerschwihr,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Ammerschwihr, France",new
+520,review_city,city_not_found,La Table du Gourmet,Riquewihr,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Riquewihr, France",new
+521,new_venue,,Jérôme Nutile,Nîmes,,,,,new,high,"no candidate in nimes, nor anywhere in France holding a Michelin 2025 row",new
+522,review_city,city_not_found,Lavandin - Château Les Oliviers de Salettes,Charols,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Charols, France",new
+523,new_venue,,L'Étang du Moulin,Bonnétage,,,,,new,high,"no candidate in bonnetage, nor anywhere in France holding a Michelin 2025 row",new
+524,new_venue,,L'Atelier du Peintre,Colmar,,,,,new,high,"no candidate in colmar, nor anywhere in France holding a Michelin 2025 row",new
+525,new_venue,,La Belle Vie,Saint-Hilaire-d'Ozilhan,,,,,new,high,"no candidate in saint-hilaire-dozilhan, nor anywhere in France holding a Michelin 2025 row",new
+526,new_venue,,Restaurant Girardin,Colmar,,,,,new,high,"no candidate in colmar, nor anywhere in France holding a Michelin 2025 row",new
+528,new_venue,,1741,Strasbourg,ve_cc24331b57,Restaurant 1741,strasbourg,One Star,use:ve_cc24331b57,high,same tier both years: 1 star,use:ve_cc24331b57
+529,new_venue,,Le Clair de la Plume,Grignan,,,,,new,high,"no candidate in grignan, nor anywhere in France holding a Michelin 2025 row",new
+530,new_venue,,Umami,Strasbourg,ve_f9e34945bd,Restaurant Umami,strasbourg,One Star,use:ve_f9e34945bd,high,same tier both years: 1 star,use:ve_f9e34945bd
+531,new_venue,,Le Jardin Secret,La Wantzenau,,,,,new,high,"no candidate in la-wantzenau, nor anywhere in France holding a Michelin 2025 row",new
+532,new_venue,,Le Relais de la Poste,La Wantzenau,ve_16bdd233b0,Hôtel-Restaurant Le Relais de la Poste,la-wantzenau,One Star,use:ve_16bdd233b0,high,"same tier both years: 1 star; dropped: ve_8859261736 (Relais De La Poste, Magescq) is already spoken for by line 204 (Relais de la Poste, match)",use:ve_16bdd233b0
+533,new_venue,,Guillaume Scheer - Les Plaisirs Gourmands,Strasbourg,,,,,new,high,"no candidate in strasbourg, nor anywhere in France holding a Michelin 2025 row",new
+535,new_venue,,de:ja,Strasbourg,ve_a8213a9418,Restaurant DEJA,strasbourg,One Star,use:ve_a8213a9418,high,same tier both years: 1 star,use:ve_a8213a9418
+537,new_venue,,L'Orchidée,Ensisheim,,,,,new,high,"no candidate in ensisheim, nor anywhere in France holding a Michelin 2025 row",new
+539,new_venue,,Lamartine,Le Bourget-du-Lac,,,,,new,high,"no candidate in le-bourget-du-lac, nor anywhere in France holding a Michelin 2025 row",new
+542,review_city,city_not_found,Maison Chenet - Entre Vigne et Garrigue,Pujaut,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Pujaut, France",new
+544,review_city,city_not_found,La Table de L'Incomparable,Tresserve,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Tresserve, France",new
+545,new_venue,,Ineffable,Barbentane,ve_9aa71bbec8,Restaurant Ineffable,barbentane,One Star,use:ve_9aa71bbec8,high,same tier both years: 1 star,use:ve_9aa71bbec8
+546,new_venue,,Il Cortile,Mulhouse,,,,,new,high,"no candidate in mulhouse, nor anywhere in France holding a Michelin 2025 row",new
+548,new_venue,,Pollen,Avignon,ve_42a5fc32bc,Restaurant Pollen,avignon,One Star,use:ve_42a5fc32bc,high,same tier both years: 1 star,use:ve_42a5fc32bc
+549,review_city,city_not_found,Le Prieuré,Villeneuve-lès-Avignon,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Villeneuve-lès-Avignon, France",new
+550,new_venue,,Le Refuge des Gourmets,Machilly,ve_b279522a5e,REFUGE DES GOURMETS,machilly,One Star,use:ve_b279522a5e,high,same tier both years: 1 star,use:ve_b279522a5e
+551,new_venue,,Asterales,Corrençon-en-Vercors,,,,,new,high,"no candidate in correncon-en-vercors, nor anywhere in France holding a Michelin 2025 row",new
+552,review_city,city_not_found,L'Auberge de Lucinges,Lucinges,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Lucinges, France",new
+556,new_venue,,L'Oustalet,Gigondas,,,,,new,high,"no candidate in gigondas, nor anywhere in France holding a Michelin 2025 row",new
+559,new_venue,,La Table de Tourrel,Saint-Rémy-de-Provence,,,,,new,high,"no candidate in saint-remy, nor anywhere in France holding a Michelin 2025 row",new
+560,new_venue,,L'Aupiho - Domaine de Manville,Les Baux-de-Provence,,,,,new,high,"no candidate in les-baux-de-provence, nor anywhere in France holding a Michelin 2025 row",new
+561,new_venue,,Auberge Saint-Laurent,Sierentz,,,,,new,high,"no candidate in sierentz, nor anywhere in France holding a Michelin 2025 row",new
+562,new_venue,,Les Fresques - Hôtel Royal,Évian-les-Bains,ve_3a24173df2,Fresques,evian-les-bains,One Star,,,Ben's call: the candidate's city matches one row exactly and not the other. blank on purpose: line 349 proposes the same venue ve_3a24173df2. Two rows cannot be one venue - pick the one that is it and make the other new. (same tier both years: 1 star),use:ve_3a24173df2
+563,new_venue,,Frédéric Molina à Forêt Ivre,Vailly,ve_a4aa7cb9ba,Restaurant Frédéric Molina à Forêt Ivre,vailly,One Star,use:ve_a4aa7cb9ba,high,same tier both years: 1 star,use:ve_a4aa7cb9ba
+564,new_venue,,Le Vivier,L'Isle-sur-la-Sorgue,,,,,new,high,"no candidate in lisle-sur-la-sorgue, nor anywhere in France holding a Michelin 2025 row",new
+566,new_venue,,Kern,Seytroux,,,,,new,high,"no candidate in seytroux, nor anywhere in France holding a Michelin 2025 row",new
+567,new_venue,,Le Cin5 - Au Cœur du Village,La Clusaz,ve_a0adf5e745,Restaurant Le Cin5,la-clusaz,One Star,use:ve_a0adf5e745,high,same tier both years: 1 star,use:ve_a0adf5e745
+571,new_venue,,Vous,Megève,,,,,new,high,"no candidate in megeve, nor anywhere in France holding a Michelin 2025 row",new
+573,new_venue,,Mont Blanc Restaurant & Goûter,Hauteluce,,,,,new,high,"no candidate in hauteluce, nor anywhere in France holding a Michelin 2025 row",new
+577,new_venue,,Le Goût du Bonheur - La Fenière,Cadenet,,,,,new,high,"no candidate in cadenet, nor anywhere in France holding a Michelin 2025 row",new
+579,new_venue,,Albert 1er,Chamonix-Mont-Blanc,ve_9a31afe9f5,Restaurant Albert 1er,chamonix-mont-blanc,One Star,use:ve_9a31afe9f5,high,same tier both years: 1 star,use:ve_9a31afe9f5
+581,new_venue,,Dan B.,Ventabren,ve_238989dcec,Restaurant Dan B.,ventabren,One Star,use:ve_238989dcec,high,same tier both years: 1 star,use:ve_238989dcec
+582,new_venue,,L'Oursin,Carry-le-Rouet,,,,,new,high,"no candidate in carry-le-rouet, nor anywhere in France holding a Michelin 2025 row",new
+584,new_venue,,L'Ekrin by Laurent Azoulay,Méribel,,,,,new,high,"no candidate in meribel, nor anywhere in France holding a Michelin 2025 row",new
+585,new_venue,,Le Farçon,Courchevel,ve_1e0a5a501f,Restaurant le Farçon,courchevel,One Star,use:ve_1e0a5a501f,high,same tier both years: 1 star,use:ve_1e0a5a501f
+586,new_venue,,Le Chabichou by Stéphane Buron,Courchevel,,,,,new,high,"no candidate in courchevel, nor anywhere in France holding a Michelin 2025 row",new
+587,new_venue,,Alpage,Courchevel,ve_e643c85d2a,Restaurant Alpage,courchevel,One Star,use:ve_e643c85d2a,high,same tier both years: 1 star,use:ve_e643c85d2a
+588,new_venue,,L'Altitude,Courchevel,ve_c240b986ce,Restaurant L'Altitude*,courchevel,One Star,use:ve_c240b986ce,high,same tier both years: 1 star,use:ve_c240b986ce
+589,new_venue,,La Table de l'Orangerie - Château de Fonscolombe,Le Puy-Sainte-Réparade,,,,,new,high,"no candidate in le-puy-sainte-reparade, nor anywhere in France holding a Michelin 2025 row",new
+590,new_venue,,Les Explorateurs - Hôtel Pashmina,Val-Thorens,,,,,new,high,"no candidate in val-thorens, nor anywhere in France holding a Michelin 2025 row",new
+591,new_venue,,La Bastide Bourrelly - Mathias Dandine,Calas-Cabriès,,,,,new,high,"no candidate in calas-cabries, nor anywhere in France holding a Michelin 2025 row",new
+593,new_venue,,Le Art - Château de la Gaude,Aix-en-Provence,ve_d61dd48136,Le Art,aix-en-provence,One Star,use:ve_d61dd48136,high,same tier both years: 1 star,use:ve_d61dd48136
+596,new_venue,,Le Feuillée - Le Couvent des Minimes,Mane,ve_74b0053f51,Le Feuillée,mane,One Star,use:ve_74b0053f51,high,same tier both years: 1 star,use:ve_74b0053f51
+599,new_venue,,Ursus,Tignes,ve_ef57492a00,Restaurant URSUS,tignes,One Star,use:ve_ef57492a00,high,same tier both years: 1 star,use:ve_ef57492a00
+603,new_venue,,La Magdeleine - Mathias Dandine,Gémenos,,,,,new,high,"no candidate in gemenos, nor anywhere in France holding a Michelin 2025 row",new
+605,new_venue,,La Table de Nans,La Ciotat,,,,,new,high,"no candidate in la-ciotat, nor anywhere in France holding a Michelin 2025 row",new
+606,new_venue,,Les Oliviers,Bandol,,,,,new,high,"no candidate in bandol, nor anywhere in France holding a Michelin 2025 row",new
+607,new_venue,,La Bastide de Moustiers,Moustiers-Sainte-Marie,,,,,new,high,"no candidate in moustiers-sainte-marie, nor anywhere in France holding a Michelin 2025 row",new
+611,new_venue,,Bruno,Lorgues,,,,,new,high,"no candidate in lorgues, nor anywhere in France holding a Michelin 2025 row",new
+614,review_city,city_not_found,L'Oursin - Hôtel Les Roches,Le Lavandou,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Le Lavandou, France",new
+615,new_venue,,Faventia,Tourrettes,ve_69934b07bd,Restaurant Le FAVENTIA,tourrettes,One Star,use:ve_69934b07bd,high,same tier both years: 1 star,use:ve_69934b07bd
+616,new_venue,,La Palmeraie - Château de Valmer,La Croix-Valmer,,,,,new,high,"no candidate in la-croix-valmer, nor anywhere in France holding a Michelin 2025 row",new
+617,new_venue,,Arnaud Donckele & Maxime Frédéric at Louis Vuitton,Saint-Tropez,ve_65591e378b,Restaurant Arnaud Donckele & Maxime Frédéric at Louis Vuitton,saint-tropez,One Star,use:ve_65591e378b,high,same tier both years: 1 star,use:ve_65591e378b
+618,new_venue,,La Terrasse - Cheval Blanc St-Tropez,Saint-Tropez,,,,,new,high,"no candidate in saint-tropez, nor anywhere in France holding a Michelin 2025 row",new
+619,new_venue,,Auberge de la Roche,Valdeblore,,,,,new,high,"no candidate in valdeblore, nor anywhere in France holding a Michelin 2025 row",new
+620,new_venue,,Colette,Saint-Tropez,,,,,new,high,"no candidate in saint-tropez, nor anywhere in France holding a Michelin 2025 row",new
+621,new_venue,,Bessem,Mandelieu-la-Napoule,,,,,new,high,"no candidate in mandelieu-la-napoule, nor anywhere in France holding a Michelin 2025 row",new
+624,new_venue,,Alain Llorca,La Colle-sur-Loup,ve_b4babd7276,Restaurant @ Alain llorca,la-colle-sur-loup,One Star,use:ve_b4babd7276,high,same tier both years: 1 star,use:ve_b4babd7276
+625,new_venue,,La Palme d'Or,Cannes,ve_72bc10551e,Restaurant La Palme d'Or,cannes,One Star,use:ve_72bc10551e,high,same tier both years: 1 star,use:ve_72bc10551e
+626,review_city,city_not_found,La Table de Pierre,Saint-Paul-de-Vence,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Saint-Paul-de-Vence, France",new
+627,new_venue,,Les Terraillers,Biot,ve_9c646fdf2a,Restaurant Les Terraillers,biot,One Star,use:ve_9c646fdf2a,high,same tier both years: 1 star,use:ve_9c646fdf2a
+628,new_venue,,La Passagère - Hôtel Belles Rives,Juan-les-Pins,,,,,new,high,"no candidate in juan-les-pins, nor anywhere in France holding a Michelin 2025 row",new
+629,new_venue,,Les Pêcheurs,Antibes,,,,,new,high,"no candidate in antibes, nor anywhere in France holding a Michelin 2025 row",new
+630,new_venue,,Louroc - Hôtel du Cap-Eden-Roc,Antibes,,,,,new,high,"no candidate in antibes, nor anywhere in France holding a Michelin 2025 row",new
+632,new_venue,,Racines - Bruno Cirino,Nice,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_8234491228 (Racines, Bordeaux) is already spoken for by line 760 (Racines by Daniel Gallacher, new_venue, same city); dropped: ve_bde02da00e (Racines, Étaples) is already spoken for by line 730 (Racines, match); dropped: ve_bfcef785d1 (Racines, Annecy) is already spoken for by line 1022 (Racines, match)",new
+633,new_venue,,L'Aromate,Nice,,,,,new,high,"no candidate in nice, nor anywhere in France holding a Michelin 2025 row",new
+634,new_venue,,Épicentre,Nice,,,,,new,high,"no candidate in nice, nor anywhere in France holding a Michelin 2025 row",new
+635,new_venue,,Les Agitateurs,Nice,,,,,new,high,"no candidate in nice, nor anywhere in France holding a Michelin 2025 row",new
+639,new_venue,,Le Restaurant des Rois - La Réserve de Beaulieu,Beaulieu-sur-Mer,ve_6b022b029a,Le Restaurant des Rois,beaulieu-sur-mer,One Star,use:ve_6b022b029a,high,same tier both years: 1 star,use:ve_6b022b029a
+641,review_city,city_not_found,La Table du Cap Estel,Èze-Bord-de-Mer,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Èze-Bord-de-Mer, France",new
+642,new_venue,,A Casa di Mà,Lumio,,,,,new,high,"no candidate in lumio, nor anywhere in France holding a Michelin 2025 row",new
+645,new_venue,,La Table de la Ferme,Sartène,,,,,new,high,"no candidate in sartene, nor anywhere in France holding a Michelin 2025 row",new
+646,new_venue,,Finestra by Italo Bassi,Bonifacio,,,,,new,high,"no candidate in bonifacio, nor anywhere in France holding a Michelin 2025 row",new
+650,new_venue,,La Maison de Kerdiès,Plougasnou,ve_5c38471ed5,Restaurant La Maison de Kerdiès,plougasnou,Bib Gourmand,use:ve_5c38471ed5,high,same tier both years: Bib,use:ve_5c38471ed5
+652,new_venue,,Ti-Coz,Quimper,,,,,new,high,"no candidate in quimper, nor anywhere in France holding a Michelin 2025 row",new
+656,new_venue,,Erasmo,Carhaix-Plouguer,ve_8294ea6255,Restaurant Erasmo,carhaix-plouguer,Bib Gourmand,use:ve_8294ea6255,high,same tier both years: Bib,use:ve_8294ea6255
+660,new_venue,,Hyacinthe & Robert,Pontivy,ve_6d59eb76a1,Restaurant Hyacinthe & Robert,pontivy,Bib Gourmand,use:ve_6d59eb76a1,high,same tier both years: Bib,use:ve_6d59eb76a1
+662,new_venue,,Le Biniou,Pléneuf-Val-André,,,,,new,high,"no candidate in pleneuf-val-andre, nor anywhere in France holding a Michelin 2025 row",new
+663,new_venue,,La Chebaudière,Auray,ve_4a55e63127,Restaurant La Chebaudière,auray,Bib Gourmand,use:ve_4a55e63127,high,same tier both years: Bib,use:ve_4a55e63127
+665,new_venue,,Boma,Vannes,ve_6a9bd70b49,Restaurant Boma,vannes,Bib Gourmand,use:ve_6a9bd70b49,high,same tier both years: Bib,use:ve_6a9bd70b49
+667,new_venue,,Le Restaurant des Isles,Barneville-Carteret,ve_a6861367dd,Hôtel des Isles,barneville-carteret,Bib Gourmand,use:ve_a6861367dd,high,same tier both years: Bib,use:ve_a6861367dd
+669,new_venue,,Le Comptoir Breizh Café,Saint-Malo,,,,,new,high,"no candidate in saint-malo, nor anywhere in France holding a Michelin 2025 row",new
+674,new_venue,,Breizh Café Cancale,Cancale,,,,,new,high,"no candidate in cancale, nor anywhere in France holding a Michelin 2025 row",new
+675,new_venue,,Maison Cachée,Rochefort-en-Terre,ve_1577ca7b7e,Restaurant Maison Cachée,rochefort-en-terre,Bib Gourmand,use:ve_1577ca7b7e,high,same tier both years: Bib,use:ve_1577ca7b7e
+677,new_venue,,Bistrot de la Maison Tiegezh,Guer,,,,,new,high,"no candidate in guer, nor anywhere in France holding a Michelin 2025 row",new
+679,new_venue,,Bris'Art Culinaire,La Baule,,,,,new,high,"no candidate in la-baule, nor anywhere in France holding a Michelin 2025 row",new
+682,new_venue,,Topaze,Saint-Nazaire,ve_1cc58df978,Restaurant TOPAZE,saint-nazaire,Bib Gourmand,use:ve_1cc58df978,high,same tier both years: Bib,use:ve_1cc58df978
+684,new_venue,,Auberge de l'Abbaye,Hambye,,,,,new,high,"no candidate in hambye, nor anywhere in France holding a Michelin 2025 row",new
+687,new_venue,,Breizh Café Rennes,Rennes,,,,,new,high,"no candidate in rennes, nor anywhere in France holding a Michelin 2025 row",new
+688,new_venue,,La Petite Ourse,Rennes,ve_5d0a495512,Restaurant La Petite Ourse,rennes,Bib Gourmand,use:ve_5d0a495512,high,same tier both years: Bib,use:ve_5d0a495512
+699,new_venue,,OBBO,Nantes,,,,,new,high,"no candidate in nantes, nor anywhere in France holding a Michelin 2025 row",new
+700,new_venue,,La Mandale,Nantes,,,,,new,high,"no candidate in nantes, nor anywhere in France holding a Michelin 2025 row",new
+704,new_venue,,"Alice, le bistrot - Manoir de la Mortière",Les Sables-d'Olonne,ve_754eff4295,"Alice, le bistrot",les-sables-dolonne,Bib Gourmand,use:ve_754eff4295,high,same tier both years: Bib,use:ve_754eff4295
+707,new_venue,,Le Café des Arts,Beaulieu-sous-la-Roche,ve_8c4a5d6040,Restaurant Le Café des Arts,beaulieu-sous-la-roche,Bib Gourmand,use:ve_8c4a5d6040,high,same tier both years: Bib,use:ve_8c4a5d6040
+709,new_venue,,L'Éden,Houlgate,,,,,new,high,"no candidate in houlgate, nor anywhere in France holding a Michelin 2025 row",new
+710,review_venue,same_key_other_city,L'Atelier,Montaigu,ve_101f57b1dc,Restaurant L'Atelier,issigeac (other city),Bib Gourmand,,,"Ben's call: the candidate's city matches one row exactly and not the other. blank on purpose: line 844 proposes the same venue ve_101f57b1dc. Two rows cannot be one venue - pick the one that is it and make the other new. (city differs: db issigeac, michelin Montaigu; the venue is not moved; the discrepancy is recorded here)",new
+714,new_venue,,SaQuaNa,Honfleur,ve_5185174abe,Restaurant SaQuaNa,honfleur,Bib Gourmand,use:ve_5185174abe,high,same tier both years: Bib,use:ve_5185174abe
+715,new_venue,,L'Envers du Décor,Les Herbiers,,,,,new,high,"no candidate in les-herbiers, nor anywhere in France holding a Michelin 2025 row",new
+717,new_venue,,La P'tite Patte,Cholet,,,,,new,high,"no candidate in cholet, nor anywhere in France holding a Michelin 2025 row",new
+718,new_venue,,Le Jour du Poisson,Saint-Denis-d'Oléron,ve_ba565e3a5e,Jour Du Poisson,saint-denis-doleron,Bib Gourmand,use:ve_ba565e3a5e,high,same tier both years: Bib,use:ve_ba565e3a5e
+722,new_venue,,Sillage,Saint-Pierre-d'Oléron,ve_ede8b18173,Restaurant Sillage,saint-pierre-doleron,Bib Gourmand,use:ve_ede8b18173,high,same tier both years: Bib,use:ve_ede8b18173
+725,new_venue,,La Plage,Audresselles,,,,,new,high,"no candidate in audresselles, nor anywhere in France holding a Michelin 2025 row",new
+726,new_venue,,Bistrot du Pollet,Dieppe,ve_503267190f,Le Bistrot du Pollet,dieppe,Bib Gourmand,use:ve_503267190f,high,same tier both years: Bib,use:ve_503267190f
+728,new_venue,,La Ferme du Vert,Wierre-Effroy,,,,,new,high,"no candidate in wierre-effroy, nor anywhere in France holding a Michelin 2025 row",new
+731,new_venue,,Les Pieds Dans l'Eau,Saint-Langis-lès-Mortagne,ve_0320deb2e1,"Restaurant ""Les Pieds dans l’eau""",saint-langis-les-mortagne,Bib Gourmand,use:ve_0320deb2e1,high,same tier both years: Bib,use:ve_0320deb2e1
+736,new_venue,,La Clé des Champs,Favières,,,,,new,high,"no candidate in favieres, nor anywhere in France holding a Michelin 2025 row",new
+739,new_venue,,Restaurant du Dauphin,La Ferté-Bernard,,,,,new,high,"no candidate in la-ferte-bernard, nor anywhere in France holding a Michelin 2025 row",new
+740,new_venue,,Renée,Dunkirk,,,,,new,high,"no candidate in dunkirk, nor anywhere in France holding a Michelin 2025 row",new
+743,new_venue,,L'IØDE,Saintes,ve_25fc60c8fe,Restaurant l'IØDE,saintes,Bib Gourmand,use:ve_25fc60c8fe,high,same tier both years: Bib,use:ve_25fc60c8fe
+748,new_venue,,L'Épine,Azay-le-Rideau,,,,,new,high,"no candidate in azay-le-rideau, nor anywhere in France holding a Michelin 2025 row",new
+750,new_venue,,Briket' Bistrot,Guéthary,,,,,new,high,"no candidate in guethary, nor anywhere in France holding a Michelin 2025 row",new
+752,new_venue,,Léonie,Biarritz,,,,,new,high,"no candidate in biarritz, nor anywhere in France holding a Michelin 2025 row",new
+754,new_venue,,Auberge Le Centre Poitou,Coulombiers,,,,,new,high,"no candidate in coulombiers, nor anywhere in France holding a Michelin 2025 row",new
+757,new_venue,,Madame B,Bordeaux,ve_379053fb48,Restaurant Madame B,bordeaux,Bib Gourmand,use:ve_379053fb48,high,same tier both years: Bib,use:ve_379053fb48
+758,new_venue,,Mets Mots,Bordeaux,,,,,new,high,"no candidate in bordeaux, nor anywhere in France holding a Michelin 2025 row",new
+759,new_venue,,Panaille,Bordeaux,,,,,new,high,"no candidate in bordeaux, nor anywhere in France holding a Michelin 2025 row",new
+760,new_venue,,Racines by Daniel Gallacher,Bordeaux,,,,,new,high,"no candidate in bordeaux, nor anywhere in France holding a Michelin 2025 row",new
+761,new_venue,,La Conciergerie,Sailly-sur-la-Lys,ve_c5c9e9cfed,Restaurant La Conciergerie,sailly-sur-la-lys,Bib Gourmand,use:ve_c5c9e9cfed,high,same tier both years: Bib,use:ve_c5c9e9cfed
+763,new_venue,,Kedem,Bordeaux,ve_c9006ee0d1,Restaurant Kedem,bordeaux,Bib Gourmand,use:ve_c9006ee0d1,high,same tier both years: Bib,use:ve_c9006ee0d1
+765,new_venue,,La Table d'Inomoto,Saint-André-de-Cubzac,,,,,new,high,"no candidate in saint-andre-de-cubzac, nor anywhere in France holding a Michelin 2025 row",new
+767,new_venue,,Les Arpents,Amboise,ve_e75d63b3fb,Restaurant Les Arpents,amboise,Bib Gourmand,use:ve_e75d63b3fb,high,same tier both years: Bib,use:ve_e75d63b3fb
+768,new_venue,,Le Gantxo,Guiche,,,,,new,high,"no candidate in guiche, nor anywhere in France holding a Michelin 2025 row",new
+769,new_venue,,Ô en Couleur,Oucques,,,,,new,high,"no candidate in oucques, nor anywhere in France holding a Michelin 2025 row",new
+770,new_venue,,Le Mana,Saint-André-lez-Lille,,,,,new,high,"no candidate in saint-andre-lez-lille, nor anywhere in France holding a Michelin 2025 row",new
+771,new_venue,,La Croix Blanche,Veuzain-sur-Loire,,,,,new,high,"no candidate in veuzain-sur-loire, nor anywhere in France holding a Michelin 2025 row",new
+772,new_venue,,Balsamique,Wambrechies,,,,,new,high,"no candidate in wambrechies, nor anywhere in France holding a Michelin 2025 row",new
+773,new_venue,,Jarapea,Irouléguy,ve_049080c2ad,Restaurant Jarapea,irouleguy,Bib Gourmand,use:ve_049080c2ad,high,same tier both years: Bib,use:ve_049080c2ad
+774,new_venue,,Art'zain,Irissarry,,,,,new,high,"no candidate in irissarry, nor anywhere in France holding a Michelin 2025 row",new
+778,new_venue,,La Bistronomie,Angoulême,,,,,new,high,"no candidate in angouleme, nor anywhere in France holding a Michelin 2025 row",new
+783,new_venue,,Avarum,Fougères-sur-Bièvre,,,,,new,high,"no candidate in fougeres-sur-bievre, nor anywhere in France holding a Michelin 2025 row",new
+785,new_venue,,Domus,Mont-près-Chambord,,,,,new,high,"no candidate in mont-pres-chambord, nor anywhere in France holding a Michelin 2025 row",new
+786,new_venue,,Baca'v - Boulogne,Boulogne-Billancourt,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_fe36d30da6 (Baca'v, Paris) is already spoken for by line 823 (Baca'v par Gilles Choukroun, new_venue, same city)",new
+788,new_venue,,La Chatellenie,Availles-Limouzine,,,,,new,high,"no candidate in availles-limouzine, nor anywhere in France holding a Michelin 2025 row",new
+790,review_city,city_not_found,Charnu,Lamorlaye,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Lamorlaye, France",new
+791,review_city,city_not_found,Rosette,Clichy,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Clichy, France",new
+792,new_venue,,Bistrot des Fables,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+793,new_venue,,Mova,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+794,new_venue,,Le Radis Beurre,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+795,new_venue,,20 Eiffel,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+796,new_venue,,BRU,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+797,new_venue,,Adami,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+798,new_venue,,Le CasseNoix,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+799,new_venue,,Mandoobar,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+800,new_venue,,Kisin,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+801,new_venue,,L'Antre Amis,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+802,new_venue,,Les Canailles Pigalle,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+806,new_venue,,La Table de Mee,Paris,ve_38c864a72f,Table de MEE,paris,Bib Gourmand,use:ve_38c864a72f,high,same tier both years: Bib,use:ve_38c864a72f
+808,new_venue,,Farouche,Montrouge,ve_c199298031,Restaurant Farouche,montrouge,Bib Gourmand,use:ve_c199298031,high,same tier both years: Bib,use:ve_c199298031
+811,new_venue,,Capsule,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+823,new_venue,,Baca'v par Gilles Choukroun,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+825,new_venue,,Jip,Paris,,,,,new,high,"no candidate in paris, nor anywhere in France holding a Michelin 2025 row",new
+832,new_venue,,Villa Mirasol - Bistrot 1912,Mont-de-Marsan,ve_0500893ff4,Villa Mirasol,mont-de-marsan,Bib Gourmand,use:ve_0500893ff4,high,same tier both years: Bib,use:ve_0500893ff4
+833,new_venue,,Etchemaite,Larrau,,,,,new,high,"no candidate in larrau, nor anywhere in France holding a Michelin 2025 row",new
+834,review_venue,same_key_other_city,Bird,Yerres,,,,,new,high,"no candidate in yerres, nor anywhere in France holding a Michelin 2025 row",new
+837,new_venue,,Côté Bastide,Sainte-Foy-la-Grande,ve_ccea7da354,Restaurant Côté Bastide,sainte-foy-la-grande,Bib Gourmand,use:ve_ccea7da354,high,same tier both years: Bib,use:ve_ccea7da354
+840,new_venue,,Café Louise,Périgueux,,,,,new,high,"no candidate in perigueux, nor anywhere in France holding a Michelin 2025 row",new
+844,review_venue,same_key_other_city,L'Atelier,Issigeac,ve_101f57b1dc,Restaurant L'Atelier,issigeac,Bib Gourmand,,,Ben's call: the candidate's city matches one row exactly and not the other. blank on purpose: line 710 proposes the same venue ve_101f57b1dc. Two rows cannot be one venue - pick the one that is it and make the other new. (same tier both years: Bib),use:ve_101f57b1dc
+845,new_venue,,L'Attanum,Saint-Yrieix-la-Perche,,,,,new,high,"no candidate in saint-yrieix-la-perche, nor anywhere in France holding a Michelin 2025 row",new
+850,new_venue,,Monsieur Robert,Saint-Robert,ve_4b86bdb91b,Restaurant monsieur Robert,saint-robert,Bib Gourmand,use:ve_4b86bdb91b,high,same tier both years: Bib,use:ve_4b86bdb91b
+853,new_venue,,La Table du Cinq,Bagnères-de-Bigorre,ve_9c40a9dbe3,Restaurant La Table du Cinq,bagneres-de-bigorre,Bib Gourmand,use:ve_9c40a9dbe3,high,same tier both years: Bib,use:ve_9c40a9dbe3
+861,new_venue,,Auberge des Aryelets,Aulon,,,,,new,high,"no candidate in aulon, nor anywhere in France holding a Michelin 2025 row",new
+864,review_venue,same_key_other_city,Le Bouche à Oreille,Tulle,,,,,new,high,"no candidate left once the venue another row of this batch speaks for is set aside; dropped: ve_2304caab1b (Le Bouche à Oreille, Le Havre) is already spoken for by line 711 (Le Bouche à Oreille, match)",new
+868,new_venue,,L'Ô à la Bouche,Cahors,,,,,new,high,"no candidate in cahors, nor anywhere in France holding a Michelin 2025 row",new
+873,new_venue,,Bistrot DuPont,Pont-Sainte-Marie,,,,,new,high,"no candidate in pont-sainte-marie, nor anywhere in France holding a Michelin 2025 row",new
+879,new_venue,,Une Table à Deux,Toulouse,ve_53f4614426,Restaurant Une Table à Deux,toulouse,Bib Gourmand,use:ve_53f4614426,high,same tier both years: Bib,use:ve_53f4614426
+880,new_venue,,Le Carré de l'Ange,Saint-Lizier,,,,,new,high,"no candidate in saint-lizier, nor anywhere in France holding a Michelin 2025 row",new
+895,new_venue,,L'Auberge des Montagnes,Pailherols,ve_63beffdf34,Auberge des Montagnes,pailherols,Bib Gourmand,use:ve_63beffdf34,high,same tier both years: Bib,use:ve_63beffdf34
+898,new_venue,,Le Boudes La Vigne,Boudes,ve_b2c8a6b932,"Restaurant ""Le Boudes La Vigne""",boudes,Bib Gourmand,use:ve_b2c8a6b932,high,same tier both years: Bib,use:ve_b2c8a6b932
+899,new_venue,,Sodade,Chaudes-Aigues,ve_7e93feef0e,Hôtel & Restaurant Sodade,chaudes-aigues,Bib Gourmand,use:ve_7e93feef0e,high,same tier both years: Bib,use:ve_7e93feef0e
+900,new_venue,,Bistrot Saveurs,Castres,,,,,new,high,"no candidate in castres, nor anywhere in France holding a Michelin 2025 row",new
+903,new_venue,,Colette - Domaine de la Plagnette,Les Salles,,,,,new,high,"no candidate in les-salles, nor anywhere in France holding a Michelin 2025 row",new
+905,new_venue,,Aux 3 Capitaines,Malroy,,,,,new,high,"no candidate in malroy, nor anywhere in France holding a Michelin 2025 row",new
+906,new_venue,,L'Ouillette,Santenay,ve_e4010e1996,Hôtel-Restaurant l'Ouillette,santenay,Bib Gourmand,use:ve_e4010e1996,high,same tier both years: Bib,use:ve_e4010e1996
+907,new_venue,,La Gabale,Aumont-Aubrac,,,,,new,high,"no candidate in peyre-en-aubrac, nor anywhere in France holding a Michelin 2025 row",new
+910,new_venue,,Bistrot Lucien,Gevrey-Chambertin,,,,,new,high,"no candidate in gevrey-chambertin, nor anywhere in France holding a Michelin 2025 row",new
+912,new_venue,,Spica,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",new
+913,new_venue,,L'Évidence,Dijon,,,,,new,high,"no candidate in dijon, nor anywhere in France holding a Michelin 2025 row",new
+914,review_venue,norm_key_too_short,So,Dijon,ve_1986da12de,SO,dijon,Bib Gourmand,use:ve_1986da12de,high,"the name reduces to under three characters, so no key can match it automatically (norm_key_too_short); ""SO"" in dijon is the same name written out; same tier both years: Bib",use:ve_1986da12de
+915,new_venue,,L'Alicanta,Le Rozier,,,,,new,high,"no candidate in le-rozier, nor anywhere in France holding a Michelin 2025 row",new
+916,new_venue,,Hostellerie d'Héloïse,Cluny,,,,,new,high,"no candidate in cluny, nor anywhere in France holding a Michelin 2025 row",new
+918,new_venue,,L'Ermitage,Espaly-Saint-Marcel,ve_87ca1da3d6,restaurant l'Ermitage,espaly-saint-marcel,Bib Gourmand,use:ve_87ca1da3d6,high,same tier both years: Bib,use:ve_87ca1da3d6
+920,new_venue,,Le Bouchon Bourguignon,Tournus,,,,,new,high,"no candidate in tournus, nor anywhere in France holding a Michelin 2025 row",new
+921,new_venue,,L'Auberge des Gourmets,Le Villars,ve_b2691cae1e,Auberge des Gourmets,le-villars,Bib Gourmand,use:ve_b2691cae1e,high,same tier both years: Bib,use:ve_b2691cae1e
+923,new_venue,,Le Beaujolais,Belleville-en-Beaujolais,ve_156553c418,Restaurant Le Beaujolais,belleville-en-beaujolais,Bib Gourmand,use:ve_156553c418,high,same tier both years: Bib,use:ve_156553c418
+924,new_venue,,Maison Vidal - Le Bistrot de Justin,Saint-Julien-Chapteuil,ve_4dd54878f0,Maison vidal,saint-julien-chapteuil,Bib Gourmand,use:ve_4dd54878f0,high,same tier both years: Bib,use:ve_4dd54878f0
+925,new_venue,,L'Abbaye Caladoise,Villefranche-sur-Saône,,,,,new,high,"no candidate in villefranche-sur-saone, nor anywhere in France holding a Michelin 2025 row",new
+928,new_venue,,Bellavista,Prats-de-Mollo-la-Preste,,,,,new,high,"no candidate in prats-de-mollo-la-preste, nor anywhere in France holding a Michelin 2025 row",new
+930,new_venue,,Le Balcon,Combeaufontaine,,,,,new,high,"no candidate in combeaufontaine, nor anywhere in France holding a Michelin 2025 row",new
+931,new_venue,,Grain de Sel,Dole,ve_be663c0406,Restaurant Grain de Sel,dole,Bib Gourmand,use:ve_be663c0406,high,same tier both years: Bib,use:ve_be663c0406
+933,new_venue,,Cave à Vin & à Manger - Maison Saint-Crescent,Narbonne,,,,,new,high,"no candidate in narbonne, nor anywhere in France holding a Michelin 2025 row",new
+934,new_venue,,L'Ogustin,La Vacquerie-et-Saint-Martin-de-Castries,ve_8d0beae410,Restaurant l'ogustin,la-vacquerie-et-saint-martin-de-castries,Bib Gourmand,use:ve_8d0beae410,high,same tier both years: Bib,use:ve_8d0beae410
+940,new_venue,,Téjérina - Hôtel de la Place,Polliat,ve_82af616d87,Le Restaurant Téjérina,polliat,Bib Gourmand,use:ve_82af616d87,high,same tier both years: Bib,use:ve_82af616d87
+941,new_venue,,Agastache,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+946,new_venue,,La Virée,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+947,new_venue,,Lazare Escarguel,Perpignan,,,,,new,high,"no candidate in perpignan, nor anywhere in France holding a Michelin 2025 row",new
+948,new_venue,,La Meunière,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+953,new_venue,,Accentué,Lyon,ve_aa93720dd2,Restaurant Accentué,lyon,Bib Gourmand,use:ve_aa93720dd2,high,same tier both years: Bib,use:ve_aa93720dd2
+954,new_venue,,Le Kitchen,Lyon,ve_e83ea265c3,Restaurant Le Kitchen,lyon,Bib Gourmand,use:ve_e83ea265c3,high,same tier both years: Bib,use:ve_e83ea265c3
+955,new_venue,,Danton,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+956,new_venue,,Siprès,Lyon,,,,,new,high,"no candidate in lyon, nor anywhere in France holding a Michelin 2025 row",new
+959,new_venue,,Bergamote,Lyon,ve_76d0e682fb,Restaurant Bergamote,lyon,Bib Gourmand,use:ve_76d0e682fb,high,same tier both years: Bib,use:ve_76d0e682fb
+960,new_venue,,Le Pré Saint Jean,Pézenas,ve_4e73948e8f,Restaurant Pré Saint Jean,pezenas,Bib Gourmand,use:ve_4e73948e8f,high,same tier both years: Bib,use:ve_4e73948e8f
+961,new_venue,,Vertfeuille,Arc-et-Senans,,,,,new,high,"no candidate in arc-et-senans, nor anywhere in France holding a Michelin 2025 row",new
+963,new_venue,,Les Nymphéas,Chasse-sur-Rhône,,,,,new,high,"no candidate in chasse-sur-rhone, nor anywhere in France holding a Michelin 2025 row",new
+968,new_venue,,Bistrot Brioude,Neyrac-les-Bains,,,,,new,high,"no candidate in neyrac-les-bains, nor anywhere in France holding a Michelin 2025 row",new
+969,new_venue,,Le Cottage,Chonas-l'Amballan,,,,,new,high,"no candidate in chonas-lamballan, nor anywhere in France holding a Michelin 2025 row",new
+970,new_venue,,Le Bistronôme,Arbois,,,,,new,high,"no candidate in arbois, nor anywhere in France holding a Michelin 2025 row",new
+977,new_venue,,Le Saisonnier,Roye,,,,,new,high,"no candidate in roye, nor anywhere in France holding a Michelin 2025 row",new
+979,new_venue,,Le Temps d'Aime,Lattes,ve_6db828084a,Temps d'Aime,lattes,Bib Gourmand,use:ve_6db828084a,high,same tier both years: Bib,use:ve_6db828084a
+982,new_venue,,Julien,Fouday,,,,,new,high,"no candidate in fouday, nor anywhere in France holding a Michelin 2025 row",new
+983,new_venue,,Le Saint-Georges,Palavas-les-Flots,ve_05c971ee12,Restaurant Le Saint Georges,palavas-les-flots,Bib Gourmand,use:ve_05c971ee12,high,same tier both years: Bib,use:ve_05c971ee12
+987,new_venue,,Epona,Baix,,,,,new,high,"no candidate in baix, nor anywhere in France holding a Michelin 2025 row",new
+988,new_venue,,Le Cygne,Gundershoffen,ve_1990fd1147,Restaurant Le Cygne,gundershoffen,Bib Gourmand,use:ve_1990fd1147,high,same tier both years: Bib,use:ve_1990fd1147
+989,new_venue,,La Châtaigneraie - Perle des Vosges,Muhlbach-sur-Munster,,,,,new,high,"no candidate in muhlbach-sur-munster, nor anywhere in France holding a Michelin 2025 row",new
+990,new_venue,,L'Auberge du Pont des Pierres,Montanges,ve_a86b721c0e,Auberge du pont des pierres,montanges,Bib Gourmand,use:ve_a86b721c0e,high,same tier both years: Bib,use:ve_a86b721c0e
+991,review_city,country_label_disagrees,L'Olivier,Munster,ve_120e307eb0,Restaurant L'Olivier,munster-fr (other city),Bib Gourmand,use:ve_120e307eb0,medium,"city differs: db munster-fr, michelin Munster - the same commune, stored under a split slug (""Munster, France"") that the label cannot reach; the venue is not moved; the discrepancy is recorded here",use:ve_120e307eb0
+992,review_city,country_label_disagrees,Les Grands Arbres - Verte Vallée,Munster,,,,,city:ci_aafc2b6136,high,"the city is not missing: cities holds munster-fr (display ""Munster, France""), which no normalisation of ""Munster"" reaches - so this needs a city, not a new one created",city:ci_aafc2b6136
+993,new_venue,,Le Bistrot 270,Malataverne,ve_40366c0dda,Restaurant Le Bistrot 270,malataverne,Bib Gourmand,use:ve_40366c0dda,high,same tier both years: Bib,use:ve_40366c0dda
+994,new_venue,,La Rochette,Labaroche,,,,,new,high,"no candidate in labaroche, nor anywhere in France holding a Michelin 2025 row",new
+995,new_venue,,Len'K - La Maison Bonnet,Grane,,,,,new,high,"no candidate in grane, nor anywhere in France holding a Michelin 2025 row",new
+996,new_venue,,La Vieille Forge,Kaysersberg,,,,,new,high,"no candidate in kaysersberg, nor anywhere in France holding a Michelin 2025 row",new
+997,new_venue,,Winstub du Chambard,Kaysersberg,,,,,new,high,"no candidate in kaysersberg, nor anywhere in France holding a Michelin 2025 row",new
+998,new_venue,,Le Bistr'AU - Le Mas de Boudan,Nîmes,,,,,new,high,"no candidate in nimes, nor anywhere in France holding a Michelin 2025 row",new
+1000,new_venue,,L'AO - L'Aigle d'Or,Rimbach-près-Guebwiller,,,,,new,high,"no candidate in rimbach-pres-guebwiller, nor anywhere in France holding a Michelin 2025 row",new
+1001,new_venue,,La Taverne Alsacienne,Ingersheim,ve_cdbc14778f,Taverne Alsacienne,ingersheim,Bib Gourmand,use:ve_cdbc14778f,high,same tier both years: Bib,use:ve_cdbc14778f
+1003,new_venue,,Auberge du Pont de la Zorn,Weyersheim,,,,,new,high,"no candidate in weyersheim, nor anywhere in France holding a Michelin 2025 row",new
+1006,new_venue,,Chez Yvonne - S'Burjerstuewel,Strasbourg,ve_b4a6a34762,Chez Yvonne,strasbourg,Bib Gourmand,use:ve_b4a6a34762,high,same tier both years: Bib,use:ve_b4a6a34762
+1007,new_venue,,Au Pont Corbeau,Strasbourg,ve_3d9ae68450,Restaurant Au Pont Corbeau,strasbourg,Bib Gourmand,use:ve_3d9ae68450,high,same tier both years: Bib,use:ve_3d9ae68450
+1008,new_venue,,L'Arbre Vert,Berrwiller,,,,,new,high,"no candidate in berrwiller, nor anywhere in France holding a Michelin 2025 row",new
+1013,new_venue,,Le Bourgeon,Alby-sur-Chéran,ve_a58543d5a3,Restaurant Le Bourgeon,alby-sur-cheran,Bib Gourmand,use:ve_a58543d5a3,high,same tier both years: Bib,use:ve_a58543d5a3
+1028,new_venue,,Le Muratore,Évian-les-Bains,,,,,new,high,"no candidate in evian-les-bains, nor anywhere in France holding a Michelin 2025 row",new
+1030,new_venue,,Au Lion d'Or - Chez Théo,Rosenau,ve_f8977eb5ab,AU LION D'OR,rosenau,Bib Gourmand,use:ve_f8977eb5ab,high,same tier both years: Bib,use:ve_f8977eb5ab
+1033,review_city,city_not_found,L'Atelier L'Art des Mets,Taillades,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Taillades, France",new
+1034,review_city,city_not_found,La Chartreuse,Le Reposoir,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Le Reposoir, France",new
+1036,new_venue,,Atelier Salone,Salon-de-Provence,,,,,new,high,"no candidate in salon-de-provence, nor anywhere in France holding a Michelin 2025 row",new
+1038,new_venue,,La Ferme de Victorine,Notre-Dame-de-Bellecombe,ve_900c668573,Restaurant La Ferme de Victorine,notre-dame-de-bellecombe,Bib Gourmand,use:ve_900c668573,high,same tier both years: Bib,use:ve_900c668573
+1039,new_venue,,Le Lodge,Samoëns,,,,,new,high,"no candidate in samoens, nor anywhere in France holding a Michelin 2025 row",new
+1040,new_venue,,Breizh Café Megève,Megève,,,,,new,high,"no candidate in megeve, nor anywhere in France holding a Michelin 2025 row",new
+1042,review_city,city_not_found,La Table de Pablo,Villars,,,,,new,high,"no candidate anywhere in France holding a Michelin 2025 row; needs city: Villars, France",new
+1043,new_venue,,Simple et Meilleur,Saint-Martin-de-Belleville,,,,,new,high,"no candidate in saint-martin-de-belleville, nor anywhere in France holding a Michelin 2025 row",new
+1045,new_venue,,Akashon,Chamonix-Mont-Blanc,ve_152fb62579,Restaurant Akashon,chamonix-mont-blanc,Bib Gourmand,use:ve_152fb62579,high,same tier both years: Bib,use:ve_152fb62579
+1047,new_venue,,La Petite Verrière,Le Puy-Sainte-Réparade,,,,,new,high,"no candidate in le-puy-sainte-reparade, nor anywhere in France holding a Michelin 2025 row",new
+1048,new_venue,,Les Galinas,Aix-en-Provence,,,,,new,high,"no candidate in aix-en-provence, nor anywhere in France holding a Michelin 2025 row",new
+1054,new_venue,,Le Saint Gabriel,Toulon,ve_b4e1d36194,Restaurant Le Saint Gabriel,toulon,Bib Gourmand,use:ve_b4e1d36194,high,same tier both years: Bib,use:ve_b4e1d36194
+1055,new_venue,,Le Pastel,Toulon,,,,,new,high,"no candidate in toulon, nor anywhere in France holding a Michelin 2025 row",new
+1056,new_venue,,La Table,Tourtour,,,,,new,high,"no candidate in tourtour, nor anywhere in France holding a Michelin 2025 row",new
+1058,new_venue,,Bistrot des Anges,Le Cannet,,,,,new,high,"no candidate in le-cannet, nor anywhere in France holding a Michelin 2025 row",new
+1062,new_venue,,Chez Davia,Nice,ve_c5a935d49e,Restaurant Chez Davia,nice,Bib Gourmand,use:ve_c5a935d49e,high,same tier both years: Bib,use:ve_c5a935d49e
+1063,new_venue,,L'Alchimie,Nice,,,,,new,high,"no candidate in nice, nor anywhere in France holding a Michelin 2025 row",new
+1069,review_city,city_not_found,A Mandria di Pigna,Pigna,ve_6abba077f0,A Mandria di Pigna,pigna (other city),Bib Gourmand,skip,high,"slug-split city; cities holds pigna (display ""Pigna"") with no country at all, so the row's ""France"" hint drops it; ve_6abba077f0 (A Mandria di Pigna) sits in that same city. Settle the city row first - this batch should not decide which Pigna it is",skip
+1071,new_venue,,U Licettu,Cuttoli,,,,,new,high,"no candidate in cuttoli, nor anywhere in France holding a Michelin 2025 row",new
