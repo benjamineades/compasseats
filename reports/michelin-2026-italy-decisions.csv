@@ -1,0 +1,26 @@
+line,venue_name,city_label,proposed,decision,reason
+18,D'O,Cornaredo,use:ve_96a85fa596,use:ve_96a85fa596,Michelin Two Stars 2025 on the Milan row; Cornaredo is the commune, Milan is the nearest-big-city label the database kept
+69,Il Patio,Biella,city:ci_c3de45b159,city:ci_c3de45b159,city created 2026-09-15
+89,Il Ristorante di Guido da Costigliole,Santo Stefano Belbo,city:ci_4d4296de38,city:ci_4d4296de38,city created 2026-09-15
+90,Acqua,Olgiate Olona,city:ci_bc11c47d6f,city:ci_bc11c47d6f,city created 2026-09-15
+102,Olmo,Cornaredo,new,new,only candidate is Olmo in New York holding a Bib; different venue
+109,Anima,Milan,new,new,only candidate is ANIMA in Tuttlingen which already holds its own One Star 2026
+151,Leon d'Oro,Pralboino,city:ci_286d1127d1,city:ci_286d1127d1,city created 2026-09-15
+159,Zur Rose,San Michele,use:ve_d83e7a528d,use:ve_d83e7a528d,same city; One Star 2025 matches One Star 2026
+170,Apostelstube,Brixen,use:ve_9a94371119,use:ve_9a94371119,same city; One Star 2025 matches One Star 2026
+211,Locanda San Lorenzo,Puos d'Alpago,city:ci_4a086cba5e,city:ci_4a086cba5e,city created 2026-09-15
+217,I Portici,Bologna,use:ve_8bb6e8be1b,use:ve_8bb6e8be1b,same city; One Star 2025 matches One Star 2026
+222,La Pineta,Marina di Bibbona,use:ve_da8a4aecdd,use:ve_da8a4aecdd,same city; One Star 2025 matches One Star 2026
+233,Gucci Osteria da Massimo Bottura,Florence,new,new,only candidate is the Tokyo restaurant; Florence is a separate venue in the same group
+262,Il Pellicano,Porto Ercole,use:ve_27872430f3,use:ve_27872430f3,same city; One Star 2025 matches One Star 2026
+303,Zunica 1880 a Villa Corallo,Sant'Omero,city:ci_0a8c42d1d5,city:ci_0a8c42d1d5,city created 2026-09-15
+304,Colline Ciociare,Acuto,use:ve_be0ea460dd,use:ve_be0ea460dd,same city; One Star 2025 matches One Star 2026
+309,Villa Maiella,Guardiagrele,city:ci_fe453ebdbd,city:ci_fe453ebdbd,city created 2026-09-15
+329,Don Alfonso 1890,Sant'Agata sui Due Golfi,use:ve_7a19b6c414,use:ve_7a19b6c414,Sant'Agata sui Due Golfi is a hamlet of Massa Lubrense; One Star 2025 matches One Star 2026
+347,Oasis - Sapori Antichi,Vallesaccarda,city:ci_b21dbbab3c,city:ci_b21dbbab3c,city created 2026-09-15
+357,Signum,Malfa,city:ci_26062bc6f8,city:ci_26062bc6f8,"new Italian city malfa-it; the existing slug malfa is a Swedish row (display Molnlycke), on the cleanup list"
+395,La Pineta,Sant'Anna,city:ci_b7db01a012,city:ci_b7db01a012,city created 2026-09-15
+441,L'Ostreria Fratelli Pavesi,Podenzano,use:ve_153ba08994,use:ve_153ba08994,same city; Bib 2025 matches Bib 2026
+477,Foresta,Moena,use:ve_25b2909f17,use:ve_25b2909f17,same city; Bib 2025 matches Bib 2026
+538,Osteria Bartolini,Milano Marittima,city:ci_c7dc597f77,city:ci_c7dc597f77,city created 2026-09-15
+597,La Torre One Fire,Annunziata,city:ci_96b18bbcb4,city:ci_96b18bbcb4,city created 2026-09-15
