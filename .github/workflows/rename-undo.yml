@@ -1,0 +1,102 @@
+name: Rename — undo
+
+# Puts one applied rename batch back, in one transaction.
+#
+# It will not run unless the confirmation field reads exactly
+#   UNDO-RENAME <batch key>
+# and it refuses outright if a venue this batch renamed has been renamed again
+# since. An undo runs once; a second run is an error, not a no-op.
+#
+# `dry_run` starts TICKED. Read that output first, every time.
+#
+# Actions tab -> "Rename — undo" -> Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_key:
+        description: "Batch key — the one from the rename report"
+        required: true
+        type: string
+      confirmation:
+        description: "Type: UNDO-RENAME <batch key>"
+        required: true
+        type: string
+      dry_run:
+        description: "Dry run — work out the whole undo, print it, then roll it back (do this first)"
+        required: false
+        default: true
+        type: boolean
+
+# Shares the apply job's concurrency group, keyed on the batch.
+concurrency:
+  group: rename-${{ inputs.batch_key }}
+  cancel-in-progress: false
+
+jobs:
+  undo:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # Every input goes through env, never spliced into the shell. Splicing
+      # would let a crafted batch_key smuggle a second --confirm past the
+      # typed-confirmation gate, which is the one gate that must not be
+      # bypassable.
+      - name: Undo the batch
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          BATCH_KEY: ${{ inputs.batch_key }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          ARGS=(--batch-key "$BATCH_KEY" --confirm "$CONFIRMATION")
+          if [ "$DRY_RUN" = "true" ]; then
+            ARGS+=(--dry-run)
+          fi
+          bun run scripts/rename/undo.ts "${ARGS[@]}" | tee /tmp/rename-undo.out
+
+      - name: Put the report in the run summary
+        if: always()
+        env:
+          BATCH_KEY: ${{ inputs.batch_key }}
+        run: |
+          REPORT="reports/$BATCH_KEY-rename-undo.md"
+          if [ -f "$REPORT" ]; then
+            cat "$REPORT" >> "$GITHUB_STEP_SUMMARY"
+          elif [ -f /tmp/rename-undo.out ]; then
+            cat /tmp/rename-undo.out >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Nothing was undone. See the log above for why." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rename-undo-${{ inputs.batch_key }}
+          path: reports/
+          if-no-files-found: ignore
+
+      - name: Commit the report to the repo
+        if: always()
+        env:
+          BATCH_KEY: ${{ inputs.batch_key }}
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain reports/)" ]; then
+            echo "No report changes to commit."
+            exit 0
+          fi
+          git config user.name  "compasseats-ingest"
+          git config user.email "ingest@users.noreply.github.com"
+          git add reports/
+          git commit -m "rename: undo report for $BATCH_KEY"
+          git push

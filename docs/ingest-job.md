@@ -7,6 +7,9 @@ There are three buttons. The first one looks at a list and tells you what it
 would do. The second one does it. The third one takes one batch back out again.
 Nothing between the first two buttons changes anything you can see on the site.
 
+None of the three ever renames a venue. That is the fourth button, and it has
+its own page: **`docs/rename-job.md`**.
+
 ---
 
 ## Before the first run — three one-time setup steps
@@ -501,7 +504,7 @@ point.
 - Touch a live table outside the promote transaction
 - Create a city
 - Merge two venues
-- Rename a venue
+- Rename a venue — that is the fourth button, `docs/rename-job.md`
 - Fetch a web page — it reads a CSV you hand it, and that's all
 - Store anything Google-derived
 - Promote without the exact typed confirmation

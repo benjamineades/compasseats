@@ -1,0 +1,122 @@
+name: Rename — apply
+
+# Changes the names of a batch of venues, in one transaction.
+#
+# It will not run unless the confirmation field reads exactly
+#   RENAME <batch key>
+# and it stops on the whole batch if a single row is refused or needs a human.
+#
+# `dry_run` starts TICKED. A dry run does the entire job - every check, every
+# rename, every invariant - prints the report, and then rolls back. Untick it
+# only once you have read that output.
+#
+# Actions tab -> "Rename — apply" -> Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      csv_path:
+        description: "CSV path in this repo (e.g. fixtures/rename/michelin-2026-france-names.csv)"
+        required: true
+        type: string
+      batch_key:
+        description: "Batch key — the same value on every row of the CSV, used once for ever"
+        required: true
+        type: string
+      confirmation:
+        description: "Type: RENAME <batch key>"
+        required: true
+        type: string
+      dry_run:
+        description: "Dry run — do the whole job, print the report, then roll it back (do this first)"
+        required: false
+        default: true
+        type: boolean
+      note:
+        description: "Optional: a note stored on the batch"
+        required: false
+        default: ""
+        type: string
+
+# One run at a time per batch key, shared with the rename undo: an apply and an
+# undo of the same batch can never run at once.
+concurrency:
+  group: rename-${{ inputs.batch_key }}
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # No `bun install`: the rename scripts have no dependencies.
+
+      # Every input goes through env, never spliced into the shell. Splicing
+      # would let a crafted batch_key smuggle a second --confirm past the
+      # typed-confirmation gate, which is the one gate that must not be
+      # bypassable.
+      - name: Rename the batch
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          CSV_PATH: ${{ inputs.csv_path }}
+          BATCH_KEY: ${{ inputs.batch_key }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          BATCH_NOTE: ${{ inputs.note }}
+        run: |
+          set -euo pipefail
+          ARGS=(--csv "$CSV_PATH" --batch-key "$BATCH_KEY" --confirm "$CONFIRMATION")
+          if [ "$DRY_RUN" = "true" ]; then
+            ARGS+=(--dry-run)
+          fi
+          if [ -n "$BATCH_NOTE" ]; then
+            ARGS+=(--note "$BATCH_NOTE")
+          fi
+          bun run scripts/rename/apply.ts "${ARGS[@]}" | tee /tmp/rename.out
+
+      # The report file is written on a refusal too, and unlike the captured
+      # stdout it carries none of the progress lines. Prefer it; fall back.
+      - name: Put the report in the run summary
+        if: always()
+        env:
+          BATCH_KEY: ${{ inputs.batch_key }}
+        run: |
+          REPORT="reports/$BATCH_KEY-rename.md"
+          if [ -f "$REPORT" ]; then
+            cat "$REPORT" >> "$GITHUB_STEP_SUMMARY"
+          elif [ -f /tmp/rename.out ]; then
+            cat /tmp/rename.out >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Nothing was renamed. See the log above for why." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rename-apply-${{ inputs.batch_key }}
+          path: reports/
+          if-no-files-found: ignore
+
+      - name: Commit the report to the repo
+        if: always()
+        env:
+          BATCH_KEY: ${{ inputs.batch_key }}
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain reports/)" ]; then
+            echo "No report changes to commit."
+            exit 0
+          fi
+          git config user.name  "compasseats-ingest"
+          git config user.email "ingest@users.noreply.github.com"
+          git add reports/
+          git commit -m "rename: apply report for $BATCH_KEY"
+          git push

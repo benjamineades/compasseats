@@ -1,0 +1,5 @@
+batch_key,venue_id,expected_name,new_name,source_id,source_url,note
+rename-test-happy,ve_rn11111111,Restaurant Le Gabriel,Le Gabriel,michelin,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-gabriel,suffix dropped; the award keeps Michelin's full string
+rename-test-happy,ve_rn33333333,Comptoir,Le Comptoir,la-liste,https://www.laliste.com/en/the-list/2026,two publishers print it; la-liste's spelling wins the vote
+rename-test-happy,ve_rn55555555,Sel et Poivre,Sel & Poivre,venue,https://seletpoivre.example/,the venue's own site settled it
+rename-test-happy,ve_rn22222222,Table du Marche,Table du Marche,michelin,https://guide.michelin.com/en/ile-de-france/paris/restaurant/table-du-marche,already right
