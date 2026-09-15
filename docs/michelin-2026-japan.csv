@@ -1,0 +1,586 @@
+batch_key,source_id,year,rank,category,distinction,source_url,venue_name,city_label,country_label,venue_category,venue_status,price_symbol_raw,note,michelin_guide,name_native_michelin
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kagurazaka-ishikawa,Kagurazaka Ishikawa,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,神楽坂 石かわ
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kanda,Kanda,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,かんだ
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-osier,L'OSIER,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,ロオジエ
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ryugin-1194232,RyuGin,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,龍吟
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/harutaka,Harutaka,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,青空
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/azabu-kadowaki,Azabu Kadowaki,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,麻布 かどわき
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/myojaku,Myojaku,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,明寂
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-effervescence,L'Effervescence,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,レフェルヴェソンス
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/joel-robuchon-1193981,Joël Robuchon,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,ジョエル・ロブション
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sazenka,Sazenka,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,茶禅華
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/quintessence-1193907,Quintessence,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,カンテサンス
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/miyamaso,Miyamaso,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,美山荘
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/hyotei,Hyotei,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,瓢亭
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/mizai,Mizai,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,未在
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/isshisoden-nakamura,Isshisoden Nakamura,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,一子相伝 なかむら
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gion-sasaki,Gion Sasaki,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,祇園 さゝ木
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kikunoi-honten,Kikunoi Honten,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,菊乃井 本店
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/kashiwaya-osaka-senriyama,Kashiwaya Osaka Senriyama,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,柏屋 大阪千里山
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/hajime,HAJIME,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,ハジメ
+michelin-2026-japan,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/taian,Taian,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,太庵
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hommage,HOMMAGE,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,オマージュ
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kohaku,Kohaku,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,虎白
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/asahina-gastronome,ASAHINA Gastronome,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,アサヒナガストロノーム
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ginza-shinohara,Ginza Shinohara,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,銀座 しのはら
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kutan,Kutan,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,久丹
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tempura-kondo,Tempura Kondo,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,てんぷら 近藤
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/maz,MAZ,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,マス
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ginza-fukuju,Ginza Fukuju,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,銀座 福樹
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/esquisse,ESqUISSE,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,エスキス
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kioicho-fukudaya,Kioicho Fukudaya,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,紀尾井町 福田家
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ginza-koju,Ginza Kojyu,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,銀座 小十
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-kanesaka,Sushi Kanesaka,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,鮨 かねさか
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/akasaka-kikunoi,Akasaka Kikunoi,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,赤坂 菊乃井
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/prisma-1194160,PRISMA,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,プリズマ
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/seizan,Seizan,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,晴山
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hakuun,Hakuun,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,伯雲
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/crony-1194937,Crony,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,クローニー
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/nishiazabu-sushi-shin,Nishiazabu Sushi Shin,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,西麻布 鮨 真
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/florilege,Florilège,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,フロリレージュ
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ryuzu,Ryuzu,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,リューズ
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/jingumae-higuchi,Jingumae Higuchi,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,神宮前 樋口
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/narisawa,NARISAWA,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,ナリサワ
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/den,Den,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,傳
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sukiyabashi-jiro-roppongiten,Sukiyabashi Jiro Roppongiten,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,すきやばし 次郎 六本木店
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tempura-motoyoshi,Tempura Motoyoshi,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,天ぷら 元吉
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ensui,Ensui,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,炎水
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/tokuha-motonari,Tokuha Motonari,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,徳ﾊ本也
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kyokaiseki-kichisen,Kyokaiseki Kichisen,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,京懐石 吉泉
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sojiki-nakahigashi,Sojiki Nakahigashi,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,草喰 なかひがし
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/doppo,Doppo,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,獨歩
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/yusokuryori-mankamero,Yusokuryori Mankamero,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,有職料理 萬亀楼
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/otagi,Otagi,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,おたぎ
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sanso-kyoyamato,Sanso Kyoyamato,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,山荘 京大和
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/muromachi-yui,Muromachi Yui,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,室町 唯
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gion-nishikawa,Gion Nishikawa,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,祇園 にしかわ
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/ogata,Ogata,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,緒方
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gion-matayoshi,Gion Matayoshi,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,祇園 又吉
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kodaiji-jugyuan,Kodaiji Jugyuan,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,高台寺 十牛庵
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gion-maruyama,Gion Maruyama,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,祇園 丸山
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/ryo-sho,Ryō-shō,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,凌霄
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kenninji-gion-maruyama,Kenninji Gion Maruyama,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,建仁寺 祇園 丸山
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sumibi-kappo-ifuki,Sumibi Kappo Ifuki,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,炭火割烹 いふき
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/higashiyama-yoshihisa,Higashiyama Yoshihisa,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,東山 吉寿
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kodaiji-wakuden,Kodaiji Wakuden,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,高台寺 和久傳
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kikunoi-roan,Kikunoi Roan,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,菊乃井 露庵
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/akordu,akordu,Nara,Japan,restaurant,,¥¥¥,,nara-2026,アコルドゥ
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/nara-nikon,NARA NIKON,Nara,Japan,restaurant,,¥¥¥,,nara-2026,奈良 而今
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/tsukumo,Tsukumo,Nara,Japan,restaurant,,¥¥¥¥,,nara-2026,白
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/oryori-hanagaki,Oryori Hanagaki,Nara,Japan,restaurant,,¥¥¥¥,,nara-2026,御料理 花墻
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/shunsaiten-tsuchiya,Shunsaiten Tsuchiya,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,旬彩天 つちや
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/miyamoto,Miyamoto,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,宮本
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/tenjimbashi-aoki,Tenjimbashi Aoki,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,天神橋 青木
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/la-cime,La Cime,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,ラ・シーム
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/fujiya-1935,Fujiya 1935,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,フジヤ 1935
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/koryu,Koryu,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,弧柳
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/numata,Numata,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,ぬま田
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/kahala,KAHALA,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,カハラ
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/oimatsu-hisano,Oimatsu Hisano,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,老松 ひさ乃
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/yugen-1193266,Yugen,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,幽玄
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/teruya,Teruya,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,照屋
+michelin-2026-japan,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sushi-harasho,Sushi Harasho,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,鮨 原正
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/oku,Oku,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,奥
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/nabeno-ism,Nabeno-Ism,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,ナベノ-イズム
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/nihombashi-sonoji,Nihombashi Sonoji,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,日本橋 蕎ノ字
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/nol,nôl,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ノル
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-ichijo,Sushi Ichijo,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,鮨 一條
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/edomae-shinsaku,Edomae Shinsaku,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,江戸前 晋作
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tempura-yaguchi,Tempura Yaguchi,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,天ぷら やぐち
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/est,est,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,エスト
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/esterre-by-alain-ducasse,ESTERRE by Alain Ducasse,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,エステール by アラン・デュカス
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/il-ristorante-niko-romito-1208307,Il Ristorante - Niko Romito,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,イル・リストランテ ニコ・ロミート
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/la-paix-1194221,La Paix,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ラ ペ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-oya,Sushi Oya,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,鮨 大矢
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/beige-alain-ducasse,BEIGE Alain Ducasse,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ベージュ アラン・デュカス
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kyobashi-tempura-fukamachi,Kyobashi Tempura Fukamachi,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,京橋 てんぷら 深町
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-hashimoto,Sushi Hashimoto,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,鮨 はしもと
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/guchokuni,Guchokuni,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,愚直に
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/khao-1217131,KHAO,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,カオ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hortensia,hortensia,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,オルタンシア
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/fushikino,FUSHIKINO,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ふしきの
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/oniku-karyu,Oniku Karyu,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,おにく 花柳
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/primo-passo,PRIMO PASSO,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,プリモ パッソ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/yakitori-takahashi,Yakitori Takahashi,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,焼鳥 髙はし
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/dominique-bouchet-1194086,Dominique Bouchet Tokyo,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ドミニク・ブシェ トーキョー
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tanimoto,Tanimoto,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,多仁本
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/cycle-by-mauro-colagreco,CYCLE by Mauro Colagreco,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,スィークル
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-eterre,L'ÉTERRE,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,レテール
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ginza-kitagawa,Ginza Kitagawa,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,銀座 きた川
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/prunier-1200289,PRUNIER,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,プルニエ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tour-d-argent-1194082,Tour D'argent Tokyo,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,トゥールダルジャン 東京
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/makiyaki-ginza-onodera,MAKIYAKI GINZA ONODERA,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,薪焼 銀座おのでら
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/seiju,Seiju,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,清壽
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-argent,L'ARGENT,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ラルジャン
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/faro-1194154,FARO,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ファロ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sharikimon-onozawa,Sharikimon Onozawa,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,車力門 おの澤
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-keita,Sushi Keita,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,鮨 桂太
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/shokuzen-abe,Shokuzen Abe,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,喰善 あべ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/koshikiryori-koki,Koshikiryori Koki,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,港式料理 鴻禧
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/trois-visages,TROIS VISAGES,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,トワヴィサージュ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/la-gloire-1218215,La Gloire,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ラ グロワ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-kojima,Sushi Kojima,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,鮨 こじま
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/daigo,Daigo,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,醍醐
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/yotsuya-minemura,Yotsuya Minemura,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,四ツ谷 みね村
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/les-saisons-1194250,Les Saisons,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,レ セゾン
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/akasaka-shimabukuro,Akasaka Shimabukuro,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,赤坂 島袋
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/apotheose,apothéose,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,アポテオーズ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ren-mishina,Ren Mishina,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,蓮 三四七
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sumibikappo-shirosaka,Sumibikappo SHIROSAKA,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,炭火割烹 白坂
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/torakuro,Torakuro,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,寅黒
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/takumi-tatsuhiro,Takumi Tatsuhiro,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,匠 達広
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hyakuyaku-by-tokuyamazushi,Hyakuyaku by Tokuyamazushi,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,百薬 by 徳山鮓
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-affinage,L'AFFINAGE,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ラフィナージュ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/zurriola,ZURRIOLA,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,スリオラ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/amarantos,amarantos,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,アマラントス
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ginza-kousui,Ginza Kousui,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,銀座 志翠
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/mutsukari,Mutsukari,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,六雁
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ubuka,Ubuka,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,うぶか
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/gucci-osteria-da-massimo-bottura-1201836,Gucci Osteria da Massimo Bottura Tokyo,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,グッチ オステリア ダ マッシモ ボットゥーラ トウキョウ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/shimbashi-sasada,Shimbashi Sasada,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,新ばし 笹田
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/toki,TOKi,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,トキ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/heritage-by-kei-kobayashi,Héritage by Kei Kobayashi,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,エリタージュ バイ ケイ コバヤシ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/maerge,mærge,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,マージ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/waketokuyama,Waketokuyama,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,分とく山
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-tanaka,Sushi Tanaka,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,鮨 田中
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/towa,Towa,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,常
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/jushu,Jushu,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,壽修
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/miyasaka,Miyasaka,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,宮坂
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-elan,l'élan,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,レラン
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/edomae-sushi-hanabusa,Edomae Sushi Hanabusa,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,江戸前鮨 英
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ten-yokota,Ten Yokota,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,天 よこた
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kappo-muroi,Kappo Muroi,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,割烹 室井
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-atelier-de-joel-robuchon-1194216,L'ATELIER de Joël Robuchon,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ラトリエ ドゥ ジョエル・ロブション
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/nogizaka-shin,Nogizaka Shin,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,乃木坂 しん
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ewig,EWIG,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,エーヴィック
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-ryujiro,Sushi Ryujiro,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,鮨 龍次郎
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sorahana,Sorahana,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,空花
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-masashi,Sushi Masashi,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,鮨 将司
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/itsuka,itsuka,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,慈華
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/azabujuban-fukuda,Azabujuban Fukuda,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,麻布十番 ふくだ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/series,Series,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,シリーズ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ippei-hanten,Ippei Hanten,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,一平飯店
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/nemo,NéMo,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ネモ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sincere,Sincère,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,シンシア
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/edition-koji-shimomura,Édition Koji Shimomura,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,エディション・コウジ シモムラ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sanosushi,Sanosushi,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,佐野鮨
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hakunei,hakunei,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,白寧
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/le-sputnik,le sputnik,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ル・スプートニク
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/nishiazabu-taku,Nishiazabu Taku,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,西麻布 拓
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tenoshima,Tenoshima,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,てのしま
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/jo,JO,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,上
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/metis-roppongi,Mētis Roppongi,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,メティス 六本木
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/oryori-tsuji,Oryori Tsuji,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,御料理 辻
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-miura,Sushi Miura,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,鮨 みうら
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tempura-maehira,Tempura Maehira,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,てんぷら 前平
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/nodaiwa-azabu-Iikura-honten-1194124,Nodaiwa Azabu Iikura Honten,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,野田岩 麻布飯倉本店
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/manoir,MANOIR,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,マノワ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sassa,Sassa,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,佐々
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/yama-1214953,Yama,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,山
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/la-table-de-joel-robuchon,LA TABLE de Joël Robuchon,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ラ ターブル ドゥ ジョエル・ロブション
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/shigeyuki,Shigeyuki,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,茂幸
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/au-deco,au deco,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,おでこ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/piao-xiang,Piao-Xiang,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,飄香
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-matsuura,Sushi Matsuura,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,鮨 まつうら
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tempura-ginya,Tempura Ginya,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,天ぷら 銀屋
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/alchimiste,Alchimiste,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,アルシミスト
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/saucer,Saucer,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ソーセ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/abysse,abysse,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,アビス
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/monolith,MONOLITH,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,モノリス
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-yuki-1213818,Sushi Yuki,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,鮨 ゆうき
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/lature,LATURE,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ラチュレ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/shinois,ShinoiS,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,シノワ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/jizozushi,Jizozushi,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,地蔵鮓
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hiroo-ishizaka,Hiroo Ishizaka,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,広尾 石阪
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/seisoka,Seisoka,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,青草窠
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/craftale,CRAFTALE,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,クラフタル
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/bottega-1194168,BOTTEGA,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,ボッテガ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/higashiyama-muku,Higashiyama Muku,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,東山無垢
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tempura-miyashiro,Tempura Miyashiro,Tokyo,Japan,restaurant,,¥¥¥¥,,tokyo-2026,天婦羅 みやしろ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tenmasa-1194080,TEN-MASA,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,天雅
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushidokoro-kiraku,Sushidokoro Kiraku,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,鮨処 喜楽
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/yakumo-uezu,Yakumo Uezu,Tokyo,Japan,restaurant,,¥¥¥,,tokyo-2026,八雲 うえず
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/la-buche,la bûche,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ラ ブッシュ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kenya,Kenya,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,研野
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/mube,MUBE,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ムベ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/higashiyama-ogata,Higashiyama Ogata,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,東山 緒方
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/tsujifusa,Tsujifusa,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,辻布紗
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/koga,KOGA,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,コガ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/lurra˚,LURRA˚,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,ルーラ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/cenci,cenci,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,チェンチ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/droit,Droit,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ドロワ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sokkon-fujimoto,Sokkon Fujimoto,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,即今 藤本
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gokomachi-tagawa,Gokomachi Tagawa,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,御幸町 田がわ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kiyama,Kiyama,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,木山
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gosho-iwasaki,Gosho Iwasaki,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,御所 岩さき
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kyo-seika,Kyo Seika,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,京、静華
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kokyu,Kokyu,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,弧玖
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/tenjaku,Tenjaku,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,天若
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/higashiyama-tsukasa,Higashiyama Tsukasa,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,ひがしやま 司
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/nijo-minami,Nijo Minami,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,二條 みなみ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kanamean-nishitomiya,Kanamean Nishitomiya,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,要庵 西富家
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/jean-georges-at-the-shinmonzen,Jean-Georges at The Shinmonzen,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ジャン-ジョルジュ アット ザ シンモンゼン
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/shiro-1215790,shiro,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,しろ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/koke,KOKE,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,コケ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/manjuji-hakuran,Manjuji Hakuran,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,萬寿寺はくらん
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kikunoi-sushi-ao,Kikunoi Sushi Ao,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,菊乃井 鮨 青
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/nakamitsu,Nakamitsu,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,中満
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/shimmonzen-yonemura,Shimmonzen Yonemura,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,新門前 米村
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/velrosier,VELROSIER,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ベルロオジエ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sushi-kappo-nakaichi,Sushi Kappo Nakaichi,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,鮨 割烹 なか一
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gion-okada,Gion Okada,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,祇園 おかだ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/wagokoro-izumi,Wagokoro Izumi,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,和ごころ泉
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sushi-rakumi,Sushi Rakumi,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,鮨 楽味
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/takayama,TAKAYAMA,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,タカヤマ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/restaurant-hiramatsu-kodaiji,Restaurant Hiramatsu Kodaiji,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,レストランひらまつ 高台寺
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/muromachi-wakuden,Muromachi Wakuden,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,室町 和久傳
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kentan-horibe,Kentan Horibe,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,研覃 ほりべ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/hana-kitcho,HANA-Kitcho,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,HANA 吉兆
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sen,SEN,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,杦
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/ogawa,Ogawa,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,おが和
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gion-fukushi,Gion Fukushi,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ぎをん 福志
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kinobu,Kinobu,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,木乃婦
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gion-kida,Gion Kida,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,祇園 きだ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gion-owatari,Gion Owatari,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,祇園 大渡
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/mashiro,MASHIRO,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,真白
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/enyuan-kobayashi,Enyuan Kobayashi,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,圓融菴 小林
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/ima-1242636,ima,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,イマ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/la-biographie,La Biographie···,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,ラ・ビオグラフィ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/tozentei,Tozentei,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,陶然亭
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/noguchi-tsunagu,Noguchi Tsunagu,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,のぐち継
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sushi-matsumoto,Sushi Matsumoto,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,鮨 まつもと
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/nijojo-furuta,Nijojo Furuta,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,二条城 ふる田
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/oryori-mashita,Oryori Mashita,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,御料理 味舌
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/ayanokoji-karatsu,Ayanokoji Karatsu,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,綾小路 唐津
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/mizuno,Mizuno,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,水の
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/miyagawacho-hotta,Miyagawacho Hotta,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,宮川町 ほった
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/dodici,DODICI,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ドーディチ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/yokoi,YOKOI,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,よこい
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/vena,Vena,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ヴェーナ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/moko,MOKO,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,モコ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/miyawaki-1205446,Miyawaki,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,宮脇
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/ryoriya-maekawa,Ryoriya Maekawa,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,料理屋 まえかわ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/mirei-1193056,Mirei,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,実伶
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kyoryori-fujimoto,Kyoryori Fujimoto,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,京料理 藤本
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/torisaki,Torisaki,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,鳥さき
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kako-okamoto,Kako Okamoto,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,佳肴 岡もと
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kappo-hassun,Kappo Hassun,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,割烹 八寸
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/godan-miyazawa,Godan Miyazawa,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ごだん 宮ざわ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kyoboshi,Kyoboshi,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,京星
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/korean-restaurant-byeoleeya,Korean Restaurant Byeoleeya,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,韓式料理ピョリヤ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/germoglio,Germoglio,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ジェルモーリオ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/okina,Okina,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,おきな
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/uozuya,Uozuya,Kyoto,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,魚津屋
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/anpeiji,anpeiji,Kyoto,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,アンペイジ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/oryori-hirooka,Oryori Hirooka,Nara,Japan,restaurant,,¥¥¥,,nara-2026,お料理 ひろ岡
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/villa-communico,VILLA COMMUNICO,Nara,Japan,restaurant,,¥¥¥¥,,nara-2026,ヴィラ コムニコ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/okada,Okada,Nara,Japan,restaurant,,¥¥¥,,nara-2026,おか田
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/matsuki,Matsuki,Nara,Japan,restaurant,,¥¥¥,,nara-2026,まつ㐂
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/hoshino,Hoshino,Nara,Japan,restaurant,,¥¥¥,,nara-2026,ほしの
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/la-trace,LA TRACE,Nara,Japan,restaurant,,¥¥¥,,nara-2026,ラ・トラース
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/gokan-uogin,GOKAN UOGIN,Nara,Japan,restaurant,,¥¥¥,,nara-2026,五感 魚銀
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/koikiryori-aji-manso,Koikiryori Aji Manso,Nara,Japan,restaurant,,¥¥¥,,nara-2026,小粋料理 味 万惣
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/wa-yamamura,Wa Yamamura,Nara,Japan,restaurant,,¥¥¥,,nara-2026,和 やまむら
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/naramachi-kuko,Naramachi Kuko,Nara,Japan,restaurant,,¥¥¥,,nara-2026,奈良町 枸杞
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/ajinotabibito-roman,Ajinotabibito Roman,Nara,Japan,restaurant,,¥¥¥,,nara-2026,味の旅人 浪漫
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ichiju-nisai-ueno-minoten,Ichiju Nisai Ueno Minoten,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,一汁二菜 うえの 箕面店
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/naniwaryori-yu,Naniwaryori Yu,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,なにわ料理 有
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/higashichaya-nakamura,Higashichaya Nakamura,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,東茶屋 なかむら
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/katamachi-kawaguchi,Katamachi Kawaguchi,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,片町 川口
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/kamigatachuka-shintani,Kamigatachuka SHINTANI,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,上方中華 新瓊
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ukitacho-ima,Ukitacho Ima,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,浮田町 いま
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/pierre-1193242,Pierre,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ピエール
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/la-baie,La Baie,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ラ・ベ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/ajinokaze-nishimura,Ajinokaze Nishimura,Nara,Japan,restaurant,,¥¥¥,,nara-2026,味の風 にしむら
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/atelier-hanada,atelier HANADA,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,アトリエ ハナダ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/la-becasse-1193280,La Bécasse,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ラ・ベカス
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/le-pont-de-ciel,LE PONT DE CIEL,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ルポンドシエル
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/torisho-ishii,Torisho Ishii,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,鳥匠 いし井
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/nishitemma-ichigaya,Nishitemma Ichigaya,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,西天満 市がや
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/capi,capi,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,カピ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/numata-sou,Numata Sou,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ぬまた 双
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/konoha,Konoha,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,このは
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/yunico-1194638,YUNiCO,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ユニコ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/a-canto,a canto,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ア・カント
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/zeshin,Zeshin,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,是しん
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sushi-hoshiyama,Sushi Hoshiyama,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,鮨 ほしやま
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ajikitcho-bumbuan,Ajikitcho Bumbuan,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,味吉兆 ぶんぶ庵
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/kaishoku-shimizu,Kaishoku Shimizu,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,懐食 清水
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sui-oya,Sui Oya,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,翠 大屋
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/iwaki,Iwaki,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,いわき
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/terada,Terada,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,寺田
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/shinchi-yamamoto,Shinchi Yamamoto,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,新地 やま本
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/chi-fu,Chi-Fu,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,シーフ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/iroha,Iroha,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,彩葉
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/tosara,Tosara,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,十皿
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/kushingarando,KushinGarando,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,空心伽藍堂
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sushi-shigenaga,Sushi Shigenaga,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,鮨 重永
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/empathie,Empathie,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,エンパティ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ono,Ono,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,緒乃
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ryoriya-inaya,Ryoriya Inaya,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,料理屋 稲家
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/point,Point,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ポワン
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/oryori-yamada,Oryori Yamada,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,お料理 山田
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/yakitori-ichimatsu,Yakitori Ichimatsu,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,焼鳥 市松
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/nishino,Nishino,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,にしの
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/p-greco,P greco,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ピ・グレコ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sushi-murakami-jiro,Sushi Murakami Jiro,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,鮨 村上二郎
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/oimatsu-kitagawa,Oimatsu Kitagawa,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,老松 喜多川
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ideal-bistro,IDÉAL bistro,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,イデアル ビストロ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/n,Ñ,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,エニェ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sushi-sanshin,Sushi Sanshin,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,鮨 三心
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/yakitori-torisen,Yakitori Torisen,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,焼鳥 とり泉
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sinae,SINAE,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,シナエ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/kashiwaya-osaka-kitashinchi,Kashiwaya Osaka Kitashinchi,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,柏屋 大阪北新地
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/fushimimachi-kakoiyama,Fushimimachi Kakoiyama,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,伏見町 栫山
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/presqu’ile,PRESQU'ÎLE,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,プレスキル
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/yonemasu,Yonemasu,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,米増
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ad-hoc-1193091,ad hoc,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,アドック
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/oryori-horikawa,Oryori Horikawa,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,御料理 堀川
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/rakushin,Rakushin,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,楽心
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/hiraishi,Hiraishi,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ひらいし
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/yoshiko,Yoshiko,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,よし光
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/rooots-nakanoshima,Rooots Nakanoshima,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ルーツ ナカノシマ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/hachi,Hachi,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,八盂
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/masuda,Masuda,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,桝田
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/agnel-d-or,agnel d'or,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,アニエルドール
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/difference,Différence,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,ディファランス
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sushidokoro-amano,Sushidokoro Amano,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,寿し處 あま野
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/alarde,Alarde,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,アラルデ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/milpa,milpa,Osaka,Japan,restaurant,,¥¥¥¥,,kyoto-osaka-2026,ミルパ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ajikitcho-horieten,Ajikitcho Horieten,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,味吉兆 堀江店
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/nishishinsaibashi-yuno,Nishishinsaibashi Yuno,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,西心斎橋 ゆうの
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/kaiseki-morimoto,Kaiseki Morimoto,Nara,Japan,restaurant,,¥¥¥,,nara-2026,懐石 森本
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/sushi-kawashima,Sushi Kawashima,Nara,Japan,restaurant,,¥¥¥,,nara-2026,鮨 かわしま
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/da-terra-1197086,Da terra,Nara,Japan,restaurant,,¥¥¥,,nara-2026,ダ テッラ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/matsuzushi-tanigawa,Matsuzushi Tanigawa,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,松寿司 たにがわ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/lega,Lega',Nara,Japan,restaurant,,¥¥,,nara-2026,レガ
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/a-plus,à plus,Nara,Japan,restaurant,,¥¥¥,,nara-2026,アプリュス
+michelin-2026-japan,michelin,2026,,One Star,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/sen-1218506,SÉN,Nara,Japan,restaurant,,¥¥¥,,nara-2026,セン
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/shutei-tanaka,Shutei Tanaka,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,酒亭 田中
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sobakappo-nagano,Sobakappo Nagano,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,蕎麦割烹 ながの
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ramenya-toy-box,Ramenya Toy Box,Tokyo,Japan,restaurant,,¥,,tokyo-2026,ラーメン屋 トイ・ボックス
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ittoan,Ittoan,Tokyo,Japan,restaurant,,¥,,tokyo-2026,一東菴
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/wokotote,wokotote,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,をことて
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/asakusa-hirayama,Asakusa Hirayama,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,浅草 ひら山
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/noura,noura,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ノウラ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sugita,Sugita,Tokyo,Japan,restaurant,,¥,,tokyo-2026,すぎ田
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hatsuogawa,Hatsuogawa,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,初小川
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/grill-grand,grill GRAND,Tokyo,Japan,restaurant,,¥,,tokyo-2026,グリル グランド
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/onigiri-asakusa-yadoroku,Onigiri Asakusa Yadoroku,Tokyo,Japan,restaurant,,¥,,tokyo-2026,おにぎり 浅草 宿六
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/watabe,Watabe,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,わたべ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/japanese-ramen-gokan,Japanese Ramen Gokan,Tokyo,Japan,restaurant,,¥,,tokyo-2026,Japanese Ramen 五感
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ponta-honke,Ponta Honke,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ぽん多 本家
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/negima,Negima,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ねぎま
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ma-poule,Ma Poule,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,マ プール
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/edosoba-hosokawa,Edosoba Hosokawa,Tokyo,Japan,restaurant,,¥,,tokyo-2026,江戸蕎麦 ほそ川
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/katchar-batchar,Katchar Batchar,Tokyo,Japan,restaurant,,¥,,tokyo-2026,カッチャル バッチャル
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hamacho-kaneko,Hamacho Kaneko,Tokyo,Japan,restaurant,,¥,,tokyo-2026,浜町 かねこ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/katsuyoshi,Katsuyoshi,Tokyo,Japan,restaurant,,¥,,tokyo-2026,かつ好
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/yamato-1194199,YAMATO,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ヤマト
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sosakumenkobo-nakiryu,Sosakumenkobo NAKIRYU,Tokyo,Japan,restaurant,,¥,,tokyo-2026,創作麺工房 鳴龍
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tompachitei,Tompachitei,Tokyo,Japan,restaurant,,¥,,tokyo-2026,とん八亭
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/loiseau-de-france,Loiseau de France,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ロワゾー・ドゥ・フランス
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/biriyani-osawa,Biriyani Osawa,Tokyo,Japan,restaurant,,¥,,tokyo-2026,ビリヤニ大澤
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/mejiro-shunkotei,Mejiro Shunkotei,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,目白 旬香亭
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/yakitori-sanka,Yakitori SANKA,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,焼鳥 山香
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/yaesu-unagi-hashimoto,Yaesu Unagi Hashimoto,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,八重洲 鰻 はし本
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hashimoto,Hashimoto,Tokyo,Japan,restaurant,,¥,,tokyo-2026,はし本
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/soba-osame,Soba Osame,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,蕎麦 おさめ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/trattoria-buca-massimo,TRATTORIA BUCA'MASSIMO,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,トラットリア ブカ・マッシモ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/mejiro-zorome,Mejiro Zorome,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,目白 ぞろ芽
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/chukasoba-ginza-hachigo,Chukasoba Ginza Hachigou,Tokyo,Japan,restaurant,,¥,,tokyo-2026,中華そば 銀座 八五
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hoppers-1206470,HOPPERS,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ホッパーズ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/arroceria-la-panza,ARROCERÍA La Panza,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,アロセリア ラ パンサ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/santosham,SANTOSHAM,Tokyo,Japan,restaurant,,¥,,tokyo-2026,三燈舎
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-amitie-1194223,L'AMITIE,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ラミティエ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/teuchisoba-jiyusan,Teuchisoba Jiyusan,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,手打蕎麦 じゆうさん
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/matsunozushi,Matsunozushi,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,松野寿し
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tonkatsu-hinata,Tonkatsu Hinata,Tokyo,Japan,restaurant,,¥,,tokyo-2026,とんかつ ひなた
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/la-bettola-da-ochiai,LA BETTOLA da Ochiai,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ラ・ベットラ・ダ・オチアイ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/meishan,Meishan,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,梅香
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kyorakutei,Kyorakutei,Tokyo,Japan,restaurant,,¥,,tokyo-2026,蕎楽亭
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/les-copains-de-dominique-bouchet,Les Copains de DOMINIQUE BOUCHET,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,レ・コパン ドゥ ドミニク・ブシェ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ginza-katsukami-ii,GINZA KATSUKAMI II,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ぎんざ かつかみ弐
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/shinrakuki,Shinrakuki,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,新楽記
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ramen-matsui,RAMEN MATSUI,Tokyo,Japan,restaurant,,¥,,tokyo-2026,ラーメン マツイ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/le-nougat,Le Nougat,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ヌガ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/osteria-da-k-kappa,Osteria da K. [káppa],Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,オステリア ダ カッパ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tonkatsu-nanaido,Tonkatsu Nanaido,Tokyo,Japan,restaurant,,¥,,tokyo-2026,とんかつ 七井戸
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushidokoro-shigeru,Sushidokoro Shigeru,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,すし処 志げる
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tempura-kakiage-yukimura,Tempura Kakiage Yukimura,Tokyo,Japan,restaurant,,¥,,tokyo-2026,天ぷら かき揚げ 之村
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/shokudo-wata,Shokudo Wata,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,食堂わた
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ginza-haru-chan-ramen,Ginza HARU CHAN Ramen,Tokyo,Japan,restaurant,,¥,,tokyo-2026,銀座はるちゃんラーメン
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/bistrot-vivienne,Bistrot Vivienne,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ビストロ ヴィヴィエンヌ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/bramasole,BRAMASOLE,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ブラマソーレ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ma-cuisine-1194175,Ma Cuisine,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,マ・キュイジーヌ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/kinoshita-1197753,Kinoshita,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,キノシタ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-as,L'AS,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ラス
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-mikata,Sushi Mikata,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,鮨 三か田
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/t-astous,T'astous,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,タストゥー
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/torishige,Torishige,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,鳥茂
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/iruca-tokyo,IRUCA TOKYO,Tokyo,Japan,restaurant,,¥,,tokyo-2026,入鹿 TOKYO
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/osobano-kouga,Osobano Kouga,Tokyo,Japan,restaurant,,¥,,tokyo-2026,おそばの甲賀
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tachigui-sushi-tonari,Tachigui Sushi Tonari,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,立喰 鮨となり
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sobakiri-suzuki,Sobakiri Suzuki,Tokyo,Japan,restaurant,,¥,,tokyo-2026,そばきり すゞ木
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/los-reyes-magos,Los Reyes Magos,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ロス レイエス マーゴス
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sushi-yoshino,Sushi Yoshino,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,鮨 与志乃
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tensuke,Tensuke,Tokyo,Japan,restaurant,,¥,,tokyo-2026,天すけ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/lauburu,LAUBURU,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ローブリュー
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/soba-tajima,Soba Tajima,Tokyo,Japan,restaurant,,¥,,tokyo-2026,蕎麦 たじま
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/night-market-1241936,Night Market,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ナイトマーケット
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/le-bistrot-des-bleus,le bistrot des bleus,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ル ビストロ デ ブル
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/koryori-kuhara,Kuhara,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,久原
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tachiguisushi-sushikawa,Tachiguisushi Sushikawa,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,立食い鮨 鮨川
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/il-ballond-oro,IL BALLOND'ORO,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,イル バロンドーロ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/katsuo-shokudo,Katsuo Shokudo,Tokyo,Japan,restaurant,,¥,,tokyo-2026,かつお食堂
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/falo,falò,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ファロ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/dialogue-1200268,DIALOGUE,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ディアログ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/arroceria-sal-y-amor,Arrocería Sal y Amor,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,アロセリア サル イ アモール
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/hibino-chukashokudo,Hibino Chukashokudo,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,日々の中華食堂
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/les-six,Les six,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,レ シス
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/le-cabaret-1194236,Le cabaret,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ル・キャバレ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/rozzo-sicilia,ROZZO SICILIA,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ロッツォ シチリア
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/rei,REI,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,レイ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sasaki-seimenjo,Sasaki Seimenjo,Tokyo,Japan,restaurant,,¥,,tokyo-2026,佐々木製麺所
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/cristiano-s,Cristiano's,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,クリスチアノ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/there-is-ramen,there is ramen,Tokyo,Japan,restaurant,,¥,,tokyo-2026,ゼアー イズ ラーメン
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/jeeten,jeeten,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ジーテン
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/yoshoku-edoya,Yoshoku Edoya,Tokyo,Japan,restaurant,,¥,,tokyo-2026,洋食 エドヤ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sennomago,Sennomago,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,仙ノ孫
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/alceppo,AlCeppo,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,アルチェッポ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/yakitori-abe,Yakitori Abe,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,やきとり 阿部
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/ramen-break-beats,Ramen Break Beats,Tokyo,Japan,restaurant,,¥,,tokyo-2026,ラーメン ブレイクビーツ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/lien,Lien,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,リアン
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/bistro-glouton,BISTRO GLOUTON,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ビストロ グルトン
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/shiosoba-jiku,Shiosoba Jiku,Tokyo,Japan,restaurant,,¥,,tokyo-2026,塩そば 時空
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/audace,AUDACE,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,アウダチェ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/yakumo,YAKUMO,Tokyo,Japan,restaurant,,¥,,tokyo-2026,八雲
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/teuchi-asama,Teuchi Asama,Tokyo,Japan,restaurant,,¥,,tokyo-2026,手打ち あさま
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/homemade-ramen-muginae,Homemade Ramen Muginae,Tokyo,Japan,restaurant,,¥,,tokyo-2026,Homemade Ramen 麦苗
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tohakuan-karibe,Tohakuan Karibe,Tokyo,Japan,restaurant,,¥,,tokyo-2026,東白庵 かりべ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/seki-hanare,Seki Hanare,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,セキ ハナレ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/gigio,Gigio,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ジージョ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/mochibuta-tonkatsu-taiyo,Mochibuta Tonkatsu Taiyo,Tokyo,Japan,restaurant,,¥,,tokyo-2026,もち豚とんかつ たいよう
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/le-monde-gourmand,Le Monde Gourmand,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ル モンド グルマン
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/zupperia-osteria-pitigliano,ZUPPERIA OSTERIA PITIGLIANO,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ズッペリア・オステリア・ピティリアーノ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/washokuya-taichi,Washokuya Taichi,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,和食や 太いち
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/lanbroa,LANBRoA,Tokyo,Japan,restaurant,,¥¥,,tokyo-2026,ランブロア
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/shinjiko-shijimi-chukasoba-kohaku,Shinjiko Shijimi Chukasoba Kohaku,Tokyo,Japan,restaurant,,¥,,tokyo-2026,宍道湖しじみ中華蕎麦 琥珀
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/tonkatsu-enraku,Tonkatsu Enraku,Tokyo,Japan,restaurant,,¥,,tokyo-2026,とんかつ 燕楽
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/ramen-touhichi,Ramen Touhichi,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,らぁ麺 とうひち
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kashiwai,KASHIWAI,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,花梓侘
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/shichiku-kiko,Shichiku Kiko,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,紫竹 葵湖
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/juu-go,Juu-go,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,十五
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kokage,KOKAGE,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,木陰
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/bistro-cerisier,Bistro Cerisier,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ビストロ スリージェ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/ikkon-uehara,Ikkon Uehara,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,一献 うえ原
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/bistro-yanagihara,Bistro Yanagihara,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ビストロ ヤナギハラ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/vegan-ramen-uzu,Vegan Ramen UZU,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ヴィーガンラーメン ウズ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/tan,Tan,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,丹
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/itsutsu,Itsutsu,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,五
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sumiyakisosaitoriya-hitomi,Sumiyakisosaitoriya Hitomi,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,炭焼創彩鳥家 人見
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/chikuyuan-taro-no-atsumori,Chikuyuan Taro no Atsumori,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,竹邑庵太郎敦盛
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/jukuseibuta-kawamura,Jukuseibuta Kawamura,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,熟成豚 かわむら
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/soba-rojina,Soba Rojina,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,蕎麦 ろうじな
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kombu-to-men-kiichi,Kombu to Men Kiichi,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,昆布と麺 喜一
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sambongi-shoten,Sambongi Shoten,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,三本木商店
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/teuchisoba-kanei,Teuchisoba Kanei,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,手打ち蕎麦 かね井
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/lapintaika,Lapintaika,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ラピンタイカ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/komedokoro-inamoto,Komedokoro Inamoto,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,米処いなもと
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/asperge-blanche,Asperge Blanche,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,アスペルジュ ブランシュ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/washoku-haru,Washoku Haru,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,和食 晴ル
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/deux-filles,DEUX FILLES,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ドゥ フィーユ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/choshoku-kishin,Choshoku Kishin,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,朝食 喜心
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/muromachi-kaji,Muromachi Kaji,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,むろまち 加地
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/saryo-tesshin,Saryo Tesshin,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,茶寮哲心
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/ryoriya-otaya,Ryoriya Otaya,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,りょうりや 御旅屋
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/canton-shunsai-ikki,Canton Shunsai Ikki,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,広東旬菜 一僖
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/noodle-shop-rennosuke,NOODLE SHOP RENNOSUKE,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,麺屋 練之助
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/fuyacho-kuraku,Fuyacho Kuraku,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,麩屋町 久らく
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kikunoi-mugesambo,Kikunoi Mugesambo,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,菊乃井 無碍山房
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gombe,Gombei,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,権兵衛
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/gion-yorozuya,Gion Yorozuya,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,祇をん 萬屋
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/oito,Oito,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,おいと
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/korisu,KORISU,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,コリス
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/bocca-del-vino,BOCCA del VINO,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ボッカ デル ヴィーノ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sonoba,sonoba,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,そのば
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/izugen,Izugen,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,いづ源
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kyogoku-kaneyo,Kyogoku Kaneyo,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,京極 かねよ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/kanesho,Kanesho,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,かね正
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/saketosakana-dna,Saketosakana DNA,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,酒と魚 DNA
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/eitaroya,Eitaroya,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,えいたろう屋
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/izuu,Izuu,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,いづう
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/sushizen,Sushizen,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,すし善
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/ramenya-fujitora,Ramenya Fujitora,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,らぁ麺や ふぢとら
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/muginoyoake,Muginoyoake,Kyoto,Japan,restaurant,,¥,,kyoto-osaka-2026,麦の夜明け
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/kyoto-region/kyoto/restaurant/shigetsu,Shigetsu,Kyoto,Japan,restaurant,,¥¥,,kyoto-osaka-2026,篩月
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/toi-inshokuten,toi Inshokuten,Nara,Japan,restaurant,,¥,,nara-2026,toi 印食店
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/le-content,le content,Nara,Japan,restaurant,,¥¥,,nara-2026,ル コンタン
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/unagino-toyokawa,Unagino Toyokawa,Nara,Japan,restaurant,,¥,,nara-2026,うなぎの豊川
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/sosakukushinomise-rindo,Sosakukushinomise Rindo,Nara,Japan,restaurant,,¥¥,,nara-2026,創作串の店 りんどう
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/masala-an-takumi,Masala an TAKUMI,Nara,Japan,restaurant,,¥¥,,nara-2026,まさら庵TAKUMI
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/a-votre-sante,A VOTRE SANTE,Nara,Japan,restaurant,,¥¥,,nara-2026,ア・ヴォートル・サンテ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/ike-edoyakiunagi-asahitei,Ike Edoyakiunagi Asahitei,Nara,Japan,restaurant,,¥¥,,nara-2026,活 江戸焼うなぎ 旭亭
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/yamaoka-pizza,YAMAOKA PIZZA,Nara,Japan,restaurant,,¥,,nara-2026,山岡ピザ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/tonkatsu-fujii,Tonkatsu Fujii,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,とんかつ ふじ井
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/noto-toto-teuchisoba-tabiki,Noto Toto Teuchisoba Tabiki,Nara,Japan,restaurant,,¥,,nara-2026,農と陶と手打ちそば 旅木
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sumibi-iwata,Sumibi Iwata,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,炭火いわ田
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sushidokoro-kaihara,Sushidokoro Kaihara,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,寿司処 かい原
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/mugito-mensuke,Mugito Mensuke,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,麦と麺助
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/pitak-gohan,PITAK GOHAN,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ピタックごはん
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/diva-1242557,DIVA,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ディーバ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/tenboshi,Tenboshi,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,天星
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ogimachi-udonya-asuro,Ogimachi Udonya Asuro,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,扇町うどん屋 あすろう
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/daidokoro-kamiya,Daidokoro Kamiya,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,台処 かみ谷
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/macauda,Macauda,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,マカウダ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ramen-kuon,Ramen Kuon,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,らーめん 久遠
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sumisho-mikuriya,Sumisho Mikuriya,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,炭匠 御厨
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/kyomachibori-nakamura,Kyomachibori Nakamura,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,京町堀 なかむら
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/aka-to-shiro,AKA to SHIRO,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,あかとしろ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/la-bonne-tache,La bonne tâche,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ラ ボンヌ ターシュ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/il-luogo-di-takeuchi,il luogo di TAKEUCHI,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,イル ルォーゴ ディ・タケウチ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/tanpopo,tanpopo,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,タンポポ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/shokudo-akari,Shokudo Akari,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,食堂 燈
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/az,Az,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,アズー
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/shuko-osaka-manpukudou,Shuko Osaka Manpukudou,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,酒肴 大阪まんぷく堂
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/kushiage-010,kushiage 010,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,クシアゲ 010
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ayamuya,Ayamuya,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,あやむ屋
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/oudon-yomogi,Oudon Yomogi,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,おうどん 蓬
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/tonkatsu-katsu-hana,Tonkatsu KATSU Hana,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,とんかつ KATSU華
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ramen-hayato,Ramen Hayato,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,らーめん 颯人
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sobakiri-gaku,Sobakiri Gaku,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,そば切り 岳空
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/naniwa-okina,Naniwa Okina,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,なにわ翁
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sobakiri-arabompu,Sobakiri Arabompu,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,そば切り 荒凡夫
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/suigyo-murabayashi,Suigyo Murabayashi,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,粋魚 むらばやし
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sushitsune,Sushitsune,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,寿司常
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/aozora-blue,Aozora blue,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,青空blue
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sobakiri-karani,Sobakiri Karani,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,そば切り からに
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/benikurage,Benikurage,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,べにくらげ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/gastroteka-bimendi,gastroteka bimendi,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ガストロテカ ビメンディ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sakeya-sakana-yoshimura,Sakeya Sakana Yoshimura,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,酒や肴 よしむら
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ayamedo,Ayamedo,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,文目堂
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/udondokoro-shigemi,Udondokoro Shigemi,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,うどん処 重己
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/oryori-amenimomakezu,Oryori Amenimomakezu,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,お料理 雨ニモマケズ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/izakaya-tokitame,Izakaya Tokitame,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,居酒屋 ときため
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/donostia-1193223,Donostia,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ドノスティア
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sobadokoro-toki,Sobadokoro Toki,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,そば處 とき
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/chukasoba-uemachi,Chukasoba Uemachi,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,中華そば うえまち
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/via-del-emme,via del emme,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ヴィア デル エンメ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/kushikatsu-gojoya,Kushikatsu Gojoya,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,串かつ 五條家
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/chukashunsai-morimoto,Chukashunsai Morimoto,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,中華旬彩 森本
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/tonkatsu-minato,Tonkatsu Minato,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,とんかつ みな斗
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/prestau,PRESTAU,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,プレスト
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/ueroku-wine,Ueroku wine,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,上六ワイン
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/oribe,Oribe,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,オリベ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/sakamoto-sushi,Sakamoto Sushi,Osaka,Japan,restaurant,,¥¥¥,,kyoto-osaka-2026,さか本 鮨
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/kamigata-rainbow,Kamigata Rainbow,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,上方レインボー
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/chukasoba-mugen,Chukasoba Mugen,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,中華そば 無限
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/au-soleil-couchant,au soleil couchant,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,オー ソレイユ クーシャン
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/osteria-la-cicerchia,Osteria La Cicerchia,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,オステリア・ラ・チチェルキア
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/mendokoro-subete,Mendokoro Subete,Osaka,Japan,restaurant,,¥,,kyoto-osaka-2026,麺処 全て
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/bistrot-neuf-1242628,bistrot neuf,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,ビストロ ヌフ
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/jibundoki,JIBUNDOKI,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,時分時
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/nikomi-kimura,Nikomi Kimura,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,にこみ 㐂むら
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/tori-yamaguchi,Tori Yamaguchi,Nara,Japan,restaurant,,¥¥,,nara-2026,鳥 やまぐち
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/osaka-region/osaka/restaurant/tempura-kozaki,Tempura Kozaki,Osaka,Japan,restaurant,,¥¥,,kyoto-osaka-2026,天ぷら こざき
+michelin-2026-japan,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/nara-region/nara/restaurant/pizzeria-trattoria-magazzino,PIZZERIA TRATTORIA MAGAZZINO,Nara,Japan,restaurant,,¥,,nara-2026,ピッツェリア トラットリア マガジーノ
