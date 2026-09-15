@@ -13,8 +13,11 @@
     "ingest:stage": "bun run scripts/ingest/stage.ts",
     "ingest:promote": "bun run scripts/ingest/promote.ts",
     "ingest:undo": "bun run scripts/ingest/undo.ts",
+    "rename:apply": "bun run scripts/rename/apply.ts",
+    "rename:undo": "bun run scripts/rename/undo.ts",
     "test:ingest": "bun test scripts/ingest/ingest.test.ts",
-    "typecheck:ingest": "tsc -p tsconfig.scripts.json",
+    "test:rename": "bun test scripts/rename/rename.test.ts",
+    "typecheck:scripts": "tsc -p tsconfig.scripts.json",
     "format": "prettier --write ."
   },
   "dependencies": {

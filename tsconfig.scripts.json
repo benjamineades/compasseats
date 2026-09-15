@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["scripts/ingest/**/*.ts"],
+  "include": ["scripts/ingest/**/*.ts", "scripts/rename/**/*.ts"],
   "compilerOptions": {
     "types": ["bun"],
     "lib": ["ES2022"],
