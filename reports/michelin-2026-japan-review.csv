@@ -1,0 +1,13 @@
+line,verdict,reason,source_id,year,rank,category,distinction,venue_name,city_label,country_label,resolved_city,candidates,decision
+9,review_venue,same_key_other_city,michelin,2026,,Three Stars,,Joël Robuchon,Tokyo,Japan,tokyo,"use:ve_273774c457 (Joel Robuchon, Las Vegas, active) | use:ve_3c0f9f5711 (Joël Robuchon, Hong Kong, active) | use:ve_4f6b137284 (Joël Robuchon, Paris, active)",
+109,review_venue,loose_key_candidate_in_city,michelin,2026,,One Star,,PRUNIER,Tokyo,Japan,tokyo,"use:ve_1b1f4550a4 (RESTAURANT PRUNIER, Tokyo, active)",
+132,review_venue,loose_key_candidate_in_city,michelin,2026,,One Star,,L'AFFINAGE,Tokyo,Japan,tokyo,"use:ve_a428f842ed (Restaurant L'affinage, Tokyo, active)",
+152,review_venue,same_key_other_city,michelin,2026,,One Star,,L'ATELIER de Joël Robuchon,Tokyo,Japan,tokyo,"use:ve_b3ccc90152 (L’Atelier de Joël Robuchon, Dubai, active) | use:ve_ca2f9feb82 (L’Atelier de Joël Robuchon, Miami, active) | use:ve_e6980b4433 (L'Atelier de Joël Robuchon, Taipei, active)",
+162,review_venue,loose_key_candidate_in_city,michelin,2026,,One Star,,NéMo,Tokyo,Japan,tokyo,"use:ve_5be55d7d5d (Restaurant NéMo, Tokyo, active)",
+170,review_venue,norm_key_too_short,michelin,2026,,One Star,,JO,Tokyo,Japan,tokyo,,
+207,review_venue,loose_key_candidate_in_city,michelin,2026,,One Star,,KOGA,Kyoto,Japan,kyoto,"use:ve_2074100447 (Restaurant KOGA, Kyoto, active)",
+278,review_venue,same_key_other_city,michelin,2026,,One Star,,Hoshino,Nara,Japan,nara,"use:ve_2c182623e2 (Hoshino, Tokyo, active)",
+328,review_venue,norm_key_too_short,michelin,2026,,One Star,,Ñ,Osaka,Japan,osaka,,
+386,review_venue,same_key_other_city,michelin,2026,,Bib Gourmand,,Hashimoto,Tokyo,Japan,tokyo,"use:ve_5b05e05457 (Hashimoto, Toronto, active)",
+478,review_venue,same_key_other_city,michelin,2026,,Bib Gourmand,,Tan,Kyoto,Japan,kyoto,"use:ve_52de4f5640 (Tan, Shanghai, active) | use:ve_eeb6efed57 (Tan, Beijing, active)",
+543,review_venue,norm_key_too_short,michelin,2026,,Bib Gourmand,,Az,Osaka,Japan,osaka,,
