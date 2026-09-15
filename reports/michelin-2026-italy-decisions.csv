@@ -1,7 +1,6 @@
 line,venue_name,city_label,proposed,decision,reason
 18,D'O,Cornaredo,use:ve_96a85fa596,use:ve_96a85fa596,Michelin Two Stars 2025 on the Milan row; Cornaredo is the commune, Milan is the nearest-big-city label the database kept
-69,Il Patio,Biella,city:ci_c3de45b159,city:use:ve_b449040cb4,city created 2026-09-15
-89,Il Ristorante di Guido da Costigliole,Santo Stefano Belbo,city:ci_4d4296de38,city:ci_4d4296de38,city created 2026-09-15
+69,Il Patio,Biella,city:ci_c3de45b159;use:ve_b449040cb4,city:ci_c3de45b159;use:ve_b449040cb4,moved from Pollone to Biella per Michelin's own page - same venue89,Il Ristorante di Guido da Costigliole,Santo Stefano Belbo,city:ci_4d4296de38,city:ci_4d4296de38,city created 2026-09-15
 90,Acqua,Olgiate Olona,city:ci_bc11c47d6f,city:ci_bc11c47d6f,city created 2026-09-15
 102,Olmo,Cornaredo,new,new,only candidate is Olmo in New York holding a Bib; different venue
 109,Anima,Milan,new,new,only candidate is ANIMA in Tuttlingen which already holds its own One Star 2026
@@ -22,5 +21,4 @@ line,venue_name,city_label,proposed,decision,reason
 395,La Pineta,Sant'Anna,city:ci_b7db01a012,city:ci_b7db01a012,city created 2026-09-15
 441,L'Ostreria Fratelli Pavesi,Podenzano,use:ve_153ba08994,use:ve_153ba08994,same city; Bib 2025 matches Bib 2026
 477,Foresta,Moena,use:ve_25b2909f17,use:ve_25b2909f17,same city; Bib 2025 matches Bib 2026
-538,Osteria Bartolini,Milano Marittima,city:ci_c7dc597f77,city:new,city created 2026-09-15
-597,La Torre One Fire,Annunziata,city:ci_96b18bbcb4,city:ci_96b18bbcb4,city created 2026-09-15
+538,Osteria Bartolini,Milano Marittima,city:ci_c7dc597f77;new,city:ci_c7dc597f77;new,third location - Bologna and Cesenatico matched their own venues597,La Torre One Fire,Annunziata,city:ci_96b18bbcb4,city:ci_96b18bbcb4,city created 2026-09-15
