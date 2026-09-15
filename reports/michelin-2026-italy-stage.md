@@ -1,6 +1,6 @@
 # Ingest stage - michelin-2026-italy
 
-Staged 2026-09-15T03:40:31.389Z. **Nothing has been promoted.** This run wrote to
+Staged 2026-09-15T03:46:53.221Z. **Nothing has been promoted.** This run wrote to
 `ingest_batches` and `ingest_rows` only; every live table is untouched.
 
 ## What came in
@@ -14,6 +14,7 @@ Staged 2026-09-15T03:40:31.389Z. **Nothing has been promoted.** This run wrote t
 | source(s) | michelin |
 | list year(s) | 2026 |
 | batch key check | batch_key column present and equal to "michelin-2026-italy" on every row |
+| re-stage | decisions re-applied to the existing batch; 25 decision(s) read |
 
 ## Columns
 
@@ -25,10 +26,9 @@ Population: all 633 data rows in the CSV. Grouping key: the row's verdict.
 
 | verdict | rows | what it means |
 |---|---|---|
-| match | 304 | venue already exists; promote adds the award |
-| new_venue | 303 | promote creates the venue, listing, slug, city labels and the award |
-| review_venue | 13 | more than one candidate, or a same-name venue elsewhere; no auto-merge |
-| review_city | 12 | the city could not be resolved to exactly one row |
+| new_venue | 316 | promote creates the venue, listing, slug, city labels and the award |
+| match | 314 | venue already exists; promote adds the award |
+| review_venue | 2 | more than one candidate, or a same-name venue elsewhere; no auto-merge |
 | duplicate | 1 | this exact award already exists; promote skips it |
 
 ## What promote would do to the live tables
@@ -37,15 +37,15 @@ Population: whole table. Read now, before anything was promoted.
 
 | table | before | expected after | delta |
 |---|---|---|---|
-| venues | 11,258 | 11,561 | +303 |
-| awards | 22,884 | 23,491 | +607 |
-| listings | 11,258 | 11,561 | +303 |
-| slugs | 11,515 | 11,818 | +303 |
-| city_label_source | 22,800 | 23,406 | +606 |
+| venues | 11,258 | 11,574 | +316 |
+| awards | 22,884 | 23,514 | +630 |
+| listings | 11,258 | 11,574 | +316 |
+| slugs | 11,515 | 11,831 | +316 |
+| city_label_source | 22,800 | 23,432 | +632 |
 | price | 7,091 | 7,091 | +0 |
 | source_capture_ledger | 14 | 16 | +2 |
 
-The venue delta is **303**, not the number of `new_venue` rows (303). Several award rows can name the same new venue - one venue row, one listing, one slug, several awards.
+The venue delta is **316**, not the number of `new_venue` rows (316). Several award rows can name the same new venue - one venue row, one listing, one slug, several awards.
 
 Open venues now: 10,878. Promote refuses to let that number drop.
 
@@ -53,7 +53,7 @@ Open venues now: 10,878. Promote refuses to let that number drop.
 
 | rows | reason |
 |---|---|
-| 607 | source michelin is not price_capable |
+| 630 | source michelin is not price_capable |
 
 > No source in `award_sources` has `price_capable = true` today, so the price
 > branch writes nothing for any batch. Flipping that flag for a publisher is a
@@ -76,7 +76,7 @@ Open venues now: 10,878. Promote refuses to let that number drop.
 
 ## Review
 
-**25 row(s) need a decision** before this batch can promote.
+**2 row(s) need a decision** before this batch can promote.
 
 Open `reports/michelin-2026-italy-review.csv` in Sheets, fill the `decision` column, save it as CSV,
 and re-run the stage workflow with the same batch key plus the decisions file.
@@ -91,15 +91,11 @@ and re-run the stage workflow with the same batch key plus the decisions file.
 
 | reason | rows |
 |---|---|
-| `city_not_found` | 11 |
-| `loose_key_candidate_in_city` | 8 |
-| `same_key_other_city` | 4 |
-| `country_label_disagrees` | 1 |
-| `norm_key_too_short` | 1 |
+| `same_key_other_city` | 2 |
 
 ## Next
 
-Clear the 25 review row(s) first. Promote refuses to run while any remain.
+Clear the 2 review row(s) first. Promote refuses to run while any remain.
 
 ## Timings
 
@@ -110,18 +106,18 @@ still says how far it got.
 | # | phase | took | elapsed | detail |
 |---|---|---|---|---|
 | 1 | read the CSV | 0.0s | 0.0s | 633 rows from fixtures/ingest/michelin-2026-italy.csv |
-| 2 | opened the database connection | 0.1s | 0.1s |  |
-| 3 | read the source vocabulary | 0.0s | 0.1s | 23 sources |
-| 4 | staged the raw rows | 0.1s | 0.2s | batch 4, 633 rows |
-| 5 | row checks | 0.0s | 0.2s | 633 of 633 rows still live |
-| 6 | loaded the live rows into the resolver | 0.0s | 0.2s | 633 rows |
-| 7 | normalised the batch | 0.0s | 0.2s | 633 rows, in the database |
-| 8 | loaded the candidate cities | 0.1s | 0.3s | 439 cities |
-| 9 | loaded the candidate venues | 0.0s | 0.3s | 329 venues |
-| 10 | resolved cities | 0.0s | 0.3s | 621 of 633 settled on one city |
-| 11 | resolved venues | 0.0s | 0.3s | 304 matched an existing venue |
-| 12 | loose-name pass | 0.0s | 0.3s | 312 would-be new venues checked, 8 sent to review |
-| 13 | dedupe, subsume and rank conflicts | 0.0s | 0.4s |  |
-| 14 | built the promote plan | 0.1s | 0.4s | 303 venues, 607 awards |
-| 15 | wrote the verdicts | 0.1s | 0.5s | 633 rows |
-| 16 | committed | 0.0s | 0.5s |  |
+| 2 | opened the database connection | 0.2s | 0.3s |  |
+| 3 | read the source vocabulary | 0.4s | 0.6s | 23 sources |
+| 4 | re-read the staged rows | 0.2s | 0.8s | batch 4, 633 rows |
+| 5 | row checks | 0.0s | 0.8s | 633 of 633 rows still live |
+| 6 | loaded the live rows into the resolver | 0.3s | 1.1s | 633 rows |
+| 7 | normalised the batch | 0.1s | 1.2s | 633 rows, in the database |
+| 8 | loaded the candidate cities | 0.2s | 1.4s | 451 cities |
+| 9 | loaded the candidate venues | 0.1s | 1.5s | 329 venues |
+| 10 | resolved cities | 0.0s | 1.6s | 633 of 633 settled on one city |
+| 11 | resolved venues | 0.1s | 1.7s | 304 matched an existing venue |
+| 12 | loose-name pass | 0.2s | 1.9s | 322 would-be new venues checked, 8 sent to review |
+| 13 | dedupe, subsume and rank conflicts | 0.2s | 2.1s |  |
+| 14 | built the promote plan | 0.3s | 2.4s | 316 venues, 630 awards |
+| 15 | wrote the verdicts | 0.5s | 2.9s | 633 rows |
+| 16 | committed | 0.1s | 3.0s |  |
