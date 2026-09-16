@@ -1,6 +1,6 @@
 # Merge design: France and Italy Michelin twins (Sep 15, 2026)
 
-Status: waiting for Ben's "go" for each batch. Written by the execution chat after the Fable ruling `fable-ruling-michelin-2025-label-2026-09-15.md` (Option B, merge).
+Status: both batches ran on Sep 15, 2026 (`merge-michelin-twins-fr`, ledger id 27; `merge-michelin-twins-it`, ledger id 28). The read-back counts agree with the table below. Ben chose "yes" for the Il Falconiere URL. Written by the execution chat after the Fable ruling `fable-ruling-michelin-2025-label-2026-09-15.md` (Option B, merge).
 
 ## Inputs
 
@@ -94,4 +94,4 @@ Arithmetic:
 
 - Read the counts back with the Read connection, and compare them with the table above.
 - Plan v1.22: record the Fable ruling, batches 4.1 to 4.4, and both merges.
-- Tell Fable: Italy had 256 name-rule pairs, not 89.
+- Correction (Sep 15): an earlier chat note said that the ruling counted 89 Italy name pairs. That was wrong. Ruling section 6.1 counts 256, the same as this design.
