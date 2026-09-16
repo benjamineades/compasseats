@@ -1,7 +1,6 @@
 # Ingest promote - michelin-2026-spain
 
-**Dry run - rolled back.** Everything below is what would have happened.
-The live tables are exactly as they were.
+Committed 2026-09-16T21:15:18.363Z. One transaction, all of it or none of it.
 
 ## Counts
 
