@@ -60,11 +60,11 @@
   <div class="eyebrow">Living doc · Architecture</div>
   <h1>Re-Architecture <em>&amp; Migration Plan</em></h1>
   <div class="meta">
-    <span class="m">Version <b>1.22</b></span>
+    <span class="m">Version <b>1.23</b></span>
     <span class="m">Updated <b>September 15, 2026</b></span>
-    <span class="m">Author <b>Claude Fable 5 · v1.21–1.22 updates by Claude Opus 5</b></span>
-    <span class="m">Status <b>Michelin 2026 under way · France, Italy and Japan promoted and cleaned · 2025 label ruled · Spain &amp; Andorra in Cowork</b></span>
-    <span class="m">Responds to <b>Fable ruling on the Michelin 2025 label (Sep 15) · retire batches 4.1–4.4 · France and Italy twin merges</b></span>
+    <span class="m">Author <b>Claude Fable 5 · v1.21–1.23 updates by Claude Opus 5</b></span>
+    <span class="m">Status <b>Michelin 2026 under way · France, Italy, Japan, Spain &amp; Andorra promoted and cleaned · Monaco next · Michelin history backfill proposed</b></span>
+    <span class="m">Responds to <b>michelin-2026-spain promoted Sep 16 · retire-michelin-legacy-es · Ben: keep history visible on the site</b></span>
   </div>
 
   <p class="lead">A phased plan to rebuild CompassEats, and later Compass Local, on a licence-compliant, automated foundation that one non-technical operator runs alone. It is a design, not code. Every phase names its model and surface, the decisions that need Ben's judgment, effort in Ben's hours, and its rollback position. The decision register in §1 is the work to finish before August 18.</p>
@@ -530,6 +530,88 @@
   </div>
 
   <div class="card">
+    <h3>Michelin 2026 — Spain &amp; Andorra promoted and cleaned in one day <span class="tag brass">Sep 16, 2026</span></h3>
+    <p><strong>The capture.</strong> Cowork read <code>selection/spain</code> and <code>selection/andorra</code>. It found <strong>493 rows</strong>: Spain 16 / 37 / 245 / 194 and Andorra one One Star (Ibaya). That is −18 (−3.5%) against the 511 announced at the Málaga gala. All of the difference is in One Star and Bib, and every category equals the live site banner, so the list really shrank since November 2025. The capture also confirmed on Michelin's site the four special awards (held) and Green Star 59 (held). Files: <code>fixtures/ingest/michelin-2026-spain.csv</code> and <code>reports/michelin-2026-spain-decisions.csv</code>.</p>
+    <p><strong>Cities.</strong> 273 of the 277 town labels already resolved to one Spanish or Andorran city, so the "nearest big city" fear did not apply to Spain. Four cities were added (<code>cities-es</code>): Carcaixent, Fisterra, Sant Martí Sarroca and Xerta; cities went from 3,237 to 3,241. The <code>cities</code> table has its own audit trigger, so the four hand-written audit rows (ids 100349–100352) are copies. They are kept.</p>
+    <p><strong>The match test, from the ruling's rules.</strong> The first stage gave 189 match, 263 new_venue and 41 review. Without the decisions file, about 255 duplicate venues would have been made. The decisions file has 304 rows:</p>
+    <ul>
+      <li>268 unique same-city, same-latest-category name pairs;</li>
+      <li>28 hand-checked pairs, including 5 by elimination (medium);</li>
+      <li>8 <code>new</code> venues.</li>
+    </ul>
+    <p>Before the restage, the file was checked against the staged rows: the checksum matched, no venue was used twice, and there were no unexpected cities or categories. The restage gave <strong>485 match, 8 new, 0 review</strong>.</p>
+    <p><strong>Findings.</strong></p>
+    <ul>
+      <li>The ruling's premise that Ramón Freixa Atelier had no legacy row was wrong. A same-name venue held a Two Stars row, so the row was paired.</li>
+      <li>One legacy venue, "El Molino de Urdániz y Origen", mixed the Two Stars Molino with the Origen Bib. Molino kept the venue (with its La Liste and Best Chef rows), and Origen became a new venue.</li>
+      <li>The real Molino Two Stars legacy row was misfiled on a venue in <strong>Taipei</strong> (<code>ve_46199fee65</code>, city labels "Taipei" and "Taiwan"). This is the first proof that the Sheet has cross-country misfiles.</li>
+      <li>ARREA! and Chispa Bistró matched existing venues that had no Michelin row. La Finca matched a venue filed under the city <code>elx</code>, a second city row for Elche.</li>
+    </ul>
+    <p><strong>Promote</strong> (batch id 6, Sep 16): venues 11,034 → 11,042, awards 21,964 → 22,457, Michelin 2026 rows 3,216 → 3,709, city labels +16, ledger ids 31 and 32. All promote invariants passed.</p>
+    <p><strong>Retire</strong> (<code>retire-michelin-legacy-es</code>, ledger id 33, items 480), in one transaction:</p>
+    <ul>
+      <li>478 same-category legacy rows (Spain 477, Andorra 1);</li>
+      <li>the mixed venue's old Bib row (12775);</li>
+      <li>the Taipei duplicate: award 3257, plus the venue with its listing, slug, two wrong city labels (hand audit) and price row;</li>
+      <li>5 venues marked closed but listed by Michelin set back to active (Ancils, Beat, Casa Marco, Ibaya, La Taberna de Mike Palmer).</li>
+    </ul>
+    <p>Six Spanish legacy rows stay on venues with no 2026 row. These are live-list drops: Ricardo Sanz Wellington, Santerra, Simpar, La cuchara de Ruba, Arrieros and El Chiringuito.</p>
+
+    <div class="flag"><p><b>Cleanup list, added by Spain.</b></p>
+    <ul>
+      <li><strong>Duplicate city rows</strong> for Elche and Elx.</li>
+      <li><strong>The OAD 2025 #30 row</strong> on L'Hostal de Ca l'Enric (Bib) may belong to Ca l'Enric (the new One Star venue).</li>
+      <li><strong>A cross-country misfile check</strong> for every remaining guide: look for legacy venues whose name key equals a venue with a sourced row in another country (the Taipei case).</li>
+      <li><strong>Rename candidates</strong> from the Spain decisions file: address names ("Av. de San Sebastián, 57", "Carrer de la Pau"), junk names ("Pamplona", "Marbella"), and Google-style names.</li>
+    </ul></div>
+
+    <p><strong>Live counts at this version</strong> (population: whole table; read Sep 16 after the retire batch): venues 11,041 (active 10,678) · awards 21,977 · Michelin 2025 rows 4,519 · Michelin 2026 rows 3,709 · listings 11,041 · slugs 11,854 · cities 3,241 · <code>city_label_source</code> 23,478 · price 7,090 · <code>source_capture_ledger</code> 27 · <code>ingest_batches</code> 5, all promoted. Legacy Michelin 2025 rows left on the cleaned guides: France 20 · Italy 4 · Japan 11 · Spain 6.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>Monaco batch timing; the Elche/Elx merge</div>
+      <div class="pm"><b>Model &amp; surface</b>Cowork captured; the chat ran the match test, city inserts and retire batch through Supabase; Ben uploaded files and pressed the stage and promote buttons</div>
+      <div class="pm"><b>Rollback</b><code>UNDO michelin-2026-spain</code> works for the promote until later batches touch those rows; <code>audit_log</code> covers the retire batch</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Work item — Michelin history backfill (past editions) <span class="tag brass">Proposed Sep 16, 2026</span></h3>
+    <p><strong>Why.</strong> Ben wants the site to show both the latest distinction and its history (for example, "★★ Michelin 2026", with "★ 2023–2025" when a visitor expands the entry). The design system already shows every year per source, newest first. Other sources already carry real history: World's 50 Best Restaurants 2002–2025, World's 50 Best Bars 2009–2025, James Beard 2016–2026, and Gault&amp;Millau 2018–2026. 3,485 venues have awards from more than one year. <strong>Michelin does not.</strong> The legacy "2025" rows were a 2026 snapshot (Fable ruling), so for France, Italy, Japan and Spain the database now holds only the 2026 edition. There was no true Michelin history to keep, so this is new capture, not a restore.</p>
+    <p><strong>Rules</strong> (these follow the ruling):</p>
+    <ol>
+      <li>Every backfilled row is one guide edition, with <code>year</code> = the edition year and a <code>source_url</code> that shows that edition's selection.</li>
+      <li><strong>No inference.</strong> Never write a row because a venue "must have held" a star between two known years. A gap stays a gap.</li>
+      <li>Backfilled rows have a URL, so the retire rule never removes them. Where a real 2025 edition is backfilled, the remaining legacy "2025" rows on that guide get a sourced twin and retire by rule 2.</li>
+      <li>A "since" line on the site comes only from sourced, unbroken edition years.</li>
+      <li>The same ingest job, the same match test and the same gates as the 2026 guides. Batch keys follow the pattern <code>michelin-2025-france</code>.</li>
+    </ol>
+    <p><strong>Candidate sources, best first.</strong> Every one of them needs a test before it is trusted.</p>
+    <ul>
+      <li>Michelin's own full-selection press kits or list articles for each edition.</li>
+      <li>Archived snapshots of <code>guide.michelin.com/…/selection/&lt;country&gt;/…</code> pages, dated inside the edition window. The archive URL is the row's source.</li>
+      <li>Michelin ceremony articles. These list only the new and promoted venues, so they add rows only for those venues and never fill a whole edition.</li>
+    </ul>
+    <p>Competitor sites are never a source.</p>
+    <p><strong>Size estimate</strong> (population: rows per edition, taken from the 2026 batch sizes; real edition sizes vary by a few percent):</p>
+    <table>
+      <tr><th>Guide</th><th>Rows per edition (2026)</th><th>5 editions (2021–2025)</th><th>Batches</th></tr>
+      <tr><td>France (+ Monaco)</td><td>1,070 (+ ~9)</td><td>~5,400</td><td>5 (+5 small)</td></tr>
+      <tr><td>Italy</td><td>632</td><td>~3,200</td><td>5</td></tr>
+      <tr><td>Japan (Tokyo, Kyoto-Osaka, Nara)</td><td>585</td><td>~2,900</td><td>up to 15; the three guides have their own, sometimes irregular, edition dates</td></tr>
+      <tr><td>Spain &amp; Andorra</td><td>493</td><td>~2,500</td><td>5</td></tr>
+      <tr><td><strong>Total, four guides</strong></td><td><strong>~2,790</strong></td><td><strong>~14,000</strong></td><td><strong>~25–30</strong></td></tr>
+    </table>
+    <p>The other Michelin guides in the database get their own 2026 batches first. They are counted when the backfill reaches them.</p>
+    <p><strong>Step one — a feasibility pilot (one Cowork session, read-only).</strong> For France 2025 and Spain 2025, find out which candidate source gives a complete, dated, per-venue list, and record the URLs and the row counts against the published edition totals. The decision gate is Ben's: go, change the source, or park the item.</p>
+    <p><strong>Order.</strong> The pilot can run at any time. Full batches come after every guide has its 2026 batch, so that every venue exists and the match test is mostly exact. They must also come before the publish builder shows Michelin "since" lines.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>How many years back (5 is the estimate); pilot timing</div>
+      <div class="pm"><b>Decisions needing Fable</b>Which source types count as a per-edition source, after the pilot</div>
+      <div class="pm"><b>Model &amp; surface</b>Cowork + Chrome for the captures; the chat runs the match test and gates; the ingest job does the writes</div>
+      <div class="pm"><b>Rollback</b><code>UNDO michelin-&lt;year&gt;-&lt;guide&gt;</code> for each batch</div>
+    </div>
+  </div>
+
+  <div class="card">
     <h3>Phase 3 — Geo &amp; price resolution program <span class="tag brass">Aug 15 → rolling</span></h3>
     <p><strong>Produces:</strong> the open-data pass complete; auto-accepts promoted; the residual quantified per market (which finally sizes the legal-dependent module precisely); the review-queue loop live in Ben's 15-minute format; the venue-website channel live, reading address and price in one visit; the ingest backlog named — Tabelog (Q4-gated, early September), Africa's 50 Best, and the upper bands of four 50 Best lists whose parents hold ranks 1–50 only (World's Restaurants, North America Restaurants, MENA Restaurants, Europe Bars — Award Radar confirms each publisher issues an upper band before ingest); natively long lists (OAD to 673, Top 500 Bars, 101 Best Steakhouses) raise no convention question; plus two Award Radar checks: Asia restaurants 51–100 has no 2022 rows under any slug, and <strong>Asia's 50 Best Bars 2026 is absent entirely — no rows at any rank</strong>; precision tiers populated for every venue and price tiers wherever a confirmed source exists.</p>
     <p><strong>Hard checkpoint, now numeric (per the Aug 11 review):</strong> when the full open-data pass completes, the residual channels are re-planned before any Phase 4 design work if the measured residual exceeds <strong>4,000</strong> (the sample-basis 95% upper bound) or the Japan residual exceeds <strong>1,000</strong>. Undershoot triggers nothing — the live-mix reweighting predicts a landing below 3,300.</p>
@@ -634,6 +716,7 @@
       <tr><td>1.20</td><td>September 15, 2026</td><td>Rename job delivered (PR #6): fourth and fifth Actions buttons, migration 4 (rename_batches, rename_rows), 24 tests green, the only setter of app.allow_rename and only with SET LOCAL. Two deviations accepted: source_id "venue" writes no ledger row; the collision check measures the batch's end state. Three naming rulings recorded (no publisher suffix; never auto-cut a dash; majority wins across publishers). Ruling 3 found uncomputable today — all 118 non-Michelin awards on the 50 affected venues are legacy rows with no source_url, so no majority vote exists anywhere; legacy source_url backfill added to the cleanup list. 269 French names corrected in two reversible batches (252 + 17); the pool was 281, not the 159 previously recorded. Native-script rule adopted after Impérial Choisy: a dropped script moves to name_native first. Italy promoted: 633 rows, 317 new venues / 315 match / 1 duplicate / 0 review, every invariant passing (venues 11,258 → 11,575, awards 22,884 → 23,516, active 10,878 → 11,195). Twelve Italian cities created (3,225 → 3,237), including malfa-it against an existing Swedish row wrongly slugged malfa. Only 25 rows needed decisions, settled in chat rather than a decisions session. Two process lessons: quote the reason column in decisions files; the job states the counts, the chat does not.</td></tr>
       <tr><td>1.21</td><td>September 15, 2026</td><td>Japan promoted (batch id 5): 585 rows (20 / 61 / 276 / 228), all with source_url; first stage 421 match / 152 new / 12 review corrected by the decisions file to 570 match / 15 new, avoiding ~150 duplicate venues (venues 11,575 → 11,590, awards 23,516 → 24,101, no city created). Match test adopted as a standing pre- and post-stage step: norm_key copied to Python (1,111 of 1,112 agree), non-match rows read from ingest_rows, paired by city and 2025 category, use: decisions applied to new_venue rows too; a stage-report PR proposed, not ratified. Batch rulings recorded (Sukiyabashi Jiro and DIALOGUE new; two Nara matches by elimination flagged). Monaco gap recorded (8 rows 2025, 0 rows 2026) with a small Monaco batch named. Legacy 2025 Michelin label raised for a Fable ruling: FR 697/701, IT 310/311, JP 567/568 pairs unchanged, the same pattern in the 928 legacy 2026 rows, 2,302 venues with identical pairs. Japan cleanup items and special-award sizing added; Spain &amp; Andorra named as the next guide with published counts. Base file correction: the upload labelled v1.20 was v1.19; this version builds on the Project Knowledge v1.20.</td></tr>
       <tr><td>1.22</td><td>September 15, 2026</td><td>Fable ruling on the Michelin 2025 label recorded: capture label (May 13 to June 1, 2026 window; Nara in, Nordic and Germany out; L'Ambroisie and Kohaku stale); sourced row wins; per-guide gated retire; relabel only after a three-promotion test; never relabel a venue with an older 2026 row; "Current" imports carry a capture date. Retire batches ran: JP 567, FR 697, IT 310, mismatch 6 (ledger 23 to 26). France and Italy twin finding recorded; pairing files approved (FR 260 merges incl. La Voile keep-twin, IT 296) and both merges ran (ledger 27, 28): awards 24,101 to 21,964, venues 11,590 to 11,034, 813 non-canonical slugs, 12 venues reactivated, Il Falconiere moved to Cortona, La Torre stale Bib deleted; France and Italy undo no longer available. Two publish-builder invariants added. Cleanup items added (Le Calandre Cyrillic name and slug, wrong canonical slugs, 555 Google-style survivor names, empty San Martino, stale venues_count). Spain brief rules added from the ruling. Correction: the ruling counted 256 Italy name pairs, not 89.</td></tr>
+      <tr><td>1.23</td><td>September 16, 2026</td><td>Spain &amp; Andorra promoted (batch id 6): 493 rows (16 / 37 / 245 / 194 + Andorra 1), −18 against the gala; 4 cities added (cities 3,237 → 3,241; duplicate audit rows noted); match test: first stage 189 / 263 / 41, decisions file 304 rows (268 name pairs, 28 by hand, 8 new), restage 485 / 8 / 0; promote passed (venues 11,042, awards 22,457, Michelin 2026 rows 3,709). Retire batch <code>retire-michelin-legacy-es</code> (ledger 33): 478 same-category rows, 1 mixed-venue Bib, the Taipei misfile of Molino de Urdániz (award 3257 plus the venue), and 5 venues reactivated; awards → 21,977, venues → 11,041. Findings: the ruling's Ramón Freixa premise was wrong; the Sheet has cross-country misfiles; Elche and Elx are duplicate cities. New work item: Michelin history backfill (rules, sources, ~14,000 rows over 5 editions for four guides, pilot first), from Ben's wish to show history alongside the latest distinction.</td></tr>
     </table>
   </div>
   <footer>CompassEats · Re-Architecture &amp; Migration Plan · v1.0 — Aug 10, 2026<br>Save to <code>docs/</code> in the repo and re-upload to Project Knowledge after ratification. Update version + date on any change.</footer>
