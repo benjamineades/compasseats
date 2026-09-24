@@ -1,0 +1,10 @@
+batch_key,source_id,year,rank,category,distinction,source_url,venue_name,city_label,country_label,venue_category,venue_status,price_symbol_raw,note
+michelin-2026-monaco,michelin,2026,,Three Stars,,https://guide.michelin.com/us/en/monaco-region/monaco/restaurant/le-louis-xv-alain-ducasse-a-l-hotel-de-paris,Le Louis XV - Alain Ducasse à l'Hôtel de Paris,Monaco,Monaco,restaurant,,€€€€,
+michelin-2026-monaco,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/monaco-region/monaco/restaurant/les-ambassadeurs-by-christophe-cussac,Les Ambassadeurs by Christophe Cussac,Monaco,Monaco,restaurant,,€€€€,
+michelin-2026-monaco,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/monaco-region/monaco/restaurant/l-abysse-monte-carlo,L'Abysse Monte-Carlo,Monaco,Monaco,restaurant,,€€€€,
+michelin-2026-monaco,michelin,2026,,Two Stars,,https://guide.michelin.com/us/en/monaco-region/monaco/restaurant/blue-bay-marcel-ravin,Blue Bay Marcel Ravin,Monaco,Monaco,restaurant,,€€€€,
+michelin-2026-monaco,michelin,2026,,One Star,,https://guide.michelin.com/us/en/monaco-region/monaco/restaurant/la-table-d-antonio-salvatore-au-rampoldi,La Table d'Antonio Salvatore au Rampoldi,Monaco,Monaco,restaurant,,€€€€,
+michelin-2026-monaco,michelin,2026,,One Star,,https://guide.michelin.com/us/en/monaco-region/monaco/restaurant/le-grill9786,Le Grill,Monaco,Monaco,restaurant,,€€€€,
+michelin-2026-monaco,michelin,2026,,One Star,,https://guide.michelin.com/us/en/monaco-region/monaco/restaurant/robuchon-monaco,Robuchon Monaco,Monaco,Monaco,restaurant,,€€€€,
+michelin-2026-monaco,michelin,2026,,One Star,,https://guide.michelin.com/us/en/monaco-region/monaco/restaurant/elsa-marcel-ravin,Elsa Marcel Ravin,Monaco,Monaco,restaurant,,€€€€,
+michelin-2026-monaco,michelin,2026,,One Star,,https://guide.michelin.com/us/en/monaco-region/monaco/restaurant/pavyllon-monte-carlo,"Pavyllon Monte-Carlo, un restaurant de Yannick Alléno",Monaco,Monaco,restaurant,,€€€€,
