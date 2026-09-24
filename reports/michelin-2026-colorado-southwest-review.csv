@@ -1,0 +1,3 @@
+line,verdict,reason,source_id,year,rank,category,distinction,venue_name,city_label,country_label,resolved_city,candidates,decision
+25,review_venue,same_key_other_city,michelin,2026,,One Star,,Monte,South Salt Lake,United States,south-salt-lake,"use:ve_82320b2e5b (Monte, Rovinj, active) | use:ve_b27d3734b7 (Monte, San Feliz, active)",
+39,review_venue,same_key_other_city,michelin,2026,,Bib Gourmand,,Pizzeria Bianco,Phoenix,United States,phoenix,"use:ve_7d05978122 (Pizzeria Bianco, Los Angeles, active)",
