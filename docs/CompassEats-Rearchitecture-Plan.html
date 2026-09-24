@@ -60,11 +60,11 @@
   <div class="eyebrow">Living doc · Architecture</div>
   <h1>Re-Architecture <em>&amp; Migration Plan</em></h1>
   <div class="meta">
-    <span class="m">Version <b>1.23</b></span>
-    <span class="m">Updated <b>September 15, 2026</b></span>
-    <span class="m">Author <b>Claude Fable 5 · v1.21–1.23 updates by Claude Opus 5</b></span>
-    <span class="m">Status <b>Michelin 2026 under way · France, Italy, Japan, Spain &amp; Andorra promoted and cleaned · Monaco next · Michelin history backfill proposed</b></span>
-    <span class="m">Responds to <b>michelin-2026-spain promoted Sep 16 · retire-michelin-legacy-es · Ben: keep history visible on the site</b></span>
+    <span class="m">Version <b>1.25</b></span>
+    <span class="m">Updated <b>September 24, 2026</b></span>
+    <span class="m">Author <b>Claude Fable 5 · v1.21–1.24 updates by Claude Opus 5 · v1.25 by Claude Opus 5.5</b></span>
+    <span class="m">Status <b>Michelin 2026 under way · France, Italy, Japan, Spain &amp; Andorra, Monaco promoted and cleaned · USA (Colorado + Southwest) next · Michelin history backfill approved, after launch</b></span>
+    <span class="m">Responds to <b>michelin-2026-monaco promoted · retire-michelin-legacy-mc · handoff Sep 24</b></span>
   </div>
 
   <p class="lead">A phased plan to rebuild CompassEats, and later Compass Local, on a licence-compliant, automated foundation that one non-technical operator runs alone. It is a design, not code. Every phase names its model and surface, the decisions that need Ben's judgment, effort in Ben's hours, and its rollback position. The decision register in §1 is the work to finish before August 18.</p>
@@ -574,7 +574,60 @@
   </div>
 
   <div class="card">
-    <h3>Work item — Michelin history backfill (past editions) <span class="tag brass">Proposed Sep 16, 2026</span></h3>
+    <h3>Michelin 2026 — Monaco promoted and cleaned <span class="tag brass">Sep 2026 · recorded Sep 24</span></h3>
+    <p><strong>The capture.</strong> Opus in Cowork read the Monaco selection: <strong>9 rows</strong>, Three Stars 1 / Two Stars 3 / One Star 5 / Bib 0. Each category equals the site banner. Both SHA-256 values were identical, and no card was held out. Files: <code>fixtures/ingest/michelin-2026-monaco.csv</code> and <code>reports/michelin-2026-monaco-decisions.csv</code>; the stage and promote reports are in <code>reports/</code>.</p>
+    <p><strong>Country slug.</strong> Michelin's slug for Monaco is <code>principality-of-monaco</code>. The slug <code>monaco</code> returns the empty-result page, and the destination box has no Monaco country row. Cowork confirmed the slug from Michelin's own country map (<code>"mc":{"cname":"principality-of-monaco"}</code>). Future Monaco briefs must carry this slug.</p>
+    <p><strong>City.</strong> All 9 rows print <code>Monaco</code> and resolve to <code>ci_77f09e1229</code>. No city was added.</p>
+    <p><strong>Hold register.</strong> No Green Star in Monaco (Cowork scanned all 16 venue pages for <code>data-green-star="true"</code>). No special award went to a Monaco venue. Marco Tognon (manager, Les Ambassadeurs) has a mention in the Service Award section, but he is not one of the four award winners.</p>
+    <p><strong>Match test.</strong> Prediction and first stage agreed: 8 match, 1 new, 0 review. The decisions file has one row: line 5 → <code>use:ve_abd09cb984</code>. The restage gave <strong>9 match, 0 new, 0 review</strong>. The cross-country misfile check (whole <code>venues</code> table, on the 9 name keys and on name fragments) found no misfile. That query is the model for every later guide.</p>
+    <ul>
+      <li><strong>Line 5 → <code>ve_abd09cb984</code></strong> ("R - La Table d'Antonio Salvatore"): same city, same latest category (One Star), the only free One Star venue after the exact matches, and unique in both directions. The Michelin card name, "La Table d'Antonio Salvatore au Rampoldi", goes on the rename CSV.</li>
+      <li><strong>The third Two Stars is a database gap, not a Michelin change.</strong> Blue Bay Marcel Ravin (<code>ve_5f2aaf2e90</code>) matched exactly but has no Michelin 2025 row (only La Liste 2026). The press release names no new Two Stars in Monaco for 2026. The 2025 row is not added now. It goes to the history backfill.</li>
+    </ul>
+    <p><strong>Promote</strong> (batch id 7, ledger id 35): first a dry run (all 11 invariants passed, rolled back, ledger id 34 used by the dry run), then the real run. Michelin 2026 rows 3,709 → 3,718. No venue and no city was created.</p>
+    <p><strong>Retire</strong> (<code>retire-michelin-legacy-mc</code>, ledger id 36): 8 same-category legacy rows (award ids 679, 2544, 2545, 6573, 6574, 6575, 6576, 6577). 0 category mismatches, 0 misfiles, 0 status fixes. Michelin 2025 rows 4,519 → 4,511. Monaco now holds 0 legacy rows. France is complete with Monaco.</p>
+    <p><strong>Method notes carried forward.</strong></p>
+    <ul>
+      <li><strong>Small captures:</strong> Opus in Cowork is enough when the capture is small and the brief gives every selector. The match test, the pairs and the names stay in the chat.</li>
+      <li><strong>The promote button has a Dry run box.</strong> It starts unticked. A dry run writes <code>reports/&lt;key&gt;-promote.md</code> with "Dry run – rolled back" and uses one ledger id.</li>
+      <li><strong>Audit triggers:</strong> <code>awards</code>, <code>venues</code> and <code>cities</code> have <code>audit_row()</code> triggers. Do not write audit rows by hand for them. <code>city_label_source</code> and <code>source_capture_ledger</code> have no trigger. Read triggers from <code>pg_trigger</code>; <code>information_schema.triggers</code> shows nothing through the Read connector.</li>
+      <li><strong>Schema facts:</strong> <code>venues</code> has no country column (join through <code>venues.city_id</code> to <code>cities.country</code> and <code>country_iso</code>). <code>cities</code> has no <code>city_aliases</code> column; find where aliases live before the next simulation. <code>audit_log</code> columns: <code>id, table_name, row_pk, action, old_row, new_row, at</code>.</li>
+      <li><strong>Cleanup batch shape:</strong> one <code>DO $$ … $$</code> block that deletes by id, checks <code>ROW_COUNT</code>, raises an exception on a wrong count, and inserts one ledger row with job <code>retire:&lt;batch key&gt;</code>.</li>
+    </ul>
+
+    <div class="flag"><p><b>Next guide, from the gap list: #5 USA (remaining regions).</b> Population: Michelin rows on venues whose city has <code>country_iso</code> US, read Sep 24. The US holds <strong>686 Michelin 2025 rows and 274 Michelin 2026 rows</strong>. All 274 are older 2026 rows with no URL (California and Florida). 442 of the 2025 rows are in 57 US cities that have no 2026 row.</p>
+    <p>Most remaining US guides have <strong>no 2026 edition yet</strong>. The batch brief's rule applies: do not substitute the 2025 list; move on.</p>
+    <table>
+      <tr><th>US guide</th><th>2026 edition</th><th>Legacy rows (2025 / 2026)</th></tr>
+      <tr><td>Northeast Cities (New York, Chicago, Washington, Boston, Philadelphia)</td><td>Ceremony Dec 14, 2026 — not out</td><td>New York alone 150 / 0; Chicago 52 / 0; Washington 50 / 0</td></tr>
+      <tr><td>American South (includes Atlanta)</td><td>Ceremony Oct 21, 2026 — not out</td><td>Atlanta 17 / 0; New Orleans 14 / 0; Nashville 10 / 0</td></tr>
+      <tr><td>Texas</td><td>Press release Oct 8, 2026 — not out</td><td>Austin 20 / 0; Houston 20 / 0</td></tr>
+      <tr><td><strong>Colorado</strong> (statewide from 2026)</td><td><strong>Out, September 2026</strong></td><td><strong>19 / 0</strong> (Denver 15, Boulder 3, Aspen 1; Two Stars 1 / One Star 8 / Bib 10)</td></tr>
+      <tr><td><strong>Southwest</strong> (Arizona, Nevada, New Mexico, Utah; new guide)</td><td><strong>Out, late August 2026</strong></td><td><strong>0 / 0</strong></td></tr>
+    </table>
+    <p><strong>So the next batch is <code>michelin-2026-colorado-southwest</code></strong>: two small guides, 46 rows expected from Michelin's press releases (Colorado 0 / 1 / 9 / 13 = 23; Southwest 0 / 1 / 4 / 18 = 23). Both ceremonies came after June 1, 2026, so both use "Mindful Voices" (Colorado 3, Southwest 2), not Green Star. Mindful Voices and the special awards (4 each) go to the hold register. Brief: <code>cowork-michelin-2026-colorado-southwest.md</code>. After it: #6 China mainland (382 / 0) and #7 Great Britain &amp; Ireland (391 / 0). The three unpublished US guides get their own batches after their dates.</p>
+    <p><strong>A ruling question for the cleanup after this batch.</strong> Colorado's legacy rows are the <strong>real 2025 edition</strong>, not a 2026 snapshot: Colorado 2025 was published in September 2025, before the May 13 to June 1, 2026 capture window, and the legacy rows do not hold Milpero (new One Star 2026) or the three new 2026 Bibs. This is the "Nordic and Germany" case of the ruling (§1.6), where 2025 and 2026 rows are real history. A literal retire under rule 2.1.1 would delete that history. The chat's recommendation, not a ruling: keep the 19 Colorado legacy rows as 2025 history, and retire only rows that the promote proves wrong. The same question comes back for Northeast Cities, American South and Texas.</p></div>
+
+    <p><strong>Order of the remaining work</strong> (replaces the list in the ruling card):</p>
+    <ol>
+      <li>Michelin 2026 Colorado + Southwest: promote, then the cleanup decided by the ruling question above.</li>
+      <li>China mainland, then Great Britain &amp; Ireland, then the rest of the gap list, each promote then cleanup. The cross-country misfile check runs in every match test.</li>
+      <li>Northeast Cities, American South and Texas after their 2026 dates (Oct 8, Oct 21, Dec 14).</li>
+      <li>Rename CSV: the Spain items plus <code>ve_abd09cb984</code>.</li>
+      <li>Slug decisions: <code>padua/le-calandr</code>, <code>ragusa/duomo-di-milano</code>, <code>paris/paris-wr4tla</code>, and the street-address slugs.</li>
+      <li>Special-awards batch, after the vocabulary is fixed. Monaco adds nothing.</li>
+    </ol>
+    <p><strong>Live counts at this version</strong> (population: whole table; read Sep 24 with the Read connector): venues 11,041 (active 10,678) · awards 21,978 · Michelin 2025 rows 4,511 · Michelin 2026 rows 3,718 · listings 11,041 · slugs 11,854 · cities 3,241 · <code>city_label_source</code> 23,478 · price 7,090 · <code>source_capture_ledger</code> 29 (last id 36) · <code>ingest_batches</code> 6, all promoted. Legacy Michelin 2025 rows left on the cleaned guides: France 20 · Italy 4 · Japan 11 · Spain 6 · Monaco 0.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>Run Colorado + Southwest now, or skip to China; the Elche/Elx merge</div>
+      <div class="pm"><b>Decisions needing Fable</b>Keep or retire legacy rows on guides whose legacy rows are the real 2025 edition (Colorado first)</div>
+      <div class="pm"><b>Model &amp; surface</b>Opus in Cowork captured; the chat ran the match test and the retire batch through Supabase; Ben uploaded files and pressed the stage and promote buttons</div>
+      <div class="pm"><b>Rollback</b><code>UNDO michelin-2026-monaco</code> works for the promote until later batches touch those rows; <code>audit_log</code> covers the retire batch</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Work item — Michelin history backfill (past editions) <span class="tag brass">Approved Sep 16, 2026 · starts after launch</span></h3>
     <p><strong>Why.</strong> Ben wants the site to show both the latest distinction and its history (for example, "★★ Michelin 2026", with "★ 2023–2025" when a visitor expands the entry). The design system already shows every year per source, newest first. Other sources already carry real history: World's 50 Best Restaurants 2002–2025, World's 50 Best Bars 2009–2025, James Beard 2016–2026, and Gault&amp;Millau 2018–2026. 3,485 venues have awards from more than one year. <strong>Michelin does not.</strong> The legacy "2025" rows were a 2026 snapshot (Fable ruling), so for France, Italy, Japan and Spain the database now holds only the 2026 edition. There was no true Michelin history to keep, so this is new capture, not a restore.</p>
     <p><strong>Rules</strong> (these follow the ruling):</p>
     <ol>
@@ -591,20 +644,28 @@
       <li>Michelin ceremony articles. These list only the new and promoted venues, so they add rows only for those venues and never fill a whole edition.</li>
     </ul>
     <p>Competitor sites are never a source.</p>
-    <p><strong>Size estimate</strong> (population: rows per edition, taken from the 2026 batch sizes; real edition sizes vary by a few percent):</p>
+    <div class="flag"><p><b>Ben's decisions (Sep 16).</b></p>
+    <ol>
+      <li><strong>Target range: back to 2018</strong>, the same start as James Beard (2016) and Gault&amp;Millau (2018) in the database.</li>
+      <li><strong>Fallback: 5 editions (2021–2025)</strong>, if the pilot shows that 2018 makes the job too large.</li>
+      <li><strong>Timing: the pilot runs after the migration is complete and the site is up and running.</strong> No backfill work starts before then.</li>
+    </ol></div>
+    <p><strong>Size estimate</strong> (population: rows per edition, taken from the 2026 batch sizes. Real edition sizes vary, and earlier editions were generally smaller, so these are upper estimates):</p>
     <table>
-      <tr><th>Guide</th><th>Rows per edition (2026)</th><th>5 editions (2021–2025)</th><th>Batches</th></tr>
-      <tr><td>France (+ Monaco)</td><td>1,070 (+ ~9)</td><td>~5,400</td><td>5 (+5 small)</td></tr>
-      <tr><td>Italy</td><td>632</td><td>~3,200</td><td>5</td></tr>
-      <tr><td>Japan (Tokyo, Kyoto-Osaka, Nara)</td><td>585</td><td>~2,900</td><td>up to 15; the three guides have their own, sometimes irregular, edition dates</td></tr>
-      <tr><td>Spain &amp; Andorra</td><td>493</td><td>~2,500</td><td>5</td></tr>
-      <tr><td><strong>Total, four guides</strong></td><td><strong>~2,790</strong></td><td><strong>~14,000</strong></td><td><strong>~25–30</strong></td></tr>
+      <tr><th>Guide</th><th>Rows per edition (2026)</th><th>Target: 8 editions (2018–2025)</th><th>Fallback: 5 editions (2021–2025)</th></tr>
+      <tr><td>France (+ Monaco)</td><td>1,070 (+ ~9)</td><td>~8,600</td><td>~5,400</td></tr>
+      <tr><td>Italy</td><td>632</td><td>~5,100</td><td>~3,200</td></tr>
+      <tr><td>Japan (Tokyo, Kyoto-Osaka, Nara)</td><td>585</td><td>~4,700</td><td>~2,900</td></tr>
+      <tr><td>Spain &amp; Andorra</td><td>493</td><td>~3,900</td><td>~2,500</td></tr>
+      <tr><td><strong>Total, four guides</strong></td><td><strong>~2,790</strong></td><td><strong>~22,300 rows · ~40–50 batches</strong></td><td><strong>~14,000 rows · ~25–30 batches</strong></td></tr>
     </table>
+    <p>The batch counts assume one batch per guide and edition. Japan's three guides have their own, sometimes irregular, edition dates, and some guides moved or skipped ceremonies in 2020–2021. <strong>The pilot must list the real editions for each guide</strong> before anyone commits to the full range.</p>
     <p>The other Michelin guides in the database get their own 2026 batches first. They are counted when the backfill reaches them.</p>
-    <p><strong>Step one — a feasibility pilot (one Cowork session, read-only).</strong> For France 2025 and Spain 2025, find out which candidate source gives a complete, dated, per-venue list, and record the URLs and the row counts against the published edition totals. The decision gate is Ben's: go, change the source, or park the item.</p>
-    <p><strong>Order.</strong> The pilot can run at any time. Full batches come after every guide has its 2026 batch, so that every venue exists and the match test is mostly exact. They must also come before the publish builder shows Michelin "since" lines.</p>
+    <p><strong>Known item (Sep 24):</strong> Blue Bay Marcel Ravin, Monaco (<code>ve_5f2aaf2e90</code>), held Two Stars before 2026 but has no Michelin 2025 row. Add it through the backfill, with a source URL, not by hand.</p>
+    <p><strong>Step one — a feasibility pilot (one Cowork session, read-only), after launch.</strong> For France and Spain, test the candidate sources on two editions: <strong>2018</strong> (the hardest case) and <strong>2025</strong>. For each, record the URLs, the per-venue completeness, and the row counts against the published edition totals, and list the real edition years from 2018 to 2025. Ben decides at the gate: 2018, the 5-edition fallback, a different source, or park the item.</p>
+    <p><strong>Order.</strong> After the migration is complete and the site is up and running (Ben, Sep 16). By then every guide has its 2026 batch, so every venue exists and the match test is mostly exact. Until the backfill lands, the site shows Michelin with the 2026 edition only, and it shows no Michelin "since" lines.</p>
     <div class="phase-meta">
-      <div class="pm"><b>Decisions needing Ben</b>How many years back (5 is the estimate); pilot timing</div>
+      <div class="pm"><b>Decisions needing Ben</b>At the pilot gate: 2018 or the 5-edition fallback</div>
       <div class="pm"><b>Decisions needing Fable</b>Which source types count as a per-edition source, after the pilot</div>
       <div class="pm"><b>Model &amp; surface</b>Cowork + Chrome for the captures; the chat runs the match test and gates; the ingest job does the writes</div>
       <div class="pm"><b>Rollback</b><code>UNDO michelin-&lt;year&gt;-&lt;guide&gt;</code> for each batch</div>
@@ -717,6 +778,8 @@
       <tr><td>1.21</td><td>September 15, 2026</td><td>Japan promoted (batch id 5): 585 rows (20 / 61 / 276 / 228), all with source_url; first stage 421 match / 152 new / 12 review corrected by the decisions file to 570 match / 15 new, avoiding ~150 duplicate venues (venues 11,575 → 11,590, awards 23,516 → 24,101, no city created). Match test adopted as a standing pre- and post-stage step: norm_key copied to Python (1,111 of 1,112 agree), non-match rows read from ingest_rows, paired by city and 2025 category, use: decisions applied to new_venue rows too; a stage-report PR proposed, not ratified. Batch rulings recorded (Sukiyabashi Jiro and DIALOGUE new; two Nara matches by elimination flagged). Monaco gap recorded (8 rows 2025, 0 rows 2026) with a small Monaco batch named. Legacy 2025 Michelin label raised for a Fable ruling: FR 697/701, IT 310/311, JP 567/568 pairs unchanged, the same pattern in the 928 legacy 2026 rows, 2,302 venues with identical pairs. Japan cleanup items and special-award sizing added; Spain &amp; Andorra named as the next guide with published counts. Base file correction: the upload labelled v1.20 was v1.19; this version builds on the Project Knowledge v1.20.</td></tr>
       <tr><td>1.22</td><td>September 15, 2026</td><td>Fable ruling on the Michelin 2025 label recorded: capture label (May 13 to June 1, 2026 window; Nara in, Nordic and Germany out; L'Ambroisie and Kohaku stale); sourced row wins; per-guide gated retire; relabel only after a three-promotion test; never relabel a venue with an older 2026 row; "Current" imports carry a capture date. Retire batches ran: JP 567, FR 697, IT 310, mismatch 6 (ledger 23 to 26). France and Italy twin finding recorded; pairing files approved (FR 260 merges incl. La Voile keep-twin, IT 296) and both merges ran (ledger 27, 28): awards 24,101 to 21,964, venues 11,590 to 11,034, 813 non-canonical slugs, 12 venues reactivated, Il Falconiere moved to Cortona, La Torre stale Bib deleted; France and Italy undo no longer available. Two publish-builder invariants added. Cleanup items added (Le Calandre Cyrillic name and slug, wrong canonical slugs, 555 Google-style survivor names, empty San Martino, stale venues_count). Spain brief rules added from the ruling. Correction: the ruling counted 256 Italy name pairs, not 89.</td></tr>
       <tr><td>1.23</td><td>September 16, 2026</td><td>Spain &amp; Andorra promoted (batch id 6): 493 rows (16 / 37 / 245 / 194 + Andorra 1), −18 against the gala; 4 cities added (cities 3,237 → 3,241; duplicate audit rows noted); match test: first stage 189 / 263 / 41, decisions file 304 rows (268 name pairs, 28 by hand, 8 new), restage 485 / 8 / 0; promote passed (venues 11,042, awards 22,457, Michelin 2026 rows 3,709). Retire batch <code>retire-michelin-legacy-es</code> (ledger 33): 478 same-category rows, 1 mixed-venue Bib, the Taipei misfile of Molino de Urdániz (award 3257 plus the venue), and 5 venues reactivated; awards → 21,977, venues → 11,041. Findings: the ruling's Ramón Freixa premise was wrong; the Sheet has cross-country misfiles; Elche and Elx are duplicate cities. New work item: Michelin history backfill (rules, sources, ~14,000 rows over 5 editions for four guides, pilot first), from Ben's wish to show history alongside the latest distinction.</td></tr>
+      <tr><td>1.24</td><td>September 16, 2026</td><td>Ben's decisions on the Michelin history backfill recorded: target range back to 2018 (about 22,300 rows and 40–50 batches for the four guides); fallback 5 editions (2021–2025, about 14,000 rows) if 2018 is too large; the pilot runs only after the migration is complete and the site is live. The pilot now tests 2018 and 2025 and lists the real edition years for each guide. Until then, the site shows no Michelin "since" lines.</td></tr>
+      <tr><td>1.25</td><td>September 24, 2026</td><td>Monaco promoted (batch id 7, ledger 35, after a dry run at ledger 34): 9 rows (1 / 3 / 5 / 0), country slug <code>principality-of-monaco</code>, all rows in <code>ci_77f09e1229</code>; first stage 8 / 1 / 0, one decision (<code>use:ve_abd09cb984</code>), restage 9 / 0 / 0. Retire <code>retire-michelin-legacy-mc</code> (ledger 36): 8 same-category rows, 0 mismatches. Blue Bay Marcel Ravin's missing 2025 row sent to the backfill. Method notes: Opus is enough for small captures, the promote Dry run box, audit triggers on awards/venues/cities, schema facts. Next guide named from the gap list: USA, where only Colorado and the new Southwest guide have a 2026 edition, so the next batch is <code>michelin-2026-colorado-southwest</code> (46 rows expected). Ruling question raised on Colorado's legacy rows, which are the real 2025 edition. Remaining-work order restated. Base: v1.24 rebuilt from v1.23 with the Sep 16 edit script, because the saved copies in the repo and Project Knowledge were still v1.23.</td></tr>
     </table>
   </div>
   <footer>CompassEats · Re-Architecture &amp; Migration Plan · v1.0 — Aug 10, 2026<br>Save to <code>docs/</code> in the repo and re-upload to Project Knowledge after ratification. Update version + date on any change.</footer>
