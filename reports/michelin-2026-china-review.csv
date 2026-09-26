@@ -1,0 +1,8 @@
+line,verdict,reason,source_id,year,rank,category,distinction,venue_name,city_label,country_label,resolved_city,candidates,decision
+134,review_venue,same_key_other_city,michelin,2026,,Two Stars,,Taian Table,Guangzhou,China,guangzhou,"use:ve_3c3f107341 (Tai'an Table, Shanghai, active)",
+146,review_venue,same_key_other_city,michelin,2026,,One Star,,Lai Heen,Guangzhou,China,guangzhou,"use:ve_cdd31cd894 (Lai Heen, Macau, active) | use:ve_d970e6b8ab (Lai Heen, Hong Kong, active)",
+155,review_venue,same_key_other_city,michelin,2026,,One Star,,Xin Rong Ji,Shenzhen,China,shenzhen,"use:ve_4173a16a48 (Xin Rong Ji, Taizhou, active) | use:ve_8ff48e1c8f (Xin Rong Ji, Shanghai, active) | use:ve_ad8e3e0807 (Xinrongji, Taizhou, active) | use:ve_ed8fe96699 (Xinrongji, Beijing, active) | use:ve_f966b7e0a1 (Xin Rong Ji, Hong Kong, active)",
+275,review_venue,same_key_other_city,michelin,2026,,One Star,,Maison Lameloise,Shanghai,China,shanghai,"use:ve_c57f596527 (Maison Lameloise, Chagny, active)",
+287,review_venue,same_key_other_city,michelin,2026,,One Star,,Sense,Hangzhou,China,hangzhou,"use:ve_e40817454c (Sense, Vught, active)",
+289,review_venue,same_key_other_city,michelin,2026,,One Star,,Shang Palace,Yangzhou,China,yangzhou,"use:ve_1a1801cb53 (Shang Palace, Hong Kong, active) | use:ve_6b4fd89010 (Shang Palace, Singapore, active)",
+297,review_venue,same_key_other_city,michelin,2026,,One Star,,Xin Rong Ji,Hangzhou,China,hangzhou,"use:ve_4173a16a48 (Xin Rong Ji, Taizhou, active) | use:ve_8ff48e1c8f (Xin Rong Ji, Shanghai, active) | use:ve_ad8e3e0807 (Xinrongji, Taizhou, active) | use:ve_ed8fe96699 (Xinrongji, Beijing, active) | use:ve_f966b7e0a1 (Xin Rong Ji, Hong Kong, active)",
