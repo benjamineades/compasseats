@@ -1,6 +1,6 @@
 # Ingest stage - michelin-2026-great-britain-ireland
 
-Staged 2026-09-28T18:01:17.624Z. **Nothing has been promoted.** This run wrote to
+Staged 2026-09-28T18:28:07.402Z. **Nothing has been promoted.** This run wrote to
 `ingest_batches` and `ingest_rows` only; every live table is untouched.
 
 ## What came in
@@ -14,6 +14,7 @@ Staged 2026-09-28T18:01:17.624Z. **Nothing has been promoted.** This run wrote t
 | source(s) | michelin |
 | list year(s) | 2026 |
 | batch key check | batch_key column present and equal to "michelin-2026-great-britain-ireland" on every row |
+| re-stage | decisions re-applied to the existing batch; 148 decision(s) read |
 
 ## Columns
 
@@ -27,10 +28,8 @@ Population: all 386 data rows in the CSV. Grouping key: the row's verdict.
 
 | verdict | rows | what it means |
 |---|---|---|
-| match | 238 | venue already exists; promote adds the award |
-| new_venue | 136 | promote creates the venue, listing, slug, city labels and the award |
-| review_venue | 10 | more than one candidate, or a same-name venue elsewhere; no auto-merge |
-| review_city | 2 | the city could not be resolved to exactly one row |
+| match | 381 | venue already exists; promote adds the award |
+| new_venue | 5 | promote creates the venue, listing, slug, city labels and the award |
 
 ## What promote would do to the live tables
 
@@ -38,15 +37,15 @@ Population: whole table. Read now, before anything was promoted.
 
 | table | before | expected after | delta |
 |---|---|---|---|
-| venues | 11,209 | 11,345 | +136 |
-| awards | 22,237 | 22,611 | +374 |
-| listings | 11,209 | 11,345 | +136 |
-| slugs | 12,290 | 12,426 | +136 |
-| city_label_source | 23,822 | 24,094 | +272 |
+| venues | 11,209 | 11,214 | +5 |
+| awards | 22,237 | 22,623 | +386 |
+| listings | 11,209 | 11,214 | +5 |
+| slugs | 12,290 | 12,295 | +5 |
+| city_label_source | 23,822 | 23,832 | +10 |
 | price | 7,059 | 7,059 | +0 |
 | source_capture_ledger | 55 | 57 | +2 |
 
-The venue delta is **136**, not the number of `new_venue` rows (136). Several award rows can name the same new venue - one venue row, one listing, one slug, several awards.
+The venue delta is **5**, not the number of `new_venue` rows (5). Several award rows can name the same new venue - one venue row, one listing, one slug, several awards.
 
 Open venues now: 10,848. Promote refuses to let that number drop.
 
@@ -54,7 +53,7 @@ Open venues now: 10,848. Promote refuses to let that number drop.
 
 | rows | reason |
 |---|---|
-| 374 | source michelin is not price_capable |
+| 386 | source michelin is not price_capable |
 
 > No source in `award_sources` has `price_capable = true` today, so the price
 > branch writes nothing for any batch. Flipping that flag for a publisher is a
@@ -64,42 +63,31 @@ Open venues now: 10,848. Promote refuses to let that number drop.
 
 | line | verdict | venue | city | award | promote does |
 |---|---|---|---|---|---|
-| 2 | new_venue | Moor Hall | aughton | michelin 2026 | create ve_199691f15f (/aughton/moor-hall), listing published=true, + 1 award |
-| 3 | new_venue | Waterside Inn | bray | michelin 2026 | create ve_1c2cd0860e (/bray/waterside-inn), listing published=true, + 1 award |
-| 9 | new_venue | Sketch, The Lecture Room and Library | london | michelin 2026 | create ve_dd48b518b5 (/london/sketch-the-lecture-room-and-library), listing published=true, + 1 award |
-| 11 | new_venue | The Glenturret Lalique | crieff | michelin 2026 | create ve_deb8733e79 (/crieff/the-glenturret-lalique), listing published=true, + 1 award |
-| 13 | new_venue | Ynyshir | machynlleth | michelin 2026 | create ve_e36ef3677a (/machynlleth/ynyshir), listing published=true, + 1 award |
+| 148 | new_venue | Corenucopia by Clare Smyth | london | michelin 2026 | create ve_ce39832bd0 (/london/corenucopia-by-clare-smyth), listing published=true, + 1 award |
+| 160 | new_venue | Pétrus by Gordon Ramsay | london | michelin 2026 | create ve_61599d9f2f (/london/petrus-by-gordon-ramsay), listing published=true, + 1 award |
+| 172 | new_venue | 1890 by Gordon Ramsay | london | michelin 2026 | create ve_fc7016664d (/london/1890-by-gordon-ramsay), listing published=true, + 1 award |
+| 251 | new_venue | COR | city-of-bristol | michelin 2026 | create ve_1ade09cf15 (/city-of-bristol/cor), listing published=true, + 1 award |
+| 254 | new_venue | OTHER | city-of-bristol | michelin 2026 | create ve_bd55d03429 (/city-of-bristol/other), listing published=true, + 1 award |
 | 1 | match | L'Enclume | cartmel | michelin 2026 | + 1 award on ve_cfab22c6e2 |
+| 2 | match | Moor Hall | aughton | michelin 2026 | + 1 award on ve_2e7a477d83 |
+| 3 | match | Waterside Inn | bray | michelin 2026 | + 1 award on ve_6660008ead |
 | 4 | match | The Fat Duck | bray | michelin 2026 | + 1 award on ve_8d4b2e9406 |
 | 5 | match | The Ledbury | london | michelin 2026 | + 1 award on ve_78e41a2703 |
-| 6 | match | CORE by Clare Smyth | london | michelin 2026 | + 1 award on ve_9771a66bad |
-| 7 | match | Alain Ducasse at The Dorchester | london | michelin 2026 | + 1 award on ve_9c1eaf6823 |
 
 ## Review
 
-**12 row(s) need a decision** before this batch can promote.
-
-Open `reports/michelin-2026-great-britain-ireland-review.csv` in Sheets, fill the `decision` column, save it as CSV,
-and re-run the stage workflow with the same batch key plus the decisions file.
-
-| decision | means |
-|---|---|
-| `use:ve_xxxxxxxxxx` | this row is that existing venue |
-| `new` | create a new venue for it |
-| `city:ci_xxxxxxxx` | the city is that one |
-| `skip` | leave this row out of the promote |
-| `city:ci_x;use:ve_y` | both, in one cell |
-
-| reason | rows |
-|---|---|
-| `same_key_other_city` | 5 |
-| `loose_key_candidate_in_city` | 4 |
-| `country_label_disagrees` | 2 |
-| `norm_key_too_short` | 1 |
+Nothing needs your eyes. **0 rows in review.**
 
 ## Next
 
-Clear the 12 review row(s) first. Promote refuses to run while any remain.
+Run the **ingest-promote** workflow with:
+
+```
+batch_key:    michelin-2026-great-britain-ireland
+confirmation: PROMOTE michelin-2026-great-britain-ireland
+```
+
+The confirmation has to be exactly that, including the batch key. Anything else stops.
 
 ## Timings
 
@@ -110,18 +98,18 @@ still says how far it got.
 | # | phase | took | elapsed | detail |
 |---|---|---|---|---|
 | 1 | read the CSV | 0.0s | 0.0s | 386 rows from fixtures/ingest/michelin-2026-great-britain-ireland.csv |
-| 2 | opened the database connection | 0.1s | 0.2s |  |
-| 3 | read the source vocabulary | 0.1s | 0.3s | 23 sources |
-| 4 | staged the raw rows | 0.2s | 0.5s | batch 11, 386 rows |
-| 5 | row checks | 0.0s | 0.5s | 386 of 386 rows still live |
-| 6 | loaded the live rows into the resolver | 0.1s | 0.5s | 386 rows |
-| 7 | normalised the batch | 0.0s | 0.6s | 386 rows, in the database |
-| 8 | loaded the candidate cities | 0.1s | 0.7s | 159 cities |
-| 9 | loaded the candidate venues | 0.0s | 0.7s | 270 venues |
-| 10 | resolved cities | 0.0s | 0.7s | 384 of 386 settled on one city |
-| 11 | resolved venues | 0.0s | 0.7s | 238 matched an existing venue |
-| 12 | loose-name pass | 0.1s | 0.8s | 140 would-be new venues checked, 4 sent to review |
-| 13 | dedupe, subsume and rank conflicts | 0.0s | 0.9s |  |
-| 14 | built the promote plan | 0.1s | 1.0s | 136 venues, 374 awards |
-| 15 | wrote the verdicts | 0.2s | 1.2s | 386 rows |
-| 16 | committed | 0.0s | 1.2s |  |
+| 2 | opened the database connection | 0.1s | 0.1s |  |
+| 3 | read the source vocabulary | 0.0s | 0.2s | 23 sources |
+| 4 | re-read the staged rows | 0.0s | 0.2s | batch 11, 386 rows |
+| 5 | row checks | 0.0s | 0.2s | 386 of 386 rows still live |
+| 6 | loaded the live rows into the resolver | 0.0s | 0.2s | 386 rows |
+| 7 | normalised the batch | 0.0s | 0.3s | 386 rows, in the database |
+| 8 | loaded the candidate cities | 0.1s | 0.3s | 159 cities |
+| 9 | loaded the candidate venues | 0.0s | 0.3s | 270 venues |
+| 10 | resolved cities | 0.0s | 0.3s | 384 of 386 settled on one city |
+| 11 | resolved venues | 0.0s | 0.3s | 239 matched an existing venue |
+| 12 | loose-name pass | 0.0s | 0.4s | 141 would-be new venues checked, 4 sent to review |
+| 13 | dedupe, subsume and rank conflicts | 0.0s | 0.4s |  |
+| 14 | built the promote plan | 0.0s | 0.4s | 5 venues, 386 awards |
+| 15 | wrote the verdicts | 0.1s | 0.5s | 386 rows |
+| 16 | committed | 0.0s | 0.5s |  |
