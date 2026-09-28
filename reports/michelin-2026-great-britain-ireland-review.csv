@@ -1,0 +1,13 @@
+line,verdict,reason,source_id,year,rank,category,distinction,venue_name,city_label,country_label,resolved_city,candidates,decision
+37,review_venue,norm_key_too_short,michelin,2026,,One Star,,OX,Belfast,United Kingdom,belfast,,
+46,review_venue,loose_key_candidate_in_city,michelin,2026,,One Star,,Martin Wishart,Leith,United Kingdom,edinburgh,"use:ve_b9394d9239 (Restaurant Martin Wishart, Edinburgh, active)",
+66,review_venue,same_key_other_city,michelin,2026,,One Star,,The Barn,Aughton,United Kingdom,aughton,"use:ve_a6eb645e86 (The Barn, Walland, active) | use:ve_fc15d6696e (The Barn, Knoxville, Tennessee, active)",
+90,review_venue,same_key_other_city,michelin,2026,,One Star,,Black Swan,Oldstead,United Kingdom,oldstead,"use:ve_b075220a1b (Blackswan, Beijing, active)",
+97,review_venue,loose_key_candidate_in_city,michelin,2026,,One Star,,mýse,Hovingham,United Kingdom,hovingham,"use:ve_60de69c92f (Restaurant Mýse, Hovingham, active)",
+128,review_venue,same_key_other_city,michelin,2026,,One Star,,River Café,London,United Kingdom,london,"use:ve_e0fa4c54fd (River Cafe, Calgary, active)",
+151,review_venue,same_key_other_city,michelin,2026,,One Star,,Aulis,London,United Kingdom,london,"use:ve_fddc554cc8 (Aulis, Phang-Nga, active)",
+176,review_venue,same_key_other_city,michelin,2026,,One Star,,Angler,London,United Kingdom,london,"use:ve_3b2129dd9d (Angler, San Francisco, active)",
+190,review_venue,loose_key_candidate_in_city,michelin,2026,,One Star,,Interlude,Lower Beeding,United Kingdom,horsham,"use:ve_5295ecd694 (Restaurant Interlude, Horsham, active)",
+345,review_city,country_label_disagrees,michelin,2026,,Two Stars,,dede,Baltimore,Ireland,,"city:ci_ddb54f32ec (Baltimore, United States)",
+347,review_venue,loose_key_candidate_in_city,michelin,2026,,Two Stars,,Patrick Guilbaud,Dublin City,Ireland,dublin,"use:ve_82a42a7167 (Restaurant Patrick Guilbaud, Dublin, active)",
+370,review_city,country_label_disagrees,michelin,2026,,Bib Gourmand,,Baba'de,Baltimore,Ireland,,"city:ci_ddb54f32ec (Baltimore, United States)",
