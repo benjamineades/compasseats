@@ -60,11 +60,11 @@
   <div class="eyebrow">Living doc · Architecture</div>
   <h1>Re-Architecture <em>&amp; Migration Plan</em></h1>
   <div class="meta">
-    <span class="m">Version <b>1.26</b></span>
-    <span class="m">Updated <b>September 24, 2026</b></span>
-    <span class="m">Author <b>Claude Fable 5 · v1.21–1.24 updates by Claude Opus 5 · v1.25–1.26 by Claude Opus 5.5</b></span>
-    <span class="m">Status <b>Michelin 2026 under way · France, Italy, Japan, Spain &amp; Andorra, Monaco, Colorado + Southwest promoted and closed · China mainland next · Michelin history backfill approved, after launch</b></span>
-    <span class="m">Responds to <b>michelin-2026-colorado-southwest promoted Sep 24 · bosq-active · Fable ruling on rule 2.1.1 (Sep 24)</b></span>
+    <span class="m">Version <b>1.28</b></span>
+    <span class="m">Updated <b>September 28, 2026</b></span>
+    <span class="m">Author <b>Claude Fable 5 · v1.21–1.24 updates by Claude Opus 5 · v1.25–1.28 by Claude Opus 5.5</b></span>
+    <span class="m">Status <b>Michelin 2026 under way · France, Italy, Japan, Spain &amp; Andorra, Monaco, Colorado + Southwest, China mainland promoted and closed · Chengdu 2027 promoted · Great Britain &amp; Ireland next · Phase 4 and 5 dates under review · Michelin history backfill approved, after launch</b></span>
+    <span class="m">Responds to <b>michelin-2026-china promoted Sep 27 · China rename, retire, cleanup and slug batches Sep 27–28 · michelin-2027-chengdu promoted Sep 28 · Ben's rulings Sep 25–28</b></span>
   </div>
 
   <p class="lead">A phased plan to rebuild CompassEats, and later Compass Local, on a licence-compliant, automated foundation that one non-technical operator runs alone. It is a design, not code. Every phase names its model and surface, the decisions that need Ben's judgment, effort in Ben's hours, and its rollback position. The decision register in §1 is the work to finish before August 18.</p>
@@ -681,6 +681,161 @@
   </div>
 
   <div class="card">
+    <h3>China mainland scoped · rule 2.1.7 added · Chengdu legacy relabelled <span class="tag brass">Sep 24, 2026</span></h3>
+    <p><strong>China mainland is five guides.</strong> Population: Michelin rows on venues whose city has <code>country_iso</code> CN, read Sep 24. The database held 382 rows labelled 2025 and 0 for 2026. Each 2026 ceremony date comes from a guide.michelin.com URL.</p>
+    <table>
+      <tr><th>Guide</th><th>Edition live now</th><th>Ceremony</th><th>Published (3 / 2 / 1 / Bib)</th><th>Legacy rows</th><th>Cleanup</th></tr>
+      <tr><td>Beijing</td><td>2026</td><td>Oct 28, 2025</td><td>2 / 6 / 24 / 26 = 58</td><td>53</td><td>Before May 13: retire same-label twins</td></tr>
+      <tr><td>Shanghai · Jiangsu · Zhejiang</td><td>2026</td><td>Apr 9, 2026</td><td>1 / 14 / 62 / 164 = 241</td><td>188 (8 cities)</td><td>Retire</td></tr>
+      <tr><td>Fujian</td><td>2026</td><td>Nov 21, 2025</td><td>0 / 0 / 7 / 66 = 73</td><td>55 (4 cities)</td><td>Retire</td></tr>
+      <tr><td>Guangzhou &amp; Shenzhen</td><td>2026</td><td>Aug 18, 2026</td><td>0 / 5 / 22 / 73 = 100</td><td>54 (Guangzhou)</td><td>After June 1: keep as 2025 history</td></tr>
+      <tr><td>Chengdu</td><td><strong>2027</strong></td><td>Sep 7, 2026 (2026 edition: Sep 2, 2025)</td><td>2027: 1 / 1 / 13 / 32 = 47</td><td>32, relabelled to 2026</td><td>Rule 2.1.7: relabel, promote, retire nothing</td></tr>
+    </table>
+    <p>The legacy rows hold Changzhou, Wenzhou, Taizhou and Ningde, cities that first appeared in the 2026 editions. This confirms that the snapshot holds the 2026 editions for the three "retire" guides. Brief: <code>cowork-michelin-2026-china.md</code> (Fable in Cowork; one CSV of 472 expected rows with <code>michelin_guide</code> and <code>name_native_michelin</code> columns, a Chinese-site pass joined on the venue URL, every venue page read, and a separate hold-out file for Chengdu 2027). 24 China venues have Chinese characters in the name, so the native-name pass is required.</p>
+
+    <div class="flag"><p><b>Fable ruling, Sep 24: rule 2.1.7 added.</b> The year column holds Michelin's edition label. A legacy row holds the edition that was live on the Michelin site in the capture window (May 13 to June 1, 2026). Find that edition by its label, from the ceremony date on a Michelin URL. Then: if the incoming batch carries the same label, rule 2.1.1 applies and the legacy row is retired. If the incoming batch carries a later label, relabel the legacy row to the live-at-capture label under rule 5 first, then promote, and retire nothing. A legacy row is never retired against a sourced row with a different label.</p>
+    <table>
+      <tr><th>Guide</th><th>Edition live at capture</th><th>Incoming label</th><th>Legacy action</th><th>Retire</th></tr>
+      <tr><td>Chengdu</td><td>2026 (Sep 2, 2025)</td><td>2027</td><td>Relabel 32 rows to 2026, then promote</td><td>None</td></tr>
+      <tr><td>Beijing, Fujian</td><td>2026, expected</td><td>2027 (Oct–Nov 2026)</td><td>Same as Chengdu, if the 2027 edition arrives before their batch. Verify the 2026 ceremony URL first.</td><td>None</td></tr>
+      <tr><td>Tokyo, Kyoto-Osaka, Nara</td><td>2026 (sourced rows in place)</td><td>2027 (Feb 16, 2027)</td><td>None. The sourced 2026 rows stay as history. The 11 Japan legacy rows stay in the Japan cleanup item.</td><td>None</td></tr>
+    </table>
+    <p>Chengdu 2027 is ingested now with year 2027 (the label test is the same as for Tokyo 2026 from a Sep 2025 ceremony). After its promote, a matched venue shows "2027" in the header and "2026" on expand. A venue that Michelin dropped in 2027 keeps its 2026 row only.</p></div>
+
+    <p><strong>Batch <code>relabel-michelin-legacy-cn-chengdu</code></strong> (Sep 24). Scope: the Chengdu city (<code>ci_354b500e3a</code>), not country CN. Rule 5 conditions, all recorded in <code>reports/relabel-michelin-legacy-cn-chengdu.md</code> before the "go":</p>
+    <ol>
+      <li>Ceremony date: Chengdu 2026 published Sep 2, 2025, on a guide.michelin.com URL.</li>
+      <li>Three named 2026 changes: the new 2026 Bibs Bai Nian Fen Zheng Niu Rou, Zeng Niu Rou (Qingyang) and Long Sen Yuan (Qingyang) are legacy Bib rows 9772, 9793 and 9781. Co- and Cuo Xia are absent; the snapshot holds 32 of the 40 published rows.</li>
+      <li>Decisions record written with URLs and tests.</li>
+      <li>Rule 6 read: one line, 2025 unsourced 32, no 2026 line.</li>
+    </ol>
+    <p>Result, read back: 32 rows changed from 2025 to 2026 in one transaction. Michelin 2025 rows 4,511 → 4,479, Michelin 2026 rows 3,764 → 3,796, awards 22,024 (no change). The <code>awards</code> trigger wrote 32 audit rows. Ledger id 41, job <code>relabel:relabel-michelin-legacy-cn-chengdu</code>, items 32. Batch note: "edition year set from the ceremony date, capture May 13 to June 1, 2026, no per-row URL". No venue holds two Michelin rows with the same year and category (0). Fable's draft SQL used <code>cities.name</code>; the table has <code>display</code>, so the batch used the city id.</p>
+
+    <div class="flag"><p><b>Cleanup list, added by China.</b></p>
+    <ul>
+      <li><strong>Chengdu name contamination:</strong> legacy names such as "Upper House Chengdu", "Heming Tea House", "Xiaolongkan Old Hot Pot", "Chenmapo Sichuan Restaurant" (One Star) and "Citadines South Chengdu" (Bib, a hotel) are not Michelin names. The Chengdu 2027 match test pairs them by hand; some can be wrong-venue rows.</li>
+      <li><strong>Sheung Wan</strong> (<code>ci_37f4c9f4fb</code>) is filed under China. Sheung Wan is in Hong Kong. Check before the Hong Kong batch.</li>
+    </ul></div>
+
+    <p><strong>Live counts at this version</strong> (population: whole table; read Sep 24 after the relabel): venues 11,061 (active 10,699) · awards 22,024 · Michelin 2025 rows 4,479 · Michelin 2026 rows 3,796 · listings 11,061 · slugs 11,874 · cities 3,244 · <code>city_label_source</code> 23,518 · price 7,090 · <code>source_capture_ledger</code> 32 (last id 41) · <code>ingest_batches</code> 7, all promoted.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>None; the China capture is in Cowork</div>
+      <div class="pm"><b>Decisions needing Fable</b>None open from this card</div>
+      <div class="pm"><b>Model &amp; surface</b>The chat found the ceremony dates, ran the rule 5 tests and the relabel through Supabase; Fable ruled; Fable in Cowork captures China</div>
+      <div class="pm"><b>Rollback</b><code>audit_log</code> holds the 32 old rows (year 2025) for the relabel</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Michelin 2026 — China mainland promoted, renamed, retired and cleaned <span class="tag brass">Sep 25–28, 2026</span></h3>
+    <p><strong>Match test and promote (batch id 9, <code>michelin-2026-china</code>).</strong> First stage, no decisions: 46 match, 416 new, 7 review. The chat paired the non-match rows guide by guide (Beijing, Fujian, Guangzhou &amp; Shenzhen, Shanghai, Jiangsu, Zhejiang), and Ben ruled on each judgment item. The decisions file <code>fixtures/ingest/michelin-2026-china-decisions.csv</code> has 423 rows: 263 <code>use:</code> and 160 <code>new</code>, built with code from the source CSV. The restage gave 309 match, 160 new, 0 review, as predicted. Promote Sep 27: all 11 invariants passed. Ledger 44 (award, 469) and 45 (city_label, 320). Venues 11,061 → 11,221, awards 22,024 → 22,493, Michelin 2026 rows 3,796 → 4,265.</p>
+    <p><strong>Rename and reactivate (Sep 27–28).</strong> Gated SQL, one transaction: <code>name_native</code> set on 17 venues (16 legacy Chinese names moved verbatim, plus 荣府宴 on The House of Rong); Meet the Bund (<code>ve_78e5d38e3e</code>) closed → active; 10 prices set to the card price (6 updates, 4 inserts, <code>source</code> = <code>guide_ingest</code>). Then the rename job: batch 6 <code>rename-michelin-2026-china</code>, 263 renamed, 0 reject, ledger 47. Batch 8 <code>rename-majority-2026-cn-meet-the-bund</code>: "Meet the Bund (Zhongshan Dong Er Road)" → "Meet the Bund" (4 of 5 publishers), ledger 66.</p>
+    <p><strong>Retire (Sep 28).</strong> The repo has no retire job, so each retire is gated SQL, one transaction, scoped by city id. Guide dates from guide.michelin.com: Beijing Oct 28, 2025; Fujian Nov 21, 2025; Shanghai · Jiangsu · Zhejiang Apr 9, 2026 (all before the capture window, so rule 2.1.1 retires); Guangzhou Aug 18, 2026 (after the window, legacy rows stay as 2025 history).</p>
+    <table>
+      <tr><th>Ledger</th><th>Batch key</th><th>Change</th></tr>
+      <tr><td>48</td><td><code>retire-michelin-legacy-cn-beijing</code></td><td>46 rows deleted</td></tr>
+      <tr><td>49</td><td><code>retire-michelin-legacy-cn-sjz</code></td><td>170 rows deleted (8 cities)</td></tr>
+      <tr><td>50</td><td><code>retire-michelin-legacy-cn-fujian</code></td><td>50 rows deleted (4 cities)</td></tr>
+      <tr><td>51</td><td><code>cleanup-michelin-cn-guangzhou</code></td><td>Row 5228 moved to Jade River, row 5220 deleted, Jade Garden merged into Jade River</td></tr>
+    </table>
+    <p><strong>Cleanup (Sep 28, ledger 52–64).</strong> Gated SQL, a dry run through the Read connector first each time.</p>
+    <ul>
+      <li>52: 27 free legacy venues deleted (one award each, no card link). 55: 4 Guangzhou venues deleted.</li>
+      <li>53: the Shengyongxing Bib twin merged into Sheng Yong Xing (Chaoyang). 54: Michelin rows and their $$ price removed from the Four Seasons Hangzhou and Amanfayun hotel venues; both venues keep their other award.</li>
+      <li>56, 57: OAD 2025 ranks moved to the venues the official OAD list names; the Ling Long (Beijing) rank deleted, because no venue exists.</li>
+      <li>58, 59: Asia's 50 Best 2023 and Best Chef 2025 rows moved from Sir Elly's to Obscura.</li>
+      <li>60, 61, 63, 64: La Liste rows moved to Jingji, Jin Sha, Xin Rong Ji (Linhai) and Hangzhou House. Four Seasons Hangzhou merged into Jin Sha; Lanxuan merged into Hangzhou House.</li>
+      <li>62: Asia's 50 Best 2023 No. 77 (Ling Long, Beijing) deleted from Lamdre.</li>
+    </ul>
+    <p><strong>Slug job (Sep 28).</strong> For the 263 venues of rename batch 6: the old canonical slug became non-canonical (the old URL stays, same venue), and a new canonical slug was made from the new name with the <code>slugify</code> rule in <code>scripts/ingest/lib/slug.ts</code>. No row deleted. 0 collisions. Audit 105,135–105,660. Examples: <code>shanghai/meet-the-bund</code> (old <code>m-on-the-bund</code>), <code>hangzhou/hangzhou-house</code> (old <code>grandma-s-home</code>, <code>lanxuan-restaurant</code>).</p>
+    <p><strong>Result.</strong> Beijing, Shanghai · Jiangsu · Zhejiang and Fujian hold 0 unsourced Michelin 2026 rows, and their sourced rows equal the cards (58, 238, 73). No venue in those cities has zero awards. Michelin 2025 rows 4,479 → 4,178 (population: whole table, Sep 24 to Sep 28).</p>
+    <div class="flag"><p><b>Facts found (they change later work).</b></p>
+    <ul>
+      <li>The ingest job writes no price rows and no <code>name_native</code>. This closes the v1.26 question "promote wrote 0 price rows: by design?". See the price work item below.</li>
+      <li>The rename job changes only <code>venues.name</code>. Slugs do not follow a rename, so every rename batch needs a slug job after it. France: 148 of the 269 venues in rename batches 2 and 4 still have an old-name canonical slug.</li>
+      <li>Audit triggers exist on awards, venues, price, slugs and listings. They do not exist on <code>city_label_source</code> or <code>source_capture_ledger</code>, so a change there needs hand audit rows.</li>
+      <li>Old slugs can name another business (for example <code>beijing/ling-long</code> now opens Lamdre). The standing rule keeps them. The future Ling Long (Beijing) venue will get <code>ling-long-2</code>; decide at that ingest.</li>
+    </ul></div>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>When the France slug set (148 venues) runs</div>
+      <div class="pm"><b>Decisions needing Fable</b>None open from this card</div>
+      <div class="pm"><b>Model &amp; surface</b>Fable in Cowork captured; the chat ran the match test, the decisions file and the gated SQL through Supabase; Ben pressed the stage, promote and rename buttons</div>
+      <div class="pm"><b>Rollback</b>UNDO michelin-2026-china for the promote, until later batches touch those rows; <code>audit_log</code> covers the gated SQL batches (hand audit rows for city labels)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Michelin 2027 — Chengdu promoted · standing rules · order restated <span class="tag brass">Sep 28, 2026</span></h3>
+    <p><strong>Chengdu 2027 (batch id 10, <code>michelin-2027-chengdu</code>).</strong> Source read on guide.michelin.com: 47 cards, 1 / 1 / 13 / 32 (Three Stars / Two Stars / One Star / Bib). Every venue page says "2027 MICHELIN Guide Chengdu". 0 card-versus-page differences. Chinese names for 47 of 47. First stage: 5 match, 40 new, 2 review. Decisions file: 19 rows (18 <code>use:</code>, Xin Rong Ji <code>new</code>, because the Hong Kong, Shenzhen and Hangzhou venues are other branches). Restage: 23 match, 24 new, 0 review. Promote Sep 28: all 11 invariants passed. Ledger 69 (award, 47) and 70 (city_label, 48). Venues 11,185 → 11,209, awards 22,190 → 22,237, Michelin 2027 rows 0 → 47. The 32 relabelled 2026 rows are unchanged; nothing retired (rule 2.1.7).</p>
+    <p><strong>Set 1 (Ben, option C).</strong> Two legacy One Star venues pass rule 6b and are paired: Heming Tea House → Mi Xun Teahouse, Xiaolongkan Old Hot Pot → Silver Pot. Upper House Chengdu is not paired, so The Hall is a new venue. Scope rule kept: stars and Bib Gourmand only. Selected restaurants are not ingested.</p>
+    <p><strong>Rule 2.1.7 table, updated.</strong> Beijing and Fujian now hold sourced 2026 rows. Their 2027 editions therefore follow the Tokyo row, not the Chengdu row: promote only, the sourced 2026 rows stay as history, retire nothing. Michelin says a combined Beijing &amp; Tianjin selection comes by the end of October 2026.</p>
+
+    <div class="flag"><p><b>Standing rules from Ben, Sep 25–28.</b> These apply to all future Michelin pairing, retire and cleanup work.</p>
+    <table>
+      <tr><th>Rule</th><th>What it says</th></tr>
+      <tr><td>Rule 12</td><td>A legacy venue that holds awards of a different real restaurant takes <code>new</code>. Its legacy Michelin row goes to the retire or cleanup list.</td></tr>
+      <tr><td>Rule 6b</td><td><code>use:</code> (medium) when all five are true: the run puts one row on one card; the legacy price agrees with the card price; the legacy venue holds no other award row; the legacy name cannot own the row (a card in another category or price, a Selected restaurant, a hotel, a street, a district or another place name); no other card uses the venue.</td></tr>
+      <tr><td>Name wins</td><td>When the legacy name agrees with a card (same category and price) but its row sits in another card's slot, the named card uses the venue. The slot row becomes an orphan for the retire batch.</td></tr>
+      <tr><td>Token link</td><td>When two or more cards fit one slot, a legacy name that is the first word of only one card links that card (medium). A homophone with a different character is not enough.</td></tr>
+      <tr><td>Category exception</td><td>A card may use a venue with no Michelin row only when a Chinese name or a 50 Best entry that names the branch proves identity.</td></tr>
+      <tr><td>Free-venue rows</td><td>A legacy row that is the only award on a free legacy venue stays out of a retire batch. It goes to cleanup, with the full venue pre-check.</td></tr>
+      <tr><td>Second category</td><td>A second legacy row in another category on one venue is deleted. One venue cannot hold two categories in one edition.</td></tr>
+      <tr><td>2025 history</td><td>A legacy row stays as 2025 history only when its venue name is the restaurant Michelin gave it to. A row moves to another venue only when the decisions file proves the target card.</td></tr>
+      <tr><td>Other publishers</td><td>A second rank of one publisher on one venue moves to the venue the publisher's own list names. A rank whose restaurant has no venue is deleted and listed for a future ingest.</td></tr>
+      <tr><td><code>name_native</code></td><td>The legacy script moves to <code>name_native</code> verbatim, except when the legacy script is another brand or a place name. Those venues wait for the Michelin <code>name_native</code> backfill.</td></tr>
+      <tr><td>Majority names</td><td>The Sep 14 majority rule also applies after a Michelin-only rename, once other publishers are read (Meet the Bund, 4 of 5).</td></tr>
+      <tr><td>Slugs</td><td>After a rename, the old canonical slug becomes non-canonical and a new canonical slug is made from the new name. No slug is deleted.</td></tr>
+      <tr><td>Price</td><td>The Michelin card price wins over a legacy price with no URL, for every guide (Ben, Sep 27 for China, extended to every guide Sep 28). See the work item below.</td></tr>
+      <tr><td>Foodle</td><td>foodle.pro is a card-order source only. Never an award source or a blurb source.</td></tr>
+    </table></div>
+
+    <p><strong>Order of the remaining work</strong> (replaces the list in the Colorado + Southwest card):</p>
+    <ol>
+      <li>Great Britain &amp; Ireland, the next guide from the gap list.</li>
+      <li>Chengdu rename CSV for the 18 paired legacy venues (majority rule; <code>ve_41a4101cbd</code> → "Co-", 3 of 3 publishers), then the slug job for them.</li>
+      <li>Chengdu retire and merge review: Upper House Chengdu and 8 legacy Bib venues with no 2027 card.</li>
+      <li>France slug set (148 venues), with the same SQL-file method. Ben decides when.</li>
+      <li><code>name_native</code> backfill from Michelin (China 469, Japan 585, Chengdu 47); Hong Kong Xin Rong Ji duplicate check (<code>ve_f966b7e0a1</code>, <code>ve_4dc9197f86</code>); Seventh Son (Tsim Sha Tsui) city check.</li>
+      <li>Price from the Michelin card (work item below).</li>
+      <li>Guides with a later ceremony, promote only: Texas after Oct 8; American South after Oct 21; Beijing &amp; Tianjin after the end of October; Fujian 2027 when published; Northeast Cities after Dec 14; Tokyo, Kyoto-Osaka, Nara 2027 after Feb 16, 2027.</li>
+      <li>Carried: rename CSVs for Italy, Japan, Spain &amp; Andorra, Monaco and Colorado + Southwest (no rename batch exists for them); the special-awards batch; the Elche/Elx merge; the Sukiyabashi Jiro split; the L'Atelier OAD pairs.</li>
+    </ol>
+
+    <div class="flag"><p><b>Cleanup list, added by China and Chengdu.</b></p>
+    <ul>
+      <li>Chengdu legacy venues with no 2027 card: Upper House Chengdu (One Star 2026) and 8 Bib venues (Citadines South Chengdu, Jincheng Fengqiwu Freshwater Fishes Restaurant, Ma Wang Zi Chuan Restaurant, Shu Di Dang Gui, Shudaxia Hot Pot Luomashi Branch, Shuyanfu, Tivano, Zhongshuijiao). Tivano is on the 2027 Selected list.</li>
+      <li>Stray non-canonical slug <code>chengdu/yuzhilan-fabrics</code> on Yu Zhi Lan.</li>
+      <li>Mi Xun Teahouse holds a Green Star. The table has no Green Star column: record it with the special-awards batch.</li>
+      <li>Seventh Son (Tsim Sha Tsui) <code>ve_a73796bf14</code> is filed in Beijing (possible Hong Kong misfile).</li>
+      <li>Future ingest list: Meet the Bund Skyline (La Liste 79.5); La Liste Shanghai Xin Rong Ji 90.5 (on The House of Rong); Ling Long, Beijing (A50B 2023 No. 77, OAD 2025 Asia No. 265). OAD shows an undated "Top Restaurants" rank: check at the next OAD ingest. OAD row 1249 on L'Osier: <code>awards.category</code> does not record which OAD list.</li>
+    </ul></div>
+
+    <div class="flag"><p><b>Documents out of date (Ben, Sep 28).</b> The Punch List (<code>CompassEats-Punch-List.html</code>, v2.47, Aug 11, 2026) and the Pipeline Run Order (<code>runorder.html</code>, v1.5, Jul 7, 2026; also the older <code>CompassEats-Pipeline-Run-Order.html</code>, v1.1) describe the Apps Script pipeline. They have no item from the migration. From v1.28 on, this plan sets the order of work. Do not follow the run order: its step 1, <code>reshapeCompassEats</code>, is prohibited. The files stay in <code>docs/</code> as history.</p></div>
+
+    <p><strong>Live counts at this version</strong> (population: whole table; read Sep 28 after the Chengdu promote): venues 11,209 (active 10,848) · awards 22,237 · Michelin 2025 / 2026 / 2027 rows 4,178 / 4,265 / 47 · listings 11,209 · slugs 12,290 (canonical 11,209, non-canonical 1,081; 0 venues without exactly one canonical slug) · cities 3,244 · <code>city_label_source</code> 23,822 · price 7,059 (10 <code>guide_ingest</code>) · venues with <code>name_native</code> 18 · blurbs 142 · redirects 9 · <code>source_capture_ledger</code> 55 (last id 70) · <code>audit_log</code> 102,946 (last id 105,898) · <code>ingest_batches</code> ids 1 and 3–10, all promoted · <code>rename_batches</code> 2, 4, 6, 8 applied.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>New Phase 4 and 5 dates; the price job method; France slug timing; a <code>cities.venues_count</code> recount; RLS on three tables</div>
+      <div class="pm"><b>Decisions needing Fable</b>None open from this card</div>
+      <div class="pm"><b>Model &amp; surface</b>Claude in Chrome read Michelin; the chat ran the match test and the gates; the ingest job did the writes</div>
+      <div class="pm"><b>Rollback</b>UNDO michelin-2027-chengdu for the promote</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Work item — Michelin card price <span class="tag brass">Approved Sep 28, 2026</span></h3>
+    <p><strong>Rule (Ben, Sep 28).</strong> The Michelin card price wins over a legacy price with no URL, for every guide. Reason: the card is current and has a URL. The legacy prices have no source URL.</p>
+    <p><strong>Why a work item.</strong> The ingest job writes no price rows. Every Michelin fixture CSV carries <code>price_symbol_raw</code>, but only 10 China venues hold a card price today. Population: distinct venues with at least one Michelin award row that has a <code>source_url</code>, read Sep 28: 3,353 venues. 2,966 hold one price row (2,956 <code>legacy_guide</code>, 10 <code>guide_ingest</code>); 387 hold none. No venue holds more than one price row.</p>
+    <p><strong>Row shape</strong> (the China precedent): <code>source</code> = <code>guide_ingest</code>, <code>method</code> = <code>published_symbol</code>, <code>publisher</code> = <code>michelin</code>, <code>currency</code> from the guide, <code>symbol_raw</code> as printed on the card, <code>source_url</code> = the card URL. The tier comes from the symbol count, as today.</p>
+    <p><strong>Rules for the job.</strong> The input is the fixture CSVs in the repo, never a retyped file. A venue gets the price of its own card row only. A venue with cards in two guides goes to review. Decision D5 does not change: Google price integers never enter production. Each guide is one gated batch with a dry run, one "go" and a read-back.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>The method (gated SQL per guide, or price writing added to the ingest job through Claude Code) and its place in the order of work</div>
+      <div class="pm"><b>Decisions needing Fable</b>None</div>
+      <div class="pm"><b>Model &amp; surface</b>The chat builds and checks each batch; the Write connector or the ingest job does the writes</div>
+      <div class="pm"><b>Rollback</b><code>audit_log</code> (the price table has an audit trigger)</div>
+    </div>
+  </div>
+
+  <div class="card">
     <h3>Work item — Michelin history backfill (past editions) <span class="tag brass">Approved Sep 16, 2026 · starts after launch</span></h3>
     <p><strong>Why.</strong> Ben wants the site to show both the latest distinction and its history (for example, "★★ Michelin 2026", with "★ 2023–2025" when a visitor expands the entry). The design system already shows every year per source, newest first. Other sources already carry real history: World's 50 Best Restaurants 2002–2025, World's 50 Best Bars 2009–2025, James Beard 2016–2026, and Gault&amp;Millau 2018–2026. 3,485 venues have awards from more than one year. <strong>Michelin does not.</strong> The legacy "2025" rows were a 2026 snapshot (Fable ruling), so for France, Italy, Japan and Spain the database now holds only the 2026 edition. There was no true Michelin history to keep, so this is new capture, not a restore.</p>
     <p><strong>Rules</strong> (these follow the ruling):</p>
@@ -740,7 +895,8 @@
   </div>
 
   <div class="card">
-    <h3>Phase 4 — Frontend rebuild <span class="tag brass">Sept, weekends</span></h3>
+    <h3>Phase 4 — Frontend rebuild <span class="tag clay">Dates under review</span></h3>
+    <div class="flag"><p><b>Dates under review (Ben, Sep 28).</b> This phase was planned for September weekends, and the swap for late September to mid October. The plan has no record of Phase 4 progress, and the Michelin ingest goes on into October (Great Britain &amp; Ireland, Texas, American South, Beijing &amp; Tianjin). The Phase 4 and 5 dates and the mid-October swap target are under review. The next version records the new dates when Ben sets them.</p></div>
     <p><strong>Produces:</strong> the restarted site on the new artifacts under D7's evolved brand: same routes, redirect handling, sharded data loading, required-attribution components, live photo Worker (wired only after the wrong-placeId triage from Phase 1a clears), honest-geo pin states, days-open display where confident, the Sources &amp; credits page generated from <code>award_sources</code>, and component slots that leave room for Tonight mode and save-to-list without building them — all non-commercial by construction per §3. Reviewed through preview URLs in <strong>three structured weekend sessions</strong>: (1) direction — home, city page, venue page; (2) full walkthrough; (3) polish and sign-off.</p>
     <p><strong>Why here:</strong> building against real, final-shaped artifacts prevents rework. <strong>If rushed earlier:</strong> the frontend chases a moving data shape — a rerun of history.</p>
     <div class="phase-meta">
@@ -752,8 +908,9 @@
   </div>
 
   <div class="card">
-    <h3>Phase 5 — Parallel run and swap <span class="tag brass">Late Sept – mid Oct</span></h3>
+    <h3>Phase 5 — Parallel run and swap <span class="tag clay">Dates under review</span></h3>
     <p><strong>Produces:</strong> a URL-parity report (every indexed URL old vs new, redirects verified); Search Console readiness; the DNS cutover runbook executed click-by-click (domain moves from Lovable's settings to Ben's Cloudflare); 30 days of the Lovable deployment kept warm; then decommission — Apps Script retired, Sheet archived, <strong>legacy Google coordinate and price columns purged with a verified deletion report (the legacy-purge gate)</strong>, Lovable cancelled.</p>
+    <div class="flag"><p><b>Added to this phase (Sep 28).</b> The URL-parity check must send each non-canonical slug (1,081 today) to its canonical URL with a 301. <code>cities.venues_count</code> is stale: no trigger keeps it, so the publish builder must count venues itself, or a recount job runs first (Ben to decide). Row Level Security is off on <code>award_categories</code>, <code>rename_batches</code> and <code>rename_rows</code>: Ben decides before the swap; do not enable RLS before access policies exist.</p></div>
     <p><strong>Why here:</strong> the swap is the point of everything before it. <strong>If skipped:</strong> two systems forever, and the compliance exposure never actually closes.</p>
     <div class="phase-meta">
       <div class="pm"><b>Decisions needing Ben</b>Go/no-go on the parity report — a 20-minute read and one call</div>
@@ -835,6 +992,8 @@
       <tr><td>1.24</td><td>September 16, 2026</td><td>Ben's decisions on the Michelin history backfill recorded: target range back to 2018 (about 22,300 rows and 40–50 batches for the four guides); fallback 5 editions (2021–2025, about 14,000 rows) if 2018 is too large; the pilot runs only after the migration is complete and the site is live. The pilot now tests 2018 and 2025 and lists the real edition years for each guide. Until then, the site shows no Michelin "since" lines.</td></tr>
       <tr><td>1.25</td><td>September 24, 2026</td><td>Monaco promoted (batch id 7, ledger 35, after a dry run at ledger 34): 9 rows (1 / 3 / 5 / 0), country slug <code>principality-of-monaco</code>, all rows in <code>ci_77f09e1229</code>; first stage 8 / 1 / 0, one decision (<code>use:ve_abd09cb984</code>), restage 9 / 0 / 0. Retire <code>retire-michelin-legacy-mc</code> (ledger 36): 8 same-category rows, 0 mismatches. Blue Bay Marcel Ravin's missing 2025 row sent to the backfill. Method notes: Opus is enough for small captures, the promote Dry run box, audit triggers on awards/venues/cities, schema facts. Next guide named from the gap list: USA, where only Colorado and the new Southwest guide have a 2026 edition, so the next batch is <code>michelin-2026-colorado-southwest</code> (46 rows expected). Ruling question raised on Colorado's legacy rows, which are the real 2025 edition. Remaining-work order restated. Base: v1.24 rebuilt from v1.23 with the Sep 16 edit script, because the saved copies in the repo and Project Knowledge were still v1.23.</td></tr>
       <tr><td>1.26</td><td>September 24, 2026</td><td>Rule 2.1.1 amended. A legacy Michelin 2025 row is retired only when its guide's 2026 ceremony date is before May 13, 2026, or a three-promotion test proves a 2026 capture. A guide with a ceremony date after June 1, 2026 keeps all legacy rows as 2025 history. Category does not change the answer. Colorado (batch 8, promoted Sep 24, 2026): ceremony Sep 14, 2026. 19 legacy rows kept. Retire batch not applicable. Evidence: the legacy rows hold none of the 4 venues new in 2026 (Milpero, Annette, Pig and Tiger, Rougarou). Texas (Oct 8, 2026), American South (Oct 21, 2026), Northeast Cities (Dec 14, 2026): same ruling. Promote only. No retire batch. Open item closed the same day: Colorado and all 46 batch venues hold 0 unsourced 2026 rows next to sourced 2026 rows; the whole table has 1 such venue (Tales by Chapter, awards 21112 and 21161, both special awards), sent to the special-awards batch, no delete. Batch record: 46 rows (Colorado 23, Southwest 23), <code>cities-us</code> (3 Utah cities, 3,241 → 3,244), first stage 20 / 24 / 2 as predicted, decisions 8 rows, restage 26 / 20 / 0, promote batch id 8 (venues 11,061, awards 22,024, Michelin 2026 rows 3,764), <code>bosq-active</code> (active 10,699).</td></tr>
+      <tr><td>1.27</td><td>September 24, 2026</td><td>Rule 2.1.7 added. The year column is Michelin's edition label. A legacy row holds the edition live at capture. Same label incoming: retire under 2.1.1. Later label incoming: relabel under rule 5 first, then promote, retire nothing. Chengdu: 2026 edition live at capture (Sep 2, 2025, URL in the decisions file). Batch relabel-michelin-legacy-cn-chengdu, 32 rows, 2025 to 2026, after the three-change test (Bai Nian Fen Zheng Niu Rou, Zeng Niu Rou, Long Sen Yuan) and the rule 6 read; ledger id 41; Michelin 2025 rows 4,479, 2026 rows 3,796, awards unchanged at 22,024. Then promote Chengdu 2027 (47 rows). No retire batch. Beijing and Fujian 2027 (Oct–Nov 2026): same path as Chengdu. Verify each 2026 ceremony URL before the relabel. Tokyo, Kyoto-Osaka, Nara 2027 (Feb 16, 2027): promote only. Sourced 2026 rows stay. The 11 Japan legacy rows stay in the Japan cleanup item. China mainland scoped as five guides with ceremony dates and cleanup paths; Cowork brief written (472 rows expected, Chengdu 2027 as a hold-out file). Cleanup items: Chengdu name contamination; Sheung Wan filed under China.</td></tr>
+      <tr><td>1.28</td><td>September 28, 2026</td><td>Base: v1.27 rebuilt from v1.26 with the exact Sep 24 edit script, because the saved copies in the repo and Project Knowledge were still v1.26. China mainland 2026 (batch id 9) promoted Sep 27: decisions file 423 rows (263 use:, 160 new), restage 309 / 160 / 0, ledger 44–45. Rename and reactivate: name_native on 17 venues, Meet the Bund active, 10 card prices; rename batch 6 (263 venues, ledger 47) and batch 8 (Meet the Bund, majority rule, ledger 66). Retire ledger 48–50 (266 rows) and Guangzhou cleanup 51; cleanup ledger 52–64; slug job for the 263 renamed venues (audit 105,135–105,660). Chengdu 2027 (batch id 10) promoted Sep 28: 47 rows, 23 match / 24 new, ledger 69–70, nothing retired; Set 1 option C. Rule 2.1.7 table: Beijing and Fujian 2027 now follow the Tokyo row. Standing rules recorded: rule 12, rule 6b, name wins, token link, category exception, free-venue rows, second category, 2025 history, other publishers, name_native exception, majority names, slugs, price, Foodle. New work item: Michelin card price for every guide (3,353 venues with a sourced Michelin row; 10 card prices today). Phase 4 and 5 dates and the mid-October swap target marked under review. Phase 5 gains the 301 check for 1,081 non-canonical slugs, the venues_count recount and the RLS decision. Punch List v2.47 and runorder v1.5 marked out of date. Order of the remaining work restated: Great Britain &amp; Ireland next.</td></tr>
     </table>
   </div>
   <footer>CompassEats · Re-Architecture &amp; Migration Plan · v1.0 — Aug 10, 2026<br>Save to <code>docs/</code> in the repo and re-upload to Project Knowledge after ratification. Update version + date on any change.</footer>
