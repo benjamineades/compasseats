@@ -1,0 +1,74 @@
+batch_key,source_id,year,rank,category,distinction,source_url,venue_name,city_label,country_label,venue_category,venue_status,price_symbol_raw,note,michelin_guide
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/spring_2986734/restaurant/corkscrew-bbq,CorkScrew BBQ,Spring,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/le-jardinier-houston,Le Jardinier Houston,Houston,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/march,March,Houston,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/bcn-taste-tradition,BCN Taste & Tradition,Houston,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/tatemo,Tatemó,Houston,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/musaafer,Musaafer,Houston,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/dallas_2954570/restaurant/tatsu-dallas,Tatsu Dallas,Dallas,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/dallas_2954570/restaurant/mamani,Mamani,Dallas,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/fort-worth_2954653/restaurant/goldee-s,Goldee’s Bar-B•Q,Fort Worth,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/barley-swine,Barley Swine,Austin,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/craft-omakase,Craft Omakase,Austin,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/interstellar-bbq,InterStellar BBQ,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/hestia,Hestia,Austin,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/kappo-kappo,Kappo Kappo,Austin,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/fabrik,Fabrik,Austin,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/leroy-and-lewis-barbecue,LeRoy and Lewis Barbecue,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/san-antonio_2958156/restaurant/nicosi,Nicōsi,San Antonio,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/san-antonio_2958156/restaurant/isidore,Isidore,San Antonio,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,One Star,,https://guide.michelin.com/us/en/texas/san-antonio_2958156/restaurant/mixtli,Mixtli,San Antonio,United States,restaurant,,$$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/spring_2986734/restaurant/rosemeyer-bar-b-q,Rosemeyer Bar-B-Q,Spring,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/spring_2986734/restaurant/belly-of-the-beast,Belly of the Beast,Spring,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/street-to-kitchen,Street to Kitchen,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/theodore-rex,Theodore Rex,Houston,United States,restaurant,,$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/khoi-barbecue,Khói Barbecue,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/nancy-s-hustle,Nancy's Hustle,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/pinkerton-s-bbq,Pinkerton's Barbecue,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/papalo-taqueria,Papalo Taqueria,Houston,United States,restaurant,,$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/ema-1214429,Casaema,Houston,United States,restaurant,,$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/da-gama-canteen,da Gama Canteen,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/kitchen-rumors,Kitchen Rumors,Houston,United States,restaurant,,$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/chopnblok,ChòpnBlọk,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/truth-bbq,Truth BBQ,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/xolo,Xolo,Houston,United States,restaurant,,$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/pearland_2986629/restaurant/killen-s-bbq,Killen's BBQ,Pearland,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/rosie-cannonball,Rosie Cannonball,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/annam,Annam,Houston,United States,restaurant,,$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/nobie-s,nobie's,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/bar-buena,Bar Buena,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/the-pit-room,The Pit Room,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/tomball_2987082/restaurant/tejas-chocolate,Tejas Chocolate + Barbecue,Tomball,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/maximo-1218096,Maximo,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/bellaire_2959890/restaurant/blood-bros-bbq,Blood Bros BBQ,Bellaire,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/murray-s-pizza-wine,Murray's Pizza & Wine,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/mala-sichuan-bistro,Mala Sichuan Bistro,Houston,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/houston_2986624/restaurant/nam-giao,Nam Giao,Houston,United States,restaurant,,$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/dallas_2954570/restaurant/resident-taqueria,Resident Taqueria,Dallas,United States,restaurant,,$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/dallas_2954570/restaurant/mot-hai-ba,Một Hai Ba,Dallas,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/dallas_2954570/restaurant/ngon-vietnamese-kitchen,Ngon Vietnamese Kitchen,Dallas,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/dallas_2954570/restaurant/gemma-1196492,Gemma,Dallas,United States,restaurant,,$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/dallas_2954570/restaurant/nonna,nonna,Dallas,United States,restaurant,,$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/dallas_2954570/restaurant/cattleack-barbeque,Cattleack Barbeque,Dallas,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/parish-barbecue,Parish Barbecue,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/micklethwait-craft-meats,Micklethwait Craft Meats,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/kg-bbq,KG BBQ,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/veracruz-fonda-bar,Veracruz Fonda & Bar,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/la-santa-barbacha,La Santa Barbacha,Austin,United States,restaurant,,$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/dai-due,Dai Due,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/kemuri-tatsu-ya,Kemuri Tatsu-ya,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/cuantos-tacos,Cuantos Tacos,Austin,United States,restaurant,,$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/mercado-sin-nombre,Mercado Sin Nombre,Austin,United States,restaurant,,$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/nixta-taqueria,Nixta Taqueria,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/emmer-rye,Emmer & Rye,Austin,United States,restaurant,,$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/franklin-barbecue,Franklin Barbecue,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/odd-duck,Odd Duck,Austin,United States,restaurant,,$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/distant-relatives,Distant Relatives,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/austin_2958315/restaurant/briscuits,Briscuits,Austin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/lockhart_2958209/restaurant/barbs-b-q,Barbs B Q,Lockhart,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/seguin_2958298/restaurant/burnt-bean-co,Burnt Bean Co.,Seguin,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/san-antonio_2958156/restaurant/southerleigh-fine-food-brewery,Southerleigh Fine Food & Brewery,San Antonio,United States,restaurant,,$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/san-antonio_2958156/restaurant/cullum-s-attaboy,Cullum's Attaboy,San Antonio,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/san-antonio_2958156/restaurant/ladino,Ladino,San Antonio,United States,restaurant,,$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/san-antonio_2958156/restaurant/mezquite,Mezquite,San Antonio,United States,restaurant,,$$$,,texas-2026
+michelin-2026-texas,michelin,2026,,Bib Gourmand,,https://guide.michelin.com/us/en/texas/san-antonio_2958156/restaurant/the-jerk-shack,The Jerk Shack,San Antonio,United States,restaurant,,$,,texas-2026
