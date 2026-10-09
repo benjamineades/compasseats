@@ -1,7 +1,6 @@
 # Rename apply - rename-majority-2026-germany
 
-**DRY RUN - rolled back.** Everything below is what would have happened.
-Every name in the database is exactly as it was.
+Committed 2026-10-09T03:52:09.584Z. One transaction, all of it or none of it.
 
 | field | value |
 |---|---|
@@ -101,9 +100,9 @@ Population: whole table, read inside the transaction before and after the writes
 | awards | 22,389 | 22,389 | 22,389 |
 | slugs | 12,509 | 12,509 | 12,509 |
 | blurbs | 142 | 142 | 142 |
-| source_capture_ledger | 71 | 73 | 73 |
-| rename_batches | 6 | 7 | 7 |
-| rename_rows | 766 | 811 | 811 |
+| source_capture_ledger | 72 | 74 | 74 |
+| rename_batches | 7 | 8 | 8 |
+| rename_rows | 780 | 825 | 825 |
 
 A rename changes no count at all except this job's own two tables and the ledger. `venues`, `awards`, `slugs` and `blurbs` are in the table so that "it changed nothing else" is a measurement rather than a promise.
 
@@ -149,4 +148,7 @@ Spellings followed: michelin (43), la-liste (2).
 
 ## Undo
 
-Nothing to undo: this was a dry run. Untick the box to do it for real.
+Reversible with one button: **Rename - undo**, with the confirmation
+`UNDO-RENAME rename-majority-2026-germany`. Dry-run it first - that box starts ticked.
+
+The undo puts every name in this batch back to its `expected_name` and removes the ledger rows tagged `rename-apply:rename-majority-2026-germany`. It refuses, rather than adapts, if a venue has been renamed again since. It runs once.
