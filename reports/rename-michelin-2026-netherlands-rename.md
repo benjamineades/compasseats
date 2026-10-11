@@ -1,7 +1,6 @@
 # Rename apply - rename-michelin-2026-netherlands
 
-**DRY RUN - rolled back.** Everything below is what would have happened.
-Every name in the database is exactly as it was.
+Committed 2026-10-11T19:57:06.063Z. One transaction, all of it or none of it.
 
 | field | value |
 |---|---|
@@ -188,4 +187,7 @@ Spellings followed: michelin (82), venue (1).
 
 ## Undo
 
-Nothing to undo: this was a dry run. Untick the box to do it for real.
+Reversible with one button: **Rename - undo**, with the confirmation
+`UNDO-RENAME rename-michelin-2026-netherlands`. Dry-run it first - that box starts ticked.
+
+The undo puts every name in this batch back to its `expected_name` and removes the ledger rows tagged `rename-apply:rename-michelin-2026-netherlands`. It refuses, rather than adapts, if a venue has been renamed again since. It runs once.
