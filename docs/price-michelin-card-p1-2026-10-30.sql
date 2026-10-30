@@ -1,0 +1,654 @@
+-- price-michelin-card-p1-2026-10-30.sql
+-- Block A, step 1: Michelin card price for P1.
+-- Population P1: active venues with a Michelin One Star, Two Stars, Three Stars or Bib Gourmand
+-- row, no price row, and a guide.michelin.com card URL on that award row (560 venues, read
+-- Oct 29, 2026 23:5x ET, venue id md5 4fcf03b424ba6d7a16d6f348ed974525).
+-- Source: the live Michelin card page (Price: line, data-sheet), read in the built-in browser.
+-- Read: 560 cards. Held: 2 (Terra ve_89ca903ac2 card 404; La Torre One Fire ve_b5a5b44c26 card URL redirects
+-- to another region path). Rows: 558 INSERT into price. source guide_ingest, method published_symbol, publisher michelin,
+-- source_url = card URL, symbol_raw = card symbol, currency from card country, tier = symbol count.
+-- Currencies: CNY 188, EUR 224, GBP 6, JPY 17, KRW 1, TWD 68, USD 54.
+-- Relay: price-michelin-card-p1-relay-2026-10-30.txt, sha256 7f22474a25dc9d78bbc480e1ab4b76d356304e0f69dbc73d3e2b4275325fdc1f, inside this file.
+-- Guards: counts before (price 7024, ledger max 139, audit max 113410); relay fingerprint md5
+-- 3780538e18f9967d72aae59b46a683c1; venue id md5 c0cf9361c46578dbb4215f77334f35c0; each row in P1 now with the same card URL; no price row now.
+-- Post-checks: price 7024+558; ledger 140; audit 558 price INSERT rows, nothing else.
+BEGIN;
+DO $do$
+DECLARE
+  rel_txt text := $r$ve_002bb1220b|us/en/georgia/atlanta_2884144/restaurant/summerland|$$|CAT_P02|bib|us|2026-10-30T03:58:18.851Z
+ve_013408683a|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/abba-hakka|$$|CAT_P02|bib|tw|2026-10-30T03:58:20.117Z
+ve_01cd992f2b|en/bretagne/rennes/restaurant/racines542026|€€€|CAT_P03|1 star|fr|2026-10-30T03:58:21.437Z
+ve_01d04b922a|us/en/guangdong-province/shenzhen_1030672/restaurant/mai-yu-lao-sha-guo-zhou|¥¥|CAT_P02|bib|cn|2026-10-30T03:58:22.782Z
+ve_01ef554181|us/en/zhe-jiang/hangzhou_1027184/restaurant/wild-yeast|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T03:58:24.126Z
+ve_01fc419350|us/en/zhe-jiang/wenzhou_1031793/restaurant/run-feng-he-niu-za|¥|CAT_P01|bib|cn|2026-10-30T03:58:25.446Z
+ve_024de34d8a|en/auvergne-rhone-alpes/lucinges/restaurant/l-auberge-de-lucinges|€€€€|CAT_P04|1 star|fr|2026-10-30T03:58:26.765Z
+ve_0305fef230|us/en/guangdong-province/guangzhou/restaurant/suyab-courtyard%E3%83%BBpickmoon-gourmet|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T03:58:28.106Z
+ve_03353c38b1|us/en/fujian-province/xiamen_1031934/restaurant/pan-ya-yuan|¥¥|CAT_P02|bib|cn|2026-10-30T03:58:29.438Z
+ve_03f3f92eb5|us/en/kaohsiung-region/kaohsiung/restaurant/liao-chi-migao|$|CAT_P01|bib|tw|2026-10-30T03:58:30.780Z
+ve_043c47cdb3|us/en/baden-wurttemberg/sulzbach_1316547/restaurant/krone-1209640|€€|CAT_P02|bib|de|2026-10-30T03:58:32.110Z
+ve_05071b0521|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/lai-kang-shan|$|CAT_P01|bib|tw|2026-10-30T03:58:33.442Z
+ve_056b071c7c|us/en/guangdong-province/guangzhou/restaurant/wuchuan-hao-wei-lai|¥|CAT_P01|bib|cn|2026-10-30T03:58:34.781Z
+ve_06fd2951bb|us/en/texas/dallas_2954570/restaurant/resident-taqueria|$|CAT_P01|bib|us|2026-10-30T03:58:36.103Z
+ve_0728682a08|us/en/taichung-region/taichung/restaurant/no-name-noodles|$|CAT_P01|bib|tw|2026-10-30T03:58:37.448Z
+ve_08e3248f33|en/normandie/deauville/restaurant/l-essentiel255041|€€€|CAT_P03|1 star|fr|2026-10-30T03:58:38.783Z
+ve_0907d6d8e8|us/en/beijing-municipality/beijing/restaurant/xin-rong-ji-jianguomenwai-street|¥¥¥|CAT_P03|1 star|cn|2026-10-30T03:58:40.103Z
+ve_091d37de68|en/ile-de-france/paris/restaurant/bistrot-des-fables|€€|CAT_P02|bib|fr|2026-10-30T03:58:41.454Z
+ve_092565cb65|us/en/tokyo-region/tokyo/restaurant/sobakiri-suzuki|¥|CAT_P01|bib|jp|2026-10-30T03:58:42.792Z
+ve_09f0bb8b15|us/en/noord-holland/amstelveen/restaurant/bistro-toost|€€|CAT_P02|bib|nl|2026-10-30T03:58:44.123Z
+ve_09f3924823|us/en/jiang-su/yangzhou_1032329/restaurant/yu-cheng|¥¥|CAT_P02|bib|cn|2026-10-30T03:58:45.460Z
+ve_0a22f427a5|us/en/taichung-region/taichung/restaurant/lao-shih-kuan-noodles|$|CAT_P01|bib|tw|2026-10-30T03:58:46.782Z
+ve_0a95c84359|us/en/new-mexico/albuquerque_2934232/restaurant/frontier|$|CAT_P01|bib|us|2026-10-30T03:58:48.105Z
+ve_0c4e0915ee|en/bretagne/plomodiern/restaurant/l-auberge-des-glazicks|€€€€|CAT_P04|2 star|fr|2026-10-30T03:58:49.413Z
+ve_0c90f6c0c8|us/en/south-carolina/charleston_2952029/restaurant/palmira|$$|CAT_P02|bib|us|2026-10-30T03:58:50.728Z
+ve_0cd1dfaac4|en/provence-alpes-cote-dazur/saint-tropez/restaurant/la-terrasse-cheval-blanc-st-tropez|€€€€|CAT_P04|1 star|fr|2026-10-30T03:58:52.059Z
+ve_0d0e52e950|en/grand-est/lembach/restaurant/cheval-blanc-4111|€€€€|CAT_P04|1 star|fr|2026-10-30T03:58:53.395Z
+ve_0ddc392c48|en/bourgogne-franche-comte/chaintr/restaurant/la-table-de-chaintre|€€€|CAT_P03|1 star|fr|2026-10-30T03:58:54.705Z
+ve_0e2ce57dcd|us/en/shanghai-municipality/shanghai/restaurant/moose-changning|¥¥¥|CAT_P03|1 star|cn|2026-10-30T03:58:56.036Z
+ve_0e38b07eaa|en/grand-est/riquewihr/restaurant/la-table-du-gourmet|€€€€|CAT_P04|1 star|fr|2026-10-30T03:58:57.364Z
+ve_0ebccf2149|us/en/jiang-su/suzhou_1031079/restaurant/dingshan-jiangyan-xiangcheng|¥¥¥|CAT_P03|1 star|cn|2026-10-30T03:58:58.705Z
+ve_0f6a5f23d0|us/en/jiang-su/nanjing_1029511/restaurant/hou-pin-xiao-yuan|¥¥|CAT_P02|bib|cn|2026-10-30T03:59:00.038Z
+ve_0f8d54f738|us/en/tokyo-region/tokyo/restaurant/dialogue-1200268|¥¥|CAT_P02|bib|jp|2026-10-30T03:59:01.395Z
+ve_0fcffab802|us/en/taipei-region/taipei/restaurant/mountain-and-sea-house|$$$|CAT_P03|1 star|tw|2026-10-30T03:59:02.746Z
+ve_107f3fe31e|us/en/chengdu-municipality/chengdu/restaurant/xiao-you-shao-mai-qiangyang|¥|CAT_P01|bib|cn|2026-10-30T03:59:04.079Z
+ve_1096f1b2fb|en/bretagne/noyal-sur-vilaine/restaurant/auberge-du-pont-d-acigne|€€€€|CAT_P04|1 star|fr|2026-10-30T03:59:05.449Z
+ve_114fbde327|en/provence-alpes-cote-dazur/salon-de-provence/restaurant/atelier-salone|€€|CAT_P02|bib|fr|2026-10-30T03:59:06.782Z
+ve_1244277aac|us/en/taipei-region/taipei/restaurant/open-smile|$|CAT_P01|bib|tw|2026-10-30T03:59:08.104Z
+ve_128b8427d0|us/en/groningen/groningen/restaurant/dokjard|€€|CAT_P02|bib|nl|2026-10-30T03:59:09.435Z
+ve_12e1dee96f|us/en/zeeland/kortgene_2215334/restaurant/rozewied|€€€|CAT_P03|1 star|nl|2026-10-30T03:59:10.784Z
+ve_139c220d06|en/ile-de-france/paris/restaurant/mandoobar|€€|CAT_P02|bib|fr|2026-10-30T03:59:12.111Z
+ve_13e93ccbe7|us/en/beijing-municipality/beijing/restaurant/jingji|¥¥¥¥|CAT_P04|2 star|cn|2026-10-30T03:59:13.489Z
+ve_14945f94c2|en/bretagne/lorient/restaurant/louise1000376|€€€|CAT_P03|1 star|fr|2026-10-30T03:59:14.827Z
+ve_14ce5d2000|us/en/campania/amalfi/restaurant/alici|€€€€|CAT_P04|1 star|it|2026-10-30T03:59:16.159Z
+ve_14db5c0cd0|en/auvergne-rhone-alpes/le-broc/restaurant/origines|€€€€|CAT_P04|1 star|fr|2026-10-30T03:59:17.502Z
+ve_1506d9a82d|us/en/niedersachsen/hohnhorst_1337121/restaurant/restaurant-mohn|€€€|CAT_P03|1 star|de|2026-10-30T03:59:18.827Z
+ve_154740d5e3|us/en/south-carolina/bluffton_2952024/restaurant/okan|$$|CAT_P02|bib|us|2026-10-30T03:59:20.154Z
+ve_167ecfa11e|us/en/guangdong-province/shenzhen_1030672/restaurant/dioswa-bistro|¥¥|CAT_P02|bib|cn|2026-10-30T03:59:21.501Z
+ve_16b203f206|en/grand-est/montenach/restaurant/le-k|€€€€|CAT_P04|1 star|fr|2026-10-30T03:59:22.846Z
+ve_16ecfa59c1|us/en/tokyo-region/tokyo/restaurant/there-is-ramen|¥|CAT_P01|bib|jp|2026-10-30T03:59:24.180Z
+ve_17475f658b|us/en/catalunya/xerta/restaurant/villa-retiro|€€€€|CAT_P04|1 star|es|2026-10-30T03:59:25.515Z
+ve_175d6ce4a3|us/en/guangdong-province/shenzhen_1030672/restaurant/hua-zhou-b-ji-fan-dian|¥|CAT_P01|bib|cn|2026-10-30T03:59:26.843Z
+ve_175f7d63c2|us/en/tokyo-region/tokyo/restaurant/sukiyabashi-jiro-roppongiten|¥¥¥¥|CAT_P04|2 star|jp|2026-10-30T03:59:28.170Z
+ve_17c0cef701|us/en/northern-taiwan/hsinchu-county_2853127/restaurant/tsou-chi-cai-bao-zhongzheng-road|$|CAT_P01|bib|tw|2026-10-30T03:59:29.534Z
+ve_183605970b|us/en/baden-wurttemberg/schluchsee/restaurant/brasserie-barbara|€€|CAT_P02|bib|de|2026-10-30T03:59:30.859Z
+ve_19487f4036|us/en/texas/houston_2986624/restaurant/khoi-barbecue|$$|CAT_P02|bib|us|2026-10-30T03:59:32.191Z
+ve_19bac307ee|us/en/nordrhein-westfalen/gummersbach/restaurant/muhlenhelle-bistro|€€|CAT_P02|bib|de|2026-10-30T03:59:33.543Z
+ve_1ade09cf15|us/en/south-gloucestershire/bristol/restaurant/cor|££|CAT_P02|bib|gb|2026-10-30T03:59:34.885Z
+ve_1c69e31580|us/en/new-mexico/santa-fe_2934394/restaurant/la-choza|$$|CAT_P02|bib|us|2026-10-30T03:59:36.227Z
+ve_1d1607deee|en/grand-est/vinay/restaurant/alcove|€€€€|CAT_P04|1 star|fr|2026-10-30T03:59:37.560Z
+ve_1e44b6e20e|us/en/tokyo-region/tokyo/restaurant/yamato-1194199|¥¥|CAT_P02|bib|jp|2026-10-30T03:59:38.884Z
+ve_1e4f1a0464|us/en/guangdong-province/guangzhou/restaurant/ze-8|¥¥|CAT_P02|bib|cn|2026-10-30T03:59:40.242Z
+ve_1e7a896777|us/en/zuid-holland/den-haag/restaurant/ramen-kitanoya|€|CAT_P01|bib|nl|2026-10-30T03:59:41.578Z
+ve_1fa2789470|us/en/tokyo-region/tokyo/restaurant/jo|¥¥¥¥|CAT_P04|1 star|jp|2026-10-30T03:59:42.936Z
+ve_200e7ebf47|en/auvergne-rhone-alpes/alleyras/restaurant/le-haut-allier|€€€€|CAT_P04|1 star|fr|2026-10-30T03:59:44.186Z
+ve_20abced354|en/auvergne-rhone-alpes/veyrier-du-lac/restaurant/la-table-de-yoann-conte|€€€€|CAT_P04|2 star|fr|2026-10-30T03:59:45.509Z
+ve_20f7655e91|us/en/baden-wurttemberg/weil-am-rhein/restaurant/cafe-gupi|€€|CAT_P02|1 star|de|2026-10-30T03:59:46.863Z
+ve_2144773974|en/ile-de-france/paris/restaurant/bru|€€|CAT_P02|bib|fr|2026-10-30T03:59:48.204Z
+ve_217324874a|us/en/taipei-region/taipei/restaurant/fujin-tree-taiwanese-cuisine-champagne-songshan|$$|CAT_P02|1 star|tw|2026-10-30T03:59:49.547Z
+ve_221a7b3549|us/en/new-mexico/santa-fe_2934394/restaurant/tia-sophia-s|$|CAT_P01|bib|us|2026-10-30T03:59:50.894Z
+ve_2259bdabb5|us/en/chengdu-municipality/chengdu/restaurant/the-woo-s|¥¥|CAT_P02|bib|cn|2026-10-30T03:59:52.234Z
+ve_22be3b24aa|us/en/tokyo-region/tokyo/restaurant/shinrakuki|¥¥|CAT_P02|bib|jp|2026-10-30T03:59:54.142Z
+ve_22e8135a7f|us/en/zhe-jiang/hangzhou_1027184/restaurant/little-pigtail-noodle-shop|¥|CAT_P01|bib|cn|2026-10-30T03:59:55.470Z
+ve_2388fa3eff|us/en/guangdong-province/shenzhen_1030672/restaurant/xin-hu-cun-cu-rou-longhua-jianshe-road|¥|CAT_P01|bib|cn|2026-10-30T03:59:56.801Z
+ve_23c4b48882|us/en/shanghai-municipality/shanghai/restaurant/yue-hai-tang|¥¥¥|CAT_P03|1 star|cn|2026-10-30T03:59:58.126Z
+ve_24544d8147|us/en/guangdong-province/guangzhou/restaurant/xiguan-zhuyuan-shiba-fu|¥|CAT_P01|bib|cn|2026-10-30T03:59:59.473Z
+ve_253a0eaf55|us/en/zhe-jiang/wenzhou_1031793/restaurant/jin-hong-lao-zi-hao-zhu-zang-fen|¥|CAT_P01|bib|cn|2026-10-30T04:00:00.833Z
+ve_25f63580d9|us/en/guangdong-province/shenzhen_1030672/restaurant/yun-jing|¥¥¥¥|CAT_P04|2 star|cn|2026-10-30T04:00:02.190Z
+ve_26086996f8|us/en/new-mexico/santa-fe_2934394/restaurant/jambo-cafe|$$|CAT_P02|bib|us|2026-10-30T04:00:03.521Z
+ve_260fc553ba|us/en/taipei-region/taipei/restaurant/zea|$$$$|CAT_P04|1 star|tw|2026-10-30T04:00:04.876Z
+ve_263c700f0e|en/bourgogne-franche-comte/dole/restaurant/la-chaumiere11044|€€€€|CAT_P04|1 star|fr|2026-10-30T04:00:06.237Z
+ve_268dcb0fb1|us/en/zhe-jiang/hangzhou_1027184/restaurant/tong-ma-ma-xihu|¥|CAT_P01|bib|cn|2026-10-30T04:00:07.562Z
+ve_2718ce16b6|us/en/fujian-province/fuzhou_1026814/restaurant/xingxian-mawei|¥¥|CAT_P02|bib|cn|2026-10-30T04:00:08.925Z
+ve_273774c457|us/en/nevada/las-vegas_2935077/restaurant/restaurant-de-joel-robuchon|$$$$|CAT_P04|2 star|us|2026-10-30T04:00:10.234Z
+ve_274ff23fe9|en/ile-de-france/paris/restaurant/accents-table-bourse|€€€€|CAT_P04|1 star|fr|2026-10-30T04:00:11.569Z
+ve_287d52920c|us/en/bayern/mnchen/restaurant/tantris-75719|€€€€|CAT_P04|2 star|de|2026-10-30T04:00:12.901Z
+ve_29456c74be|us/en/guangdong-province/guangzhou/restaurant/lai-heen-559155|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:00:14.252Z
+ve_29a960cf7b|us/en/beijing-municipality/beijing/restaurant/xin-rong-ji-jinrong-street|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:00:15.597Z
+ve_2a71cf2840|us/en/fujian-province/xiamen_1031934/restaurant/dai-tai|¥¥|CAT_P02|bib|cn|2026-10-30T04:00:16.934Z
+ve_2a78957c12|us/en/shanghai-municipality/shanghai/restaurant/the-taste-of-huzhou|¥|CAT_P01|bib|cn|2026-10-30T04:00:18.308Z
+ve_2aad95237f|us/en/fujian-province/fuzhou_1026814/restaurant/167-shan-hai-li|¥¥|CAT_P02|bib|cn|2026-10-30T04:00:19.645Z
+ve_2becba2392|us/en/guangdong-province/guangzhou/restaurant/mei-lu-xiao-chu|¥¥|CAT_P02|bib|cn|2026-10-30T04:00:20.981Z
+ve_2d8dc88fb7|us/en/lazio/roma/restaurant/enoteca-la-torre|€€€€|CAT_P04|2 star|it|2026-10-30T04:00:22.340Z
+ve_2e4a06078e|us/en/zhe-jiang/hangzhou_1027184/restaurant/xiu-cai-yang-rou-mian|¥|CAT_P01|bib|cn|2026-10-30T04:00:23.707Z
+ve_2ee867733a|us/en/fujian-province/xiamen_1031934/restaurant/homeme18-huming-road|¥|CAT_P01|bib|cn|2026-10-30T04:00:25.059Z
+ve_2eeac39d82|us/en/beijing-municipality/beijing/restaurant/chao-shang-chao-xicheng|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:00:26.434Z
+ve_2f04f32e25|en/provence-alpes-cote-dazur/ze-bord-de-mer/restaurant/la-table-du-cap-estel|€€€€|CAT_P04|1 star|fr|2026-10-30T04:00:27.779Z
+ve_2f83e6a534|us/en/zhe-jiang/hangzhou_1027184/restaurant/qing-chun-perma|¥¥|CAT_P02|bib|cn|2026-10-30T04:00:29.131Z
+ve_2f893f9438|us/en/noord-brabant/mierlo_2216676/restaurant/de-cuijt|€€€€|CAT_P04|1 star|nl|2026-10-30T04:00:30.492Z
+ve_2fb0a980e7|us/en/bayern/eichsttt/restaurant/staderer|€€€€|CAT_P04|1 star|de|2026-10-30T04:00:31.808Z
+ve_2fdd3a2ae3|us/en/guangdong-province/guangzhou/restaurant/yao-ji|¥¥|CAT_P02|bib|cn|2026-10-30T04:00:33.117Z
+ve_3081a1a5ed|en/auvergne-rhone-alpes/tresserve/restaurant/la-table-de-l-incomparable|€€€€|CAT_P04|1 star|fr|2026-10-30T04:00:34.445Z
+ve_30d395e57a|en/provence-alpes-cote-dazur/saint-paul-de-vence/restaurant/la-table-de-pierre|€€€€|CAT_P04|1 star|fr|2026-10-30T04:00:35.791Z
+ve_30dca02626|us/en/guangdong-province/shenzhen_1030672/restaurant/da-tang-liang-tang|¥¥|CAT_P02|bib|cn|2026-10-30T04:00:37.149Z
+ve_311b391026|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/superman|$$|CAT_P02|bib|tw|2026-10-30T04:00:38.502Z
+ve_320f4e04ee|us/en/northern-taiwan/hsinchu-county_2853127/restaurant/hung-chin|$$|CAT_P02|bib|tw|2026-10-30T04:00:39.832Z
+ve_3252daae0e|us/en/fujian-province/fuzhou_1026814/restaurant/lin-yi-nen-ming-pai-zhu-xue-hua|¥|CAT_P01|bib|cn|2026-10-30T04:00:41.150Z
+ve_32af691419|en/auvergne-rhone-alpes/le-reposoir_1512712/restaurant/la-chartreuse|€€|CAT_P02|bib|fr|2026-10-30T04:00:42.490Z
+ve_330f3f4178|us/en/taipei-region/taipei/restaurant/sushi-kajin|$$$$|CAT_P04|1 star|tw|2026-10-30T04:00:43.816Z
+ve_340848ef62|en/auvergne-rhone-alpes/lyon/restaurant/les-loges|€€€€|CAT_P04|1 star|fr|2026-10-30T04:00:45.178Z
+ve_343a90895d|us/en/beijing-municipality/beijing/restaurant/zijin-mansion|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:00:46.515Z
+ve_34517714e2|us/en/niedersachsen/seesen_1340885/restaurant/harzfenster-by-johannes-steingruber|€€€€|CAT_P04|1 star|de|2026-10-30T04:00:47.842Z
+ve_3475456c9b|us/en/jiang-su/suzhou_1031079/restaurant/gusu-fusion|¥|CAT_P01|bib|cn|2026-10-30T04:00:49.175Z
+ve_368db200e6|en/ile-de-france/paris/restaurant/la-scene|€€€€|CAT_P04|2 star|fr|2026-10-30T04:00:50.509Z
+ve_376f9dd936|us/en/chengdu-municipality/chengdu/restaurant/guan-jin-wuhou|¥¥|CAT_P02|bib|cn|2026-10-30T04:00:51.868Z
+ve_3859baecaf|us/en/kaohsiung-region/kaohsiung/restaurant/mi-yuan-tzu-steamed-glutinous-rice|$|CAT_P01|bib|tw|2026-10-30T04:00:53.217Z
+ve_3889ffb4e6|en/provence-alpes-cote-dazur/le-puy-sainte-rparade/restaurant/la-petite-verriere|€€|CAT_P02|bib|fr|2026-10-30T04:00:54.550Z
+ve_38916224da|us/en/guangdong-province/shenzhen_1030672/restaurant/fumee-1243502|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:00:55.887Z
+ve_38feaaecd2|us/en/comunidad-valenciana/carcaixent_1386765/restaurant/origen-1214557|€€€|CAT_P03|1 star|es|2026-10-30T04:00:57.231Z
+ve_392d15eab8|us/en/jiang-su/suzhou_1031079/restaurant/xi-ding-jia-yan|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:00:58.588Z
+ve_3a4a55928e|us/en/zhe-jiang/hangzhou_1027184/restaurant/qing-tao|¥¥|CAT_P02|bib|cn|2026-10-30T04:00:59.947Z
+ve_3a6db57938|en/grand-est/kaysersberg/restaurant/la-table-d-olivier-nasti|€€€€|CAT_P04|2 star|fr|2026-10-30T04:01:01.327Z
+ve_3af1c9c454|en/bourgogne-franche-comte/dijon/restaurant/stephane-derbord|€€€€|CAT_P04|1 star|fr|2026-10-30T04:01:02.694Z
+ve_3b3049b426|us/en/nordrhein-westfalen/sprockhvel/restaurant/tante-anna|€€€€|CAT_P04|1 star|de|2026-10-30T04:01:04.041Z
+ve_3be5964407|us/en/noord-holland/haarlem/restaurant/bruis|€€|CAT_P02|bib|nl|2026-10-30T04:01:05.370Z
+ve_3c4b336d0a|us/en/fujian-province/ningde/restaurant/xiao-dong-men-niu-rou-shui-fen-lao-dian|¥|CAT_P01|bib|cn|2026-10-30T04:01:06.717Z
+ve_3d1cda8ab7|us/en/piemonte/torino/restaurant/condividere|€€€€|CAT_P04|1 star|it|2026-10-30T04:01:08.034Z
+ve_3e7d56fee8|en/auvergne-rhone-alpes/lyon/restaurant/le-neuvieme-art|€€€€|CAT_P04|2 star|fr|2026-10-30T04:01:09.370Z
+ve_3ec1cc96ed|us/en/tainan-region/tainan/restaurant/xie-shopkeeper|$$|CAT_P02|bib|tw|2026-10-30T04:01:10.715Z
+ve_40a12813d1|us/en/noord-holland/amsterdam/restaurant/wils|€€€|CAT_P03|1 star|nl|2026-10-30T04:01:12.069Z
+ve_40a461563b|us/en/emilia-romagna/longiano/restaurant/magnolia|€€€€|CAT_P04|2 star|it|2026-10-30T04:01:13.411Z
+ve_40a55cfa6b|us/en/taichung-region/taichung/restaurant/shineyu|$$$$|CAT_P04|1 star|tw|2026-10-30T04:01:14.745Z
+ve_410be56f8e|us/en/bayern/wirsberg/restaurant/alexander-herrmann-by-tobias-batz|€€€€|CAT_P04|2 star|de|2026-10-30T04:01:16.100Z
+ve_416299efd7|us/en/fujian-province/xiamen_1031934/restaurant/xiang-mo-jin-nian-siming|¥¥|CAT_P02|bib|cn|2026-10-30T04:01:17.409Z
+ve_4210d49d00|en/ile-de-france/clichy/restaurant/rosette|€€|CAT_P02|bib|fr|2026-10-30T04:01:18.758Z
+ve_428a966a61|us/en/tennessee/memphis_2788663/restaurant/bao-toan-kitchen-bar|$$|CAT_P02|bib|us|2026-10-30T04:01:20.094Z
+ve_453d6fb6b1|us/en/guangdong-province/shenzhen_1030672/restaurant/xingning-ke-jia-cai-guan-meicun-road|¥¥|CAT_P02|bib|cn|2026-10-30T04:01:21.425Z
+ve_456bb67f9e|us/en/chengdu-municipality/chengdu/restaurant/yao-guai-mian|¥|CAT_P01|bib|cn|2026-10-30T04:01:22.794Z
+ve_45e0ac2be8|us/en/jiang-su/suzhou_1031079/restaurant/tang-yuan|¥|CAT_P01|bib|cn|2026-10-30T04:01:24.138Z
+ve_46093ed834|us/en/guangdong-province/shenzhen_1030672/restaurant/chao-shang-chao-1244756|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:01:25.488Z
+ve_46199fee65|us/en/taipei-region/taipei/restaurant/molino-de-urdaniz|$$$$|CAT_P04|2 star|tw|2026-10-30T04:01:26.822Z
+ve_46863e0216|us/en/jiang-su/nanjing_1029511/restaurant/xu-jian-ping-tang-bao-rehe-south-road|¥|CAT_P01|bib|cn|2026-10-30T04:01:28.161Z
+ve_46c906b415|us/en/guangdong-province/shenzhen_1030672/restaurant/ge-ji-mei-ji-xian|¥¥|CAT_P02|bib|cn|2026-10-30T04:01:29.496Z
+ve_4718a2a879|us/en/zhe-jiang/hangzhou_1027184/restaurant/fu-xing-mian-wang|¥|CAT_P01|bib|cn|2026-10-30T04:01:30.832Z
+ve_476b32da8e|us/en/jiang-su/nanjing_1029511/restaurant/san-bai-wan-bao-ying-chang-yu-mian|¥|CAT_P01|bib|cn|2026-10-30T04:01:32.159Z
+ve_47d855a88e|en/nouvelle-aquitaine/saint-milion/restaurant/la-table-de-pavie|€€€€|CAT_P04|2 star|fr|2026-10-30T04:01:33.503Z
+ve_47fb87d3b0|us/en/beijing-municipality/beijing/restaurant/niujie-halal-man-heng-ji|¥¥|CAT_P02|bib|cn|2026-10-30T04:01:34.874Z
+ve_498db571e3|en/nouvelle-aquitaine/brive-la-gaillarde/restaurant/la-table-d-olivier|€€€|CAT_P03|1 star|fr|2026-10-30T04:01:36.254Z
+ve_49d76f1590|us/en/jiang-su/nanjing_1029511/restaurant/jiangnan-wok-yun|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:01:37.600Z
+ve_49d7f4be37|us/en/utah/salt-lake-city_2960177/restaurant/feldman-s-deli|$|CAT_P01|bib|us|2026-10-30T04:01:38.945Z
+ve_4a103bb6ce|us/en/zhe-jiang/hangzhou_1027184/restaurant/xiao-dian-huang|¥¥|CAT_P02|bib|cn|2026-10-30T04:01:40.199Z
+ve_4b36b8659a|us/en/zhe-jiang/hangzhou_1027184/restaurant/xiao-zhu-fan-dian|¥¥|CAT_P02|bib|cn|2026-10-30T04:01:41.576Z
+ve_4b5f48ef55|us/en/northern-taiwan/hsinchu-county_2853127/restaurant/yi-ge-rice-vermicelli|$|CAT_P01|bib|tw|2026-10-30T04:01:42.909Z
+ve_4b6b1c4072|us/en/shanghai-municipality/shanghai/restaurant/yong-fu|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:01:44.234Z
+ve_4c0b7116b1|en/bourgogne-franche-comte/dijon/restaurant/la-maison-des-cariatides|€€€€|CAT_P04|1 star|fr|2026-10-30T04:01:45.585Z
+ve_4c3d06df7b|us/en/guangdong-province/guangzhou/restaurant/e-qian-ya-hou|¥|CAT_P01|bib|cn|2026-10-30T04:01:46.931Z
+ve_4c77fb33dc|us/en/louisiana/new-orleans_2906000/restaurant/safta-s-table|$$|CAT_P02|bib|us|2026-10-30T04:01:48.265Z
+ve_4e77c0295c|en/provence-alpes-cote-dazur/saint-rmy-de-provence/restaurant/l-auberge-de-saint-remy-fanny-rey-and-jonathan-wahid|€€€€|CAT_P04|2 star|fr|2026-10-30T04:01:49.590Z
+ve_4eaed104ef|us/en/guangdong-province/shenzhen_1030672/restaurant/jie-yang-lao-er-guo-tiao-tang|¥|CAT_P01|bib|cn|2026-10-30T04:01:50.941Z
+ve_502cb3df27|us/en/hamburg-region/hamburg/restaurant/cyn-cyn|€|CAT_P01|bib|de|2026-10-30T04:01:52.287Z
+ve_513ad27ea8|us/en/chengdu-municipality/chengdu/restaurant/mosnack|¥|CAT_P01|bib|cn|2026-10-30T04:01:53.640Z
+ve_5236dd8a92|us/en/arizona/phoenix_2875757/restaurant/pizzeria-bianco-1246609|$$|CAT_P02|bib|us|2026-10-30T04:01:54.984Z
+ve_524cd4f57d|us/en/shanghai-municipality/shanghai/restaurant/8-%C2%BD-otto-e-mezzo-bombana|¥¥¥¥|CAT_P04|2 star|cn|2026-10-30T04:01:56.317Z
+ve_5276ee70a2|us/en/guangdong-province/guangzhou/restaurant/ya-yuan|¥¥|CAT_P02|bib|cn|2026-10-30T04:01:57.714Z
+ve_530480e9d5|en/nouvelle-aquitaine/mont-de-marsan/restaurant/la-table-mirasol|€€€|CAT_P03|1 star|fr|2026-10-30T04:01:59.038Z
+ve_53b3b5d3e5|us/en/north-carolina/carrboro_2149794/restaurant/tesoro|$$|CAT_P02|bib|us|2026-10-30T04:02:00.377Z
+ve_53f13cc9c0|en/nouvelle-aquitaine/bordeaux/restaurant/le-pressoir-d-argent-gordon-ramsay|€€€€|CAT_P04|2 star|fr|2026-10-30T04:02:01.730Z
+ve_544e352dbc|us/en/taipei-region/taipei/restaurant/sushi-akira|$$$$|CAT_P04|1 star|tw|2026-10-30T04:02:03.134Z
+ve_547f1867d4|us/en/taipei-region/taipei/restaurant/tien-hsiang-lo|$$$|CAT_P03|1 star|tw|2026-10-30T04:02:04.472Z
+ve_5559e9180c|us/en/taipei-region/taipei/restaurant/mizue|$$$$|CAT_P04|2 star|tw|2026-10-30T04:02:05.839Z
+ve_5577f21b5e|en/auvergne-rhone-alpes/grane/restaurant/le-kleber-la-maison-bonnet|€€€€|CAT_P04|1 star|fr|2026-10-30T04:02:07.236Z
+ve_557b576103|us/en/zhe-jiang/wenzhou_1031793/restaurant/lao-wen-zhou-hun-tun-dan|¥|CAT_P01|bib|cn|2026-10-30T04:02:08.571Z
+ve_559d2e9f98|us/en/chengdu-municipality/chengdu/restaurant/wan-san-mian-guan-jinjiang|¥|CAT_P01|bib|cn|2026-10-30T04:02:09.882Z
+ve_55f5752b45|us/en/zhe-jiang/hangzhou_1027184/restaurant/sense-1216520|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:02:11.229Z
+ve_561d10edfa|en/hauts-de-france/lamorlaye_1547640/restaurant/charnu|€€|CAT_P02|bib|fr|2026-10-30T04:02:12.560Z
+ve_561ec4bc6f|us/en/abruzzo/guardiagrele/restaurant/villa-maiella|€€€|CAT_P03|1 star|it|2026-10-30T04:02:13.880Z
+ve_564b39567a|us/en/kaohsiung-region/kaohsiung/restaurant/hou-chi-duck-rice|$|CAT_P01|bib|tw|2026-10-30T04:02:15.208Z
+ve_56ad2a26c6|us/en/baden-wurttemberg/mannheim/restaurant/the-tourist-trap|€€€€|CAT_P04|1 star|de|2026-10-30T04:02:16.547Z
+ve_56dfa4c5fa|us/en/zhe-jiang/hangzhou_1027184/restaurant/wang-ri-shun-hao|¥|CAT_P01|bib|cn|2026-10-30T04:02:17.870Z
+ve_5737d2f060|us/en/texas/houston_2986624/restaurant/street-to-kitchen|$$|CAT_P02|bib|us|2026-10-30T04:02:19.198Z
+ve_577799bcaf|us/en/taipei-region/taipei/restaurant/ban-bo|$$$|CAT_P03|1 star|tw|2026-10-30T04:02:20.554Z
+ve_58278caf72|us/en/fujian-province/xiamen_1031934/restaurant/si-xia-li-huli|¥¥|CAT_P02|bib|cn|2026-10-30T04:02:21.892Z
+ve_58a21c0118|en/auvergne-rhone-alpes/saint-didier-de-la-tour/restaurant/ambroisie|€€€€|CAT_P04|1 star|fr|2026-10-30T04:02:23.281Z
+ve_58d35257a1|en/centre-val-de-loire/chartres/restaurant/le-georges|€€€€|CAT_P04|1 star|fr|2026-10-30T04:02:24.612Z
+ve_59067001bc|us/en/guangdong-province/guangzhou/restaurant/xin-ji|¥¥|CAT_P02|1 star|cn|2026-10-30T04:02:25.947Z
+ve_5934ca89a5|us/en/arizona/phoenix_2875757/restaurant/kid-sister|$$|CAT_P02|bib|us|2026-10-30T04:02:27.272Z
+ve_597637956c|us/en/tokyo-region/tokyo/restaurant/l-atelier-de-joel-robuchon-1194216|¥¥¥|CAT_P03|1 star|jp|2026-10-30T04:02:28.599Z
+ve_5982cea881|us/en/kaohsiung-region/kaohsiung/restaurant/habu|$$$|CAT_P03|1 star|tw|2026-10-30T04:02:29.949Z
+ve_5a6400a60d|us/en/utah/west-valley-city_2960179/restaurant/pho-777-1247529|$|CAT_P01|bib|us|2026-10-30T04:02:31.291Z
+ve_5aab4721a0|us/en/jiang-su/suzhou_1031079/restaurant/ling-ling-jiu-jia|¥¥|CAT_P02|bib|cn|2026-10-30T04:02:32.617Z
+ve_5ad6ece817|en/grand-est/strasbourg/restaurant/les-plaisirs-gourmands|€€€€|CAT_P04|1 star|fr|2026-10-30T04:02:33.938Z
+ve_5b5c4f827e|us/en/lombardia/pralboino/restaurant/leon-d-oro146788|€€€€|CAT_P04|1 star|it|2026-10-30T04:02:35.275Z
+ve_5ba0efb167|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/yonghe-chia-hsiang-soy-milk|$|CAT_P01|bib|tw|2026-10-30T04:02:36.592Z
+ve_5c6ad5c2fd|en/pays-de-la-loire/la-baule/restaurant/bris-art-culinaire|€€|CAT_P02|bib|fr|2026-10-30T04:02:37.929Z
+ve_5cbc70d4e5|us/en/fujian-province/xiamen_1031934/restaurant/tong-an-fan-dian-huachang-road|¥¥|CAT_P02|bib|cn|2026-10-30T04:02:39.273Z
+ve_5d3f003ebe|en/pays-de-la-loire/fontevraud-l-abbaye/restaurant/fontevraud-l-ermitage|€€€|CAT_P03|1 star|fr|2026-10-30T04:02:40.643Z
+ve_5d5203048a|en/provence-alpes-cote-dazur/nice/restaurant/racines-bruno-cirino|€€€|CAT_P03|1 star|fr|2026-10-30T04:02:41.961Z
+ve_5d854edbc3|us/en/zhe-jiang/hangzhou_1027184/restaurant/xin-rong-ji-1199323|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:02:43.311Z
+ve_5ea36ed3f8|us/en/kaohsiung-region/kaohsiung/restaurant/nibbon|$$$$|CAT_P04|1 star|tw|2026-10-30T04:02:44.685Z
+ve_5ee7e8ac6f|en/occitanie/pujaut/restaurant/maison-chenet-entre-vigne-et-garrigue|€€€€|CAT_P04|1 star|fr|2026-10-30T04:02:46.026Z
+ve_5f2aaf2e90|us/en/monaco-region/monaco/restaurant/blue-bay-marcel-ravin|€€€€|CAT_P04|2 star|mc|2026-10-30T04:02:47.367Z
+ve_5f5a5a4e0a|us/en/bayern/bernried_1281441/restaurant/schwingshackl-heimatkuche-1213862|€€|CAT_P02|bib|de|2026-10-30T04:02:48.708Z
+ve_5f98076100|en/auvergne-rhone-alpes/courchevel/restaurant/slalom-1850|€€€€|CAT_P04|2 star|fr|2026-10-30T04:02:50.035Z
+ve_5fa8fc7bce|us/en/zhe-jiang/hangzhou_1027184/restaurant/datou-yingshi-xiaoguan|¥¥|CAT_P02|bib|cn|2026-10-30T04:02:51.378Z
+ve_5fcfaab691|us/en/north-carolina/charlotte_2987283/restaurant/the-story-of-mi-carino|$$|CAT_P02|bib|us|2026-10-30T04:02:52.724Z
+ve_6069ec83d9|us/en/zhe-jiang/taizhou_7770462/restaurant/carved-dragons-jiaojiang|¥¥|CAT_P02|1 star|cn|2026-10-30T04:02:54.064Z
+ve_614a065700|en/ile-de-france/paris/restaurant/le-radis-beurre|€€|CAT_P02|bib|fr|2026-10-30T04:02:55.389Z
+ve_6155d4ebdf|en/auvergne-rhone-alpes/charols/restaurant/lavandin-chateau-les-oliviers-de-salettes|€€€€|CAT_P04|1 star|fr|2026-10-30T04:02:56.718Z
+ve_61599d9f2f|us/en/greater-london/london/restaurant/petrus284688|££££|CAT_P04|1 star|gb|2026-10-30T04:02:58.044Z
+ve_615bd4bcea|en/nouvelle-aquitaine/guthary/restaurant/briket-bistrot|€€|CAT_P02|bib|fr|2026-10-30T04:02:59.291Z
+ve_6267d02f02|us/en/limburg/schin-op-geul_2216951/restaurant/suis|€€€€|CAT_P04|2 star|nl|2026-10-30T04:03:00.622Z
+ve_6379ca3d4d|us/en/shanghai-municipality/shanghai/restaurant/ou-yue-zun-xian|¥¥|CAT_P02|bib|cn|2026-10-30T04:03:01.944Z
+ve_638e8e4893|us/en/chengdu-municipality/chengdu/restaurant/focus-by-bill-yue|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:03:03.292Z
+ve_639eb2992a|us/en/comunidad-de-madrid/madrid/restaurant/la-tasqueria|€€€|CAT_P03|1 star|es|2026-10-30T04:03:04.643Z
+ve_63d293449b|us/en/chengdu-municipality/chengdu/restaurant/dumpling-drinks|¥|CAT_P01|bib|cn|2026-10-30T04:03:05.976Z
+ve_64bc6a47bd|us/en/jiang-su/yangzhou_1032329/restaurant/shang-palace-1216419|¥¥|CAT_P02|1 star|cn|2026-10-30T04:03:07.301Z
+ve_64c540d88e|us/en/colorado/denver_1261491/restaurant/rougarou|$$|CAT_P02|bib|us|2026-10-30T04:03:08.628Z
+ve_65092c7cbb|us/en/fujian-province/ningde/restaurant/ning-chuan-zu-yao-yu-wan|¥|CAT_P01|bib|cn|2026-10-30T04:03:09.964Z
+ve_651744a412|us/en/taipei-region/taipei/restaurant/restaurant-12|$$$$|CAT_P04|1 star|tw|2026-10-30T04:03:11.285Z
+ve_65fa70f1be|us/en/northern-taiwan/hsinchu-city_2853126/restaurant/cat-house|$|CAT_P01|bib|tw|2026-10-30T04:03:12.639Z
+ve_66052eab74|us/en/northern-taiwan/hsinchu-city_2853126/restaurant/dongmen-rice-noodle-soup|$|CAT_P01|bib|tw|2026-10-30T04:03:13.974Z
+ve_660e52c8f5|us/en/bayern/starnberg/restaurant/aubergine388304|€€€€|CAT_P04|1 star|de|2026-10-30T04:03:15.318Z
+ve_66199ee46e|us/en/shanghai-municipality/shanghai/restaurant/he-shan-mian-jia|¥|CAT_P01|bib|cn|2026-10-30T04:03:16.641Z
+ve_662c5aac55|us/en/louisiana/new-orleans_2906000/restaurant/dakar-nola|$$$$|CAT_P04|1 star|us|2026-10-30T04:03:17.996Z
+ve_67313b2934|us/en/fujian-province/xiamen_1031934/restaurant/fleurs-et-festin|¥¥|CAT_P02|1 star|cn|2026-10-30T04:03:19.330Z
+ve_6769026317|us/en/shanghai-municipality/shanghai/restaurant/yong-fu-hongkou|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:03:20.673Z
+ve_6825dd130f|us/en/tainan-region/tainan/restaurant/baa-wanli-goat|$$|CAT_P02|bib|tw|2026-10-30T04:03:22.051Z
+ve_683d3eef6c|us/en/beijing-municipality/beijing/restaurant/bao-bao-hao|¥¥|CAT_P02|bib|cn|2026-10-30T04:03:23.386Z
+ve_685df7c6f5|us/en/zhe-jiang/wenzhou_1031793/restaurant/jin-wen-yu-yuan-huiyuan-road|¥|CAT_P01|bib|cn|2026-10-30T04:03:24.716Z
+ve_688dcee8c9|us/en/zhe-jiang/wenzhou_1031793/restaurant/juan-juan-zao-dian-dian|¥|CAT_P01|bib|cn|2026-10-30T04:03:26.046Z
+ve_68caf281a3|us/en/chengdu-municipality/chengdu/restaurant/ren-ren-shui-jiao|¥|CAT_P01|bib|cn|2026-10-30T04:03:27.382Z
+ve_68d6eacdf5|us/en/drenthe/veeningen_2214724/restaurant/le-epifaan|€€€€|CAT_P04|1 star|nl|2026-10-30T04:03:28.723Z
+ve_68f8103652|us/en/northern-taiwan/hsinchu-city_2853126/restaurant/nung-wei-hsiao-chu|$$|CAT_P02|bib|tw|2026-10-30T04:03:30.048Z
+ve_69b7b57435|us/en/sicilia/malfa/restaurant/signum|€€€€|CAT_P04|1 star|it|2026-10-30T04:03:31.398Z
+ve_6aae3c8d64|us/en/veneto/puos-d-alpago/restaurant/locanda-san-lorenzo|€€€|CAT_P03|1 star|it|2026-10-30T04:03:32.728Z
+ve_6ac4ec141d|us/en/comunidad-valenciana/elche/restaurant/la-finca|€€€€|CAT_P04|1 star|es|2026-10-30T04:03:34.056Z
+ve_6ac90e1017|us/en/zhe-jiang/hangzhou_1027184/restaurant/definitely-fresh|¥¥|CAT_P02|bib|cn|2026-10-30T04:03:35.377Z
+ve_6c9fea6ee4|en/auvergne-rhone-alpes/talloires-montmin/restaurant/l-auberge-de-montmin|€€€€|CAT_P04|2 star|fr|2026-10-30T04:03:36.723Z
+ve_6cb4f81b13|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/san-chieh-mei-nung-chia-le|$$|CAT_P02|bib|tw|2026-10-30T04:03:38.054Z
+ve_6ce4e59ddf|us/en/chengdu-municipality/chengdu/restaurant/ma-s-kitchen|¥¥|CAT_P02|1 star|cn|2026-10-30T04:03:39.379Z
+ve_6d9803a0e6|us/en/noord-brabant/breda/restaurant/ora-taverna-bar|€€|CAT_P02|bib|nl|2026-10-30T04:03:40.751Z
+ve_6dba6cdecb|us/en/osaka-region/osaka/restaurant/n|¥¥¥|CAT_P03|1 star|jp|2026-10-30T04:03:42.090Z
+ve_6def9461a2|us/en/comunidad-de-madrid/madrid/restaurant/a-barra|€€€€|CAT_P04|1 star|es|2026-10-30T04:03:43.438Z
+ve_6e32364543|en/provence-alpes-cote-dazur/taillades/restaurant/l-atelier-l-art-des-mets|€€|CAT_P02|bib|fr|2026-10-30T04:03:44.783Z
+ve_71312bb8f8|us/en/utrecht/loenen-aan-de-vecht/restaurant/bij-sidney|€€€€|CAT_P04|1 star|nl|2026-10-30T04:03:46.110Z
+ve_715e96bf5c|en/ile-de-france/paris/restaurant/restaurant-h|€€€€|CAT_P04|1 star|fr|2026-10-30T04:03:47.468Z
+ve_716f9013a3|us/en/guangdong-province/guangzhou/restaurant/song|¥¥|CAT_P02|1 star|cn|2026-10-30T04:03:48.838Z
+ve_72fba78e99|us/en/nordrhein-westfalen/koln/restaurant/neobiota|€€€€|CAT_P04|1 star|de|2026-10-30T04:03:50.180Z
+ve_73f1c17f03|us/en/tainan-region/tainan/restaurant/yeh-san-duck-thick-soup|$|CAT_P01|bib|tw|2026-10-30T04:03:51.568Z
+ve_74012718ad|us/en/zhe-jiang/hangzhou_1027184/restaurant/xiao-bai-cai|¥¥|CAT_P02|bib|cn|2026-10-30T04:03:52.923Z
+ve_748fb081d6|us/en/bayern/grossheubach/restaurant/zur-krone|€€|CAT_P02|bib|de|2026-10-30T04:03:54.288Z
+ve_74a3feb74f|us/en/tainan-region/tainan/restaurant/shian-jeng-shrimp-bawan|$|CAT_P01|bib|tw|2026-10-30T04:03:55.624Z
+ve_74cd41b387|us/en/piemonte/cervere/restaurant/antica-corona-reale|€€€€|CAT_P04|2 star|it|2026-10-30T04:03:56.952Z
+ve_7579b43152|us/en/guangdong-province/shenzhen_1030672/restaurant/little-tok-panjang|¥¥|CAT_P02|bib|cn|2026-10-30T04:03:58.284Z
+ve_757c8c78b9|us/en/kaohsiung-region/kaohsiung/restaurant/erge-shih-tang|$$|CAT_P02|bib|tw|2026-10-30T04:03:59.618Z
+ve_776f6bffc0|us/en/guangdong-province/shenzhen_1030672/restaurant/yuan-sheng-tai|¥¥|CAT_P02|bib|cn|2026-10-30T04:04:00.975Z
+ve_78e649ee27|us/en/shanghai-municipality/shanghai/restaurant/chun|¥|CAT_P01|bib|cn|2026-10-30T04:04:02.309Z
+ve_795adb5ebe|us/en/south-carolina/charleston_2952029/restaurant/rivayat-creative-indian|$$|CAT_P02|bib|us|2026-10-30T04:04:03.656Z
+ve_7a30148b69|us/en/shanghai-municipality/shanghai/restaurant/157-shi-fang|¥¥|CAT_P02|bib|cn|2026-10-30T04:04:05.011Z
+ve_7a88dddaa0|en/occitanie/villeneuve-ls-avignon/restaurant/le-prieure13557|€€€€|CAT_P04|1 star|fr|2026-10-30T04:04:06.348Z
+ve_7b3fa587f4|us/en/beijing-municipality/beijing/restaurant/fujian-cuisine-dongsanhuan-north-road|¥¥|CAT_P02|bib|cn|2026-10-30T04:04:07.681Z
+ve_7b61ee521c|us/en/hessen/frankfurt-am-main/restaurant/rausch|€€€€|CAT_P04|2 star|de|2026-10-30T04:04:09.015Z
+ve_7c286e49de|us/en/shanghai-municipality/shanghai/restaurant/ning-hai-shi-fu|¥¥|CAT_P02|bib|cn|2026-10-30T04:04:10.359Z
+ve_7c469c8c9d|us/en/piemonte/santo-stefano-belbo/restaurant/il-ristorante-di-guido-da-costigliole|€€€€|CAT_P04|1 star|it|2026-10-30T04:04:11.686Z
+ve_7c49618161|en/centre-val-de-loire/montbazon/restaurant/l-evidence|€€€|CAT_P03|1 star|fr|2026-10-30T04:04:13.008Z
+ve_7ca85fe62d|us/en/fujian-province/quanzhou_1030272/restaurant/wai-tou-niu-rou-meiling-road|¥|CAT_P01|bib|cn|2026-10-30T04:04:14.341Z
+ve_7cd1b354b2|en/bretagne/binic/restaurant/la-table-d-asten|€€€|CAT_P03|1 star|fr|2026-10-30T04:04:15.665Z
+ve_7d01661f87|en/bretagne/pire-chance/restaurant/la-table-des-peres-domaine-du-chateau-des-peres|€€€€|CAT_P04|1 star|fr|2026-10-30T04:04:16.982Z
+ve_7de76e5bb6|us/en/baden-wurttemberg/stuttgart/restaurant/laesa|€€€€|CAT_P04|1 star|de|2026-10-30T04:04:18.318Z
+ve_7f26576721|us/en/guangdong-province/shenzhen_1030672/restaurant/opus-388|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:04:19.656Z
+ve_7fb7d7c34d|us/en/taipei-region/taipei/restaurant/a-cut|$$$$|CAT_P04|1 star|tw|2026-10-30T04:04:20.980Z
+ve_7fdc48486a|us/en/bayern/klingenberg-am-main/restaurant/colbo|€€€€|CAT_P04|1 star|de|2026-10-30T04:04:22.324Z
+ve_807227e68f|us/en/hessen/frankfurt-am-main/restaurant/the-dune|€€€€|CAT_P04|2 star|de|2026-10-30T04:04:23.665Z
+ve_81010c707b|us/en/shanghai-municipality/shanghai/restaurant/gastro-esthetics-at-dadong|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:04:24.997Z
+ve_811a48504e|en/nouvelle-aquitaine/saint-pe-sur-nivelle/restaurant/la-table-de-cedric-bechade-l-auberge-basque|€€€€|CAT_P04|1 star|fr|2026-10-30T04:04:26.343Z
+ve_81ee6aa1e8|us/en/chengdu-municipality/chengdu/restaurant/zhuan-zhuan-hui-lianhua-south-road|¥¥|CAT_P02|bib|cn|2026-10-30T04:04:27.698Z
+ve_82c2790b4f|en/provence-alpes-cote-dazur/le-lavandou/restaurant/l-oursin-hotel-les-roches|€€€€|CAT_P04|1 star|fr|2026-10-30T04:04:29.056Z
+ve_82e1309127|us/en/hamburg-region/hamburg/restaurant/arc-restaurant|€€€|CAT_P03|1 star|de|2026-10-30T04:04:30.399Z
+ve_82f336e11a|us/en/georgia/guy_7770503/restaurant/uberto-restaurant|$$$$|CAT_P04|1 star|us|2026-10-30T04:04:31.740Z
+ve_8329660025|us/en/fujian-province/xiamen_1031934/restaurant/lai-cuo-cheng-bian-shi-dian|¥|CAT_P01|bib|cn|2026-10-30T04:04:32.986Z
+ve_840175e4a2|us/en/nordrhein-westfalen/koln/restaurant/ox-klee|€€€€|CAT_P04|2 star|de|2026-10-30T04:04:34.323Z
+ve_84ca117fa0|en/nouvelle-aquitaine/arcachon/restaurant/le-patio396|€€€|CAT_P03|1 star|fr|2026-10-30T04:04:35.675Z
+ve_84ec62fcbd|us/en/zhe-jiang/taizhou_7770462/restaurant/xin-rong-ji-jiaojiang|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:04:37.066Z
+ve_84faf8d1f8|us/en/zhe-jiang/hangzhou_1027184/restaurant/rong-xian-mian-guan-qianjiang-road|¥|CAT_P01|bib|cn|2026-10-30T04:04:38.390Z
+ve_85020a53ff|us/en/piemonte/vernante/restaurant/nazionale|€€€|CAT_P03|1 star|it|2026-10-30T04:04:39.725Z
+ve_85216c5295|us/en/northern-taiwan/hsinchu-city_2853126/restaurant/he-jih-hsiang-minzu-road|$|CAT_P01|bib|tw|2026-10-30T04:04:41.034Z
+ve_860ee6d6b7|us/en/baden-wurttemberg/rust/restaurant/eatrenalin|€€€€|CAT_P04|1 star|de|2026-10-30T04:04:42.375Z
+ve_8654bf99d5|us/en/baden-wurttemberg/langenau/restaurant/stube-zwei-null|€€|CAT_P02|bib|de|2026-10-30T04:04:43.711Z
+ve_8669f5408d|us/en/noord-holland/amsterdam/restaurant/boon-de-koot|€€|CAT_P02|bib|nl|2026-10-30T04:04:45.024Z
+ve_86c535260d|us/en/tennessee/nashville_2790527/restaurant/maiz-de-la-vida|$$|CAT_P02|bib|us|2026-10-30T04:04:46.375Z
+ve_86f18a2ceb|us/en/lazio/roma/restaurant/all-oro|€€€€|CAT_P04|1 star|it|2026-10-30T04:04:47.719Z
+ve_898937d7db|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/jhen-pin|$|CAT_P01|bib|tw|2026-10-30T04:04:49.048Z
+ve_89a19471a1|us/en/texas/austin_2958315/restaurant/fabrik|$$$$|CAT_P04|1 star|us|2026-10-30T04:04:50.376Z
+ve_8ae79907cc|us/en/guangdong-province/shenzhen_1030672/restaurant/gao-san-jie-dou-hua-dian|¥|CAT_P01|bib|cn|2026-10-30T04:04:52.991Z
+ve_8b14006ced|us/en/osaka-region/osaka/restaurant/shuko-osaka-manpukudou|¥¥|CAT_P02|bib|jp|2026-10-30T04:04:54.312Z
+ve_8c386f6988|us/en/rheinland-pfalz/saarburg_1332732/restaurant/dopamin|€€€€|CAT_P04|1 star|de|2026-10-30T04:04:55.644Z
+ve_8c3c033108|en/nouvelle-aquitaine/bordeaux/restaurant/la-table-d-hotes-le-quatrieme-mur|€€€€|CAT_P04|1 star|fr|2026-10-30T04:04:56.987Z
+ve_8cbf21d12d|us/en/pais-vasco/bilbao/restaurant/ola-martin-berasategui|€€€€|CAT_P04|1 star|es|2026-10-30T04:04:58.334Z
+ve_8d984b8bd1|us/en/pais-vasco/santa-cruz-de-campezo/restaurant/arrea|€€€€|CAT_P04|1 star|es|2026-10-30T04:04:59.662Z
+ve_8e41aa3f13|us/en/utah/south-salt-lake_2960184/restaurant/monte-1247517|$$$$|CAT_P04|1 star|us|2026-10-30T04:05:00.985Z
+ve_8e59e4721a|us/en/zhe-jiang/wenzhou_1031793/restaurant/yu-ji-seafood|¥¥|CAT_P02|bib|cn|2026-10-30T04:05:02.347Z
+ve_8e7d1fbc55|en/ile-de-france/paris/restaurant/20-eiffel|€€|CAT_P02|bib|fr|2026-10-30T04:05:03.670Z
+ve_8fd685a196|en/auvergne-rhone-alpes/lyon/restaurant/burgundy-by-mathieu|€€€€|CAT_P04|1 star|fr|2026-10-30T04:05:05.006Z
+ve_907de0e767|us/en/kaohsiung-region/kaohsiung/restaurant/yung-yen|$$|CAT_P02|bib|tw|2026-10-30T04:05:06.373Z
+ve_908bce5c92|us/en/northern-taiwan/hsinchu-county_2853127/restaurant/noon-turnip-cake|$|CAT_P01|bib|tw|2026-10-30T04:05:07.706Z
+ve_910d7c4aaf|us/en/fujian-province/xiamen_1031934/restaurant/wu-lan-sha-cha-mian|¥|CAT_P01|bib|cn|2026-10-30T04:05:09.016Z
+ve_919a718cb4|us/en/kaohsiung-region/kaohsiung/restaurant/hsiu-ming|$|CAT_P01|bib|tw|2026-10-30T04:05:10.354Z
+ve_91bcf27047|us/en/zhe-jiang/hangzhou_1027184/restaurant/dou-lai-fan-dian|¥¥|CAT_P02|bib|cn|2026-10-30T04:05:11.680Z
+ve_9244198304|en/provence-alpes-cote-dazur/saint-tropez/restaurant/colette-1192024|€€€€|CAT_P04|1 star|fr|2026-10-30T04:05:13.008Z
+ve_92b3a99385|us/en/nevada/las-vegas_2935077/restaurant/esther-s-kitchen|$$|CAT_P02|bib|us|2026-10-30T04:05:14.352Z
+ve_9322582563|us/en/guangdong-province/guangzhou/restaurant/tai-shan-lao-biao-xian-tang-yuan-xihua-road|¥|CAT_P01|bib|cn|2026-10-30T04:05:15.690Z
+ve_940eb2f957|us/en/utah/south-salt-lake_2960184/restaurant/one-more-noodle-house|$|CAT_P01|bib|us|2026-10-30T04:05:17.023Z
+ve_94a391d73a|us/en/fujian-province/xiamen_1031934/restaurant/da-tong-shao-jiu-lang|¥¥|CAT_P02|bib|cn|2026-10-30T04:05:18.354Z
+ve_94f8b27a1d|us/en/jiang-su/suzhou_1031079/restaurant/liu-jia-you-meng-mei|¥|CAT_P01|bib|cn|2026-10-30T04:05:19.676Z
+ve_95ff5e20cf|en/provence-alpes-cote-dazur/nice/restaurant/flaveur|€€€€|CAT_P04|2 star|fr|2026-10-30T04:05:21.004Z
+ve_961188cfbe|us/en/tokyo-region/tokyo/restaurant/sassa|¥¥¥¥|CAT_P04|1 star|jp|2026-10-30T04:05:22.343Z
+ve_965e0e3908|us/en/nevada/las-vegas_2935077/restaurant/l-atelier-de-joel-robuchon-las-vegas|$$$$|CAT_P04|1 star|us|2026-10-30T04:05:23.675Z
+ve_972745a42c|us/en/taipei-region/taipei/restaurant/silks-house|$$$|CAT_P03|1 star|tw|2026-10-30T04:05:25.019Z
+ve_9758a288cd|us/en/beijing-municipality/beijing/restaurant/lu-style|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:05:26.363Z
+ve_9788abe6b9|us/en/chengdu-municipality/chengdu/restaurant/gui-tian-yuan-zi|¥¥|CAT_P02|bib|cn|2026-10-30T04:05:27.710Z
+ve_97b4f3505c|us/en/guangdong-province/guangzhou/restaurant/xiguan-zhuyuan-lizhiwan|¥|CAT_P01|bib|cn|2026-10-30T04:05:29.041Z
+ve_985707c998|us/en/arizona/scottsdale_2875755/restaurant/fnb|$$|CAT_P02|bib|us|2026-10-30T04:05:30.365Z
+ve_9916c47b98|us/en/liege/sankt-vith/restaurant/zur-post210392|€€€€|CAT_P04|1 star|be|2026-10-30T04:05:31.706Z
+ve_9949d04394|us/en/georgia/roswell_2884202/restaurant/tipsy-thaiger|$$$|CAT_P03|bib|us|2026-10-30T04:05:33.032Z
+ve_999fa337ae|us/en/bayern/augsburg/restaurant/august495065|€€€€|CAT_P04|2 star|de|2026-10-30T04:05:34.362Z
+ve_99ef79d850|us/en/texas/houston_2986624/restaurant/bar-buena|$$|CAT_P02|bib|us|2026-10-30T04:05:35.681Z
+ve_9a35ffe0b1|us/en/baden-wurttemberg/ellwangen-(jagst)_1313960/restaurant/hirsch-1207191|€€|CAT_P02|bib|de|2026-10-30T04:05:37.037Z
+ve_9ad4b93052|us/en/chengdu-municipality/chengdu/restaurant/da-ya-ji|¥|CAT_P01|bib|cn|2026-10-30T04:05:38.363Z
+ve_9b7f264837|us/en/bayern/spiegelau_1291351/restaurant/das-palmberger-hoamart|€€|CAT_P02|bib|de|2026-10-30T04:05:39.708Z
+ve_9c574617dc|us/en/berlin-region/berlin/restaurant/byblos-1245987|€€|CAT_P02|bib|de|2026-10-30T04:05:41.046Z
+ve_9c5bee36cb|us/en/taipei-region/taipei/restaurant/ya-ge|$$$$|CAT_P04|1 star|tw|2026-10-30T04:05:42.406Z
+ve_9d5627b2f3|us/en/kaohsiung-region/kaohsiung/restaurant/cianjin-brasied-pork-rice|$|CAT_P01|bib|tw|2026-10-30T04:05:43.750Z
+ve_9d8e88772a|us/en/nara-region/nara/restaurant/noto-toto-teuchisoba-tabiki|¥|CAT_P01|bib|jp|2026-10-30T04:05:45.149Z
+ve_9daa7d3da1|us/en/emilia-romagna/milano-marittima/restaurant/osteria-del-gran-fritto334900|€€|CAT_P02|bib|it|2026-10-30T04:05:46.478Z
+ve_9f67b9b8ee|us/en/tainan-region/tainan/restaurant/huang-chia-shrimp-roll|$|CAT_P01|bib|tw|2026-10-30T04:05:47.801Z
+ve_9fa686ebe2|us/en/tainan-region/tainan/restaurant/cheng-shi|$|CAT_P01|bib|tw|2026-10-30T04:05:49.127Z
+ve_9fe2d9c536|us/en/fujian-province/xiamen_1031934/restaurant/panda-s|¥¥|CAT_P02|bib|cn|2026-10-30T04:05:50.460Z
+ve_a0aa7d14ee|us/en/hessen/frankfurt-am-main/restaurant/bornheimer-ratskeller|€€|CAT_P02|bib|de|2026-10-30T04:05:51.791Z
+ve_a1741badff|us/en/shanghai-municipality/shanghai/restaurant/lei-garden-xuhui|¥¥|CAT_P02|1 star|cn|2026-10-30T04:05:53.142Z
+ve_a195aa4251|us/en/texas/austin_2958315/restaurant/kappo-kappo|$$$$|CAT_P04|1 star|us|2026-10-30T04:05:54.505Z
+ve_a1e52e5a36|us/en/jiang-su/suzhou_1031079/restaurant/liu-yi-lou-nanxin-road|¥¥|CAT_P02|bib|cn|2026-10-30T04:05:55.848Z
+ve_a22d420df9|us/en/chengdu-municipality/chengdu/restaurant/hu-er-ge-yao-shan-ti-hua|¥|CAT_P01|bib|cn|2026-10-30T04:05:57.186Z
+ve_a2a6eebf81|us/en/lombardia/bergamo/restaurant/villa-elena|€€€€|CAT_P04|2 star|it|2026-10-30T04:05:58.518Z
+ve_a371703e3d|us/en/nevada/las-vegas_2935077/restaurant/guy-savoy-las-vegas|$$$$|CAT_P04|1 star|us|2026-10-30T04:05:59.849Z
+ve_a3e33775da|us/en/zhe-jiang/hangzhou_1027184/restaurant/king-s-choice|¥¥|CAT_P02|bib|cn|2026-10-30T04:06:01.199Z
+ve_a4307b564b|en/bourgogne-franche-comte/malbuisson/restaurant/le-bon-accueil4521|€€€|CAT_P03|1 star|fr|2026-10-30T04:06:02.564Z
+ve_a473e18914|us/en/mecklenburg-vorpommern/dierhagen/restaurant/ostseelounge-1214302|€€€€|CAT_P04|1 star|de|2026-10-30T04:06:03.968Z
+ve_a47777d12a|us/en/jiang-su/nanjing_1029511/restaurant/guang-ying-ju-%E2%80%A2-lao-zheng-xing|¥¥|CAT_P02|bib|cn|2026-10-30T04:06:05.290Z
+ve_a5e7191926|us/en/bayern/mnchen/restaurant/mokum|€€|CAT_P02|bib|de|2026-10-30T04:06:06.634Z
+ve_a6766acd63|en/bretagne/guer/restaurant/bistrot-de-la-maison-tiegezh|€€|CAT_P02|bib|fr|2026-10-30T04:06:07.977Z
+ve_a68fab1a43|us/en/nordrhein-westfalen/essen/restaurant/teko-by-lange-rodriguez|€€€€|CAT_P04|1 star|de|2026-10-30T04:06:09.303Z
+ve_a6a9979c01|us/en/shanghai-municipality/shanghai/restaurant/xiao-tao-mian-guan|¥|CAT_P01|bib|cn|2026-10-30T04:06:10.645Z
+ve_a6da955b4f|us/en/zhe-jiang/hangzhou_1027184/restaurant/song-1217000|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:06:11.981Z
+ve_a70181d6d0|en/occitanie/carcassonne/restaurant/la-table-de-franck-putelat|€€€€|CAT_P04|2 star|fr|2026-10-30T04:06:13.328Z
+ve_a745410058|us/en/fujian-province/xiamen_1031934/restaurant/lu-niang-zi-huli|¥|CAT_P01|bib|cn|2026-10-30T04:06:14.744Z
+ve_a797b25772|us/en/taipei-region/taipei/restaurant/mume|$$$|CAT_P03|1 star|tw|2026-10-30T04:06:16.078Z
+ve_a7ae8c5e47|us/en/tokyo-region/tokyo/restaurant/shinjiko-shijimi-chukasoba-kohaku|¥|CAT_P01|bib|jp|2026-10-30T04:06:17.412Z
+ve_a887966a7f|us/en/fujian-province/fuzhou_1026814/restaurant/ye-jia-hua-sheng-tang|¥|CAT_P01|bib|cn|2026-10-30T04:06:18.743Z
+ve_a8a03c5d2b|us/en/northern-taiwan/hsinchu-county_2853127/restaurant/monsoon-1245161|$$|CAT_P02|bib|tw|2026-10-30T04:06:20.070Z
+ve_a8a773adff|en/occitanie/uzs/restaurant/la-table-d-uzes|€€€€|CAT_P04|1 star|fr|2026-10-30T04:06:21.390Z
+ve_a91aa70189|us/en/berlin-region/berlin/restaurant/salhino|€€|CAT_P02|bib|de|2026-10-30T04:06:22.725Z
+ve_a96edea225|en/pays-de-la-loire/mayenne/restaurant/l-eveil-des-sens|€€€|CAT_P03|1 star|fr|2026-10-30T04:06:24.060Z
+ve_a9d1331ee3|en/ile-de-france/vincennes/restaurant/l-ours|€€€€|CAT_P04|1 star|fr|2026-10-30T04:06:25.390Z
+ve_aa712d5a1b|us/en/zhe-jiang/wenzhou_1031793/restaurant/mao-chang-lao-mian-guan|¥|CAT_P01|bib|cn|2026-10-30T04:06:26.734Z
+ve_aa87491e3a|us/en/chengdu-municipality/chengdu/restaurant/hokkien-cuisine|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:06:28.064Z
+ve_aab551e951|us/en/toscana/forte-dei-marmi/restaurant/bistrot|€€€€|CAT_P04|1 star|it|2026-10-30T04:06:29.478Z
+ve_aac721dd2b|us/en/nordrhein-westfalen/bergisch-gladbach/restaurant/schote-1215854|€€€€|CAT_P04|1 star|de|2026-10-30T04:06:30.817Z
+ve_aae6903bf0|us/en/piemonte/sant-anna/restaurant/la-pineta148217|€€|CAT_P02|bib|it|2026-10-30T04:06:32.144Z
+ve_ab005c1886|us/en/tainan-region/tainan/restaurant/yu-dao|$$$$|CAT_P04|1 star|tw|2026-10-30T04:06:33.469Z
+ve_ab17ada0da|en/ile-de-france/paris/restaurant/la-grande-du-plaza-athenee|€€€€|CAT_P04|1 star|fr|2026-10-30T04:06:34.797Z
+ve_ab4ae66796|us/en/beijing-municipality/beijing/restaurant/hua-sheng-feng-dongsanhuan-south-road|¥¥|CAT_P02|bib|cn|2026-10-30T04:06:36.159Z
+ve_abccb8710d|us/en/beijing-municipality/beijing/restaurant/seventh-son-1186794|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:06:37.507Z
+ve_ac078b1119|us/en/gelderland/duiven/restaurant/t-raedthuys|€€€|CAT_P03|1 star|nl|2026-10-30T04:06:38.845Z
+ve_ac634c2879|en/pays-de-la-loire/bellevigne-en-layon_7770388/restaurant/la-table-de-la-bergerie|€€€|CAT_P03|1 star|fr|2026-10-30T04:06:40.163Z
+ve_acf7e634fe|us/en/marche/gabicce-monte/restaurant/dalla-gioconda|€€€|CAT_P03|1 star|it|2026-10-30T04:06:41.601Z
+ve_ae2045d603|us/en/colorado/denver_1261491/restaurant/milpero|$$$$|CAT_P04|1 star|us|2026-10-30T04:06:42.923Z
+ve_ae36d47f80|us/en/nordrhein-westfalen/dusseldorf/restaurant/nagaya|€€€€|CAT_P04|1 star|de|2026-10-30T04:06:44.266Z
+ve_ae9fe2766d|us/en/lombardia/gargnano/restaurant/villa-feltrinelli|€€€€|CAT_P04|2 star|it|2026-10-30T04:06:45.604Z
+ve_aee74187ea|us/en/guangdong-province/shenzhen_1030672/restaurant/rex-shan-shui-chang-fen|¥|CAT_P01|bib|cn|2026-10-30T04:06:46.923Z
+ve_aff1c67ff4|us/en/beijing-municipality/beijing/restaurant/zhong|¥¥|CAT_P02|bib|cn|2026-10-30T04:06:48.241Z
+ve_b017ac2790|us/en/taipei-region/taipei/restaurant/ad-astra-1206669|$$$$|CAT_P04|1 star|tw|2026-10-30T04:06:49.578Z
+ve_b058ae3ce4|en/ile-de-france/paris/restaurant/ze-kitchen-galerie|€€€€|CAT_P04|1 star|fr|2026-10-30T04:06:50.918Z
+ve_b0e15826f5|us/en/guangdong-province/shenzhen_1030672/restaurant/show-hands|¥¥|CAT_P02|bib|cn|2026-10-30T04:06:52.256Z
+ve_b0f8f735f9|en/auvergne-rhone-alpes/lyon/restaurant/ombellule|€€€€|CAT_P04|1 star|fr|2026-10-30T04:06:53.583Z
+ve_b16482a53f|us/en/fujian-province/fuzhou_1026814/restaurant/hatter|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:06:54.938Z
+ve_b271ef2331|us/en/chengdu-municipality/chengdu/restaurant/xin-rong-ji-1207940|¥¥¥|CAT_P03|3 star|cn|2026-10-30T04:06:56.262Z
+ve_b362656ec7|us/en/taipei-region/taipei/restaurant/toriaezu-curry|$$|CAT_P02|bib|tw|2026-10-30T04:06:57.593Z
+ve_b36d4390ac|us/en/overijssel/zwolle/restaurant/wijn-boer|€€|CAT_P02|bib|nl|2026-10-30T04:06:58.935Z
+ve_b3f74363c9|us/en/taipei-region/taipei/restaurant/amaze|$$$$|CAT_P04|1 star|tw|2026-10-30T04:07:00.295Z
+ve_b426a6ef18|us/en/zhe-jiang/hangzhou_1027184/restaurant/shi-wei-xian-shangcheng|¥¥|CAT_P02|bib|cn|2026-10-30T04:07:01.647Z
+ve_b4be84da72|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/bei-ya-duck-thick-soup|$|CAT_P01|bib|tw|2026-10-30T04:07:02.984Z
+ve_b4df10d4f7|us/en/comunidad-foral-de-navarra/urdaitz/restaurant/origen-1202542|€|CAT_P01|bib|es|2026-10-30T04:07:04.343Z
+ve_b554d2a2fa|us/en/comunidad-de-madrid/madrid/restaurant/chispa-bistro|€€€|CAT_P03|1 star|es|2026-10-30T04:07:05.660Z
+ve_b5e9669bd6|en/ile-de-france/paris/restaurant/kisin|€€|CAT_P02|bib|fr|2026-10-30T04:07:08.331Z
+ve_b736154761|us/en/colorado/aurora_1261489/restaurant/annette-1212468|$$|CAT_P02|bib|us|2026-10-30T04:07:09.666Z
+ve_b77a5b1eac|us/en/shanghai-municipality/shanghai/restaurant/seventh-son-jingan|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:07:10.986Z
+ve_b7fe126ee0|us/en/chengdu-municipality/chengdu/restaurant/no-37-lao-yuan-ba-chao-shou|¥|CAT_P01|bib|cn|2026-10-30T04:07:12.319Z
+ve_b82494c044|en/hauts-de-france/busnes/restaurant/la-table-de-christophe-dufossé|€€€€|CAT_P04|2 star|fr|2026-10-30T04:07:13.739Z
+ve_b83e690aca|us/en/georgia/atlanta_2884144/restaurant/so-fox|$$$|CAT_P03|1 star|us|2026-10-30T04:07:15.086Z
+ve_b870a6b377|en/ile-de-france/paris/restaurant/le-casse-noix|€€|CAT_P02|bib|fr|2026-10-30T04:07:16.429Z
+ve_b89103a46d|en/ile-de-france/paris/restaurant/les-canailles-pigalle|€€|CAT_P02|bib|fr|2026-10-30T04:07:17.770Z
+ve_b89369c406|us/en/new-mexico/santa-fe_2934394/restaurant/paper-dosa|$$|CAT_P02|bib|us|2026-10-30T04:07:19.116Z
+ve_b8e20a1776|us/en/chengdu-municipality/chengdu/restaurant/organization-south|¥¥|CAT_P02|bib|cn|2026-10-30T04:07:20.452Z
+ve_b8f74cf2b7|us/en/texas/austin_2958315/restaurant/leroy-and-lewis-barbecue|$$|CAT_P02|1 star|us|2026-10-30T04:07:21.793Z
+ve_b9457bcd14|us/en/fujian-province/xiamen_1031934/restaurant/xian-xiong-qi|¥¥|CAT_P02|bib|cn|2026-10-30T04:07:23.121Z
+ve_b99c2cc8b6|en/provence-alpes-cote-dazur/saint-rmy-de-provence/restaurant/la-table-de-tourrel|€€€€|CAT_P04|1 star|fr|2026-10-30T04:07:24.444Z
+ve_b9c67532ea|us/en/zhe-jiang/hangzhou_1027184/restaurant/hui-xin-xiao-chi-dian|¥|CAT_P01|bib|cn|2026-10-30T04:07:25.809Z
+ve_bad7b795e0|us/en/hessen/frankfurt-am-main/restaurant/lohninger|€€€€|CAT_P04|1 star|de|2026-10-30T04:07:27.151Z
+ve_bbccd34af8|en/ile-de-france/paris/restaurant/table-bruno-verjus|€€€€|CAT_P04|2 star|fr|2026-10-30T04:07:28.482Z
+ve_bc244843c4|us/en/beijing-municipality/beijing/restaurant/my-soup|¥¥|CAT_P02|bib|cn|2026-10-30T04:07:29.855Z
+ve_bc2baac574|us/en/shanghai-municipality/shanghai/restaurant/obscura|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:07:31.196Z
+ve_bd01e5fa80|us/en/guangdong-province/shenzhen_1030672/restaurant/pier-3|¥¥|CAT_P02|bib|cn|2026-10-30T04:07:32.552Z
+ve_bd55d03429|us/en/south-gloucestershire/bristol/restaurant/other|££|CAT_P02|bib|gb|2026-10-30T04:07:33.861Z
+ve_bdff7ef11b|us/en/guangdong-province/guangzhou/restaurant/yu-yuen|¥¥|CAT_P02|bib|cn|2026-10-30T04:07:35.219Z
+ve_be4a97c179|us/en/shanghai-municipality/shanghai/restaurant/yong-yi-ting|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:07:36.534Z
+ve_be9428c3a0|us/en/mississippi/oxford_2919729/restaurant/miscellanea-spirit-house|$$|CAT_P02|bib|us|2026-10-30T04:07:37.879Z
+ve_bf4f0713f7|us/en/guangdong-province/guangzhou/restaurant/yong|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:07:39.206Z
+ve_bfcde1a0a2|en/provence-alpes-cote-dazur/la-ciotat/restaurant/la-table-de-nans|€€€€|CAT_P04|1 star|fr|2026-10-30T04:07:40.539Z
+ve_bfda4f7b82|en/ile-de-france/paris/restaurant/es|€€€€|CAT_P04|1 star|fr|2026-10-30T04:07:41.878Z
+ve_c0a3184148|us/en/guangdong-province/guangzhou/restaurant/ru-yi-chuan-tong-zhu-sheng-mian|¥|CAT_P01|bib|cn|2026-10-30T04:07:43.212Z
+ve_c0e31003c5|us/en/berlin-region/berlin/restaurant/lorenz-adlon-esszimmer|€€€€|CAT_P04|1 star|de|2026-10-30T04:07:44.539Z
+ve_c1203f68bf|us/en/beijing-municipality/beijing/restaurant/rong-pao|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:07:45.872Z
+ve_c191e091bb|us/en/zhe-jiang/hangzhou_1027184/restaurant/ma-er-si-fang-cai|¥¥|CAT_P02|bib|cn|2026-10-30T04:07:47.204Z
+ve_c28c3793ac|us/en/texas/houston_2986624/restaurant/kitchen-rumors|$$$|CAT_P03|bib|us|2026-10-30T04:07:48.538Z
+ve_c2c0630e58|us/en/limburg/weert/restaurant/bistro-luux|€€|CAT_P02|bib|nl|2026-10-30T04:07:49.873Z
+ve_c4b1d010c4|us/en/guangdong-province/guangzhou/restaurant/baode-dunhe-road|¥¥|CAT_P02|bib|cn|2026-10-30T04:07:51.199Z
+ve_c5a5babc62|en/nouvelle-aquitaine/eugnie-les-bains/restaurant/l-orangerie-1209337|€€€€|CAT_P04|1 star|fr|2026-10-30T04:07:52.540Z
+ve_c5be40e627|us/en/guangdong-province/guangzhou/restaurant/mamak|¥|CAT_P01|bib|cn|2026-10-30T04:07:53.863Z
+ve_c652d1f565|us/en/guangdong-province/shenzhen_1030672/restaurant/tai-shan-lao-huang-shan-fan|¥¥|CAT_P02|bib|cn|2026-10-30T04:07:55.202Z
+ve_c6ae6d866a|us/en/zhe-jiang/wenzhou_1031793/restaurant/bai-nian-hun-tun-lao-dian|¥|CAT_P01|bib|cn|2026-10-30T04:07:56.524Z
+ve_c6cc29e19d|us/en/baden-wurttemberg/stuttgart/restaurant/speisemeisterei|€€€€|CAT_P04|2 star|de|2026-10-30T04:07:57.841Z
+ve_c75a5edc51|en/pays-de-la-loire/montaigu/restaurant/l-atelier-1216533|€€|CAT_P02|bib|fr|2026-10-30T04:07:59.175Z
+ve_c7e78b66b3|en/grand-est/ammerschwihr/restaurant/julien-binz|€€€€|CAT_P04|1 star|fr|2026-10-30T04:08:00.497Z
+ve_c83fdf5759|us/en/arizona/phoenix_2875757/restaurant/lom-wong|$$$|CAT_P03|bib|us|2026-10-30T04:08:01.824Z
+ve_c844edd53f|en/ile-de-france/paris/restaurant/at|€€€€|CAT_P04|1 star|fr|2026-10-30T04:08:03.152Z
+ve_c89d728777|us/en/zhe-jiang/hangzhou_1027184/restaurant/nan-feng-fan-dian|¥¥|CAT_P02|bib|cn|2026-10-30T04:08:04.484Z
+ve_c91400454b|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/tsai-chia-beef-noodles|$|CAT_P01|bib|tw|2026-10-30T04:08:05.802Z
+ve_c914e2cfe3|us/en/limburg/valkenburg/restaurant/ambrozijn|€€€€|CAT_P04|1 star|nl|2026-10-30T04:08:07.143Z
+ve_c93f199c6e|us/en/beijing-municipality/beijing/restaurant/liu-ma-ma-dumplings-chaoyang|¥|CAT_P01|bib|cn|2026-10-30T04:08:08.472Z
+ve_c9bdf9ddb8|us/en/jiang-su/nanjing_1029511/restaurant/hao-po-tang-bao|¥|CAT_P01|bib|cn|2026-10-30T04:08:09.805Z
+ve_ca46b5e287|us/en/jiang-su/suzhou_1031079/restaurant/lao-chen-jia|¥¥|CAT_P02|bib|cn|2026-10-30T04:08:11.150Z
+ve_ca50107d68|us/en/lazio/roma/restaurant/pipero|€€€€|CAT_P04|1 star|it|2026-10-30T04:08:12.476Z
+ve_ca753ad297|us/en/guangdong-province/guangzhou/restaurant/si-mao-cai-guan|¥|CAT_P01|bib|cn|2026-10-30T04:08:13.810Z
+ve_cabae88fce|us/en/zhe-jiang/hangzhou_1027184/restaurant/ambre-ciel|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:08:15.141Z
+ve_cc8208f11d|us/en/bayern/mnchen/restaurant/the-cloud-by-kafer|€€€€|CAT_P04|2 star|de|2026-10-30T04:08:16.469Z
+ve_ccc308b463|us/en/zhe-jiang/hangzhou_1027184/restaurant/lai-cui-mian-guan-ji-mao-road|¥|CAT_P01|bib|cn|2026-10-30T04:08:17.806Z
+ve_ccdf63d0e0|us/en/arizona/phoenix_2875757/restaurant/little-miss-bbq|$$|CAT_P02|bib|us|2026-10-30T04:08:19.145Z
+ve_cdb704e14f|en/auvergne-rhone-alpes/lyon/restaurant/l-atelier-des-augustins|€€€€|CAT_P04|1 star|fr|2026-10-30T04:08:20.472Z
+ve_ce02b752b9|us/en/lombardia/milano/restaurant/sadler|€€€€|CAT_P04|1 star|it|2026-10-30T04:08:21.806Z
+ve_ce39832bd0|us/en/greater-london/london/restaurant/corenucopia-by-clare-smyth|££££|CAT_P04|1 star|gb|2026-10-30T04:08:23.140Z
+ve_ce42cf03c3|en/provence-alpes-cote-dazur/villars/restaurant/la-table-de-pablo|€€|CAT_P02|bib|fr|2026-10-30T04:08:24.492Z
+ve_ceb4224c81|us/en/catalunya/sant-marti-sarroca/restaurant/casa-nova|€€€€|CAT_P04|1 star|es|2026-10-30T04:08:25.839Z
+ve_cec4b19f8b|us/en/chengdu-municipality/chengdu/restaurant/the-hall|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:08:27.185Z
+ve_cf229c5c5f|us/en/shanghai-municipality/shanghai/restaurant/moose-pudong|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:08:28.520Z
+ve_cf4089984b|us/en/guangdong-province/shenzhen_1030672/restaurant/xiao-fu-rong|¥|CAT_P01|bib|cn|2026-10-30T04:08:29.855Z
+ve_cfe03c3b52|us/en/lombardia/olgiate-olona/restaurant/acqua-1201998|€€€€|CAT_P04|1 star|it|2026-10-30T04:08:31.180Z
+ve_cfe688ea98|us/en/arizona/phoenix_2875757/restaurant/valentine|$$|CAT_P02|bib|us|2026-10-30T04:08:32.511Z
+ve_d068cb8fb6|us/en/jiang-su/nanjing_1029511/restaurant/gu-jia-bao-zi|¥|CAT_P01|bib|cn|2026-10-30T04:08:33.846Z
+ve_d0f6e10741|us/en/guangdong-province/shenzhen_1030672/restaurant/fat-kee|¥¥|CAT_P02|bib|cn|2026-10-30T04:08:35.171Z
+ve_d0fe4040f5|en/ile-de-france/paris/restaurant/mova|€€|CAT_P02|bib|fr|2026-10-30T04:08:36.519Z
+ve_d2820ac4f5|en/auvergne-rhone-alpes/lyon/restaurant/mere-brazier|€€€€|CAT_P04|2 star|fr|2026-10-30T04:08:37.864Z
+ve_d32edd43d0|us/en/campania/vallesaccarda/restaurant/oasis-sapori-antichi|€€€|CAT_P03|1 star|it|2026-10-30T04:08:39.209Z
+ve_d353daa74b|us/en/chengdu-municipality/chengdu/restaurant/ban-tian-te-se-mian|¥|CAT_P01|bib|cn|2026-10-30T04:08:40.528Z
+ve_d356968485|en/ile-de-france/paris/restaurant/l-orangerie505878|€€€€|CAT_P04|2 star|fr|2026-10-30T04:08:41.856Z
+ve_d4078ef7ff|us/en/fujian-province/xiamen_1031934/restaurant/xiao-cheng-xi|¥¥|CAT_P02|bib|cn|2026-10-30T04:08:43.202Z
+ve_d5004c5cad|us/en/kyoto-region/kyoto/restaurant/tan|¥¥|CAT_P02|bib|jp|2026-10-30T04:08:44.536Z
+ve_d5594bb27c|us/en/chengdu-municipality/chengdu/restaurant/mao-wu-da-jiu-dian|¥|CAT_P01|bib|cn|2026-10-30T04:08:45.899Z
+ve_d6217834fc|us/en/guangdong-province/shenzhen_1030672/restaurant/xin-rong-ji-1244722|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:08:47.229Z
+ve_d639bca3df|us/en/guangdong-province/guangzhou/restaurant/zhou-men|¥|CAT_P01|bib|cn|2026-10-30T04:08:48.567Z
+ve_d656f14bd5|en/ile-de-france/paris/restaurant/adami|€€|CAT_P02|bib|fr|2026-10-30T04:08:49.891Z
+ve_d6d7a07cee|us/en/guangdong-province/shenzhen_1030672/restaurant/ensue|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:08:51.230Z
+ve_d79face9ac|us/en/bayern/mnchen/restaurant/atelier-1198719|€€€€|CAT_P04|2 star|de|2026-10-30T04:08:52.557Z
+ve_d9aa54003e|us/en/guangdong-province/guangzhou/restaurant/dai-yong-town|¥¥|CAT_P02|bib|cn|2026-10-30T04:08:53.883Z
+ve_d9f9152025|us/en/taipei-region/taipei/restaurant/kiku-1216129|$$$$|CAT_P04|1 star|tw|2026-10-30T04:08:55.226Z
+ve_dae12e66cb|us/en/taichung-region/taichung/restaurant/don-moo|$|CAT_P01|bib|tw|2026-10-30T04:08:56.569Z
+ve_dc2bbd612c|us/en/taipei-region/taipei/restaurant/ching-jiao|$$|CAT_P02|bib|tw|2026-10-30T04:08:57.911Z
+ve_dc8cab89a0|en/bourgogne-franche-comte/levernois/restaurant/table-de-levernois|€€€€|CAT_P04|1 star|fr|2026-10-30T04:08:59.237Z
+ve_dca4964305|us/en/tainan-region/tainan/restaurant/zhu-ji-dong-tsai-ya|$|CAT_P01|bib|tw|2026-10-30T04:09:00.570Z
+ve_dcfe53c583|us/en/guangdong-province/shenzhen_1030672/restaurant/jiu-jiu-noodle|¥|CAT_P01|bib|cn|2026-10-30T04:09:01.915Z
+ve_dd68e7cb45|us/en/zuid-holland/delft/restaurant/azurite|€€€€|CAT_P04|2 star|nl|2026-10-30T04:09:03.250Z
+ve_dd6de25c33|en/centre-val-de-loire/ardon/restaurant/la-table-christophe-hay|€€€€|CAT_P04|1 star|fr|2026-10-30T04:09:04.607Z
+ve_dd7ac25282|en/grand-est/colmar/restaurant/l-atelier-du-peintre|€€€|CAT_P03|1 star|fr|2026-10-30T04:09:05.935Z
+ve_de5b455b8d|en/bourgogne-franche-comte/gevrey-chambertin/restaurant/la-table-dhotes-la-rotisserie-du-chambertin|€€€€|CAT_P04|1 star|fr|2026-10-30T04:09:07.267Z
+ve_de7750ef83|us/en/galicia/santiago-de-compostela/restaurant/casa-marcelo|€€€€|CAT_P04|1 star|es|2026-10-30T04:09:08.592Z
+ve_de90b6e9c3|us/en/zhe-jiang/wenzhou_1031793/restaurant/heng-qian-kou-huang-zhu-ying-san-xian-mian|¥|CAT_P01|bib|cn|2026-10-30T04:09:09.931Z
+ve_deacf6de90|us/en/tainan-region/tainan/restaurant/no-name-lamb-soup|$|CAT_P01|bib|tw|2026-10-30T04:09:11.288Z
+ve_df8468de69|us/en/galicia/santa-comba/restaurant/retiro-da-costina|€€€€|CAT_P04|2 star|es|2026-10-30T04:09:12.630Z
+ve_dfbe6bf767|us/en/mecklenburg-vorpommern/schwerin/restaurant/gourmetrestaurant-1751|€€€€|CAT_P04|1 star|de|2026-10-30T04:09:13.961Z
+ve_dfeb448273|us/en/tainan-region/tainan/restaurant/chan-chi|$|CAT_P01|bib|tw|2026-10-30T04:09:15.323Z
+ve_dfface2f35|us/en/rheinland-pfalz/freinsheim/restaurant/weinreich|€€|CAT_P02|bib|de|2026-10-30T04:09:16.647Z
+ve_e05c8150b3|us/en/north-carolina/raleigh_2149711/restaurant/ajja|$$|CAT_P02|bib|us|2026-10-30T04:09:17.997Z
+ve_e072ed05f6|us/en/lazio/roma/restaurant/orma-roma|€€€€|CAT_P04|1 star|it|2026-10-30T04:09:19.337Z
+ve_e1152bfc8e|us/en/zhe-jiang/hangzhou_1027184/restaurant/ge-lang-guan|¥¥|CAT_P02|bib|cn|2026-10-30T04:09:20.674Z
+ve_e13bd5c2c2|us/en/colorado/denver_1261491/restaurant/pig-and-tiger|$$|CAT_P02|bib|us|2026-10-30T04:09:22.011Z
+ve_e15034d80b|us/en/guangdong-province/shenzhen_1030672/restaurant/cuihu-nanshan|¥¥|CAT_P02|bib|cn|2026-10-30T04:09:23.362Z
+ve_e17b5f1052|us/en/saarland/blieskastel/restaurant/landgenuss|€€|CAT_P02|bib|de|2026-10-30T04:09:24.693Z
+ve_e256bfa97a|kr/en/busan-region/busan_1025838/restaurant/arp|₩|CAT_P01|bib|kr|2026-10-30T04:09:26.045Z
+ve_e2f29db6ed|us/en/jiang-su/suzhou_1031079/restaurant/oriental-chao|¥¥|CAT_P02|bib|cn|2026-10-30T04:09:27.367Z
+ve_e33e161b48|us/en/texas/houston_2986624/restaurant/xolo|$$$|CAT_P03|bib|us|2026-10-30T04:09:28.698Z
+ve_e352d403af|en/nouvelle-aquitaine/biarritz/restaurant/la-table-d-aurelien-largeau|€€€€|CAT_P04|1 star|fr|2026-10-30T04:09:30.040Z
+ve_e3a11647b4|us/en/tainan-region/tainan/restaurant/lien-wu-chiao-lamb-soup|$|CAT_P01|bib|tw|2026-10-30T04:09:31.368Z
+ve_e3cc8e6df9|us/en/taipei-region/taipei/restaurant/yu-yu-1969|$$|CAT_P02|bib|tw|2026-10-30T04:09:32.681Z
+ve_e497685786|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/yeh-chia-pork-ribs-medicinal-herbs-soup|$|CAT_P01|bib|tw|2026-10-30T04:09:34.025Z
+ve_e515f6353a|us/en/noord-holland/amsterdam/restaurant/utage-sake-bar|€€|CAT_P02|bib|nl|2026-10-30T04:09:35.370Z
+ve_e583bec755|us/en/hamburg-region/hamburg/restaurant/gassenhaur|€€|CAT_P02|bib|de|2026-10-30T04:09:36.695Z
+ve_e5c8a91032|us/en/groningen/groningen/restaurant/nassau|€€€|CAT_P03|1 star|nl|2026-10-30T04:09:38.027Z
+ve_e64517047a|us/en/shanghai-municipality/shanghai/restaurant/ho-hung-kee-570572|¥¥|CAT_P02|bib|cn|2026-10-30T04:09:39.360Z
+ve_e65c648cd3|en/auvergne-rhone-alpes/lyon/restaurant/miraflores-1190862|€€€€|CAT_P04|1 star|fr|2026-10-30T04:09:40.705Z
+ve_e773df6165|us/en/guangdong-province/shenzhen_1030672/restaurant/xiao-long-niu-rou-mian-futian|¥|CAT_P01|bib|cn|2026-10-30T04:09:42.033Z
+ve_e7949f46d6|us/en/noord-holland/amsterdam/restaurant/fulu-mandarijn|€€|CAT_P02|bib|nl|2026-10-30T04:09:43.362Z
+ve_e79de0a3eb|us/en/catalunya/la-vall-de-bianya/restaurant/ca-l-enric|€€€€|CAT_P04|1 star|es|2026-10-30T04:09:44.740Z
+ve_e7a5110d4f|us/en/guangdong-province/guangzhou/restaurant/stiller|¥¥¥|CAT_P03|1 star|cn|2026-10-30T04:09:46.072Z
+ve_e805c4ab47|en/ile-de-france/paris/restaurant/l-antre-amis|€€|CAT_P02|bib|fr|2026-10-30T04:09:47.426Z
+ve_e825de3930|us/en/nordrhein-westfalen/detmold/restaurant/porte-neuf|€€€€|CAT_P04|1 star|de|2026-10-30T04:09:48.765Z
+ve_e8571e5e10|us/en/lazio/roma/restaurant/aroma|€€€€|CAT_P04|1 star|it|2026-10-30T04:09:50.077Z
+ve_e97925aa1c|us/en/taipei-region/taipei/restaurant/impromptu-by-paul-lee|$$$$|CAT_P04|1 star|tw|2026-10-30T04:09:51.449Z
+ve_eb08c02db3|en/provence-alpes-cote-dazur/bonnieux/restaurant/la-table-des-amis|€€€€|CAT_P04|2 star|fr|2026-10-30T04:09:52.809Z
+ve_ebcc8d4578|en/pays-de-la-loire/le-mans/restaurant/l-auberge-de-bagatelle|€€€€|CAT_P04|1 star|fr|2026-10-30T04:09:54.154Z
+ve_ec3ac5cc83|us/en/baden-wurttemberg/rutesheim_1316036/restaurant/das-philippin|€€€€|CAT_P04|1 star|de|2026-10-30T04:09:55.484Z
+ve_ec3f9267ba|us/en/nevada/las-vegas_2935077/restaurant/e-by-jose-andres|$$$$|CAT_P04|1 star|us|2026-10-30T04:09:56.804Z
+ve_eca0c32c21|us/en/fujian-province/fuzhou_1026814/restaurant/yi-qiang-dadao-road|¥|CAT_P01|bib|cn|2026-10-30T04:09:58.134Z
+ve_ecaf898f47|us/en/taipei-region/taipei/restaurant/golden-formosa|$$|CAT_P02|1 star|tw|2026-10-30T04:09:59.480Z
+ve_ee5c3cf115|us/en/shanghai-municipality/shanghai/restaurant/xin-rong-ji-west-nanjing-road|¥¥¥¥|CAT_P04|1 star|cn|2026-10-30T04:10:00.823Z
+ve_ef49e460a8|en/grand-est/obernai/restaurant/thierry-schwartz-table-naturelle|€€€€|CAT_P04|1 star|fr|2026-10-30T04:10:02.170Z
+ve_efdb19e12c|us/en/texas/houston_2986624/restaurant/murray-s-pizza-wine|$$|CAT_P02|bib|us|2026-10-30T04:10:03.519Z
+ve_eff7af7883|en/occitanie/parnac/restaurant/les-jardins|€€|CAT_P02|1 star|fr|2026-10-30T04:10:04.854Z
+ve_f026dbec1c|en/ile-de-france/paris/restaurant/guy-savoy|€€€€|CAT_P04|2 star|fr|2026-10-30T04:10:06.179Z
+ve_f06df0ad3c|us/en/baden-wurttemberg/berghaupten/restaurant/hirsch80990|€|CAT_P01|bib|de|2026-10-30T04:10:07.526Z
+ve_f075d9ec6b|en/occitanie/narbonne/restaurant/la-table-lionel-giraud|€€€€|CAT_P04|2 star|fr|2026-10-30T04:10:08.864Z
+ve_f099074ae1|us/en/chengdu-municipality/chengdu/restaurant/cuo-xia|¥¥|CAT_P02|bib|cn|2026-10-30T04:10:10.204Z
+ve_f0abb402c3|us/en/nevada/las-vegas_2935077/restaurant/china-poblano|$$|CAT_P02|bib|us|2026-10-30T04:10:11.560Z
+ve_f0d56b4eae|us/en/noord-holland/amsterdam/restaurant/bistro-de-la-mer|€€€|CAT_P03|1 star|nl|2026-10-30T04:10:12.915Z
+ve_f1086e1d3a|us/en/nevada/las-vegas_2935077/restaurant/yen-viet-kitchen|$$|CAT_P02|bib|us|2026-10-30T04:10:14.263Z
+ve_f191378d18|us/en/osaka-region/osaka/restaurant/ukitacho-ima|¥¥¥¥|CAT_P04|1 star|jp|2026-10-30T04:10:15.614Z
+ve_f21bd1d959|us/en/chengdu-municipality/chengdu/restaurant/ting-yuan-399|¥¥|CAT_P02|bib|cn|2026-10-30T04:10:16.991Z
+ve_f26ba9de94|us/en/nordrhein-westfalen/bonn/restaurant/theodor-s|€€€€|CAT_P04|1 star|de|2026-10-30T04:10:18.334Z
+ve_f2d760c8c5|en/grand-est/illhaeusern/restaurant/auberge-de-l-ill|€€€€|CAT_P04|2 star|fr|2026-10-30T04:10:19.658Z
+ve_f3cd3980d4|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/bitan-chiao-tou-goose|$$|CAT_P02|bib|tw|2026-10-30T04:10:20.981Z
+ve_f4300dee32|us/en/chengdu-municipality/chengdu/restaurant/zinan|¥¥|CAT_P02|1 star|cn|2026-10-30T04:10:22.325Z
+ve_f6ab48ae52|en/provence-alpes-cote-dazur/saint-jean-cap-ferrat/restaurant/le-cap|€€€€|CAT_P04|1 star|fr|2026-10-30T04:10:23.662Z
+ve_f8ef3790c5|us/en/greater-london/london/restaurant/restaurant-gordon-ramsay-high|££££|CAT_P04|1 star|gb|2026-10-30T04:10:25.020Z
+ve_f96435baf5|us/en/guangdong-province/shenzhen_1030672/restaurant/the-bay-by-chef-fei|¥¥¥|CAT_P03|2 star|cn|2026-10-30T04:10:26.383Z
+ve_f9a0661361|us/en/tennessee/knoxville_2790957/restaurant/a-dopo|$$|CAT_P02|bib|us|2026-10-30T04:10:27.726Z
+ve_f9e52b367f|us/en/tokyo-region/tokyo/restaurant/sobakappo-nagano|¥¥|CAT_P02|bib|jp|2026-10-30T04:10:28.973Z
+ve_fb2f78722d|en/ile-de-france/paris/restaurant/blanc-1211547|€€€€|CAT_P04|2 star|fr|2026-10-30T04:10:30.295Z
+ve_fbce4227c5|en/hauts-de-france/cassel/restaurant/haut-bonheur-de-la-table|€€|CAT_P02|1 star|fr|2026-10-30T04:10:31.625Z
+ve_fc5934befb|us/en/hamburg-region/hamburg/restaurant/lenz|€€|CAT_P02|bib|de|2026-10-30T04:10:32.947Z
+ve_fc7016664d|us/en/greater-london/london/restaurant/1890-by-gordon-ramsay|££££|CAT_P04|1 star|gb|2026-10-30T04:10:34.294Z
+ve_fd14ae57be|us/en/northern-taiwan/hsinchu-county_2853127/restaurant/sushi-an|$$$$|CAT_P04|1 star|tw|2026-10-30T04:10:35.639Z
+ve_fd26816b1d|us/en/fujian-province/quanzhou_1030272/restaurant/lao-a-bo|¥¥|CAT_P02|bib|cn|2026-10-30T04:10:36.974Z
+ve_fd739bff8d|us/en/abruzzo/sant-omero_1846403/restaurant/zunica-1880|€€€|CAT_P03|1 star|it|2026-10-30T04:10:38.304Z
+ve_fdbcec9464|us/en/northern-taiwan/new-taipei-city_2853082/restaurant/da-one-gone-lamb|$|CAT_P01|bib|tw|2026-10-30T04:10:39.608Z
+ve_fe807964aa|en/auvergne-rhone-alpes/pont-du-chteau/restaurant/auberge-du-pont37415|€€€|CAT_P03|1 star|fr|2026-10-30T04:10:40.934Z
+ve_febc96b2d2|us/en/arizona/phoenix_2875757/restaurant/huarachis-taqueria|$$|CAT_P02|bib|us|2026-10-30T04:10:42.280Z
+ve_ff06e71af7|us/en/gelderland/hoog-soeren_2216407/restaurant/wild-atelier|€€€€|CAT_P04|1 star|nl|2026-10-30T04:10:43.642Z
+ve_ff8fd903dd|us/en/north-carolina/durham_2986749/restaurant/ideal-s|$|CAT_P01|bib|us|2026-10-30T04:10:44.960Z
+ve_ffc480ca32|us/en/guangdong-province/shenzhen_1030672/restaurant/xin-ji-ke-jia-wei-dao|¥|CAT_P01|bib|cn|2026-10-30T04:10:46.342Z
+ve_ffdb3291fd|us/en/tokyo-region/tokyo/restaurant/la-table-de-joel-robuchon|¥¥¥|CAT_P03|1 star|jp|2026-10-30T04:10:47.670Z$r$;
+  rel jsonb;
+  n_exp int := 558;
+  v_fp text;
+  v_ids text;
+  v_bad int;
+  v_lid bigint;
+BEGIN
+  IF (SELECT count(*) FROM price) <> 7024 THEN RAISE EXCEPTION 'price count before is not 7024'; END IF;
+  IF (SELECT max(id) FROM source_capture_ledger) <> 139 THEN RAISE EXCEPTION 'ledger max before is not 139'; END IF;
+  IF (SELECT max(id) FROM audit_log) <> 113410 THEN RAISE EXCEPTION 'audit max before is not 113410'; END IF;
+  IF encode(sha256(convert_to(rel_txt, 'UTF8')), 'hex') <> '7f22474a25dc9d78bbc480e1ab4b76d356304e0f69dbc73d3e2b4275325fdc1f' THEN RAISE EXCEPTION 'relay sha256'; END IF;
+  -- relay line: venue_id|card path|symbol|CAT_P0n|distinction|country|captured_at
+  SELECT jsonb_agg(jsonb_build_object(
+           'venue_id', f[1], 'source_url', 'https://guide.michelin.com/' || f[2], 'symbol_raw', f[3],
+           'currency', CASE f[6] WHEN 'us' THEN 'USD' WHEN 'cn' THEN 'CNY' WHEN 'tw' THEN 'TWD' WHEN 'jp' THEN 'JPY'
+                         WHEN 'kr' THEN 'KRW' WHEN 'gb' THEN 'GBP'
+                         WHEN 'fr' THEN 'EUR' WHEN 'de' THEN 'EUR' WHEN 'it' THEN 'EUR' WHEN 'nl' THEN 'EUR'
+                         WHEN 'es' THEN 'EUR' WHEN 'be' THEN 'EUR' WHEN 'mc' THEN 'EUR' END,
+           'tier', char_length(f[3]), 'captured_at', f[7]) ORDER BY f[1] COLLATE "C"),
+         count(*) FILTER (WHERE array_length(f, 1) <> 7 OR f[4] <> 'CAT_P0' || char_length(f[3])
+                            OR char_length(f[3]) NOT BETWEEN 1 AND 4
+                            OR f[3] <> repeat(left(f[3], 1), char_length(f[3])))
+    INTO rel, v_bad
+    FROM (SELECT string_to_array(l, '|') AS f FROM regexp_split_to_table(rel_txt, E'\n') AS l) s;
+  IF v_bad <> 0 THEN RAISE EXCEPTION 'relay lines malformed: %', v_bad; END IF;
+  IF jsonb_array_length(rel) <> n_exp THEN RAISE EXCEPTION 'relay rows: %', jsonb_array_length(rel); END IF;
+  IF EXISTS (SELECT 1 FROM jsonb_to_recordset(rel) AS x(symbol_raw text, currency text)
+              WHERE x.currency IS NULL
+                 OR left(x.symbol_raw, 1) <> CASE x.currency WHEN 'USD' THEN '$' WHEN 'TWD' THEN '$' WHEN 'CNY' THEN '¥'
+                                              WHEN 'JPY' THEN '¥' WHEN 'KRW' THEN '₩' WHEN 'GBP' THEN '£' WHEN 'EUR' THEN '€' END)
+    THEN RAISE EXCEPTION 'symbol does not match currency'; END IF;
+
+  SELECT md5(string_agg(x.venue_id||'|'||x.source_url||'|'||x.symbol_raw||'|'||x.currency||'|'||x.tier||'|'||x.captured_at,
+                        E'\n' ORDER BY x.venue_id COLLATE "C")),
+         md5(string_agg(x.venue_id, E'\n' ORDER BY x.venue_id COLLATE "C"))
+    INTO v_fp, v_ids
+    FROM jsonb_to_recordset(rel) AS x(venue_id text, source_url text, symbol_raw text, currency text, tier int, captured_at text);
+  IF v_fp <> '3780538e18f9967d72aae59b46a683c1' THEN RAISE EXCEPTION 'relay fingerprint %', v_fp; END IF;
+  IF v_ids <> 'c0cf9361c46578dbb4215f77334f35c0' THEN RAISE EXCEPTION 'venue id md5 %', v_ids; END IF;
+
+  -- each row: venue active, no price row, card URL = latest Michelin star/Bib card URL of the venue
+  SELECT count(*) INTO v_bad
+    FROM jsonb_to_recordset(rel) AS x(venue_id text, source_url text)
+   WHERE NOT EXISTS (SELECT 1 FROM venues v WHERE v.id = x.venue_id AND v.status = 'active')
+      OR EXISTS (SELECT 1 FROM price p WHERE p.venue_id = x.venue_id)
+      OR x.source_url IS DISTINCT FROM (
+           SELECT a.source_url FROM awards a
+            WHERE a.venue_id = x.venue_id AND a.source_id = 'michelin'
+              AND a.category IN ('One Star','Two Stars','Three Stars','Bib Gourmand')
+              AND a.source_url ~ '^https://guide\.michelin\.com/.*/restaurant/'
+            ORDER BY a.year DESC, a.id DESC LIMIT 1);
+  IF v_bad <> 0 THEN RAISE EXCEPTION 'rows outside P1 or URL changed: %', v_bad; END IF;
+
+  INSERT INTO price (venue_id, tier, symbol_raw, currency, source, method, publisher, source_url, captured_at, confidence)
+  SELECT x.venue_id, x.tier::smallint, x.symbol_raw, x.currency, 'guide_ingest', 'published_symbol', 'michelin',
+         x.source_url, x.captured_at::timestamptz, NULL
+    FROM jsonb_to_recordset(rel) AS x(venue_id text, source_url text, symbol_raw text, currency text, tier int, captured_at text);
+
+  INSERT INTO source_capture_ledger (publisher, field_type, items, job)
+  VALUES ('michelin', 'price', n_exp,
+          'price-card:price-michelin-card-p1-2026-10-30 | block A step 1, P1: active Michelin star/Bib venues with no price row and a card URL | '
+          || n_exp || ' rows inserted (CNY 188, EUR 224, GBP 6, JPY 17, KRW 1, TWD 68, USD 54) | live card read, built-in browser | relay md5 3780538e18f9967d72aae59b46a683c1')
+  RETURNING id INTO v_lid;
+
+  -- post-checks
+  IF (SELECT count(*) FROM price) <> 7024 + n_exp THEN RAISE EXCEPTION 'price count after'; END IF;
+  IF v_lid <> 140 THEN RAISE EXCEPTION 'ledger id %', v_lid; END IF;
+  IF (SELECT count(*) FROM audit_log WHERE id > 113410) <> n_exp THEN RAISE EXCEPTION 'audit rows after'; END IF;
+  IF (SELECT count(*) FROM audit_log a
+        JOIN jsonb_to_recordset(rel) AS x(venue_id text) ON x.venue_id = a.row_pk
+       WHERE a.id > 113410 AND a.table_name = 'price' AND a.action = 'INSERT') <> n_exp
+    THEN RAISE EXCEPTION 'audit price INSERT rows'; END IF;
+  IF (SELECT count(*) FROM price p JOIN jsonb_to_recordset(rel) AS x(venue_id text, symbol_raw text, source_url text)
+        ON x.venue_id = p.venue_id AND x.symbol_raw = p.symbol_raw AND x.source_url = p.source_url
+       WHERE p.source = 'guide_ingest' AND p.publisher = 'michelin') <> n_exp
+    THEN RAISE EXCEPTION 'price rows after do not match relay'; END IF;
+END
+$do$;
+COMMIT;
