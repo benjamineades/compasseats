@@ -1,0 +1,54 @@
+1195446|us/en/istanbul-province/istanbul/restaurant/pandeli|₺₺|CAT_P02|bib|tr|2026-10-30T17:59:25.946Z
+1195448|us/en/istanbul-province/istanbul/restaurant/sade-bes-denizler-mutfag%C4%B1|₺|CAT_P01|bib|tr|2026-10-30T17:59:27.272Z
+1195449|us/en/istanbul-province/istanbul/restaurant/tershane|₺|CAT_P01|bib|tr|2026-10-30T17:59:28.518Z
+1195473|us/en/istanbul-province/istanbul/restaurant/araka|₺₺₺|CAT_P03|1 star|tr|2026-10-30T17:59:29.844Z
+1195479|us/en/istanbul-province/istanbul/restaurant/cuma|₺₺|CAT_P02|bib|tr|2026-10-30T17:59:31.180Z
+1195519|us/en/istanbul-province/istanbul/restaurant/karakoy-lokantas%C4%B1|₺₺|CAT_P02|bib|tr|2026-10-30T17:59:32.506Z
+1195528|us/en/istanbul-province/istanbul/restaurant/mikla|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T17:59:33.840Z
+1195530|us/en/istanbul-province/istanbul/restaurant/neolokal|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T17:59:35.191Z
+1195531|us/en/istanbul-province/istanbul/restaurant/nicole|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T17:59:36.527Z
+1195553|us/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak|₺₺₺₺|CAT_P04|2 star|tr|2026-10-30T17:59:37.873Z
+1195854|us/en/istanbul-province/istanbul/restaurant/casa-lavanda|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T17:59:39.120Z
+1199400|us/en/istanbul-province/istanbul/restaurant/tatbak|₺₺|CAT_P02|bib|tr|2026-10-30T17:59:40.475Z
+1207261|us/en/izmir/izmir_2809416/restaurant/tavac%C4%B1-recep-usta|₺₺|CAT_P02|bib|tr|2026-10-30T17:59:41.799Z
+1207581|us/en/izmir/izmir_2809416/restaurant/aysa-bosnak-borekcisi|₺|CAT_P01|bib|tr|2026-10-30T17:59:43.159Z
+1208004|us/en/izmir/izmir_2809416/restaurant/od-urla|₺₺₺|CAT_P03|1 star|tr|2026-10-30T17:59:44.472Z
+1208027|us/en/mugla/bodrum_2806351/restaurant/otantik-ocakbas%C4%B1|₺|CAT_P01|bib|tr|2026-10-30T17:59:45.794Z
+1208172|us/en/izmir/izmir_2809416/restaurant/teruar-urla|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T17:59:47.109Z
+1208202|us/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T17:59:48.440Z
+1208228|us/en/mugla/bodrum_2806351/restaurant/kitchen-1208228|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T17:59:49.768Z
+1208257|us/en/izmir/izmir_2809416/restaurant/vino-locale|₺₺₺₺|CAT_P04|2 star|tr|2026-10-30T17:59:51.016Z
+1208300|us/en/istanbul-province/istanbul/restaurant/tavac%C4%B1-recep-usta-bostanc%C4%B1|₺₺|CAT_P02|bib|tr|2026-10-30T17:59:52.349Z
+1208310|us/en/izmir/izmir_2809416/restaurant/la-mahzen|₺₺|CAT_P02|bib|tr|2026-10-30T17:59:53.599Z
+1209151|us/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T17:59:54.848Z
+1209180|us/en/istanbul-province/istanbul/restaurant/arkestra|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T17:59:56.204Z
+1209189|us/en/istanbul-province/istanbul/restaurant/foxy-nisantas%C4%B1|₺₺|CAT_P02|bib|tr|2026-10-30T17:59:57.543Z
+1209232|us/en/mugla/bodrum_2806351/restaurant/bagaras%C4%B1|₺₺|CAT_P02|bib|tr|2026-10-30T17:59:58.868Z
+1209896|us/en/izmir/izmir_2809416/restaurant/asma%C2%A0yaprag%C4%B1|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:00.184Z
+1209897|us/en/izmir/izmir_2809416/restaurant/adil-muftuoglu|₺|CAT_P01|bib|tr|2026-10-30T18:00:01.515Z
+1210080|us/en/izmir/izmir_2809416/restaurant/begendik-abi|₺|CAT_P01|bib|tr|2026-10-30T18:00:02.855Z
+1213077|us/en/istanbul-province/istanbul/restaurant/araf-istanbul|₺₺|CAT_P02|1 star|tr|2026-10-30T18:00:04.182Z
+1213087|us/en/izmir/izmir_2809416/restaurant/nar%C4%B1mor|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T18:00:05.497Z
+1213216|us/en/istanbul-province/istanbul/restaurant/ali-ocakbas%C4%B1|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:06.837Z
+1213264|us/en/istanbul-province/istanbul/restaurant/nazende-cadde|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:08.205Z
+1213287|us/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T18:00:09.535Z
+1213342|us/en/istanbul-province/istanbul/restaurant/mutfakkoz|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:10.878Z
+1213363|us/en/nevsehir/urgup_2827493/restaurant/revithia|₺₺₺₺|CAT_P04|1 star|tr|2026-10-30T18:00:12.194Z
+1213531|us/en/izmir/izmir_2809416/restaurant/asl%C4%B1nda-meyhane|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:13.511Z
+1213553|us/en/nevsehir/urgup_2827493/restaurant/aravan-evi|₺|CAT_P01|bib|tr|2026-10-30T18:00:14.833Z
+1214437|us/en/istanbul-province/istanbul/restaurant/yanyal%C4%B1-fehmi-lokantas%C4%B1|₺|CAT_P01|bib|tr|2026-10-30T18:00:16.165Z
+1214439|us/en/istanbul-province/istanbul/restaurant/ahmet-ustam-ocakbas%C4%B1|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:17.503Z
+1214684|us/en/mugla/bodrum_2806351/restaurant/arka-ristorante-pizzeria|₺|CAT_P01|bib|tr|2026-10-30T18:00:18.840Z
+1215531|us/en/istanbul-province/istanbul/restaurant/parvus-kalam%C4%B1s|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:20.168Z
+1215809|us/en/mugla/bodrum_2806351/restaurant/beynel|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:21.487Z
+1215811|us/en/mugla/milas_2807963/restaurant/agora-pansiyon|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:22.800Z
+1216095|us/en/istanbul-province/istanbul/restaurant/mahir-lokantas%C4%B1|₺|CAT_P01|bib|tr|2026-10-30T18:00:24.122Z
+1218606|us/en/istanbul-province/istanbul/restaurant/casius-antioch-kitchen|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:25.449Z
+1218691|us/en/nevsehir/urgup_2827493/restaurant/babayan-evi-restaurant|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:26.779Z
+1218694|us/en/nevsehir/urgup_2827493/restaurant/old-greek-house|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:28.096Z
+1218697|us/en/nevsehir/nevsehir-merkez_2821449/restaurant/happena|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:29.431Z
+1241913|us/en/izmir/izmir_2809416/restaurant/kemal-in-yeri-mulkiyeliler-birligi|₺|CAT_P01|bib|tr|2026-10-30T18:00:30.757Z
+1242046|us/en/izmir/izmir_2809416/restaurant/partal-kardesler-bal%C4%B1k-restorant|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:32.065Z
+1242624|us/en/mugla/fethiye_2806867/restaurant/mezegi|₺₺|CAT_P02|bib|tr|2026-10-30T18:00:33.366Z
+1242765|us/en/mugla/bodrum_2806351/restaurant/mandalya|₺|CAT_P01|bib|tr|2026-10-30T18:00:34.672Z
+1243802|us/en/nigde/nigde-merkez_2821454/restaurant/tabal-gastronomi-evi|₺|CAT_P01|bib|tr|2026-10-30T18:00:35.995Z

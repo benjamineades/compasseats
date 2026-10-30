@@ -1,0 +1,53 @@
+ve_027c7055e4|10664|1209189|exact-key|Foxy Nişantaşı|Foxy Nişantaşı
+ve_0b63b424aa|11334|1218691|exact-key|Babayan Evi Restaurant|Babayan Evi Restaurant
+ve_0bed98d6f5|10682|1213531|exact-key|ASLINDA MEYHANE URLA|Aslında Meyhane
+ve_0d51fc7213|9221|1209896|exact-key|Asma Yaprağı|Asma Yaprağı
+ve_0e1a18ca2d|11263|1242624|exact-key|Mezegi|Mezegi
+ve_1368ed47bc|10683|1207581|subset-key|Ayşa Boşnak Börekçisi ve Ev Yemekleri - Alsancak|Ayşa Boşnak Börekçisi
+ve_136db1bad1|5646|1195531|exact-key|Nicole|Nicole
+ve_18edcac317|11262|1242765|exact-key|Mandalya Butik Otel|Mandalya
+ve_1a1bbea864|10669|1195446|exact-key|Pandeli Restaurant|Pandeli
+ve_1cb00fa293|11261|1209232|exact-key|Bagarasi Restaurant|Bağarası
+ve_349b73a7ad|10681|1209897|subset-key|Tarihi Adil Müftüoğlu Uğur Lokantası|Adil Müftüoğlu
+ve_35e19380c8|5638|1195528|exact-key|Mikla|Mikla
+ve_36abe24a4c|5634|1195473|exact-key|Araka|Araka
+ve_37474fb40a|10672|1199400|exact-key|Tatbak|Tatbak
+ve_3858b8c38e|10687|1242046|exact-key|Partal Kardeşler Balık Restorant|Partal Kardeşler Balık Restorant
+ve_385a5536af|11437|1243802|exact-key|Tabal Gastronomi Evi (Niğde Belediyesi)|Tabal Gastronomi Evi
+ve_3aba3f840e|10685|1241913|subset-key|Kemal’in Yeri - Mülkiyeliler Birliği İzmir Şubesi|Kemal'in Yeri
+ve_3c28ea50a0|9541|1208027|exact-key|Otantik Ocakbaşı|Otantik Ocakbaşı
+ve_400c27e18a|10662|1195479|exact-key|Cuma|Cuma
+ve_420e6f5990|10688|1207261|exact-key|Tavacı Recep Usta Alsancak - İzmir|Tavacı Recep Usta Alsancak
+ve_465ee2066b|10674|1195449|manual-spelling|Tersane İstanbul|Tershane
+ve_467cda6952|5641|1195530|exact-key|Neolokal|Neolokal
+ve_5410da4251|9152|1195854|exact-key|Casa Lavanda Boutique Hotel & Restaurant|Casa Lavanda
+ve_5628da600d|8782|1213087|exact-key|Narımor Urla Butik Otel|Narımor
+ve_5ed9e3ba91|10671|1195448|exact-key|SADE "Beş Denizler Mutfağı"|SADE "Beş Denizler Mutfağı"
+ve_639a9f06bc|10666|1216095|exact-key|Mahir Lokantası|Mahir Lokantası
+ve_6734eae626|11336|1218694|exact-key|Old Greek House|Old Greek House
+ve_68b10737c1|4232|1208202|exact-key|MACAKIZI BODRUM|Maçakızı
+ve_6946477934|5635|1209180|exact-key|Arkestra|Arkestra
+ve_6ad5ac3d8e|10668|1213264|exact-key|Nazende Cadde|Nazende Cadde
+ve_6b845b4191|10659|1214439|exact-key|Ahmet Ustam Ocakbaşı|Ahmet Ustam Ocakbaşı
+ve_85cac1bf09|8787|1208172|exact-key|TERUAR URLA|Teruar Urla
+ve_90cec22abd|10684|1210080|exact-key|Beğendik Abi|Beğendik Abi
+ve_9821c9bb73|9540|1215809|exact-key|Beynel Bitez|Beynel
+ve_9852cbf26e|2131|1195553|exact-key|TURK FATIH TUTAK|TURK FATİH TUTAK
+ve_9b55bcbafd|10673|1208300|exact-key|Tavacı Recep Usta Bostancı - İstanbul|Tavacı Recep Usta Bostancı
+ve_a2b0e7bf15|10665|1195519|exact-key|Karaköy Lokantası|Karaköy Lokantası
+ve_a59287b6fe|10661|1218606|exact-key|Casius Antioch Kitchen Restaurant|Casius Antioch Kitchen
+ve_a731e2441c|3451|1208257|exact-key|Urla Vino Locale|Vino Locale
+ve_aab61fc860|10675|1214437|exact-key|Yanyalı Fehmi Lokantası|Yanyalı Fehmi Lokantası
+ve_abf8e67998|10667|1213342|exact-key|mutfakkoz|mutfakkoz
+ve_b4ab5979c5|9539|1214684|exact-key|Arka Ristorente Pizzeria Bodrum|Arka Ristorante Pizzeria
+ve_bda466a347|11335|1218697|exact-key|Happena Restaurant|Happena
+ve_c42df0ddef|5633|1213077|exact-key|Araf İstanbul|Araf İstanbul
+ve_c98ccae6d0|4427|1213363|exact-key|Revithia|Revithia
+ve_d6b1548b2d|11195|1215811|exact-key|Agora Pansiyon|Agora Pansiyon
+ve_de05509e50|9094|1213287|exact-key|Mezra Yalıkavak|Mezra Yalıkavak
+ve_e2939f7812|13037|1213553|exact-key|Aravan Evi Restaurant|Aravan Evi
+ve_e611b7d736|10670|1215531|exact-key|Parvus Kalamış|Parvus Kalamış
+ve_efa4c69e8f|8783|1208004|exact-key|OD Urla|OD Urla
+ve_f088b7a06a|5648|1209151|exact-key|Sankai by Nagaya|Sankai by Nagaya
+ve_f1b7fc23a0|4231|1208228|exact-key|KITCHEN by Osman Sezener|Kitchen By Osman Sezener
+ve_f9cfd37334|10660|1213216|exact-key|Ali Ocakbaşı Karaköy|Ali Ocakbaşı Karaköy
