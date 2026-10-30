@@ -1,0 +1,15 @@
+# Held 8 name-diff venues: decisions, Oct 30 2026 (rename batch 30, no write in this file)
+# Source list: the 8 "hold" lines of docs/name-diff-evidence-2026-10-30.txt.
+# Ben, Oct 30 2026: 19:23 ET "Option 1" (read the 4 sites not read before); 19:25 ET "All recommended".
+# Site reads, Oct 30 ~23:24-23:30 UTC, WebFetch, Ben approved each fetch: 4 cards (website link) + 4 sites
+#   (Maison Patte Noire, Andrea, UZU Kyoto, Kitchen), then 2 cards for the website link only (LULU, TURK).
+# Columns: venue_id|new_name|source_id|source_url (venue rows only; michelin rows use the live card URL)|rule|site read (where)
+# new_name is in Unicode NFC. La P’tite Patte uses U+2019 (curly), as the card and the site do.
+ve_c4d70b9a92|La P’tite Patte|michelin||R1 (site = card; the Bib belongs to the bistro, not to Le Patte Noire, which is Selected only)|La P’tite Patte (top nav, body H2, footer hours heading; always curly ’); parent site "Maison Patte Noire" has 2 restaurants: Le Patte Noire (gastronomic) and La P’tite Patte (bistro) [https://www.maisonpattenoire.fr]
+ve_f3378b4564|LULU fusion bistro|venue|https://lulu-fusion-bistro.eatbu.com/|R1 (site has one form; card differs in capitals)|LULU fusion bistro (title, header)
+ve_9852cbf26e|Turk Fatih Tutak|venue|https://www.turkft.com/|R1 + R3 (site title in normal case; card TURK FATİH TUTAK is the same in Turkish capitals)|Turk Fatih Tutak (title); TURK + Fatih Tutak (nav)
+ve_f1b7fc23a0|Kitchen by Osman Sezener|venue|https://www.editionhotels.com/bodrum/restaurants-and-bars/kitchen/|R3 + Oct 11 "by <chef>" rule (site uses "by Osman Sezener"; card has "By")|KITCHEN BY OSMAN SEZENER (H1, H2, nav); Kitchen by Osman Sezener (body); Kitchen (meta description) [The Bodrum EDITION page]
+ve_b4ab5979c5|Arka Ristorante Pizzeria|michelin||R5 card (site has 2 forms, Arka Pizzaria / Arka Pizzeria, none = card; our name had the typo Ristorente)|Arka Pizzaria (title); Arka Pizzeria (footer)
+ve_f21ee3afab|Bánh Bèo - Bánh đập|michelin||R5 card, exact (no site; Michelin is the only publisher; the dash is part of the name, not a suffix)|no site
+ve_6d2d60d7ba|Andrea|michelin||R2 (site has more than one form; card uses Andrea)|Ristorante Andrea (title, footer, body); Andrea alone (heading "Le stanze di Andrea", logo link title); never "Enoteca" or a dash [https://www.ristoranteandrea.it/]
+ve_bb69a63e96|UZU Kyoto|michelin||R1 (site = card; "Vegan Ramen UZU" is the brand of the group)|UZU Kyoto (nav, store list); Vegan Ramen UZU (title, brand) [https://vegan-uzu.com/]
