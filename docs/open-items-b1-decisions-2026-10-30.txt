@@ -1,0 +1,12 @@
+# Open items block 1, decisions and reads (2026-10-30)
+# Ben Oct 30 19:46 ET 'Go' (items 1-4), 19:50 ET 'All recommended' (1 = A, 2 = A, 3 = A, 4 = A)
+# Item 1 Telleruide: city ci_b8de1219b5 "Telleruide" (1 venue, 221 South Oak ve_b44e9a2762, OAD 2026 No. 606, no URL).
+#   Site https://www.221southoak.com/ : "221 South Oak Street, Telluride, Colorado"; title "221 South Oak | Telluride Restaurant";
+#   "Closed For Offseason, We Reopen 12/11" (seasonal; status stays active). Decision A: new city Telluride, venue moved,
+#   new slug telluride/221-south-oak, old slug non-canonical, old city row deleted, alias telleruide -> Telluride.
+# Item 4 Paloma Taqueria ve_3fad690140: card (Bib 2026, 28 Helwick Street, Wānaka) shows no closure; site notice
+#   "Closed for Refurbishment ... back open on June 30" (date passed; old notice). Decision A: no write, item closed.
+#   Card and site both write Wānaka (supports the city-label item).
+line|venue_id|expected_name|new_name|source|card_url|card_h1|site_read|rule
+1|ve_04c2784726|Lavello|Forentum|michelin|https://guide.michelin.com/us/en/basilicata/lavello/restaurant/forentum|Forentum|Forentum (title "Home - Forentum", logo alt, footer); "Antica Cantina Forentum a Lavello" (H4) [https://www.forentum.it]|rule R1 (site has one form = card h1); our name was the town name
+2|ve_e574aeb7fd|Restaurant Les Fresques une étoile Michelin depuis plus de 10 ans|Les Fresques|michelin|https://guide.michelin.com/us/en/nouvelle-aquitaine/monestier/restaurant/les-fresques|Les Fresques - Château des Vigiers|LES FRESQUES (main menu, section heading); Les Fresques (second menu "Les Fresques, Restaurant Étoilé") [https://vigiers.com/]|rule R1 + R3 (site writes Les Fresques in normal case and in capitals) = card h1 minus the hotel suffix (R5); our name had a tagline appended
