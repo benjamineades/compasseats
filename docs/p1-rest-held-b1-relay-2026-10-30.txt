@@ -1,0 +1,16 @@
+ve_00d8a2d2b6|21049|url|us/en/lower-silesian/wroclaw_2399695/restaurant/most|€€€|CAT_P03|1 star|False|pl|2026-10-30T19:12:44.404Z
+ve_1f12403d25|21117|url|us/en/da-nang-region/da-nang_2984390/restaurant/nam-hien-phan-thanh-street|₫|CAT_P01|bib|False|vn|2026-10-30T19:12:45.754Z
+ve_24aeca03f9|27766|price|https://web.archive.org/web/20250904212434id_/https://guide.michelin.com/us/en/chengdu-municipality/chengdu/restaurant/zhu-ji-zhi-mian-pu|¥|CAT_P01|bib|False|cn|2026-10-30T19:13:12.805Z
+ve_2b87774359|21080|green|us/en/california/oakland/restaurant/pomet|$$$|CAT_P03|plate|True|us|2026-10-30T19:12:47.111Z
+ve_355d4a675c|21078|green|us/en/california/santa-barbara/restaurant/monte-s|$$$|CAT_P03|plate|True|us|2026-10-30T19:12:48.468Z
+ve_362cf33750|21127|url|us/en/ho-chi-minh/ho-chi-minh_2978179/restaurant/banh-canh-cua-ba-ba|₫|CAT_P01|bib|False|vn|2026-10-30T19:12:49.819Z
+ve_3a998c5225|15350|green|us/en/california/berkeley/restaurant/chez-panisse|$$$$|CAT_P04|plate|True|us|2026-10-30T19:12:51.177Z
+ve_3fad690140|21210|url|us/en/south-island/wanaka_2306683/restaurant/paloma-taqueria|$$|CAT_P02|bib|False|nz|2026-10-30T19:12:52.506Z
+ve_43771d354f|21073|green|us/en/california/us-los-angeles/restaurant/chi-spacca|$$$$|CAT_P04|plate|True|us|2026-10-30T19:12:53.873Z
+ve_466f9b5fe9|-|price|us/en/georgia/atlanta_2884144/restaurant/banshee|$$$|CAT_P03|plate|False|us|2026-10-30T19:12:55.230Z
+ve_49fd475e56|17831|green|us/en/california/big-sur/restaurant/sierra-mar|$$$$|CAT_P04|plate|True|us|2026-10-30T19:12:56.574Z
+ve_95d87f1674|21072|heritage|us/en/california/long-beach/restaurant/heritage-1196790|$$$$|CAT_P04|1 star|True|us|2026-10-30T19:12:57.922Z
+ve_afc5cbe328|21118|url|us/en/da-nang-region/da-nang_2984390/restaurant/ba-vui|₫|CAT_P01|bib|False|vn|2026-10-30T19:12:59.273Z
+ve_ca50fd9f2e|21077|url|us/en/california/beverly-hills/restaurant/miura-1246958|$$$$|CAT_P04|1 star|False|us|2026-10-30T19:13:00.633Z
+ve_dff956ccb3|21120|url|us/en/da-nang-region/da-nang_2984390/restaurant/le-gia-khang-ngu-hanh-son|₫|CAT_P01|bib|False|vn|2026-10-30T19:13:01.996Z
+ve_f21ee3afab|21119|url|us/en/da-nang-region/da-nang_2984390/restaurant/banh-beo-banh-%C4%91ap|₫|CAT_P01|bib|False|vn|2026-10-30T19:13:03.346Z

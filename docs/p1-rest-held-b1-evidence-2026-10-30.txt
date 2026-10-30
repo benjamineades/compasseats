@@ -1,0 +1,42 @@
+Held P1-rest venues, batch 1: evidence (Oct 30, 2026)
+Reads: built-in browser, fetch() from a guide.michelin.com tab (1.2 s pause); archive card from a web.archive.org tab.
+List pages read (all 200): /us/en/selection/vietnam/restaurants (189), /us/en/california/restaurants (514),
+/us/en/selection/new-zealand/restaurants (110), /us/en/selection/poland/restaurants (196), /us/en/georgia/restaurants (64),
+/us/en/florida/restaurants (196). Card attributes are on the child div with data-restaurant-name (not on div.card__menu).
+Relay read 19:12-19:13 UTC: 15 live cards 200, no redirect; Zhu Ji archive card 200.
+
+Group 1 Banshee ve_466f9b5fe9: card 1208021 Atlanta, distinction plate (Selected), greenstar False, $$$ CAT_P03,
+  1271 Glenwood Ave. SE. Award rows Bib 2023 (21098), Bib 2024 (21099) unchanged (ruling Oct 10). Price only.
+Group 2 Zhu Ji Zhi Mian Pu ve_24aeca03f9: live card 404. Archive 20250904212434: "Zhu Ji Zhi Mian Pu (Jinjiang)", bib,
+  CAT_P01, data sheet "¥ · Noodles", 194 Yixinqiao South Street, Jinjiang. Price line regex does not match this layout;
+  symbol from the data sheet block. Price only, source_url = archive URL (award 27766 already holds it).
+Group 3 California Green Stars (One Star -> Green Star):
+  Chez Panisse 15350 (card 122448, $$$$), Chi Spacca 21073 (559663, $$$$), Monte's 21078 (1246959, $$$),
+  Pomet 21080 (1200736, $$$), Sierra Mar 17831 (559403, $$$$). All cards: dLayer distinction plate, greenstar True.
+  https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california (published 2026-06-25):
+    10 Three Stars, 13 Two Stars, 60 One Star; none of the 5 on the star lists.
+  https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-california-stars-green-stars
+    (published 2025-06-25): Green Stars list includes Chez Panisse, Chi Spacca, Pomet, Heritage (Long Beach).
+  The 5 rows sit in award block 21061-21082 (Aug 14 sheet load) with real new 2026 One Stars (Kojima, Lielle,
+  Lucien, Restaurant Naides, Troubadour, Wolfsbane). Cause: Green Star icon read as a star.
+Group 4 Heritage Long Beach ve_95d87f1674: award 21072 Two Stars -> One Star. Card 1196790: "One Star ... in the 2026
+  MICHELIN Guide USA", greenstar True, $$$$, 2030 E. 7th St. 2026 article: "Long Beach: Heritage" in the One Star
+  list only. New award 30100: 2026 Green Star, card URL. Heritage Fort Lauderdale ve_16051192ae (card 1207412,
+  Bib) is a different venue, no change.
+Group 5 Miura ve_ca50fd9f2e: card 1246958 Beverly Hills, 218 N. Rodeo Dr., 1 star, $$$$; 2026 article "Beverly Hills:
+  Miura NEW". City stays Los Angeles (no Beverly Hills city row). Award 21077 URL.
+  Paloma Taqueria ve_3fad690140: card 1247956 Wanaka, 28 Helwick Street, bib, $$. Venue site palomawanaka.co.nz:
+  Wanaka only, no Auckland branch, "Closed for Refurbishment". Award 21210 URL. City move Auckland -> Wanaka: batch 2.
+Group 6 Nam Hin ve_1f12403d25: card 1211842 "Nam Hìn (Phan Thanh Street)", 46 Phan Thanh Street, Thanh Khe Ward,
+  Da Nang, bib, ₫. Only Nam Hìn card; no sister venue. Award 21117 URL. Name ("Han Market") to the name block.
+  Branch merges (batch 2): Chay Garden, Hồng Phát, Mặn Mòi (see batch 2 evidence).
+Group 7 (only card with the core name in the Vietnam list, same city, Bib, ₫):
+  Crab noodle Ba ba ve_362cf33750 = Bánh Canh Cua Bà Ba 1246201, 84/6 Nguyen Bieu Street (award 21127)
+  Xôi, Bún măng gà bà Vui ve_afc5cbe328 = Bà Vui 1247823, 55 Le Hong Phong Street (award 21118)
+  Bún Bò Huế - Lê Gia Khang ve_dff956ccb3 = Lê Gia Khang (Ngũ Hành Sơn) 1247838, 19 Le Quang Dao Street (award 21120)
+  Bánh Bèo, Bánh Đập, Bánh Ướt ve_f21ee3afab = Bánh Bèo - Bánh đập 1247824, 251 Phan Chau Trinh Street (award 21119)
+Group 8 Most Tumski ve_00d8a2d2b6: card 1219253 "Most", 1 star, €€€, Księcia Witolda 1, Wrocław. Venue site
+  miedzy-mostami.pl: "Restauracja Między Mostami" with tasting room "Most"; "Most Tumski" not on the site.
+  Card 1219163 Między Mostami (plate) is not our venue. Award 21049 URL. Name to the name block.
+Write: Oct 30, 2026 19:17:43 UTC, Write connector, one transaction. Ledger 158 (award 15), 159 (price 16).
+  Audit 118698-118728. Price 7714 -> 7730, awards 23352 -> 23353. Active star/Bib venues with no price 22 -> 6.
