@@ -1,0 +1,475 @@
+ve_003f5e3cd0|us/en/galicia/vigo/restaurant/casa-marco|€€|CAT_P02|bib|es|2026-10-30T08:12:16.521Z
+ve_00f08dd007|us/en/catalunya/la-pobla-de-segur_1440576/restaurant/el-raier|€€|CAT_P02|bib|es|2026-10-30T08:12:17.788Z
+ve_01279ad39f|us/en/comunidad-valenciana/calp/restaurant/orobianco|€€€€|CAT_P04|1 star|es|2026-10-30T08:12:19.182Z
+ve_01982da706|us/en/andalucia/jerez-de-la-frontera/restaurant/mantua|€€€€|CAT_P04|1 star|es|2026-10-30T08:12:20.515Z
+ve_02df2db986|us/en/pais-vasco/es-donostia-san-sebastian/restaurant/akelare|€€€€|CAT_P04|3 star|es|2026-10-30T08:12:21.905Z
+ve_0525ef0d89|us/en/comunidad-valenciana/xbia/restaurant/tula|€€€|CAT_P03|1 star|es|2026-10-30T08:12:23.258Z
+ve_05c29de415|us/en/canarias/gua-de-isora/restaurant/m-b|€€€€|CAT_P04|2 star|es|2026-10-30T08:12:24.590Z
+ve_061c3fe6f1|us/en/catalunya/peralada/restaurant/castell-peralada|€€€€|CAT_P04|1 star|es|2026-10-30T08:12:25.915Z
+ve_065c01d8dd|us/en/canarias/adeje/restaurant/nub-1194862|€€€€|CAT_P04|1 star|es|2026-10-30T08:12:27.259Z
+ve_071b1b01cb|us/en/aragon/tramacastilla/restaurant/hospederia-el-batan|€€€|CAT_P03|1 star|es|2026-10-30T08:12:28.618Z
+ve_071eda71ef|us/en/comunidad-valenciana/alfafara/restaurant/casa-el-tio-david|€€|CAT_P02|bib|es|2026-10-30T08:12:29.936Z
+ve_07a7af9e2a|us/en/catalunya/sant-quirze-del-valles/restaurant/can-ferran|€|CAT_P01|bib|es|2026-10-30T08:12:31.254Z
+ve_089c84c290|us/en/pais-vasco/axpe/restaurant/txispa|€€€€|CAT_P04|1 star|es|2026-10-30T08:12:32.578Z
+ve_097d73c43f|us/en/principado-de-asturias/gijon/restaurant/el-recetario|€€|CAT_P02|bib|es|2026-10-30T08:12:33.913Z
+ve_0996b2ee96|us/en/catalunya/lleida/restaurant/aimia|€€|CAT_P02|bib|es|2026-10-30T08:12:35.246Z
+ve_09f253c0fd|us/en/galicia/santiago-de-compostela/restaurant/anaco|€€|CAT_P02|bib|es|2026-10-30T08:12:36.575Z
+ve_0a12e7b582|us/en/principado-de-asturias/arriondas/restaurant/el-corral-del-indianu|€€€|CAT_P03|1 star|es|2026-10-30T08:12:37.915Z
+ve_0bd2260035|us/en/castilla-y-leon/val-de-san-lorenzo/restaurant/la-lecheria|€€|CAT_P02|bib|es|2026-10-30T08:12:39.257Z
+ve_0c8079634f|us/en/catalunya/salou/restaurant/deliranto|€€€€|CAT_P04|1 star|es|2026-10-30T08:12:40.573Z
+ve_0cd320812c|us/en/islas-baleares/palma/restaurant/dins-santi-taura|€€€€|CAT_P04|1 star|es|2026-10-30T08:12:41.916Z
+ve_0d930f07a0|us/en/comunidad-de-madrid/madrid/restaurant/saddle|€€€€|CAT_P04|1 star|es|2026-10-30T08:12:43.250Z
+ve_0e1d201751|us/en/principado-de-asturias/tox/restaurant/regueiro|€€€|CAT_P03|1 star|es|2026-10-30T08:12:44.692Z
+ve_0e8b138b47|us/en/catalunya/barcelona/restaurant/cinc-sentits|€€€€|CAT_P04|2 star|es|2026-10-30T08:12:46.015Z
+ve_0fcf4d4df3|us/en/catalunya/l-escala/restaurant/la-gruta|€€|CAT_P02|bib|es|2026-10-30T08:12:48.110Z
+ve_0ff37da225|us/en/castilla-la-mancha/es-toledo/restaurant/ivan-cerdeno|€€€€|CAT_P04|2 star|es|2026-10-30T08:12:50.109Z
+ve_0ffa4648ff|us/en/catalunya/bellvis/restaurant/la-boscana|€€€€|CAT_P04|2 star|es|2026-10-30T08:12:52.110Z
+ve_1080fb62d5|us/en/comunidad-valenciana/elche/restaurant/frisone|€€|CAT_P02|bib|es|2026-10-30T08:12:54.109Z
+ve_11140cb31a|us/en/cantabria/cartes/restaurant/la-carteria|€€|CAT_P02|bib|es|2026-10-30T08:12:56.110Z
+ve_112c42c843|us/en/pais-vasco/mondragon_1426863/restaurant/arteaga-landetxea|€|CAT_P01|bib|es|2026-10-30T08:12:58.109Z
+ve_119d7c8d87|us/en/andalucia/ronda/restaurant/bardal|€€€€|CAT_P04|2 star|es|2026-10-30T08:13:00.110Z
+ve_11fbbb7c9f|us/en/islas-baleares/es-selva/restaurant/miceli|€€|CAT_P02|bib|es|2026-10-30T08:13:02.109Z
+ve_13031d02a6|us/en/comunidad-valenciana/alcossebre/restaurant/atalaya|€€€|CAT_P03|1 star|es|2026-10-30T08:13:04.109Z
+ve_133c958fb4|us/en/principado-de-asturias/gijon/restaurant/marcos|€€€€|CAT_P04|1 star|es|2026-10-30T08:13:06.110Z
+ve_142c17ad36|us/en/catalunya/sort/restaurant/fogony|€€€|CAT_P03|1 star|es|2026-10-30T08:13:08.110Z
+ve_146237b505|us/en/catalunya/barcelona/restaurant/glug|€€|CAT_P02|bib|es|2026-10-30T08:13:10.109Z
+ve_14ea0578a3|us/en/region-de-murcia/murcia/restaurant/perro-limon|€€|CAT_P02|bib|es|2026-10-30T08:13:12.110Z
+ve_157591506d|us/en/andalucia/malaga/restaurant/kaleja|€€€|CAT_P03|1 star|es|2026-10-30T08:13:14.109Z
+ve_15994d9c64|us/en/andalucia/cordoba/restaurant/terra-olea-1194951|€€|CAT_P02|bib|es|2026-10-30T08:13:16.107Z
+ve_15a90e528c|us/en/comunidad-de-madrid/madrid/restaurant/ugo-chan|€€€€|CAT_P04|1 star|es|2026-10-30T08:13:18.110Z
+ve_15adf58735|us/en/principado-de-asturias/gijon/restaurant/farragua|€€|CAT_P02|bib|es|2026-10-30T08:13:20.108Z
+ve_16717e6876|us/en/comunidad-valenciana/valencia/restaurant/fierro|€€€€|CAT_P04|1 star|es|2026-10-30T08:13:22.111Z
+ve_17180a60b0|us/en/pais-vasco/amorebieta-etxano/restaurant/la-revelia|€€|CAT_P02|1 star|es|2026-10-30T08:13:24.110Z
+ve_17eb8e749c|us/en/andalucia/sanlucar-de-barrameda/restaurant/casa-bigote|€€|CAT_P02|bib|es|2026-10-30T08:13:25.437Z
+ve_17ff31b7b3|us/en/catalunya/barcelona/restaurant/cocina-hermanos-torres|€€€€|CAT_P04|3 star|es|2026-10-30T08:13:26.754Z
+ve_180cfdcfce|us/en/canarias/mogan/restaurant/los-guayres|€€€€|CAT_P04|1 star|es|2026-10-30T08:13:28.094Z
+ve_18f0c4c3c2|us/en/andalucia/cordoba/restaurant/recomiendo|€€€|CAT_P03|1 star|es|2026-10-30T08:13:30.742Z
+ve_190706df89|us/en/catalunya/barcelona/restaurant/angle|€€€€|CAT_P04|1 star|es|2026-10-30T08:13:32.082Z
+ve_192f0331c1|us/en/comunidad-valenciana/castell-de-la-plana/restaurant/arre|€€|CAT_P02|bib|es|2026-10-30T08:13:33.424Z
+ve_199029e646|us/en/aragon/huesca/restaurant/lillas-pastia|€€€|CAT_P03|1 star|es|2026-10-30T08:13:34.804Z
+ve_19e9e78a94|us/en/comunidad-valenciana/benicarlo/restaurant/raul-resino|€€€€|CAT_P04|1 star|es|2026-10-30T08:13:36.131Z
+ve_1a7001ee86|us/en/catalunya/barcelona/restaurant/enigma|€€€€|CAT_P04|2 star|es|2026-10-30T08:13:37.459Z
+ve_1bd091678f|us/en/catalunya/sant-fruitos-de-bages/restaurant/l-o|€€€|CAT_P03|1 star|es|2026-10-30T08:13:38.810Z
+ve_1bf69eddeb|us/en/comunidad-valenciana/requena/restaurant/el-yantar-la-cocina-de-pilar|€|CAT_P01|bib|es|2026-10-30T08:13:40.143Z
+ve_1c14f955e9|us/en/castilla-y-leon/leon/restaurant/conmimo|€|CAT_P01|bib|es|2026-10-30T08:13:41.483Z
+ve_1c7c8be4b6|us/en/comunidad-foral-de-navarra/pamplona/restaurant/kabo|€€€|CAT_P03|1 star|es|2026-10-30T08:13:42.826Z
+ve_1c8b41d221|us/en/principado-de-asturias/llanes/restaurant/le-bistro-1241296|€€|CAT_P02|bib|es|2026-10-30T08:13:44.158Z
+ve_1c9044d2e4|us/en/extremadura/zarza-de-granadilla/restaurant/versatil|€€€|CAT_P03|1 star|es|2026-10-30T08:13:45.485Z
+ve_1ca4fbb861|us/en/castilla-y-leon/valladolid/restaurant/alquimia|€€€|CAT_P03|1 star|es|2026-10-30T08:13:46.800Z
+ve_1d455f0954|us/en/andalucia/malaga/restaurant/base9|€|CAT_P01|bib|es|2026-10-30T08:13:48.148Z
+ve_1eaa4d7f57|us/en/galicia/vigo/restaurant/silabario|€€€|CAT_P03|1 star|es|2026-10-30T08:13:49.479Z
+ve_1ee766b4e3|us/en/galicia/santiago-de-compostela/restaurant/a-tafona|€€€€|CAT_P04|1 star|es|2026-10-30T08:13:50.808Z
+ve_2032c28419|us/en/pais-vasco/bilbao/restaurant/islares|€€€€|CAT_P04|1 star|es|2026-10-30T08:13:52.146Z
+ve_205a51b62b|us/en/catalunya/castellar-del-valles/restaurant/garbi|€€|CAT_P02|bib|es|2026-10-30T08:13:53.479Z
+ve_20e9580050|us/en/andalucia/cadiz/restaurant/mare-1213853|€€€|CAT_P03|1 star|es|2026-10-30T08:13:54.820Z
+ve_21e1753194|us/en/catalunya/barcelona/restaurant/prodigi|€€€|CAT_P03|1 star|es|2026-10-30T08:13:56.140Z
+ve_221bd6c40b|us/en/catalunya/tarragona/restaurant/la-xarxa|€€|CAT_P02|bib|es|2026-10-30T08:13:57.495Z
+ve_226d08bdec|us/en/region-de-murcia/murcia/restaurant/tandem|€€|CAT_P02|bib|es|2026-10-30T08:13:58.830Z
+ve_22907d1ab4|us/en/canarias/chimiche/restaurant/el-secreto-de-chimiche|€€|CAT_P02|bib|es|2026-10-30T08:14:00.155Z
+ve_22eefcbe13|us/en/castilla-y-leon/nava-del-rey_1434687/restaurant/cain|€€|CAT_P02|bib|es|2026-10-30T08:14:01.473Z
+ve_2321acf9b8|us/en/aragon/anciles_7770296/restaurant/ansils|€€€|CAT_P03|1 star|es|2026-10-30T08:14:02.791Z
+ve_233d852ec9|us/en/aragon/carinena/restaurant/la-rebotica|€|CAT_P01|bib|es|2026-10-30T08:14:04.153Z
+ve_246a65b3dd|us/en/comunidad-foral-de-navarra/pamplona/restaurant/rodero|€€€|CAT_P03|1 star|es|2026-10-30T08:14:05.472Z
+ve_26140ae340|us/en/comunidad-de-madrid/madrid/restaurant/emi|€€€€|CAT_P04|1 star|es|2026-10-30T08:14:06.810Z
+ve_27404710b0|us/en/la-rioja/logrono/restaurant/ikaro|€€€|CAT_P03|1 star|es|2026-10-30T08:14:08.158Z
+ve_278783ec64|us/en/castilla-la-mancha/es-cuenca/restaurant/casas-colgadas|€€€|CAT_P03|1 star|es|2026-10-30T08:14:09.488Z
+ve_2843a32af5|us/en/galicia/cambados/restaurant/yayo-daporta|€€€|CAT_P03|1 star|es|2026-10-30T08:14:10.809Z
+ve_2918448e34|us/en/catalunya/calldetenes/restaurant/can-jubany|€€€€|CAT_P04|1 star|es|2026-10-30T08:14:12.152Z
+ve_29600bc192|us/en/comunidad-valenciana/vinaros/restaurant/ruben-miralles|€€|CAT_P02|1 star|es|2026-10-30T08:14:13.501Z
+ve_296c94e9df|us/en/castilla-y-leon/burgos/restaurant/cobo-evolucion|€€€€|CAT_P04|1 star|es|2026-10-30T08:14:14.840Z
+ve_2978c2e939|us/en/canarias/adeje/restaurant/donaire|€€€|CAT_P03|1 star|es|2026-10-30T08:14:16.201Z
+ve_29cc020085|us/en/andalucia/granada/restaurant/farala|€€€|CAT_P03|1 star|es|2026-10-30T08:14:17.561Z
+ve_29dde59fbe|us/en/catalunya/vilamari/restaurant/can-boix|€€|CAT_P02|bib|es|2026-10-30T08:14:18.905Z
+ve_2b59ddb58b|us/en/catalunya/girona/restaurant/el-celler-de-can-roca|€€€€|CAT_P04|3 star|es|2026-10-30T08:14:20.242Z
+ve_2bf3f314f6|us/en/comunidad-valenciana/valencia/restaurant/fraula|€€€|CAT_P03|1 star|es|2026-10-30T08:14:21.580Z
+ve_2c23546e87|us/en/comunidad-valenciana/morella/restaurant/meson-del-pastor|€|CAT_P01|bib|es|2026-10-30T08:14:22.911Z
+ve_2c32880de7|us/en/canarias/playa-blanca/restaurant/kamezi|€€€€|CAT_P04|1 star|es|2026-10-30T08:14:24.239Z
+ve_2da0b63039|us/en/canarias/santa-cruz-de-tenerife/restaurant/san-sebastian-57|€€|CAT_P02|bib|es|2026-10-30T08:14:25.591Z
+ve_2dc378f0b9|us/en/aragon/huesca/restaurant/el-origen|€|CAT_P01|bib|es|2026-10-30T08:14:26.920Z
+ve_2e233b081e|us/en/comunidad-de-madrid/madrid/restaurant/varra|€€€|CAT_P03|bib|es|2026-10-30T08:14:28.243Z
+ve_2eb46f0896|us/en/catalunya/girona/restaurant/divinum|€€€€|CAT_P04|1 star|es|2026-10-30T08:14:29.585Z
+ve_2ec41aad11|us/en/catalunya/cambrils/restaurant/rincon-de-diego|€€€|CAT_P03|1 star|es|2026-10-30T08:14:30.941Z
+ve_2edabdaac1|us/en/region-de-murcia/murcia/restaurant/frases|€€€|CAT_P03|1 star|es|2026-10-30T08:14:32.261Z
+ve_2f586198c7|us/en/comunidad-foral-de-navarra/donamaria/restaurant/donamaria-ko-benta|€€|CAT_P02|bib|es|2026-10-30T08:14:33.601Z
+ve_2feb9ead34|us/en/galicia/vigo/restaurant/enxebre|€€|CAT_P02|bib|es|2026-10-30T08:14:34.927Z
+ve_301e54c0eb|us/en/extremadura/es-trujillo/restaurant/alberca|€€|CAT_P02|bib|es|2026-10-30T08:14:36.269Z
+ve_30a212b648|us/en/aragon/ainsa/restaurant/callizo|€€€€|CAT_P04|1 star|es|2026-10-30T08:14:37.596Z
+ve_30e194dd5b|us/en/comunidad-foral-de-navarra/urdaitz/restaurant/el-molino-de-urdaniz|€€€€|CAT_P04|2 star|es|2026-10-30T08:14:38.928Z
+ve_3199b382d8|us/en/aragon/tella/restaurant/casa-ruben|€€€|CAT_P03|1 star|es|2026-10-30T08:14:40.273Z
+ve_31b1676ecb|us/en/galicia/ourense/restaurant/nova|€€€|CAT_P03|1 star|es|2026-10-30T08:14:41.594Z
+ve_3305f5aa09|us/en/castilla-la-mancha/albacete/restaurant/ababol|€€€€|CAT_P04|1 star|es|2026-10-30T08:14:42.919Z
+ve_332b359f18|us/en/comunidad-valenciana/valencia/restaurant/riff|€€€€|CAT_P04|1 star|es|2026-10-30T08:14:44.232Z
+ve_334f24e00a|us/en/castilla-y-leon/valladolid/restaurant/la-cocina-de-manuel|€€|CAT_P02|bib|es|2026-10-30T08:14:45.569Z
+ve_33dde97059|us/en/comunidad-valenciana/ondara/restaurant/casa-pepa|€€€|CAT_P03|1 star|es|2026-10-30T08:14:46.913Z
+ve_3484b4a555|us/en/castilla-la-mancha/tarancon/restaurant/la-martina|€€|CAT_P02|bib|es|2026-10-30T08:14:48.237Z
+ve_34bba7bd0e|us/en/canarias/adeje/restaurant/el-rincon-de-juan-carlos-1194880|€€€€|CAT_P04|2 star|es|2026-10-30T08:14:49.576Z
+ve_34ccffd703|us/en/pais-vasco/getaria/restaurant/elkano|€€€€|CAT_P04|1 star|es|2026-10-30T08:14:50.959Z
+ve_353a924700|us/en/pais-vasco/bilbao/restaurant/los-fueros|€€|CAT_P02|bib|es|2026-10-30T08:14:52.295Z
+ve_36e4d8e532|us/en/castilla-la-mancha/quintanar-de-la-orden/restaurant/granero|€€|CAT_P02|bib|es|2026-10-30T08:14:53.640Z
+ve_37663f29aa|us/en/castilla-y-leon/burgos/restaurant/ricardo-temino|€€€€|CAT_P04|1 star|es|2026-10-30T08:14:54.955Z
+ve_3875c46c65|us/en/andalucia/olvera/restaurant/la-tarara|€€|CAT_P02|bib|es|2026-10-30T08:14:56.282Z
+ve_391b9761f3|us/en/catalunya/olot/restaurant/les-cols|€€€€|CAT_P04|2 star|es|2026-10-30T08:14:57.624Z
+ve_3b4c5c108b|us/en/cantabria/suesa/restaurant/pan-de-cuco|€€|CAT_P02|bib|es|2026-10-30T08:14:58.948Z
+ve_3bb4d750de|us/en/comunidad-valenciana/almoradi/restaurant/el-buey|€€|CAT_P02|bib|es|2026-10-30T08:15:00.265Z
+ve_3bdcecc26e|us/en/andalucia/marbella/restaurant/messina|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:01.575Z
+ve_3bff5392a8|us/en/la-rioja/san-vicente-de-la-sonsierra/restaurant/casa-toni|€€|CAT_P02|bib|es|2026-10-30T08:15:02.930Z
+ve_3c2003f4db|us/en/catalunya/girona/restaurant/massana|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:04.270Z
+ve_3c5e67fa0b|us/en/canarias/playa-de-las-americas/restaurant/taste-1973|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:05.597Z
+ve_3c8ac75e04|us/en/catalunya/barcelona/restaurant/atempo-1196425|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:06.932Z
+ve_3ea6392cab|us/en/andalucia/marbella/restaurant/nintai|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:08.261Z
+ve_3ea8aa5599|us/en/islas-baleares/sant-josep-de-sa-talaia/restaurant/unic|€€€|CAT_P03|1 star|es|2026-10-30T08:15:09.607Z
+ve_3ff125c79e|us/en/catalunya/cambrils/restaurant/can-bosch|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:10.957Z
+ve_404ab37d4e|us/en/comunidad-de-madrid/madrid/restaurant/treze|€€|CAT_P02|bib|es|2026-10-30T08:15:12.305Z
+ve_406c80855f|us/en/catalunya/barcelona/restaurant/disfrutar|€€€€|CAT_P04|3 star|es|2026-10-30T08:15:13.667Z
+ve_418e50ab15|us/en/comunidad-valenciana/calp/restaurant/audrey-s-by-rafa-soler|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:15.076Z
+ve_4215e52847|us/en/comunidad-de-madrid/madrid/restaurant/smoked-room|€€€€|CAT_P04|2 star|es|2026-10-30T08:15:16.404Z
+ve_42fa402c0f|us/en/comunidad-valenciana/valencia/restaurant/ricard-camarena|€€€€|CAT_P04|2 star|es|2026-10-30T08:15:17.747Z
+ve_43c736cc3c|us/en/catalunya/artesa-de-lleida/restaurant/antoni-rubies|€|CAT_P01|bib|es|2026-10-30T08:15:19.092Z
+ve_455ccb3c70|us/en/castilla-y-leon/quintanilla-de-onesimo/restaurant/taller|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:20.449Z
+ve_4598df4524|us/en/pais-vasco/bilbao/restaurant/nerua-guggenheim-bilbao|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:21.801Z
+ve_461d8990bd|us/en/castilla-y-leon/navaleno/restaurant/la-lobita|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:23.142Z
+ve_463f581253|us/en/catalunya/barcelona/restaurant/abac|€€€€|CAT_P04|3 star|es|2026-10-30T08:15:24.466Z
+ve_46493a2426|us/en/castilla-y-leon/miranda-de-ebro/restaurant/la-vasca|€€|CAT_P02|bib|es|2026-10-30T08:15:25.864Z
+ve_470435dccb|us/en/andalucia/granada/restaurant/albidaya|€€|CAT_P02|bib|es|2026-10-30T08:15:27.201Z
+ve_4706bf3d90|us/en/castilla-y-leon/leon/restaurant/cocinandos|€€€|CAT_P03|1 star|es|2026-10-30T08:15:28.534Z
+ve_47fdc162e7|us/en/aragon/canfranc-estacion_1384216/restaurant/canfranc-express|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:29.857Z
+ve_488c4c0d84|us/en/comunidad-valenciana/altura_1386350/restaurant/la-farola|€|CAT_P01|bib|es|2026-10-30T08:15:31.207Z
+ve_4895c5b426|us/en/castilla-y-leon/matapozuelos/restaurant/la-botica|€€€|CAT_P03|1 star|es|2026-10-30T08:15:32.554Z
+ve_48e73db2bc|us/en/comunidad-valenciana/calp/restaurant/komfort|€€|CAT_P02|bib|es|2026-10-30T08:15:33.881Z
+ve_49fabb1f0a|us/en/catalunya/ulldecona/restaurant/l-antic-moli|€€€|CAT_P03|1 star|es|2026-10-30T08:15:35.200Z
+ve_4a34b8b3eb|us/en/comunidad-valenciana/calp/restaurant/beat|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:36.520Z
+ve_4a996971d3|us/en/andalucia/malaga/restaurant/la-cosmo|€€|CAT_P02|bib|es|2026-10-30T08:15:37.853Z
+ve_4c6c41e318|us/en/catalunya/barcelona/restaurant/via-veneto|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:39.210Z
+ve_4ca3ad2c4f|us/en/galicia/ourense/restaurant/miguel-gonzalez|€€€|CAT_P03|1 star|es|2026-10-30T08:15:40.567Z
+ve_4ca713310a|us/en/la-rioja/ezcaray/restaurant/el-portal|€€€€|CAT_P04|2 star|es|2026-10-30T08:15:41.824Z
+ve_4cb2f1e19a|us/en/andalucia/los-rosales_3888074/restaurant/ochando|€|CAT_P01|1 star|es|2026-10-30T08:15:43.147Z
+ve_4d216aa9a3|us/en/comunidad-valenciana/ayora_1386399/restaurant/pinea-1207164|€€|CAT_P02|bib|es|2026-10-30T08:15:44.547Z
+ve_4d2fd3a809|us/en/castilla-la-mancha/siguenza/restaurant/el-doncel|€€€|CAT_P03|1 star|es|2026-10-30T08:15:45.863Z
+ve_4d874f31e8|us/en/extremadura/zafra/restaurant/acebuche|€€|CAT_P02|bib|es|2026-10-30T08:15:47.182Z
+ve_4d8c220a0a|us/en/principado-de-asturias/arriondas/restaurant/casa-marcial|€€€€|CAT_P04|3 star|es|2026-10-30T08:15:48.524Z
+ve_4db3364734|us/en/aragon/hecho/restaurant/cantere|€€|CAT_P02|bib|es|2026-10-30T08:15:49.851Z
+ve_4e11a859fb|us/en/comunidad-de-madrid/madrid/restaurant/yugo|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:51.183Z
+ve_4e1332cd2e|us/en/comunidad-valenciana/xbia/restaurant/bonamb|€€€€|CAT_P04|2 star|es|2026-10-30T08:15:52.533Z
+ve_4e17ff2b16|us/en/catalunya/barcelona/restaurant/mae-barcelona|€€€|CAT_P03|1 star|es|2026-10-30T08:15:53.866Z
+ve_4e185e8bdc|us/en/pais-vasco/mungia_1403141/restaurant/bakea|€€€|CAT_P03|1 star|es|2026-10-30T08:15:55.201Z
+ve_4ecd793ec3|us/en/canarias/adeje/restaurant/haydee-by-victor-suarez|€€€€|CAT_P04|1 star|es|2026-10-30T08:15:56.531Z
+ve_4f1ef3df82|us/en/cantabria/santander/restaurant/el-serbal-1197026|€€€|CAT_P03|1 star|es|2026-10-30T08:15:57.871Z
+ve_4f3abf240d|us/en/comunidad-de-madrid/alcala-de-henares/restaurant/eximio-by-fernando-martin|€€|CAT_P02|bib|es|2026-10-30T08:15:59.210Z
+ve_4feb000ab5|us/en/comunidad-de-madrid/madrid/restaurant/gofio-by-cicero-canary|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:00.567Z
+ve_51eb1bd7c9|us/en/islas-baleares/eivissa/restaurant/omakase-by-walt|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:01.928Z
+ve_520b8f6e06|us/en/catalunya/santa-coloma-de-gramenet/restaurant/lluerna|€€€|CAT_P03|1 star|es|2026-10-30T08:16:03.284Z
+ve_522275c5c3|us/en/andalucia/palmones/restaurant/casa-mane|€€|CAT_P02|bib|es|2026-10-30T08:16:04.634Z
+ve_52886fe960|us/en/catalunya/la-vall-de-bianya/restaurant/l-hostal-de-ca-l-enric|€€|CAT_P02|bib|es|2026-10-30T08:16:05.959Z
+ve_537a7ddb48|us/en/aragon/tramacastilla-de-tena/restaurant/lavedan|€€|CAT_P02|bib|es|2026-10-30T08:16:07.278Z
+ve_53a417e302|us/en/comunidad-valenciana/el-palmar/restaurant/arroceria-maribel|€€|CAT_P02|bib|es|2026-10-30T08:16:08.593Z
+ve_53ca289c60|us/en/pais-vasco/galdakao/restaurant/andra-mari220169|€€€|CAT_P03|1 star|es|2026-10-30T08:16:09.960Z
+ve_53ec037b5f|us/en/comunidad-valenciana/valencia/restaurant/flores-raras|€€€€|CAT_P04|2 star|es|2026-10-30T08:16:11.295Z
+ve_53f6129fef|us/en/castilla-la-mancha/illescas/restaurant/el-bohio|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:12.650Z
+ve_54b47dbca3|us/en/catalunya/barcelona/restaurant/sao|€€|CAT_P02|bib|es|2026-10-30T08:16:13.991Z
+ve_559932facf|us/en/catalunya/barcelona/restaurant/alkimia|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:15.332Z
+ve_55c3ea4f47|us/en/comunidad-valenciana/alacant/restaurant/baeza-rufete|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:16.665Z
+ve_5651dc27bd|us/en/comunidad-de-madrid/madrid/restaurant/sisapo|€€|CAT_P02|bib|es|2026-10-30T08:16:17.986Z
+ve_56773ac9de|us/en/catalunya/ulldecona/restaurant/espacio-amunt|€|CAT_P01|bib|es|2026-10-30T08:16:19.341Z
+ve_569c3ff54d|us/en/castilla-y-leon/real-sitio-de-san-ildefonso/restaurant/la-fundicion|€€|CAT_P02|bib|es|2026-10-30T08:16:20.703Z
+ve_56d256a1ad|us/en/catalunya/macanet-de-cabrenys/restaurant/els-cacadors|€€|CAT_P02|bib|es|2026-10-30T08:16:22.010Z
+ve_570761ade0|us/en/catalunya/portbou/restaurant/voramar|€€€|CAT_P03|1 star|es|2026-10-30T08:16:23.325Z
+ve_587d474367|us/en/pais-vasco/es-donostia-san-sebastian/restaurant/ibai-by-paulo-airaudo|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:24.654Z
+ve_59159fbbcd|us/en/comunidad-de-madrid/madrid/restaurant/gaytan|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:25.987Z
+ve_59d5116776|us/en/castilla-y-leon/astorga/restaurant/las-termas|€|CAT_P01|bib|es|2026-10-30T08:16:27.324Z
+ve_59d53e2cd0|us/en/principado-de-asturias/ribadesella/restaurant/ayalga|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:28.637Z
+ve_5b616b8c98|us/en/la-rioja/logrono/restaurant/kiro-sushi|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:29.956Z
+ve_5bc114bba1|us/en/islas-baleares/eivissa/restaurant/la-gaia|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:31.313Z
+ve_5cba6554db|us/en/la-rioja/logrono/restaurant/la-cocina-de-ramon|€€|CAT_P02|bib|es|2026-10-30T08:16:32.638Z
+ve_5e9d6be7bd|us/en/comunidad-de-madrid/madrid/restaurant/la-terraza-del-casino|€€€€|CAT_P04|2 star|es|2026-10-30T08:16:33.994Z
+ve_5f54e1c027|us/en/catalunya/ponts/restaurant/lo-ponts|€|CAT_P01|bib|es|2026-10-30T08:16:35.341Z
+ve_5f821db96a|us/en/castilla-y-leon/morales-de-rey/restaurant/brigecio|€€|CAT_P02|bib|es|2026-10-30T08:16:36.654Z
+ve_5fd0c3489f|us/en/comunidad-de-madrid/valdemorillo/restaurant/la-casa-de-manolo-franco|€€€|CAT_P03|1 star|es|2026-10-30T08:16:37.963Z
+ve_5fdc93e8c3|us/en/galicia/pontevedra/restaurant/eirado-da-lena|€€€|CAT_P03|1 star|es|2026-10-30T08:16:39.296Z
+ve_60447964ab|us/en/galicia/padron/restaurant/o-pazo|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:40.624Z
+ve_60a46392f1|us/en/canarias/las-palmas-de-gran-canaria/restaurant/muxgo|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:41.946Z
+ve_60f66dda34|us/en/catalunya/barcelona/restaurant/hisop|€€€|CAT_P03|1 star|es|2026-10-30T08:16:43.287Z
+ve_6147db8135|us/en/aragon/mora-de-rubielos/restaurant/el-rinconcico|€|CAT_P01|bib|es|2026-10-30T08:16:44.631Z
+ve_62c3310109|us/en/canarias/santa-cruz-de-tenerife/restaurant/el-aguarde|€€|CAT_P02|bib|es|2026-10-30T08:16:45.949Z
+ve_633581d312|us/en/comunidad-de-madrid/valdemoro/restaurant/chiron|€€€|CAT_P03|1 star|es|2026-10-30T08:16:47.293Z
+ve_639715ab8b|us/en/catalunya/amposta/restaurant/l-algadir|€€|CAT_P02|bib|es|2026-10-30T08:16:48.613Z
+ve_64252eb2b3|us/en/catalunya/cornudella-de-montsant/restaurant/quatre-molins|€€€|CAT_P03|1 star|es|2026-10-30T08:16:49.934Z
+ve_649a9081fa|us/en/canarias/garachico/restaurant/el-rebojo|€€|CAT_P02|bib|es|2026-10-30T08:16:51.249Z
+ve_64b075df6a|us/en/comunidad-valenciana/morella/restaurant/daluan|€€|CAT_P02|bib|es|2026-10-30T08:16:52.563Z
+ve_64f26b27f1|us/en/catalunya/corca/restaurant/bo-tic|€€€€|CAT_P04|2 star|es|2026-10-30T08:16:53.900Z
+ve_6535b4dad3|us/en/comunidad-de-madrid/madrid/restaurant/desde-1911|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:55.219Z
+ve_65728feda5|us/en/comunidad-valenciana/valencia/restaurant/2-estaciones|€€|CAT_P02|bib|es|2026-10-30T08:16:56.563Z
+ve_659ee55e0e|us/en/comunidad-valenciana/valencia/restaurant/kaido-sushi-bar|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:57.918Z
+ve_679b559808|us/en/andalucia/cordoba/restaurant/choco|€€€€|CAT_P04|1 star|es|2026-10-30T08:16:59.238Z
+ve_69be560fc8|us/en/comunidad-valenciana/benicarlo/restaurant/pau|€|CAT_P01|bib|es|2026-10-30T08:17:00.572Z
+ve_6a355f42a6|us/en/castilla-la-mancha/villalba-de-la-sierra/restaurant/meson-nelia|€€|CAT_P02|bib|es|2026-10-30T08:17:01.904Z
+ve_6ba0a614a9|us/en/cantabria/santander/restaurant/agua-salada|€€|CAT_P02|bib|es|2026-10-30T08:17:03.223Z
+ve_6bc35c1c90|us/en/catalunya/barcelona/restaurant/koy-shunka|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:04.573Z
+ve_6cc1c2a7ba|us/en/castilla-la-mancha/villarrobledo/restaurant/azafran|€€|CAT_P02|bib|es|2026-10-30T08:17:07.194Z
+ve_6d98eade16|us/en/castilla-y-leon/leon/restaurant/pablo|€€€|CAT_P03|1 star|es|2026-10-30T08:17:08.508Z
+ve_6dbebb59d2|us/en/catalunya/barcelona/restaurant/dos-palillos|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:09.827Z
+ve_6df7bc9ddb|us/en/comunidad-valenciana/valencia/restaurant/lienzo|€€€|CAT_P03|1 star|es|2026-10-30T08:17:11.186Z
+ve_6f20fccbef|us/en/comunidad-de-madrid/madrid/restaurant/quinque|€€|CAT_P02|bib|es|2026-10-30T08:17:12.548Z
+ve_6f45c2ee36|us/en/castilla-la-mancha/torrenueva/restaurant/retama|€€€|CAT_P03|1 star|es|2026-10-30T08:17:13.911Z
+ve_6f49d93dae|us/en/catalunya/arbcies/restaurant/les-magnolies|€€€|CAT_P03|1 star|es|2026-10-30T08:17:15.224Z
+ve_6fafe69d59|us/en/andalucia/aljaraque/restaurant/finca-alfoliz|€€|CAT_P02|bib|es|2026-10-30T08:17:16.576Z
+ve_6fd14f1159|us/en/andalucia/cordoba/restaurant/la-cuchara-de-san-lorenzo|€€|CAT_P02|bib|es|2026-10-30T08:17:17.907Z
+ve_700f23df5c|us/en/extremadura/jaraiz-de-la-vera/restaurant/la-finca314631|€|CAT_P01|bib|es|2026-10-30T08:17:19.240Z
+ve_705632f726|us/en/canarias/adeje/restaurant/il-bocconcino-by-royal-hideaway|€€€|CAT_P03|1 star|es|2026-10-30T08:17:20.549Z
+ve_7093579043|us/en/andalucia/jaen/restaurant/dama-juana|€€€|CAT_P03|1 star|es|2026-10-30T08:17:21.936Z
+ve_718794fe85|us/en/principado-de-asturias/ortiguera/restaurant/ferpel|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:23.259Z
+ve_71cb99da4d|us/en/comunidad-de-madrid/madrid/restaurant/toki-1205025|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:24.595Z
+ve_71f19cea9d|us/en/principado-de-asturias/llanes/restaurant/el-retiro|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:25.970Z
+ve_752aae185b|us/en/andalucia/cordoba/restaurant/noor|€€€€|CAT_P04|3 star|es|2026-10-30T08:17:27.307Z
+ve_75959d8b8e|us/en/pais-vasco/es-donostia-san-sebastian/restaurant/kokotxa|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:28.654Z
+ve_75dabae05e|us/en/cantabria/cosgaya/restaurant/del-oso|€€|CAT_P02|bib|es|2026-10-30T08:17:30.018Z
+ve_78951beaba|us/en/pais-vasco/amorebieta-etxano/restaurant/boroa|€€€|CAT_P03|1 star|es|2026-10-30T08:17:31.373Z
+ve_78a8bb5a80|us/en/pais-vasco/es-donostia-san-sebastian/restaurant/amelia-1191398|€€€€|CAT_P04|2 star|es|2026-10-30T08:17:32.705Z
+ve_78b08112a0|us/en/pais-vasco/zarautz_1420514/restaurant/masta|€€|CAT_P02|bib|es|2026-10-30T08:17:34.060Z
+ve_78c9d39095|us/en/region-de-murcia/jumilla_1387488/restaurant/de-loreto|€€|CAT_P02|bib|es|2026-10-30T08:17:35.391Z
+ve_7a30d1cb6f|us/en/comunidad-valenciana/benissa/restaurant/casa-bernardi|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:36.729Z
+ve_7ba5ec37fb|us/en/catalunya/calders/restaurant/urbisol|€€|CAT_P02|bib|es|2026-10-30T08:17:38.061Z
+ve_7c23b423ba|us/en/pais-vasco/larrabetzu/restaurant/eneko|€€€|CAT_P03|1 star|es|2026-10-30T08:17:39.435Z
+ve_7d17e77590|us/en/castilla-y-leon/sardon-de-duero/restaurant/refectorio|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:40.814Z
+ve_7d47b1e9fe|us/en/canarias/san-cristobal-de-la-laguna/restaurant/tasca-silbo-gomero|€€|CAT_P02|bib|es|2026-10-30T08:17:42.144Z
+ve_7e4f5458d5|us/en/andalucia/linares/restaurant/los-sentidos|€€|CAT_P02|bib|es|2026-10-30T08:17:43.493Z
+ve_7efff1d902|us/en/la-rioja/haro/restaurant/nublo|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:44.807Z
+ve_80246163ae|us/en/aragon/zaragoza/restaurant/la-prensa|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:46.136Z
+ve_8031ac1dc3|us/en/andalucia/sevilla/restaurant/canabota|€€€|CAT_P03|1 star|es|2026-10-30T08:17:47.468Z
+ve_827d258b71|us/en/comunidad-de-madrid/madrid/restaurant/el-invernadero|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:48.816Z
+ve_82809d1a08|us/en/comunidad-de-madrid/madrid/restaurant/dstage|€€€€|CAT_P04|2 star|es|2026-10-30T08:17:50.167Z
+ve_830b168a13|us/en/pais-vasco/hondarribia/restaurant/alameda220551|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:51.524Z
+ve_834a4bdbfb|us/en/andalucia/sevilla/restaurant/az-zait|€€|CAT_P02|bib|es|2026-10-30T08:17:52.774Z
+ve_835f7e290b|us/en/catalunya/barcelona/restaurant/moments|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:54.118Z
+ve_858826fc13|us/en/comunidad-valenciana/alacant/restaurant/tabula-rasa|€€|CAT_P02|bib|es|2026-10-30T08:17:55.484Z
+ve_85e04f2f2b|us/en/andalucia/malaga/restaurant/jose-carlos-garcia|€€€€|CAT_P04|1 star|es|2026-10-30T08:17:56.824Z
+ve_85e900f515|us/en/comunidad-de-madrid/madrid/restaurant/gala|€€|CAT_P02|bib|es|2026-10-30T08:17:58.182Z
+ve_869f01dde7|us/en/comunidad-de-madrid/madrid/restaurant/eter|€€€|CAT_P03|1 star|es|2026-10-30T08:17:59.516Z
+ve_8769ca6723|us/en/catalunya/barcelona/restaurant/enoteca204150|€€€€|CAT_P04|2 star|es|2026-10-30T08:18:00.902Z
+ve_87dfe084f9|us/en/andalucia/baeza/restaurant/vandelvira|€€€|CAT_P03|1 star|es|2026-10-30T08:18:02.252Z
+ve_87e1c8eb29|us/en/galicia/ourense/restaurant/pacifico1154940|€€|CAT_P02|bib|es|2026-10-30T08:18:03.612Z
+ve_87f22dd775|us/en/galicia/sober_3313368/restaurant/vertigo-1205008|€€€|CAT_P03|1 star|es|2026-10-30T08:18:04.951Z
+ve_8876a94387|us/en/andalucia/marbella/restaurant/skina|€€€€|CAT_P04|2 star|es|2026-10-30T08:18:06.255Z
+ve_896d4ea8d7|us/en/galicia/santiago-de-compostela/restaurant/cafe-de-altamira|€€|CAT_P02|bib|es|2026-10-30T08:18:07.585Z
+ve_89d8508d54|us/en/castilla-y-leon/penafiel/restaurant/ambivium|€€€€|CAT_P04|1 star|es|2026-10-30T08:18:08.922Z
+ve_8a74182a3c|us/en/comunidad-valenciana/cocentaina/restaurant/natxo-selles|€€|CAT_P02|bib|es|2026-10-30T08:18:10.257Z
+ve_8a9bc46893|us/en/castilla-y-leon/palencia/restaurant/terra-1189297|€€|CAT_P02|bib|es|2026-10-30T08:18:11.601Z
+ve_8aee24e82c|us/en/islas-baleares/soller/restaurant/ca%C2%B4n-boqueta|€€|CAT_P02|bib|es|2026-10-30T08:18:12.928Z
+ve_8bc8f018ae|us/en/catalunya/sant-sadurni-d-anoia/restaurant/la-cava-d-en-sergi|€|CAT_P01|bib|es|2026-10-30T08:18:14.268Z
+ve_8cbe7e38cb|us/en/catalunya/castello-d-empuries/restaurant/emporium|€€€€|CAT_P04|1 star|es|2026-10-30T08:18:15.601Z
+ve_8cd307127e|us/en/castilla-la-mancha/casas-ibanez/restaurant/oba|€€€€|CAT_P04|1 star|es|2026-10-30T08:18:16.959Z
+ve_8dfe07504b|us/en/comunidad-valenciana/meliana/restaurant/napicol|€€|CAT_P02|bib|es|2026-10-30T08:18:18.291Z
+ve_8f70f00d5e|us/en/andalucia/jaen/restaurant/baga|€€€|CAT_P03|1 star|es|2026-10-30T08:18:19.626Z
+ve_8fe9670f7e|us/en/andalucia/vera/restaurant/terraza-carmona|€€|CAT_P02|bib|es|2026-10-30T08:18:20.975Z
+ve_9029131959|us/en/andalucia/pozoblanco_1391839/restaurant/karan-bistro|€€|CAT_P02|bib|es|2026-10-30T08:18:22.307Z
+ve_90be9ca4c6|us/en/andalucia/malaga/restaurant/blossom-1202609|€€€€|CAT_P04|1 star|es|2026-10-30T08:18:23.614Z
+ve_90fc8e3a19|us/en/catalunya/gimenells/restaurant/malena|€€€|CAT_P03|1 star|es|2026-10-30T08:18:24.962Z
+ve_913d8a2baa|us/en/islas-baleares/muro/restaurant/fusion19|€€€€|CAT_P04|1 star|es|2026-10-30T08:18:26.270Z
+ve_9154e6858a|us/en/canarias/puerto-de-la-cruz/restaurant/el-taller-seve-diaz|€€€|CAT_P03|1 star|es|2026-10-30T08:18:27.597Z
+ve_917b2c74cd|us/en/extremadura/villanueva-de-la-serena_1448463/restaurant/macarraca|€€|CAT_P02|bib|es|2026-10-30T08:18:28.941Z
+ve_91cd6967df|us/en/canarias/santa-cruz-de-tenerife/restaurant/moral|€€|CAT_P02|bib|es|2026-10-30T08:18:30.301Z
+ve_91fea27b67|us/en/extremadura/hervas/restaurant/nardi|€€|CAT_P02|bib|es|2026-10-30T08:18:31.638Z
+ve_920633186e|us/en/catalunya/castello-d-empuries/restaurant/bistrot-1965|€€|CAT_P02|bib|es|2026-10-30T08:18:32.984Z
+ve_9248b58749|us/en/catalunya/sagas/restaurant/els-casals|€€€|CAT_P03|1 star|es|2026-10-30T08:18:34.336Z
+ve_92c4e34ed0|us/en/pais-vasco/getxo/restaurant/iwasaki-1201573|€€|CAT_P02|bib|es|2026-10-30T08:18:35.650Z
+ve_93144fd58b|us/en/galicia/pontevedra/restaurant/trasmallo-1212595|€|CAT_P01|bib|es|2026-10-30T08:18:36.980Z
+ve_93647eb9bc|us/en/catalunya/gombren/restaurant/la-fonda-xesc|€€€|CAT_P03|1 star|es|2026-10-30T08:18:38.312Z
+ve_94030afaec|us/en/pais-vasco/dima/restaurant/garena|€€€€|CAT_P04|1 star|es|2026-10-30T08:18:39.622Z
+ve_944e12c26d|us/en/castilla-y-leon/tariego-de-cerrato/restaurant/casa-chesmy|€€|CAT_P02|bib|es|2026-10-30T08:18:40.942Z
+ve_9492114de0|us/en/comunidad-valenciana/xinorlet/restaurant/elias|€€|CAT_P02|bib|es|2026-10-30T08:18:42.258Z
+ve_94b75f22b4|us/en/canarias/patalavaca/restaurant/la-aquarela|€€€€|CAT_P04|1 star|es|2026-10-30T08:18:43.571Z
+ve_952c8a0321|us/en/comunidad-de-madrid/san-lorenzo-de-el-escorial/restaurant/montia-1196081|€€€€|CAT_P04|1 star|es|2026-10-30T08:18:44.924Z
+ve_963168c876|us/en/catalunya/santa-coloma-de-gramenet/restaurant/verat|€|CAT_P01|bib|es|2026-10-30T08:18:46.296Z
+ve_973c665f77|us/en/comunidad-valenciana/dnia/restaurant/quique-dacosta|€€€€|CAT_P04|3 star|es|2026-10-30T08:18:47.631Z
+ve_981ef9111e|us/en/catalunya/barcelona/restaurant/bardeni-caldeni|€€|CAT_P02|bib|es|2026-10-30T08:18:48.957Z
+ve_98b6f8c2ce|us/en/galicia/o-grove/restaurant/culler-de-pau|€€€€|CAT_P04|2 star|es|2026-10-30T08:18:50.301Z
+ve_98cd979fa8|us/en/comunidad-de-madrid/madrid/restaurant/la-monteria|€€|CAT_P02|bib|es|2026-10-30T08:18:51.632Z
+ve_993d71b287|us/en/galicia/santiago-de-compostela/restaurant/a-horta-d-obradoiro|€€|CAT_P02|bib|es|2026-10-30T08:18:52.970Z
+ve_9a17d6fa4e|us/en/canarias/tegueste/restaurant/la-bola-de-jorge-bosch|€|CAT_P01|bib|es|2026-10-30T08:18:54.309Z
+ve_9aebceb06a|us/en/galicia/vigo/restaurant/maruja-limon|€€€|CAT_P03|1 star|es|2026-10-30T08:18:55.629Z
+ve_9af3473f0b|us/en/islas-baleares/llucmajor/restaurant/andreu-genestra-1208507|€€€€|CAT_P04|1 star|es|2026-10-30T08:18:56.971Z
+ve_9b6f15d6d5|us/en/catalunya/llan/restaurant/miramar|€€€€|CAT_P04|2 star|es|2026-10-30T08:18:58.301Z
+ve_9bbd3178c2|us/en/catalunya/barcelona/restaurant/avenir|€€|CAT_P02|bib|es|2026-10-30T08:18:59.617Z
+ve_9cbea82349|us/en/canarias/adeje/restaurant/san-ho|€€€|CAT_P03|1 star|es|2026-10-30T08:19:00.948Z
+ve_9d56eaedb8|us/en/catalunya/barcelona/restaurant/bacaro-1206273|€€|CAT_P02|bib|es|2026-10-30T08:19:02.289Z
+ve_9d956bc06f|us/en/aragon/villanova/restaurant/casa-arcas|€€€|CAT_P03|1 star|es|2026-10-30T08:19:03.646Z
+ve_9d98c72609|us/en/andalucia/almunecar/restaurant/el-chaleco|€€|CAT_P02|bib|es|2026-10-30T08:19:05.001Z
+ve_9e6f425375|us/en/pais-vasco/es-donostia-san-sebastian/restaurant/itzuli|€€€|CAT_P03|1 star|es|2026-10-30T08:19:06.313Z
+ve_9e7d6fedad|us/en/la-rioja/alfaro/restaurant/morro-tango|€|CAT_P01|bib|es|2026-10-30T08:19:07.651Z
+ve_9e8da23a88|us/en/pais-vasco/bilbao/restaurant/al-margen|€€|CAT_P02|bib|es|2026-10-30T08:19:08.980Z
+ve_9f3f11e856|us/en/pais-vasco/tolosa/restaurant/ama|€€€|CAT_P03|1 star|es|2026-10-30T08:19:10.323Z
+ve_a0c279f355|us/en/pais-vasco/bilbao/restaurant/zarate|€€€|CAT_P03|1 star|es|2026-10-30T08:19:11.657Z
+ve_a0e0e0b476|us/en/comunidad-de-madrid/madrid/restaurant/tresde|€€|CAT_P02|bib|es|2026-10-30T08:19:13.001Z
+ve_a122719d41|us/en/pais-vasco/axpe/restaurant/etxebarri|€€€€|CAT_P04|1 star|es|2026-10-30T08:19:14.348Z
+ve_a1f4e16a04|us/en/canarias/icod-de-los-vinos/restaurant/furancho-la-zapateria|€|CAT_P01|bib|es|2026-10-30T08:19:15.672Z
+ve_a20f706024|us/en/andalucia/puente-genil/restaurant/alma-ezequiel-montilla|€€|CAT_P02|bib|es|2026-10-30T08:19:16.991Z
+ve_a2cea08203|us/en/comunidad-valenciana/cocentaina/restaurant/l-escaleta|€€€€|CAT_P04|2 star|es|2026-10-30T08:19:18.315Z
+ve_a2dd3d05ac|us/en/la-rioja/logrono/restaurant/ajonegro|€€€|CAT_P03|1 star|es|2026-10-30T08:19:19.637Z
+ve_a38571b491|us/en/catalunya/olost/restaurant/sala|€€€|CAT_P03|1 star|es|2026-10-30T08:19:20.969Z
+ve_a4c6753c0b|us/en/catalunya/llagostera/restaurant/els-tinars|€€€|CAT_P03|1 star|es|2026-10-30T08:19:22.303Z
+ve_a534a23d6b|us/en/catalunya/barcelona/restaurant/cruix|€€|CAT_P02|bib|es|2026-10-30T08:19:23.636Z
+ve_a6e99ff1ef|us/en/aragon/binefar/restaurant/carmen-1184551|€€|CAT_P02|bib|es|2026-10-30T08:19:25.001Z
+ve_a6f5cdeca8|us/en/andalucia/almodovar-del-rio/restaurant/la-taberna-de-cuatro-caminos|€€|CAT_P02|bib|es|2026-10-30T08:19:26.333Z
+ve_a78552ebf6|us/en/catalunya/barcelona/restaurant/aleia|€€€€|CAT_P04|2 star|es|2026-10-30T08:19:27.662Z
+ve_a89d72f9cf|us/en/galicia/a-corua/restaurant/el-de-alberto|€€|CAT_P02|bib|es|2026-10-30T08:19:29.013Z
+ve_a8af33d29a|us/en/aragon/rafales/restaurant/la-alqueria|€€|CAT_P02|bib|es|2026-10-30T08:19:30.373Z
+ve_a8c99c4e1c|us/en/castilla-y-leon/valladolid/restaurant/trigo|€€€|CAT_P03|1 star|es|2026-10-30T08:19:31.702Z
+ve_a9a5afc044|us/en/region-de-murcia/region-de-murcia-el-palmar/restaurant/cabana-buenavista|€€€€|CAT_P04|2 star|es|2026-10-30T08:19:33.062Z
+ve_a9ebb1489e|us/en/aragon/zaragoza/restaurant/gente-rara|€€€|CAT_P03|1 star|es|2026-10-30T08:19:34.382Z
+ve_aa0e7f2ec0|us/en/castilla-y-leon/pobladura-del-valle_1435243/restaurant/la-trebede|€|CAT_P01|bib|es|2026-10-30T08:19:35.710Z
+ve_aa8facd124|us/en/catalunya/angles/restaurant/l-alianca-1919-d-angles|€€€€|CAT_P04|1 star|es|2026-10-30T08:19:37.058Z
+ve_aaa5312ae7|us/en/comunidad-de-madrid/madrid/restaurant/manifesto-13|€€|CAT_P02|bib|es|2026-10-30T08:19:38.403Z
+ve_aba7a2db38|us/en/islas-baleares/palma/restaurant/zaranda-1191909|€€€€|CAT_P04|1 star|es|2026-10-30T08:19:39.756Z
+ve_abd3020a01|us/en/catalunya/barcelona/restaurant/taberna-kamikaze|€€€|CAT_P03|1 star|es|2026-10-30T08:19:41.106Z
+ve_ac2c4f2253|us/en/principado-de-asturias/prendes/restaurant/casa-gerardo|€€€|CAT_P03|1 star|es|2026-10-30T08:19:42.457Z
+ve_ac8b19e375|us/en/comunidad-valenciana/alzira/restaurant/cami-vell|€€|CAT_P02|bib|es|2026-10-30T08:19:43.802Z
+ve_acbe037132|us/en/castilla-la-mancha/talavera-de-la-reina/restaurant/raices-carlos-maldonado|€€€|CAT_P03|1 star|es|2026-10-30T08:19:45.140Z
+ve_ad0e407c44|us/en/comunidad-de-madrid/madrid/restaurant/diverxo|€€€€|CAT_P04|3 star|es|2026-10-30T08:19:46.491Z
+ve_ad8d4635f9|us/en/catalunya/barcelona/restaurant/berbena|€€|CAT_P02|bib|es|2026-10-30T08:19:47.860Z
+ve_ae3184649d|us/en/comunidad-valenciana/san-antonio-de-benageber_1388600/restaurant/simposio|€€€|CAT_P03|1 star|es|2026-10-30T08:19:49.201Z
+ve_ae993787dd|us/en/castilla-y-leon/salamanca/restaurant/bambu|€€|CAT_P02|bib|es|2026-10-30T08:19:50.526Z
+ve_b016b34618|us/en/comunidad-valenciana/alacant/restaurant/alba|€|CAT_P01|bib|es|2026-10-30T08:19:51.874Z
+ve_b034ef71f5|us/en/islas-baleares/palmanova/restaurant/es-fum|€€€€|CAT_P04|1 star|es|2026-10-30T08:19:53.259Z
+ve_b0d8d7dcae|us/en/galicia/santiago-de-compostela/restaurant/a-viaxe|€€|CAT_P02|bib|es|2026-10-30T08:19:54.596Z
+ve_b16a6ef596|us/en/comunidad-valenciana/valencia/restaurant/memoria-gustativa|€€|CAT_P02|bib|es|2026-10-30T08:19:55.955Z
+ve_b197ed17c5|us/en/andalucia/jaen/restaurant/malak|€€€|CAT_P03|1 star|es|2026-10-30T08:19:57.311Z
+ve_b1d1c4f795|us/en/andalucia/monachil/restaurant/la-cantina-de-diego|€€|CAT_P02|bib|es|2026-10-30T08:19:58.646Z
+ve_b21f7a8d89|us/en/catalunya/sant-julia-de-ramis/restaurant/esperit-roca|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:00.001Z
+ve_b25107faab|us/en/catalunya/el-masnou/restaurant/tresmacarrons|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:01.370Z
+ve_b27d3734b7|us/en/principado-de-asturias/san-feliz/restaurant/monte-1190765|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:02.696Z
+ve_b50fd0162f|us/en/region-de-murcia/yecla/restaurant/barahonda|€€€|CAT_P03|1 star|es|2026-10-30T08:20:04.115Z
+ve_b67278bfbb|us/en/catalunya/terrassa/restaurant/el-cel-de-les-oques|€€|CAT_P02|bib|es|2026-10-30T08:20:05.439Z
+ve_b6c6afc09a|us/en/andalucia/el-ejido/restaurant/la-costa|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:06.755Z
+ve_b6c8816e41|us/en/galicia/santiago-de-compostela/restaurant/mar-de-esteiro|€€|CAT_P02|bib|es|2026-10-30T08:20:08.085Z
+ve_b705060cf6|us/en/comunidad-de-madrid/madrid/restaurant/ramon-freixa-atelier|€€€€|CAT_P04|2 star|es|2026-10-30T08:20:09.435Z
+ve_b7c94c7503|us/en/andalucia/cordoba/restaurant/el-envero|€€|CAT_P02|bib|es|2026-10-30T08:20:10.780Z
+ve_b864b92101|us/en/comunidad-valenciana/vall-d-alba/restaurant/cal-paradis|€€€|CAT_P03|1 star|es|2026-10-30T08:20:12.146Z
+ve_b87fe8830c|us/en/comunidad-de-madrid/madrid/restaurant/coque|€€€€|CAT_P04|2 star|es|2026-10-30T08:20:13.463Z
+ve_b8a25da9ca|us/en/castilla-y-leon/salamanca/restaurant/en-la-parra|€€€|CAT_P03|1 star|es|2026-10-30T08:20:14.817Z
+ve_b97266f268|us/en/canarias/las-palmas-de-gran-canaria/restaurant/poemas-by-hermanos-padron|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:16.161Z
+ve_ba2aa446c8|us/en/comunidad-de-madrid/madrid/restaurant/la-mama|€€|CAT_P02|bib|es|2026-10-30T08:20:17.520Z
+ve_baad2edc3a|us/en/principado-de-asturias/es-salinas/restaurant/real-balneario|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:18.871Z
+ve_bb115e3114|us/en/andalucia/cordoba/restaurant/la-taberna-de-almodovar|€€|CAT_P02|bib|es|2026-10-30T08:20:20.195Z
+ve_bc94ad4a9f|us/en/andalucia/gaucin/restaurant/platero-y-co|€|CAT_P01|bib|es|2026-10-30T08:20:21.524Z
+ve_bcab74078d|us/en/andalucia/jaen/restaurant/radis|€€€|CAT_P03|1 star|es|2026-10-30T08:20:22.853Z
+ve_bd26dac816|us/en/castilla-y-leon/avila/restaurant/barro|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:24.218Z
+ve_be608af444|us/en/catalunya/lleida/restaurant/sise|€€|CAT_P02|bib|es|2026-10-30T08:20:25.550Z
+ve_bf831b0067|us/en/andalucia/malaga/restaurant/la-taberna-de-mike-palmer|€€|CAT_P02|bib|es|2026-10-30T08:20:26.874Z
+ve_bfa1132508|us/en/islas-baleares/canyamel/restaurant/voro|€€€€|CAT_P04|2 star|es|2026-10-30T08:20:28.237Z
+ve_c0b3e481e9|us/en/galicia/ourense/restaurant/ceibe|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:29.570Z
+ve_c174212b8d|us/en/aragon/barbastro/restaurant/la-oveja-negra|€€|CAT_P02|bib|es|2026-10-30T08:20:30.892Z
+ve_c18fc53635|us/en/comunidad-foral-de-navarra/pamplona/restaurant/europa|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:32.205Z
+ve_c22071b0e5|us/en/canarias/las-palmas-de-gran-canaria/restaurant/tabaiba|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:33.532Z
+ve_c34f4a226f|us/en/pais-vasco/bilbao/restaurant/kimtxu|€€|CAT_P02|bib|es|2026-10-30T08:20:34.874Z
+ve_c4f69aae6d|us/en/comunidad-de-madrid/madrid/restaurant/la-barra-de-la-tasqueria|€€|CAT_P02|bib|es|2026-10-30T08:20:36.211Z
+ve_c7619588a4|us/en/castilla-la-mancha/torre-de-juan-abad/restaurant/coto-de-quevedo|€€€|CAT_P03|1 star|es|2026-10-30T08:20:37.557Z
+ve_c8263ee30f|us/en/comunidad-valenciana/oropesa-del-mar/restaurant/llavor|€€€|CAT_P03|1 star|es|2026-10-30T08:20:38.880Z
+ve_c87595d42b|us/en/comunidad-de-madrid/pozuelo-de-alarcon/restaurant/ancestral-1241234|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:40.201Z
+ve_c9b160f2ff|us/en/andalucia/cadiz/restaurant/codigo-de-barra|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:41.526Z
+ve_c9d595123c|us/en/canarias/las-palmas-de-gran-canaria/restaurant/el-equilibrista-33|€€|CAT_P02|bib|es|2026-10-30T08:20:42.872Z
+ve_c9e8ebded0|us/en/galicia/santiago-de-compostela/restaurant/con-culler|€€|CAT_P02|bib|es|2026-10-30T08:20:44.216Z
+ve_ca4a5ecda0|us/en/comunidad-de-madrid/madrid/restaurant/quimbaya|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:45.595Z
+ve_ca51cda88b|us/en/comunidad-de-madrid/madrid/restaurant/corral-de-la-moreria-gastronomico|€€€€|CAT_P04|1 star|es|2026-10-30T08:20:46.943Z
+ve_ca9909c2b0|us/en/region-de-murcia/cartagena/restaurant/magoga|€€€|CAT_P03|1 star|es|2026-10-30T08:20:48.282Z
+ve_cb306c569d|us/en/pais-vasco/lasarte-oria/restaurant/martin-berasategui|€€€€|CAT_P04|3 star|es|2026-10-30T08:20:49.615Z
+ve_cbb6307531|us/en/pais-vasco/errenteria/restaurant/mugaritz|€€€€|CAT_P04|2 star|es|2026-10-30T08:20:50.962Z
+ve_ccf497dea9|us/en/galicia/raxo-(san-gregorio)_1412090/restaurant/pepe-vieira|€€€€|CAT_P04|2 star|es|2026-10-30T08:20:52.287Z
+ve_ce28552d0e|us/en/catalunya/barcelona/restaurant/oniric|€€|CAT_P02|bib|es|2026-10-30T08:20:53.616Z
+ve_cf934f0305|us/en/galicia/santiago-de-compostela/restaurant/asador-gonzaba|€€|CAT_P02|bib|es|2026-10-30T08:20:54.979Z
+ve_cfd23a9f84|us/en/comunidad-valenciana/sagunt/restaurant/arrels|€€€|CAT_P03|1 star|es|2026-10-30T08:20:56.314Z
+ve_d0c2e91b3f|us/en/aragon/puertomingalvo_1385584/restaurant/existe-1210540|€€|CAT_P02|bib|es|2026-10-30T08:20:57.643Z
+ve_d0ed7ab726|us/en/andalucia/el-puerto-de-santa-maria/restaurant/aponiente|€€€€|CAT_P04|3 star|es|2026-10-30T08:20:58.954Z
+ve_d1706ab857|us/en/comunidad-valenciana/castell-de-la-plana/restaurant/le-bistrot-gastronomico|€€|CAT_P02|bib|es|2026-10-30T08:21:00.275Z
+ve_d1d9b9d078|us/en/comunidad-valenciana/dnia/restaurant/peix-y-brases|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:01.609Z
+ve_d23d7c1954|us/en/galicia/camarinas/restaurant/villa-de-oro|€€|CAT_P02|bib|es|2026-10-30T08:21:02.962Z
+ve_d2a4599c02|us/en/comunidad-foral-de-navarra/lekunberri/restaurant/maskarada|€|CAT_P01|bib|es|2026-10-30T08:21:04.274Z
+ve_d35c079995|us/en/region-de-murcia/murcia/restaurant/almo|€€€|CAT_P03|1 star|es|2026-10-30T08:21:05.612Z
+ve_d46f1f5a95|us/en/galicia/barizo/restaurant/as-garzas|€€€|CAT_P03|1 star|es|2026-10-30T08:21:06.944Z
+ve_d503fa30af|us/en/aragon/sardas/restaurant/la-era-de-los-nogales|€€|CAT_P02|1 star|es|2026-10-30T08:21:08.264Z
+ve_d517cac9cc|us/en/cantabria/santander/restaurant/casona-del-judio|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:09.594Z
+ve_d538274afb|us/en/comunidad-valenciana/valencia/restaurant/la-salita-1192181|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:10.944Z
+ve_d59853e0c0|us/en/galicia/a-corua/restaurant/arbore-da-veira|€€€|CAT_P03|1 star|es|2026-10-30T08:21:12.287Z
+ve_d5b0659a73|us/en/castilla-y-leon/castroverde-de-campos/restaurant/lera|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:13.630Z
+ve_d6958a22fd|us/en/comunidad-de-madrid/madrid/restaurant/tres-por-cuatro|€€|CAT_P02|bib|es|2026-10-30T08:21:14.962Z
+ve_d6e668d79e|us/en/andalucia/fuengirola/restaurant/sollo|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:16.347Z
+ve_d72335476c|us/en/galicia/santiago-de-compostela/restaurant/ghalpon-abastos|€€|CAT_P02|bib|es|2026-10-30T08:21:17.693Z
+ve_d76a85a534|us/en/comunidad-de-madrid/madrid/restaurant/clos-madrid|€€€|CAT_P03|1 star|es|2026-10-30T08:21:19.053Z
+ve_d91ff7b2f1|us/en/andalucia/sevilla/restaurant/abantal|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:20.393Z
+ve_db7838ecbc|us/en/catalunya/barcelona/restaurant/quirat|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:21.739Z
+ve_db89da4d30|us/en/comunidad-de-madrid/tres-cantos/restaurant/la-sarten|€€|CAT_P02|bib|es|2026-10-30T08:21:23.100Z
+ve_dc0e7f65e0|us/en/comunidad-de-madrid/madrid/restaurant/cebo-1203091|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:24.477Z
+ve_dce3921956|us/en/catalunya/barcelona/restaurant/suto|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:25.895Z
+ve_dcfd9da9c1|us/en/castilla-la-mancha/ciudad-real/restaurant/meson-octavio|€€|CAT_P02|bib|es|2026-10-30T08:21:27.239Z
+ve_ddec9dac95|us/en/comunidad-valenciana/la-nucia/restaurant/el-xato|€€€|CAT_P03|1 star|es|2026-10-30T08:21:28.551Z
+ve_de407b0825|us/en/galicia/a-corua/restaurant/terreo|€€|CAT_P02|bib|es|2026-10-30T08:21:29.864Z
+ve_dec22f33e7|us/en/pais-vasco/bilbao/restaurant/mina|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:31.202Z
+ve_dfa3acf0f2|us/en/catalunya/barcelona/restaurant/mont-bar|€€€|CAT_P03|2 star|es|2026-10-30T08:21:32.550Z
+ve_e02328caa2|us/en/andalucia/bailen/restaurant/aureum|€€|CAT_P02|bib|es|2026-10-30T08:21:33.893Z
+ve_e0a19f4dc2|us/en/catalunya/terrassa/restaurant/vapor-gastronomic|€|CAT_P01|bib|es|2026-10-30T08:21:35.214Z
+ve_e0b85919c8|us/en/castilla-y-leon/benavente/restaurant/el-ermitano|€€€|CAT_P03|1 star|es|2026-10-30T08:21:36.548Z
+ve_e0ef421a90|us/en/catalunya/santa-coloma-de-queralt/restaurant/hostal-colomi|€€|CAT_P02|bib|es|2026-10-30T08:21:37.872Z
+ve_e16a3d0348|us/en/catalunya/l-escala/restaurant/mas-concas|€€|CAT_P02|bib|es|2026-10-30T08:21:39.187Z
+ve_e3e95fc7b0|us/en/catalunya/alcanar/restaurant/citrus-del-tancat|€€€|CAT_P03|1 star|es|2026-10-30T08:21:40.532Z
+ve_e4697958f0|us/en/comunidad-de-madrid/madrid/restaurant/sen-omakase|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:41.880Z
+ve_e498d41b9a|us/en/castilla-la-mancha/tomelloso/restaurant/epilogo|€€|CAT_P02|1 star|es|2026-10-30T08:21:43.220Z
+ve_e499553d5b|us/en/extremadura/madrigal-de-la-vera/restaurant/el-molino|€|CAT_P01|bib|es|2026-10-30T08:21:44.552Z
+ve_e4f2745ac7|us/en/andalucia/chiclana-de-la-frontera_1446717/restaurant/alevante|€€€€|CAT_P04|2 star|es|2026-10-30T08:21:45.923Z
+ve_e4fa70d628|us/en/cantabria/ampuero/restaurant/solana|€€€|CAT_P03|1 star|es|2026-10-30T08:21:47.270Z
+ve_e51e132f2b|us/en/comunidad-de-madrid/madrid/restaurant/in-pulso|€€|CAT_P02|bib|es|2026-10-30T08:21:49.933Z
+ve_e53e22e8d9|us/en/catalunya/barcelona/restaurant/come-by-paco-mendez|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:51.339Z
+ve_e6505dd55c|us/en/principado-de-asturias/gijon/restaurant/auga|€€€|CAT_P03|1 star|es|2026-10-30T08:21:52.692Z
+ve_e6762a2d63|us/en/cantabria/carasa_7770389/restaurant/pico-velasco|€€€|CAT_P03|1 star|es|2026-10-30T08:21:54.108Z
+ve_e6fa597676|us/en/islas-baleares/port-d-alcdia/restaurant/maca-de-castro|€€€€|CAT_P04|1 star|es|2026-10-30T08:21:55.435Z
+ve_e8ba24412d|us/en/pais-vasco/es-donostia-san-sebastian/restaurant/arzak|€€€€|CAT_P04|3 star|es|2026-10-30T08:21:56.778Z
+ve_e97ac3b413|us/en/andalucia/ubeda/restaurant/cantina-la-estacion|€€|CAT_P02|bib|es|2026-10-30T08:21:58.122Z
+ve_e988c08380|us/en/castilla-la-mancha/es-cuenca/restaurant/olea-comedor|€|CAT_P01|bib|es|2026-10-30T08:21:59.442Z
+ve_ea5fa1cc36|us/en/comunidad-de-madrid/becerril-de-la-sierra_1441704/restaurant/malabar-bistro-nomada|€€|CAT_P02|bib|es|2026-10-30T08:22:00.781Z
+ve_eb162e108e|us/en/andalucia/jerez-de-la-frontera/restaurant/lu-cocina-y-alma|€€€€|CAT_P04|2 star|es|2026-10-30T08:22:02.098Z
+ve_eb6986fae6|us/en/andalucia/cordoba/restaurant/regadera|€€|CAT_P02|bib|es|2026-10-30T08:22:03.444Z
+ve_ebc0bf6eed|us/en/comunidad-valenciana/el-pinos/restaurant/el-raco-de-pere-i-pepa|€€|CAT_P02|bib|es|2026-10-30T08:22:04.794Z
+ve_ebf304ad37|us/en/catalunya/barcelona/restaurant/caelis|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:06.112Z
+ve_ec5b3ed302|us/en/castilla-y-leon/salamanca/restaurant/victor-gutierrez|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:07.455Z
+ve_ec606b29bc|us/en/comunidad-de-madrid/madrid/restaurant/osa|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:08.798Z
+ve_ec81522009|us/en/castilla-y-leon/castrillo-de-los-polvazares/restaurant/casa-coscolo|€|CAT_P01|bib|es|2026-10-30T08:22:10.152Z
+ve_ed5d30f034|us/en/extremadura/cceres/restaurant/atrio|€€€€|CAT_P04|3 star|es|2026-10-30T08:22:11.466Z
+ve_ed84fca322|us/en/catalunya/mataro/restaurant/dos-cuiners|€€|CAT_P02|bib|es|2026-10-30T08:22:12.807Z
+ve_eda9c4ff60|us/en/catalunya/ulldecona/restaurant/les-moles|€€€|CAT_P03|1 star|es|2026-10-30T08:22:14.127Z
+ve_ede2aed779|us/en/cantabria/hoznayo/restaurant/la-bicicleta|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:15.476Z
+ve_ede7014918|us/en/galicia/cambados/restaurant/a-taberna-do-trasno|€€|CAT_P02|bib|es|2026-10-30T08:22:16.818Z
+ve_ee3e68a950|us/en/comunidad-valenciana/castell-de-la-plana/restaurant/izakaya-tasca|€|CAT_P01|bib|es|2026-10-30T08:22:18.166Z
+ve_eebe70138a|us/en/aragon/chia/restaurant/casa-chongastan|€€|CAT_P02|bib|es|2026-10-30T08:22:19.507Z
+ve_ef09d1fce0|us/en/comunidad-foral-de-navarra/pamplona/restaurant/el-mercao|€€|CAT_P02|bib|es|2026-10-30T08:22:20.833Z
+ve_efc8e578f3|us/en/castilla-la-mancha/siguenza/restaurant/el-molino-de-alcuneza|€€€|CAT_P03|1 star|es|2026-10-30T08:22:22.174Z
+ve_f1b08070e4|us/en/aragon/huesca/restaurant/tatau|€€€|CAT_P03|1 star|es|2026-10-30T08:22:23.506Z
+ve_f2372732b5|us/en/catalunya/poboleda/restaurant/brots|€€|CAT_P02|bib|es|2026-10-30T08:22:24.867Z
+ve_f29878f198|us/en/andalucia/marbella/restaurant/back|€€€|CAT_P03|1 star|es|2026-10-30T08:22:26.204Z
+ve_f2b8ec2c9c|us/en/catalunya/barcelona/restaurant/lasarte|€€€€|CAT_P04|3 star|es|2026-10-30T08:22:27.559Z
+ve_f363115bdf|us/en/catalunya/barcelona/restaurant/hofmann|€€€|CAT_P03|1 star|es|2026-10-30T08:22:28.908Z
+ve_f38d631609|us/en/islas-baleares/es-capdella/restaurant/sa-clastra|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:30.251Z
+ve_f3b73456c4|us/en/galicia/vigo/restaurant/morrofino|€€|CAT_P02|bib|es|2026-10-30T08:22:31.581Z
+ve_f40d04f1f7|us/en/comunidad-de-madrid/madrid/restaurant/velascoabella|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:32.920Z
+ve_f4b31cb32c|us/en/castilla-la-mancha/almansa/restaurant/maralba|€€€€|CAT_P04|2 star|es|2026-10-30T08:22:34.270Z
+ve_f4c1fd2c96|us/en/comunidad-de-madrid/madrid/restaurant/pabu|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:35.594Z
+ve_f4d7e6af2b|us/en/comunidad-de-madrid/madrid/restaurant/deessa|€€€€|CAT_P04|2 star|es|2026-10-30T08:22:36.976Z
+ve_f5127e5680|us/en/galicia/san-salvador-de-poio/restaurant/solla|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:38.313Z
+ve_f5d8ce9ec5|us/en/catalunya/igualada/restaurant/somiatruites|€|CAT_P01|bib|es|2026-10-30T08:22:39.633Z
+ve_f6e5763d41|us/en/andalucia/malaga/restaurant/palodu|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:40.962Z
+ve_f79e9512dd|us/en/pais-vasco/larrabetzu/restaurant/azurmendi|€€€€|CAT_P04|3 star|es|2026-10-30T08:22:42.293Z
+ve_f803bbe43a|us/en/comunidad-de-madrid/leganes/restaurant/sante|€€|CAT_P02|bib|es|2026-10-30T08:22:43.638Z
+ve_f9239d1ce7|us/en/catalunya/barcelona/restaurant/fishology|€€€|CAT_P03|1 star|es|2026-10-30T08:22:44.993Z
+ve_f9a53c7787|us/en/comunidad-foral-de-navarra/legasa/restaurant/arotxa|€€|CAT_P02|bib|es|2026-10-30T08:22:46.340Z
+ve_fa05fc3fec|us/en/galicia/carballo/restaurant/pementa-rosa|€€|CAT_P02|bib|es|2026-10-30T08:22:47.682Z
+ve_fa15d83ffa|us/en/andalucia/sevilla/restaurant/lalola-de-javi-abascal|€€|CAT_P02|bib|es|2026-10-30T08:22:49.005Z
+ve_fa7d82cea0|us/en/castilla-y-leon/ponferrada/restaurant/mu%E2%80%A2na|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:50.351Z
+ve_fa8ae8e487|us/en/comunidad-valenciana/cheste/restaurant/huerto-martinez|€|CAT_P01|bib|es|2026-10-30T08:22:51.683Z
+ve_faab892a7a|us/en/comunidad-de-madrid/madrid/restaurant/las-tortillas-de-gabino|€€|CAT_P02|bib|es|2026-10-30T08:22:53.024Z
+ve_faf26a7d6b|us/en/la-rioja/daroca-de-rioja/restaurant/venta-moncalvillo|€€€€|CAT_P04|2 star|es|2026-10-30T08:22:54.367Z
+ve_fb04e1d17c|us/en/comunidad-de-madrid/madrid/restaurant/ravioxo|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:55.701Z
+ve_fbc6d25751|us/en/catalunya/vilafranca-del-penedes/restaurant/el-cigro-d-or|€|CAT_P01|bib|es|2026-10-30T08:22:57.050Z
+ve_fbf7bb17ee|us/en/catalunya/cornella-del-terri_1441200/restaurant/can-xapes|€€|CAT_P02|bib|es|2026-10-30T08:22:58.378Z
+ve_fc1da1bc18|us/en/islas-baleares/palma/restaurant/marc-fosh|€€€€|CAT_P04|1 star|es|2026-10-30T08:22:59.704Z
+ve_fcf0e4d0d8|us/en/cantabria/villaverde-de-pontones/restaurant/cenador-de-amos|€€€€|CAT_P04|3 star|es|2026-10-30T08:23:01.057Z
+ve_fdc48eec68|us/en/andalucia/alcal-del-valle/restaurant/meson-sabor-andaluz|€€€|CAT_P03|1 star|es|2026-10-30T08:23:02.411Z
+ve_fe71066bb1|us/en/andalucia/sevilla/restaurant/balbuena-y-huertas|€€|CAT_P02|bib|es|2026-10-30T08:23:03.762Z
+ve_fe82bd2604|us/en/castilla-y-leon/miranda-de-ebro/restaurant/alejandro-serrano|€€€€|CAT_P04|1 star|es|2026-10-30T08:23:05.104Z
+ve_fedf4cae3e|us/en/comunidad-de-madrid/madrid/restaurant/bacira|€€|CAT_P02|bib|es|2026-10-30T08:23:06.446Z
+ve_fee48b155c|us/en/galicia/a-corua/restaurant/taberna-5-mares|€€|CAT_P02|bib|es|2026-10-30T08:23:07.803Z
