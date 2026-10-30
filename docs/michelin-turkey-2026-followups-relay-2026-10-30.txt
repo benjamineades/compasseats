@@ -1,0 +1,3 @@
+ve_51ce2088a5|10663|relabel|https://web.archive.org/web/20260106015516id_/https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/efendy|Bib Gourmand
+ve_f088b7a06a|5648|status|active|One Star
+ve_f8013e6d34|10686|relabel|https://guide.michelin.com/us/en/izmir/izmir_2809416/restaurant/la-mahzen|Bib Gourmand

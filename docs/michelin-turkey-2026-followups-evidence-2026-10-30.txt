@@ -1,0 +1,31 @@
+# Turkey 2026 follow-ups: evidence reads, Oct 30, 2026 (built-in browser, fetch() with 1.2 s pause; values from the tool output)
+
+## Efendy Istanbul ve_51ce2088a5 (award 10663)
+live  18:2x UTC  /us/en/istanbul-province/istanbul/restaurant/efendy  status 404
+CDX   guide.michelin.com/en/istanbul-province/istanbul/restaurant/efendy: 20241108112602, 20260106015516, 20260113131942 (all 200)
+CDX   guide.michelin.com/de/de/istanbul-province/istanbul/restaurant/efendy: 20260128140738 (200)
+CDX   guide.michelin.com/tr/tr/istanbul-province/istanbul/restaurant/efendy: 20240506092443, 20240619050634, 20250906172357 (200)
+id_   20260106015516 /en/  status 200 | name EFENDY | restaurant_id 1209218 | distinction bib | dateAwarded 2026 | CAT_P02 | tr | Nisbetiye Caddesi No:13, Levent/Besiktas
+id_   20260113131942 /en/  status 200 | name EFENDY | restaurant_id 1209218 | distinction bib | dateAwarded 2026 | CAT_P02 | tr | same address
+id_   20260128140738 /de/de/ status 200 | name EFENDY | restaurant_id 1209218 | distinction bib | dateAwarded 2026 | CAT_P02 | tr | same address
+web   Time Out Istanbul review (Oct 15, 2024): open, no closure note.
+
+## Lucien Arkas Baglari ve_f8013e6d34 (award 10686) = LA Mahzen card 1208310
+live  /us/en/izmir/izmir_2809416/restaurant/la-mahzen  status 200, no redirect | name LA Mahzen | distinction bib | dateAwarded 2026 | CAT_P02 | tr
+      address Kuscuburun Mahallesi, Basmimar Sinan Caddesi No:81, Yazibasi, Torbali, Izmir 35860
+      card review text starts with the Domaine Lucien Arkas vineyards | CTA_website https://lawines.com.tr/restaurant.aspx
+web   lawines.com.tr/restaurant.aspx: page title "Lucien Arkas Baglari"; no "LA Mahzen" on the page
+CDX   us/en la-mahzen: 20240824121533/34 (200); en la-mahzen: 20240824121532, 20240824121609 (200)
+id_   20240824121533 us/en: name LA Mahzen | restaurant_id 1208310 | bib | CAT_P01 | same address
+
+## Sankai by Nagaya ve_f088b7a06a (award 5648)
+live  /us/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya  status 200 | restaurant_id 1209151 | 1 star | dateAwarded 2026 | CAT_P04 | tr
+      Bebek, Cevdet Pasa Caddesi No:34, Besiktas | no closure text | CTA_website https://sankai.com.tr/
+web   sankai.com.tr: reservation contact, no closure notice; page holds injected casino spam (site probably hacked)
+web   Time Out Istanbul (Aug 1, 2024): open. Web search "Sankai by Nagaya kapandi": no closure result.
+db    status closed came from the Aug 14 sheet load (audit 4862, INSERT); no later change before this write.
+
+## Article
+https://guide.michelin.com/us/en/article/michelin-guide-ceremony/the-michelin-guide-turkiye-reveals-its-2026-restaurant-selection
+Dec 4, 2025. Bib total 39 (16 new). Names in the article do not include Efendy, LA Mahzen or Lucien Arkas.
+Known Bibs after this write: 36 + Efendy + LA Mahzen/Lucien Arkas = 38. One Bib is still unknown.
