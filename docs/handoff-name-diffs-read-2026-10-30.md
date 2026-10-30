@@ -1,4 +1,4 @@
-# Handoff: Name differences read (cards + venue sites), no write. Oct 30, 2026. Next: Ben's 3 decisions, then the rename batch.
+# Handoff: Name differences read (cards + venue sites), no write. Oct 30, 2026. Decisions made. Next: the rename batch (72).
 
 This file replaces `handoff-p1-rest-held-b2-done-2026-10-30.md` for live state and next steps. That file still holds the
 batch 2 results and its method notes. The per-venue list is `name-diff-evidence-2026-10-30.txt` (94 lines). The working
@@ -11,7 +11,9 @@ slug template `docs/slugs-rename-michelin-2026-germany.sql`.
 - 17:38 ET: list the name differences, grouped (wrong branch / card ward or branch suffix / venue's own spelling), with the
   site spelling; no write.
 - 18:17 ET "Read sites" (approved each WebFetch).
-- 18:32 ET: write the handoff. **The 3 decisions below are not answered yet.**
+- 18:32 ET: write the handoff.
+- **18:35 ET "Let's go with your recommendations on the decisions": 1 = A (rules R1–R5 accepted), 2 = A (rename the
+  9 † venues on site + card agreement), 3 = hold the 8 venues for a later batch.**
 
 ## Live state (read Oct 30, 22:32 UTC, whole tables). No write in this session.
 | Table | Count |
@@ -40,7 +42,7 @@ slug template `docs/slugs-rename-michelin-2026-germany.sql`.
    brutohospitality.co.nz/venues/francesca; Lille Mølle → norrlyst.dk/restaurantlillemoelle/.
 6. Proposed result: **rename 72, keep 14, hold 8** (see the evidence file, column 6 and 7).
 
-## Proposed rules (Ben to confirm: decision 1)
+## Rules (accepted by Ben, Oct 30 18:35 ET)
 - R1 The site writes the name one way → use that way.
 - R2 The site writes it more than one way → use the way the card also uses.
 - R3 Capitals alone are no difference when the site also writes normal case. All-caps-only sites keep the capitals
@@ -60,13 +62,13 @@ slug template `docs/slugs-rename-michelin-2026-germany.sql`.
   LULU FUSION BISTRO (site "LULU fusion bistro"); Arka Ristorente Pizzeria Bodrum (site "Arka Pizzaria" title / "Arka
   Pizzeria" footer); TURK FATIH TUTAK† (site "Turk Fatih Tutak", nav "TURK"); KITCHEN by Osman Sezener (site not read).
 
-## Decisions open for Ben
+## Decisions (answered Oct 30 18:35 ET: 1 = A, 2 = A, 3 = later batch)
 1. Rules R1–R5: A accept (recommended) / B change one.
 2. The 9 † venues where site and card agree (SELINE, SOICHI, Amisfield, Logan Brown, The Kitchen, ESSE, MACAKIZI, TERUAR,
    Urla Vino Locale): A rename now on site + card agreement (recommended, Oct 10 ruling) / B read the other publishers first.
 3. The 8 held venues: a name now, or a later batch.
 
-## Next steps (after the decisions)
+## Next steps
 1. Fresh read: names of the 72 rename venues = column 3 of the evidence file (gate on md5 of `id|name`, ordered by id).
 2. Build the rename batch from the evidence file by script (no hand-typed names): rename_batches + rename_rows, then the slug
    file (new canonical slug where the slug rule gives a new slug, old slug non-canonical; check that no new slug is taken in
@@ -113,7 +115,7 @@ slug template `docs/slugs-rename-michelin-2026-germany.sql`.
 Read claude/handoff-name-diffs-read-2026-10-30.md and claude/name-diff-evidence-2026-10-30.txt from the project files,
 then claude/handoff-chengdu-held-7-cleanup-done-2026-10-04.md for working rules and
 claude/handoff-germany-renamed-sets23-2026-10-09.md for the rename and slug method. Do a fresh count read and confirm
-ledger 162 and audit_log 118,753. My decisions: 1 = A, 2 = A, 3 = leave the 8 held venues for a later batch.
+ledger 162 and audit_log 118,753. My decisions are recorded in the handoff (1 = A, 2 = A, 8 held venues later).
 Then build the rename batch for the 72 "rename" lines from the evidence file by script, with the slug file, run the
 syntax check and the dry run, and show me the file and the counts in /ste style. No write before my go. Attach the
 compasseats repo with push access for the commit after any write.
