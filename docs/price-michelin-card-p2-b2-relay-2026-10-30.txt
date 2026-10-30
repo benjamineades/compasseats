@@ -1,0 +1,467 @@
+ve_7e6c2c408f|en/nouvelle-aquitaine/bourg-charente/restaurant/la-ribaudiere|€€€|CAT_P03|1 star|fr|2026-10-30T05:47:20.002Z
+ve_7e7e309472|en/nouvelle-aquitaine/lormont/restaurant/le-prince-noir-vivien-durand|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:21.386Z
+ve_7e8674acb0|en/nouvelle-aquitaine/brantme/restaurant/le-moulin-de-l-abbaye|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:22.714Z
+ve_7e93feef0e|en/auvergne-rhone-alpes/chaudes-aigues/restaurant/sodade|€€|CAT_P02|bib|fr|2026-10-30T05:47:24.052Z
+ve_7ee39634d2|en/ile-de-france/paris/restaurant/mallory-gabsi|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:25.398Z
+ve_7f9aebf6d4|en/hauts-de-france/wambrechies/restaurant/balsamique|€€|CAT_P02|bib|fr|2026-10-30T05:47:26.742Z
+ve_7fccf74533|en/grand-est/pinal/restaurant/les-ducs-de-lorraine|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:28.057Z
+ve_8003ce7374|en/hauts-de-france/castre/restaurant/l-auberge|€€|CAT_P02|bib|fr|2026-10-30T05:47:29.386Z
+ve_803026b38a|en/ile-de-france/paris/restaurant/imperial-choisy|€€|CAT_P02|bib|fr|2026-10-30T05:47:30.721Z
+ve_804fcbc58a|en/provence-alpes-cote-dazur/manosque/restaurant/restaurant-pierre-grein|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:32.048Z
+ve_80a25a0824|en/nouvelle-aquitaine/le-grand-village-plage/restaurant/le-relais-des-salines|€€|CAT_P02|bib|fr|2026-10-30T05:47:33.369Z
+ve_80d1bf1939|en/provence-alpes-cote-dazur/avignon/restaurant/l-agape|€€|CAT_P02|bib|fr|2026-10-30T05:47:34.705Z
+ve_810f6617d1|en/occitanie/sabran/restaurant/le-cedre-de-montcaud|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:36.036Z
+ve_8123692ae2|en/auvergne-rhone-alpes/saint-genis-laval_1515236/restaurant/l-etape-doree|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:37.370Z
+ve_8152b2fae5|en/centre-val-de-loire/cheverny/restaurant/le-favori-les-sources-de-cheverny|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:38.702Z
+ve_8234491228|en/nouvelle-aquitaine/bordeaux/restaurant/racines-by-daniel-gallacher|€€|CAT_P02|bib|fr|2026-10-30T05:47:40.049Z
+ve_824b29fc52|en/auvergne-rhone-alpes/saint-martin-sur-la-chambre/restaurant/le-clocher-des-peres|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:41.382Z
+ve_8294ea6255|en/bretagne/carhaix-plouguer_1563515/restaurant/erasmo|€€|CAT_P02|bib|fr|2026-10-30T05:47:42.695Z
+ve_82969d0b5a|en/ile-de-france/paris/restaurant/maison-ruggieri-palais-royal|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:44.039Z
+ve_829f7fd32b|en/ile-de-france/paris/restaurant/omar-dhiab|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:45.387Z
+ve_82af616d87|en/auvergne-rhone-alpes/polliat/restaurant/tejerina-hotel-de-la-place|€€|CAT_P02|bib|fr|2026-10-30T05:47:46.718Z
+ve_82b300187b|en/auvergne-rhone-alpes/saint-julien-en-vercors/restaurant/cafe-brochier|€€|CAT_P02|bib|fr|2026-10-30T05:47:48.035Z
+ve_82beeb00c9|en/auvergne-rhone-alpes/chatel-guyon/restaurant/l-impulsif|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:49.349Z
+ve_82ebb80e2e|en/normandie/argentan/restaurant/la-renaissance433|€€€|CAT_P03|1 star|fr|2026-10-30T05:47:50.665Z
+ve_834b709a64|en/ile-de-france/paris/restaurant/le-cornichon|€€|CAT_P02|bib|fr|2026-10-30T05:47:52.020Z
+ve_8357d635a0|en/ile-de-france/paris/restaurant/contraste1186546|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:53.359Z
+ve_83e2a41306|en/grand-est/rouvres-en-xaintois_1543966/restaurant/burnel|€€€|CAT_P03|1 star|fr|2026-10-30T05:47:54.683Z
+ve_8457b128d6|en/bourgogne-franche-comte/beaune/restaurant/le-carmin|€€€€|CAT_P04|1 star|fr|2026-10-30T05:47:56.014Z
+ve_846788b091|en/grand-est/reims/restaurant/arbane|€€€€|CAT_P04|2 star|fr|2026-10-30T05:47:57.359Z
+ve_8484ecb3b0|en/occitanie/toulouse/restaurant/l-air-de-famille336979|€€|CAT_P02|bib|fr|2026-10-30T05:47:58.700Z
+ve_849be22e8c|en/grand-est/wihr-au-val/restaurant/la-nouvelle-auberge|€€€|CAT_P03|1 star|fr|2026-10-30T05:48:00.037Z
+ve_84a59a042e|en/normandie/honfleur/restaurant/la-fleur-de-sel3731|€€|CAT_P02|bib|fr|2026-10-30T05:48:01.390Z
+ve_84a7014ae7|en/occitanie/rodez/restaurant/restaurant-herve-busset|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:02.702Z
+ve_8546fd4661|en/occitanie/toulouse/restaurant/py-r|€€€€|CAT_P04|2 star|fr|2026-10-30T05:48:04.039Z
+ve_8667acbfef|en/auvergne-rhone-alpes/courchevel/restaurant/le-chabichou-by-stephane-buron|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:05.371Z
+ve_867311bd99|en/pays-de-la-loire/mareuil-sur-lay/restaurant/maison-desamy|€€€|CAT_P03|1 star|fr|2026-10-30T05:48:06.695Z
+ve_86a8d81018|en/nouvelle-aquitaine/saint-vincent-de-tyrosse/restaurant/le-hittau|€€€|CAT_P03|1 star|fr|2026-10-30T05:48:08.021Z
+ve_86bb697627|en/nouvelle-aquitaine/montbron/restaurant/moulin-de-la-tardoire|€€€|CAT_P03|1 star|fr|2026-10-30T05:48:09.333Z
+ve_871d204beb|en/auvergne-rhone-alpes/clermont-ferrand/restaurant/l-ostal|€€€|CAT_P03|1 star|fr|2026-10-30T05:48:10.668Z
+ve_872bef0175|en/nouvelle-aquitaine/bourg-charente/restaurant/la-table-du-fleuve|€€|CAT_P02|bib|fr|2026-10-30T05:48:11.991Z
+ve_87787c0053|en/bourgogne-franche-comte/combeaufontaine/restaurant/le-balcon|€€|CAT_P02|bib|fr|2026-10-30T05:48:13.304Z
+ve_87ca1da3d6|en/auvergne-rhone-alpes/espaly-saint-marcel/restaurant/l-ermitage|€€|CAT_P02|bib|fr|2026-10-30T05:48:14.627Z
+ve_8829ebf4cf|en/ile-de-france/paris/restaurant/yoshinori|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:15.977Z
+ve_8859261736|en/nouvelle-aquitaine/magescq/restaurant/relais-de-la-poste11709|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:17.334Z
+ve_890ec43950|en/hauts-de-france/marcq-en-barul/restaurant/rozo-1202595|€€€€|CAT_P04|2 star|fr|2026-10-30T05:48:18.686Z
+ve_8920261ae0|en/grand-est/strasbourg/restaurant/au-coin-des-pucelles|€€|CAT_P02|bib|fr|2026-10-30T05:48:20.032Z
+ve_8976cb64df|en/grand-est/nancy/restaurant/la-maison-dans-le-parc|€€€|CAT_P03|1 star|fr|2026-10-30T05:48:22.655Z
+ve_89c014afb7|en/hauts-de-france/dunkerque_1546085/restaurant/renee|€€|CAT_P02|bib|fr|2026-10-30T05:48:23.980Z
+ve_89cb20bd38|en/ile-de-france/paris/restaurant/hanada|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:25.326Z
+ve_8a4f12a1a4|en/provence-alpes-cote-dazur/le-cannet/restaurant/bistrot-des-anges|€€|CAT_P02|bib|fr|2026-10-30T05:48:26.655Z
+ve_8a7ad46888|en/auvergne-rhone-alpes/saint-martin-de-belleville/restaurant/simple-et-meilleur|€€|CAT_P02|bib|fr|2026-10-30T05:48:27.978Z
+ve_8a8e59f190|en/provence-alpes-cote-dazur/ramatuelle/restaurant/la-voile|€€€€|CAT_P04|2 star|fr|2026-10-30T05:48:29.308Z
+ve_8afbe4929d|en/nouvelle-aquitaine/saint-yrieix-la-perche_1472250/restaurant/l-attanum|€€|CAT_P02|bib|fr|2026-10-30T05:48:30.618Z
+ve_8b0411fd68|en/occitanie/saint-mdard/restaurant/le-gindreau|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:31.943Z
+ve_8b272c08ce|en/occitanie/castres/restaurant/bistrot-saveurs|€€|CAT_P02|bib|fr|2026-10-30T05:48:33.271Z
+ve_8b7a5c4bbc|en/pays-de-la-loire/brtignolles-sur-mer/restaurant/jean-marc-perochon|€€€|CAT_P03|1 star|fr|2026-10-30T05:48:34.591Z
+ve_8ba000bfa4|en/nouvelle-aquitaine/carsac-aillac/restaurant/o-moulin|€€|CAT_P02|bib|fr|2026-10-30T05:48:35.913Z
+ve_8c25148528|en/grand-est/kaysersberg/restaurant/l-alchemille|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:37.243Z
+ve_8c33d4188d|en/nouvelle-aquitaine/daglan/restaurant/le-petit-paris|€€|CAT_P02|bib|fr|2026-10-30T05:48:38.583Z
+ve_8c4a5d6040|en/pays-de-la-loire/beaulieu-sous-la-roche/restaurant/cafe-des-arts|€€|CAT_P02|bib|fr|2026-10-30T05:48:39.899Z
+ve_8d0beae410|en/occitanie/la-vacquerie-et-saint-martin-de-castries_1502152/restaurant/l-ogustin|€€|CAT_P02|bib|fr|2026-10-30T05:48:41.215Z
+ve_8d3531f731|en/nouvelle-aquitaine/eugnie-les-bains/restaurant/les-pres-d-eugenie-michel-guerard|€€€€|CAT_P04|3 star|fr|2026-10-30T05:48:42.532Z
+ve_8d6ad4c71f|en/auvergne-rhone-alpes/clermont-ferrand/restaurant/jean-claude-leclerc|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:43.870Z
+ve_8dccaaf452|en/hauts-de-france/le-touquet-paris-plage/restaurant/le-pavillon9000|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:45.199Z
+ve_8e0adfebb4|en/pays-de-la-loire/nantes/restaurant/omija|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:46.551Z
+ve_8e3131f064|en/occitanie/puy-l-vque/restaurant/les-dodus|€€|CAT_P02|bib|fr|2026-10-30T05:48:47.884Z
+ve_8e42976446|en/nouvelle-aquitaine/ars/restaurant/nacre|€€€|CAT_P03|1 star|fr|2026-10-30T05:48:49.260Z
+ve_8e5c7e3a08|en/provence-alpes-cote-dazur/lorgues/restaurant/bruno|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:50.594Z
+ve_8f2a2345da|en/pays-de-la-loire/nantes/restaurant/obbo|€€|CAT_P02|bib|fr|2026-10-30T05:48:51.922Z
+ve_8f3dd2fa55|en/nouvelle-aquitaine/bordeaux/restaurant/maison-nouvelle|€€€€|CAT_P04|2 star|fr|2026-10-30T05:48:53.248Z
+ve_8f57474bcb|en/provence-alpes-cote-dazur/cadenet/restaurant/le-gout-du-bonheur-la-feniere|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:54.572Z
+ve_8f608b136d|en/ile-de-france/paris/restaurant/quinsou|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:55.919Z
+ve_900c668573|en/auvergne-rhone-alpes/notre-dame-de-bellecombe/restaurant/la-ferme-de-victorine|€€|CAT_P02|bib|fr|2026-10-30T05:48:57.261Z
+ve_90281049c3|en/provence-alpes-cote-dazur/arles/restaurant/le-gibolin|€€|CAT_P02|bib|fr|2026-10-30T05:48:58.588Z
+ve_91143eac6a|en/provence-alpes-cote-dazur/bandol/restaurant/les-oliviers122360|€€€€|CAT_P04|1 star|fr|2026-10-30T05:48:59.923Z
+ve_91787e60f2|en/bretagne/lorient/restaurant/gare-aux-gouts|€€|CAT_P02|bib|fr|2026-10-30T05:49:01.248Z
+ve_918b74c9c8|en/occitanie/gourdon/restaurant/delicatessens|€€|CAT_P02|bib|fr|2026-10-30T05:49:02.567Z
+ve_91fe766800|en/pays-de-la-loire/nantes/restaurant/lulurouget|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:03.918Z
+ve_928040f777|en/auvergne-rhone-alpes/saint-bonnet-le-froid/restaurant/l-acte-2|€€|CAT_P02|bib|fr|2026-10-30T05:49:05.239Z
+ve_9282ea441c|en/grand-est/colombey-les-deux-glises/restaurant/hostellerie-la-montagne|€€€|CAT_P03|1 star|fr|2026-10-30T05:49:06.551Z
+ve_928e3ed098|en/normandie/bayeux/restaurant/l-angle-saint-laurent|€€|CAT_P02|bib|fr|2026-10-30T05:49:07.922Z
+ve_93594b399b|en/nouvelle-aquitaine/pouillon/restaurant/l-auberge-du-pas-de-vent|€€|CAT_P02|bib|fr|2026-10-30T05:49:09.242Z
+ve_9369cd8351|en/corse/bonifacio/restaurant/finestra-by-italo-bassi|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:10.578Z
+ve_937fd0194b|en/nouvelle-aquitaine/coulombiers/restaurant/auberge-le-centre-poitou|€€|CAT_P02|bib|fr|2026-10-30T05:49:11.883Z
+ve_93f70f8cea|en/ile-de-france/gambais/restaurant/ruche|€€€|CAT_P03|1 star|fr|2026-10-30T05:49:13.217Z
+ve_9519988e02|en/grand-est/langres/restaurant/bulle-d-osier|€€€€|CAT_P04|2 star|fr|2026-10-30T05:49:14.531Z
+ve_9587332e14|en/ile-de-france/paris/restaurant/le-tire-bouchon-rodier|€€|CAT_P02|bib|fr|2026-10-30T05:49:15.878Z
+ve_95f52c5e5a|en/grand-est/laubach/restaurant/la-merise|€€€€|CAT_P04|2 star|fr|2026-10-30T05:49:17.198Z
+ve_9631efc8fe|en/pays-de-la-loire/chteau-thbaud/restaurant/auberge-la-gaillotiere|€€|CAT_P02|bib|fr|2026-10-30T05:49:18.512Z
+ve_965b1e96e4|en/normandie/hambye/restaurant/auberge-de-l-abbaye3653|€€|CAT_P02|bib|fr|2026-10-30T05:49:19.832Z
+ve_96911445d7|en/ile-de-france/la-garenne-colombes/restaurant/tata-yoyo|€€|CAT_P02|bib|fr|2026-10-30T05:49:21.192Z
+ve_9747120ced|en/occitanie/montpellier/restaurant/reflet-d-obione|€€€|CAT_P03|1 star|fr|2026-10-30T05:49:22.521Z
+ve_974d97d7f9|en/ile-de-france/paris/restaurant/frederic-simonin|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:23.866Z
+ve_97ee888517|en/bretagne/combrit/restaurant/les-trois-rochers|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:25.197Z
+ve_980b27209b|en/bourgogne-franche-comte/cluny/restaurant/hostellerie-d-heloise|€€|CAT_P02|bib|fr|2026-10-30T05:49:26.520Z
+ve_984b9e5ab1|en/normandie/houlgate/restaurant/l-eden|€€|CAT_P02|bib|fr|2026-10-30T05:49:27.870Z
+ve_987eef7ff2|en/nouvelle-aquitaine/monbazillac/restaurant/la-tour-des-vents|€€€|CAT_P03|1 star|fr|2026-10-30T05:49:29.202Z
+ve_98b2c2d46b|en/nouvelle-aquitaine/saint-milion/restaurant/les-belles-perdrix-de-troplong-mondot|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:30.555Z
+ve_98fdf69141|en/bretagne/saint-mloir-des-ondes/restaurant/le-coquillage|€€€€|CAT_P04|3 star|fr|2026-10-30T05:49:31.885Z
+ve_990106e8f1|en/ile-de-france/paris/restaurant/neso|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:33.217Z
+ve_9984947217|en/occitanie/narbonne/restaurant/cave-a-vin-and-a-manger-maison-saint-crescent|€€|CAT_P02|bib|fr|2026-10-30T05:49:34.539Z
+ve_99b6cf11d7|en/pays-de-la-loire/les-herbiers/restaurant/l-envers-du-decor|€€|CAT_P02|bib|fr|2026-10-30T05:49:35.874Z
+ve_9a31afe9f5|en/auvergne-rhone-alpes/chamonix-mont-blanc/restaurant/albert-1er|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:37.206Z
+ve_9aa457058a|en/centre-val-de-loire/la-borne/restaurant/l-epicerie|€€|CAT_P02|bib|fr|2026-10-30T05:49:38.530Z
+ve_9aa71bbec8|en/provence-alpes-cote-dazur/barbentane_1504843/restaurant/ineffable|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:39.856Z
+ve_9b272faa8a|en/ile-de-france/paris/restaurant/trente-trois|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:41.185Z
+ve_9ba4877f9b|en/bourgogne-franche-comte/sampans/restaurant/chateau-du-mont-joly|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:42.500Z
+ve_9bb4434717|en/normandie/la-ferrire-aux-tangs/restaurant/auberge-de-la-mine|€€€|CAT_P03|1 star|fr|2026-10-30T05:49:43.834Z
+ve_9be720211b|en/centre-val-de-loire/le-petit-pressigny/restaurant/la-promenade-maison-dallais|€€€|CAT_P03|1 star|fr|2026-10-30T05:49:45.151Z
+ve_9bed68966f|en/bretagne/concarneau/restaurant/le-flaveur|€€|CAT_P02|bib|fr|2026-10-30T05:49:46.465Z
+ve_9bfab1fb75|en/ile-de-france/paris/restaurant/le-coucou-1241534|€€|CAT_P02|bib|fr|2026-10-30T05:49:47.827Z
+ve_9c2e7e5cf0|en/ile-de-france/paris/restaurant/bellefeuille-saint-james-paris|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:49.178Z
+ve_9c40a9dbe3|en/occitanie/bagnres-de-bigorre/restaurant/la-table-du-cinq|€€|CAT_P02|bib|fr|2026-10-30T05:49:50.484Z
+ve_9c646fdf2a|en/provence-alpes-cote-dazur/biot/restaurant/les-terraillers|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:51.801Z
+ve_9c73191a15|en/centre-val-de-loire/gien/restaurant/cote-jardin|€€€|CAT_P03|1 star|fr|2026-10-30T05:49:53.113Z
+ve_9d0c701035|en/occitanie/payrin-augmontel/restaurant/villa-pinewood|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:54.458Z
+ve_9e018db055|en/occitanie/sommires/restaurant/le-patio-by-lou-caleou|€€|CAT_P02|bib|fr|2026-10-30T05:49:55.794Z
+ve_9e14ccd309|en/normandie/valmont/restaurant/maison-caillet|€€€€|CAT_P04|1 star|fr|2026-10-30T05:49:57.129Z
+ve_9e16ffbc0c|en/pays-de-la-loire/la-fert-bernard/restaurant/restaurant-du-dauphin|€€|CAT_P02|bib|fr|2026-10-30T05:49:58.442Z
+ve_9e18c5ab0b|en/occitanie/floressas_1492997/restaurant/holodeck|€€€|CAT_P03|1 star|fr|2026-10-30T05:49:59.765Z
+ve_9e553d0775|en/auvergne-rhone-alpes/fleurie/restaurant/auberge-du-cep|€€€|CAT_P03|1 star|fr|2026-10-30T05:50:01.104Z
+ve_9e5a1fe04b|en/occitanie/aumont-aubrac/restaurant/cyril-attrazic|€€€€|CAT_P04|2 star|fr|2026-10-30T05:50:02.421Z
+ve_9e77c9e379|en/nouvelle-aquitaine/saint-jean-de-blaignac/restaurant/auberge-st-jean|€€€|CAT_P03|1 star|fr|2026-10-30T05:50:03.757Z
+ve_9eb678dfd1|en/nouvelle-aquitaine/bordeaux/restaurant/sens-1198521|€€|CAT_P02|bib|fr|2026-10-30T05:50:05.101Z
+ve_9ebd7adccf|en/ile-de-france/boulogne-billancourt/restaurant/baca-v-boulogne|€€|CAT_P02|bib|fr|2026-10-30T05:50:06.430Z
+ve_a02c91a9b2|en/ile-de-france/paris/restaurant/brigade-du-tigre|€€|CAT_P02|bib|fr|2026-10-30T05:50:07.800Z
+ve_a03e18c9b0|en/provence-alpes-cote-dazur/ansouis/restaurant/garrigue|€€€|CAT_P03|1 star|fr|2026-10-30T05:50:09.141Z
+ve_a043a49e17|en/ile-de-france/paris/restaurant/pilgrim1000208|€€€|CAT_P03|1 star|fr|2026-10-30T05:50:10.496Z
+ve_a090b83869|en/ile-de-france/paris/restaurant/capsule|€€|CAT_P02|bib|fr|2026-10-30T05:50:11.843Z
+ve_a0b7949ab3|en/occitanie/colombires-sur-orb/restaurant/granit|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:13.168Z
+ve_a1312ec44d|en/grand-est/muhlbach-sur-munster/restaurant/la-chataigneraie-perle-des-vosges|€€|CAT_P02|bib|fr|2026-10-30T05:50:14.505Z
+ve_a14c8f1c93|en/bretagne/baden/restaurant/la-chaumiere-de-pomper|€|CAT_P01|bib|fr|2026-10-30T05:50:15.831Z
+ve_a1d1d9f9c4|en/provence-alpes-cote-dazur/peillon/restaurant/les-plaisirs|€€|CAT_P02|bib|fr|2026-10-30T05:50:17.196Z
+ve_a1d4ac0870|en/centre-val-de-loire/fondettes/restaurant/l-opidom|€€€|CAT_P03|1 star|fr|2026-10-30T05:50:18.526Z
+ve_a2b1c83c30|en/auvergne-rhone-alpes/lyon/restaurant/tetedoie|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:19.855Z
+ve_a2ca61a9ba|en/auvergne-rhone-alpes/lyon/restaurant/racine900057|€|CAT_P01|bib|fr|2026-10-30T05:50:21.201Z
+ve_a33601f45f|en/ile-de-france/paris/restaurant/apicius6479|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:22.541Z
+ve_a3fb25d54f|en/centre-val-de-loire/montlivault/restaurant/ezia|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:23.894Z
+ve_a437c9610d|en/auvergne-rhone-alpes/saint-gervais-les-bains/restaurant/la-table-d-armante|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:25.226Z
+ve_a453cac427|en/centre-val-de-loire/azay-le-rideau/restaurant/l-epine|€€€|CAT_P03|bib|fr|2026-10-30T05:50:26.570Z
+ve_a46674c50f|en/auvergne-rhone-alpes/menthon-saint-bernard/restaurant/le-confidentiel|€€|CAT_P02|bib|fr|2026-10-30T05:50:27.903Z
+ve_a483b38a55|en/grand-est/metz/restaurant/yozora|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:29.254Z
+ve_a4981c57aa|en/bretagne/lannion/restaurant/l-anthocyane|€€€|CAT_P03|1 star|fr|2026-10-30T05:50:30.599Z
+ve_a4aa7cb9ba|en/auvergne-rhone-alpes/vailly/restaurant/frederic-molina-a-foret-ivre|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:31.925Z
+ve_a51a7c8dbe|en/nouvelle-aquitaine/les-eyzies-de-tayac/restaurant/le-bistro-des-glycines|€€|CAT_P02|bib|fr|2026-10-30T05:50:33.254Z
+ve_a525c8fbc3|en/nouvelle-aquitaine/larrau/restaurant/etchemaite|€€|CAT_P02|bib|fr|2026-10-30T05:50:34.571Z
+ve_a54bfe1aef|en/ile-de-france/paris/restaurant/nomicos|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:35.918Z
+ve_a55d6b03c5|en/occitanie/argels-gazost/restaurant/au-fond-du-gosier|€€|CAT_P02|bib|fr|2026-10-30T05:50:37.234Z
+ve_a58543d5a3|en/auvergne-rhone-alpes/alby-sur-cheran_1509144/restaurant/le-bourgeon|€€|CAT_P02|bib|fr|2026-10-30T05:50:38.566Z
+ve_a590da187c|en/grand-est/weyersheim/restaurant/auberge-du-pont-de-la-zorn|€€|CAT_P02|bib|fr|2026-10-30T05:50:39.885Z
+ve_a5adef5d5f|en/hauts-de-france/wierre-effroy/restaurant/la-ferme-du-vert|€€|CAT_P02|bib|fr|2026-10-30T05:50:41.205Z
+ve_a6069ae1c4|en/centre-val-de-loire/blois/restaurant/assa|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:42.545Z
+ve_a654b345f2|en/occitanie/bziers/restaurant/pica-pica|€€|CAT_P02|bib|fr|2026-10-30T05:50:43.898Z
+ve_a6861367dd|en/normandie/barneville-carteret/restaurant/le-restaurant-des-isles|€€|CAT_P02|bib|fr|2026-10-30T05:50:45.221Z
+ve_a6b5a0cda6|en/occitanie/perpignan/restaurant/manat|€€|CAT_P02|bib|fr|2026-10-30T05:50:46.554Z
+ve_a6eea17d93|en/grand-est/strasbourg/restaurant/au-crocodile|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:47.905Z
+ve_a71d3afafa|en/normandie/ouistreham/restaurant/la-table-d-hotes|€€|CAT_P02|bib|fr|2026-10-30T05:50:49.223Z
+ve_a74e9ee3a3|en/hauts-de-france/saint-omer/restaurant/bacove|€€€|CAT_P03|1 star|fr|2026-10-30T05:50:50.563Z
+ve_a7aa4a27b6|en/ile-de-france/paris/restaurant/datil|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:51.897Z
+ve_a7ae74fe66|en/ile-de-france/paris/restaurant/l-archeste|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:53.224Z
+ve_a7bc7bbf87|en/bourgogne-franche-comte/tournus/restaurant/aux-terrasses|€€€|CAT_P03|1 star|fr|2026-10-30T05:50:54.557Z
+ve_a7e2024015|en/ile-de-france/paris/restaurant/qui-plume-la-lune|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:55.920Z
+ve_a7f8b57db0|en/auvergne-rhone-alpes/clermont-ferrand/restaurant/il-visconti|€€|CAT_P02|bib|fr|2026-10-30T05:50:57.259Z
+ve_a80ec28e18|en/ile-de-france/paris/restaurant/jacques-faussat|€€€|CAT_P03|1 star|fr|2026-10-30T05:50:58.602Z
+ve_a8213a9418|en/grand-est/strasbourg/restaurant/de-ja|€€€€|CAT_P04|1 star|fr|2026-10-30T05:50:59.936Z
+ve_a86b721c0e|en/auvergne-rhone-alpes/montanges/restaurant/l-auberge-du-pont-des-pierres|€€|CAT_P02|bib|fr|2026-10-30T05:51:01.267Z
+ve_a8d9697131|en/auvergne-rhone-alpes/saint-martin-de-belleville/restaurant/rene-et-maxime-meilleur|€€€€|CAT_P04|2 star|fr|2026-10-30T05:51:02.607Z
+ve_a907c1aa12|en/provence-alpes-cote-dazur/nice/restaurant/epicentre-1218827|€€€|CAT_P03|1 star|fr|2026-10-30T05:51:05.223Z
+ve_a960a3181f|en/auvergne-rhone-alpes/le-coteau/restaurant/l-atelier-locavore|€€|CAT_P02|bib|fr|2026-10-30T05:51:06.545Z
+ve_a9f521f0e3|en/ile-de-france/ville-d-avray/restaurant/le-corot|€€€€|CAT_P04|2 star|fr|2026-10-30T05:51:07.883Z
+ve_aa3cd721a5|en/bourgogne-franche-comte/dijon/restaurant/spica|€€|CAT_P02|bib|fr|2026-10-30T05:51:09.220Z
+ve_aa67974b8b|en/provence-alpes-cote-dazur/frjus/restaurant/l-amandier|€€|CAT_P02|bib|fr|2026-10-30T05:51:10.541Z
+ve_aa7b4e7c78|en/centre-val-de-loire/sancerre/restaurant/la-pomme-d-or|€€€|CAT_P03|1 star|fr|2026-10-30T05:51:11.870Z
+ve_aa93720dd2|en/auvergne-rhone-alpes/lyon/restaurant/accentue|€€|CAT_P02|bib|fr|2026-10-30T05:51:13.250Z
+ve_aab4a0fb96|en/centre-val-de-loire/bracieux/restaurant/le-rendez-vous-des-gourmets|€€|CAT_P02|bib|fr|2026-10-30T05:51:14.587Z
+ve_aab59e886b|en/ile-de-france/paris/restaurant/automne|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:15.928Z
+ve_aad5e76b3e|en/nouvelle-aquitaine/saint-milion/restaurant/logis-de-la-cadene|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:17.276Z
+ve_ab0d143fef|en/occitanie/naucelle/restaurant/l-obelias|€€|CAT_P02|bib|fr|2026-10-30T05:51:18.583Z
+ve_ab4e53c1d2|en/bretagne/roscoff/restaurant/nori|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:19.907Z
+ve_abfc1294af|en/bourgogne-franche-comte/prenois/restaurant/auberge-de-la-charme|€€€|CAT_P03|1 star|fr|2026-10-30T05:51:21.253Z
+ve_ac62b39d7c|en/nouvelle-aquitaine/bordeaux/restaurant/le-pavillon-des-boulevards|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:22.587Z
+ve_ad2cf75d6d|en/ile-de-france/paris/restaurant/aldehyde|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:23.929Z
+ve_ad97da0145|en/pays-de-la-loire/bouchemaine_1570563/restaurant/lueurs|€€€|CAT_P03|1 star|fr|2026-10-30T05:51:25.259Z
+ve_ade26d34b5|en/ile-de-france/paris/restaurant/sushi-b514232|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:26.587Z
+ve_ae34100f94|en/provence-alpes-cote-dazur/menton/restaurant/l-orangerie-1219331|€€|CAT_P02|bib|fr|2026-10-30T05:51:27.930Z
+ve_af04d11e71|en/grand-est/la-wantzenau/restaurant/le-jardin-secret|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:29.254Z
+ve_af31ae2a89|en/ile-de-france/paris/restaurant/double-dragon|€€|CAT_P02|bib|fr|2026-10-30T05:51:30.603Z
+ve_af9265ac4c|en/centre-val-de-loire/le-louroux/restaurant/la-table-du-prieure|€€|CAT_P02|bib|fr|2026-10-30T05:51:31.941Z
+ve_b052a675b6|en/bourgogne-franche-comte/danjoutin/restaurant/le-pot-d-etain|€€€|CAT_P03|1 star|fr|2026-10-30T05:51:33.259Z
+ve_b07d24243b|en/grand-est/sierentz/restaurant/auberge-st-laurent|€€€|CAT_P03|1 star|fr|2026-10-30T05:51:34.580Z
+ve_b146e3f46a|en/occitanie/balma/restaurant/l-equilibre|€€|CAT_P02|bib|fr|2026-10-30T05:51:35.908Z
+ve_b1b75b05b2|en/bretagne/cancale/restaurant/breizh-cafe-cancale|€€|CAT_P02|bib|fr|2026-10-30T05:51:37.250Z
+ve_b20eb308d7|en/ile-de-france/paris/restaurant/solstice|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:38.585Z
+ve_b2691cae1e|en/bourgogne-franche-comte/le-villars/restaurant/l-auberge-des-gourmets|€€|CAT_P02|bib|fr|2026-10-30T05:51:39.931Z
+ve_b279522a5e|en/auvergne-rhone-alpes/machilly/restaurant/le-refuge-des-gourmets|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:41.252Z
+ve_b2c8a6b932|en/auvergne-rhone-alpes/boudes/restaurant/le-boudes-la-vigne|€€|CAT_P02|bib|fr|2026-10-30T05:51:42.565Z
+ve_b2d28b40f3|en/bourgogne-franche-comte/vault-de-lugny/restaurant/le-valucien-chateau-de-vault-de-lugny|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:43.912Z
+ve_b315d05d8f|en/pays-de-la-loire/les-sables-d-olonne/restaurant/l-abissiou|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:45.256Z
+ve_b3fbc1daa6|en/grand-est/pont-sainte-marie/restaurant/bistrot-dupont|€€|CAT_P02|bib|fr|2026-10-30T05:51:46.580Z
+ve_b4398b9cc3|en/hauts-de-france/calais/restaurant/histoire-ancienne|€€|CAT_P02|bib|fr|2026-10-30T05:51:47.908Z
+ve_b45598fed5|en/corse/olmeto/restaurant/la-verriere|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:49.228Z
+ve_b4a6a34762|en/grand-est/strasbourg/restaurant/chez-yvonne-s-burjerstuewel|€€|CAT_P02|bib|fr|2026-10-30T05:51:50.557Z
+ve_b4babd7276|en/provence-alpes-cote-dazur/la-colle-sur-loup/restaurant/alain-llorca|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:51.886Z
+ve_b4cee2dc61|en/grand-est/kaysersberg/restaurant/winstub-du-chambard|€€|CAT_P02|bib|fr|2026-10-30T05:51:53.216Z
+ve_b4d17e56d3|en/ile-de-france/paris/restaurant/le-pre-catelan|€€€€|CAT_P04|3 star|fr|2026-10-30T05:51:54.574Z
+ve_b4e1d36194|en/provence-alpes-cote-dazur/toulon/restaurant/le-saint-gabriel|€€|CAT_P02|bib|fr|2026-10-30T05:51:55.898Z
+ve_b53ae4e0f5|en/occitanie/gaillac/restaurant/vigne-en-foule|€€|CAT_P02|bib|fr|2026-10-30T05:51:57.224Z
+ve_b56c9cc152|en/auvergne-rhone-alpes/autrans/restaurant/palegrie-chez-l-henri|€€€|CAT_P03|1 star|fr|2026-10-30T05:51:58.542Z
+ve_b5e82c5a77|en/auvergne-rhone-alpes/malataverne/restaurant/le-colombier|€€€€|CAT_P04|1 star|fr|2026-10-30T05:51:59.884Z
+ve_b60189d14c|en/auvergne-rhone-alpes/uriage-les-bains/restaurant/maison-aribert|€€€€|CAT_P04|2 star|fr|2026-10-30T05:52:01.228Z
+ve_b6574b3362|en/grand-est/montcy-notre-dame/restaurant/l-auberge-du-laminak|€€|CAT_P02|bib|fr|2026-10-30T05:52:02.558Z
+ve_b6b0389606|en/provence-alpes-cote-dazur/bandol/restaurant/au-clair-de-la-vigne|€€|CAT_P02|bib|fr|2026-10-30T05:52:03.900Z
+ve_b6d6fb287f|en/bourgogne-franche-comte/auxerre/restaurant/le-sarment|€€|CAT_P02|bib|fr|2026-10-30T05:52:05.220Z
+ve_b6fd7ed39d|en/bretagne/saint-malo/restaurant/doma|€€|CAT_P02|bib|fr|2026-10-30T05:52:06.586Z
+ve_b7791eab98|en/provence-alpes-cote-dazur/antibes/restaurant/les-pecheurs|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:07.936Z
+ve_b7929c5c7e|en/bretagne/rennes/restaurant/bombance|€€|CAT_P02|bib|fr|2026-10-30T05:52:09.277Z
+ve_b79abf6ec2|en/bretagne/cancale/restaurant/la-table-breizh-cafe|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:10.610Z
+ve_b7b47d480d|en/bretagne/pleneuf-val-andre/restaurant/le-biniou|€€|CAT_P02|bib|fr|2026-10-30T05:52:11.944Z
+ve_b7ebe666a8|en/ile-de-france/paris/restaurant/fana|€€|CAT_P02|bib|fr|2026-10-30T05:52:13.277Z
+ve_b89d90b1b9|en/ile-de-france/paris/restaurant/shabour|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:14.625Z
+ve_b8be9bfe03|en/normandie/juvigny-sous-andaine/restaurant/au-bon-accueil3941|€€|CAT_P02|bib|fr|2026-10-30T05:52:15.952Z
+ve_b90037f9e1|en/nouvelle-aquitaine/la-roque-gageac/restaurant/la-belle-etoile|€€|CAT_P02|bib|fr|2026-10-30T05:52:17.273Z
+ve_b9288e59b5|en/provence-alpes-cote-dazur/vallauris/restaurant/les-dilettants|€€|CAT_P02|bib|fr|2026-10-30T05:52:18.619Z
+ve_b93b8941db|en/auvergne-rhone-alpes/jongieux/restaurant/les-morainieres|€€€€|CAT_P04|3 star|fr|2026-10-30T05:52:19.960Z
+ve_b9609849ac|en/nouvelle-aquitaine/moirax/restaurant/auberge-le-prieure|€€€|CAT_P03|1 star|fr|2026-10-30T05:52:21.290Z
+ve_b99cce429c|en/occitanie/toulouse/restaurant/acte-2-yannick-delpech|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:22.622Z
+ve_b9dbde448f|en/occitanie/saint-cyprien/restaurant/l-almandin|€€€|CAT_P03|1 star|fr|2026-10-30T05:52:23.953Z
+ve_ba198ac9b3|en/auvergne-rhone-alpes/neyrac-les-bains/restaurant/bistrot-brioude|€|CAT_P01|bib|fr|2026-10-30T05:52:25.283Z
+ve_ba3f2ba841|en/auvergne-rhone-alpes/valence/restaurant/epitheque|€€€|CAT_P03|1 star|fr|2026-10-30T05:52:26.612Z
+ve_ba565e3a5e|en/nouvelle-aquitaine/saint-denis-d-olron/restaurant/le-jour-du-poisson|€€|CAT_P02|bib|fr|2026-10-30T05:52:27.945Z
+ve_ba5fa6fd27|en/ile-de-france/paris/restaurant/abri-soba|€€|CAT_P02|bib|fr|2026-10-30T05:52:29.296Z
+ve_ba9acf7af5|en/provence-alpes-cote-dazur/saint-cannat/restaurant/le-mas-bottero|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:30.630Z
+ve_baeae630ab|en/ile-de-france/paris/restaurant/le-jules-verne|€€€€|CAT_P04|2 star|fr|2026-10-30T05:52:31.976Z
+ve_bb260dbec9|en/ile-de-france/paris/restaurant/nakatani|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:33.327Z
+ve_bbb2e26803|en/pays-de-la-loire/la-roche-sur-yon/restaurant/les-reflets|€€€|CAT_P03|1 star|fr|2026-10-30T05:52:34.657Z
+ve_bc5a4507f9|en/auvergne-rhone-alpes/annecy/restaurant/brasserie-brunet|€€|CAT_P02|bib|fr|2026-10-30T05:52:35.999Z
+ve_bc8a29a321|en/pays-de-la-loire/saint-joachim/restaurant/la-mare-aux-oiseaux|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:37.316Z
+ve_bc9741b0a7|en/provence-alpes-cote-dazur/le-cannet/restaurant/villa-archange|€€€€|CAT_P04|2 star|fr|2026-10-30T05:52:38.654Z
+ve_bcd1d68ae8|en/ile-de-france/paris/restaurant/l-oiseau-blanc|€€€€|CAT_P04|2 star|fr|2026-10-30T05:52:39.987Z
+ve_bd43aa404b|en/auvergne-rhone-alpes/lyon/restaurant/la-meuniere|€€|CAT_P02|bib|fr|2026-10-30T05:52:41.336Z
+ve_bde02da00e|en/hauts-de-france/etaples/restaurant/racines-1192568|€€|CAT_P02|bib|fr|2026-10-30T05:52:42.681Z
+ve_be3607ecc5|en/centre-val-de-loire/veuil/restaurant/auberge-st-fiacre|€€|CAT_P02|bib|fr|2026-10-30T05:52:44.004Z
+ve_be663c0406|en/bourgogne-franche-comte/dole/restaurant/grain-de-sel407331|€€|CAT_P02|bib|fr|2026-10-30T05:52:45.325Z
+ve_be960787a6|en/pays-de-la-loire/montreverd/restaurant/la-chabotterie|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:46.651Z
+ve_bf76d7e634|en/ile-de-france/paris/restaurant/origines-restaurant|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:49.288Z
+ve_bfcef785d1|en/auvergne-rhone-alpes/annecy/restaurant/racines-1200311|€€|CAT_P02|bib|fr|2026-10-30T05:52:50.652Z
+ve_c01f73b4c9|en/nouvelle-aquitaine/fr-pau/restaurant/jumo-co|€|CAT_P01|bib|fr|2026-10-30T05:52:52.003Z
+ve_c05dd372a7|en/bourgogne-franche-comte/dijon/restaurant/cave|€€|CAT_P02|bib|fr|2026-10-30T05:52:53.353Z
+ve_c09c6dfd4d|en/centre-val-de-loire/blois/restaurant/christophe-hay-fleur-de-loire|€€€€|CAT_P04|2 star|fr|2026-10-30T05:52:54.704Z
+ve_c0a013f8c2|en/provence-alpes-cote-dazur/marseille/restaurant/une-table-au-sud|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:56.050Z
+ve_c0ccaa867a|en/nouvelle-aquitaine/cognac/restaurant/notes|€€€|CAT_P03|1 star|fr|2026-10-30T05:52:57.432Z
+ve_c0d5e85291|en/grand-est/faulquemont/restaurant/toya|€€€€|CAT_P04|1 star|fr|2026-10-30T05:52:58.748Z
+ve_c1747183e5|en/normandie/blainville-sur-mer/restaurant/le-mascaret|€€€|CAT_P03|1 star|fr|2026-10-30T05:53:00.089Z
+ve_c199298031|en/ile-de-france/montrouge/restaurant/farouche|€€|CAT_P02|bib|fr|2026-10-30T05:53:01.508Z
+ve_c1ed640f1b|en/provence-alpes-cote-dazur/snas/restaurant/le-bon-temps|€€|CAT_P02|bib|fr|2026-10-30T05:53:02.846Z
+ve_c2075743bd|en/ile-de-france/yerres/restaurant/bird|€€|CAT_P02|bib|fr|2026-10-30T05:53:04.166Z
+ve_c23ff18a0e|en/ile-de-france/paris/restaurant/zostera|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:05.510Z
+ve_c240b986ce|en/auvergne-rhone-alpes/courchevel/restaurant/l-altitude|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:06.854Z
+ve_c240ec7c2c|en/ile-de-france/paris/restaurant/rosemarie|€€|CAT_P02|bib|fr|2026-10-30T05:53:08.191Z
+ve_c29125ac38|en/bretagne/guer/restaurant/maison-tiegezh|€€€|CAT_P03|1 star|fr|2026-10-30T05:53:09.513Z
+ve_c2aeca7793|en/ile-de-france/paris/restaurant/plenitude-cheval-blanc-paris|€€€€|CAT_P04|3 star|fr|2026-10-30T05:53:10.852Z
+ve_c34dcc76fb|en/auvergne-rhone-alpes/coligny/restaurant/au-petit-relais|€€|CAT_P02|bib|fr|2026-10-30T05:53:12.175Z
+ve_c3e44dce6d|en/pays-de-la-loire/brem-sur-mer/restaurant/les-genets|€€€|CAT_P03|1 star|fr|2026-10-30T05:53:13.493Z
+ve_c4006f6dd5|en/hauts-de-france/trosly-loire_1550618/restaurant/auberge-de-la-grive|€€€|CAT_P03|1 star|fr|2026-10-30T05:53:14.816Z
+ve_c41cfe5100|en/auvergne-rhone-alpes/vaudevant/restaurant/la-recre|€€|CAT_P02|bib|fr|2026-10-30T05:53:16.131Z
+ve_c420808a1b|en/auvergne-rhone-alpes/ouches/restaurant/troisgros-le-bois-sans-feuilles|€€€€|CAT_P04|3 star|fr|2026-10-30T05:53:17.460Z
+ve_c4c9552719|en/normandie/cherbourg-en-cotentin/restaurant/le-pily|€€€|CAT_P03|1 star|fr|2026-10-30T05:53:18.783Z
+ve_c4d2d655db|en/occitanie/lavalette/restaurant/auberge-de-la-forge|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:20.099Z
+ve_c4d8e44e69|en/ile-de-france/paris/restaurant/anona|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:22.759Z
+ve_c57f596527|en/bourgogne-franche-comte/chagny/restaurant/maison-lameloise|€€€€|CAT_P04|3 star|fr|2026-10-30T05:53:24.098Z
+ve_c5819a967f|en/pays-de-la-loire/nantes/restaurant/les-cadets|€€€|CAT_P03|1 star|fr|2026-10-30T05:53:25.439Z
+ve_c5a935d49e|en/provence-alpes-cote-dazur/nice/restaurant/chez-davia|€€|CAT_P02|bib|fr|2026-10-30T05:53:26.779Z
+ve_c5c9e9cfed|en/hauts-de-france/sailly-sur-la-lys_1550057/restaurant/la-conciergerie|€€|CAT_P02|bib|fr|2026-10-30T05:53:28.107Z
+ve_c684606a81|en/ile-de-france/paris/restaurant/clamato|€€|CAT_P02|bib|fr|2026-10-30T05:53:29.458Z
+ve_c6a377cdbb|en/ile-de-france/paris/restaurant/agape|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:30.799Z
+ve_c6f76408e1|en/centre-val-de-loire/sach/restaurant/auberge-du-xiie-siecle|€€€|CAT_P03|1 star|fr|2026-10-30T05:53:32.117Z
+ve_c6feb7769a|en/nouvelle-aquitaine/altillac/restaurant/cueillette|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:33.434Z
+ve_c814632cb2|en/auvergne-rhone-alpes/samons/restaurant/le-lodge|€€|CAT_P02|bib|fr|2026-10-30T05:53:34.763Z
+ve_c87979e078|en/bretagne/rennes/restaurant/estime|€€|CAT_P02|bib|fr|2026-10-30T05:53:36.122Z
+ve_c89c116860|en/provence-alpes-cote-dazur/aix-en-provence/restaurant/la-table-de-pierre-reboul|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:37.466Z
+ve_c8f1322fa5|en/occitanie/cret/restaurant/fario-1215907|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:38.802Z
+ve_c9006ee0d1|en/nouvelle-aquitaine/bordeaux/restaurant/kedem|€€|CAT_P02|bib|fr|2026-10-30T05:53:40.133Z
+ve_c9111fcc21|en/hauts-de-france/marcq-en-barul/restaurant/repu|€€|CAT_P02|bib|fr|2026-10-30T05:53:41.462Z
+ve_c9e79b8faf|en/bourgogne-franche-comte/roye/restaurant/le-saisonnier|€€|CAT_P02|bib|fr|2026-10-30T05:53:42.780Z
+ve_cac82bd0ef|en/occitanie/toulouse/restaurant/cartouches|€€|CAT_P02|bib|fr|2026-10-30T05:53:44.154Z
+ve_caeccf4285|en/provence-alpes-cote-dazur/laragne-montglin/restaurant/l-araignee-gourmande|€€|CAT_P02|bib|fr|2026-10-30T05:53:45.514Z
+ve_cb112fa3c8|en/grand-est/wlfling-ls-sarreguemines/restaurant/restaurant-dimofski|€€|CAT_P02|bib|fr|2026-10-30T05:53:46.837Z
+ve_cb6c037c7c|en/bretagne/vannes/restaurant/la-tete-en-l-air|€€€|CAT_P03|1 star|fr|2026-10-30T05:53:48.179Z
+ve_cbb2a08129|en/occitanie/montpellier/restaurant/l-artichaut|€€|CAT_P02|bib|fr|2026-10-30T05:53:49.509Z
+ve_cc226ff607|en/normandie/saint-tienne-du-vauvray/restaurant/la-ferme-de-la-haute-cremonville|€€|CAT_P02|bib|fr|2026-10-30T05:53:50.830Z
+ve_cc24331b57|en/grand-est/strasbourg/restaurant/1741|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:52.163Z
+ve_cc9fecdc57|en/grand-est/champillon/restaurant/le-royal|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:53.478Z
+ve_ccd562d31a|en/provence-alpes-cote-dazur/saint-chamas/restaurant/le-rabelais|€€|CAT_P02|bib|fr|2026-10-30T05:53:54.810Z
+ve_ccea7da354|en/nouvelle-aquitaine/sainte-foy-la-grande/restaurant/cote-bastide|€|CAT_P01|bib|fr|2026-10-30T05:53:56.133Z
+ve_ccfa76f523|en/grand-est/reims/restaurant/racine|€€€€|CAT_P04|2 star|fr|2026-10-30T05:53:57.462Z
+ve_cd0a71512b|en/hauts-de-france/touy/restaurant/l-oree-de-la-foret|€€€€|CAT_P04|1 star|fr|2026-10-30T05:53:58.778Z
+ve_cdab07397d|en/auvergne-rhone-alpes/saint-germain/restaurant/auberge-de-montfleury|€€€|CAT_P03|1 star|fr|2026-10-30T05:54:00.097Z
+ve_cdbc14778f|en/grand-est/ingersheim/restaurant/la-taverne-alsacienne|€€|CAT_P02|bib|fr|2026-10-30T05:54:01.436Z
+ve_ce2c75110e|en/provence-alpes-cote-dazur/chteauneuf-de-gadagne/restaurant/la-maison-de-celou|€€|CAT_P02|bib|fr|2026-10-30T05:54:02.754Z
+ve_ce3f3c9853|en/grand-est/reims/restaurant/le-parc-les-crayeres|€€€€|CAT_P04|2 star|fr|2026-10-30T05:54:04.101Z
+ve_ce8aa0328e|en/provence-alpes-cote-dazur/antibes/restaurant/louroc|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:05.437Z
+ve_ceae013af8|en/bretagne/brest/restaurant/l-embrun|€€€|CAT_P03|1 star|fr|2026-10-30T05:54:06.769Z
+ve_ceafe004e5|en/auvergne-rhone-alpes/annecy/restaurant/le-denti|€€|CAT_P02|bib|fr|2026-10-30T05:54:08.105Z
+ve_cebd41ad1a|en/centre-val-de-loire/azay-le-rideau/restaurant/auberge-pom-poire|€€€|CAT_P03|1 star|fr|2026-10-30T05:54:09.445Z
+ve_ceec9ba426|en/nouvelle-aquitaine/bidart/restaurant/les-freres-ibarboure|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:10.787Z
+ve_cfa23d3c1d|en/nouvelle-aquitaine/fr-pau/restaurant/omnivore|€€|CAT_P02|bib|fr|2026-10-30T05:54:12.127Z
+ve_cfc4d4dff7|en/ile-de-france/paris/restaurant/septime|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:13.484Z
+ve_d0847daad2|en/nouvelle-aquitaine/biarritz/restaurant/leonie|€€|CAT_P02|bib|fr|2026-10-30T05:54:14.815Z
+ve_d0e893cfa9|en/bourgogne-franche-comte/arc-et-senans_1526004/restaurant/vertfeuille|€€|CAT_P02|bib|fr|2026-10-30T05:54:16.136Z
+ve_d18e343e8b|en/pays-de-la-loire/nantes/restaurant/freia|€€€|CAT_P03|1 star|fr|2026-10-30T05:54:17.473Z
+ve_d1b1219263|en/corse/sartene_1508622/restaurant/la-table-de-la-ferme|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:18.794Z
+ve_d1b2803295|en/normandie/saint-l/restaurant/intuition|€€€|CAT_P03|1 star|fr|2026-10-30T05:54:20.127Z
+ve_d1cccaafdf|en/provence-alpes-cote-dazur/la-croix-valmer/restaurant/la-palmeraie|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:21.470Z
+ve_d20477fc5d|en/provence-alpes-cote-dazur/l-isle-sur-la-sorgue/restaurant/le-vivier3857|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:22.813Z
+ve_d2053c11d9|en/centre-val-de-loire/veuzain-sur-loire_7770371/restaurant/la-croix-blanche-9435|€€|CAT_P02|bib|fr|2026-10-30T05:54:24.145Z
+ve_d2e2276a25|en/auvergne-rhone-alpes/annecy/restaurant/anto|€€€|CAT_P03|bib|fr|2026-10-30T05:54:25.487Z
+ve_d3f30d16fc|en/nouvelle-aquitaine/bordeaux/restaurant/amicis|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:26.836Z
+ve_d406c844d7|en/bretagne/fr-port-louis/restaurant/avel-vor|€€€|CAT_P03|1 star|fr|2026-10-30T05:54:28.169Z
+ve_d4537a0193|en/occitanie/lacave/restaurant/chateau-de-la-treyne|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:29.497Z
+ve_d45dea00da|en/nouvelle-aquitaine/prigueux/restaurant/cafe-louise|€€|CAT_P02|bib|fr|2026-10-30T05:54:30.818Z
+ve_d472175bc2|en/occitanie/bziers/restaurant/calice|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:32.162Z
+ve_d491fe827c|en/ile-de-france/pontoise/restaurant/l-or-q-idee|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:33.483Z
+ve_d49f07447a|en/ile-de-france/paris/restaurant/114-faubourg|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:34.848Z
+ve_d4a55fa97b|en/auvergne-rhone-alpes/annecy/restaurant/cozna|€€|CAT_P02|bib|fr|2026-10-30T05:54:36.200Z
+ve_d55f10a67f|en/ile-de-france/paris/restaurant/le-faham|€€€|CAT_P03|1 star|fr|2026-10-30T05:54:37.526Z
+ve_d5d8dad3bb|en/auvergne-rhone-alpes/tournemire/restaurant/la-petite-grange|€€|CAT_P02|bib|fr|2026-10-30T05:54:38.844Z
+ve_d61dd48136|en/provence-alpes-cote-dazur/aix-en-provence/restaurant/le-art-chateau-de-la-gaude|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:40.196Z
+ve_d6372fa061|en/bretagne/saint-av/restaurant/le-pressoir|€€€|CAT_P03|1 star|fr|2026-10-30T05:54:41.525Z
+ve_d688622905|en/auvergne-rhone-alpes/lyon/restaurant/le-cochon-qui-boit|€€|CAT_P02|bib|fr|2026-10-30T05:54:42.859Z
+ve_d6a5b3bf3b|en/grand-est/sierentz/restaurant/winstub-a-cote|€€|CAT_P02|bib|fr|2026-10-30T05:54:44.182Z
+ve_d6cfed208f|en/bourgogne-franche-comte/chassy_1527287/restaurant/erre|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:45.492Z
+ve_d6d6aa4c8d|en/occitanie/nimes/restaurant/duende|€€€€|CAT_P04|2 star|fr|2026-10-30T05:54:46.838Z
+ve_d6eb81ebac|en/ile-de-france/paris/restaurant/prevelle|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:48.193Z
+ve_d715e3118a|en/bourgogne-franche-comte/saint-martin-du-tertre/restaurant/le-martin-bel-air|€€|CAT_P02|bib|fr|2026-10-30T05:54:49.525Z
+ve_d846ebd663|en/corse/cuttoli/restaurant/u-licettu|€€|CAT_P02|bib|fr|2026-10-30T05:54:50.838Z
+ve_d84b6d7793|en/auvergne-rhone-alpes/poncin/restaurant/aintimiste|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:52.164Z
+ve_d859b9a386|en/provence-alpes-cote-dazur/cucuron/restaurant/la-petite-maison-de-cucuron|€€€|CAT_P03|1 star|fr|2026-10-30T05:54:53.495Z
+ve_d89d0b6d74|en/provence-alpes-cote-dazur/bonnieux/restaurant/ju-maison-de-cuisine|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:54.827Z
+ve_d8c121d02f|en/auvergne-rhone-alpes/orcines/restaurant/auberge-de-la-baraque|€€|CAT_P02|bib|fr|2026-10-30T05:54:56.166Z
+ve_d8f2845af8|en/hauts-de-france/bry_1545291/restaurant/le-camelia-1242759|€€|CAT_P02|1 star|fr|2026-10-30T05:54:57.493Z
+ve_d9adcba13c|en/provence-alpes-cote-dazur/flassans-sur-issole_1505557/restaurant/chez-jeannette|€€€€|CAT_P04|1 star|fr|2026-10-30T05:54:58.809Z
+ve_d9fbad3d06|en/nouvelle-aquitaine/irissarry/restaurant/art-zain|€€|CAT_P02|bib|fr|2026-10-30T05:55:00.172Z
+ve_da06010097|en/pays-de-la-loire/nantes/restaurant/la-mandale|€|CAT_P01|bib|fr|2026-10-30T05:55:01.502Z
+ve_da2f1e3a16|en/nouvelle-aquitaine/saint-andr-de-cubzac/restaurant/la-table-d-inomoto|€€|CAT_P02|bib|fr|2026-10-30T05:55:02.818Z
+ve_da7ac0e02c|en/auvergne-rhone-alpes/saint-galmier/restaurant/la-source|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:04.140Z
+ve_da85740849|en/nouvelle-aquitaine/bommes/restaurant/lalique|€€€€|CAT_P04|2 star|fr|2026-10-30T05:55:05.466Z
+ve_da96217030|en/auvergne-rhone-alpes/chaudes-aigues/restaurant/serge-vieira|€€€€|CAT_P04|2 star|fr|2026-10-30T05:55:06.798Z
+ve_dae238a8e7|en/provence-alpes-cote-dazur/thoule-sur-mer/restaurant/l-or-bleu|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:08.139Z
+ve_db02d4dcc5|en/centre-val-de-loire/chteauroux/restaurant/jeux-2-gouts|€€|CAT_P02|bib|fr|2026-10-30T05:55:09.461Z
+ve_db5d4bd3f0|en/ile-de-france/versailles/restaurant/gordon-ramsay-au-trianon|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:10.808Z
+ve_db661b5dd8|en/ile-de-france/paris/restaurant/fief|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:12.153Z
+ve_dc084d725c|en/nouvelle-aquitaine/trmolat/restaurant/le-vieux-logis|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:13.476Z
+ve_dc6781646e|en/auvergne-rhone-alpes/pouilly-sous-charlieu/restaurant/restaurant-de-la-loire|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:14.799Z
+ve_dc737d9ead|en/ile-de-france/paris/restaurant/le-caillebotte|€€|CAT_P02|bib|fr|2026-10-30T05:55:16.130Z
+ve_dc7ea96ddc|en/centre-val-de-loire/vendme/restaurant/le-malu|€€|CAT_P02|bib|fr|2026-10-30T05:55:17.463Z
+ve_dcc133522c|en/auvergne-rhone-alpes/grenoble/restaurant/tohu-bohu|€€|CAT_P02|bib|fr|2026-10-30T05:55:18.795Z
+ve_dcc83ccec2|en/auvergne-rhone-alpes/vienne/restaurant/la-pyramide-maison-henriroux|€€€€|CAT_P04|2 star|fr|2026-10-30T05:55:20.114Z
+ve_dcd8096e99|en/occitanie/orsan/restaurant/c-la-vie|€€|CAT_P02|bib|fr|2026-10-30T05:55:21.436Z
+ve_dd0d470b28|en/bourgogne-franche-comte/dijon/restaurant/l-evidence-1192598|€€|CAT_P02|bib|fr|2026-10-30T05:55:22.775Z
+ve_dd3d0ebbe8|en/ile-de-france/paris/restaurant/heritages|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:24.154Z
+ve_dd801124be|en/bretagne/quedillac_1568933/restaurant/le-relais-de-la-rance|€€|CAT_P02|bib|fr|2026-10-30T05:55:25.486Z
+ve_ddacc5addd|en/bretagne/quimper/restaurant/allium|€€€|CAT_P03|1 star|fr|2026-10-30T05:55:26.815Z
+ve_ddfc90d89f|en/ile-de-france/paris/restaurant/aux-plumes|€€|CAT_P02|bib|fr|2026-10-30T05:55:29.445Z
+ve_dec741f3ba|en/occitanie/pujaudran/restaurant/le-puits-st-jacques|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:30.760Z
+ve_dfdfc1808c|en/auvergne-rhone-alpes/uriage-les-bains/restaurant/cafe-a|€€|CAT_P02|bib|fr|2026-10-30T05:55:32.105Z
+ve_e02e3a30a6|en/ile-de-france/paris/restaurant/ortensia-1202241|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:33.445Z
+ve_e116620c40|en/provence-alpes-cote-dazur/thoule-sur-mer/restaurant/mareluna|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:34.791Z
+ve_e1295b0932|en/normandie/coutances/restaurant/kalamansi|€€|CAT_P02|bib|fr|2026-10-30T05:55:36.102Z
+ve_e156e96564|en/grand-est/mulhouse/restaurant/il-cortile40020|€€€|CAT_P03|1 star|fr|2026-10-30T05:55:37.426Z
+ve_e162d68c0c|en/bourgogne-franche-comte/sens/restaurant/la-madeleine|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:38.757Z
+ve_e2455e455b|en/occitanie/toulouse/restaurant/sept-1207676|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:40.080Z
+ve_e2e751c581|en/auvergne-rhone-alpes/tournemire/restaurant/le-puy-tilleul|€€€|CAT_P03|1 star|fr|2026-10-30T05:55:41.399Z
+ve_e376983102|en/ile-de-france/paris/restaurant/auguste|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:42.741Z
+ve_e387043c8f|en/grand-est/kaysersberg/restaurant/la-vieille-forge3949|€€|CAT_P02|bib|fr|2026-10-30T05:55:44.081Z
+ve_e3d1c59155|en/provence-alpes-cote-dazur/ze/restaurant/la-chevre-d-or|€€€€|CAT_P04|2 star|fr|2026-10-30T05:55:45.429Z
+ve_e4010e1996|en/bourgogne-franche-comte/santenay/restaurant/l-ouillette|€€|CAT_P02|bib|fr|2026-10-30T05:55:46.775Z
+ve_e4f8e8ad7d|en/provence-alpes-cote-dazur/roubion/restaurant/auberge-quintessence|€€€|CAT_P03|1 star|fr|2026-10-30T05:55:48.107Z
+ve_e567d7ae7a|en/bretagne/hillion_1564248/restaurant/le-bon-abri|€€|CAT_P02|bib|fr|2026-10-30T05:55:49.422Z
+ve_e56a83de1c|en/auvergne-rhone-alpes/annecy/restaurant/la-haut-1212434|€€|CAT_P02|bib|fr|2026-10-30T05:55:50.755Z
+ve_e574aeb7fd|en/nouvelle-aquitaine/monestier/restaurant/les-fresques|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:52.078Z
+ve_e5c791b774|en/occitanie/perpignan/restaurant/le-garriane|€€|CAT_P02|bib|fr|2026-10-30T05:55:53.405Z
+ve_e5f3ad574c|en/grand-est/metz/restaurant/timilia|€€€|CAT_P03|1 star|fr|2026-10-30T05:55:54.731Z
+ve_e68a10fa6a|en/ile-de-france/la-garenne-colombes/restaurant/le-saint-joseph|€€|CAT_P02|bib|fr|2026-10-30T05:55:56.077Z
+ve_e75d63b3fb|en/centre-val-de-loire/amboise/restaurant/les-arpents|€€|CAT_P02|bib|fr|2026-10-30T05:55:57.409Z
+ve_e76ae24458|en/bretagne/rennes/restaurant/ima|€€€€|CAT_P04|1 star|fr|2026-10-30T05:55:58.752Z
+ve_e7707fd2c5|en/corse/santa-reparata-di-balagna_1508608/restaurant/l-aghjalle|€€|CAT_P02|bib|fr|2026-10-30T05:56:00.079Z
+ve_e7a099765d|en/normandie/auzouville-sur-saane/restaurant/auberge-de-la-mere-duval|€€|CAT_P02|bib|fr|2026-10-30T05:56:01.387Z
+ve_e83ea265c3|en/auvergne-rhone-alpes/lyon/restaurant/le-kitchen|€€|CAT_P02|bib|fr|2026-10-30T05:56:02.715Z
+ve_e858660b34|en/nouvelle-aquitaine/tulle/restaurant/le-bouche-a-oreille490710|€€|CAT_P02|bib|fr|2026-10-30T05:56:04.038Z
+ve_e862fd4e4f|en/occitanie/lectoure/restaurant/racinette|€€|CAT_P02|bib|fr|2026-10-30T05:56:05.350Z
+ve_e9e0dfba11|en/auvergne-rhone-alpes/saint-tienne/restaurant/la-table-des-matrus|€€|CAT_P02|bib|fr|2026-10-30T05:56:06.692Z
+ve_ea0ac1f83a|en/bretagne/saint-malo/restaurant/le-comptoir-breizh-cafe|€€|CAT_P02|bib|fr|2026-10-30T05:56:08.028Z
+ve_ea4e42a114|en/provence-alpes-cote-dazur/nice/restaurant/l-alchimie|€€|CAT_P02|bib|fr|2026-10-30T05:56:09.367Z
+ve_ea838a498e|en/ile-de-france/paris/restaurant/le-gabriel476630|€€€€|CAT_P04|3 star|fr|2026-10-30T05:56:10.710Z
+ve_eb0dbfc986|en/auvergne-rhone-alpes/val-thorens/restaurant/les-explorateurs|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:12.051Z
+ve_ebba65aabe|en/normandie/la-haye-du-puits_1557360/restaurant/le-petit-nor-cat|€€|CAT_P02|bib|fr|2026-10-30T05:56:13.381Z
+ve_ebd63723cc|en/occitanie/toulouse/restaurant/michel-sarran|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:14.716Z
+ve_ec51bda29b|en/nouvelle-aquitaine/les-eyzies-de-tayac/restaurant/le-1862|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:16.048Z
+ve_ed34a0062a|en/ile-de-france/paris/restaurant/marsan-par-helene-darroze|€€€€|CAT_P04|2 star|fr|2026-10-30T05:56:17.400Z
+ve_ede8b18173|en/nouvelle-aquitaine/saint-pierre-d-olron/restaurant/sillage|€€|CAT_P02|bib|fr|2026-10-30T05:56:18.725Z
+ve_ee898a4ee3|en/provence-alpes-cote-dazur/juan-les-pins/restaurant/la-passagere|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:20.080Z
+ve_eec65a8b6e|en/provence-alpes-cote-dazur/chteau-arnoux/restaurant/la-bonne-etape|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:21.396Z
+ve_eeded0c3ef|en/ile-de-france/paris/restaurant/kei|€€€€|CAT_P04|3 star|fr|2026-10-30T05:56:22.742Z
+ve_ef25cbc6cd|en/bourgogne-franche-comte/dijon/restaurant/cibo|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:24.089Z
+ve_ef3e449450|en/auvergne-rhone-alpes/saint-alban-de-roche/restaurant/lo-fieu|€€|CAT_P02|bib|fr|2026-10-30T05:56:25.471Z
+ve_ef5a22d3be|en/nouvelle-aquitaine/saint-leon-sur-vezere/restaurant/le-petit-leon|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:26.792Z
+ve_efec1e6627|en/occitanie/fontjoncouse/restaurant/auberge-du-vieux-puits|€€€€|CAT_P04|3 star|fr|2026-10-30T05:56:28.134Z
+ve_f01fbdebdf|en/ile-de-france/paris/restaurant/le-violon-d-ingres5989|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:29.482Z
+ve_f040942edc|en/occitanie/albi/restaurant/l-epicurien66531|€€|CAT_P02|bib|fr|2026-10-30T05:56:30.799Z
+ve_f042d8773f|en/nouvelle-aquitaine/martillac/restaurant/la-grand-vigne|€€€€|CAT_P04|2 star|fr|2026-10-30T05:56:32.133Z
+ve_f04dc487c2|en/nouvelle-aquitaine/la-teste-de-buch/restaurant/l-aillet|€€|CAT_P02|bib|fr|2026-10-30T05:56:33.458Z
+ve_f0f985e5c8|en/auvergne-rhone-alpes/saint-bonnet-le-froid/restaurant/restaurant-marcon|€€€€|CAT_P04|3 star|fr|2026-10-30T05:56:34.798Z
+ve_f206c37f46|en/auvergne-rhone-alpes/megve/restaurant/breizh-cafe-megeve|€€|CAT_P02|bib|fr|2026-10-30T05:56:36.146Z
+ve_f209fd7fd3|en/auvergne-rhone-alpes/lyon/restaurant/veronatuti|€€|CAT_P02|bib|fr|2026-10-30T05:56:37.486Z
+ve_f2125e5900|en/normandie/cabourg/restaurant/symbiose-1211835|€€€|CAT_P03|1 star|fr|2026-10-30T05:56:38.806Z
+ve_f23ad7efa1|en/nouvelle-aquitaine/sauternes/restaurant/la-chapelle-de-guiraud|€|CAT_P01|bib|fr|2026-10-30T05:56:40.141Z
+ve_f259061491|en/provence-alpes-cote-dazur/brianon/restaurant/au-plaisir-ambre|€€|CAT_P02|bib|fr|2026-10-30T05:56:41.469Z
+ve_f27e66ce3d|en/ile-de-france/paris/restaurant/armani-ristorante|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:42.816Z
+ve_f2b568ec70|en/normandie/rives-en-seine_7770403/restaurant/g-a-au-manoir-de-retival|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:44.155Z
+ve_f3183e93d3|en/normandie/bayeux/restaurant/l-alcove|€€|CAT_P02|bib|fr|2026-10-30T05:56:45.476Z
+ve_f375f880fc|en/grand-est/strasbourg/restaurant/les-funambules|€€€|CAT_P03|1 star|fr|2026-10-30T05:56:46.825Z
+ve_f3b9b7ad6f|en/occitanie/perpignan/restaurant/lazare-escarguel|€€|CAT_P02|bib|fr|2026-10-30T05:56:48.162Z
+ve_f4013309eb|en/auvergne-rhone-alpes/lyon/restaurant/rustique|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:49.489Z
+ve_f449b168e6|en/ile-de-france/villeneuve-le-comte_1553696/restaurant/la-vieille-auberge-1206650|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:50.835Z
+ve_f4852dc1e4|en/nouvelle-aquitaine/bar_1473878/restaurant/l-epicurieux-1217336|€€|CAT_P02|bib|fr|2026-10-30T05:56:52.155Z
+ve_f49862e401|en/auvergne-rhone-alpes/cully/restaurant/saisons4469|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:53.498Z
+ve_f58de326b8|en/occitanie/leucate/restaurant/le-grand-cap|€€€|CAT_P03|1 star|fr|2026-10-30T05:56:54.822Z
+ve_f5b8a05588|en/occitanie/calvisson_1500992/restaurant/monique-1213895|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:56.148Z
+ve_f6015d7ea0|en/nouvelle-aquitaine/agen/restaurant/la-table-de-michel-dussau|€€|CAT_P02|bib|fr|2026-10-30T05:56:57.452Z
+ve_f667ce2a30|en/occitanie/nimes/restaurant/skab|€€€€|CAT_P04|1 star|fr|2026-10-30T05:56:58.786Z
+ve_f6fce4aa8d|en/grand-est/barr/restaurant/enfin|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:00.156Z
+ve_f71fc8da27|en/ile-de-france/paris/restaurant/relais-louis-xiii|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:01.502Z
+ve_f74a315a56|en/nouvelle-aquitaine/ainhoa/restaurant/ithurria|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:02.832Z
+ve_f7569cf3a6|en/provence-alpes-cote-dazur/marseille/restaurant/prosper-1241891|€€|CAT_P02|bib|fr|2026-10-30T05:57:04.163Z
+ve_f75e18c4b2|en/auvergne-rhone-alpes/lyon/restaurant/au-14-fevrier281900|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:05.503Z
+ve_f76faf0b7a|en/bretagne/nevez/restaurant/ar-men-du|€€€|CAT_P03|1 star|fr|2026-10-30T05:57:06.821Z
+ve_f820b56723|en/auvergne-rhone-alpes/valence/restaurant/la-cachette|€€€|CAT_P03|1 star|fr|2026-10-30T05:57:08.167Z
+ve_f8977eb5ab|en/grand-est/rosenau/restaurant/au-lion-d-or-chez-theo|€€|CAT_P02|bib|fr|2026-10-30T05:57:09.503Z
+ve_f92edb295e|en/provence-alpes-cote-dazur/arles/restaurant/la-chassagnette|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:10.825Z
+ve_f9457a50a2|en/ile-de-france/paris/restaurant/lasserre|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:12.184Z
+ve_f952760b96|en/nouvelle-aquitaine/bordeaux/restaurant/le-cent-33|€€€|CAT_P03|1 star|fr|2026-10-30T05:57:13.542Z
+ve_f95e4099ce|en/auvergne-rhone-alpes/lyon/restaurant/le-zeste-gourmand|€€|CAT_P02|bib|fr|2026-10-30T05:57:14.881Z
+ve_f986c56924|en/ile-de-france/montreuil-ile-de-france/restaurant/villa9trois|€€€|CAT_P03|1 star|fr|2026-10-30T05:57:16.231Z
+ve_f993a07185|en/auvergne-rhone-alpes/saint-didier-au-mont-d-or_1515212/restaurant/l-eclat-de-pierre|€€|CAT_P02|bib|fr|2026-10-30T05:57:17.563Z
+ve_f9bd7b2a36|en/bourgogne-franche-comte/montcenis/restaurant/le-montcenis|€€|CAT_P02|bib|fr|2026-10-30T05:57:18.890Z
+ve_f9de9ef6b7|en/auvergne-rhone-alpes/bourg-en-bresse/restaurant/agave-1218272|€€|CAT_P02|bib|fr|2026-10-30T05:57:20.216Z
+ve_f9e34945bd|en/grand-est/strasbourg/restaurant/umami202668|€€€|CAT_P03|1 star|fr|2026-10-30T05:57:21.544Z
+ve_fa54992eff|en/provence-alpes-cote-dazur/gmenos/restaurant/la-magdeleine-mathias-dandine|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:22.872Z
+ve_fa63448525|en/occitanie/saint-lieux-ls-lavaur/restaurant/le-colvert63526|€€|CAT_P02|bib|fr|2026-10-30T05:57:24.189Z
+ve_fa7fd51058|en/provence-alpes-cote-dazur/bonnieux/restaurant/la-bastide-10332|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:25.570Z
+ve_fa9fc57d06|en/normandie/rouen/restaurant/paul-arthur|€€|CAT_P02|bib|fr|2026-10-30T05:57:26.910Z
+ve_fb0c255da6|en/bretagne/plouider/restaurant/la-table-de-la-butte|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:28.241Z
+ve_fb52bea09e|en/ile-de-france/paris/restaurant/imperial-treasure1186891|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:29.585Z
+ve_fb7c6d6400|en/provence-alpes-cote-dazur/le-castellet/restaurant/la-table-du-castellet|€€€€|CAT_P04|3 star|fr|2026-10-30T05:57:30.919Z
+ve_fbce518979|en/nouvelle-aquitaine/arcangues/restaurant/moulin-d-alotz|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:32.255Z
+ve_fc270204bd|en/auvergne-rhone-alpes/lyon/restaurant/m-restaurant|€€|CAT_P02|bib|fr|2026-10-30T05:57:33.598Z
+ve_fc320835af|en/provence-alpes-cote-dazur/joucas/restaurant/la-table-de-xavier-mathieu|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:34.928Z
+ve_fc6a54d39a|en/bourgogne-franche-comte/tournus/restaurant/le-bouchon-bourguignon|€€|CAT_P02|bib|fr|2026-10-30T05:57:36.251Z
+ve_fcc0d286e3|en/provence-alpes-cote-dazur/marseille/restaurant/le-petit-nice|€€€€|CAT_P04|3 star|fr|2026-10-30T05:57:37.611Z
+ve_fd036675b1|en/auvergne-rhone-alpes/le-puy-en-velay/restaurant/l-emotion|€€|CAT_P02|bib|fr|2026-10-30T05:57:38.922Z
+ve_fd4687ea75|en/ile-de-france/paris/restaurant/oxte|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:40.288Z
+ve_fd5ebb73d6|en/ile-de-france/paris/restaurant/sola|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:41.624Z
+ve_fd6cd0318d|en/bretagne/baden/restaurant/le-gavrinis|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:42.941Z
+ve_fd9d8fecae|en/centre-val-de-loire/boismorand/restaurant/auberge-des-templiers|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:44.257Z
+ve_fdb27e8cae|en/auvergne-rhone-alpes/chazelles-sur-lyon/restaurant/chateau-blanchard|€€€€|CAT_P04|1 star|fr|2026-10-30T05:57:45.603Z
+ve_fe36d30da6|en/ile-de-france/paris/restaurant/baca-v|€€|CAT_P02|bib|fr|2026-10-30T05:57:46.978Z
+ve_feac5d24f0|en/grand-est/colmar/restaurant/jy-s|€€€€|CAT_P04|2 star|fr|2026-10-30T05:57:48.302Z
