@@ -1,0 +1,9 @@
+ve_448903808c|23350|us/en/campania/telese/restaurant/la-locanda-del-borgo|us/en/campania/telese-terme_1850913/restaurant/la-locanda-del-borgo|€€€€|CAT_P04|1 star|it|2026-10-30T16:57:41.450Z
+ve_542c195114|23258|us/en/toscana/prato/restaurant/paca|us/en/toscana/carmignano_1833819/restaurant/paca|€€€€|CAT_P04|1 star|it|2026-10-30T16:57:42.698Z
+ve_69e1e106b5|23083|us/en/campania/vico-equense/restaurant/torre-del-saracino|us/en/campania/sorrento/restaurant/torre-del-saracino|€€€€|CAT_P04|2 star|it|2026-10-30T16:57:43.960Z
+ve_6d2d60d7ba|23667|us/en/sicilia/palazzolo-acreide/restaurant/andrea-sapori-montani|us/en/sicilia/palazzolo-acreide/restaurant/andrea|€€|CAT_P02|bib|it|2026-10-30T16:57:45.203Z
+ve_bb69a63e96|24729|us/en/kyoto-region/kyoto/restaurant/vegan-ramen-uzu|us/en/kyoto-region/kyoto/restaurant/uzu-kyoto|¥¥|CAT_P02|bib|jp|2026-10-30T16:57:46.453Z
+ve_c4d70b9a92|22682|en/pays-de-la-loire/cholet/restaurant/la-p'tite-patte|us/en/pays-de-la-loire/cholet/restaurant/la-p%E2%80%99tite-patte|€€|CAT_P02|bib|fr|2026-10-30T16:57:47.701Z
+ve_e50adc624d|25629|us/en/canarias/las-caletas/restaurant/el-jardin-de-la-sal|us/en/canarias/fuencaliente-de-la-palma/restaurant/el-jardin-de-la-sal|€|CAT_P01|bib|es|2026-10-30T16:57:48.952Z
+ve_eef796a74d|23588|us/en/sardegna/sanluri/restaurant/coxinendi|us/en/sardegna/quartu-sant-elena_1840763/restaurant/coxinendi|€€|CAT_P02|bib|it|2026-10-30T16:57:50.196Z
+ve_f558535881|23079|us/en/campania/telese/restaurant/kresios|us/en/campania/telese-terme_1850913/restaurant/kresios|€€€€|CAT_P04|2 star|it|2026-10-30T16:57:51.448Z
