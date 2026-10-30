@@ -1,0 +1,543 @@
+-- price-michelin-card-p2-b6-2026-10-30.sql
+-- Block A, step 2, batch 6 (Germany, 433 venues).
+-- Population P2: active venues with a Michelin One Star, Two Stars, Three Stars or Bib Gourmand row whose source_url is
+-- a guide.michelin.com card URL (latest by year desc, id desc), and a price row with source legacy_guide and no source_url.
+-- Source: the live Michelin card page (Price: line, data-sheet), read in the built-in browser.
+-- Rows: 432 UPDATE of the legacy price row (source guide_ingest, method published_symbol, publisher michelin,
+-- source_url = card URL, symbol_raw = card symbol, currency from card country, tier = symbol count, confidence NULL,
+-- captured_at = read time). Rows where the card tier equals the legacy tier are also updated (Ben, Oct 30, 2026).
+-- Cards that show Selected only are also updated; award rows do not change (Ben, Oct 30, 2026; Oct 10 ruling).
+-- Currencies: EUR 432. Card tiers: 1 = 8, 2 = 118, 3 = 40, 4 = 266. Card distinction: 1 star 255, 2 star 39, 3 star 12, bib 126.
+-- Relay sha256 c017e2ef258af1f373966e60c0c0beb82f0ca72a668ae7d07dd7d157a28a525d (inside this file).
+-- Guards: counts before (price 7582, ledger max 145, audit max 116535); relay fingerprint md5
+-- ae32d44488c1797313ffe1d9c6eb67ad; venue id md5 8071dcd9586815d5286a643a182e513c; old price rows md5 ee362d9fc51dc74b30bfd23b16de57f9;
+-- each row in P2 now with the same card URL.
+-- Post-checks: price count 7582 (unchanged); ledger 146; audit 432 price UPDATE rows, nothing else;
+-- each price row now matches the relay.
+BEGIN;
+DO $do$
+DECLARE
+  rel_txt text := $r$ve_000416f84a|us/en/bayern/regensburg/restaurant/ontra-s-gourmetstube|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:21Z
+ve_000789cf23|us/en/bayern/mnchen/restaurant/1804-hirschau|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:23Z
+ve_00142098d8|us/en/rheinland-pfalz/knittelsheim/restaurant/irori-1214842|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:24Z
+ve_010aebafb8|us/en/bayern/mittenwald/restaurant/das-marktrestaurant|€€€|CAT_P03|1 star|de|2026-10-30T08:51:26Z
+ve_0121ab04e8|us/en/nordrhein-westfalen/dortmund/restaurant/schwarzgold|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:27Z
+ve_012c1b1c79|us/en/sachsen/wilthen/restaurant/erbgericht-tautewalde|€€|CAT_P02|bib|de|2026-10-30T08:51:28Z
+ve_01cb535157|us/en/rheinland-pfalz/neupotz/restaurant/zum-lamm|€€|CAT_P02|bib|de|2026-10-30T08:51:30Z
+ve_0230b58c5e|us/en/rheinland-pfalz/weisenheim-am-berg/restaurant/admiral|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:31Z
+ve_033e14a5d8|us/en/baden-wurttemberg/bad-teinach-zavelstein/restaurant/gourmetrestaurant-berlins-krone|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:33Z
+ve_0343540d3a|us/en/nordrhein-westfalen/neukirchen-vluyn/restaurant/little-john-s|€€|CAT_P02|bib|de|2026-10-30T08:51:34Z
+ve_035de3407a|us/en/niedersachsen/osnabruck/restaurant/iko|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:35Z
+ve_0505d8b2dc|us/en/baden-wurttemberg/hayingen/restaurant/restaurant-1950|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:37Z
+ve_05c8496ec5|us/en/saarland/sankt-wendel/restaurant/kunz|€€€|CAT_P03|1 star|de|2026-10-30T08:51:38Z
+ve_05e0722750|us/en/hessen/limburg-an-der-lahn/restaurant/360%C2%B0|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:39Z
+ve_06251d22b1|us/en/niedersachsen/hannover/restaurant/jante|€€€€|CAT_P04|2 star|de|2026-10-30T08:51:41Z
+ve_06e7e35a31|us/en/bayern/pleiskirchen/restaurant/huberwirt|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:42Z
+ve_07443f695d|us/en/bayern/nurnberg/restaurant/waidwerk|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:43Z
+ve_07c3761513|us/en/bayern/mnchen/restaurant/tantris-dna|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:45Z
+ve_07ce393508|us/en/baden-wurttemberg/baden-baden/restaurant/le-jardin-de-france|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:46Z
+ve_07cf802a97|us/en/bayern/nurnberg/restaurant/tisane|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:48Z
+ve_088567d150|us/en/sachsen-anhalt/wernigerode/restaurant/pietsch|€€€€|CAT_P04|2 star|de|2026-10-30T08:51:49Z
+ve_0889d3c886|us/en/bayern/frasdorf/restaurant/michael-s-leitenberg|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:50Z
+ve_08974e852a|us/en/bayern/brugstadt/restaurant/weinhaus-stern|€€|CAT_P02|bib|de|2026-10-30T08:51:52Z
+ve_09dfd3f052|us/en/bayern/mnchen/restaurant/werneckhof-sigi-schelling|€€€€|CAT_P04|1 star|de|2026-10-30T08:51:54Z
+ve_09e5c57dac|us/en/berlin-region/berlin/restaurant/matthias|€€€|CAT_P03|1 star|de|2026-10-30T08:51:56Z
+ve_0af95c1d33|us/en/bayern/forstinning/restaurant/zum-vaas|€€|CAT_P02|bib|de|2026-10-30T08:51:58Z
+ve_0c6979f2b4|us/en/baden-wurttemberg/todtnau/restaurant/derwaldfrieden|€€|CAT_P02|bib|de|2026-10-30T08:52:00Z
+ve_0cf1045862|us/en/bayern/nurnberg/restaurant/veles|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:02Z
+ve_0d5b0c077c|us/en/hessen/frankfurt-am-main/restaurant/lafleur|€€€€|CAT_P04|2 star|de|2026-10-30T08:52:04Z
+ve_0d73dfe719|us/en/berlin-region/berlin/restaurant/bonvivant-1197308|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:06Z
+ve_0efab759e6|us/en/hessen/eltville-am-rhein/restaurant/jean|€€€|CAT_P03|1 star|de|2026-10-30T08:52:08Z
+ve_0f39336c95|us/en/nordrhein-westfalen/wuppertal/restaurant/shiraz|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:10Z
+ve_1008c9d43a|us/en/berlin-region/berlin/restaurant/mastan|€€|CAT_P02|bib|de|2026-10-30T08:52:12Z
+ve_10faa8dd60|us/en/sachsen/dresden/restaurant/deli351464|€€|CAT_P02|bib|de|2026-10-30T08:52:14Z
+ve_111d8d2a60|us/en/baden-wurttemberg/fellbach/restaurant/oettinger-s-restaurant|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:16Z
+ve_1192ffe93c|us/en/baden-wurttemberg/kappelrodeck/restaurant/zum-rebstock|€€|CAT_P02|bib|de|2026-10-30T08:52:18Z
+ve_124c75680f|us/en/nordrhein-westfalen/dusseldorf/restaurant/im-schiffchen|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:20Z
+ve_12b1f9d2af|us/en/baden-wurttemberg/karlsruhe/restaurant/bistro-margarete|€€|CAT_P02|bib|de|2026-10-30T08:52:22Z
+ve_13d1501d81|us/en/baden-wurttemberg/mannheim/restaurant/doblers|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:24Z
+ve_13e2ea6366|us/en/bayern/deggendorf_1282003/restaurant/edl-eins-fine-dining|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:26Z
+ve_14268ff151|us/en/nordrhein-westfalen/dorsten/restaurant/rosin|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:28Z
+ve_151f45142c|us/en/nordrhein-westfalen/dusseldorf/restaurant/munstermanns-kontor|€€|CAT_P02|bib|de|2026-10-30T08:52:30Z
+ve_161e5dfddc|us/en/rheinland-pfalz/dreis/restaurant/waldhotel-sonnora|€€€€|CAT_P04|3 star|de|2026-10-30T08:52:31Z
+ve_168d05cb69|us/en/bayern/samerberg/restaurant/gasthof-alpenrose|€€|CAT_P02|bib|de|2026-10-30T08:52:32Z
+ve_16f6c14bbf|us/en/berlin-region/berlin/restaurant/hugos|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:34Z
+ve_17ffd58979|us/en/niedersachsen/bad-nenndorf/restaurant/august82886|€€|CAT_P02|bib|de|2026-10-30T08:52:35Z
+ve_182b71f78d|us/en/hessen/frankenberg/restaurant/philipp-soldan|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:36Z
+ve_1861fa98c2|us/en/berlin-region/berlin/restaurant/lucky-leek|€€|CAT_P02|bib|de|2026-10-30T08:52:38Z
+ve_18839d2d45|us/en/nordrhein-westfalen/koln/restaurant/le-moissonnier|€€€|CAT_P03|1 star|de|2026-10-30T08:52:39Z
+ve_19e248db68|us/en/thuringen/nordhausen/restaurant/feine-speiseschenke|€|CAT_P01|bib|de|2026-10-30T08:52:40Z
+ve_1a0c4aedd2|us/en/nordrhein-westfalen/dorsten/restaurant/goldener-anker|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:42Z
+ve_1a40b8cd3a|us/en/rheinland-pfalz/bad-kreuznach/restaurant/im-kittchen|€€|CAT_P02|bib|de|2026-10-30T08:52:43Z
+ve_1acd4bfa81|us/en/baden-wurttemberg/knigsbronn/restaurant/ursprung|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:44Z
+ve_1bdc128830|us/en/nordrhein-westfalen/aachen/restaurant/sankt-benedikt|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:46Z
+ve_1cd2f9af99|us/en/baden-wurttemberg/freiburg-im-breisgau/restaurant/jacobi|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:47Z
+ve_1d3c9b42ba|us/en/sachsen-anhalt/halle-saale/restaurant/speiseberg|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:49Z
+ve_1dbeecac20|us/en/bayern/rdental/restaurant/froschgrundsee|€€|CAT_P02|bib|de|2026-10-30T08:52:50Z
+ve_1ddd3744a0|us/en/hessen/frankfurt-am-main/restaurant/masa-japanese-cuisine|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:51Z
+ve_1f562f2026|us/en/bayern/illschwang/restaurant/cheval-blanc554556|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:53Z
+ve_1fc31c14da|us/en/bayern/frstenfeldbruck/restaurant/furstenfelder|€€|CAT_P02|bib|de|2026-10-30T08:52:54Z
+ve_205c480ca0|us/en/rheinland-pfalz/piesport/restaurant/schanz-restaurant|€€€€|CAT_P04|3 star|de|2026-10-30T08:52:55Z
+ve_209c49283c|us/en/rheinland-pfalz/kirchheim-an-der-weinstrasse/restaurant/schwarz-gourmet|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:57Z
+ve_209fc6e18d|us/en/nordrhein-westfalen/koln/restaurant/la-cuisine-rademacher|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:58Z
+ve_20f25eb7b5|us/en/bayern/lindau/restaurant/karrisma|€€€€|CAT_P04|1 star|de|2026-10-30T08:52:59Z
+ve_2114f512c5|us/en/baden-wurttemberg/weinstadt/restaurant/cedric-1204630|€€€|CAT_P03|1 star|de|2026-10-30T08:53:01Z
+ve_233a81ae1b|us/en/nordrhein-westfalen/koln/restaurant/zur-tant|€€€|CAT_P03|1 star|de|2026-10-30T08:53:02Z
+ve_235d1c2a3b|us/en/bayern/volkach/restaurant/weinstock|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:03Z
+ve_23b57d0bf0|us/en/schleswig-holstein/hrnum/restaurant/kai3|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:05Z
+ve_23bb4d35e7|us/en/saarland/perl/restaurant/victor-s-fine-dining-by-christian-bau|€€€€|CAT_P04|3 star|de|2026-10-30T08:53:06Z
+ve_23ebc4a406|us/en/baden-wurttemberg/eggenstein-leopoldshafen/restaurant/das-garbo-im-lowen|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:08Z
+ve_252b9b472a|us/en/thuringen/blankenhain/restaurant/masters|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:09Z
+ve_254b7c9c5f|us/en/rheinland-pfalz/deidesheim/restaurant/l-a-jordan|€€€€|CAT_P04|3 star|de|2026-10-30T08:53:10Z
+ve_262ce366e3|us/en/baden-wurttemberg/uhingen/restaurant/schloss-filseck|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:12Z
+ve_267de44736|us/en/bayern/rottach-egern/restaurant/restaurant-uberfahrt|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:13Z
+ve_26ad467b46|us/en/hessen/herleshausen/restaurant/la-vallee-verte|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:14Z
+ve_2802e73c66|us/en/baden-wurttemberg/waldbronn/restaurant/schwitzer-s-am-park|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:16Z
+ve_28cc28bd85|us/en/baden-wurttemberg/rust/restaurant/ammolite-the-lighthouse-restaurant|€€€€|CAT_P04|2 star|de|2026-10-30T08:53:17Z
+ve_28dead570d|us/en/bayern/bad-kissingen/restaurant/laudensacks-gourmet-restaurant|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:18Z
+ve_298b87c613|us/en/hamburg-region/hamburg/restaurant/landhaus-scherrer|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:20Z
+ve_2a870c5a3c|us/en/berlin-region/berlin/restaurant/pars-restaurant|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:21Z
+ve_2b6800f4b0|us/en/baden-wurttemberg/de-schwbisch-hall/restaurant/rebers-pflug|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:22Z
+ve_2c1c3cfcc9|us/en/bayern/wurzburg/restaurant/kuno-1408|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:24Z
+ve_2c3da34a8d|us/en/bayern/weissenbrunn/restaurant/gasthof-alex|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:25Z
+ve_2d0e0b16ff|us/en/rheinland-pfalz/meisenheim/restaurant/meisenheimer-hof|€€€|CAT_P03|1 star|de|2026-10-30T08:53:27Z
+ve_2d4e1f739b|us/en/baden-wurttemberg/sthlingen/restaurant/gasthaus-schwanen77903|€€|CAT_P02|bib|de|2026-10-30T08:53:28Z
+ve_2e68b47c2a|us/en/rheinland-pfalz/trittenheim/restaurant/wein-und-tafelhaus|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:29Z
+ve_2f9550d88c|us/en/bayern/vhringen/restaurant/speisemeisterei-burgthalschenke|€€|CAT_P02|bib|de|2026-10-30T08:53:31Z
+ve_303e21dc90|us/en/baden-wurttemberg/stuttgart/restaurant/wielandshohe|€€€|CAT_P03|1 star|de|2026-10-30T08:53:32Z
+ve_304f3c804a|us/en/bayern/nurnberg/restaurant/entenstuben|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:33Z
+ve_305c420bc9|us/en/bayern/mnchen/restaurant/mountain-hub-gourmet|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:35Z
+ve_30712cb7ac|us/en/nordrhein-westfalen/koln/restaurant/pottkind|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:36Z
+ve_3196ba1b91|us/en/bayern/dinkelsbhl/restaurant/ehemalige-sparkasse|€€|CAT_P02|bib|de|2026-10-30T08:53:37Z
+ve_31e09545ac|us/en/baden-wurttemberg/baden-baden/restaurant/weinstube-zum-engel|€€|CAT_P02|bib|de|2026-10-30T08:53:39Z
+ve_3335f301ae|us/en/baden-wurttemberg/winterbach/restaurant/landgasthaus-hirsch|€€|CAT_P02|bib|de|2026-10-30T08:53:40Z
+ve_3352bc258c|us/en/berlin-region/berlin/restaurant/cookies-cream|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:42Z
+ve_34497056d0|us/en/bayern/weissenstadt/restaurant/gasthaus-egertal|€€|CAT_P02|bib|de|2026-10-30T08:53:43Z
+ve_35170fd7ef|us/en/baden-wurttemberg/zell-im-wiesental/restaurant/berggasthof-schlussel|€€|CAT_P02|bib|de|2026-10-30T08:53:44Z
+ve_3624f10e3f|us/en/rheinland-pfalz/deidesheim/restaurant/gasthaus-zur-kanne|€€|CAT_P02|bib|de|2026-10-30T08:53:46Z
+ve_3639765fe0|us/en/nordrhein-westfalen/dusseldorf/restaurant/tafelspitz-1876|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:47Z
+ve_39a0c0bd8d|us/en/mecklenburg-vorpommern/schwerin/restaurant/cube-by-mika|€€|CAT_P02|bib|de|2026-10-30T08:53:48Z
+ve_39fa5e2559|us/en/bayern/aldersbach/restaurant/das-asam|€€|CAT_P02|bib|de|2026-10-30T08:53:50Z
+ve_3a4412beba|us/en/bayern/mnchen/restaurant/gasthaus-waltz|€€|CAT_P02|bib|de|2026-10-30T08:53:51Z
+ve_3ac1072ea6|us/en/bayern/aschau-im-chiemgau/restaurant/restaurant-heinz-winkler|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:52Z
+ve_3b016ddca7|us/en/hessen/fulda/restaurant/christian-friends-tastekitchen|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:54Z
+ve_3c275ace80|us/en/bayern/bischofswiesen/restaurant/solo-du|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:55Z
+ve_3cacae8566|us/en/sachsen/leipzig/restaurant/kuultivo|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:57Z
+ve_3ced38d2da|us/en/bayern/oberstdorf/restaurant/das-jagdhaus|€€|CAT_P02|bib|de|2026-10-30T08:53:58Z
+ve_3e196559c2|us/en/bayern/augsburg/restaurant/sartory|€€€€|CAT_P04|1 star|de|2026-10-30T08:53:59Z
+ve_3e88f531ea|us/en/bayern/krn/restaurant/ikigai-122205|€€€€|CAT_P04|2 star|de|2026-10-30T08:54:01Z
+ve_4111a67b75|us/en/baden-wurttemberg/kleines-wiesental/restaurant/sennhutte|€€|CAT_P02|bib|de|2026-10-30T08:54:02Z
+ve_41fb4e4838|us/en/thuringen/dermbach/restaurant/bjornsox|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:03Z
+ve_42094ec84f|us/en/nordrhein-westfalen/koln/restaurant/gasthaus-scherz|€€|CAT_P02|bib|de|2026-10-30T08:54:05Z
+ve_42d2a9449c|us/en/baden-wurttemberg/ohningen/restaurant/falconera|€€€|CAT_P03|1 star|de|2026-10-30T08:54:06Z
+ve_42dc793e5d|us/en/hamburg-region/hamburg/restaurant/haerlin|€€€€|CAT_P04|3 star|de|2026-10-30T08:54:07Z
+ve_442828b0f8|us/en/sachsen/pirna/restaurant/felsenbirne|€€|CAT_P02|bib|de|2026-10-30T08:54:09Z
+ve_4476b503cf|us/en/bayern/auerbach-in-der-oberpfalz/restaurant/soulfood|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:10Z
+ve_45ce37fe85|us/en/baden-wurttemberg/freiburg-im-breisgau/restaurant/hawara|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:11Z
+ve_4642412030|us/en/nordrhein-westfalen/vreden/restaurant/buschker-s-stuben|€€|CAT_P02|bib|de|2026-10-30T08:54:13Z
+ve_46a88e85fa|us/en/baden-wurttemberg/heidelberg/restaurant/oben|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:14Z
+ve_46b86c736a|us/en/baden-wurttemberg/baiersbronn/restaurant/schwarzwaldstube|€€€€|CAT_P04|3 star|de|2026-10-30T08:54:15Z
+ve_46fffc7d5a|us/en/hessen/frankfurt-am-main/restaurant/erno-s-bistro|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:17Z
+ve_4781ae4f00|us/en/sachsen/dresden/restaurant/elements351459|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:18Z
+ve_47ec50d844|us/en/baden-wurttemberg/friedrichshafen_1309211/restaurant/pinus-im-seegut|€€|CAT_P02|bib|de|2026-10-30T08:54:19Z
+ve_4849e32048|us/en/baden-wurttemberg/ulm/restaurant/seestern|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:21Z
+ve_49408434a4|us/en/berlin-region/berlin/restaurant/bricole|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:22Z
+ve_4a2f3e3575|us/en/rheinland-pfalz/bad-neuenahr-ahrweiler/restaurant/steinheuers-restaurant-zur-alten-post|€€€€|CAT_P04|2 star|de|2026-10-30T08:54:24Z
+ve_4a5030d511|us/en/hamburg-region/hamburg/restaurant/koer|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:25Z
+ve_4a64b5f6c8|us/en/sachsen/aue/restaurant/lotters-wirtschaft-tausendguldenstube|€€|CAT_P02|bib|de|2026-10-30T08:54:26Z
+ve_4a8730ef92|us/en/berlin-region/berlin/restaurant/nobelhart-schmutzig|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:28Z
+ve_4a8dad246a|us/en/bayern/grassau/restaurant/es-senz|€€€€|CAT_P04|3 star|de|2026-10-30T08:54:29Z
+ve_4ac7b2a0e3|us/en/nordrhein-westfalen/munster/restaurant/spitzner|€€€|CAT_P03|1 star|de|2026-10-30T08:54:30Z
+ve_4af8057c09|us/en/baden-wurttemberg/efringen-kirchen/restaurant/traube1181496|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:32Z
+ve_4b73704e1a|us/en/baden-wurttemberg/asperg/restaurant/schwabenstube|€€€|CAT_P03|1 star|de|2026-10-30T08:54:33Z
+ve_4c7e5a58ba|us/en/berlin-region/berlin/restaurant/remi|€€|CAT_P02|bib|de|2026-10-30T08:54:34Z
+ve_4d15de16fe|us/en/bayern/prien-am-chiemsee/restaurant/zum-fischer-am-see|€€|CAT_P02|bib|de|2026-10-30T08:54:36Z
+ve_4ea2da3ad7|us/en/bayern/mnchen/restaurant/alois-dallmayr-fine-dining|€€€€|CAT_P04|2 star|de|2026-10-30T08:54:37Z
+ve_4ec7f5495d|us/en/rheinland-pfalz/massweiler/restaurant/borst|€€€|CAT_P03|1 star|de|2026-10-30T08:54:38Z
+ve_4ee5fb3298|us/en/berlin-region/berlin/restaurant/golvet|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:40Z
+ve_4feabd098d|us/en/schleswig-holstein/tinnum/restaurant/bodendorf-s|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:41Z
+ve_502fdfd9bb|us/en/bayern/rottach-egern/restaurant/haubentaucher|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:43Z
+ve_5226f2cc29|us/en/rheinland-pfalz/trier/restaurant/bagatelle-78242|€€€|CAT_P03|1 star|de|2026-10-30T08:54:44Z
+ve_526049da1d|us/en/baden-wurttemberg/mannheim/restaurant/opus-v|€€€€|CAT_P04|2 star|de|2026-10-30T08:54:45Z
+ve_5335f343cc|us/en/bayern/frasdorf/restaurant/restaurant-karner|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:47Z
+ve_557f435436|us/en/bayern/rottach-egern/restaurant/dichterstub-n|€€€€|CAT_P04|2 star|de|2026-10-30T08:54:48Z
+ve_55bfc9c07d|us/en/baden-wurttemberg/baiersbronn/restaurant/1789-1191834|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:49Z
+ve_55cffa5e55|us/en/nordrhein-westfalen/haltern-am-see/restaurant/ratsstuben|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:51Z
+ve_55fda0db7c|us/en/rheinland-pfalz/deidesheim/restaurant/schwarzer-hahn|€€€€|CAT_P04|1 star|de|2026-10-30T08:54:52Z
+ve_5620195654|us/en/baden-wurttemberg/karlsruhe/restaurant/sein|€€€€|CAT_P04|2 star|de|2026-10-30T08:54:53Z
+ve_575f81dc9f|us/en/saarland/sankt-ingbert/restaurant/midi|€€€|CAT_P03|1 star|de|2026-10-30T08:54:55Z
+ve_57e91b5227|us/en/saarland/saarbrucken/restaurant/gastehaus-klaus-erfort|€€€€|CAT_P04|2 star|de|2026-10-30T08:54:56Z
+ve_59031c1f3a|us/en/hamburg-region/hamburg/restaurant/heimatjuwel|€€€|CAT_P03|1 star|de|2026-10-30T08:54:58Z
+ve_59032756fb|us/en/bayern/oberstdorf/restaurant/das-fetzwerk|€€|CAT_P02|bib|de|2026-10-30T08:54:59Z
+ve_59ba780fbf|us/en/rheinland-pfalz/koblenz/restaurant/verbene|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:00Z
+ve_59e894965e|us/en/nordrhein-westfalen/dusseldorf/restaurant/yoshi-by-nagaya|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:02Z
+ve_5b6ee33a69|us/en/baden-wurttemberg/kenzingen/restaurant/scheidels-restaurant-zum-kranz|€€|CAT_P02|bib|de|2026-10-30T08:55:03Z
+ve_5bce8edfdd|us/en/baden-wurttemberg/zweiflingen/restaurant/le-cerf83229|€€€€|CAT_P04|2 star|de|2026-10-30T08:55:04Z
+ve_5c59a008a1|us/en/bayern/bad-tlz/restaurant/jagerwirt|€€|CAT_P02|bib|de|2026-10-30T08:55:06Z
+ve_5c5cc9fdec|us/en/thuringen/blankenhain/restaurant/the-first|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:07Z
+ve_5cae4b8cc5|us/en/bayern/mnchen/restaurant/les-deux|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:08Z
+ve_5cbabcbb5e|us/en/bayern/adelshofen/restaurant/zum-falken|€€|CAT_P02|bib|de|2026-10-30T08:55:10Z
+ve_5cdf75f74e|us/en/baden-wurttemberg/bad-peterstal/restaurant/kamin-und-bauernstube|€€|CAT_P02|bib|de|2026-10-30T08:55:11Z
+ve_5d63b9c31d|us/en/baden-wurttemberg/bonndorf-im-schwarzwald/restaurant/sommerau|€€|CAT_P02|bib|de|2026-10-30T08:55:13Z
+ve_5dc3caa0f5|us/en/nordrhein-westfalen/rheda-wiedenbrck/restaurant/reuter|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:14Z
+ve_5e0948ed6b|us/en/hessen/frankfurt-am-main/restaurant/bidlabu|€€€|CAT_P03|1 star|de|2026-10-30T08:55:15Z
+ve_5f55eb3fb2|us/en/hamburg-region/hamburg/restaurant/piment|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:17Z
+ve_5fad8fbf2d|us/en/nordrhein-westfalen/gummersbach/restaurant/muhlenhelle|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:18Z
+ve_6036462df1|us/en/bayern/mnchen/restaurant/sparkling-bistro|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:19Z
+ve_6046196daf|us/en/sachsen/leipzig/restaurant/frieda|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:21Z
+ve_606583641e|us/en/nordrhein-westfalen/pulheim/restaurant/gut-larchenhof|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:22Z
+ve_6169b6c64c|us/en/baden-wurttemberg/weinheim/restaurant/ziegler|€€|CAT_P02|bib|de|2026-10-30T08:55:23Z
+ve_61d4ac88a4|us/en/niedersachsen/norderney/restaurant/seesteg|€€€|CAT_P03|1 star|de|2026-10-30T08:55:25Z
+ve_61fa83ffc1|us/en/rheinland-pfalz/andernach/restaurant/purs|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:26Z
+ve_641d63a89a|us/en/niedersachsen/cuxhaven/restaurant/sterneck|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:28Z
+ve_6431271987|us/en/baden-wurttemberg/sulzburg/restaurant/landgasthof-rebstock|€€|CAT_P02|bib|de|2026-10-30T08:55:29Z
+ve_643ee35bb6|us/en/nordrhein-westfalen/bergisch-gladbach/restaurant/vendome|€€€€|CAT_P04|2 star|de|2026-10-30T08:55:30Z
+ve_64436827e9|us/en/baden-wurttemberg/endingen-am-kaiserstuhl/restaurant/dutters-stube|€€|CAT_P02|bib|de|2026-10-30T08:55:32Z
+ve_6572c9ff9b|us/en/bayern/wernberg-kblitz/restaurant/wirtsstube|€€|CAT_P02|bib|de|2026-10-30T08:55:33Z
+ve_65b1662355|us/en/baden-wurttemberg/lahr/restaurant/adler82171|€€€|CAT_P03|1 star|de|2026-10-30T08:55:34Z
+ve_66f3685f5e|us/en/bayern/neunburg-vorm-wald/restaurant/obendorfer-s-eisvogel|€€€€|CAT_P04|2 star|de|2026-10-30T08:55:36Z
+ve_672e9db373|us/en/baden-wurttemberg/kernen-im-remstal/restaurant/malathounis|€€€|CAT_P03|1 star|de|2026-10-30T08:55:37Z
+ve_674a30e184|us/en/bayern/pilsach/restaurant/landgasthof-meier|€€|CAT_P02|bib|de|2026-10-30T08:55:39Z
+ve_67ae1460bd|us/en/hessen/frankfurt-am-main/restaurant/restaurant-villa-merton|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:40Z
+ve_68870e5395|us/en/bayern/bischofswiesen/restaurant/kulturhof-stanggass-gasthaus|€€|CAT_P02|bib|de|2026-10-30T08:55:41Z
+ve_68db88cdf1|us/en/bayern/passau/restaurant/marcel-von-winckelmann|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:43Z
+ve_697673c543|us/en/nordrhein-westfalen/koln/restaurant/sahila-the-restaurant|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:44Z
+ve_69b0034cdc|us/en/nordrhein-westfalen/dusseldorf/restaurant/agata-s|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:45Z
+ve_6ad1dbf41a|us/en/nordrhein-westfalen/hvelhof/restaurant/gasthof-brink|€€|CAT_P02|bib|de|2026-10-30T08:55:47Z
+ve_6ae3aadc78|us/en/berlin-region/berlin/restaurant/loumi|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:48Z
+ve_6b6991748e|us/en/nordrhein-westfalen/harsewinkel/restaurant/poppenborg-s-stubchen|€€|CAT_P02|bib|de|2026-10-30T08:55:49Z
+ve_6c889649ae|us/en/hamburg-region/hamburg/restaurant/zeik|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:51Z
+ve_6dc7545127|us/en/bayern/kirchlauter/restaurant/gutshof-andres|€€|CAT_P02|bib|de|2026-10-30T08:55:52Z
+ve_6e31f3818d|us/en/bayern/hauzenberg/restaurant/anetseder|€€|CAT_P02|bib|de|2026-10-30T08:55:54Z
+ve_6ec95ab40c|us/en/baden-wurttemberg/stuttgart/restaurant/hupperts|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:55Z
+ve_6f8276389b|us/en/bayern/landsberg-am-lech_1299909/restaurant/lech-line|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:56Z
+ve_6f937f16f3|us/en/sachsen/leipzig/restaurant/stadtpfeiffer|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:58Z
+ve_70803bb3f6|us/en/bayern/kirchdorf/restaurant/christian-s-restaurant-gasthof-grainer|€€€€|CAT_P04|1 star|de|2026-10-30T08:55:59Z
+ve_72cc39cf6e|us/en/berlin-region/berlin/restaurant/coda-dessert-dining|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:00Z
+ve_7323207168|us/en/baden-wurttemberg/de-schwbisch-hall/restaurant/eisenbahn|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:02Z
+ve_73d767e429|us/en/hessen/freiensteinau/restaurant/landgasthof-zur-post|€|CAT_P01|bib|de|2026-10-30T08:56:03Z
+ve_73f5cc1d61|us/en/bayern/augsburg/restaurant/alte-liebe|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:04Z
+ve_746d8b48a8|us/en/niedersachsen/hannover/restaurant/votum|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:06Z
+ve_749fcda661|us/en/berlin-region/berlin/restaurant/bandol-sur-mer|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:07Z
+ve_74ed401d13|us/en/baden-wurttemberg/vogtsburg-im-kaiserstuhl/restaurant/schwarzer-adler|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:08Z
+ve_757e354c50|us/en/hamburg-region/hamburg/restaurant/petit-amour|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:10Z
+ve_7612a8ba92|us/en/nordrhein-westfalen/dusseldorf/restaurant/la-vie-by-thomas-buhner-1210743|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:11Z
+ve_76137567a4|us/en/hamburg-region/hamburg/restaurant/100-200|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:13Z
+ve_766914b040|us/en/hessen/darmstadt/restaurant/ox-1194853|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:14Z
+ve_766b85cde9|us/en/rheinland-pfalz/neuhtten/restaurant/le-temple|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:15Z
+ve_76fa16dc59|us/en/baden-wurttemberg/bad-peterstal/restaurant/le-pavillon83378|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:17Z
+ve_784628648e|us/en/baden-wurttemberg/salach/restaurant/gourmetrestaurant-fine-dining-rs|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:18Z
+ve_788a74bd57|us/en/rheinland-pfalz/darscheid/restaurant/kucher-s-gourmet|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:19Z
+ve_78d61f4aa2|us/en/rheinland-pfalz/birkweiler/restaurant/schockes-kuche|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:21Z
+ve_7a03e27d78|us/en/sachsen/radebeul/restaurant/atelier-sanssouci|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:22Z
+ve_7a698e2407|us/en/nordrhein-westfalen/munster/restaurant/coeur-d-artichaut|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:23Z
+ve_7b432d66a1|us/en/niedersachsen/friesoythe_1344188/restaurant/regional-friesoythe|€€|CAT_P02|bib|de|2026-10-30T08:56:25Z
+ve_7b61b769fd|us/en/rheinland-pfalz/koblenz/restaurant/gotthardt-s-by-yannick-noack|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:26Z
+ve_7d292dfd01|us/en/bayern/duggendorf/restaurant/hummels-gourmetstube|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:28Z
+ve_7d7276d37a|us/en/saarland/saarbrucken/restaurant/esplanade539722|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:29Z
+ve_7dc28d64c1|us/en/sachsen/aue/restaurant/st-andreas|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:30Z
+ve_7f35ac70b7|us/en/baden-wurttemberg/konstanz/restaurant/ophelia|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:32Z
+ve_801f5d310a|us/en/baden-wurttemberg/sonnenbhl/restaurant/hirsch77747|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:33Z
+ve_808254fbbe|us/en/baden-wurttemberg/ettlingen/restaurant/erbprinz|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:34Z
+ve_80f5000a5c|us/en/bayern/niederwinkling/restaurant/buchner|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:36Z
+ve_810fd58433|us/en/schleswig-holstein/rantum/restaurant/sol-ring-hof|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:37Z
+ve_819326b154|us/en/nordrhein-westfalen/koln/restaurant/henne-weinbar|€|CAT_P01|bib|de|2026-10-30T08:56:38Z
+ve_81c0fbac28|us/en/nordrhein-westfalen/koln/restaurant/la-societe|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:40Z
+ve_83964b9c3c|us/en/bayern/frammersbach/restaurant/schwarzkopf|€€|CAT_P02|bib|de|2026-10-30T08:56:41Z
+ve_8420b51edf|us/en/bayern/berchtesgaden/restaurant/pur-1187942|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:42Z
+ve_858aba7da0|us/en/hamburg-region/hamburg/restaurant/atlantic-restaurant|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:44Z
+ve_864a3e79b8|us/en/rheinland-pfalz/jugenheim-in-rheinhessen/restaurant/weedenhof|€€|CAT_P02|bib|de|2026-10-30T08:56:45Z
+ve_866f20ea17|us/en/berlin-region/berlin/restaurant/horvath|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:47Z
+ve_86ce1b8e11|us/en/niedersachsen/dornum/restaurant/fahrhaus|€€|CAT_P02|bib|de|2026-10-30T08:56:48Z
+ve_86dc569939|us/en/baden-wurttemberg/ostrach/restaurant/landhotel-zum-hirsch|€€|CAT_P02|bib|de|2026-10-30T08:56:49Z
+ve_87a48be224|us/en/bayern/nurnberg/restaurant/essigbratlein|€€€€|CAT_P04|2 star|de|2026-10-30T08:56:51Z
+ve_884cf7506a|us/en/bayern/ubersee_1280400/restaurant/june-1213481|€€€|CAT_P03|1 star|de|2026-10-30T08:56:52Z
+ve_885eda93f2|us/en/baden-wurttemberg/langenau/restaurant/hochzwei|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:53Z
+ve_89def3daf3|us/en/saarland/blieskastel/restaurant/hammerle-s-restaurant-barrique|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:55Z
+ve_8a307c9575|us/en/bayern/presseck/restaurant/gasthof-berghof-ursprung|€€|CAT_P02|bib|de|2026-10-30T08:56:56Z
+ve_8ac4fcb91e|us/en/nordrhein-westfalen/erkelenz/restaurant/troyka|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:57Z
+ve_8af475ebcc|us/en/baden-wurttemberg/endingen-am-kaiserstuhl/restaurant/merkles-restaurant|€€€€|CAT_P04|1 star|de|2026-10-30T08:56:59Z
+ve_8b26939ed5|us/en/baden-wurttemberg/bad-sckingen/restaurant/genuss-apotheke|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:00Z
+ve_8cd643ee60|us/en/nordrhein-westfalen/munster/restaurant/brust-oder-keule|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:02Z
+ve_8d103ceaff|us/en/bayern/riedenburg/restaurant/forst-s-landhaus|€€|CAT_P02|bib|de|2026-10-30T08:57:03Z
+ve_8de68dc19f|us/en/bayern/hauzenberg/restaurant/landgasthaus-gidibauer-hof|€|CAT_P01|bib|de|2026-10-30T08:57:04Z
+ve_8ff4e08e8b|us/en/bayern/simmershofen_1306812/restaurant/winzerhof-stahl|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:06Z
+ve_9340b7e3be|us/en/hamburg-region/hamburg/restaurant/nil|€€|CAT_P02|bib|de|2026-10-30T08:57:07Z
+ve_934630124b|us/en/mecklenburg-vorpommern/ostseebad-binz/restaurant/freustil|€€€|CAT_P03|1 star|de|2026-10-30T08:57:08Z
+ve_942665156f|us/en/bayern/bergkirchen/restaurant/gasthaus-weissenbeck|€€|CAT_P02|bib|de|2026-10-30T08:57:10Z
+ve_942ea22e04|us/en/nordrhein-westfalen/aachen/restaurant/la-becasse|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:11Z
+ve_955d0dada1|us/en/schleswig-holstein/timmendorfer-strand/restaurant/orangerie78167|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:13Z
+ve_9594348590|us/en/baden-wurttemberg/endingen-am-kaiserstuhl/restaurant/die-pfarrwirtschaft|€€|CAT_P02|bib|de|2026-10-30T08:57:14Z
+ve_95f5d3e206|us/en/baden-wurttemberg/mittelbiberach_1310820/restaurant/esszimmer-1204759|€€|CAT_P02|bib|de|2026-10-30T08:57:15Z
+ve_963db10cb6|us/en/bayern/neubeuern/restaurant/auers-schlosswirtschaft|€€|CAT_P02|bib|de|2026-10-30T08:57:17Z
+ve_96635c66fd|us/en/hamburg-region/hamburg/restaurant/zur-flottbeker-schmiede|€€|CAT_P02|bib|de|2026-10-30T08:57:18Z
+ve_96bf809bbc|us/en/mecklenburg-vorpommern/bad-doberan/restaurant/friedrich-franz|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:19Z
+ve_97671dd36e|us/en/berlin-region/berlin/restaurant/rutz|€€€€|CAT_P04|3 star|de|2026-10-30T08:57:21Z
+ve_9768a07e6c|us/en/bayern/nurnberg/restaurant/wonka|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:22Z
+ve_97a6a500a3|us/en/baden-wurttemberg/grenzach-wyhlen/restaurant/eckert|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:24Z
+ve_97de402f65|us/en/bayern/bad-ktzing/restaurant/leos-by-stephan-brandl|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:25Z
+ve_987a52d071|us/en/bayern/mnchen/restaurant/gabelspiel|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:26Z
+ve_9a402528da|us/en/nordrhein-westfalen/bonn/restaurant/halbedel-s-gasthaus|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:28Z
+ve_9a7a71c6be|us/en/bayern/waging-am-see/restaurant/landhaus-tanner|€€|CAT_P02|bib|de|2026-10-30T08:57:29Z
+ve_9b14d4a0aa|us/en/brandenburg/werder/restaurant/alte-uberfahrt|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:30Z
+ve_9b1836a5b6|us/en/rheinland-pfalz/mainz/restaurant/stein-s-traube|€€€|CAT_P03|1 star|de|2026-10-30T08:57:32Z
+ve_9bf6eab1ca|us/en/nordrhein-westfalen/dusseldorf/restaurant/jae-1205584|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:33Z
+ve_9c222872bc|us/en/bayern/teisnach/restaurant/oswald-s-gourmetstube|€€€€|CAT_P04|2 star|de|2026-10-30T08:57:34Z
+ve_9d78cfee92|us/en/baden-wurttemberg/wildberg/restaurant/talblick|€€|CAT_P02|bib|de|2026-10-30T08:57:36Z
+ve_9e5c4b5555|us/en/rheinland-pfalz/wachenheim-an-der-weinstrasse/restaurant/intense-1195298|€€€€|CAT_P04|2 star|de|2026-10-30T08:57:37Z
+ve_9e878421ec|us/en/baden-wurttemberg/vaihingen-an-der-enz/restaurant/lamm-rosswag|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:38Z
+ve_9f9c2cedfb|us/en/nordrhein-westfalen/duisburg/restaurant/mod-by-sven-nothel|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:40Z
+ve_a0525f68e4|us/en/baden-wurttemberg/elzach/restaurant/rossle|€€|CAT_P02|bib|de|2026-10-30T08:57:41Z
+ve_a05414a3ba|us/en/bayern/sommerhausen/restaurant/philipp|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:43Z
+ve_a06b49218f|us/en/saarland/sankt-ingbert/restaurant/atama-by-martin-stopp|€€€€|CAT_P04|2 star|de|2026-10-30T08:57:44Z
+ve_a1fe39ecf3|us/en/bayern/illertissen/restaurant/vier-jahreszeiten-restaurant-imhof|€€|CAT_P02|bib|de|2026-10-30T08:57:45Z
+ve_a21e5606ca|us/en/niedersachsen/hannover/restaurant/handwerk|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:47Z
+ve_a2b50d1946|us/en/rheinland-pfalz/hardert/restaurant/corona-hotel-zur-post|€€|CAT_P02|bib|de|2026-10-30T08:57:48Z
+ve_a2d6404423|us/en/rheinland-pfalz/selzen/restaurant/kaupers-restaurant-im-kapellenhof|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:49Z
+ve_a3b86ce5d4|us/en/baden-wurttemberg/baden-baden/restaurant/maltes-hidden-kitchen|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:51Z
+ve_a3c1ddcf08|us/en/baden-wurttemberg/grenzach-wyhlen/restaurant/ruhrberger-hof|€€|CAT_P02|bib|de|2026-10-30T08:57:52Z
+ve_a4899578c1|us/en/niedersachsen/osnabruck/restaurant/kesselhaus1179716|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:53Z
+ve_a4b6b633e7|us/en/hessen/frankfurt-am-main/restaurant/yaldy|€€|CAT_P02|bib|de|2026-10-30T08:57:55Z
+ve_a4c05fac5d|us/en/berlin-region/berlin/restaurant/tim-raue|€€€€|CAT_P04|2 star|de|2026-10-30T08:57:56Z
+ve_a68841feed|us/en/baden-wurttemberg/neuhausen/restaurant/alte-baiz|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:58Z
+ve_a81a3518f2|us/en/bayern/regensburg/restaurant/storstad|€€€€|CAT_P04|1 star|de|2026-10-30T08:57:59Z
+ve_a91fcc12f2|us/en/bayern/mnchen/restaurant/komu|€€€€|CAT_P04|2 star|de|2026-10-30T08:58:00Z
+ve_aa94015613|us/en/berlin-region/berlin/restaurant/mami-s|€€|CAT_P02|bib|de|2026-10-30T08:58:02Z
+ve_ab9eb80120|us/en/bayern/mnchen/restaurant/brothers|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:03Z
+ve_ad3ccee9a1|us/en/nordrhein-westfalen/essen/restaurant/kettner-s-kamota|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:04Z
+ve_aeba0a7456|us/en/baden-wurttemberg/donaueschingen/restaurant/osch-noir|€€€€|CAT_P04|2 star|de|2026-10-30T08:58:06Z
+ve_aee680dc40|us/en/schleswig-holstein/keitum/restaurant/tipken%C2%B4s|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:07Z
+ve_b0a68f018a|us/en/baden-wurttemberg/baiersbronn/restaurant/schlossberg|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:09Z
+ve_b18b739e75|us/en/baden-wurttemberg/waldenbuch/restaurant/gasthof-krone|€€€|CAT_P03|1 star|de|2026-10-30T08:58:10Z
+ve_b1b3a8e4ce|us/en/bayern/piding/restaurant/lohmayr-stub-n|€€|CAT_P02|bib|de|2026-10-30T08:58:11Z
+ve_b1cded444d|us/en/bayern/pfronten/restaurant/pavo-im-burghotel-falkenstein|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:13Z
+ve_b2449fc6ee|us/en/rheinland-pfalz/bad-neuenahr-ahrweiler/restaurant/historisches-gasthaus-sanct-peter-restaurant-brogsitter|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:14Z
+ve_b28ff85ca5|us/en/schleswig-holstein/kiel/restaurant/ahlmanns|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:15Z
+ve_b2b57e491b|us/en/bayern/bernried_1281441/restaurant/schwingshackl-esskultur|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:17Z
+ve_b335f4a72c|us/en/bayern/langenzenn/restaurant/keidenzeller-hof|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:18Z
+ve_b34e3be975|us/en/baden-wurttemberg/hayingen/restaurant/rose|€|CAT_P01|bib|de|2026-10-30T08:58:19Z
+ve_b46cfdebad|us/en/rheinland-pfalz/mainz/restaurant/favorite-restaurant|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:21Z
+ve_b4712f932f|us/en/baden-wurttemberg/ulm/restaurant/bi-braud|€€€|CAT_P03|1 star|de|2026-10-30T08:58:22Z
+ve_b4e1c3df40|us/en/baden-wurttemberg/oberboihingen/restaurant/zur-linde76225|€|CAT_P01|bib|de|2026-10-30T08:58:23Z
+ve_b6778cce32|us/en/berlin-region/berlin/restaurant/hallmann-und-klee|€€€|CAT_P03|1 star|de|2026-10-30T08:58:25Z
+ve_b6c0d1b3dd|us/en/bayern/neu-ulm/restaurant/stephans-stuben|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:26Z
+ve_b6edcb22ae|us/en/bayern/finning/restaurant/zum-staudenwirt|€€|CAT_P02|bib|de|2026-10-30T08:58:28Z
+ve_b7c3a95507|us/en/hessen/eltville-am-rhein/restaurant/ente|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:29Z
+ve_b7cbf06c68|us/en/baden-wurttemberg/freiburg-im-breisgau/restaurant/eichhalde|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:30Z
+ve_b8360de0c5|us/en/hamburg-region/hamburg/restaurant/jellyfish|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:32Z
+ve_b89ce05d50|us/en/baden-wurttemberg/sankt-mrgen/restaurant/zum-kreuz|€€|CAT_P02|bib|de|2026-10-30T08:58:33Z
+ve_b9c83d62a7|us/en/bayern/marktbreit/restaurant/michels-stern|€€|CAT_P02|bib|de|2026-10-30T08:58:34Z
+ve_ba011b22c7|us/en/baden-wurttemberg/elzach/restaurant/schack-s-adler|€€|CAT_P02|bib|de|2026-10-30T08:58:36Z
+ve_bc1cf74926|us/en/baden-wurttemberg/immenstaad-am-bodensee/restaurant/seehof|€€|CAT_P02|bib|de|2026-10-30T08:58:37Z
+ve_bc488b87cd|us/en/rheinland-pfalz/naurath-wald/restaurant/russel-s-landhaus|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:39Z
+ve_bc805069c7|us/en/hamburg-region/hamburg/restaurant/haebel|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:40Z
+ve_bd14a03ab7|us/en/bayern/rothenburg-ob-der-tauber/restaurant/mittermeier|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:41Z
+ve_bd4c5ae2ef|us/en/baden-wurttemberg/isny-im-allgu/restaurant/allgauer-stuben|€€|CAT_P02|bib|de|2026-10-30T08:58:43Z
+ve_bd51e9f45a|us/en/nordrhein-westfalen/schmallenberg/restaurant/hofstube|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:44Z
+ve_be29ccaab9|us/en/hamburg-region/hamburg/restaurant/lakeside|€€€€|CAT_P04|2 star|de|2026-10-30T08:58:45Z
+ve_bf90f025d0|us/en/bayern/ofterschwang/restaurant/silberdistel|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:47Z
+ve_bfecf57e4d|us/en/rheinland-pfalz/neupotz/restaurant/gehrlein-s-hardtwald|€€|CAT_P02|bib|de|2026-10-30T08:58:48Z
+ve_c0720f338d|us/en/baden-wurttemberg/freiburg-im-breisgau/restaurant/wolfshohle-1198858|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:50Z
+ve_c261c84c90|us/en/brandenburg/falkensee_1318711/restaurant/sawito|€€€|CAT_P03|1 star|de|2026-10-30T08:58:51Z
+ve_c3dda37111|us/en/berlin-region/berlin/restaurant/november-brasserie|€€|CAT_P02|bib|de|2026-10-30T08:58:52Z
+ve_c400f8c12c|us/en/baden-wurttemberg/sulzburg/restaurant/hirschen78032|€€€€|CAT_P04|2 star|de|2026-10-30T08:58:54Z
+ve_c45d948825|us/en/hessen/frankfurt-am-main/restaurant/sommerfeld|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:55Z
+ve_c4bb2a2bd3|us/en/berlin-region/berlin/restaurant/tulus-lotrek|€€€€|CAT_P04|1 star|de|2026-10-30T08:58:56Z
+ve_c4c411f432|us/en/baden-wurttemberg/baiersbronn/restaurant/restaurant-bareiss|€€€€|CAT_P04|3 star|de|2026-10-30T08:58:58Z
+ve_c5c5bbf971|us/en/rheinland-pfalz/andernach/restaurant/ai-pero|€€|CAT_P02|bib|de|2026-10-30T08:58:59Z
+ve_c5cc23a894|us/en/saarland/saarlouis/restaurant/louis-restaurant|€€€€|CAT_P04|2 star|de|2026-10-30T08:59:00Z
+ve_c6c5fa9a8d|us/en/bayern/cham/restaurant/gasthaus-odenturm|€|CAT_P01|bib|de|2026-10-30T08:59:02Z
+ve_c79219382e|us/en/baden-wurttemberg/schriesheim/restaurant/raro-im-muhlenhof|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:03Z
+ve_c7ef91b5dd|us/en/baden-wurttemberg/gernsbach/restaurant/werners-restaurant99887|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:05Z
+ve_c86214d7a6|us/en/bayern/gmund-am-tegernsee/restaurant/ostiner-stub-n|€€|CAT_P02|bib|de|2026-10-30T08:59:06Z
+ve_ca548881df|us/en/bayern/lindau/restaurant/villino|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:07Z
+ve_ca907e10bb|us/en/berlin-region/berlin/restaurant/barra|€€|CAT_P02|bib|de|2026-10-30T08:59:09Z
+ve_cae401498e|us/en/nordrhein-westfalen/dusseldorf/restaurant/setzkasten|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:10Z
+ve_caf8559280|us/en/bayern/wurzburg/restaurant/mizar|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:11Z
+ve_cb8fc4e95f|us/en/thuringen/erfurt/restaurant/clara-restaurant-im-kaisersaal|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:13Z
+ve_cbcc09aefb|us/en/baden-wurttemberg/schorndorf/restaurant/gourmetrestaurant-nico-burkhardt|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:14Z
+ve_cc6f548d8e|us/en/rheinland-pfalz/geisfeld_1330179/restaurant/kaufmann-s|€€|CAT_P02|bib|de|2026-10-30T08:59:15Z
+ve_cd2f7ba3a5|us/en/baden-wurttemberg/bietigheim-bissingen/restaurant/maerz-das-restaurant|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:17Z
+ve_cd34c7783a|us/en/hessen/hchst-im-odenwald/restaurant/gaststube81589|€€|CAT_P02|bib|de|2026-10-30T08:59:18Z
+ve_cd80f14ae3|us/en/bayern/mnchen/restaurant/tohru-in-der-schreiberei|€€€€|CAT_P04|3 star|de|2026-10-30T08:59:20Z
+ve_cdec957d76|us/en/bayern/erlangen/restaurant/holzgarten|€€|CAT_P02|bib|de|2026-10-30T08:59:21Z
+ve_ce76dfd046|us/en/hessen/frankfurt-am-main/restaurant/seven-swans|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:22Z
+ve_ce8789421f|us/en/mecklenburg-vorpommern/feldberger-seenlandschaft/restaurant/alte-schule-klassenzimmer|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:24Z
+ve_ced10c4d84|us/en/nordrhein-westfalen/koln/restaurant/capricorn-i-aries-brasserie|€€|CAT_P02|bib|de|2026-10-30T08:59:25Z
+ve_d01ecc7480|us/en/sachsen/dresden/restaurant/genuss-atelier|€€€|CAT_P03|1 star|de|2026-10-30T08:59:26Z
+ve_d175f515c7|us/en/baden-wurttemberg/de-schwbisch-hall/restaurant/landhaus-zum-rossle|€€|CAT_P02|bib|de|2026-10-30T08:59:28Z
+ve_d38d05d17c|us/en/nordrhein-westfalen/koln/restaurant/taku|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:29Z
+ve_d44aee72d5|us/en/baden-wurttemberg/baiersbronn/restaurant/schatzhauser|€€|CAT_P02|bib|de|2026-10-30T08:59:31Z
+ve_d46e645158|us/en/bayern/nrdlingen/restaurant/wirtshaus-meyers-keller|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:32Z
+ve_d4a3980667|us/en/nordrhein-westfalen/paderborn/restaurant/balthasar|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:33Z
+ve_d55d175080|us/en/brandenburg/neuzelle_1322193/restaurant/wilde-klosterkuche|€€|CAT_P02|bib|de|2026-10-30T08:59:35Z
+ve_d56ebba332|us/en/nordrhein-westfalen/essen/restaurant/chefs-atelier|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:36Z
+ve_d5d9c2a701|us/en/mecklenburg-vorpommern/heringsdorf/restaurant/kulmeck-by-tom-wickboldt|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:37Z
+ve_d5e1ca405a|us/en/baden-wurttemberg/tuttlingen/restaurant/anima|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:39Z
+ve_d672abea64|us/en/bayern/regensburg/restaurant/aska-1186893|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:40Z
+ve_d6906e8bfb|us/en/schleswig-holstein/tangstedt/restaurant/gutskuche|€€|CAT_P02|bib|de|2026-10-30T08:59:41Z
+ve_d778d7e03c|us/en/baden-wurttemberg/ravensburg/restaurant/kaisersaal|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:43Z
+ve_d7a5a15a7a|us/en/rheinland-pfalz/koblenz/restaurant/schiller-s-restaurant|€€€|CAT_P03|1 star|de|2026-10-30T08:59:44Z
+ve_d7eb5e2b42|us/en/bayern/marktbreit/restaurant/alter-esel|€€|CAT_P02|bib|de|2026-10-30T08:59:46Z
+ve_d82a735d56|us/en/baden-wurttemberg/waiblingen/restaurant/bachofer|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:47Z
+ve_d94f519644|us/en/mecklenburg-vorpommern/rostock/restaurant/gourmet-restaurant-der-butt|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:48Z
+ve_d96516d928|us/en/bayern/dietramszell/restaurant/moarwirt|€€|CAT_P02|bib|de|2026-10-30T08:59:50Z
+ve_d99908fed4|us/en/nordrhein-westfalen/dusseldorf/restaurant/zwanzig23-by-lukas-jakobi|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:51Z
+ve_d9ab4941c8|us/en/bayern/markt-indersdorf_1300191/restaurant/mind-1209794|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:52Z
+ve_d9b9adf960|us/en/baden-wurttemberg/stuttgart/restaurant/zur-weinsteige|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:54Z
+ve_d9cb2eb404|us/en/rheinland-pfalz/pirmasens/restaurant/die-brasserie|€€€€|CAT_P04|1 star|de|2026-10-30T08:59:55Z
+ve_db4d0d9491|us/en/bayern/ruderting/restaurant/landgasthof-zum-muller|€€|CAT_P02|bib|de|2026-10-30T08:59:57Z
+ve_dbd4dc38f2|us/en/sachsen/dresden/restaurant/heiderand|€€€|CAT_P03|1 star|de|2026-10-30T08:59:58Z
+ve_de0af0b5c9|us/en/baden-wurttemberg/tiefenbronn/restaurant/bauernstuben|€€|CAT_P02|bib|de|2026-10-30T08:59:59Z
+ve_de2b6590e5|us/en/schleswig-holstein/glcksburg/restaurant/meierei-dirk-luther|€€€€|CAT_P04|2 star|de|2026-10-30T09:00:01Z
+ve_de56b2c6a7|us/en/nordrhein-westfalen/koln/restaurant/maximilian-lorenz|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:02Z
+ve_deb007b6bd|us/en/baden-wurttemberg/donaueschingen/restaurant/die-burg|€€€|CAT_P03|1 star|de|2026-10-30T09:00:03Z
+ve_df92470d4f|us/en/schleswig-holstein/scharbeutz/restaurant/diva|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:05Z
+ve_e12f9853d8|us/en/niedersachsen/lneburg/restaurant/rohms-deli|€€|CAT_P02|bib|de|2026-10-30T09:00:06Z
+ve_e134f7fdb5|us/en/hessen/bad-hersfeld/restaurant/l-etable164933|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:07Z
+ve_e20a6877aa|us/en/baden-wurttemberg/ehningen/restaurant/landhaus-feckl|€€€|CAT_P03|1 star|de|2026-10-30T09:00:09Z
+ve_e22c5af8dd|us/en/nordrhein-westfalen/essen/restaurant/hannappel|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:10Z
+ve_e23ab31418|us/en/bayern/kreuzwertheim_1295241/restaurant/la-boucherie|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:11Z
+ve_e277fbbeba|us/en/hamburg-region/hamburg/restaurant/the-lisbeth|€€€|CAT_P03|1 star|de|2026-10-30T09:00:13Z
+ve_e387ce797a|us/en/baden-wurttemberg/bad-rippoldsau/restaurant/klosterle-hof|€€|CAT_P02|bib|de|2026-10-30T09:00:14Z
+ve_e3c0554021|us/en/nordrhein-westfalen/dusseldorf/restaurant/essbar|€€|CAT_P02|bib|de|2026-10-30T09:00:16Z
+ve_e49c3ac9d7|us/en/bayern/nurnberg/restaurant/etz|€€€€|CAT_P04|2 star|de|2026-10-30T09:00:17Z
+ve_e4b3d1f445|us/en/schleswig-holstein/flensburg/restaurant/das-grace|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:18Z
+ve_e4b53b0427|us/en/hamburg-region/hamburg/restaurant/glorie|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:20Z
+ve_e52e8e380f|us/en/baden-wurttemberg/stuttgart/restaurant/delice|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:21Z
+ve_e622dc98a4|us/en/baden-wurttemberg/staufen-im-breisgau/restaurant/die-krone|€€|CAT_P02|bib|de|2026-10-30T09:00:22Z
+ve_e7df93eca0|us/en/baden-wurttemberg/schluchsee/restaurant/muhle-1195341|€€€€|CAT_P04|2 star|de|2026-10-30T09:00:24Z
+ve_e7fc83a59b|us/en/schleswig-holstein/wyk/restaurant/alt-wyk|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:25Z
+ve_e884f4d630|us/en/nordrhein-westfalen/odenthal/restaurant/zur-post83223|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:27Z
+ve_e91ff49724|us/en/bayern/nurnberg/restaurant/zweisinn-meiers-fine-dining|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:28Z
+ve_e9e7461048|us/en/baden-wurttemberg/frickingen/restaurant/lowen72973|€€|CAT_P02|bib|de|2026-10-30T09:00:29Z
+ve_ea5bdb9697|us/en/baden-wurttemberg/schwendi/restaurant/esszimmer-im-oberschwabischen-hof-1195566|€€€|CAT_P03|1 star|de|2026-10-30T09:00:31Z
+ve_ec04518d3c|us/en/nordrhein-westfalen/meerbusch/restaurant/anthony-s-kitchen|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:32Z
+ve_ec6fa906be|us/en/baden-wurttemberg/freiburg-im-breisgau/restaurant/colombi-restaurant|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:33Z
+ve_ecd96c40cc|us/en/baden-wurttemberg/stuttgart/restaurant/der-zauberlehrling|€€€|CAT_P03|1 star|de|2026-10-30T09:00:35Z
+ve_ecf8981481|us/en/berlin-region/berlin/restaurant/facil|€€€€|CAT_P04|2 star|de|2026-10-30T09:00:36Z
+ve_ed4805dc19|us/en/bayern/oberstdorf/restaurant/ess-atelier-strauss|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:37Z
+ve_ed5192118c|us/en/hamburg-region/hamburg/restaurant/the-table-kevin-fehling|€€€€|CAT_P04|3 star|de|2026-10-30T09:00:39Z
+ve_edddd99863|us/en/hessen/frankfurt-am-main/restaurant/main-tower-restaurant-lounge-1198316|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:40Z
+ve_ee3b423148|us/en/berlin-region/berlin/restaurant/nussbaumerin|€€|CAT_P02|bib|de|2026-10-30T09:00:42Z
+ve_ee92539101|us/en/bayern/friedberg/restaurant/gasthaus-goldener-stern|€€|CAT_P02|bib|de|2026-10-30T09:00:43Z
+ve_eea5593c6a|us/en/baden-wurttemberg/baiersbronn/restaurant/dorfstuben|€€|CAT_P02|bib|de|2026-10-30T09:00:44Z
+ve_ef9143b7ad|us/en/schleswig-holstein/neuendorf-bei-wilster/restaurant/zum-duckerstieg|€€|CAT_P02|bib|de|2026-10-30T09:00:46Z
+ve_f0ad6a31a6|us/en/niedersachsen/hannover/restaurant/marie-1204342|€€€|CAT_P03|1 star|de|2026-10-30T09:00:47Z
+ve_f100b27414|us/en/nordrhein-westfalen/bonn/restaurant/yunico|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:48Z
+ve_f208304e7d|us/en/bayern/wackersberg/restaurant/tolzer-schiessstatte-hager|€€|CAT_P02|bib|de|2026-10-30T09:00:50Z
+ve_f22fa95b1e|us/en/bayern/spalt/restaurant/gasthof-blumenthal|€|CAT_P01|bib|de|2026-10-30T09:00:51Z
+ve_f2eda3d4e2|us/en/mecklenburg-vorpommern/krakow-am-see/restaurant/ich-weiss-ein-haus-am-see|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:52Z
+ve_f32c38bb59|us/en/baden-wurttemberg/freiamt/restaurant/zur-krone72877|€€|CAT_P02|bib|de|2026-10-30T09:00:54Z
+ve_f34842f924|us/en/bayern/windorf/restaurant/feilmeiers-landleben|€€|CAT_P02|bib|de|2026-10-30T09:00:55Z
+ve_f477ae2f2b|us/en/bayern/augsburg/restaurant/nose-belly|€€€|CAT_P03|1 star|de|2026-10-30T09:00:56Z
+ve_f52aa64565|us/en/sachsen-anhalt/wernigerode/restaurant/zeitwerk|€€€€|CAT_P04|1 star|de|2026-10-30T09:00:58Z
+ve_f589486169|us/en/baden-wurttemberg/bad-krozingen/restaurant/storchen|€€€|CAT_P03|1 star|de|2026-10-30T09:00:59Z
+ve_f75cff4948|us/en/schleswig-holstein/lubeck/restaurant/wullenwever|€€€€|CAT_P04|1 star|de|2026-10-30T09:01:00Z
+ve_f78ac45ec6|us/en/niedersachsen/bad-sachsa_1334125/restaurant/joseph-s-fine-dining|€€€€|CAT_P04|1 star|de|2026-10-30T09:01:02Z
+ve_f7bb78dfcb|us/en/baden-wurttemberg/tengen/restaurant/gasthof-zur-sonne78132|€€|CAT_P02|bib|de|2026-10-30T09:01:03Z
+ve_f87bb36eb5|us/en/rheinland-pfalz/meerfeld/restaurant/poststuben|€€|CAT_P02|bib|de|2026-10-30T09:01:04Z
+ve_f9295e688c|us/en/bayern/kreuzwertheim_1295241/restaurant/landgasthof-zum-kaffelstein|€€|CAT_P02|bib|de|2026-10-30T09:01:06Z
+ve_f94219fa0e|us/en/hamburg-region/hamburg/restaurant/hygge-brasserie-bar|€€|CAT_P02|bib|de|2026-10-30T09:01:08Z
+ve_fa24002020|us/en/berlin-region/berlin/restaurant/irma-la-douce|€€€|CAT_P03|1 star|de|2026-10-30T09:01:10Z
+ve_fa36943b0a|us/en/baden-wurttemberg/bad-herrenalb/restaurant/lamm81508|€€|CAT_P02|bib|de|2026-10-30T09:01:11Z
+ve_faef52673f|us/en/nordrhein-westfalen/aachen/restaurant/bistro356408|€€|CAT_P02|bib|de|2026-10-30T09:01:13Z
+ve_fb89a8302d|us/en/bayern/mnchen/restaurant/jan-1204321|€€€€|CAT_P04|3 star|de|2026-10-30T09:01:14Z
+ve_fbfa71093f|us/en/bayern/prien-am-chiemsee/restaurant/wachter-foodbar|€€€€|CAT_P04|1 star|de|2026-10-30T09:01:15Z
+ve_fc8534e21e|us/en/nordrhein-westfalen/velbert/restaurant/haus-stemberg|€€€|CAT_P03|1 star|de|2026-10-30T09:01:17Z
+ve_fe0905b89e|us/en/bayern/waldkirchen/restaurant/johanns|€€€€|CAT_P04|1 star|de|2026-10-30T09:01:18Z
+ve_fe45bfa7eb|us/en/rheinland-pfalz/frankweiler/restaurant/weinstube-brand|€€|CAT_P02|bib|de|2026-10-30T09:01:19Z
+ve_fe66019fc0|us/en/bayern/marktbergel/restaurant/rotes-ross164952|€€|CAT_P02|bib|de|2026-10-30T09:01:21Z
+ve_ff9f2ff3ef|us/en/baden-wurttemberg/stuttgart/restaurant/5|€€€€|CAT_P04|1 star|de|2026-10-30T09:01:22Z$r$;
+  rel jsonb;
+  n_exp int := 432;
+  v_fp text;
+  v_ids text;
+  v_old text;
+  v_bad int;
+  v_upd int;
+  v_lid bigint;
+BEGIN
+  IF (SELECT count(*) FROM price) <> 7582 THEN RAISE EXCEPTION 'price count before is not 7582'; END IF;
+  IF (SELECT max(id) FROM source_capture_ledger) <> 145 THEN RAISE EXCEPTION 'ledger max before is not 145'; END IF;
+  IF (SELECT max(id) FROM audit_log) <> 116535 THEN RAISE EXCEPTION 'audit max before is not 116535'; END IF;
+  IF encode(sha256(convert_to(rel_txt, 'UTF8')), 'hex') <> 'c017e2ef258af1f373966e60c0c0beb82f0ca72a668ae7d07dd7d157a28a525d' THEN RAISE EXCEPTION 'relay sha256'; END IF;
+  -- relay line: venue_id|card path|symbol|CAT_P0n|distinction|country|captured_at
+  SELECT jsonb_agg(jsonb_build_object(
+           'venue_id', f[1], 'source_url', 'https://guide.michelin.com/' || f[2], 'symbol_raw', f[3],
+           'currency', CASE f[6] WHEN 'us' THEN 'USD' WHEN 'cn' THEN 'CNY' WHEN 'tw' THEN 'TWD' WHEN 'jp' THEN 'JPY' WHEN 'kr' THEN 'KRW' WHEN 'gb' THEN 'GBP' WHEN 'fr' THEN 'EUR' WHEN 'de' THEN 'EUR' WHEN 'it' THEN 'EUR' WHEN 'nl' THEN 'EUR' WHEN 'es' THEN 'EUR' WHEN 'be' THEN 'EUR' WHEN 'mc' THEN 'EUR' WHEN 'ie' THEN 'EUR' WHEN 'lu' THEN 'EUR' WHEN 'ad' THEN 'EUR' END,
+           'tier', char_length(f[3]), 'captured_at', f[7]) ORDER BY f[1] COLLATE "C"),
+         count(*) FILTER (WHERE array_length(f, 1) <> 7 OR f[4] <> 'CAT_P0' || char_length(f[3])
+                            OR char_length(f[3]) NOT BETWEEN 1 AND 4
+                            OR f[3] <> repeat(left(f[3], 1), char_length(f[3])))
+    INTO rel, v_bad
+    FROM (SELECT string_to_array(l, '|') AS f FROM regexp_split_to_table(rel_txt, E'\n') AS l) s;
+  IF v_bad <> 0 THEN RAISE EXCEPTION 'relay lines malformed: %', v_bad; END IF;
+  IF jsonb_array_length(rel) <> n_exp THEN RAISE EXCEPTION 'relay rows: %', jsonb_array_length(rel); END IF;
+  IF EXISTS (SELECT 1 FROM jsonb_to_recordset(rel) AS x(symbol_raw text, currency text)
+              WHERE x.currency IS NULL
+                 OR left(x.symbol_raw, 1) <> CASE x.currency WHEN 'USD' THEN '$' WHEN 'TWD' THEN '$' WHEN 'CNY' THEN '¥'
+                                              WHEN 'JPY' THEN '¥' WHEN 'KRW' THEN '₩' WHEN 'GBP' THEN '£' WHEN 'EUR' THEN '€' END)
+    THEN RAISE EXCEPTION 'symbol does not match currency'; END IF;
+
+  SELECT md5(string_agg(x.venue_id||'|'||x.source_url||'|'||x.symbol_raw||'|'||x.currency||'|'||x.tier||'|'||x.captured_at,
+                        E'\n' ORDER BY x.venue_id COLLATE "C")),
+         md5(string_agg(x.venue_id, E'\n' ORDER BY x.venue_id COLLATE "C"))
+    INTO v_fp, v_ids
+    FROM jsonb_to_recordset(rel) AS x(venue_id text, source_url text, symbol_raw text, currency text, tier int, captured_at text);
+  IF v_fp <> 'ae32d44488c1797313ffe1d9c6eb67ad' THEN RAISE EXCEPTION 'relay fingerprint %', v_fp; END IF;
+  IF v_ids <> '8071dcd9586815d5286a643a182e513c' THEN RAISE EXCEPTION 'venue id md5 %', v_ids; END IF;
+
+  -- old rows: the legacy price rows of the relay venues, as read before the build
+  SELECT md5(string_agg(p.venue_id||'|'||p.tier||'|'||coalesce(p.symbol_raw,'')||'|'||coalesce(p.publisher,''),
+                        E'\n' ORDER BY p.venue_id COLLATE "C"))
+    INTO v_old
+    FROM price p JOIN jsonb_to_recordset(rel) AS x(venue_id text) ON x.venue_id = p.venue_id;
+  IF v_old IS DISTINCT FROM 'ee362d9fc51dc74b30bfd23b16de57f9' THEN RAISE EXCEPTION 'old price rows md5 %', v_old; END IF;
+
+  -- each row: venue active; legacy price row with no URL; card URL = latest Michelin star/Bib card URL of the venue
+  SELECT count(*) INTO v_bad
+    FROM jsonb_to_recordset(rel) AS x(venue_id text, source_url text)
+   WHERE NOT EXISTS (SELECT 1 FROM venues v WHERE v.id = x.venue_id AND v.status = 'active')
+      OR NOT EXISTS (SELECT 1 FROM price p WHERE p.venue_id = x.venue_id AND p.source = 'legacy_guide' AND p.source_url IS NULL)
+      OR x.source_url IS DISTINCT FROM (
+           SELECT a.source_url FROM awards a
+            WHERE a.venue_id = x.venue_id AND a.source_id = 'michelin'
+              AND a.category IN ('One Star','Two Stars','Three Stars','Bib Gourmand')
+              AND a.source_url ~ '^https://guide\.michelin\.com/.*/restaurant/'
+            ORDER BY a.year DESC, a.id DESC LIMIT 1);
+  IF v_bad <> 0 THEN RAISE EXCEPTION 'rows outside P2 or URL changed: %', v_bad; END IF;
+
+  UPDATE price p
+     SET tier = x.tier::smallint, symbol_raw = x.symbol_raw, currency = x.currency, source = 'guide_ingest',
+         method = 'published_symbol', publisher = 'michelin', source_url = x.source_url,
+         captured_at = x.captured_at::timestamptz, confidence = NULL
+    FROM jsonb_to_recordset(rel) AS x(venue_id text, source_url text, symbol_raw text, currency text, tier int, captured_at text)
+   WHERE p.venue_id = x.venue_id AND p.source = 'legacy_guide' AND p.source_url IS NULL;
+  GET DIAGNOSTICS v_upd = ROW_COUNT;
+  IF v_upd <> n_exp THEN RAISE EXCEPTION 'rows updated: %', v_upd; END IF;
+
+  INSERT INTO source_capture_ledger (publisher, field_type, items, job)
+  VALUES ('michelin', 'price', n_exp,
+          'price-card:price-michelin-card-p2-b6-2026-10-30 | block A step 2 batch 6 (Germany, 433 venues): legacy price rows with no URL, active Michelin star/Bib venues with a card URL | '
+          || n_exp || ' rows updated from legacy (EUR 432) | live card read, built-in browser | relay md5 ae32d44488c1797313ffe1d9c6eb67ad')
+  RETURNING id INTO v_lid;
+
+  -- post-checks
+  IF (SELECT count(*) FROM price) <> 7582 THEN RAISE EXCEPTION 'price count after'; END IF;
+  IF v_lid <> 146 THEN RAISE EXCEPTION 'ledger id %', v_lid; END IF;
+  IF (SELECT count(*) FROM audit_log WHERE id > 116535) <> n_exp THEN RAISE EXCEPTION 'audit rows after'; END IF;
+  IF (SELECT count(*) FROM audit_log a
+        JOIN jsonb_to_recordset(rel) AS x(venue_id text) ON x.venue_id = a.row_pk
+       WHERE a.id > 116535 AND a.table_name = 'price' AND a.action = 'UPDATE') <> n_exp
+    THEN RAISE EXCEPTION 'audit price UPDATE rows'; END IF;
+  IF (SELECT count(*) FROM price p
+        JOIN jsonb_to_recordset(rel) AS x(venue_id text, source_url text, symbol_raw text, currency text, tier int, captured_at text)
+          ON x.venue_id = p.venue_id AND x.symbol_raw = p.symbol_raw AND x.source_url = p.source_url
+         AND x.currency = p.currency AND x.tier = p.tier AND x.captured_at::timestamptz = p.captured_at
+       WHERE p.source = 'guide_ingest' AND p.method = 'published_symbol' AND p.publisher = 'michelin'
+         AND p.confidence IS NULL) <> n_exp
+    THEN RAISE EXCEPTION 'price rows after do not match relay'; END IF;
+END
+$do$;
+COMMIT;
