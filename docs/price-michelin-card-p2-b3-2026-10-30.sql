@@ -1,0 +1,697 @@
+-- price-michelin-card-p2-b3-2026-10-30.sql
+-- Block A, step 2, batch 3 (Italy, 596 venues).
+-- Population P2: active venues with a Michelin One Star, Two Stars, Three Stars or Bib Gourmand row whose source_url is
+-- a guide.michelin.com card URL (latest by year desc, id desc), and a price row with source legacy_guide and no source_url.
+-- Source: the live Michelin card page (Price: line, data-sheet), read in the built-in browser.
+-- Rows: 586 UPDATE of the legacy price row (source guide_ingest, method published_symbol, publisher michelin,
+-- source_url = card URL, symbol_raw = card symbol, currency from card country, tier = symbol count, confidence NULL,
+-- captured_at = read time). Rows where the card tier equals the legacy tier are also updated (Ben, Oct 30, 2026).
+-- Cards that show Selected only are also updated; award rows do not change (Ben, Oct 30, 2026; Oct 10 ruling).
+-- Currencies: EUR 586. Card tiers: 1 = 72, 2 = 175, 3 = 109, 4 = 230. Card distinction: 1 star 298, 2 star 30, 3 star 14, bib 244.
+-- Relay sha256 1a3813a8b08a8f742031d8af353459f76653efbff20bf2561c90923e1111def3 (inside this file).
+-- Guards: counts before (price 7582, ledger max 142, audit max 114908); relay fingerprint md5
+-- 55626b8b973398987b653d9d663e6f53; venue id md5 9c037cf5da16ec47c403f9870514b80d; old price rows md5 aef8a1d276c2c3a400f035f5c7d278f8;
+-- each row in P2 now with the same card URL.
+-- Post-checks: price count 7582 (unchanged); ledger 143; audit 586 price UPDATE rows, nothing else;
+-- each price row now matches the relay.
+BEGIN;
+DO $do$
+DECLARE
+  rel_txt text := $r$ve_0297400ed5|us/en/toscana/san-gimignano/restaurant/linfa|€€€€|CAT_P04|1 star|it|2026-10-30T06:22:53.714Z
+ve_02a314c977|us/en/liguria/urbe_1801837/restaurant/la-civetta|€€|CAT_P02|bib|it|2026-10-30T06:22:55.071Z
+ve_0368dd0aba|us/en/campania/bacoli/restaurant/caracol|€€€€|CAT_P04|1 star|it|2026-10-30T06:22:56.406Z
+ve_03afeaae49|us/en/campania/limatola_1849192/restaurant/la-taverna-delle-follie|€€|CAT_P02|bib|it|2026-10-30T06:22:57.748Z
+ve_043aeb147d|us/en/lazio/trevinano/restaurant/la-parolina|€€€€|CAT_P04|1 star|it|2026-10-30T06:22:59.072Z
+ve_04c2784726|us/en/basilicata/lavello/restaurant/forentum|€|CAT_P01|bib|it|2026-10-30T06:23:00.399Z
+ve_051a0f1bc8|us/en/lombardia/milano/restaurant/da-giannino-l-angolo-d-abruzzo|€€|CAT_P02|bib|it|2026-10-30T06:23:01.732Z
+ve_05c6585158|us/en/sicilia/randazzo/restaurant/veneziano|€€|CAT_P02|bib|it|2026-10-30T06:23:03.060Z
+ve_0622b82775|us/en/lazio/roma/restaurant/la-pergola69016|€€€€|CAT_P04|3 star|it|2026-10-30T06:23:04.434Z
+ve_063f92c73f|us/en/toscana/cortona/restaurant/il-falconiere|€€€€|CAT_P04|1 star|it|2026-10-30T06:23:05.761Z
+ve_06520e2312|us/en/marche/marzocca/restaurant/madonnina-del-pescatore|€€€€|CAT_P04|2 star|it|2026-10-30T06:23:07.088Z
+ve_06e977bba4|us/en/puglia/ruvo-di-puglia/restaurant/u-p-e-p-i-d-d-e|€€|CAT_P02|bib|it|2026-10-30T06:23:08.404Z
+ve_0779b60644|us/en/trentino-alto-adige/merano/restaurant/sissi|€€€|CAT_P03|1 star|it|2026-10-30T06:23:09.736Z
+ve_086a060074|us/en/sicilia/terrasini/restaurant/salotto-sul-mare|€|CAT_P01|bib|it|2026-10-30T06:23:11.064Z
+ve_08b1bde86c|us/en/puglia/san-marzano-di-san-giuseppe_1853441/restaurant/vez|€€|CAT_P02|bib|it|2026-10-30T06:23:12.399Z
+ve_09946e039b|us/en/piemonte/orta-san-giulio/restaurant/villa-crespi|€€€€|CAT_P04|3 star|it|2026-10-30T06:23:13.735Z
+ve_0a0ea1b7c9|us/en/toscana/firenze/restaurant/da-burde|€€|CAT_P02|bib|it|2026-10-30T06:23:15.070Z
+ve_0a91203107|us/en/piemonte/orta-san-giulio/restaurant/locanda-di-orta|€€€€|CAT_P04|1 star|it|2026-10-30T06:23:16.435Z
+ve_0acd48522e|us/en/lombardia/castiglione-delle-stiviere/restaurant/hostaria-viola|€€|CAT_P02|bib|it|2026-10-30T06:23:17.766Z
+ve_0c28f3dbce|us/en/campania/napoli/restaurant/veritas|€€€|CAT_P03|1 star|it|2026-10-30T06:23:19.108Z
+ve_0c3d055903|us/en/veneto/bigolino/restaurant/tre-noghere|€€|CAT_P02|bib|it|2026-10-30T06:23:20.444Z
+ve_0c7f5feaaf|us/en/campania/castellammare-di-stabia/restaurant/piazzetta-milu|€€€€|CAT_P04|2 star|it|2026-10-30T06:23:21.772Z
+ve_0dd410c41a|us/en/umbria/capodacqua/restaurant/une|€€€€|CAT_P04|1 star|it|2026-10-30T06:23:23.103Z
+ve_0e2cf0cc42|us/en/liguria/ne/restaurant/la-brinca|€€|CAT_P02|bib|it|2026-10-30T06:23:24.426Z
+ve_0e8288882b|us/en/lombardia/concesio/restaurant/miramonti-l-altro|€€€€|CAT_P04|1 star|it|2026-10-30T06:23:25.759Z
+ve_0ead9edad6|us/en/emilia-romagna/modena/restaurant/l-erba-del-re|€€€€|CAT_P04|1 star|it|2026-10-30T06:23:27.112Z
+ve_10446b243a|us/en/puglia/polignano-a-mare/restaurant/pasha|€€€€|CAT_P04|1 star|it|2026-10-30T06:23:28.434Z
+ve_10c01a7f1d|us/en/toscana/forte-dei-marmi/restaurant/lux-lucis|€€€€|CAT_P04|1 star|it|2026-10-30T06:23:29.784Z
+ve_116f485d79|us/en/trentino-alto-adige/selva-di-val-gardena/restaurant/alpenroyal-gourmet|€€€€|CAT_P04|1 star|it|2026-10-30T06:23:31.123Z
+ve_11e6e488a3|us/en/piemonte/soriso/restaurant/al-sorriso|€€€€|CAT_P04|1 star|it|2026-10-30T06:23:32.455Z
+ve_1217140ab2|us/en/sicilia/linguaglossa/restaurant/in-cucina-dai-pennisi|€€|CAT_P02|bib|it|2026-10-30T06:23:33.819Z
+ve_12415400ae|us/en/veneto/arzignano/restaurant/damini-macelleria-affini|€€€|CAT_P03|1 star|it|2026-10-30T06:23:35.158Z
+ve_12905c2aa4|us/en/trentino-alto-adige/molini/restaurant/schoneck|€€€|CAT_P03|1 star|it|2026-10-30T06:23:36.501Z
+ve_12b0e4600d|us/en/toscana/ponte-a-moriano/restaurant/antica-locanda-di-sesto|€€|CAT_P02|bib|it|2026-10-30T06:23:37.833Z
+ve_137c9a25b2|us/en/trentino-alto-adige/moena/restaurant/malga-panna|€€€|CAT_P03|1 star|it|2026-10-30T06:23:39.165Z
+ve_153ba08994|us/en/emilia-romagna/podenzano/restaurant/l-ostreria-fratelli-pavesi|€€|CAT_P02|bib|it|2026-10-30T06:23:40.492Z
+ve_155693285b|us/en/veneto/oppeano/restaurant/famiglia-rana|€€€€|CAT_P04|2 star|it|2026-10-30T06:23:41.810Z
+ve_15a2cc015a|us/en/emilia-romagna/bologna/restaurant/trattoria-di-via-serra|€|CAT_P01|bib|it|2026-10-30T06:23:43.172Z
+ve_15ce1a6425|us/en/emilia-romagna/montegridolfo_1826929/restaurant/osteria-dell-accademia|€€|CAT_P02|bib|it|2026-10-30T06:23:44.511Z
+ve_1622d587a0|us/en/emilia-romagna/polesine-parmense/restaurant/antica-corte-pallavicina|€€€|CAT_P03|1 star|it|2026-10-30T06:23:45.829Z
+ve_1727fb4901|us/en/veneto/rubano/restaurant/le-calandre|€€€€|CAT_P04|3 star|it|2026-10-30T06:23:47.150Z
+ve_17806afc9f|us/en/piemonte/cavatore/restaurant/da-fausto|€€|CAT_P02|bib|it|2026-10-30T06:23:48.480Z
+ve_18ca950e8d|us/en/emilia-romagna/savigno/restaurant/trattoria-da-amerigo|€€|CAT_P02|1 star|it|2026-10-30T06:23:49.809Z
+ve_191c9ba60d|us/en/veneto/pianiga/restaurant/trattoria-da-paeto|€€|CAT_P02|bib|it|2026-10-30T06:23:51.125Z
+ve_1924d58f83|us/en/marche/appignano/restaurant/osteria-dei-segreti|€€|CAT_P02|bib|it|2026-10-30T06:23:52.459Z
+ve_1a906b6d4b|us/en/sicilia/bagheria/restaurant/tuma|€|CAT_P01|bib|it|2026-10-30T06:23:53.796Z
+ve_1abb5a64d0|us/en/umbria/morrano-nuovo/restaurant/da-gregorio|€€|CAT_P02|bib|it|2026-10-30T06:23:55.101Z
+ve_1ae07af1e2|us/en/piemonte/borghetto-di-borbera/restaurant/il-fiorile|€€|CAT_P02|bib|it|2026-10-30T06:23:56.414Z
+ve_1ba2f22b34|us/en/marche/ancona/restaurant/sot-ajarchi|€€|CAT_P02|bib|it|2026-10-30T06:23:57.765Z
+ve_1cfec607b2|us/en/lombardia/puegnago-sul-garda/restaurant/casa-leali|€€€|CAT_P03|1 star|it|2026-10-30T06:23:59.094Z
+ve_1d9a18c2ae|us/en/friuli-venezia-giulia/cavazzo-carnico/restaurant/borgo-poscolle|€|CAT_P01|bib|it|2026-10-30T06:24:00.438Z
+ve_1e0c86fb05|us/en/liguria/dolcedo/restaurant/equilibrio|€€€|CAT_P03|1 star|it|2026-10-30T06:24:01.820Z
+ve_1e4fb9b60e|us/en/lombardia/milano/restaurant/trippa|€€|CAT_P02|bib|it|2026-10-30T06:24:03.179Z
+ve_20439c7bf2|us/en/lombardia/esine/restaurant/da-sapi|€€|CAT_P02|bib|it|2026-10-30T06:24:04.512Z
+ve_20c6b0461e|us/en/emilia-romagna/rimini/restaurant/trattoria-da-lucio|€€€|CAT_P03|1 star|it|2026-10-30T06:24:05.857Z
+ve_212581db76|us/en/lombardia/recorfano/restaurant/antica-trattoria-gianna|€|CAT_P01|bib|it|2026-10-30T06:24:07.188Z
+ve_22e8021e76|us/en/lazio/ariccia/restaurant/sintesi|€€€|CAT_P03|1 star|it|2026-10-30T06:24:08.535Z
+ve_233364b3de|us/en/lombardia/milano/restaurant/anima-fine-dining|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:09.873Z
+ve_234001c741|us/en/lombardia/lodi_1806947/restaurant/la-coldana|€€|CAT_P02|1 star|it|2026-10-30T06:24:11.213Z
+ve_234b233b30|us/en/lazio/roma/restaurant/trattoria-pennestri|€€|CAT_P02|bib|it|2026-10-30T06:24:12.573Z
+ve_239b436368|us/en/toscana/orbetello/restaurant/l-oste-dispensa|€€|CAT_P02|bib|it|2026-10-30T06:24:13.894Z
+ve_247dbc6150|us/en/emilia-romagna/castel-maggiore/restaurant/iacobucci|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:15.228Z
+ve_248a61276b|us/en/veneto/malo/restaurant/la-favellina|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:16.565Z
+ve_249cddcaf4|us/en/emilia-romagna/imola/restaurant/san-domenico|€€€€|CAT_P04|2 star|it|2026-10-30T06:24:17.893Z
+ve_251842320d|us/en/emilia-romagna/ferrara/restaurant/ca-d-frara|€€|CAT_P02|bib|it|2026-10-30T06:24:19.218Z
+ve_25b2909f17|us/en/trentino-alto-adige/moena/restaurant/foresta162722|€€|CAT_P02|bib|it|2026-10-30T06:24:20.542Z
+ve_2643fb4ca8|us/en/campania/pompei/restaurant/president|€€€|CAT_P03|1 star|it|2026-10-30T06:24:21.873Z
+ve_26745cabb9|us/en/lazio/roma/restaurant/romane|€|CAT_P01|bib|it|2026-10-30T06:24:23.203Z
+ve_26c86a305a|us/en/sicilia/marina-di-ragusa/restaurant/votavota|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:24.517Z
+ve_27872430f3|us/en/toscana/porto-ercole/restaurant/il-pellicano|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:25.845Z
+ve_27fe47b3ff|us/en/lombardia/cernobbio/restaurant/materia|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:27.182Z
+ve_2881ecb741|us/en/toscana/firenze/restaurant/il-palagio|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:28.534Z
+ve_28f8af1538|us/en/emilia-romagna/parma/restaurant/brisla|€€|CAT_P02|bib|it|2026-10-30T06:24:29.857Z
+ve_293c042e7c|us/en/emilia-romagna/modena/restaurant/osteria-francescana|€€€€|CAT_P04|3 star|it|2026-10-30T06:24:31.201Z
+ve_29b231c710|us/en/toscana/montemerano/restaurant/caino|€€€€|CAT_P04|2 star|it|2026-10-30T06:24:32.520Z
+ve_2a8c69ebc6|us/en/friuli-venezia-giulia/buttrio/restaurant/trattoria-al-parco|€€|CAT_P02|bib|it|2026-10-30T06:24:33.846Z
+ve_2a976ad7f9|us/en/campania/ravello/restaurant/il-flauto-di-pan|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:35.177Z
+ve_2aa1664770|us/en/campania/sant--agata-sui-due-golfi/restaurant/lo-stuzzichino|€€|CAT_P02|bib|it|2026-10-30T06:24:36.517Z
+ve_2b1079065a|us/en/emilia-romagna/rubbianino/restaurant/ca-matilde|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:37.853Z
+ve_2b235ecba6|us/en/veneto/sernaglia-della-battaglia/restaurant/dalla-libera|€€|CAT_P02|bib|it|2026-10-30T06:24:39.176Z
+ve_2bc7ce7396|us/en/trentino-alto-adige/levico-terme/restaurant/boivin|€€|CAT_P02|bib|it|2026-10-30T06:24:40.502Z
+ve_2bf5ad8120|us/en/lombardia/grazie/restaurant/locanda-delle-grazie|€|CAT_P01|bib|it|2026-10-30T06:24:41.828Z
+ve_2d16aa2885|us/en/campania/squille/restaurant/marotta|€€€|CAT_P03|1 star|it|2026-10-30T06:24:43.148Z
+ve_2d8ff7775f|us/en/emilia-romagna/rivergaro/restaurant/caffe-grande|€€|CAT_P02|bib|it|2026-10-30T06:24:44.491Z
+ve_2de9526ede|us/en/piemonte/tigliole/restaurant/ca-vittoria|€€€|CAT_P03|1 star|it|2026-10-30T06:24:45.849Z
+ve_2e3fa5892c|us/en/piemonte/pibesi-d-alba/restaurant/21-9|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:47.213Z
+ve_2eeefebb15|us/en/lombardia/sirmione/restaurant/tancredi|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:48.543Z
+ve_2fa1639779|us/en/lazio/labico/restaurant/antonello-colonna-labico|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:49.883Z
+ve_3056ca7105|us/en/umbria/montone/restaurant/tipico-osteria-dei-sensi|€€|CAT_P02|bib|it|2026-10-30T06:24:51.204Z
+ve_30947232fd|us/en/trentino-alto-adige/madonna-di-campiglio/restaurant/il-gallo-cedrone|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:52.544Z
+ve_30c61d3e9f|us/en/veneto/marostica/restaurant/osteria-madonnetta|€|CAT_P01|bib|it|2026-10-30T06:24:53.886Z
+ve_31444e17e1|us/en/friuli-venezia-giulia/mariano-del-friuli/restaurant/al-piave|€|CAT_P01|bib|it|2026-10-30T06:24:55.222Z
+ve_3170a831fd|us/en/liguria/alassio/restaurant/nove|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:56.548Z
+ve_327829f814|us/en/veneto/schio/restaurant/spinechile|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:57.898Z
+ve_32efb3db0d|us/en/lombardia/desenzano-del-garda/restaurant/esplanade|€€€€|CAT_P04|1 star|it|2026-10-30T06:24:59.233Z
+ve_333ae0c311|us/en/molise/agnone_1841303/restaurant/locanda-mammi|€€|CAT_P02|1 star|it|2026-10-30T06:25:00.549Z
+ve_338b20e02f|us/en/veneto/plois_%207770419/restaurant/dolada|€€€|CAT_P03|1 star|it|2026-10-30T06:25:01.910Z
+ve_33db2b79cb|us/en/lazio/carnello/restaurant/mingone|€|CAT_P01|bib|it|2026-10-30T06:25:03.225Z
+ve_33db48c6cb|us/en/lombardia/isola-dovarese/restaurant/caffe-la-crepa|€€|CAT_P02|bib|it|2026-10-30T06:25:04.567Z
+ve_347fd0dde4|us/en/lazio/tarquinia/restaurant/namo-ristobottega|€€|CAT_P02|bib|it|2026-10-30T06:25:05.880Z
+ve_3487609f86|us/en/campania/vallo-della-lucania/restaurant/la-chioccia-d-oro|€|CAT_P01|bib|it|2026-10-30T06:25:07.203Z
+ve_35034eeac4|us/en/abruzzo/pescara/restaurant/taverna-58|€|CAT_P01|bib|it|2026-10-30T06:25:08.525Z
+ve_352636ed8a|us/en/lombardia/piadena/restaurant/dell-alba|€€|CAT_P02|bib|it|2026-10-30T06:25:09.872Z
+ve_35ab89af59|us/en/marche/pesaro/restaurant/nostrano|€€€|CAT_P03|1 star|it|2026-10-30T06:25:11.200Z
+ve_35f4f358e9|us/en/liguria/sestri-levante/restaurant/rezzano-cucina-e-vino|€€€|CAT_P03|1 star|it|2026-10-30T06:25:12.577Z
+ve_36c19b7977|us/en/piemonte/torino/restaurant/carignano|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:13.920Z
+ve_388c0ba038|us/en/piemonte/torino/restaurant/contesto-alimentare|€€|CAT_P02|bib|it|2026-10-30T06:25:15.270Z
+ve_389bbf3e46|us/en/veneto/venezia/restaurant/local|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:16.622Z
+ve_38e919293b|us/en/sicilia/castelbuono/restaurant/palazzaccio|€€|CAT_P02|bib|it|2026-10-30T06:25:17.940Z
+ve_391be98afc|us/en/piemonte/torino/restaurant/del-cambio|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:19.274Z
+ve_3966de7fe6|us/en/campania/amalfi/restaurant/sensi536205|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:20.615Z
+ve_39b6b13910|us/en/lazio/roma/restaurant/zia|€€€|CAT_P03|1 star|it|2026-10-30T06:25:21.935Z
+ve_39bf4c8d77|us/en/lombardia/milano/restaurant/abba|€€€|CAT_P03|1 star|it|2026-10-30T06:25:23.319Z
+ve_3a9553e34e|us/en/toscana/viareggio/restaurant/il-piccolo-principe|€€€€|CAT_P04|2 star|it|2026-10-30T06:25:24.649Z
+ve_3aa7aae384|us/en/emilia-romagna/bagnolo-in-piano/restaurant/trattoria-da-probo|€|CAT_P01|bib|it|2026-10-30T06:25:25.972Z
+ve_3bb7d0e719|us/en/toscana/casanova-di-terricciola/restaurant/cannavacciuolo-vineyard|€€€|CAT_P03|1 star|it|2026-10-30T06:25:27.296Z
+ve_3bb90f4d3f|us/en/emilia-romagna/pennabilli/restaurant/il-piastrino|€€€|CAT_P03|1 star|it|2026-10-30T06:25:28.611Z
+ve_3c3a5f9169|us/en/trentino-alto-adige/nova-levante/restaurant/johannes-stube|€€€|CAT_P03|1 star|it|2026-10-30T06:25:29.932Z
+ve_3c4f18f446|us/en/campania/conca-dei-marini/restaurant/il-refettorio|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:31.280Z
+ve_3c51fec822|us/en/liguria/chiavari/restaurant/da-felice|€€|CAT_P02|bib|it|2026-10-30T06:25:32.613Z
+ve_3c6566b9b0|us/en/lazio/roma/restaurant/imago|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:33.962Z
+ve_3c9934b78d|us/en/emilia-romagna/bologna/restaurant/osteria-bartolini|€|CAT_P01|bib|it|2026-10-30T06:25:35.301Z
+ve_3dd7ba77c5|us/en/lazio/genazzano/restaurant/aminta-resort|€€€|CAT_P03|1 star|it|2026-10-30T06:25:36.643Z
+ve_3e095e9773|us/en/campania/paestum/restaurant/le-trabe|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:37.982Z
+ve_3e37bfb476|us/en/liguria/cavi/restaurant/raieu|€€|CAT_P02|bib|it|2026-10-30T06:25:39.313Z
+ve_3e76b0d969|us/en/trentino-alto-adige/badia_3684715/restaurant/porcino|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:40.646Z
+ve_3ed52727c2|us/en/trentino-alto-adige/cavalese/restaurant/el-molin|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:41.980Z
+ve_3f83a8cbbb|us/en/piemonte/capriata-d-orba/restaurant/il-moro|€€|CAT_P02|bib|it|2026-10-30T06:25:43.347Z
+ve_3f9f26077f|us/en/lazio/tivoli/restaurant/li-somari|€€|CAT_P02|bib|it|2026-10-30T06:25:44.677Z
+ve_3ff580c3ac|us/en/toscana/seggiano/restaurant/silene|€€€|CAT_P03|1 star|it|2026-10-30T06:25:45.993Z
+ve_40e6e7514b|us/en/piemonte/cherasco/restaurant/osteria-la-torre|€€|CAT_P02|bib|it|2026-10-30T06:25:47.319Z
+ve_41fc3a6a33|us/en/abruzzo/teramo/restaurant/oishi-teramo|€€|CAT_P02|bib|it|2026-10-30T06:25:48.640Z
+ve_4209e63b7a|us/en/campania/pisciotta/restaurant/angiolina|€€|CAT_P02|bib|it|2026-10-30T06:25:49.960Z
+ve_4229e63a0d|us/en/marche/porto-san-giorgio/restaurant/retroscena|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:51.288Z
+ve_42a63a8a9d|us/en/emilia-romagna/selva-malvezzi_1828749/restaurant/locanda-pincelli|€€|CAT_P02|bib|it|2026-10-30T06:25:52.600Z
+ve_433a07c202|us/en/trentino-alto-adige/lagundo/restaurant/luisl-stube|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:53.966Z
+ve_436685bedd|us/en/lazio/pontinia/restaurant/mater1apr1ma|€€€|CAT_P03|1 star|it|2026-10-30T06:25:55.302Z
+ve_436bf017a2|us/en/sicilia/siracusa/restaurant/cortile-spirito-santo|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:56.660Z
+ve_4387c36776|us/en/campania/sorrento/restaurant/il-buco|€€€€|CAT_P04|1 star|it|2026-10-30T06:25:57.992Z
+ve_44ab63e419|us/en/trentino-alto-adige/merano/restaurant/in-viaggio-claudio-melis1154911|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:00.648Z
+ve_44b2cf5421|us/en/marche/senigallia/restaurant/uliassi|€€€€|CAT_P04|3 star|it|2026-10-30T06:26:01.988Z
+ve_45b44ca3cc|us/en/friuli-venezia-giulia/cormons/restaurant/trattoria-al-cacciatore-della-subida|€€€|CAT_P03|1 star|it|2026-10-30T06:26:03.326Z
+ve_4672fca7ce|us/en/abruzzo/pescara/restaurant/estro|€|CAT_P01|bib|it|2026-10-30T06:26:04.672Z
+ve_46c7681a0e|us/en/lombardia/milano/restaurant/enrico-bartolini-al-mudec|€€€€|CAT_P04|3 star|it|2026-10-30T06:26:06.042Z
+ve_4785ca7921|us/en/puglia/savelletri/restaurant/due-camini|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:07.376Z
+ve_47cf8e2c84|us/en/lombardia/vigevano/restaurant/i-castagni|€€€|CAT_P03|1 star|it|2026-10-30T06:26:08.700Z
+ve_482ef575ac|us/en/veneto/velo-veronese/restaurant/13-comuni|€€|CAT_P02|bib|it|2026-10-30T06:26:10.022Z
+ve_488b989290|us/en/sicilia/archi/restaurant/zash|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:11.344Z
+ve_488be97dc3|us/en/piemonte/nizza-monferrato/restaurant/le-due-lanterne|€|CAT_P01|bib|it|2026-10-30T06:26:12.679Z
+ve_490ffd70da|us/en/piemonte/san-marzano-oliveto/restaurant/del-belbo-da-bardon|€€|CAT_P02|bib|it|2026-10-30T06:26:14.014Z
+ve_4af63ccc53|us/en/lazio/fiumicino/restaurant/il-tino|€€€|CAT_P03|1 star|it|2026-10-30T06:26:15.348Z
+ve_4b79691ad5|us/en/lombardia/villa-d-alm/restaurant/osteria-della-brughiera|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:16.676Z
+ve_4bac804a7a|us/en/friuli-venezia-giulia/ruda/restaurant/osteria-altran|€€€|CAT_P03|1 star|it|2026-10-30T06:26:18.004Z
+ve_4c666fa1b6|us/en/veneto/venezia/restaurant/glam-enrico-bartolini|€€€€|CAT_P04|2 star|it|2026-10-30T06:26:19.340Z
+ve_4c7f793fc9|us/en/calabria/san-giovanni-in-fiore/restaurant/hyle|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:20.655Z
+ve_4ce65f22cf|us/en/piemonte/monforte-d-alba/restaurant/borgo-sant-anna|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:21.981Z
+ve_4dbc042523|us/en/lombardia/ponte-san-pietro/restaurant/cucina-cereda|€€€|CAT_P03|1 star|it|2026-10-30T06:26:23.306Z
+ve_4ddeec7b22|us/en/liguria/dolceacqua_1795057/restaurant/casaebottega|€€|CAT_P02|bib|it|2026-10-30T06:26:24.645Z
+ve_4e39b9c894|us/en/campania/baronissi/restaurant/cetaria|€€€|CAT_P03|1 star|it|2026-10-30T06:26:25.965Z
+ve_4e583e2c3e|us/en/veneto/caldogno/restaurant/molin-vecio|€|CAT_P01|bib|it|2026-10-30T06:26:27.291Z
+ve_4ed9a5dda8|us/en/emilia-romagna/campogalliano/restaurant/magnagallo|€€|CAT_P02|bib|it|2026-10-30T06:26:28.609Z
+ve_4f0e603908|us/en/lazio/roma/restaurant/green-t|€€|CAT_P02|bib|it|2026-10-30T06:26:29.941Z
+ve_50189097fa|us/en/piemonte/venaria-reale/restaurant/dolce-stil-novo-alla-reggia|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:31.268Z
+ve_50e0eccb61|us/en/sicilia/ragusa/restaurant/locanda-don-serafino|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:32.596Z
+ve_515080c567|us/en/campania/ariano-irpino/restaurant/maeba-restaurant|€€€|CAT_P03|1 star|it|2026-10-30T06:26:33.919Z
+ve_516e50574a|us/en/toscana/montalcino/restaurant/sala-dei-grappoli|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:35.253Z
+ve_52940fadfa|us/en/lombardia/milano/restaurant/contraste|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:36.595Z
+ve_5339c78ef0|us/en/abruzzo/caramanico-terme/restaurant/locanda-del-barone|€|CAT_P01|bib|it|2026-10-30T06:26:37.907Z
+ve_534965a1f9|us/en/toscana/san-gimignano/restaurant/da-pode|€€|CAT_P02|bib|it|2026-10-30T06:26:39.230Z
+ve_53bb645298|us/en/lazio/ponza/restaurant/acqua-pazza-1192022|€€€|CAT_P03|1 star|it|2026-10-30T06:26:40.551Z
+ve_5414b96838|us/en/friuli-venezia-giulia/san-quirino/restaurant/la-primula|€€€|CAT_P03|1 star|it|2026-10-30T06:26:41.861Z
+ve_54269d0039|us/en/emilia-romagna/rimini/restaurant/guido|€€€|CAT_P03|1 star|it|2026-10-30T06:26:43.179Z
+ve_54c1cc620e|us/en/piemonte/canale/restaurant/all-enoteca|€€€|CAT_P03|1 star|it|2026-10-30T06:26:45.825Z
+ve_5544dcb0fd|us/en/trentino-alto-adige/ortisei/restaurant/anna-stuben|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:47.156Z
+ve_55968152c6|us/en/puglia/manduria/restaurant/casamatta|€€€|CAT_P03|1 star|it|2026-10-30T06:26:48.498Z
+ve_55adab28bf|us/en/piemonte/bra/restaurant/boccondivino|€|CAT_P01|bib|it|2026-10-30T06:26:49.840Z
+ve_56c96d340b|us/en/lombardia/pieve-san-giacomo/restaurant/osteria-del-miglio-2-10|€|CAT_P01|bib|it|2026-10-30T06:26:51.176Z
+ve_56e6115581|us/en/basilicata/matera/restaurant/vitantonio-lombardo|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:52.504Z
+ve_578ead2e2b|us/en/veneto/vetrego/restaurant/il-sogno|€€|CAT_P02|bib|it|2026-10-30T06:26:53.823Z
+ve_57925568f8|us/en/abruzzo/sulmona/restaurant/clemente|€€|CAT_P02|bib|it|2026-10-30T06:26:55.194Z
+ve_5831fed8e5|us/en/trentino-alto-adige/dobbiaco/restaurant/tilia|€€€€|CAT_P04|1 star|it|2026-10-30T06:26:56.513Z
+ve_58a7a449c1|us/en/marche/loreto/restaurant/andreina|€€€|CAT_P03|1 star|it|2026-10-30T06:26:57.823Z
+ve_58a8206e20|us/en/piemonte/arona/restaurant/condividere-1204836|€€|CAT_P02|bib|it|2026-10-30T06:26:59.149Z
+ve_59677ff7c9|us/en/sicilia/taormina/restaurant/st-george-by-heinz-beck|€€€€|CAT_P04|2 star|it|2026-10-30T06:27:00.510Z
+ve_5984bc8c92|us/en/campania/napoli/restaurant/locanda-gesu-vecchio|€|CAT_P01|bib|it|2026-10-30T06:27:01.845Z
+ve_59eae1f648|us/en/liguria/portofino/restaurant/cracco-portofino|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:03.192Z
+ve_5a439b46a3|us/en/piemonte/serralunga-d-alba/restaurant/guido361561|€€€|CAT_P03|1 star|it|2026-10-30T06:27:04.511Z
+ve_5aaf98b25e|us/en/piemonte/torino/restaurant/andrea-larossa|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:05.844Z
+ve_5afd1cb5b7|us/en/campania/ospedaletto-d-alpinolo/restaurant/osteria-del-gallo-e-della-volpe|€|CAT_P01|bib|it|2026-10-30T06:27:07.174Z
+ve_5b2f7a16b5|us/en/friuli-venezia-giulia/tricesimo/restaurant/miculan|€|CAT_P01|bib|it|2026-10-30T06:27:08.488Z
+ve_5cc73e10ce|us/en/campania/anacapri/restaurant/l-olivo|€€€€|CAT_P04|2 star|it|2026-10-30T06:27:09.836Z
+ve_5d1beeb7ee|us/en/veneto/corrubbio/restaurant/amista-33|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:11.162Z
+ve_5d8d36d033|us/en/veneto/galliera-veneta/restaurant/al-palazzon|€€|CAT_P02|bib|it|2026-10-30T06:27:12.489Z
+ve_5e16fb2fda|us/en/marche/recanati/restaurant/casa-bertini|€€€|CAT_P03|1 star|it|2026-10-30T06:27:13.795Z
+ve_5e1befe955|us/en/toscana/castelnuovo-berardenga/restaurant/poggio-rosso|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:15.120Z
+ve_5e57d2bcba|us/en/piemonte/san-maurizio-canavese/restaurant/la-credenza|€€€|CAT_P03|1 star|it|2026-10-30T06:27:16.445Z
+ve_5ee4c9ac48|us/en/campania/amalfi/restaurant/la-caravella-dal-1959|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:17.772Z
+ve_5f65414b3a|us/en/sicilia/isola-vulcano/restaurant/i-tenerumi|€€€€|CAT_P04|2 star|it|2026-10-30T06:27:19.109Z
+ve_5f75d4b002|us/en/veneto/verona/restaurant/osteria-mondo-d-oro|€€|CAT_P02|bib|it|2026-10-30T06:27:20.451Z
+ve_603528e837|us/en/campania/cetara/restaurant/al-convento|€€|CAT_P02|bib|it|2026-10-30T06:27:21.777Z
+ve_6170a2ff5e|us/en/puglia/carovigno/restaurant/dissapore-di-andrea-catalano|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:23.099Z
+ve_62d9bf3a36|us/en/lombardia/sorisole/restaurant/assonica|€€€|CAT_P03|1 star|it|2026-10-30T06:27:24.429Z
+ve_630283aaa0|us/en/toscana/firenze/restaurant/saporium-firenze|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:25.762Z
+ve_630ff4b6d2|us/en/piemonte/montrigiasco/restaurant/castagneto|€€|CAT_P02|bib|it|2026-10-30T06:27:27.134Z
+ve_63f9f02c04|us/en/trentino-alto-adige/tirolo/restaurant/castel-fine-dining|€€€€|CAT_P04|2 star|it|2026-10-30T06:27:28.490Z
+ve_6419c47e6e|us/en/piemonte/quarona/restaurant/italia|€€|CAT_P02|bib|it|2026-10-30T06:27:29.825Z
+ve_6471b2405c|us/en/campania/sorrento/restaurant/lorelei|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:31.165Z
+ve_647929775f|us/en/lazio/roma/restaurant/acquolina|€€€€|CAT_P04|2 star|it|2026-10-30T06:27:32.492Z
+ve_6504540317|us/en/toscana/chiusdino/restaurant/saporium|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:33.819Z
+ve_656b0ef02a|us/en/marche/fossombrone/restaurant/osteria-zanchetti|€€|CAT_P02|bib|it|2026-10-30T06:27:35.131Z
+ve_659d7239ba|us/en/sicilia/linguaglossa/restaurant/shalai|€€€|CAT_P03|1 star|it|2026-10-30T06:27:36.462Z
+ve_6620c35565|us/en/piemonte/la-morra/restaurant/osteria-veglio|€|CAT_P01|bib|it|2026-10-30T06:27:37.792Z
+ve_66be9568b2|us/en/trentino-alto-adige/isera/restaurant/casa-del-vino-della-vallagarina|€€|CAT_P02|bib|it|2026-10-30T06:27:39.115Z
+ve_66efdddecb|us/en/emilia-romagna/san-piero-in-bagno/restaurant/da-gorini|€€€|CAT_P03|1 star|it|2026-10-30T06:27:40.437Z
+ve_67a062545c|us/en/veneto/mazzorbo/restaurant/venissa|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:41.779Z
+ve_67ca893447|us/en/abruzzo/pacentro/restaurant/taverna-dei-caldora|€|CAT_P01|bib|it|2026-10-30T06:27:43.088Z
+ve_681bb2829d|us/en/abruzzo/civitella-casanova/restaurant/il-ritrovo-d-abruzzo|€€|CAT_P02|bib|it|2026-10-30T06:27:44.398Z
+ve_684b0b0a49|us/en/lazio/civitavecchia/restaurant/forma|€€|CAT_P02|bib|it|2026-10-30T06:27:45.705Z
+ve_6949a75980|us/en/calabria/santa-cristina-d-aspromonte/restaurant/qafiz|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:47.017Z
+ve_698a56f540|us/en/lombardia/borgonato/restaurant/due-colombe|€€€|CAT_P03|1 star|it|2026-10-30T06:27:48.351Z
+ve_69b3721f29|us/en/trentino-alto-adige/san-genesio-atesino/restaurant/antica-locanda-al-cervo-landgasthof-zum-hirschen|€€|CAT_P02|bib|it|2026-10-30T06:27:49.686Z
+ve_6a2fb5c7bf|us/en/emilia-romagna/parma/restaurant/i-tri-siochett|€|CAT_P01|bib|it|2026-10-30T06:27:52.367Z
+ve_6a85d45754|us/en/liguria/montoggio/restaurant/roma|€|CAT_P01|bib|it|2026-10-30T06:27:53.693Z
+ve_6b2fd30eea|us/en/lombardia/runate/restaurant/dal-pescatore|€€€€|CAT_P04|3 star|it|2026-10-30T06:27:55.031Z
+ve_6b94ccfff9|us/en/umbria/torgiano/restaurant/elementi|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:56.373Z
+ve_6bdb379ac2|us/en/friuli-venezia-giulia/sappada/restaurant/laite|€€€€|CAT_P04|1 star|it|2026-10-30T06:27:57.712Z
+ve_6caf1bd7a5|us/en/emilia-romagna/argelato/restaurant/l-800|€€|CAT_P02|bib|it|2026-10-30T06:28:00.366Z
+ve_6d9b28784b|us/en/lazio/roma/restaurant/moma|€€€|CAT_P03|1 star|it|2026-10-30T06:28:02.985Z
+ve_6dd3d87434|us/en/lombardia/torno/restaurant/il-sereno-al-lago|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:04.350Z
+ve_6e14b4ff69|us/en/sicilia/palermo/restaurant/buatta-cucina-popolana|€€|CAT_P02|bib|it|2026-10-30T06:28:05.681Z
+ve_6e3fe2279b|us/en/toscana/ghirlanda/restaurant/bracali|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:07.021Z
+ve_6e900cdda1|us/en/campania/nocera-superiore/restaurant/la-fratanza|€|CAT_P01|bib|it|2026-10-30T06:28:08.347Z
+ve_6eafb183f2|us/en/marche/marotta/restaurant/burro-alici|€€|CAT_P02|bib|it|2026-10-30T06:28:09.671Z
+ve_6f51dcbe33|us/en/emilia-romagna/rimini/restaurant/osteria-de-borg|€€|CAT_P02|bib|it|2026-10-30T06:28:10.999Z
+ve_6fe3f36cc4|us/en/toscana/cutigliano/restaurant/trattoria-da-fagiolino|€€|CAT_P02|bib|it|2026-10-30T06:28:12.315Z
+ve_7030263fee|us/en/lombardia/bracca/restaurant/dentella|€€|CAT_P02|bib|it|2026-10-30T06:28:13.629Z
+ve_71314c6097|us/en/umbria/castiglione-del-lago/restaurant/l-acquario|€€|CAT_P02|bib|it|2026-10-30T06:28:14.963Z
+ve_71d831c4c0|us/en/trentino-alto-adige/mauls/restaurant/gourmetstube-einhorn|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:16.298Z
+ve_71d8a8bef5|us/en/lombardia/milano/restaurant/seta-by-antonio-guida|€€€€|CAT_P04|2 star|it|2026-10-30T06:28:17.639Z
+ve_732cf5d835|us/en/piemonte/monteu-roero/restaurant/cantina-dei-cacciatori|€|CAT_P01|bib|it|2026-10-30T06:28:18.960Z
+ve_734a1851bc|us/en/lazio/roma/restaurant/hosteria-grappolo-d-oro|€|CAT_P01|bib|it|2026-10-30T06:28:20.298Z
+ve_73a2c9101d|us/en/sicilia/catania/restaurant/coria|€€€|CAT_P03|1 star|it|2026-10-30T06:28:21.630Z
+ve_7442b66da8|us/en/toscana/viareggio/restaurant/romano|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:22.978Z
+ve_74d392b2d5|us/en/lombardia/treviglio/restaurant/san-martino155366|€€€|CAT_P03|1 star|it|2026-10-30T06:28:24.310Z
+ve_752a8f07f3|us/en/sardegna/oliena/restaurant/su-gologone|€€|CAT_P02|bib|it|2026-10-30T06:28:25.617Z
+ve_753159192f|us/en/sicilia/licata/restaurant/la-madia|€€€€|CAT_P04|2 star|it|2026-10-30T06:28:26.937Z
+ve_7562363fa4|us/en/lombardia/limone-sul-garda/restaurant/senso-alfio-ghezzi-lake-garda|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:28.255Z
+ve_76865f818b|us/en/piemonte/alba/restaurant/piazza-duomo|€€€€|CAT_P04|3 star|it|2026-10-30T06:28:29.592Z
+ve_7768e80af3|us/en/piemonte/cartosio/restaurant/cacciatori|€€|CAT_P02|bib|it|2026-10-30T06:28:30.907Z
+ve_77f190505b|us/en/toscana/firenze/restaurant/trattoria-cibreo-cibreino|€€|CAT_P02|bib|it|2026-10-30T06:28:32.251Z
+ve_780dd2b9be|us/en/toscana/lucarelli/restaurant/osteria-le-panzanelle|€€|CAT_P02|bib|it|2026-10-30T06:28:33.576Z
+ve_78bdfa6f9c|us/en/piemonte/roletto/restaurant/il-ciabot|€|CAT_P01|bib|it|2026-10-30T06:28:34.903Z
+ve_79904996fe|us/en/campania/massa-lubrense/restaurant/relais-blu|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:36.152Z
+ve_79cfad3219|us/en/sardegna/pula/restaurant/fradis-minoris|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:37.483Z
+ve_7a19b6c414|us/en/campania/sant--agata-sui-due-golfi/restaurant/don-alfonso-1890-151521|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:38.826Z
+ve_7a98523bda|us/en/umbria/norcia/restaurant/granaro-del-monte|€|CAT_P01|bib|it|2026-10-30T06:28:40.142Z
+ve_7ae2ac9395|us/en/toscana/lucca/restaurant/nida|€€|CAT_P02|bib|it|2026-10-30T06:28:41.492Z
+ve_7ae3a514c9|us/en/lombardia/calvisano/restaurant/al-gambero|€€€|CAT_P03|1 star|it|2026-10-30T06:28:42.816Z
+ve_7c3b8dd333|us/en/lombardia/milano/restaurant/procaccini|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:44.150Z
+ve_7d4cb01df3|us/en/lazio/roma/restaurant/marco-martini-restaurant|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:45.492Z
+ve_7d9891bc99|us/en/piemonte/torino/restaurant/scannabue-caffe-restaurant|€|CAT_P01|bib|it|2026-10-30T06:28:46.760Z
+ve_7e7bcc1f40|us/en/lombardia/brusaporto/restaurant/da-vittorio|€€€€|CAT_P04|3 star|it|2026-10-30T06:28:48.089Z
+ve_7ec48dcb22|us/en/trentino-alto-adige/valle-di-casies/restaurant/durnwald|€€|CAT_P02|bib|it|2026-10-30T06:28:49.404Z
+ve_7f337d6083|us/en/emilia-romagna/cesenatico/restaurant/osteria-del-gran-fritto|€€|CAT_P02|bib|it|2026-10-30T06:28:50.723Z
+ve_7fc42a61e1|us/en/toscana/firenze/restaurant/borgo-san-jacopo|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:52.060Z
+ve_7fd4e5aecf|us/en/lombardia/como/restaurant/kitchen-325766|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:53.407Z
+ve_7fd8cc45f2|us/en/lombardia/sirmione/restaurant/la-speranzina-restaurant-relais|€€€€|CAT_P04|1 star|it|2026-10-30T06:28:54.734Z
+ve_803e5b3565|us/en/liguria/pigna/restaurant/terme|€€|CAT_P02|bib|it|2026-10-30T06:28:56.062Z
+ve_805cf47358|us/en/veneto/col-san-martino/restaurant/locanda-da-condo|€€|CAT_P02|bib|it|2026-10-30T06:28:57.397Z
+ve_80de6f51f8|us/en/emilia-romagna/san-pancrazio/restaurant/la-cucoma|€€|CAT_P02|bib|it|2026-10-30T06:28:58.705Z
+ve_8137d7a7b3|us/en/lombardia/capriate-san-gervasio/restaurant/kanton-restaurant|€€|CAT_P02|bib|it|2026-10-30T06:29:00.042Z
+ve_81bd05e2f3|us/en/toscana/fiesole/restaurant/serrae-villa-fiesole|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:01.381Z
+ve_81d1930a13|us/en/lombardia/cavernago/restaurant/il-saraceno|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:02.717Z
+ve_81e7bf0bc1|us/en/emilia-romagna/ponte-dell-olio/restaurant/locanda-cacciatori|€|CAT_P01|bib|it|2026-10-30T06:29:04.045Z
+ve_8294c26d40|us/en/emilia-romagna/faenza/restaurant/la-baita|€€|CAT_P02|bib|it|2026-10-30T06:29:05.379Z
+ve_8302bafe11|us/en/puglia/lucera/restaurant/coquus|€€|CAT_P02|bib|it|2026-10-30T06:29:06.679Z
+ve_8320a597ee|us/en/veneto/sandrigo/restaurant/trattoria-da-palmerino|€€|CAT_P02|bib|it|2026-10-30T06:29:07.992Z
+ve_8333e63945|us/en/campania/furore/restaurant/bluh-furore|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:09.340Z
+ve_8373a59075|us/en/marche/cagli/restaurant/la-gioconda|€€|CAT_P02|bib|it|2026-10-30T06:29:10.652Z
+ve_83988eebc1|us/en/piemonte/serralunga-d-alba/restaurant/la-rei-natura-by-michelangelo-mammoliti|€€€€|CAT_P04|3 star|it|2026-10-30T06:29:11.979Z
+ve_8431dd633d|us/en/valle-d-aosta/brusson/restaurant/laghetto|€€|CAT_P02|bib|it|2026-10-30T06:29:13.335Z
+ve_847642d440|us/en/veneto/verona/restaurant/casa-perbellini|€€€€|CAT_P04|3 star|it|2026-10-30T06:29:14.676Z
+ve_854646b476|us/en/campania/vietri-sul-mare/restaurant/volta-del-fuenti|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:16.031Z
+ve_85cea2a2ed|us/en/abruzzo/rivisondoli/restaurant/da-giocondo|€|CAT_P01|bib|it|2026-10-30T06:29:17.341Z
+ve_85eca347be|us/en/lazio/fiumicino/restaurant/pascucci-al-porticciolo|€€€|CAT_P03|1 star|it|2026-10-30T06:29:18.681Z
+ve_867afeb3d0|us/en/emilia-romagna/monticelli-d-ongina/restaurant/antica-trattoria-cattivelli|€€|CAT_P02|bib|it|2026-10-30T06:29:20.004Z
+ve_879021cf91|us/en/piemonte/monforte-d-alba/restaurant/fre|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:21.339Z
+ve_8807b0044a|us/en/lazio/roma/restaurant/pulejo|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:22.673Z
+ve_88225f4dec|us/en/campania/eboli/restaurant/il-papavero|€€|CAT_P02|1 star|it|2026-10-30T06:29:24.004Z
+ve_88d96f125c|us/en/lombardia/corte-de-cortesi/restaurant/il-gabbiano|€€|CAT_P02|bib|it|2026-10-30T06:29:25.326Z
+ve_8911448c17|us/en/emilia-romagna/gaione/restaurant/trattoria-antichi-sapori|€|CAT_P01|bib|it|2026-10-30T06:29:26.657Z
+ve_8a8e89bb8d|us/en/toscana/fosdinovo/restaurant/locanda-dei-banchieri|€€€|CAT_P03|1 star|it|2026-10-30T06:29:27.972Z
+ve_8b15f66ec5|us/en/lombardia/palazzolo-sull-oglio/restaurant/osteria-della-villetta|€|CAT_P01|bib|it|2026-10-30T06:29:29.289Z
+ve_8b5ff0319a|us/en/campania/napoli/restaurant/il-ristorante-alain-ducasse-napoli|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:30.613Z
+ve_8b7f1d01be|us/en/trentino-alto-adige/madonna-di-campiglio/restaurant/dolomieu|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:31.996Z
+ve_8bb6e8be1b|us/en/emilia-romagna/bologna/restaurant/i-portici|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:33.333Z
+ve_8c5c4a68fe|us/en/emilia-romagna/vicomero/restaurant/romani|€|CAT_P01|bib|it|2026-10-30T06:29:34.669Z
+ve_8d3639a182|us/en/lazio/roma/restaurant/il-convivio-troiani|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:35.997Z
+ve_8d7ca7653a|us/en/lombardia/cornaredo/restaurant/olmo|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:37.316Z
+ve_8e037a7382|us/en/toscana/montepulciano/restaurant/osmosi|€€€|CAT_P03|1 star|it|2026-10-30T06:29:38.648Z
+ve_8ee1c34b70|us/en/abruzzo/civitella-casanova/restaurant/la-bandiera|€€€|CAT_P03|1 star|it|2026-10-30T06:29:39.970Z
+ve_8f59f18824|us/en/friuli-venezia-giulia/sauris_1820948/restaurant/alla-pace|€€|CAT_P02|bib|it|2026-10-30T06:29:41.293Z
+ve_8fcc448e19|us/en/liguria/ventimiglia/restaurant/casa-buono|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:42.627Z
+ve_90680bacd0|us/en/abruzzo/torano-nuovo_1847049/restaurant/osteria-dei-maltagliati|€€|CAT_P02|bib|it|2026-10-30T06:29:43.953Z
+ve_90d86673af|us/en/lombardia/mantello/restaurant/la-presef|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:45.277Z
+ve_91eceec206|us/en/lazio/tivoli/restaurant/al-madrigale|€€€|CAT_P03|1 star|it|2026-10-30T06:29:46.601Z
+ve_927b088f99|us/en/puglia/andria/restaurant/il-turacciolo|€€|CAT_P02|bib|it|2026-10-30T06:29:47.924Z
+ve_92d175c0fa|us/en/campania/it-sant-agnello/restaurant/don-geppi|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:49.273Z
+ve_92ec9577d1|us/en/calabria/strongoli/restaurant/dattilo|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:50.600Z
+ve_92ef6a473d|us/en/basilicata/melfi/restaurant/la-villa139895|€|CAT_P01|bib|it|2026-10-30T06:29:51.910Z
+ve_935c039ce4|us/en/sardegna/porto-cervo/restaurant/confusion|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:53.225Z
+ve_944cf9c3e2|us/en/sicilia/agrigento/restaurant/osteria-expanificio|€|CAT_P01|bib|it|2026-10-30T06:29:54.566Z
+ve_94e5c5e1cc|us/en/lombardia/origgio/restaurant/olio|€€€|CAT_P03|1 star|it|2026-10-30T06:29:55.890Z
+ve_9550fda04b|us/en/valle-d-aosta/aosta/restaurant/vecchio-ristoro|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:57.222Z
+ve_95caca8c3c|us/en/piemonte/badia-di-dulzago/restaurant/osteria-san-giulio|€€|CAT_P02|bib|it|2026-10-30T06:29:58.602Z
+ve_95fc5855a8|us/en/calabria/lamezia-terme/restaurant/abbruzzino-oltre|€€€€|CAT_P04|1 star|it|2026-10-30T06:29:59.927Z
+ve_960c3077af|us/en/emilia-romagna/calestano/restaurant/locanda-mariella|€€|CAT_P02|bib|it|2026-10-30T06:30:01.252Z
+ve_96a85fa596|us/en/lombardia/cornaredo/restaurant/d-o|€€€€|CAT_P04|2 star|it|2026-10-30T06:30:02.598Z
+ve_9717ca7160|us/en/emilia-romagna/finale-emilia/restaurant/osteria-la-fefa|€€|CAT_P02|bib|it|2026-10-30T06:30:03.935Z
+ve_985c82e99d|us/en/sicilia/catania/restaurant/sapio|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:05.271Z
+ve_988c995464|us/en/piemonte/torino/restaurant/antiche-sere|€€|CAT_P02|bib|it|2026-10-30T06:30:06.614Z
+ve_98d3cb4ac2|us/en/liguria/imperia/restaurant/osteria-didu-1201493|€|CAT_P01|bib|it|2026-10-30T06:30:07.940Z
+ve_993528760a|us/en/trentino-alto-adige/pinzolo/restaurant/grual|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:09.275Z
+ve_99af3e7640|us/en/piemonte/cuorgn/restaurant/rosselli-77|€|CAT_P01|bib|it|2026-10-30T06:30:10.592Z
+ve_9a2facfe30|us/en/toscana/firenze/restaurant/gucci-osteria-da-massimo-bottura|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:11.941Z
+ve_9a94371119|us/en/trentino-alto-adige/bressanone/restaurant/apostelstube|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:13.325Z
+ve_9b42d4f61b|us/en/lombardia/milano/restaurant/il-luogo-di-aimo-e-nadia|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:14.662Z
+ve_9bb7a763f9|us/en/umbria/cannara/restaurant/perbacco-vini-e-cucina|€|CAT_P01|bib|it|2026-10-30T06:30:15.978Z
+ve_9bc993f49e|us/en/emilia-romagna/bologna/restaurant/ahime|€€|CAT_P02|bib|it|2026-10-30T06:30:17.302Z
+ve_9c0293aa0a|us/en/marche/montemonaco/restaurant/il-tiglio|€€€|CAT_P03|1 star|it|2026-10-30T06:30:18.626Z
+ve_9c5bd66e72|us/en/umbria/montefalco/restaurant/camiano-piccolo|€€|CAT_P02|bib|it|2026-10-30T06:30:19.969Z
+ve_9d1c73c953|us/en/toscana/montalcino/restaurant/taverna-il-grappolo-blu|€|CAT_P01|bib|it|2026-10-30T06:30:21.324Z
+ve_9daeb9321f|us/en/veneto/oderzo/restaurant/gellius|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:22.661Z
+ve_9dcafd5591|us/en/liguria/genova/restaurant/il-marin-eataly|€€€|CAT_P03|1 star|it|2026-10-30T06:30:23.992Z
+ve_9e9310b9d5|us/en/veneto/borgoricco/restaurant/storie-d-amore|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:25.315Z
+ve_9ecda6dc01|us/en/liguria/imperia/restaurant/sarri|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:26.644Z
+ve_9f0a0b4c10|us/en/campania/napoli/restaurant/ostaria-pignatelli|€|CAT_P01|bib|it|2026-10-30T06:30:27.999Z
+ve_9f7f039b6e|us/en/piemonte/sizzano/restaurant/impero|€€|CAT_P02|bib|it|2026-10-30T06:30:29.347Z
+ve_9f963c51d2|us/en/trentino-alto-adige/brentonico/restaurant/maso-palu|€€|CAT_P02|bib|it|2026-10-30T06:30:30.676Z
+ve_a0065721c3|us/en/piemonte/valdieri/restaurant/la-locanda-del-falco|€|CAT_P01|bib|it|2026-10-30T06:30:31.985Z
+ve_a07bb23abc|us/en/lombardia/saronno_1809624/restaurant/sui-generis|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:34.621Z
+ve_a0d9fab2a7|us/en/puglia/lecce/restaurant/primo-restaurant|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:35.993Z
+ve_a100c8115d|us/en/lombardia/brescia/restaurant/trattoria-porteri|€€|CAT_P02|bib|it|2026-10-30T06:30:37.326Z
+ve_a197115998|us/en/lombardia/milano/restaurant/verso-capitaneo|€€€€|CAT_P04|2 star|it|2026-10-30T06:30:38.680Z
+ve_a4a946ec80|us/en/sicilia/taormina/restaurant/principe-cerami|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:40.018Z
+ve_a4c824e918|us/en/abruzzo/castel-di-sangro/restaurant/reale|€€€€|CAT_P04|3 star|it|2026-10-30T06:30:41.339Z
+ve_a5041b8e68|us/en/piemonte/torino/restaurant/fratelli-bruzzone|€|CAT_P01|bib|it|2026-10-30T06:30:42.680Z
+ve_a50552a73f|us/en/lombardia/albavilla/restaurant/il-cantuccio|€€€|CAT_P03|1 star|it|2026-10-30T06:30:44.025Z
+ve_a523dfebc9|us/en/campania/ravello/restaurant/rossellinis|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:45.359Z
+ve_a58b5833fa|us/en/toscana/forte-dei-marmi/restaurant/lorenzo|€€€|CAT_P03|1 star|it|2026-10-30T06:30:46.694Z
+ve_a616dd276e|us/en/friuli-venezia-giulia/dolegna-del-collio/restaurant/ronchi-ro|€€|CAT_P02|bib|it|2026-10-30T06:30:48.027Z
+ve_a67cc6ff15|us/en/emilia-romagna/sasso-marconi/restaurant/casa-mazzucchelli|€€€|CAT_P03|1 star|it|2026-10-30T06:30:49.344Z
+ve_a6a2182988|us/en/calabria/bagnara-calabra/restaurant/taverna-kerkira|€€|CAT_P02|bib|it|2026-10-30T06:30:50.659Z
+ve_a6fe14ce91|us/en/basilicata/terranova-di-pollino/restaurant/luna-rossa|€|CAT_P01|bib|it|2026-10-30T06:30:51.979Z
+ve_a7de2e67a2|us/en/liguria/san-remo/restaurant/paolo-e-barbara|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:53.295Z
+ve_a848f0b0c2|us/en/emilia-romagna/bobbio/restaurant/enoteca-san-nicola|€|CAT_P01|bib|it|2026-10-30T06:30:54.616Z
+ve_a8b3fddb83|us/en/lombardia/lomazzo/restaurant/trattoria-contemporanea|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:55.860Z
+ve_a948bc4940|us/en/lazio/roma/restaurant/domenico-dal-1968|€€|CAT_P02|bib|it|2026-10-30T06:30:57.218Z
+ve_a951f0a01b|us/en/liguria/andora/restaurant/vignamare|€€€€|CAT_P04|1 star|it|2026-10-30T06:30:58.546Z
+ve_a95b60e5e0|us/en/lazio/roma/restaurant/osteria-della-trippa|€€|CAT_P02|bib|it|2026-10-30T06:30:59.911Z
+ve_a9ac3b827a|us/en/lombardia/milano/restaurant/iyo|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:01.240Z
+ve_a9bcc2ca3c|us/en/emilia-romagna/rubiera/restaurant/osteria-del-viandante|€€€|CAT_P03|1 star|it|2026-10-30T06:31:02.636Z
+ve_a9e8326518|us/en/veneto/mirano/restaurant/da-flavio-e-fabrizio-al-teatro|€€|CAT_P02|bib|it|2026-10-30T06:31:03.964Z
+ve_a9fa0b5f4a|us/en/trentino-alto-adige/bolzano/restaurant/vogele|€€|CAT_P02|bib|it|2026-10-30T06:31:05.329Z
+ve_aa4509f603|us/en/toscana/anghiari/restaurant/da-alighiero|€|CAT_P01|bib|it|2026-10-30T06:31:06.663Z
+ve_aa4d3229b3|us/en/lombardia/milano/restaurant/moebius-sperimentale|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:08.028Z
+ve_aadff6c503|us/en/campania/nola/restaurant/re-santi-e-leoni|€€€|CAT_P03|1 star|it|2026-10-30T06:31:09.354Z
+ve_ab0417cf78|us/en/trentino-alto-adige/merano/restaurant/prezioso|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:10.705Z
+ve_ab30389c9a|us/en/toscana/castelnuovo-berardenga/restaurant/l-asinello|€€€|CAT_P03|1 star|it|2026-10-30T06:31:12.031Z
+ve_ac4a8a4cbb|us/en/piemonte/pettenasco/restaurant/cannavacciuolo-by-the-lake|€€€|CAT_P03|1 star|it|2026-10-30T06:31:13.392Z
+ve_acdfd2daf5|us/en/veneto/verona/restaurant/iris-ristorante|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:14.723Z
+ve_adeb827a21|us/en/abruzzo/san-salvo-marina/restaurant/al-metro|€€€|CAT_P03|1 star|it|2026-10-30T06:31:16.054Z
+ve_adff29d159|us/en/lombardia/adrara-san-martino/restaurant/ai-burattini|€€|CAT_P02|bib|it|2026-10-30T06:31:17.387Z
+ve_ae7f3ed18c|us/en/emilia-romagna/fidenza/restaurant/podere-san-faustino|€€|CAT_P02|bib|it|2026-10-30T06:31:18.715Z
+ve_aeca65c37c|us/en/veneto/venezia/restaurant/wisteria|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:20.053Z
+ve_af8bbdb335|us/en/veneto/brenzone-sul-garda_1812115/restaurant/nin|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:21.382Z
+ve_af8c9c49f4|us/en/lombardia/gargnano/restaurant/la-tortuga|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:22.719Z
+ve_afc0d24e7c|us/en/sardegna/san-teodoro/restaurant/gusto-by-sadler|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:24.080Z
+ve_b001b89e32|us/en/piemonte/torino/restaurant/l-acino|€€|CAT_P02|bib|it|2026-10-30T06:31:25.422Z
+ve_b0e6e821e7|us/en/piemonte/torino/restaurant/cannavacciuolo-bistrot|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:26.748Z
+ve_b1302d762e|us/en/toscana/follonica/restaurant/il-sottomarino|€€|CAT_P02|bib|it|2026-10-30T06:31:28.078Z
+ve_b149f81c94|us/en/piemonte/bra/restaurant/osteria-la-pimpinella|€€|CAT_P02|bib|it|2026-10-30T06:31:29.432Z
+ve_b1db556d85|us/en/lombardia/milano/restaurant/horto-1204821|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:30.772Z
+ve_b20939a610|us/en/trentino-alto-adige/moena/restaurant/agritur-el-mas|€€|CAT_P02|bib|it|2026-10-30T06:31:32.111Z
+ve_b24b1c1085|us/en/veneto/verona/restaurant/il-desco|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:33.462Z
+ve_b28fcdb43a|us/en/emilia-romagna/borgonovo-val-tidone/restaurant/la-palta|€€€|CAT_P03|1 star|it|2026-10-30T06:31:34.789Z
+ve_b29334f26e|us/en/piemonte/asti/restaurant/cannavacciuolo-le-cattedrali-asti|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:36.131Z
+ve_b2d04dfdb5|us/en/lazio/monterotondo/restaurant/trattoria-della-fortuna|€€|CAT_P02|bib|it|2026-10-30T06:31:37.452Z
+ve_b30b954460|us/en/piemonte/priocca/restaurant/il-centro|€€€|CAT_P03|1 star|it|2026-10-30T06:31:38.784Z
+ve_b33b7935bc|us/en/campania/gragnano/restaurant/o-me-o-il-mare|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:40.126Z
+ve_b449040cb4|us/en/piemonte/biella/restaurant/il-patio|€€€|CAT_P03|1 star|it|2026-10-30T06:31:41.445Z
+ve_b4af74a490|us/en/lombardia/rho/restaurant/mezzolitro-vini-e-cucina|€€|CAT_P02|bib|it|2026-10-30T06:31:42.764Z
+ve_b50ed77a77|us/en/sicilia/isola-vulcano/restaurant/il-cappero|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:44.095Z
+ve_b5e2aa4d98|us/en/campania/ariano-irpino/restaurant/la-pignata|€|CAT_P01|bib|it|2026-10-30T06:31:45.403Z
+ve_b666d59af0|us/en/sardegna/san-pantaleo/restaurant/il-fuoco-sacro|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:46.732Z
+ve_b67f1ab2e1|us/en/lombardia/stradella/restaurant/osteria-numero-2|€|CAT_P01|bib|it|2026-10-30T06:31:48.064Z
+ve_b68249259f|us/en/lazio/roma/restaurant/il-pagliaccio|€€€€|CAT_P04|2 star|it|2026-10-30T06:31:49.396Z
+ve_b711bdbf7a|us/en/lombardia/milano/restaurant/cracco|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:50.753Z
+ve_b77353eef4|us/en/toscana/san-donato-in-poggio/restaurant/antica-trattoria-la-toppa|€€|CAT_P02|bib|it|2026-10-30T06:31:52.089Z
+ve_b7d8654f12|us/en/veneto/barbarano-vicentino/restaurant/aqua-crua|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:53.420Z
+ve_b81330cd14|us/en/toscana/moggiona/restaurant/il-cedro|€|CAT_P01|bib|it|2026-10-30T06:31:54.761Z
+ve_b8430e36c3|us/en/veneto/cavaion-veronese/restaurant/oseleta|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:56.087Z
+ve_b8f6ada54c|us/en/campania/positano/restaurant/li-galli|€€€€|CAT_P04|1 star|it|2026-10-30T06:31:57.413Z
+ve_b94522c9a8|us/en/campania/napoli/restaurant/george-restaurant|€€€€|CAT_P04|2 star|it|2026-10-30T06:31:58.753Z
+ve_b968ed2d32|us/en/veneto/lapio/restaurant/trattoria-da-zamboni|€€|CAT_P02|bib|it|2026-10-30T06:32:00.131Z
+ve_ba1e81aeb8|us/en/toscana/firenze/restaurant/l-ortone|€€|CAT_P02|bib|it|2026-10-30T06:32:01.482Z
+ve_bb198bce08|us/en/campania/forio/restaurant/umberto-a-mare|€€€|CAT_P03|1 star|it|2026-10-30T06:32:02.822Z
+ve_bb94640ae7|us/en/puglia/ceglie-messapica/restaurant/cibus|€€|CAT_P02|bib|it|2026-10-30T06:32:04.146Z
+ve_bbad5e41eb|us/en/sicilia/noto/restaurant/crocifisso|€€€|CAT_P03|1 star|it|2026-10-30T06:32:05.480Z
+ve_bbb563bb97|us/en/toscana/trequanda/restaurant/il-conte-matto|€€|CAT_P02|bib|it|2026-10-30T06:32:06.808Z
+ve_bbded4a224|us/en/lazio/roma/restaurant/ineo|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:08.145Z
+ve_bc1a78c0cd|us/en/piemonte/torino/restaurant/vintage-1997|€€€|CAT_P03|1 star|it|2026-10-30T06:32:09.487Z
+ve_bc3b8f2e05|us/en/toscana/castelnuovo-berardenga/restaurant/contrada|€€€|CAT_P03|1 star|it|2026-10-30T06:32:10.829Z
+ve_bcd01bba3b|us/en/piemonte/alba/restaurant/locanda-del-pilone|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:12.172Z
+ve_bd10beb673|us/en/liguria/san-desiderio/restaurant/bruxaboschi|€€|CAT_P02|bib|it|2026-10-30T06:32:13.492Z
+ve_bdc5412efe|us/en/trentino-alto-adige/san-martino-in-passiria/restaurant/quellenhof-gourmetstube-1897|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:14.872Z
+ve_be0ea460dd|us/en/lazio/acuto/restaurant/colline-ciociare|€€€|CAT_P03|1 star|it|2026-10-30T06:32:16.180Z
+ve_be92046d4f|us/en/toscana/castelnuovo-berardenga/restaurant/il-visibilio|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:17.505Z
+ve_befa64f027|us/en/toscana/gaiole-in-chianti/restaurant/il-pievano|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:18.835Z
+ve_bf1324ab66|us/en/lombardia/albiate/restaurant/grow-restaurant|€€€|CAT_P03|1 star|it|2026-10-30T06:32:20.157Z
+ve_c01d0f370a|us/en/toscana/livorno/restaurant/azzighe|€€|CAT_P02|bib|it|2026-10-30T06:32:21.476Z
+ve_c0311032c2|us/en/toscana/marlia/restaurant/butterfly|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:22.815Z
+ve_c057ad1a82|us/en/campania/ischia/restaurant/dani-maison|€€€€|CAT_P04|2 star|it|2026-10-30T06:32:24.153Z
+ve_c09268848a|us/en/lazio/roma/restaurant/per-me-giulio-terrinoni|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:25.479Z
+ve_c381dfbcef|us/en/marche/treia_1832420/restaurant/il-casolare-dei-segreti|€€|CAT_P02|bib|it|2026-10-30T06:32:26.812Z
+ve_c382d2556c|us/en/lazio/rivodutri/restaurant/la-trota|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:28.120Z
+ve_c40380f4f4|us/en/lombardia/torrazza-coste_1810090/restaurant/villa-naj|€€€|CAT_P03|1 star|it|2026-10-30T06:32:29.438Z
+ve_c4385fefb6|us/en/lombardia/milano/restaurant/berton|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:30.785Z
+ve_c45ea7cf92|us/en/veneto/san-giorgio-di-valpolicella/restaurant/dalla-rosa-alda|€|CAT_P01|bib|it|2026-10-30T06:32:32.155Z
+ve_c475c82939|us/en/piemonte/torino/restaurant/magazzino-52|€€|CAT_P02|bib|it|2026-10-30T06:32:33.474Z
+ve_c49d9955c8|us/en/piemonte/torino/restaurant/consorzio|€€|CAT_P02|bib|it|2026-10-30T06:32:34.849Z
+ve_c643c6c3c8|us/en/emilia-romagna/lama/restaurant/vecchia-lama|€€|CAT_P02|bib|it|2026-10-30T06:32:36.177Z
+ve_c69f4e7820|us/en/calabria/villa-san-giovanni/restaurant/vecchio-porto|€|CAT_P01|bib|it|2026-10-30T06:32:37.498Z
+ve_c6c61bfe4d|us/en/lombardia/teglio/restaurant/fracia|€€|CAT_P02|bib|it|2026-10-30T06:32:38.823Z
+ve_c6f66a3667|us/en/lombardia/trescore-balneario/restaurant/loro|€€€|CAT_P03|1 star|it|2026-10-30T06:32:40.137Z
+ve_c763df6f85|us/en/lombardia/voghera_1810742/restaurant/rimulas|€€|CAT_P02|bib|it|2026-10-30T06:32:41.448Z
+ve_c7e0868df9|us/en/lombardia/fagnano-olona/restaurant/acquerello197794|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:42.778Z
+ve_c7f5181cd4|us/en/campania/cetara/restaurant/la-dispensa-di-armatore|€|CAT_P01|bib|it|2026-10-30T06:32:44.104Z
+ve_c8085884a5|us/en/emilia-romagna/novafeltria/restaurant/del-turista-da-marchesi|€|CAT_P01|bib|it|2026-10-30T06:32:45.416Z
+ve_c881cfabc7|us/en/sicilia/bagheria/restaurant/i-pupi|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:46.730Z
+ve_c8b68b8b65|us/en/lombardia/madesimo/restaurant/il-cantinone-e-sport-hotel-alpina|€€€|CAT_P03|1 star|it|2026-10-30T06:32:48.072Z
+ve_c8f1ad893d|us/en/lombardia/manerba-del-garda/restaurant/capriccio|€€€|CAT_P03|1 star|it|2026-10-30T06:32:49.398Z
+ve_c8ffa0558a|us/en/lombardia/milano/restaurant/sine|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:50.726Z
+ve_c9677a172d|us/en/trentino-alto-adige/chienes/restaurant/gassenwirt|€€|CAT_P02|bib|it|2026-10-30T06:32:52.072Z
+ve_ca0cc0ea54|us/en/campania/paestum/restaurant/tre-olivi|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:53.419Z
+ve_ca8ed319c3|us/en/toscana/bolgheri/restaurant/osteria-magona|€€|CAT_P02|bib|it|2026-10-30T06:32:56.048Z
+ve_cac10fef31|us/en/puglia/putignano/restaurant/angelo-sabatelli|€€€€|CAT_P04|1 star|it|2026-10-30T06:32:57.377Z
+ve_cac4391e0e|us/en/puglia/montegrosso/restaurant/antichi-sapori|€€|CAT_P02|bib|it|2026-10-30T06:32:58.682Z
+ve_cb3979c1de|us/en/emilia-romagna/gaibana/restaurant/trattoria-lanzagallo|€|CAT_P01|bib|it|2026-10-30T06:33:00.037Z
+ve_cb5e60fa70|us/en/toscana/montalcino/restaurant/campo-del-drago|€€€€|CAT_P04|2 star|it|2026-10-30T06:33:01.386Z
+ve_cb8a5bfb01|us/en/lazio/fiumicino/restaurant/bistrot-quarantunododici|€€|CAT_P02|bib|it|2026-10-30T06:33:02.732Z
+ve_cc84c9e08a|us/en/lombardia/milano/restaurant/aalto|€€€|CAT_P03|1 star|it|2026-10-30T06:33:04.077Z
+ve_ccc6ed43aa|us/en/sicilia/terrasini/restaurant/il-bavaglino-1206991|€€€|CAT_P03|1 star|it|2026-10-30T06:33:05.384Z
+ve_cd3ec70d11|us/en/toscana/firenze/restaurant/atto-di-vito-mollica|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:06.733Z
+ve_cd6502259f|us/en/piemonte/casale-monferrato/restaurant/osteria-bar-sport|€€|CAT_P02|bib|it|2026-10-30T06:33:08.076Z
+ve_cda705bd27|us/en/lombardia/fasano-del-garda/restaurant/il-fagiano|€€€|CAT_P03|1 star|it|2026-10-30T06:33:09.408Z
+ve_cdc5fe1546|us/en/veneto/cortina-d-ampezzo/restaurant/sanbrite|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:10.750Z
+ve_ce9a21389b|us/en/lazio/roma/restaurant/la-terrazza68963|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:12.099Z
+ve_cf2c67efdf|us/en/trentino-alto-adige/sarentino/restaurant/terra151934|€€€€|CAT_P04|2 star|it|2026-10-30T06:33:13.419Z
+ve_cf454ca5af|us/en/sicilia/bagheria/restaurant/limu|€€€|CAT_P03|1 star|it|2026-10-30T06:33:14.735Z
+ve_cfd2c687bd|us/en/campania/positano/restaurant/zass|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:16.102Z
+ve_cff9b0b42e|us/en/veneto/negrar/restaurant/trattoria-alla-ruota|€€|CAT_P02|bib|it|2026-10-30T06:33:17.436Z
+ve_d008de5215|us/en/campania/praiano/restaurant/un-piano-nel-cielo|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:18.783Z
+ve_d0916e1d60|us/en/toscana/tavarnelle-val-di-pesa/restaurant/la-torre166500|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:20.175Z
+ve_d0d19b85b6|us/en/campania/brusciano/restaurant/taverna-estia|€€€€|CAT_P04|2 star|it|2026-10-30T06:33:21.498Z
+ve_d1dab27fd3|us/en/toscana/firenze/restaurant/enoteca-pinchiorri|€€€€|CAT_P04|3 star|it|2026-10-30T06:33:22.843Z
+ve_d24fd531f5|us/en/campania/ticciano/restaurant/cannavacciuolo-countryside|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:24.188Z
+ve_d256863a88|us/en/trentino-alto-adige/brunico/restaurant/atelier-moessmer-norbert-niederkofler|€€€€|CAT_P04|3 star|it|2026-10-30T06:33:25.532Z
+ve_d2bcea6354|us/en/piemonte/treiso/restaurant/la-ciau-del-tornavento|€€€|CAT_P03|1 star|it|2026-10-30T06:33:26.880Z
+ve_d401e6376c|us/en/emilia-romagna/codigoro/restaurant/la-zanzara|€€€|CAT_P03|1 star|it|2026-10-30T06:33:28.196Z
+ve_d4fafa967b|us/en/sicilia/taormina/restaurant/la-capinera|€€€|CAT_P03|1 star|it|2026-10-30T06:33:29.531Z
+ve_d50a8c138b|us/en/friuli-venezia-giulia/cividale-del-friuli/restaurant/al-monastero|€€|CAT_P02|bib|it|2026-10-30T06:33:30.845Z
+ve_d531566119|us/en/piemonte/viceno/restaurant/edelweiss|€|CAT_P01|bib|it|2026-10-30T06:33:32.171Z
+ve_d57035e515|us/en/sardegna/cagliari/restaurant/old-friend|€€|CAT_P02|bib|it|2026-10-30T06:33:33.503Z
+ve_d58d2221e4|us/en/lombardia/milano/restaurant/andrea-aprea|€€€€|CAT_P04|2 star|it|2026-10-30T06:33:34.849Z
+ve_d63ebdc04a|us/en/trentino-alto-adige/castelbello/restaurant/kuppelrain|€€€|CAT_P03|1 star|it|2026-10-30T06:33:36.186Z
+ve_d69bcacff5|us/en/emilia-romagna/rimini/restaurant/abocar-due-cucine|€€€|CAT_P03|1 star|it|2026-10-30T06:33:37.514Z
+ve_d6a813d347|us/en/umbria/perugia/restaurant/ada|€€€|CAT_P03|1 star|it|2026-10-30T06:33:38.854Z
+ve_d71347bfcb|us/en/liguria/noli/restaurant/il-vescovado|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:40.176Z
+ve_d78acd7578|us/en/emilia-romagna/fiorano-modenese/restaurant/alto|€€€|CAT_P03|1 star|it|2026-10-30T06:33:41.493Z
+ve_d7a9b0f80f|us/en/abruzzo/giulianova-lido/restaurant/osteria-dal-moro|€|CAT_P01|bib|it|2026-10-30T06:33:42.833Z
+ve_d7b4bbdace|us/en/lazio/roma/restaurant/glass-hostaria|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:44.183Z
+ve_d81a71e966|us/en/veneto/venezia/restaurant/quadri|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:45.519Z
+ve_d83bfbc88b|us/en/puglia/crispiano/restaurant/la-cuccagna|€€|CAT_P02|bib|it|2026-10-30T06:33:46.875Z
+ve_d83e7a528d|us/en/trentino-alto-adige/trentino-alto-adige-san-michele/restaurant/zur-rose|€€€|CAT_P03|1 star|it|2026-10-30T06:33:48.196Z
+ve_d86234c258|us/en/campania/lacco-ameno/restaurant/indaco|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:49.563Z
+ve_d928aeb878|us/en/toscana/forte-dei-marmi/restaurant/sciabola|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:50.887Z
+ve_d95b591229|us/en/puglia/ostuni/restaurant/osteria-piazzetta-cattedrale|€€|CAT_P02|bib|it|2026-10-30T06:33:52.225Z
+ve_d977f455fb|us/en/emilia-romagna/cesenatico/restaurant/ancora-1213776|€€€|CAT_P03|1 star|it|2026-10-30T06:33:53.545Z
+ve_d9b2f7faff|us/en/umbria/norcia/restaurant/vespasia|€€€|CAT_P03|1 star|it|2026-10-30T06:33:54.874Z
+ve_d9e8560f1a|us/en/emilia-romagna/modena/restaurant/al-gatto-verde|€€€€|CAT_P04|1 star|it|2026-10-30T06:33:56.205Z
+ve_da8a4aecdd|us/en/toscana/marina-di-bibbona/restaurant/la-pineta|€€€|CAT_P03|1 star|it|2026-10-30T06:33:57.551Z
+ve_db08130e8b|us/en/trentino-alto-adige/aldein/restaurant/krone|€€|CAT_P02|bib|it|2026-10-30T06:33:58.869Z
+ve_db3f7e19b0|us/en/campania/marina-del-cantone/restaurant/taverna-del-capitano|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:00.195Z
+ve_dbdb546a14|us/en/veneto/lughetto/restaurant/antica-osteria-cera|€€€€|CAT_P04|2 star|it|2026-10-30T06:34:01.540Z
+ve_dbf6b0e09b|us/en/veneto/pontelongo/restaurant/lazzaro-1915|€€€|CAT_P03|1 star|it|2026-10-30T06:34:02.869Z
+ve_dc29435117|us/en/piemonte/traversella/restaurant/le-miniere|€|CAT_P01|bib|it|2026-10-30T06:34:04.205Z
+ve_dc6e3a4a0c|us/en/emilia-romagna/galeata/restaurant/la-campanara|€€|CAT_P02|bib|it|2026-10-30T06:34:05.537Z
+ve_dd0cf389a8|us/en/lombardia/sirmione/restaurant/la-rucola-2-0|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:06.869Z
+ve_dde9c94aa9|us/en/lazio/roma/restaurant/53-untitled|€€|CAT_P02|bib|it|2026-10-30T06:34:08.212Z
+ve_deeced5139|us/en/sicilia/catania/restaurant/me-cumpari-turiddu|€€|CAT_P02|bib|it|2026-10-30T06:34:09.577Z
+ve_df79df6a64|us/en/liguria/sarzana_1800790/restaurant/il-cardinale-vino-e-cucina|€€|CAT_P02|bib|it|2026-10-30T06:34:10.899Z
+ve_e039002bc5|us/en/liguria/cavi/restaurant/impronta-d-acqua|€€€|CAT_P03|1 star|it|2026-10-30T06:34:12.232Z
+ve_e0a79df3f4|us/en/piemonte/calamandrana/restaurant/violetta|€€|CAT_P02|bib|it|2026-10-30T06:34:13.549Z
+ve_e12f92e805|us/en/lazio/roma/restaurant/idylio-by-apreda|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:14.897Z
+ve_e13daa5c7c|us/en/valle-d-aosta/cogne/restaurant/le-petit-restaurant|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:17.509Z
+ve_e1acbc7697|us/en/trentino-alto-adige/nalles/restaurant/apollonia|€€|CAT_P02|bib|it|2026-10-30T06:34:18.831Z
+ve_e1f6bdcfac|us/en/lombardia/milano/restaurant/dongio|€|CAT_P01|bib|it|2026-10-30T06:34:20.178Z
+ve_e26733a07c|us/en/campania/napoli/restaurant/aria-1197785|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:21.522Z
+ve_e2b73c0763|us/en/emilia-romagna/cesenatico/restaurant/la-buca130947|€€€|CAT_P03|1 star|it|2026-10-30T06:34:22.849Z
+ve_e327f7780b|us/en/marche/fano/restaurant/cile-s|€€|CAT_P02|bib|it|2026-10-30T06:34:24.166Z
+ve_e353e92c60|us/en/toscana/monteriggioni/restaurant/futura-osteria|€€€|CAT_P03|bib|it|2026-10-30T06:34:25.482Z
+ve_e35b495f7a|us/en/abruzzo/montepagano/restaurant/d-one-restaurant-diffuso|€€€|CAT_P03|1 star|it|2026-10-30T06:34:26.813Z
+ve_e362728f66|us/en/lazio/roma/restaurant/enoteca-al-parlamento-achilli|€€€|CAT_P03|1 star|it|2026-10-30T06:34:28.137Z
+ve_e43ad26d69|us/en/friuli-venezia-giulia/dolegna-del-collio/restaurant/l-argine-a-venco|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:29.479Z
+ve_e452104fa6|us/en/trentino-alto-adige/ravina/restaurant/locanda-margon|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:30.828Z
+ve_e478f1a03b|us/en/piemonte/masio/restaurant/trattoria-losanna|€|CAT_P01|bib|it|2026-10-30T06:34:32.138Z
+ve_e47c7bed0e|us/en/veneto/lonigo/restaurant/la-peca|€€€€|CAT_P04|2 star|it|2026-10-30T06:34:33.468Z
+ve_e48d9bf043|us/en/campania/capri/restaurant/le-monzu|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:34.812Z
+ve_e56b544b94|us/en/toscana/firenze/restaurant/luca-s-by-paulo-airaudo|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:36.157Z
+ve_e594164193|us/en/emilia-romagna/parma/restaurant/inkiostro|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:37.480Z
+ve_e5e5f865e3|us/en/emilia-romagna/bagno-di-romagna/restaurant/del-lago|€€€|CAT_P03|1 star|it|2026-10-30T06:34:38.799Z
+ve_e7baad3a51|us/en/toscana/forte-dei-marmi/restaurant/la-magnolia|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:40.124Z
+ve_e829673e77|us/en/veneto/altissimo/restaurant/casin-del-gamba|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:41.446Z
+ve_e82e1eb7aa|us/en/basilicata/castelmezzano/restaurant/al-becco-della-civetta|€€|CAT_P02|bib|it|2026-10-30T06:34:42.753Z
+ve_e8539d768b|us/en/emilia-romagna/maranello/restaurant/il-cavallino|€€€|CAT_P03|1 star|it|2026-10-30T06:34:44.073Z
+ve_e86a2043a5|us/en/veneto/verona/restaurant/al-bersagliere|€€|CAT_P02|bib|it|2026-10-30T06:34:45.411Z
+ve_e8c8e1eb8a|us/en/puglia/trani/restaurant/casa-sgarra|€€€|CAT_P03|1 star|it|2026-10-30T06:34:46.744Z
+ve_e925be4c07|us/en/emilia-romagna/sasso-marconi/restaurant/la-grotta-dal-1918|€|CAT_P01|bib|it|2026-10-30T06:34:48.071Z
+ve_e934665572|us/en/valle-d-aosta/aosta/restaurant/paolo-griffa-al-caffe-nazionale|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:49.420Z
+ve_e95a8dd5e2|us/en/piemonte/pinerolo/restaurant/zappatori|€€€|CAT_P03|1 star|it|2026-10-30T06:34:50.774Z
+ve_e9aea37687|us/en/sardegna/baia-sardinia/restaurant/capogiro|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:52.101Z
+ve_ea5cc6c5c9|us/en/veneto/belluno/restaurant/al-borgo126456|€€|CAT_P02|bib|it|2026-10-30T06:34:53.430Z
+ve_ea6305be2b|us/en/campania/salerno/restaurant/bistrot-di-pescheria|€€|CAT_P02|bib|it|2026-10-30T06:34:54.753Z
+ve_eaac991379|us/en/veneto/malcesine/restaurant/vecchia-malcesine|€€€€|CAT_P04|1 star|it|2026-10-30T06:34:56.089Z
+ve_eab6011b2e|us/en/toscana/firenze/restaurant/zeb|€€|CAT_P02|bib|it|2026-10-30T06:34:57.420Z
+ve_eb90f4645b|us/en/umbria/casaglia/restaurant/stella|€|CAT_P01|bib|it|2026-10-30T06:34:58.750Z
+ve_ebd27f876b|us/en/lombardia/milano/restaurant/joia|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:00.101Z
+ve_ebd8725ffc|us/en/sicilia/taormina/restaurant/otto-geleng|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:01.453Z
+ve_ec136658e4|us/en/piemonte/bra/restaurant/battaglino|€€|CAT_P02|bib|it|2026-10-30T06:35:02.791Z
+ve_ec5bb0dfdb|us/en/toscana/colle-di-val-d-elsa/restaurant/arnolfo|€€€€|CAT_P04|2 star|it|2026-10-30T06:35:04.140Z
+ve_ecb262cd7b|us/en/lombardia/bolzone/restaurant/trattoria-via-vai|€€|CAT_P02|bib|it|2026-10-30T06:35:05.458Z
+ve_ece2c35281|us/en/sicilia/castelbuono/restaurant/nangalarruni|€|CAT_P01|bib|it|2026-10-30T06:35:06.768Z
+ve_ed2fc7d5ba|us/en/puglia/lesina/restaurant/le-antiche-sere|€€|CAT_P02|bib|it|2026-10-30T06:35:08.079Z
+ve_ed9a038e8d|us/en/puglia/trani/restaurant/quintessenza-1195965|€€€|CAT_P03|1 star|it|2026-10-30T06:35:09.394Z
+ve_edae87329f|us/en/toscana/chiusi/restaurant/osteria-la-solita-zuppa|€|CAT_P01|bib|it|2026-10-30T06:35:10.724Z
+ve_ee457522bf|us/en/veneto/cortina-d-ampezzo/restaurant/tivoli|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:12.087Z
+ve_ee78293255|us/en/trentino-alto-adige/romeno/restaurant/nerina|€|CAT_P01|bib|it|2026-10-30T06:35:13.407Z
+ve_eeb2006f97|us/en/campania/amalfi/restaurant/glicine|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:14.732Z
+ve_efe1077d6c|us/en/sicilia/ragusa/restaurant/duomo160079|€€€€|CAT_P04|2 star|it|2026-10-30T06:35:17.365Z
+ve_f04f470083|us/en/sicilia/palermo/restaurant/mec-restaurant|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:18.714Z
+ve_f06f2f4e48|us/en/piemonte/cioccaro/restaurant/locanda-del-sant-uffizio-enrico-bartolini|€€€€|CAT_P04|2 star|it|2026-10-30T06:35:20.035Z
+ve_f0af66405f|us/en/friuli-venezia-giulia/trieste/restaurant/harry-s-piccolo|€€€€|CAT_P04|2 star|it|2026-10-30T06:35:21.363Z
+ve_f12b342093|us/en/marche/offida/restaurant/osteria-ophis|€€|CAT_P02|bib|it|2026-10-30T06:35:22.688Z
+ve_f1897e2c05|us/en/trentino-alto-adige/san-lorenzo-di-sebato/restaurant/lerchner-s-in-runggen|€€|CAT_P02|bib|it|2026-10-30T06:35:24.042Z
+ve_f1924a863c|us/en/lombardia/bianzone/restaurant/altavilla|€€|CAT_P02|bib|it|2026-10-30T06:35:25.387Z
+ve_f1dc7c7ab4|us/en/lombardia/oltressenda-alta/restaurant/contrada-bricconi|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:26.709Z
+ve_f251e2e22d|us/en/lombardia/varzi/restaurant/buscone|€€|CAT_P02|bib|it|2026-10-30T06:35:28.033Z
+ve_f25e1d5439|us/en/veneto/venezia/restaurant/oro-restaurant|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:29.360Z
+ve_f295d24e2b|us/en/lombardia/villa-di-chiavenna/restaurant/lanterna-verde|€€€|CAT_P03|1 star|it|2026-10-30T06:35:30.683Z
+ve_f37345e87a|us/en/trentino-alto-adige/trentino-alto-adige-san-michele/restaurant/osteria-platzegg|€€|CAT_P02|bib|it|2026-10-30T06:35:32.030Z
+ve_f39b6996b8|us/en/calabria/marina-di-gioiosa-ionica/restaurant/gambero-rosso|€€€|CAT_P03|1 star|it|2026-10-30T06:35:33.336Z
+ve_f3d4688ff5|us/en/toscana/firenze/restaurant/il-latini|€€|CAT_P02|bib|it|2026-10-30T06:35:34.677Z
+ve_f452b99b6e|us/en/puglia/martina-franca_1852170/restaurant/bros-trattoria|€€|CAT_P02|bib|it|2026-10-30T06:35:35.998Z
+ve_f455fabe80|us/en/sardegna/cagliari/restaurant/cucina-eat|€|CAT_P01|bib|it|2026-10-30T06:35:37.332Z
+ve_f457393f4f|us/en/sicilia/capri-leone/restaurant/antica-filanda|€€|CAT_P02|bib|it|2026-10-30T06:35:38.660Z
+ve_f457cb2e3d|us/en/toscana/viareggio/restaurant/lunasia500267|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:40.009Z
+ve_f4740a6c6a|us/en/emilia-romagna/coloreto/restaurant/trattoria-ai-due-platani|€€|CAT_P02|bib|it|2026-10-30T06:35:41.322Z
+ve_f4d38d0c08|us/en/veneto/san-polo-di-piave/restaurant/osteria-enoteca-gambrinus|€€|CAT_P02|bib|it|2026-10-30T06:35:42.661Z
+ve_f4dcb1a2a3|us/en/sicilia/taormina/restaurant/vineria-modi|€€€|CAT_P03|1 star|it|2026-10-30T06:35:44.015Z
+ve_f4eff0ee27|us/en/campania/sorrento/restaurant/terrazza-bosquet|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:45.357Z
+ve_f5e066455e|us/en/abruzzo/roseto-degli-abruzzi/restaurant/vecchia-marina|€€|CAT_P02|bib|it|2026-10-30T06:35:48.030Z
+ve_f633c4e10b|us/en/friuli-venezia-giulia/godia/restaurant/agli-amici|€€€€|CAT_P04|2 star|it|2026-10-30T06:35:49.353Z
+ve_f7436783fd|us/en/campania/vico-equense/restaurant/antica-osteria-nonna-rosa|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:50.699Z
+ve_f7d05f75f2|us/en/friuli-venezia-giulia/savogna-d-isonzo/restaurant/lokanda-devetak|€€|CAT_P02|bib|it|2026-10-30T06:35:52.017Z
+ve_f8641e8d4b|us/en/piemonte/novello_1797954/restaurant/massimo-camia|€€€|CAT_P03|1 star|it|2026-10-30T06:35:53.338Z
+ve_f977a3acfd|us/en/toscana/cortona/restaurant/la-bucaccia|€|CAT_P01|bib|it|2026-10-30T06:35:54.672Z
+ve_fb0efa67af|us/en/liguria/genova/restaurant/san-giorgio562345|€€€|CAT_P03|1 star|it|2026-10-30T06:35:56.013Z
+ve_fd3422e849|us/en/piemonte/torino/restaurant/piano-35|€€€€|CAT_P04|1 star|it|2026-10-30T06:35:57.346Z
+ve_fd381761f8|us/en/piemonte/carru/restaurant/vascello-d-oro|€|CAT_P01|bib|it|2026-10-30T06:35:58.665Z
+ve_fd70c806da|us/en/emilia-romagna/bologna/restaurant/al-cambio|€€|CAT_P02|bib|it|2026-10-30T06:35:59.994Z
+ve_fdb5e53a1f|us/en/trentino-alto-adige/trentino-alto-adige-san-michele/restaurant/osteria-acquarol|€€€|CAT_P03|1 star|it|2026-10-30T06:36:01.320Z
+ve_fe4933fab5|us/en/liguria/genova/restaurant/rosmarino|€€|CAT_P02|bib|it|2026-10-30T06:36:02.658Z
+ve_fefe2728a6|us/en/toscana/castiglione-della-pescaia/restaurant/osteria-del-mare-gia-il-votapentole|€€|CAT_P02|bib|it|2026-10-30T06:36:04.015Z
+ve_ff3609e5b3|us/en/toscana/passignano/restaurant/osteria-di-passignano|€€€€|CAT_P04|1 star|it|2026-10-30T06:36:05.335Z
+ve_ffe997e479|us/en/emilia-romagna/longiano/restaurant/dei-cantoni|€€|CAT_P02|bib|it|2026-10-30T06:36:06.655Z$r$;
+  rel jsonb;
+  n_exp int := 586;
+  v_fp text;
+  v_ids text;
+  v_old text;
+  v_bad int;
+  v_upd int;
+  v_lid bigint;
+BEGIN
+  IF (SELECT count(*) FROM price) <> 7582 THEN RAISE EXCEPTION 'price count before is not 7582'; END IF;
+  IF (SELECT max(id) FROM source_capture_ledger) <> 142 THEN RAISE EXCEPTION 'ledger max before is not 142'; END IF;
+  IF (SELECT max(id) FROM audit_log) <> 114908 THEN RAISE EXCEPTION 'audit max before is not 114908'; END IF;
+  IF encode(sha256(convert_to(rel_txt, 'UTF8')), 'hex') <> '1a3813a8b08a8f742031d8af353459f76653efbff20bf2561c90923e1111def3' THEN RAISE EXCEPTION 'relay sha256'; END IF;
+  -- relay line: venue_id|card path|symbol|CAT_P0n|distinction|country|captured_at
+  SELECT jsonb_agg(jsonb_build_object(
+           'venue_id', f[1], 'source_url', 'https://guide.michelin.com/' || f[2], 'symbol_raw', f[3],
+           'currency', CASE f[6] WHEN 'us' THEN 'USD' WHEN 'cn' THEN 'CNY' WHEN 'tw' THEN 'TWD' WHEN 'jp' THEN 'JPY' WHEN 'kr' THEN 'KRW' WHEN 'gb' THEN 'GBP' WHEN 'fr' THEN 'EUR' WHEN 'de' THEN 'EUR' WHEN 'it' THEN 'EUR' WHEN 'nl' THEN 'EUR' WHEN 'es' THEN 'EUR' WHEN 'be' THEN 'EUR' WHEN 'mc' THEN 'EUR' WHEN 'ie' THEN 'EUR' WHEN 'lu' THEN 'EUR' WHEN 'ad' THEN 'EUR' END,
+           'tier', char_length(f[3]), 'captured_at', f[7]) ORDER BY f[1] COLLATE "C"),
+         count(*) FILTER (WHERE array_length(f, 1) <> 7 OR f[4] <> 'CAT_P0' || char_length(f[3])
+                            OR char_length(f[3]) NOT BETWEEN 1 AND 4
+                            OR f[3] <> repeat(left(f[3], 1), char_length(f[3])))
+    INTO rel, v_bad
+    FROM (SELECT string_to_array(l, '|') AS f FROM regexp_split_to_table(rel_txt, E'\n') AS l) s;
+  IF v_bad <> 0 THEN RAISE EXCEPTION 'relay lines malformed: %', v_bad; END IF;
+  IF jsonb_array_length(rel) <> n_exp THEN RAISE EXCEPTION 'relay rows: %', jsonb_array_length(rel); END IF;
+  IF EXISTS (SELECT 1 FROM jsonb_to_recordset(rel) AS x(symbol_raw text, currency text)
+              WHERE x.currency IS NULL
+                 OR left(x.symbol_raw, 1) <> CASE x.currency WHEN 'USD' THEN '$' WHEN 'TWD' THEN '$' WHEN 'CNY' THEN '¥'
+                                              WHEN 'JPY' THEN '¥' WHEN 'KRW' THEN '₩' WHEN 'GBP' THEN '£' WHEN 'EUR' THEN '€' END)
+    THEN RAISE EXCEPTION 'symbol does not match currency'; END IF;
+
+  SELECT md5(string_agg(x.venue_id||'|'||x.source_url||'|'||x.symbol_raw||'|'||x.currency||'|'||x.tier||'|'||x.captured_at,
+                        E'\n' ORDER BY x.venue_id COLLATE "C")),
+         md5(string_agg(x.venue_id, E'\n' ORDER BY x.venue_id COLLATE "C"))
+    INTO v_fp, v_ids
+    FROM jsonb_to_recordset(rel) AS x(venue_id text, source_url text, symbol_raw text, currency text, tier int, captured_at text);
+  IF v_fp <> '55626b8b973398987b653d9d663e6f53' THEN RAISE EXCEPTION 'relay fingerprint %', v_fp; END IF;
+  IF v_ids <> '9c037cf5da16ec47c403f9870514b80d' THEN RAISE EXCEPTION 'venue id md5 %', v_ids; END IF;
+
+  -- old rows: the legacy price rows of the relay venues, as read before the build
+  SELECT md5(string_agg(p.venue_id||'|'||p.tier||'|'||coalesce(p.symbol_raw,'')||'|'||coalesce(p.publisher,''),
+                        E'\n' ORDER BY p.venue_id COLLATE "C"))
+    INTO v_old
+    FROM price p JOIN jsonb_to_recordset(rel) AS x(venue_id text) ON x.venue_id = p.venue_id;
+  IF v_old IS DISTINCT FROM 'aef8a1d276c2c3a400f035f5c7d278f8' THEN RAISE EXCEPTION 'old price rows md5 %', v_old; END IF;
+
+  -- each row: venue active; legacy price row with no URL; card URL = latest Michelin star/Bib card URL of the venue
+  SELECT count(*) INTO v_bad
+    FROM jsonb_to_recordset(rel) AS x(venue_id text, source_url text)
+   WHERE NOT EXISTS (SELECT 1 FROM venues v WHERE v.id = x.venue_id AND v.status = 'active')
+      OR NOT EXISTS (SELECT 1 FROM price p WHERE p.venue_id = x.venue_id AND p.source = 'legacy_guide' AND p.source_url IS NULL)
+      OR x.source_url IS DISTINCT FROM (
+           SELECT a.source_url FROM awards a
+            WHERE a.venue_id = x.venue_id AND a.source_id = 'michelin'
+              AND a.category IN ('One Star','Two Stars','Three Stars','Bib Gourmand')
+              AND a.source_url ~ '^https://guide\.michelin\.com/.*/restaurant/'
+            ORDER BY a.year DESC, a.id DESC LIMIT 1);
+  IF v_bad <> 0 THEN RAISE EXCEPTION 'rows outside P2 or URL changed: %', v_bad; END IF;
+
+  UPDATE price p
+     SET tier = x.tier::smallint, symbol_raw = x.symbol_raw, currency = x.currency, source = 'guide_ingest',
+         method = 'published_symbol', publisher = 'michelin', source_url = x.source_url,
+         captured_at = x.captured_at::timestamptz, confidence = NULL
+    FROM jsonb_to_recordset(rel) AS x(venue_id text, source_url text, symbol_raw text, currency text, tier int, captured_at text)
+   WHERE p.venue_id = x.venue_id AND p.source = 'legacy_guide' AND p.source_url IS NULL;
+  GET DIAGNOSTICS v_upd = ROW_COUNT;
+  IF v_upd <> n_exp THEN RAISE EXCEPTION 'rows updated: %', v_upd; END IF;
+
+  INSERT INTO source_capture_ledger (publisher, field_type, items, job)
+  VALUES ('michelin', 'price', n_exp,
+          'price-card:price-michelin-card-p2-b3-2026-10-30 | block A step 2 batch 3 (Italy, 596 venues): legacy price rows with no URL, active Michelin star/Bib venues with a card URL | '
+          || n_exp || ' rows updated from legacy (EUR 586) | live card read, built-in browser | relay md5 55626b8b973398987b653d9d663e6f53')
+  RETURNING id INTO v_lid;
+
+  -- post-checks
+  IF (SELECT count(*) FROM price) <> 7582 THEN RAISE EXCEPTION 'price count after'; END IF;
+  IF v_lid <> 143 THEN RAISE EXCEPTION 'ledger id %', v_lid; END IF;
+  IF (SELECT count(*) FROM audit_log WHERE id > 114908) <> n_exp THEN RAISE EXCEPTION 'audit rows after'; END IF;
+  IF (SELECT count(*) FROM audit_log a
+        JOIN jsonb_to_recordset(rel) AS x(venue_id text) ON x.venue_id = a.row_pk
+       WHERE a.id > 114908 AND a.table_name = 'price' AND a.action = 'UPDATE') <> n_exp
+    THEN RAISE EXCEPTION 'audit price UPDATE rows'; END IF;
+  IF (SELECT count(*) FROM price p
+        JOIN jsonb_to_recordset(rel) AS x(venue_id text, source_url text, symbol_raw text, currency text, tier int, captured_at text)
+          ON x.venue_id = p.venue_id AND x.symbol_raw = p.symbol_raw AND x.source_url = p.source_url
+         AND x.currency = p.currency AND x.tier = p.tier AND x.captured_at::timestamptz = p.captured_at
+       WHERE p.source = 'guide_ingest' AND p.method = 'published_symbol' AND p.publisher = 'michelin'
+         AND p.confidence IS NULL) <> n_exp
+    THEN RAISE EXCEPTION 'price rows after do not match relay'; END IF;
+END
+$do$;
+COMMIT;
