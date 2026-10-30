@@ -1,0 +1,107 @@
+# Name differences: card read + venue-site read, Oct 30, 2026 (no write)
+# Card read: built-in browser, fetch() of the live guide.michelin.com card, h1 = card name, CTA "website" link = site.
+#   21:4x UTC, all status 200. Card URLs: price-michelin-card-p1-rest-relay-2026-10-30.txt (P1 rest 116),
+#   michelin-turkey-2026-relabel-price-relay-2026-10-30.txt (Turkey), p1-rest-held-b1-relay-2026-10-30.txt (Vietnam held, Most),
+#   p1-rest-held-b2-relay-2026-10-30.txt (3 sisters), michelin-turkey-2026-followups-relay-2026-10-30.txt (LA Mahzen).
+# Site read: WebFetch, 22:17-22:31 UTC, Ben approved each fetch. 75 tried, 69 read, 6 not read.
+# Rules proposed (Ben to confirm): R1 site has one way -> use it. R2 site has more than one way -> use the way the card
+#   also uses. R3 capitals alone are no difference when the site also writes normal case (all-caps-only sites keep caps).
+#   R4 no site way matches the card -> site title/logo way. R5 no site or not read -> card name minus suffix (Oct 10 fallback).
+# Columns: venue_id|group|ours (venues.name)|card h1|site way read (where)|action|new name
+# Group: G1 wrong branch, G2 card ward/branch suffix, G3 venue's own spelling differs. † = has a non-Michelin award row.
+ve_1f12403d25|G1|Nam Hin Restaurant(Vietnamese Cuisine) - Han Market|Nam Hìn (Phan Thanh Street)|no site|rename R5|Nam Hìn
+ve_c4d70b9a92|G1|Maison Patte Noire "1 lieu, 2 restaurants"|La P'tite Patte (held-P2 note; same address has Le Patte Noire, Selected)|not read|hold|-
+ve_550d36061d|G2|Bombay Palace Wanaka|Bombay Palace (Wānaka)|Bombay Palace (title, logo, header, footer)|rename R1|Bombay Palace
+ve_dff956ccb3|G2|Bún Bò Huế - Lê Gia Khang|Lê Gia Khang (Ngũ Hành Sơn)|no site|rename R5|Lê Gia Khang
+ve_c1ed9b62ab|G2|Mặn Mòi, Thảo Điền - Homey Authentic Vietnamese Cuisine|Mặn Mòi (An Khánh)|Mặn Mòi (title); branch page "Mặn Mòi, Thảo Điền"|rename R2|Mặn Mòi
+ve_3195442b2e|G2|CHAY GARDEN Võ Văn Tần - Vegetarian Restaurant & Coffee|Chay Garden (Xuan Hoa)|not read (site error)|rename R5|Chay Garden
+ve_28735e5aef|G2|The Cow|The Cow (Queenstown)|The Cow (footer); THE COW (title)|keep|-
+ve_39dc53fd44|G2|Hủ Tiếu Hồng Phát|Hồng Phát (Bàn Cờ)|Hủ Tiếu Hồng Phát (title, H1, footer); branch "Hồng Phát Quận 3"|keep R1|-
+ve_8456d9d090|G2|Bánh Cuốn Gia Truyền Thanh Vân|Bánh Cuốn Gia Truyền Thanh Vân (Hang Ga Street)|no site|keep (= card minus suffix)|-
+ve_0d2a2613bc|G3|SELINE†|Seline|SELINE (title, logo); Seline (body)|rename R2/R3|Seline
+ve_13663ffad8|G3|BODA|Boda|Boda (header); BODA (footer)|rename R2|Boda
+ve_5b7fbcd496|G3|BAR CITRA|Bar Citra|Bar Citra (title, site name)|rename R1|Bar Citra
+ve_94b838eb8b|G3|SOICHI†|Soichi|Soichi Sushi (title, hero); SOICHI (nav logo)|rename R2/R3|Soichi
+ve_3ceedd2541|G3|lao xi noodle house|LaoXi Noodle House|no site|rename R5|LaoXi Noodle House
+ve_b9249cb9cb|G3|Gostilna "Francl"|Gostilna Francl|Gostilna Francl (title)|rename R1|Gostilna Francl
+ve_8a95e5c71c|G3|Apero Food and Wine|Apéro Food & Wine|Apéro Food & Wine (title, logo)|rename R1|Apéro Food & Wine
+ve_26113673ef|G3|ROCA|Roca|ROCA (title, body)|keep R1/R3|-
+ve_d4e21f04f5|G3|LONDO|Londo|L0ND0 (title, logo); LONDO (description)|keep R3|-
+ve_ec93c46116|G3|LUCIEN|Lucien|LUCIEN (title, logo alt)|keep R3|-
+ve_f3378b4564|G3|LULU FUSION BISTRO|Lulu Fusion Bistro|LULU fusion bistro (title, header)|hold (mixed case)|-
+ve_9852cbf26e|G3|TURK FATIH TUTAK†|TURK FATİH TUTAK|Turk Fatih Tutak (title); TURK + Fatih Tutak (nav)|hold|-
+ve_f1b7fc23a0|G3|KITCHEN by Osman Sezener|Kitchen By Osman Sezener|not read (server error)|hold (Oct 11 "by <chef>" rule)|-
+ve_00d4d6d264|G3|Gatherings Restaurant|Gatherings|gatherings (title); Gatherings (body); Gatherings Restaurant (address)|rename R2|Gatherings
+ve_011fc70ba3|G3|Amisfield Restaurant & Cellar Door†|Amisfield|Amisfield (title, logo, header)|rename R1|Amisfield
+ve_0849db628b|G3|Parro Restaurant|Parro|Parro Restaurant (title); PARRO (header); parro (footer)|rename R2|Parro
+ve_0a44a31b38|G3|Sherwood Queenstown|Sherwood|Sherwood (logo, footer); Sherwood Restaurant (H1)|rename R2|Sherwood
+ve_0f9ec4e4b7|G3|Logan Brown Restaurant and Bar†|Logan Brown|Logan Brown (footer, logo)|rename R2|Logan Brown
+ve_19293e8d21|G3|Cazador Restaurant & Delicatessen|Cazador|Cazador (title)|rename R1|Cazador
+ve_2606c64ac7|G3|Essence Restaurant by ROKI Collection|Essence|Essence (title, headings)|rename R1|Essence
+ve_2797da32c8|G3|Cicio Cacio Osteria|Cicio Cacio|Cicio Cacio (footer); Cicio Cacio Osteria Newtown (title)|rename R2|Cicio Cacio
+ve_511c2dae82|G3|Indian Alley Wakefield Restaurant and Bar|Indian Alley|Indian Alley (title, logo); location "Indian Alley at Wakefield"|rename R2|Indian Alley
+ve_51fddc03a1|G3|Francesca Restaurant|Francesca|Francesca Wānaka (title, H1); Francesca (footer) [brutohospitality.co.nz]|rename R2|Francesca
+ve_5378290021|G3|Fire And Slice Woodfired Pizzeria|Fire And Slice|Fire & Slice (title); FIRE AND SLICE (header)|rename R2|Fire And Slice
+ve_6104079fa4|G3|Tussock Hill Vineyard and Cellar Door Restaurant|Tussock Hill|Tussock Hill (logo); Tussock Hill Vineyard (title)|rename R2|Tussock Hill
+ve_9c0a28d383|G3|Mudbrick Vineyard and Restaurant|Mudbrick|Mudbrick (footer)|rename R2|Mudbrick
+ve_9c58775c6b|G3|Treehouse Wānaka|Treehouse|Treehouse Wanaka (title); Treehouse (body)|rename R2|Treehouse
+ve_a38d20a146|G3|Odeon restaurant|Odeon|ODEON (title); Odeon (logo alt)|rename R2/R3|Odeon
+ve_b800e5f2d9|G3|Inati restaurant|Inati|INATI (title, body); Inati.nz (footer)|rename R2/R3|Inati
+ve_41993ac9f8|G3|COTOA Restaurant|Cotoa|Cotoa (title)|rename R1|Cotoa
+ve_69e9d7215e|G3|The Kitchen Restaurant†|The Kitchen|The Kitchen Restaurant (title, H1); The Kitchen (logo)|rename R2|The Kitchen
+ve_8f950e4488|G3|Union Restaurant|Union|Union Pasadena (title, logo)|rename R1|Union Pasadena
+ve_ab95922a06|G3|Emelina Restaurant|Emelina|Emelina (title)|rename R1|Emelina
+ve_d3f44a7e0b|G3|Lugya'h by Ponchos Tlayudas|Lugya'h|Poncho's Tlayudas brings you Lugya'h (title); Lugya’h (nav)|rename R2|Lugya'h
+ve_f12e597554|G3|Troubadour Bread & Bistro|Troubadour|Troubadour Bread & Bistro (title); Troubadour (logo)|rename R2|Troubadour
+ve_6930919788|G3|Moondog Cafe Key West|Moondog Cafe & Bakery|Moondog Cafe Key West (title, logo); moondog cafe & Bakery (footer)|rename R2|Moondog Cafe & Bakery
+ve_27ca9196d7|G3|Restaurant Boreal|Boreal|boreal (title); Boreal (og:title)|rename R2|Boreal
+ve_8aa02a036f|G3|Credo restaurant|Credo|Credo (title)|rename R1|Credo
+ve_c6c4bba54c|G3|Pievos – restoranas, kavinė, gėlės|Pievos|Pievos (header, logo)|rename R1|Pievos
+ve_d506cb62f8|G3|ESSE Restaurant†|ESSE|ESSE (title, footer)|rename R1|ESSE
+ve_dcdc654c7b|G3|Okê Restaurant|Okê|Okê (title); Restaurant Okê (body)|rename R2|Okê
+ve_fe3bb3204c|G3|Restaurant Lille Mølle|Lille Mølle|Restaurant Lille Mølle (title, H1); Lille Mølle (og, nav) [norrlyst.dk]|rename R2|Lille Mølle
+ve_bc652b214e|G3|Frank|Restaurant Frank|Restaurant Frank (header); Frank (title start)|rename R2|Restaurant Frank
+ve_edecaf0478|G3|Harry's Piccolo|Harry’s Piccolo Poreč|Harry's Piccolo Poreč (title, header)|rename R1|Harry's Piccolo Poreč
+ve_c7ded05de6|G3|Restoran Loora|Bistro Loora|Bistro Loora (site name); Bistro Loora Đakovo (H1)|rename R2|Bistro Loora
+ve_00d8a2d2b6|G3|Most Tumski|Most|restaurant "Między Mostami"; tasting room "Most" (card address = site)|rename R2|Most
+ve_db77e8996f|G3|Tantalus Estate|Tantalus Estate Restaurant|TANTALUS ESTATE RESTAURANT (H1); Tantalus Estate (footer)|rename R2|Tantalus Estate Restaurant
+ve_fead3f6b69|G3|MAMMOM restaurant - Vietnamese Cuisine|Mammom|Mammom Restaurant (title, logo); MAMMOM (body)|rename R2/R3|Mammom
+ve_0bed98d6f5|G3|ASLINDA MEYHANE URLA|Aslında Meyhane|Aslında Meyhane (title, header)|rename R1|Aslında Meyhane
+ve_1a1bbea864|G3|Pandeli Restaurant|Pandeli|Pandeli (title, logo, footer)|rename R1|Pandeli
+ve_385a5536af|G3|Tabal Gastronomi Evi (Niğde Belediyesi)|Tabal Gastronomi Evi|Tabal Gastronomi Evi (logo, footer)|rename R1|Tabal Gastronomi Evi
+ve_5410da4251|G3|Casa Lavanda Boutique Hotel & Restaurant|Casa Lavanda|Casa Lavanda (title, footer)|rename R1|Casa Lavanda
+ve_68b10737c1|G3|MACAKIZI BODRUM†|Maçakızı|Maçakızı Hotel (title); Maçakızı Restaurant (footer nav)|rename R2|Maçakızı
+ve_85cac1bf09|G3|TERUAR URLA†|Teruar Urla|Teruar Urla (title, footer)|rename R1|Teruar Urla
+ve_a731e2441c|G3|Urla Vino Locale†|Vino Locale|Vino Locale (title, body); URLA VINO LOCALE (og)|rename R2|Vino Locale
+ve_bda466a347|G3|Happena Restaurant|Happena|Happena (title, footer); Happena Restaurant (header)|rename R2|Happena
+ve_e2939f7812|G3|Aravan Evi Restaurant|Aravan Evi|Aravan Evi (logo, footer)|rename R1|Aravan Evi
+ve_465ee2066b|G3|Tersane İstanbul|Tershane|Tershane (title, footer); street "Tersane Cd."|rename R1|Tershane
+ve_5628da600d|G3|Narımor Urla Butik Otel|Narımor|Narımor Urla (title, logo, footer)|rename R1|Narımor Urla
+ve_349b73a7ad|G3|Tarihi Adil Müftüoğlu Uğur Lokantası|Adil Müftüoğlu|Adil Müftüoğlu Uğur Lokantası (title; footer has typo "Mütfüoğlu")|rename R1|Adil Müftüoğlu Uğur Lokantası
+ve_420e6f5990|G3|Tavacı Recep Usta Alsancak - İzmir|Tavacı Recep Usta Alsancak|Tavacı Recep Usta (H1, footer); branch "İzmir Alsancak Şubesi"|rename R1|Tavacı Recep Usta
+ve_9b55bcbafd|G3|Tavacı Recep Usta Bostancı - İstanbul|Tavacı Recep Usta Bostancı|Tavacı Recep Usta (H1, footer); branch "İstanbul Bostancı Şubesi"|rename R1|Tavacı Recep Usta
+ve_b4ab5979c5|G3|Arka Ristorente Pizzeria Bodrum|Arka Ristorante Pizzeria|Arka Pizzaria (title); Arka Pizzeria (footer)|hold (site inconsistent)|-
+ve_3148ec4456|G3|La Lola Saigon|La Lola|no site|rename R5|La Lola
+ve_362cf33750|G3|Crab noodle Ba ba|Bánh Canh Cua Bà Ba|no site|rename R5|Bánh Canh Cua Bà Ba
+ve_afc5cbe328|G3|Xôi, Bún măng gà bà Vui|Bà Vui|no site|rename R5|Bà Vui
+ve_f21ee3afab|G3|Bánh Bèo, Bánh Đập, Bánh Ướt|Bánh Bèo - Bánh đập|no site|hold (Sep 14 dash rule)|-
+ve_1368ed47bc|G3|Ayşa Boşnak Börekçisi ve Ev Yemekleri - Alsancak|Ayşa Boşnak Börekçisi|no site|rename R5|Ayşa Boşnak Börekçisi
+ve_18edcac317|G3|Mandalya Butik Otel|Mandalya|no site|rename R5|Mandalya
+ve_3aba3f840e|G3|Kemal’in Yeri - Mülkiyeliler Birliği İzmir Şubesi|Kemal'in Yeri|no site|rename R5|Kemal'in Yeri
+ve_9821c9bb73|G3|Beynel Bitez|Beynel|no site|rename R5|Beynel
+ve_1cb00fa293|G3|Bagarasi Restaurant|Bağarası|not read (site error)|rename R5|Bağarası
+ve_93938731bf|G3|Hummingbird Restaurant & Lounge|Hummingbird|not read (robots)|rename R5|Hummingbird
+ve_a4cdd65b30|G3|Restaurant & Bar Botschaft|Botschaft|not read (robots)|rename R5|Botschaft
+ve_f320066f74|G3|Ortega Fish Shack|Ortega|not read (robots)|rename R5|Ortega
+ve_1c8cc4a492|G3|Upstairs Tasting Room|Upstairs|Upstairs Tasting Room (title, header)|keep R1|-
+ve_b97ec9a16a|G3|Rātā Restaurant|Rātā|Rātā Restaurant (title, logo)|keep R1|-
+ve_dc68ae55f1|G3|Double Luck Chinese|Double Luck|Double Luck Chinese (title, logo, footer)|keep R1|-
+ve_29e2076287|G3|Restaurant Levi|Levi|Restaurant Levi (title, header, address)|keep R1|-
+ve_9f50697f1f|G3|Steampunk Restauracja|Steampunk|Steampunk Restauracja (title, og, nav); Restauracja Steampunk (H1)|keep R4|-
+ve_a59287b6fe|G3|Casius Antioch Kitchen Restaurant|Casius Antioch Kitchen|Casius Antioch Kitchen Restaurant (title, footer)|keep R1|-
+ve_f8013e6d34|G3|Lucien Arkas Bağları|LA Mahzen|Lucien Arkas Bağları (title)|keep (Ben Oct 30 14:31)|-
+ve_51ce2088a5|G3|Efendy İstanbul|EFENDY (card removed after Jan 28)|not read|keep (recheck)|-
+ve_6d2d60d7ba|G3|Andrea Ristorante - Enoteca|Andrea (held-P2 note)|not read|hold (dash rule)|-
+ve_bb69a63e96|G3|Vegan Ramen UZU Kyoto|UZU Kyoto (held-P2 note)|not read|hold|-
+# Totals: 94 venues. rename 72, keep 14, hold 8. Asma Yaprağı ve_0d51fc7213 not counted (card has a no-break space only).
+# † venues: SELINE, SOICHI, TURK, Amisfield, Logan Brown, The Kitchen, ESSE, MACAKIZI, TERUAR, Urla Vino Locale (10).
