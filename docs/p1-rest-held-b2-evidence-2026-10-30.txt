@@ -1,0 +1,41 @@
+Held P1-rest batch 2 evidence. Read Oct 30, 2026, 20:54-20:56 UTC, built-in browser, fetch() of each live card from a guide.michelin.com tab.
+
+Live Michelin cards (all HTTP 200, no redirect, distinction bib, greenstar False):
+- 1201807 "Chay Garden (Xuan Hoa)". 52 Vo Van Tan Street, Xuan Hoa Ward, Ho Chi Minh City. Price ₫ (CAT_P01). Site chaygarden.com.
+  /us/en/ho-chi-minh/ho-chi-minh_2978179/restaurant/chay-garden
+- 1205566 "Hồng Phát (Bàn Cờ)". 389-391 Vo Van Tan Street, Ban Co Ward, Ho Chi Minh City. Price ₫ (CAT_P01). Site hutieuhongphat.com.
+  /us/en/ho-chi-minh/ho-chi-minh_2978179/restaurant/hong-phat-district-3
+- 1211006 "Mặn Mòi (An Khánh)". 32 D11 Street, An Khanh Ward, Ho Chi Minh City, 721400. Price ₫₫ (CAT_P02). Site manmoi.vn.
+  /us/en/ho-chi-minh/ho-chi-minh_2978179/restaurant/man-moi-thu-duc-city
+- 1247956 "Paloma Taqueria". 28 Helwick Street, Wānaka, 9305. Card city "Wānaka", region South Island. Price $$ (CAT_P02).
+  /us/en/south-island/wanaka_2306683/restaurant/paloma-taqueria
+
+Venue sites:
+- manmoi.vn/en/our-locations/ (WebFetch Oct 30): footer lists "Mặn Mòi, Bến Nghé" = 125 St. Hai Ba Trung, W. Sai Gon;
+  "Mặn Mòi, Thảo Điền" = 32 St. 11, W. An Khanh; "Mặn Mòi, Tao Đàn" = 34 Vo Van Tan, W. Xuan Hoa. Main list: Thảo Điền =
+  32 D11, phường Thảo Điền, Quận 2.
+- manmoi.vn/man-moi-thao-dien-q2/ (WebFetch Oct 30): branch Mặn Mòi, Thảo Điền, 32 Đường 11, P. An Khánh.
+  => card 1211006 address = the Thảo Điền branch (sister ve_c1ed9b62ab). Bến Nghé is another branch.
+- hutieuhongphat.com (session of Oct 30, batch 1 evidence): branch 01 "Hồng Phát Quận 3" = 389-391 Võ Văn Tần.
+
+Database read (Oct 30, 20:4x UTC): fresh counts price 7,730, ledger max 159, audit max 118,728, awards 23,353 (max 30,100),
+venues 11,307 (active 10,940), slugs 12,842, listings 11,307, city_label_source 24,011.
+Old rows fingerprint (46 rows on the 7 venues) md5 1f810ecb01106604d517f8bef7edcabe.
+Paloma city labels: 21594 "Auckland" (city_display), 21595 "New Zealand" (country). The 5 other Wanaka venues hold "Wanaka".
+Precedent for a city move: audit 112958-112960 (venue city UPDATE, old slug non-canonical, new canonical slug INSERT).
+
+Relay p1-rest-held-b2-relay-2026-10-30.txt: 4 lines, sha256 d23c77cf2805be3242df19cf6477f2074eecf808fbb902ca3fec9ce05c7f527a
+(browser hash = file hash). Fingerprint md5 2b4e083aeb9008d9bd2e69d4af979a87.
+Dry run (Read connector, block up to the first write): all guards passed; stopped at line 102 with "read-only transaction".
+Read after: ledger 159, audit 118,728, price 7,730, venues 11,307, award 21121 still on ve_3a9de72b7b.
+
+Ben's choices (Oct 30, 17:07 ET): Man Moi merge confirmed; Paloma city label 21594 -> "Wanaka". Ledger text rebuilt
+(file sha256 54d79d32c8393d66786792af2ec8ac19a4464884d05c0b7b271e1847cbb8ec5a); pglast check passed again.
+Write connector: 3 tries (17:08, 17:23, 17:30 ET), each confirmation prompt cancelled by the client after 0.6 s; nothing ran
+(read after each: ledger 159, audit 118,728).
+Write: Ben ran the file in the Supabase SQL Editor. Committed Oct 30, 21:34:04 UTC (17:34 ET).
+Read-back: venues 11,304 (active 10,937), awards 23,353, price 7,730, slugs 12,843, listings 11,304, city labels 24,005;
+ledgers 160 award 3, 161 price 3, 162 city_label 1 (job text md5 a442cb1b121f89c7354861dae0011a56 = file);
+audit 118,729-118,753 (25): awards UPDATE 3, city_label_source DELETE 6 + UPDATE 1, listings DELETE 3, price UPDATE 3,
+slugs INSERT 1 + UPDATE 4, venues DELETE 3 + UPDATE 1; 0 rows left on the 3 held ids; active star/Bib venues with no
+price 3 (Terra, La Torre One Fire, Sankai); venues without exactly 1 canonical slug 0.
