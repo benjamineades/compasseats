@@ -7,6 +7,7 @@ the method. `handoff-price-card-p1-done-2026-10-30.md` holds the card-read metho
 
 ## Ben's decisions (unchanged, Oct 30, 2026)
 1. Batch order: France 1, France 2, Italy, Japan, Spain, Germany, UK+IE, CN+TW, Benelux+MC+AD, US.
+   Confirmed Oct 30, 02:17 ET: Italy next, before Nov 12 (see Open items).
 2. Card tier equals legacy tier: update the row anyway (real symbol, ISO currency, card URL).
 3. Card shows Selected only: update the price anyway. Award rows do not change (Oct 10 ruling).
 
@@ -71,8 +72,9 @@ the method. `handoff-price-card-p1-done-2026-10-30.md` holds the card-read metho
 - Carried: Beijing & Tianjin after Nov 1; Switzerland after Nov 2; Italy 2027 edition Nov 12 (rule 2.1.7);
   telleruide slug; apostrophe policy; Nadair (Atlanta) possibly closed; Florida 2026 Green Stars article not found;
   La Table – Christophe Hay merge candidate; 7 unproven legacy special-award rows; 5 new awards on closed venues.
-- Note for Italy: the Italy 2027 edition comes out Nov 12. Batch 3 reads today's cards; a card read after Nov 12 may
-  show 2027 data. Ben may prefer to run Italy before Nov 12 or move it after Japan.
+- Italy timing (Ben, Oct 30, 02:17 ET): batch 3 is Italy, next, before the Italy 2027 edition (Nov 12). The cards
+  read now show 2026 data. Read all 596 Italy cards in one session, so the batch does not straddle Nov 12. If batch 3
+  cannot run before Nov 12, stop and ask Ben again.
 
 ## Suggested opening prompt
 ```
@@ -81,6 +83,6 @@ claude/handoff-price-card-p2-brief-2026-10-30.md for the P2 definition and batch
 claude/handoff-price-card-p1-done-2026-10-30.md for the card-read method and
 claude/handoff-chengdu-held-7-cleanup-done-2026-10-04.md for working rules. Use claude/build_price_update_sql.py
 as the builder. Do a fresh count read and confirm price 7,582, ledger 142 and audit_log 114,908. Then start batch 3 of
-block A step 2 (Italy, 596 venues): read the cards, build the file, examine it read-only, and show me the diff.
+block A step 2 (Italy, 596 venues, before the Nov 12 Italy 2027 edition): read the cards, build the file, examine it read-only, and show me the diff.
 No write before my go. Attach the compasseats repo with push access for the commit after the write.
 ```
