@@ -1,0 +1,8 @@
+ins|ve_2b87774359|-|Green Star|https://web.archive.org/web/20250914051229id_/https://guide.michelin.com/us/en/california/oakland/restaurant/pomet
+ins|ve_3a998c5225|-|Green Star|https://web.archive.org/web/20250809160635id_/https://guide.michelin.com/us/en/california/berkeley/restaurant/chez-panisse
+ins|ve_43771d354f|-|Green Star|https://web.archive.org/web/20250726005340id_/https://guide.michelin.com/us/en/california/us-los-angeles/restaurant/chi-spacca
+ins|ve_95d87f1674|-|Green Star|https://web.archive.org/web/20250912123304id_/https://guide.michelin.com/us/en/california/long-beach/restaurant/heritage-1196790
+ins|ve_95d87f1674|-|One Star|https://web.archive.org/web/20250912123304id_/https://guide.michelin.com/us/en/california/long-beach/restaurant/heritage-1196790
+url|ve_466f9b5fe9|21098|Bib Gourmand|https://web.archive.org/web/20231219192142id_/https://guide.michelin.com/us/en/georgia/atlanta_2884144/restaurant/banshee
+url|ve_466f9b5fe9|21099|Bib Gourmand|https://web.archive.org/web/20250414230834id_/https://guide.michelin.com/us/en/georgia/atlanta_2884144/restaurant/banshee
+url|ve_c1ed9b62ab|10494|Bib Gourmand|https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-vietnam-2025
