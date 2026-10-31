@@ -1,0 +1,24 @@
+display|ci_845e30f4ce|telese|Telese|Telese Terme|https://guide.michelin.com/us/en/campania/telese-terme_1850913/restaurant/kresios
+newcity|ci_6480e34f4d|carmignano|Carmignano|ci_c02c36007b
+newcity|ci_cef88d0e62|quartu-sant-elena|Quartu Sant'Elena|ci_d59e7dd97f
+newcity|ci_06496b916c|fuencaliente-de-la-palma|Fuencaliente de la Palma|ci_b52d606d20
+move|ve_542c195114|ci_c02c36007b|ci_6480e34f4d|prato|paca-ristorante|carmignano|paca-ristorante
+move|ve_69e1e106b5|ci_84cafc2357|ci_25a0f29d02|vico-equense|torre-del-saracino|sorrento|torre-del-saracino
+move|ve_e50adc624d|ci_b52d606d20|ci_06496b916c|las-caletas|restaurante-tematico-el-jardin-de-la-sal|fuencaliente-de-la-palma|restaurante-tematico-el-jardin-de-la-sal
+move|ve_eef796a74d|ci_d59e7dd97f|ci_cef88d0e62|sanluri|coxinendi-ristorante|quartu-sant-elena|coxinendi-ristorante
+count|ci_25a0f29d02|5|6
+count|ci_84cafc2357|2|1
+delcity|ci_c02c36007b|prato
+delcity|ci_d59e7dd97f|sanluri
+delcity|ci_b52d606d20|las-caletas
+alias|las caletas|ci_06496b916c
+resolve|carmignano|IT|ci_6480e34f4d
+resolve|quartu sant elena|IT|ci_cef88d0e62
+resolve|fuencaliente de la palma|ES|ci_06496b916c
+resolve|las caletas|ES|ci_06496b916c
+resolve|sorrento|IT|ci_25a0f29d02
+resolve|vico equense|IT|ci_84cafc2357
+resolve|prato|IT|-
+resolve|sanluri|IT|-
+resolve|telese|IT|ci_845e30f4ce
+resolve|telese terme|IT|ci_845e30f4ce
