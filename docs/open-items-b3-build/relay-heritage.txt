@@ -1,0 +1,4 @@
+ins|ve_95d87f1674|2023|Green Star|https://web.archive.org/web/20240206061227id_/https://guide.michelin.com/us/en/california/long-beach/restaurant/heritage-1196790
+ins|ve_95d87f1674|2023|One Star|https://web.archive.org/web/20240206061227id_/https://guide.michelin.com/us/en/california/long-beach/restaurant/heritage-1196790
+ins|ve_95d87f1674|2024|Green Star|https://web.archive.org/web/20240913163626id_/https://guide.michelin.com/us/en/california/long-beach/restaurant/heritage-1196790
+ins|ve_95d87f1674|2024|One Star|https://web.archive.org/web/20240913163626id_/https://guide.michelin.com/us/en/california/long-beach/restaurant/heritage-1196790

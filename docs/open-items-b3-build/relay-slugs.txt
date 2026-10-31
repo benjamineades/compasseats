@@ -1,0 +1,12 @@
+ve_027c7055e4|istanbul|foxy-nisantas|foxy-nisantasi
+ve_2f0a1cc318|istanbul|apart-man-yenikoy|apartiman-yenikoy
+ve_3858b8c38e|izmir|partal-kardesler-bal-k-restorant|partal-kardesler-balik-restorant
+ve_3c28ea50a0|bodrum|otantik-ocakbas|otantik-ocakbasi
+ve_5ed9e3ba91|istanbul|sade-bes-denizler-mutfag|sade-bes-denizler-mutfagi
+ve_639a9f06bc|istanbul|mahir-lokantas|mahir-lokantasi
+ve_6b845b4191|istanbul|ahmet-ustam-ocakbas|ahmet-ustam-ocakbasi
+ve_a2b0e7bf15|istanbul|karakoy-lokantas|karakoy-lokantasi
+ve_aab61fc860|istanbul|yanyal-fehmi-lokantas|yanyali-fehmi-lokantasi
+ve_e611b7d736|istanbul|parvus-kalam-s|parvus-kalamis
+ve_f8013e6d34|izmir|lucien-arkas-baglar|lucien-arkas-baglari
+ve_f9cfd37334|istanbul|ali-ocakbas-karakoy|ali-ocakbasi-karakoy
