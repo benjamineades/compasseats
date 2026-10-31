@@ -549,8 +549,9 @@ function buildReport(i: ReportInput): string {
     p();
   }
   p(
-    `\`cities.venues_count\` is maintained by its own refresh job, as it is at promote: neither ` +
-      `job writes it.`,
+    `\`cities.venues_count\` is a stored copy with no refresh job, and neither undo nor promote ` +
+      `writes it, so it goes stale after this run. For correct counts read the view ` +
+      `\`city_venue_counts\` (column \`active_venues\`).`,
   );
   p();
 
