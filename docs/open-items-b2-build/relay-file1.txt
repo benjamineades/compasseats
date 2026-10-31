@@ -1,0 +1,7 @@
+url|10493|ve_39dc53fd44|Bib Gourmand|https://web.archive.org/web/20250908053336id_/https://guide.michelin.com/vn/en/ho-chi-minh/ho-chi-minh_2978179/restaurant/hong-phat-district-3
+url|10908|ve_b3825c7559|Bib Gourmand|https://web.archive.org/web/20250805095033id_/https://guide.michelin.com/gb/en/east-sussex/lewes_1754494/restaurant/dill-1205977
+status|ve_b3825c7559|active|closed
+status|ve_fff5bda31e|active|closed
+price-ins|ve_f088b7a06a|4|₺₺₺₺|TRY|https://guide.michelin.com/us/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya|2026-10-30T17:59:54.848Z
+price-upd|ve_51ce2088a5|2|₺₺|TRY|https://web.archive.org/web/20260106015516id_/https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/efendy|2026-10-31T02:15:37.451Z
+price-upd|ve_f8013e6d34|2|₺₺|TRY|https://guide.michelin.com/us/en/izmir/izmir_2809416/restaurant/la-mahzen|2026-10-30T17:59:53.599Z
