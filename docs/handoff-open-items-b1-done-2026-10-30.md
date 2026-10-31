@@ -1,4 +1,4 @@
-# Handoff: Open items block 1 done (Telluride city, Forentum, Les Fresques, Paloma) + city display names. Oct 30, 2026 (20:57 Atlanta). Next: Ben chooses.
+# Handoff: Open items block 1 done (Telluride city, Forentum, Les Fresques, Paloma) + city display names + apostrophe ruling. Oct 30, 2026 (21:02 Atlanta). Next: Ben chooses.
 
 This file replaces `handoff-name-diffs-held8-done-2026-10-30.md` for live state and open items. That file still holds the
 batch 30 record and the slug-reuse method. Rules R1-R5: `handoff-name-diffs-read-2026-10-30.md`. Working rules and database
@@ -11,6 +11,7 @@ notes: `handoff-chengdu-held-7-cleanup-done-2026-10-04.md`.
 - 20:21 ET "Go" (file 1), 20:36 ET "Go" (file 2), 20:38 ET "Go" (file 3), 20:45 ET "Retry the connector",
   20:48 ET "Ran manually in Supabase" (file 3, SQL Editor).
 - 20:53 ET "A": city display names only (Waiheke Island, Wānaka, Đakovo; slugs stay). 20:55 ET "Go".
+- 20:59 ET "Keep venue's source spelling": apostrophe policy = A (rule R6 below). No write.
 
 ## Live state (read Oct 31, 00:56:18 UTC, whole tables)
 | Table | Count |
@@ -55,6 +56,12 @@ notes: `handoff-chengdu-held-7-cleanup-done-2026-10-04.md`.
    Slugs waiheke / wanaka / dakovo unchanged; old and new labels resolve to the same city. No ledger row.
    Note: Wanaka `venues_count` is 4 but the city has 6 venues (5 active): part of the recount item.
 
+## Rule R6 (Ben, Oct 30 20:59 ET): apostrophes
+- Keep the apostrophe the source writes, per venue: straight U+0027 or curly U+2019 (site first, then card, as R1-R5).
+  No bulk change to one form. Live: 627 names straight, 56 curly (read Oct 31 ~01:00 UTC).
+- Safe because `norm_key` and the slug rule treat both forms the same (`norm_key('Harry''s Bar')` = `norm_key('Harry’s Bar')`
+  = `harrysbar`; both `La P'tite Patte` forms give slug `la-p-tite-patte`). Matching and URLs do not depend on the form.
+
 ## Results
 | Venue | Before | After | Canonical slug now | Old slugs (non-canonical) |
 |---|---|---|---|---|
@@ -91,32 +98,32 @@ notes: `handoff-chengdu-held-7-cleanup-done-2026-10-04.md`.
 | `docs/cities-display-waiheke-wanaka-dakovo-2026-10-30.sql` (108 lines) | Run (audit 118,988-118,990) | `620f9621bdea47f28a36d5fbda7da8859fa3000d3400d16439eaf9cc6780613f` |
 | this handoff | project `claude/`, repo `docs/` | - |
 
-## Open items, smallest first (carried; items 1-4 of the Oct 30 list and the city display names are closed)
-1. Apostrophe policy: 683 names (627 straight U+0027, 56 curly U+2019). A keep the source spelling per venue (recommended,
-   no write) / B all straight / C all curly.
-2. Missing Green Star and URL rows: 2025 Green Star for Chez Panisse, Chi Spacca, Pomet, Heritage (Long Beach); 2025 rows of
+## Open items, smallest first (carried; items 1-4 of the Oct 30 list, the city display names and the apostrophe policy are closed)
+1. Missing Green Star and URL rows: 2025 Green Star for Chez Panisse, Chi Spacca, Pomet, Heritage (Long Beach); 2025 rows of
    the 3 sisters (10486, 10493, 10494) without URL; Banshee 2023/2024 Bib rows without URL; American South 2025/2026 check.
-3. Turkey follow-ups: Sankai by Nagaya price (₺₺₺₺, CAT_P04, TRY 4); Efendy recheck; one 2026 Turkey Bib unknown (39 vs 38);
+2. Turkey follow-ups: Sankai by Nagaya price (₺₺₺₺, CAT_P04, TRY 4); Efendy recheck; one 2026 Turkey Bib unknown (39 vs 38);
    Efendy and Lucien Arkas legacy `$$` rows; Sankai site spam.
-4. Turkey card cities that differ from ours (Revithia, Casa Lavanda, Bagarasi, Mandalya, Mezegi, Asma Yaprağı, Mezra Yalıkavak,
+3. Turkey card cities that differ from ours (Revithia, Casa Lavanda, Bagarasi, Mandalya, Mezegi, Asma Yaprağı, Mezra Yalıkavak,
    Babayan Evi, Old Greek House) plus KITCHEN by Osman Sezener (card Yalıkavak, ours Bodrum). Ben chooses the city policy.
-5. Status checks: Nadair (Atlanta) possibly closed; Dill (Lewes).
-6. Held-P2 items: 5 city changes; 15 P2 venues that left the guide.
-7. Merge and award cleanup: La Table – Christophe Hay merge candidate; 7 unproven legacy special-award rows; 5 new awards on
-   closed venues; Miura / Beverly Hills city policy; Terra (Fisterra) `ve_89ca903ac2` card 404; La Torre One Fire
+4. Status checks: Nadair (Atlanta) possibly closed; Dill (Lewes).
+5. Held-P2 items: 5 city changes; 15 P2 venues that left the guide.
+6. Merge and award cleanup: La Table – Christophe Hay merge candidate; 7 unproven legacy special-award rows; 5 new awards on
+   closed venues; Miura / Beverly Hills city policy; Duddell's (Hong Kong) possible duplicate: `ve_a3512f9a51` (Michelin 2025
+   One Star, OAD 2025 No. 120, slug hong-kong/duddell-s) and `ve_f88a5d9dc2` (Pinnacle Guide 2026 2-Pin, slug
+   hong-kong/duddell-s-bar), same norm_key `duddells`, found Oct 31 ~01:00 UTC; Terra (Fisterra) `ve_89ca903ac2` card 404; La Torre One Fire
    `ve_b5a5b44c26` card moved.
-8. `cities.venues_count` recount: 375 cities differ from the live count (read Oct 30, before this block). Ben decides.
-9. Date gates: Switzerland after Nov 2; Italy 2027 and the Café Spice Namasté / Unforgettable rechecks after Nov 12;
+7. `cities.venues_count` recount: 375 cities differ from the live count (read Oct 30, before this block). Ben decides.
+8. Date gates: Switzerland after Nov 2; Italy 2027 and the Café Spice Namasté / Unforgettable rechecks after Nov 12;
     Fujian 2027 late Nov; Spain 2027 Dec 1; Northeast Cities after Dec 14; Tokyo / Kyoto-Osaka / Nara 2027 after Feb 16, 2027;
     Belgium & Luxembourg 2027 spring 2027; American Great Lakes Apr 21, 2027; Germany 2027 and GB&I 2027 dates not found;
     Florida 2026 Green Stars article not found.
-10. Write connector prompt closes by itself (now seen on a DELETE file twice); SQL Editor route works.
-11. Telluride: 221 South Oak reopens 12/11 (seasonal); no action needed unless the site shows otherwise.
+9. Write connector prompt closes by itself (now seen on a DELETE file twice); SQL Editor route works.
+10. Telluride: 221 South Oak reopens 12/11 (seasonal); no action needed unless the site shows otherwise.
 
 ## Suggested opening prompt
 ```
 Read claude/handoff-open-items-b1-done-2026-10-30.md from the project files, then claude/handoff-name-diffs-read-2026-10-30.md
-for rules R1-R5 and claude/handoff-chengdu-held-7-cleanup-done-2026-10-04.md for working rules. Do a fresh count read and
+for rules R1-R5 (R6 is in this file) and claude/handoff-chengdu-held-7-cleanup-done-2026-10-04.md for working rules. Do a fresh count read and
 confirm ledger 165, audit_log 118,990, slugs 12,915 and city_aliases 262. Then show me the next-block options in /ste style
 (the open items, smallest first, with what each needs from me) and wait for my choice. No write before my go.
 Attach the compasseats repo with push access for the commit after any write.
