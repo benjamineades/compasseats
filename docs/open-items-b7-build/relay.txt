@@ -1,0 +1,17 @@
+status|ve_d0b3463bc7|La Galinette|ci_9ba49d57fc|3|4|card https://guide.michelin.com/en/occitanie/perpignan/restaurant/la-galinette One Star, 2026 MICHELIN Guide France, hours Wed-Sat, no closure note (read Oct 31)
+status|ve_d89d9e74aa|La Tana Gourmet|ci_e4929e796f|1|2|card https://guide.michelin.com/us/en/veneto/asiago/restaurant/la-tana-gourmet One Star, 2026 MICHELIN Guide Italia, no closure note (read Oct 31)
+status|ve_971eedfb86|Rolland|ci_fc6d18576b|0|1|card https://guide.michelin.com/en/bretagne/plourhan_1568608/restaurant/rolland Bib Gourmand, 2026 MICHELIN Guide France, hours Wed-Fri, no closure note (read Oct 31)
+status|ve_ef57492a00|Ursus|ci_f28e5f4881|0|1|card https://guide.michelin.com/en/auvergne-rhone-alpes/tignes/restaurant/ursus One Star, 2026 MICHELIN Guide France, hours Tue-Sat, no closure note (read Oct 31)
+url|21093|ve_b872d4efd2|Green Star||https://www.visitfloridamedia.com/releases/post/historic-moment-michelin-guide-reveals-first-statewide-restaurant-selection-for-florida/
+url|21094|ve_fb0e3f3b24|Green Star||https://www.visitfloridamedia.com/releases/post/historic-moment-michelin-guide-reveals-first-statewide-restaurant-selection-for-florida/
+url|21095|ve_64a5a273fc|Green Star||https://www.visitfloridamedia.com/releases/post/historic-moment-michelin-guide-reveals-first-statewide-restaurant-selection-for-florida/
+url|21111|ve_230f220397|Green Star||https://guide.michelin.com/vn/en/article/michelin-guide-ceremony/full-list-michelin-stars-michelin-guide-vietnam-2026
+url|21113|ve_eba2b712fd|Green Star||https://guide.michelin.com/vn/en/article/michelin-guide-ceremony/full-list-michelin-stars-michelin-guide-vietnam-2026
+url|21154|ve_5d8610b754|Exceptional Cocktails Award|Rhianda Smith|https://www.visitfloridamedia.com/releases/post/historic-moment-michelin-guide-reveals-first-statewide-restaurant-selection-for-florida/
+url|21155|ve_f3704c5a16|Young Chef Award|Jada Vidal|https://www.visitfloridamedia.com/releases/post/historic-moment-michelin-guide-reveals-first-statewide-restaurant-selection-for-florida/
+merge-award|21261|ve_3e461fe576|ve_dd6de25c33|gault-millau|2026|Three Toques · Grand de Demain
+merge-award|29699|ve_3e461fe576|ve_dd6de25c33|michelin|2026|Green Star
+merge-slug|ve_3e461fe576|ve_dd6de25c33|ardon|la-table-de-christophe-hay-et-lois-bee
+merge-label|21695|ve_3e461fe576|ve_dd6de25c33|city_display|Ardon|gault-millau
+merge-label|21696|ve_3e461fe576|ve_dd6de25c33|country|France|gault-millau
+merge-count|ci_10e2a8b9f3|2|1
