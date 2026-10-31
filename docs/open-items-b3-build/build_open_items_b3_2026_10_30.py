@@ -229,7 +229,9 @@ def f2(pre, name, test):
 BEGIN;
 DO $do$
 DECLARE
-  rel text := $r${tm}$r$;
+  -- replace(): removes CR characters that a copy and paste can add (Oct 30 23:29 ET: first SQL Editor try stopped at
+  --   'relay hash'; nothing ran). The hash then checks the exact content.
+  rel text := replace($r${tm}$r$, E'\\r', '');
   v_n int;
   v_lid bigint;
   v_txt text;

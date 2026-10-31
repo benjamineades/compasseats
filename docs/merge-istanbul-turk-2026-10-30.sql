@@ -25,11 +25,13 @@
 BEGIN;
 DO $do$
 DECLARE
-  rel text := $r$award|15878|ve_a19227e5fa|ve_9852cbf26e|2025|1-Knife|
+  -- replace(): removes CR characters that a copy and paste can add (Oct 30 23:29 ET: first SQL Editor try stopped at
+  --   'relay hash'; nothing ran). The hash then checks the exact content.
+  rel text := replace($r$award|15878|ve_a19227e5fa|ve_9852cbf26e|2025|1-Knife|
 award|15879|ve_a19227e5fa|ve_9852cbf26e|2024|1-Knife|https://thebestchefawards.com/wp-content/uploads/2024/11/List-2024_The-Best-Chef-Awards.pdf
 slug|-|ve_a19227e5fa|ve_9852cbf26e|istanbul|istanbul|
 label|15453|ve_a19227e5fa|-|city_display|Istanbul|best-chef-awards
-label|15454|ve_a19227e5fa|-|country|Turkey|best-chef-awards$r$;
+label|15454|ve_a19227e5fa|-|country|Turkey|best-chef-awards$r$, E'\r', '');
   v_n int;
   v_lid bigint;
   v_txt text;
