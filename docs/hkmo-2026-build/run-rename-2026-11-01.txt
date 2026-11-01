@@ -1,0 +1,21 @@
+HK/MO 2026 rename batch: run record, Nov 1 2026
+
+Ben: 11:25 ET "D1-D6: A"; 11:31 ET "go" (rename file).
+
+1. Fresh read 16:25:36 UTC: 66 venues, live id|name md5 4f152108531406dbd60d0a236c35ea50 (= file).
+2. Syntax check (pglast): rename file 3 statements, PL/pgSQL parses; slug file 3 statements, PL/pgSQL parses.
+3. CSV check: scripts/rename/lib/renameCsv.ts loadRenameCsv -> 66 rows, 66 venues, michelin 62, venue 4.
+4. Rename dry run (Read connector, sections 1-2 without note text, ends with a planned RAISE): "DRY RUN OK: all
+   pre-checks passed (no write attempted)". Input guards id|expected, id|new, rows matched.
+5. Rename write: docs/rename-michelin-2026-hong-kong-macau.sql
+   (sha256 3cb5dc7adea4cf5f8205dc183b8f9ccfcb0d0fc88c31c8b097528b838cbe7ae7), Write connector, first try,
+   committed 2026-11-01 16:34:02.84 UTC.
+   - rename batch 36 rename-michelin-2026-hong-kong-macau, status applied; 66 rename_rows (michelin 62, venue 4).
+   - ledger 206: michelin, name, 62.
+   - audit_log 121,096-121,161 (66 rows, venues UPDATE, 1 timestamp).
+6. Read-back 16:34:13 UTC: live id|name md5 54a197ce00838a8281751082dea80d20 (= file new). venues 11,300 (active
+   10,935); awards 23,368; slugs 12,952 (non-canonical 1,652); listings 11,300; blurbs 142; rename_batches 21;
+   rename_rows 1,277; ledger 156 rows, last id 206; audit_log 115,823 rows, last id 121,161; cities.venues_count sum 10,935.
+7. Slug dry run (Read connector, full DO block): all gates passed (plan 49, keep 17, fingerprint
+   9e682a117c541d0747eb52c43ebe9966); stopped at the first UPDATE with "read-only transaction".
+   Slug write: waiting for Ben's go.
