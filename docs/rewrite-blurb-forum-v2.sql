@@ -1,14 +1,14 @@
 -- rewrite-blurb-forum-v2.sql  (built by docs/forum-blurb-build/build_forum_blurb_v2.py; do not edit by hand)
 -- Open item 1: Forum blurb. Ben's choices Nov 1 14:01 ET: A1 (draft as is), B1 (version 2, status rewritten, 4 source URLs),
--- C1 (database only), D1 (venues.chef unchanged), E1 (1 ledger row).
--- One transaction. Writes: 1 UPDATE on blurbs (trigger writes 1 audit row), 1 INSERT on source_capture_ledger.
+-- C1 (database only), D1 (venues.chef unchanged).
+-- Run 1 (19:10 UTC) rolled back: ledger publisher 'compasseats' is not in award_sources. Ben, Nov 1 14:24 ET: F1 = no ledger row.
+-- One transaction. Writes: 1 UPDATE on blurbs (trigger writes 1 audit row). No ledger row (F1).
 -- Gates: ledger max 211, audit max 121,933, blurbs 142, old Forum row md5 b310ca68e92a826262fb7dc6e97df728.
 DO $do$
 DECLARE
   v_old_md5 text;
   v_new_md5 text;
   v_cnt int;
-  v_ledger_id bigint;
 BEGIN
   -- pre-gates
   IF (SELECT max(id) FROM source_capture_ledger) <> 211 THEN RAISE EXCEPTION 'gate: ledger max is not 211'; END IF;
@@ -31,11 +31,6 @@ BEGIN
   GET DIAGNOSTICS v_cnt = ROW_COUNT;
   IF v_cnt <> 1 THEN RAISE EXCEPTION 'post: blurb rows updated %', v_cnt; END IF;
 
-  -- write 2: the ledger row
-  INSERT INTO source_capture_ledger (publisher, field_type, items, job)
-  VALUES ('compasseats', 'blurb', 1, 'blurb:rewrite-forum-ve_fe4ae32eec | open item 1 (Ben, Nov 1 14:01 ET "A1, B1, C1, D1, E1"): Option B blurb v2 for Forum (Hong Kong), rewritten from fetched sources per the Option B runbook + humanizer layer; name "Forum" now used | version 1 -> 2, status needs_rewrite -> rewritten, sources = 4 URLs (Michelin card, Wikipedia, SCMP 2024, SCMP 100 Top Tables 2026) | C1 database only (Sheet / ImportOptionB.gs unchanged); D1 venues.chef unchanged | draft docs/forum-blurb-build/draft-forum-blurb-v2.txt sha256 bf3cccf3...f7acc7')
-  RETURNING id INTO v_ledger_id;
-
   -- post-checks
   SELECT md5(short||'|'||long||'|'||method||'|'||version||'|'||status||'|'||sources::text)
     INTO v_new_md5 FROM blurbs WHERE venue_id = 've_fe4ae32eec';
@@ -49,7 +44,7 @@ BEGIN
      AND (old_row->>'version') = '1' AND (new_row->>'version') = '2';
   IF v_cnt <> 1 THEN RAISE EXCEPTION 'post: audit row for blurbs UPDATE not found'; END IF;
   SELECT count(*) INTO v_cnt FROM source_capture_ledger WHERE id > 211;
-  IF v_cnt <> 1 OR v_ledger_id IS NULL THEN RAISE EXCEPTION 'post: new ledger rows %', v_cnt; END IF;
-  RAISE NOTICE 'OK: ledger id %, new row md5 %', v_ledger_id, v_new_md5;
+  IF v_cnt <> 0 THEN RAISE EXCEPTION 'post: new ledger rows %', v_cnt; END IF;
+  RAISE NOTICE 'OK: new row md5 %', v_new_md5;
 END
 $do$;
