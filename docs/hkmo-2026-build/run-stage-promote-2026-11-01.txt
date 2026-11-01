@@ -1,0 +1,14 @@
+Batch 19 michelin-2026-hong-kong-macau - stage and promote, Nov 1 2026
+Stage run 1 (#39, run 41322060334, Chrome, commit 72ac402): duplicate 112, match 2, new_venue 65, review_venue 1 (line 20 same_key_other_city) = prediction.
+  staged source_url md5 (by line, comma) a7e077e3d981ca9dc964520e1d261a99 = CSV.
+Stage run 2 (#40, run 41322223369, gh CLI, decisions fixtures/ingest/michelin-2026-hong-kong-macau-decisions.csv sha256 6c744582...7876):
+  duplicate 172, match 2 (45 Ando ve_694e8845c1, 130 Putien (Causeway Bay) ve_73d901a8fe), new_venue 6 = prediction; 66 decisions applied;
+  172 of 172 duplicates: 1 collision, same venue, same URL, year 2026.
+Promote dry run (#41, run 41322278511): 11 of 11 invariants pass; rolled back.
+Promote (Ben "go" 10:43 ET; run 41322658057), committed 2026-11-01 15:43:35.633905 UTC:
+  ledger 200 (michelin, award, 8), 201 (michelin, city_label, 12); audit 121,019-121,044 (26 INSERT: awards 8, venues 6, listings 6, slugs 6)
+  awards 23,362 -> 23,370 (ids 30123-30130); venues 11,306 (active 10,941, closed 365); slugs 12,956; listings 11,306; city labels 24,011; price 7,731
+  Michelin 2026 6,269; HK/MO Michelin 2026 180 rows, 180 with URL, 180 distinct
+  New venues: Lai Ching Heen ve_403f3ed56b, Dragon Inn ve_e49568f69f, Eton ve_35baee2d3a, Eng Kee Noodle Shop ve_01b130259b,
+    Sang Kee Foods (Western District) ve_b02a3e951b, An Choi ve_85e880a028 (all /hong-kong/<slug>)
+  NOTE: cities.venues_count not updated by the promote (hong-kong 262 vs 268 active). Fix in the cleanup file.
