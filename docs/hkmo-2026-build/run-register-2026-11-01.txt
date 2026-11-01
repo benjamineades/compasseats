@@ -1,0 +1,44 @@
+Run record: docs/register-hkmo-2026-11-01.sql (HK/MO register items, open item 1 of handoff-hkmo-price-done)
+Date: Nov 1, 2026. Ben 12:59 ET "For all choices go with your recommendation" = 1a A, 1b A, 1c A, 1d A, 1e A
+(E1 = Mentor Chef name as the article prints it; Claude took E1 because no recommendation was given). Ben "go" 13:07 ET.
+
+File: docs/register-hkmo-2026-11-01.sql, 206 lines, UTF-8 (one non-ASCII character: e-acute in "José"), LF,
+  sha256 c5296a5624ea8f29b7a923850ba3f3055d94546d5c95d843a06777c0959b4590 (commit 47fd8df, built, not run).
+  Built by docs/hkmo-2026-build/build_register_hkmo_2026_11_01.py
+  (sha256 79dd0db2a2a25cbfebf0eaf52e86e05f10536160849721a305b1595da2d18bbc).
+  Inputs: docs/michelin-2026-hong-kong-macau-log.md sha256 8ddf6780...39df (part 13 special awards);
+  fixtures/ingest/michelin-2026-hong-kong-macau.csv sha256 32d9839c...adbb (card URL + category).
+  pglast: SQL and PL/pgSQL body parse.
+
+Reads (Nov 1, read-only):
+  1a Xin Rong Ji: OAD Top Restaurants in Asia 2025 (built-in browser) No. 14 "Xin Rong Ji Restaurant HK", Hong Kong;
+     OAD page /restaurant/xin-rong-ji-restaurant-hk "China Overseas Building, No.138 Lockhart Road"; Michelin card
+     xin-rong-ji "GF & 1F, China Overseas Building, 139 Lockhart Road, Wan Chai". Foodle OAD HK 2025: No. 14, 138 Lockhart Rd.
+  1b Mesa: hotel page grandlisboapalace.com/en/restaurants-n-bars/mesa (built-in browser): "About Mesa Bar", body "Mesa Bar";
+     The 50 directory "Mesa Bar", Grand Lisboa Palace Level 3; Asia's 50 Best Bars 2022 51-100 No. 82 "Mesa", Macau.
+     Michelin 2026: Mesa Selected only (DB holds 0 Selected rows).
+  1c Chiu Chow Delicacies: hk/en card (built-in browser) title "Restaurant not found". NOTE: a WebFetch of the same URL
+     returned a Bib card (cached or wrong); the browser read is the record. OpenRice r1142618: open, Shop 1, 96 Wharf Road,
+     reviews Oct 2026 (old card: Shop 4). No write.
+  1d Hong Kong Zuicho: OpenRice r633520 "Zuicho (Closed)", Michelin One Star 2021-2025, 29 Jervois Street; DB status
+     already closed; OAD 2025 No. 261 "Zuicho", Hong Kong (row 18155 stays). No write.
+  1e special awards: ceremony article (log part 13). Sol (Young Chef, Kim GwanJu): no venue, Selected only -> skipped (Q3 A).
+
+Dry run: Read connector, 18:05 UTC, guards-only copy (sections 0-4) ending in RAISE 'DRY RUN OK': all guards passed.
+
+Real run: Write connector, first try, transaction time 2026-11-01 18:09:40 UTC. All post-checks passed.
+Read-back 18:10:06 UTC:
+  venues 11,299 (active 10,934, closed 365); awards 23,371 (last id 30,138; Michelin 9,667); slugs 13,002
+  (canonical 11,299, non-canonical 1,703); listings 11,299; price 7,733 (legacy_guide 2,380); city labels 23,999;
+  cities.venues_count sum 10,934 (0 cities differ from the view; Hong Kong 261).
+  Ledger 208: oad, award, 1 (merge Xin Rong Ji, row 18019). Ledger 209: michelin, award, 3 (special awards).
+  audit_log 121,575-121,587 (13): awards INSERT 3 + UPDATE 1, cities UPDATE 1, city_label_source UPDATE 2 (hand),
+  listings DELETE 1, slugs INSERT 1 + UPDATE 2, venues DELETE 1 + UPDATE 1.
+  Rename batch 37 rename-hkmo-register-mesa-bar-2026-11-01 applied (1 row, source venue, no ledger row).
+  New awards: 30136 The Huaiyang Garden Service Award Jenny Ye; 30137 Caprice Sommelier Award Floriane Hureau;
+  30138 Tin Lung Heen Mentor Chef Award "Lau Ping Lui, Paul".
+  Xin Rong Ji ve_f966b7e0a1: 5573 michelin 2026 One Star, 5574-5576 Asia's 50 Best 2023-2025, 18019 oad 2025 No. 14
+  (source_url OAD list); slugs hong-kong/xin-rong-ji (canonical), xin-rong-ji-restaurant, xinrongji.
+  ve_4dc9197f86 deleted (old URL hong-kong/xin-rong-ji-restaurant now opens ve_f966b7e0a1).
+  Mesa Bar ve_6f0bd256a0: macau/mesa-bar (canonical), macau/mesa-by-jose-avillez-bar. Restaurant ve_a2a7ed787d
+  "Mesa by José Avillez" unchanged.
