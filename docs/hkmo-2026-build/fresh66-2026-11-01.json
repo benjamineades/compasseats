@@ -1,0 +1,1088 @@
+{
+ "fresh66": {
+  "n_found": 66,
+  "md5_id_name": "4f152108531406dbd60d0a236c35ea50",
+  "rows": [
+   {
+    "id": "ve_0a1435bba9",
+    "name": "Yue Kee Roast Goose Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/yue-kee"
+     }
+    ]
+   },
+   {
+    "id": "ve_115bd39094",
+    "name": "聚興家 Ju Xing Home",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/ju-xing-home"
+     }
+    ]
+   },
+   {
+    "id": "ve_1b381644e1",
+    "name": "Mak Man Kee Noodle Shop(Jordan)",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/mak-man-kee"
+     }
+    ]
+   },
+   {
+    "id": "ve_2020552694",
+    "name": "Tasty Congee & Noodle Wantun Shop (IFC, Central)",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/tasty-central"
+     }
+    ]
+   },
+   {
+    "id": "ve_20dcae2458",
+    "name": "Lok Kei Noodle",
+    "status": "active",
+    "city_id": "ci_9690a92f29",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/macau-region/macau/restaurant/luk-kei-noodle"
+     }
+    ]
+   },
+   {
+    "id": "ve_219fd17c3a",
+    "name": "Kwan Kee Claypot Rice",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/kwan-kee-clay-pot-rice-queen-s-road-west"
+     }
+    ]
+   },
+   {
+    "id": "ve_26b3179f6e",
+    "name": "SHE WONG LEUNG",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/she-wong-leung"
+     }
+    ]
+   },
+   {
+    "id": "ve_26caf93ec1",
+    "name": "Estab De Comidas Son Tak Kong",
+    "status": "active",
+    "city_id": "ci_9690a92f29",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/macau-region/macau/restaurant/son-tak-kong"
+     }
+    ]
+   },
+   {
+    "id": "ve_29ee3c9989",
+    "name": "Little Napoli Pizzeria",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/little-napoli"
+     }
+    ]
+   },
+   {
+    "id": "ve_3037854371",
+    "name": "Kwan Kee Bamboo Noodle",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/kwan-kee-bamboo-noodles-cheung-sha-wan"
+     }
+    ]
+   },
+   {
+    "id": "ve_3788cffce7",
+    "name": "Din Tai Fung City of Dreams Branch",
+    "status": "active",
+    "city_id": "ci_9690a92f29",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/macau-region/macau/restaurant/din-tai-fung-cod"
+     }
+    ]
+   },
+   {
+    "id": "ve_3c0f9f5711",
+    "name": "Joël Robuchon",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Two Stars",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/l-atelier-de-joel-robuchon"
+     }
+    ]
+   },
+   {
+    "id": "ve_3cece0e6db",
+    "name": "Shugetsu (Central)",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/shugetsu-ramen-central"
+     }
+    ]
+   },
+   {
+    "id": "ve_41a24ad709",
+    "name": "Fiata Pizza",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/fiata"
+     }
+    ]
+   },
+   {
+    "id": "ve_4568d0d35c",
+    "name": "Yat Tung Heen - Eaton HK",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/yat-tung-heen-jordan"
+     }
+    ]
+   },
+   {
+    "id": "ve_4c76b8854a",
+    "name": "Cheung Hing Kee Shanghai Pan Fried Buns",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/cheung-hing-kee-tsim-sha-tsui"
+     }
+    ]
+   },
+   {
+    "id": "ve_504e87b09a",
+    "name": "Restoran Saya",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/saya"
+     }
+    ]
+   },
+   {
+    "id": "ve_513ddce2fd",
+    "name": "Loja Sopa da Fita Cheong Kei",
+    "status": "active",
+    "city_id": "ci_9690a92f29",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/macau-region/macau/restaurant/cheong-kei"
+     }
+    ]
+   },
+   {
+    "id": "ve_5309c1719c",
+    "name": "Fung Shing Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/fung-shing-north-point"
+     }
+    ]
+   },
+   {
+    "id": "ve_5767a71449",
+    "name": "Yuan Is Here",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/yuan-is-here-western-district"
+     }
+    ]
+   },
+   {
+    "id": "ve_577911454a",
+    "name": "賀賀澤-潮州海鮮小炒 Ho Ho Chak Chiu Chow Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/ho-ho-chak"
+     }
+    ]
+   },
+   {
+    "id": "ve_5b036c98aa",
+    "name": "Spring Moon 嘉麟樓",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/spring-moon"
+     }
+    ]
+   },
+   {
+    "id": "ve_62dc9734db",
+    "name": "Ho To Tai Noodle Shop",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/ho-to-tai-yuen-long"
+     }
+    ]
+   },
+   {
+    "id": "ve_65955cc504",
+    "name": "Tin Hung Roast Goose Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/tin-hung"
+     }
+    ]
+   },
+   {
+    "id": "ve_65d8ce2624",
+    "name": "Roganic Hong Kong",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Green Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/roganic1185143"
+     },
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/roganic1185143"
+     }
+    ]
+   },
+   {
+    "id": "ve_663c63e504",
+    "name": "Po Kee BBQ Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/po-kee"
+     }
+    ]
+   },
+   {
+    "id": "ve_6aac496f85",
+    "name": "Lucky Indonesia Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/lucky-indonesia"
+     }
+    ]
+   },
+   {
+    "id": "ve_6cc88fe33b",
+    "name": "LAI's Kitchen",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/lai-s-kitchen"
+     }
+    ]
+   },
+   {
+    "id": "ve_6f1de5ea6a",
+    "name": "TAKEYA",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/takeya"
+     }
+    ]
+   },
+   {
+    "id": "ve_721a2d6fc2",
+    "name": "Sang Kee Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/sang-kee"
+     }
+    ]
+   },
+   {
+    "id": "ve_768e5e4482",
+    "name": "Yuen Long Tai Wing Wah Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/tai-wing-wah"
+     }
+    ]
+   },
+   {
+    "id": "ve_76ac1b7433",
+    "name": "FENG WEI JU 風味居",
+    "status": "active",
+    "city_id": "ci_9690a92f29",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Two Stars",
+      "u": "https://guide.michelin.com/us/en/macau-region/macau/restaurant/feng-wei-ju"
+     }
+    ]
+   },
+   {
+    "id": "ve_774596ac1d",
+    "name": "RÙN",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Two Stars",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/run"
+     }
+    ]
+   },
+   {
+    "id": "ve_7bcd70ccd3",
+    "name": "Ye Shanghai (Tsim Sha Tsui)",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/ye-shanghai-tsim-sha-tsui-1191719"
+     }
+    ]
+   },
+   {
+    "id": "ve_7cf40a5234",
+    "name": "Kai Kai Dessert",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/kai-kai"
+     }
+    ]
+   },
+   {
+    "id": "ve_7db92e090b",
+    "name": "Tin Lung Heen | The Ritz-Carlton, Hong Kong",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Two Stars",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/tin-lung-heen"
+     }
+    ]
+   },
+   {
+    "id": "ve_7e1a08407f",
+    "name": "Octavium Italian Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Two Stars",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/octavium"
+     }
+    ]
+   },
+   {
+    "id": "ve_85ba8ac9ae",
+    "name": "Aji 雅吉",
+    "status": "active",
+    "city_id": "ci_9690a92f29",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/macau-region/macau/restaurant/aji-1215915"
+     }
+    ]
+   },
+   {
+    "id": "ve_8a5d5ef4fe",
+    "name": "Café Hunan",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/prof-chan-s-western-district"
+     }
+    ]
+   },
+   {
+    "id": "ve_8fde5a47ce",
+    "name": "LOUISE",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/louise"
+     }
+    ]
+   },
+   {
+    "id": "ve_96336c916d",
+    "name": "TATE Dining Room",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Two Stars",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/tate"
+     }
+    ]
+   },
+   {
+    "id": "ve_96a71ea519",
+    "name": "Bayi",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/ba-yi"
+     }
+    ]
+   },
+   {
+    "id": "ve_a23698ce24",
+    "name": "Ho Hung Kee Congee & Noodle",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/ho-hung-kee"
+     }
+    ]
+   },
+   {
+    "id": "ve_a32153f7bc",
+    "name": "NOI by Paulo Airaudo",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Two Stars",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/noi-1204599"
+     }
+    ]
+   },
+   {
+    "id": "ve_a4ba2e8edc",
+    "name": "船記 Ship Kee",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/ship-kee"
+     }
+    ]
+   },
+   {
+    "id": "ve_b2987bc4c5",
+    "name": "TUBER Umberto Bombana (K11 MUSEA)",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/tuber-umberto-bombana"
+     }
+    ]
+   },
+   {
+    "id": "ve_b431f74dc7",
+    "name": "Sushi Takeshi 鮨たけし",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/sushi-takeshi"
+     }
+    ]
+   },
+   {
+    "id": "ve_b5b3ad8a0b",
+    "name": "Art & Taste (美食台灣餐廳)",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/art-taste"
+     }
+    ]
+   },
+   {
+    "id": "ve_b655947dcb",
+    "name": "Hung’s delicacies",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/hung-s-delicacies"
+     }
+    ]
+   },
+   {
+    "id": "ve_bac747f4f4",
+    "name": "Tsim Chai Kee Noodle",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/tsim-chai-kee-wellington-street"
+     }
+    ]
+   },
+   {
+    "id": "ve_c74eb51585",
+    "name": "Lau Sum Kee Noodle (Fuk Wing Street)",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/lau-sum-kee-fuk-wing-street"
+     }
+    ]
+   },
+   {
+    "id": "ve_d25a123a7d",
+    "name": "Yat Lok Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/yat-lok"
+     }
+    ]
+   },
+   {
+    "id": "ve_d3a7dceb29",
+    "name": "lulu BAOBAO 手工拉麵小籠包 [ Wong Chuk Hang ]",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/lulu-baobao"
+     }
+    ]
+   },
+   {
+    "id": "ve_d409e788ba",
+    "name": "Keung Kee Roasted Meat Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/keung-kee-1198877"
+     }
+    ]
+   },
+   {
+    "id": "ve_d4fb60b454",
+    "name": "The Chairman Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/the-chairman"
+     }
+    ]
+   },
+   {
+    "id": "ve_d5d7131dc9",
+    "name": "Fu Ho Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/fu-ho-tsim-sha-tsui"
+     }
+    ]
+   },
+   {
+    "id": "ve_d7d755fc0c",
+    "name": "鮨わだつみ Sushi Wadatsumi (K11 MUSEA)",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/sushi-wadatsumi-1197866"
+     }
+    ]
+   },
+   {
+    "id": "ve_d94512745c",
+    "name": "Restaurante Kapok",
+    "status": "active",
+    "city_id": "ci_9690a92f29",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/macau-region/macau/restaurant/kapok"
+     }
+    ]
+   },
+   {
+    "id": "ve_eddbdeda7f",
+    "name": "Tosca Di Angelo",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/tosca352519"
+     }
+    ]
+   },
+   {
+    "id": "ve_eecb08a500",
+    "name": "VEA Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/vea"
+     }
+    ]
+   },
+   {
+    "id": "ve_f7fd2a6231",
+    "name": "The Huai Yang Garden",
+    "status": "active",
+    "city_id": "ci_9690a92f29",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Two Stars",
+      "u": "https://guide.michelin.com/us/en/macau-region/macau/restaurant/the-huaiyang-garden"
+     }
+    ]
+   },
+   {
+    "id": "ve_fda5727c73",
+    "name": "China Tang - Landmark",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "One Star",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/china-tang-446675"
+     }
+    ]
+   },
+   {
+    "id": "ve_fe4ae32eec",
+    "name": "富臨飯店 Forum Restaurant",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 1,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Three Stars",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/forum"
+     }
+    ]
+   },
+   {
+    "id": "ve_fe897986f4",
+    "name": "Sister Wah Beef Brisket",
+    "status": "active",
+    "city_id": "ci_1b1537ad28",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/sister-wah-tin-hau"
+     }
+    ]
+   },
+   {
+    "id": "ve_ff2ced77af",
+    "name": "Lou Kei (Fai Chi Kei)",
+    "status": "active",
+    "city_id": "ci_9690a92f29",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/macau-region/macau/restaurant/lou-kei-fai-chi-kei"
+     }
+    ]
+   },
+   {
+    "id": "ve_ff67dda5e5",
+    "name": "JUSTINDIA 印象派",
+    "status": "active",
+    "city_id": "ci_9690a92f29",
+    "blurbs": 0,
+    "prior_rr": 0,
+    "canon": 1,
+    "mich_urls": [
+     {
+      "y": 2026,
+      "c": "Bib Gourmand",
+      "u": "https://guide.michelin.com/us/en/macau-region/macau/restaurant/justindia"
+     }
+    ]
+   }
+  ]
+ },
+ "counts": {
+  "venues": 11300,
+  "awards": 23368,
+  "slugs": 12952,
+  "noncanon": 1652,
+  "listings": 11300,
+  "blurbs": 142,
+  "rb": 20,
+  "rb_max": 35,
+  "rr": 1211,
+  "led_n": 155,
+  "led_max": 205,
+  "aud_n": 115757,
+  "aud_max": 121095,
+  "award_sources_michelin": 1,
+  "award_sources_venue": 0,
+  "key_used": 0,
+  "read_at": "2026-11-01T16:25:36.551145+00:00"
+ }
+}

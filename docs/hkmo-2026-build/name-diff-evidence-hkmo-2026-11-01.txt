@@ -8,6 +8,7 @@
 #   Site in Chinese only (no English form) = R5.
 # Columns: line|venue_id|ours (venues.name)|card h1|site way read (where)|rule|action|new name
 # action: rename / keep / ask (Ben to choose). "-" = no change. Line 62: "¦" stands for the "|" in the live name.
+# Ben Nov 1 11:25 ET "D1-D6: A": the 5 ask lines are decided (33, 34, 43, 54 keep; 70 rename). Result: rename 66, keep 18.
 1|ve_f5b303e074|Ah Chun Shandong Dumpling|Ah Chun Shandong Dumpling (Prince Edward)|no site link on card|R5|keep|-
 2|ve_b5b3ad8a0b|Art & Taste (美食台灣餐廳)|Art & Taste|no site link on card|R5|rename|Art & Taste
 3|ve_96a71ea519|Bayi|Ba Yi|no site link on card|R5|rename|Ba Yi
@@ -40,8 +41,8 @@
 30|ve_6aac496f85|Lucky Indonesia Restaurant|Lucky Indonesia|no site link on card|R5|rename|Lucky Indonesia
 31|ve_d3a7dceb29|lulu BAOBAO 手工拉麵小籠包 [ Wong Chuk Hang ]|Lulu Baobao (Wong Chuk Hang)|lulu BAOBAO (title, heading, nav, body); one way only|R1|rename|lulu BAOBAO
 32|ve_1b381644e1|Mak Man Kee Noodle Shop(Jordan)|Mak Man Kee|no English name in text (title Chinese 麥文記麵家; og:site_name MMK.HK)|R5|rename|Mak Man Kee
-33|ve_d3f490f5b8|Man Ho|Man Ho (Admiralty)|hotel page: Man Ho Chinese Restaurant (title only); body did not load (error heading)|-|ask|-
-34|ve_2b85356623|MONO|Mono|MONO (title, og:site_name, logo, H1, body); Mono only in the nav item Mono-pedia|-|ask|-
+33|ve_d3f490f5b8|Man Ho|Man Ho (Admiralty)|hotel page: Man Ho Chinese Restaurant (title only); body did not load (error heading); Ben Nov 1 11:25 ET D1 = A: page body did not load, treated as not read|R5|keep|-
+34|ve_2b85356623|MONO|Mono|MONO (title, og:site_name, logo, H1, body); Mono only in the nav item Mono-pedia; Ben Nov 1 11:25 ET D2 = A|R3|keep|-
 35|ve_a32153f7bc|NOI by Paulo Airaudo|Noi by Paulo Airaudo|Noi (logo alt, H1, nav, body, footer); no "by Paulo Airaudo" form|R1|rename|Noi
 36|ve_7e1a08407f|Octavium Italian Restaurant|Octavium|site not read (site error)|R5|rename|Octavium
 37|ve_663c63e504|Po Kee BBQ Restaurant|Po Kee|no site link on card|R5|rename|Po Kee
@@ -50,7 +51,7 @@
 40|ve_774596ac1d|RÙN|Rùn|Rùn (title, logo alt, body, footer)|R1|rename|Rùn
 41|ve_721a2d6fc2|Sang Kee Restaurant|Sang Kee|Sang Kee (title, og:site_name)|R1|rename|Sang Kee
 42|ve_504e87b09a|Restoran Saya|Saya|no site link on card|R5|rename|Saya
-43|ve_712b801106|Seventh Son Restaurant|Seventh Son (Wan Chai)|Seventhson (title); Seventh Son Restaurant (banner caption); Seventh Son (meta keywords only)|-|ask|-
+43|ve_712b801106|Seventh Son Restaurant|Seventh Son (Wan Chai)|Seventhson (title); Seventh Son Restaurant (banner caption); Seventh Son (meta keywords only); Ben Nov 1 11:25 ET D3 = A: visible caption form|R1|keep|-
 44|ve_26b3179f6e|SHE WONG LEUNG|She Wong Leung|no site link on card|R5|rename|She Wong Leung
 45|ve_a4ba2e8edc|船記 Ship Kee|Ship Kee|site not read (Instagram, robots)|R5|rename|Ship Kee
 46|ve_3cece0e6db|Shugetsu (Central)|Shugetsu Ramen (Central)|no site link on card|R5|rename|Shugetsu Ramen
@@ -61,7 +62,7 @@
 51|ve_b431f74dc7|Sushi Takeshi 鮨たけし|Sushi Takeshi|no site link on card|R5|rename|Sushi Takeshi
 52|ve_d7d755fc0c|鮨わだつみ Sushi Wadatsumi (K11 MUSEA)|Sushi Wadatsumi|鮨わだつみ SUSHI WADATSUMI (title, logo link); capitals only, R3|R1/R3|rename|Sushi Wadatsumi
 53|ve_768e5e4482|Yuen Long Tai Wing Wah Restaurant|Tai Wing Wah|no site link on card|R5|rename|Tai Wing Wah
-54|ve_af6cfd76ec|Tai Woo Restaurant|Tai Woo|Tai Woo Restaurant (title, H1, body); Tai Woo only in a customer quote|-|ask|-
+54|ve_af6cfd76ec|Tai Woo Restaurant|Tai Woo|Tai Woo Restaurant (title, H1, body); Tai Woo only in a customer quote; Ben Nov 1 11:25 ET D4 = A: title, H1, body|R1|keep|-
 55|ve_6f1de5ea6a|TAKEYA|Takeya|no site link on card|R5|rename|Takeya
 56|ve_2020552694|Tasty Congee & Noodle Wantun Shop (IFC, Central)|Tasty (Central)|group site tasty.com.hk: Tasty Congee & Noodle Wantun Shop (title); Tasty congee & Noodle Wantun Shop (footer); no "Tasty" alone|R4|rename|Tasty Congee & Noodle Wantun Shop
 57|ve_96336c916d|TATE Dining Room|Tate|TATE (title, og:site_name, logo, body); Tate (body); TATE 態邸 (heading)|R2/R3|rename|Tate
@@ -77,7 +78,7 @@
 67|ve_eecb08a500|VEA Restaurant|Vea|VEA (title, body, footer); one way only|R1|rename|VEA
 68|ve_d25a123a7d|Yat Lok Restaurant|Yat Lok (Central)|no site link on card|R5|rename|Yat Lok
 69|ve_4568d0d35c|Yat Tung Heen - Eaton HK|Yat Tung Heen|Yat Tung Heen (title, og:site_name, H1 logo alt)|R1|rename|Yat Tung Heen
-70|ve_7bcd70ccd3|Ye Shanghai (Tsim Sha Tsui)|Yè Shanghai (Tsim Sha Tsui)|group site elite-concepts.com: yè shanghai (nav, footer); yè Shanghai (Tsim Sha Tsui); Ye Shanghai (Tsim Sha Tsui & Admiralty)|-|ask|-
+70|ve_7bcd70ccd3|Ye Shanghai (Tsim Sha Tsui)|Yè Shanghai (Tsim Sha Tsui)|group site elite-concepts.com: yè shanghai (nav, footer); yè Shanghai (Tsim Sha Tsui); Ye Shanghai (Tsim Sha Tsui & Admiralty); Ben Nov 1 11:25 ET D5 = A|R2/R3|rename|Yè Shanghai (Tsim Sha Tsui)
 71|ve_5767a71449|Yuan Is Here|Yuan is Here (Western District)|no site link on card|R5|rename|Yuan is Here
 72|ve_0a1435bba9|Yue Kee Roast Goose Restaurant|Yue Kee|Yue Kee Roast Goose Restaurant (title, H1); Yue Kee (nav link)|R2|rename|Yue Kee
 73|ve_85ba8ac9ae|Aji 雅吉|Aji|resort page: Aji (H1, body); Aji at MGM COTAI (title)|R2|rename|Aji
