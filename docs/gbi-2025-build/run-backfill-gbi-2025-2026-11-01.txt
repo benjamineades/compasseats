@@ -1,0 +1,21 @@
+Run record: Great Britain & Ireland 2025 stars and Green Stars from the archive (item 4, guide 1 of 5), Nov 1, 2026
+
+File: docs/backfill-michelin-2025-great-britain-ireland.sql sha256 85677755b52bbda485e8616eeb408746f6d7799528e3384119858d12e810cd25 (158 lines)
+Built by: docs/gbi-2025-build/build_backfill_gbi_2025.py (mode sql use) from
+  relay-gbi-2025-archive-20250211.txt (sha256 003ae95ec6c1031f558f503be6f8d35f6f0d930bb10f2ee0e7991985b87536e0) and
+  links-gbi-2025-archive-20250211.txt (sha256 60d35e7df6077a30e0d5991bc96e29bea9d7a741e4994e9d8f0554030d80bdc1).
+Sources: stars capture 20250211084823 (every-michelin-star-restaurant-in-great-britain-ireland, 10/29/181);
+  Green Stars capture 20250211223426 (green-stars-sustainable-gastronomy-great-britain-uk-ireland-full-list-new, 36).
+  Counts = Feb 10, 2025 ceremony "at a Glance" (michelin-stars-reveal-uk-ireland-2025-all-awards-news, capture 20250211223425).
+Ben's choices: Nov 1 15:50 ET "N1, P2, Q1, R1, S1"; 17:03 ET "T1, go".
+Dry run (Read connector): all pre-checks passed, stopped at the first write. Post-check queries tested alone: TEST OK.
+Run: Write connector, first try, 1 transaction, all gates passed. Read-back 22:04:50 UTC.
+  awards 23,560 -> 23,784; new ids 30500-30723 (224 INSERT); 6 existing 2025 One Star rows got the source_url
+  (ids 4216, 4403, 4778, 5696, 6036, 6090).
+  GB&I rows with the archive URLs: Green Star 19, One Star 174, Three Stars 10, Two Stars 27 (230).
+  Match: card link 212; venue id 18 (12 with a Michelin row; 6 name-only pairs, T1).
+  Q1 skipped, no venue: 26 lines (9 stars, 17 Green Stars).
+  Michelin 10,080; Michelin 2025 3,704 (no URL 3,237); Green Star 2025 31; GB/IE/JE Michelin 2025 233.
+  Ledger 214 (michelin, award, 230); ledger 162 rows.
+  Audit 121,991-122,220 (INSERT 224, UPDATE 6); audit_log 116,708 rows.
+  Unchanged: venues 11,299; slugs 13,002; cities 3,260; cities.venues_count sum 10,934; price 7,733; listings 11,299.
