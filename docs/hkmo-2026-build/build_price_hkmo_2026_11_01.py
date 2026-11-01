@@ -1,0 +1,271 @@
+#!/usr/bin/env python3
+"""Build docs/price-michelin-card-hong-kong-macau-2026.sql (HK/MO price from the 2026 Michelin card).
+
+Open item 1 of handoff-hkmo-native-done-2026-11-01.
+Source: ingest_rows batch 19 (michelin-2026-hong-kong-macau), field price_symbol_raw, read inside the SQL.
+Nothing is typed. Model: docs/build_price_update_sql.py (block A step 2) and
+docs/hkmo-2026-build/build_name_native_hkmo_2026_11_01.py (plan read from ingest_rows).
+
+Usage: python3 build_price_hkmo_2026_11_01.py CAP INS
+  CAP = batch : captured_at = ingest_batches 19 created_at (2026-11-01 15:36:21.487926+00)
+        now   : captured_at = time of the write (transaction time)
+  INS = yes   : also INSERT a price row for the 6 venues with none (Ando + 5 new venues)
+        no    : UPDATE the 174 legacy rows only
+Currency: Hong Kong -> HKD, Macao -> MOP (guide.michelin.com/en/restaurants-price-ranges-index:
+  HK$ for Hong Kong, MOP$ for Macao; same bands < 100 / 100-800 / 800-1'600 / > 1'600).
+Fingerprints were read from the database on Nov 1, 2026 (17:2x UTC).
+"""
+import sys
+
+CAP = sys.argv[1] if len(sys.argv) > 1 else 'batch'
+INS = sys.argv[2] if len(sys.argv) > 2 else 'yes'
+assert CAP in ('batch', 'now') and INS in ('yes', 'no')
+
+VENUES, AWARDS, SLUGS = 11300, 23368, 13001
+PRICE, LEGACY = 7727, 2554
+LEDGER_LAST, AUDIT_LAST = 206, 121394
+B19_CREATED = '2026-11-01 15:36:21.487926+00'
+N_ALL, N_UPD, N_INS = 180, 174, 6
+MD5_ALL = '0525e524d5b56b1bf77caa6e9f3c7649'
+MD5_UPD = '0f4b0bf3cbcb77c7bfe4a228c36d4726'
+MD5_INS = '8e5d0ad861aada04db406cd1d88c512d'
+MD5_OLD = 'b8755c53352a292a6cebb360c009ad6e'
+
+N = N_ALL if INS == 'yes' else N_UPD
+N_I = N_INS if INS == 'yes' else 0
+MD5_PLAN = MD5_ALL if INS == 'yes' else MD5_UPD
+PRICE_AFTER = PRICE + N_I
+LEGACY_AFTER = LEGACY - N_UPD
+LEDGER_NEW = LEDGER_LAST + 1
+CUR_TXT = 'HKD 146, MOP 34' if INS == 'yes' else 'HKD 140, MOP 34'
+CAP_EXPR = "'%s'::timestamptz" % B19_CREATED if CAP == 'batch' else 'now()'
+CAP_NOTE = ('captured_at = ingest batch 19 created_at %s (the capture rows entered the database; '
+            'the Cowork capture ran earlier on Nov 1)' % B19_CREATED) if CAP == 'batch' else \
+           'captured_at = transaction time of the write'
+KEY = 'price-michelin-card-hong-kong-macau-2026'
+
+PLAN = """WITH plan AS (
+      SELECT DISTINCT a.venue_id AS vid, r.raw->>'source_url' AS url, r.raw->>'price_symbol_raw' AS sym,
+             CASE c.country WHEN 'Hong Kong' THEN 'HKD' WHEN 'Macao' THEN 'MOP' END AS cur,
+             char_length(r.raw->>'price_symbol_raw') AS tier,
+             r.raw->>'country_label' AS cl, c.country AS ctry,
+             EXISTS (SELECT 1 FROM price p0 WHERE p0.venue_id = a.venue_id) AS has_row
+        FROM ingest_rows r
+        JOIN awards a ON a.source_id = 'michelin' AND a.year = 2026 AND a.source_url = r.raw->>'source_url'
+         AND a.category IN ('One Star', 'Two Stars', 'Three Stars', 'Bib Gourmand')
+        JOIN venues v ON v.id = a.venue_id
+        JOIN cities c ON c.id = v.city_id
+       WHERE r.batch_id = 19
+    )"""
+
+PLAN_LINE = "vid || '|' || url || '|' || sym || '|' || cur || '|' || tier"
+INS_FILTER = '' if INS == 'yes' else ' WHERE has_row'
+
+if INS == 'yes':
+    insert_block = f"""
+  -- The change, part 2: INSERT a price row for the {N_INS} venues with none.
+  {PLAN}
+  INSERT INTO price (venue_id, tier, symbol_raw, currency, source, method, publisher, source_url, captured_at, confidence)
+  SELECT p.vid, p.tier::smallint, p.sym, p.cur, 'guide_ingest'::price_source_t, 'published_symbol'::price_method_t,
+         'michelin', p.url, {CAP_EXPR}, NULL::real
+    FROM plan p WHERE NOT p.has_row;
+  GET DIAGNOSTICS n_ins = ROW_COUNT;
+  IF n_ins <> {N_INS} THEN
+    RAISE EXCEPTION 'Insert failed: % rows, expected {N_INS}', n_ins;
+  END IF;
+"""
+    ins_note = (f"-- Rows: {N_UPD} UPDATE of the legacy price row + {N_INS} INSERT (Ando ve_694e8845c1 had no price row;\n"
+                f"--   5 venues are new from the Nov 1 promote: An Choi, Dragon Inn, Eng Kee Noodle Shop, Eton,\n"
+                f"--   Sang Kee Foods (Western District)).")
+else:
+    insert_block = "\n  n_ins := 0;  -- INS = no: the 6 venues with no price row are not in this file.\n"
+    ins_note = f"-- Rows: {N_UPD} UPDATE of the legacy price row. The 6 venues with no price row are left out (INS = no)."
+
+sql = f"""-- {KEY}.sql
+-- Purpose: Hong Kong and Macau price from the 2026 Michelin card (open item 1, handoff-hkmo-native-done-2026-11-01).
+-- Rule: the Michelin card price wins over a legacy price with no URL, for every guide (Ben, Sep 28, 2026).
+--   Rows where the card tier equals the legacy tier are also updated (Ben, Oct 30, 2026): they get the card symbol,
+--   currency, publisher michelin and the card URL.
+-- Population: venues of the 2026 Michelin One/Two/Three Stars or Bib Gourmand rows whose source_url = a card in
+--   ingest_rows batch 19 (michelin-2026-hong-kong-macau): 180 cards = 180 venues (Hong Kong 146, Macao 34), all active.
+--   The 5 Green Star rows share a card URL with a star row; the category filter and DISTINCT give 1 row per venue.
+-- Source: ingest_rows batch 19 price_symbol_raw (card symbol as printed; Cowork capture Nov 1, 2026; 4 venue pages
+--   checked against the card; 0 differences between the English and Chinese cards). Read inside this file.
+-- Currency: Hong Kong -> HKD, Macao -> MOP (Michelin price-range index: HK$ and MOP$). tier = symbol count.
+{ins_note}
+-- Card vs legacy on the {N_UPD} rows: 171 same symbol, 3 differ (Feuille $$$$ -> $$$, Run $$$ -> $$$$,
+--   Sun Tung Lok Chinese Cuisine $$ -> $$$).
+-- Written values: source guide_ingest, method published_symbol, publisher michelin, source_url = card URL,
+--   confidence NULL, {CAP_NOTE}.
+-- Currencies: {CUR_TXT}. Ledger row {LEDGER_NEW} (michelin, price, {N}).
+-- Gates: whole-table counts, last ledger id and last audit id before (single-use file); batch 19 created_at;
+--   plan count and md5 (vid|url|symbol|currency|tier by vid): {MD5_PLAN};
+--   every target active, card URL = latest Michelin star/Bib card URL of the venue, country label = city country,
+--   existing rows legacy_guide with no URL; old price rows md5 {MD5_OLD};
+--   counts after; ledger id; exactly {N} audit rows on price ({N_UPD} UPDATE, {N_I} INSERT), new values md5 = plan;
+--   every price row now matches the plan.
+-- Built by docs/hkmo-2026-build/build_price_hkmo_2026_11_01.py {CAP} {INS}.
+-- Dry run: send the whole DO block through the Read connector. It stops at the UPDATE with "read-only transaction".
+
+BEGIN;
+
+DO $$
+DECLARE
+  n_venues    bigint;
+  n_awards    bigint;
+  n_slugs     bigint;
+  n_price     bigint;
+  n_legacy    bigint;
+  l_max_pre   bigint;
+  a_max_pre   bigint;
+  t_b19       timestamptz;
+  n_plan      bigint;
+  n_dist      bigint;
+  n_has       bigint;
+  m_plan      text;
+  m_upd       text;
+  m_ins       text;
+  m_old       text;
+  n_bad       bigint;
+  n_upd       bigint;
+  n_ins       bigint;
+  v_lid       bigint;
+  n_audit     bigint;
+  n_badaudit  bigint;
+  m_audit     text;
+BEGIN
+  -- Gate 1: whole-table counts, last ledger id and last audit id before; batch 19 created_at.
+  SELECT count(*) INTO n_venues FROM venues;
+  SELECT count(*) INTO n_awards FROM awards;
+  SELECT count(*) INTO n_slugs FROM slugs;
+  SELECT count(*), count(*) FILTER (WHERE source::text = 'legacy_guide') INTO n_price, n_legacy FROM price;
+  SELECT coalesce(max(id), 0) INTO l_max_pre FROM source_capture_ledger;
+  SELECT coalesce(max(id), 0) INTO a_max_pre FROM audit_log;
+  SELECT created_at INTO t_b19 FROM ingest_batches WHERE id = 19 AND batch_key = 'michelin-2026-hong-kong-macau';
+  IF (n_venues, n_awards, n_slugs, n_price, n_legacy, l_max_pre, a_max_pre)
+     IS DISTINCT FROM ({VENUES}::bigint, {AWARDS}::bigint, {SLUGS}::bigint, {PRICE}::bigint, {LEGACY}::bigint,
+                       {LEDGER_LAST}::bigint, {AUDIT_LAST}::bigint)
+     OR t_b19 IS DISTINCT FROM '{B19_CREATED}'::timestamptz THEN
+    RAISE EXCEPTION 'Gate 1 failed: venues/awards/slugs/price/legacy/ledger max/audit max = %/%/%/%/%/%/%, batch 19 %',
+      n_venues, n_awards, n_slugs, n_price, n_legacy, l_max_pre, a_max_pre, t_b19;
+  END IF;
+
+  -- Gate 2: the plan, read from ingest_rows batch 19.
+  {PLAN}
+  SELECT count(*), count(DISTINCT vid), count(*) FILTER (WHERE has_row),
+         md5(string_agg({PLAN_LINE}, E'\\n' ORDER BY vid)),
+         md5(string_agg({PLAN_LINE}, E'\\n' ORDER BY vid) FILTER (WHERE has_row)),
+         md5(string_agg({PLAN_LINE}, E'\\n' ORDER BY vid) FILTER (WHERE NOT has_row))
+    INTO n_plan, n_dist, n_has, m_plan, m_upd, m_ins FROM plan;
+  IF n_plan <> {N_ALL} OR n_dist <> {N_ALL} OR n_has <> {N_UPD}
+     OR m_plan IS DISTINCT FROM '{MD5_ALL}' OR m_upd IS DISTINCT FROM '{MD5_UPD}' OR m_ins IS DISTINCT FROM '{MD5_INS}' THEN
+    RAISE EXCEPTION 'Gate 2 failed: plan rows %, distinct %, with price row %, md5 % / % / %', n_plan, n_dist, n_has, m_plan, m_upd, m_ins;
+  END IF;
+
+  -- Gate 3: every target is active; symbol is 1-4 "$"; currency known; country label = city country;
+  --         card URL = the latest Michelin star/Bib card URL of the venue; an existing row is legacy_guide with no URL.
+  {PLAN}
+  SELECT count(*) INTO n_bad
+    FROM plan p
+    JOIN venues v ON v.id = p.vid
+    LEFT JOIN price pr ON pr.venue_id = p.vid
+   WHERE v.status::text <> 'active'
+      OR p.sym !~ '^[$]{{1,4}}$' OR p.cur IS NULL OR p.cl IS DISTINCT FROM p.ctry
+      OR p.url IS DISTINCT FROM (
+           SELECT a.source_url FROM awards a
+            WHERE a.venue_id = p.vid AND a.source_id = 'michelin'
+              AND a.category IN ('One Star', 'Two Stars', 'Three Stars', 'Bib Gourmand')
+              AND a.source_url ~ '^https://guide[.]michelin[.]com/.*/restaurant/'
+            ORDER BY a.year DESC, a.id DESC LIMIT 1)
+      OR (pr.venue_id IS NOT NULL AND (pr.source::text <> 'legacy_guide' OR pr.source_url IS NOT NULL));
+  IF n_bad <> 0 THEN
+    RAISE EXCEPTION 'Gate 3 failed: % target rows fail the row checks', n_bad;
+  END IF;
+
+  -- Gate 4: the old price rows are exactly as read on Nov 1, 2026.
+  {PLAN}
+  SELECT md5(string_agg(md5(to_jsonb(pr)::text), '' ORDER BY pr.venue_id)) INTO m_old
+    FROM price pr WHERE pr.venue_id IN (SELECT vid FROM plan);
+  IF m_old IS DISTINCT FROM '{MD5_OLD}' THEN
+    RAISE EXCEPTION 'Gate 4 failed: old price rows md5 %, expected {MD5_OLD}', m_old;
+  END IF;
+
+  -- The change, part 1: UPDATE the {N_UPD} legacy price rows.
+  {PLAN}
+  UPDATE price pr
+     SET tier = p.tier::smallint, symbol_raw = p.sym, currency = p.cur, source = 'guide_ingest'::price_source_t,
+         method = 'published_symbol'::price_method_t, publisher = 'michelin', source_url = p.url,
+         captured_at = {CAP_EXPR}, confidence = NULL
+    FROM plan p
+   WHERE pr.venue_id = p.vid AND p.has_row AND pr.source::text = 'legacy_guide' AND pr.source_url IS NULL;
+  GET DIAGNOSTICS n_upd = ROW_COUNT;
+  IF n_upd <> {N_UPD} THEN
+    RAISE EXCEPTION 'Update failed: % rows, expected {N_UPD}', n_upd;
+  END IF;
+{insert_block}
+  INSERT INTO source_capture_ledger (publisher, field_type, items, job)
+  VALUES ('michelin', 'price', {N},
+          'price-card:{KEY} | open item 1 (handoff-hkmo-native-done-2026-11-01): Hong Kong and Macau price from the 2026 card | '
+          || '{N_UPD} updated from legacy, {N_I} inserted ({CUR_TXT}) | source ingest_rows batch 19 price_symbol_raw '
+          || '(Cowork capture Nov 1, 2026) | plan md5 {MD5_PLAN}')
+  RETURNING id INTO v_lid;
+  IF v_lid <> {LEDGER_NEW} THEN
+    RAISE EXCEPTION 'Ledger id %, expected {LEDGER_NEW}', v_lid;
+  END IF;
+
+  -- Gate 5: whole-table counts after.
+  SELECT count(*) INTO n_venues FROM venues;
+  SELECT count(*) INTO n_awards FROM awards;
+  SELECT count(*) INTO n_slugs FROM slugs;
+  SELECT count(*), count(*) FILTER (WHERE source::text = 'legacy_guide') INTO n_price, n_legacy FROM price;
+  IF (n_venues, n_awards, n_slugs, n_price, n_legacy)
+     IS DISTINCT FROM ({VENUES}::bigint, {AWARDS}::bigint, {SLUGS}::bigint, {PRICE_AFTER}::bigint, {LEGACY_AFTER}::bigint) THEN
+    RAISE EXCEPTION 'Gate 5 failed: venues/awards/slugs/price/legacy = %/%/%/%/%, expected {VENUES}/{AWARDS}/{SLUGS}/{PRICE_AFTER}/{LEGACY_AFTER}',
+      n_venues, n_awards, n_slugs, n_price, n_legacy;
+  END IF;
+
+  -- Gate 6: exactly {N} new audit rows, all on price ({N_UPD} UPDATE, {N_I} INSERT), and the new values md5 = the plan md5.
+  SELECT count(*) INTO n_audit FROM audit_log WHERE id > a_max_pre;
+  SELECT count(*) INTO n_badaudit FROM audit_log
+   WHERE id > a_max_pre AND NOT (table_name = 'price' AND action IN ('UPDATE', 'INSERT'));
+  SELECT md5(string_agg(row_pk || '|' || (new_row->>'source_url') || '|' || (new_row->>'symbol_raw') || '|'
+                        || (new_row->>'currency') || '|' || (new_row->>'tier'), E'\\n' ORDER BY row_pk))
+    INTO m_audit FROM audit_log WHERE id > a_max_pre;
+  IF n_audit <> {N} OR n_badaudit <> 0 OR m_audit IS DISTINCT FROM '{MD5_PLAN}'
+     OR (SELECT count(*) FROM audit_log WHERE id > a_max_pre AND action = 'UPDATE') <> {N_UPD}
+     OR (SELECT count(*) FROM audit_log WHERE id > a_max_pre AND action = 'INSERT') <> {N_I} THEN
+    RAISE EXCEPTION 'Gate 6 failed: % audit rows (expected {N}), % not price UPDATE/INSERT, md5 %', n_audit, n_badaudit, m_audit;
+  END IF;
+
+  -- Gate 7: every plan row now matches its price row.
+  {PLAN}
+  SELECT count(*) INTO n_bad
+    FROM plan p
+    LEFT JOIN price pr ON pr.venue_id = p.vid
+   WHERE (p.has_row OR {'true' if INS == 'yes' else 'false'})
+     AND (pr.venue_id IS NULL OR pr.tier <> p.tier OR pr.symbol_raw IS DISTINCT FROM p.sym
+          OR pr.currency IS DISTINCT FROM p.cur OR pr.source::text <> 'guide_ingest'
+          OR pr.method::text <> 'published_symbol' OR pr.publisher IS DISTINCT FROM 'michelin'
+          OR pr.source_url IS DISTINCT FROM p.url OR pr.confidence IS NOT NULL
+          OR pr.captured_at IS DISTINCT FROM {CAP_EXPR});
+  IF n_bad <> 0 THEN
+    RAISE EXCEPTION 'Gate 7 failed: % price rows do not match the plan', n_bad;
+  END IF;
+
+  RAISE NOTICE 'OK: % price rows updated, % inserted. Ledger %. Audit ids % to %.',
+    n_upd, n_ins, v_lid, a_max_pre + 1, a_max_pre + n_audit;
+END
+$$;
+
+COMMIT;
+
+-- Read-back (run after the commit):
+-- SELECT count(*), count(*) FILTER (WHERE source = 'legacy_guide') FROM price;  -- expect {PRICE_AFTER} / {LEGACY_AFTER}
+-- SELECT c.country, p.currency, p.tier, count(*) FROM price p JOIN venues v ON v.id = p.venue_id
+--   JOIN cities c ON c.id = v.city_id WHERE c.country IN ('Hong Kong', 'Macao') GROUP BY 1, 2, 3 ORDER BY 1, 2, 3;
+"""
+assert sql.isascii()
+out = 'docs/%s.sql' % KEY
+with open(out, 'w', encoding='ascii', newline='\n') as f:
+    f.write(sql)
+print(out, CAP, INS, 'rows', N)

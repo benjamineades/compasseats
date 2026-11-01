@@ -1,0 +1,29 @@
+Run record: docs/price-michelin-card-hong-kong-macau-2026.sql (HK/MO price from the 2026 card, open item 1)
+Date: Nov 1, 2026. Ben choices 12:28 ET: 1A (source = ingest_rows batch 19 price_symbol_raw), 2A (captured_at = batch 19
+created_at 2026-11-01 15:36:21.487926+00), 3A (INSERT the 6 venues with no price row). Ben "go" 12:46 ET.
+
+File: docs/price-michelin-card-hong-kong-macau-2026.sql, 267 lines, ASCII, LF,
+  sha256 5f5645e1414a2a3522c1d2b3e75d96622ab6d11d1e9d6cababe5f946b2d80cd6.
+  Built by docs/hkmo-2026-build/build_price_hkmo_2026_11_01.py batch yes
+  (sha256 9ff3211e217beec74c3c657e66202777898a3e12473ae9e8312e938c4ecf851b). pglast: 3 statements, body parses.
+Population: 180 venues of the 2026 Michelin star/Bib rows whose card URL is in ingest batch 19 (HK 146, Macao 34), all active.
+  174 legacy_guide rows with no URL (171 same symbol, 3 tier changes: Feuille $$$$ -> $$$, Run $$$ -> $$$$,
+  Sun Tung Lok Chinese Cuisine $$ -> $$$); 6 with no price row (Ando ve_694e8845c1; new: An Choi ve_85e880a028,
+  Dragon Inn ve_e49568f69f, Eng Kee Noodle Shop ve_01b130259b, Eton ve_35baee2d3a, Sang Kee Foods (Western District)
+  ve_b02a3e951b). Lai Ching Heen ve_403f3ed56b (new venue) already held the legacy row moved from Lai Heen (audit 121,072).
+  Currency: HK -> HKD, Macao -> MOP (guide.michelin.com/en/restaurants-price-ranges-index: HK$ and MOP$).
+  Out of scope: Chiu Chow Delicacies (North Point) keeps its legacy row (no 2026 card).
+Fingerprints: plan md5 0525e524d5b56b1bf77caa6e9f3c7649 (vid|url|symbol|currency|tier by vid); update subset
+  0f4b0bf3cbcb77c7bfe4a228c36d4726; insert subset 8e5d0ad861aada04db406cd1d88c512d; old price rows md5
+  b8755c53352a292a6cebb360c009ad6e.
+Dry run: Read connector, ~17:25 UTC, shortened copy of gates 1-4: passed, stopped at the first UPDATE (read-only transaction).
+Fresh read before go: 17:28:12 UTC, all gate values equal.
+
+Real run: Write connector, first try, transaction time 2026-11-01 17:47:12 UTC. All 7 gates passed.
+Read-back 17:47:23 UTC:
+  price 7,733 (legacy_guide 2,380); venues 11,300; awards 23,368; slugs 13,001; name_native 338; cities.venues_count sum 10,935.
+  Ledger 207: michelin, price, 180, job "price-card:price-michelin-card-hong-kong-macau-2026 | ...".
+  audit_log 121,395-121,574: 180 rows, all price (174 UPDATE, 6 INSERT), 1 timestamp; new values md5 = plan 0525e524...3c7649.
+  HK/MO price rows: HKD 1/2/3/4 = 26/57/34/29; MOP 1/2/3/4 = 2/13/10/9; 1 HK legacy row left (Chiu Chow Delicacies).
+  Spot check: Feuille $$$ HKD, Run $$$$ HKD, Sun Tung Lok $$$ HKD, Ando $$$ HKD, An Choi $$ HKD.
+Review list price-hkmo-2026-review.csv (180 rows): chat file for Ben, not in the repo.
