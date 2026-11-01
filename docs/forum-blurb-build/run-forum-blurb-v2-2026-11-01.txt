@@ -1,0 +1,19 @@
+Run record: Forum blurb v2 (open item 1), Nov 1, 2026
+
+File: docs/rewrite-blurb-forum-v2.sql sha256 e3f6c1d57d6c2edbd1c22373b1c30fbec50314fb7d93b387b57289c9a3c84fd5 (50 lines)
+Built by: docs/forum-blurb-build/build_forum_blurb_v2.py from docs/forum-blurb-build/draft-forum-blurb-v2.txt
+  (sha256 bf3cccf3cb28784cb658bce6687346480dceedc8aabd547d4fac14d6b3f7acc7)
+Ben's choices: Nov 1 14:01 ET "A1, B1, C1, D1, E1"; Nov 1 14:24 ET "F1" (replaces E1).
+
+Run 1, 19:10 UTC (Write connector): rolled back. ERROR 23503: source_capture_ledger_publisher_fkey,
+  publisher 'compasseats' is not in award_sources(slug). Nothing written. Ledger id 212 and audit id 121934
+  used by the rolled-back transaction, no rows.
+Run 2, Ben "go" 14:31 ET, committed 19:32:03 UTC (Write connector, 1 transaction, all gates passed):
+  blurbs ve_fe4ae32eec: version 1 -> 2, status needs_rewrite -> rewritten, sources = 4 URLs, new text.
+  Old row md5 b310ca68e92a826262fb7dc6e97df728; new row md5 523fd41f18ba8380b85e1db41bf1a526.
+  Audit 121935 (blurbs, UPDATE, row_pk ve_fe4ae32eec). No ledger row (F1).
+
+Read-back 19:32:08 UTC (whole tables): venues 11,299; awards 23,543; slugs 13,002; price 7,733; listings 11,299;
+  cities.venues_count sum 10,934; blurbs 142 (rewritten 1, needs_rewrite 141); ledger 160 rows, last id 211;
+  audit_log 116,423 rows, last id 121,935.
+Not changed: Google Sheet, apps-script/ImportOptionB.gs (C1), venues.chef "Wong Lung To" (D1).
