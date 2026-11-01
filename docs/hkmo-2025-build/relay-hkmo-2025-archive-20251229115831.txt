@@ -1,0 +1,265 @@
+001|Hong Kong|Three Stars|8 1/2 Otto e Mezzo - Bombana|
+002|Hong Kong|Three Stars|Amber|promoted
+003|Hong Kong|Three Stars|Caprice|
+004|Hong Kong|Three Stars|Forum|
+005|Hong Kong|Three Stars|Sushi Shikon|
+006|Hong Kong|Three Stars|Ta Vie|
+007|Hong Kong|Three Stars|T'ang Court|
+008|Hong Kong|Two Stars|Arbor|
+009|Hong Kong|Two Stars|Bo Innovation|
+010|Hong Kong|Two Stars|Lai Ching Heen|
+011|Hong Kong|Two Stars|L'Envol|
+012|Hong Kong|Two Stars|Lung King Heen|
+013|Hong Kong|Two Stars|Noi by Paulo Airaudo|
+014|Hong Kong|Two Stars|Octavium|
+015|Hong Kong|Two Stars|R\u00f9n|
+016|Hong Kong|Two Stars|Tate|
+017|Hong Kong|Two Stars|Tin Lung Heen|
+018|Hong Kong|Two Stars|Ying Jee Club|
+019|Hong Kong|One Star|Ami|promoted
+020|Hong Kong|One Star|And\u014d|
+021|Hong Kong|One Star|Arcane|
+022|Hong Kong|One Star|Beefbar|
+023|Hong Kong|One Star|Belon|
+024|Hong Kong|One Star|Chaat|
+025|Hong Kong|One Star|Cristal Room by Anne-Sophie Pic|
+026|Hong Kong|One Star|Duddell's|
+027|Hong Kong|One Star|\u00c9pure|
+028|Hong Kong|One Star|Estro|
+029|Hong Kong|One Star|Feuille|
+030|Hong Kong|One Star|Fook Lam Moon (Wan Chai)|
+031|Hong Kong|One Star|Fu Ho|
+032|Hong Kong|One Star|Gaddi's|
+033|Hong Kong|One Star|Godenya|
+034|Hong Kong|One Star|Hansik Goo|
+035|Hong Kong|One Star|Ho Hung Kee (Causeway Bay)|
+036|Hong Kong|One Star|I M Teppanyaki & Wine|
+037|Hong Kong|One Star|Imperial Treasure Fine Chinese Cuisine (Tsim Sha Tsui)|
+038|Hong Kong|One Star|Kam's Roast Goose|
+039|Hong Kong|One Star|Kappo Rin|
+040|Hong Kong|One Star|Liu Yuan Pavilion|
+041|Hong Kong|One Star|Loaf On|
+042|Hong Kong|One Star|Louise|
+043|Hong Kong|One Star|Man Ho (Admiralty)|
+044|Hong Kong|One Star|Man Wah|
+045|Hong Kong|One Star|Mono|
+046|Hong Kong|One Star|Mora|
+047|Hong Kong|One Star|Nagamoto|
+048|Hong Kong|One Star|Neighborhood|
+049|Hong Kong|One Star|New Punjab Club|
+050|Hong Kong|One Star|Pang's Kitchen|
+051|Hong Kong|One Star|Petrus|
+052|Hong Kong|One Star|Plaisance by Mauro Colagreco|promoted
+053|Hong Kong|One Star|Racines|
+054|Hong Kong|One Star|Roganic|
+055|Hong Kong|One Star|Ryota Kappou Modern|
+056|Hong Kong|One Star|Seventh Son (Wan Chai)|
+057|Hong Kong|One Star|Shang Palace|
+058|Hong Kong|One Star|Spring Moon|
+059|Hong Kong|One Star|Summer Palace|
+060|Hong Kong|One Star|Sun Tung Lok|
+061|Hong Kong|One Star|Sushi Saito|
+062|Hong Kong|One Star|Sushi Wadatsumi|
+063|Hong Kong|One Star|The Chairman|
+064|Hong Kong|One Star|The Legacy House|
+065|Hong Kong|One Star|Tosca di Angelo|
+066|Hong Kong|One Star|Tuber Umberto Bombana|promoted
+067|Hong Kong|One Star|Vea|
+068|Hong Kong|One Star|Whey|
+069|Hong Kong|One Star|Xin Rong Ji|
+070|Hong Kong|One Star|Yardbird|
+071|Hong Kong|One Star|Yat Lok (Central)|
+072|Hong Kong|One Star|Yat Tung Heen|
+073|Hong Kong|One Star|Y\u00e8 Shanghai (Tsim Sha Tsui)|
+074|Hong Kong|One Star|Yong Fu|
+075|Hong Kong|One Star|Zhejiang Heen|
+076|Hong Kong|One Star|Zuicho|
+077|Hong Kong|Selected|Above & Beyond|
+078|Hong Kong|Selected|Ank\u00f4ma|new
+079|Hong Kong|Selected|B\u00e1nh M\u00ec N\u1ebfm (Wan Chai)|new
+080|Hong Kong|Selected|Beanmountain|
+081|Hong Kong|Selected|Cafe Bau|
+082|Hong Kong|Selected|Carbone|
+083|Hong Kong|Selected|Carna by Dario Cecchini|new
+084|Hong Kong|Selected|Celestial Court|
+085|Hong Kong|Selected|Chesa|
+086|Hong Kong|Selected|Chuen Kee Seafood (Hoi Pong Street)|
+087|Hong Kong|Selected|Citrino da Yoshinaga Jinbo|new
+088|Hong Kong|Selected|Cuisine Cuisine at The Mira|
+089|Hong Kong|Selected|Farm House|
+090|Hong Kong|Selected|Fat Boy|
+091|Hong Kong|Selected|Fishball Man (To Kwa Wan)|
+092|Hong Kong|Selected|Heimat|
+093|Hong Kong|Selected|Hing Kee|
+094|Hong Kong|Selected|Ho Kee Dessert (To Kwa Wan)|
+095|Hong Kong|Selected|Ho Lee Fook|
+096|Hong Kong|Selected|Hong Kong Cuisine|
+097|Hong Kong|Selected|Hop Yik Tai|
+098|Hong Kong|Selected|Hung Hom Pancake|
+099|Hong Kong|Selected|Hyde Park Garden|
+100|Hong Kong|Selected|Involtini|
+101|Hong Kong|Selected|Ippoh|
+102|Hong Kong|Selected|Jardin de Jade (Wan Chai)|
+103|Hong Kong|Selected|Jee|new
+104|Hong Kong|Selected|Ki Tsui|
+105|Hong Kong|Selected|Kicho|new
+106|Hong Kong|Selected|Leela|
+107|Hong Kong|Selected|Lei Garden (Wan Chai)|
+108|Hong Kong|Selected|Lucale|
+109|Hong Kong|Selected|Luk Yu Tea House|
+110|Hong Kong|Selected|Magistracy Dining Room|new
+111|Hong Kong|Selected|Mak Kee (May Ka Mansion)|
+112|Hong Kong|Selected|M\u00e2m Amis|
+113|Hong Kong|Selected|Man Kee Cart Noodles|
+114|Hong Kong|Selected|Mandarin Grill + Bar|
+115|Hong Kong|Selected|Ming Court (Mong Kok)|
+116|Hong Kong|Selected|Mosu|
+117|Hong Kong|Selected|Mrs. Fong Chinese Desserts|
+118|Hong Kong|Selected|One Harbour Road|
+119|Hong Kong|Selected|Owl's|
+120|Hong Kong|Selected|Prince and the Peacock|new
+121|Hong Kong|Selected|Sabah|
+122|Hong Kong|Selected|S\u1ebfp|
+123|Hong Kong|Selected|She Wong Hei|
+124|Hong Kong|Selected|Shum Shum Desserts|
+125|Hong Kong|Selected|Snack Baby|new
+126|Hong Kong|Selected|So Kee|
+127|Hong Kong|Selected|Tai Tsai (Tsuen Wan)|
+128|Hong Kong|Selected|T\u00e9 Bo|new
+129|Hong Kong|Selected|Temple Street Beef Offal|
+130|Hong Kong|Selected|Teppanyaki Mihara Goten|new
+131|Hong Kong|Selected|Testina|
+132|Hong Kong|Selected|The Merchants|
+133|Hong Kong|Selected|The Steak House|
+134|Hong Kong|Selected|The Swiss Chalet|
+135|Hong Kong|Selected|Toritama|
+136|Hong Kong|Selected|Trattoria Felino|new
+137|Hong Kong|Selected|Twist & Buckle (Tsim Sha Tsui)|
+138|Hong Kong|Selected|Udatsu Sushi|new
+139|Hong Kong|Selected|Wing|
+140|Hong Kong|Selected|Yu\u00e8 (Causeway Bay)|
+141|Hong Kong|Selected|Yu\u00e8 (Gold Coast)|
+142|Hong Kong|Green Star|Amber|
+143|Hong Kong|Green Star|Feuille|
+144|Hong Kong|Green Star|Mora|
+145|Hong Kong|Green Star|Roganic|
+146|Hong Kong|Bib Gourmand|Ah Chun Shandong Dumpling|
+147|Hong Kong|Bib Gourmand|\u0102n Ch\u01a1i|
+148|Hong Kong|Bib Gourmand|Art & Taste|new
+149|Hong Kong|Bib Gourmand|Ba Yi|
+150|Hong Kong|Bib Gourmand|Banana Boy|new
+151|Hong Kong|Bib Gourmand|Caf\u00e9 Hunan (Western District)|
+152|Hong Kong|Bib Gourmand|Cheung Hing Kee (Tsim Sha Tsui)|
+153|Hong Kong|Bib Gourmand|Chiu Ka Banquet|new
+154|Hong Kong|Bib Gourmand|Chiuchow Delicacies|
+155|Hong Kong|Bib Gourmand|Din Tai Fung (Causeway Bay)|
+156|Hong Kong|Bib Gourmand|Din Tai Fung (Tsim Sha Tsui)|
+157|Hong Kong|Bib Gourmand|Dragon Inn|
+158|Hong Kong|Bib Gourmand|Eng Kee Noodle Shop|
+159|Hong Kong|Bib Gourmand|Eton|
+160|Hong Kong|Bib Gourmand|Fisholic (North Point)|
+161|Hong Kong|Bib Gourmand|Fung Shing (North Point)|
+162|Hong Kong|Bib Gourmand|Glorious Cuisine|
+163|Hong Kong|Bib Gourmand|Hao Tang Hao Mian (Tai Wai)|
+164|Hong Kong|Bib Gourmand|Heartwarming (Prince Edward)|new
+165|Hong Kong|Bib Gourmand|Ho To Tai|
+166|Hong Kong|Bib Gourmand|Ju Xing Home|
+167|Hong Kong|Bib Gourmand|Juno|new
+168|Hong Kong|Bib Gourmand|Kai Kai\u00a0(Jordan)|
+169|Hong Kong|Bib Gourmand|Kau Kee|
+170|Hong Kong|Bib Gourmand|Keung Kee|move from MICHELIN selected
+171|Hong Kong|Bib Gourmand|Kung Wo Beancurd Factory|
+172|Hong Kong|Bib Gourmand|Kwan Kee Bamboo Noodles|
+173|Hong Kong|Bib Gourmand|Kwan Kee Clay Pot Rice (Queen's Road West)|
+174|Hong Kong|Bib Gourmand|Lau Sum Kee (Fuk Wing Street)|
+175|Hong Kong|Bib Gourmand|Little Napoli|
+176|Hong Kong|Bib Gourmand|Lucky Indonesia|
+177|Hong Kong|Bib Gourmand|Mak Man Kee|
+178|Hong Kong|Bib Gourmand|Man Yuen|
+179|Hong Kong|Bib Gourmand|Megan's Kitchen|
+180|Hong Kong|Bib Gourmand|Po Kee|
+181|Hong Kong|Bib Gourmand|Putien (Causeway Bay)|
+182|Hong Kong|Bib Gourmand|Samsen (Wan Chai)|
+183|Hong Kong|Bib Gourmand|Sang Kee|
+184|Hong Kong|Bib Gourmand|Sang Kee Foods (Western District)|
+185|Hong Kong|Bib Gourmand|Saya|
+186|Hong Kong|Bib Gourmand|She Wong Leung|
+187|Hong Kong|Bib Gourmand|Shek Kee Kitchen|
+188|Hong Kong|Bib Gourmand|Ship Kee|
+189|Hong Kong|Bib Gourmand|Shugetsu Ramen (Central)|
+190|Hong Kong|Bib Gourmand|Sing Kee|
+191|Hong Kong|Bib Gourmand|Sister Wah|
+192|Hong Kong|Bib Gourmand|Sun Yuen Hing Kee|
+193|Hong Kong|Bib Gourmand|Tai Wai Dining Room (Tai Wai)|
+194|Hong Kong|Bib Gourmand|Tai Wing Wah|
+195|Hong Kong|Bib Gourmand|Tai Woo|
+196|Hong Kong|Bib Gourmand|Tak Kee|
+197|Hong Kong|Bib Gourmand|Takeya|
+198|Hong Kong|Bib Gourmand|Tasty (Central)|
+199|Hong Kong|Bib Gourmand|Thai Pai Dong|new
+200|Hong Kong|Bib Gourmand|Tim Ho Wan (Sham Shui Po)|
+201|Hong Kong|Bib Gourmand|Tin Hung|
+202|Hong Kong|Bib Gourmand|Trusty Congee King (Wan Chai)|
+203|Hong Kong|Bib Gourmand|Tsim Chai Kee (Wellington Street)|
+204|Hong Kong|Bib Gourmand|Twins Liangpi Limited (Mong Kok)|
+205|Hong Kong|Bib Gourmand|Wang Fu|
+206|Hong Kong|Bib Gourmand|What To Eat|
+207|Hong Kong|Bib Gourmand|Wing Lai Yuen|
+208|Hong Kong|Bib Gourmand|Yi Jia|
+209|Hong Kong|Bib Gourmand|Yuan is Here (Western District)|
+210|Hong Kong|Bib Gourmand|Yue Kee|
+211|Macau|Three Stars|Jade Dragon|
+212|Macau|Three Stars|Robuchon au D\u00f4me|
+213|Macau|Two Stars|Alain Ducasse at Morpheus|
+214|Macau|Two Stars|Chef Tam's Seasons|promoted
+215|Macau|Two Stars|Feng Wei Ju|
+216|Macau|Two Stars|The Eight|
+217|Macau|Two Stars|The Huaiyang Garden|
+218|Macau|Two Stars|Wing Lei|
+219|Macau|One Star|8 1/2 Otto e Mezzo - Bombana|
+220|Macau|One Star|Aji|new
+221|Macau|One Star|Five Foot Road|
+222|Macau|One Star|Lai Heen|
+223|Macau|One Star|Mizumi|new
+224|Macau|One Star|Pearl Dragon|
+225|Macau|One Star|Sushi Kinetsu|
+226|Macau|One Star|Sushi Kissho by Miyakawa|new
+227|Macau|One Star|Ying|
+228|Macau|One Star|Zi Yat Heen|
+229|Macau|One Star|Zuicho|new
+230|Macau|Selected|A Lorcha|
+231|Macau|Selected|Chiado|
+232|Macau|Selected|Don Alfonso 1890|
+233|Macau|Selected|Drunken Fish|new
+234|Macau|Selected|Fong Kei|
+235|Macau|Selected|Imperial Court|
+236|Macau|Selected|Kika|
+237|Macau|Selected|Lord Stow's Bakery (Rua do Tassara)|
+238|Macau|Selected|Lun Kee Rice Roll|new
+239|Macau|Selected|Manuel Cozinha Portuguesa|
+240|Macau|Selected|Mok Yee Kei|
+241|Macau|Selected|Ngao Kei Ka Lei Chon (Macau)|
+242|Macau|Selected|Palace Garden|
+243|Macau|Selected|Pin Yue Xuan|
+244|Macau|Selected|Portug\u00e1lia|
+245|Macau|Selected|Saffron|
+246|Macau|Selected|SW Steakhouse|
+247|Macau|Selected|Terrazza|
+248|Macau|Selected|The Kitchen|
+249|Macau|Selected|The Mews|
+250|Macau|Selected|The Ritz-Carlton Caf\u00e9|
+251|Macau|Selected|Ving Kei (Macau)|
+252|Macau|Selected|Yi|
+253|Macau|Selected|Yi Shun (Macau)|
+254|Macau|Green Star|UTM Educational Restaurant|
+255|Macau|Bib Gourmand|Chan Seng Kei|
+256|Macau|Bib Gourmand|Cheong Kei|
+257|Macau|Bib Gourmand|Din Tai Fung (COD)|
+258|Macau|Bib Gourmand|Justindia|new
+259|Macau|Bib Gourmand|Kapok|
+260|Macau|Bib Gourmand|Lok Kei Noodles (Patane)|
+261|Macau|Bib Gourmand|Lou Kei|
+262|Macau|Bib Gourmand|O Casti\u00e7o|
+263|Macau|Bib Gourmand|Restaurante Litoral (Taipa)|
+264|Macau|Bib Gourmand|Son Tak Kong|
+265|Macau|Bib Gourmand|UTM Educational Restaurant|
