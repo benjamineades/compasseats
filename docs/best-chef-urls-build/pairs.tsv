@@ -1,0 +1,1301 @@
+award_id	year	knives	level	name	city	status	chef_ids	list_entries
+14	2025	3	L1	Piazza Duomo	alba	active	19744	3|piazzaduomo|alba
+15	2024	3	L1	Piazza Duomo	alba	active	19744	3|piazzaduomo|alba
+24	2025	2	L1	Zilte	antwerp	active	20048	2|zilte|antwerp
+25	2024	2	L1	Zilte	antwerp	active	20048	2|zilte|antwerp
+29	2025	3	L1	Casa Marcial	arriondas	active	19792	3|casamarcial|arriondas
+33	2025	2	MANUAL	Moor Hall Restaurant with Rooms	aughton	active	19970	2|moorhall|lancashire
+36	2025	2	L3	Sven Wassmer Memories	bad-ragaz	active	20027	2|memories|badragaz
+37	2024	2	L3	Sven Wassmer Memories	bad-ragaz	active	20027	2|memories|badragaz
+43	2024	1	L1	Schwarzwaldstube	baiersbronn	active	29690	1|schwarzwaldstube|baiersbronn
+60	2025	3	L1	Sorn	bangkok	active	19819	3|sorn|bangkok
+61	2024	3	L1	Sorn	bangkok	active	19819	3|sorn|bangkok
+76	2025	3	L1	Sühring	bangkok	active	19820	3|suhring|bangkok
+77	2024	2	L1	Sühring	bangkok	active	19820	2|suhring|bangkok
+88	2025	3	L1	Cocina Hermanos Torres	barcelona	active	19766	3|cocinahermanostorres|barcelona
+89	2024	3	L1	Cocina Hermanos Torres	barcelona	active	19766	3|cocinahermanostorres|barcelona
+99	2025	3	L1	Disfrutar	barcelona	active	19739	3|disfrutar|barcelona
+100	2024	3	L1	Disfrutar	barcelona	active	19739	3|disfrutar|barcelona
+104	2025	3	L1	Lasarte	barcelona	active	19802	3|lasarte|barcelona
+105	2024	3	L1	Lasarte	barcelona	active	19802	3|lasarte|barcelona
+113	2025	3	L1	Chao Shang Chao (Chaoyang)	beijing	active	19829	3|chaoshangchao|beijing
+114	2024	3	L1	Chao Shang Chao (Chaoyang)	beijing	active	19829	3|chaoshangchao|beijing
+116	2025	3	L1	Rutz	berlin	active	19782	3|rutz|berlin
+117	2024	3	L1	Rutz	berlin	active	19782	3|rutz|berlin
+123	2025	2	L1	The Fat Duck	bray	active	19913	2|thefatduck|bray
+124	2024	2	L1	The Fat Duck	bray	active	19913	2|thefatduck|bray
+143	2025	3	L1	Atelier Moessmer Norbert Niederkofler	brunico	active	19795	3|ateliermoessmernorbertniederkofler|brunico
+144	2024	2	L1	Atelier Moessmer Norbert Niederkofler	brunico	active	19795	2|ateliermoessmernorbertniederkofler|brunico
+161	2025	2	L1	L'Enclume	cartmel	active	20021	2|lenclume|cartmel
+162	2024	2	L1	L'Enclume	cartmel	active	20021	2|lenclume|cartmel
+175	2025	2	L3	Ristorante Reale	castel-di-sangro	active	19984	2|reale|casteldisangro
+176	2024	2	L3	Ristorante Reale	castel-di-sangro	active	19984	2|reale|casteldisangro
+182	2025	2	L1	Smyth	chicago	active	19939	2|smyth|chicago
+183	2024	2	L1	Smyth	chicago	active	19939	2|smyth|chicago
+199	2025	3	L1	Geranium	copenhagen	active	19809	3|geranium|copenhagen
+200	2024	3	L1	Geranium	copenhagen	active	19809	3|geranium|copenhagen
+205	2025	3	L1	Noma	copenhagen	active	19812	3|noma|copenhagen
+206	2024	3	L1	Noma	copenhagen	active	19812	3|noma|copenhagen
+227	2025	2	L3	Restaurant de l'Hôtel de Ville de Crissier	crissier	active	19892	2|restaurantdelhoteldeville|crissier
+228	2024	1	L3	Restaurant de l'Hôtel de Ville de Crissier	crissier	active	19892	1|restaurantdelhoteldeville|crissier
+238	2025	2	L3	Atrio Cáceres	caceres	active	20042	2|atrio|caceres
+239	2024	2	L3	Atrio Cáceres	caceres	active	20042	2|atrio|caceres
+243	2025	3	L1	Noor	cordoba	active	19798	3|noor|cordoba
+244	2024	3	L1	Noor	cordoba	active	19798	3|noor|cordoba
+248	2025	2	L1	Waldhotel Sonnora	dreis	active	19854	2|waldhotelsonnora|dreis
+249	2024	2	L1	Waldhotel Sonnora	dreis	active	19854	2|waldhotelsonnora|dreis
+254	2025	2	L1	FZN by Björn Frantzén	dubai	active	20043	2|fznbybjornfrantzen|dubai
+265	2025	3	L1	Tresind Studio	dubai	active	19760	3|tresindstudio|dubai
+266	2024	3	L1	Tresind Studio	dubai	active	19760	3|tresindstudio|dubai
+278	2025	3	L3	Restaurant Quique Dacosta	denia	active	19808	3|quiquedacosta|denia
+279	2024	3	L3	Restaurant Quique Dacosta	denia	active	19808	3|quiquedacosta|denia
+292	2025	3	L1	APONIENTE	cadiz	active	19719	3|aponiente|cadiz
+293	2024	3	L1	APONIENTE	cadiz	active	19719	3|aponiente|cadiz
+309	2025	3	L1	Schloss Schauenstein	furstenau	active	19718	3|schlossschauenstein|furstenau
+310	2024	3	L1	Schloss Schauenstein	furstenau	active	19718	3|schlossschauenstein|furstenau
+326	2025	3	L3	Restaurant Jordnær	copenhagen	active	19745	3|jordnaer|copenhagen
+327	2024	3	L3	Restaurant Jordnær	copenhagen	active	19745	3|jordnaer|copenhagen
+347	2025	3	L1	El Celler de Can Roca	girona	active	19768	3|elcellerdecanroca|girona
+348	2024	3	L1	El Celler de Can Roca	girona	active	19768	3|elcellerdecanroca|girona
+352	2025	2	L1	es:senz	grassau	active	19876	2|essenz|grassau
+353	2024	2	L1	es:senz	grassau	active	19876	2|essenz|grassau
+357	2025	1	L1	Haerlin	hamburg	active	24833	1|haerlin|hamburg
+363	2025	2	L1	The Table	hamburg	active	19956	2|thetable|hamburg
+364	2024	2	L1	The Table	hamburg	active	19956	2|thetable|hamburg
+370	2025	2	L3	SingleThread Farm - Restaurant - Inn	healdsburg	active	19962	2|singlethread|healdsburg
+371	2024	2	L3	SingleThread Farm - Restaurant - Inn	healdsburg	active	19962	2|singlethread|healdsburg
+401	2025	2	L1	Amber	hong-kong	active	20006	2|amber|hongkong
+402	2024	2	L1	Amber	hong-kong	active	20006	2|amber|hongkong
+421	2025	3	L1	Caprice	hong-kong	active	19754	3|caprice|hongkong
+422	2024	3	L1	Caprice	hong-kong	active	19754	3|caprice|hongkong
+447	2025	3	L1	Ta Vie	hong-kong	active	19758	3|tavie|hongkong
+448	2024	2	L1	Ta Vie	hong-kong	active	19758	2|tavie|hongkong
+466	2025	3	L1	Hiša Franko	kobarid	active	19716	3|hisafranko|kobarid
+467	2024	3	L1	Hiša Franko	kobarid	active	19716	3|hisafranko|kobarid
+473	2025	1	L1	Hyotei	kyoto	active	25182	1|hyotei|kyoto
+474	2024	1	L1	Hyotei	kyoto	active	25182	1|hyotei|kyoto
+481	2025	2	L1	Kikunoi Honten	kyoto	active	20053	2|kikunoihonten|kyoto
+482	2024	2	L1	Kikunoi Honten	kyoto	active	20053	2|kikunoihonten|kyoto
+490	2025	3	L1	Mizai	kyoto	active	19761	3|mizai|kyoto
+491	2024	3	L1	Mizai	kyoto	active	19761	3|mizai|kyoto
+495	2025	3	L1	La Marine	noirmoutier-en-lile	active	19711	3|lamarine|noirmoutierenlile
+496	2024	2	L1	La Marine	noirmoutier-en-lile	active	19711	2|lamarine|noirmoutierenlile
+509	2025	3	L3	Azurmendi jatetxea	larrabetzu	active	19743	3|azurmendi|larrabetzu
+510	2024	3	L3	Azurmendi jatetxea	larrabetzu	active	19743	3|azurmendi|larrabetzu
+521	2025	3	L1	Martin Berasategui	san-sebastian	active	19783	3|martinberasategui|sansebastian
+522	2024	3	L1	Martin Berasategui	san-sebastian	active	19783	3|martinberasategui|sansebastian
+526	2025	2	L1	La Table du Castellet	le-castellet	active	19886	2|latableducastellet|lecastellet
+530	2025	2	L1	L'Oustau de Baumanière	les-baux-de-provence	active	19906	2|loustaudebaumaniere|lesbauxdeprovence
+531	2024	2	L1	L'Oustau de Baumanière	les-baux-de-provence	active	19906	2|loustaudebaumaniere|lesbauxdeprovence
+535	2025	2	L1	Alain Ducasse at The Dorchester	london	active	19931	2|alainducasseatthedorchester|london
+538	2025	3	L3	Core by Clare Smyth	london	active	19730	3|core|london
+539	2024	3	L3	Core by Clare Smyth	london	active	19730	3|core|london
+543	2025	3	L1	Hélène Darroze at The Connaught	london	active	19757	3|helenedarrozeattheconnaught|london
+544	2024	2	L1	Hélène Darroze at The Connaught	london	active	19757	2|helenedarrozeattheconnaught|london
+554	2024	2	L1	Restaurant Gordon Ramsay	london	active	20626	2|restaurantgordonramsay|london
+556	2025	3	L1	The Ledbury	london	active	19724	3|theledbury|london
+569	2025	2	L1	Providence	los-angeles	active	19975	2|providence|losangeles
+618	2025	3	L1	DiverXO	madrid	active	19736	3|diverxo|madrid
+619	2024	3	L1	DiverXO	madrid	active	19736	3|diverxo|madrid
+625	2025	3	MANUAL	AM par Alexandre Mazzia	marseille	active	19713	3|am|marseille
+626	2024	3	MANUAL	AM par Alexandre Mazzia	marseille	active	19713	3|am|marseille
+633	2025	3	L3	Le Petit Nice Passedat - Hôtel 5 étoiles Relais & Châteaux à Marseille	marseille	active	19751	3|lepetitnice|marseille
+634	2024	2	L3	Le Petit Nice Passedat - Hôtel 5 étoiles Relais & Châteaux à Marseille	marseille	active	19751	2|lepetitnice|marseille
+637	2025	3	L1	Flocons de Sel	megeve	active	19742	3|floconsdesel|megeve
+638	2024	3	L1	Flocons de Sel	megeve	active	19742	3|floconsdesel|megeve
+652	2025	3	L1	Mirazur	menton	active	19786	3|mirazur|menton
+653	2024	3	L1	Mirazur	menton	active	19786	3|mirazur|menton
+671	2025	3	L1	Osteria Francescana	modena	active	19785	3|osteriafrancescana|modena
+672	2024	3	L1	Osteria Francescana	modena	active	19785	3|osteriafrancescana|modena
+675	2025	2	MANUAL	Le Louis XV - Alain Ducasse à l'Hôtel de Paris	monaco	active	19880	2|lelouisxvalainducasse|montecarlo
+690	2025	3	L1	JAN	munich	active	19764	3|jan|munich
+691	2024	3	L1	JAN	munich	active	19764	3|jan|munich
+698	2025	2	L1	Tohru in der Schreiberei	munich	active	20036	2|tohruinderschreiberei|munich
+699	2024	1	L1	Tohru in der Schreiberei	munich	active	20036	1|tohruinderschreiberei|munich
+713	2025	3	L1	Eleven Madison Park	new-york	active	19733	3|elevenmadisonpark|newyork
+714	2024	3	L1	Eleven Madison Park	new-york	active	19733	3|elevenmadisonpark|newyork
+727	2025	2	L1	Jungsik	new-york	active	19950	2|jungsik|newyork
+728	2024	2	L1	Jungsik	new-york	active	19950	2|jungsik|newyork
+779	2024	2	L1	Per Se	new-york	active	20738	2|perse|newyork
+792	2025	2	L1	Sushi Sho	new-york	active	19954	2|sushisho|newyork
+796	2025	2	L3	Villa Crespi	orta-san-giulio	active	19840	2|villacrespirelaischateaux|ortasangiulio
+800	2025	2	L1	Hajime	osaka	active	19908	2|hajime|osaka
+801	2024	2	L1	Hajime	osaka	active	19908	2|hajime|osaka
+814	2025	2	L1	Maaemo	oslo	active	19885	2|maaemo|oslo
+815	2024	2	L1	Maaemo	oslo	active	19885	2|maaemo|oslo
+827	2025	3	L3	Alléno	paris	active	19828	3|allenoparisaupavillonledoyen|paris
+828	2024	3	L3	Alléno	paris	active	19828	3|allenoparisaupavillonledoyen|paris
+836	2025	3	L1	Arpège	paris	active	19707	3|arpege|paris
+837	2024	3	L1	Arpège	paris	active	19707	3|arpege|paris
+862	2025	3	L1	Kei	paris	active	19777	3|kei|paris
+863	2024	3	L1	Kei	paris	active	19777	3|kei|paris
+877	2025	2	L1	Le Cinq	paris	active	19851	2|lecinq|paris
+878	2024	2	L1	Le Cinq	paris	active	19851	2|lecinq|paris
+881	2025	2	L1	Le Gabriel	paris	active	19934	2|legabriel|paris
+882	2024	2	L1	Le Gabriel	paris	active	19934	2|legabriel|paris
+886	2025	3	MANUAL	Le Pré Catelan	paris	active	19747	3|leprecatalan|paris
+887	2024	3	MANUAL	Le Pré Catelan	paris	active	19747	3|leprecatalan|paris
+902	2025	3	L1	Pierre Gagnaire	paris	active	19806	3|pierregagnaire|paris
+903	2024	3	L1	Pierre Gagnaire	paris	active	19806	3|pierregagnaire|paris
+906	2025	3	L1	Plénitude	paris	active	19721	3|plenitude|paris
+907	2024	3	L1	Plénitude	paris	active	19721	3|plenitude|paris
+915	2025	2	L1	Épicure	paris	active	19843	2|epicure|paris
+919	2025	3	L3	Victor's Fine Dining by Christian Bau	perl	active	19728	3|victorsfinedining|perl
+920	2024	3	L3	Victor's Fine Dining by Christian Bau	perl	active	19728	3|victorsfinedining|perl
+928	2025	3	L3	La Rei Natura by Michelangelo Mammoliti	serralunga-dalba	active	19789	3|lareinatura|serralungadalba
+929	2024	3	L3	La Rei Natura by Michelangelo Mammoliti	serralunga-dalba	active	19789	3|lareinatura|serralungadalba
+939	2025	3	L1	Boury	roeselare	active	19821	3|boury|roeselare
+940	2024	2	L1	Boury	roeselare	active	19821	2|boury|roeselare
+943	2025	2	L1	La Pergola	rome	active	19911	2|lapergola|rome
+944	2024	2	L1	La Pergola	rome	active	19911	2|lapergola|rome
+966	2025	3	MANUAL	Le Calandrе	padua	active	19784	3|lecalandre|rubano
+967	2024	2	MANUAL	Le Calandrе	padua	active	19784	2|lecalandre|rubano
+973	2025	2	L1	Le Coquillage	saint-meloir-des-ondes	active	19916	2|lecoquillage|saintmeloirdesondes
+980	2025	3	L3	ADDISON BY WILLIAM BRADLEY	san-diego	active	19827	3|addison|sandiego
+981	2024	3	L3	ADDISON BY WILLIAM BRADLEY	san-diego	active	19827	3|addison|sandiego
+999	2025	3	L1	Atelier Crenn	san-francisco	active	19740	3|ateliercrenn|sanfrancisco
+1000	2024	3	L1	Atelier Crenn	san-francisco	active	19740	3|ateliercrenn|sanfrancisco
+1018	2025	3	L1	Benu	san-francisco	active	19731	3|benu|sanfrancisco
+1019	2024	3	L1	Benu	san-francisco	active	19731	3|benu|sanfrancisco
+1036	2025	2	L1	Quince	san-francisco	active	19976	2|quince|sanfrancisco
+1070	2025	2	L1	Arzak	san-sebastian	active	19878	2|arzak|sansebastian
+1071	2024	2	L1	Arzak	san-sebastian	active	19878	2|arzak|sansebastian
+1079	2025	3	L1	Uliassi	senigallia	active	19787	3|uliassi|senigallia
+1080	2024	3	L1	Uliassi	senigallia	active	19787	3|uliassi|senigallia
+1086	2025	3	L1	Mingles	seoul	active	19776	3|mingles|seoul
+1087	2024	3	L1	Mingles	seoul	active	19776	3|mingles|seoul
+1098	2025	3	L1	Tai'an Table	shanghai	active	19727	3|taiantable|shanghai
+1099	2024	2	L1	Tai'an Table	shanghai	active	19727	2|taiantable|shanghai
+1103	2025	2	L1	Les Amis	singapore	active	20015	2|lesamis|singapore
+1104	2024	2	L1	Les Amis	singapore	active	20015	2|lesamis|singapore
+1130	2025	3	L1	Odette	singapore	active	19774	3|odette|singapore
+1131	2024	3	L1	Odette	singapore	active	19774	3|odette|singapore
+1146	2025	2	L1	Zén	singapore	active	19971	2|zen|singapore
+1150	2025	2	L1	Re-naa	stavanger	active	20026	2|renaa|stavanger
+1151	2024	2	L1	Re-naa	stavanger	active	20026	2|renaa|stavanger
+1156	2025	3	L1	Frantzén	stockholm	active	19723	3|frantzen|stockholm
+1157	2024	3	L1	Frantzén	stockholm	active	19723	3|frantzen|stockholm
+1174	2025	2	L3	Evvai Restaurant	sao-paulo	active	19968	2|evvai|saopaulo
+1175	2024	1	L3	Evvai Restaurant	sao-paulo	active	19968	1|evvai|saopaulo
+1186	2025	3	L1	TUJU	sao-paulo	active	19762	3|tuju|saopaulo
+1187	2024	2	L1	TUJU	sao-paulo	active	19762	2|tuju|saopaulo
+1192	2025	2	L1	JL STUDIO	taichung	active	19936	2|jlstudio|taichung
+1193	2024	2	L1	JL STUDIO	taichung	active	19936	2|jlstudio|taichung
+1207	2025	3	L2	Assiette Champenoise	reims	active	19722	3|assiettechampenoise|tinqueux
+1208	2024	3	L2	Assiette Champenoise	reims	active	19722	3|assiettechampenoise|tinqueux
+1212	2025	2	L1	Azabu Kadowaki	tokyo	active	20044	2|azabukadowaki|tokyo
+1213	2024	3	L1	Azabu Kadowaki	tokyo	active	20044	3|azabukadowaki|tokyo
+1218	2025	2	L3	Ginza Harutaka	tokyo	active	19909	2|harutaka|tokyo
+1225	2025	3	L1	Kagurazaka Ishikawa	tokyo	active	19759	3|kagurazakaishikawa|tokyo
+1226	2024	2	L1	Kagurazaka Ishikawa	tokyo	active	19759	2|kagurazakaishikawa|tokyo
+1241	2025	2	L1	L’Effervescence	tokyo	active	20019	2|leffervescence|tokyo
+1242	2024	2	L1	L’Effervescence	tokyo	active	20019	2|leffervescence|tokyo
+1247	2025	1	L1	L’Osier	tokyo	active	20647	1|losier|tokyo
+1248	2024	2	L1	L’Osier	tokyo	active	20647	2|losier|tokyo
+1254	2025	1	L1	Myoujyaku	tokyo	active	24918	1|myoujyaku|tokyo
+1259	2025	2	L1	Quintessence	tokyo	active	20020	2|quintessence|tokyo
+1260	2024	2	L1	Quintessence	tokyo	active	20020	2|quintessence|tokyo
+1268	2025	3	L3	Nihonryori RyuGin	tokyo	active	19816	3|ryugin|tokyo
+1269	2024	3	L3	Nihonryori RyuGin	tokyo	active	19816	3|ryugin|tokyo
+1281	2025	3	L1	Sazenka	tokyo	active	19822	3|sazenka|tokyo
+1295	2025	3	L1	SÉZANNE	tokyo	active	19732	3|sezanne|tokyo
+1296	2024	3	L1	SÉZANNE	tokyo	active	19732	3|sezanne|tokyo
+1304	2025	3	L3	Maison Pic	valence	active	19720	3|pic|valence
+1305	2024	3	L3	Maison Pic	valence	active	19720	3|pic|valence
+1308	2025	2	L1	Casa Perbellini 12 Apostoli	verona	active	19903	2|casaperbellini12apostoli|verona
+1309	2024	1	L1	Casa Perbellini 12 Apostoli	verona	active	19903	1|casaperbellini12apostoli|verona
+1313	2025	2	L3	Restaurant Amador	vienna	active	19948	2|amador|vienna
+1314	2024	2	L3	Restaurant Amador	vienna	active	19948	2|amador|vienna
+1321	2025	3	L1	Steirereck	vienna	active	19756	3|steirereck|vienna
+1322	2024	2	L1	Steirereck	vienna	active	19756	2|steirereck|vienna
+1351	2025	2	L1	Cenador de Amós	villaverde-de-pontones	active	19935	2|cenadordeamos|villaverdedepontones
+1352	2024	2	L1	Cenador de Amós	villaverde-de-pontones	active	19935	2|cenadordeamos|villaverdedepontones
+1356	2025	3	L1	Somni	los-angeles	active	19706	3|somni|losangeles
+1369	2025	2	L1	Aqua	wolfsburg	closed	20025	2|aqua|wolfsburg
+1370	2024	2	L1	Aqua	wolfsburg	closed	20025	2|aqua|wolfsburg
+1409	2025	3	L1	De Librije	zwolle	active	19793	3|delibrije|zwolle
+1410	2024	3	L1	De Librije	zwolle	active	20312	3|delibrije|zwolle
+1424	2025	2	L1	Vila Joya	albufeira	active	19870	2|vilajoya|albufeira
+1425	2024	1	L1	Vila Joya	albufeira	active	19870	1|vilajoya|albufeira
+1433	2025	1	L1	Ciel Bleu	amsterdam	active	24798	1|cielbleu|amsterdam
+1444	2025	1	L2	La Paix	brussels	active	24853	1|lapaix|anderlecht
+1450	2025	2	L1	Hertog Jan at Botanic	antwerp	active	19902	2|hertogjanatbotanic|antwerp
+1451	2024	1	L1	Hertog Jan at Botanic	antwerp	active	19902	1|hertogjanatbotanic|antwerp
+1468	2025	1	L3	Delta Restaurant	athens	active	24902	1|delta|athens
+1469	2024	1	L3	Delta Restaurant	athens	active	24902	1|delta|athens
+1475	2025	1	L2	Cyril Attrazic	peyre-en-aubrac	active	24839	1|cyrilattrazic|aumontaubrac
+1493	2025	3	L3	Baan Tepa Culinary Space	bangkok	closed	19729	3|baantepa|bangkok
+1494	2024	2	L3	Baan Tepa Culinary Space	bangkok	closed	19729	2|baantepa|bangkok
+1502	2025	1	L1	Côte by Mauro Colagreco	bangkok	active	24857	1|cotebymaurocolagreco|bangkok
+1503	2024	1	L1	Côte by Mauro Colagreco	bangkok	active	24857	1|cotebymaurocolagreco|bangkok
+1511	2025	2	L1	Gaa	bangkok	active	19900	2|gaa|bangkok
+1512	2024	1	L1	Gaa	bangkok	active	19900	1|gaa|bangkok
+1523	2025	1	L1	INDDEE	bangkok	active	25114	1|inddee|bangkok
+1529	2025	1	L1	R-HAAN	bangkok	active	24835	1|rhaan|bangkok
+1530	2024	1	L1	R-HAAN	bangkok	active	24835	1|rhaan|bangkok
+1533	2025	1	L3	Aleia Restaurant at Casa Fuster Hotel	barcelona	active	25084	1|aleia|barcelona
+1534	2024	1	L3	Aleia Restaurant at Casa Fuster Hotel	barcelona	active	25084	1|aleia|barcelona
+1539	2025	3	L1	Enigma	barcelona	active	19708	3|enigma|barcelona
+1540	2024	3	L1	Enigma	barcelona	active	19708	3|enigma|barcelona
+1546	2025	2	L1	roots	basel	active	19988	2|roots|basel
+1547	2024	1	L1	roots	basel	active	19988	1|roots|basel
+1553	2025	1	L1	Blackswan	beijing	active	25168	1|blackswan|beijing
+1556	2025	1	L1	Jing	beijing	active	25177	1|jing|beijing
+1560	2025	3	L1	King's Joy	beijing	active	19750	3|kingsjoy|beijing
+1561	2024	3	L1	King's Joy	beijing	active	19750	3|kingsjoy|beijing
+1569	2025	1	L1	Lamdre	beijing	active	24840	1|lamdre|beijing
+1597	2025	3	L1	CODA	berlin	active	19811	3|coda|berlin
+1598	2024	3	L1	CODA	berlin	active	19811	3|coda|berlin
+1611	2025	2	L1	Horváth	berlin	active	20013	2|horvath|berlin
+1612	2024	2	L1	Horváth	berlin	active	20013	2|horvath|berlin
+1618	2025	2	L1	Tim Raue	berlin	active	20035	2|timraue|berlin
+1619	2024	2	L1	Tim Raue	berlin	active	20035	2|timraue|berlin
+1639	2025	1	L1	Opheem	birmingham	active	24773	1|opheem|birmingham
+1654	2025	2	L1	Aska	new-york	active	19896	2|aska|newyork
+1655	2024	2	L1	Aska	new-york	active	19896	2|aska|newyork
+1662	2025	1	L1	Taverna Estia	brusciano	active	24891	1|tavernaestia|brusciano
+1665	2024	1	L3	Stand Étterem	budapest	active	29762	1|stand|budapest
+1670	2025	3	L3	Aramburu Relais & Châteaux	buenos-aires	active	19752	3|aramburu|buenosaires
+1671	2024	2	L3	Aramburu Relais & Châteaux	buenos-aires	active	19752	2|aramburu|buenosaires
+1685	2025	2	MANUAL	Aubergine the restaurant at L'Auberge Carmel	carmel-by-the-sea	active	19951	2|aubergine|carmel
+1701	2025	2	L1	Piazzetta Milù	castellamare-di-stabia	active	19977	2|piazzettamilu|castellamaredistabia
+1702	2024	1	L1	Piazzetta Milù	castellamare-di-stabia	active	19977	1|piazzettamilu|castellamaredistabia
+1726	2025	3	L1	Alinea	chicago	active	19753	3|alinea|chicago
+1727	2024	3	L1	Alinea	chicago	active	19753	3|alinea|chicago
+1739	2025	2	L3	Ever Restaurant	chicago	active	19855	2|ever|chicago
+1740	2024	2	L3	Ever Restaurant	chicago	active	19855	2|ever|chicago
+1752	2025	1	L1	Oriole	chicago	active	25054	1|oriole|chicago
+1753	2024	1	L1	Oriole	chicago	active	25054	1|oriole|chicago
+1771	2025	2	L3	Ristorante Arnolfo | 2 Stelle Michelin	colle-di-val-delsa	active	19899	2|arnolfo|colledivaldelsa
+1789	2025	3	L1	Alchemist	copenhagen	active	19810	3|alchemist|copenhagen
+1790	2024	3	L1	Alchemist	copenhagen	active	19810	3|alchemist|copenhagen
+1798	2025	3	L1	Kadeau	copenhagen	active	19794	3|kadeau|copenhagen
+1799	2024	3	L1	Kadeau	copenhagen	active	19794	3|kadeau|copenhagen
+1806	2025	2	L1	Koan	copenhagen	active	19960	2|koan|copenhagen
+1807	2024	2	L1	Koan	copenhagen	active	19960	2|koan|copenhagen
+1812	2025	1	MANUAL	King Hans Cellar	copenhagen	active	25018	1|konghanskaelder|copenhagen
+1813	2024	1	MANUAL	King Hans Cellar	copenhagen	active	25018	1|konghanskaelder|copenhagen
+1816	2025	2	L2	D'O	milan	active	19868	2|do|cornaredo
+1817	2024	1	L2	D'O	milan	active	19868	1|do|cornaredo
+1833	2025	2	L1	Vespertine	culver-city	active	19942	2|vespertine|culvercity
+1834	2024	2	L1	Vespertine	culver-city	active	19942	2|vespertine|culvercity
+1857	2025	2	L3	Amelia by Paulo Airaudo	san-sebastian	active	19991	2|amelia|sansebastian
+1858	2024	2	L3	Amelia by Paulo Airaudo	san-sebastian	active	19991	2|amelia|sansebastian
+1867	2025	2	L1	Row on 45	dubai	active	20453	2|rowon45|dubai
+1868	2024	2	L1	Row on 45	dubai	active	20453	2|rowon45|dubai
+1885	2025	2	L3	Chapter One Restaurant	dublin	active	19979	2|chapterone|dublin
+1896	2025	1	MANUAL	Create by Guido Braeken	eijsden	active	24907	1|create|eijsdenmargraten
+1898	2025	1	L2	Cabaña Buenavista	el-palmar	active	25066	1|cabanabuenavista|murcia
+1901	2025	1	L3	Harbor House Inn	elk	active	25029	1|harborhouse|elk
+1902	2024	1	L3	Harbor House Inn	elk	active	25029	1|harborhouse|elk
+1926	2025	3	L1	Mugaritz	san-sebastian	active	19717	3|mugaritz|sansebastian
+1927	2024	3	L1	Mugaritz	san-sebastian	active	19717	3|mugaritz|sansebastian
+1940	2025	1	L1	Mammertsberg	freidorf	active	25126	1|mammertsberg|freidorf
+1941	2024	1	L1	Mammertsberg	freidorf	active	25126	1|mammertsberg|freidorf
+1950	2025	1	L1	GEM.	gemert	active	20707	1|gem|gemert
+1951	2024	2	L1	GEM.	gemert	active	20707	2|gem|gemert
+1969	2025	2	L3	Döllerers Wirtshaus	golling-an-der-salzach	active	19837	2|dollerer|gollingandersalzach
+1970	2024	1	L3	Döllerers Wirtshaus	golling-an-der-salzach	active	19837	1|dollerer|gollingandersalzach
+1980	2025	1	L1	Jiang By Chef Fei	guangzhou	active	24924	1|jiangbycheffei|guangzhou
+1981	2024	1	L1	Jiang By Chef Fei	guangzhou	active	24924	1|jiangbycheffei|guangzhou
+1989	2025	1	L1	100/200 Kitchen	hamburg	active	25152	1|100200kitchen|hamburg
+2007	2025	2	L1	Ru Yuan	hangzhou	active	19897	2|ruyuan|hangzhou
+2013	2025	1	L2	Jante	hanover	active	25161	1|jante|hannover
+2014	2024	1	L2	Jante	hanover	active	25161	1|jante|hannover
+2025	2024	1	L1	Tribeca	heeze	active	29700	1|tribeca|heeze
+2031	2025	1	L3	Ravintola Palace	helsinki	active	24870	1|palace|helsinki
+2032	2024	1	L3	Ravintola Palace	helsinki	active	24870	1|palace|helsinki
+2040	2025	2	L1	Arbor	hong-kong	active	19884	2|arbor|hongkong
+2041	2024	1	L1	Arbor	hong-kong	active	19884	1|arbor|hongkong
+2045	2025	1	L1	Bo Innovation	hong-kong	active	24785	1|boinnovation|hongkong
+2046	2024	1	L1	Bo Innovation	hong-kong	active	24785	1|boinnovation|hongkong
+2063	2025	1	L1	L'Envol	hong-kong	active	25058	1|lenvol|hongkong
+2064	2024	1	L1	L'Envol	hong-kong	active	25058	1|lenvol|hongkong
+2098	2025	2	L1	TATE Dining Room	hong-kong	active	20047	2|tatediningroom|hongkong
+2099	2024	2	L1	TATE Dining Room	hong-kong	active	20047	2|tatediningroom|hongkong
+2127	2025	2	MANUAL	Ristorante I Tenerumi	vulcanello	active	19867	2|itenerumi|vulcanoisland
+2135	2025	2	L3	Restaurante LÚ Cocina y Alma	jerez-de-la-frontera	active	19949	2|lucocinayalma|jerezdelafrontera
+2136	2024	1	L3	Restaurante LÚ Cocina y Alma	jerez-de-la-frontera	active	19949	1|lucocinayalma|jerezdelafrontera
+2149	2025	2	MANUAL	Bottiglieria 1881 Restaurant	krakow	active	19998	2|bottiglieria1881|cracow
+2150	2024	2	MANUAL	Bottiglieria 1881 Restaurant	krakow	active	19998	2|bottiglieria1881|cracow
+2155	2025	2	L3	Restaurant Milka	kranjska-gora	active	19865	2|milka|kranjskagora
+2156	2024	2	L3	Restaurant Milka	kranjska-gora	active	19865	2|milka|kranjskagora
+2160	2025	1	L1	Inter Scaldes	kruiningen	active	24948	1|interscaldes|kruiningen
+2161	2024	1	L1	Inter Scaldes	kruiningen	active	24948	1|interscaldes|kruiningen
+2163	2025	1	L2	Hof van Cleve	kruishoutem	active	24888	1|hofvancleve|kruisem
+2185	2025	3	L3	Dewakan Restaurant	kuala-lumpur	active	19735	3|dewakan|kualalumpur
+2186	2024	2	L3	Dewakan Restaurant	kuala-lumpur	active	19735	2|dewakan|kualalumpur
+2201	2025	2	L1	Gion Nishikawa	kyoto	active	19973	2|gionnishikawa|kyoto
+2228	2025	3	L1	La Grenouillère	montreuil	active	19712	3|lagrenouillere|montreuil
+2229	2024	2	L1	La Grenouillère	montreuil	active	19712	2|lagrenouillere|montreuil
+2241	2025	2	L1	La Table du Lausanne Palace	lausanne	active	19895	2|latabledulausannepalace|lausanne
+2242	2024	2	L1	La Table du Lausanne Palace	lausanne	active	19895	2|latabledulausannepalace|lausanne
+2260	2025	1	L1	Casa de Chá da Boa Nova	leca-da-palmeira	active	25108	1|casadechadaboanova|lecadapalmeira
+2261	2024	1	L1	Casa de Chá da Boa Nova	leca-da-palmeira	active	25108	1|casadechadaboanova|lecadapalmeira
+2265	2024	1	L3	Ristorante la Madia	licata	active	29702	1|lamadia|licata
+2269	2025	2	L1	L'Air du Temps	liernu	active	20010	2|lairdutemps|liernu
+2270	2024	1	L1	L'Air du Temps	liernu	active	20010	1|lairdutemps|liernu
+2273	2025	2	L3	Restaurant Pearl Morissette	lincoln	active	19859	2|pearlmorissette|lincoln
+2274	2024	2	L3	Restaurant Pearl Morissette	lincoln	active	19859	2|pearlmorissette|lincoln
+2281	2025	1	L2	Fifty Seconds	lisbon	active	25109	1|fiftyseconds|lisboa
+2285	2025	2	L3	Henrique Sá Pessoa	lisbon	active	19912	2|restaurantehenriquesapessoa|lisbon
+2286	2024	2	L3	Henrique Sá Pessoa	lisbon	active	19912	2|restaurantehenriquesapessoa|lisbon
+2289	2025	3	L3	Restaurant Miramar	llanca	active	19799	3|miramar|llanca
+2290	2024	3	L3	Restaurant Miramar	llanca	active	19799	3|miramar|llanca
+2300	2025	2	L1	Alex Dilling at Hotel Café Royal	london	active	19834	2|alexdillingathotelcaferoyal|london
+2301	2024	2	L1	Alex Dilling at Hotel Café Royal	london	active	19834	2|alexdillingathotelcaferoyal|london
+2307	2025	1	L1	Da Terra	london	active	25086	1|daterra|london
+2308	2024	1	L1	Da Terra	london	active	25086	1|daterra|london
+2332	2025	2	L3	Ikoyi Restaurant	london	active	19933	2|ikoyi|london
+2333	2024	2	L3	Ikoyi Restaurant	london	active	19933	2|ikoyi|london
+2337	2025	2	L1	Kitchen Table	london	active	19924	2|kitchentable|london
+2338	2024	2	L1	Kitchen Table	london	active	19924	2|kitchentable|london
+2344	2025	2	L1	Row on 5	london	active	19926	2|rowon5|london
+2345	2024	2	L1	Row on 5	london	active	19926	2|rowon5|london
+2361	2025	1	L1	Trivet	london	active	24965	1|trivet|london
+2362	2024	1	L1	Trivet	london	active	24965	1|trivet|london
+2368	2025	1	L1	Hayato	los-angeles	active	24814	1|hayato|losangeles
+2390	2025	1	L1	Chef Tam's Seasons	macau	active	24992	1|cheftamsseasons|macau
+2426	2025	2	L1	Coque	madrid	active	19969	2|coque|madrid
+2427	2024	2	L1	Coque	madrid	active	19969	2|coque|madrid
+2434	2025	3	L1	DSTAgE	madrid	active	19738	3|dstage|madrid
+2435	2024	3	L1	DSTAgE	madrid	active	19738	3|dstage|madrid
+2438	2025	3	L3	Paco Roncero Restaurante	madrid	active	19800	3|pacoroncero|madrid
+2439	2024	3	L3	Paco Roncero Restaurante	madrid	active	19800	3|pacoroncero|madrid
+2443	2025	1	MANUAL	Restaurante Ramón Freixa Atelier	madrid	active	20679	1|ramonfreixatradicionatelier|madrid
+2444	2024	2	MANUAL	Restaurante Ramón Freixa Atelier	madrid	active	20679	2|ramonfreixatradicionatelier|madrid
+2446	2025	2	L1	Smoked Room	madrid	active	19857	2|smokedroom|madrid
+2447	2024	2	L1	Smoked Room	madrid	active	19857	2|smokedroom|madrid
+2473	2025	2	L1	Madonnina del Pescatore	senigallia	active	19980	2|madonninadelpescatore|senigallia
+2474	2024	2	L1	Madonnina del Pescatore	senigallia	active	19980	2|madonninadelpescatore|senigallia
+2501	2025	2	L1	Pujol	mexico-city	active	19883	2|pujol|mexicocity
+2502	2024	2	L1	Pujol	mexico-city	active	19883	2|pujol|mexicocity
+2523	2025	3	L1	Quintonil	mexico-city	active	19769	3|quintonil|mexicocity
+2524	2024	3	L1	Quintonil	mexico-city	active	19769	3|quintonil|mexicocity
+2535	2025	2	L3	Andrea Aprea | Ristorante	milan	active	19835	2|andreaaprea|milan
+2538	2025	1	L3	Seta by Antonio Guida	milan	active	25189	1|seta|milan
+2539	2024	1	L3	Seta by Antonio Guida	milan	active	25189	1|seta|milan
+2551	2025	1	L1	Alois - Dallmayr Fine Dining	munich	active	25105	1|aloisdallmayrfinedining|munich
+2588	2025	2	L1	Aquavit	new-york	active	19879	2|aquavit|newyork
+2589	2024	2	L1	Aquavit	new-york	active	19879	2|aquavit|newyork
+2594	2025	1	L1	Atera	new-york	active	25104	1|atera|newyork
+2595	2024	1	L1	Atera	new-york	active	25104	1|atera|newyork
+2605	2025	3	L1	ATOMIX	new-york	active	19775	3|atomix|newyork
+2606	2024	3	L1	ATOMIX	new-york	active	19775	3|atomix|newyork
+2616	2025	1	L3	The Chef's Table at Brooklyn Fare	new-york	active	25031	1|chefstableatbrooklynfare|newyork
+2617	2024	1	L3	The Chef's Table at Brooklyn Fare	new-york	active	25031	1|chefstableatbrooklynfare|newyork
+2622	2025	3	L1	César	new-york	active	19726	3|cesar|newyork
+2675	2025	1	L1	odo	new-york	active	24919	1|odo|newyork
+2689	2025	1	L1	The Modern	new-york	active	25151	1|themodern|newyork
+2690	2024	1	L1	The Modern	new-york	active	25151	1|themodern|newyork
+2703	2025	1	L1	De Nieuwe Winkel	nijmegen	active	24872	1|denieuwewinkel|nijmegen
+2706	2025	2	L3	Restaurant Sat Bains with Rooms	nottingham	active	20012	2|restaurantsatbains|nottingham
+2714	2025	1	L1	etz	nuremberg	active	24883	1|etz|nuremberg
+2715	2024	1	L1	etz	nuremberg	active	24883	1|etz|nuremberg
+2723	2025	2	L1	Culler de Pau	o-grove	active	19928	2|cullerdepau|ogrove
+2724	2024	2	L1	Culler de Pau	o-grove	active	19928	2|cullerdepau|ogrove
+2737	2025	2	L3	Restaurant Les Cols | Olot	olot	active	19889	2|lescols|olot
+2738	2024	3	L3	Restaurant Les Cols | Olot	olot	active	19889	3|lescols|olot
+2744	2025	1	L3	Ristorante Famiglia Rana	oppeano	active	24890	1|famigliarana|oppeano
+2760	2025	2	L1	La Cime	osaka	active	20055	2|lacime|osaka
+2761	2024	2	L1	La Cime	osaka	active	20055	2|lacime|osaka
+2784	2025	2	L3	Restaurant Kontrast	oslo	active	19978	2|kontrast|oslo
+2795	2025	2	L1	David Toutain	paris	active	19863	2|davidtoutain|paris
+2796	2024	2	L1	David Toutain	paris	active	19863	2|davidtoutain|paris
+2812	2024	2	L1	Le Clarence	paris	active	20443	2|leclarence|paris
+2814	2025	2	L3	Le Grand Restaurant - Jean-François Piège	paris	active	19930	2|legrandrestaurant|paris
+2815	2024	2	L3	Le Grand Restaurant - Jean-François Piège	paris	active	19930	2|legrandrestaurant|paris
+2828	2025	3	L3	Restaurant Le Meurice Alain Ducasse	paris	active	19715	3|lemeuricealainducasse|paris
+2829	2024	3	L3	Restaurant Le Meurice Alain Ducasse	paris	active	19715	3|lemeuricealainducasse|paris
+2835	2025	1	L1	Sushi Yoshinaga	paris	active	25159	1|sushiyoshinaga|paris
+2840	2025	3	L3	Restaurante Ocean	porches	active	19755	3|ocean|porches
+2841	2024	3	L3	Restaurante Ocean	porches	active	19755	3|ocean|porches
+2844	2025	1	L3	Restaurante Antiqvvm	porto	active	25171	1|antiqvvm|porto
+2845	2024	1	L3	Restaurante Antiqvvm	porto	active	25171	1|antiqvvm|porto
+2852	2025	1	L3	Restaurant Tanière³	quebec	active	24895	1|taniere|quebec
+2860	2025	1	L1	Söl'ring Hof	sylt	active	24937	1|solringhof|sylt
+2867	2025	1	MANUAL	Restaurante Pepe Vieira	poio	active	25180	1|pepevieira|raxo
+2868	2024	1	MANUAL	Restaurante Pepe Vieira	poio	active	25180	1|pepevieira|raxo
+2871	2025	1	L1	Brut172	reijmerstok	active	24912	1|brut172|reijmerstok
+2885	2025	2	L1	Lasai	rio-de-janeiro	active	20000	2|lasai|riodejaneiro
+2886	2024	2	L1	Lasai	rio-de-janeiro	active	20000	2|lasai|riodejaneiro
+2897	2025	1	L1	Oro	rio-de-janeiro	active	24881	1|oro|riodejaneiro
+2898	2024	1	L1	Oro	rio-de-janeiro	active	24881	1|oro|riodejaneiro
+2907	2025	1	L1	Il Pagliaccio	rome	active	24791	1|ilpagliaccio|rome
+2910	2025	1	L3	Bardal | Benito Gómez | Restaurante en Ronda	ronda	active	24807	1|bardal|ronda
+2920	2025	1	L1	Parkheuvel	rotterdam	active	24876	1|parkheuvel|rotterdam
+2921	2024	1	L1	Parkheuvel	rotterdam	active	24876	1|parkheuvel|rotterdam
+2952	2025	1	L3	Restaurant Ikarus	salzburg	active	25022	1|ikarus|salzburg
+2970	2025	1	L1	Birdsong	san-francisco	active	24830	1|birdsong|sanfrancisco
+2982	2025	2	L1	Kiln	san-francisco	active	19940	2|kiln|sanfrancisco
+3026	2025	1	L3	Mélisse Restaurant	santa-monica	active	24971	1|melisse|santamonica
+3037	2025	2	L3	Restaurant Magdalena	rickenbach	active	19872	2|magdalena|rickenbach
+3040	2025	1	L1	taubenkobel	schutzen-am-gebirge	active	24774	1|taubenkobel|schutzenamgebirge
+3041	2024	1	L1	taubenkobel	schutzen-am-gebirge	active	24774	1|taubenkobel|schutzenamgebirge
+3046	2025	2	L1	Alla Prima	seoul	active	19958	2|allaprima|seoul
+3047	2024	1	L1	Alla Prima	seoul	active	19958	1|allaprima|seoul
+3054	2025	2	L1	EVETT	seoul	active	19947	2|evett|seoul
+3064	2025	2	L1	KwonSookSoo	seoul	active	19961	2|kwonsooksoo|seoul
+3072	2024	2	L1	Mitou	seoul	active	20608	2|mitou|seoul
+3079	2025	3	L3	MOSU Seoul	seoul	active	19818	3|mosu|seoul
+3080	2024	2	L3	MOSU Seoul	seoul	active	19818	2|mosu|seoul
+3084	2025	2	L3	Restaurant Allen	seoul	active	20016	2|allen|seoul
+3085	2024	1	L3	Restaurant Allen	seoul	active	20016	1|allen|seoul
+3089	2025	1	L1	Soigné	seoul	active	20614	1|soigne|seoul
+3090	2024	2	L1	Soigné	seoul	active	20614	2|soigne|seoul
+3109	2025	1	L1	Fu He Hui	shanghai	active	25162	1|fuhehui|shanghai
+3137	2025	1	L1	Tou Zao	shanghai	active	24951	1|touzao|shanghai
+3138	2025	2	L3	Vyn Restaurant	simrishamn	active	19858	2|vyn|simrishamn
+3139	2024	2	L3	Vyn Restaurant	simrishamn	active	19858	2|vyn|simrishamn
+3147	2025	1	L1	Cloudstreet	singapore	active	25097	1|cloudstreet|singapore
+3148	2024	1	L1	Cloudstreet	singapore	active	25097	1|cloudstreet|singapore
+3161	2025	2	L3	JAAN By Kirk Westaway	singapore	active	19959	2|jaanbykirk|singapore
+3162	2024	2	L3	JAAN By Kirk Westaway	singapore	active	19959	2|jaanbykirk|singapore
+3173	2025	2	L1	Meta	singapore	active	20024	2|meta|singapore
+3174	2024	2	L1	Meta	singapore	active	20024	2|meta|singapore
+3179	2025	2	L1	Saint Pierre	singapore	active	19881	2|saintpierre|singapore
+3183	2025	1	L3	Shoukouwa Restaurant	singapore	active	25052	1|shoukouwa|singapore
+3184	2024	1	L3	Shoukouwa Restaurant	singapore	active	25052	1|shoukouwa|singapore
+3190	2025	3	L1	Thevar	singapore	active	19780	3|thevar|singapore
+3191	2024	3	L1	Thevar	singapore	active	19780	3|thevar|singapore
+3204	2025	1	L1	Enclos	sonoma	active	24815	1|enclos|sonoma
+3208	2025	1	L1	AIRA	stockholm	active	25157	1|aira|stockholm
+3209	2024	1	L1	AIRA	stockholm	active	25157	1|aira|stockholm
+3231	2025	3	L1	D.O.M.	sao-paulo	active	19710	3|dom|saopaulo
+3232	2024	3	L1	D.O.M.	sao-paulo	active	19710	3|dom|saopaulo
+3247	2025	2	L1	logy	taipei	active	20008	2|logy|taipei
+3248	2024	2	L1	logy	taipei	active	20008	2|logy|taipei
+3262	2025	1	L3	180 Degrees Restaurant	tallinn	active	29708	1|180|tallinn
+3263	2024	1	L3	180 Degrees Restaurant	tallinn	active	29708	1|180|tallinn
+3287	2025	1	L3	Platán Gourmet Restaurant	tata	active	24930	1|platangourmet|tata
+3288	2024	1	L3	Platán Gourmet Restaurant	tata	active	24930	1|platangourmet|tata
+3292	2025	1	L1	Krèsios	telese	active	24905	1|kresios|telese
+3293	2024	1	L1	Krèsios	telese	active	24905	1|kresios|telese
+3317	2025	2	L1	Den	tokyo	active	20056	2|den|tokyo
+3318	2024	2	L1	Den	tokyo	active	20056	2|den|tokyo
+3330	2025	2	L1	Esquisse	tokyo	active	19963	2|esquisse|tokyo
+3331	2024	1	L1	Esquisse	tokyo	active	19963	1|esquisse|tokyo
+3343	2025	2	L1	Florilège	tokyo	active	19914	2|florilege|tokyo
+3344	2024	2	L1	Florilège	tokyo	active	19914	2|florilege|tokyo
+3364	2025	1	L1	Hommage	tokyo	active	25055	1|hommage|tokyo
+3378	2025	2	L1	MAZ	tokyo	active	20011	2|maz|tokyo
+3379	2024	1	L1	MAZ	tokyo	active	20011	1|maz|tokyo
+3398	2025	3	L1	NARISAWA	tokyo	active	19830	3|narisawa|tokyo
+3399	2024	3	L1	NARISAWA	tokyo	active	19830	3|narisawa|tokyo
+3413	2025	1	L1	Ryuzu	tokyo	active	25113	1|ryuzu|tokyo
+3442	2025	1	L1	paz	torshavn	active	25081	1|paz|torshavn
+3448	2024	1	MANUAL	Home Aribert - Restaurant Gastronomique 2 Étoiles Michelin	uriage-les-bains	active	29723	1|maisonaribert|uriagelesbains
+3452	2025	1	L1	Vino Locale	izmir	active	25063	1|vinolocale|izmir
+3453	2025	2	HOLD	Flores Raras Restaurante	valencia	active		Flores Raras (Valencia) 2025 2-Knife: no entry; nearest = Luis Valls, El Poblet (former workplace)
+3458	2025	2	L3	Ricard Camarena Restaurant	valencia	active	20003	2|ricardcamarena|valencia
+3459	2024	2	L3	Ricard Camarena Restaurant	valencia	active	20003	2|ricardcamarena|valencia
+3466	2025	2	L3	Ristorante Glam	venice	active	19873	2|glam|venice
+3467	2024	2	L3	Ristorante Glam	venice	active	19873	2|glam|venice
+3475	2025	2	L2	Torre del Saracino	sorrento	active	19901	2|torredelsaracino|vicoequense
+3479	2025	2	L3	Restaurant Doubek	vienna	active	20022	2|doubek|vienna
+3480	2024	1	L3	Restaurant Doubek	vienna	active	20022	1|doubek|vienna
+3495	2025	1	L1	Mraz & Sohn	vienna	active	25006	1|mrazsohn|vienna
+3496	2024	1	L1	Mraz & Sohn	vienna	active	25006	1|mrazsohn|vienna
+3500	2025	1	L3	Silvio Nickol	vienna	active	25127	1|silvionickolgourmetrestaurant|vienna
+3518	2025	2	L1	focus ATELIER	vitznau	active	19989	2|focusatelier|vitznau
+3532	2025	1	L2	Jônt	washington-dc	active	25111	1|jont|washington
+3536	2025	3	L2	minibar	washington-dc	active	19770	3|minibar|washington
+3541	2025	2	L2	The Inn at Little Washington	washington-dc	active	19990	2|theinnatlittlewashington|washington
+3542	2024	2	L2	The Inn at Little Washington	washington-dc	active	19990	2|theinnatlittlewashington|washington
+3572	2025	1	L1	Taverne zum Schäfli	wigoltingen	active	24831	1|tavernezumschafli|wigoltingen
+3573	2024	1	L1	Taverne zum Schäfli	wigoltingen	active	24831	1|tavernezumschafli|wigoltingen
+3582	2025	1	L3	IGNIV Zürich by Andreas Caminada	zurich	active	24845	1|igniv|zurich
+3583	2024	1	L3	IGNIV Zürich by Andreas Caminada	zurich	active	24845	1|igniv|zurich
+3586	2025	1	L1	The Counter	zurich	active	25038	1|thecounter|zurich
+3595	2025	2	L3	Hôtel Château de La Chèvre d’Or	eze	active	20037	2|lachevredor|eze
+3607	2025	1	L3	Restaurant Domestic	aarhus	active	24832	1|domestic|aarhus
+3676	2025	2	L1	Bougainville	amsterdam	active	20034	2|bougainville|amsterdam
+3677	2024	1	L1	Bougainville	amsterdam	active	20034	1|bougainville|amsterdam
+3686	2025	2	L1	RIJKS	amsterdam	active	19945	2|rijks|amsterdam
+3687	2024	2	L1	RIJKS	amsterdam	active	19945	2|rijks|amsterdam
+3718	2025	1	L3	Paolo Griffa al Caffè Nazionale	aosta	active	25067	1|caffenazionale|aosta
+3752	2025	1	L3	CTC Urban Gastronomy	athens	active	24782	1|ctc|athens
+3753	2024	1	L3	CTC Urban Gastronomy	athens	active	24782	1|ctc|athens
+3762	2025	1	L3	Soil restaurant	athens	active	25147	1|soil|athens
+3763	2024	1	L3	Soil restaurant	athens	active	25147	1|soil|athens
+3775	2025	1	L1	Atlas	atlanta	active	24896	1|atlas|atlanta
+3839	2025	3	L2	Asador Etxebarri	axpe	active	19825	3|asadoretxebarri|atxondo
+3840	2024	3	L2	Asador Etxebarri	axpe	active	19825	3|asadoretxebarri|atxondo
+3861	2025	2	L2	Txispa	axpe	active	20032	2|txispa|atxondo
+3862	2024	1	L2	Txispa	axpe	active	20032	1|txispa|atxondo
+3917	2024	1	L1	Blue by Alain Ducasse	bangkok	active	29694	1|bluebyalainducasse|bangkok
+3930	2025	1	L1	Coda	bangkok	active	25145	1|coda|bangkok
+3939	2025	3	L1	Gaggan	bangkok	active	19748	3|gaggan|bangkok
+3940	2024	3	L1	Gaggan	bangkok	active	19748	3|gaggan|bangkok
+3955	2025	2	L3	Haoma Bangkok	bangkok	active	19869	2|haoma|bangkok
+3956	2024	2	L3	Haoma Bangkok	bangkok	active	19869	2|haoma|bangkok
+3967	2025	1	L3	Raan Jay Fai	bangkok	active	24942	1|jayfai|bangkok
+3968	2024	1	L3	Raan Jay Fai	bangkok	active	24942	1|jayfai|bangkok
+3985	2025	1	L1	Maison Dunand	bangkok	active	24799	1|maisondunand|bangkok
+3986	2024	1	L1	Maison Dunand	bangkok	active	24799	1|maisondunand|bangkok
+3991	2025	1	L1	nahm	bangkok	active	25079	1|nahm|bangkok
+3992	2024	1	L1	nahm	bangkok	active	25079	1|nahm|bangkok
+4006	2025	2	L1	Nusara	bangkok	active	20040	2|nusara|bangkok
+4007	2024	2	L1	Nusara	bangkok	active	20040	2|nusara|bangkok
+4018	2025	3	L3	Restaurant POTONG	bangkok	active	19801	3|potong|bangkok
+4019	2024	3	L3	Restaurant POTONG	bangkok	active	19801	3|potong|bangkok
+4034	2025	2	L1	Samrub Samrub Thai	bangkok	active	19997	2|samrubsamrubthai|bangkok
+4035	2024	2	L1	Samrub Samrub Thai	bangkok	active	19997	2|samrubsamrubthai|bangkok
+4045	2024	1	L1	Wana Yook	bangkok	active	29756	1|wanayook|bangkok
+4052	2025	2	L1	Alkimia	barcelona	active	19943	2|alkimia|barcelona
+4053	2024	1	L1	Alkimia	barcelona	active	19943	1|alkimia|barcelona
+4059	2025	3	L1	COME	barcelona	active	19797	3|come|barcelona
+4060	2024	3	L1	COME	barcelona	active	19797	3|come|barcelona
+4086	2024	1	L2	Ackermannshof	basel	active	29676	1|ackermannshof|switzerland
+4101	2025	1	L1	Gastro Esthetics DaDong	beijing	active	24865	1|gastroestheticsdadong|beijing
+4118	2025	1	L1	TRB Hutong	beijing	active	25000	1|trbhutong|beijing
+4205	2025	1	L3	Nerua Guggenheim Bilbao	bilbao	active	24968	1|neruaguggenheim|bilbao
+4206	2024	1	L3	Nerua Guggenheim Bilbao	bilbao	active	24968	1|neruaguggenheim|bilbao
+4233	2025	1	L1	Maçakızı	bodrum	active	24797	1|macakizi|bodrum
+4234	2024	1	L1	Maçakızı	bodrum	active	24797	1|macakizi|bodrum
+4236	2025	1	L1	Auberge du Vert Mont	boeschepe	active	24887	1|aubergeduvertmont|boeschepe
+4259	2025	1	L1	La Palta	borgonovo-val-tidone	active	24928	1|lapalta|borgonovovaltidone
+4289	2024	2	L3	Ristorante NIN	brenzone-sul-garda	active	20732	2|nin|brenzonesulgarda
+4294	2025	1	L1	Wood	breuil-cervinia	closed	24786	1|wood|breuilcervinia
+4319	2025	1	L1	Eliane	brussels	active	24990	1|eliane|brussels
+4321	2025	1	MANUAL	Osip restaurant	bruton	active	25033	1|osip|somerset
+4322	2024	1	MANUAL	Osip restaurant	bruton	active	25033	1|osip|somerset
+4337	2025	2	L3	Rumour by Rácz Jenő	budapest	active	19999	2|rumour|budapest
+4338	2024	1	L3	Rumour by Rácz Jenő	budapest	active	19999	1|rumour|budapest
+4342	2025	2	L1	Salt	budapest	active	20029	2|salt|budapest
+4343	2024	2	L1	Salt	budapest	active	20029	2|salt|budapest
+4346	2025	2	L3	Crizia Restaurante	buenos-aires	active	19898	2|crizia|buenosaires
+4347	2024	1	L3	Crizia Restaurante	buenos-aires	active	19898	1|crizia|buenosaires
+4354	2025	2	L3	Don Julio Parrilla	buenos-aires	active	20637	2|donjulio|buenosaires
+4355	2024	2	L3	Don Julio Parrilla	buenos-aires	active	19986	2|donjulio|buenosaires
+4373	2025	2	L3	Trescha Restaurant	buenos-aires	active	20039	2|trescha|buenosaires
+4374	2024	2	L3	Trescha Restaurant	buenos-aires	active	20039	2|trescha|buenosaires
+4378	2025	1	L1	Lignum	bullaun	active	24848	1|lignum|bullaun
+4438	2025	1	L1	Lilo	carlsbad	active	24875	1|lilo|carlsbad
+4473	2025	1	L3	Ristorante El Molin	cavalese	active	24776	1|elmolin|cavalese
+4480	2025	1	L3	Ristorante Materia Cernobbio	cernobbio	active	24856	1|materia|cernobbio
+4481	2024	1	L3	Ristorante Materia Cernobbio	cernobbio	active	24856	1|materia|cernobbio
+4510	2025	2	L1	Co-	chengdu	active	21184	2|co|chengdu
+4534	2025	1	L1	Elske	chicago	active	24854	1|elske|chicago
+4535	2024	1	L1	Elske	chicago	active	24854	1|elske|chicago
+4539	2025	1	L1	Esmé	chicago	active	24946	1|esme|chicago
+4540	2024	1	L1	Esmé	chicago	active	24946	1|esme|chicago
+4623	2025	1	L3	Restaurant JATAK	copenhagen	active	24963	1|jatak|copenhagen
+4624	2024	1	L3	Restaurant JATAK	copenhagen	active	24963	1|jatak|copenhagen
+4632	2025	1	L1	Sushi Anaba	copenhagen	active	25009	1|sushianaba|copenhagen
+4633	2024	1	L1	Sushi Anaba	copenhagen	active	25009	1|sushianaba|copenhagen
+4637	2025	2	L1	Søllerød Kro	holte	active	19847	2|sollerodkro|holte
+4654	2025	2	L1	SanBrite	cortina-dampezzo	active	20005	2|sanbrite|cortinadampezzo
+4655	2024	1	L1	SanBrite	cortina-dampezzo	active	20005	1|sanbrite|cortinadampezzo
+4658	2025	1	L3	La Stüa de Michil - Simone Cantafio	corvara-in-badia	closed	25129	1|lastuademichil|corvarainbadia
+4659	2024	1	L3	La Stüa de Michil - Simone Cantafio	corvara-in-badia	closed	25129	1|lastuademichil|corvarainbadia
+4676	2025	1	L1	The Pine	creemore	active	24947	1|thepine|creemore
+4685	2025	1	L3	Máximo	mexico-city	active	24867	1|maximobistro|mexicocity
+4765	2025	2	L1	L'Argine a Vencò	dolegna-del-collio	active	19839	2|largineavenco|dolegnadelcollio
+4766	2024	2	L1	L'Argine a Vencò	dolegna-del-collio	active	19839	2|largineavenco|dolegnadelcollio
+4804	2024	1	L1	Dinner by Heston Blumenthal	dubai	active	29692	1|dinnerbyhestonblumenthal|dubai
+4825	2025	1	L1	11 Woodfire	dubai	active	24813	1|11woodfire|dubai
+4832	2025	1	L3	Avatara Restaurant	dubai	active	25089	1|avatara|dubai
+4833	2024	1	L3	Avatara Restaurant	dubai	active	25089	1|avatara|dubai
+4841	2025	1	L1	Manāo	dubai	active	24767	1|manao|dubai
+4844	2025	1	L1	Moonrise	dubai	active	25134	1|moonrise|dubai
+4845	2024	1	L1	Moonrise	dubai	active	25134	1|moonrise|dubai
+4852	2025	3	L3	ORFALI BROS RESTAURANT	dubai	active	19796	3|orfalibros|dubai
+4853	2024	2	L3	ORFALI BROS RESTAURANT	dubai	active	19796	2|orfalibros|dubai
+4866	2024	3	L1	Ossiano	dubai	active	20292	3|ossiano|dubai
+4887	2025	1	L1	Restaurant 360	dubrovnik	active	25016	1|restaurant360|dubrovnik
+4888	2024	1	L1	Restaurant 360	dubrovnik	active	25016	1|restaurant360|dubrovnik
+4921	2025	1	L1	Pine	newcastle	active	24818	1|pine|newcastle
+4945	2025	1	MANUAL	LUNARIO VALLE DE GUADALUPE	guadalupe	active	25124	1|lunario|valledeguadalupe
+5011	2025	1	L1	Pascucci al Porticciolo	fiumicino	active	24904	1|pascuccialporticciolo|fiumicino
+5041	2025	1	L3	Ristorante Lux Lucis	forte-dei-marmi	active	25166	1|luxlucis|fortedeimarmi
+5115	2025	2	L1	Arco by Paco Pérez	gdansk	active	19841	2|arcobypacoperez|gdansk
+5116	2024	1	L1	Arco by Paco Pérez	gdansk	active	19841	1|arcobypacoperez|gdansk
+5142	2025	1	MANUAL	Restaurant au Jardin	george-town	active	25139	1|aujardin|penang
+5143	2024	1	MANUAL	Restaurant au Jardin	george-town	active	25139	1|aujardin|penang
+5156	2025	1	L2	ELKANO	getaria	active	24772	1|elkano|guetaria
+5225	2025	2	L1	Chōwa	guangzhou	active	19964	2|chowa|guangzhou
+5230	2025	1	L1	Lingnan House	guangzhou	active	24811	1|lingnanhouse|guangzhou
+5293	2025	2	L1	Jin Sha	hangzhou	active	21193	2|jinsha|hangzhou
+5308	2025	1	L3	Nhà hàng Gia	hanoi	active	25117	1|gia|hanoi
+5309	2024	1	L3	Nhà hàng Gia	hanoi	active	25117	1|gia|hanoi
+5313	2025	1	MANUAL	KOKI - The House of Senses	hanoi	active	24920	1|hibanabykoki|hanoi
+5314	2024	1	MANUAL	KOKI - The House of Senses	hanoi	active	24920	1|hibanabykoki|hanoi
+5348	2025	2	L3	Restaurant Grön	helsinki	active	20041	2|gron|helsinki
+5371	2025	1	L3	Restaurant ESSENS	hlohovec	active	25062	1|essens|hlohovec
+5374	2025	1	L3	AKUNA Restaurant	ho-chi-minh-city	active	25116	1|akuna|hochiminhcity
+5375	2024	1	L3	AKUNA Restaurant	ho-chi-minh-city	active	25116	1|akuna|hochiminhcity
+5379	2025	1	L3	CieL Dining	ho-chi-minh-city	active	25170	1|ciel|hochiminhcity
+5386	2025	1	L1	Anan Saigon	ho-chi-minh-city	active	25077	1|anansaigon|hochiminhcity
+5387	2024	1	L1	Anan Saigon	ho-chi-minh-city	active	25077	1|anansaigon|hochiminhcity
+5403	2025	1	L1	BELON	hong-kong	active	25036	1|belon|hongkong
+5412	2025	1	L1	Estro	hong-kong	active	24793	1|estro|hongkong
+5420	2025	1	L1	Feuille	hong-kong	active	24967	1|feuille|hongkong
+5421	2024	1	L1	Feuille	hong-kong	active	24967	1|feuille|hongkong
+5458	2025	1	L1	MONO	hong-kong	active	25094	1|mono|hongkong
+5459	2024	1	L1	MONO	hong-kong	active	25094	1|mono|hongkong
+5488	2025	3	L3	The Chairman Restaurant	hong-kong	active	19734	3|thechairman|hongkong
+5489	2024	3	L3	The Chairman Restaurant	hong-kong	active	19734	3|thechairman|hongkong
+5537	2025	1	MANUAL	Neighborhood	hong-kong	active	24852	1|neighbourhood|hongkong
+5589	2025	1	L1	ÉPURE	hong-kong	active	24802	1|epure|hongkong
+5636	2025	1	L1	Arkestra	istanbul	active	24825	1|arkestra|istanbul
+5642	2025	3	L1	Neolokal	istanbul	active	19779	3|neolokal|istanbul
+5643	2024	2	L1	Neolokal	istanbul	active	19779	2|neolokal|istanbul
+5649	2025	1	L1	humus x hortense	brussels	active	25048	1|humusxhortense|brussels
+5650	2024	1	L1	humus x hortense	brussels	active	25048	1|humusxhortense|brussels
+5657	2025	1	L3	Restaurante Bagá	jaen	active	25074	1|baga|jaen
+5705	2025	1	L3	Restaurant Giewont	koscielisko	active	25082	1|giewont|koscielisko
+5715	2025	1	L3	Beta KL	kuala-lumpur	active	25091	1|beta|kualalumpur
+5779	2025	1	L1	LURRA°	kyoto	active	24934	1|lurra|kyoto
+5860	2025	1	L1	Abbruzzino Oltre	lamezia-terme	active	24998	1|abbruzzinooltre|lameziaterme
+5944	2025	1	L3	SENSO Lake Garda	limone-sul-garda	active	24783	1|senso|limonesulgarda
+5961	2025	1	L3	Encanto	lisbon	active	30158	1|encantojoseavillez|lisbon
+5972	2025	1	L1	Loco	lisbon	active	24781	1|loco|lisbon
+5975	2025	1	L2	Marlene,	lisbon	active	25020	1|marlene|lisboa
+5976	2024	1	L2	Marlene,	lisbon	active	25020	1|marlene|lisboa
+6017	2025	1	L3	BRAT Restaurant	london	active	25158	1|brat|london
+6018	2024	1	L3	BRAT Restaurant	london	active	25158	1|brat|london
+6040	2025	1	L3	Frog by Adam Handling Restaurant Covent Garden	london	active	24769	1|frog|london
+6054	2025	3	L1	KOL	london	active	19815	3|kol|london
+6055	2024	3	L1	KOL	london	active	19815	3|kol|london
+6066	2024	1	MANUAL	Muse by Tom Aikens	london	active	29717	1|tohruinderschreiberei|london
+6077	2025	1	L3	Plates Restaurant & Food Studio	london	active	24989	1|plates|london
+6109	2025	1	L1	Tom Brown at The Capital	london	active	25155	1|tombrownatthecapital|london
+6111	2025	1	L1	Trinity	london	active	24768	1|trinity|london
+6112	2024	1	L1	Trinity	london	active	24768	1|trinity|london
+6120	2025	2	L3	Ristorante Andreina	loreto	active	19882	2|andreina|loreto
+6121	2024	1	L3	Ristorante Andreina	loreto	active	19882	1|andreina|loreto
+6147	2024	1	L3	Kato Restaurant	los-angeles	active	29752	1|kato|losangeles
+6194	2025	1	MANUAL	FELIX LO BASSO RESTAURANT	lugano	active	24880	1|felixlobasso|sorengo
+6240	2025	1	L1	Aji 雅吉	macau	active	25125	1|aji|macau
+6315	2025	1	L3	Restaurante Desde 1911	madrid	active	24860	1|desde1911|madrid
+6316	2024	1	L3	Restaurante Desde 1911	madrid	active	24860	1|desde1911|madrid
+6325	2025	1	L1	OSA	madrid	active	24966	1|osa|madrid
+6358	2025	1	L2	Hapag	manila	active	24956	1|hapag|makati
+6363	2025	1	L2	Kása Palma	manila	active	24765	1|kasapalma|makati
+6365	2025	2	L2	Toyo Eatery	manila	active	19944	2|toyoeatery|makati
+6366	2024	2	L2	Toyo Eatery	manila	active	19944	2|toyoeatery|makati
+6451	2025	2	L1	Venissa	venice	active	19850	2|venissa|venice
+6452	2024	2	L1	Venissa	venice	active	19850	2|venissa|venice
+6472	2025	1	L1	Angélica Cocina Maestra	mendoza	active	24969	1|angelicacocinamaestra|mendoza
+6474	2025	1	L1	Azafrán	mendoza	active	25122	1|azafran|mendoza
+6475	2024	1	L1	Azafrán	mendoza	active	25122	1|azafran|mendoza
+6480	2025	1	L3	Casa Vigil Palmares	mendoza	active	24931	1|casavigil|mendoza
+6532	2025	2	L1	Contraste	milan	active	19974	2|contraste|milan
+6533	2024	1	L1	Contraste	milan	active	19974	1|contraste|milan
+6536	2025	2	L1	Cracco	milan	active	19848	2|cracco|milan
+6537	2024	2	L1	Cracco	milan	active	19848	2|cracco|milan
+6548	2025	1	MANUAL	Il Luogo di Aimo e Nadia	milan	active	24777	1|illuogoaimoenadia|milan
+6564	2025	3	L1	Al Gatto Verde	modena	active	19767	3|algattoverde|modena
+6565	2024	2	L1	Al Gatto Verde	modena	active	19767	2|algattoverde|modena
+6602	2025	1	L3	KOLI	monterrey	active	25102	1|kolicocinadeorigen|monterrey
+6603	2024	1	L3	KOLI	monterrey	active	25102	1|kolicocinadeorigen|monterrey
+6624	2025	1	L3	Restaurant Mastard	montreal	active	25128	1|mastard|montreal
+6684	2025	1	L1	Le Manoir de la Régate	nantes	active	25025	1|lemanoirdelaregate|nantes
+6685	2024	1	L1	Le Manoir de la Régate	nantes	active	25025	1|lemanoirdelaregate|nantes
+6753	2025	1	L1	Corima	new-york	active	24884	1|corima|newyork
+6797	2025	2	L1	FREVO	new-york	active	19894	2|frevo|newyork
+6798	2024	1	L1	FREVO	new-york	active	19894	1|frevo|newyork
+6849	2025	1	L1	l’abeille	new-york	active	25039	1|labeille|newyork
+6850	2024	1	L1	l’abeille	new-york	active	25039	1|labeille|newyork
+6912	2025	1	L1	ONICE	nice	active	24886	1|onice|nice
+6913	2024	1	L1	ONICE	nice	active	24886	1|onice|nice
+6925	2025	1	L3	AKKEE Thai Delicacies and Tasting Counter	nonthaburi	active	25131	1|akkee|nonthaburi
+6971	2025	2	L3	Levadura de Olla Restaurante	oaxaca	active	20033	2|levaduradeolla|oaxaca
+6997	2025	3	L1	Contrada Bricconi	oltressenda-alta	active	19790	3|contradabricconi|oltressendaalta
+6998	2024	2	L1	Contrada Bricconi	oltressenda-alta	active	19790	2|contradabricconi|oltressendaalta
+7082	2025	2	L3	Sanshin	osaka	active	20054	2|sushisanshin|osaka
+7109	2025	2	L1	Savage	oslo	active	19836	2|savage|oslo
+7110	2024	2	L1	Savage	oslo	active	19836	2|savage|oslo
+7118	2025	1	L1	À L’aise	oslo	active	25164	1|alaise|oslo
+7131	2025	2	L1	Willem Hiele	oudenburg	active	20050	2|willemhiele|oudenburg
+7132	2024	2	L1	Willem Hiele	oudenburg	active	20050	2|willemhiele|oudenburg
+7138	2025	1	MANUAL	Benoit Dewitte	ouwegem	active	24810	1|benoitbernarddewitte|ouwegem
+7152	2025	1	L3	MEC Restaurant	palermo	active	24823	1|mec|palermo
+7179	2024	1	L3	ANONA - Restaurant gastronomique étoilé	paris	active	29729	1|anona|paris
+7183	2025	2	L1	Astrance	paris	active	19987	2|astrance|paris
+7184	2024	2	L1	Astrance	paris	active	19987	2|astrance|paris
+7212	2025	1	L3	FIEF / Fait Ici En France	paris	active	25169	1|fief|paris
+7213	2024	1	L3	FIEF / Fait Ici En France	paris	active	25169	1|fief|paris
+7299	2025	2	L1	Septime	paris	active	19846	2|septime|paris
+7300	2024	1	L1	Septime	paris	active	19846	1|septime|paris
+7316	2025	1	L1	Vaisseau	paris	active	24770	1|vaisseau|paris
+7325	2025	1	L3	Ristorante Inkiostro	parma	active	25115	1|inkiostro|parma
+7386	2025	1	L1	Le Chique	puerto-morelos	active	24949	1|lechique|puertomorelos
+7387	2024	1	L1	Le Chique	puerto-morelos	active	24949	1|lechique|puertomorelos
+7419	2025	1	MANUAL	Restaurante Maca de Castro - Mallorca	port-dalcudia	active	25008	1|macadecastro|mallorca
+7427	2025	2	L1	Vista	portimao	active	19937	2|vista|portimao
+7428	2024	2	L1	Vista	portimao	active	19937	2|vista|portimao
+7436	2025	2	L1	Euskalduna Studio	porto	active	20046	2|euskaldunastudio|porto
+7437	2024	2	L1	Euskalduna Studio	porto	active	20046	2|euskaldunastudio|porto
+7445	2025	1	L1	Pedro Lemos	porto	active	25073	1|pedrolemos|porto
+7451	2025	1	L3	Ristorante Cracco Portofino	portofino	active	25030	1|craccoportofino|portofino
+7454	2025	2	L1	COB	portoroz	active	19888	2|cob|portoroz
+7463	2025	1	L1	MUGA	poznan	active	24800	1|muga|poznan
+7488	2025	1	L3	Fradis Minoris Ristorante	pula	active	24892	1|fradisminoris|pula
+7489	2024	1	L3	Fradis Minoris Ristorante	pula	active	24892	1|fradisminoris|pula
+7535	2025	1	L3	Herdade do Esporão Restaurant	reguengos-de-monsaraz	active	24820	1|herdadedoesporao|reguengosdemonsaraz
+7536	2024	1	L3	Herdade do Esporão Restaurant	reguengos-de-monsaraz	active	24820	1|herdadedoesporao|reguengosdemonsaraz
+7563	2025	1	L1	Nebo	rijeka	active	24858	1|nebo|rijeka
+7564	2024	1	L1	Nebo	rijeka	active	24858	1|nebo|rijeka
+7568	2025	2	L1	Da Lucio	rimini	active	19920	2|dalucio|rimini
+7569	2024	1	L1	Da Lucio	rimini	active	19920	1|dalucio|rimini
+7578	2025	1	L1	Oseille	rio-de-janeiro	active	25153	1|oseille|riodejaneiro
+7583	2025	2	L1	Oteque	rio-de-janeiro	active	19832	2|oteque|riodejaneiro
+7584	2024	2	L1	Oteque	rio-de-janeiro	active	19832	2|oteque|riodejaneiro
+7608	2025	1	L3	Idylio by Apreda	rome	active	24889	1|idylio|rome
+7623	2025	1	L3	Zia Restaurant	rome	active	24795	1|zia|rome
+7624	2024	1	L3	Zia Restaurant	rome	active	24795	1|zia|rome
+7661	2025	2	L1	Knystaforsen	rydobruk	active	19982	2|knystaforsen|rydobruk
+7662	2024	2	L1	Knystaforsen	rydobruk	active	19982	2|knystaforsen|rydobruk
+7682	2025	1	MANUAL	Bed & Breakfast - Les Belles Perdrix	saint-emilion	active	24851	1|lesbellesperdrixdetroplongmondot|saintemilion
+7688	2024	1	L3	PRESS Restaurant	saint-helena	active	29713	1|press|sainthelena
+7725	2025	1	L1	Deliranto	salou	active	24970	1|deliranto|salou
+7771	2025	1	L1	Nisei	san-francisco	active	24855	1|nisei|sanfrancisco
+7806	2025	1	L1	PANGEA	monterrey	active	24909	1|pangea|monterrey
+7815	2025	2	L1	daGorini	san-piero-in-bagno	active	19904	2|dagorini|sanpieroinbagno
+7821	2025	1	MANUAL	Restaurante Casa Solla	poio	active	25076	1|casasolla|pontevedra
+7856	2025	2	L1	Qafiz	santa-cristina-daspromonte	active	19985	2|qafiz|santacristinadaspromonte
+7857	2024	1	L1	Qafiz	santa-cristina-daspromonte	active	19985	1|qafiz|santacristinadaspromonte
+7937	2025	2	MANUAL	Eatanic Garden, Josun Palace	seoul	active	19941	2|lamantsecreteatanicgarden|seoul
+7938	2024	1	MANUAL	Eatanic Garden, Josun Palace	seoul	active	19941	1|lamantsecreteatanicgarden|seoul
+7959	2025	1	L1	LEGUME	seoul	active	25132	1|legume|seoul
+7969	2025	1	L1	Onjium	seoul	active	24828	1|onjium|seoul
+7970	2024	1	L1	Onjium	seoul	active	24828	1|onjium|seoul
+7977	2025	1	L1	Solbam	seoul	active	24874	1|solbam|seoul
+7978	2024	1	L1	Solbam	seoul	active	24874	1|solbam|seoul
+7992	2024	1	L1	Vinho	seoul	active	29768	1|vinho|seoul
+7998	2025	1	L1	Zero Complex	seoul	active	24829	1|zerocomplex|seoul
+8044	2025	3	L1	Ling Long	shanghai	active	19765	3|linglong|shanghai
+8045	2024	2	L1	Ling Long	shanghai	active	19765	2|linglong|shanghai
+8057	2025	1	L1	Obscura	shanghai	active	24950	1|obscura|shanghai
+8074	2025	1	L1	Vivant by Johnny Pham	shanghai	active	24959	1|vivantbyjohnnypham|shanghai
+8099	2025	1	L1	Araya	singapore	active	24893	1|araya|singapore
+8102	2025	2	L3	Restaurant Born	singapore	active	20059	2|born|singapore
+8103	2024	1	L3	Restaurant Born	singapore	active	20059	1|born|singapore
+8145	2025	2	L3	Restaurant Labyrinth	singapore	active	21187	2|labyrinth|singapore
+8146	2024	1	L3	Restaurant Labyrinth	singapore	active	21187	1|labyrinth|singapore
+8154	2025	2	L1	Nouri	singapore	active	19919	2|nouri|singapore
+8155	2024	1	L1	Nouri	singapore	active	19919	1|nouri|singapore
+8162	2025	2	L1	Seroja	singapore	active	19957	2|seroja|singapore
+8163	2024	2	L1	Seroja	singapore	active	19957	2|seroja|singapore
+8174	2025	1	L1	Summer Pavilion	singapore	active	24827	1|summerpavilion|singapore
+8175	2024	1	L1	Summer Pavilion	singapore	active	24827	1|summerpavilion|singapore
+8199	2025	2	L1	Burnt Ends	singapore	active	19861	2|burntends|singapore
+8200	2024	2	L1	Burnt Ends	singapore	active	19861	2|burntends|singapore
+8254	2025	1	L1	Assonica	sorisole	active	24778	1|assonica|sorisole
+8262	2025	2	L3	Marotta Ristorante	squille	active	19871	2|marotta|squille
+8263	2024	1	L3	Marotta Ristorante	squille	active	19871	1|marotta|squille
+8287	2025	2	L3	Restaurant Ekstedt	stockholm	active	19983	2|ekstedt|stockholm
+8288	2024	2	L3	Restaurant Ekstedt	stockholm	active	19983	2|ekstedt|stockholm
+8298	2025	1	L1	Nour	stockholm	active	25120	1|nour|stockholm
+8299	2024	1	L1	Nour	stockholm	active	25120	1|nour|stockholm
+8355	2025	1	L1	Kanoe	sao-paulo	active	25140	1|kanoe|saopaulo
+8357	2025	1	L3	Kazuo Restaurante	sao-paulo	active	24983	1|kazuo|saopaulo
+8358	2024	1	L3	Kazuo Restaurante	sao-paulo	active	24983	1|kazuo|saopaulo
+8361	2025	1	L3	Maní	sao-paulo	active	24915	1|manimanioca|saopaulo
+8362	2024	1	L3	Maní	sao-paulo	active	24915	1|manimanioca|saopaulo
+8387	2025	2	L2	Gallery By Chele	manila	active	19849	2|gallerybychele|taguig
+8388	2024	1	L2	Gallery By Chele	manila	active	19849	1|gallerybychele|taguig
+8402	2025	1	L2	de nuit	taipei	active	24984	1|denuit|taipeicity
+8427	2025	1	L3	NCH, NOA CHEF’s HALL	tallinn	active	25160	1|noachefshall|tallinn
+8428	2024	1	L3	NCH, NOA CHEF’s HALL	tallinn	active	25160	1|noachefshall|tallinn
+8485	2025	2	L1	apothéose	tokyo	active	19955	2|apotheose|tokyo
+8486	2024	1	L1	apothéose	tokyo	active	19955	1|apotheose|tokyo
+8496	2025	1	L3	CYCLE	tokyo	active	25184	1|cyclebymaurocolagreco|tokyo
+8497	2024	1	L3	CYCLE	tokyo	active	25184	1|cyclebymaurocolagreco|tokyo
+8506	2025	1	L1	est	tokyo	active	24908	1|est|tokyo
+8507	2024	1	L1	est	tokyo	active	24908	1|est|tokyo
+8581	2025	1	L1	nôl	tokyo	active	25149	1|nol|tokyo
+8666	2025	1	L1	Aburi Hana	toronto	closed	25112	1|aburihana|toronto
+8670	2025	1	L1	Alo	toronto	active	25069	1|alo|toronto
+8671	2024	1	L1	Alo	toronto	active	25069	1|alo|toronto
+8691	2025	1	L1	Quetzal	toronto	active	25138	1|quetzal|toronto
+8700	2025	2	L1	Sushi Masaki Saito	toronto	active	19972	2|sushimasakisaito|toronto
+8701	2024	1	L1	Sushi Masaki Saito	toronto	active	19972	1|sushimasakisaito|toronto
+8721	2025	1	L3	Aux Terrasses - Hôtel Restaurant Tournus	tournus	active	24943	1|auxterrasses|tournus
+8722	2024	1	L3	Aux Terrasses - Hôtel Restaurant Tournus	tournus	active	24943	1|auxterrasses|tournus
+8730	2025	1	L3	Restaurant Bootshaus	traunkirchen	active	25007	1|bootshaus|traunkirchen
+8752	2024	1	MANUAL	Ristorante Del Cambio	turin	active	29706	1|delcambio|torino
+8766	2025	1	L3	Restaurang Äng	tvaaker	active	24885	1|ang|tvaaker
+8767	2024	1	L3	Restaurang Äng	tvaaker	active	24885	1|ang|tvaaker
+8772	2025	1	L1	De Leuf	ubachsberg	active	25099	1|deleuf|ubachsberg
+8773	2024	1	L1	De Leuf	ubachsberg	active	25099	1|deleuf|ubachsberg
+8784	2025	1	L1	OD Urla	izmir	active	25061	1|odurla|izmir
+8788	2025	1	L1	Teruar Urla	izmir	active	25060	1|teruarurla|izmir
+8796	2025	1	L1	Frédéric Molina à Forêt Ivre	vailly	active	24897	1|fredericmolinaaforetivre|vailly
+8797	2024	1	L1	Frédéric Molina à Forêt Ivre	vailly	active	24897	1|fredericmolinaaforetivre|vailly
+8810	2025	2	L3	La Salita de Begoña Rodrigo	valencia	active	19845	2|lasalita|valencia
+8811	2024	2	L3	La Salita de Begoña Rodrigo	valencia	active	19845	2|lasalita|valencia
+8827	2025	1	L1	Noni	valletta	active	24962	1|noni|valletta
+8863	2025	2	L3	Restaurant Lyst	vejle	active	19860	2|lyst|vejle
+8907	2025	1	L3	Restaurant Herzig	vienna	active	25135	1|herzig|vienna
+8971	2025	1	L1	hub.praga	warsaw	active	25179	1|hubpraga|warsaw
+8973	2025	1	L1	Nuta	warsaw	active	24788	1|nuta|warsaw
+8974	2024	1	L1	Nuta	warsaw	active	24788	1|nuta|warsaw
+8976	2025	1	L1	Rozbrat 20	warsaw	active	24803	1|rozbrat20|warsaw
+9010	2025	1	L2	Oyster Oyster	washington-dc	active	25098	1|oysteroyster|washington
+9014	2025	1	L2	Pineapple and Pearls	washington-dc	active	24766	1|pineappleandpearls|washington
+9015	2024	1	L2	Pineapple and Pearls	washington-dc	active	24766	1|pineappleandpearls|washington
+9071	2025	1	L1	Menssa	brussels	active	24834	1|menssa|brussels
+9117	2025	1	L1	KLE	zurich	active	25187	1|kle|zurich
+9118	2024	1	L1	KLE	zurich	active	25187	1|kle|zurich
+9127	2025	2	L1	Sud 777	mexico-city	active	20476	2|sud777|mexicocity
+9128	2024	2	L1	Sud 777	mexico-city	active	20476	2|sud777|mexicocity
+9153	2025	1	L2	Grič	horjul	active	25004	1|gric|sentjostnadhorjulom
+9154	2024	1	L2	Grič	horjul	active	25004	1|gric|sentjostnadhorjulom
+9160	2025	1	L3	Restaurante Alcalde	guadalajara	active	24894	1|alcalde|guadalajara
+9161	2024	1	L3	Restaurante Alcalde	guadalajara	active	24894	1|alcalde|guadalajara
+9172	2025	2	L1	Xokol	guadalajara	active	20052	2|xokol|guadalajara
+9173	2024	2	L1	Xokol	guadalajara	active	20052	2|xokol|guadalajara
+9176	2025	2	L1	Huniik	merida	active	20007	2|huniik|merida
+9177	2024	2	L1	Huniik	merida	active	20007	2|huniik|merida
+9183	2025	2	MANUAL	Ixi'im Restaurant	chochola	active	19965	2|ixiimchableyucatan|chochola
+9184	2024	1	MANUAL	Ixi'im Restaurant	chochola	active	19965	1|ixiimchableyucatan|chochola
+9546	2025	1	L3	Ristorante Al Cambio	bologna	active	25028	1|alcambio|bologna
+10120	2025	2	L1	Sufret Maryam	dubai	active	20009	2|sufretmaryam|dubai
+10462	2025	1	L3	Ravintola Nolla	helsinki	active	25003	1|nolla|helsinki
+11138	2025	3	L3	Trattoria BROS'	martina-franca	active	19746	3|bros|martinafranca
+11139	2024	3	L3	Trattoria BROS'	martina-franca	active	19746	3|bros|martinafranca
+11193	2025	1	L3	Trattoria Trippa	milan	active	24861	1|trippa|milan
+11194	2024	1	L3	Trattoria Trippa	milan	active	24861	1|trippa|milan
+12337	2025	2	L3	A Casa do Porco Bar	sao-paulo	active	19932	2|acasadoporco|saopaulo
+12338	2024	2	L3	A Casa do Porco Bar	sao-paulo	active	19932	2|acasadoporco|saopaulo
+12387	2025	1	L3	Mocotó Vila Medeiros	sao-paulo	active	25101	1|mocoto|saopaulo
+12773	2025	2	L3	El Molino de Urdániz y Origen	urdaniz	active	19864	2|molinodeurdaniz|urdaniz
+12962	2025	1	L2	BABA	wroc-aw	active	24804	1|baba|wroclaw
+12963	2024	1	L2	BABA	wroc-aw	active	24804	1|baba|wroclaw
+13050	2025	3	L1	Maido	lima	active	19791	3|maido|lima
+13051	2024	3	L1	Maido	lima	active	19791	3|maido|lima
+13060	2025	3	L1	Table	paris	active	19725	3|table|paris
+13061	2024	3	L1	Table	paris	active	19725	3|table|paris
+13070	2025	3	L1	Kjolle	lima	active	19805	3|kjolle|lima
+13071	2024	3	L1	Kjolle	lima	active	19805	3|kjolle|lima
+13086	2025	3	L3	WING Restaurant	hong-kong	active	19824	3|wing|hongkong
+13087	2024	2	L3	WING Restaurant	hong-kong	active	19824	2|wing|hongkong
+13097	2025	3	L1	Lido 84	gardone-riviera	closed	19813	3|lido84|gardoneriviera
+13098	2024	3	L1	Lido 84	gardone-riviera	closed	19813	3|lido84|gardoneriviera
+13111	2025	3	L1	Boragó	santiago	active	19814	3|borago|santiago
+13112	2024	3	L1	Boragó	santiago	active	19814	3|borago|santiago
+13123	2025	3	L1	Mérito	lima	active	19773	3|merito|lima
+13124	2024	2	L1	Mérito	lima	active	19773	2|merito|lima
+13133	2025	2	L3	Mayta Restaurante	lima	active	19921	2|mayta|lima
+13134	2024	2	L3	Mayta Restaurante	lima	active	19921	2|mayta|lima
+13154	2025	3	L2	Belcanto	lisbon	active	19771	3|belcanto|lisboa
+13155	2024	3	L2	Belcanto	lisbon	active	19771	3|belcanto|lisboa
+13160	2025	3	L1	Celele	cartagena	active	19763	3|celele|cartagena
+13161	2024	3	L1	Celele	cartagena	active	19763	3|celele|cartagena
+13850	2025	2	L1	ARCA	tulum	active	19946	2|arca|tulum
+13851	2024	2	L1	ARCA	tulum	active	19946	2|arca|tulum
+14046	2025	3	L1	El Chato	bogota	active	19714	3|elchato|bogota
+14047	2024	3	L1	El Chato	bogota	active	19714	3|elchato|bogota
+14061	2025	2	L1	La Colombe	cape-town	active	19922	2|lacolombe|capetown
+14062	2024	2	L1	La Colombe	cape-town	active	19922	2|lacolombe|capetown
+14274	2025	3	L1	Central	lima	active	19826	3|central|lima
+14275	2024	3	L1	Central	lima	active	19826	3|central|lima
+14282	2025	3	L1	Leo	bogota	active	19778	3|leo|bogota
+14283	2024	3	L1	Leo	bogota	active	19778	3|leo|bogota
+14475	2025	3	L3	Fyn Restaurant	cape-town	active	19804	3|fyn|capetown
+14476	2024	2	L3	Fyn Restaurant	cape-town	active	19804	2|fyn|capetown
+14519	2024	2	L3	ULTRAVIOLET BY PAUL PAIRET	shanghai	active	20657	2|ultraviolet|shanghai
+14578	2024	1	L1	Tippling Club	singapore	closed	29680	1|tipplingclub|singapore
+14871	2025	1	L3	Brae Restaurant	birregurra	active	24841	1|brae|birregurra
+14872	2024	1	L3	Brae Restaurant	birregurra	active	24841	1|brae|birregurra
+15108	2025	2	L3	Quay Restaurant	sydney	closed	19995	2|quay|sydney
+15109	2024	2	L3	Quay Restaurant	sydney	closed	19995	2|quay|sydney
+15303	2025	1	L1	Tantris	munich	active	24808	1|tantris|munich
+15304	2024	1	L1	Tantris	munich	active	24808	1|tantris|munich
+15445	2024	1	L1	Eigensinn Farm	singhampton	active	29764	1|eigensinnfarm|singhampton
+15484	2025	3	L1	Andō	hong-kong	active	19705	3|ando|hongkong
+15485	2024	2	L1	Andō	hong-kong	active	19705	2|ando|hongkong
+15492	2025	3	L1	NUEMA	quito	active	19709	3|nuema|quito
+15493	2024	2	L1	NUEMA	quito	active	19709	2|nuema|quito
+15502	2025	3	L1	Diacá	guatemala-city	active	19737	3|diaca|guatemalacity
+15503	2024	3	L1	Diacá	guatemala-city	active	19737	3|diaca|guatemalacity
+15512	2025	3	L2	Locavore NXT	ubud	active	19741	3|locavorenxt|bali
+15513	2024	1	L2	Locavore NXT	ubud	active	19741	1|locavorenxt|bali
+15516	2025	3	L1	Saint Peter	sydney	active	19772	3|saintpeter|sydney
+15517	2024	3	L1	Saint Peter	sydney	active	19772	3|saintpeter|sydney
+15518	2025	3	L3	Restaurante Manu	curitiba	active	19781	3|manu|curitiba
+15519	2024	3	L3	Restaurante Manu	curitiba	active	19781	3|manu|curitiba
+15528	2025	3	L1	Sushi Meino	tokyo	active	19788	3|sushimeino|tokyo
+15529	2024	3	L1	Sushi Meino	tokyo	active	19788	3|sushimeino|tokyo
+15531	2025	3	L1	TIAN	vienna	active	19803	3|tian|vienna
+15532	2024	2	L1	TIAN	vienna	active	19803	2|tian|vienna
+15536	2025	3	L1	NAAR	kasauli	active	19807	3|naar|kasauli
+15537	2024	2	L1	NAAR	kasauli	active	19807	2|naar|kasauli
+15541	2025	3	L3	Grand Hotel a Villa Feltrinelli	gargnano	active	19817	3|villafeltrinelli|gargnano
+15542	2024	2	L3	Grand Hotel a Villa Feltrinelli	gargnano	active	19817	2|villafeltrinelli|gargnano
+15544	2025	3	L1	Amisfield	queenstown	active	19823	3|amisfield|queenstown
+15545	2024	3	L1	Amisfield	queenstown	active	19823	3|amisfield|queenstown
+15548	2025	2	L3	Ristorante Dina	gussago	active	19831	2|dina|gussago
+15549	2024	1	L3	Ristorante Dina	gussago	active	19831	1|dina|gussago
+15552	2025	2	L3	Acqua Italian Dining Restaurant Bangkok	bangkok	active	19833	2|acqua|bangkok
+15553	2024	1	L3	Acqua Italian Dining Restaurant Bangkok	bangkok	active	19833	1|acqua|bangkok
+15555	2025	2	L3	Iris | Rosendal	rosendal	active	19838	2|iris|rosendal
+15556	2024	2	L3	Iris | Rosendal	rosendal	active	19838	2|iris|rosendal
+15557	2025	2	L1	Suculent	barcelona	active	19842	2|suculent|barcelona
+15558	2024	2	L1	Suculent	barcelona	active	19842	2|suculent|barcelona
+15560	2025	2	L1	AT	paris	active	19844	2|at|paris
+15561	2024	2	L1	AT	paris	active	19844	2|at|paris
+15563	2025	2	L3	LA TABLE DES AMIS - BONNIEUX	bonnieux	active	19852	2|latabledesamis|bonnieux
+15565	2025	2	L1	PiperoRoma	rome	active	19853	2|piperoroma|rome
+15566	2024	1	L1	PiperoRoma	rome	active	19853	1|piperoroma|rome
+15567	2025	2	L2	Blue Hill at Stone Barns	tarrytown	active	19856	2|bluehillatstonebarns|newyork
+15568	2024	2	L2	Blue Hill at Stone Barns	tarrytown	active	19856	2|bluehillatstonebarns|newyork
+15569	2025	2	L2	Fauna	guadalupe	active	19862	2|fauna|valledeguadalupe
+15570	2024	1	L2	Fauna	guadalupe	active	19862	1|fauna|valledeguadalupe
+15576	2025	2	L1	Dalla Gioconda	gabicce-monte	active	19866	2|dallagioconda|gabiccemonte
+15577	2024	1	L1	Dalla Gioconda	gabicce-monte	active	19866	1|dallagioconda|gabiccemonte
+15580	2025	2	L3	Silo London	london	closed	19874	2|silo|london
+15582	2025	2	L1	Podere Belvedere Tuscany	pontassieve	active	19877	2|poderebelvederetuscany|pontassieve
+15584	2025	2	L1	Kuuk	merida	active	19992	2|kuuk|merida
+15585	2024	2	L1	Kuuk	merida	active	19992	2|kuuk|merida
+15588	2025	2	L3	Restaurante Origem	salvador	active	19887	2|origem|salvador
+15589	2024	2	L3	Restaurante Origem	salvador	active	19887	2|origem|salvador
+15594	2025	2	L1	L'Auberge de Saint-Rémy	saint-remy	active	20494	2|laubergedesaintremy|saintremy
+15595	2024	2	L1	L'Auberge de Saint-Rémy	saint-remy	active	20494	2|laubergedesaintremy|saintremy
+15597	2025	2	L3	Villa La Coste	le-puy-sainte-reparade	active	19890	2|louisoncurrentworkplacevillalacoste|lepuysaintereparade
+15598	2025	2	L1	L'Auberge de Montmin	talloires-montmin	active	19891	2|laubergedemontmin|talloiresmontmin
+15600	2025	2	L1	Pepe In Grani	caiazzo	active	19893	2|pepeingrani|caiazzo
+15601	2024	2	L1	Pepe In Grani	caiazzo	active	19893	2|pepeingrani|caiazzo
+15602	2025	2	L3	The Restaurant	zurich	active	19910	2|therestaurantatthedoldergrand|zurich
+15603	2024	2	L3	The Restaurant	zurich	active	19910	2|therestaurantatthedoldergrand|zurich
+15605	2025	2	L3	TakaHisa Japanese Restaurant	dubai	active	19915	2|takahisa|dubai
+15611	2025	2	L3	Aguají Restaurant by Chef Tita	sosua	active	19917	2|aguaji|sosua
+15612	2024	2	L3	Aguají Restaurant by Chef Tita	sosua	active	19917	2|aguaji|sosua
+15614	2025	2	L1	Cordero	caracas	active	19918	2|cordero|caracas
+15615	2024	1	L1	Cordero	caracas	active	19918	1|cordero|caracas
+15619	2025	2	L1	Le Doyenné	saint-vrain	active	19923	2|ledoyenne|saintvrain
+15620	2024	1	L1	Le Doyenné	saint-vrain	active	19923	1|ledoyenne|saintvrain
+15622	2025	2	L1	Bar da Dona Onça	sao-paulo	active	19925	2|bardadonaonca|saopaulo
+15623	2024	2	L1	Bar da Dona Onça	sao-paulo	active	19925	2|bardadonaonca|saopaulo
+15626	2025	2	MANUAL	Langdon Hall Country House Hotel & Spa	cambridge-on	active	19927	2|langdonhall|cambridge
+15627	2024	2	MANUAL	Langdon Hall Country House Hotel & Spa	cambridge-on	active	19927	2|langdonhall|cambridge
+15630	2025	2	MANUAL	El Papagayo Restaurant	cordoba-ar	active	19929	2|elpapagayo|cordoba
+15631	2024	2	MANUAL	El Papagayo Restaurant	cordoba-ar	active	19929	2|elpapagayo|cordoba
+15634	2025	2	L1	The LivingRoom at Summerhill Guest Estate	durban	active	19938	2|thelivingroomatsummerhillguestestate|durban
+15635	2024	1	L1	The LivingRoom at Summerhill Guest Estate	durban	active	19938	1|thelivingroomatsummerhillguestestate|durban
+15636	2025	2	L1	Farmlore	bengaluru	active	19875	2|farmlore|bengaluru
+15640	2025	2	L1	Villa Aida	wakayama	active	19952	2|villaaida|wakayama
+15641	2024	2	L1	Villa Aida	wakayama	active	19952	2|villaaida|wakayama
+15648	2025	2	L1	BOZAR	brussels	active	19953	2|bozar|brussels
+15649	2024	2	L1	BOZAR	brussels	active	19953	2|bozar|brussels
+15651	2025	2	L1	Gucci Osteria	florence	active	20030	2|gucciosteria|florence
+15652	2024	2	L1	Gucci Osteria	florence	active	20030	2|gucciosteria|florence
+15655	2025	2	L1	Satoyama Jujo	niigata	active	20596	2|satoyamajujo|niigata
+15656	2024	2	L1	Satoyama Jujo	niigata	active	20596	2|satoyamajujo|niigata
+15657	2025	2	L3	Stone Sal Yanyan Western Restaurant	shanghai	active	20058	2|stonesal|shanghai
+15659	2025	2	L3	MIL Centro - Food Lab and Interpretation Center	moray	active	19966	2|mil|moray
+15660	2024	2	L3	MIL Centro - Food Lab and Interpretation Center	moray	active	19966	2|mil|moray
+15669	2025	2	MANUAL	Khufu's Restaurant	cairo	active	19981	2|khufus|giza
+15670	2024	1	MANUAL	Khufu's Restaurant	cairo	active	19981	1|khufus|giza
+15675	2025	2	L1	Broto	lisbon	active	19993	2|broto|lisbon
+15676	2024	2	L1	Broto	lisbon	active	19993	2|broto|lisbon
+15677	2025	2	L2	La Petite Colombe	franschhoek	active	19994	2|lapetitecolombe|capetown
+15679	2025	2	L3	Cheval Blanc by Peter Knogl	basel	active	19996	2|chevalblanc|basel
+15680	2025	2	L1	Estimar	barcelona	active	20001	2|estimar|barcelona
+15681	2024	2	L1	Estimar	barcelona	active	20001	2|estimar|barcelona
+15690	2025	2	HOLD	Ensue	shenzhen	active		Ensue (Shenzhen) 2025 2-Knife: Ensue is 1 knife (row 15691); Shenzhen 2-knife entry = Fumee (Reina Chen), no row
+15691	2025	1	L1	Ensue	shenzhen	active	24945	1|ensue|shenzhen
+15694	2025	2	L3	The Yeatman Hotel	porto	active	20004	2|theyeatman|porto
+15695	2024	2	L3	The Yeatman Hotel	porto	active	20004	2|theyeatman|porto
+15698	2025	2	L1	Ræst	torshavn	active	20014	2|raest|torshavn
+15699	2024	2	L1	Ræst	torshavn	active	20014	2|raest|torshavn
+15700	2025	2	L1	Sublime	guatemala-city	active	20017	2|sublime|guatemalacity
+15701	2024	1	L1	Sublime	guatemala-city	active	20017	1|sublime|guatemalacity
+15708	2025	2	L1	Indian Accent	new-delhi	active	20018	2|indianaccent|newdelhi
+15717	2025	2	L3	Widder Hotel	zurich	active	20023	2|widder|zurich
+15718	2024	2	L3	Widder Hotel	zurich	active	20023	2|widder|zurich
+15720	2025	2	L3	Syrco BASÈ - RESTAURANT and BAR	bali	active	20028	2|syrcobase|bali
+15721	2024	2	L3	Syrco BASÈ - RESTAURANT and BAR	bali	active	20028	2|syrcobase|bali
+15722	2025	2	L3	Stücki Park	basel	active	20031	2|stucki|basel
+15723	2024	2	L3	Stücki Park	basel	active	20031	2|stucki|basel
+15725	2025	2	L3	Story Street	london	active	20038	2|story|london
+15727	2025	2	HOLD	8½ Otto e Mezzo BOMBANA	macau	active		8 1/2 Otto e Mezzo BOMBANA (Macau) 2025 2-Knife: entry = Umberto Bombana, Hong Kong (Alexandra House)
+15737	2025	2	L3	Krasota Dubai Restaurant	dubai	active	20049	2|krasota|dubai
+15738	2024	2	L3	Krasota Dubai Restaurant	dubai	active	20049	2|krasota|dubai
+15739	2025	2	L3	Restaurant Xavier Pellicer	barcelona	active	20051	2|xavierpellicer|barcelona
+15740	2024	2	L3	Restaurant Xavier Pellicer	barcelona	active	20051	2|xavierpellicer|barcelona
+15742	2025	2	L1	Sushi Arai	tokyo	active	22831	2|sushiarai|tokyo
+15745	2025	2	L1	Paris Butter	auckland	active	20057	2|parisbutter|auckland
+15748	2025	1	L3	INJA Restaurant	new-delhi	active	24771	1|inja|newdelhi
+15751	2025	1	L1	Oncore by Clare Smyth	sydney	closed	24775	1|oncorebyclaresmyth|sydney
+15752	2024	1	L1	Oncore by Clare Smyth	sydney	closed	24775	1|oncorebyclaresmyth|sydney
+15754	2025	1	L3	NOUA. Bucătărie Românească	bucharest	active	24779	1|noua|bucharest
+15755	2025	1	L3	AURA by Alexander Herrmann & Tobias Bätz	wirsberg	active	24780	1|aura|wirsberg
+15757	2025	1	L1	La Mesa	santiago	active	24784	1|lamesa|santiago
+15758	2025	1	MANUAL	The Palash Vann Resort	maharashtra	active	24787	1|palaash|maharashtra
+15759	2024	1	MANUAL	The Palash Vann Resort	maharashtra	active	24787	1|palaash|maharashtra
+15760	2025	1	L3	Clara Restaurante	quito	active	24882	1|clara|quito
+15763	2025	1	L1	Yi	macau	active	24789	1|yi|macau
+15773	2025	1	L3	Farasha Farmhouse	marrakech	active	24790	1|farashafarmhousemoutonnoir|marrakech
+15774	2025	1	L1	La Mar	lima	active	24792	1|lamar|lima
+15783	2025	1	L1	Park	westmount	active	24794	1|park|westmount
+15786	2025	1	L1	Ho Lee Fook	hong-kong	active	24796	1|holeefook|hongkong
+15788	2025	1	MANUAL	Bourgeois Bohemians	saint-petersburg	active	24812	1|bourgeoisbohemian|saintpetersbourg
+15790	2025	1	L1	Hémicycle	paris	closed	24801	1|hemicycle|paris
+15791	2024	1	L1	Hémicycle	paris	closed	24801	1|hemicycle|paris
+15794	2025	1	L3	Paste Bangkok	bangkok	active	24805	1|paste|bangkok
+15795	2024	1	L3	Paste Bangkok	bangkok	active	24805	1|paste|bangkok
+15798	2025	1	L3	Pipit Restaurant	pottsville	active	24806	1|pipit|pottsville
+15799	2025	1	L1	Demencia	santiago	active	24809	1|demencia|santiago
+15804	2025	1	L2	Iai	manila	active	24816	1|iai|taguig
+15805	2025	1	L1	Apartıman Yeniköy	istanbul	active	24817	1|apartimanyenikoy|istanbul
+15806	2024	1	L1	Apartıman Yeniköy	istanbul	active	24817	1|apartimanyenikoy|istanbul
+15807	2025	1	L3	Dusk Restaurant	stellenbosch	active	24819	1|dusk|stellenbosch
+15808	2024	1	L3	Dusk Restaurant	stellenbosch	active	24819	1|dusk|stellenbosch
+15810	2025	1	L1	Alto	caracas	active	24821	1|alto|caracas
+15811	2024	1	L1	Alto	caracas	active	24821	1|alto|caracas
+15812	2025	1	L3	Orujo, Taller de Gastronomía	san-juan	active	24822	1|orujo|sanjuan
+15813	2025	1	L1	Domingo	cali	active	24824	1|domingo|cali
+15814	2024	1	L1	Domingo	cali	active	24824	1|domingo|cali
+15815	2025	1	L1	Meet the Bund	shanghai	active	24826	1|meetthebund|shanghai
+15816	2024	1	L1	Meet the Bund	shanghai	active	24826	1|meetthebund|shanghai
+15823	2025	1	L1	HODAN	istanbul	closed	24836	1|hodan|istanbul
+15824	2025	1	L1	Amaru	melbourne	active	24837	1|amaru|melbourne
+15826	2025	1	L1	Pikaia Lodge	galapagos	active	24838	1|pikaialodge|galapagos
+15827	2025	1	L1	Ox & Klee	cologne	active	24842	1|oxklee|cologne
+15828	2024	1	L1	Ox & Klee	cologne	active	24842	1|oxklee|cologne
+15833	2025	1	L1	Sixpenny	stanmore	active	24843	1|sixpenny|stanmore
+15834	2024	1	L1	Sixpenny	stanmore	active	24843	1|sixpenny|stanmore
+15836	2025	1	L3	ECK Restaurant	bratislava	active	24844	1|eck|bratislava
+15838	2025	1	L1	Rubra	punta-de-mita	active	24846	1|rubra|puntademita
+15840	2025	1	L1	Oltre.	bologna	active	24847	1|oltre|bologna
+15841	2024	1	L1	Oltre.	bologna	active	24847	1|oltre|bologna
+15842	2025	1	L3	Restaurante Manga	salvador	active	24849	1|manga|salvador
+15843	2024	1	L3	Restaurante Manga	salvador	active	24849	1|manga|salvador
+15846	2025	1	L1	EIGHT	calgary	active	24850	1|eight|calgary
+15848	2025	1	L3	Restaurant Daalder*	amsterdam	active	24859	1|daalder|amsterdam
+15849	2025	1	L3	Restaurante Flor De Lis	guatemala-city	active	24862	1|flordelis|guatemalacity
+15851	2025	1	L1	Ōre	bangkok	closed	24863	1|ore|bangkok
+15852	2024	1	L1	Ōre	bangkok	closed	24863	1|ore|bangkok
+15855	2025	1	L3	Sakhalin İstanbul	istanbul	active	24864	1|sakhalin|istanbul
+15856	2025	1	L1	Farmers	marrakech	active	24866	1|farmers|marrakech
+15858	2025	1	L1	Metzi	sao-paulo	active	24868	1|metzi|saopaulo
+15864	2025	1	L1	Peach Blossoms	singapore	active	24869	1|peachblossoms|singapore
+15868	2025	1	L1	L’évo	toyama	active	24871	1|levo|toyama
+15869	2024	1	L1	L’évo	toyama	active	24871	1|levo|toyama
+15875	2025	1	L1	Balzi Rossi	ventimiglia	active	24873	1|balzirossi|ventimiglia
+15876	2025	1	L1	Mengano	buenos-aires	active	24877	1|mengano|buenosaires
+15878	2025	1	L3	Turk Fatih Tutak	istanbul	active	24878	1|turk|istanbul
+15879	2024	1	L3	Turk Fatih Tutak	istanbul	active	24878	1|turk|istanbul
+15880	2025	1	MANUAL	Table III	casablanca	active	24879	1|table3|casablanca
+15883	2025	1	L1	Cantina del Tigre	panama-city	active	24898	1|cantinadeltigre|panamacity
+15888	2025	1	L3	Girl & the Goose - Restaurante Centroamericano	dubai	active	24899	1|girlthegoose|dubai
+15890	2025	1	L2	Rumari	jimbaran	active	24900	1|rumari|bali
+15891	2024	1	L2	Rumari	jimbaran	active	24900	1|rumari|bali
+15893	2025	1	L3	SEM Restaurant	lisbon	closed	24901	1|sem|lisbon
+15894	2024	1	L3	SEM Restaurant	lisbon	closed	24901	1|sem|lisbon
+15895	2025	1	L3	Ocyá	rio-de-janeiro	active	24903	1|ocyaleblon|riodejaneiro
+15896	2024	1	L3	Ocyá	rio-de-janeiro	active	24903	1|ocyaleblon|riodejaneiro
+15899	2025	1	L1	El Xolo	san-salvador	active	24906	1|elxolo|sansalvador
+15904	2025	1	L1	Kvitnes Gård	kvitnes	active	24910	1|kvitnesgard|kvitnes
+15906	2025	1	L1	August	jakarta	active	24911	1|august|jakarta
+15907	2024	1	L1	August	jakarta	active	24911	1|august|jakarta
+15912	2025	1	L1	Scalottas Terroir	lenzerheide	closed	24913	1|scalottasterroir|lenzerheide
+15913	2025	1	L3	Sufra Restaurant	amman	active	24914	1|sufra|amman
+15918	2025	1	L1	Tala	auckland	active	24916	1|tala|auckland
+15921	2025	1	L2	Conservatorium	san-jose	active	24917	1|conservatorium|ciudadcolon
+15924	2025	1	L3	WAGYUMAFIA DISTRICT	tokyo	active	24921	1|wagyumafia|tokyo
+15927	2025	1	L1	T.U.N.G Dining	hanoi	active	24922	1|tungdining|hanoi
+15928	2025	1	L1	ManO2	zagreb	active	24923	1|mano2|zagreb
+15929	2025	1	L1	Vue de monde	melbourne	active	24925	1|vuedemonde|melbourne
+15931	2025	1	L1	Papa's	mumbai	active	24926	1|papas|mumbai
+15934	2025	1	L3	La Calma by Fredes	santiago	active	24927	1|lacalma|santiago
+15935	2024	1	L3	La Calma by Fredes	santiago	active	24927	1|lacalma|santiago
+15942	2025	1	L3	TFAYA - brasserie arabesque	marrakech	active	24929	1|tfaya|marrakech
+15943	2024	1	L3	TFAYA - brasserie arabesque	marrakech	active	24929	1|tfaya|marrakech
+15944	2025	1	L1	El Bosque Bistró	caracas	active	24932	1|elbosquebistro|caracas
+15945	2024	1	L1	El Bosque Bistró	caracas	active	24932	1|elbosquebistro|caracas
+15946	2025	1	L1	The Chef's Table at Blue Duck Station	owhango	active	24933	1|thechefstableatblueduckstation|owhango
+15947	2025	1	L1	Humo Negro	bogota	active	24935	1|humonegro|bogota
+15953	2025	1	L3	Restaurant Gordon Ramsay High	london	active	24936	1|gordonramsayhigh|london
+15954	2024	1	L3	Restaurant Gordon Ramsay High	london	active	24936	1|gordonramsayhigh|london
+15956	2025	1	L1	De Groene Lantaarn	staphorst	closed	24938	1|degroenelantaarn|staphorst
+15957	2024	1	L1	De Groene Lantaarn	staphorst	closed	24938	1|degroenelantaarn|staphorst
+15959	2025	1	L1	La Tasquería	madrid	active	24939	1|latasqueria|madrid
+15960	2025	1	L1	Pulperia Santa Elvira	santiago	active	24940	1|pulperiasantaelvira|santiago
+15964	2025	1	MANUAL	Hotel Cañitas Classic	casas-ibanez	active	24941	1|canitasmaitegastro|casasibanez
+15966	2025	1	L3	Afluente Restaurante	bogota	active	24944	1|afluente|bogota
+15969	2025	1	L3	ARTE Restaurant	svaty-jur	active	24953	1|arte|svatyjur
+15970	2025	1	L1	ZEA	taipei	active	24954	1|zea|taipei
+15971	2025	1	L1	Lolla	singapore	closed	24955	1|lolla|singapore
+15972	2024	1	L1	Lolla	singapore	closed	24955	1|lolla|singapore
+15976	2025	1	L3	PIER Restaurant	cape-town	active	24957	1|pier|capetown
+15978	2025	1	L3	The Ritz London	london	active	24958	1|theritz|london
+15979	2024	1	L3	The Ritz London	london	active	24958	1|theritz|london
+15980	2025	1	L2	Reverie	washington-dc	closed	24960	1|reverie|washington
+15981	2024	1	L2	Reverie	washington-dc	closed	24960	1|reverie|washington
+15983	2025	1	L2	gēn	george-town	active	24961	1|gen|penang
+15987	2025	1	L1	Gašperov mlyn	batizovce	active	24972	1|gasperovmlyn|batizovce
+15989	2025	1	L1	Alma	montreal	active	24973	1|alma|montreal
+15991	2025	1	L1	La Tasquita de Enfrente	madrid	active	24974	1|latasquitadeenfrente|madrid
+15992	2024	1	L1	La Tasquita de Enfrente	madrid	active	24974	1|latasquitadeenfrente|madrid
+15994	2025	1	L3	20 Victoria St	toronto	active	24975	1|20victoria|toronto
+15997	2025	1	HOLD	Fo'ao Vaperse Hotel	guangzhou	active		Fo'ao Vaperse Hotel (Guangzhou) 2025 1-Knife: no entry; unused Guangzhou entry = Rever (Julien Xu)
+15998	2025	1	L1	Julia	buenos-aires	active	24977	1|julia|buenosaires
+15999	2024	1	L1	Julia	buenos-aires	active	24977	1|julia|buenosaires
+16006	2025	1	L3	Xiamen	xiamen	active	24980	1|xia|xiamen
+16007	2025	1	L3	La Grande Table Marocaine, Royal Mansour Marrakech	marrakech	active	24981	1|lagrandetablemarocaine|marrakech
+16008	2024	1	L3	La Grande Table Marocaine, Royal Mansour Marrakech	marrakech	active	24981	1|lagrandetablemarocaine|marrakech
+16015	2025	1	L3	Restaurant UOZEN	niigata	active	24982	1|uozen|niigata
+16016	2024	1	L3	Restaurant UOZEN	niigata	active	24982	1|uozen|niigata
+16018	2025	1	L1	Jun’s	dubai	active	24986	1|juns|dubai
+16023	2025	1	L1	Svinkløv Badehotel	fjerritslev	active	24987	1|svinklovbadehotel|fjerritslev
+16024	2024	1	L1	Svinkløv Badehotel	fjerritslev	active	24987	1|svinklovbadehotel|fjerritslev
+16025	2025	1	L1	Solstice	newcastle	active	24988	1|solstice|newcastle
+16028	2025	1	L1	Sawada	tokyo	active	24991	1|sawada|tokyo
+16030	2025	1	MANUAL	Firedoor Restaurant	sydney	active	24993	1|firedoor|surryhills
+16031	2024	1	MANUAL	Firedoor Restaurant	sydney	active	24993	1|firedoor|surryhills
+16034	2025	1	L3	Sidart Restaurant	auckland	closed	24994	1|sidart|auckland
+16035	2025	1	L1	The Golden Fork	rabat	active	24995	1|thegoldenfork|rabat
+16036	2024	1	L1	The Golden Fork	rabat	active	24995	1|thegoldenfork|rabat
+16037	2025	1	L3	Chefs Warehouse Beau Constantia	cape-town	active	24996	1|chefswarehouse|capetown
+16039	2025	1	MANUAL	Beijing 1996	beijing	active	24997	1|chef1996|beijing
+16041	2025	1	L3	Autem Milano	milan	active	24999	1|autem|milan
+16043	2025	1	L1	Em	mexico-city	active	25001	1|em|mexicocity
+16047	2025	1	L3	Casa Coloni Ristorante	paestum	closed	25002	1|casacoloni|paestum
+16048	2025	1	L1	Origin	lucenec	active	25005	1|origin|lucenec
+16049	2025	1	L1	ILIS	new-york	closed	25010	1|ilis|newyork
+16052	2025	1	L1	Casa Mamá Luz	bogota	active	25011	1|casamamaluz|bogota
+16053	2024	1	L1	Casa Mamá Luz	bogota	active	25011	1|casamamaluz|bogota
+16054	2025	1	L1	Atelier	ottawa	closed	25012	1|atelier|ottawa
+16055	2024	1	L1	Atelier	ottawa	closed	25012	1|atelier|ottawa
+16058	2025	1	L1	Noriko Omakase	warsaw	active	25013	1|norikoomakase|warsaw
+16059	2025	1	L1	Sustanza	naples	active	25014	1|sustanza|naples
+16061	2025	1	L1	Gran Dabbang	buenos-aires	active	25015	1|grandabbang|buenosaires
+16070	2025	1	L3	ChiaroScuro di Marina Ravarotto	cagliari	active	25017	1|chiaroscuro|cagliari
+16071	2025	1	L1	Rosi	zurich	closed	25019	1|rosi|zurich
+16072	2024	1	L1	Rosi	zurich	closed	25019	1|rosi|zurich
+16073	2025	1	L1	Arami	la-paz	active	25021	1|arami|lapaz
+16074	2024	1	L1	Arami	la-paz	active	25021	1|arami|lapaz
+16076	2025	1	L1	X.O.	medellin	closed	25023	1|xo|medellin
+16080	2025	1	L1	MERTIA	stellenbosch	active	25026	1|mertia|stellenbosch
+16081	2025	1	L1	bianc	hamburg	closed	25027	1|bianc|hamburg
+16082	2024	1	L1	bianc	hamburg	closed	25027	1|bianc|hamburg
+16087	2025	1	L3	Restaurant Tres	rotterdam	active	25034	1|tres|rotterdam
+16088	2024	1	L3	Restaurant Tres	rotterdam	active	25034	1|tres|rotterdam
+16090	2025	1	L1	A nóż widelec	poznan	active	25035	1|anozwidelec|poznan
+16091	2025	1	L3	Somma Restaurant	singapore	active	25037	1|somma|singapore
+16092	2025	1	L3	Arbequina Restaurant	toronto	active	25040	1|arbequina|toronto
+16093	2025	1	L3	Gigi Waterfall Corner	johannesburg	active	20427	1|gigi|johannesburg
+16094	2024	2	L3	Gigi Waterfall Corner	johannesburg	active	20427	2|gigi|johannesburg
+16095	2025	1	L1	JULIA	tokyo	active	25042	1|julia|tokyo
+16096	2024	1	L1	JULIA	tokyo	active	25042	1|julia|tokyo
+16097	2025	1	L1	Sofreh	new-york	active	25043	1|sofreh|newyork
+16098	2024	1	L1	Sofreh	new-york	active	25043	1|sofreh|newyork
+16099	2025	1	L3	Oda Restaurante 🇨🇴	bogota	active	25044	1|oda|bogota
+16100	2024	1	L3	Oda Restaurante 🇨🇴	bogota	active	25044	1|oda|bogota
+16104	2025	1	L3	Restaurant Naz	karuizawa	active	25045	1|naz|karuizawa
+16107	2025	1	L3	NEL Restaurant	sydney	active	25046	1|nel|sydney
+16108	2025	1	L3	Ana Cocina Local	guatemala-city	active	25049	1|ana|guatemalacity
+16110	2025	1	L1	Yum Cha	santiago	active	25050	1|yumcha|santiago
+16111	2024	1	L1	Yum Cha	santiago	active	25050	1|yumcha|santiago
+16115	2025	1	L1	8 1/2 Otto e Mezzo Bombana	shanghai	active	25051	1|812ottoemezzobombana|shanghai
+16117	2025	1	L1	Porcine	sydney	active	25047	1|porcine|sydney
+16118	2025	1	L1	Ekaa	mumbai	active	25053	1|ekaa|mumbai
+16119	2024	1	L1	Ekaa	mumbai	active	25053	1|ekaa|mumbai
+16122	2025	1	L1	Teatro kitchen & bar	barcelona	closed	25056	1|teatrokitchenbar|barcelona
+16123	2024	1	L1	Teatro kitchen & bar	barcelona	closed	25056	1|teatrokitchenbar|barcelona
+16125	2025	1	L1	Mirabelle	bekkjarvik	active	25059	1|mirabelle|bekkjarvik
+16126	2025	1	L3	Sikwa Restaurante	san-jose	active	25064	1|sikwa|sanjose
+16131	2025	1	L1	Mercado 24	guatemala-city	active	25065	1|mercado24|guatemalacity
+16132	2024	1	L1	Mercado 24	guatemala-city	active	25065	1|mercado24|guatemalacity
+16137	2025	1	L3	Sarasanegro Restaurante	buenos-aires	active	25068	1|sarasanegro|buenosaires
+16138	2024	1	L3	Sarasanegro Restaurante	buenos-aires	active	25068	1|sarasanegro|buenosaires
+16139	2025	1	L3	Aalia Restaurant Sydney	sydney	active	25070	1|aalia|sydney
+16142	2025	1	L3	Fervor Restaurant	perth	active	25071	1|fervor|perth
+16143	2025	1	L1	DeMo	santiago	active	25072	1|demo|santiago
+16144	2024	1	L1	DeMo	santiago	active	25072	1|demo|santiago
+16145	2025	1	L3	Fotografiska Tallinn	tallinn	active	25075	1|fotografiska|tallinn
+16146	2024	1	L3	Fotografiska Tallinn	tallinn	active	25075	1|fotografiska|tallinn
+16147	2025	1	L3	CAAA by Pietro Catalano	lucerne	active	25078	1|caaa|lucerne
+16148	2024	1	L3	CAAA by Pietro Catalano	lucerne	active	25078	1|caaa|lucerne
+16149	2025	1	L1	Forest	auckland	active	25080	1|forest|auckland
+16150	2025	1	L3	Chapter Dining	hanoi	active	25083	1|chapter|hanoi
+16151	2025	1	L1	Gresca	barcelona	active	25085	1|gresca|barcelona
+16152	2025	1	L1	Rafael	lima	active	25087	1|rafael|lima
+16161	2025	1	L3	Fakhreldin Restaurant	amman	active	25088	1|fakhreldin|amman
+16166	2025	1	L1	Biohof Taratsch	lohn	active	25092	1|biohoftaratsch|lohn
+16167	2025	1	L1	Kappa Chakka Kandhari	chennai	active	25093	1|kappachakkakandhari|chennai
+16168	2024	1	L1	Kappa Chakka Kandhari	chennai	active	25093	1|kappachakkakandhari|chennai
+16169	2025	1	L1	Indian Accent	mumbai	active	25095	1|indianaccent|mumbai
+16170	2025	1	MANUAL	Riku Chef’s counter	cape-town	active	25096	1|kirubyriku|capetown
+16171	2024	1	MANUAL	Riku Chef’s counter	cape-town	active	25096	1|kirubyriku|capetown
+16172	2025	1	L3	The Agrarian Kitchen	hobart	active	25100	1|agrariankitchen|hobart
+16173	2025	1	L1	Coro	orvieto	active	25103	1|coro|orvieto
+16174	2025	1	L1	The Waterside	cape-town	active	25106	1|thewaterside|capetown
+16175	2025	1	L3	Orma Roma	rome	active	25107	1|orma|rome
+16177	2025	1	L1	Salsify at the Roundhouse	cape-town	active	25110	1|salsifyattheroundhouse|capetown
+16178	2025	1	L3	Restaurante Silvestre	san-jose	active	25188	1|silvestre|sanjose
+16179	2025	1	L1	Dara Dining by Sara Aqel	amman	active	25118	1|daradiningbysaraaqel|amman
+16180	2024	1	L1	Dara Dining by Sara Aqel	amman	active	25118	1|daradiningbysaraaqel|amman
+16183	2025	1	L1	SantoPalato	rome	active	25119	1|santopalato|rome
+16184	2025	1	L3	Ochsen 1596	muri	active	25121	1|ochsen|muri
+16185	2024	1	L3	Ochsen 1596	muri	active	25121	1|ochsen|muri
+16186	2025	1	L1	Midunu	accra	active	25123	1|midunu|accra
+16188	2025	1	L1	Seraf Vadi	istanbul	active	25130	1|serafvadi|istanbul
+16189	2025	1	L1	Nyn Esti	athens	active	25136	1|nynesti|athens
+16190	2025	1	HOLD	The Fellas	shanghai	active		The Fellas (Shanghai) 2025 1-Knife: no entry; unused Shanghai entries = 102 House (closed), Scilla
+16191	2025	1	L1	Teruzushi	sugawara	active	25141	1|teruzushi|sugawara
+16192	2024	1	L1	Teruzushi	sugawara	active	25141	1|teruzushi|sugawara
+16194	2025	1	L1	Goh	fukuoka	active	25142	1|goh|fukuoka
+16195	2024	1	L1	Goh	fukuoka	active	25142	1|goh|fukuoka
+16200	2025	1	L1	Kataori	kanazawa	active	25143	1|kataori|kanazawa
+16204	2025	1	L1	Beihouse	beirut	active	25146	1|beihouse|beirut
+16206	2025	1	L3	Nelita Restaurant	sao-paulo	active	25148	1|nelita|saopaulo
+16207	2024	1	L3	Nelita Restaurant	sao-paulo	active	25148	1|nelita|saopaulo
+16212	2025	1	L3	Apotheka Bar & Lounge	tbilisi	active	25150	1|apotheka|tbilisi
+16213	2024	1	L3	Apotheka Bar & Lounge	tbilisi	active	25150	1|apotheka|tbilisi
+16214	2025	1	L3	Moonah Restaurant	melbourne	active	25154	1|moonah|melbourne
+16215	2025	1	L1	Mishiguene	buenos-aires	active	25156	1|mishiguene|buenosaires
+16216	2024	1	L1	Mishiguene	buenos-aires	active	25156	1|mishiguene|buenosaires
+16226	2025	1	L1	Kibun	tokyo	active	25163	1|kibun|tokyo
+16227	2025	1	L3	Phayawi Restaurante	la-paz	active	25165	1|phayawi|lapaz
+16231	2025	1	L1	Masque	mumbai	active	25167	1|masque|mumbai
+16232	2024	1	L1	Masque	mumbai	active	25167	1|masque|mumbai
+16241	2025	1	L3	TANG Asian Luxury Restaurant & Bar Waterfront	cape-town	active	25172	1|tang|capetown
+16242	2025	1	L3	Cosmos Restaurant / Космос	sofia	active	25173	1|cosmos|sofia
+16244	2025	1	L3	EDGE for Men - V & A Waterfront	cape-town	active	25174	1|edge|capetown
+16245	2025	1	L3	Les Créatifs Restaurant	johannesburg	active	25175	1|lescreatifs|johannesburg
+16246	2024	1	L3	Les Créatifs Restaurant	johannesburg	active	25175	1|lescreatifs|johannesburg
+16247	2025	1	L1	Yong Fu (Huangpu)	shanghai	active	25176	1|yongfu|shanghai
+16250	2025	1	L3	Ya’axche Restaurante - Centro Etnogastronómico	yucatan	active	20769	1|yaaxche|yucatan
+16251	2024	2	L3	Ya’axche Restaurante - Centro Etnogastronómico	yucatan	active	20769	2|yaaxche|yucatan
+16252	2025	1	L1	NADODI	kuala-lumpur	active	25181	1|nadodi|kualalumpur
+16256	2025	1	L3	HIBA Restaurant	tel-aviv	active	25183	1|hiba|telaviv
+16257	2024	1	L3	HIBA Restaurant	tel-aviv	active	25183	1|hiba|telaviv
+16258	2025	1	L1	AVANT	shenzhen	active	25185	1|avant|shenzhen
+16259	2024	1	L1	AVANT	shenzhen	active	25185	1|avant|shenzhen
+16261	2025	1	L3	Eat and Cook - Best Fine Dining KL	kuala-lumpur	closed	25186	1|eatandcook|kualalumpur
+16263	2024	3	L3	Fusions	manama	closed	20389	3|fusionsbytala|manama
+16268	2024	2	L1	été	tokyo	active	20634	2|ete|tokyo
+16274	2024	1	L1	Wayan	new-york	active	29710	1|wayan|newyork
+16275	2024	1	L1	Bæst	copenhagen	active	29738	1|baest|copenhagen
+16276	2024	1	L1	Art di Daniele Sperindio	singapore	closed	29715	1|artdidanielesperindio|singapore
+16278	2024	1	L1	pasjoli	santa-monica	active	29727	1|pasjoli|santamonica
+16280	2024	1	L1	ernst	berlin	closed	29742	1|ernst|berlin
+16282	2024	1	L3	ARREA! Jatetxea	santa-cruz-de-campezo	active	29698	1|arrea|santacruzdecampezo
+16284	2024	1	L3	El Baqueano - Cocina Autóctona Contemporanea	salta	active	29750	1|elbaqueano|salta
+16291	2024	1	L1	Contrast	amsterdam	closed	29746	1|contrast|amsterdam
+16292	2024	1	L1	Lyle's	adelaide	active	29748	1|lyles|adelaide
+16293	2024	1	L1	White Plate by Chef Jason	bardez	closed	29678	1|whiteplatebychefjason|bardez
+16294	2024	1	L1	Euphoria	singapore	closed	29758	1|euphoria|singapore
+16300	2024	1	L1	Biohotel Walserstuba	riezlern	active	29686	1|biohotelwalserstuba|riezlern
+16301	2024	1	L1	Flames	johannesburg	active	29719	1|flames|johannesburg
+16304	2024	1	L1	Bvlgari Il Ristorante - Luca Fantin	tokyo	closed	29766	1|bvlgariilristorantelucafantin|tokyo
+16306	2024	1	L3	Maito Restaurante	panama-city	active	29754	1|maito|panamacity
+16313	2024	1	L3	Higashiazabu Amamoto	tokyo	active	29731	1|amamoto|tokyo
+16316	2024	1	L1	Mustard Seed	singapore	active	29704	1|mustardseed|singapore
+16318	2024	1	L1	Emazulwini Restaurant	cape-town	closed	29744	1|emazulwinirestaurant|capetown
+16319	2024	1	L1	Canvas	bangkok	closed	29696	1|canvas|bangkok
+16321	2024	1	L1	The Pem	london	active	29725	1|thepem|london
+16322	2024	1	L2	Estelle	melbourne	active	29740	1|estelle|victoria
+16323	2024	1	L1	Zeniya	kanazawa	active	29684	1|zeniya|kanazawa
+16325	2024	1	L2	Metiz	manila	active	29721	1|metiz|makati
+16329	2024	1	L1	La Docena	guadalajara	active	29682	1|ladocena|guadalajara
+16332	2024	1	L1	Noon	mumbai	closed	29736	1|noon|mumbai
+17720	2024	1	L3	El Cielo	miami	active	29760	1|elcielorestaurantmiami|miami
+18381	2025	3	L3	Ynyshir Restaurant & Rooms	machynlleth	active	19749	3|ynyshir|machynlleth
+18382	2024	3	L3	Ynyshir Restaurant & Rooms	machynlleth	active	19749	3|ynyshir|machynlleth

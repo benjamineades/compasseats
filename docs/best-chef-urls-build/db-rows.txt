@@ -1,0 +1,1300 @@
+14|2025|3|Piazza Duomo|alba|active
+15|2024|3|Piazza Duomo|alba|active
+24|2025|2|Zilte|antwerp|active
+25|2024|2|Zilte|antwerp|active
+29|2025|3|Casa Marcial|arriondas|active
+33|2025|2|Moor Hall Restaurant with Rooms|aughton|active
+36|2025|2|Sven Wassmer Memories|bad-ragaz|active
+37|2024|2|Sven Wassmer Memories|bad-ragaz|active
+43|2024|1|Schwarzwaldstube|baiersbronn|active
+60|2025|3|Sorn|bangkok|active
+61|2024|3|Sorn|bangkok|active
+76|2025|3|Sühring|bangkok|active
+77|2024|2|Sühring|bangkok|active
+88|2025|3|Cocina Hermanos Torres|barcelona|active
+89|2024|3|Cocina Hermanos Torres|barcelona|active
+99|2025|3|Disfrutar|barcelona|active
+100|2024|3|Disfrutar|barcelona|active
+104|2025|3|Lasarte|barcelona|active
+105|2024|3|Lasarte|barcelona|active
+113|2025|3|Chao Shang Chao (Chaoyang)|beijing|active
+114|2024|3|Chao Shang Chao (Chaoyang)|beijing|active
+116|2025|3|Rutz|berlin|active
+117|2024|3|Rutz|berlin|active
+123|2025|2|The Fat Duck|bray|active
+124|2024|2|The Fat Duck|bray|active
+143|2025|3|Atelier Moessmer Norbert Niederkofler|brunico|active
+144|2024|2|Atelier Moessmer Norbert Niederkofler|brunico|active
+161|2025|2|L'Enclume|cartmel|active
+162|2024|2|L'Enclume|cartmel|active
+175|2025|2|Ristorante Reale|castel-di-sangro|active
+176|2024|2|Ristorante Reale|castel-di-sangro|active
+182|2025|2|Smyth|chicago|active
+183|2024|2|Smyth|chicago|active
+199|2025|3|Geranium|copenhagen|active
+200|2024|3|Geranium|copenhagen|active
+205|2025|3|Noma|copenhagen|active
+206|2024|3|Noma|copenhagen|active
+227|2025|2|Restaurant de l'Hôtel de Ville de Crissier|crissier|active
+228|2024|1|Restaurant de l'Hôtel de Ville de Crissier|crissier|active
+238|2025|2|Atrio Cáceres|caceres|active
+239|2024|2|Atrio Cáceres|caceres|active
+243|2025|3|Noor|cordoba|active
+244|2024|3|Noor|cordoba|active
+248|2025|2|Waldhotel Sonnora|dreis|active
+249|2024|2|Waldhotel Sonnora|dreis|active
+254|2025|2|FZN by Björn Frantzén|dubai|active
+265|2025|3|Tresind Studio|dubai|active
+266|2024|3|Tresind Studio|dubai|active
+278|2025|3|Restaurant Quique Dacosta|denia|active
+279|2024|3|Restaurant Quique Dacosta|denia|active
+292|2025|3|APONIENTE|cadiz|active
+293|2024|3|APONIENTE|cadiz|active
+309|2025|3|Schloss Schauenstein|furstenau|active
+310|2024|3|Schloss Schauenstein|furstenau|active
+326|2025|3|Restaurant Jordnær|copenhagen|active
+327|2024|3|Restaurant Jordnær|copenhagen|active
+347|2025|3|El Celler de Can Roca|girona|active
+348|2024|3|El Celler de Can Roca|girona|active
+352|2025|2|es:senz|grassau|active
+353|2024|2|es:senz|grassau|active
+357|2025|1|Haerlin|hamburg|active
+363|2025|2|The Table|hamburg|active
+364|2024|2|The Table|hamburg|active
+370|2025|2|SingleThread Farm - Restaurant - Inn|healdsburg|active
+371|2024|2|SingleThread Farm - Restaurant - Inn|healdsburg|active
+401|2025|2|Amber|hong-kong|active
+402|2024|2|Amber|hong-kong|active
+421|2025|3|Caprice|hong-kong|active
+422|2024|3|Caprice|hong-kong|active
+447|2025|3|Ta Vie|hong-kong|active
+448|2024|2|Ta Vie|hong-kong|active
+466|2025|3|Hiša Franko|kobarid|active
+467|2024|3|Hiša Franko|kobarid|active
+473|2025|1|Hyotei|kyoto|active
+474|2024|1|Hyotei|kyoto|active
+481|2025|2|Kikunoi Honten|kyoto|active
+482|2024|2|Kikunoi Honten|kyoto|active
+490|2025|3|Mizai|kyoto|active
+491|2024|3|Mizai|kyoto|active
+495|2025|3|La Marine|noirmoutier-en-lile|active
+496|2024|2|La Marine|noirmoutier-en-lile|active
+509|2025|3|Azurmendi jatetxea|larrabetzu|active
+510|2024|3|Azurmendi jatetxea|larrabetzu|active
+521|2025|3|Martin Berasategui|san-sebastian|active
+522|2024|3|Martin Berasategui|san-sebastian|active
+526|2025|2|La Table du Castellet|le-castellet|active
+530|2025|2|L'Oustau de Baumanière|les-baux-de-provence|active
+531|2024|2|L'Oustau de Baumanière|les-baux-de-provence|active
+535|2025|2|Alain Ducasse at The Dorchester|london|active
+538|2025|3|Core by Clare Smyth|london|active
+539|2024|3|Core by Clare Smyth|london|active
+543|2025|3|Hélène Darroze at The Connaught|london|active
+544|2024|2|Hélène Darroze at The Connaught|london|active
+554|2024|2|Restaurant Gordon Ramsay|london|active
+556|2025|3|The Ledbury|london|active
+569|2025|2|Providence|los-angeles|active
+618|2025|3|DiverXO|madrid|active
+619|2024|3|DiverXO|madrid|active
+625|2025|3|AM par Alexandre Mazzia|marseille|active
+626|2024|3|AM par Alexandre Mazzia|marseille|active
+633|2025|3|Le Petit Nice Passedat - Hôtel 5 étoiles Relais & Châteaux à Marseille|marseille|active
+634|2024|2|Le Petit Nice Passedat - Hôtel 5 étoiles Relais & Châteaux à Marseille|marseille|active
+637|2025|3|Flocons de Sel|megeve|active
+638|2024|3|Flocons de Sel|megeve|active
+652|2025|3|Mirazur|menton|active
+653|2024|3|Mirazur|menton|active
+671|2025|3|Osteria Francescana|modena|active
+672|2024|3|Osteria Francescana|modena|active
+675|2025|2|Le Louis XV - Alain Ducasse à l'Hôtel de Paris|monaco|active
+690|2025|3|JAN|munich|active
+691|2024|3|JAN|munich|active
+698|2025|2|Tohru in der Schreiberei|munich|active
+699|2024|1|Tohru in der Schreiberei|munich|active
+713|2025|3|Eleven Madison Park|new-york|active
+714|2024|3|Eleven Madison Park|new-york|active
+727|2025|2|Jungsik|new-york|active
+728|2024|2|Jungsik|new-york|active
+779|2024|2|Per Se|new-york|active
+792|2025|2|Sushi Sho|new-york|active
+796|2025|2|Villa Crespi|orta-san-giulio|active
+800|2025|2|Hajime|osaka|active
+801|2024|2|Hajime|osaka|active
+814|2025|2|Maaemo|oslo|active
+815|2024|2|Maaemo|oslo|active
+827|2025|3|Alléno|paris|active
+828|2024|3|Alléno|paris|active
+836|2025|3|Arpège|paris|active
+837|2024|3|Arpège|paris|active
+862|2025|3|Kei|paris|active
+863|2024|3|Kei|paris|active
+877|2025|2|Le Cinq|paris|active
+878|2024|2|Le Cinq|paris|active
+881|2025|2|Le Gabriel|paris|active
+882|2024|2|Le Gabriel|paris|active
+886|2025|3|Le Pré Catelan|paris|active
+887|2024|3|Le Pré Catelan|paris|active
+902|2025|3|Pierre Gagnaire|paris|active
+903|2024|3|Pierre Gagnaire|paris|active
+906|2025|3|Plénitude|paris|active
+907|2024|3|Plénitude|paris|active
+915|2025|2|Épicure|paris|active
+919|2025|3|Victor's Fine Dining by Christian Bau|perl|active
+920|2024|3|Victor's Fine Dining by Christian Bau|perl|active
+928|2025|3|La Rei Natura by Michelangelo Mammoliti|serralunga-dalba|active
+929|2024|3|La Rei Natura by Michelangelo Mammoliti|serralunga-dalba|active
+939|2025|3|Boury|roeselare|active
+940|2024|2|Boury|roeselare|active
+943|2025|2|La Pergola|rome|active
+944|2024|2|La Pergola|rome|active
+966|2025|3|Le Calandrе|padua|active
+967|2024|2|Le Calandrе|padua|active
+973|2025|2|Le Coquillage|saint-meloir-des-ondes|active
+980|2025|3|ADDISON BY WILLIAM BRADLEY|san-diego|active
+981|2024|3|ADDISON BY WILLIAM BRADLEY|san-diego|active
+999|2025|3|Atelier Crenn|san-francisco|active
+1000|2024|3|Atelier Crenn|san-francisco|active
+1018|2025|3|Benu|san-francisco|active
+1019|2024|3|Benu|san-francisco|active
+1036|2025|2|Quince|san-francisco|active
+1070|2025|2|Arzak|san-sebastian|active
+1071|2024|2|Arzak|san-sebastian|active
+1079|2025|3|Uliassi|senigallia|active
+1080|2024|3|Uliassi|senigallia|active
+1086|2025|3|Mingles|seoul|active
+1087|2024|3|Mingles|seoul|active
+1098|2025|3|Tai'an Table|shanghai|active
+1099|2024|2|Tai'an Table|shanghai|active
+1103|2025|2|Les Amis|singapore|active
+1104|2024|2|Les Amis|singapore|active
+1130|2025|3|Odette|singapore|active
+1131|2024|3|Odette|singapore|active
+1146|2025|2|Zén|singapore|active
+1150|2025|2|Re-naa|stavanger|active
+1151|2024|2|Re-naa|stavanger|active
+1156|2025|3|Frantzén|stockholm|active
+1157|2024|3|Frantzén|stockholm|active
+1174|2025|2|Evvai Restaurant|sao-paulo|active
+1175|2024|1|Evvai Restaurant|sao-paulo|active
+1186|2025|3|TUJU|sao-paulo|active
+1187|2024|2|TUJU|sao-paulo|active
+1192|2025|2|JL STUDIO|taichung|active
+1193|2024|2|JL STUDIO|taichung|active
+1207|2025|3|Assiette Champenoise|reims|active
+1208|2024|3|Assiette Champenoise|reims|active
+1212|2025|2|Azabu Kadowaki|tokyo|active
+1213|2024|3|Azabu Kadowaki|tokyo|active
+1218|2025|2|Ginza Harutaka|tokyo|active
+1225|2025|3|Kagurazaka Ishikawa|tokyo|active
+1226|2024|2|Kagurazaka Ishikawa|tokyo|active
+1241|2025|2|L’Effervescence|tokyo|active
+1242|2024|2|L’Effervescence|tokyo|active
+1247|2025|1|L’Osier|tokyo|active
+1248|2024|2|L’Osier|tokyo|active
+1254|2025|1|Myoujyaku|tokyo|active
+1259|2025|2|Quintessence|tokyo|active
+1260|2024|2|Quintessence|tokyo|active
+1268|2025|3|Nihonryori RyuGin|tokyo|active
+1269|2024|3|Nihonryori RyuGin|tokyo|active
+1281|2025|3|Sazenka|tokyo|active
+1295|2025|3|SÉZANNE|tokyo|active
+1296|2024|3|SÉZANNE|tokyo|active
+1304|2025|3|Maison Pic|valence|active
+1305|2024|3|Maison Pic|valence|active
+1308|2025|2|Casa Perbellini 12 Apostoli|verona|active
+1309|2024|1|Casa Perbellini 12 Apostoli|verona|active
+1313|2025|2|Restaurant Amador|vienna|active
+1314|2024|2|Restaurant Amador|vienna|active
+1321|2025|3|Steirereck|vienna|active
+1322|2024|2|Steirereck|vienna|active
+1351|2025|2|Cenador de Amós|villaverde-de-pontones|active
+1352|2024|2|Cenador de Amós|villaverde-de-pontones|active
+1356|2025|3|Somni|los-angeles|active
+1369|2025|2|Aqua|wolfsburg|closed
+1370|2024|2|Aqua|wolfsburg|closed
+1409|2025|3|De Librije|zwolle|active
+1410|2024|3|De Librije|zwolle|active
+1424|2025|2|Vila Joya|albufeira|active
+1425|2024|1|Vila Joya|albufeira|active
+1433|2025|1|Ciel Bleu|amsterdam|active
+1444|2025|1|La Paix|brussels|active
+1450|2025|2|Hertog Jan at Botanic|antwerp|active
+1451|2024|1|Hertog Jan at Botanic|antwerp|active
+1468|2025|1|Delta Restaurant|athens|active
+1469|2024|1|Delta Restaurant|athens|active
+1475|2025|1|Cyril Attrazic|peyre-en-aubrac|active
+1493|2025|3|Baan Tepa Culinary Space|bangkok|closed
+1494|2024|2|Baan Tepa Culinary Space|bangkok|closed
+1502|2025|1|Côte by Mauro Colagreco|bangkok|active
+1503|2024|1|Côte by Mauro Colagreco|bangkok|active
+1511|2025|2|Gaa|bangkok|active
+1512|2024|1|Gaa|bangkok|active
+1523|2025|1|INDDEE|bangkok|active
+1529|2025|1|R-HAAN|bangkok|active
+1530|2024|1|R-HAAN|bangkok|active
+1533|2025|1|Aleia Restaurant at Casa Fuster Hotel|barcelona|active
+1534|2024|1|Aleia Restaurant at Casa Fuster Hotel|barcelona|active
+1539|2025|3|Enigma|barcelona|active
+1540|2024|3|Enigma|barcelona|active
+1546|2025|2|roots|basel|active
+1547|2024|1|roots|basel|active
+1553|2025|1|Blackswan|beijing|active
+1556|2025|1|Jing|beijing|active
+1560|2025|3|King's Joy|beijing|active
+1561|2024|3|King's Joy|beijing|active
+1569|2025|1|Lamdre|beijing|active
+1597|2025|3|CODA|berlin|active
+1598|2024|3|CODA|berlin|active
+1611|2025|2|Horváth|berlin|active
+1612|2024|2|Horváth|berlin|active
+1618|2025|2|Tim Raue|berlin|active
+1619|2024|2|Tim Raue|berlin|active
+1639|2025|1|Opheem|birmingham|active
+1654|2025|2|Aska|new-york|active
+1655|2024|2|Aska|new-york|active
+1662|2025|1|Taverna Estia|brusciano|active
+1665|2024|1|Stand Étterem|budapest|active
+1670|2025|3|Aramburu Relais & Châteaux|buenos-aires|active
+1671|2024|2|Aramburu Relais & Châteaux|buenos-aires|active
+1685|2025|2|Aubergine the restaurant at L'Auberge Carmel|carmel-by-the-sea|active
+1701|2025|2|Piazzetta Milù|castellamare-di-stabia|active
+1702|2024|1|Piazzetta Milù|castellamare-di-stabia|active
+1726|2025|3|Alinea|chicago|active
+1727|2024|3|Alinea|chicago|active
+1739|2025|2|Ever Restaurant|chicago|active
+1740|2024|2|Ever Restaurant|chicago|active
+1752|2025|1|Oriole|chicago|active
+1753|2024|1|Oriole|chicago|active
+1771|2025|2|Ristorante Arnolfo | 2 Stelle Michelin|colle-di-val-delsa|active
+1789|2025|3|Alchemist|copenhagen|active
+1790|2024|3|Alchemist|copenhagen|active
+1798|2025|3|Kadeau|copenhagen|active
+1799|2024|3|Kadeau|copenhagen|active
+1806|2025|2|Koan|copenhagen|active
+1807|2024|2|Koan|copenhagen|active
+1812|2025|1|King Hans Cellar|copenhagen|active
+1813|2024|1|King Hans Cellar|copenhagen|active
+1816|2025|2|D'O|milan|active
+1817|2024|1|D'O|milan|active
+1833|2025|2|Vespertine|culver-city|active
+1834|2024|2|Vespertine|culver-city|active
+1857|2025|2|Amelia by Paulo Airaudo|san-sebastian|active
+1858|2024|2|Amelia by Paulo Airaudo|san-sebastian|active
+1867|2025|2|Row on 45|dubai|active
+1868|2024|2|Row on 45|dubai|active
+1885|2025|2|Chapter One Restaurant|dublin|active
+1896|2025|1|Create by Guido Braeken|eijsden|active
+1898|2025|1|Cabaña Buenavista|el-palmar|active
+1901|2025|1|Harbor House Inn|elk|active
+1902|2024|1|Harbor House Inn|elk|active
+1926|2025|3|Mugaritz|san-sebastian|active
+1927|2024|3|Mugaritz|san-sebastian|active
+1940|2025|1|Mammertsberg|freidorf|active
+1941|2024|1|Mammertsberg|freidorf|active
+1950|2025|1|GEM.|gemert|active
+1951|2024|2|GEM.|gemert|active
+1969|2025|2|Döllerers Wirtshaus|golling-an-der-salzach|active
+1970|2024|1|Döllerers Wirtshaus|golling-an-der-salzach|active
+1980|2025|1|Jiang By Chef Fei|guangzhou|active
+1981|2024|1|Jiang By Chef Fei|guangzhou|active
+1989|2025|1|100/200 Kitchen|hamburg|active
+2007|2025|2|Ru Yuan|hangzhou|active
+2013|2025|1|Jante|hanover|active
+2014|2024|1|Jante|hanover|active
+2025|2024|1|Tribeca|heeze|active
+2031|2025|1|Ravintola Palace|helsinki|active
+2032|2024|1|Ravintola Palace|helsinki|active
+2040|2025|2|Arbor|hong-kong|active
+2041|2024|1|Arbor|hong-kong|active
+2045|2025|1|Bo Innovation|hong-kong|active
+2046|2024|1|Bo Innovation|hong-kong|active
+2063|2025|1|L'Envol|hong-kong|active
+2064|2024|1|L'Envol|hong-kong|active
+2098|2025|2|TATE Dining Room|hong-kong|active
+2099|2024|2|TATE Dining Room|hong-kong|active
+2127|2025|2|Ristorante I Tenerumi|vulcanello|active
+2135|2025|2|Restaurante LÚ Cocina y Alma|jerez-de-la-frontera|active
+2136|2024|1|Restaurante LÚ Cocina y Alma|jerez-de-la-frontera|active
+2149|2025|2|Bottiglieria 1881 Restaurant|krakow|active
+2150|2024|2|Bottiglieria 1881 Restaurant|krakow|active
+2155|2025|2|Restaurant Milka|kranjska-gora|active
+2156|2024|2|Restaurant Milka|kranjska-gora|active
+2160|2025|1|Inter Scaldes|kruiningen|active
+2161|2024|1|Inter Scaldes|kruiningen|active
+2163|2025|1|Hof van Cleve|kruishoutem|active
+2185|2025|3|Dewakan Restaurant|kuala-lumpur|active
+2186|2024|2|Dewakan Restaurant|kuala-lumpur|active
+2201|2025|2|Gion Nishikawa|kyoto|active
+2228|2025|3|La Grenouillère|montreuil|active
+2229|2024|2|La Grenouillère|montreuil|active
+2241|2025|2|La Table du Lausanne Palace|lausanne|active
+2242|2024|2|La Table du Lausanne Palace|lausanne|active
+2260|2025|1|Casa de Chá da Boa Nova|leca-da-palmeira|active
+2261|2024|1|Casa de Chá da Boa Nova|leca-da-palmeira|active
+2265|2024|1|Ristorante la Madia|licata|active
+2269|2025|2|L'Air du Temps|liernu|active
+2270|2024|1|L'Air du Temps|liernu|active
+2273|2025|2|Restaurant Pearl Morissette|lincoln|active
+2274|2024|2|Restaurant Pearl Morissette|lincoln|active
+2281|2025|1|Fifty Seconds|lisbon|active
+2285|2025|2|Henrique Sá Pessoa|lisbon|active
+2286|2024|2|Henrique Sá Pessoa|lisbon|active
+2289|2025|3|Restaurant Miramar|llanca|active
+2290|2024|3|Restaurant Miramar|llanca|active
+2300|2025|2|Alex Dilling at Hotel Café Royal|london|active
+2301|2024|2|Alex Dilling at Hotel Café Royal|london|active
+2307|2025|1|Da Terra|london|active
+2308|2024|1|Da Terra|london|active
+2332|2025|2|Ikoyi Restaurant|london|active
+2333|2024|2|Ikoyi Restaurant|london|active
+2337|2025|2|Kitchen Table|london|active
+2338|2024|2|Kitchen Table|london|active
+2344|2025|2|Row on 5|london|active
+2345|2024|2|Row on 5|london|active
+2361|2025|1|Trivet|london|active
+2362|2024|1|Trivet|london|active
+2368|2025|1|Hayato|los-angeles|active
+2390|2025|1|Chef Tam's Seasons|macau|active
+2426|2025|2|Coque|madrid|active
+2427|2024|2|Coque|madrid|active
+2434|2025|3|DSTAgE|madrid|active
+2435|2024|3|DSTAgE|madrid|active
+2438|2025|3|Paco Roncero Restaurante|madrid|active
+2439|2024|3|Paco Roncero Restaurante|madrid|active
+2443|2025|1|Restaurante Ramón Freixa Atelier|madrid|active
+2444|2024|2|Restaurante Ramón Freixa Atelier|madrid|active
+2446|2025|2|Smoked Room|madrid|active
+2447|2024|2|Smoked Room|madrid|active
+2473|2025|2|Madonnina del Pescatore|senigallia|active
+2474|2024|2|Madonnina del Pescatore|senigallia|active
+2501|2025|2|Pujol|mexico-city|active
+2502|2024|2|Pujol|mexico-city|active
+2523|2025|3|Quintonil|mexico-city|active
+2524|2024|3|Quintonil|mexico-city|active
+2535|2025|2|Andrea Aprea | Ristorante|milan|active
+2538|2025|1|Seta by Antonio Guida|milan|active
+2539|2024|1|Seta by Antonio Guida|milan|active
+2551|2025|1|Alois - Dallmayr Fine Dining|munich|active
+2588|2025|2|Aquavit|new-york|active
+2589|2024|2|Aquavit|new-york|active
+2594|2025|1|Atera|new-york|active
+2595|2024|1|Atera|new-york|active
+2605|2025|3|ATOMIX|new-york|active
+2606|2024|3|ATOMIX|new-york|active
+2616|2025|1|The Chef's Table at Brooklyn Fare|new-york|active
+2617|2024|1|The Chef's Table at Brooklyn Fare|new-york|active
+2622|2025|3|César|new-york|active
+2675|2025|1|odo|new-york|active
+2689|2025|1|The Modern|new-york|active
+2690|2024|1|The Modern|new-york|active
+2703|2025|1|De Nieuwe Winkel|nijmegen|active
+2706|2025|2|Restaurant Sat Bains with Rooms|nottingham|active
+2714|2025|1|etz|nuremberg|active
+2715|2024|1|etz|nuremberg|active
+2723|2025|2|Culler de Pau|o-grove|active
+2724|2024|2|Culler de Pau|o-grove|active
+2737|2025|2|Restaurant Les Cols | Olot|olot|active
+2738|2024|3|Restaurant Les Cols | Olot|olot|active
+2744|2025|1|Ristorante Famiglia Rana|oppeano|active
+2760|2025|2|La Cime|osaka|active
+2761|2024|2|La Cime|osaka|active
+2784|2025|2|Restaurant Kontrast|oslo|active
+2795|2025|2|David Toutain|paris|active
+2796|2024|2|David Toutain|paris|active
+2812|2024|2|Le Clarence|paris|active
+2814|2025|2|Le Grand Restaurant - Jean-François Piège|paris|active
+2815|2024|2|Le Grand Restaurant - Jean-François Piège|paris|active
+2828|2025|3|Restaurant Le Meurice Alain Ducasse|paris|active
+2829|2024|3|Restaurant Le Meurice Alain Ducasse|paris|active
+2835|2025|1|Sushi Yoshinaga|paris|active
+2840|2025|3|Restaurante Ocean|porches|active
+2841|2024|3|Restaurante Ocean|porches|active
+2844|2025|1|Restaurante Antiqvvm|porto|active
+2845|2024|1|Restaurante Antiqvvm|porto|active
+2852|2025|1|Restaurant Tanière³|quebec|active
+2860|2025|1|Söl'ring Hof|sylt|active
+2867|2025|1|Restaurante Pepe Vieira|poio|active
+2868|2024|1|Restaurante Pepe Vieira|poio|active
+2871|2025|1|Brut172|reijmerstok|active
+2885|2025|2|Lasai|rio-de-janeiro|active
+2886|2024|2|Lasai|rio-de-janeiro|active
+2897|2025|1|Oro|rio-de-janeiro|active
+2898|2024|1|Oro|rio-de-janeiro|active
+2907|2025|1|Il Pagliaccio|rome|active
+2910|2025|1|Bardal | Benito Gómez | Restaurante en Ronda|ronda|active
+2920|2025|1|Parkheuvel|rotterdam|active
+2921|2024|1|Parkheuvel|rotterdam|active
+2952|2025|1|Restaurant Ikarus|salzburg|active
+2970|2025|1|Birdsong|san-francisco|active
+2982|2025|2|Kiln|san-francisco|active
+3026|2025|1|Mélisse Restaurant|santa-monica|active
+3037|2025|2|Restaurant Magdalena|rickenbach|active
+3040|2025|1|taubenkobel|schutzen-am-gebirge|active
+3041|2024|1|taubenkobel|schutzen-am-gebirge|active
+3046|2025|2|Alla Prima|seoul|active
+3047|2024|1|Alla Prima|seoul|active
+3054|2025|2|EVETT|seoul|active
+3064|2025|2|KwonSookSoo|seoul|active
+3072|2024|2|Mitou|seoul|active
+3079|2025|3|MOSU Seoul|seoul|active
+3080|2024|2|MOSU Seoul|seoul|active
+3084|2025|2|Restaurant Allen|seoul|active
+3085|2024|1|Restaurant Allen|seoul|active
+3089|2025|1|Soigné|seoul|active
+3090|2024|2|Soigné|seoul|active
+3109|2025|1|Fu He Hui|shanghai|active
+3137|2025|1|Tou Zao|shanghai|active
+3138|2025|2|Vyn Restaurant|simrishamn|active
+3139|2024|2|Vyn Restaurant|simrishamn|active
+3147|2025|1|Cloudstreet|singapore|active
+3148|2024|1|Cloudstreet|singapore|active
+3161|2025|2|JAAN By Kirk Westaway|singapore|active
+3162|2024|2|JAAN By Kirk Westaway|singapore|active
+3173|2025|2|Meta|singapore|active
+3174|2024|2|Meta|singapore|active
+3179|2025|2|Saint Pierre|singapore|active
+3183|2025|1|Shoukouwa Restaurant|singapore|active
+3184|2024|1|Shoukouwa Restaurant|singapore|active
+3190|2025|3|Thevar|singapore|active
+3191|2024|3|Thevar|singapore|active
+3204|2025|1|Enclos|sonoma|active
+3208|2025|1|AIRA|stockholm|active
+3209|2024|1|AIRA|stockholm|active
+3231|2025|3|D.O.M.|sao-paulo|active
+3232|2024|3|D.O.M.|sao-paulo|active
+3247|2025|2|logy|taipei|active
+3248|2024|2|logy|taipei|active
+3262|2025|1|180 Degrees Restaurant|tallinn|active
+3263|2024|1|180 Degrees Restaurant|tallinn|active
+3287|2025|1|Platán Gourmet Restaurant|tata|active
+3288|2024|1|Platán Gourmet Restaurant|tata|active
+3292|2025|1|Krèsios|telese|active
+3293|2024|1|Krèsios|telese|active
+3317|2025|2|Den|tokyo|active
+3318|2024|2|Den|tokyo|active
+3330|2025|2|Esquisse|tokyo|active
+3331|2024|1|Esquisse|tokyo|active
+3343|2025|2|Florilège|tokyo|active
+3344|2024|2|Florilège|tokyo|active
+3364|2025|1|Hommage|tokyo|active
+3378|2025|2|MAZ|tokyo|active
+3379|2024|1|MAZ|tokyo|active
+3398|2025|3|NARISAWA|tokyo|active
+3399|2024|3|NARISAWA|tokyo|active
+3413|2025|1|Ryuzu|tokyo|active
+3442|2025|1|paz|torshavn|active
+3448|2024|1|Home Aribert - Restaurant Gastronomique 2 Étoiles Michelin|uriage-les-bains|active
+3452|2025|1|Vino Locale|izmir|active
+3453|2025|2|Flores Raras Restaurante|valencia|active
+3458|2025|2|Ricard Camarena Restaurant|valencia|active
+3459|2024|2|Ricard Camarena Restaurant|valencia|active
+3466|2025|2|Ristorante Glam|venice|active
+3467|2024|2|Ristorante Glam|venice|active
+3475|2025|2|Torre del Saracino|sorrento|active
+3479|2025|2|Restaurant Doubek|vienna|active
+3480|2024|1|Restaurant Doubek|vienna|active
+3495|2025|1|Mraz & Sohn|vienna|active
+3496|2024|1|Mraz & Sohn|vienna|active
+3500|2025|1|Silvio Nickol|vienna|active
+3518|2025|2|focus ATELIER|vitznau|active
+3532|2025|1|Jônt|washington-dc|active
+3536|2025|3|minibar|washington-dc|active
+3541|2025|2|The Inn at Little Washington|washington-dc|active
+3542|2024|2|The Inn at Little Washington|washington-dc|active
+3572|2025|1|Taverne zum Schäfli|wigoltingen|active
+3573|2024|1|Taverne zum Schäfli|wigoltingen|active
+3582|2025|1|IGNIV Zürich by Andreas Caminada|zurich|active
+3583|2024|1|IGNIV Zürich by Andreas Caminada|zurich|active
+3586|2025|1|The Counter|zurich|active
+3595|2025|2|Hôtel Château de La Chèvre d’Or|eze|active
+3607|2025|1|Restaurant Domestic|aarhus|active
+3676|2025|2|Bougainville|amsterdam|active
+3677|2024|1|Bougainville|amsterdam|active
+3686|2025|2|RIJKS|amsterdam|active
+3687|2024|2|RIJKS|amsterdam|active
+3718|2025|1|Paolo Griffa al Caffè Nazionale|aosta|active
+3752|2025|1|CTC Urban Gastronomy|athens|active
+3753|2024|1|CTC Urban Gastronomy|athens|active
+3762|2025|1|Soil restaurant|athens|active
+3763|2024|1|Soil restaurant|athens|active
+3775|2025|1|Atlas|atlanta|active
+3839|2025|3|Asador Etxebarri|axpe|active
+3840|2024|3|Asador Etxebarri|axpe|active
+3861|2025|2|Txispa|axpe|active
+3862|2024|1|Txispa|axpe|active
+3917|2024|1|Blue by Alain Ducasse|bangkok|active
+3930|2025|1|Coda|bangkok|active
+3939|2025|3|Gaggan|bangkok|active
+3940|2024|3|Gaggan|bangkok|active
+3955|2025|2|Haoma Bangkok|bangkok|active
+3956|2024|2|Haoma Bangkok|bangkok|active
+3967|2025|1|Raan Jay Fai|bangkok|active
+3968|2024|1|Raan Jay Fai|bangkok|active
+3985|2025|1|Maison Dunand|bangkok|active
+3986|2024|1|Maison Dunand|bangkok|active
+3991|2025|1|nahm|bangkok|active
+3992|2024|1|nahm|bangkok|active
+4006|2025|2|Nusara|bangkok|active
+4007|2024|2|Nusara|bangkok|active
+4018|2025|3|Restaurant POTONG|bangkok|active
+4019|2024|3|Restaurant POTONG|bangkok|active
+4034|2025|2|Samrub Samrub Thai|bangkok|active
+4035|2024|2|Samrub Samrub Thai|bangkok|active
+4045|2024|1|Wana Yook|bangkok|active
+4052|2025|2|Alkimia|barcelona|active
+4053|2024|1|Alkimia|barcelona|active
+4059|2025|3|COME|barcelona|active
+4060|2024|3|COME|barcelona|active
+4086|2024|1|Ackermannshof|basel|active
+4101|2025|1|Gastro Esthetics DaDong|beijing|active
+4118|2025|1|TRB Hutong|beijing|active
+4205|2025|1|Nerua Guggenheim Bilbao|bilbao|active
+4206|2024|1|Nerua Guggenheim Bilbao|bilbao|active
+4233|2025|1|Maçakızı|bodrum|active
+4234|2024|1|Maçakızı|bodrum|active
+4236|2025|1|Auberge du Vert Mont|boeschepe|active
+4259|2025|1|La Palta|borgonovo-val-tidone|active
+4289|2024|2|Ristorante NIN|brenzone-sul-garda|active
+4294|2025|1|Wood|breuil-cervinia|closed
+4319|2025|1|Eliane|brussels|active
+4321|2025|1|Osip restaurant|bruton|active
+4322|2024|1|Osip restaurant|bruton|active
+4337|2025|2|Rumour by Rácz Jenő|budapest|active
+4338|2024|1|Rumour by Rácz Jenő|budapest|active
+4342|2025|2|Salt|budapest|active
+4343|2024|2|Salt|budapest|active
+4346|2025|2|Crizia Restaurante|buenos-aires|active
+4347|2024|1|Crizia Restaurante|buenos-aires|active
+4354|2025|2|Don Julio Parrilla|buenos-aires|active
+4355|2024|2|Don Julio Parrilla|buenos-aires|active
+4373|2025|2|Trescha Restaurant|buenos-aires|active
+4374|2024|2|Trescha Restaurant|buenos-aires|active
+4378|2025|1|Lignum|bullaun|active
+4438|2025|1|Lilo|carlsbad|active
+4473|2025|1|Ristorante El Molin|cavalese|active
+4480|2025|1|Ristorante Materia Cernobbio|cernobbio|active
+4481|2024|1|Ristorante Materia Cernobbio|cernobbio|active
+4510|2025|2|Co-|chengdu|active
+4534|2025|1|Elske|chicago|active
+4535|2024|1|Elske|chicago|active
+4539|2025|1|Esmé|chicago|active
+4540|2024|1|Esmé|chicago|active
+4623|2025|1|Restaurant JATAK|copenhagen|active
+4624|2024|1|Restaurant JATAK|copenhagen|active
+4632|2025|1|Sushi Anaba|copenhagen|active
+4633|2024|1|Sushi Anaba|copenhagen|active
+4637|2025|2|Søllerød Kro|holte|active
+4654|2025|2|SanBrite|cortina-dampezzo|active
+4655|2024|1|SanBrite|cortina-dampezzo|active
+4658|2025|1|La Stüa de Michil - Simone Cantafio|corvara-in-badia|closed
+4659|2024|1|La Stüa de Michil - Simone Cantafio|corvara-in-badia|closed
+4676|2025|1|The Pine|creemore|active
+4685|2025|1|Máximo|mexico-city|active
+4765|2025|2|L'Argine a Vencò|dolegna-del-collio|active
+4766|2024|2|L'Argine a Vencò|dolegna-del-collio|active
+4804|2024|1|Dinner by Heston Blumenthal|dubai|active
+4825|2025|1|11 Woodfire|dubai|active
+4832|2025|1|Avatara Restaurant|dubai|active
+4833|2024|1|Avatara Restaurant|dubai|active
+4841|2025|1|Manāo|dubai|active
+4844|2025|1|Moonrise|dubai|active
+4845|2024|1|Moonrise|dubai|active
+4852|2025|3|ORFALI BROS RESTAURANT|dubai|active
+4853|2024|2|ORFALI BROS RESTAURANT|dubai|active
+4866|2024|3|Ossiano|dubai|active
+4887|2025|1|Restaurant 360|dubrovnik|active
+4888|2024|1|Restaurant 360|dubrovnik|active
+4921|2025|1|Pine|newcastle|active
+4945|2025|1|LUNARIO VALLE DE GUADALUPE|guadalupe|active
+5011|2025|1|Pascucci al Porticciolo|fiumicino|active
+5041|2025|1|Ristorante Lux Lucis|forte-dei-marmi|active
+5115|2025|2|Arco by Paco Pérez|gdansk|active
+5116|2024|1|Arco by Paco Pérez|gdansk|active
+5142|2025|1|Restaurant au Jardin|george-town|active
+5143|2024|1|Restaurant au Jardin|george-town|active
+5156|2025|1|ELKANO|getaria|active
+5225|2025|2|Chōwa|guangzhou|active
+5230|2025|1|Lingnan House|guangzhou|active
+5293|2025|2|Jin Sha|hangzhou|active
+5308|2025|1|Nhà hàng Gia|hanoi|active
+5309|2024|1|Nhà hàng Gia|hanoi|active
+5313|2025|1|KOKI - The House of Senses|hanoi|active
+5314|2024|1|KOKI - The House of Senses|hanoi|active
+5348|2025|2|Restaurant Grön|helsinki|active
+5371|2025|1|Restaurant ESSENS|hlohovec|active
+5374|2025|1|AKUNA Restaurant|ho-chi-minh-city|active
+5375|2024|1|AKUNA Restaurant|ho-chi-minh-city|active
+5379|2025|1|CieL Dining|ho-chi-minh-city|active
+5386|2025|1|Anan Saigon|ho-chi-minh-city|active
+5387|2024|1|Anan Saigon|ho-chi-minh-city|active
+5403|2025|1|BELON|hong-kong|active
+5412|2025|1|Estro|hong-kong|active
+5420|2025|1|Feuille|hong-kong|active
+5421|2024|1|Feuille|hong-kong|active
+5458|2025|1|MONO|hong-kong|active
+5459|2024|1|MONO|hong-kong|active
+5488|2025|3|The Chairman Restaurant|hong-kong|active
+5489|2024|3|The Chairman Restaurant|hong-kong|active
+5537|2025|1|Neighborhood|hong-kong|active
+5589|2025|1|ÉPURE|hong-kong|active
+5636|2025|1|Arkestra|istanbul|active
+5642|2025|3|Neolokal|istanbul|active
+5643|2024|2|Neolokal|istanbul|active
+5649|2025|1|humus x hortense|brussels|active
+5650|2024|1|humus x hortense|brussels|active
+5657|2025|1|Restaurante Bagá|jaen|active
+5705|2025|1|Restaurant Giewont|koscielisko|active
+5715|2025|1|Beta KL|kuala-lumpur|active
+5779|2025|1|LURRA°|kyoto|active
+5860|2025|1|Abbruzzino Oltre|lamezia-terme|active
+5944|2025|1|SENSO Lake Garda|limone-sul-garda|active
+5961|2025|1|Encanto|lisbon|active
+5972|2025|1|Loco|lisbon|active
+5975|2025|1|Marlene,|lisbon|active
+5976|2024|1|Marlene,|lisbon|active
+6017|2025|1|BRAT Restaurant|london|active
+6018|2024|1|BRAT Restaurant|london|active
+6040|2025|1|Frog by Adam Handling Restaurant Covent Garden|london|active
+6054|2025|3|KOL|london|active
+6055|2024|3|KOL|london|active
+6066|2024|1|Muse by Tom Aikens|london|active
+6077|2025|1|Plates Restaurant & Food Studio|london|active
+6109|2025|1|Tom Brown at The Capital|london|active
+6111|2025|1|Trinity|london|active
+6112|2024|1|Trinity|london|active
+6120|2025|2|Ristorante Andreina|loreto|active
+6121|2024|1|Ristorante Andreina|loreto|active
+6147|2024|1|Kato Restaurant|los-angeles|active
+6194|2025|1|FELIX LO BASSO RESTAURANT|lugano|active
+6240|2025|1|Aji 雅吉|macau|active
+6315|2025|1|Restaurante Desde 1911|madrid|active
+6316|2024|1|Restaurante Desde 1911|madrid|active
+6325|2025|1|OSA|madrid|active
+6358|2025|1|Hapag|manila|active
+6363|2025|1|Kása Palma|manila|active
+6365|2025|2|Toyo Eatery|manila|active
+6366|2024|2|Toyo Eatery|manila|active
+6451|2025|2|Venissa|venice|active
+6452|2024|2|Venissa|venice|active
+6472|2025|1|Angélica Cocina Maestra|mendoza|active
+6474|2025|1|Azafrán|mendoza|active
+6475|2024|1|Azafrán|mendoza|active
+6480|2025|1|Casa Vigil Palmares|mendoza|active
+6532|2025|2|Contraste|milan|active
+6533|2024|1|Contraste|milan|active
+6536|2025|2|Cracco|milan|active
+6537|2024|2|Cracco|milan|active
+6548|2025|1|Il Luogo di Aimo e Nadia|milan|active
+6564|2025|3|Al Gatto Verde|modena|active
+6565|2024|2|Al Gatto Verde|modena|active
+6602|2025|1|KOLI|monterrey|active
+6603|2024|1|KOLI|monterrey|active
+6624|2025|1|Restaurant Mastard|montreal|active
+6684|2025|1|Le Manoir de la Régate|nantes|active
+6685|2024|1|Le Manoir de la Régate|nantes|active
+6753|2025|1|Corima|new-york|active
+6797|2025|2|FREVO|new-york|active
+6798|2024|1|FREVO|new-york|active
+6849|2025|1|l’abeille|new-york|active
+6850|2024|1|l’abeille|new-york|active
+6912|2025|1|ONICE|nice|active
+6913|2024|1|ONICE|nice|active
+6925|2025|1|AKKEE Thai Delicacies and Tasting Counter|nonthaburi|active
+6971|2025|2|Levadura de Olla Restaurante|oaxaca|active
+6997|2025|3|Contrada Bricconi|oltressenda-alta|active
+6998|2024|2|Contrada Bricconi|oltressenda-alta|active
+7082|2025|2|Sanshin|osaka|active
+7109|2025|2|Savage|oslo|active
+7110|2024|2|Savage|oslo|active
+7118|2025|1|À L’aise|oslo|active
+7131|2025|2|Willem Hiele|oudenburg|active
+7132|2024|2|Willem Hiele|oudenburg|active
+7138|2025|1|Benoit Dewitte|ouwegem|active
+7152|2025|1|MEC Restaurant|palermo|active
+7179|2024|1|ANONA - Restaurant gastronomique étoilé|paris|active
+7183|2025|2|Astrance|paris|active
+7184|2024|2|Astrance|paris|active
+7212|2025|1|FIEF / Fait Ici En France|paris|active
+7213|2024|1|FIEF / Fait Ici En France|paris|active
+7299|2025|2|Septime|paris|active
+7300|2024|1|Septime|paris|active
+7316|2025|1|Vaisseau|paris|active
+7325|2025|1|Ristorante Inkiostro|parma|active
+7386|2025|1|Le Chique|puerto-morelos|active
+7387|2024|1|Le Chique|puerto-morelos|active
+7419|2025|1|Restaurante Maca de Castro - Mallorca|port-dalcudia|active
+7427|2025|2|Vista|portimao|active
+7428|2024|2|Vista|portimao|active
+7436|2025|2|Euskalduna Studio|porto|active
+7437|2024|2|Euskalduna Studio|porto|active
+7445|2025|1|Pedro Lemos|porto|active
+7451|2025|1|Ristorante Cracco Portofino|portofino|active
+7454|2025|2|COB|portoroz|active
+7463|2025|1|MUGA|poznan|active
+7488|2025|1|Fradis Minoris Ristorante|pula|active
+7489|2024|1|Fradis Minoris Ristorante|pula|active
+7535|2025|1|Herdade do Esporão Restaurant|reguengos-de-monsaraz|active
+7536|2024|1|Herdade do Esporão Restaurant|reguengos-de-monsaraz|active
+7563|2025|1|Nebo|rijeka|active
+7564|2024|1|Nebo|rijeka|active
+7568|2025|2|Da Lucio|rimini|active
+7569|2024|1|Da Lucio|rimini|active
+7578|2025|1|Oseille|rio-de-janeiro|active
+7583|2025|2|Oteque|rio-de-janeiro|active
+7584|2024|2|Oteque|rio-de-janeiro|active
+7608|2025|1|Idylio by Apreda|rome|active
+7623|2025|1|Zia Restaurant|rome|active
+7624|2024|1|Zia Restaurant|rome|active
+7661|2025|2|Knystaforsen|rydobruk|active
+7662|2024|2|Knystaforsen|rydobruk|active
+7682|2025|1|Bed & Breakfast - Les Belles Perdrix|saint-emilion|active
+7688|2024|1|PRESS Restaurant|saint-helena|active
+7725|2025|1|Deliranto|salou|active
+7771|2025|1|Nisei|san-francisco|active
+7806|2025|1|PANGEA|monterrey|active
+7815|2025|2|daGorini|san-piero-in-bagno|active
+7821|2025|1|Restaurante Casa Solla|poio|active
+7856|2025|2|Qafiz|santa-cristina-daspromonte|active
+7857|2024|1|Qafiz|santa-cristina-daspromonte|active
+7937|2025|2|Eatanic Garden, Josun Palace|seoul|active
+7938|2024|1|Eatanic Garden, Josun Palace|seoul|active
+7959|2025|1|LEGUME|seoul|active
+7969|2025|1|Onjium|seoul|active
+7970|2024|1|Onjium|seoul|active
+7977|2025|1|Solbam|seoul|active
+7978|2024|1|Solbam|seoul|active
+7992|2024|1|Vinho|seoul|active
+7998|2025|1|Zero Complex|seoul|active
+8044|2025|3|Ling Long|shanghai|active
+8045|2024|2|Ling Long|shanghai|active
+8057|2025|1|Obscura|shanghai|active
+8074|2025|1|Vivant by Johnny Pham|shanghai|active
+8099|2025|1|Araya|singapore|active
+8102|2025|2|Restaurant Born|singapore|active
+8103|2024|1|Restaurant Born|singapore|active
+8145|2025|2|Restaurant Labyrinth|singapore|active
+8146|2024|1|Restaurant Labyrinth|singapore|active
+8154|2025|2|Nouri|singapore|active
+8155|2024|1|Nouri|singapore|active
+8162|2025|2|Seroja|singapore|active
+8163|2024|2|Seroja|singapore|active
+8174|2025|1|Summer Pavilion|singapore|active
+8175|2024|1|Summer Pavilion|singapore|active
+8199|2025|2|Burnt Ends|singapore|active
+8200|2024|2|Burnt Ends|singapore|active
+8254|2025|1|Assonica|sorisole|active
+8262|2025|2|Marotta Ristorante|squille|active
+8263|2024|1|Marotta Ristorante|squille|active
+8287|2025|2|Restaurant Ekstedt|stockholm|active
+8288|2024|2|Restaurant Ekstedt|stockholm|active
+8298|2025|1|Nour|stockholm|active
+8299|2024|1|Nour|stockholm|active
+8355|2025|1|Kanoe|sao-paulo|active
+8357|2025|1|Kazuo Restaurante|sao-paulo|active
+8358|2024|1|Kazuo Restaurante|sao-paulo|active
+8361|2025|1|Maní|sao-paulo|active
+8362|2024|1|Maní|sao-paulo|active
+8387|2025|2|Gallery By Chele|manila|active
+8388|2024|1|Gallery By Chele|manila|active
+8402|2025|1|de nuit|taipei|active
+8427|2025|1|NCH, NOA CHEF’s HALL|tallinn|active
+8428|2024|1|NCH, NOA CHEF’s HALL|tallinn|active
+8485|2025|2|apothéose|tokyo|active
+8486|2024|1|apothéose|tokyo|active
+8496|2025|1|CYCLE|tokyo|active
+8497|2024|1|CYCLE|tokyo|active
+8506|2025|1|est|tokyo|active
+8507|2024|1|est|tokyo|active
+8581|2025|1|nôl|tokyo|active
+8666|2025|1|Aburi Hana|toronto|closed
+8670|2025|1|Alo|toronto|active
+8671|2024|1|Alo|toronto|active
+8691|2025|1|Quetzal|toronto|active
+8700|2025|2|Sushi Masaki Saito|toronto|active
+8701|2024|1|Sushi Masaki Saito|toronto|active
+8721|2025|1|Aux Terrasses - Hôtel Restaurant Tournus|tournus|active
+8722|2024|1|Aux Terrasses - Hôtel Restaurant Tournus|tournus|active
+8730|2025|1|Restaurant Bootshaus|traunkirchen|active
+8752|2024|1|Ristorante Del Cambio|turin|active
+8766|2025|1|Restaurang Äng|tvaaker|active
+8767|2024|1|Restaurang Äng|tvaaker|active
+8772|2025|1|De Leuf|ubachsberg|active
+8773|2024|1|De Leuf|ubachsberg|active
+8784|2025|1|OD Urla|izmir|active
+8788|2025|1|Teruar Urla|izmir|active
+8796|2025|1|Frédéric Molina à Forêt Ivre|vailly|active
+8797|2024|1|Frédéric Molina à Forêt Ivre|vailly|active
+8810|2025|2|La Salita de Begoña Rodrigo|valencia|active
+8811|2024|2|La Salita de Begoña Rodrigo|valencia|active
+8827|2025|1|Noni|valletta|active
+8863|2025|2|Restaurant Lyst|vejle|active
+8907|2025|1|Restaurant Herzig|vienna|active
+8971|2025|1|hub.praga|warsaw|active
+8973|2025|1|Nuta|warsaw|active
+8974|2024|1|Nuta|warsaw|active
+8976|2025|1|Rozbrat 20|warsaw|active
+9010|2025|1|Oyster Oyster|washington-dc|active
+9014|2025|1|Pineapple and Pearls|washington-dc|active
+9015|2024|1|Pineapple and Pearls|washington-dc|active
+9071|2025|1|Menssa|brussels|active
+9117|2025|1|KLE|zurich|active
+9118|2024|1|KLE|zurich|active
+9127|2025|2|Sud 777|mexico-city|active
+9128|2024|2|Sud 777|mexico-city|active
+9153|2025|1|Grič|horjul|active
+9154|2024|1|Grič|horjul|active
+9160|2025|1|Restaurante Alcalde|guadalajara|active
+9161|2024|1|Restaurante Alcalde|guadalajara|active
+9172|2025|2|Xokol|guadalajara|active
+9173|2024|2|Xokol|guadalajara|active
+9176|2025|2|Huniik|merida|active
+9177|2024|2|Huniik|merida|active
+9183|2025|2|Ixi'im Restaurant|chochola|active
+9184|2024|1|Ixi'im Restaurant|chochola|active
+9546|2025|1|Ristorante Al Cambio|bologna|active
+10120|2025|2|Sufret Maryam|dubai|active
+10462|2025|1|Ravintola Nolla|helsinki|active
+11138|2025|3|Trattoria BROS'|martina-franca|active
+11139|2024|3|Trattoria BROS'|martina-franca|active
+11193|2025|1|Trattoria Trippa|milan|active
+11194|2024|1|Trattoria Trippa|milan|active
+12337|2025|2|A Casa do Porco Bar|sao-paulo|active
+12338|2024|2|A Casa do Porco Bar|sao-paulo|active
+12387|2025|1|Mocotó Vila Medeiros|sao-paulo|active
+12773|2025|2|El Molino de Urdániz y Origen|urdaniz|active
+12962|2025|1|BABA|wroc-aw|active
+12963|2024|1|BABA|wroc-aw|active
+13050|2025|3|Maido|lima|active
+13051|2024|3|Maido|lima|active
+13060|2025|3|Table|paris|active
+13061|2024|3|Table|paris|active
+13070|2025|3|Kjolle|lima|active
+13071|2024|3|Kjolle|lima|active
+13086|2025|3|WING Restaurant|hong-kong|active
+13087|2024|2|WING Restaurant|hong-kong|active
+13097|2025|3|Lido 84|gardone-riviera|closed
+13098|2024|3|Lido 84|gardone-riviera|closed
+13111|2025|3|Boragó|santiago|active
+13112|2024|3|Boragó|santiago|active
+13123|2025|3|Mérito|lima|active
+13124|2024|2|Mérito|lima|active
+13133|2025|2|Mayta Restaurante|lima|active
+13134|2024|2|Mayta Restaurante|lima|active
+13154|2025|3|Belcanto|lisbon|active
+13155|2024|3|Belcanto|lisbon|active
+13160|2025|3|Celele|cartagena|active
+13161|2024|3|Celele|cartagena|active
+13850|2025|2|ARCA|tulum|active
+13851|2024|2|ARCA|tulum|active
+14046|2025|3|El Chato|bogota|active
+14047|2024|3|El Chato|bogota|active
+14061|2025|2|La Colombe|cape-town|active
+14062|2024|2|La Colombe|cape-town|active
+14274|2025|3|Central|lima|active
+14275|2024|3|Central|lima|active
+14282|2025|3|Leo|bogota|active
+14283|2024|3|Leo|bogota|active
+14475|2025|3|Fyn Restaurant|cape-town|active
+14476|2024|2|Fyn Restaurant|cape-town|active
+14519|2024|2|ULTRAVIOLET BY PAUL PAIRET|shanghai|active
+14578|2024|1|Tippling Club|singapore|closed
+14871|2025|1|Brae Restaurant|birregurra|active
+14872|2024|1|Brae Restaurant|birregurra|active
+15108|2025|2|Quay Restaurant|sydney|closed
+15109|2024|2|Quay Restaurant|sydney|closed
+15303|2025|1|Tantris|munich|active
+15304|2024|1|Tantris|munich|active
+15445|2024|1|Eigensinn Farm|singhampton|active
+15484|2025|3|Andō|hong-kong|active
+15485|2024|2|Andō|hong-kong|active
+15492|2025|3|NUEMA|quito|active
+15493|2024|2|NUEMA|quito|active
+15502|2025|3|Diacá|guatemala-city|active
+15503|2024|3|Diacá|guatemala-city|active
+15512|2025|3|Locavore NXT|ubud|active
+15513|2024|1|Locavore NXT|ubud|active
+15516|2025|3|Saint Peter|sydney|active
+15517|2024|3|Saint Peter|sydney|active
+15518|2025|3|Restaurante Manu|curitiba|active
+15519|2024|3|Restaurante Manu|curitiba|active
+15528|2025|3|Sushi Meino|tokyo|active
+15529|2024|3|Sushi Meino|tokyo|active
+15531|2025|3|TIAN|vienna|active
+15532|2024|2|TIAN|vienna|active
+15536|2025|3|NAAR|kasauli|active
+15537|2024|2|NAAR|kasauli|active
+15541|2025|3|Grand Hotel a Villa Feltrinelli|gargnano|active
+15542|2024|2|Grand Hotel a Villa Feltrinelli|gargnano|active
+15544|2025|3|Amisfield|queenstown|active
+15545|2024|3|Amisfield|queenstown|active
+15548|2025|2|Ristorante Dina|gussago|active
+15549|2024|1|Ristorante Dina|gussago|active
+15552|2025|2|Acqua Italian Dining Restaurant Bangkok|bangkok|active
+15553|2024|1|Acqua Italian Dining Restaurant Bangkok|bangkok|active
+15555|2025|2|Iris | Rosendal|rosendal|active
+15556|2024|2|Iris | Rosendal|rosendal|active
+15557|2025|2|Suculent|barcelona|active
+15558|2024|2|Suculent|barcelona|active
+15560|2025|2|AT|paris|active
+15561|2024|2|AT|paris|active
+15563|2025|2|LA TABLE DES AMIS - BONNIEUX|bonnieux|active
+15565|2025|2|PiperoRoma|rome|active
+15566|2024|1|PiperoRoma|rome|active
+15567|2025|2|Blue Hill at Stone Barns|tarrytown|active
+15568|2024|2|Blue Hill at Stone Barns|tarrytown|active
+15569|2025|2|Fauna|guadalupe|active
+15570|2024|1|Fauna|guadalupe|active
+15576|2025|2|Dalla Gioconda|gabicce-monte|active
+15577|2024|1|Dalla Gioconda|gabicce-monte|active
+15580|2025|2|Silo London|london|closed
+15582|2025|2|Podere Belvedere Tuscany|pontassieve|active
+15584|2025|2|Kuuk|merida|active
+15585|2024|2|Kuuk|merida|active
+15588|2025|2|Restaurante Origem|salvador|active
+15589|2024|2|Restaurante Origem|salvador|active
+15594|2025|2|L'Auberge de Saint-Rémy|saint-remy|active
+15595|2024|2|L'Auberge de Saint-Rémy|saint-remy|active
+15597|2025|2|Villa La Coste|le-puy-sainte-reparade|active
+15598|2025|2|L'Auberge de Montmin|talloires-montmin|active
+15600|2025|2|Pepe In Grani|caiazzo|active
+15601|2024|2|Pepe In Grani|caiazzo|active
+15602|2025|2|The Restaurant|zurich|active
+15603|2024|2|The Restaurant|zurich|active
+15605|2025|2|TakaHisa Japanese Restaurant|dubai|active
+15611|2025|2|Aguají Restaurant by Chef Tita|sosua|active
+15612|2024|2|Aguají Restaurant by Chef Tita|sosua|active
+15614|2025|2|Cordero|caracas|active
+15615|2024|1|Cordero|caracas|active
+15619|2025|2|Le Doyenné|saint-vrain|active
+15620|2024|1|Le Doyenné|saint-vrain|active
+15622|2025|2|Bar da Dona Onça|sao-paulo|active
+15623|2024|2|Bar da Dona Onça|sao-paulo|active
+15626|2025|2|Langdon Hall Country House Hotel & Spa|cambridge-on|active
+15627|2024|2|Langdon Hall Country House Hotel & Spa|cambridge-on|active
+15630|2025|2|El Papagayo Restaurant|cordoba-ar|active
+15631|2024|2|El Papagayo Restaurant|cordoba-ar|active
+15634|2025|2|The LivingRoom at Summerhill Guest Estate|durban|active
+15635|2024|1|The LivingRoom at Summerhill Guest Estate|durban|active
+15636|2025|2|Farmlore|bengaluru|active
+15640|2025|2|Villa Aida|wakayama|active
+15641|2024|2|Villa Aida|wakayama|active
+15648|2025|2|BOZAR|brussels|active
+15649|2024|2|BOZAR|brussels|active
+15651|2025|2|Gucci Osteria|florence|active
+15652|2024|2|Gucci Osteria|florence|active
+15655|2025|2|Satoyama Jujo|niigata|active
+15656|2024|2|Satoyama Jujo|niigata|active
+15657|2025|2|Stone Sal Yanyan Western Restaurant|shanghai|active
+15659|2025|2|MIL Centro - Food Lab and Interpretation Center|moray|active
+15660|2024|2|MIL Centro - Food Lab and Interpretation Center|moray|active
+15669|2025|2|Khufu's Restaurant|cairo|active
+15670|2024|1|Khufu's Restaurant|cairo|active
+15675|2025|2|Broto|lisbon|active
+15676|2024|2|Broto|lisbon|active
+15677|2025|2|La Petite Colombe|franschhoek|active
+15679|2025|2|Cheval Blanc by Peter Knogl|basel|active
+15680|2025|2|Estimar|barcelona|active
+15681|2024|2|Estimar|barcelona|active
+15690|2025|2|Ensue|shenzhen|active
+15691|2025|1|Ensue|shenzhen|active
+15694|2025|2|The Yeatman Hotel|porto|active
+15695|2024|2|The Yeatman Hotel|porto|active
+15698|2025|2|Ræst|torshavn|active
+15699|2024|2|Ræst|torshavn|active
+15700|2025|2|Sublime|guatemala-city|active
+15701|2024|1|Sublime|guatemala-city|active
+15708|2025|2|Indian Accent|new-delhi|active
+15717|2025|2|Widder Hotel|zurich|active
+15718|2024|2|Widder Hotel|zurich|active
+15720|2025|2|Syrco BASÈ - RESTAURANT and BAR|bali|active
+15721|2024|2|Syrco BASÈ - RESTAURANT and BAR|bali|active
+15722|2025|2|Stücki Park|basel|active
+15723|2024|2|Stücki Park|basel|active
+15725|2025|2|Story Street|london|active
+15727|2025|2|8½ Otto e Mezzo BOMBANA|macau|active
+15737|2025|2|Krasota Dubai Restaurant|dubai|active
+15738|2024|2|Krasota Dubai Restaurant|dubai|active
+15739|2025|2|Restaurant Xavier Pellicer|barcelona|active
+15740|2024|2|Restaurant Xavier Pellicer|barcelona|active
+15742|2025|2|Sushi Arai|tokyo|active
+15745|2025|2|Paris Butter|auckland|active
+15748|2025|1|INJA Restaurant|new-delhi|active
+15751|2025|1|Oncore by Clare Smyth|sydney|closed
+15752|2024|1|Oncore by Clare Smyth|sydney|closed
+15754|2025|1|NOUA. Bucătărie Românească|bucharest|active
+15755|2025|1|AURA by Alexander Herrmann & Tobias Bätz|wirsberg|active
+15757|2025|1|La Mesa|santiago|active
+15758|2025|1|The Palash Vann Resort|maharashtra|active
+15759|2024|1|The Palash Vann Resort|maharashtra|active
+15760|2025|1|Clara Restaurante|quito|active
+15763|2025|1|Yi|macau|active
+15773|2025|1|Farasha Farmhouse|marrakech|active
+15774|2025|1|La Mar|lima|active
+15783|2025|1|Park|westmount|active
+15786|2025|1|Ho Lee Fook|hong-kong|active
+15788|2025|1|Bourgeois Bohemians|saint-petersburg|active
+15790|2025|1|Hémicycle|paris|closed
+15791|2024|1|Hémicycle|paris|closed
+15794|2025|1|Paste Bangkok|bangkok|active
+15795|2024|1|Paste Bangkok|bangkok|active
+15798|2025|1|Pipit Restaurant|pottsville|active
+15799|2025|1|Demencia|santiago|active
+15804|2025|1|Iai|manila|active
+15805|2025|1|Apartıman Yeniköy|istanbul|active
+15806|2024|1|Apartıman Yeniköy|istanbul|active
+15807|2025|1|Dusk Restaurant|stellenbosch|active
+15808|2024|1|Dusk Restaurant|stellenbosch|active
+15810|2025|1|Alto|caracas|active
+15811|2024|1|Alto|caracas|active
+15812|2025|1|Orujo, Taller de Gastronomía|san-juan|active
+15813|2025|1|Domingo|cali|active
+15814|2024|1|Domingo|cali|active
+15815|2025|1|Meet the Bund|shanghai|active
+15816|2024|1|Meet the Bund|shanghai|active
+15823|2025|1|HODAN|istanbul|closed
+15824|2025|1|Amaru|melbourne|active
+15826|2025|1|Pikaia Lodge|galapagos|active
+15827|2025|1|Ox & Klee|cologne|active
+15828|2024|1|Ox & Klee|cologne|active
+15833|2025|1|Sixpenny|stanmore|active
+15834|2024|1|Sixpenny|stanmore|active
+15836|2025|1|ECK Restaurant|bratislava|active
+15838|2025|1|Rubra|punta-de-mita|active
+15840|2025|1|Oltre.|bologna|active
+15841|2024|1|Oltre.|bologna|active
+15842|2025|1|Restaurante Manga|salvador|active
+15843|2024|1|Restaurante Manga|salvador|active
+15846|2025|1|EIGHT|calgary|active
+15848|2025|1|Restaurant Daalder*|amsterdam|active
+15849|2025|1|Restaurante Flor De Lis|guatemala-city|active
+15851|2025|1|Ōre|bangkok|closed
+15852|2024|1|Ōre|bangkok|closed
+15855|2025|1|Sakhalin İstanbul|istanbul|active
+15856|2025|1|Farmers|marrakech|active
+15858|2025|1|Metzi|sao-paulo|active
+15864|2025|1|Peach Blossoms|singapore|active
+15868|2025|1|L’évo|toyama|active
+15869|2024|1|L’évo|toyama|active
+15875|2025|1|Balzi Rossi|ventimiglia|active
+15876|2025|1|Mengano|buenos-aires|active
+15878|2025|1|Turk Fatih Tutak|istanbul|active
+15879|2024|1|Turk Fatih Tutak|istanbul|active
+15880|2025|1|Table III|casablanca|active
+15883|2025|1|Cantina del Tigre|panama-city|active
+15888|2025|1|Girl & the Goose - Restaurante Centroamericano|dubai|active
+15890|2025|1|Rumari|jimbaran|active
+15891|2024|1|Rumari|jimbaran|active
+15893|2025|1|SEM Restaurant|lisbon|closed
+15894|2024|1|SEM Restaurant|lisbon|closed
+15895|2025|1|Ocyá|rio-de-janeiro|active
+15896|2024|1|Ocyá|rio-de-janeiro|active
+15899|2025|1|El Xolo|san-salvador|active
+15904|2025|1|Kvitnes Gård|kvitnes|active
+15906|2025|1|August|jakarta|active
+15907|2024|1|August|jakarta|active
+15912|2025|1|Scalottas Terroir|lenzerheide|closed
+15913|2025|1|Sufra Restaurant|amman|active
+15918|2025|1|Tala|auckland|active
+15921|2025|1|Conservatorium|san-jose|active
+15924|2025|1|WAGYUMAFIA DISTRICT|tokyo|active
+15927|2025|1|T.U.N.G Dining|hanoi|active
+15928|2025|1|ManO2|zagreb|active
+15929|2025|1|Vue de monde|melbourne|active
+15931|2025|1|Papa's|mumbai|active
+15934|2025|1|La Calma by Fredes|santiago|active
+15935|2024|1|La Calma by Fredes|santiago|active
+15942|2025|1|TFAYA - brasserie arabesque|marrakech|active
+15943|2024|1|TFAYA - brasserie arabesque|marrakech|active
+15944|2025|1|El Bosque Bistró|caracas|active
+15945|2024|1|El Bosque Bistró|caracas|active
+15946|2025|1|The Chef's Table at Blue Duck Station|owhango|active
+15947|2025|1|Humo Negro|bogota|active
+15953|2025|1|Restaurant Gordon Ramsay High|london|active
+15954|2024|1|Restaurant Gordon Ramsay High|london|active
+15956|2025|1|De Groene Lantaarn|staphorst|closed
+15957|2024|1|De Groene Lantaarn|staphorst|closed
+15959|2025|1|La Tasquería|madrid|active
+15960|2025|1|Pulperia Santa Elvira|santiago|active
+15964|2025|1|Hotel Cañitas Classic|casas-ibanez|active
+15966|2025|1|Afluente Restaurante|bogota|active
+15969|2025|1|ARTE Restaurant|svaty-jur|active
+15970|2025|1|ZEA|taipei|active
+15971|2025|1|Lolla|singapore|closed
+15972|2024|1|Lolla|singapore|closed
+15976|2025|1|PIER Restaurant|cape-town|active
+15978|2025|1|The Ritz London|london|active
+15979|2024|1|The Ritz London|london|active
+15980|2025|1|Reverie|washington-dc|closed
+15981|2024|1|Reverie|washington-dc|closed
+15983|2025|1|gēn|george-town|active
+15987|2025|1|Gašperov mlyn|batizovce|active
+15989|2025|1|Alma|montreal|active
+15991|2025|1|La Tasquita de Enfrente|madrid|active
+15992|2024|1|La Tasquita de Enfrente|madrid|active
+15994|2025|1|20 Victoria St|toronto|active
+15997|2025|1|Fo'ao Vaperse Hotel|guangzhou|active
+15998|2025|1|Julia|buenos-aires|active
+15999|2024|1|Julia|buenos-aires|active
+16006|2025|1|Xiamen|xiamen|active
+16007|2025|1|La Grande Table Marocaine, Royal Mansour Marrakech|marrakech|active
+16008|2024|1|La Grande Table Marocaine, Royal Mansour Marrakech|marrakech|active
+16015|2025|1|Restaurant UOZEN|niigata|active
+16016|2024|1|Restaurant UOZEN|niigata|active
+16018|2025|1|Jun’s|dubai|active
+16023|2025|1|Svinkløv Badehotel|fjerritslev|active
+16024|2024|1|Svinkløv Badehotel|fjerritslev|active
+16025|2025|1|Solstice|newcastle|active
+16028|2025|1|Sawada|tokyo|active
+16030|2025|1|Firedoor Restaurant|sydney|active
+16031|2024|1|Firedoor Restaurant|sydney|active
+16034|2025|1|Sidart Restaurant|auckland|closed
+16035|2025|1|The Golden Fork|rabat|active
+16036|2024|1|The Golden Fork|rabat|active
+16037|2025|1|Chefs Warehouse Beau Constantia|cape-town|active
+16039|2025|1|Beijing 1996|beijing|active
+16041|2025|1|Autem Milano|milan|active
+16043|2025|1|Em|mexico-city|active
+16047|2025|1|Casa Coloni Ristorante|paestum|closed
+16048|2025|1|Origin|lucenec|active
+16049|2025|1|ILIS|new-york|closed
+16052|2025|1|Casa Mamá Luz|bogota|active
+16053|2024|1|Casa Mamá Luz|bogota|active
+16054|2025|1|Atelier|ottawa|closed
+16055|2024|1|Atelier|ottawa|closed
+16058|2025|1|Noriko Omakase|warsaw|active
+16059|2025|1|Sustanza|naples|active
+16061|2025|1|Gran Dabbang|buenos-aires|active
+16070|2025|1|ChiaroScuro di Marina Ravarotto|cagliari|active
+16071|2025|1|Rosi|zurich|closed
+16072|2024|1|Rosi|zurich|closed
+16073|2025|1|Arami|la-paz|active
+16074|2024|1|Arami|la-paz|active
+16076|2025|1|X.O.|medellin|closed
+16080|2025|1|MERTIA|stellenbosch|active
+16081|2025|1|bianc|hamburg|closed
+16082|2024|1|bianc|hamburg|closed
+16087|2025|1|Restaurant Tres|rotterdam|active
+16088|2024|1|Restaurant Tres|rotterdam|active
+16090|2025|1|A nóż widelec|poznan|active
+16091|2025|1|Somma Restaurant|singapore|active
+16092|2025|1|Arbequina Restaurant|toronto|active
+16093|2025|1|Gigi Waterfall Corner|johannesburg|active
+16094|2024|2|Gigi Waterfall Corner|johannesburg|active
+16095|2025|1|JULIA|tokyo|active
+16096|2024|1|JULIA|tokyo|active
+16097|2025|1|Sofreh|new-york|active
+16098|2024|1|Sofreh|new-york|active
+16099|2025|1|Oda Restaurante 🇨🇴|bogota|active
+16100|2024|1|Oda Restaurante 🇨🇴|bogota|active
+16104|2025|1|Restaurant Naz|karuizawa|active
+16107|2025|1|NEL Restaurant|sydney|active
+16108|2025|1|Ana Cocina Local|guatemala-city|active
+16110|2025|1|Yum Cha|santiago|active
+16111|2024|1|Yum Cha|santiago|active
+16115|2025|1|8 1/2 Otto e Mezzo Bombana|shanghai|active
+16117|2025|1|Porcine|sydney|active
+16118|2025|1|Ekaa|mumbai|active
+16119|2024|1|Ekaa|mumbai|active
+16122|2025|1|Teatro kitchen & bar|barcelona|closed
+16123|2024|1|Teatro kitchen & bar|barcelona|closed
+16125|2025|1|Mirabelle|bekkjarvik|active
+16126|2025|1|Sikwa Restaurante|san-jose|active
+16131|2025|1|Mercado 24|guatemala-city|active
+16132|2024|1|Mercado 24|guatemala-city|active
+16137|2025|1|Sarasanegro Restaurante|buenos-aires|active
+16138|2024|1|Sarasanegro Restaurante|buenos-aires|active
+16139|2025|1|Aalia Restaurant Sydney|sydney|active
+16142|2025|1|Fervor Restaurant|perth|active
+16143|2025|1|DeMo|santiago|active
+16144|2024|1|DeMo|santiago|active
+16145|2025|1|Fotografiska Tallinn|tallinn|active
+16146|2024|1|Fotografiska Tallinn|tallinn|active
+16147|2025|1|CAAA by Pietro Catalano|lucerne|active
+16148|2024|1|CAAA by Pietro Catalano|lucerne|active
+16149|2025|1|Forest|auckland|active
+16150|2025|1|Chapter Dining|hanoi|active
+16151|2025|1|Gresca|barcelona|active
+16152|2025|1|Rafael|lima|active
+16161|2025|1|Fakhreldin Restaurant|amman|active
+16166|2025|1|Biohof Taratsch|lohn|active
+16167|2025|1|Kappa Chakka Kandhari|chennai|active
+16168|2024|1|Kappa Chakka Kandhari|chennai|active
+16169|2025|1|Indian Accent|mumbai|active
+16170|2025|1|Riku Chef’s counter|cape-town|active
+16171|2024|1|Riku Chef’s counter|cape-town|active
+16172|2025|1|The Agrarian Kitchen|hobart|active
+16173|2025|1|Coro|orvieto|active
+16174|2025|1|The Waterside|cape-town|active
+16175|2025|1|Orma Roma|rome|active
+16177|2025|1|Salsify at the Roundhouse|cape-town|active
+16178|2025|1|Restaurante Silvestre|san-jose|active
+16179|2025|1|Dara Dining by Sara Aqel|amman|active
+16180|2024|1|Dara Dining by Sara Aqel|amman|active
+16183|2025|1|SantoPalato|rome|active
+16184|2025|1|Ochsen 1596|muri|active
+16185|2024|1|Ochsen 1596|muri|active
+16186|2025|1|Midunu|accra|active
+16188|2025|1|Seraf Vadi|istanbul|active
+16189|2025|1|Nyn Esti|athens|active
+16190|2025|1|The Fellas|shanghai|active
+16191|2025|1|Teruzushi|sugawara|active
+16192|2024|1|Teruzushi|sugawara|active
+16194|2025|1|Goh|fukuoka|active
+16195|2024|1|Goh|fukuoka|active
+16200|2025|1|Kataori|kanazawa|active
+16204|2025|1|Beihouse|beirut|active
+16206|2025|1|Nelita Restaurant|sao-paulo|active
+16207|2024|1|Nelita Restaurant|sao-paulo|active
+16212|2025|1|Apotheka Bar & Lounge|tbilisi|active
+16213|2024|1|Apotheka Bar & Lounge|tbilisi|active
+16214|2025|1|Moonah Restaurant|melbourne|active
+16215|2025|1|Mishiguene|buenos-aires|active
+16216|2024|1|Mishiguene|buenos-aires|active
+16226|2025|1|Kibun|tokyo|active
+16227|2025|1|Phayawi Restaurante|la-paz|active
+16231|2025|1|Masque|mumbai|active
+16232|2024|1|Masque|mumbai|active
+16241|2025|1|TANG Asian Luxury Restaurant & Bar Waterfront|cape-town|active
+16242|2025|1|Cosmos Restaurant / Космос|sofia|active
+16244|2025|1|EDGE for Men - V & A Waterfront|cape-town|active
+16245|2025|1|Les Créatifs Restaurant|johannesburg|active
+16246|2024|1|Les Créatifs Restaurant|johannesburg|active
+16247|2025|1|Yong Fu (Huangpu)|shanghai|active
+16250|2025|1|Ya’axche Restaurante - Centro Etnogastronómico|yucatan|active
+16251|2024|2|Ya’axche Restaurante - Centro Etnogastronómico|yucatan|active
+16252|2025|1|NADODI|kuala-lumpur|active
+16256|2025|1|HIBA Restaurant|tel-aviv|active
+16257|2024|1|HIBA Restaurant|tel-aviv|active
+16258|2025|1|AVANT|shenzhen|active
+16259|2024|1|AVANT|shenzhen|active
+16261|2025|1|Eat and Cook - Best Fine Dining KL|kuala-lumpur|closed
+16263|2024|3|Fusions|manama|closed
+16268|2024|2|été|tokyo|active
+16274|2024|1|Wayan|new-york|active
+16275|2024|1|Bæst|copenhagen|active
+16276|2024|1|Art di Daniele Sperindio|singapore|closed
+16278|2024|1|pasjoli|santa-monica|active
+16280|2024|1|ernst|berlin|closed
+16282|2024|1|ARREA! Jatetxea|santa-cruz-de-campezo|active
+16284|2024|1|El Baqueano - Cocina Autóctona Contemporanea|salta|active
+16291|2024|1|Contrast|amsterdam|closed
+16292|2024|1|Lyle's|adelaide|active
+16293|2024|1|White Plate by Chef Jason|bardez|closed
+16294|2024|1|Euphoria|singapore|closed
+16300|2024|1|Biohotel Walserstuba|riezlern|active
+16301|2024|1|Flames|johannesburg|active
+16304|2024|1|Bvlgari Il Ristorante - Luca Fantin|tokyo|closed
+16306|2024|1|Maito Restaurante|panama-city|active
+16313|2024|1|Higashiazabu Amamoto|tokyo|active
+16316|2024|1|Mustard Seed|singapore|active
+16318|2024|1|Emazulwini Restaurant|cape-town|closed
+16319|2024|1|Canvas|bangkok|closed
+16321|2024|1|The Pem|london|active
+16322|2024|1|Estelle|melbourne|active
+16323|2024|1|Zeniya|kanazawa|active
+16325|2024|1|Metiz|manila|active
+16329|2024|1|La Docena|guadalajara|active
+16332|2024|1|Noon|mumbai|closed
+17720|2024|1|El Cielo|miami|active
+18381|2025|3|Ynyshir Restaurant & Rooms|machynlleth|active
+18382|2024|3|Ynyshir Restaurant & Rooms|machynlleth|active
