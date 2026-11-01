@@ -1,0 +1,24 @@
+Run record: docs/awards-michelin-2026-hong-kong-macau-green-star.sql (open item 1, D9 = A)
+File sha256 aedc96762e894ca1cfa076ce38134b25e003cfa087bc7cefecd70b214ef2a071 (115 lines)
+Build script docs/hkmo-2026-build/build_green_star_hkmo_2026_11_01.py sha256 25635401091c2086edc36d700df1cfac3a66a7aaf7e10cc6e990762460d1f954
+Source: docs/michelin-2026-hong-kong-macau-log.md part 13 (sha256 8ddf67809aa00f8773b9c1b091a5b3cbd95a2b1551e30631dbd36e00e99239df)
+
+Start check, Nov 1 15:59:34 UTC (whole tables): venues 11,300 (active 10,935, closed 365); awards 23,363 (last id 30,130);
+  slugs 12,952 (canonical 11,300); listings 11,300; price 7,727; city_label_source 23,999; ledger 154 rows, last id 204;
+  audit_log 115,752 rows, last id 121,090; cities.venues_count sum 10,935. All = handoff.
+Plan query (Read connector): plan md5 9a367fc13e3132fa0284e2469ca84415 (= script); line:venue md5 cac32b7a4b64f3a279bf13a830bebe9c
+  (1:ve_8278ead889, 2:ve_17e6e908f5, 3:ve_59d40bfdec, 4:ve_65d8ce2624, 5:ve_4ec07a8222; each URL on exactly 1 Michelin row).
+Syntax: pglast parse_sql 3 statements, parse_plpgsql ok, 0 non-ASCII characters.
+Dry run (Read connector, DO block): all pre-checks passed; stopped at the first INSERT, "read-only transaction".
+  Read after, 16:01:44 UTC: awards 23,363 (last 30,130), ledger 204, audit 121,090. No id used.
+Ben "go" Nov 1 11:03 ET. Gate read 16:03:40 UTC: unchanged.
+Write: Write connector, first try, committed 16:04:10 UTC, all post-checks passed.
+Read-back 16:04:16 UTC:
+  awards 23,368 (Michelin 9,664; Green Star 2026 129); new award ids 30131-30135:
+    30131 Amber ve_8278ead889 | 30132 Feuille ve_17e6e908f5 | 30133 Mora ve_59d40bfdec |
+    30134 Roganic Hong Kong ve_65d8ce2624 | 30135 UTM Educational Restaurant ve_4ec07a8222
+    (all michelin, 2026, Green Star, rank null, distinction null, source_url = venue page)
+  ledger 155 rows, new id 205 (michelin, award, 5, job special-awards:michelin-2026-hong-kong-macau-green-star | ...)
+  audit_log 115,757 rows, ids 121,091-121,095 (5 awards INSERT, row_pk 30131-30135)
+  No change: venues 11,300 (active 10,935); slugs 12,952 (canonical 11,300); listings 11,300; price 7,727;
+    city_label_source 23,999; cities.venues_count sum 10,935.
