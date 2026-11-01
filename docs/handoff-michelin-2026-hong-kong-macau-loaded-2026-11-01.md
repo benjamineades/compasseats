@@ -1,4 +1,4 @@
-# Handoff: Hong Kong / Macau Michelin 2026 loaded (relabel, stage, promote, cleanup). Nov 1, 2026 (11:00 Atlanta). Next: D9 Green Star file, then Ben chooses.
+# Handoff: Hong Kong / Macau Michelin 2026 loaded (relabel, stage, promote, cleanup). Nov 1, 2026 (11:00 Atlanta). D9 Green Star rows done (16:04 UTC). Next: Ben chooses.
 
 This file replaces `handoff-open-items-b10-done-2026-11-01.md` for live state and open items. Rules R1-R5:
 `handoff-name-diffs-read-2026-10-30.md`. Michelin city rule (D7): `handoff-open-items-b2-done-2026-10-30.md`. Promote method:
@@ -11,19 +11,20 @@ This file replaces `handoff-open-items-b10-done-2026-11-01.md` for live state an
   new, 3 legacy rows to contamination), D4 = B (Dragon Inn new), D5 = A (Putien pair: card row on ve_73d901a8fe, legacy venue to
   cleanup), D6 = delete Duddell's 5409, D7 = keep Chiu Chow Delicacies 10529 as 2025 history, D8 = 2025 backfill later,
   D9 = A (5 Green Star 2026 rows in a small file after the promote; NOT DONE YET).
+- 11:03 "go" (D9 Green Star file).
 - 10:27 "Go" (relabel). 10:35 "Can you run that in chrome?" (stage). 10:43 "Go" (promote). 10:47 "start cleanup". 10:55 "go" (cleanup).
 
-## Live state (read Nov 1, 15:57:16 UTC, whole tables)
+## Live state (read Nov 1, 16:04:16 UTC, whole tables)
 | Table | Count |
 |---|---|
 | venues | 11,300 (active **10,935**, closed **365**) |
-| awards | **23,363** |
+| awards | **23,368** (last id 30,135); Michelin 9,664; Michelin Green Star 2026 **129** |
 | price | **7,727** |
 | slugs | **12,952** (canonical 11,300, non-canonical **1,652**); venues with other than 1 canonical slug: 0 |
 | listings | 11,300 |
 | city_label_source | **23,999** |
-| source_capture_ledger | **154** rows, last id **204** |
-| audit_log | **115,752** rows, last id **121,090** |
+| source_capture_ledger | **155** rows, last id **205** |
+| audit_log | **115,757** rows, last id **121,095** |
 | cities.venues_count | sum **10,935**; cities that differ from the view: 0 |
 | ingest_batches | batch **19** `michelin-2026-hong-kong-macau` promoted |
 | Michelin 2025 / 2026 rows | 3,291 / 6,269 |
@@ -53,6 +54,11 @@ This file replaces `handoff-open-items-b10-done-2026-11-01.md` for live state an
    -> Lai Ching Heen (old slugs non-canonical; price rows moved); OAD 79 + La Liste 92.5 -> Lai Ching Heen; OAD 352 -> Macau
    Lai Heen `ve_cdd31cd894`.
 
+8. **Green Star (D9 = A)** `docs/awards-michelin-2026-hong-kong-macau-green-star.sql` (sha256 `aedc9676...a071`, commit `a4841df`):
+   Write connector, first try, 16:04:10 UTC. Awards 30131-30135 (Amber, Feuille, Mora, Roganic Hong Kong, UTM Educational
+   Restaurant; 2026, Green Star, source_url = venue page). Ledger **205**; audit **121,091-121,095**. Run record
+   `docs/hkmo-2026-build/run-green-star-2026-11-01.txt`.
+
 ## Methods that worked (new)
 - **Label test before a promote:** compare each legacy row's category with the 2026 card on the same venue; 100% agreement with 2026
   (and disagreement with the 2025 article) = wrong label -> relabel in place (year + URL), then stage gives `duplicate`.
@@ -62,8 +68,7 @@ This file replaces `handoff-open-items-b10-done-2026-11-01.md` for live state an
 - **OAD restaurant page** `https://www.oadguides.com/restaurant/<slug>` gives the address behind a list entry.
 
 ## Open items, smallest first
-1. **D9 Green Star 2026 (approved, not done):** 5 rows, URL = venue page: Amber `ve_8278ead889`, Feuille `ve_17e6e908f5`, Mora
-   `ve_59d40bfdec`, Roganic `ve_65d8ce2624`, UTM Educational Restaurant `ve_4ec07a8222` (log part 13). Small gated INSERT file.
+1. ~~D9 Green Star 2026~~ DONE Nov 1 16:04 UTC (ledger 205, audit 121,091-121,095, commit `a4841df`).
 2. HK/MO rename batch (R1-R5, site reads): 87 paired names differed from the card on Nov 1 (for example "Tin Lung Heen | The
    Ritz-Carlton, Hong Kong", "Cafe Hunan" -> Prof Chan's (Western District), "Joel Robuchon" -> L'Atelier de Joel Robuchon).
 3. HK/MO name_native from `venue_name_zh` (180 rows; 0 HK/MO venues have name_native).
@@ -84,13 +89,14 @@ This file replaces `handoff-open-items-b10-done-2026-11-01.md` for live state an
 | `docs/relabel-michelin-2026-hong-kong-macau-legacy.sql` | Run (ledger 197) | `d8490db8...445c` |
 | `fixtures/ingest/michelin-2026-hong-kong-macau-decisions.csv` | Applied (stage run 2) | `6c744582...7876` |
 | `docs/cleanup-michelin-2026-hong-kong-macau.sql` | Run (ledger 202-204) | `5d5c440a...34dd` |
+| `docs/awards-michelin-2026-hong-kong-macau-green-star.sql` | Run (ledger 205) | `aedc9676...a071` |
 | `docs/hkmo-2026-build/` (relays, build scripts, run records) | Build | - |
 
 ## Suggested opening prompt
 ```
 Read claude/handoff-michelin-2026-hong-kong-macau-loaded-2026-11-01.md from the project files, then
-claude/handoff-chengdu-held-7-cleanup-done-2026-10-04.md for working rules. Do a fresh count read and confirm ledger 204,
-audit_log 121,090, venues 11,300, awards 23,363, slugs 12,952 and cities.venues_count sum 10,935. Then build open item 1
-(the 5 Hong Kong / Macau Green Star 2026 rows, D9 = A), dry run it, and show me in /ste style. No write before my go.
-Attach the compasseats repo with push access for the commit after any write.
+claude/handoff-chengdu-held-7-cleanup-done-2026-10-04.md for working rules. Do a fresh count read and confirm ledger 205,
+audit_log 121,095, venues 11,300, awards 23,368, slugs 12,952 and cities.venues_count sum 10,935. Then start open item 2
+(HK/MO rename batch, R1-R5): build the file, examine it read-only, and show me in /ste style with the choices. No write
+before my go. Attach the compasseats repo with push access for the commit after any write.
 ```
