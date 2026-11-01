@@ -1,0 +1,36 @@
+Run record: docs/backfill-michelin-2025-hong-kong-macau.sql (D8, HK/MO 2025 history backfill)
+Ben, Nov 1 13:22 ET "A2, B1, C1, D1, E1"; 13:41 ET "go"; 13:43 ET "Go" (after the fix below).
+
+Source: https://web.archive.org/web/20251229115831id_/https://guide.michelin.com/hk/en/article/michelin-guide-ceremony/hong-kong-macau-full-list
+  Read Nov 1 in the built-in browser: status 200, 0 redirects, title "The Full List of the MICHELIN Guide Hong Kong & Macau 2025".
+  Section counts = heading numbers (12 of 12): HK 3* 7, 2* 11, 1* 58, Selected 65, Green Star 4, Bib 65;
+  Macau 3* 2, 2* 6, 1* 11, Selected 24, Green Star 1, Bib 11.
+Relay: relay-hkmo-2025-archive-20251229115831.txt, 265 lines, sha256 02bf30b13374118617211cf4973146b8048784e3717366e6aabcff5a9c0ca81b
+  (browser hash = file hash). Commit 9731f21.
+
+Start check 18:12:20 UTC (whole tables): ledger 209, audit 121,587, venues 11,299, awards 23,371, slugs 13,002, price 7,733,
+  cities.venues_count sum 10,934. All = handoff-hkmo-register-done-2026-11-01.
+Match read (176 relay rows: Stars, Bib, Green Star): exact name 145; name without "(branch)" 19; 2 candidates, exact name picks 1: 2;
+  name differs, paired by the 2026 card: 8 (C1); 2 candidates, paired by the card: 1 (Din Tai Fung TST = din-tai-fung-silvercord);
+  no venue: 3 (D1: Man Yuen, Sun Yuen Hing Kee, What To Eat; none in venues or in deleted-venue audit rows).
+Plan query (plan-query-hkmo-2025.sql, Read connector): 173 rows, t1 145 / t2 19 / use 9; seq:venue md5 25d612df6b72c2fe467b5db320cf07cb;
+  in city 173; active 172, closed 1 (HK Zuicho); distinct venue+category 173; existing 2025 = 10529 only (no URL).
+Build: build_backfill_hkmo_2025.py; plan md5 21797d76c3053f1fc992cf5e07d6fda1.
+Dry run (Read connector): first try failed at CREATE TEMP TABLE (read-only transaction does not allow it); the plan was moved to a
+  jsonb variable. Second dry run: all guards passed, stopped at the first INSERT. Read after 18:27:55 UTC: no id used.
+Run 1 (Write connector, 18:42 UTC): guards, writes and the first 4 post-checks passed; the category post-check failed with
+  "column reference n is ambiguous" (alias n = PL/pgSQL variable n). Rolled back. Read 18:42:51 UTC: all counts unchanged,
+  0 idle transactions. Ids used by run 1: awards 30139-30310, ledger 210, audit 121588-121760 (no rows exist with these ids).
+Fix: alias n -> cnt in that check (2 lines). Tested alone through the Read connector. File sha256
+  437ce587aa93f7901f52152fdd21f7e221e04ed5312ab6c5b5e09c4857827100, build script sha256
+  5110097c5fb2419443e1bf25a9cc7ce80d756e16ac92e953ba3306444b52e915, commit 1a7db4c.
+Gate read 18:43:55 UTC: unchanged.
+Run 2 (Write connector): committed 18:45:21 UTC, all post-checks passed.
+Read-back 18:45:32 UTC:
+  awards 23,543 (last id 30,482); new award ids 30311-30482 (172; michelin, 2025, rank null, distinction null, source_url = archive URL)
+  Michelin 9,839; Michelin 2025 3,463 (no URL 3,281); HK/MO Michelin 2025: Hong Kong 142, Macau 31 (all with the archive URL)
+  row 10529 source_url = archive URL
+  ledger 160 rows, new id 211 (michelin, award, 173, job backfill:michelin-2025-hong-kong-macau-archive | ...)
+  audit_log 116,422 rows, ids 121,761-121,933 (173: 172 awards INSERT, 1 awards UPDATE row_pk 10529)
+  Spot: Zuicho (HK, closed) 2025 One Star; Sushi Saito 2025 One Star; Cristal Room 2025 One Star; Chiu Chow Delicacies 2025 Bib.
+  No change: venues 11,299 (active 10,934); slugs 13,002; listings 11,299; price 7,733; cities.venues_count sum 10,934.
