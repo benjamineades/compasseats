@@ -6,7 +6,7 @@
 -- Source: https://web.archive.org/web/20251229115831id_/https://guide.michelin.com/hk/en/article/michelin-guide-ceremony/hong-kong-macau-full-list
 --   (read Nov 1 in the built-in browser; status 200, 0 redirects; title "The Full List of the MICHELIN Guide Hong Kong & Macau 2025").
 -- Relay: docs/hkmo-2025-build/relay-hkmo-2025-archive-20251229115831.txt sha256 02bf30b13374118617211cf4973146b8048784e3717366e6aabcff5a9c0ca81b.
--- Built by docs/hkmo-2025-build/build_backfill_hkmo_2025.py (sha256 dde11dc5c093314e17b7f27c4a85c28872f9a1f95846d54ba33c24e36602da3a) from the relay (no retyped rows).
+-- Built by docs/hkmo-2025-build/build_backfill_hkmo_2025.py (sha256 5110097c5fb2419443e1bf25a9cc7ce80d756e16ac92e953ba3306444b52e915) from the relay (no retyped rows).
 -- Venue match, inside this transaction: exact norm_key in the city (t1); else norm_key with the trailing "(branch)" removed
 --   on both sides, 1 venue only (t2); else the C1 venue id. Gates: plan md5 21797d76c3053f1fc992cf5e07d6fda1; seq:venue md5 25d612df6b72c2fe467b5db320cf07cb.
 -- Expected: awards INSERT 172 (michelin, 2025) and UPDATE 1 (id 10529, source_url); 1 ledger row; 173 audit rows (trigger).
@@ -112,8 +112,8 @@ BEGIN
                                                 IF x <> 3463 THEN RAISE EXCEPTION 'Michelin 2025 after % (expected 3463)', x; END IF;
   SELECT count(*) INTO x FROM awards WHERE source_id = 'michelin' AND year = 2025 AND category = 'Green Star';
                                                 IF x <> 9 THEN RAISE EXCEPTION 'Green Star 2025 after % (expected 9)', x; END IF;
-  SELECT string_agg(category || ':' || n, ',' ORDER BY category), sum(n) INTO s, x FROM (
-    SELECT a.category, count(*) n FROM awards a JOIN venues v ON v.id = a.venue_id
+  SELECT string_agg(category || ':' || cnt, ',' ORDER BY category), sum(cnt) INTO s, x FROM (
+    SELECT a.category, count(*) cnt FROM awards a JOIN venues v ON v.id = a.venue_id
      WHERE a.source_id = 'michelin' AND a.year = 2025 AND v.city_id IN ('ci_1b1537ad28', 'ci_9690a92f29')
        AND a.source_url = arch AND a.rank IS NULL AND a.distinction IS NULL GROUP BY a.category) g;
   IF x <> 173 OR s <> 'Bib Gourmand:73,Green Star:5,One Star:69,Three Stars:9,Two Stars:17'
