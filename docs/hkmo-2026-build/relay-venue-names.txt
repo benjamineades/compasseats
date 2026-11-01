@@ -1,0 +1,60 @@
+ve_fe4ae32eec|富臨飯店 Forum Restaurant
+ve_7db92e090b|Tin Lung Heen | The Ritz-Carlton, Hong Kong
+ve_96336c916d|TATE Dining Room
+ve_7e1a08407f|Octavium Italian Restaurant
+ve_3c0f9f5711|Joël Robuchon
+ve_d7d755fc0c|鮨わだつみ Sushi Wadatsumi (K11 MUSEA)
+ve_d5d7131dc9|Fu Ho Restaurant
+ve_b2987bc4c5|TUBER Umberto Bombana (K11 MUSEA)
+ve_4568d0d35c|Yat Tung Heen - Eaton HK
+ve_dd9a5ae60b|Sun Tung Lok Chinese Cuisine
+ve_d3f490f5b8|Man Ho
+ve_a23698ce24|Ho Hung Kee Congee & Noodle
+ve_712b801106|Seventh Son Restaurant
+ve_fda5727c73|China Tang - Landmark
+ve_65d8ce2624|Roganic Hong Kong
+ve_d25a123a7d|Yat Lok Restaurant
+ve_eecb08a500|VEA Restaurant
+ve_d4fb60b454|The Chairman Restaurant
+ve_65955cc504|Tin Hung Roast Goose Restaurant
+ve_62dc9734db|Ho To Tai Noodle Shop
+ve_768e5e4482|Yuen Long Tai Wing Wah Restaurant
+ve_3037854371|Kwan Kee Bamboo Noodle
+ve_0a1435bba9|Yue Kee Roast Goose Restaurant
+ve_6aac496f85|Lucky Indonesia Restaurant
+ve_c22a05499e|Heartwarming
+ve_7822d0e77f|Tim Ho Wan
+ve_c74eb51585|Lau Sum Kee Noodle (Fuk Wing Street)
+ve_f5b303e074|Ah Chun Shandong Dumpling
+ve_504e87b09a|Restoran Saya
+ve_a88562b3e2|Fisholic
+ve_8f5f717f00|Thai Pai Dong
+ve_4c76b8854a|Cheung Hing Kee Shanghai Pan Fried Buns
+ve_5309c1719c|Fung Shing Restaurant
+ve_7cf40a5234|Kai Kai Dessert
+ve_1b381644e1|Mak Man Kee Noodle Shop(Jordan)
+ve_69f6dd939a|Din Tai Fung
+ve_577911454a|賀賀澤-潮州海鮮小炒 Ho Ho Chak Chiu Chow Restaurant
+ve_bac747f4f4|Tsim Chai Kee Noodle
+ve_2020552694|Tasty Congee & Noodle Wantun Shop (IFC, Central)
+ve_c33daac8d4|Trusty Congee King
+ve_721a2d6fc2|Sang Kee Restaurant
+ve_3cece0e6db|Shugetsu (Central)
+ve_663c63e504|Po Kee BBQ Restaurant
+ve_af6cfd76ec|Tai Woo Restaurant
+ve_d409e788ba|Keung Kee Roasted Meat Restaurant
+ve_41a24ad709|Fiata Pizza
+ve_6fc44f5547|Sing Kee Seafood Restaurant
+ve_219fd17c3a|Kwan Kee Claypot Rice
+ve_8a5d5ef4fe|Café Hunan
+ve_fe897986f4|Sister Wah Beef Brisket
+ve_29ee3c9989|Little Napoli Pizzeria
+ve_5767a71449|Yuan Is Here
+ve_20dcae2458|Lok Kei Noodle
+ve_ff2ced77af|Lou Kei (Fai Chi Kei)
+ve_513ddce2fd|Loja Sopa da Fita Cheong Kei
+ve_26caf93ec1|Estab De Comidas Son Tak Kong
+ve_6bc5bda23a|O Castiço
+ve_d94512745c|Restaurante Kapok
+ve_3788cffce7|Din Tai Fung City of Dreams Branch
+ve_06f9a55c25|Restaurante Litoral Taipa
