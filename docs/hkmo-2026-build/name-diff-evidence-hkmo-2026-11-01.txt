@@ -1,0 +1,94 @@
+# HK/MO 2026 name differences: live venues.name vs Michelin 2026 card h1, with the venue site read. CompassEats, Nov 1 2026.
+# Population: 180 HK/MO 2026 cards = 180 venues (read 16:07 UTC). Name differs on 86; 2 excluded (8 1/2 Otto e Mezzo HK + Macau,
+#   named by rename batch 35 this morning, Ben D2 = A). This file: 84 lines.
+# Card read: built-in browser fetch() of each live card, 16:12 UTC, 84 of 84 status 200, h1 = Cowork capture name on 84.
+# Site read: WebFetch of the card website link, 16:20-16:45 UTC. 49 cards have a link; 43 read, 6 not read. 35 cards have no link.
+# Rules (Ben Oct 30): R1 site one way; R2 site several ways -> the way the card uses; R3 capitals alone are no difference
+#   (all-caps-only sites keep capitals); R4 no site way matches the card -> site title/logo way; R5 no site or not read -> card minus suffix.
+#   Site in Chinese only (no English form) = R5.
+# Columns: line|venue_id|ours (venues.name)|card h1|site way read (where)|rule|action|new name
+# action: rename / keep / ask (Ben to choose). "-" = no change. Line 62: "¦" stands for the "|" in the live name.
+1|ve_f5b303e074|Ah Chun Shandong Dumpling|Ah Chun Shandong Dumpling (Prince Edward)|no site link on card|R5|keep|-
+2|ve_b5b3ad8a0b|Art & Taste (美食台灣餐廳)|Art & Taste|no site link on card|R5|rename|Art & Taste
+3|ve_96a71ea519|Bayi|Ba Yi|no site link on card|R5|rename|Ba Yi
+4|ve_831d82348c|BELON|Belon|BELON (title, og:site_name, nav, body, footer); no normal-case form|R1/R3|keep|-
+5|ve_414e12da92|CHAAT|Chaat|CHAAT (title, H1, nav, body); no normal-case form|R1/R3|keep|-
+6|ve_4c76b8854a|Cheung Hing Kee Shanghai Pan Fried Buns|Cheung Hing Kee (Tsim Sha Tsui)|site not read (site error)|R5|rename|Cheung Hing Kee
+7|ve_fda5727c73|China Tang - Landmark|China Tang|site not read (robots)|R5|rename|China Tang
+8|ve_69f6dd939a|Din Tai Fung|Din Tai Fung (Tsim Sha Tsui)|(HK) DIN TAI FUNG (title, og:site_name, logo); capitals only, R3|R3|keep|-
+9|ve_c707f1d861|ÉPURE|Épure|ÉPURE (body, all occurrences); no normal-case form|R1/R3|keep|-
+10|ve_41a24ad709|Fiata Pizza|Fiata|Fiata Pizza (title, og:site_name); Fiata (body, footer "by Fiata")|R2|rename|Fiata
+11|ve_a88562b3e2|Fisholic|Fisholic (North Point)|Fisholic (title, og:site_name, description)|R1|keep|-
+12|ve_fe4ae32eec|富臨飯店 Forum Restaurant|Forum|no site link on card|R5|rename|Forum
+13|ve_d5d7131dc9|Fu Ho Restaurant|Fu Ho|Chinese only (富豪酒家); no English form|R5|rename|Fu Ho
+14|ve_5309c1719c|Fung Shing Restaurant|Fung Shing (North Point)|no site link on card|R5|rename|Fung Shing
+15|ve_c22a05499e|Heartwarming|Heartwarming (Prince Edward)|Chinese only (暖心芝作); no English form|R5|keep|-
+16|ve_577911454a|賀賀澤-潮州海鮮小炒 Ho Ho Chak Chiu Chow Restaurant|Ho Ho Chak|no site link on card|R5|rename|Ho Ho Chak
+17|ve_a23698ce24|Ho Hung Kee Congee & Noodle|Ho Hung Kee (Causeway Bay)|group site tasty.com.hk: Ho Hung Kee (branch headings)|R1|rename|Ho Hung Kee
+18|ve_62dc9734db|Ho To Tai Noodle Shop|Ho To Tai|no site link on card|R5|rename|Ho To Tai
+19|ve_b655947dcb|Hung’s delicacies|Hung's Delicacies|Hung's Delicacies (body, straight apostrophe); title Chinese only|R1|rename|Hung's Delicacies
+20|ve_115bd39094|聚興家 Ju Xing Home|Ju Xing Home|Chinese only (聚興家); no English form|R5|rename|Ju Xing Home
+21|ve_7cf40a5234|Kai Kai Dessert|Kai Kai (Jordan)|no site link on card|R5|rename|Kai Kai
+22|ve_d409e788ba|Keung Kee Roasted Meat Restaurant|Keung Kee|no site link on card|R5|rename|Keung Kee
+23|ve_3037854371|Kwan Kee Bamboo Noodle|Kwan Kee Bamboo Noodles|no site link on card|R5|rename|Kwan Kee Bamboo Noodles
+24|ve_219fd17c3a|Kwan Kee Claypot Rice|Kwan Kee Clay Pot Rice (Queen's Road West)|no site link on card|R5|rename|Kwan Kee Clay Pot Rice
+25|ve_3c0f9f5711|Joël Robuchon|L'Atelier de Joël Robuchon|L'Atelier de Joël Robuchon (nav, footer, body; straight apostrophe)|R1|rename|L'Atelier de Joël Robuchon
+26|ve_6cc88fe33b|LAI's Kitchen|Lai's Kitchen|group site flowerdrum.com.hk: Lai's Kitchen (heading, body); LAI's Kitchen (menu link)|R2|rename|Lai's Kitchen
+27|ve_c74eb51585|Lau Sum Kee Noodle (Fuk Wing Street)|Lau Sum Kee (Fuk Wing Street)|no site link on card|R5|rename|Lau Sum Kee
+28|ve_29ee3c9989|Little Napoli Pizzeria|Little Napoli|Little Napoli (title, body); Little Napoli Pizzeria (footer)|R2|rename|Little Napoli
+29|ve_8fde5a47ce|LOUISE|Louise|Louise (body, many); LOUISE (logo alt)|R2/R3|rename|Louise
+30|ve_6aac496f85|Lucky Indonesia Restaurant|Lucky Indonesia|no site link on card|R5|rename|Lucky Indonesia
+31|ve_d3a7dceb29|lulu BAOBAO 手工拉麵小籠包 [ Wong Chuk Hang ]|Lulu Baobao (Wong Chuk Hang)|lulu BAOBAO (title, heading, nav, body); one way only|R1|rename|lulu BAOBAO
+32|ve_1b381644e1|Mak Man Kee Noodle Shop(Jordan)|Mak Man Kee|no English name in text (title Chinese 麥文記麵家; og:site_name MMK.HK)|R5|rename|Mak Man Kee
+33|ve_d3f490f5b8|Man Ho|Man Ho (Admiralty)|hotel page: Man Ho Chinese Restaurant (title only); body did not load (error heading)|-|ask|-
+34|ve_2b85356623|MONO|Mono|MONO (title, og:site_name, logo, H1, body); Mono only in the nav item Mono-pedia|-|ask|-
+35|ve_a32153f7bc|NOI by Paulo Airaudo|Noi by Paulo Airaudo|Noi (logo alt, H1, nav, body, footer); no "by Paulo Airaudo" form|R1|rename|Noi
+36|ve_7e1a08407f|Octavium Italian Restaurant|Octavium|site not read (site error)|R5|rename|Octavium
+37|ve_663c63e504|Po Kee BBQ Restaurant|Po Kee|no site link on card|R5|rename|Po Kee
+38|ve_8a5d5ef4fe|Café Hunan|Prof Chan's (Western District)|no site link on card|R5|rename|Prof Chan's
+39|ve_65d8ce2624|Roganic Hong Kong|Roganic|Roganic Hong Kong (title, og:site_name); Roganic (body, About heading)|R2|rename|Roganic
+40|ve_774596ac1d|RÙN|Rùn|Rùn (title, logo alt, body, footer)|R1|rename|Rùn
+41|ve_721a2d6fc2|Sang Kee Restaurant|Sang Kee|Sang Kee (title, og:site_name)|R1|rename|Sang Kee
+42|ve_504e87b09a|Restoran Saya|Saya|no site link on card|R5|rename|Saya
+43|ve_712b801106|Seventh Son Restaurant|Seventh Son (Wan Chai)|Seventhson (title); Seventh Son Restaurant (banner caption); Seventh Son (meta keywords only)|-|ask|-
+44|ve_26b3179f6e|SHE WONG LEUNG|She Wong Leung|no site link on card|R5|rename|She Wong Leung
+45|ve_a4ba2e8edc|船記 Ship Kee|Ship Kee|site not read (Instagram, robots)|R5|rename|Ship Kee
+46|ve_3cece0e6db|Shugetsu (Central)|Shugetsu Ramen (Central)|no site link on card|R5|rename|Shugetsu Ramen
+47|ve_6fc44f5547|Sing Kee Seafood Restaurant|Sing Kee|group site taihing.com: Sing Kee Seafood Restaurant (heading, link); one English way|R1|keep|-
+48|ve_fe897986f4|Sister Wah Beef Brisket|Sister Wah|no site link on card|R5|rename|Sister Wah
+49|ve_5b036c98aa|Spring Moon 嘉麟樓|Spring Moon|hotel page: Spring Moon (title, body)|R1|rename|Spring Moon
+50|ve_dd9a5ae60b|Sun Tung Lok Chinese Cuisine|Sun Tung Lok|SUN TUNG LOK CHINESE CUISINE (footer); title Chinese; capitals only, R3|R1/R3|keep|-
+51|ve_b431f74dc7|Sushi Takeshi 鮨たけし|Sushi Takeshi|no site link on card|R5|rename|Sushi Takeshi
+52|ve_d7d755fc0c|鮨わだつみ Sushi Wadatsumi (K11 MUSEA)|Sushi Wadatsumi|鮨わだつみ SUSHI WADATSUMI (title, logo link); capitals only, R3|R1/R3|rename|Sushi Wadatsumi
+53|ve_768e5e4482|Yuen Long Tai Wing Wah Restaurant|Tai Wing Wah|no site link on card|R5|rename|Tai Wing Wah
+54|ve_af6cfd76ec|Tai Woo Restaurant|Tai Woo|Tai Woo Restaurant (title, H1, body); Tai Woo only in a customer quote|-|ask|-
+55|ve_6f1de5ea6a|TAKEYA|Takeya|no site link on card|R5|rename|Takeya
+56|ve_2020552694|Tasty Congee & Noodle Wantun Shop (IFC, Central)|Tasty (Central)|group site tasty.com.hk: Tasty Congee & Noodle Wantun Shop (title); Tasty congee & Noodle Wantun Shop (footer); no "Tasty" alone|R4|rename|Tasty Congee & Noodle Wantun Shop
+57|ve_96336c916d|TATE Dining Room|Tate|TATE (title, og:site_name, logo, body); Tate (body); TATE 態邸 (heading)|R2/R3|rename|Tate
+58|ve_8f5f717f00|Thai Pai Dong|Thai Pai Dong (Jordan)|no site link on card|R5|keep|-
+59|ve_d4fb60b454|The Chairman Restaurant|The Chairman|The Chairman (og:site_name, logo alt, footer); The Chairman Restaurant (meta keywords only)|R1|rename|The Chairman
+60|ve_7822d0e77f|Tim Ho Wan|Tim Ho Wan (Sham Shui Po)|timhowan.com: Tim Ho Wan (body, footer)|R1|keep|-
+61|ve_65955cc504|Tin Hung Roast Goose Restaurant|Tin Hung|no site link on card|R5|rename|Tin Hung
+62|ve_7db92e090b|Tin Lung Heen ¦ The Ritz-Carlton, Hong Kong|Tin Lung Heen|Tin Lung Heen (title, logo alt, body, footer)|R1|rename|Tin Lung Heen
+63|ve_eddbdeda7f|Tosca Di Angelo|Tosca di Angelo|Tosca di Angelo (title, logo alt, body, footer); Tosca Di Angelo (one FAQ line)|R2|rename|Tosca di Angelo
+64|ve_c33daac8d4|Trusty Congee King|Trusty Congee King (Wan Chai)|no site link on card|R5|keep|-
+65|ve_bac747f4f4|Tsim Chai Kee Noodle|Tsim Chai Kee (Wellington Street)|no site link on card|R5|rename|Tsim Chai Kee
+66|ve_b2987bc4c5|TUBER Umberto Bombana (K11 MUSEA)|Tuber Umberto Bombana|site not read (site error)|R5|rename|Tuber Umberto Bombana
+67|ve_eecb08a500|VEA Restaurant|Vea|VEA (title, body, footer); one way only|R1|rename|VEA
+68|ve_d25a123a7d|Yat Lok Restaurant|Yat Lok (Central)|no site link on card|R5|rename|Yat Lok
+69|ve_4568d0d35c|Yat Tung Heen - Eaton HK|Yat Tung Heen|Yat Tung Heen (title, og:site_name, H1 logo alt)|R1|rename|Yat Tung Heen
+70|ve_7bcd70ccd3|Ye Shanghai (Tsim Sha Tsui)|Yè Shanghai (Tsim Sha Tsui)|group site elite-concepts.com: yè shanghai (nav, footer); yè Shanghai (Tsim Sha Tsui); Ye Shanghai (Tsim Sha Tsui & Admiralty)|-|ask|-
+71|ve_5767a71449|Yuan Is Here|Yuan is Here (Western District)|no site link on card|R5|rename|Yuan is Here
+72|ve_0a1435bba9|Yue Kee Roast Goose Restaurant|Yue Kee|Yue Kee Roast Goose Restaurant (title, H1); Yue Kee (nav link)|R2|rename|Yue Kee
+73|ve_85ba8ac9ae|Aji 雅吉|Aji|resort page: Aji (H1, body); Aji at MGM COTAI (title)|R2|rename|Aji
+74|ve_513ddce2fd|Loja Sopa da Fita Cheong Kei|Cheong Kei|no site link on card|R5|rename|Cheong Kei
+75|ve_3788cffce7|Din Tai Fung City of Dreams Branch|Din Tai Fung (COD)|no site link on card|R5|rename|Din Tai Fung
+76|ve_76ac1b7433|FENG WEI JU 風味居|Feng Wei Ju|resort page names no restaurant|R5|rename|Feng Wei Ju
+77|ve_ff67dda5e5|JUSTINDIA 印象派|Justindia|Justindia (body); Justindia Macau (title); Justindia印象派 (social labels)|R2|rename|Justindia
+78|ve_d94512745c|Restaurante Kapok|Kapok|no site link on card|R5|rename|Kapok
+79|ve_ff2ced77af|Lou Kei (Fai Chi Kei)|Lou Kei|no site link on card|R5|rename|Lou Kei
+80|ve_20dcae2458|Lok Kei Noodle|Lok Kei Noodles|no site link on card|R5|rename|Lok Kei Noodles
+81|ve_6bc5bda23a|O Castiço|O Castiço (Taipa)|no site link on card|R5|keep|-
+82|ve_06f9a55c25|Restaurante Litoral Taipa|Restaurant Litoral (Taipa)|Restaurante Litoral Taipa (title, footer); Restaurante Litoral (og:site_name); Litoral Taipa (logo, heading); no card form, R4 = title way = our name|R4|keep|-
+83|ve_26caf93ec1|Estab De Comidas Son Tak Kong|Son Tak Kong|no site link on card|R5|rename|Son Tak Kong
+84|ve_f7fd2a6231|The Huai Yang Garden|The Huaiyang Garden|hotel page: The Huaiyang Garden (title, H1, body)|R1|rename|The Huaiyang Garden
