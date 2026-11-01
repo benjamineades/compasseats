@@ -16,9 +16,9 @@
 -- 4. Best Chef rows added: Guy Savoy (Paris) 2024 2-Knife and 2025 2-Knife, URL = the results page of each edition.
 -- Not in this file: row 15727 (8½ Macau) held for the Hong Kong/Macau block; The Fellas and Fo'ao Vaperse Hotel = file 2.
 -- Relay docs/open-items-b9-build/relay-file1.txt sha256 b73aa3c9caaed36d49f3eb654ae94987550da1c1bf7f7d64feec09ea9067b656.
--- Expected: rename_batches 18 -> 19, rename_rows 1201 -> 1209, slugs 12945 -> 12950 (non-canonical 1643 -> 1651),
---   awards 23363 -> 23365, ledger 180 -> 184 (michelin name 4, best-chef-awards name 4, best-chef-awards award 2 + 2),
---   audit 120732 -> 120760 (+28: venues UPDATE 8, slugs UPDATE 11, slugs INSERT 5, awards UPDATE 2, awards INSERT 2).
+-- Expected: rename_batches 18 -> 19, rename_rows 1201 -> 1209, slugs 12945 -> 12950 (non-canonical 1643 -> 1648),
+--   awards 23363 -> 23365, ledger last id 180 -> 188 (ids 185-188: michelin name 4, best-chef-awards name 4, best-chef-awards award 2 + 2),
+--   audit last id 120732 -> 120788 (ids 120761-120788, +28: venues UPDATE 8, slugs UPDATE 11, slugs INSERT 5, awards UPDATE 2, awards INSERT 2).
 -- Dry run: send through the Read connector. It stops at the first INSERT with "read-only transaction".
 BEGIN;
 DO $do$
@@ -47,6 +47,8 @@ BEGIN
   IF (SELECT count(*) FROM source_capture_ledger) <> 136 OR (SELECT max(id) FROM source_capture_ledger) <> 180 THEN RAISE EXCEPTION 'ledger before'; END IF;
   IF (SELECT count(*) FROM audit_log) <> 115448 OR (SELECT max(id) FROM audit_log) <> 120732 THEN RAISE EXCEPTION 'audit before'; END IF;
   IF EXISTS (SELECT 1 FROM rename_batches WHERE batch_key = 'rename-open-items-b9-2026-11-01') THEN RAISE EXCEPTION 'batch key used'; END IF;
+  IF (SELECT last_value FROM pg_sequences WHERE schemaname = 'public' AND sequencename = 'source_capture_ledger_id_seq') <> 184
+     OR (SELECT last_value FROM pg_sequences WHERE schemaname = 'public' AND sequencename = 'audit_log_id_seq') <> 120760 THEN RAISE EXCEPTION 'id counters before'; END IF;
 
   -- rename gates
   IF (SELECT count(*) FROM regexp_split_to_table(rel, E'\n') l WHERE split_part(l, '|', 1) = 'ren') <> 8 THEN RAISE EXCEPTION 'ren lines'; END IF;
@@ -99,11 +101,11 @@ BEGIN
   INSERT INTO source_capture_ledger (publisher, field_type, items, job)
   VALUES ('michelin', 'name', 4, 'rename-apply:rename-open-items-b9-2026-11-01 | gated SQL file docs/rename-urls-open-items-b9-2026-11-01.sql (Write connector) | 4 names follow the Michelin 2026 card and the venue site, rules R1, R2, R5: Le Calandre (Cyrillic letter removed), Les Belles Perdrix de Troplong Mondot, Maison Aribert, Hibana by Koki | Ben Nov 1 08:28 ET "All recommendations"')
   RETURNING id INTO v_lid;
-  IF v_lid <> 181 THEN RAISE EXCEPTION 'ledger id michelin name %', v_lid; END IF;
+  IF v_lid <> 185 THEN RAISE EXCEPTION 'ledger id michelin name %', v_lid; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job)
   VALUES ('best-chef-awards', 'name', 4, 'rename-apply:rename-open-items-b9-2026-11-01 | gated SQL file docs/rename-urls-open-items-b9-2026-11-01.sql (Write connector) | 4 names follow the Best Chef card and the venue site, rules R1, R3, R4: EDGE (was a shop name), XIA (was the city), Palaash (was the resort), Cañitas Maite (was the hotel) | Ben Nov 1 08:28 ET "All recommendations"')
   RETURNING id INTO v_lid;
-  IF v_lid <> 182 THEN RAISE EXCEPTION 'ledger id best-chef name %', v_lid; END IF;
+  IF v_lid <> 186 THEN RAISE EXCEPTION 'ledger id best-chef name %', v_lid; END IF;
   UPDATE rename_batches SET status = 'applied', applied_at = now() WHERE id = bid AND status = 'staged';
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'batch status'; END IF;
 
@@ -125,7 +127,7 @@ BEGIN
   INSERT INTO source_capture_ledger (publisher, field_type, items, job)
   VALUES ('best-chef-awards', 'award', 2, 'pair-fix:rename-urls-open-items-b9-2026-11-01 | 2 of the 5 rows held on Nov 1 (block 8) get the 2025 results page https://thebestchefawards.com/events-results/?id=2376: 3453 stays on Flores Raras (El Poblet renamed Jan 2026, same address and owner; card Luis Valls "El Poblet (former workplace)"); 15690 moves Ensue ve_d6d7a07cee -> Fumée ve_38916224da (the one Shenzhen 2-knife card = Reina Chen, Fumée; Ensue is 1 knife = 15691) | 15727 held for the Hong Kong/Macau block | Ben Nov 1 08:28 ET "All recommendations"')
   RETURNING id INTO v_lid;
-  IF v_lid <> 183 THEN RAISE EXCEPTION 'ledger id pair-fix %', v_lid; END IF;
+  IF v_lid <> 187 THEN RAISE EXCEPTION 'ledger id pair-fix %', v_lid; END IF;
 
   -- 4. award rows added
   INSERT INTO awards (venue_id, source_id, year, rank, category, distinction, source_url)
@@ -134,12 +136,12 @@ BEGIN
   INSERT INTO source_capture_ledger (publisher, field_type, items, job)
   VALUES ('best-chef-awards', 'award', 2, 'award-add:rename-urls-open-items-b9-2026-11-01 | ve_f026dbec1c Guy Savoy (Paris) 2024 2-Knife (https://thebestchefawards.com/events-results/?id=1874) and 2025 2-Knife (https://thebestchefawards.com/events-results/?id=2376); chef card 19907 on both results pages, no row before (pairing check Nov 1) | Ben Nov 1 08:28 ET "All recommendations"')
   RETURNING id INTO v_lid;
-  IF v_lid <> 184 THEN RAISE EXCEPTION 'ledger id award-add %', v_lid; END IF;
+  IF v_lid <> 188 THEN RAISE EXCEPTION 'ledger id award-add %', v_lid; END IF;
 
   -- post-checks
   IF (SELECT count(*) FROM venues) <> 11302 OR (SELECT count(*) FROM listings) <> 11302 OR (SELECT count(*) FROM blurbs) <> 142 THEN RAISE EXCEPTION 'venues/listings/blurbs after'; END IF;
   IF (SELECT count(*) FROM awards) <> 23365 THEN RAISE EXCEPTION 'awards after'; END IF;
-  IF (SELECT count(*) FROM slugs) <> 12950 OR (SELECT count(*) FROM slugs WHERE NOT is_canonical) <> 1651
+  IF (SELECT count(*) FROM slugs) <> 12950 OR (SELECT count(*) FROM slugs WHERE NOT is_canonical) <> 1648
      OR (SELECT count(*) FROM slugs WHERE is_canonical) <> 11302 THEN RAISE EXCEPTION 'slugs after'; END IF;
   IF EXISTS (SELECT 1 FROM venues v WHERE (SELECT count(*) FROM slugs s WHERE s.venue_id = v.id AND s.property_id = 'eats' AND s.is_canonical) <> 1)
     THEN RAISE EXCEPTION 'venues without exactly 1 canonical slug'; END IF;

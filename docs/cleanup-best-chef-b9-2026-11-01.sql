@@ -9,7 +9,7 @@
 -- Relay docs/open-items-b9-build/relay-file2.txt sha256 2666136e38603fe4b4a44783e2533d8848402988201048ae91eef3f3ffffabd2. Plan fingerprint 8e1c516a11818c2614c882358a71130f.
 -- Expected: venues 11302 -> 11300 (active 10936 -> 10934), awards 23365 -> 23363, slugs 12950 -> 12948,
 --   listings 11302 -> 11300, city_label_source 24003 -> 23999, venues_count sum 10936 -> 10934,
---   ledger 184 -> 185, audit 120760 -> 120774 (+14: city_label_source DELETE 4 (hand), awards 2, slugs 2, listings 2, venues 2 DELETE, cities UPDATE 2).
+--   ledger last id 188 -> 189, audit last id 120788 -> 120802 (+14: city_label_source DELETE 4 (hand), awards 2, slugs 2, listings 2, venues 2 DELETE, cities UPDATE 2).
 BEGIN;
 DO $do$
 DECLARE
@@ -21,9 +21,11 @@ BEGIN
   IF (SELECT count(*) FROM venues) <> 11302 OR (SELECT count(*) FROM venues WHERE status = 'active') <> 10936 THEN RAISE EXCEPTION 'venues before'; END IF;
   IF (SELECT count(*) FROM awards) <> 23365 OR (SELECT count(*) FROM slugs) <> 12950 OR (SELECT count(*) FROM listings) <> 11302
      OR (SELECT count(*) FROM city_label_source) <> 24003 THEN RAISE EXCEPTION 'tables before'; END IF;
-  IF (SELECT count(*) FROM source_capture_ledger) <> 140 OR (SELECT max(id) FROM source_capture_ledger) <> 184 THEN RAISE EXCEPTION 'ledger before'; END IF;
-  IF (SELECT count(*) FROM audit_log) <> 115476 OR (SELECT max(id) FROM audit_log) <> 120760 THEN RAISE EXCEPTION 'audit before'; END IF;
+  IF (SELECT count(*) FROM source_capture_ledger) <> 140 OR (SELECT max(id) FROM source_capture_ledger) <> 188 THEN RAISE EXCEPTION 'ledger before'; END IF;
+  IF (SELECT count(*) FROM audit_log) <> 115476 OR (SELECT max(id) FROM audit_log) <> 120788 THEN RAISE EXCEPTION 'audit before'; END IF;
   IF (SELECT sum(venues_count) FROM cities) <> 10936 THEN RAISE EXCEPTION 'venues_count sum before'; END IF;
+  IF (SELECT last_value FROM pg_sequences WHERE schemaname = 'public' AND sequencename = 'source_capture_ledger_id_seq') <> 188
+     OR (SELECT last_value FROM pg_sequences WHERE schemaname = 'public' AND sequencename = 'audit_log_id_seq') <> 120788 THEN RAISE EXCEPTION 'id counters before'; END IF;
   IF (SELECT count(*) FROM cities c LEFT JOIN city_venue_counts v ON v.city_id = c.id
        WHERE c.venues_count IS DISTINCT FROM coalesce(v.active_venues, 0)) <> 0 THEN RAISE EXCEPTION 'cities differ before'; END IF;
 
@@ -66,7 +68,7 @@ BEGIN
   INSERT INTO source_capture_ledger (publisher, field_type, items, job)
   VALUES ('best-chef-awards', 'award', 2, 'cleanup:cleanup-best-chef-b9-2026-11-01 | contamination rule (Ben, Sep 28): 2 legacy Best Chef 2025 1-Knife rows with no provable pairing, deleted with their venues | 16190 The Fellas ve_42dfc9b029 (Shanghai, Italian rooftop bar), 15997 Fo''ao Vaperse Hotel ve_8caa39d442 (Guangzhou, a hotel); no Best Chef 2024/2025 card or special award names either (read Nov 1) | old URLs 404, no redirect | Ben Nov 1 08:28 ET "All recommendations"')
   RETURNING id INTO v_lid;
-  IF v_lid <> 185 THEN RAISE EXCEPTION 'ledger id %', v_lid; END IF;
+  IF v_lid <> 189 THEN RAISE EXCEPTION 'ledger id %', v_lid; END IF;
 
   -- post-checks
   IF EXISTS (SELECT 1 FROM regexp_split_to_table(rel, E'\n') l WHERE split_part(l, '|', 1) = 'del' AND (
@@ -80,10 +82,10 @@ BEGIN
   IF (SELECT count(*) FROM cities c LEFT JOIN city_venue_counts v ON v.city_id = c.id
        WHERE c.venues_count IS DISTINCT FROM coalesce(v.active_venues, 0)) <> 0 THEN RAISE EXCEPTION 'cities differ after'; END IF;
   IF EXISTS (SELECT 1 FROM venues v WHERE (SELECT count(*) FROM slugs s WHERE s.venue_id = v.id AND s.is_canonical) <> 1) THEN RAISE EXCEPTION 'canonical slugs after'; END IF;
-  IF (SELECT count(*) FROM audit_log WHERE id > 120760) <> 14 THEN RAISE EXCEPTION 'audit rows after'; END IF;
-  IF (SELECT count(*) FROM audit_log WHERE id > 120760 AND action = 'DELETE' AND table_name = 'city_label_source') <> 4
-     OR (SELECT count(*) FROM audit_log WHERE id > 120760 AND action = 'DELETE' AND table_name IN ('awards', 'slugs', 'listings', 'venues')) <> 8
-     OR (SELECT count(*) FROM audit_log WHERE id > 120760 AND action = 'UPDATE' AND table_name = 'cities'
+  IF (SELECT count(*) FROM audit_log WHERE id > 120788) <> 14 OR (SELECT max(id) FROM audit_log) <> 120802 THEN RAISE EXCEPTION 'audit rows after'; END IF;
+  IF (SELECT count(*) FROM audit_log WHERE id > 120788 AND action = 'DELETE' AND table_name = 'city_label_source') <> 4
+     OR (SELECT count(*) FROM audit_log WHERE id > 120788 AND action = 'DELETE' AND table_name IN ('awards', 'slugs', 'listings', 'venues')) <> 8
+     OR (SELECT count(*) FROM audit_log WHERE id > 120788 AND action = 'UPDATE' AND table_name = 'cities'
            AND (old_row - 'venues_count') = (new_row - 'venues_count')) <> 2 THEN RAISE EXCEPTION 'audit rows by table'; END IF;
 END
 $do$;

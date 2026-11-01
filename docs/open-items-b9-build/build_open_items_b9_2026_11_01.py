@@ -94,12 +94,15 @@ S1, S2 = sha(relay1), sha(relay2)
 
 # counts (live Nov 1 13:28 UTC) and the expected state after file 1
 B = dict(venues=11302, active=10936, awards=23363, slugs=12945, noncanon=1643, listings=11302, blurbs=142, rb=18, rr=1201,
-         led_n=136, led_max=180, aud_n=115448, aud_max=120732, vc_sum=10936, cls=24003)
-A1 = dict(B, awards=B['awards'] + 2, slugs=B['slugs'] + 5, noncanon=B['noncanon'] + 8, rb=B['rb'] + 1, rr=B['rr'] + 8,
-          led_n=B['led_n'] + 4, led_max=B['led_max'] + 4, aud_n=B['aud_n'] + 28, aud_max=B['aud_max'] + 28)
+         led_n=136, led_max=180, aud_n=115448, aud_max=120732, vc_sum=10936, cls=24003,
+         led_seq=184, aud_seq=120760)  # id counters after the rolled-back first run (Nov 1 13:35 UTC): ids 181-184 / 120733-120760 used up
+# old canonical -> non-canonical 8, reused slugs non-canonical -> canonical 3: non-canonical +5 (first build said +8: run stopped at 'slugs after')
+A1 = dict(B, awards=B['awards'] + 2, slugs=B['slugs'] + 5, noncanon=B['noncanon'] + 5, rb=B['rb'] + 1, rr=B['rr'] + 8,
+          led_n=B['led_n'] + 4, led_max=B['led_seq'] + 4, aud_n=B['aud_n'] + 28, aud_max=B['aud_seq'] + 28,
+          led_seq=B['led_seq'] + 4, aud_seq=B['aud_seq'] + 28)
 A2 = dict(A1, venues=A1['venues'] - 2, active=A1['active'] - 2, awards=A1['awards'] - 2, slugs=A1['slugs'] - 2,
           listings=A1['listings'] - 2, cls=A1['cls'] - 4, led_n=A1['led_n'] + 1, led_max=A1['led_max'] + 1,
-          aud_n=A1['aud_n'] + 14, aud_max=A1['aud_max'] + 14, vc_sum=A1['vc_sum'] - 2)
+          aud_n=A1['aud_n'] + 14, aud_max=A1['aud_max'] + 14, vc_sum=A1['vc_sum'] - 2, led_seq=A1['led_seq'] + 1, aud_seq=A1['aud_seq'] + 14)
 
 REL = "regexp_split_to_table(rel, E'\\n') l"
 def sp(i): return f"split_part(l, '|', {i})"
@@ -116,8 +119,8 @@ file1 = f"""-- rename-urls-open-items-b9-2026-11-01.sql
 -- Not in this file: row 15727 (8½ Macau) held for the Hong Kong/Macau block; The Fellas and Fo'ao Vaperse Hotel = file 2.
 -- Relay docs/open-items-b9-build/relay-file1.txt sha256 {S1}.
 -- Expected: rename_batches {B['rb']} -> {A1['rb']}, rename_rows {B['rr']} -> {A1['rr']}, slugs {B['slugs']} -> {A1['slugs']} (non-canonical {B['noncanon']} -> {A1['noncanon']}),
---   awards {B['awards']} -> {A1['awards']}, ledger {B['led_max']} -> {A1['led_max']} (michelin name 4, best-chef-awards name 4, best-chef-awards award 2 + 2),
---   audit {B['aud_max']} -> {A1['aud_max']} (+28: venues UPDATE 8, slugs UPDATE 11, slugs INSERT 5, awards UPDATE 2, awards INSERT 2).
+--   awards {B['awards']} -> {A1['awards']}, ledger last id {B['led_max']} -> {A1['led_max']} (ids {B['led_seq']+1}-{A1['led_seq']}: michelin name 4, best-chef-awards name 4, best-chef-awards award 2 + 2),
+--   audit last id {B['aud_max']} -> {A1['aud_max']} (ids {B['aud_seq']+1}-{A1['aud_seq']}, +28: venues UPDATE 8, slugs UPDATE 11, slugs INSERT 5, awards UPDATE 2, awards INSERT 2).
 -- Dry run: send through the Read connector. It stops at the first INSERT with "read-only transaction".
 BEGIN;
 DO $do$
@@ -135,6 +138,8 @@ BEGIN
   IF (SELECT count(*) FROM source_capture_ledger) <> {B['led_n']} OR (SELECT max(id) FROM source_capture_ledger) <> {B['led_max']} THEN RAISE EXCEPTION 'ledger before'; END IF;
   IF (SELECT count(*) FROM audit_log) <> {B['aud_n']} OR (SELECT max(id) FROM audit_log) <> {B['aud_max']} THEN RAISE EXCEPTION 'audit before'; END IF;
   IF EXISTS (SELECT 1 FROM rename_batches WHERE batch_key = 'rename-open-items-b9-2026-11-01') THEN RAISE EXCEPTION 'batch key used'; END IF;
+  IF (SELECT last_value FROM pg_sequences WHERE schemaname = 'public' AND sequencename = 'source_capture_ledger_id_seq') <> {B['led_seq']}
+     OR (SELECT last_value FROM pg_sequences WHERE schemaname = 'public' AND sequencename = 'audit_log_id_seq') <> {B['aud_seq']} THEN RAISE EXCEPTION 'id counters before'; END IF;
 
   -- rename gates
   IF (SELECT count(*) FROM {REL} WHERE {sp(1)} = 'ren') <> 8 THEN RAISE EXCEPTION 'ren lines'; END IF;
@@ -187,11 +192,11 @@ BEGIN
   INSERT INTO source_capture_ledger (publisher, field_type, items, job)
   VALUES ('michelin', 'name', 4, 'rename-apply:rename-open-items-b9-2026-11-01 | gated SQL file docs/rename-urls-open-items-b9-2026-11-01.sql (Write connector) | 4 names follow the Michelin 2026 card and the venue site, rules R1, R2, R5: Le Calandre (Cyrillic letter removed), Les Belles Perdrix de Troplong Mondot, Maison Aribert, Hibana by Koki | {BEN}')
   RETURNING id INTO v_lid;
-  IF v_lid <> {B['led_max'] + 1} THEN RAISE EXCEPTION 'ledger id michelin name %', v_lid; END IF;
+  IF v_lid <> {B['led_seq'] + 1} THEN RAISE EXCEPTION 'ledger id michelin name %', v_lid; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job)
   VALUES ('best-chef-awards', 'name', 4, 'rename-apply:rename-open-items-b9-2026-11-01 | gated SQL file docs/rename-urls-open-items-b9-2026-11-01.sql (Write connector) | 4 names follow the Best Chef card and the venue site, rules R1, R3, R4: EDGE (was a shop name), XIA (was the city), Palaash (was the resort), Cañitas Maite (was the hotel) | {BEN}')
   RETURNING id INTO v_lid;
-  IF v_lid <> {B['led_max'] + 2} THEN RAISE EXCEPTION 'ledger id best-chef name %', v_lid; END IF;
+  IF v_lid <> {B['led_seq'] + 2} THEN RAISE EXCEPTION 'ledger id best-chef name %', v_lid; END IF;
   UPDATE rename_batches SET status = 'applied', applied_at = now() WHERE id = bid AND status = 'staged';
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'batch status'; END IF;
 
@@ -213,7 +218,7 @@ BEGIN
   INSERT INTO source_capture_ledger (publisher, field_type, items, job)
   VALUES ('best-chef-awards', 'award', 2, 'pair-fix:rename-urls-open-items-b9-2026-11-01 | 2 of the 5 rows held on Nov 1 (block 8) get the 2025 results page {U25}: 3453 stays on Flores Raras (El Poblet renamed Jan 2026, same address and owner; card Luis Valls "El Poblet (former workplace)"); 15690 moves Ensue ve_d6d7a07cee -> Fumée ve_38916224da (the one Shenzhen 2-knife card = Reina Chen, Fumée; Ensue is 1 knife = 15691) | 15727 held for the Hong Kong/Macau block | {BEN}')
   RETURNING id INTO v_lid;
-  IF v_lid <> {B['led_max'] + 3} THEN RAISE EXCEPTION 'ledger id pair-fix %', v_lid; END IF;
+  IF v_lid <> {B['led_seq'] + 3} THEN RAISE EXCEPTION 'ledger id pair-fix %', v_lid; END IF;
 
   -- 4. award rows added
   INSERT INTO awards (venue_id, source_id, year, rank, category, distinction, source_url)
@@ -222,7 +227,7 @@ BEGIN
   INSERT INTO source_capture_ledger (publisher, field_type, items, job)
   VALUES ('best-chef-awards', 'award', 2, 'award-add:rename-urls-open-items-b9-2026-11-01 | ve_f026dbec1c Guy Savoy (Paris) 2024 2-Knife ({U24}) and 2025 2-Knife ({U25}); chef card 19907 on both results pages, no row before (pairing check Nov 1) | {BEN}')
   RETURNING id INTO v_lid;
-  IF v_lid <> {B['led_max'] + 4} THEN RAISE EXCEPTION 'ledger id award-add %', v_lid; END IF;
+  IF v_lid <> {B['led_seq'] + 4} THEN RAISE EXCEPTION 'ledger id award-add %', v_lid; END IF;
 
   -- post-checks
   IF (SELECT count(*) FROM venues) <> {A1['venues']} OR (SELECT count(*) FROM listings) <> {A1['listings']} OR (SELECT count(*) FROM blurbs) <> {A1['blurbs']} THEN RAISE EXCEPTION 'venues/listings/blurbs after'; END IF;
@@ -269,7 +274,7 @@ def file2(C, title, note):
 -- Relay docs/open-items-b9-build/relay-file2.txt sha256 {S2}. Plan fingerprint {PF}.
 -- Expected: venues {C['venues']} -> {C['venues'] - 2} (active {C['active']} -> {C['active'] - 2}), awards {C['awards']} -> {C['awards'] - 2}, slugs {C['slugs']} -> {C['slugs'] - 2},
 --   listings {C['listings']} -> {C['listings'] - 2}, city_label_source {C['cls']} -> {C['cls'] - 4}, venues_count sum {C['vc_sum']} -> {C['vc_sum'] - 2},
---   ledger {C['led_max']} -> {C['led_max'] + 1}, audit {C['aud_max']} -> {C['aud_max'] + 14} (+14: city_label_source DELETE 4 (hand), awards 2, slugs 2, listings 2, venues 2 DELETE, cities UPDATE 2).
+--   ledger last id {C['led_max']} -> {C['led_seq'] + 1}, audit last id {C['aud_max']} -> {C['aud_seq'] + 14} (+14: city_label_source DELETE 4 (hand), awards 2, slugs 2, listings 2, venues 2 DELETE, cities UPDATE 2).
 BEGIN;
 DO $do$
 DECLARE
@@ -283,6 +288,8 @@ BEGIN
   IF (SELECT count(*) FROM source_capture_ledger) <> {C['led_n']} OR (SELECT max(id) FROM source_capture_ledger) <> {C['led_max']} THEN RAISE EXCEPTION 'ledger before'; END IF;
   IF (SELECT count(*) FROM audit_log) <> {C['aud_n']} OR (SELECT max(id) FROM audit_log) <> {C['aud_max']} THEN RAISE EXCEPTION 'audit before'; END IF;
   IF (SELECT sum(venues_count) FROM cities) <> {C['vc_sum']} THEN RAISE EXCEPTION 'venues_count sum before'; END IF;
+  IF (SELECT last_value FROM pg_sequences WHERE schemaname = 'public' AND sequencename = 'source_capture_ledger_id_seq') <> {C['led_seq']}
+     OR (SELECT last_value FROM pg_sequences WHERE schemaname = 'public' AND sequencename = 'audit_log_id_seq') <> {C['aud_seq']} THEN RAISE EXCEPTION 'id counters before'; END IF;
   IF (SELECT count(*) FROM cities c LEFT JOIN city_venue_counts v ON v.city_id = c.id
        WHERE c.venues_count IS DISTINCT FROM coalesce(v.active_venues, 0)) <> 0 THEN RAISE EXCEPTION 'cities differ before'; END IF;
 
@@ -325,7 +332,7 @@ BEGIN
   INSERT INTO source_capture_ledger (publisher, field_type, items, job)
   VALUES ('best-chef-awards', 'award', 2, 'cleanup:cleanup-best-chef-b9-2026-11-01 | contamination rule (Ben, Sep 28): 2 legacy Best Chef 2025 1-Knife rows with no provable pairing, deleted with their venues | 16190 The Fellas ve_42dfc9b029 (Shanghai, Italian rooftop bar), 15997 Fo''ao Vaperse Hotel ve_8caa39d442 (Guangzhou, a hotel); no Best Chef 2024/2025 card or special award names either (read Nov 1) | old URLs 404, no redirect | {BEN}')
   RETURNING id INTO v_lid;
-  IF v_lid <> {C['led_max'] + 1} THEN RAISE EXCEPTION 'ledger id %', v_lid; END IF;
+  IF v_lid <> {C['led_seq'] + 1} THEN RAISE EXCEPTION 'ledger id %', v_lid; END IF;
 
   -- post-checks
   IF EXISTS (SELECT 1 FROM {REL} WHERE {sp(1)} = 'del' AND (
@@ -339,7 +346,7 @@ BEGIN
   IF (SELECT count(*) FROM cities c LEFT JOIN city_venue_counts v ON v.city_id = c.id
        WHERE c.venues_count IS DISTINCT FROM coalesce(v.active_venues, 0)) <> 0 THEN RAISE EXCEPTION 'cities differ after'; END IF;
   IF EXISTS (SELECT 1 FROM venues v WHERE (SELECT count(*) FROM slugs s WHERE s.venue_id = v.id AND s.is_canonical) <> 1) THEN RAISE EXCEPTION 'canonical slugs after'; END IF;
-  IF (SELECT count(*) FROM audit_log WHERE id > {C['aud_max']}) <> 14 THEN RAISE EXCEPTION 'audit rows after'; END IF;
+  IF (SELECT count(*) FROM audit_log WHERE id > {C['aud_max']}) <> 14 OR (SELECT max(id) FROM audit_log) <> {C['aud_seq'] + 14} THEN RAISE EXCEPTION 'audit rows after'; END IF;
   IF (SELECT count(*) FROM audit_log WHERE id > {C['aud_max']} AND action = 'DELETE' AND table_name = 'city_label_source') <> 4
      OR (SELECT count(*) FROM audit_log WHERE id > {C['aud_max']} AND action = 'DELETE' AND table_name IN ('awards', 'slugs', 'listings', 'venues')) <> 8
      OR (SELECT count(*) FROM audit_log WHERE id > {C['aud_max']} AND action = 'UPDATE' AND table_name = 'cities'
