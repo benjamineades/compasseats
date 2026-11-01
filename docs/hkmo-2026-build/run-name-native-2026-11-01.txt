@@ -1,0 +1,23 @@
+Run record: docs/name-native-michelin-2026-hong-kong-macau.sql (HK/MO name_native, open item 1)
+Date: Nov 1, 2026. Ben choices 11:59 ET: 1A (branch part kept), 2A (45 Latin-only cards skipped). Ben "go" 12:00 ET.
+
+File: docs/name-native-michelin-2026-hong-kong-macau.sql, 149 lines, ASCII, LF,
+  sha256 c235423a374e27e6ad29b414a39eaf5bcf4ab3007086016a8771cc31a68d1b4a (commit 9880ff2, built, not run).
+  Built by docs/hkmo-2026-build/build_name_native_hkmo_2026_11_01.py A. pglast: 3 statements, body parses.
+Population: 180 cards of ingest batch 19 = 180 venues (HK 146, Macau 34), all active, 0 name_native before.
+  Set: 135 (HK 103, Macau 32), card venue_name_zh with Chinese script, as written (32 with branch part).
+  Skipped: 45 cards with a Latin-only venue_name_zh (= card English name on all 45).
+  Checks: 0 duplicate Chinese names; 5 Green Star rows (30131-30135) share a card URL, DISTINCT = 1 row per venue.
+Fingerprints: plan md5 (vid|name_native by vid) 8823c9956c7fd990dc41a2d084d545ac (database = script);
+  option B md5 b2b57dea71832c248f7ceb0bfa01661c (not used); target rows md5 6dcc463166ccb76016be404d70968b76.
+Dry run: Read connector, 16:57 UTC. Gates 1-4 passed, stopped at the UPDATE (read-only transaction).
+  Read after: name_native 203, audit last 121,259.
+Fresh read before go: 17:00:02 UTC, all gate values equal.
+
+Real run: Write connector, first try, transaction time 2026-11-01 17:00:45 UTC. All 6 gates passed.
+Read-back 17:00:53 UTC:
+  venues 11,300; name_native 338 (HK/MO 135); awards 23,368; slugs 13,001 (canonical 11,300);
+  ledger last id 206 (no ledger row, China Sep 27 / Taiwan Oct 27 precedent); cities.venues_count sum 10,935.
+  audit_log 121,260-121,394: 135 rows, all venues UPDATE, 1 timestamp, only name_native changed (null -> value).
+  Audit pairs md5 = live HK/MO md5 = plan 8823c9956c7fd990dc41a2d084d545ac.
+Review list name-native-hkmo-2026-review.csv (180 rows): chat file for Ben's records, not in the repo.
