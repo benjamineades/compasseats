@@ -1,0 +1,256 @@
+001|Three Stars|London|Alain Ducasse at The Dorchester|
+002|Three Stars|London|CORE by Clare Smyth|
+003|Three Stars|Bray|Fat Duck|
+004|Three Stars|London|H\u00e9l\u00e8ne Darroze at The Connaught|
+005|Three Stars|Cartmel|L'Enclume|
+006|Three Stars|Aughton|Moor Hall|NEW
+007|Three Stars|London|Restaurant Gordon Ramsay|
+008|Three Stars|London|Sketch, The Lecture Room & Library|
+009|Three Stars|London|The Ledbury|
+010|Three Stars|Bray|Waterside Inn|
+011|Two Stars|London|A.Wong|
+012|Two Stars|London|Alex Dilling at Hotel Caf\u00e9 Royal|
+013|Two Stars|London|Brooklands by Claude Bosi|
+014|Two Stars|Dublin|Chapter One by Mickael Viljanen|
+015|Two Stars|London|Claude Bosi at Bibendum|
+016|Two Stars|London|Da Terra|
+017|Two Stars|Baltimore|dede|
+018|Two Stars|London|Dinner by Heston Blumenthal|
+019|Two Stars|London|Gymkhana|
+020|Two Stars|Marlow|Hand and Flowers|
+021|Two Stars|Saltwood|hide and fox|NEW
+022|Two Stars|London|Humble Chicken|NEW
+023|Two Stars|London|Ikoyi|
+024|Two Stars|London|Kitchen Table|
+025|Two Stars|London|La Dame de Pic London|
+026|Two Stars|Great Milton|Le Manoir aux Quat' Saisons|
+027|Two Stars|Blackrock|Liath|
+028|Two Stars|Cambridge|Midsummer House|
+029|Two Stars|Birmingham|Opheem|
+030|Two Stars|Dublin|Patrick Guilbaud|
+031|Two Stars|Auchterarder|Restaurant Andrew Fairlie|
+032|Two Stars|Nottingham|Restaurant Sat Bains|
+033|Two Stars|London|Story|
+034|Two Stars|Castlemartyr|Terre|
+035|Two Stars|London|The Clove Club|
+036|Two Stars|Crieff|The Glenturret Lalique|
+037|Two Stars|London|The Ritz Restaurant|NEW
+038|Two Stars|London|Trivet|
+039|Two Stars|Machynlleth|Ynyshir|
+040|One Star|London|1890 by Gordon Ramsay|
+041|One Star|Ledbury|33 The Homend|NEW
+042|One Star|London|64 Goodge Street|NEW
+043|One Star|Plymouth|\u00c0cl\u00e8af|
+044|One Star|Birmingham|Adam's|
+045|One Star|London|Akoko|
+046|One Star|Nottingham|alchemilla|
+047|One Star|Askham|Allium at Askham Hall|
+048|One Star|London|Amaya|
+049|One Star|London|Angler|
+050|One Star|London|AngloThai|NEW
+051|One Star|Galway|Aniar|
+052|One Star|Amersham|Artichoke|
+053|One Star|London|Aulis|
+054|One Star|Edinburgh|AVERY|NEW
+055|One Star|Ballyfin|Ballyfin|NEW
+056|One Star|Dublin|Bastible|
+057|One Star|Kinsale|Bastion|
+058|One Star|Oxwich|Beach House|
+059|One Star|London|Behind|
+060|One Star|Horsham|Ben Wilkinson at The Pass|
+061|One Star|London|Benares|
+062|One Star|Oldstead|Black Swan|
+063|One Star|Saint Helier|Bohemia|
+064|One Star|London|Brat|
+065|One Star|Bridge|Bridge Arms|
+066|One Star|Bristol|Bulrush|
+067|One Star|Castle Combe|Bybrook|
+068|One Star|Glasgow|Cail Bruich|
+069|One Star|Kilkenny|Campagne|
+070|One Star|London|Caract\u00e8re|NEW
+071|One Star|London|Casa Fof\u014d|
+072|One Star|Brampton|Cedar Tree by Hrishikesh Desai|
+073|One Star|Ballydehob|Chestnut|
+074|One Star|London|Chez Bruce|
+075|One Star|London|Chishuru|
+076|One Star|London|Club Gascon|
+077|One Star|Edinburgh|Condita|
+078|One Star|London|Cornus|NEW
+079|One Star|Braithwaite|Cottage in the Wood|
+080|One Star|St Mellion|Crocadon|
+081|One Star|London|Cycene|
+082|One Star|London|Dining Room at The Goring|
+083|One Star|Skelton|Dog and Gun Inn|
+084|One Star|Dublin|D'Olier Street|
+085|One Star|London|Dorian|
+086|One Star|London|DOSA|NEW
+087|One Star|London|Dysart Petersham|
+088|One Star|Torquay|Elephant|
+089|One Star|London|Elystan Street|
+090|One Star|London|Endo at The Rotunda|
+091|One Star|London|Evelyn's Table|
+092|One Star|London|Five Fields|
+093|One Star|Fordwich|Fordwich Arms|
+094|One Star|Grasmere|Forest Side|
+095|One Star|Middleton Tyas|Forge|NEW
+096|One Star|London|Frog by Adam Handling|
+097|One Star|London|Galvin La Chapelle|
+098|One Star|Chagford|Gidleigh Park|
+099|One Star|Dublin|Glovers Alley|
+100|One Star|Cardiff|Gorse|NEW
+101|One Star|Hampton in Arden|Grace & Savour|
+102|One Star|East Grinstead|Gravetye Manor|
+103|One Star|Hambleton|Hambleton Hall|
+104|One Star|London|Harwood Arms|
+105|One Star|Newton in Cartmel|heft|
+106|One Star|Leith|Heron|
+107|One Star|London|HIDE|
+108|One Star|Bray|Hinds Head|
+109|One Star|Wall|Hjem|
+110|One Star|Penarth|Home|
+111|One Star|Doolin|Homestead Cottage|
+112|One Star|Ardmore|House|
+113|One Star|Newcastle upon Tyne|House of Tides|
+114|One Star|London|Humo|
+115|One Star|Lower Beeding|Interlude|
+116|One Star|London|Jamavar|
+117|One Star|Mountsorrel|John's House|
+118|One Star|London|Kitchen W8|
+119|One Star|London|KOL|
+120|One Star|London|La Trompette|
+121|One Star|Thomastown|Lady Helen|
+122|One Star|Ambleside|Lake Road Kitchen|
+123|One Star|Bagshot|Latymer|
+124|One Star|Cheltenham|Le Champignon Sauvage|
+125|One Star|Bullaun|LIG\u0418UM|NEW
+126|One Star|London|Lita|NEW
+127|One Star|Isle of Skye|Loch Bay|
+128|One Star|London|Luca|
+129|One Star|Cheltenham|Lumi\u00e8re|
+130|One Star|Edinburgh|LYLA|NEW
+131|One Star|London|Lyle's|
+132|One Star|Lympstone|Lympstone Manor|
+133|One Star|Manchester|mana|
+134|One Star|Caistor St Edmund|Mark Poynton at Caistor Hall|NEW
+135|One Star|Leith|Martin Wishart|
+136|One Star|Knowstone|Masons Arms|
+137|One Star||Mauro Colagreco at Raffles London at The OWO|NEW
+138|One Star|Holt|Meadowsweet|
+139|One Star|Morston|Morston Hall|
+140|One Star|London|Mountain|
+141|One Star|London|Murano|
+142|One Star|London|Muse by Tom Aikens|
+143|One Star|Hovingham|m\u00fdse|
+144|One Star|Langho|Northcote|
+145|One Star|Murcott|Nut Tree Inn|
+146|One Star|Ambleside|Old Stamp House|
+147|One Star|Bath|Olive Tree|
+148|One Star|London|OMA|NEW
+149|One Star|London|Ormer Mayfair|
+150|One Star|Bruton|Osip|
+151|One Star|Port Isaac|Outlaw's Fish Kitchen|
+152|One Star|Port Isaac|Outlaw's New Road|
+153|One Star|Belfast|OX|
+154|One Star|Padstow|Paul Ainsworth at No.6|
+155|One Star|London|Pavyllon London|
+156|One Star|Bury St Edmunds|Pea Porridge|
+157|One Star|Penton|Pentonbridge Inn|
+158|One Star|London|P\u00e9trus by Gordon Ramsay|
+159|One Star|London|Pied \u00e0 Terre|
+160|One Star|East Wallhouses|Pine|
+161|One Star|South Dalton|Pipe and Glass|
+162|One Star|London|Plates London|NEW
+163|One Star|London|Portland|
+164|One Star|London|Quilon|
+165|One Star|Colerne|Restaurant Hywel Jones by Lucknam Park|
+166|One Star|Cambridge|Restaurant Twenty-Two|
+167|One Star|London|River Caf\u00e9|
+168|One Star|Cartmel|Rogan & Co|
+169|One Star|York|Roots|
+170|One Star|London|Row on 5|NEW
+171|One Star|London|Sabor|
+172|One Star|Ripon|Shaun Rankin at Grantley Hall|
+173|One Star|Birmingham|Simpsons|
+174|One Star|Manchester|Skof|NEW
+175|One Star|London|SO\u007cLA|
+176|One Star|London|Sollip|
+177|One Star|Aughton|S\u014d\u2013L\u014d|
+178|One Star|Newcastle upon Tyne|SOLSTICE BY KENNY ATKINSON|
+179|One Star|Dorking|Sorrel|
+180|One Star|Menai Bridge|Sosban & The Old Butchers|
+181|One Star|Bowness-on-Windermere|SOURCE at Gilpin Hotel|
+182|One Star|London|St. Barts|
+183|One Star|London|St. JOHN|
+184|One Star|Harome|Star Inn at Harome|
+185|One Star|East Mersea|Stark|
+186|One Star|Esher|Starling|NEW
+187|One Star|London|Sushi Kanesaka|
+188|One Star|London|Taku|
+189|One Star|Hetton|The Angel|
+190|One Star|Aughton|The Barn|
+191|One Star|Cashel|The Bishop's Buttery|
+192|One Star|Marlow|The Coach|
+193|One Star|Kenilworth|The Cross|
+194|One Star|Malmesbury|The Dining Room|
+195|One Star|Leith|The Kitchin|
+196|One Star|Maynooth|The Morrison Room|NEW
+197|One Star|Belfast|The Muddlers Club|
+198|One Star|Hunstanton|The Neptune|
+199|One Star|London|The Ninth|
+200|One Star|Adare|The Oak Room|
+201|One Star|Peat Inn|The Peat Inn|
+202|One Star|Whatcote|The Royal Oak|
+203|One Star|Ambleside|The Samling|
+204|One Star|Seasalter|The Sportsman|
+205|One Star|Egham|The Tudor Pass|
+206|One Star|Fence|The White Swan|
+207|One Star|Whitebrook|The Whitebrook|
+208|One Star|Edinburgh|Timberyard|
+209|One Star|London|Trinity|
+210|One Star|London|Trishna|
+211|One Star|London|Umu|
+212|One Star|Glasgow|Unalome by Graeme Cheevers|
+213|One Star|Lichfield|Upstairs by Tom Shepherd|
+214|One Star|Dublin|Variety Jones|
+215|One Star|London|Veeraswamy|
+216|One Star|Llanddewi Skirrid|Walnut Tree|
+217|One Star|London|Wild Honey St James|
+218|One Star|Bristol|Wilsons|NEW
+219|One Star|Winteringham|Winteringham Fields|
+220|One Star|Ascot|Woven by Adam Smith|
+221|Green Star|Margate|Angela's|
+222|Green Star|London|Apricity|
+223|Green Star|Oldstead|Black Swan|
+224|Green Star|Lewannick|Coombeshead Farm|
+225|Green Star|St Mellion|Crocadon|
+226|Green Star|Falmouth|CULTURE|
+227|Green Star|Daylesford|Daylesford Organic Farm|
+228|Green Star|Simonsbath|Exmoor Forest Inn|
+229|Green Star|Middleton Tyas|Forge|
+230|Green Star|Goathland|Homestead Kitchen|NEW
+231|Green Star|Lower Beeding|Interlude|
+232|Green Star|Plungar|Jericho|NEW
+233|Green Star|Great Milton|Le Manoir aux Quat' Saisons|
+234|Green Star|Cartmel|L'Enclume|
+235|Green Star|Heckfield|Marle|
+236|Green Star|Aughton|Moor Hall|
+237|Green Star|Tenbury Wells|Native|NEW
+238|Green Star|Bath|Oak|
+239|Green Star|Bruton|Osip|
+240|Green Star|London|Petersham Nurseries Caf\u00e9|
+241|Green Star|East Wallhouses|Pine|
+242|Green Star|Tisbury|Pythouse Kitchen Garden|NEW
+243|Green Star|Nottingham|Restaurant Sat Bains|
+244|Green Star|London|Silo|
+245|Green Star|London|St. Barts|
+246|Green Star|Kilndown|The Small Holding|
+247|Green Star|Peasmarsh|Tillingham|
+248|Green Star|Stockport|Where The Light Gets In|
+249|Green Star|Whitchurch|Wild Shropshire|NEW
+250|Green Star|Bristol|Wilsons|
+251|Green Star|Strachur|Inver|
+252|Green Star|Narberth|ANNWN|
+253|Green Star|Hay-on-Wye|CHAPTERS|
+254|Green Star|Llandderfel|Henry Robertson|
+255|Green Star|Whitebrook|The Whitebrook|
+256|Green Star|Galway|Kai Restaurant|
