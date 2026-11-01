@@ -19,3 +19,11 @@ Ben: 11:25 ET "D1-D6: A"; 11:31 ET "go" (rename file).
 7. Slug dry run (Read connector, full DO block): all gates passed (plan 49, keep 17, fingerprint
    9e682a117c541d0747eb52c43ebe9966); stopped at the first UPDATE with "read-only transaction".
    Slug write: waiting for Ben's go.
+8. Ben 11:36 ET "go" (slug file). Slug write: docs/slugs-rename-michelin-2026-hong-kong-macau.sql
+   (sha256 c7078d972eda82470e32269aeefd0463b4796c86690d048a982c1c4a1cbc5021), Write connector, first try,
+   ~16:36:40 UTC. audit_log 121,162-121,259 (98 rows: 49 slugs UPDATE + 49 slugs INSERT, 1 timestamp). No ledger row.
+9. Read-back 16:36:53 UTC: fingerprint of id|name|city|old slug (now non-canonical)|new canonical slug
+   = plan 9e682a117c541d0747eb52c43ebe9966 (49 rows); 17 keep their slug; 49 old slugs non-canonical.
+   slugs 13,001 (canonical 11,300, non-canonical 1,701); venues with other than 1 canonical slug 0;
+   venues 11,300; awards 23,368; listings 11,300; blurbs 142; ledger last id 206; audit_log 115,921 rows,
+   last id 121,259; cities.venues_count sum 10,935.
