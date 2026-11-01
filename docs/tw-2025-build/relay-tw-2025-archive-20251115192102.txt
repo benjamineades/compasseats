@@ -1,0 +1,60 @@
+1|Three Stars|Taipei|Le Palais|
+2|Three Stars|Taipei|Ta\u00efrroir|
+3|Three Stars|Taichung|JL Studio|
+4|Two Stars|Taipei|A|PROMOTED
+5|Two Stars|Taipei|Eika|PROMOTED
+6|Two Stars|Taipei|L'Atelier de Jo\u00ebl Robuchon|
+7|Two Stars|Taipei|logy|
+8|Two Stars|Taipei|Molino de Urd\u00e1niz|
+9|Two Stars|Taipei|Mudan|
+10|Two Stars|Taipei|Yu Kapo|PROMOTED
+11|One Star|Taipei|A Cut|
+12|One Star|Taipei|Ad Astra|
+13|One Star|Taipei|aMaze|NEW
+14|One Star|Taipei|Ban Bo|
+15|One Star|Taipei|Chuan Ya|NEW
+16|One Star|Taipei|Circum-|
+17|One Star|Taipei|de nuit|
+18|One Star|Taipei|FRASSI|PROMOTED
+19|One Star|Taipei|Fujin Tree Taiwanese Cuisine & Champagne (Songshan)|
+20|One Star|Taipei|Golden Formosa|
+21|One Star|Taipei|Hosu|PROMOTED
+22|One Star|Taipei|Impromptu by Paul Lee|
+23|One Star|Taipei|INITA|
+24|One Star|Taipei|Ken Anhe|
+25|One Star|Taipei|Kitcho|
+26|One Star|Taipei|La Vie by Thomas B\u00fchner|PROMOTED
+27|One Star|Taipei|Ming Fu|
+28|One Star|Taipei|Mipon|
+29|One Star|Taipei|Motoichi|NEW
+30|One Star|Taipei|Mountain and Sea House|
+31|One Star|Taipei|NOBUO|
+32|One Star|Taipei|Paris 1930 de Hideki Takayama|
+33|One Star|Taipei|Sens|
+34|One Star|Taipei|Shin Yeh Taiwanese Signature|
+35|One Star|Taipei|Sushi Akira|
+36|One Star|Taipei|Sushi Kajin|NEW
+37|One Star|Taipei|Sushi Ryu|
+38|One Star|Taipei|Sushiyoshi|
+39|One Star|Taipei|T+T|
+40|One Star|Taipei|The Guest House|
+41|One Star|Taipei|Tien Hsiang Lo|
+42|One Star|Taipei|Wok by O'BOND|
+43|One Star|Taipei|Ya Ge|
+44|One Star|Taipei|ZEA|
+45|One Star|Taichung|Fleur de Sel|
+46|One Star|Taichung|L'Atelier par Yao|
+47|One Star|Taichung|Oretachi No Nikuya|
+48|One Star|Taichung|Sur-|
+49|One Star|Taichung|YUENJI|
+50|One Star|Kaohsiung|GEN|
+51|One Star|Kaohsiung|HAILI|
+52|One Star|Kaohsiung|Sho|
+53|One Star|Kaohsiung|the FRONT HOUSE|PROMOTED
+54|Green Star|Taipei|EMBERS|
+55|Green Star|Taipei|Hosu|
+56|Green Star|Taipei|Little Tree Food (Da'an Road)|
+57|Green Star|Taipei|Mountain and Sea House|
+58|Green Star|Taipei|Yangming Spring (Shilin)|
+59|Green Star|Taichung|Tu Pang|NEW
+60|Green Star|Kaohsiung|Thomas Chien|
