@@ -1,0 +1,11 @@
+relabel-michelin-2026-hong-kong-macau-legacy.sql - RUN
+Ben "go" Nov 1 10:27 ET. Write connector, first try, committed 2026-11-01 15:29:35.981079 UTC.
+File sha256 d8490db88c166606268d1200753b06946015b9f0da9f6666ccb888fa6c33445c (commit 85568bd).
+Read-back 15:29:48 UTC:
+  ledger 197 (michelin, award, 171, relabel:michelin-2026-hong-kong-macau-legacy), ledger rows 149
+  audit 120,822-120,992 (171, awards UPDATE, one timestamp), audit rows 115,680
+  awards 23,362 (unchanged), venues 11,300, closed 365, slugs 12,950, price 7,731, cities.venues_count sum 10,935
+  Michelin 2025 3,469 -> 3,298; Michelin 2026 6,090 -> 6,261
+  HK/MO Michelin 2026: 172 rows, 172 with URL, 172 distinct URLs
+  HK/MO Michelin 2025 left: 5409,10529,10532,10534,10535,10562,10591,18227
+  samples: 391 (8 1/2 HK), 2056 (Cristal Room), 6238 (8 1/2 Macau), 10561 (Cafe Hunan -> Prof Chan's URL) all 2026 with card URL
