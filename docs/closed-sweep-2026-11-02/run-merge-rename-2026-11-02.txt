@@ -1,0 +1,16 @@
+Run record: docs/fix-closed-sweep-merge-rename-2026-11-02.sql
+sha256 d20c666b671aace6e5c5e94940d7627c4a225c11a6b86523d7ba86b69e94bd92
+Ben: 14:29 ET "1A, 2A, 3A, 4A, 5A, 6A, 7A, 8A, 9A"; 14:35 ET "Go"; 14:41 ET "Ran".
+Syntax: pglast, file and DO body parse. Dry run (Read connector): all pre gates passed, stopped at the first INSERT with "read-only transaction".
+Write connector: 2 calls returned "client cancelled this confirmation" after 0.6 s. Nothing ran (read 19:37:31 UTC: no change).
+Run: Ben, Supabase SQL Editor, committed Nov 2 2026, 19:41:19 UTC. One transaction, all gates passed.
+Read-back 19:41:59 UTC, whole tables:
+venues 11,294 (active 10,990, closed 304); awards 25,097; slugs 13,019 (canonical 11,294, non-canonical 1,725); price 7,727; listings 11,294; city labels 23,989; cities 3,264.
+cities.venues_count sum 10,990; 0 cities differ from the view. Tokyo 594, Singapore 205, Sankt Anton am Arlberg 3, Courchevel 7.
+closed published 0; closed not published 304; active not published 0.
+rename_batches 27 (last id 42); rename_rows 1,298.
+ledger 185 rows, new ids 235 (michelin, 1), 236 (la-liste, 2), 237 (oad, 1).
+audit_log 118,806 rows, new ids 124,291-124,320 (30): awards UPDATE 4; cities UPDATE 2; city_label_source DELETE 4, UPDATE 1 (hand); listings DELETE 2, UPDATE 3; price DELETE 1; slugs INSERT 2, UPDATE 4; venues DELETE 2, UPDATE 5.
+Survivors: ve_bd408ea3c3 Gourmetrestaurant Tannenhof (active, published, 3 awards, old slug hotel-tannenhof); ve_5f98076100 Slalom 1850 (active, published, 3 awards, old slug baumaniere-1850).
+Renamed: ve_af6c894a24 Azabu-Juban Kitafuku, native 麻布十番 きた福 (active, published, canonical azabu-juban-kitafuku); ve_7e3068bc36 Revolution Wine Bistro (active, published, canonical revolution-wine-bistro).
+Deleted: ve_aed4b4a9f3 Hotel Tannenhof, ve_070ced1e07 Baumanière 1850. 0 rows remain on these ids.
