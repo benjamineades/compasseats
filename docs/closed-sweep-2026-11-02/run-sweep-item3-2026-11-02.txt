@@ -1,0 +1,13 @@
+Run record: docs/fix-closed-sweep-item3-2026-11-02.sql
+sha256 0bf27a93bebf8cd0214c99550291c5b8dab4b5d7123fd1f69b7e64088a200805
+Ben: 16:25 ET "1A, 2A, 3A, 4A, 5A"; 16:29 ET "Go".
+Write connector, first try. Audit first row Nov 2 2026, 21:30:26 UTC. The SQL body was sent without the header comments.
+Read-back 21:30:45 UTC, whole tables:
+venues 11,293 (active 10,999, closed 294); awards 25,097; slugs 13,022 (canonical 11,293, non-canonical 1,729); price 7,727; listings 11,293; cities 3,265; city_label_source 23,989.
+cities.venues_count sum 10,999; 0 cities differ from the view.
+closed published 0; closed not published 294; active not published 0.
+rename_batches 29 (new batch id 44); rename_rows 1,301.
+ledger 186 rows, last id 238 (no change).
+audit_log 118,857 rows, new ids 124,359-124,371: cities INSERT 1 and UPDATE 2, listings UPDATE 3, slugs INSERT 1 and UPDATE 1, venues UPDATE 5.
+Venues read back: Tsushimi ve_001296abf4 active, published, Nirasaki (count 1), /nirasaki/tsushimi canonical, /tokyo/tsushimi non-canonical; Suetomi ve_779a1ac27f active, published, Tokyo (count 595); Scalottas Terroir ve_fae8dcb6f0 active, published, Lenzerheide (count 1); The Grill at Amangani ve_8d69af215c closed, not published (no change).
+Evidence for all 4 venues: docs/closed-sweep-2026-11-02/closed-sweep-item3-evidence-2026-11-02.csv (sha256 87ff1d68d711df2bf78f7d69562cdd305ebcc78b9cc97268ffc48b5fcdfb340d).
