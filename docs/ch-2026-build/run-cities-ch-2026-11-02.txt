@@ -1,0 +1,24 @@
+Run record: docs/cities-michelin-2026-switzerland-2026-11-02.sql
+File sha256: b7dec4748c8f5cd8e64e2a23644f27a373fd96bb055446ba44ba80489112d8a9 (commit 4d6b311)
+Ben: Nov 2 2026, 18:23 ET "Go".
+
+Attempts:
+- 23:23 UTC and 23:24 UTC: Write connector. The client cancelled the confirmation after 0.5 s both times. Nothing ran
+  (read 23:23:46 and 23:24:25 UTC: cities 3,265, aliases 266, audit last id 124,371).
+- Ben ran the file in the Supabase SQL Editor. Audit rows written at 23:31:49.728953 UTC. Ben, 18:31 ET: "Done".
+
+Read-back (23:32:10 UTC, whole tables):
+- cities 3,279 (+14); venues_count sum 10,999; cities that differ from city_venue_counts: 0
+- city_aliases 262 (-4); ollon, ebersecken, schwarzenburg, utzenstorf left: 0
+- new city fingerprint 80788e2dbb9ad982de34687fb8efd75a (= end gate)
+- venues 11,293 (active 10,999, closed 294); awards 25,097; slugs 13,022; price 7,727; listings 11,293; city_label_source 23,989
+- closed published 0; ledger 186 rows, last id 238 (no ledger row); ingest_batches last id 19
+- audit_log 118,875 rows, last id 124,389. New ids 124,372-124,389 (18): cities INSERT 14, city_aliases DELETE 4
+
+New cities (no coordinates; region per Ben 1B):
+ci_0a56f8cfef buchs, ci_10bd8ad705 ollon, ci_12152d7fd8 ballaigues, ci_1776a9795b ebersecken,
+ci_2138aeb041 morbio-inferiore (italian-lakes), ci_6f6257483c celerina (swiss-alps), ci_a14062e6ed utzenstorf,
+ci_a456f7a2d5 stans, ci_a89407b990 oberwil, ci_b206712e95 messen, ci_bac45d1f1a pfaffnau, ci_c8093069b1 gonten,
+ci_caebcc3d7a schwarzenburg, ci_db61a34f59 intragna (italian-lakes).
+
+Next: stage run 1 of batch michelin-2026-switzerland (fixtures/ingest/michelin-2026-switzerland.csv), after Ben's go.
