@@ -61,3 +61,18 @@ Ben 12:32 "Go" (read), 12:34 "1A, 2A", 12:36 "Go". `docs/add-es-2026-erre-de-roc
 New: Erre de Roca `ve_671b739c15` in new city Condado de Treviño `ci_cb9d9222f1`, active, Michelin 2026 One Star (source: list article). It moved from Miranda de Ebro (Gasteiz Hoy Jan 13 2026; own site errederoca.com). No card found, no price row. Check its Michelin status at the Spain 2027 list (Dec 1).
 No venue made, closed (Ben 1A): Pierre (Mâcon; own site, closes June 19, page modified Jun 5 2026), Maison Hache (Eygalières; Bouillantes Mar 31 2026, L'Oiseau qui Chante took the site), NM (Oviedo; OKdiario Jan 19 2026), Béns d'Avall (Sóller; closed Mar 1 2026, new concept due Mar 2027: recheck then), SCAPAR (Barcelona; 7 Caníbales Jun 10 2026).
 Live state after: venues **11,296** (active **10,917**, closed 379); awards **25,097**; Spain + Andorra Michelin 2026 star rows **304**; slugs **13,017** (non-canonical 1,721); price 7,728; listings **11,296**; city labels **23,993**; cities **3,264**, sum **10,917** (0 differ); closed published 358; ledger **182** rows, last id **234**; audit_log **118,242** rows, last id **123,756**.
+
+## Next (Ben, Nov 2, 12:37: new chat)
+Open item 10: one rule for closed venues with `listings.published` true (358 of 379, whole table, read 17:36 UTC). F1 said no change before Nov 12; Ben chooses the rule now, a write stays subject to his go. Switzerland waits for "results live" (at 17:36 UTC the live lists still showed 4 / 23 / 103 / 97).
+Recheck list carried: Hegel Eins, Sushi Saito, Ricardo Sanz Wellington, Santerra, Galanga, La Table de l'Alpaga, Erre de Roca (Michelin status), Béns d'Avall (Mar 2027).
+
+## Suggested opening prompt
+```
+Read claude/handoff-es-list-compare-done-2026-11-02.md from the project files, then
+claude/handoff-open-items-rls-names-fr-closures-done-2026-11-02.md for the full open-item list and
+claude/handoff-chengdu-held-7-cleanup-done-2026-10-04.md for working rules. Do a fresh count read and confirm ledger 234,
+audit_log 123,756, venues 11,296 (active 10,917, closed 379), awards 25,097, slugs 13,017, price 7,728 and cities.venues_count sum 10,917.
+Then start open item 10: read what the site and the publish builder do with closed venues today, count the 358 closed published venues by
+useful groups, and show me in /ste style the options for one rule and the effect of each on the site. Ask me any question the plan does not decide.
+No write before my go. Attach the compasseats repo with push access for the commit after any write.
+```
