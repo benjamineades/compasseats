@@ -1,0 +1,2 @@
+fix-status-closed-3-nideggen-hjem-taku-2026-11-02.sql sha256 93178c3519fa0a99d15aaf5aee85ea056cc6ba5b63d2897b2bdef620d4d367db
+Ben "go" Nov 2 12:19 ET. Write connector, first try, all gates passed. No ledger row. Audit 123735-123740.

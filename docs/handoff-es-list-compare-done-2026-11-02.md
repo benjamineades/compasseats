@@ -41,3 +41,11 @@ Single reads, no change: SEZANNE (stars removed, new team, new listing, SCMP); N
 - Taiwan, Hong Kong and Spain lines are mostly plain text. Spain: `City – Name [– NOVEDAD]`.
 - Spain card path for guessing is not reliable. A guessed card 404 proves nothing.
 - A repo stop check asks for a commit of untracked files: use a branch before a go, then merge after the run.
+
+## Added Nov 2, 12:20 Atlanta: status read of the 18 candidates and 3 closures
+Ben 12:15 "Go" (status read), 12:18 "1A, 2A" (close Nideggen and Hjem; Taku closed), 12:19 "Go".
+`docs/fix-status-closed-3-nideggen-hjem-taku-2026-11-02.sql` (sha256 `93178c35...d367db`). Write connector, first try. Audit 123,735-123,740. No ledger row.
+Closed: Burgrestaurant Nideggen `ve_3fede02a60` (Falstaff Aug 6 2026), Restaurant Hjem `ve_c905b58267` (Harden's Jul 10 2026), Taku `ve_4789a4e337` (Hot Dinners Feb 20 2026, now Sushi Amamoto; no venue for it unless it wins an award). Nideggen and Wall now have 0 active venues.
+Live state after: venues 11,296 (active **10,917**, closed **379**); cities sum **10,917**; closed published **358**; audit_log **118,226** rows, last id **123,740**; ledger 231; awards 25,096.
+Recheck, status unchanged (conflicting evidence): Hegel Eins `ve_cea4def219` (break since Dec 2025, card live), Sushi Saito `ve_a248207d2a` (card 404, Time Out lists hours, updated Sep 2026). Stay active, card live with first tag "plate" (Selected, read by tag only): Schattbuch, Bieberbau, Skykitchen, Carmelo Greco, Casala, Showroom, kochZIMMER, Roter Hahn, Le Frankenberg. Settled earlier: De Juwelier, Da Vinci, Sense, Fleur de Sel.
+Note: `/us/en/greater-london/london/restaurant/taku` redirects to Taku in Cologne, so a card status check by a guessed path must compare the final URL.
