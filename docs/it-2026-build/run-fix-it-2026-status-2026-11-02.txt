@@ -1,0 +1,12 @@
+Run record: Italy 2026 status and gap fix. Nov 2, 2026. Ben: 07:22 ET "S1, G1, V2"; 07:26 ET "Go".
+File: docs/fix-michelin-2026-italy-status-gap.sql  sha256 2ebb207d4f2958c13331a0e989a113760aaf4dda646675cfc3f291c5e079eac8
+Build: docs/it-2026-build/build_fix_it_2026_status.py
+Syntax: pglast 3 statements, body parses. Dry run (Read connector): stopped at the first UPDATE with "read-only transaction"; all pre gates passed.
+Run: Write connector, first try, last audit row 2026-11-02 12:27:30 UTC. All gates passed.
+Read-back 2026-11-02 12:27:52 UTC, whole tables:
+venues 11301 (active 10938, closed 363); awards 25085 (last id 32024); Michelin 11381; Michelin 2026 6283; IT One Star 2026 334
+slugs 13005 (non-canonical 1704); listings 11301; blurbs 142; price 7734; cities 3262, venues_count sum 10938; aliases 266; labels 24001
+ledger 169 rows, last id 221; audit_log 118063 rows, ids 123555-123577 added (venues 8, cities 8, awards 3, city_label_source 2, listings 1, slugs 1)
+New awards: 32022 Octavin, 32023 Atman, 32024 Agli Amici Dopolavoro (2026 One Star, article URL).
+Active: Atelier, La Stua de Michil, La Trattoria, Stube Hermitage, Suinsom, Agli Amici Dopolavoro ve_5025ee0810.
+Closed: Octavin, Atman. Unchanged closed, recheck: Wood, Peter Brunel, Quattro Passi.
