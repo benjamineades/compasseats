@@ -1,0 +1,13 @@
+Run record: RLS on 3 tables; rename batch 40 (8 venues); name_native Naramachi Kuko. Nov 2, 2026.
+Ben: 10:21 ET "1A, 2A, 3A, 4A, 5A"; 10:34 ET "Go RLS, Go both. 3A".
+Files: docs/rls-three-tables-2026-11-02.sql sha256 ac158e838150347f85a715b08f549df45d4235d02e676bdfd5a4342d254589d4
+       docs/fix-open-items-names-native-2026-11-02.sql sha256 661dc83eb77a00b0c70247ecd790dbabba84c228e2db609590b2f49a6d21fd19
+Syntax: pglast, file and DO body parse. Dry run (Read connector, block up to the first write): stopped with "read-only transaction"; all pre gates passed.
+Run: Claude, Write connector, first try, about 15:34 UTC. Both files ran from BEGIN to COMMIT; the header comment lines of the files were not sent. No error, so all gates passed.
+Read-back 2026-11-02 15:34:35 UTC (after RLS): public tables RLS on 24, off 0; rename_rows 1285; award_categories 2143.
+Read-back 2026-11-02 15:35:37 UTC (after names), whole tables:
+venues 11296 (active 10930); name_native 339; awards 25081; slugs 13013 (non-canonical 1717); price 7729; cities.venues_count sum 10930
+rename_batches 25 (last id 40); rename_rows 1293; ledger 176 rows, last id 228; audit_log 118178 rows, ids 123668-123692 (25)
+Le Manoir aux Quat’Saisons ve_7b865a33b7 oxford/le-manoir-aux-quat-saisons; La Palmeraie ve_d1cccaafdf; La Chapelle ve_7963871c91; La Passagère ve_ee898a4ee3; René et Maxime Meilleur ve_a8d9697131; Les Explorateurs ve_eb0dbfc986; La Côte d'Or ve_2e35f20ae1; Restaurant Girardin ve_634228e9d5.
+Naramachi Kuko ve_c0eba7ae71 name_native 奈良町 枸杞.
+France 2026 list read: docs/fr-2026-list-read/relay-fr-2026-article-2026-11-02.txt (668 lines: 31 / 84 / 553), source guide.michelin.com/fr/fr/article/michelin-guide-ceremony/la-liste-complete-des-etoiles-du-guide-michelin-france-2026.
