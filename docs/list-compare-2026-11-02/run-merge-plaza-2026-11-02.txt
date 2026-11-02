@@ -1,0 +1,3 @@
+merge-fr-plaza-athenee-2026-11-02.sql sha256 99d33868e2f43eba90a2343db96eb095f55269c3cf7d325386ef9ff03b648898
+Ben "go" Nov 2 12:28 ET. Write connector returned "cancelled" twice (0.6 s and 0.5 s; nothing ran, read-back proved it). Ben ran the file in the SQL Editor, committed Nov 2 17:31:07 UTC.
+Ledger 232. Audit 123741-123749. Read back 17:31:23 UTC: all counts as expected.
