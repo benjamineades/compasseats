@@ -1,0 +1,5 @@
+fix-es-2026-list-4-rows-simpar-closed-2026-11-02.sql sha256 5c12edf4adb7bcf83041436609a422f896a737f59b0a62cb73b48554f7b90a02
+Ben "go" Nov 2 12:13 ET. Write connector, first try, all gates passed. Read back 17:14:24 UTC.
+Awards 32036-32039. Ledger 231. Audit 123729-123734.
+ledger 231 (179 rows), audit 123734 (118220 rows), venues 11296 (active 10920, closed 376), awards 25096, Michelin 11392,
+Spain + Andorra Michelin 2026 star rows 303, slugs 13016, price 7729, cities sum 10920, city diff 0, closed published 355.
