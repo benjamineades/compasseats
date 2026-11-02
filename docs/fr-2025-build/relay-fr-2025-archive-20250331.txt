@@ -1,0 +1,654 @@
+001|Three Stars|Annecy|Le Clos des Sens|
+002|Three Stars|Les Baux-de-Provence|L'Oustau de Baumani\u00e8re|
+003|Three Stars|Cassis|La Villa Madie|
+004|Three Stars|Le Castellet|La Table du Castellet|
+005|Three Stars|Chagny|Maison Lameloise|
+006|Three Stars|Courchevel|Le 1947 \u00e0 Cheval Blanc|
+007|Three Stars|Eug\u00e9nie-les-Bains|Les Pr\u00e9s d'Eug\u00e9nie - Michel Gu\u00e9rard|
+008|Three Stars|Fontjoncouse|Auberge du Vieux Puits|
+009|Three Stars|\u00cele de Noirmoutier / L'Herbaudi\u00e8re|La Marine|
+010|Three Stars|Marseille|AM par Alexandre Mazzia|
+011|Three Stars|Marseille|Le Petit Nice|
+012|Three Stars|Meg\u00e8ve|Flocons de Sel|
+013|Three Stars|Menton|Mirazur|
+014|Three Stars|Monaco|Le Louis XV - Alain Ducasse \u00e0 l'H\u00f4tel de Paris|
+015|Three Stars|Ouches|Troisgros - Le Bois sans Feuilles|
+016|Three Stars|La Rochelle|Christopher Coutanceau|NEW
+017|Three Stars|Paris 1er|Kei|
+018|Three Stars|Paris 1er|Pl\u00e9nitude - Cheval Blanc Paris|
+019|Three Stars|Paris 4e|L'Ambroisie|
+020|Three Stars|Paris 7e|Arp\u00e8ge|
+021|Three Stars|Paris 8e|All\u00e9no Paris au Pavillon Ledoyen|
+022|Three Stars|Paris 8e|Le Cinq|
+023|Three Stars|Paris 8e|\u00c9picure|
+024|Three Stars|Paris 8e|Pierre Gagnaire|
+025|Three Stars|Paris 8e|Le Gabriel - La R\u00e9serve Paris|
+026|Three Stars|Paris 16e|Le Pr\u00e9 Catelan|
+027|Three Stars|Reims|Assiette Champenoise|
+028|Three Stars|Saint-Bonnet-le-Froid|Restaurant Marcon|
+029|Three Stars|Saint-M\u00e9loir-des-Ondes|Le Coquillage|NEW
+030|Three Stars|Saint-Tropez|La Vague d'Or - Cheval Blanc St-Tropez|
+031|Three Stars|Valence|Pic|
+032|Two Stars|Annecy|Maison Beno\u00eet Vidal|
+033|Two Stars|Aumont-Aubrac|Cyril Attrazic|
+034|Two Stars|Blois|Christophe Hay - Fleur de Loire|
+035|Two Stars|Bommes|Lalique|
+036|Two Stars|Bonnieux|La Table des Amis|
+037|Two Stars|Bordeaux|Le Pressoir d'Argent - Gordon Ramsay|
+038|Two Stars|Bordeaux|L'Observatoire du Gabriel|NEW
+039|Two Stars|Bordeaux|Maison Nouvelle|NEW
+040|Two Stars|Busnes|Ch\u00e2teau de Beaulieu - Christophe Dufoss\u00e9|
+041|Two Stars|Le Cannet|La Villa Archange|
+042|Two Stars|Carcassonne|La Table de Franck Putelat|
+043|Two Stars|Chaudes-Aigues|Serge Vieira|
+044|Two Stars|Ciboure|Ekaitza|NEW
+045|Two Stars|Clermont-Ferrand|Le Pr\u00e9 - Xavier Beaudiment|
+046|Two Stars|Collonges-au-Mont-d'Or|Paul Bocuse|
+047|Two Stars|Colmar|JY'S|
+048|Two Stars|Courchevel|Baumani\u00e8re 1850|NEW
+049|Two Stars|Courchevel|Le Chabichou by St\u00e9phane Buron|
+050|Two Stars|Courchevel|Le Sarkara|
+051|Two Stars|Courchevel|Sylvestre Wahid - Les Grandes Alpes|
+052|Two Stars|Dijon|William Frachot|
+053|Two Stars|\u00c8ze|La Ch\u00e8vre d'Or|
+054|Two Stars|Garons|Michel Kayser - Restaurant Alexandre|
+055|Two Stars|Illhaeusern|Auberge de l'Ill|
+056|Two Stars|Joigny|La C\u00f4te Saint-Jacques|
+057|Two Stars|Jongieux|Les Moraini\u00e8res|
+058|Two Stars|Kaysersberg|La Table d'Olivier Nasti|
+059|Two Stars|Laguiole|Bras|
+060|Two Stars|Laubach|La Merise|
+061|Two Stars|Lyon|M\u00e8re Brazier|
+062|Two Stars|Lyon|Le Neuvi\u00e8me Art|
+063|Two Stars|Lyon|Takao Takano|
+064|Two Stars|La Madelaine-sous-Montreuil|La Grenouill\u00e8re|
+065|Two Stars|Magescq|Relais de la Poste|
+066|Two Stars|Marcq-en-Bar\u0153ul|Roz\u00f3|NEW
+067|Two Stars|Martillac|La Grand'Vigne - Les Sources de Caudalie|
+068|Two Stars|Monaco|Blue Bay Marcel Ravin|
+069|Two Stars|Monaco|Les Ambassadeurs by Christophe Cussac|
+070|Two Stars|Monaco|L'Abysse Monte-Carlo|NEW
+071|Two Stars|Narbonne|La Table Lionel Giraud|
+072|Two Stars|Nice|Flaveur|
+073|Two Stars|N\u00eemes|Duende|
+074|Two Stars|Obernai|La Fourchette des Ducs|
+075|Two Stars|Paris 1er|Restaurant Le Meurice Alain Ducasse|
+076|Two Stars|Paris 1er|Palais Royal Restaurant|
+077|Two Stars|Paris 2e|Sushi Yoshinaga|NEW
+078|Two Stars|Paris 6e|Guy Savoy|
+079|Two Stars|Paris 6e|Marsan par H\u00e9l\u00e8ne Darroze|
+080|Two Stars|Paris 7e|David Toutain|
+081|Two Stars|Paris 7e|Le Jules Verne|
+082|Two Stars|Paris 8e|L'Abysse au Pavillon Ledoyen|
+083|Two Stars|Paris 8e|Le Clarence|
+084|Two Stars|Paris 8e|Le Grand Restaurant - Jean-Fran\u00e7ois Pi\u00e8ge|
+085|Two Stars|Paris 8e|L'Orangerie|
+086|Two Stars|Paris 8e|La Sc\u00e8ne|
+087|Two Stars|Paris 8e|Le Taillevent|
+088|Two Stars|Paris 12e|Table - Bruno Verjus|
+089|Two Stars|Paris 16e|L'Oiseau Blanc|
+090|Two Stars|Paris 16e|Blanc|NEW
+091|Two Stars|Paris 17e|Maison Rostang|
+092|Two Stars|La Plaine-sur-Mer|Anne de Bretagne|
+093|Two Stars|Plomodiern|L'Auberge des Glazicks|
+094|Two Stars|Porto-Vecchio|Casadelmar|
+095|Two Stars|Pyla-sur-Mer|Le Skiff Club|
+096|Two Stars|Ramatuelle|La Voile - La R\u00e9serve Ramatuelle|
+097|Two Stars|Reims|Le Parc Les Cray\u00e8res|
+098|Two Stars|Reims|Racine|
+099|Two Stars|Saint-\u00c9milion|La Table de Pavie|
+100|Two Stars|Saint-Gr\u00e9goire|Maison Ronan Kervarrec|
+101|Two Stars|Saint-Martin-de-Belleville|Ren\u00e9 et Maxime Meilleur|
+102|Two Stars|Saint-R\u00e9my|C\u00e9dric Burtin|
+103|Two Stars|Saint-R\u00e9my-de-Provence|L'Auberge de Saint-R\u00e9my - Fanny Rey & Jonathan Wahid|NEW
+104|Two Stars|Saulieu|La C\u00f4te d'Or|
+105|Two Stars|Talloires-Montmin|L'Auberge de Montmin|
+106|Two Stars|Talloires-Montmin|Jean Sulpice|
+107|Two Stars|Toulouse|Py-r|
+108|Two Stars|Uriage-les-Bains|Maison Aribert|
+109|Two Stars|Veyrier-du-Lac|La Table de Yoann Conte|
+110|Two Stars|Vienne|La Pyramide - Maison Henriroux|
+111|Two Stars|Vonnas|Georges Blanc|
+112|Two Stars|Wingen-sur-Moder|Villa Ren\u00e9 Lalique|
+113|One Star|Ambronay|Auberge de l'Abbaye|
+114|One Star|Poncin|AinTimiste|
+115|One Star|Pont-de-Vaux|Le Raisin|
+116|One Star|Replonges|La Huchette|
+117|One Star|Montlu\u00e7on|La Chapelle - Ch\u00e2teau Saint-Jean|
+118|One Star|Vichy|Maison Decoret|
+119|One Star|Charmes-sur-Rh\u00f4ne|Le Carr\u00e9 d'Alethius|
+120|One Star|Les Vans|Likok\u00e9|
+121|One Star|Saint-Germain|Auberge de Montfleury|
+122|One Star|Veyras|La B\u00f2ria|NEW
+123|One Star|Marcol\u00e8s|Auberge de la Tour|
+124|One Star|Charols|Lavandin - Ch\u00e2teau Les Oliviers de Salettes|NEW
+125|One Star|Grane|Le Kl\u00e9ber - La Maison Bonnet|
+126|One Star|Granges-les-Beaumont|Les C\u00e8dres|
+127|One Star|Grignan|Le Clair de la Plume|
+128|One Star|Malataverne|Domaine du Colombier|
+129|One Star|Valence|Flaveurs|
+130|One Star|Valence|La Cachette|
+131|One Star|Autrans-M\u00e9audre en Vercors|Pal\u00e9gri\u00e9 Chez l'Henri|NEW
+132|One Star|Chonas-l'Amballan|La Table de Philippe Girardon|
+133|One Star|Corren\u00e7on-en-Vercors|Asterales|NEW
+134|One Star|Grenoble|Le Fantin Latour - St\u00e9phane Froidevaux|
+135|One Star|Les Deux-Alpes|Le P'tit Polyte|
+136|One Star|Saint-Alban-de-Roche|L'\u00c9mulsion|
+137|One Star|Saint-Didier-de-la-Tour|Ambroisie|
+138|One Star|Chazelles-sur-Lyon|Ch\u00e2teau Blanchard|
+139|One Star|Ouches|Ch\u00e2teau d'Origny|
+140|One Star|Pouilly-sous-Charlieu|Restaurant de la Loire|
+141|One Star|Saint-Galmier|La Source|
+142|One Star|Alleyras|Le Haut-Allier|
+143|One Star|Le Puy-en-Velay|Le Chamarlenc|
+144|One Star|Le Broc|Origines|
+145|One Star|Chamali\u00e8res|Radio|
+146|One Star|Ch\u00e2tel-Guyon|L'Impulsif|
+147|One Star|Clermont-Ferrand|Apicius|
+148|One Star|Clermont-Ferrand|Jean-Claude Leclerc|
+149|One Star|Clermont-Ferrand|L'Ostal|
+150|One Star|Issoire|L'Atelier Yssoirien|
+151|One Star|Pont-du-Ch\u00e2teau|Auberge du Pont|
+152|One Star|Chasselay|Guy Lassausaie|
+153|One Star|\u00c9cully|Saisons|
+154|One Star|Fleurie|Auberge du Cep|
+155|One Star|Lyon|L'Atelier des Augustins|
+156|One Star|Lyon|Au 14 F\u00e9vrier|
+157|One Star|Lyon|Burgundy by Matthieu|
+158|One Star|Lyon|Le Gourmet de S\u00e8ze|
+159|One Star|Lyon|Miraflores|
+160|One Star|Lyon|Prairial|
+161|One Star|Lyon|Rustique|
+162|One Star|Lyon|La Sommeli\u00e8re|
+163|One Star|Lyon|Les Terrasses de Lyon|
+164|One Star|Lyon|T\u00eatedoie|
+165|One Star|Lyon|Ombellule|NEW
+166|One Star|Vaux-en-Beaujolais|Auberge de Clochemerle|NEW
+167|One Star|Courchevel|Alpage|
+168|One Star|Courchevel|Le Far\u00e7on|
+169|One Star|Le Bourget-du-Lac|Atmosph\u00e8res|
+170|One Star|Le Bourget-du-Lac|Lamartine|
+171|One Star|Hauteluce|Mont Blanc Restaurant & Go\u00fbter|
+172|One Star|M\u00e9ribel|L'Ekrin by Laurent Azoulay|
+173|One Star|Saint-Martin-sur-la-Chambre|Le Clocher des P\u00e8res|
+174|One Star|Tignes|Ursus|
+175|One Star|Tresserve|La Table de L'Incomparable|
+176|One Star|Val-d'Is\u00e8re|La Table de l'Ours|
+177|One Star|Val-Thorens|Les Explorateurs - H\u00f4tel Pashmina|
+178|One Star|Annecy|L'Esquisse|
+179|One Star|Annecy|La Rotonde des Tr\u00e9soms|
+180|One Star|Annecy|Vincent Favre F\u00e9lix|
+181|One Star|Chamonix-Mont-Blanc|Albert 1er|
+182|One Star|La Clusaz|Le Cin5 - Au C\u0153ur du Village|
+183|One Star|Douvaine|\u00d4 Flaveurs|
+184|One Star|\u00c9vian-les-Bains|Les Fresques - H\u00f4tel Royal|
+185|One Star|Lucinges|L'Auberge de Lucinges|
+186|One Star|Machilly|Le Refuge des Gourmets|
+187|One Star|Meg\u00e8ve|La Table de l'Alpaga|
+188|One Star|Meg\u00e8ve|Vous|NEW
+189|One Star|Seytroux|Kern|NEW
+190|One Star|Vailly|Fr\u00e9d\u00e9ric Molina au Moulin de L\u00e9r\u00e9|
+191|One Star|Margencel|Sechex-Nous|NEW
+192|One Star|Beaune|Clos du C\u00e8dre|
+193|One Star|Beaune|Le Carmin|
+194|One Star|Chassagne-Montrachet|Ed.Em|
+195|One Star|Courban|Ch\u00e2teau de Courban|NEW
+196|One Star|Dijon|CIBO|
+197|One Star|Dijon|L'Asp\u00e9rule|
+198|One Star|Dijon|Loiseau des Ducs|
+199|One Star|Dijon|Origine|
+200|One Star|Gevrey-Chambertin|La Table d'H\u00f4tes - La R\u00f4tisserie du Chambertin|
+201|One Star|Levernois|Table de Levernois|
+202|One Star|Pernand-Vergelesses|Le Charlemagne|
+203|One Star|Prenois|Auberge de la Charme|
+204|One Star|Bonn\u00e9tage|L'\u00c9tang du Moulin|
+205|One Star|Malbuisson|Le Bon Accueil|
+206|One Star|Dole|La Chaumi\u00e8re|
+207|One Star|Sampans|Ch\u00e2teau du Mont Joly|
+208|One Star|Buxy|L'Empreinte|
+209|One Star|Chaintr\u00e9|La Table de Chaintr\u00e9|
+210|One Star|Charolles|Fr\u00e9d\u00e9ric Doucet|
+211|One Star|Fuiss\u00e9|L'O des Vignes|
+212|One Star|M\u00e2con|Pierre|
+213|One Star|Montbellet|La Marande|
+214|One Star|Tournus|Aux Terrasses|
+215|One Star|Tournus|L'\u00c9crin de Yohann Chapuis|
+216|One Star|Sens|La Madeleine|
+217|One Star|Vault-de-Lugny|Le Valucien - Ch\u00e2teau de Vault-de-Lugny|
+218|One Star|Danjoutin|Le Pot d'\u00c9tain|
+219|One Star|Binic|La Table d'Asten|
+220|One Star|Lannion|L'Anthocyane|
+221|One Star|M\u00fbr-de-Bretagne|Auberge Grand'Maison|
+222|One Star|Pl\u00e9rin|La Vieille Tour|
+223|One Star|Saint-Brieuc|Aux Pesked|
+224|One Star|Tr\u00e9beurden|Manoir de Lan-Kerellec|
+225|One Star|Brest|L'Embrun|
+226|One Star|Carantec|Nicolas Carro - H\u00f4tel de Carantec|
+227|One Star|Combrit|Les Trois Rochers|
+228|One Star|N\u00e9vez|Ar Men Du|
+229|One Star|Plomeur|Nuance|NEW
+230|One Star|Plougonvelin|Hostellerie de la Pointe St-Mathieu|
+231|One Star|Plouider|La Table de La Butte|
+232|One Star|Pont-Aven|Rosmadec Le Moulin|
+233|One Star|Quimper|Allium|
+234|One Star|Roscoff|Le Brittany|
+235|One Star|Saint-Pol-de-L\u00e9on|La Pomme d'Api|
+236|One Star|Cancale|La Table Breizh Caf\u00e9|
+237|One Star|Dinard|Le Pourquoi Pas|
+238|One Star|Noyal-sur-Vilaine|Auberge du Pont d'Acign\u00e9|
+239|One Star|Pir\u00e9-Chanc\u00e9|La Table des P\u00e8res - Domaine du Ch\u00e2teau des P\u00e8res|
+240|One Star|Rennes|Ima|
+241|One Star|Rennes|Racines|
+242|One Star|Saint-Malo|Le Saint Placide|
+243|One Star|Baden|Le Gavrinis|
+244|One Star|Carnac|C\u00f4t\u00e9 Cuisine|
+245|One Star|Guer|Maison Tiegezh|
+246|One Star|Kervignac|L'Inattendu - Domaine de Locgu\u00e9nol\u00e9|NEW
+247|One Star|Lorient|Louise|
+248|One Star|Port-Louis|Avel Vor|
+249|One Star|Saint-Av\u00e9|Le Pressoir|
+250|One Star|Vannes|La T\u00eate en l'Air|
+251|One Star|Boulleret|Maison Medard|
+252|One Star|Sancerre|La Pomme d'Or|NEW
+253|One Star|Chartres|Le Georges|
+254|One Star|Saint-Valentin|Au 14 F\u00e9vrier|
+255|One Star|Amboise|Ch\u00e2teau de Pray|
+256|One Star|Azay-le-Rideau|Auberge Pom'Poire|
+257|One Star|Fondettes|L'Opidom|
+258|One Star|Le Petit-Pressigny|La Promenade|
+259|One Star|Loches|Arbore & Sens|
+260|One Star|Montbazon|L'\u00c9vidence|
+261|One Star|Sach\u00e9|Auberge du XII\u00e8me Si\u00e8cle|
+262|One Star|Blois|Assa|
+263|One Star|Cellettes|La Vieille Tour|
+264|One Star|Cheverny|Le Favori - Les Sources de Cheverny|
+265|One Star|Montlivault|Ezia|
+266|One Star|Romorantin-Lanthenay|Grand H\u00f4tel du Lion d'Or|
+267|One Star|Ardon|La Table - Christophe Hay et Lo\u00efs B\u00e9e|
+268|One Star|Boismorand|Auberge des Templiers|
+269|One Star|Gien|C\u00f4t\u00e9 Jardin|
+270|One Star|Orl\u00e9ans|Le Li\u00e8vre Gourmand|
+271|One Star|Bonifacio|Finestra by Italo Bassi|NEW
+272|One Star|Murtoli|La Table de la Ferme|
+273|One Star|Olmeto|La Verri\u00e8re|
+274|One Star|Porticcio|Le Charlie|NEW
+275|One Star|Lumio|A Casa di M\u00e0|
+276|One Star|Ch\u00e2lons-en-Champagne|J\u00e9r\u00f4me Feck|
+277|One Star|Champillon|Le Royal|
+278|One Star|Montchenot|Le Grand Cerf|
+279|One Star|Reims|Le Mill\u00e9naire|NEW
+280|One Star|Reims|Arbane|NEW
+281|One Star|Colombey-les-Deux-\u00c9glises|Hostellerie la Montagne|
+282|One Star|Langres|Bulle d'Osier|NEW
+283|One Star|Lun\u00e9ville|Ch\u00e2teau d'Adom\u00e9nil|
+284|One Star|Nancy|La Maison dans le Parc|
+285|One Star|Baerenthal|L'Arnsbourg|
+286|One Star|Faulquemont|Toya|
+287|One Star|Hagondange|Quai des Saveurs|
+288|One Star|Languimberg|Chez Mich\u00e8le|
+289|One Star|Metz|Yozora|NEW
+290|One Star|Montenach|Le K|
+291|One Star|Sarreguemines|Auberge Saint-Walfrid|
+292|One Star|Barr|Enfin|
+293|One Star|Colroy-la-Roche|La Cheneaudi\u00e8re - Le Feuillage|NEW
+294|One Star|Drusenheim|Au Gourmet|
+295|One Star|Lembach|Auberge du Cheval Blanc|
+296|One Star|Marlenheim|Le Cerf|
+297|One Star|Monswiller|Kasb\u00fcr|
+298|One Star|Obernai|Thierry Schwartz - Le Restaurant|
+299|One Star|Rhinau|Au Vieux Couvent|
+300|One Star|Schiltigheim|Guillaume Scheer - Les Plaisirs Gourmands|
+301|One Star|Sessenheim|Auberge au B\u0153uf|
+302|One Star|Steige|Auberge Chez Guth|NEW
+303|One Star|La Vancelle|Auberge Frankenbourg|
+304|One Star|La Wantzenau|Le Jardin Secret|
+305|One Star|La Wantzenau|Le Relais de la Poste|
+306|One Star|Strasbourg|1741|
+307|One Star|Strasbourg|Au Crocodile|
+308|One Star|Strasbourg|de:ja|
+309|One Star|Strasbourg|Les Funambules|
+310|One Star|Strasbourg|Umami|
+311|One Star|Altkirch|L'Orchid\u00e9e|
+312|One Star|Ammerschwihr|Restaurant Julien Binz|
+313|One Star|Colmar|L'Atelier du Peintre|
+314|One Star|Colmar|Restaurant Girardin|
+315|One Star|Kaysersberg|Alch\u00e9mille|
+316|One Star|Mulhouse|Il Cortile|
+317|One Star|Riquewihr|La Table du Gourmet|
+318|One Star|Rixheim|Le 7\u00e8me Continent|
+319|One Star|Sierentz|Auberge St-Laurent|
+320|One Star|Wihr-au-Val|La Nouvelle Auberge|
+321|One Star|\u00c9pinal|Les Ducs de Lorraine|
+322|One Star|Rouvres-en-Xaintois|Burnel|NEW
+323|One Star|Courcelles-sur-Vesle|La Table de Courcelles - Ch\u00e2teau de Courcelles|NEW
+324|One Star|Trosly-Loire|Auberge de la Grive|
+325|One Star|Boeschepe|Auberge du Vert Mont|
+326|One Star|Cassel|Haut Bonheur de la Table|
+327|One Star|Croix|Arborescence|
+328|One Star|Lille|Ginko|NEW
+329|One Star|Lille|La Table - H\u00f4tel Clarance|
+330|One Star|Lille|Le Restaurant du Cerisier|
+331|One Star|Lille|Puret\u00e9|
+332|One Star|Belle-\u00c9glise|La Grange de Belle-\u00c9glise|
+333|One Star|Chantilly|Le Verbois|
+334|One Star|\u00c9touy|L'Or\u00e9e de la For\u00eat|
+335|One Star|Le Touquet-Paris-Plage|Le Pavillon - H\u00f4tel Westminster|
+336|One Star|Saint-Omer|Bac\u00f4ve|
+337|One Star|Paris 1er|Le Baudelaire|
+338|One Star|Paris 1er|La Dame de Pic|
+339|One Star|Paris 1er|Espadon|
+340|One Star|Paris 1er|Granite|
+341|One Star|Paris 1er|Nhome|
+342|One Star|Paris 1er|Omar Dhiab|
+343|One Star|Paris 1er|Le Tout-Paris|
+344|One Star|Paris 1er|Hakuba|NEW
+345|One Star|Paris 1er|Yam'Tcha|
+346|One Star|Paris 2e|Accents Table Bourse|
+347|One Star|Paris 2e|Fleur de Pav\u00e9|
+348|One Star|Paris 2e|Frenchie|
+349|One Star|Paris 2e|Pantagruel|
+350|One Star|Paris 2e|Pur' - Jean-Fran\u00e7ois Rouquette|
+351|One Star|Paris 2e|Shabour|
+352|One Star|Paris 2e|Sushi B|
+353|One Star|Paris 3e|Anne|
+354|One Star|Paris 3e|Datil|
+355|One Star|Paris 4e|Aldehyde|NEW
+356|One Star|Paris 4e|Le Sergent Recruteur|
+357|One Star|Paris 4e|Restaurant H|
+358|One Star|Paris 5e|Alliance|
+359|One Star|Paris 5e|AT|
+360|One Star|Paris 5e|Baieta|
+361|One Star|Paris 5e|Mavrommatis|
+362|One Star|Paris 5e|Sola|
+363|One Star|Paris 5e|Solstice|
+364|One Star|Paris 5e|Tour d'Argent|
+365|One Star|Paris 6e|Armani Ristorante|
+366|One Star|Paris 6e|Quinsou|
+367|One Star|Paris 6e|Relais Louis XIII|
+368|One Star|Paris 6e|Yoshinori|
+369|One Star|Paris 6e|Ze Kitchen Galerie|
+370|One Star|Paris 7e|Aida|
+371|One Star|Paris 7e|Auguste|
+372|One Star|Paris 7e|Divellec|
+373|One Star|Paris 7e|ES|
+374|One Star|Paris 7e|Gaya par Pierre Gagnaire|
+375|One Star|Paris 7e|H\u00e9micycle|
+376|One Star|Paris 7e|Le Violon d'Ingres|
+377|One Star|Paris 7e|Nakatani|
+378|One Star|Paris 7e|Pertinence|
+379|One Star|Paris 7e|Tomy & Co|
+380|One Star|Paris 8e|114, Faubourg|
+381|One Star|Paris 8e|Akrame|
+382|One Star|Paris 8e|Apicius|
+383|One Star|Paris 8e|Contraste|
+384|One Star|Paris 8e|Helen|
+385|One Star|Paris 8e|Il Carpaccio|
+386|One Star|Paris 8e|Jean Imbert au Plaza Ath\u00e9n\u00e9e|
+387|One Star|Paris 8e|L'Ar\u00f4me|
+388|One Star|Paris 8e|Lasserre|
+389|One Star|Paris 8e|L'Atelier de Jo\u00ebl Robuchon - \u00c9toile|
+390|One Star|Paris 8e|Le Chiberta|
+391|One Star|Paris 8e|Galanga|
+392|One Star|Paris 8e|Le George|
+393|One Star|Paris 8e|L'\u00c9crin|
+394|One Star|Paris 8e|Lucas Carton|
+395|One Star|Paris 8e|Maison Dubois|
+396|One Star|Paris 8e|Onor|
+397|One Star|Paris 8e|Pavyllon|
+398|One Star|Paris 8e|Trente-Trois|
+399|One Star|Paris 8e|Origines Restaurant|NEW
+400|One Star|Paris 9e|NESO|
+401|One Star|Paris 11e|Am\u00e2lia|NEW
+402|One Star|Paris 11e|Automne|
+403|One Star|Paris 11e|FIEF|
+404|One Star|Paris 11e|G\u00e9osmine|
+405|One Star|Paris 11e|Qui Plume la Lune|
+406|One Star|Paris 11e|Septime|
+407|One Star|Paris 11e|Vaisseau|NEW
+408|One Star|Paris 12e|Virtus|
+409|One Star|Paris 14e|MoSuke|
+410|One Star|Paris 15e|Chakaiseiki Akiyoshi|
+411|One Star|Paris 15e|Neige d'\u00c9t\u00e9|
+412|One Star|Paris 16e|Alan Geaam|
+413|One Star|Paris 16e|Astrance|
+414|One Star|Paris 16e|Bellefeuille - Saint James Paris|
+415|One Star|Paris 16e|Comice|
+416|One Star|Paris 16e|Don Juan II|
+417|One Star|Paris 16e|La Grande Cascade|
+418|One Star|Paris 16e|L'Archeste|
+419|One Star|Paris 16e|Nomicos|
+420|One Star|Paris 16e|\u014crtensia|
+421|One Star|Paris 16e|Pages|
+422|One Star|Paris 16e|Substance|
+423|One Star|Paris 17e|Agap\u00e9|NEW
+424|One Star|Paris 17e|Anona|
+425|One Star|Paris 17e|\u00c9pisodes|
+426|One Star|Paris 17e|Fr\u00e9d\u00e9ric Simonin|
+427|One Star|Paris 17e|Jacques Faussat|
+428|One Star|Paris 17e|La Sc\u00e8ne Th\u00e9l\u00e8me|
+429|One Star|Paris 17e|Le Faham by Kelly Rangama|
+430|One Star|Paris 17e|Mallory Gabsi|
+431|One Star|Paris 17e|Oxte|
+432|One Star|Paris 18e|Sushi Shunei|NEW
+433|One Star|Couilly-Pont-aux-Dames|Auberge de la Brie|
+434|One Star|Fontainebleau|L'Axel|
+435|One Star|Villeneuve-le-Comte|La Vieille Auberge|
+436|One Star|Le Tremblay-sur-Mauldre|Num\u00e9ro 3|
+437|One Star|Marly-Le-Roi|Le Village Tomohiro|
+438|One Star|Rolleboise|Le Panoramique - Domaine de la Corniche|
+439|One Star|Versailles|Gordon Ramsay au Trianon|
+440|One Star|Versailles|La Table du 11|
+441|One Star|Versailles|Ducasse au Ch\u00e2teau de Versailles - Le Grand Contr\u00f4le|
+442|One Star|Issy-les-Moulineaux|Maison Avoise|NEW
+443|One Star|Meudon|L'Escarbille|
+444|One Star|Rueil-Malmaison|Ochre|
+445|One Star|Ville-d'Avray|Le Corot|
+446|One Star|Montreuil|Villa9Trois|
+447|One Star|Vincennes|L'Ours|
+448|One Star|Pontoise|L'Or Q'Id\u00e9e|
+449|One Star|Monaco|Elsa|NEW
+450|One Star|Monaco|La Table d'Antonio Salvatore au Rampoldi|
+451|One Star|Monaco|Le Grill|
+452|One Star|Monaco|Pavyllon, un restaurant de Yannick All\u00e9no, Monte-Carlo|
+453|One Star|Cabourg|Symbiose|NEW
+454|One Star|Caen|Ivan Vautier|
+455|One Star|Deauville|L'Essentiel|
+456|One Star|Deauville|Maximin Hellio|
+457|One Star|Giverny|Le Jardin des Plumes|
+458|One Star|Lyons-la-For\u00eat|La Licorne Royale|
+459|One Star|Blainville-sur-Mer|Le Mascaret|
+460|One Star|Cherbourg-en-Cotentin|Le Pily|
+461|One Star|Saint-L\u00f4|Intuition|
+462|One Star|Servon|Auberge Sauvage|NEW
+463|One Star|Argentan|La Renaissance|
+464|One Star|Bagnoles-de-l'Orne|Le Manoir du Lys|
+465|One Star|La Ferri\u00e8re-aux-\u00c9tangs|Auberge de la Mine|
+466|One Star|Caudebec-en-Caux|G.a. au Manoir de R\u00e9tival|
+467|One Star|Dieppe|Les Voiles d'Or|
+468|One Star|Le Havre|Jean-Luc Tartarin|
+469|One Star|Rouen|L'Odas|
+470|One Star|Valmont|La Maison Caillet|
+471|One Star|Angoul\u00eame|Les Sources de Fontbelle|
+472|One Star|Bourg-Charente|La Ribaudi\u00e8re|
+473|One Star|Cognac|Les Foudres|
+474|One Star|Massignac|Dyades au Domaine des \u00c9tangs|NEW
+475|One Star|Montbron|Moulin de la Tardoire|
+476|One Star|Puymoyen|Aum\u00ec|
+477|One Star|Breuillet|L'Aquarelle|
+478|One Star|La Jarrie|L'Hysope|
+479|One Star|Altillac|Cueillette|
+480|One Star|Brive-la-Gaillarde|La Table d'Olivier|
+481|One Star|Brant\u00f4me|Le Moulin de l'Abbaye|
+482|One Star|Les Eyzies-de-Tayac|Le 1862 - Les Glycines|
+483|One Star|Monbazillac|La Tour des Vents|
+484|One Star|Monestier|Les Fresques - Ch\u00e2teau des Vigiers|
+485|One Star|P\u00e9rigueux|L'Essentiel|
+486|One Star|Saint-L\u00e9on-sur-V\u00e9z\u00e8re|Le Petit L\u00e9on|
+487|One Star|Tr\u00e9molat|Le Vieux Logis|
+488|One Star|Arcachon|Le Patio|
+489|One Star|Ar\u00e8s|Nacre|
+490|One Star|Bordeaux|Amicis|NEW
+491|One Star|Bordeaux|La Table d'H\u00f4tes - Le Quatri\u00e8me Mur|
+492|One Star|Bordeaux|Le Pavillon des Boulevards|
+493|One Star|Bordeaux|L'Oiseau Bleu|
+494|One Star|Bordeaux|Ressources|
+495|One Star|Bordeaux|Sol\u00e9na|
+496|One Star|Bordeaux|Tentazioni|
+497|One Star|Bouliac|Le Saint-James|
+498|One Star|Lormont|Le Prince Noir - Vivien Durand|
+499|One Star|Saint-\u00c9milion|Les Belles Perdrix de Troplong Mondot|
+500|One Star|Saint-\u00c9milion|Logis de la Cad\u00e8ne|
+501|One Star|Saint-Jean-de-Blaignac|L'Auberge Saint Jean|NEW
+502|One Star|Eug\u00e9nie-les-Bains|L'Orangerie|NEW
+503|One Star|Mont-de-Marsan|La Table Mirasol|
+504|One Star|Saint-Vincent-de-Tyrosse|Le Hittau|
+505|One Star|Seignosse|Villa de l'\u00c9tang Blanc|
+506|One Star|Moirax|Auberge le Prieur\u00e9|
+507|One Star|Puymirol|Michel Trama|
+508|One Star|Ainhoa|Ithurria|
+509|One Star|Arcangues|Moulin d'Alotz|
+510|One Star|Biarritz|Les Rosiers|
+511|One Star|Biarritz|L'Impertinent|
+512|One Star|Biarritz|La Table d'Aur\u00e9lien Largeau|NEW
+513|One Star|Bidarray|Lore Ttipia - Auberge Ostape|NEW
+514|One Star|Bidart|La Table des Fr\u00e8res Ibarboure|
+515|One Star|Espelette|Choko Ona|
+516|One Star|Gu\u00e9thary|Brik\u00e9t\u00e9nia|
+517|One Star|Hasparren|La Maison de Pierre|
+518|One Star|Saint-Jean-de-Luz|Le Ka\u00efku|
+519|One Star|Saint-P\u00e9e-sur-Nivelle|La Table de C\u00e9dric B\u00e9chade - L'Auberge Basque|
+520|One Star|Nieul|La Chapelle Saint-Martin|
+521|One Star|La Roche-l'Abeille|Le Moulin de la Gorce|
+522|One Star|Lastours|Le Puits du Tr\u00e9sor|
+523|One Star|Leucate|Le Grand Cap|
+524|One Star|Belcastel|Vieux Pont|
+525|One Star|Conques-en-Rouergue|\u00c9milie & Thomas - Moulin de Cambelong|
+526|One Star|Rodez|Restaurant Herv\u00e9 Busset|
+527|One Star|Calvisson|Monique|NEW
+528|One Star|N\u00eemes|J\u00e9r\u00f4me Nutile|
+529|One Star|N\u00eemes|Rouge|
+530|One Star|N\u00eemes|Skab|
+531|One Star|Pujaut|Maison Chenet - Entre Vigne et Garrigue|
+532|One Star|Sabran|Le C\u00e8dre de Montcaud|
+533|One Star|Saint-Hilaire-de-Brethmas|Le Saint Hilaire|
+534|One Star|Uz\u00e8s|La Table d'Uz\u00e8s|
+535|One Star|Villeneuve-l\u00e8s-Avignon|Le Prieur\u00e9|
+536|One Star|Aureville|En Marge|
+537|One Star|Lavalette|Auberge de la Forge|
+538|One Star|Montrab\u00e9|L'Apart\u00e9|
+539|One Star|Quint-Fonsegrives|En Pleine Nature|
+540|One Star|Rouffiac-Tolosan|\u00d4 Saveurs|
+541|One Star|Toulouse|Acte 2 Yannick Delpech|NEW
+542|One Star|Toulouse|Michel Sarran|
+543|One Star|Toulouse|SEPT|
+544|One Star|Toulouse|St\u00e9phane Tourni\u00e9 - Les Jardins de l'Op\u00e9ra|
+545|One Star|Pujaudran|Le Puits Saint Jacques|
+546|One Star|Puylausic|La Maison Despou\u00e8s|NEW
+547|One Star|B\u00e9ziers|L'Alter-Native|
+548|One Star|B\u00e9ziers|Calice|
+549|One Star|Colombi\u00e8res-sur-Orb|Granit - La M\u00e9canique des Fr\u00e8res Bonano|
+550|One Star|Montpellier|\u00c9bullition|NEW
+551|One Star|Montpellier|Jardin des Sens|
+552|One Star|Montpellier|La R\u00e9serve Rimbaud|
+553|One Star|Montpellier|Leclere|
+554|One Star|Montpellier|Pastis Restaurant|
+555|One Star|Montpellier|Reflet d'Obione|
+556|One Star|P\u00e9zenas|Restaurant De Lauzun|
+557|One Star|S\u00e8te|The Marcel|
+558|One Star|Lacave|Ch\u00e2teau de la Treyne|
+559|One Star|Lacave|Le Pont de l'Ouysse|
+560|One Star|Saint-C\u00e9r\u00e9|Les Trois Soleils de Montal|
+561|One Star|Saint-M\u00e9dard|Le Gindreau|
+562|One Star|B\u00e9lesta|La Coop\u00e9rative - Domaine Riberach|
+563|One Star|C\u00e9ret|Fario|NEW
+564|One Star|Collioure|La Balette|
+565|One Star|Perpignan|La Galinette|
+566|One Star|Saint-Cyprien|L'Almandin|
+567|One Star|Payren-Augmentel|Villa Pinewood|
+568|One Star|Les Sorini\u00e8res|Le 1201 - Abbaye de Villeneuve|
+569|One Star|Nantes|L'Atlantide 1874 - Maison Gu\u00e9ho|
+570|One Star|Nantes|Les Cadets|
+571|One Star|Nantes|Freia|NEW
+572|One Star|Nantes|LuluRouget|
+573|One Star|Nantes|Le Manoir de la R\u00e9gate|
+574|One Star|Nantes|Omija|NEW
+575|One Star|Saint-Joachim|La Mare aux Oiseaux|
+576|One Star|Angers|Lait Thym Sel|
+577|One Star|Bellevigne-en-Layon|La Table de la Bergerie|
+578|One Star|Fontevraud-L'Abbaye|Fontevraud Le Restaurant|
+579|One Star|Mayenne|L'\u00c9veil des Sens|
+580|One Star|Le Mans|L'Auberge de Bagatelle|
+581|One Star|Brem-sur-Mer|Les Gen\u00eats|
+582|One Star|Br\u00e9tignolles-sur-Mer|Jean-Marc P\u00e9rochon|
+583|One Star|La Roche-sur-Yon|Les Reflets|
+584|One Star|Les Sables-d'Olonne|L'Abissiou|
+585|One Star|Mareuil-sur-Lay|Maison Desamy|
+586|One Star|Montaigu|La Robe|
+587|One Star|Montr\u00e9verd|La Chabotterie|
+588|One Star|Ch\u00e2teau-Arnoux-Saint-Auban|La Bonne \u00c9tape|
+589|One Star|Mane|Le Feuill\u00e9e - Le Couvent des Minimes|
+590|One Star|Manosque|Restaurant Pierre Grein|
+591|One Star|Moustiers-Sainte-Marie|La Bastide de Moustiers|
+592|One Star|Antibes|Le Figuier de Saint-Esprit|
+593|One Star|Antibes|Louroc - H\u00f4tel du Cap-Eden-Roc|
+594|One Star|Antibes|Les P\u00eacheurs|
+595|One Star|Beaulieu-sur-Mer|Le Restaurant des Rois - La R\u00e9serve de Beaulieu|
+596|One Star|Biot|Les Terraillers|
+597|One Star|Cannes|La Palme d'Or|NEW
+598|One Star|La Colle-sur-Loup|Alain Llorca|
+599|One Star|\u00c8ze|Ch\u00e2teau Eza|
+600|One Star|Juan-les-Pins|La Passag\u00e8re - H\u00f4tel Belles Rives|
+601|One Star|Mandelieu-la-Napoule|Bessem|
+602|One Star|Nice|Les Agitateurs|
+603|One Star|Nice|L'Aromate|
+604|One Star|Nice|Le Chantecler|
+605|One Star|Nice|JAN|
+606|One Star|Nice|ONICE|
+607|One Star|Nice|Pure & V|
+608|One Star|Nice|Racines - Bruno Cirino|
+609|One Star|Roubion|Auberge Quintessence|NEW
+610|One Star|Saint-Jean-Cap-Ferrat|Le Cap|
+611|One Star|Th\u00e9oule-sur-Mer|L'Or Bleu|
+612|One Star|Th\u00e9oule-sur-Mer|Mareluna|NEW
+613|One Star|Villeneuve-Loubet|La Flibuste|
+614|One Star|Aix-en-Provence|Le Art|
+615|One Star|Aix-en-Provence|\u00c9tude|NEW
+616|One Star|Aix-en-Provence|Pierre Reboul|
+617|One Star|Barbentane|Ineffable|NEW
+618|One Star|Cabri\u00e8s|La Bastide Bourrelly - Mathias Dandine|
+619|One Star|Eygali\u00e8res|Maison Hache|
+620|One Star|G\u00e9menos|La Magdeleine - Mathias Dandine|
+621|One Star|La Ciotat|Couleurs de Shimatani|
+622|One Star|La Ciotat|La Table de Nans|
+623|One Star|Le Puy-Sainte-R\u00e9parade|H\u00e9l\u00e8ne Darroze \u00e0 Villa La Coste|
+624|One Star|Le Puy-Sainte-R\u00e9parade|La Table de l'Orangerie - Ch\u00e2teau de Fonscolombe|
+625|One Star|Le Sambuc|La Chassagnette|
+626|One Star|Les Baux-de-Provence|L'Aupiho - Domaine de Manville|
+627|One Star|Marseille|Belle de Mars|NEW
+628|One Star|Marseille|Une Table, au Sud|
+629|One Star|Saint-Cannat|Le Mas Bottero|
+630|One Star|Saint-R\u00e9my-de-Provence|Restaurant de Tourrel|
+631|One Star|Salon-de-Provence|Villa Salone|
+632|One Star|Ventabren|Dan B.|
+633|One Star|Flassans-sur-Issole|Chez Jeannette|NEW
+634|One Star|Flayosc|Le Jardin de Berne|
+635|One Star|La Croix-Valmer|La Palmeraie - Ch\u00e2teau de Valmer|
+636|One Star|Le Lavandou|L'Arbre au Soleil|
+637|One Star|Les Arcs|Le Relais des Moines|
+638|One Star|Lorgues|Bruno|
+639|One Star|Saint-Rapha\u00ebl|R\u00e9cif|
+640|One Star|Saint-Tropez|Arnaud Donckele & Maxime Fr\u00e9d\u00e9ric at Louis Vuitton|NEW
+641|One Star|Saint-Tropez|Colette|
+642|One Star|Saint-Tropez|La Terrasse - Cheval Blanc St-Tropez|
+643|One Star|Tourrettes|Faventia|
+644|One Star|Ansouis|La Closerie|
+645|One Star|Avignon|La Mirande|
+646|One Star|Avignon|Pollen|
+647|One Star|Bonnieux|La Bastide|
+648|One Star|Bonnieux|JU - Maison de Cuisine|NEW
+649|One Star|Cadenet|Le Go\u00fbt du Bonheur - La Feni\u00e8re|
+650|One Star|Ch\u00e2teauneuf-du-Pape|La M\u00e8re Germaine|
+651|One Star|Cucuron|La Petite Maison de Cucuron|
+652|One Star|Gigondas|L'Oustalet|
+653|One Star|Joucas|La Table de Xaxier Mathieu|
+654|One Star|L'Isle-sur-la-Sorgue|Le Vivier|

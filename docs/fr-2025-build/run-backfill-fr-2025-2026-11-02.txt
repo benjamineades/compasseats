@@ -1,0 +1,29 @@
+Run record: France (with Monaco) 2025 stars from the archive (item 4, guide 2 of 5), Nov 1, 2026 (Atlanta) / Nov 2 UTC
+
+File: docs/backfill-michelin-2025-france.sql sha256 93e5a3883e2137a95b701cc3bebd50e61eba489501cd912ead52b9909a96e715 (154 lines)
+Built by: docs/fr-2025-build/build_backfill_fr_2025.py (mode sql) from
+  relay-fr-2025-archive-20250331.txt (sha256 2c643dc540ce0838d7c33d72c1b73c7b784e22786794a0803d5d166df7cd4c1a) and
+  links-fr-2025-archive-20250331.txt (sha256 fa61206194399920f0623c8a7faf762452e3ad0be4298c3ab3327d572a0b1b18).
+Source: capture 20250331212340 of guide-michelin-france-2025-la-liste-complete-des-etoiles (fr/fr, michelin-guide-ceremony).
+  Read in the built-in browser, status 200, 0 redirects. Title names 2025. Article states 654 starred = 31 / 81 / 542 lines.
+  Ceremony: Metz, Monday Mar 31, 2025 (guide.michelin.com metz-accueillera-la-ceremonie-du-guide-michelin-france-2025).
+  3 lines held a second, empty card link; the named link was kept (103, 305, 432).
+Green Stars (U3): not loaded. les-etoiles-vertes-du-guide-michelin-2025 (capture 20250416160946) lists the 10 new 2025
+  Green Stars only. CDX fr/fr article prefix (Mar 2025 - Jun 2026, filter vert|green): no full 2025 list. fr/en and the
+  restaurants/etoile-verte-michelin search page: CDX 503.
+Ben's choices: Nov 1 15:50 ET "N1, P2, Q1, R1, S1"; 19:02 ET "W1, x1, U3"; 19:13 ET "go".
+Plan read (Read connector, Nov 2 00:08:49 UTC): plan md5 2076638fcc73bcfc3c8ab74b4a373461 (= file); seq:venue md5
+  84c12d3f3959d8b6b7cc4795419b61dc; existing 2025 ids md5 f7e9c501fa6eccf9f369844bde2dfd58; 0 star conflicts; 593 distinct venues.
+Dry run (Read connector): all pre-checks passed, stopped at the first write ("read-only transaction").
+Run: Write connector, first try, 1 transaction, all gates passed. Read-back Nov 2 00:16:06 UTC.
+  awards 23,784 -> 24,364; new ids 30724-31303 (580 INSERT); 13 existing 2025 star rows got the source_url
+  (ids 1648, 1824, 1826, 4402, 4748, 5885, 6463, 7220, 7233, 7241, 7250, 7270, 8926).
+  Rows with the archive URL: One Star 486, Three Stars 31, Two Stars 76 (593).
+  Match: card link 543; venue id 50 (V1 2025 row 13; V2 same name + 2026 row 20; V3 near name + same 2026 card 16 (W1);
+  X1 name-only 1: 375 Hemicycle -> ve_75f04d40b5). 9 paired venues have status closed (history rows).
+  Q1 skipped: 61 lines (no venue 55; rejected candidate 5: 208, 254, 263, 345, 384; X1 skip 623 Villa La Coste).
+  Card-pair name check: 22 pairs with no slug word in the venue name; all checked, same place (mostly hotel names).
+  Michelin 10,660; Michelin 2025 4,284 (no URL 3,224); Green Star 2025 31; FR/MC Michelin 2025 600.
+  Ledger 215 (michelin, award, 593); ledger 163 rows.
+  Audit 122,221-122,813 (INSERT 580, UPDATE 13); audit_log 117,301 rows.
+  Unchanged: venues 11,299; slugs 13,002; cities 3,260; cities.venues_count sum 10,934; price 7,733; listings 11,299.
