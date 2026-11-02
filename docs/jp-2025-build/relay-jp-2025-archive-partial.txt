@@ -1,0 +1,119 @@
+T|green|la-paix-1194221|tokyo-region|\u30e9 \u30da\uff0fLa Paix
+T|green|faro-1194154|tokyo-region|\u30d5\u30a1\u30ed\uff0fFARO
+T|green|n%C5%93ud-tokyo|tokyo-region|\u30cc\u30fc \u30c8\u30a6\u30ad\u30e7\u30a6\uff0fN\u0153ud. TOKYO
+T|green|florilege|tokyo-region|\u30d5\u30ed\u30ea\u30ec\u30fc\u30b8\u30e5\uff0fFloril\u00e8ge
+T|green|daigo|tokyo-region|\u918d\u9190\uff0fDaigo
+T|green|den|tokyo-region|\u50b3\uff0fDen
+T|green|crony-1194937|tokyo-region|\u30af\u30ed\u30fc\u30cb\u30fc\uff0fCrony
+T|green|sincere|tokyo-region|\u30b7\u30f3\u30b7\u30a2\uff0fSinc\u00e8re
+T|green|narisawa|tokyo-region|\u30ca\u30ea\u30b5\u30ef\uff0fNARISAWA
+T|green|l-effervescence|tokyo-region|\u30ec\u30d5\u30a7\u30eb\u30f4\u30a7\u30bd\u30f3\u30b9\uff0fL'Effervescence
+T|green|lature|tokyo-region|\u30e9\u30c1\u30e5\u30ec\uff0fLATURE
+T|green|nol|tokyo-region|\u30ce\u30eb\uff0fn\u00f4l
+T|3|kanda|tokyo-region|\u304b\u3093\u3060\uff0fKanda
+T|3|azabu-kadowaki|tokyo-region|\u9ebb\u5e03 \u304b\u3069\u308f\u304d\uff0fAzabu Kadowaki
+T|3|kohaku|tokyo-region|\u864e\u767d\uff0fKohaku
+T|3|sezanne|tokyo-region|\u30bb\u30b6\u30f3\uff0fS\u00c9ZANNE
+T|3|harutaka|tokyo-region|\u9752\u7a7a\uff0fHarutaka
+T|3|l-osier|tokyo-region|\u30ed\u30aa\u30b8\u30a8\uff0fL'OSIER
+T|3|kagurazaka-ishikawa|tokyo-region|\u795e\u697d\u5742 \u77f3\u304b\u308f\uff0fKagurazaka Ishikawa
+T|3|ryugin-1194232|tokyo-region|\u9f8d\u541f\uff0fRyuGin
+T|3|l-effervescence|tokyo-region|\u30ec\u30d5\u30a7\u30eb\u30f4\u30a7\u30bd\u30f3\u30b9\uff0fL'Effervescence
+T|3|joel-robuchon-1193981|tokyo-region|\u30b8\u30e7\u30a8\u30eb\u30fb\u30ed\u30d6\u30b7\u30e7\u30f3\uff0fJo\u00ebl Robuchon
+T|3|quintessence-1193907|tokyo-region|\u30ab\u30f3\u30c6\u30b5\u30f3\u30b9\uff0fQuintessence
+T|3|sazenka|tokyo-region|\u8336\u7985\u83ef\uff0fSazenka
+K|green|ristorante-dono|kyoto-region|ristorante DONO
+K|green|shigetsu|kyoto-region|Shigetsu
+K|green|la-buche|kyoto-region|la b\u00fbche
+K|green|vegan-ramen-uzu|kyoto-region|Vegan Ramen UZU
+K|green|miyamaso|kyoto-region|Miyamaso
+K|green|juu-go|kyoto-region|Juu-go
+K|green|tan|kyoto-region|Tan
+K|green|kodaiji-wakuden|kyoto-region|Kodaiji Wakuden
+K|green|muromachi-wakuden|kyoto-region|Muromachi Wakuden
+K|green|sojiki-nakahigashi|kyoto-region|Sojiki Nakahigashi
+K|3|mizai|kyoto-region|Mizai
+K|3|gion-sasaki|kyoto-region|Gion Sasaki
+K|3|isshisoden-nakamura|kyoto-region|Isshisoden Nakamura
+K|3|hyotei|kyoto-region|Hyotei
+K|3|kikunoi-honten|kyoto-region|Kikunoi Honten
+K|2|yusokuryori-mankamero|kyoto-region|Yusokuryori Mankamero
+K|2|sanso-kyoyamato|kyoto-region|Sanso Kyoyamato
+K|2|ogata|kyoto-region|Ogata
+K|2|kyokaiseki-kichisen|kyoto-region|Kyokaiseki Kichisen
+K|2|gion-nishikawa|kyoto-region|Gion Nishikawa
+K|2|otagi|kyoto-region|Otagi
+K|2|miyamaso|kyoto-region|Miyamaso
+K|2|sumibi-kappo-ifuki|kyoto-region|Sumibi Kappo Ifuki
+K|2|kenninji-gion-maruyama|kyoto-region|Kenninji Gion Maruyama
+K|2|kodaiji-wakuden|kyoto-region|Kodaiji Wakuden
+K|2|kikunoi-roan|kyoto-region|Kikunoi Roan
+K|2|sojiki-nakahigashi|kyoto-region|Sojiki Nakahigashi
+K|2|kodaiji-jugyuan|kyoto-region|Kodaiji Jugyuan
+K|2|gion-matayoshi|kyoto-region|Gion Matayoshi
+K|2|gion-maruyama|kyoto-region|Gion Maruyama
+K|2|ryo-sho|kyoto-region|Ry\u014d-sh\u014d
+K|1p1|shiro-1215790|kyoto-region|shiro
+K|1p1|tsujifusa|kyoto-region|Tsujifusa
+K|1p1|gion-mamma|kyoto-region|Gion Mamma
+K|1p1|koke|kyoto-region|KOKE
+K|1p1|nakamitsu|kyoto-region|Nakamitsu
+K|1p1|kikunoi-sushi-ao|kyoto-region|Kikunoi Sushi Ao
+K|1p1|kenya|kyoto-region|Kenya
+K|1p1|cenci|kyoto-region|cenci
+K|1p1|muni-alain-ducasse|kyoto-region|MUNI ALAIN DUCASSE
+K|1p1|muromachi-yui|kyoto-region|Muromachi Yui
+K|1p1|ryoriya-maekawa|kyoto-region|Ryoriya Maekawa
+K|1p1|shimmonzen-yonemura|kyoto-region|Shimmonzen Yonemura
+K|1p1|velrosier|kyoto-region|VELROSIER
+K|1p1|jiki-miyazawa|kyoto-region|Jiki Miyazawa
+K|1p1|mirei-1193056|kyoto-region|Mirei
+K|1p1|droit|kyoto-region|Droit
+K|1p1|sushi-kappo-nakaichi|kyoto-region|Sushi Kappo Nakaichi
+K|1p1|gion-okada|kyoto-region|Gion Okada
+K|1p1|vena|kyoto-region|Vena
+K|1p1|kyoryori-fujimoto|kyoto-region|Kyoryori Fujimoto
+O|green|terada|osaka-region|Terada
+O|green|kashiwaya-osaka-senriyama|osaka-region|Kashiwaya Osaka Senriyama
+O|green|unkaku|osaka-region|Unkaku
+O|3|hajime|osaka-region|HAJIME
+O|3|taian|osaka-region|Taian
+O|3|kashiwaya-osaka-senriyama|osaka-region|Kashiwaya Osaka Senriyama
+O|2|la-cime|osaka-region|La Cime
+O|2|miyamoto|osaka-region|Miyamoto
+O|2|fujiya-1935|osaka-region|Fujiya 1935
+O|2|koryu|osaka-region|Koryu
+O|2|yugen-1193266|osaka-region|Yugen
+O|2|shunsaiten-tsuchiya|osaka-region|Shunsaiten Tsuchiya
+O|2|sushi-harasho|osaka-region|Sushi Harasho
+O|2|numata|osaka-region|Numata
+O|2|kahala|osaka-region|KAHALA
+O|2|oimatsu-hisano|osaka-region|Oimatsu Hisano
+O|2|tenjimbashi-aoki|osaka-region|Tenjimbashi Aoki
+O|1p1|milpa|osaka-region|milpa
+O|1p1|rooots-nakanoshima|osaka-region|Rooots Nakanoshima
+O|1p1|naniwaryori-yu|osaka-region|Naniwaryori Yu
+O|1p1|torisho-ishii|osaka-region|Torisho Ishii
+O|1p1|pierre-1193242|osaka-region|Pierre
+O|1p1|la-becasse-1193280|osaka-region|La B\u00e9casse
+O|1p1|rakushin|osaka-region|Rakushin
+O|1p1|le-pont-de-ciel|osaka-region|LE PONT DE CIEL
+O|1p1|higashichaya-nakamura|osaka-region|Higashichaya Nakamura
+O|1p1|hiraishi|osaka-region|Hiraishi
+O|1p1|difference|osaka-region|Diff\u00e9rence
+O|1p1|terada|osaka-region|Terada
+O|1p1|chi-fu|osaka-region|Chi-Fu
+O|1p1|shinchi-yamamoto|osaka-region|Shinchi Yamamoto
+O|1p1|sushidokoro-amano|osaka-region|Sushidokoro Amano
+O|1p1|nishitemma-ichigaya|osaka-region|Nishitemma Ichigaya
+O|1p1|konoha|osaka-region|Konoha
+O|1p1|capi|osaka-region|capi
+O|1p1|yunico-1194638|osaka-region|YUNiCO
+O|1p1|a-canto|osaka-region|a canto
+N|green|da-terra-1197086|nara-region|Da terra
+N|green|sen-1218506|nara-region|S\u00c9N
+N|green|awa-naramachiten|nara-region|AWA Naramachiten
+N|green|sanjuhachi|nara-region|Sanjuhachi
+N|green|kuramoto-ryori-maruto-shoyu|nara-region|Kuramoto Ryori Maruto Shoyu
+N|green|kiyosuminosato-awa|nara-region|Kiyosuminosato AWA
+N|green|chugokusai-naramachi-kuko|nara-region|Chugokusai Naramachi Kuko

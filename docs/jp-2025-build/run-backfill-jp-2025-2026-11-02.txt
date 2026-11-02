@@ -1,0 +1,12 @@
+Run: docs/backfill-michelin-2025-japan.sql (sha256 167b13b5db779219f28254f9935f4270caaafb8e9afe6ef070ac7b8e01362b21)
+Ben: Nov 1 21:50 ET "J1 & K1"; Nov 1 21:55 ET "Go".
+Committed: Nov 2 2026, about 02:56 UTC, Write connector, 1 transaction, first try, all gates passed.
+Dry run before (Read connector): all pre-checks passed, stop at the first write ("read-only transaction"); 0 ids used.
+
+Read-back 2026-11-02 02:56:34 UTC (whole tables):
+  awards 24,643 -> 24,713 (new ids 31583-31652, 70 INSERT); award 1291 (SEZANNE) source_url filled
+  Michelin 11,009; Michelin 2025 4,633 (no URL 3,220); Green Star 2025 55
+  Japan Michelin 2025 81 (archive URL: Green Star 24, Three Stars 20, Two Stars 27; 10 legacy rows unchanged)
+  source_capture_ledger 165 rows, last id 217 (items 71, job backfill:michelin-2025-japan-archive)
+  audit_log 117,654 rows, ids 123,096-123,166 (INSERT 70, UPDATE 1)
+  venues 11,299 (active 10,934); slugs 13,002; price 7,733; listings 11,299; blurbs 142; cities 3,260; venues_count sum 10,934

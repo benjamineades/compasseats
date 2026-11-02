@@ -1,0 +1,30 @@
+Japan 2025 (item 4) - archive sources examined Nov 2, 2026 UTC. Read-only. No database write.
+
+Edition totals (Michelin jp/ja ceremony articles, archive):
+- Tokyo 2025, published 2024-10-17: 3* 12 / 2* 26 / 1* 132 / Green 12
+  web.archive.org/web/20241214015605id_/https://guide.michelin.com/jp/ja/article/michelin-guide-ceremony/michelinguide-tokyo-new-selection-jp
+- Kyoto Osaka 2025, published 2025-03-27: Kyoto 5 / 16 / 72, Green 10; Osaka 3 / 11 / 65, Green 3
+  web.archive.org/web/20250327094700id_/https://guide.michelin.com/jp/ja/article/michelin-guide-ceremony/michelinguide-kyoto-osaka-new-selection-2025-jp
+- Nara 2025, published 2025-05-14: 2* 4 / 1* 18 / Green 7
+  web.archive.org/web/20250514155736id_/https://guide.michelin.com/jp/ja/article/michelin-guide-ceremony/michelin-guide-nara-new-selection-2025-jp
+All three articles list new and promoted restaurants only.
+
+Complete sets found (page total = published total):
+T|green  20250712063411 jp/ja/tokyo-region/restaurants/sustainable_gastronomy   12 of 12
+T|3      20250122140437 jp/ja/tokyo-region/restaurants/3-stars-michelin         12 of 12 (same set as 20241225115413)
+K|green  20250401023911 jp/en/kyoto-region/restaurants/sustainable_gastronomy   10 of 10
+K|3      20250401023910 jp/en/kyoto-region/restaurants/3-stars-michelin          5 of 5
+K|2      20250401023910 jp/en/kyoto-region/restaurants/2-stars-michelin         16 of 16
+O|green  20250401023911 jp/en/osaka-region/restaurants/sustainable_gastronomy    3 of 3
+O|3      20250401023910 jp/en/osaka-region/restaurants/3-stars-michelin          3 of 3
+O|2      20250401023910 jp/en/osaka-region/restaurants/2-stars-michelin         11 of 11
+N|green  20250714130145 jp/en/nara-region/restaurants/sustainable_gastronomy     7 of 7
+Partial (page 1 of 4 only):
+K|1p1    20250401023910 jp/en/kyoto-region/restaurants/1-star-michelin          20 of 72
+O|1p1    20250401023910 jp/en/osaka-region/restaurants/1-star-michelin          20 of 65
+Not found in any locale searched: Tokyo 2* and 1*, Nara 2* and 1*, Kyoto and Osaka 1* pages 2-4.
+Locales searched (CDX prefix, region and city paths): jp/ja, jp/en, us/en, en, sg/en, hk/en, gb/en, tw/zh_TW, kr/ko, hk/zh_HK (partial), selection/japan (us/en, jp/en, jp/ja).
+Press releases (news.michelin.co.jp, prtimes.jp, michelin.com): counts and new names only.
+
+Relay: relay-jp-2025-archive-partial.txt, 119 lines, sha256 ceab8dbaf2ffabb7f2ddab92ca72ac2ed99a19db45a1a5d6b76d60afa5db99e1
+Card slugs only in the page cards; layout: .js-restaurant__list_items (results), .js-restaurants__empty_items (suggestions, ignored).
