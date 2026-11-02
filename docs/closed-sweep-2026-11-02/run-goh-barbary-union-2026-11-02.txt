@@ -1,0 +1,11 @@
+Run record: docs/fix-closed-sweep-goh-barbary-union-2026-11-02.sql
+sha256 806a9a6c94eca4054ec2ed2d73de388bab5277ba7a1ee266c9ba996bf4d2e295
+Ben: 15:29 ET "1A, 2A, 3A"; 15:32 ET "Go"; 15:36 ET "Ran".
+Write connector cancelled 2 calls in 0.5 s (nothing ran; read 20:34:20 UTC proved no change). Ben ran the file in the SQL Editor. Audit first row Nov 2 2026, 20:36:34 UTC.
+Read-back 20:37:00 UTC, whole tables:
+venues 11,293 (active 10,996, closed 297); awards 25,097; slugs 13,021 (canonical 11,293, non-canonical 1,728); price 7,727; listings 11,293; cities 3,264; city_label_source 23,989.
+cities.venues_count sum 10,996; 0 cities differ from the view.
+closed published 0; closed not published 297; active not published 0.
+rename_batches 28 (last id 43); rename_rows 1,300.
+ledger 186 rows, last id 238.
+audit_log 118,844 rows, new ids 124,342-124,358: awards UPDATE 3, cities UPDATE 1, city_label_source UPDATE 2 (hand), listings DELETE 1 and UPDATE 1, slugs INSERT 2 and UPDATE 3, venues DELETE 1 and UPDATE 3.
