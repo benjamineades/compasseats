@@ -1,0 +1,19 @@
+Run record: Italy 2026 fixes (open items 2-4, handoff it-2025-backfill-done)
+Ben: Nov 2 06:25 ET "S1, G1, C1, X1"; 06:45 ET "Go".
+File: docs/fix-michelin-2026-italy-san-martino-gaps.sql  sha256 a57c8c81f9278ac92a7d40daaa84308defc904a6a36e3cb9f9909e916da27d3f
+Relay: docs/it-2026-build/relay-it-2026-archive-20251123.txt  sha256 d754b751b817de4a56b2f83d0033eaf92fc38606ac0bfabb9a3e6c724777d073 (browser = disk)
+Dry run (Read connector): all pre-checks passed; stopped at the first write ("read-only transaction").
+Run 1 (Write connector): failed at the venue insert (norm_key is a generated column). Rolled back. Read after: venues 11,299, audit last id 123,533, ledger 218, 0 open transactions. 2 audit ids were used (123,534-123,535), with no rows.
+Fix: norm_key removed from the insert; post-check added (norm_key = sanmartino). No other change.
+Run 2 (Write connector): committed, all in-transaction post-checks passed.
+
+Read-back 2026-11-02 11:48:41 UTC (whole tables):
+  venues 11,300 (active 10,934); awards 25,082 (last id 32,021); Michelin 11,378; Michelin 2025 4,999
+  slugs 13,004 (non-canonical 1,704); listings 11,300; price 7,734; blurbs 142
+  cities 3,262; venues_count sum 10,934; aliases 266; labels 23,999
+  source_capture_ledger 168 rows, last id 220 (219 award 5, 220 price 2)
+  audit_log 118,040 rows, new ids 123,536-123,554 (19 rows)
+  Italy Michelin One Star: 2026 331, 2025 316. Italy closed venues with a 2026 star: 10.
+New awards: 32018 Treviglio 2025; 32019 Scorze 2026; 32020 Contaminazioni 2026; 32021 Lido 84 2026. Moved: 23163 to ve_2ed5af2056.
+Italy 2026 One Star: article 341, database 331. Gap 10: Octavin, Atman (venues active, cards 404) and 8 with no venue found:
+  Don Alfonso 1890 San Barbato, Il Circolino, Sedicesimo Secolo, Gabbiano 3.0, Castello di Fighine, Palais Royal Restaurant, Matteo Grandi in Basilica, Agli Amici Dopolavoro.

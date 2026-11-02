@@ -1,0 +1,395 @@
+n|stars|region|city|name|card_path
+1|3||Alba|Piazza Duomo|/it/it/piemonte/alba/ristorante/piazza-duomo
+2|3||Brunico|Atelier Moessmer Norbert Niederkofler|/it/it/trentino-alto-adige/brunico/ristorante/atelier-moessmer-norbert-niederkofler
+3|3||Brusaporto|Da Vittorio|/it/it/lombardia/brusaporto/ristorante/da-vittorio
+4|3||Castel di Sangro|Reale|/it/it/abruzzo/castel-di-sangro/ristorante/reale
+5|3||Firenze|Enoteca Pinchiorri|/it/it/toscana/firenze/ristorante/enoteca-pinchiorri
+6|3||Milano|Enrico Bartolini al Mudec|/it/it/lombardia/milano/ristorante/enrico-bartolini-al-mudec
+7|3||Modena|Osteria Francescana|/it/it/emilia-romagna/modena/ristorante/osteria-francescana
+8|3||Nerano|Quattro Passi|/it/it/campania/nerano_7770444/ristorante/quattro-passi
+9|3||Orta San Giulio|Villa Crespi|/it/it/piemonte/orta-san-giulio/ristorante/villa-crespi
+10|3||Roma|La Pergola|/it/it/lazio/roma/ristorante/la-pergola69016
+11|3||Rubano|Le Calandre|/it/it/veneto/rubano/ristorante/le-calandre
+12|3||Runate|Dal Pescatore|/it/it/lombardia/runate/ristorante/dal-pescatore
+13|3||Senigallia|Uliassi|/it/it/marche/senigallia/ristorante/uliassi
+14|3||Serralunga d'Alba|La Rei Natura by Michelangelo Mammoliti|/it/it/piemonte/serralunga-d-alba/ristorante/la-rei-natura-by-michelangelo-mammoliti
+15|3||Verona|Casa Perbellini 12 Apostoli|/it/it/veneto/verona/ristorante/casa-perbellini
+16|2||Anacapri|L'Olivo|/it/it/campania/anacapri/ristorante/l-olivo
+17|2||Bergamo|Villa Elena|/it/it/lombardia/bergamo/ristorante/villa-elena
+18|2||Brusciano|Taverna Estia|/it/it/campania/brusciano/ristorante/taverna-estia
+19|2||Castellammare di Stabia|Piazzetta Mil\u00f9|/it/it/campania/castellammare-di-stabia/ristorante/piazzetta-milu
+20|2||Cervere|Antica Corona Reale|/it/it/piemonte/cervere/ristorante/antica-corona-reale
+21|2||Cioccaro|Locanda Sant'Uffizio Enrico Bartolini|/it/it/piemonte/cioccaro/ristorante/locanda-del-sant-uffizio-enrico-bartolini
+22|2||Colle di Val d'Elsa|Arnolfo|/it/it/toscana/colle-di-val-d-elsa/ristorante/arnolfo
+23|2||Cornaredo|D'O|/it/it/lombardia/cornaredo/ristorante/d-o
+24|2||Firenze|Santa Elisabetta|/it/it/toscana/firenze/ristorante/santa-elisabetta
+25|2||Gargnano|Villa Feltrinelli|/it/it/lombardia/gargnano/ristorante/villa-feltrinelli
+26|2||Godia|Agli Amici|/it/it/friuli-venezia-giulia/godia/ristorante/agli-amici
+27|2||Imola|San Domenico|/it/it/emilia-romagna/imola/ristorante/san-domenico
+28|2||Ischia|dan\u00ed maison|/it/it/campania/ischia/ristorante/dani-maison
+29|2||Isola Vulcano|I Tenerumi|/it/it/sicilia/isola-vulcano/ristorante/i-tenerumi
+30|2||Licata|La Madia|/it/it/sicilia/licata/ristorante/la-madia
+31|2||Longiano|Magnolia|/it/it/emilia-romagna/longiano/ristorante/magnolia
+32|2||Lonigo|La Peca|/it/it/veneto/lonigo/ristorante/la-peca
+33|2||Lughetto|Antica Osteria Cera|/it/it/veneto/lughetto/ristorante/antica-osteria-cera
+34|2||Marzocca|Madonnina del Pescatore|/it/it/marche/marzocca/ristorante/madonnina-del-pescatore
+35|2||Milano|Andrea Aprea|/it/it/lombardia/milano/ristorante/andrea-aprea
+36|2||Milano|Verso Capitaneo|/it/it/lombardia/milano/ristorante/verso-capitaneo
+37|2||Milano|Seta by Antonio Guida|/it/it/lombardia/milano/ristorante/seta-by-antonio-guida
+38|2||Montalcino|Campo del Drago|/it/it/toscana/montalcino/ristorante/campo-del-drago
+39|2||Montemerano|Caino|/it/it/toscana/montemerano/ristorante/caino
+40|2||Napoli|George Restaurant|/it/it/campania/napoli/ristorante/george-restaurant
+41|2||Oppeano|Famiglia Rana|/it/it/veneto/oppeano/ristorante/famiglia-rana
+42|2||Ragusa|Duomo|/it/it/sicilia/ragusa/ristorante/duomo160079
+43|2||Roma|Il Pagliaccio|/it/it/lazio/roma/ristorante/il-pagliaccio
+44|2||Roma|Acquolina|/it/it/lazio/roma/ristorante/acquolina
+45|2||Roma|Enoteca La Torre|/it/it/lazio/roma/ristorante/enoteca-la-torre
+46|2||Sarentino|Terra The Magic Place|/it/it/trentino-alto-adige/sarentino/ristorante/terra151934
+47|2||Taormina|St. George by Heinz Beck|/it/it/sicilia/taormina/ristorante/st-george-by-heinz-beck
+48|2||Telese|Kr\u00e8sios|/it/it/campania/telese/ristorante/kresios
+49|2||Tirolo|Castel fine dining|/it/it/trentino-alto-adige/tirolo/ristorante/castel-fine-dining
+50|2||Trieste|Harry's Piccolo|/it/it/friuli-venezia-giulia/trieste/ristorante/harry-s-piccolo
+51|2||Venezia|Glam Enrico Bartolini|/it/it/veneto/venezia/ristorante/glam-enrico-bartolini
+52|2||Viareggio|Il Piccolo Principe|/it/it/toscana/viareggio/ristorante/il-piccolo-principe
+53|2||Vico Equense|Torre del Saracino|/it/it/campania/vico-equense/ristorante/torre-del-saracino
+54|1|ABRUZZO|Civitella Casanova|La Bandiera|/it/it/abruzzo/civitella-casanova/ristorante/la-bandiera
+55|1|ABRUZZO|Guardiagrele|Villa Maiella|/it/it/abruzzo/guardiagrele/ristorante/villa-maiella
+56|1|ABRUZZO|Montepagano|D.one Ristorante Diffuso|/it/it/abruzzo/montepagano/ristorante/d-one-restaurant-diffuso
+57|1|ABRUZZO|San Salvo Marina|Al Metr\u00f2|/it/it/abruzzo/san-salvo-marina/ristorante/al-metro
+58|1|ABRUZZO|Sant'Omero|Zunica 1880 a Villa Corallo|/it/it/abruzzo/sant-omero_1846403/ristorante/zunica-1880
+59|1|BASILICATA|Lavello|Don Alfonso 1890 San Barbato|/it/it/basilicata/lavello/ristorante/don-alfonso-1890-san-barbato
+60|1|BASILICATA|Matera|Vitantonio Lombardo|/it/it/basilicata/matera/ristorante/vitantonio-lombardo
+61|1|CALABRIA|Lamezia Terme|Abbruzzino Oltre|/it/it/calabria/lamezia-terme/ristorante/abbruzzino-oltre
+62|1|CALABRIA|Marina di Gioiosa Ionica|Gambero Rosso|/it/it/calabria/marina-di-gioiosa-ionica/ristorante/gambero-rosso
+63|1|CALABRIA|San Giovanni in Fiore|Hyle|/it/it/calabria/san-giovanni-in-fiore/ristorante/hyle
+64|1|CALABRIA|Santa Cristina d'Aspromonte|Qafiz|/it/it/calabria/santa-cristina-d-aspromonte/ristorante/qafiz
+65|1|CALABRIA|Strongoli|Dattilo|/it/it/calabria/strongoli/ristorante/dattilo
+66|1|CAMPANIA|Amalfi|Sensi|/it/it/campania/amalfi/ristorante/sensi536205
+67|1|CAMPANIA|Amalfi|La Caravella dal 1959|/it/it/campania/amalfi/ristorante/la-caravella-dal-1959
+68|1|CAMPANIA|Amalfi|Glicine|/it/it/campania/amalfi/ristorante/glicine
+69|1|CAMPANIA|Amalfi|Alici|/it/it/campania/amalfi/ristorante/alici
+70|1|CAMPANIA|Ariano Irpino|Maeba Restaurant|/it/it/campania/ariano-irpino/ristorante/maeba-restaurant
+71|1|CAMPANIA|Bacoli|Caracol|/it/it/campania/bacoli/ristorante/caracol
+72|1|CAMPANIA|Baronissi|Cetaria|/it/it/campania/baronissi/ristorante/cetaria
+73|1|CAMPANIA|Capri|Le Monz\u00f9|/it/it/campania/capri/ristorante/le-monzu
+74|1|CAMPANIA|Conca dei Marini|Il Refettorio|/it/it/campania/conca-dei-marini/ristorante/il-refettorio
+75|1|CAMPANIA|Eboli|Il Papavero|/it/it/campania/eboli/ristorante/il-papavero
+76|1|CAMPANIA|Forio - Isola di Ischia|Umberto a Mare|/it/it/campania/forio/ristorante/umberto-a-mare
+77|1|CAMPANIA|Furore|Bluh Furore|/it/it/campania/furore/ristorante/bluh-furore
+78|1|CAMPANIA|Gragnano|O Me O Il Mare|/it/it/campania/gragnano/ristorante/o-me-o-il-mare
+79|1|CAMPANIA|Lacco Ameno|Indaco|/it/it/campania/lacco-ameno/ristorante/indaco
+80|1|CAMPANIA|Marina del Cantone|Taverna del Capitano|/it/it/campania/marina-del-cantone/ristorante/taverna-del-capitano
+81|1|CAMPANIA|Massa Lubrense|Relais Blu|/it/it/campania/massa-lubrense/ristorante/relais-blu
+82|1|CAMPANIA|Napoli|ARIA|/it/it/campania/napoli/ristorante/aria-1197785
+83|1|CAMPANIA|Napoli|Veritas|/it/it/campania/napoli/ristorante/veritas
+84|1|CAMPANIA|Napoli|Il Ristorante Alain Ducasse Napoli|/it/it/campania/napoli/ristorante/il-ristorante-alain-ducasse-napoli
+85|1|CAMPANIA|Nola|Re Santi e Leoni|/it/it/campania/nola/ristorante/re-santi-e-leoni
+86|1|CAMPANIA|Paestum|Tre Olivi|/it/it/campania/paestum/ristorante/tre-olivi
+87|1|CAMPANIA|Paestum|Le Trabe|/it/it/campania/paestum/ristorante/le-trabe
+88|1|CAMPANIA|Pompei|President|/it/it/campania/pompei/ristorante/president
+89|1|CAMPANIA|Positano|Zass|/it/it/campania/positano/ristorante/zass
+90|1|CAMPANIA|Positano|Li Galli|/it/it/campania/positano/ristorante/li-galli
+91|1|CAMPANIA|Praiano|Un Piano nel Cielo|/it/it/campania/praiano/ristorante/un-piano-nel-cielo
+92|1|CAMPANIA|Ravello|Rossellinis|/it/it/campania/ravello/ristorante/rossellinis
+93|1|CAMPANIA|Ravello|Il Flauto di Pan|/it/it/campania/ravello/ristorante/il-flauto-di-pan
+94|1|CAMPANIA|Sant'Agata sui Due Golfi|Don Alfonso 1890|/it/it/campania/sant--agata-sui-due-golfi/ristorante/don-alfonso-1890-151521
+95|1|CAMPANIA|Sant'Agnello|Don Geppi|/it/it/campania/it-sant-agnello/ristorante/don-geppi
+96|1|CAMPANIA|Somma Vesuviana|Contaminazioni Restaurant|/it/it/campania/somma-vesuviana/ristorante/contaminazioni-restaurant
+97|1|CAMPANIA|Sorrento|Il Buco|/it/it/campania/sorrento/ristorante/il-buco
+98|1|CAMPANIA|Sorrento|Terrazza Bosquet|/it/it/campania/sorrento/ristorante/terrazza-bosquet
+99|1|CAMPANIA|Sorrento|Lorelei|/it/it/campania/sorrento/ristorante/lorelei
+100|1|CAMPANIA|Squille|Marotta|/it/it/campania/squille/ristorante/marotta
+101|1|CAMPANIA|Telese Terme|La Locanda del Borgo|/it/it/campania/telese/ristorante/la-locanda-del-borgo
+102|1|CAMPANIA|Ticciano|Cannavacciuolo Countryside|/it/it/campania/ticciano/ristorante/cannavacciuolo-countryside
+103|1|CAMPANIA|Vallesaccarda|Oasis - Sapori Antichi|/it/it/campania/vallesaccarda/ristorante/oasis-sapori-antichi
+104|1|CAMPANIA|Vico Equense|Antica Osteria Nonna Rosa|/it/it/campania/vico-equense/ristorante/antica-osteria-nonna-rosa
+105|1|CAMPANIA|Vietri sul Mare|Volta del Fuenti by Michele De Blasio|/it/it/campania/vietri-sul-mare/ristorante/volta-del-fuenti
+106|1|EMILIA-ROMAGNA|Bagno di Romagna|Ristorante del Lago|/it/it/emilia-romagna/bagno-di-romagna/ristorante/del-lago
+107|1|EMILIA-ROMAGNA|Bologna|I Portici|/it/it/emilia-romagna/bologna/ristorante/i-portici
+108|1|EMILIA-ROMAGNA|Borgonovo Val Tidone|La Palta|/it/it/emilia-romagna/borgonovo-val-tidone/ristorante/la-palta
+109|1|EMILIA-ROMAGNA|Castel Maggiore|Iacobucci|/it/it/emilia-romagna/castel-maggiore/ristorante/iacobucci
+110|1|EMILIA-ROMAGNA|Cesenatico|La Buca|/it/it/emilia-romagna/cesenatico/ristorante/la-buca130947
+111|1|EMILIA-ROMAGNA|Cesenatico|Anc\u00f2ra|/it/it/emilia-romagna/cesenatico/ristorante/ancora-1213776
+112|1|EMILIA-ROMAGNA|Codigoro|La Zanzara|/it/it/emilia-romagna/codigoro/ristorante/la-zanzara
+113|1|EMILIA-ROMAGNA|Fiorano Modenese|Alto|/it/it/emilia-romagna/fiorano-modenese/ristorante/alto
+114|1|EMILIA-ROMAGNA|Maranello|Cavallino|/it/it/emilia-romagna/maranello/ristorante/il-cavallino
+115|1|EMILIA-ROMAGNA|Modena|L'Erba del Re|/it/it/emilia-romagna/modena/ristorante/l-erba-del-re
+116|1|EMILIA-ROMAGNA|Modena|Al Gatto Verde|/it/it/emilia-romagna/modena/ristorante/al-gatto-verde
+117|1|EMILIA-ROMAGNA|Parma|Inkiostro|/it/it/emilia-romagna/parma/ristorante/inkiostro
+118|1|EMILIA-ROMAGNA|Pennabilli|Il Piastrino|/it/it/emilia-romagna/pennabilli/ristorante/il-piastrino
+119|1|EMILIA-ROMAGNA|Polesine Parmense|Antica Corte Pallavicina|/it/it/emilia-romagna/polesine-parmense/ristorante/antica-corte-pallavicina
+120|1|EMILIA-ROMAGNA|Rimini|Da Lucio|/it/it/emilia-romagna/rimini/ristorante/trattoria-da-lucio
+121|1|EMILIA-ROMAGNA|Rimini|Abocar Due Cucine|/it/it/emilia-romagna/rimini/ristorante/abocar-due-cucine
+122|1|EMILIA-ROMAGNA|Rimini|Guido|/it/it/emilia-romagna/rimini/ristorante/guido
+123|1|EMILIA-ROMAGNA|Rubbianino|Ca' Matilde|/it/it/emilia-romagna/rubbianino/ristorante/ca-matilde
+124|1|EMILIA-ROMAGNA|Rubiera|Osteria del Viandante|/it/it/emilia-romagna/rubiera/ristorante/osteria-del-viandante
+125|1|EMILIA-ROMAGNA|San Piero in Bagno|Da Gorini|/it/it/emilia-romagna/san-piero-in-bagno/ristorante/da-gorini
+126|1|EMILIA-ROMAGNA|Sasso Marconi|Casa Mazzucchelli|/it/it/emilia-romagna/sasso-marconi/ristorante/casa-mazzucchelli
+127|1|EMILIA-ROMAGNA|Savigno|Trattoria da Amerigo|/it/it/emilia-romagna/savigno/ristorante/trattoria-da-amerigo
+128|1|FRIULI VENEZIA-GIULIA|Cormons|Trattoria al Cacciatore \u2013 La Subida|/it/it/friuli-venezia-giulia/cormons/ristorante/trattoria-al-cacciatore-della-subida
+129|1|FRIULI VENEZIA-GIULIA|Dolegna del Collio|L'Argine a Venc\u00f2|/it/it/friuli-venezia-giulia/dolegna-del-collio/ristorante/l-argine-a-venco
+130|1|FRIULI VENEZIA-GIULIA|Ruda|Osteria Altran|/it/it/friuli-venezia-giulia/ruda/ristorante/osteria-altran
+131|1|FRIULI VENEZIA-GIULIA|San Quirino|La Primula|/it/it/friuli-venezia-giulia/san-quirino/ristorante/la-primula
+132|1|FRIULI VENEZIA-GIULIA|Sappada|Laite|/it/it/friuli-venezia-giulia/sappada/ristorante/laite
+133|1|LAZIO|Acuto|Colline Ciociare|/it/it/lazio/acuto/ristorante/colline-ciociare
+134|1|LAZIO|Ariccia|Sintesi|/it/it/lazio/ariccia/ristorante/sintesi
+135|1|LAZIO|Fiumicino|Il Tino|/it/it/lazio/fiumicino/ristorante/il-tino
+136|1|LAZIO|Fiumicino|Pascucci al Porticciolo|/it/it/lazio/fiumicino/ristorante/pascucci-al-porticciolo
+137|1|LAZIO|Genazzano|Marco Bottega Ristorante|/it/it/lazio/genazzano/ristorante/aminta-resort
+138|1|LAZIO|Labico|Antonello Colonna Labico|/it/it/lazio/labico/ristorante/antonello-colonna-labico
+139|1|LAZIO|Pontinia|Mater1apr1ma|/it/it/lazio/pontinia/ristorante/mater1apr1ma
+140|1|LAZIO|Ponza|Acqua Pazza|/it/it/lazio/ponza/ristorante/acqua-pazza-1192022
+141|1|LAZIO|Rivodutri|La Trota|/it/it/lazio/rivodutri/ristorante/la-trota
+142|1|LAZIO|Roma|Pulejo|/it/it/lazio/roma/ristorante/pulejo
+143|1|LAZIO|Roma|Orma Roma|/it/it/lazio/roma/ristorante/orma-roma
+144|1|LAZIO|Roma|INEO|/it/it/lazio/roma/ristorante/ineo
+145|1|LAZIO|Roma|Pipero Roma|/it/it/lazio/roma/ristorante/pipero
+146|1|LAZIO|Roma|Il Convivio Troiani|/it/it/lazio/roma/ristorante/il-convivio-troiani
+147|1|LAZIO|Roma|Per Me Giulio Terrinoni|/it/it/lazio/roma/ristorante/per-me-giulio-terrinoni
+148|1|LAZIO|Roma|Achilli al Parlamento|/it/it/lazio/roma/ristorante/enoteca-al-parlamento-achilli
+149|1|LAZIO|Roma|Im\u00e0go|/it/it/lazio/roma/ristorante/imago
+150|1|LAZIO|Roma|Moma|/it/it/lazio/roma/ristorante/moma
+151|1|LAZIO|Roma|La Terrazza|/it/it/lazio/roma/ristorante/la-terrazza68963
+152|1|LAZIO|Roma|Marco Martini Restaurant|/it/it/lazio/roma/ristorante/marco-martini-restaurant
+153|1|LAZIO|Roma|Aroma|/it/it/lazio/roma/ristorante/aroma
+154|1|LAZIO|Roma|All'Oro|/it/it/lazio/roma/ristorante/all-oro
+155|1|LAZIO|Roma|Glass Hostaria|/it/it/lazio/roma/ristorante/glass-hostaria
+156|1|LAZIO|Roma|Zia|/it/it/lazio/roma/ristorante/zia
+157|1|LAZIO|Roma|Idylio by Apreda|/it/it/lazio/roma/ristorante/idylio-by-apreda
+158|1|LAZIO|Tivoli|Al Madrigale \u007c Nuova Cucina Rurale|/it/it/lazio/tivoli/ristorante/al-madrigale
+159|1|LAZIO|Trevinano|La Parolina|/it/it/lazio/trevinano/ristorante/la-parolina
+160|1|LIGURIA|Alassio|Nove|/it/it/liguria/alassio/ristorante/nove
+161|1|LIGURIA|Andora|Vignamare|/it/it/liguria/andora/ristorante/vignamare
+162|1|LIGURIA|Cavi di Lavagna|Impronta d'Acqua|/it/it/liguria/cavi/ristorante/impronta-d-acqua
+163|1|LIGURIA|Dolcedo|Equilibrio|/it/it/liguria/dolcedo/ristorante/equilibrio
+164|1|LIGURIA|Genova|Il Marin|/it/it/liguria/genova/ristorante/il-marin-eataly
+165|1|LIGURIA|Genova|San Giorgio|/it/it/liguria/genova/ristorante/san-giorgio562345
+166|1|LIGURIA|Imperia|Sarri|/it/it/liguria/imperia/ristorante/sarri
+167|1|LIGURIA|Noli|Vescovado|/it/it/liguria/noli/ristorante/il-vescovado
+168|1|LIGURIA|Portofino|Cracco Portofino|/it/it/liguria/portofino/ristorante/cracco-portofino
+169|1|LIGURIA|Sanremo|Paolo e Barbara|/it/it/liguria/san-remo/ristorante/paolo-e-barbara
+170|1|LIGURIA|Sestri Levante|Rezzano Cucina e Vino|/it/it/liguria/sestri-levante/ristorante/rezzano-cucina-e-vino
+171|1|LIGURIA|Ventimiglia|Casa Buono|/it/it/liguria/ventimiglia/ristorante/casa-buono
+172|1|LOMBARDIA|Albavilla|Il Cantuccio|/it/it/lombardia/albavilla/ristorante/il-cantuccio
+173|1|LOMBARDIA|Albiate|Grow Restaurant|/it/it/lombardia/albiate/ristorante/grow-restaurant
+174|1|LOMBARDIA|Bergamo|Impronte|/it/it/lombardia/albiate/ristorante/grow-restaurant
+175|1|LOMBARDIA|Borgonato|Due Colombe|/it/it/lombardia/borgonato/ristorante/due-colombe
+176|1|LOMBARDIA|Calvisano|Al Gambero|/it/it/lombardia/calvisano/ristorante/al-gambero
+177|1|LOMBARDIA|Cavernago|Il Saraceno|/it/it/lombardia/cavernago/ristorante/il-saraceno
+178|1|LOMBARDIA|Cernobbio|Materia|/it/it/lombardia/cernobbio/ristorante/materia
+179|1|LOMBARDIA|Como|Kitchen|/it/it/lombardia/como/ristorante/kitchen-325766
+180|1|LOMBARDIA|Concesio|Miramonti l'Altro|/it/it/lombardia/concesio/ristorante/miramonti-l-altro
+181|1|LOMBARDIA|Cornaredo|Olmo|/it/it/lombardia/cornaredo/ristorante/olmo
+182|1|LOMBARDIA|Desenzano del Garda|Esplanade|/it/it/lombardia/desenzano-del-garda/ristorante/esplanade
+183|1|LOMBARDIA|Fagnano Olona|Acquerello|/it/it/lombardia/fagnano-olona/ristorante/acquerello197794
+184|1|LOMBARDIA|Fasano del Garda|Lido 84|/it/it/lombardia/fasano-del-garda/ristorante/lido-84
+185|1|LOMBARDIA|Fasano del Garda|Il Fagiano|/it/it/lombardia/fasano-del-garda/ristorante/il-fagiano
+186|1|LOMBARDIA|Gargnano|La Tortuga|/it/it/lombardia/gargnano/ristorante/la-tortuga
+187|1|LOMBARDIA|Limone sul Garda|Senso Lake Garda Alfio Ghezzi|/it/it/lombardia/limone-sul-garda/ristorante/senso-alfio-ghezzi-lake-garda
+188|1|LOMBARDIA|Lodi|La Coldana|/it/it/lombardia/lodi_1806947/ristorante/la-coldana
+189|1|LOMBARDIA|Lomazzo|Trattoria contemporanea|/it/it/lombardia/lomazzo/ristorante/trattoria-contemporanea
+190|1|LOMBARDIA|Madesimo|Il Cantinone e Sport Hotel Alpina|/it/it/lombardia/madesimo/ristorante/il-cantinone-e-sport-hotel-alpina
+191|1|LOMBARDIA|Manerba del Garda|Capriccio|/it/it/lombardia/manerba-del-garda/ristorante/capriccio
+192|1|LOMBARDIA|Mantello|La Pres\u00e9f|/it/it/lombardia/mantello/ristorante/la-presef
+193|1|LOMBARDIA|Milano|Cracco in Galleria|/it/it/lombardia/milano/ristorante/cracco
+194|1|LOMBARDIA|Milano|Berton|/it/it/lombardia/milano/ristorante/berton
+195|1|LOMBARDIA|Milano|Sadler|/it/it/lombardia/milano/ristorante/sadler
+196|1|LOMBARDIA|Milano|Contraste|/it/it/lombardia/milano/ristorante/contraste
+197|1|LOMBARDIA|Milano|Iyo|/it/it/lombardia/milano/ristorante/iyo
+198|1|LOMBARDIA|Milano|Il Luogo Aimo e Nadia|/it/it/lombardia/milano/ristorante/il-luogo-di-aimo-e-nadia
+199|1|LOMBARDIA|Milano|Sine by Di Pinto|/it/it/lombardia/milano/ristorante/sine
+200|1|LOMBARDIA|Milano|Moebius Sperimentale|/it/it/lombardia/milano/ristorante/moebius-sperimentale
+201|1|LOMBARDIA|Milano|Iyo Kaiseki|/it/it/lombardia/milano/ristorante/aalto
+202|1|LOMBARDIA|Milano|Anima|/it/it/lombardia/milano/ristorante/anima-fine-dining
+203|1|LOMBARDIA|Milano|Procaccini|/it/it/lombardia/milano/ristorante/procaccini
+204|1|LOMBARDIA|Milano|Abba|/it/it/lombardia/milano/ristorante/abba
+205|1|LOMBARDIA|Milano|Horto|/it/it/lombardia/milano/ristorante/horto-1204821
+206|1|LOMBARDIA|Milano|Joia|/it/it/lombardia/milano/ristorante/joia
+207|1|LOMBARDIA|Monza|Il Circolino|/it/it/lombardia/monza/ristorante/il-circolino
+208|1|LOMBARDIA|Olgiate Olona|Acqua|/it/it/lombardia/olgiate-olona/ristorante/acqua-1201998
+209|1|LOMBARDIA|Oltressenda Alta|Contrada Bricconi|/it/it/lombardia/oltressenda-alta/ristorante/contrada-bricconi
+210|1|LOMBARDIA|Origgio|Olio N|/it/it/lombardia/origgio/ristorante/olio
+211|1|LOMBARDIA|Ponte San Pietro|Cucina Cereda|/it/it/lombardia/ponte-san-pietro/ristorante/cucina-cereda
+212|1|LOMBARDIA|Pralboino|Leon d'Oro|/it/it/lombardia/pralboino/ristorante/leon-d-oro146788
+213|1|LOMBARDIA|Pudiano|Sedicesimo Secolo|/it/it/lombardia/pudiano/ristorante/sedicesimo-secolo
+214|1|LOMBARDIA|Puegnago sul Garda|Casa Leali|/it/it/lombardia/puegnago-sul-garda/ristorante/casa-leali
+215|1|LOMBARDIA|Saronno|sui generis.|/it/it/lombardia/saronno_1809624/ristorante/sui-generis
+216|1|LOMBARDIA|Sirmione|La Rucola 2.0|/it/it/lombardia/sirmione/ristorante/la-rucola-2-0
+217|1|LOMBARDIA|Sirmione|La Speranzina Restaurant & Relais|/it/it/lombardia/sirmione/ristorante/la-speranzina-restaurant-relais
+218|1|LOMBARDIA|Sirmione|Tancredi|/it/it/lombardia/sirmione/ristorante/tancredi
+219|1|LOMBARDIA|Sorisole|Assonica|/it/it/lombardia/sorisole/ristorante/osteria-degli-assonica
+220|1|LOMBARDIA|Torno|Il Sereno Al Lago|/it/it/lombardia/torno/ristorante/il-sereno-al-lago
+221|1|LOMBARDIA|Torrazza Coste|Villa Naj|/it/it/lombardia/torrazza-coste_1810090/ristorante/villa-naj
+222|1|LOMBARDIA|Trescore Balneario|LoRo|/it/it/lombardia/trescore-balneario/ristorante/loro
+223|1|LOMBARDIA|Treviglio|San Martino|/it/it/lombardia/treviglio/ristorante/san-martino155366
+224|1|LOMBARDIA|Vigevano|I Castagni|/it/it/lombardia/vigevano/ristorante/i-castagni
+225|1|LOMBARDIA|Villa d'Alm\u00e8|Osteria della Brughiera|/it/it/lombardia/villa-d-alm/ristorante/osteria-della-brughiera
+226|1|LOMBARDIA|Villa di Chiavenna|Lanterna Verde|/it/it/lombardia/villa-di-chiavenna/ristorante/lanterna-verde
+227|1|MARCHE|Gabicce Monte|Dalla Gioconda|/it/it/marche/gabicce-monte/ristorante/dalla-gioconda
+228|1|MARCHE|Loreto|Andreina|/it/it/marche/loreto/ristorante/andreina
+229|1|MARCHE|Montemonaco|Il Tiglio|/it/it/marche/montemonaco/ristorante/il-tiglio
+230|1|MARCHE|Pesaro|Nostrano|/it/it/marche/pesaro/ristorante/nostrano
+231|1|MARCHE|Porto San Giorgio|Retroscena|/it/it/marche/porto-san-giorgio/ristorante/retroscena
+232|1|MARCHE|Recanati|Casa Bertini|/it/it/marche/recanati/ristorante/casa-bertini
+233|1|MOLISE|Agnone|Locanda Mamm\u00ec|/it/it/molise/agnone_1841303/ristorante/locanda-mammi
+234|1|PIEMONTE|Alba|Locanda del Pilone|/it/it/piemonte/alba/ristorante/locanda-del-pilone
+235|1|PIEMONTE|Asti|Cannavacciuolo Le Cattedrali Asti|/it/it/piemonte/asti/ristorante/cannavacciuolo-le-cattedrali-asti
+236|1|PIEMONTE|Canale|All'Enoteca|/it/it/piemonte/canale/ristorante/all-enoteca
+237|1|PIEMONTE|Domodossola|Atelier|/it/it/piemonte/domodossola/ristorante/atelier161790
+238|1|PIEMONTE|Monforte d'Alba|FRE|/it/it/piemonte/monforte-d-alba/ristorante/fre
+239|1|PIEMONTE|Monforte d'Alba|Borgo Sant'Anna|/it/it/piemonte/monforte-d-alba/ristorante/borgo-sant-anna
+240|1|PIEMONTE|Novello Massimo|Camia|/it/it/piemonte/novello_1797954/ristorante/massimo-camia
+241|1|PIEMONTE|Orta San Giulio|Andrea Monesi - Locanda di Orta|/it/it/piemonte/orta-san-giulio/ristorante/locanda-di-orta
+242|1|PIEMONTE|Pettenasco|Cannavacciuolo by the Lake|/it/it/piemonte/pettenasco/ristorante/cannavacciuolo-by-the-lake
+243|1|PIEMONTE|Pinerolo|Trattoria Zappatori|/it/it/piemonte/pinerolo/ristorante/zappatori
+244|1|PIEMONTE|Piobesi d'Alba|21.9|/it/it/piemonte/pibesi-d-alba/ristorante/21-9
+245|1|PIEMONTE|Pollone|Il Patio|/it/it/piemonte/pollone/ristorante/il-patio
+246|1|PIEMONTE|Priocca|Il Centro|/it/it/piemonte/priocca/ristorante/il-centro
+247|1|PIEMONTE|San Maurizio Canavese|La Credenza|/it/it/piemonte/san-maurizio-canavese/ristorante/la-credenza
+248|1|PIEMONTE|Santo Stefano Belbo|Il Ristorante di Guido da Costigliole|/it/it/piemonte/santo-stefano-belbo/ristorante/il-ristorante-di-guido-da-costigliole
+249|1|PIEMONTE|Serralunga d'Alba|Guidoristorante|/it/it/piemonte/serralunga-d-alba/ristorante/guido361561
+250|1|PIEMONTE|Soriso|Al Sorriso|/it/it/piemonte/soriso/ristorante/al-sorriso
+251|1|PIEMONTE|Tigliole|Ca' Vittoria|/it/it/piemonte/tigliole/ristorante/ca-vittoria
+252|1|PIEMONTE|Torino|Andrea Larossa|/it/it/piemonte/torino/ristorante/andrea-larossa
+253|1|PIEMONTE|Torino|Cannavacciuolo Bistrot|/it/it/piemonte/torino/ristorante/cannavacciuolo-bistrot
+254|1|PIEMONTE|Torino|Condividere|/it/it/piemonte/torino/ristorante/condividere
+255|1|PIEMONTE|Torino|Del Cambio|/it/it/piemonte/torino/ristorante/del-cambio
+256|1|PIEMONTE|Torino|Vintage 1997|/it/it/piemonte/torino/ristorante/vintage-1997
+257|1|PIEMONTE|Torino|Carignano|/it/it/piemonte/torino/ristorante/carignano
+258|1|PIEMONTE|Torino|Piano35|/it/it/piemonte/torino/ristorante/piano-35
+259|1|PIEMONTE|Torino|Unforgettable|/it/it/piemonte/torino/ristorante/unforgettable
+260|1|PIEMONTE|Treiso|La Ciau del Tornavento|/it/it/piemonte/treiso/ristorante/la-ciau-del-tornavento
+261|1|PIEMONTE|Venaria|Reale Dolce Stil Novo alla Reggia|/it/it/piemonte/venaria-reale/ristorante/dolce-stil-novo-alla-reggia
+262|1|PIEMONTE|Vernante|Nazionale|/it/it/piemonte/vernante/ristorante/nazionale
+263|1|PUGLIA|Carovigno|Dissapore di Andrea Catalano|/it/it/puglia/carovigno/ristorante/dissapore-di-andrea-catalano
+264|1|PUGLIA|Lecce|Primo Restaurant|/it/it/puglia/lecce/ristorante/primo-restaurant
+265|1|PUGLIA|Manduria|Casamatta|/it/it/puglia/manduria/ristorante/casamatta
+266|1|PUGLIA|Polignano a Mare|Pash\u00e0|/it/it/puglia/polignano-a-mare/ristorante/pasha
+267|1|PUGLIA|Putignano|Angelo Sabatelli|/it/it/puglia/putignano/ristorante/angelo-sabatelli
+268|1|PUGLIA|Savelletri|Due Camini|/it/it/puglia/savelletri/ristorante/due-camini
+269|1|PUGLIA|Trani|Casa Sgarra|/it/it/puglia/trani/ristorante/casa-sgarra
+270|1|PUGLIA|Trani|Quintessenza|/it/it/puglia/trani/ristorante/quintessenza-1195965
+271|1|SARDEGNA|Baia Sardinia|Capogiro|/it/it/sardegna/baia-sardinia/ristorante/capogiro
+272|1|SARDEGNA|Porto Cervo|Italo Bassi Confusion Restaurant|/it/it/sardegna/porto-cervo/ristorante/confusion
+273|1|SARDEGNA|Pula|Fradis Minoris|/it/it/sardegna/pula/ristorante/fradis-minoris
+274|1|SARDEGNA|San Pantaleo|Il Fuoco Sacro|/it/it/sardegna/san-pantaleo/ristorante/il-fuoco-sacro
+275|1|SARDEGNA|San Teodoro|Gusto by Sadler|/it/it/sardegna/san-teodoro/ristorante/gusto-by-sadler
+276|1|SICILIA|Archi|Zash|/it/it/sicilia/archi/ristorante/zash
+277|1|SICILIA|Bagheria|L\u00ecm\u00f9|/it/it/sicilia/bagheria/ristorante/limu
+278|1|SICILIA|Bagheria|I Pupi|/it/it/sicilia/bagheria/ristorante/i-pupi
+279|1|SICILIA|Catania|Coria|/it/it/sicilia/catania/ristorante/coria
+280|1|SICILIA|Catania|Sapio|/it/it/sicilia/catania/ristorante/sapio
+281|1|SICILIA|Isola Vulcano|Il Cappero|/it/it/sicilia/isola-vulcano/ristorante/il-cappero
+282|1|SICILIA|Linguaglossa|Shalai|/it/it/sicilia/linguaglossa/ristorante/shalai
+283|1|SICILIA|Malfa|Signum|/it/it/sicilia/malfa/ristorante/signum
+284|1|SICILIA|Marina di Ragusa|Votavota|/it/it/sicilia/marina-di-ragusa/ristorante/votavota
+285|1|SICILIA|Noto|Crocifisso|/it/it/sicilia/noto/ristorante/crocifisso
+286|1|SICILIA|Palermo|Mec Restaurant|/it/it/sicilia/palermo/ristorante/mec-restaurant
+287|1|SICILIA|Ragusa|Locanda Don Serafino|/it/it/sicilia/ragusa/ristorante/locanda-don-serafino
+288|1|SICILIA|Siracusa|Cortile Spirito Santo|/it/it/sicilia/siracusa/ristorante/cortile-spirito-santo
+289|1|SICILIA|Taormina|La Capinera|/it/it/sicilia/taormina/ristorante/la-capinera
+290|1|SICILIA|Taormina|Otto Geleng|/it/it/sicilia/taormina/ristorante/otto-geleng
+291|1|SICILIA|Taormina|Principe Cerami|/it/it/sicilia/taormina/ristorante/principe-cerami
+292|1|SICILIA|Taormina|Vineria Mod\u00ec|/it/it/sicilia/taormina/ristorante/vineria-modi
+293|1|SICILIA|Terrasini|Il Bavaglino|/it/it/sicilia/terrasini/ristorante/il-bavaglino-1206991
+294|1|TOSCANA|Arezzo|Octavin|/it/it/toscana/arezzo/ristorante/octavin
+295|1|TOSCANA|Badia|A Passignano Osteria di Passignano|/it/it/toscana/passignano/ristorante/osteria-di-passignano
+296|1|TOSCANA|Casanova di Terricciola|Cannavacciuolo Vineyard|/it/it/toscana/casanova-di-terricciola/ristorante/cannavacciuolo-vineyard
+297|1|TOSCANA|Castelnuovo Berardenga|Il Visibilio|/it/it/toscana/castelnuovo-berardenga/ristorante/il-visibilio
+298|1|TOSCANA|Castelnuovo Berardenga|L'Asinello|/it/it/toscana/castelnuovo-berardenga/ristorante/l-asinello
+299|1|TOSCANA|Castelnuovo Berardenga|Contrada|/it/it/toscana/castelnuovo-berardenga/ristorante/contrada
+300|1|TOSCANA|Castelnuovo Berardenga|Il Poggio Rosso|/it/it/toscana/castelnuovo-berardenga/ristorante/poggio-rosso
+301|1|TOSCANA|Castiglione della Pescaia|La Trattoria Enrico Bartolini|/it/it/toscana/castiglione-della-pescaia/ristorante/la-trattoria-enrico-bartolini
+302|1|TOSCANA|Chiusdino|Saporium|/it/it/toscana/chiusdino/ristorante/saporium
+303|1|TOSCANA|Fiesole|Serrae Villa Fiesole|/it/it/toscana/fiesole/ristorante/serrae-villa-fiesole
+304|1|TOSCANA|Firenze|Atto di Vito Mollica|/it/it/toscana/firenze/ristorante/atto-di-vito-mollica
+305|1|TOSCANA|Firenze|Luca's by Paulo Airaudo|/it/it/toscana/firenze/ristorante/luca-s-by-paulo-airaudo
+306|1|TOSCANA|Firenze|Gucci Osteria da Massimo Bottura|/it/it/toscana/firenze/ristorante/gucci-osteria-da-massimo-bottura
+307|1|TOSCANA|Firenze|Il Palagio|/it/it/toscana/firenze/ristorante/il-palagio
+308|1|TOSCANA|Firenze|Borgo San Jacopo|/it/it/toscana/firenze/ristorante/borgo-san-jacopo
+309|1|TOSCANA|Firenze|Saporium Firenze|/it/it/toscana/firenze/ristorante/saporium-firenze
+310|1|TOSCANA|Forte dei Marmi|Lorenzo|/it/it/toscana/forte-dei-marmi/ristorante/lorenzo
+311|1|TOSCANA|Forte dei Marmi|Lux Lucis|/it/it/toscana/forte-dei-marmi/ristorante/lux-lucis
+312|1|TOSCANA|Forte dei Marmi|La Magnolia|/it/it/toscana/forte-dei-marmi/ristorante/la-magnolia
+313|1|TOSCANA|Forte dei Marmi|Sciabola|/it/it/toscana/forte-dei-marmi/ristorante/sciabola
+314|1|TOSCANA|Forte dei Marmi|Bistrot|/it/it/toscana/forte-dei-marmi/ristorante/bistrot
+315|1|TOSCANA|Fosdinovo|Locanda de Banchieri|/it/it/toscana/fosdinovo/ristorante/locanda-dei-banchieri
+316|1|TOSCANA|Gaiole in Chianti|Il Pievano|/it/it/toscana/gaiole-in-chianti/ristorante/il-pievano
+317|1|TOSCANA|Ghirlanda|Bracali|/it/it/toscana/ghirlanda/ristorante/bracali
+318|1|TOSCANA|Marina di Bibbona|La Pineta|/it/it/toscana/marina-di-bibbona/ristorante/la-pineta
+319|1|TOSCANA|Marina di Grosseto|Gabbiano 3.0|/it/it/toscana/marina-di-grosseto/ristorante/gabbiano-3-0
+320|1|TOSCANA|Marlia|Butterfly|/it/it/toscana/marlia/ristorante/butterfly
+321|1|TOSCANA|Montalcino|La Sala dei Grappoli|/it/it/toscana/montalcino/ristorante/sala-dei-grappoli
+322|1|TOSCANA|Montepulciano|Osmosi|/it/it/toscana/montepulciano/ristorante/osmosi
+323|1|TOSCANA|Porto Ercole|Il Pellicano|/it/it/toscana/porto-ercole/ristorante/il-pellicano
+324|1|TOSCANA|Prato|Paca|/it/it/toscana/prato/ristorante/paca
+325|1|TOSCANA|San Casciano dei Bagni|Castello di Fighine|/it/it/toscana/san-casciano-dei-bagni/ristorante/castello-di-fighine
+326|1|TOSCANA|San Gimignano|Linfa|/it/it/toscana/san-gimignano/ristorante/linfa
+327|1|TOSCANA|San Martino|Il Falconiere|/it/it/toscana/san-martino/ristorante/il-falconiere
+328|1|TOSCANA|Seggiano|Silene|/it/it/toscana/seggiano/ristorante/silene
+329|1|TOSCANA|Tavarnelle Val di Pesa|La Torre|/it/it/toscana/seggiano/ristorante/silene
+330|1|TOSCANA|Viareggio|Romano|/it/it/toscana/viareggio/ristorante/romano
+331|1|TOSCANA|Viareggio|Lunasia|/it/it/toscana/viareggio/ristorante/lunasia500267
+332|1|TOSCANA|Vinci|Atman|/it/it/toscana/vinci_1839587/ristorante/atman
+333|1|TRENTINO ALTO ADIGE|Arco|Peter Brunel Ristorante Gourmet|/it/it/trentino-alto-adige/arco/ristorante/peter-brunel-ristorante-gourmet
+334|1|TRENTINO ALTO ADIGE|Badia|Porcino|/it/it/trentino-alto-adige/badia_3684715/ristorante/porcino
+335|1|TRENTINO ALTO ADIGE|Bressanone|Apostelstube|/it/it/trentino-alto-adige/bressanone/ristorante/apostelstube
+336|1|TRENTINO ALTO ADIGE|Castelbello|Kuppelrain|/it/it/trentino-alto-adige/castelbello/ristorante/kuppelrain
+337|1|TRENTINO ALTO ADIGE|Cavalese|El Molin|/it/it/trentino-alto-adige/cavalese/ristorante/el-molin
+338|1|TRENTINO ALTO ADIGE|Corvara in Badia|La St\u00fca de Michil - Simone Cantafio|/it/it/trentino-alto-adige/corvara-in-badia/ristorante/la-stua-de-michil
+339|1|TRENTINO ALTO ADIGE|Dobbiaco|Tilia|/it/it/trentino-alto-adige/dobbiaco/ristorante/tilia
+340|1|TRENTINO ALTO ADIGE|Lagundo|Luisl Stube|/it/it/trentino-alto-adige/lagundo/ristorante/luisl-stube
+341|1|TRENTINO ALTO ADIGE|Madonna di Campiglio|Stube Hermitage|/it/it/trentino-alto-adige/madonna-di-campiglio/ristorante/stube-hermitage
+342|1|TRENTINO ALTO ADIGE|Madonna di Campiglio|Dolomieu|/it/it/trentino-alto-adige/madonna-di-campiglio/ristorante/dolomieu
+343|1|TRENTINO ALTO ADIGE|Madonna di Campiglio|Il Gallo Cedrone|/it/it/trentino-alto-adige/madonna-di-campiglio/ristorante/il-gallo-cedrone
+344|1|TRENTINO ALTO ADIGE|Merano|Sissi|/it/it/trentino-alto-adige/merano/ristorante/sissi
+345|1|TRENTINO ALTO ADIGE|Merano|In Viaggio - Claudio Melis|/it/it/trentino-alto-adige/merano/ristorante/in-viaggio-claudio-melis1154911
+346|1|TRENTINO ALTO ADIGE|Merano|Prezioso|/it/it/trentino-alto-adige/merano/ristorante/in-viaggio-claudio-melis1154911
+347|1|TRENTINO ALTO ADIGE|Moena|Malga Panna|/it/it/trentino-alto-adige/moena/ristorante/malga-panna
+348|1|TRENTINO ALTO ADIGE|Molini|Sch\u00f6neck|/it/it/trentino-alto-adige/molini/ristorante/schoneck
+349|1|TRENTINO ALTO ADIGE|Mules|Gourmetstube Einhorn|/it/it/trentino-alto-adige/mauls/ristorante/gourmetstube-einhorn
+350|1|TRENTINO ALTO ADIGE|Nova Levante|Johannesstube|/it/it/trentino-alto-adige/nova-levante/ristorante/johannes-stube
+351|1|TRENTINO ALTO ADIGE|Ortisei|Anna Stuben|/it/it/trentino-alto-adige/ortisei/ristorante/anna-stuben
+352|1|TRENTINO ALTO ADIGE|Pinzolo|Grual|/it/it/trentino-alto-adige/pinzolo/ristorante/grual
+353|1|TRENTINO ALTO ADIGE|Ravina|Locanda Margon|/it/it/trentino-alto-adige/ravina/ristorante/locanda-margon
+354|1|TRENTINO ALTO ADIGE|San Martino in Passiria|Quellenhof Gourmetstube 1897|/it/it/trentino-alto-adige/san-martino-in-passiria/ristorante/quellenhof-gourmetstube-1897
+355|1|TRENTINO ALTO ADIGE|San Michele|Zur Rose|/it/it/trentino-alto-adige/trentino-alto-adige-san-michele/ristorante/zur-rose
+356|1|TRENTINO ALTO ADIGE|San Michele|Osteria Acquarol|/it/it/trentino-alto-adige/trentino-alto-adige-san-michele/ristorante/osteria-acquarol
+357|1|TRENTINO ALTO ADIGE|Selva di Val Gardena|Alpenroyal Gourmet|/it/it/trentino-alto-adige/selva-di-val-gardena/ristorante/alpenroyal-gourmet
+358|1|TRENTINO ALTO ADIGE|Selva di Val Gardena|Suinsom|/it/it/trentino-alto-adige/selva-di-val-gardena/ristorante/suinsom
+359|1|UMBRIA|Capodacqua|Une|/it/it/umbria/capodacqua/ristorante/une
+360|1|UMBRIA|Norcia|Vespasia|/it/it/umbria/norcia/ristorante/vespasia
+361|1|UMBRIA|Perugia|Ada|/it/it/umbria/perugia/ristorante/ada
+362|1|UMBRIA|Torgiano|Elementi|/it/it/umbria/torgiano/ristorante/elementi
+363|1|VALLE D\u2019AOSTA|Aosta|Paolo Griffa al Caff\u00e8 Nazionale|/it/it/valle-d-aosta/aosta/ristorante/paolo-griffa-al-caffe-nazionale
+364|1|VALLE D\u2019AOSTA|Aosta|Vecchio Ristoro|/it/it/valle-d-aosta/aosta/ristorante/vecchio-ristoro
+365|1|VALLE D\u2019AOSTA|Breuil Cervinia|Wood|/it/it/valle-d-aosta/it-breuil-cervinia/ristorante/wood460913
+366|1|VALLE D\u2019AOSTA|Cogne|Le Petit Bellevue|/it/it/valle-d-aosta/cogne/ristorante/le-petit-restaurant
+367|1|VENETO|Altissimo|Casin del Gamba|/it/it/veneto/altissimo/ristorante/casin-del-gamba
+368|1|VENETO|Arzignano|Damini Macelleria & Affini|/it/it/veneto/arzignano/ristorante/damini-macelleria-affini
+369|1|VENETO|Asiago|La Tana Gourmet|/it/it/veneto/asiago/ristorante/la-tana-gourmet
+370|1|VENETO|Barbarano Vicentino|Aqua Crua|/it/it/veneto/barbarano-vicentino/ristorante/aqua-crua
+371|1|VENETO|Borgoricco|Storie d'Amore|/it/it/veneto/borgoricco/ristorante/storie-d-amore
+372|1|VENETO|Brenzone sul Garda|Nin|/it/it/veneto/brenzone-sul-garda_1812115/ristorante/nin
+373|1|VENETO|Cavaion Veronese|Oseleta|/it/it/veneto/cavaion-veronese/ristorante/oseleta
+374|1|VENETO|Corrubbio|Amist\u00e0|/it/it/veneto/corrubbio/ristorante/amista-33
+375|1|VENETO|Cortina d'Ampezzo|Tivoli|/it/it/veneto/cortina-d-ampezzo/ristorante/tivoli
+376|1|VENETO|Cortina d'Ampezzo|SanBrite|/it/it/veneto/cortina-d-ampezzo/ristorante/sanbrite
+377|1|VENETO|Malcesine Vecchia|Malcesine|/it/it/veneto/malcesine/ristorante/vecchia-malcesine
+378|1|VENETO|Malo|La Favellina|/it/it/veneto/malo/ristorante/la-favellina
+379|1|VENETO|Mazzorbo|Venissa|/it/it/veneto/mazzorbo/ristorante/venissa
+380|1|VENETO|Oderzo|Gellivs|/it/it/veneto/oderzo/ristorante/gellius
+381|1|VENETO|Plois|Dolada|/it/it/veneto/plois_%207770419/ristorante/dolada
+382|1|VENETO|Pontelongo|Lazzaro 1915|/it/it/veneto/pontelongo/ristorante/lazzaro-1915
+383|1|VENETO|Puos d'Alpago|Locanda San Lorenzo|/it/it/veneto/puos-d-alpago/ristorante/locanda-san-lorenzo
+384|1|VENETO|Schio|Spinechile|/it/it/veneto/schio/ristorante/spinechile
+385|1|VENETO|Scorz\u00e8|San Martino|/it/it/veneto/scorz/ristorante/san-martino
+386|1|VENETO|Venezia|Quadri|/it/it/veneto/venezia/ristorante/quadri
+387|1|VENETO|Venezia|Local|/it/it/veneto/venezia/ristorante/local
+388|1|VENETO|Venezia|Oro Restaurant|/it/it/veneto/venezia/ristorante/oro-restaurant
+389|1|VENETO|Venezia|Agli Amici Dopolavoro|/it/it/veneto/venezia/ristorante/dopolavoro
+390|1|VENETO|Venezia|Wist\u00e8ria|/it/it/veneto/venezia/ristorante/wisteria
+391|1|VENETO|Venezia|Palais Royal Restaurant|/it/it/veneto/venezia/ristorante/palais-royal-restaurant
+392|1|VENETO|Verona|Iris Ristorante|/it/it/veneto/verona/ristorante/iris-ristorante
+393|1|VENETO|Verona|Il Desco|/it/it/veneto/verona/ristorante/il-desco
+394|1|VENETO|Vicenza|Matteo Grandi in Basilica|/it/it/veneto/vicenza/ristorante/matteo-grandi
