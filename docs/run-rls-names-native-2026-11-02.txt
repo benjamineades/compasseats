@@ -18,3 +18,9 @@ Run: Claude, Write connector, first try, about 16:13 UTC. BEGIN to COMMIT sent; 
 Read-back 2026-11-02 16:13:30 UTC, whole tables: venues 11296 (active 10930, closed 366); awards 25092 (last id 32035); France and Monaco Michelin 2026 star rows 666;
 slugs 13016 (non-canonical 1720); price 7729; cities sum 10930; rename_batches 26 (last id 41); rename_rows 1296; ledger 178 rows, last id 230; audit_log 118198, ids 123693-123712 (20).
 Names: La Flibuste ve_e1bffb1188, La Table de l'Alpaga ve_68ad93cad4, Le Sarkara ve_95253d6c9e. New award rows: 11, list article URL. All 11 cards give a 404.
+
+France S1, 9 venues closed. Ben: 11:12 ET "S1"; 11:27 ET "Go".
+File: docs/fix-status-fr-closed-9-2026-11-02.sql sha256 bb8a9370bc0f88990ee03a7fe2c07afa18327b00cccf45410da547f0e4086603
+Run: Claude, Write connector, first try, about 16:28 UTC. BEGIN to COMMIT sent; header comment lines not sent. No error, so all gates passed.
+Read-back 2026-11-02 16:28:17 UTC, whole tables: venues 11296 (active 10921, closed 375); awards 25092; slugs 13016; price 7729; cities sum 10921, cities that differ from the view 0;
+closed venues published 354, not published 21; ledger 178 rows, last id 230; audit_log 118214, ids 123713-123728 (16).
