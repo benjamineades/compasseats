@@ -1,0 +1,16 @@
+Run record: open items A1, B1, C1, D1. Nov 2, 2026. Ben: 08:31 ET "A1 and B1, then close item 12. C1, D1, F1"; 08:37 ET "Go"; 08:42 ET "Try again"; 08:51 ET "Ran".
+File: docs/fix-open-items-a1-b1-c1-d1-2026-11-02.sql  sha256 5aa2a7b16c9328a1c8167cbc19a1cb01ed2fa9c4743da386384ad3b0bf82863f
+Syntax: pglast, file and DO body parse. Dry run (Read connector, block up to the first write): stopped at the first INSERT with "read-only transaction"; all pre gates passed.
+Write connector: 3 calls returned "client cancelled this confirmation" after 0.7 s, 0.8 s, 0.8 s. Nothing ran (read after each). SELECT 1 through the same connector returned a result.
+Run: Ben, Supabase SQL Editor, committed 2026-11-02 13:50:53 UTC. One transaction, all gates passed.
+Read-back 2026-11-02 13:51:27 UTC, whole tables:
+venues 11297 (active 10932, closed 365); awards 25081 (last id 32024); Michelin 11377; Michelin 2025 4995 (no URL 3214)
+slugs 13008 (canonical 11297, non-canonical 1711); listings 11297; blurbs 142; price 7730; cities 3263, venues_count sum 10932, cities that differ from the view 0
+city_aliases 266; city_label_source 23993; redirects 9
+rename_batches 24 (last id 39); rename_rows 1285; ledger 172 rows, last id 224; audit_log 118130 rows, ids 123592-123644 added (53)
+Audit: awards DELETE 4; cities INSERT 1, UPDATE 4; city_aliases UPDATE 1 (hand); city_label_source DELETE 8 (hand); listings DELETE 4; price DELETE 4; slugs DELETE 4, INSERT 6, UPDATE 6; venues DELETE 4, UPDATE 7.
+A1, batch 39 rename-open-items-names-2026-11-02, ledger 223: Naramachi Kuko ve_c0eba7ae71 nara/naramachi-kuko; BACK ve_f29878f198 marbella/back; Europa ve_c18fc53635 pamplona/europa. Old slugs non-canonical.
+B1, ledger 224: deleted Tokyo ve_060efda1ae (12689), Shinjuku City ve_7b85d0d345 (12648), Tokyo Ramen Street ve_2593b20be1 (12673), Daimaru Shinsaibashi ve_d8c9373112 (7091). 0 rows remain. Tokyo 592, Osaka 156. Japan Michelin 2025 rows with no URL: 6.
+C1: new city ci_931967f233 Saint-Rémy-de-Provence (Provence), 3 venues: L'Auberge de Saint-Rémy ve_4e77c0295c, Fanny rey et jonathan wahid ve_77657c7bbf, La Table de Tourrel ve_b99c2cc8b6. Alias "saint remy de provence" moved. ci_76107a3a0c Saint-Rémy moved to Burgundy, 1 venue: Cédric Burtin ve_023efa5fc2. Old slugs non-canonical.
+D1: Le Manoir ve_7b865a33b7 closed, status only. Oxford 0. Own site: "our restaurant will be closed until summer 2027".
+No write: item 12 (SLOW&LOW, Terra, closed), F1 (closed venues published 344, not published 21).
