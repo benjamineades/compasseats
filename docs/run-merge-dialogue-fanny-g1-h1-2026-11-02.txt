@@ -1,0 +1,15 @@
+Run record: G1 (Dialog in the Dark Japan) and H1 (Fanny rey et jonathan wahid). Nov 2, 2026. Ben: 09:09 ET facts and Lido 84 keep; 09:48 ET "G1, H1"; 10:05 ET "Go"; 10:08 ET "Ran".
+File: docs/merge-dialogue-fanny-g1-h1-2026-11-02.sql  sha256 4b34b7c56e283518bc1bca8c1ca623ab9f43ab854dd5d414d060a582156fc53a
+Syntax: pglast, file and DO body parse. Dry run 1 (Read connector) stopped at a gate: Claude wrote the expected slug order wrong; the file was corrected, nothing ran. Dry run 2: stopped at the first INSERT with "read-only transaction"; all pre gates passed.
+Write connector: 1 call returned "client cancelled this confirmation" after 0.6 s. Nothing ran (read after).
+Run: Ben, Supabase SQL Editor, committed 2026-11-02 15:07:50 UTC. One transaction, all gates passed.
+Read-back 2026-11-02 15:08:15 UTC, whole tables:
+venues 11296 (active 10930, closed 366); awards 25081 (last id 32024); Michelin 11377
+slugs 13008 (canonical 11296, non-canonical 1712); listings 11296; blurbs 142; price 7729 (legacy_guide 2375); cities 3263, venues_count sum 10930, cities that differ from the view 0
+city_aliases 266; city_label_source 23993; redirects 9
+rename_batches 24 (last id 39); rename_rows 1285; ledger 175 rows, last id 227; audit_log 118153 rows, ids 123645-123667 added (23)
+Audit: awards UPDATE 3; cities UPDATE 2; city_label_source DELETE 2, INSERT 2, UPDATE 3 (hand); listings DELETE 2, INSERT 1; price DELETE 1; slugs DELETE 1, INSERT 1, UPDATE 2; venues DELETE 2, INSERT 1.
+G1, ledger 225 (michelin), 226 (forbes-travel-guide): deleted Dialog in the Dark Japan ve_02074ec7f9. Award 21913 -> DIALOGUE ve_0f8d54f738. Award 21914 -> new closed venue Dialogue ve_1ceb1a3042 santa-monica/dialogue. Tokyo 591.
+H1, ledger 227 (gault-millau): merged Fanny rey et jonathan wahid ve_77657c7bbf into L'Auberge de Saint-Rémy ve_4e77c0295c. Award 21248, 2 slugs (non-canonical) and 3 labels moved. Saint-Rémy-de-Provence 2.
+No write: Lido 84 keeps Gardone Riviera (Ben, 09:09 ET).
+0 rows remain on the 2 deleted venue ids.
