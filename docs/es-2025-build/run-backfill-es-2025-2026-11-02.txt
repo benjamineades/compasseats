@@ -1,0 +1,21 @@
+Run record: Michelin Guide Spain 2025 (with Andorra) star backfill, item 4 (guide 3 of 5).
+Ben, Nov 1 2026 ET: 15:50 "N1, P2, Q1, R1, S1"; 19:35 "Y3, Z1, G1"; 19:40 "y-use, go".
+File: docs/backfill-michelin-2025-spain.sql (sha256 f19b35ab295171ba3fbcf263e765c27721a44863bc420717d0f07ddb67b0823a)
+Source: https://web.archive.org/web/20241130022008id_/https://guide.michelin.com/es/es/articulo/michelin-guide-ceremony/todas-las-estrellas-de-la-guia-michelin-espana-2025
+  292 starred = 16 / 33 / 243 (242 Spain + 1 Andorra); NEW 1 / 3 / 32; ceremony Murcia, Nov 26 2024.
+Relay sha256 27850f82436de16518689cbcd617b08c5d4f0ea5f2b56bb945062853155faf67
+Link map sha256 99ce36e453f63c917974df38f2b1d4aef250dfe9c50aedf72a3a8a98d8c574b6
+Plan md5 505b7c2694bb6f6ac7c16453ae2f6139; seq:venue md5 f3546777d28ca3038df1aecc58648f80;
+existing ids md5 fbb517a822ede96ed0b57a5eb1755c73 (6331, 6335, 7867).
+Match: card 273; V1 3; Y (moved/renamed) 3: 37 Ramon Freixa Madrid -> ve_b705060cf6 (Atelier, Velazquez 24),
+  150 Ancestral -> ve_c87595d42b (Pozuelo de Alarcon), 158 Haydee -> ve_4ecd793ec3 (Adeje);
+  Z1 name-only 3: 76 Aurt ve_27266639a6, 93 Teatro kitchen & bar ve_6532e88951, 132 Tohqa ve_b1c292cecb.
+Q1 skipped 10 (no venue): 47, 88, 133, 172, 203, 214, 244, 262, 263, 289.
+Checks before the run: plan read (card 273, use 9, 282 distinct venues, all ES/AD, 0 star conflicts, 5 closed);
+  pglast syntax check passed; dry run through the Read connector stopped at the first UPDATE ("read-only transaction").
+Run: Write connector, first try, committed. Read-back 2026-11-02 00:42:36 UTC:
+  awards 24,643 (new ids 31304-31582, 279 INSERT); URL fills 6331, 6335, 7867;
+  Michelin 10,939; Michelin 2025 4,563 (no URL 3,221); Green Star 2025 31 (unchanged);
+  ES/AD Michelin 2025 285; archive-URL rows by category One Star 234, Three Stars 16, Two Stars 32;
+  venues 11,299; slugs 13,002; cities 3,260; venues_count sum 10,934; price 7,733; listings 11,299;
+  ledger 164 rows, new id 216 (items 282); audit_log 117,583 rows, new ids 122,814-123,095 (INSERT, UPDATE).

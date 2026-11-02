@@ -1,0 +1,292 @@
+001|Three Stars|Arriondas|Casa Marcial|NEW
+002|Three Stars|Barcelona|ABaC|
+003|Three Stars|Barcelona|Cocina Hermanos Torres|
+004|Three Stars|Barcelona|Disfrutar|
+005|Three Stars|Barcelona|Lasarte|
+006|Three Stars|C\u00e1ceres|Atrio|
+007|Three Stars|C\u00f3rdoba|Noor|
+008|Three Stars|D\u00e9nia|Quique Dacosta|
+009|Three Stars|Donostia / San Sebasti\u00e1n|Akela\u0155e|
+010|Three Stars|Donostia / San Sebasti\u00e1n|Arzak|
+011|Three Stars|El Puerto de Santa Mar\u00eda|Aponiente|
+012|Three Stars|Girona|El Celler de Can Roca|
+013|Three Stars|Larrabetzu|Azurmendi|
+014|Three Stars|Lasarte \u2013 Oria|Mart\u00edn Berasategui|
+015|Three Stars|Madrid|DiverXO|
+016|Three Stars|Villaverde de Pontones|Cenador de Am\u00f3s|
+017|Two Stars|Adeje|El Rinc\u00f3n de Juan Carlos|
+018|Two Stars|Almansa|Maralba|
+019|Two Stars|Barcelona|Cinc Sentits|
+020|Two Stars|Barcelona|Enoteca Paco P\u00e9rez|
+021|Two Stars|Canyamel|Voro|
+022|Two Stars|Chiclana de la Frontera|Alevante|NEW
+023|Two Stars|Cocentaina|L\u2019Escaleta|
+024|Two Stars|Cor\u00e7\u00e0|Bo.TiC|
+025|Two Stars|Daroca de Rioja|Venta Moncalvillo|
+026|Two Stars|Donostia / San Sebasti\u00e1n|Amelia by Paulo Airaudo|
+027|Two Stars|El Palmar|Caba\u00f1a Buenavista|
+028|Two Stars|Errenteria|Mugaritz|
+029|Two Stars|Ezcaray|El Portal de Echaurren|
+030|Two Stars|Gu\u00eda de Isora|M.B|
+031|Two Stars|Jerez de la Frontera|L\u00da Cocina y Alma|NEW
+032|Two Stars|Llan\u00e7\u00e0|Miramar|
+033|Two Stars|Madrid|Coque|
+034|Two Stars|Madrid|Deessa|
+035|Two Stars|Madrid|DSTAgE|
+036|Two Stars|Madrid|Paco Roncero|
+037|Two Stars|Madrid|Ram\u00f3n Freixa Madrid|
+038|Two Stars|Madrid|Smoked Room|
+039|Two Stars|Marbella|Skina|
+040|Two Stars|O Grove|Culler de Pau|
+041|Two Stars|Olot|Les Cols|
+042|Two Stars|Rax\u00f3|Pepe Vieria|
+043|Two Stars|Ronda|Bardal|
+044|Two Stars|Santa Comba|Retiro da Costi\u00f1a|NEW
+045|Two Stars|Toledo|Iv\u00e1n Cerde\u00f1o|
+046|Two Stars|Urdaitz|El Molino de Urd\u00e1niz|
+047|Two Stars|Val\u00e8ncia|El Poblet|
+048|Two Stars|Val\u00e8ncia|Ricard Camarena|
+049|Two Stars|X\u00e0bia|BonAmb|
+050|One Star|Soldeu|Ibaya|
+051|One Star|A Coru\u00f1a|\u00c1rbore da Veira|
+052|One Star|Adeje|Donaire|NEW
+053|One Star|Adeje|Il Bocconcino by Royal Hideaway|NEW
+054|One Star|Adeje|Nub|
+055|One Star|Adeje|San-H\u00f4|
+056|One Star|Ainsa|Callizo|
+057|One Star|Alacant|Baeza & Rufete|
+058|One Star|Albacete|Ababol|
+059|One Star|Alcal\u00e1 del Valle|Mes\u00f3n Sabor Andaluz|NEW
+060|One Star|Alcanar|Citrus del Tancat|NEW
+061|One Star|Alcoseebre|Atalaya|
+062|One Star|Amorebieta \u2013 Etxano|Boroa|
+063|One Star|Ampuero|Solana|
+064|One Star|Anciles|Ansils|NEW
+065|One Star|Angl\u00e8s|L\u2019Alian\u00e7a d\u2019Angl\u00e8s|
+066|One Star|Arb\u00facies|Les Magn\u00f2lies|
+067|One Star|Arriondas|El Corral del Indianu|
+068|One Star|\u00c1vila|Barro|
+069|One Star|Axpe|Etxebarri|
+070|One Star|Axpe|Txispa|
+071|One Star|Baeza|Vandelvira|
+072|One Star|Barcelona|Aleia|
+073|One Star|Barcelona|Alkimia|
+074|One Star|Barcelona|Angle|
+075|One Star|Barcelona|Atempo|
+076|One Star|Barcelona|A\u00fcrt|
+077|One Star|Barcelona|Caelis|
+078|One Star|Barcelona|COME by Paco M\u00e9ndez|
+079|One Star|Barcelona|Dos Palillos|
+080|One Star|Barcelona|Enigma|
+081|One Star|Barcelona|Fish\u00f8logy|NEW
+082|One Star|Barcelona|Hisop|
+083|One Star|Barcelona|Hofmann|
+084|One Star|Barcelona|Koy Shunka|
+085|One Star|Barcelona|MAE Barcelona|NEW
+086|One Star|Barcelona|Moments|
+087|One Star|Barcelona|Mont Bar|
+088|One Star|Barcelona|Oria|
+089|One Star|Barcelona|Prodigi|NEW
+090|One Star|Barcelona|Quirat|
+091|One Star|Barcelona|Slow & Low|
+092|One Star|Barcelona|Suto|
+093|One Star|Barcelona|Teatro kitchen & bar|NEW
+094|One Star|Barcelona|Via Veneto|
+095|One Star|Barizo|As Garzas|
+096|One Star|Bellv\u00eds|La Boscana|
+097|One Star|Benavente|El Ermita\u00f1o|
+098|One Star|Benicarl\u00f3|Ra\u00fal Resino|
+099|One Star|Benissa|Casa Bernardi|
+100|One Star|Bilbao|Mina|
+101|One Star|Bilbao|Nerua Guggenheim Bilbao|
+102|One Star|Bilbao|Ola Mart\u00edn Berasategui|
+103|One Star|Bilbao|Zarate|
+104|One Star|Burgos|Cobo Evoluci\u00f3n|
+105|One Star|Burgos|Ricardo Temi\u00f1o|NEW
+106|One Star|C\u00e1diz|C\u00f3digo de Barra|
+107|One Star|Calldetenes|Can Jubany|
+108|One Star|Calp|Audrey\u2019s|
+109|One Star|Calp|Beat|
+110|One Star|Calp|Orobianco|
+111|One Star|Cambados|Yayo Daporta|
+112|One Star|Cambrils|Can Bosch|
+113|One Star|Cambrils|Rinc\u00f3n de Diego|
+114|One Star|Canfranc-Estaci\u00f3n|Canfranc Express|
+115|One Star|Carcaixent|Origen|NEW
+116|One Star|Cartagena|Magoga|
+117|One Star|Casas-Ib\u00e1\u00f1ez|Oba-|
+118|One Star|Castell\u00f3 d\u2019Emp\u00faries|Emporium|
+119|One Star|Castroverde de Campos|Lera|
+120|One Star|C\u00f3rdoba|Choco|
+121|One Star|Cornudella de Montsant|Quatre Molins|
+122|One Star|Cuenca|Casas Colgadas Restaurante|NEW
+123|One Star|D\u00e9nia|Peix & Brases|
+124|One Star|Dima|Garena|
+125|One Star|Donostia \u2013 San Sebasti\u00e1n|iBAi by Paulo Airaudo|NEW
+126|One Star|Donostia - San Sebasti\u00e1n|Kokotxa|
+127|One Star|Eivissa|La Gaia|
+128|One Star|Eivissa|Omakase by Walt|
+129|One Star|El Ejido|La Costa|
+130|One Star|El Masnou|Tresmacarrons|
+131|One Star|Elche|La Finca|
+132|One Star|El Puerto de Santa Mar\u00eda|Tohqa|
+133|One Star|Es Canar|Etxeko Ibiza|
+134|One Star|Es Capdell\u00e0|Sa Clastra|
+135|One Star|Fisterra|Terra|
+136|One Star|Fuengirola|Sollo|
+137|One Star|Galdakao|Andra Mari|
+138|One Star|Getaria|Elkano|
+139|One Star|Gij\u00f3n|Auga|
+140|One Star|Gij\u00f3n|Marcos|
+141|One Star|Gimenells|Malena|
+142|One Star|Girona|Divinum|NEW
+143|One Star|Girona|Massana|
+144|One Star|Gombr\u00e8n|La Fonda Xesc|
+145|One Star|Haro|Nublo|
+146|One Star|Hondarribia|Alameda|
+147|One Star|Hoznayo|La Bicicleta|
+148|One Star|Huesca|Lillas Pastia|
+149|One Star|Huesca|Tatau|
+150|One Star|Illescas|Ancestral|
+151|One Star|Illescas|El Boh\u00edo|
+152|One Star|Ja\u00e9n|Bag\u00e1|
+153|One Star|Ja\u00e9n|Dama Juana|
+154|One Star|Ja\u00e9n|Malak|
+155|One Star|Ja\u00e9n|Radis|
+156|One Star|Jerez de la Frontera|Mant\u00faa|
+157|One Star|La Nucia|El Xato|
+158|One Star|La Orotava|Hayd\u00e9e by V\u00edctor Su\u00e1rez|
+159|One Star|La Vall de Bianya|Ca l\u2019Enric|
+160|One Star|Larrabetzu|Eneko|
+161|One Star|Las Palmas de Gran Canaria|Muxgo|NEW
+162|One Star|Las Palmas de Gran Canaria|Poemas by Hermanos Padr\u00f3n|
+163|One Star|Las Palmas de Gran Canaria|Tabaiba|
+164|One Star|Le\u00f3n|Cocinandos|
+165|One Star|Le\u00f3n|Pablo|
+166|One Star|Llagostera|Els Tinars|
+167|One Star|Llanes|El Retiro|
+168|One Star|Llucmajor|Andreu Genestra|
+169|One Star|Logro\u00f1o|Ajonegro|
+170|One Star|Logro\u00f1o|Ikaro|
+171|One Star|Logro\u00f1o|Kiro Sushi|
+172|One Star|Loja|La Finca|
+173|One Star|Madrid|A\u2019Barra|
+174|One Star|Madrid|CEBO|
+175|One Star|Madrid|Chispa Bistr\u00f3|NEW
+176|One Star|Madrid|Clos Madrid|
+177|One Star|Madrid|Corral de la Morer\u00eda Gastron\u00f3mico|
+178|One Star|Madrid|Desde 1911|
+179|One Star|Madrid|El Invernadero|
+180|One Star|Madrid|Gayt\u00e1n|
+181|One Star|Madrid|Gofio|NEW
+182|One Star|Madrid|La Tasquer\u00eda|
+183|One Star|Madrid|OSA|
+184|One Star|Madrid|Pab\u00fa|NEW
+185|One Star|Madrid|Quimbaya|
+186|One Star|Madrid|RavioXO|
+187|One Star|Madrid|Ricardo Sanz Wellington|
+188|One Star|Madrid|Saddle|
+189|One Star|Madrid|Santerra|
+190|One Star|Madrid|Sen Omakase|NEW
+191|One Star|Madrid|Toki|
+192|One Star|Madrid|Ugo Chan|
+193|One Star|Madrid|VelascoAbell\u00e0|NEW
+194|One Star|Madrid|Yugo The Bunker|
+195|One Star|M\u00e1laga|Blossom|NEW
+196|One Star|M\u00e1laga|Jos\u00e9 Carlos Garc\u00eda|
+197|One Star|M\u00e1laga|Kaleja|
+198|One Star|Marbella|BACK|
+199|One Star|Marbella|Messina|
+200|One Star|Marbella|Nintai|
+201|One Star|Matapozuelos|La Botica de Matapozuelos|
+202|One Star|Miranda de Ebro|Alejandro Serrano|
+203|One Star|Miranda de Ebro|Erre de Roca|
+204|One Star|Mog\u00e1n|Los Guayres|
+205|One Star|Murcia|Almo de Juan Guillam\u00f3n|
+206|One Star|Murcia|Frases|NEW
+207|One Star|Muro|Fusion19|
+208|One Star|Navaleno|La Lobita|
+209|One Star|Olost|Sala|
+210|One Star|Ondara|Casa Pepa|
+211|One Star|Ortiguera|Ferpel Gastron\u00f3mico|
+212|One Star|Ourense|Ceibe|
+213|One Star|Ourense|Nova|
+214|One Star|Oviedo|NM|
+215|One Star|Padr\u00f3n|O\u2019Pazo|
+216|One Star|Palma|DINS Santi Taura|
+217|One Star|Palma|Marc Fosh|
+218|One Star|Palma|Zaranda|
+219|One Star|Palmanova|Es Fum|
+220|One Star|Pamplona|Europa|
+221|One Star|Pamplona|Kabo|
+222|One Star|Pamplona|Rodero|
+223|One Star|Patalavaca|La Aquarela|
+224|One Star|Pe\u00f1afiel|Ambivium|
+225|One Star|Peralada|Castell Peralada|
+226|One Star|Playa de las Am\u00e9ricas|Taste 1973|
+227|One Star|Playa Blanca|Kamez\u00ed|NEW
+228|One Star|Ponferrada|Mu\u2022na|
+229|One Star|Pontevedra|Eirado|
+230|One Star|Portbou|Voramar|NEW
+231|One Star|Port d\u2019Alc\u00fadia|Maca de Castro|
+232|One Star|Prendes|Casa Gerardo|
+233|One Star|Quintanilla de On\u00e9simo|Taller Arzuaga|
+234|One Star|Ribadesella|Ayalga|
+235|One Star|Sag\u00e0s|Els Casals|
+236|One Star|Sagunt|Arrels|
+237|One Star|Salamanca|En la Parra|
+238|One Star|Salamanca|V\u00edctor Guti\u00e9rrez|
+239|One Star|Salinas|Real Balneario|
+240|One Star|Salou|Deliranto|
+241|One Star|San Feliz|Monte|
+242|One Star|San Lorenzo de El Escorial|Montia|
+243|One Star|San Salvador de Poio|Solla|
+244|One Star|Sant Antoni de Portmany|Es Trag\u00f3n|
+245|One Star|Sant Fruit\u00f3s de Bages|L\u2019\u00d3|
+246|One Star|Sant Josep de sa Talaia|Unic|
+247|One Star|Sant Juli\u00e0 de Ramis|Esperit Roca|NEW
+248|One Star|Sant Mart\u00ed Sarroca|Casa Nova|NEW
+249|One Star|Santa Coloma de Gramenet|Lluerna|
+250|One Star|Santa Cruz de Campezo|ARREA!|
+251|One Star|Santander|Casona del Jud\u00edo|
+252|One Star|Santander|El Serbal|
+253|One Star|Santiago de Compostela|A Tafona|
+254|One Star|Santiago de Compostela|Casa Marcelo|
+255|One Star|Santiago de Compostela|Simpar|NEW
+256|One Star|Sardas|La Era de los Nogales|NEW
+257|One Star|Sard\u00f3n de Duero|Refectorio|
+258|One Star|Sevilla|Abantal|
+259|One Star|Sevilla|Ca\u00f1abota|
+260|One Star|Sig\u00fcenza|El Doncel|
+261|One Star|Sig\u00fcenza|El Molino de Alcuneza|
+262|One Star|S\u00f3ller|B\u00e9ns d\u2019Avall|
+263|One Star|Soria|Baluarte|
+264|One Star|Sort|Fogony|
+265|One Star|Talavera de la Reina|Ra\u00edces-Carlos Maldonado|
+266|One Star|Tolosa|Ama|NEW
+267|One Star|Tomelloso|Ep\u00edlogo|NEW
+268|One Star|Torre de Juan Abad|Coto de Quevedo Evoluci\u00f3n|
+269|One Star|Torrenueva|Retama|
+270|One Star|Tramacastilla|Hospeder\u00eda El Bat\u00e1n|
+271|One Star|Ulldecona|L\u2019Antic Mol\u00ed|
+272|One Star|Ulldecona|Les Moles|
+273|One Star|Valdemorillo|La Casa de Manolo Franco|NEW
+274|One Star|Valdemoro|Chir\u00f3n|
+275|One Star|Val\u00e8ncia|Fierro|
+276|One Star|Val\u00e8ncia|Fraula|
+277|One Star|Val\u00e8ncia|Kaido Sushi Bar|
+278|One Star|Val\u00e8ncia|La Salita|
+279|One Star|Val\u00e8ncia|Lienzo|
+280|One Star|Val\u00e8ncia|Riff|
+281|One Star|Vall d\u2019Alba|Cal Parad\u00eds|
+282|One Star|Valladolid|Alquimia \u2013 Laboratorio|
+283|One Star|Valladolid|Trigo|
+284|One Star|Villanova|Casa Arcas|NEW
+285|One Star|Vigo|Maruja Lim\u00f3n|
+286|One Star|Vigo|Silabario|
+287|One Star|X\u00e0bia|Tula|
+288|One Star|Xerta|Villa Retiro|
+289|One Star|Zaragoza|Cancook|
+290|One Star|Zaragoza|Gente Rara|
+291|One Star|Zaragoza|La Prensa|
+292|One Star|Zarza de Granadilla|Vers\u00e1til|
