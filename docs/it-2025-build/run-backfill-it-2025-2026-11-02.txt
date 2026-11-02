@@ -1,0 +1,19 @@
+Run record: Italy 2025 star backfill (item 4, guide 5 of 5)
+Ben: Nov 2 05:44 ET "Z2, H2, G1"; 06:02 ET "Go" (C1 = pair Contaminazioni; Ha = 385 -> Scorze venue, 218 skip).
+File: docs/backfill-michelin-2025-italy.sql  sha256 3a3c6f5a2c6448f82f64f90f283d646ce8cb2001e1d7560927f7c7e86e53b00c
+Plan md5 d748ff347794c270a01b59e4eab15189; seq:venue md5 4c25150f45bcaf66094ba69ed5f7402a; existing ids md5 0548104fe69a02b66108b6a0b6084a9a
+Counts before: counts-before-2026-11-02T1059.json (read 2026-11-02 10:59:28 UTC)
+Dry run (Read connector): all pre-checks passed; stopped at the first write ("read-only transaction").
+Run (Write connector, 1 transaction, first try): committed, no error (all in-transaction post-checks passed).
+
+Read-back 2026-11-02 11:04:44 UTC (whole tables):
+  awards 25,078 (was 24,713; last id 32,017; new ids 31,653-32,017)
+  Michelin 11,374; Michelin 2025 4,998; Michelin 2025 no URL 3,218; Green Star 2025 55 (unchanged)
+  Italy Michelin 2025: Bib Gourmand 2 (legacy, unchanged), One Star 315, Two Stars 38, Three Stars 14
+  Rows with the Italy archive URL: 367 (365 INSERT + 2 URL fills: 3729 Octavin, 8939 Atman)
+  venues 11,299 (active 10,934); slugs 13,002; price 7,733; listings 11,299; cities 3,260; venues_count sum 10,934
+  source_capture_ledger 166 rows, last id 218 (items 367, job backfill:michelin-2025-italy-archive)
+  audit_log 118,021 rows, last id 123,533 (new 123,167-123,533: INSERT 365, UPDATE 2)
+Spot check: 385 -> ve_74d392b2d5 Ristorante San Martino (Scorze) 32011; 391 -> Il Desco 32016; 392 -> Iris 32017;
+  390 -> Wisteria 32015; 97 -> Contaminazioni 31743; 183 -> Lido 84 31825; 14 -> Casa Perbellini 31666 Three Stars.
+Skipped (26): Q1 25 (no venue) + 218 San Martino Treviglio (no venue; the card match pointed at the Scorze venue).
