@@ -1,0 +1,12 @@
+Run record: Italy 2026 status and name pairs. Nov 2, 2026. Ben: 08:06 ET "E1, U1, N1"; 08:15 ET "Go".
+File: docs/fix-michelin-2026-italy-status-names.sql  sha256 7f90e04456177ffcabc92f2b4ecf38629dea5b03ecc5a39fa3e7665d7a4cc783
+Build: docs/it-2026-build/build_status_names_it_2026.py
+Syntax: pglast 3 statements, body parses. Dry run (Read connector): stopped at the first UPDATE with "read-only transaction"; all pre gates passed.
+Run: Write connector, first try, last audit row 2026-11-02 13:16:42 UTC. All gates passed.
+Read-back 2026-11-02 13:16:58 UTC, whole tables:
+venues 11301 (active 10937, closed 364); awards 25085 (last id 32024); Michelin 11381
+slugs 13006 (non-canonical 1705); listings 11301; blurbs 142; price 7734; cities 3262, venues_count sum 10937; aliases 266; labels 24001
+rename_batches 23 (last id 38); rename_rows 1282; ledger 170 rows, last id 222; audit_log 118077 rows, ids 123578-123591 added (venues 5, cities 1, slugs 8)
+Closed: Santa Elisabetta ve_e1339c5391 (Florence 27).
+Renamed: Il Desco ve_b24b1c1085, Iris Ristorante ve_acdfd2daf5, San Martino ve_74d392b2d5, Atman ve_48fe5153e8.
+No write: Assonica, Unforgettable, Impronte.
