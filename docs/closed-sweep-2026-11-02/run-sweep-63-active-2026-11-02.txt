@@ -1,0 +1,11 @@
+Run record: docs/fix-status-sweep-63-active-2026-11-02.sql
+sha256 19c7df5bbfeb1e8520733b4fad4f435c18d1a9c7924a554f6cd03e761eab2c4a
+Ben: 14:14 ET "1A, 2A, 3A, 4A, 5A"; 14:18 ET "Go".
+Write connector, first try. Audit first row Nov 2 2026, 19:19:40 UTC. The SQL body was sent without the header comments.
+Read-back 19:19:45 UTC, whole tables:
+venues 11,296 (active 10,988, closed 308); awards 25,097; slugs 13,017; price 7,728; listings 11,296; cities 3,264.
+cities.venues_count sum 10,988; 0 cities differ from the view.
+closed published 0; closed not published 308; active not published 0.
+ledger 182 rows, last id 234 (no change).
+audit_log 118,776 rows, new ids 124,123-124,290: cities UPDATE 42, listings UPDATE 63, venues UPDATE 63.
+Evidence for all 201 venues: docs/closed-sweep-2026-11-02/closed-sweep-201-evidence-2026-11-02.csv (sha256 e68e57aafef0c50c896550f3b07d4c9875cf57ff72598d51e9e9d15994444017).
