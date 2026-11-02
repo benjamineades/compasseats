@@ -1,0 +1,2 @@
+add-es-2026-erre-de-roca-2026-11-02.sql sha256 2dec1f846614a67cef3847ce596bd6724536e7c86c6b4277710e677ae29cf08c
+Ben "go" Nov 2 12:36 ET. Write connector, first try, all gates passed. Ledger 233-234. Audit 123750-123756.
