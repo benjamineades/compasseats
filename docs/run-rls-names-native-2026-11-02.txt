@@ -11,3 +11,10 @@ rename_batches 25 (last id 40); rename_rows 1293; ledger 176 rows, last id 228; 
 Le Manoir aux Quat’Saisons ve_7b865a33b7 oxford/le-manoir-aux-quat-saisons; La Palmeraie ve_d1cccaafdf; La Chapelle ve_7963871c91; La Passagère ve_ee898a4ee3; René et Maxime Meilleur ve_a8d9697131; Les Explorateurs ve_eb0dbfc986; La Côte d'Or ve_2e35f20ae1; Restaurant Girardin ve_634228e9d5.
 Naramachi Kuko ve_c0eba7ae71 name_native 奈良町 枸杞.
 France 2026 list read: docs/fr-2026-list-read/relay-fr-2026-article-2026-11-02.txt (668 lines: 31 / 84 / 553), source guide.michelin.com/fr/fr/article/michelin-guide-ceremony/la-liste-complete-des-etoiles-du-guide-michelin-france-2026.
+
+France 3A. Ben: 10:34 ET "3A"; 11:12 ET "Go France".
+File: docs/fix-fr-2026-list-11-rows-3-names-2026-11-02.sql sha256 f492885a5948c2a0021135dd5ab19700fc89d9b786980089449654f6c906d23a
+Run: Claude, Write connector, first try, about 16:13 UTC. BEGIN to COMMIT sent; header comment lines not sent. No error, so all gates passed.
+Read-back 2026-11-02 16:13:30 UTC, whole tables: venues 11296 (active 10930, closed 366); awards 25092 (last id 32035); France and Monaco Michelin 2026 star rows 666;
+slugs 13016 (non-canonical 1720); price 7729; cities sum 10930; rename_batches 26 (last id 41); rename_rows 1296; ledger 178 rows, last id 230; audit_log 118198, ids 123693-123712 (20).
+Names: La Flibuste ve_e1bffb1188, La Table de l'Alpaga ve_68ad93cad4, Le Sarkara ve_95253d6c9e. New award rows: 11, list article URL. All 11 cards give a 404.
