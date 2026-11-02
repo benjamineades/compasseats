@@ -1,0 +1,224 @@
+1|aargau-region/kunten-sulz/restaurant/fahr|Fahr|Künten-Sulz, Switzerland|€€€€
+1|aargau-region/lenzburg/restaurant/rosmarin-1207137|Rosmarin|Lenzburg, Switzerland|€€€€
+1|appenzell-ausserrhoden/gais/restaurant/truube|Truube|Gais, Switzerland|€€€
+1|appenzell-ausserrhoden/rehetobel/restaurant/gasthaus-zum-gupf|Gasthaus Zum Gupf|Rehetobel, Switzerland|€€€
+1|appenzell-innerrhoden/gonten/restaurant/barenstobe|Bärenstobe|Gonten, Switzerland|€€€€
+1|basel-landschaft/bubendorf/restaurant/le-murenberg|Le Murenberg|Bubendorf, Switzerland|€€€
+1|basel-landschaft/oberwil/restaurant/schlussel-1244305|Schlüssel|Oberwil, Switzerland|€€€
+1|basel-stadt/basel/restaurant/ackermannshof|Ackermannshof|Basel, Switzerland|€€€€
+1|basel-stadt/basel/restaurant/restaurant-la|Restaurant LA|Basel, Switzerland|€€€
+1|bern-region/adelboden/restaurant/alpenblick|Alpenblick - Stuba|Adelboden, Switzerland|€€€€
+1|bern-region/bern/restaurant/myle|MYLE|Berne, Switzerland|€€€€
+1|bern-region/bern/restaurant/wein-sein-mit-harzbluet|Wein & Sein|Berne, Switzerland|€€€€
+1|bern-region/bern/restaurant/zoe|ZOE|Berne, Switzerland|€€€€
+1|bern-region/biel/restaurant/du-bourg-1218243|Du Bourg|Biel, Switzerland|€€€€
+1|bern-region/burgdorf/restaurant/zur-gedult|Zur Gedult|Burgdorf, Switzerland|€€€€
+1|bern-region/grindelwald/restaurant/1910-gourmet-by-hausers|1910 Gourmet by Hausers|Grindelwald, Switzerland|€€€€
+1|bern-region/grindelwald/restaurant/fiescherblick|Fiescherblick|Grindelwald, Switzerland|€€€
+1|bern-region/interlaken/restaurant/radius-by-stefan-beer|Radius by Stefan Beer|Interlaken, Switzerland|€€€€
+1|bern-region/ligerz/restaurant/aux-trois-amis|Aux Trois Amis|Ligerz, Switzerland|€€€
+1|bern-region/sonceboz/restaurant/du-cerf|Du Cerf|Sonceboz, Switzerland|€€€€
+1|bern-region/steffisburg/restaurant/panorama-cayenne|Panorama - Cayenne|Steffisburg, Switzerland|€€€
+1|bern-region/thun/restaurant/centric-dining|Centric Dining|Thun, Switzerland|€€€€
+1|bern-region/wengi-bei-buren/restaurant/sonne180069|Sonne|Wengi bei Büren, Switzerland|€€€€
+1|bern-region/wilderswil/restaurant/alpenblick179404|Alpenblick|Wilderswil, Switzerland|€€€€
+1|fribourg-region/fribourg/restaurant/des-trois-tours-1195868|Des Trois Tours|Fribourg, Switzerland|€€€€
+1|fribourg-region/fribourg/restaurant/le-perolles|Le Pérolles|Fribourg, Switzerland|€€€€
+1|fribourg-region/villarepos/restaurant/auberge-de-la-croix-blanche|Auberge de la Croix Blanche|Villarepos, Switzerland|€€€
+1|geneve-region/geneve/restaurant/arakel|Arakel|Geneva, Switzerland|€€€
+1|geneve-region/geneve/restaurant/bayview|Bayview by Danny Khezzar|Geneva, Switzerland|€€€€
+1|geneve-region/geneve/restaurant/f-p-journe-le-restaurant|F.P.Journe Le Restaurant|Geneva, Switzerland|€€€
+1|geneve-region/geneve/restaurant/il-lago|Il Lago|Geneva, Switzerland|€€€€
+1|geneve-region/geneve/restaurant/l-aparte114414|L'Aparté|Geneva, Switzerland|€€€
+1|geneve-region/geneve/restaurant/la-micheline|La Micheline|Geneva, Switzerland|€€€
+1|geneve-region/geneve/restaurant/tosca525872|Tosca|Geneva, Switzerland|€€€
+1|geneve-region/satigny/restaurant/domaine-de-chateauvieux|Domaine de Châteauvieux|Satigny, Switzerland|€€€€
+1|geneve-region/thnex/restaurant/le-cigalon179243|Le Cigalon|Thônex, Switzerland|€€€
+1|geneve-region/troinex/restaurant/la-chaumiere-by-serge-labrosse|La Chaumière by Serge Labrosse|Troinex, Switzerland|€€€
+1|graubunden/brail/restaurant/vivanda310725|Vivanda|Brail, Switzerland|€€€€
+1|graubunden/davos-platz/restaurant/apollo|Apollo|Davos Platz, Switzerland|€€€€
+1|graubunden/frstenau/restaurant/oz|OZ|Fürstenau, Switzerland|€€€€
+1|graubunden/la-punt-chamues-ch/restaurant/gasthaus-krone|LA CHAVALLERA in der Krone Säumerei am Inn|La Punt-Chamues-ch, Switzerland|€€€€
+1|graubunden/madulain/restaurant/chesa-stuva-colani|Chesa Stüva Colani|Madulain, Switzerland|€€€€
+1|graubunden/sankt-moritz/restaurant/talvo|Talvo|Saint Moritz, Switzerland|€€€€
+1|luzern-region/brunnen/restaurant/birdy-s-by-achtien-the-nest|Birdy's by Achtien - The Nest|Brunnen, Switzerland|€€€€
+1|luzern-region/kriens_1150909/restaurant/sonnenberg-le-soir|Sonnenberg le soir|Kriens, Switzerland|€€€
+1|luzern-region/luzern/restaurant/caaa-by-pietro-catalano|CAAA by Pietro Catalano|Lucerne, Switzerland|€€€€
+1|luzern-region/luzern/restaurant/de-matos|de MATOS|Lucerne, Switzerland|€€€
+1|luzern-region/luzern/restaurant/lucide|Lucide|Lucerne, Switzerland|€€€€
+1|luzern-region/luzern/restaurant/maihofli|Maihöfli by UniQuisine|Lucerne, Switzerland|€€€
+1|luzern-region/luzern/restaurant/minamo|Minamo|Lucerne, Switzerland|€€€€
+1|luzern-region/romoos_1152275/restaurant/wiesner-mysterion-zauber|Wiesner Mysterion - Wiesner - Zauber|Romoos, Switzerland|€€€€
+1|nidwalden/hergiswil/restaurant/seerestaurant-belvedere|Seerestaurant Belvédère|Hergiswil, Switzerland|€€€€
+1|nidwalden/stansstad/restaurant/uniquisine-atelier|UniQuisine Atelier|Stansstad, Switzerland|€€€€
+1|sankt-gallen-region/bad-ragaz/restaurant/verve-by-sven|verve by sven|Bad Ragaz, Switzerland|€€€
+1|sankt-gallen-region/balgach/restaurant/bad-balgach-by-schutzelhofer|Bad Balgach by Schützelhofer|Balgach, Switzerland|€€€
+1|sankt-gallen-region/lmmenschwil/restaurant/neue-blumenau|Neue Blumenau|Lömmenschwil, Switzerland|€€€
+1|sankt-gallen-region/mels/restaurant/schlussel-nidbergstube|Schlüssel - Nidbergstube|Mels, Switzerland|€€€€
+1|sankt-gallen-region/sankt-gallen/restaurant/corso-547750|Corso|Sankt Gallen, Switzerland|€€€
+1|sankt-gallen-region/sankt-gallen/restaurant/jagerhof|Jägerhof|Sankt Gallen, Switzerland|€€€
+1|sankt-gallen-region/sankt-gallen/restaurant/soleil-d-or-by-david-geisser|Soleil d’Or by David Geisser|Sankt Gallen, Switzerland|€€€€
+1|sankt-gallen-region/wittenbach/restaurant/segreto|Segreto|Wittenbach, Switzerland|€€€€
+1|schaffhausen-region/schaffhausen/restaurant/villa-sommerlust|Villa Sommerlust|Schaffhausen, Switzerland|€€€
+1|solothurn-region/flh/restaurant/wirtshaus-zur-sage|Wirtshaus Zur Säge|Flüh, Switzerland|€€€€
+1|solothurn-region/riedholz/restaurant/attisholz-le-feu|Château Attisholz - Le feu|Riedholz, Switzerland|€€€€
+1|solothurn-region/trimbach/restaurant/traube179829|Traube|Trimbach, Switzerland|€€€€
+1|ticino/ascona/restaurant/locanda-barbarossa|Locanda Barbarossa|Ascona, Switzerland|€€€€
+1|ticino/bellinzona/restaurant/locanda-orico|Locanda Orico|Bellinzona, Switzerland|€€€€
+1|ticino/castel-san-pietro/restaurant/osteria-enoteca-cuntitt|Osteria Enoteca Cuntitt|Castel San Pietro, Switzerland|€€€
+1|ticino/losone/restaurant/osteria-dell-enoteca|Osteria dell'Enoteca|Losone, Switzerland|€€€€
+1|ticino/lugano/restaurant/felix-lo-basso-restaurant|Soledì Restaurant|Lugano, Switzerland|€€€€
+1|ticino/lugano/restaurant/i-due-sud|I Due Sud|Lugano, Switzerland|€€€€
+1|ticino/lugano/restaurant/meta-1192226|META|Lugano, Switzerland|€€€€
+1|ticino/lugano/restaurant/the-view473933|THE VIEW|Lugano, Switzerland|€€€€
+1|ticino/morbio-inferiore_1156290/restaurant/ristorante-con-enoteca-origini|Ristorante con enoteca Origini|Morbio Inferiore, Switzerland|€€
+1|uri/andermatt/restaurant/gutsch-by-markus-neff|GÜTSCH by Markus Neff|Andermatt, Switzerland|€€€
+1|uri/andermatt/restaurant/the-japanese-by-the-chedi|The Japanese at Gütsch|Andermatt, Switzerland|€€€€
+1|vaud/aubonne/restaurant/njorden|Njørden|Aubonne, Switzerland|€€€€
+1|vaud/ballaigues/restaurant/la-croix-d-or-1202971|La Croix d'Or|Ballaigues, Switzerland|€€€
+1|vaud/brent/restaurant/le-pont-de-brent-1214910|Le Pont de Brent|Brent, Switzerland|€€€
+1|vaud/cheseaux-noraz/restaurant/table-de-mary|Table de Mary|Cheseaux-Noréaz, Switzerland|€€€
+1|vaud/lausanne/restaurant/le-berceau-des-sens|Le Berceau des Sens|Lausanne, Switzerland|€€€
+1|vaud/montreux/restaurant/stephane-decotterd|Stéphane Décotterd|Montreux, Switzerland|€€€€
+1|vaud/ollon_1156456/restaurant/hotel-de-ville-179826|Restaurant de l'Hôtel de Ville|Ollon, Switzerland|€€€€
+1|vaud/yverdon-les-bains/restaurant/restaurant-de-l-hotel-de-ville-gerber-wyss|Restaurant GERBER WYSS|Yverdon-les-Bains, Switzerland|€€€€
+1|wallis/champex-lac/restaurant/au-1465|Au 1465|Champex-Lac, Switzerland|€€€€
+1|wallis/crans-montana/restaurant/l-ours179041|L'OURS|Crans-Montana, Switzerland|€€€€
+1|wallis/crans-montana/restaurant/le-montblanc|LeMontBlanc|Crans-Montana, Switzerland|€€€€
+1|wallis/verbier/restaurant/la-table-d-adrien|La Table d'Adrien|Verbier, Switzerland|€€€€
+1|wallis/zermatt/restaurant/ad-lib|ad lib|Zermatt, Switzerland|€€€€
+1|wallis/zermatt/restaurant/after-seven|After Seven|Zermatt, Switzerland|€€€€
+1|wallis/zermatt/restaurant/alpine-gourmet-prato-borni|Alpine Gourmet Prato Borni|Zermatt, Switzerland|€€€€
+1|wallis/zermatt/restaurant/brasserie-uno|Brasserie Uno|Zermatt, Switzerland|€€€€
+1|zug-region/menzingen/restaurant/lowen179704|Gasthaus Löwen|Menzingen, Switzerland|€€€
+1|zurich-region/bubikon/restaurant/lowen-apriori|Löwen - Apriori|Bubikon, Switzerland|€€€€
+1|zurich-region/gattikon/restaurant/sihlhalde|Sihlhalde|Gattikon, Switzerland|€€€
+1|zurich-region/zurich/restaurant/eden-kitchen-bar|Eden Kitchen & Bar|Zurich, Switzerland|€€€€
+1|zurich-region/zurich/restaurant/equitable-im-sankt-meinrad|EquiTable|Zurich, Switzerland|€€€€
+1|zurich-region/zurich/restaurant/kle|KLE|Zurich, Switzerland|€€€
+1|zurich-region/zurich/restaurant/la-rotisserie114192|La Rôtisserie|Zurich, Switzerland|€€€€
+1|zurich-region/zurich/restaurant/neue-taverne|Neue Taverne|Zurich, Switzerland|€€€
+1|zurich-region/zurich/restaurant/orsini-1211219|ORSINI|Zurich, Switzerland|€€€€
+1|zurich-region/zurich/restaurant/remy|rémy|Zurich, Switzerland|€€€€
+1|zurich-region/zurich/restaurant/sushi-shin|Shin|Zurich, Switzerland|€€€€
+1|zurich-region/zurich/restaurant/wirtschaft-im-franz|Wirtschaft im FRANZ|Zurich, Switzerland|€€€
+1|zurich-region/zurich/restaurant/woschi|Wöschi|Zurich, Switzerland|€€€€
+2|basel-stadt/basel/restaurant/roots568552|roots|Basel, Switzerland|€€€€
+2|geneve-region/geneve/restaurant/l-atelier-robuchon|L'Atelier Robuchon|Geneva, Switzerland|€€€€
+2|graubunden/arosa/restaurant/la-brezza-1191835|La Brezza|Arosa, Switzerland|€€€€
+2|graubunden/sankt-moritz/restaurant/da-vittorio384903|Da Vittorio - St. Moritz|Saint Moritz, Switzerland|€€€€
+2|graubunden/sankt-moritz/restaurant/ecco-st-moritz|Ecco St. Moritz|Saint Moritz, Switzerland|€€€€
+2|graubunden/vals/restaurant/7132-silver|7132 Silver|Vals, Switzerland|€€€€
+2|jura/le-noirmont/restaurant/maison-wenger|Maison Wenger|Le Noirmont, Switzerland|€€€€
+2|luzern-region/luzern/restaurant/colonnade|Colonnade|Lucerne, Switzerland|€€€€
+2|luzern-region/vitznau/restaurant/focus|focus ATELIER|Vitznau, Switzerland|€€€€
+2|sankt-gallen-region/sankt-gallen/restaurant/einstein-gourmet|Einstein Gourmet|Sankt Gallen, Switzerland|€€€€
+2|schwyz/schwyz/restaurant/magdalena|Magdalena|Schwyz, Switzerland|€€€€
+2|thurgau/freidorf/restaurant/mammertsberg-1200885|Mammertsberg|Freidorf, Switzerland|€€€€
+2|thurgau/wigoltingen/restaurant/taverne-zum-schafli|Taverne zum Schäfli|Wigoltingen, Switzerland|€€€€
+2|ticino/ascona/restaurant/ecco|Ecco|Ascona, Switzerland|€€€€
+2|uri/andermatt/restaurant/igniv-by-andreas-caminada-1207200|IGNIV by Andreas Caminada|Andermatt, Switzerland|€€€€
+2|valais/saviese_1157070/restaurant/gilles-varone|Gilles Varone|Savièse, Switzerland|€€€€
+2|vaud/lausanne/restaurant/anne-sophie-pic|Pic Beau-Rivage Palace|Lausanne, Switzerland|€€€€
+2|vaud/lausanne/restaurant/la-table-du-lausanne-palace|La Table du Lausanne Palace|Lausanne, Switzerland|€€€€
+2|zurich-region/zurich/restaurant/igniv-zurich-by-andreas-caminada|IGNIV Zürich by Andreas Caminada|Zurich, Switzerland|€€€€
+2|zurich-region/zurich/restaurant/the-counter|The Counter|Zurich, Switzerland|€€€€
+2|zurich-region/zurich/restaurant/the-restaurant196194|The Restaurant|Zurich, Switzerland|€€€€
+2|zurich-region/zurich/restaurant/widder-restaurant|Widder Restaurant|Zurich, Switzerland|€€€€
+3|basel-stadt/basel/restaurant/cheval-blanc-by-peter-knogl|Cheval Blanc by Peter Knogl|Basel, Switzerland|€€€€
+3|graubunden/frstenau/restaurant/schloss-schauenstein|Schloss Schauenstein|Fürstenau, Switzerland|€€€€
+3|sankt-gallen-region/bad-ragaz/restaurant/memories|Sven Wassmer Memories|Bad Ragaz, Switzerland|€€€€
+3|uri/andermatt/restaurant/the-japanese-restaurant|The Japanese Restaurant|Andermatt, Switzerland|€€€€
+3|vaud/crissier/restaurant/restaurant-de-l-hotel-de-ville|Restaurant de l'Hôtel de Ville|Crissier, Switzerland|€€€€
+B|aargau-region/fislisbach/restaurant/linde|Linde|Fislisbach, Switzerland|€€
+B|aargau-region/wlflinswil/restaurant/landgasthof-ochsen|Landgasthof Ochsen|Wölflinswil, Switzerland|€€
+B|appenzell-ausserrhoden/grub/restaurant/baren179308|Bären|Grub, Switzerland|€€
+B|appenzell-ausserrhoden/rehetobel/restaurant/dorfhus-gupf|Dorfhus Gupf|Rehetobel, Switzerland|€€
+B|appenzell-ausserrhoden/teufen/restaurant/anker|Anker|Teufen, Switzerland|€€
+B|appenzell-innerrhoden/gonten/restaurant/lowenstobe|Löwenstobe|Gonten, Switzerland|€€
+B|basel-stadt/basel/restaurant/au-violon|au violon|Basel, Switzerland|€€
+B|bern-region/adelboden/restaurant/alpenblick-bistro-1208465|Alpenblick - Bistro|Adelboden, Switzerland|€€
+B|bern-region/burgdorf/restaurant/stadthaus|Stadthaus|Burgdorf, Switzerland|€€
+B|bern-region/frutigen/restaurant/philipp-blaser|Blasers Restaurant|Frutigen, Switzerland|€€
+B|bern-region/interlaken/restaurant/salzano|SALZANO|Interlaken, Switzerland|€€
+B|bern-region/lyss_1151218/restaurant/hardern-pintli|Hardern Pintli|Lyss, Switzerland|€€
+B|bern-region/saanen/restaurant/16-art-bar|16 ART-BAR-RESTAURANT|Saanen, Switzerland|€€
+B|bern-region/schupfen_1152693/restaurant/schupbarg-beizli|Schüpbärg-Beizli|Schüpfen, Switzerland|€€
+B|bern-region/schwarzenburg/restaurant/baren-182932|Bären|Schwarzenburg, Switzerland|€€
+B|bern-region/steffisburg/restaurant/panorama-bistro|Panorama - Bistro|Steffisburg, Switzerland|€€
+B|bern-region/utzenstorf/restaurant/baren180243|Bären|Utzenstorf, Switzerland|€€
+B|bern-region/wilderswil/restaurant/alpenblick-bistro|Alpenblick - Swiss Bistro|Wilderswil, Switzerland|€€
+B|geneve-region/bernex/restaurant/les-curiades|Les Curiades|Bernex, Switzerland|€€
+B|geneve-region/carouge/restaurant/le-bistrot-le-lion-d-or|Bistrot du Lion d'Or|Carouge, Switzerland|€€
+B|geneve-region/geneve/restaurant/l-agape-1197107|L'Agape|Geneva, Switzerland|€€
+B|geneve-region/geneve/restaurant/le-bologne|Le Bologne|Geneva, Switzerland|€€
+B|geneve-region/geneve/restaurant/le-dorian|Le Dorian|Geneva, Switzerland|€€
+B|geneve-region/geneve/restaurant/naturlich|Natürlich|Geneva, Switzerland|€€
+B|geneve-region/geneve/restaurant/suahoy|SUAHOY|Geneva, Switzerland|€€
+B|graubunden/celerina/restaurant/ya-mama-by-moses-ceylan|Ya Mama by Moses Ceylan|Celerina, Switzerland|€€
+B|graubunden/disentis/restaurant/stiva-grischuna|Stiva Grischuna|Disentis, Switzerland|€€
+B|graubunden/flsch/restaurant/pinot|PINOT|Fläsch, Switzerland|€€
+B|graubunden/frstenau/restaurant/casa-caminada|Casa Caminada|Fürstenau, Switzerland|€€
+B|graubunden/ilanz/restaurant/casa-casutt|Casa Casutt - Ustria|Ilanz, Switzerland|€€
+B|graubunden/madulain/restaurant/colani-bistrot|Colani Bistrot|Madulain, Switzerland|€€
+B|graubunden/pontresina/restaurant/la-trattoria|La Trattoria|Pontresina, Switzerland|€€
+B|graubunden/sankt-moritz/restaurant/la-scarpetta-1217902|La Scarpetta|Saint Moritz, Switzerland|€€
+B|graubunden/sent/restaurant/pensiun-aldier|Pensiun Aldier|Sent, Switzerland|€€
+B|luzern-region/brunnen/restaurant/birdy-s-by-achtien|Birdy's by Achtien|Brunnen, Switzerland|€€
+B|luzern-region/ebersecken/restaurant/sonne179112|Sonne|Ebersecken, Switzerland|€€
+B|luzern-region/hildisrieden/restaurant/bacchus-bistro-genussmanufaktur|Bacchus Bistro & Genussmanufaktur|Hildisrieden, Switzerland|€€
+B|luzern-region/meggen/restaurant/la-pistache-bistro|Balm - Bistro|Meggen, Switzerland|€€
+B|luzern-region/pfaffnau_1152016/restaurant/klostergasthaus-lowen-gaststube|Klostergasthaus Löwen - Gaststube|Pfaffnau, Switzerland|€
+B|luzern-region/rigi-kaltbad/restaurant/bistrot-by-regina-montium|Bistro by Regina Montium|Rigi Kaltbad, Switzerland|€€
+B|luzern-region/romoos_1152275/restaurant/wiesner-mysterion-%E2%80%93-werkstatt-kost|Wiesner Mysterion – Werkstatt Kost|Romoos, Switzerland|€€
+B|nidwalden/stans/restaurant/culinarium-alpinum|Culinarium Alpinum|Stans, Switzerland|€€
+B|sankt-gallen-region/buchs/restaurant/gasthaus-traube-die-braustube|Gasthaus Traube - Die Braustube|Buchs, Switzerland|€€
+B|sankt-gallen-region/mels/restaurant/schlusselstube|Restaurant Schlüssel - Schlüsselstube|Mels, Switzerland|€€
+B|sankt-gallen-region/sankt-gallen/restaurant/candela|Candela|Sankt Gallen, Switzerland|€€
+B|sankt-gallen-region/sankt-gallen/restaurant/netts-schutzengarten|Netts Schützengarten|Sankt Gallen, Switzerland|€€
+B|schaffhausen-region/schaffhausen/restaurant/d-chuchi|D'Chuchi|Schaffhausen, Switzerland|€€
+B|schwyz/ried-muotathal/restaurant/adler179921|Adler|Ried-Muotathal, Switzerland|€€
+B|schwyz/riemenstalden/restaurant/kaiserstock|Kaiserstock|Riemenstalden, Switzerland|€€
+B|solothurn-region/grenchen/restaurant/chappeli|Chappeli|Grenchen, Switzerland|€€
+B|solothurn-region/kestenholz/restaurant/eintracht|Eintracht|Kestenholz, Switzerland|€€
+B|solothurn-region/messen_1151365/restaurant/lowen-messen-die-land-brasserie|Löwen Messen - Die Land Brasserie|Messen, Switzerland|€€
+B|solothurn-region/riedholz/restaurant/chateau-attisholz-brasserie-la-source|Château Attisholz - Brasserie la Source|Riedholz, Switzerland|€€
+B|solothurn-region/solothurn/restaurant/zum-alten-stephan|Zum Alten Stephan|Solothurn, Switzerland|€€
+B|thurgau/diessenhofen/restaurant/gasthaus-schupfen|Gasthaus Schupfen|Diessenhofen, Switzerland|€€
+B|thurgau/frauenfeld/restaurant/zum-goldenen-kreuz|Gasthof zum goldenen Kreuz|Frauenfeld, Switzerland|€€
+B|ticino/ascona/restaurant/asia|Asia|Ascona, Switzerland|€€
+B|ticino/avegno/restaurant/grotto-valmaggese|Grotto Valmaggese|Avegno, Switzerland|€€
+B|ticino/centovalli-intragna/restaurant/yanelo|Ristorante della Stazione da YanElo|Intragna, Switzerland|€€
+B|ticino/losone/restaurant/centrale178757|Centrale|Losone, Switzerland|€€
+B|ticino/massagno/restaurant/grotto-della-salute|Grotto della Salute|Massagno, Switzerland|€€
+B|ticino/tegna/restaurant/alla-cantina|Alla Cantina|Tegna, Switzerland|€€
+B|vaud/aubonne/restaurant/njord-cafe|Njørd café|Aubonne, Switzerland|€€
+B|vaud/chardonne/restaurant/la-haut-1214751|Là-Haut|Chardonne, Switzerland|€€
+B|vaud/corseaux_1154610/restaurant/le-lab-by-adel-niko|Le Lab by Adel & Niko|Corseaux, Switzerland|€€
+B|vaud/cossonay/restaurant/la-fleur-de-sel-183809|La Fleur de Sel|Cossonay, Switzerland|€€
+B|vaud/lausanne/restaurant/myo-sushi-bar|Myò Sushi Bar|Lausanne, Switzerland|€€
+B|vaud/le-brassus_1155573/restaurant/brasserie-le-gogant|Brasserie Le Gogant|Le Brassus, Switzerland|€€
+B|vaud/le-mont-sur-lausanne/restaurant/auberge-communale-le-mont|Auberge Communale Le Mont|Le Mont-sur-Lausanne, Switzerland|€€
+B|vaud/montreux/restaurant/le-bistro-by-decotterd|Le Bistro by Décotterd|Montreux, Switzerland|€€
+B|vaud/saint-legier/restaurant/auberge-communale-180272|Auberge Communale|Saint-Légier, Switzerland|€€
+B|vaud/yens/restaurant/auberge-de-la-croix-d%C2%B4or-bistro|Auberge de la Croix d'Or - Bistro|Yens, Switzerland|€€
+B|wallis/binn/restaurant/albrun|Albrun|Binn, Switzerland|€€
+B|wallis/crans-montana/restaurant/edo181374|Edo|Crans-Montana, Switzerland|€€
+B|wallis/ernen/restaurant/gommerstuba|Gommerstuba|Ernen, Switzerland|€€
+B|wallis/haute-nendaz/restaurant/au-vieux-nendaz|Au Vieux Nendaz|Haute-Nendaz, Switzerland|€€
+B|wallis/haute-nendaz/restaurant/mont-rouge|Mont-Rouge|Haute-Nendaz, Switzerland|€€€
+B|wallis/zermatt/restaurant/bazaar-1202826|Bazaar|Zermatt, Switzerland|€€
+B|zug-region/zug/restaurant/rathauskeller-bistro|Rathauskeller Bistro|Zug, Switzerland|€€
+B|zug-region/zug/restaurant/zum-kaiser-franz-im-rossl|Zum Kaiser Franz|Zug, Switzerland|€€
+B|zurich-region/erlenbach/restaurant/zum-pflugstein|Zum Pflugstein|Erlenbach, Switzerland|€€
+B|zurich-region/freienstein-teufen/restaurant/wirtshus-zum-wyberg-gourmet-stubli|Wirtshus zum Wyberg|Freienstein-Teufen, Switzerland|€€
+B|zurich-region/stfa/restaurant/gasthof-zur-sonne|Gasthof zur Sonne|Stäfa, Switzerland|€€
+B|zurich-region/zurich/restaurant/barranco|Barranco|Zurich, Switzerland|€€
+B|zurich-region/zurich/restaurant/bauernschanke|Bauernschänke|Zurich, Switzerland|€€
+B|zurich-region/zurich/restaurant/capet-neo-bistro|Capet - Neo-Bistro|Zurich, Switzerland|€€
+B|zurich-region/zurich/restaurant/dar|DAR|Zurich, Switzerland|€€
+B|zurich-region/zurich/restaurant/freilager-la-trattoria|Freilager La Trattoria|Zurich, Switzerland|€€
+B|zurich-region/zurich/restaurant/gul|Gül|Zurich, Switzerland|€€
+B|zurich-region/zurich/restaurant/josef|Josef|Zurich, Switzerland|€€
+B|zurich-region/zurich/restaurant/neri-cantina-cucina|Neri Cantina & Cucina|Zurich, Switzerland|€€
+B|zurich-region/zurich/restaurant/soi-28-by-heilemann|Soï 28 by Stefan Heilemann|Zurich, Switzerland|€€
