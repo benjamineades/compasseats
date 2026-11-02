@@ -1,0 +1,11 @@
+Run record: docs/fix-closed-rule-8-active-350-unpublished-2026-11-02.sql
+sha256 39d39edfec88ef0eb80582fe7a9b7eed2a4e52a04c9b091567c588b8606eaac1
+Ben: 13:11 ET "1A, 2A, 3A, 4A, 5A, 6A, 7A"; 13:26 ET "1A, 2A, 3A, 4A"; 13:40 ET "Go".
+Write connector, first try. Committed Nov 2 2026, 18:40:52 UTC. The SQL body was sent without the header comments.
+Read-back 18:41:00 UTC, whole tables:
+venues 11,296 (active 10,925, closed 371); awards 25,097; slugs 13,017; price 7,728; listings 11,296; cities 3,264.
+cities.venues_count sum 10,925; 0 cities differ from the view.
+closed published 0; closed not published 371; active not published 0.
+ledger 182 rows, last id 234 (no change).
+audit_log 118,608 rows, new ids 123,757-124,122: cities UPDATE 8, listings UPDATE 350, venues UPDATE 8.
+8 venues active and published: Alpage, Atelier (Auckland), Ed.Em, L'Impertinent, Le Cin5, Le Saint-James, Muttonbird, Ostaria Tyrol.
