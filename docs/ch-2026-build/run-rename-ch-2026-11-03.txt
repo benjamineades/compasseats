@@ -1,0 +1,13 @@
+Run record: docs/rename-michelin-2026-switzerland.sql
+sha256 ad9b69b2226a1403fd89c9b0cbc684359fd04912df31f1d73e0c1042e7416cda
+Evidence: docs/ch-2026-build/name-diff-evidence-ch-2026-11-02.csv, sha256 cde8b48ea41a76a54d9a9c9c8f3153ddf2a885fbed4638b30241cb452cc9c32a
+Ben: Nov 2 23:04 ET "1&4"; 23:25 ET "A"; Nov 3 16:17 ET "1A, 2A, 3A, 4A, 5A, 6A, 7A"; 16:18 ET "go".
+Write connector, first try. Audit first row Nov 3 2026, 21:21:50 UTC. The SQL body was sent without the header comments.
+Read-back 21:21:57 UTC, whole tables:
+venues 11,323 (active 11,031); awards 25,321; slugs 13,053 (non-canonical 1,730, no change); price 7,727.
+rename_batches 31 (new batch id 46, applied); rename_rows 1,396; batch rows 94.
+ledger 190 rows, last id 244 (michelin, name, 81).
+audit_log 119,329 rows, new ids 125,065-125,158 (94 venues UPDATE).
+Live id|name md5 of the 94 venues = file new 36ea880a01a9bdbf59abd204e9b30efd.
+Decision 5 of the Swiss decisions handoff is replaced: Soleil d'Or is now "Soleil d’Or by Benjamin Geisser" (Ben 1A).
+Held: Restaurant Sonne Scheunenberg ve_1ff8df1642 (Ben 3A).
