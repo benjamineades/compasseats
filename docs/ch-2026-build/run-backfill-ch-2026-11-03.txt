@@ -1,0 +1,4 @@
+Run record: docs/backfill-michelin-2025-switzerland-4.sql
+sha256 c49afee6a957ec8bf4ae6cc6700758ba90842174c6eecf07fe550f47a74e3242
+Ben: Nov 3 16:29 ET "1,2,3"; 16:37 ET "1A"; 16:39 ET "Go". Write connector, first try. The SQL body was sent without the header comments.
+Expected read-back: awards 25,325; Michelin 2025 4,998; ledger 246; audit 125,566-125,569.
