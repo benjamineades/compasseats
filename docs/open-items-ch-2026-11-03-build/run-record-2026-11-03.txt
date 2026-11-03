@@ -1,0 +1,14 @@
+Run records, Swiss open items, Nov 3 2026. Ben (ET): 17:08 "Lets do all 4. You pick the order." 18:10 "1A,2A, 3A, 4A".
+1. docs/cleanup-city-aliases-2026-11-03.sql sha256 2be5579d80aabcaf1f30376e6c3bbc753112107d9efb0fdaae3baea743e8b5c2
+   Ben 18:20 "go". Write connector: confirmation question got no answer in 230 s, nothing ran (read 23:25:10 UTC). Ben ran it in the SQL Editor, 23:29:32 UTC, 18:29 "done".
+   Aliases 262 -> 222. Audit 125,594-125,633 (40 hand rows). No ledger row.
+2. docs/slugs-letters-removed-2026-11-03.sql sha256 fc5392aed2d19f1a88573cdba44ffccd4a32444c0b8fbfc691b1e5d1228b8c9e
+   Ben 18:29 "go". Write connector, first try, 23:30:14 UTC. Slugs 13,144 -> 13,166 (non-canonical 1,846). Audit 125,634-125,677. No ledger row.
+3. docs/source-url-michelin-2025-switzerland-cards.sql sha256 3f91f6a20b203fa605e3856863ed20a568ffba78a2348c7bab76c5e102bfe7a3
+   Ben 18:30 "go". Write connector, first try, 23:32:41 UTC. 177 rows, Michelin 2025 no URL 3,212 -> 3,035. Audit 125,678-125,854. Ledger 249 (michelin, award, 177).
+   Form change before the run: 3 VALUES lists -> 1 jsonb plan constant. Old sha256 1e9d9ca3c2c5d09936d2bacfa391f3609767d6216c1819bd6124573578157f36 (output of build_c_d.py). Plan fingerprint 260aeb2199cf3a4a2b79540f27bc6d95 and gates unchanged.
+   Relay relay-ch-2025-cards-archive.txt sha256 8eac4effc37fd616586b9953821f7b351ab2a7674ce2a4ef3ed74efed253e2ec.
+4. docs/rewrite-blurb-cheval-blanc-v2.sql sha256 06b75bc25365b7803acc6487ffc3857ca33c84b5fe1419cdb097f0e9ff4112e8
+   Ben 18:36 "go". Write connector, first try, 23:37:12 UTC. New row md5 426de6cac631b6bf757c481b46f48033. Audit 125,855. No ledger row.
+SQL bodies were sent without the header comments.
+Read-back 23:37:24 UTC: ledger 249 (195 rows); audit 125,855 (120,026 rows); venues 11,320 (active 11,028, closed 292); awards 25,324; slugs 13,166; price 7,759; aliases 222; rewritten 2; cities sum 11,028, 0 differ; closed published 0.

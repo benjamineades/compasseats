@@ -1,0 +1,263 @@
+alias,target_slug,target_display,target_country,target_venues_count,class,label_rows,venues_in_target,venues_elsewhere,other_city_same_name,labels
+akirkeby,aakirkeby,Åkirkeby,Denmark,1,KEEP in use,1,1,0,,-:Åkirkeby
+alacati,izmir,İzmir,Turkey,13,"KEEP in use, venue filed under a neighbor city",1,1,0,,michelin:Alaçatı
+alvaro obregon,mexico-city,Mexico City,Mexico,68,KEEP in use,2,2,0,,-:Álvaro Obregón | michelin:Álvaro Obregón
+anderlecht,brussels,Brussels,Belgium,27,KEEP in use,2,2,0,,-:Anderlecht | michelin:Anderlecht
+anterwp,antwerp,Antwerp,Belgium,20,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+antwerpen,antwerp,Antwerp,Belgium,20,KEEP in use,15,15,0,,-:Antwerpen | michelin:Antwerpen
+apatamonasterio,axpe,Axpe,Spain,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+argentina,cordoba-ar,"Córdoba, Argentina",Argentina,1,DELETE country,0,0,0,,
+atherton,redwood-city,Redwood City,United States,2,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Atherton
+atxondo,axpe,Axpe,Spain,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+aumont aubrac,peyre-en-aubrac,Aumont-Aubrac,France,2,KEEP in use,3,2,0,,-:Aumont-Aubrac | michelin:Aumont-Aubrac
+autrans meaudre en vercors,correncon-en-vercors,Corrençon-en-Vercors,France,2,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Autrans Méaudre en Vercors
+bad peterstal,bad-peterstal-griesbach,Bad Peterstal,Germany,2,KEEP in use,2,2,0,,-:Bad Peterstal | michelin:Bad Peterstal
+bangalore,bengaluru,Bengaluru,India,8,KEEP in use,1,1,0,,-:Bangalore
+barangaroo,sydney,Sydney,Australia,35,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+barranco,lima,Lima,Peru,31,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+beograd,belgrade,Belgrade,Serbia,8,KEEP in use,1,1,0,,la-liste:Beograd
+beverly hills,beverly-hills,Beverly Hills,United States,1,KEEP in use,10,1,9,,-:Beverly Hills | michelin:Beverly Hills | oad:Beverly Hills | wine-spectator:Beverly Hills
+birmingham,birmingham-al,"Birmingham, Alabama",United States,5,KEEP in use,15,6,9,"birmingham [United Kingdom, Birmingham, 8]","-:Birmingham | james-beard:Birmingham, Alabama | michelin:Birmingham | michelin:Birmingham, Alabama | pinnacle-guide:Birmingham"
+blackburn,langho,Langho,United Kingdom,1,DELETE separate town,0,0,0,,
+bourguillon,fribourg,Fribourg,Switzerland,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+bowness on windermere,windermere,Bowness-on-Windermere,United Kingdom,1,KEEP in use,1,1,0,,michelin:Bowness-on-Windermere
+bramboden,romoos,Romoos,Switzerland,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+brooklyn,new-york,New York,United States,346,KEEP in use,37,37,0,,-:Brooklyn | james-beard:Brooklyn | michelin:Brooklyn | oad:Brooklyn
+brugge,bruges,Bruges,Belgium,10,KEEP in use,6,6,0,,michelin:Brugge
+bruxelles,brussels,Brussels,Belgium,27,KEEP in use,1,1,0,,la-liste:Bruxelles
+canada,cambridge-on,"Cambridge, Ontario",Canada,2,DELETE country,0,0,0,,
+carmel,carmel-by-the-sea,Carmel by the Sea,United States,4,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+cartagena de indias,cartagena,Cartagena,Colombia,3,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+castel del sangro,castel-di-sangro,Castel di Sangro,Italy,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+castel verruca,merano,Merano,Italy,3,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+castellammare di stabia,castellamare-di-stabia,Castellammare di Stabia,Italy,1,KEEP in use,1,1,0,,-:Castellammare di Stabia
+castiglion del bosco,montalcino,Montalcino,Italy,4,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+central,hong-kong,Hong Kong,Hong Kong,267,KEEP in use,1,1,0,,-:Central
+cioccaro,cioccaro-di-penango,Cioccaro,Italy,1,KEEP in use,2,1,0,,-:Cioccaro | michelin:Cioccaro
+collingwood,creemore,Creemore,Canada,1,DELETE separate town,0,0,0,,
+collonges au mont dor,lyon,Lyon,France,31,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+cologne,cologne,Köln,Germany,14,KEEP in use,4,4,0,,michelin:Cologne | top-500-bars:Cologne
+coral gables,miami,Miami,United States,63,"KEEP in use, venue filed under a neighbor city",4,4,0,,-:Coral Gables | michelin:Coral Gables
+cornaredo,milan,Milan,Italy,53,"KEEP in use, venue filed under a neighbor city",3,2,0,,-:Cornaredo | michelin:Cornaredo
+corral del risco,punta-de-mita,Punta de Mita,Mexico,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+courchevel 1850,courchevel,Courchevel,France,7,KEEP in use,1,1,0,,-:Courchevel 1850
+cracow,krakow,Kraków,Poland,6,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+cuauhtemoc,mexico-city,Mexico City,Mexico,68,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+cupar,peat-inn,Peat Inn,United Kingdom,1,DELETE separate town,0,0,0,,
+curtiba,curitiba,Curitiba,Brazil,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+dc,washington-dc,Washington,United States,69,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+deidenheim,deidesheim,Deidesheim,Germany,3,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+dellach,maria-worth,Maria Wörth,Austria,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+donostia,san-sebastian,San Sebastián,Spain,10,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+donostia san sebastian,san-sebastian,San Sebastián,Spain,10,KEEP in use,5,5,0,,-:Donostia / San Sebastián | michelin:Donostia / San Sebastián
+dublin 2,dublin,Dublin,Ireland,18,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+dublin city,dublin,Dublin,Ireland,18,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+durtol,clermont-ferrand,Clermont-Ferrand,France,7,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Durtol
+east wallhouses,newcastle,Newcastle upon Tyne,United Kingdom,4,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:East Wallhouses
+echaurren,ezcaray,Ezcaray,Spain,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+eghezee,liernu,Liernu,Belgium,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+eijsden margraten,eijsden,Eijsden,Netherlands,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+el puerto de santa maria,cadiz,Cádiz,Spain,3,"KEEP in use, venue filed under a neighbor city",2,2,0,,-:El Puerto de Santa María | oad:El Puerto de Santa María
+errenteria,san-sebastian,San Sebastián,Spain,10,"KEEP in use, venue filed under a neighbor city",2,2,0,,-:Errenteria | oad:Errenteria
+exmouth,lympstone,Lympstone,United Kingdom,1,DELETE separate town,0,0,0,,
+firenze,florence,Florence,Italy,27,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+fohr wyk,wyk,Wyk,Germany,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+fordwich,canterbury,Canterbury,United Kingdom,1,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Fordwich
+france,munster-fr,"Munster, France",France,2,DELETE country,0,0,0,,
+frankfurt am main,frankfurt,Frankfurt,Germany,14,KEEP in use,3,3,0,,michelin:Frankfurt am Main
+frankfurt on the main,frankfurt,Frankfurt,Germany,14,KEEP in use,11,11,0,,-:Frankfurt on the Main | michelin:Frankfurt on the Main
+freiburg,freiburg-im-breisgau,Freiburg im Breisgau,Germany,5,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+freienfeld bei sterzing,mules,Mules,Italy,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+friuli venezia,trieste,Trieste,Italy,1,DELETE region or province,0,0,0,,
+gentofte,copenhagen,Copenhagen,Denmark,60,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Gentofte
+gipuzkoa,san-sebastian,San Sebastián,Spain,10,DELETE region or province,0,0,0,,
+giza,cairo,Cairo,Egypt,7,"KEEP in use, venue filed under a neighbor city",2,2,0,,-:Giza | mena-50-best-restaurants:Giza
+glasgow city,glasgow,Glasgow,United Kingdom,10,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+gothenberg,gothenburg,Gothenburg,Sweden,7,KEEP in use,1,1,0,,oad:Gothenberg
+grange over sands,cartmel,Cartmel,United Kingdom,3,DELETE separate town,0,0,0,,
+grasmere,ambleside,Ambleside,United Kingdom,5,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Grasmere
+grisons,furstenau,Fürstenau,Switzerland,3,DELETE region or province,0,0,0,,
+gronigen,groningen,Groningen,Netherlands,4,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+guetaria,getaria,Getaria,Spain,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+guia de isora tenerife,guia-de-isora,Guía de Isora,Spain,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+halle,halle-saale,Halle (saale),Germany,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+hameau de st marcel saint martin de belleville,saint-martin-de-belleville,Saint-Martin-de-Belleville,France,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+hannover,hanover,Hanover,Germany,4,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+heidelburg,heidelberg,Heidelberg,Germany,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+heist,knokke-heist,Knokke-Heist,Belgium,4,KEEP in use,1,1,0,,-:Heist
+hexham,wall,Wall,United Kingdom,0,DELETE separate town,0,0,0,,
+huelva,linares-de-la-sierra,Linares de la Sierra,Spain,1,DELETE region or province,0,0,0,,
+hythe,saltwood,Saltwood,United Kingdom,1,DELETE separate town,0,0,0,,
+ireland,baltimore-ie,"Baltimore, Ireland",Ireland,2,DELETE country,0,0,0,,
+isola vulcano,vulcanello,Isola Vulcano,Italy,2,KEEP in use,4,2,0,,-:Isola Vulcano | michelin:Isola Vulcano
+iwade,wakayama,Wakayama,Japan,2,DELETE separate town,0,0,0,,
+ixelles,brussels,Brussels,Belgium,27,KEEP in use,7,7,0,,-:Ixelles | michelin:Ixelles
+javea,xabia,Xàbia,Spain,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+jiminez de jamuz,jimenez-de-jamuz,Jiménez de Jamuz,Spain,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+jordan station,lincoln,Lincoln,Canada,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+knokke,knokke-heist,Knokke-Heist,Belgium,4,KEEP in use,3,3,0,,-:Knokke | michelin:Knokke
+knoxville,knoxville-tennessee,"Knoxville, Tennessee",United States,2,KEEP in use,2,2,0,,"forbes-travel-guide:Knoxville, Tennessee | michelin:Knoxville"
+koksijde,sint-idesbald,Sint-Idesbald,Belgium,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+koln,cologne,Köln,Germany,14,KEEP in use,10,10,0,,-:Köln | michelin:Köln
+konstanz,constance,Constance,Germany,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+kruisem,kruishoutem,Kruishoutem,Belgium,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+la madelaine sous montreuil,montreuil,Montreuil,France,2,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:La Madelaine-sous-Montreuil
+lagundo,algund,Algund,Italy,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+lamporecchio,vinci,Vinci,Italy,0,DELETE separate town,0,0,0,,
+las caletas,fuencaliente-de-la-palma,Fuencaliente de la Palma,Spain,1,KEEP in use,1,1,0,,michelin:Las Caletas
+lasarte,san-sebastian,San Sebastián,Spain,10,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+lasarte oria,san-sebastian,San Sebastián,Spain,10,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Lasarte-Oria
+lech,lech,Lech am Arlberg,Austria,4,KEEP in use,1,1,0,,-:Lech
+lech am arlberg,lech,Lech am Arlberg,Austria,4,KEEP in use,3,3,0,,-:Lech am Arlberg | michelin:Lech am Arlberg
+leith,edinburgh,Edinburgh,United Kingdom,17,KEEP in use,4,4,0,,-:Leith | michelin:Leith
+lens,crans-montana,Crans Montana,Switzerland,3,DELETE separate town,0,0,0,,
+lherbaudiere,noirmoutier-en-lile,Noirmoutier-en-l'Île,France,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+lindau im bodensee,lindau,Lindau,Germany,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+lisboa,lisbon,Lisbon,Portugal,31,KEEP in use,2,2,0,,-:Lisboa
+loughborough,mountsorrel,Loughborough,United Kingdom,1,KEEP in use,1,1,0,,-:Loughborough
+lower beeding,horsham,Horsham,United Kingdom,2,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Lower Beeding
+luzern,lucerne,Lucerne,Switzerland,7,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+macao,macau,Macau,Macao,61,KEEP in use,6,6,0,,-:Macao | la-liste:Macao
+maidenhead,bray,Bray,United Kingdom,3,DELETE separate town,0,0,0,,
+makati,manila,Manila,Philippines,24,KEEP in use,1,1,0,,-:Makati
+makati city,manila,Manila,Philippines,24,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+makati metro manila,manila,Manila,Philippines,24,KEEP in use,14,14,0,,-:Makati - Metro Manila | michelin:Makati - Metro Manila
+malfa salina,malfa,Mölnlycke,Sweden,1,DELETE wrong place,0,0,0,,
+manhattan,new-york,New York,United States,346,KEEP in use,25,25,0,,-:Manhattan | oad:Manhattan
+manilla,manila,Manila,Philippines,24,KEEP in use,3,3,0,,oad:Manilla
+marina del cantone,massa-lubrense,Massa Lubrense,Italy,3,KEEP in use,2,2,0,,-:Marina del Cantone | michelin:Marina del Cantone
+marrakesh,marrakech,Marrakech,Morocco,12,KEEP in use,3,3,0,,la-liste:Marrakesh
+marzocca,senigallia,Senigallia,Italy,2,KEEP in use,1,1,0,,-:Marzocca
+mazzorbo,venice,Venice,Italy,14,KEEP in use,1,1,0,,-:Mazzorbo
+metro manila,manila,Manila,Philippines,24,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+mexico,la-paz-mx,"La Paz, Mexico",Mexico,1,DELETE country,0,0,0,,
+miami beach,miami,Miami,United States,63,"KEEP in use, venue filed under a neighbor city",15,15,0,,-:Miami Beach | michelin:Miami Beach | oad:Miami Beach
+mieming,obermieming,Mieming,Austria,1,KEEP in use,1,1,0,,-:Mieming
+miguel hidalgo,mexico-city,Mexico City,Mexico,68,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+milano,milan,Milan,Italy,53,KEEP in use,1,1,0,,-:Milano
+miraflores,lima,Lima,Peru,31,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+molnlycke,malfa,Mölnlycke,Sweden,1,KEEP in use,1,1,0,,-:Mölnlycke
+monmouth,whitebrook,Whitebrook,United Kingdom,1,DELETE separate town,0,0,0,,
+monte carlo,monaco,Monaco,Monaco,11,KEEP in use,9,9,0,,-:Monte-Carlo | la-liste:Monte Carlo | michelin:Monte-Carlo
+montemerano manciano,montemerano,Montemerano,Italy,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+montemor o novo alentejo,montemor-o-novo,Montemor-o-Novo,Portugal,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+moutfort,oetrange,Oetrange,Luxembourg,1,DELETE separate town,0,0,0,,
+munchen,munich,Munich,Germany,25,KEEP in use,2,2,0,,gault-millau:München
+naurath,naurath-wald,Naurath/Wald,Germany,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+nerano,massa-lubrense,Massa Lubrense,Italy,3,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+new taipei,new-taipei-city,New Taipei City,Taiwan,18,KEEP in use,18,18,0,,michelin:New Taipei
+new york city,new-york,New York,United States,346,KEEP in use,1,1,0,,-:New York City
+newcastle upon tyne,newcastle,Newcastle upon Tyne,United Kingdom,4,KEEP in use,4,4,0,,-:Newcastle upon Tyne | michelin:Newcastle upon Tyne
+newton in cartmel,cartmel,Cartmel,United Kingdom,3,KEEP in use,1,1,0,,-:Newton in Cartmel
+ninjang,nanjing,Nanjing,China,26,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+noirmoutier,noirmoutier-en-lile,Noirmoutier-en-l'Île,France,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+nonoichi,kanazawa,Kanazawa,Japan,10,DELETE separate town,0,0,0,,
+nurnberg,nuremberg,Nuremberg,Germany,8,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+oaxaca de juarez,oaxaca,Oaxaca,Mexico,13,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+oberlech,lech,Lech am Arlberg,Austria,4,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+old amersham,amersham,Amersham,United Kingdom,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+oldsted,oldstead,Oldstead,United Kingdom,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+ormskirk,aughton,Aughton,United Kingdom,3,DELETE separate town,0,0,0,,
+oudenberg,oudenburg,Oudenburg,Belgium,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+our,paliseul,Paliseul,Belgium,2,KEEP in use,1,1,0,,-:Our
+penang,george-town,George Town,Malaysia,33,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Penang
+pocantico hills,tarrytown,Tarrytown,United States,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+pontevedra,poio,Pontevedra,Spain,4,KEEP in use,4,4,0,,-:Pontevedra | michelin:Pontevedra
+powys,machynlleth,Machynlleth,United Kingdom,1,DELETE region or province,0,0,0,,
+profondeville,arbre,Arbre,Belgium,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+puerta de santa maria,cadiz,Cádiz,Spain,3,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+pyla sur mer,la-teste-de-buch,La Teste-de-Buch,France,2,KEEP in use,1,1,0,,-:Pyla-sur-Mer
+quebec city,quebec,Québec,Canada,15,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+queens,new-york,New York,United States,346,KEEP in use,12,12,0,,-:Queens | michelin:Queens
+rantum,sylt,Sylt,Germany,2,KEEP in use,1,1,0,,-:Rantum
+raxo,poio,Pontevedra,Spain,4,KEEP in use,1,1,0,,-:Raxó
+rickenbach sz,rickenbach,Schwyz,Switzerland,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+rio de janiero,rio-de-janeiro,Rio de Janeiro,Brazil,22,KEEP in use,1,1,0,,oad:Rio de Janiero
+ripponlea,melbourne,Melbourne,Australia,26,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+rubano,padua,Rubano,Italy,1,KEEP in use,2,1,0,,-:Rubano | michelin:Rubano
+rugen,ostseebad-binz,Ostseebad Binz,Germany,1,DELETE region or province,0,0,0,,
+runate,canneto-sulloglio,Canneto sull'Oglio,Italy,1,KEEP in use,1,1,0,,michelin:Runate
+saint bon tarentaise,courchevel,Courchevel,France,7,KEEP in use,1,1,0,,-:Saint-Bon-Tarentaise
+saint ghislain,baudour,Baudour,Belgium,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+saint martin d uriage,uriage-les-bains,Uriage-les-Bains,France,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+saint martin duriage,uriage-les-bains,Uriage-les-Bains,France,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+saint petersbourg,saint-petersburg,Saint Petersburg,Russia,6,KEEP in use,1,1,0,,-:Saint Petersbourg
+saint remy de provence,saint-remy-de-provence,Saint-Rémy-de-Provence,France,2,KEEP in use,3,2,0,,-:Saint-Rémy-de-Provence | gault-millau:Saint-Rémy-de-Provence | michelin:Saint-Rémy-de-Provence
+san juan bautista la raya,oaxaca,Oaxaca,Mexico,13,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+san pedro garza garcia,monterrey,Monterrey,Mexico,5,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:San Pedro Garza García
+san pietro all olmo cornaredo,milan,Milan,Italy,53,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+san pietro allolmo,milan,Milan,Italy,53,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+san pietro allolmo cornaredo,milan,Milan,Italy,53,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+san salvador de poio,poio,Pontevedra,Spain,4,KEEP in use,1,1,0,,-:San Salvador de Poio
+sandweiler,findel,Findel,Luxembourg,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+sankt gallen,st-gallen,Sankt Gallen,Switzerland,6,KEEP in use,6,6,0,,-:Sankt Gallen | michelin:Sankt Gallen
+sankt moritz,saint-moritz,Saint Moritz,Switzerland,4,KEEP in use,1,1,0,,la-liste:Sankt Moritz
+sankt niklausen,wilderswil,Wilderswil,Switzerland,2,DELETE wrong place,0,0,0,,
+santa coloma de gramenet,barcelona,Barcelona,Spain,73,"KEEP in use, venue filed under a neighbor city",2,2,0,,-:Santa Coloma de Gramenet | michelin:Santa Coloma de Gramenet
+santa cristina d aspromonte,santa-cristina-daspromonte,Santa Cristina d'Aspromonte,Italy,1,KEEP in use,1,1,0,,-:Santa Cristina d'Aspromonte
+santa maria annunziata,tavarnelle-val-di-pesa,Tavarnelle Val di Pesa,Italy,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+santanna,marina-di-bibbona,Marina di Bibbona,Italy,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+sarmeola di rubano,padua,Rubano,Italy,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+schloss bensberg,bergisch-gladbach,Bergisch Gladbach,Germany,3,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+schwyz,rickenbach,Schwyz,Switzerland,1,KEEP in use,1,1,0,,-:Schwyz
+sedlec u mikulova,hlohovec,Hlohovec,Czechia,1,DELETE separate town,0,0,0,,
+sentjost nad horjulom,horjul,Šentjošt nad Horjulom,Slovenia,1,KEEP in use,1,1,0,,-:Šentjošt nad Horjulom
+shenzen,shenzhen,Shenzhen,China,30,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+sicily,licata,Licata,Italy,1,DELETE region or province,0,0,0,,
+sile,istanbul,Istanbul,Turkey,35,"KEEP in use, venue filed under a neighbor city",1,1,0,,michelin:Şile
+silvaplana,saint-moritz,Saint Moritz,Switzerland,4,DELETE separate town,0,0,0,,
+simrisham,simrishamn,Simrishamn,Sweden,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+sint kruis,bruges,Bruges,Belgium,10,KEEP in use,2,2,0,,-:Sint-Kruis | michelin:Sint Kruis
+sint kwintens lennik,lennik,Sint Kwintens Lennik,Belgium,1,KEEP in use,1,1,0,,-:Sint Kwintens Lennik
+skillinge,simrishamn,Simrishamn,Sweden,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+sorengo,lugano,Lugano,Switzerland,4,DELETE separate town,0,0,0,,
+south wales,pontyclun,Pontyclun,United Kingdom,1,DELETE region or province,0,0,0,,
+st anton em arlburg,sankt-anton-am-arlberg,Sankt Anton am Arlberg,Austria,3,KEEP in use,1,1,0,,-:St. Anton em Arlburg
+st helena,saint-helena,Saint Helena,United States,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+stavenger,stavanger,Stavanger,Norway,4,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+suita,osaka,Osaka,Japan,156,DELETE separate town,0,0,0,,
+surfside,miami,Miami,United States,63,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Surfside
+surry hills,sydney,Sydney,Australia,35,KEEP in use,1,1,0,,-:Surry Hills
+sutp nar mevkii urla,izmir,İzmir,Turkey,13,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+taguig,manila,Manila,Philippines,24,KEEP in use,1,1,0,,-:Taguig
+tallin,tallinn,Tallinn,Estonia,11,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+techendorf,weissensee,Weissensee,Austria,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+tel aviv jaffo,tel-aviv,Tel Aviv,Israel,13,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+telese terme,telese,Telese Terme,Italy,2,KEEP same as city name,0,0,0,,
+telleruide,telluride,Telluride,United States,1,KEEP in use,1,1,0,,oad:Telleruide
+tinnum,sylt,Sylt,Germany,2,KEEP in use,1,1,0,,-:Tinnum
+tinqueux,reims,Reims,France,6,"KEEP in use, venue filed under a neighbor city",1,1,0,,-:Tinqueux
+tirolo,tirol,Tirol,Italy,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+torino,turin,Turin,Italy,19,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+treviglio,treviglio,Treviglio,Italy,1,KEEP in use,1,1,0,,michelin:Treviglio
+trucco,ventimiglia,Ventimiglia,Italy,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+uccle,brussels,Brussels,Belgium,27,KEEP in use,4,4,0,,-:Uccle | michelin:Uccle
+udine,godia,Godia,Italy,1,DELETE region or province,0,0,0,,
+united states,birmingham-al,"Birmingham, Alabama",United States,5,DELETE country,0,0,0,,
+unternberg,neufelden,Neufelden,Austria,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+urdaitz,urdaniz,Urdániz,Spain,2,KEEP in use,2,2,0,,-:Urdaitz | michelin:Urdaitz
+urla,izmir,İzmir,Turkey,13,"KEEP in use, venue filed under a neighbor city",4,4,0,,-:Urla | michelin:Urla
+us,birmingham-al,"Birmingham, Alabama",United States,5,DELETE country,0,0,0,,
+usa,birmingham-al,"Birmingham, Alabama",United States,5,DELETE country,0,0,0,,
+vaihingen an der enz rosswag,vaihingen-an-der-enz,Vaihingen an der Enz,Germany,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+valenica,valencia,Valencia,Spain,12,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+valkenburg,valkenburg-aan-de-geul,Valkenburg aan de Geul,Netherlands,1,KEEP in use,1,1,0,,michelin:Valkenburg
+valle de guadalupe,guadalupe,Guadalupe,Mexico,6,KEEP in use,2,2,0,,-:Valle de Guadalupe
+venezia,venice,Venice,Italy,14,KEEP in use,1,1,0,,michelin:Venezia
+vernazza,marina-di-gioiosa-ionica,Marina di Gioiosa Ionica,Italy,1,DELETE wrong place,0,0,0,,
+vila nova de gaia,porto,Porto,Portugal,18,"KEEP in use, venue filed under a neighbor city",2,2,0,,michelin:Vila Nova de Gaia
+vitacura,santiago,Santiago,Chile,17,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+vulcano island,vulcanello,Isola Vulcano,Italy,2,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+vysoky ujezd u berouna,vysoky-ujezd,Vysoký Újezd,Czechia,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+waregem,beveren-leie,Beveren-Leie,Belgium,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+washington,washington-dc,Washington,United States,69,KEEP in use,79,72,0,,"-:Washington | -:Washington, DC | james-beard:Washington | michelin:Washington | north-america-50-best-restaurants:Washington | oad:Washington | oad:Washington, DC | pinnacle-guide:Washington | spirited-awards:Washington | top-500-bars:Washington"
+washington d c,washington-dc,Washington,United States,69,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+washington dc metro,washington-dc,Washington,United States,69,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+west hollywood,los-angeles,Los Angeles,United States,114,"KEEP in use, venue filed under a neighbor city",2,2,0,,oad:West Hollywood
+westerlo,tongerlo,Tongerlo,Belgium,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+whitstable,seasalter,Seasalter,United Kingdom,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,
+wien,vienna,Vienna,Austria,30,KEEP in use,1,1,0,,gault-millau:Wien
+windermere,ambleside,Ambleside,United Kingdom,5,DELETE wrong place,0,0,0,"windermere [United Kingdom, Bowness-on-Windermere, 1]",
+woluwe saint pierre,brussels,Brussels,Belgium,27,KEEP in use,1,1,0,,-:Woluwe Saint Pierre
+yalikavak,bodrum,Bodrum,Turkey,8,KEEP in use,1,1,0,,michelin:Yalıkavak
+zingem,ouwegem,Ouwegem,Belgium,1,"KEEP no use: spelling, or place inside the city or its municipality",0,0,0,,

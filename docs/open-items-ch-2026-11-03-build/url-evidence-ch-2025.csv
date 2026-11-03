@@ -1,0 +1,226 @@
+award_id,venue_id,venue,city,category,result,capture_ts,source_url,card_name_or_path
+39,ve_034adbb581,Sven Wassmer Memories,Bad Ragaz,Three Stars,CAPTURE,20251025153854,https://web.archive.org/web/20251025153854id_/https://guide.michelin.com/en/sankt-gallen-region/bad-ragaz/restaurant/memories,Sven Wassmer Memories
+230,ve_a024c1df89,Restaurant de l'Hôtel de Ville de Crissier,Crissier,Three Stars,CAPTURE,20251025150750,https://web.archive.org/web/20251025150750id_/https://guide.michelin.com/en/vaud/crissier/restaurant/restaurant-de-l-hotel-de-ville,Restaurant de l'Hôtel de Ville
+231,ve_b76744c249,Restaurant de l'Hôtel de Ville,Ollon,One Star,CAPTURE,20260128201135,https://web.archive.org/web/20260128201135id_/https://guide.michelin.com/en/vaud/ollon_1156456/restaurant/hotel-de-ville-179826,Restaurant de l'Hôtel de Ville
+312,ve_6ce9f52552,Schloss Schauenstein,Fürstenau,Three Stars,CAPTURE,20260208075750,https://web.archive.org/web/20260208075750id_/https://guide.michelin.com/en/graubunden/frstenau/restaurant/schloss-schauenstein,Schloss Schauenstein
+1447,ve_43e6921d70,IGNIV by Andreas Caminada,Andermatt,Two Stars,CAPTURE,20251025150943,https://web.archive.org/web/20251025150943id_/https://guide.michelin.com/en/uri/andermatt/restaurant/igniv-by-andreas-caminada-1207200,IGNIV by Andreas Caminada
+1464,ve_ae81ba57b5,La Brezza,Arosa,Two Stars,CAPTURE,20261004032513,https://web.archive.org/web/20261004032513id_/https://guide.michelin.com/en/graubunden/arosa/restaurant/la-brezza-1191835,La Brezza
+1466,ve_01c783d370,Ecco,Ascona,Two Stars,CAPTURE,20251025151245,https://web.archive.org/web/20251025151245id_/https://guide.michelin.com/en/ticino/ascona/restaurant/ecco,Ecco
+1545,ve_87ba9caf15,roots,Basel,Two Stars,CAPTURE,20251122012143,https://web.archive.org/web/20251122012143id_/https://guide.michelin.com/en/basel-stadt/basel/restaurant/roots568552,roots
+1550,ve_d0eb34891c,Restaurant Stucki - Tanja Grandits,Basel,Two Stars,CAPTURE,20261004031851,https://web.archive.org/web/20261004031851id_/https://guide.michelin.com/en/basel-stadt/basel/restaurant/stucki-tanja-grandits,Stucki - Tanja Grandits
+1939,ve_05d711b347,Mammertsberg,Freidorf,Two Stars,CAPTURE,20261004032030,https://web.archive.org/web/20261004032030id_/https://guide.michelin.com/en/thurgau/freidorf/restaurant/mammertsberg-1200885,Mammertsberg
+1954,ve_f85f455848,L'Atelier Robuchon,Geneva,Two Stars,CAPTURE,20260115200353,https://web.archive.org/web/20260115200353id_/https://guide.michelin.com/en/geneve-region/geneve/restaurant/l-atelier-robuchon,L'Atelier Robuchon
+2240,ve_afc6441e98,La Table du Lausanne Palace,Lausanne,Two Stars,CAPTURE,20251211190507,https://web.archive.org/web/20251211190507id_/https://guide.michelin.com/en/vaud/lausanne/restaurant/la-table-du-lausanne-palace,La Table du Lausanne Palace
+2245,ve_9bd0fbec42,Pic au Beau-Rivage Palace,Lausanne,Two Stars,CAPTURE,20251206084608,https://web.archive.org/web/20251206084608id_/https://guide.michelin.com/en/vaud/lausanne/restaurant/anne-sophie-pic,Pic Beau-Rivage Palace
+2248,ve_34de6a2e24,Maison Wenger,Le Noirmont,Two Stars,CAPTURE,20261004032231,https://web.archive.org/web/20261004032231id_/https://guide.michelin.com/en/jura/le-noirmont/restaurant/maison-wenger,Maison Wenger
+2373,ve_6ddb2bea16,Colonnade,Lucerne,Two Stars,CAPTURE,20261004033106,https://web.archive.org/web/20261004033106id_/https://guide.michelin.com/en/luzern-region/luzern/restaurant/colonnade,Colonnade
+2940,ve_dcfa59471a,Da Vittorio - St. Moritz,Saint Moritz,Two Stars,CAPTURE,20251112081144,https://web.archive.org/web/20251112081144id_/https://guide.michelin.com/en/graubunden/sankt-moritz/restaurant/da-vittorio384903,Da Vittorio - St. Moritz
+2941,ve_360a80b032,Ecco St. Moritz,Saint Moritz,Two Stars,CAPTURE,20261004035641,https://web.archive.org/web/20261004035641id_/https://guide.michelin.com/en/graubunden/sankt-moritz/restaurant/ecco-st-moritz,Ecco St. Moritz
+3018,ve_abb6d290d7,Einstein Gourmet,Sankt Gallen,Two Stars,CAPTURE,20261004033314,https://web.archive.org/web/20261004033314id_/https://guide.michelin.com/en/sankt-gallen-region/sankt-gallen/restaurant/einstein-gourmet,Einstein Gourmet
+3034,ve_579505f292,Gilles Varone,Savièse,Two Stars,CAPTURE,20251025153225,https://web.archive.org/web/20251025153225id_/https://guide.michelin.com/en/valais/saviese_1157070/restaurant/gilles-varone,Gilles Varone
+3036,ve_1489b03a45,Magdalena,Schwyz,Two Stars,CAPTURE,20261004035818,https://web.archive.org/web/20261004035818id_/https://guide.michelin.com/en/schwyz/schwyz/restaurant/magdalena,Magdalena
+3464,ve_bd812d0ff0,7132 Silver,Vals,Two Stars,CAPTURE,20251230191817,https://web.archive.org/web/20251230191817id_/https://guide.michelin.com/en/graubunden/vals/restaurant/7132-silver,7132 Silver
+3517,ve_17dddf4312,focus ATELIER,Vitznau,Two Stars,CAPTURE,20251107185448,https://web.archive.org/web/20251107185448id_/https://guide.michelin.com/en/luzern-region/vitznau/restaurant/focus,focus ATELIER
+3571,ve_c358f16957,Taverne zum Schäfli,Wigoltingen,Two Stars,CAPTURE,20261004035948,https://web.archive.org/web/20261004035948id_/https://guide.michelin.com/en/thurgau/wigoltingen/restaurant/taverne-zum-schafli,Taverne zum Schäfli
+3584,ve_0e8742bfa6,IGNIV Zürich by Andreas Caminada,Zürich,Two Stars,CAPTURE,20261004040416,https://web.archive.org/web/20261004040416id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/igniv-zurich-by-andreas-caminada,IGNIV Zürich by Andreas Caminada
+3588,ve_c1e5d4a085,The Counter,Zürich,Two Stars,CAPTURE,20251215084113,https://web.archive.org/web/20251215084113id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/the-counter,The Counter
+3590,ve_4ae2c90fdb,Widder Restaurant,Zürich,Two Stars,CAPTURE,20261004040905,https://web.archive.org/web/20261004040905id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/widder-restaurant,Widder Restaurant
+3628,ve_7561fa5d25,Alpenblick - Stuba,Adelboden,One Star,CAPTURE,20261007151140,https://web.archive.org/web/20261007151140id_/https://guide.michelin.com/ch/de/bern-region/adelboden/restaurant/alpenblick,Alpenblick - Stuba
+3629,ve_858eea062b,Alpenblick - Bistro,Adelboden,Bib Gourmand,CAPTURE,20260713001607,https://web.archive.org/web/20260713001607id_/https://guide.michelin.com/us/en/bern-region/adelboden/restaurant/alpenblick-bistro-1208465,Alpenblick - Bistro
+3695,ve_d9a2af4de3,Gütsch by Markus Neff,Andermatt,One Star,CAPTURE,20260105074114,https://web.archive.org/web/20260105074114id_/https://guide.michelin.com/us/en/uri/andermatt/restaurant/gutsch-by-markus-neff,GÜTSCH by Markus Neff
+3696,ve_07c58c3cc2,The Japanese at Gütsch,Andermatt,One Star,CAPTURE,20260116000927,https://web.archive.org/web/20260116000927id_/https://guide.michelin.com/en/uri/andermatt/restaurant/the-japanese-by-the-chedi,The Japanese by The Chedi at Gütsch
+3740,ve_c1c5a8cafd,Locanda Barbarossa,Ascona,One Star,CAPTURE,20260713163215,https://web.archive.org/web/20260713163215id_/https://guide.michelin.com/de/de/ticino/ascona/restaurant/locanda-barbarossa,Locanda Barbarossa
+3811,ve_063365e885,Njørden,Aubonne,One Star,CAPTURE,20251206211723,https://web.archive.org/web/20251206211723id_/https://guide.michelin.com/en/vaud/aubonne/restaurant/njorden,Njørden
+3812,ve_6cedf32a8c,Njørd café,Aubonne,Bib Gourmand,NO CAPTURE,,,vaud/aubonne/restaurant/njord-cafe
+3882,ve_1d9d530f43,verve by sven,Bad Ragaz,One Star,CAPTURE,20260201223352,https://web.archive.org/web/20260201223352id_/https://guide.michelin.com/en/sankt-gallen-region/bad-ragaz/restaurant/verve-by-sven,Verve by Sven
+3909,ve_5144bb9225,Bad Balgach,Balgach,One Star,NO CAPTURE,,,sankt-gallen-region/balgach/restaurant/bad-balgach-by-schutzelhofer
+4085,ve_849859a769,Ackermannshof,Basel,One Star,CAPTURE,20260113005708,https://web.archive.org/web/20260113005708id_/https://guide.michelin.com/en/basel-stadt/basel/restaurant/ackermannshof,Ackermannshof
+4130,ve_06e7909221,Locanda Orico,Bellinzona,One Star,NO CAPTURE,,,ticino/bellinzona/restaurant/locanda-orico
+4184,ve_e96faa2a8b,Wein & Sein,Berne,One Star,CAPTURE,20251213231400,https://web.archive.org/web/20251213231400id_/https://guide.michelin.com/en/bern-region/bern/restaurant/wein-sein-mit-harzbluet,Wein & Sein
+4185,ve_98a21f8fa8,ZOE,Berne,One Star,CAPTURE,20251023053520,https://web.archive.org/web/20251023053520id_/https://guide.michelin.com/us/en/bern-region/bern/restaurant/zoe,ZOE
+4198,ve_88b7d09578,Du Bourg,Biel,One Star,CAPTURE,20260122060645,https://web.archive.org/web/20260122060645id_/https://guide.michelin.com/ch/de/bern-region/biel/restaurant/du-bourg-1218243,Du Bourg
+4276,ve_99b9445be8,Vivanda,Brail,One Star,CAPTURE,20251112073650,https://web.archive.org/web/20251112073650id_/https://guide.michelin.com/en/graubunden/brail/restaurant/vivanda310725,Vivanda
+4287,ve_6521db946e,Le Pont de Brent,Brent,One Star,CAPTURE,20251025154838,https://web.archive.org/web/20251025154838id_/https://guide.michelin.com/en/vaud/brent/restaurant/le-pont-de-brent-1214910,Le Pont de Brent
+4297,ve_5a57b7bf80,Les Montagnards,Broc,One Star,CAPTURE,20251024020557,https://web.archive.org/web/20251024020557id_/https://guide.michelin.com/us/en/fribourg-region/broc/restaurant/les-montagnards-le-sommet,Les Montagnards - Le Sommet
+4310,ve_d84ee8e403,Birdy's by Achtien - The Nest,Brunnen,One Star,CAPTURE,20251021100802,https://web.archive.org/web/20251021100802id_/https://guide.michelin.com/ch/de/luzern-region/brunnen/restaurant/birdy-s-by-achtien-the-nest,Birdy's by Achtien - The Nest
+4311,ve_2552a6a023,Birdy's by Achtien,Brunnen,Bib Gourmand,NO CAPTURE,,,luzern-region/brunnen/restaurant/birdy-s-by-achtien
+4327,ve_58207f74b9,Le Murenberg,Bubendorf,One Star,CAPTURE,20260118041223,https://web.archive.org/web/20260118041223id_/https://guide.michelin.com/ch/fr/basel-landschaft/bubendorf/restaurant/le-murenberg,Le Murenberg
+4328,ve_9bee700c20,Löwen - Apriori,Bubikon,One Star,CAPTURE,20260516120227,https://web.archive.org/web/20260516120227id_/https://guide.michelin.com/ch/de/zurich-region/bubikon/restaurant/lowen-apriori,Löwen - Apriori
+4380,ve_c923c2a1be,Zur Gedult,Burgdorf,One Star,CAPTURE,20260122032556,https://web.archive.org/web/20260122032556id_/https://guide.michelin.com/ch/de/bern-region/burgdorf/restaurant/zur-gedult,Zur Gedult
+4457,ve_1cbfdbcb6f,Osteria Enoteca Cuntitt,Castel San Pietro,One Star,NO CAPTURE,,,ticino/castel-san-pietro/restaurant/osteria-enoteca-cuntitt
+4488,ve_16681ee5aa,The Dining Room,Cham,One Star,NO CAPTURE,,,no card path
+4491,ve_d92707d46d,Au 1465,Champex Lac,One Star,CAPTURE,20260219103213,https://web.archive.org/web/20260219103213id_/https://guide.michelin.com/en/wallis/champex-lac/restaurant/au-1465,Au 1465
+4521,ve_b250afb41e,Table de Mary,Cheseaux Noréaz,One Star,CAPTURE,20251210172347,https://web.archive.org/web/20251210172347id_/https://guide.michelin.com/fr/fr/vaud/cheseaux-noraz/restaurant/table-de-mary,Table de Mary
+4673,ve_341bc10299,L'Ours,Crans Montana,One Star,CAPTURE,20260224112751,https://web.archive.org/web/20260224112751id_/https://guide.michelin.com/en/wallis/crans-montana/restaurant/l-ours179041,L'OURS
+4674,ve_b69774d8b6,LeMontBlanc,Crans Montana,One Star,CAPTURE,20251122220207,https://web.archive.org/web/20251122220207id_/https://guide.michelin.com/en/wallis/crans-montana/restaurant/le-montblanc,LeMontBlanc
+4724,ve_a4c946b567,Apollo,Davos Platz,One Star,CAPTURE,20260115154936,https://web.archive.org/web/20260115154936id_/https://guide.michelin.com/en/graubunden/davos-platz/restaurant/apollo,Apollo
+5027,ve_e14c24e574,Wirtshaus Zur Säge,Flüh,One Star,CAPTURE,20251102122259,https://web.archive.org/web/20251102122259id_/https://guide.michelin.com/us/en/solothurn-region/flh/restaurant/wirtshaus-zur-sage,Wirtshaus Zur Säge
+5086,ve_972ceacb75,Restaurant des Trois Tours,Fribourg,One Star,CAPTURE,20251225113732,https://web.archive.org/web/20251225113732id_/https://guide.michelin.com/en/fribourg-region/fribourg/restaurant/des-trois-tours-1195868,Des Trois Tours
+5088,ve_c8909ddae6,Le Pérolles,Fribourg,One Star,CAPTURE,20260116144455,https://web.archive.org/web/20260116144455id_/https://guide.michelin.com/en/fribourg-region/fribourg/restaurant/le-perolles,Le Pérolles
+5100,ve_a95e4d1fd2,Oz,Fürstenau,One Star,CAPTURE,20251122091531,https://web.archive.org/web/20251122091531id_/https://guide.michelin.com/en/graubunden/frstenau/restaurant/oz,OZ
+5103,ve_ecb7d6ece3,Truube,Gais,One Star,CAPTURE,20261008105109,https://web.archive.org/web/20261008105109id_/https://guide.michelin.com/ch/de/appenzell-ausserrhoden/gais/restaurant/truube,Truube
+5113,ve_6d8608e5bc,Sihlhalde,Gattikon,One Star,CAPTURE,20260209215402,https://web.archive.org/web/20260209215402id_/https://guide.michelin.com/us/en/zurich-region/gattikon/restaurant/sihlhalde,Sihlhalde
+5121,ve_94bfcd1372,Arakel,Geneva,One Star,CAPTURE,20251111204545,https://web.archive.org/web/20251111204545id_/https://guide.michelin.com/en/geneve-region/geneve/restaurant/arakel,Arakel
+5123,ve_a8b6e20720,Bayview by Danny Khezzar,Geneva,One Star,CAPTURE,20260208172112,https://web.archive.org/web/20260208172112id_/https://guide.michelin.com/en/geneve-region/geneve/restaurant/bayview,Bayview by Michel Roth
+5124,ve_3d9699e9fd,F.P.Journe Le Restaurant,Geneva,One Star,CAPTURE,20260212044809,https://web.archive.org/web/20260212044809id_/https://guide.michelin.com/ch/de/geneve-region/geneve/restaurant/f-p-journe-le-restaurant,F.P.Journe Le Restaurant
+5125,ve_f4bd246e34,Il Lago,Geneva,One Star,CAPTURE,20251023073955,https://web.archive.org/web/20251023073955id_/https://guide.michelin.com/us/en/geneve-region/geneve/restaurant/il-lago,Il Lago
+5127,ve_b220cc5a23,L'Aparté,Geneva,One Star,CAPTURE,20260617230948,https://web.archive.org/web/20260617230948id_/https://guide.michelin.com/ch/de/geneve-region/geneve/restaurant/l-aparte114414,L'Aparté
+5128,ve_66460670d8,La Micheline,Geneva,One Star,CAPTURE,20261007082406,https://web.archive.org/web/20261007082406id_/https://guide.michelin.com/ch/fr/geneve-region/geneve/restaurant/la-micheline,La Micheline
+5129,ve_565b689f7c,Tosca,Geneva,One Star,CAPTURE,20260209003142,https://web.archive.org/web/20260209003142id_/https://guide.michelin.com/en/geneve-region/geneve/restaurant/tosca525872,Tosca
+5130,ve_f556874f89,Le Tsé Fung,Geneva,One Star,CAPTURE,20251109074922,https://web.archive.org/web/20251109074922id_/https://guide.michelin.com/en/geneve-region/geneve/restaurant/tse-fung,Tsé Fung
+5213,ve_1a8e759931,1910 · Gourmet by Hausers,Grindelwald,One Star,CAPTURE,20260209092008,https://web.archive.org/web/20260209092008id_/https://guide.michelin.com/us/en/bern-region/grindelwald/restaurant/1910-gourmet-by-hausers,1910 Gourmet by Hausers
+5214,ve_9e9ca98fc6,Fiescherblick,Grindelwald,One Star,CAPTURE,20251025151418,https://web.archive.org/web/20251025151418id_/https://guide.michelin.com/en/bern-region/grindelwald/restaurant/fiescherblick,Fiescherblick
+5355,ve_217eabd5b6,Seerestaurant Belvédère,Hergiswil,One Star,CAPTURE,20251206003325,https://web.archive.org/web/20251206003325id_/https://guide.michelin.com/en/nidwalden/hergiswil/restaurant/seerestaurant-belvedere,Seerestaurant Belvédère
+5623,ve_72153581ce,Radius by Stefan Beer,Interlaken,One Star,CAPTURE,20251025151008,https://web.archive.org/web/20251025151008id_/https://guide.michelin.com/us/en/bern-region/interlaken/restaurant/radius-by-stefan-beer,Radius by Stefan Beer
+5710,ve_8875fb8787,Sonnenberg le soir,Kriens,One Star,CAPTURE,20251217023329,https://web.archive.org/web/20251217023329id_/https://guide.michelin.com/en/luzern-region/kriens_1150909/restaurant/sonnenberg-le-soir,Sonnenberg le soir
+5824,ve_2796023d12,Fahr,Künten Sulz,One Star,CAPTURE,20260120162445,https://web.archive.org/web/20260120162445id_/https://guide.michelin.com/ch/de/aargau-region/kunten-sulz/restaurant/fahr,Fahr
+5833,ve_a98d36a359,La Chavallera,La Punt Chamues ch,One Star,CAPTURE,20260219030201,https://web.archive.org/web/20260219030201id_/https://guide.michelin.com/us/en/graubunden/la-punt-chamues-ch/restaurant/gasthaus-krone,LA CHAVALLERA in der Krone Säumerei am Inn
+5879,ve_d7d236223f,Le Berceau des Sens,Lausanne,One Star,NO CAPTURE,,,vaud/lausanne/restaurant/le-berceau-des-sens
+5913,ve_57827b7323,Rosmarin,Lenzburg,One Star,CAPTURE,20251025150907,https://web.archive.org/web/20251025150907id_/https://guide.michelin.com/en/aargau-region/lenzburg/restaurant/rosmarin-1207137,Rosmarin
+5936,ve_70b912529b,Aux Trois Amis,Ligerz,One Star,CAPTURE,20251212074521,https://web.archive.org/web/20251212074521id_/https://guide.michelin.com/ch/de/bern-region/ligerz/restaurant/aux-trois-amis,Aux Trois Amis
+6186,ve_d4348b86a0,Osteria dell'Enoteca,Losone,One Star,CAPTURE,20260710203013,https://web.archive.org/web/20260710203013id_/https://guide.michelin.com/ch/de/ticino/losone/restaurant/osteria-dell-enoteca,Osteria dell'Enoteca
+6190,ve_44e54ae90d,de MATOS,Lucerne,One Star,CAPTURE,20251025154628,https://web.archive.org/web/20251025154628id_/https://guide.michelin.com/en/luzern-region/luzern/restaurant/de-matos,de MATOS
+6191,ve_80d0054396,Lucide,Lucerne,One Star,CAPTURE,20251116195347,https://web.archive.org/web/20251116195347id_/https://guide.michelin.com/en/luzern-region/luzern/restaurant/lucide,Lucide
+6192,ve_f0ca488fd0,Maihöfli by UniQuisine,Lucerne,One Star,CAPTURE,20251226073752,https://web.archive.org/web/20251226073752id_/https://guide.michelin.com/en/luzern-region/luzern/restaurant/maihofli,Maihöfli by UniQuisine
+6193,ve_870a5c0afc,Minamo,Lucerne,One Star,CAPTURE,20251026012043,https://web.archive.org/web/20251026012043id_/https://guide.michelin.com/en/luzern-region/luzern/restaurant/minamo,Minamo
+6195,ve_3bd1317f1c,Soledì Restaurant,Lugano,One Star,CAPTURE,20251025150910,https://web.archive.org/web/20251025150910id_/https://guide.michelin.com/en/ticino/lugano/restaurant/felix-lo-basso-restaurant,Felix Lo Basso Restaurant
+6196,ve_0b50291587,I Due Sud,Lugano,One Star,CAPTURE,20260209184307,https://web.archive.org/web/20260209184307id_/https://guide.michelin.com/en/ticino/lugano/restaurant/i-due-sud,I Due Sud
+6197,ve_8d85cda920,META,Lugano,One Star,CAPTURE,20251206031958,https://web.archive.org/web/20251206031958id_/https://guide.michelin.com/ch/de/ticino/lugano/restaurant/meta-1192226,META
+6198,ve_07fdc406cd,THE VIEW Lugano,Lugano,One Star,CAPTURE,20260212193923,https://web.archive.org/web/20260212193923id_/https://guide.michelin.com/en/ticino/lugano/restaurant/the-view473933,THE VIEW
+6216,ve_bac6a71c73,Neue Blumenau,Lömmenschwil,One Star,CAPTURE,20261007130232,https://web.archive.org/web/20261007130232id_/https://guide.michelin.com/en/sankt-gallen-region/lmmenschwil/restaurant/neue-blumenau,Neue Blumenau
+6349,ve_388aeca5ca,Chesa Stüva Colani,Madulain,One Star,CAPTURE,20251227115120,https://web.archive.org/web/20251227115120id_/https://guide.michelin.com/en/graubunden/madulain/restaurant/chesa-stuva-colani,Chesa Stüva Colani
+6467,ve_27a2d86ff0,Schlüssel - Nidbergstube,Mels,One Star,NO CAPTURE,,,sankt-gallen-region/mels/restaurant/schlussel-nidbergstube
+6468,ve_b9da8d6de9,Restaurant Schlüssel - Schlüsselstube,Mels,Bib Gourmand,NO CAPTURE,,,sankt-gallen-region/mels/restaurant/schlusselstube
+6483,ve_cbdc6c829b,Gasthaus Löwen,Menzingen,One Star,CAPTURE,20251021095416,https://web.archive.org/web/20251021095416id_/https://guide.michelin.com/ch/de/zug-region/menzingen/restaurant/lowen179704,Gasthaus Löwen
+6619,ve_614ef54974,Stéphane Décotterd,Montreux,One Star,CAPTURE,20251109094134,https://web.archive.org/web/20251109094134id_/https://guide.michelin.com/ch/fr/vaud/montreux/restaurant/stephane-decotterd,Stéphane Décotterd
+7538,ve_8c8a10de1e,Gasthaus zum Gupf,Rehetobel,One Star,NO CAPTURE,,,appenzell-ausserrhoden/rehetobel/restaurant/gasthaus-zum-gupf
+7555,ve_46053b218b,Château Attisholz - Le feu,Riedholz,One Star,CAPTURE,20251027040456,https://web.archive.org/web/20251027040456id_/https://guide.michelin.com/us/en/solothurn-region/riedholz/restaurant/attisholz-le-feu,Château Attisholz - Le feu
+7556,ve_4766480819,Château Attisholz - Brasserie la Source,Riedholz,Bib Gourmand,CAPTURE,20251025151817,https://web.archive.org/web/20251025151817id_/https://guide.michelin.com/en/solothurn-region/riedholz/restaurant/chateau-attisholz-brasserie-la-source,Château Attisholz - Brasserie la Source
+7561,ve_6ebf3c684e,Regina Montium,Rigi Kaltbad,One Star,CAPTURE,20251021114943,https://web.archive.org/web/20251021114943id_/https://guide.michelin.com/ch/de/luzern-region/rigi-kaltbad/restaurant/regina-montium,Regina Montium
+7626,ve_b0b6289cfe,Wiesner Mysterion - Wiesner - Zauber,Romoos,One Star,CAPTURE,20251023120726,https://web.archive.org/web/20251023120726id_/https://guide.michelin.com/us/en/luzern-region/romoos_1152275/restaurant/wiesner-mysterion-zauber,Wiesner Mysterion - Wiesner - Zauber
+7627,ve_08fb4a4859,Wiesner Mysterion – Werkstatt Kost,Romoos,Bib Gourmand,CAPTURE,20251107041608,https://web.archive.org/web/20251107041608id_/https://guide.michelin.com/us/en/luzern-region/romoos_1152275/restaurant/wiesner-mysterion-%E2%80%93-werkstatt-kost,Wiesner Mysterion – Werkstatt Kost
+7698,ve_30a31d4e84,Talvo,Saint Moritz,One Star,CAPTURE,20251025162909,https://web.archive.org/web/20251025162909id_/https://guide.michelin.com/en/graubunden/sankt-moritz/restaurant/talvo,Talvo
+7833,ve_9acda23640,Corso,Sankt Gallen,One Star,CAPTURE,20251025152324,https://web.archive.org/web/20251025152324id_/https://guide.michelin.com/en/sankt-gallen-region/sankt-gallen/restaurant/corso-547750,Corso
+7834,ve_fff99c3357,Jägerhof,Sankt Gallen,One Star,NO CAPTURE,,,sankt-gallen-region/sankt-gallen/restaurant/jagerhof
+7835,ve_157d527091,Soleil d’Or by Benjamin Geisser,Sankt Gallen,One Star,CAPTURE,20251025151712,https://web.archive.org/web/20251025151712id_/https://guide.michelin.com/en/sankt-gallen-region/sankt-gallen/restaurant/soleil-d-or-by-david-geisser,Soleil d’Or by David Geisser
+7881,ve_677686ef5f,Domaine de Châteauvieux,Satigny,One Star,CAPTURE,20251205094537,https://web.archive.org/web/20251205094537id_/https://guide.michelin.com/en/geneve-region/satigny/restaurant/domaine-de-chateauvieux,Domaine de Châteauvieux
+7886,ve_f3e4ce992e,Villa Sommerlust,Schaffhausen,One Star,CAPTURE,20260226041756,https://web.archive.org/web/20260226041756id_/https://guide.michelin.com/en/schaffhausen-region/schaffhausen/restaurant/villa-sommerlust,Villa Sommerlust
+8248,ve_2559b85e8f,du Cerf,Sonceboz,One Star,NO CAPTURE,,,bern-region/sonceboz/restaurant/du-cerf
+8268,ve_b8fe5cdaeb,UniQuisine Atelier,Stansstad,One Star,CAPTURE,20260219060526,https://web.archive.org/web/20260219060526id_/https://guide.michelin.com/en/nidwalden/stansstad/restaurant/uniquisine-atelier,UniQuisine Atelier
+8277,ve_e412256f8a,Panorama - Cayenne,Steffisburg,One Star,CAPTURE,20251025013738,https://web.archive.org/web/20251025013738id_/https://guide.michelin.com/us/en/bern-region/steffisburg/restaurant/panorama-cayenne,Panorama - Cayenne
+8278,ve_2a76b77e16,Panorama - Bistro,Steffisburg,Bib Gourmand,NO CAPTURE,,,bern-region/steffisburg/restaurant/panorama-bistro
+8458,ve_da2116f2fa,Centric Dining,Thun,One Star,CAPTURE,20260122060631,https://web.archive.org/web/20260122060631id_/https://guide.michelin.com/ch/de/bern-region/thun/restaurant/centric-dining,Centric Dining
+8461,ve_2b2dbfb9bf,Le Cigalon,Thônex,One Star,CAPTURE,20260117182446,https://web.archive.org/web/20260117182446id_/https://guide.michelin.com/en/geneve-region/thnex/restaurant/le-cigalon179243,Le Cigalon
+8739,ve_1b96d21ab8,Traube,Trimbach,One Star,CAPTURE,20260715192336,https://web.archive.org/web/20260715192336id_/https://guide.michelin.com/ch/de/solothurn-region/trimbach/restaurant/traube179829,Traube
+8742,ve_363cdb21ff,La Chaumière,Troinex,One Star,CAPTURE,20251025161340,https://web.archive.org/web/20251025161340id_/https://guide.michelin.com/us/en/geneve-region/troinex/restaurant/la-chaumiere-by-serge-labrosse,La Chaumière by Serge Labrosse
+8791,ve_6784aa9f52,Torkel,Vaduz,One Star,NO CAPTURE,,,liechtenstein-region/vaduz/restaurant/torkel
+8881,ve_719794767d,La Table d'Adrien,Verbier,One Star,CAPTURE,20260214042455,https://web.archive.org/web/20260214042455id_/https://guide.michelin.com/en/wallis/verbier/restaurant/la-table-d-adrien,La Table d'Adrien
+8923,ve_01ac90dd44,Auberge de la Croix Blanche,Villarepos,One Star,NO CAPTURE,,,fribourg-region/villarepos/restaurant/auberge-de-la-croix-blanche
+8968,ve_5c738f9d6f,Gasthof Sternen,Wangen bei Dübendorf,One Star,CAPTURE,20251026034800,https://web.archive.org/web/20251026034800id_/https://guide.michelin.com/us/en/zurich-region/wangen-bei-dbendorf/restaurant/sternen-badstube,Sternen - Badstube
+9047,ve_1ff8df1642,Restaurant Sonne Scheunenberg,Wengi bei Büren,One Star,CAPTURE,20260713032210,https://web.archive.org/web/20260713032210id_/https://guide.michelin.com/en/bern-region/wengi-bei-buren/restaurant/sonne180069,Sonne
+9048,ve_bcb98826f3,Sonne,Ebersecken,Bib Gourmand,CAPTURE,20251208045545,https://web.archive.org/web/20251208045545id_/https://guide.michelin.com/en/luzern-region/ebersecken/restaurant/sonne179112,Sonne
+9059,ve_dd38531f8f,Alpenblick,Wilderswil,One Star,CAPTURE,20260711023223,https://web.archive.org/web/20260711023223id_/https://guide.michelin.com/en/bern-region/wilderswil/restaurant/alpenblick179404,Alpenblick
+9068,ve_16ad2ecf9a,Segreto,Wittenbach,One Star,NO CAPTURE,,,sankt-gallen-region/wittenbach/restaurant/segreto
+9099,ve_6dfe615691,Maison Gerber Wyss,Yverdon-les-Bains,One Star,CAPTURE,20251104204603,https://web.archive.org/web/20251104204603id_/https://guide.michelin.com/us/en/vaud/yverdon-les-bains/restaurant/restaurant-de-l-hotel-de-ville-gerber-wyss,Restaurant GERBER WYSS
+9105,ve_7077280426,After Seven,Zermatt,One Star,CAPTURE,20251116001659,https://web.archive.org/web/20251116001659id_/https://guide.michelin.com/en/wallis/zermatt/restaurant/after-seven,After Seven
+9106,ve_4025b6f6ff,Alpine Gourmet Prato Borni,Zermatt,One Star,CAPTURE,20251116133430,https://web.archive.org/web/20251116133430id_/https://guide.michelin.com/en/wallis/zermatt/restaurant/alpine-gourmet-prato-borni,Alpine Gourmet Prato Borni
+9107,ve_3c7b28d0d0,Brasserie Uno,Zermatt,One Star,CAPTURE,20251117014002,https://web.archive.org/web/20251117014002id_/https://guide.michelin.com/en/wallis/zermatt/restaurant/brasserie-uno,Brasserie Uno
+9108,ve_0a64d6733c,Ristorante Capri,Zermatt,One Star,CAPTURE,20260117230719,https://web.archive.org/web/20260117230719id_/https://guide.michelin.com/ch/fr/wallis/zermatt/restaurant/capri,Capri
+9114,ve_0f001417aa,Eden Kitchen & Bar,Zürich,One Star,CAPTURE,20251205001826,https://web.archive.org/web/20251205001826id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/eden-kitchen-bar,Eden Kitchen & Bar
+9115,ve_3ae5d0df0b,EquiTable,Zürich,One Star,CAPTURE,20260123075022,https://web.archive.org/web/20260123075022id_/https://guide.michelin.com/ch/fr/zurich-region/zurich/restaurant/equitable-im-sankt-meinrad,EquiTable
+9116,ve_2522b9d892,KLE,Zürich,One Star,CAPTURE,20251122012142,https://web.archive.org/web/20251122012142id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/kle,KLE
+9119,ve_8bc081e1b7,La Rôtisserie,Zürich,One Star,CAPTURE,20251212074021,https://web.archive.org/web/20251212074021id_/https://guide.michelin.com/us/en/zurich-region/zurich/restaurant/la-rotisserie114192,La Rôtisserie
+9120,ve_92d9df6be0,Neue Taverne,Zürich,One Star,CAPTURE,20251209034619,https://web.archive.org/web/20251209034619id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/neue-taverne,Neue Taverne
+9121,ve_ad3e6741bc,ORSINI,Zürich,One Star,CAPTURE,20251110230104,https://web.archive.org/web/20251110230104id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/orsini-1211219,ORSINI
+9122,ve_e46b60682d,SHIN,Zürich,One Star,CAPTURE,20260606132718,https://web.archive.org/web/20260606132718id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/sushi-shin,Shin
+9123,ve_c5b0394397,Wirtschaft im Franz,Zürich,One Star,CAPTURE,20260213005139,https://web.archive.org/web/20260213005139id_/https://guide.michelin.com/ch/fr/zurich-region/zurich/restaurant/wirtschaft-im-franz,Wirtschaft im FRANZ
+9124,ve_a61e476c4c,Wöschi,Zürich,One Star,NO CAPTURE,,,zurich-region/zurich/restaurant/woschi
+9215,ve_afe088a965,Café du Levant,Aire la Ville,Bib Gourmand,CAPTURE,20251210053730,https://web.archive.org/web/20251210053730id_/https://guide.michelin.com/en/geneve-region/aire-la-ville/restaurant/cafe-du-levant,Café du Levant
+9296,ve_cd936acefb,Asia,Ascona,Bib Gourmand,NO CAPTURE,,,ticino/ascona/restaurant/asia
+9364,ve_f9a0b887fa,Grotto Valmaggese,Avegno,Bib Gourmand,CAPTURE,20260124002051,https://web.archive.org/web/20260124002051id_/https://guide.michelin.com/ch/de/ticino/avegno/restaurant/grotto-valmaggese,Grotto Valmaggese
+9440,ve_e48844ec79,au violon,Basel,Bib Gourmand,CAPTURE,20260119121031,https://web.archive.org/web/20260119121031id_/https://guide.michelin.com/en/basel-stadt/basel/restaurant/au-violon,au violon
+9511,ve_1eed8640fe,Les Curiades,Bernex,Bib Gourmand,CAPTURE,20251211122452,https://web.archive.org/web/20251211122452id_/https://guide.michelin.com/en/geneve-region/bernex/restaurant/les-curiades,Les Curiades
+9523,ve_b374e99c35,Albrun,Binn,Bib Gourmand,NO CAPTURE,,,wallis/binn/restaurant/albrun
+9592,ve_bbb89adc15,Agorà,Brissago,Bib Gourmand,CAPTURE,20251206121843,https://web.archive.org/web/20251206121843id_/https://guide.michelin.com/ch/fr/ticino/brissago/restaurant/agora-1190920,Agorà
+9640,ve_7e95e4eb62,Stadthaus,Burgdorf,Bib Gourmand,NO CAPTURE,,,bern-region/burgdorf/restaurant/stadthaus
+9703,ve_25dc01317b,Bistrot du Lion d'Or,Carouge,Bib Gourmand,CAPTURE,20260116024547,https://web.archive.org/web/20260116024547id_/https://guide.michelin.com/ch/fr/geneve-region/carouge/restaurant/le-bistrot-le-lion-d-or,Bistrot du Lion d'Or
+9758,ve_f11e1f2315,Là-Haut,Chardonne,Bib Gourmand,CAPTURE,20260113102823,https://web.archive.org/web/20260113102823id_/https://guide.michelin.com/en/vaud/chardonne/restaurant/la-haut-1214751,Là-Haut
+9889,ve_91da401a21,Collonge Café Restaurant,Collonge Bellerive,Bib Gourmand,CAPTURE,20251205032500,https://web.archive.org/web/20251205032500id_/https://guide.michelin.com/en/geneve-region/collonge-bellerive/restaurant/collonge-cafe,Collonge Café
+9943,ve_2c3e5b35fa,Le Lab by Adel & Niko,Corseaux,Bib Gourmand,CAPTURE,20260121222234,https://web.archive.org/web/20260121222234id_/https://guide.michelin.com/ch/de/vaud/corseaux_1154610/restaurant/le-lab-by-adel-niko,Le Lab by Adel & Niko
+9948,ve_05a8d1a8a0,La Fleur de Sel,Cossonay,Bib Gourmand,NO CAPTURE,,,vaud/cossonay/restaurant/la-fleur-de-sel-183809
+9952,ve_f75e7fa787,Edo,Crans Montana,Bib Gourmand,CAPTURE,20260221173837,https://web.archive.org/web/20260221173837id_/https://guide.michelin.com/en/wallis/crans-montana/restaurant/edo181374,Edo
+10034,ve_545ce3ba16,Golden Dragon - Asia Restaurant,Davos Platz,Bib Gourmand,CAPTURE,20260129123420,https://web.archive.org/web/20260129123420id_/https://guide.michelin.com/en/graubunden/davos-platz/restaurant/golden-dragon,Golden Dragon
+10047,ve_a3c14fc8e2,Gasthaus Schupfen,Diessenhofen,Bib Gourmand,CAPTURE,20260211223302,https://web.archive.org/web/20260211223302id_/https://guide.michelin.com/ch/fr/thurgau/diessenhofen/restaurant/gasthaus-schupfen,Gasthaus Schupfen
+10057,ve_ea0bc2ee9c,Stiva Grischuna,Disentis,Bib Gourmand,CAPTURE,20260103214833,https://web.archive.org/web/20260103214833id_/https://guide.michelin.com/us/en/graubunden/disentis/restaurant/stiva-grischuna,Stiva Grischuna
+10166,ve_26c585f1a3,Restaurant zum Pflugstein,Erlenbach,Bib Gourmand,CAPTURE,20260322031544,https://web.archive.org/web/20260322031544id_/https://guide.michelin.com/ch/de/zurich-region/erlenbach/restaurant/zum-pflugstein,Zum Pflugstein
+10167,ve_6ed2283c42,Gommerstuba,Ernen,Bib Gourmand,NO CAPTURE,,,wallis/ernen/restaurant/gommerstuba
+10188,ve_5d8a1b282d,Linde,Fislisbach,Bib Gourmand,NO CAPTURE,,,aargau-region/fislisbach/restaurant/linde
+10196,ve_ed815f15fb,Restaurant Pinot,Fläsch,Bib Gourmand,CAPTURE,20260210055906,https://web.archive.org/web/20260210055906id_/https://guide.michelin.com/us/en/graubunden/flsch/restaurant/pinot,PINOT
+10210,ve_62ffe749b7,Gasthof zum goldenen Kreuz,Frauenfeld,Bib Gourmand,CAPTURE,20260711210436,https://web.archive.org/web/20260711210436id_/https://guide.michelin.com/ch/de/thurgau/frauenfeld/restaurant/zum-goldenen-kreuz,Gasthof zum goldenen Kreuz
+10212,ve_bbb79f7c94,Wirtshus zum Wyberg,Freienstein Teufen,Bib Gourmand,NO CAPTURE,,,zurich-region/freienstein-teufen/restaurant/wirtshus-zum-wyberg-gourmet-stubli
+10218,ve_9dbfd4baab,Blasers Restaurant,Frutigen,Bib Gourmand,CAPTURE,20251207214916,https://web.archive.org/web/20251207214916id_/https://guide.michelin.com/ch/de/bern-region/frutigen/restaurant/philipp-blaser,Philipp Blaser
+10236,ve_88d0e53b2b,Casa Caminada,Fürstenau,Bib Gourmand,CAPTURE,20260125080939,https://web.archive.org/web/20260125080939id_/https://guide.michelin.com/en/graubunden/frstenau/restaurant/casa-caminada,Casa Caminada
+10252,ve_0c2a354c88,Bistrot Dumas,Geneva,Bib Gourmand,NO CAPTURE,,,geneve-region/geneve/restaurant/bistrot-dumas
+10253,ve_2cf260b991,Chez Philippe - Bar Grill,Geneva,Bib Gourmand,CAPTURE,20260711232039,https://web.archive.org/web/20260711232039id_/https://guide.michelin.com/ch/fr/geneve-region/geneve/restaurant/chez-philippe,Chez Philippe
+10254,ve_d19cb20894,L'Agape,Geneva,Bib Gourmand,NO CAPTURE,,,geneve-region/geneve/restaurant/l-agape-1197107
+10255,ve_c69f4777fa,LE BOLOGNE,Geneva,Bib Gourmand,CAPTURE,20260208101519,https://web.archive.org/web/20260208101519id_/https://guide.michelin.com/ch/de/geneve-region/geneve/restaurant/le-bologne,Le Bologne
+10256,ve_11181fa16e,Le Dorian,Geneva,Bib Gourmand,CAPTURE,20251025153007,https://web.archive.org/web/20251025153007id_/https://guide.michelin.com/en/geneve-region/geneve/restaurant/le-dorian,Le Dorian
+10257,ve_79bd16f567,Natürlich,Geneva,Bib Gourmand,CAPTURE,20260217111630,https://web.archive.org/web/20260217111630id_/https://guide.michelin.com/ch/de/geneve-region/geneve/restaurant/naturlich,Natürlich
+10258,ve_65331808f4,Osteria della Bottega,Geneva,Bib Gourmand,CAPTURE,20260207105259,https://web.archive.org/web/20260207105259id_/https://guide.michelin.com/ch/de/geneve-region/geneve/restaurant/osteria-della-bottega,Osteria della Bottega
+10259,ve_8cd6bbf504,Suahoy,Geneva,Bib Gourmand,CAPTURE,20260618020603,https://web.archive.org/web/20260618020603id_/https://guide.michelin.com/ch/fr/geneve-region/geneve/restaurant/suahoy,SUAHOY
+10323,ve_7e4b97f994,Chappeli,Grenchen,Bib Gourmand,NO CAPTURE,,,solothurn-region/grenchen/restaurant/chappeli
+10328,ve_9d2037d9e3,Bären,Grub,Bib Gourmand,NO CAPTURE,,,appenzell-ausserrhoden/grub/restaurant/baren179308
+10448,ve_d1cdab8617,Au Vieux Nendaz,Haute Nendaz,Bib Gourmand,CAPTURE,20251025152941,https://web.archive.org/web/20251025152941id_/https://guide.michelin.com/en/wallis/haute-nendaz/restaurant/au-vieux-nendaz,Au Vieux Nendaz
+10449,ve_eaeac5a4c3,Mont-Rouge,Haute Nendaz,Bib Gourmand,CAPTURE,20260118013814,https://web.archive.org/web/20260118013814id_/https://guide.michelin.com/ch/fr/wallis/haute-nendaz/restaurant/mont-rouge,Mont-Rouge
+10471,ve_27907ac388,Bacchus Bistro & Genussmanufaktur,Hildisrieden,Bib Gourmand,CAPTURE,20260214141428,https://web.archive.org/web/20260214141428id_/https://guide.michelin.com/en/luzern-region/hildisrieden/restaurant/bacchus-bistro-genussmanufaktur,Bacchus Bistro & Genussmanufaktur
+10636,ve_9503403a2a,Ô Bois Sauvage,Hérémence,Bib Gourmand,NO CAPTURE,,,no card path
+10643,ve_c670f5d3a0,Casa Casutt - Ustria,Ilanz,Bib Gourmand,NO CAPTURE,,,graubunden/ilanz/restaurant/casa-casutt
+10651,ve_354f0e9cd1,Salzano,Interlaken,Bib Gourmand,CAPTURE,20251209105644,https://web.archive.org/web/20251209105644id_/https://guide.michelin.com/ch/fr/bern-region/interlaken/restaurant/salzano,SALZANO
+10730,ve_4b848ba4c5,Eintracht,Kestenholz,Bib Gourmand,NO CAPTURE,,,solothurn-region/kestenholz/restaurant/eintracht
+10875,ve_85ddc8ee73,MYO Sushi Bar,Lausanne,Bib Gourmand,CAPTURE,20260118115104,https://web.archive.org/web/20260118115104id_/https://guide.michelin.com/en/vaud/lausanne/restaurant/myo-sushi-bar,Myò Sushi Bar
+10877,ve_376a156e18,Brasserie Le Gogant,Le Brassus,Bib Gourmand,NO CAPTURE,,,vaud/le-brassus_1155573/restaurant/brasserie-le-gogant
+10884,ve_af85a36ec0,Auberge Communale Le Mont,Le Mont sur Lausanne,Bib Gourmand,CAPTURE,20260210130333,https://web.archive.org/web/20260210130333id_/https://guide.michelin.com/ch/fr/vaud/le-mont-sur-lausanne/restaurant/auberge-communale-le-mont,Auberge Communale Le Mont
+11036,ve_7bb31146bb,Centrale,Losone,Bib Gourmand,NO CAPTURE,,,ticino/losone/restaurant/centrale178757
+11059,ve_82ef3df931,Hardern Pintli,Lyss,Bib Gourmand,NO CAPTURE,,,bern-region/lyss_1151218/restaurant/hardern-pintli
+11094,ve_8f85789bec,Colani Bistrot,Madulain,Bib Gourmand,CAPTURE,20260210032923,https://web.archive.org/web/20260210032923id_/https://guide.michelin.com/us/en/graubunden/madulain/restaurant/colani-bistrot,Colani Bistrot
+11142,ve_a115922980,Grotto della Salute,Massagno,Bib Gourmand,CAPTURE,20260712030146,https://web.archive.org/web/20260712030146id_/https://guide.michelin.com/ch/de/ticino/massagno/restaurant/grotto-della-salute,Grotto della Salute
+11149,ve_3b661056f4,Balm-Bistro,Meggen,Bib Gourmand,CAPTURE,20260113225353,https://web.archive.org/web/20260113225353id_/https://guide.michelin.com/us/en/luzern-region/meggen/restaurant/la-pistache-bistro,Balm - Bistro
+11234,ve_1d933071d4,Le Bistro by Décotterd,Montreux,Bib Gourmand,CAPTURE,20260219033509,https://web.archive.org/web/20260219033509id_/https://guide.michelin.com/ch/fr/vaud/montreux/restaurant/le-bistro-by-decotterd,Le Bistro by Décotterd
+11732,ve_44c88fa139,La Trattoria,Pontresina,Bib Gourmand,CAPTURE,20260114040417,https://web.archive.org/web/20260114040417id_/https://guide.michelin.com/us/en/graubunden/pontresina/restaurant/la-trattoria,La Trattoria
+11820,ve_748a07d79c,Adler,Ried Muotathal,Bib Gourmand,NO CAPTURE,,,schwyz/ried-muotathal/restaurant/adler179921
+11822,ve_2949d340bd,Kaiserstock,Riemenstalden,Bib Gourmand,NO CAPTURE,,,schwyz/riemenstalden/restaurant/kaiserstock
+11827,ve_2bec51b859,Bistro by Regina Montium,Rigi Kaltbad,Bib Gourmand,CAPTURE,20251116061653,https://web.archive.org/web/20251116061653id_/https://guide.michelin.com/en/luzern-region/rigi-kaltbad/restaurant/bistrot-by-regina-montium,Bistro by Regina Montium
+11883,ve_0453a355cc,16 ART-BAR-RESTAURANT,Saanen,Bib Gourmand,CAPTURE,20251210000850,https://web.archive.org/web/20251210000850id_/https://guide.michelin.com/en/bern-region/saanen/restaurant/16-art-bar,16 ART-BAR-RESTAURANT
+11908,ve_f022d54c53,Auberge Communale,Saint Légier,Bib Gourmand,CAPTURE,20260113225926,https://web.archive.org/web/20260113225926id_/https://guide.michelin.com/en/vaud/saint-legier/restaurant/auberge-communale-180272,Auberge Communale
+11915,ve_991ee558ec,La Scarpetta,Saint Moritz,Bib Gourmand,CAPTURE,20251025152302,https://web.archive.org/web/20251025152302id_/https://guide.michelin.com/en/graubunden/sankt-moritz/restaurant/la-scarpetta-1217902,La Scarpetta
+12002,ve_1505450bf5,Candela,Sankt Gallen,Bib Gourmand,NO CAPTURE,,,sankt-gallen-region/sankt-gallen/restaurant/candela
+12003,ve_787c43dc24,Netts Schützengarten,Sankt Gallen,Bib Gourmand,NO CAPTURE,,,sankt-gallen-region/sankt-gallen/restaurant/netts-schutzengarten
+12047,ve_dd813da121,Café de Peney,Satigny,Bib Gourmand,CAPTURE,20251117042834,https://web.archive.org/web/20251117042834id_/https://guide.michelin.com/en/geneve-region/satigny/restaurant/cafe-de-peney,Café de Peney
+12055,ve_98ee73fa04,D'Chuchi,Schaffhausen,Bib Gourmand,CAPTURE,20260216210445,https://web.archive.org/web/20260216210445id_/https://guide.michelin.com/ch/de/schaffhausen-region/schaffhausen/restaurant/d-chuchi,D'Chuchi
+12060,ve_1c76580b78,Schüpbärg-Beizli,Schüpfen,Bib Gourmand,NO CAPTURE,,,bern-region/schupfen_1152693/restaurant/schupbarg-beizli
+12077,ve_6a05813773,Pensiun Aldier,Sent,Bib Gourmand,NO CAPTURE,,,graubunden/sent/restaurant/pensiun-aldier
+12263,ve_c1043be4db,Salzhaus Restaurant Bar,Solothurn,Bib Gourmand,CAPTURE,20260209122709,https://web.archive.org/web/20260209122709id_/https://guide.michelin.com/ch/de/solothurn-region/solothurn/restaurant/salzhaus,SALZHAUS
+12264,ve_8981d8563c,Zum alten Stephan,Solothurn,Bib Gourmand,CAPTURE,20260121135030,https://web.archive.org/web/20260121135030id_/https://guide.michelin.com/ch/fr/solothurn-region/solothurn/restaurant/zum-alten-stephan,Zum Alten Stephan
+12309,ve_88f074f889,Gasthof zur Sonne,Stäfa,Bib Gourmand,NO CAPTURE,,,zurich-region/stfa/restaurant/gasthof-zur-sonne
+12545,ve_84891f3ea7,Alla Cantina,Tegna,Bib Gourmand,CAPTURE,20251206212522,https://web.archive.org/web/20251206212522id_/https://guide.michelin.com/ch/de/ticino/tegna/restaurant/alla-cantina,Alla Cantina
+12556,ve_16bee61228,Anker,Teufen,Bib Gourmand,NO CAPTURE,,,appenzell-ausserrhoden/teufen/restaurant/anker
+12777,ve_f187bc9d57,Restaurant Blume,Uster,Bib Gourmand,NO CAPTURE,,,zurich-region/uster/restaurant/blume
+12917,ve_7e5b6485dc,Fischerstube Weesen,Weesen,Bib Gourmand,NO CAPTURE,,,sankt-gallen-region/weesen/restaurant/fischerstube
+12947,ve_59b228c72a,Alpenblick - Swiss Bistro,Wilderswil,Bib Gourmand,CAPTURE,20251117101508,https://web.archive.org/web/20251117101508id_/https://guide.michelin.com/ch/de/bern-region/wilderswil/restaurant/alpenblick-bistro,Alpenblick - Swiss Bistro
+12968,ve_ffc19aeb13,Landgasthof Ochsen,Wölflinswil,Bib Gourmand,NO CAPTURE,,,aargau-region/wlflinswil/restaurant/landgasthof-ochsen
+13001,ve_24270e9ae9,Auberge de la Croix d'Or - Bistro,Yens,Bib Gourmand,NO CAPTURE,,,vaud/yens/restaurant/auberge-de-la-croix-d%C2%B4or-bistro
+13016,ve_a6ee409a10,Bazaar,Zermatt,Bib Gourmand,CAPTURE,20260712220541,https://web.archive.org/web/20260712220541id_/https://guide.michelin.com/en/wallis/zermatt/restaurant/bazaar-1202826,Bazaar
+13017,ve_a9da585c25,Rathauskeller Bistro,Zug,Bib Gourmand,NO CAPTURE,,,zug-region/zug/restaurant/rathauskeller-bistro
+13018,ve_2942d4bab9,Zum Kaiser Franz,Zug,Bib Gourmand,CAPTURE,20260710103204,https://web.archive.org/web/20260710103204id_/https://guide.michelin.com/ch/de/zug-region/zug/restaurant/zum-kaiser-franz-im-rossl,Zum Kaiser Franz
+13019,ve_ad1e8d7bdc,Boucherie AuGust,Zürich,Bib Gourmand,CAPTURE,20251211080857,https://web.archive.org/web/20251211080857id_/https://guide.michelin.com/ch/de/zurich-region/zurich/restaurant/august,AuGust
+13020,ve_82fbbd3ef0,Barranco,Zürich,Bib Gourmand,CAPTURE,20260111104924,https://web.archive.org/web/20260111104924id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/barranco,Barranco
+13021,ve_288a180bb7,Bauernschänke,Zürich,Bib Gourmand,CAPTURE,20260125100623,https://web.archive.org/web/20260125100623id_/https://guide.michelin.com/us/en/zurich-region/zurich/restaurant/bauernschanke,Bauernschänke
+13022,ve_0fdc7bdb6e,DAR,Zürich,Bib Gourmand,CAPTURE,20251122213345,https://web.archive.org/web/20251122213345id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/dar,DAR
+13023,ve_1166143cdd,Didi's Frieden,Zürich,Bib Gourmand,NO CAPTURE,,,no card path
+13024,ve_55b47250ad,Freilager La Trattoria,Zürich,Bib Gourmand,CAPTURE,20251226042917,https://web.archive.org/web/20251226042917id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/freilager-la-trattoria,Freilager La Trattoria
+13025,ve_84b1483316,Gaijin Izakaya,Zürich,Bib Gourmand,CAPTURE,20251216175501,https://web.archive.org/web/20251216175501id_/https://guide.michelin.com/ch/fr/zurich-region/zurich/restaurant/gaijin-izakaya,Gaijin Izakaya
+13026,ve_016ad6629e,Gül,Zürich,Bib Gourmand,CAPTURE,20260714230219,https://web.archive.org/web/20260714230219id_/https://guide.michelin.com/us/en/zurich-region/zurich/restaurant/gul,Gül
+13027,ve_83a4d94634,Josef,Zürich,Bib Gourmand,CAPTURE,20251112230024,https://web.archive.org/web/20251112230024id_/https://guide.michelin.com/us/en/zurich-region/zurich/restaurant/josef,Josef
+13028,ve_ed49b28480,La Bottega di Mario,Zürich,Bib Gourmand,CAPTURE,20260213140827,https://web.archive.org/web/20260213140827id_/https://guide.michelin.com/ch/de/zurich-region/zurich/restaurant/la-bottega-di-mario,La Bottega di Mario
+13029,ve_8736e72d3d,Rigiblick,Zürich,Bib Gourmand,CAPTURE,20251210145902,https://web.archive.org/web/20251210145902id_/https://guide.michelin.com/en/zurich-region/zurich/restaurant/rigiblick-zuriberg-beiz,Rigiblick Züriberg Beiz
+20659,ve_46e15d96d7,Cheval Blanc by Peter Knogl,Basel,Three Stars,CAPTURE,20251025221957,https://web.archive.org/web/20251025221957id_/https://guide.michelin.com/en/basel-stadt/basel/restaurant/cheval-blanc-by-peter-knogl,Cheval Blanc by Peter Knogl
