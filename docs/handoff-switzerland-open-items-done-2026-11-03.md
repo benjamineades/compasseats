@@ -16,7 +16,7 @@ Venues **11,320** (active **11,028**, closed **292**). Awards **25,324**. Michel
 | Aliases | `docs/cleanup-city-aliases-2026-11-03.sql` (`2be5579d...b5c2`) | Ben, SQL Editor, 23:29:32 UTC (Write connector question got no answer in 230 s, nothing ran) | 125,594-125,633 | 40 deleted, 262 to 222; no ledger row |
 | Slugs | `docs/slugs-letters-removed-2026-11-03.sql` (`fc5392ae...8b9e`) | Write connector, first try, 23:30:14 UTC | 125,634-125,677 | 22 new canonical; old slugs non-canonical; no ledger row |
 | 2025 URLs | `docs/source-url-michelin-2025-switzerland-cards.sql` (`3f91f6a2...e7a3`) | Write connector, first try, 23:32:41 UTC | 125,678-125,854 | 177 rows; ledger 249 (michelin, award, 177) |
-| Blurb | `docs/rewrite-blurb-cheval-blanc-v2.sql` (`06b75bc2...a8e8`) | Write connector, first try, 23:37:12 UTC | 125,855 | `ve_46e15d96d7` v2, `rewritten`, 3 sources; no ledger row |
+| Blurb | `docs/rewrite-blurb-cheval-blanc-v2.sql` (`06b75bc2...12e8`) | Write connector, first try, 23:37:12 UTC | 125,855 | `ve_46e15d96d7` v2, `rewritten`, 3 sources; no ledger row |
 
 Build files, evidence and run record: `docs/open-items-ch-2026-11-03-build/` (`alias-check-262.csv`, `url-evidence-ch-2025.csv`, `relay-ch-2025-cards-archive.txt`, `run-record-2026-11-03.txt`).
 
