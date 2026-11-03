@@ -1,0 +1,7 @@
+Run record: docs/price-michelin-card-switzerland-2026.sql
+sha256 cbbccefe4bc0c3766b7b42ce10ece0783a3a45fed1af10a94059084583b3dce6
+Ben: decision 4 (Nov 2 18:09 ET "4A"); Nov 3 16:29 ET "1,2,3"; 16:37 ET "1A, 2A, 3A, 4A"; 16:38 ET "Go".
+Write connector, first try. The SQL body was sent without the header comments.
+Plan md5 88b231838dc59fadf1614b4fe61e1072: 225 venues, 191 UPDATE, 34 INSERT, currency CHF.
+Tier changes: Birdy's by Achtien $$$$ -> €€, Tosca $$$$ -> €€€, Wöschi $$$ -> €€€€, Gasthaus Löwen $$$$ -> €€€, L'Atelier Robuchon $$$ -> €€€€.
+Expected read-back: price 7,761 (legacy_guide 2,182); ledger 245; audit 125,341-125,565.
