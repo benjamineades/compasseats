@@ -1,0 +1,16 @@
+Run record: docs/status-michelin-2026-switzerland-2026-11-02.sql
+sha256 ba34978e941f3723261061a0598e8f6868796f175e77d7963554a273fa5d6486
+Evidence: docs/ch-2026-build/status-evidence-ch-2026-11-02.csv, sha256 f0d3951bd9723793486a357a342ec2cb810442159187fe57e9eec3a19c2154e4
+Ben: Nov 2 17:26 ET "1A"; 17:57 ET "Keep After Seven listed as open"; 21:31 ET "1A, 2A"; 21:32 ET "Go".
+Write connector, first try. Audit first row Nov 3 2026, 02:32:54 UTC. The SQL body was sent without the header comments.
+Read-back 02:33:13 UTC, whole tables:
+venues 11,323 (active 11,031, closed 292); awards 25,321; slugs 13,053 (canonical 11,323, non-canonical 1,730); price 7,727; listings 11,323; cities 3,279; city_label_source 24,049.
+cities.venues_count sum 11,031; 0 cities differ from the view.
+closed published 0; closed not published 292; active not published 0.
+rename_batches 30 (new batch id 45, applied); rename_rows 1,302.
+ledger 189 rows, last id 243 (no change).
+audit_log 119,235 rows, new ids 125,056-125,064: cities UPDATE 2, listings UPDATE 2, slugs INSERT 1 and UPDATE 1, venues UPDATE 3.
+Venues read back: After Seven ve_7077280426 active, published, Zermatt (count 7), /zermatt/after-seven canonical;
+Colani Bistrot ve_8f85789bec active, published, Madulain (count 2), norm_key colanibistrot, /madulain/colani-bistrot canonical, /madulain/chesa-stuva-colani-ristorante non-canonical;
+Chesa Stuva Colani ve_388aeca5ca active, published (no change).
+Limit: the dry run used a shorter copy of the start gates and one test insert. End gates ran only in the real transaction, and they passed.

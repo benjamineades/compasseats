@@ -1,0 +1,8 @@
+venue_id,name,source,url,read_at_utc,read_method,finding
+ve_9503403a2a,Ô Bois Sauvage,Michelin card /us/en,https://guide.michelin.com/us/en/wallis/heremence_1155248/restaurant/o-bois-sauvage,2026-11-03,web fetch report,"Temporarily closed. Meta description: Bib Gourmand, 2025 MICHELIN Guide Switzerland. Hours Wed-Sun also listed."
+ve_9503403a2a,Ô Bois Sauvage,Michelin card /en,https://guide.michelin.com/en/wallis/heremence_1155248/restaurant/o-bois-sauvage,2026-11-03,web fetch report,"No closure note. Bib Gourmand. Wed-Sun. No guide year. Same card, other URL, other result (same conflict as item 7)."
+ve_9503403a2a,Ô Bois Sauvage,Michelin 2026 list read (224 lines),docs/ch-2026-list-read/relay-ch-2026-list-pages-2026-11-02.txt,2026-11-03,file search,"0 lines match. The venue is not on the 2026 star and Bib lists."
+ve_9503403a2a,Ô Bois Sauvage,Tripadvisor,https://www.tripadvisor.com/Restaurant_Review-g4352903-d8720956-Reviews-O_Bois_Sauvage-Heremence_Canton_of_Valais_Swiss_Alps.html,2026-11-03,web fetch report,"Newest review Mar 2026. Other reviews Feb 2026. Label only 'Closed today' and Mon-Tue hours. Weak status evidence."
+ve_9503403a2a,Ô Bois Sauvage,Own site,https://leboissauvage.ch/,2026-11-03,not read,"The fetch tool refused the site (robots_disallowed)."
+ve_9503403a2a,Ô Bois Sauvage,Hérémence Tourisme,https://www.heremence-tourisme.ch/fr/restaurant-o-bois-sauvage-fp45843,2026-11-03,not read,"Page did not open."
+ve_9503403a2a,Ô Bois Sauvage,MySwitzerland,https://www.myswitzerland.com/fr-ch/decouvrir/a-manger-a-boire/restaurant/le-bois-sauvage/,2026-11-03,not read,"Page did not open."
