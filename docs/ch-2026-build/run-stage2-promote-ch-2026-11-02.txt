@@ -1,0 +1,20 @@
+Run record: batch 20 michelin-2026-switzerland, stage run 2 and promote
+Ben: Nov 2 2026 ET 18:57 "Go" (stage run 2), 18:59 "Go" (promote).
+
+Stage run 2: GitHub Action run 41549271811 (23:57 UTC), decisions fixtures/ingest/michelin-2026-switzerland-decisions.csv (sha256 1f25c96f...8c39).
+  match 195, new_venue 30, review 0 (= prediction). Read-only check against the repo files: 225 of 225 rows have the expected
+  verdict and venue; 30 new venue groups; 0 venues with 2 cards.
+Promote dry run: Action run 41549474417 (23:59 UTC), rolled back, 11 of 11 invariants pass. Read after: no change
+  (venues 11,293, awards 25,097, ledger last id 238, audit last id 124,389).
+Promote: Action run 41549614796, committed 2026-11-03T00:00:19.279Z, 11 of 11 invariants pass.
+
+Read-back (Nov 3 00:00:47 UTC, whole tables):
+  venues 11,323 (active 11,029, closed 294); awards 25,322 (last id 32,490); listings 11,323; slugs 13,052 (canonical 11,323);
+  price 7,727; city_label_source 24,049; ledger 188 rows, last id 242 (241 michelin/award/225, 242 michelin/city_label/60);
+  audit_log 119,190 rows, last id 125,019 (new ids 124,705-125,019: awards INSERT 225, listings INSERT 30, slugs INSERT 30, venues INSERT 30);
+  the ids 124,390-124,704 and ledger 239-240 were used by the rolled-back dry run.
+  CH/LI Michelin 2026 rows: Three Stars 5, Two Stars 22, One Star 106, Bib Gourmand 92 = 225, 225 distinct URLs, award ids 32,266-32,490.
+  closed published 0; active not published 0; venues with other than 1 canonical slug 0.
+  cities.venues_count sum 10,999 and 26 cities differ from city_venue_counts (the promote does not refresh it; the cleanup sets it).
+
+Next: docs/cleanup-michelin-2026-switzerland-2026-11-02.sql after Ben's go.
