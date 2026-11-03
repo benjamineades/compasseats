@@ -1,0 +1,11 @@
+Run record: docs/cleanup-michelin-2026-switzerland-list-2026-11-03.sql
+sha256 8fdf004f1c22e57b67d007971acb2a5494cee19c8d55acca58934032e76fa72f
+Ben: decision 2 (Nov 2 18:09 ET "2A"); Nov 3 16:37 ET "2A, 3A, 4A"; 16:41 ET "Go"; 16:48 ET "done".
+Write connector cancelled the call in 0.6 s; a read at 21:42:24 UTC proved that nothing ran. Ben ran the file in the SQL Editor, committed 21:48:13 UTC, "OK: all gates passed".
+Read-back 21:48:38 UTC, whole tables:
+venues 11,320 (active 11,028, closed 292); awards 25,324; Michelin 2025 4,997; slugs 13,144 (canonical 11,320, non-canonical 1,824); price 7,759 (legacy_guide 2,180); listings 11,320; city_label_source 24,047; blurbs 142; cities 3,279.
+cities.venues_count sum 11,028; 0 cities differ from the view; closed published 0; active not published 0.
+ledger 194 rows, last id 248 (247 michelin 2, 248 oad 1).
+audit_log 119,764 rows, new ids 125,570-125,593: awards DELETE 1 UPDATE 2, blurbs UPDATE 1, cities UPDATE 3, city_label_source DELETE 2 UPDATE 4, listings DELETE 3, price DELETE 2, slugs UPDATE 3, venues DELETE 3.
+Old slugs: basel/grand-hotel-les-trois-rois -> Cheval Blanc by Peter Knogl; saint-moritz/carlton-hotel-st-moritz-lhw -> Da Vittorio - St. Moritz; lucerne/restaurant-magdalena -> Magdalena. All non-canonical.
+Award 2940 on Da Vittorio - St. Moritz; award 18514 on Magdalena; award 111 deleted; blurb on Cheval Blanc by Peter Knogl (status needs_rewrite).
