@@ -1,0 +1,12 @@
+Run record: docs/slugs-rename-michelin-2026-switzerland.sql
+sha256 355135db260de1dcc18dfc2c9eec7381b0744dea0246a50f96901164193f8d6f
+Ben: Nov 3 16:25 ET "go". Rename batch 46 applied first. Items 1 and 4 of the Swiss open items.
+Write connector, first try. Audit first row Nov 3 2026, 21:26:13 UTC. The SQL body was sent without the header comments.
+Read-back 21:26:38 UTC, whole tables:
+venues 11,323 (active 11,031, closed 292); awards 25,321; slugs 13,144 (canonical 11,323, non-canonical 1,821); price 7,727; listings 11,323; city_label_source 24,049; cities 3,279.
+cities.venues_count sum 11,031; closed published 0; venues with other than 1 canonical slug 0.
+rename_batches 31; rename_rows 1,396. ledger 190 rows, last id 244 (no change).
+audit_log 119,511 rows, new ids 125,159-125,340: slugs UPDATE 91, slugs INSERT 91.
+Read-back fingerprint of id|name|city|old slug|new slug = plan e36d1be94c7996fb8c528a8bb83c8bc0.
+Aubonne: /aubonne/njord-cafe and /aubonne/njorden canonical; /aubonne/nj-rd-cafe and /aubonne/nj-rden-restaurant-cafe-brunch non-canonical.
+Limit: the dry run used a copy of the start gates. End gates ran only in the real transaction, and they passed.
