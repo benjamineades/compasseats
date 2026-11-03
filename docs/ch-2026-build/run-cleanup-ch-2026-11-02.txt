@@ -1,0 +1,19 @@
+Run record: docs/cleanup-michelin-2026-switzerland-2026-11-02.sql
+File sha256: 021844e30bd5d7ffa6e262c4abc2ae0ad75b843bb6d4424eb0c8f4a707ecc19a (commit c72dcdb)
+Ben: Nov 2 2026, 19:19 ET "Go".
+
+Attempts:
+- 00:19 UTC and 00:20 UTC: Write connector. The client cancelled the confirmation after 0.6 s and 0.5 s. Nothing ran
+  (read 00:20:09 and 00:20:59 UTC: awards 25,322, audit last id 125,019, ledger last id 242, row 231 on ve_a024c1df89).
+- Ben ran the file in the Supabase SQL Editor. Audit rows written at 00:23:09.364346 UTC. Ben, 19:23 ET: "Done".
+
+Read-back (Nov 3 00:23:31 UTC, whole tables):
+- awards 25,321 (-1); venues 11,323 (active 11,029, closed 294); slugs 13,052; price 7,727; listings 11,323; city_label_source 24,049
+- cities 3,279; venues_count sum 11,029; cities that differ from city_venue_counts: 0
+- ledger 189 rows, last id 243 (michelin, award, 10, job cleanup:cleanup-michelin-2026-switzerland | ...)
+- audit_log 119,226 rows, last id 125,055; new ids 125,020-125,055 (36): awards UPDATE 9, awards DELETE 1, cities UPDATE 26
+- moved rows now on: 231 ve_b76744c249 (Ollon), 3629 ve_858eea062b, 3812 ve_6cedf32a8c, 4310 ve_d84ee8e403, 6468 ve_b9da8d6de9,
+  7556 ve_4766480819, 7627 ve_08fb4a4859, 8278 ve_2a76b77e16, 9048 ve_bcb98826f3 (Ebersecken); row 9060 deleted
+- closed published 0
+
+Next: status file (After Seven ve_7077280426 active; ve_8f85789bec active and renamed Colani Bistrot), after Ben's go.
