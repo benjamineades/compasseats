@@ -5,6 +5,7 @@ This file replaces `handoff-switzerland-decisions-2026-11-02.md` for the Swiss l
 ## Ben's input (ET, Nov 2)
 - 21:31 "1A, 2A": 1A = recheck the 2 venues after they open. 2A = read Ô Bois Sauvage after the status file, as a separate step.
 - 21:32 "Go".
+- 21:42 "Q1: A": Ben opens the Ô Bois Sauvage site. 22:26 "A": it stays closed, recheck after Jan 2027.
 
 ## Live state (read Nov 3, 02:33:13 UTC, whole tables)
 Venues **11,323** (active **11,031**, closed **292**). Awards **25,321**. Slugs **13,053** (canonical 11,323, non-canonical 1,730). Price 7,727. Listings 11,323. city_label_source 24,049. Cities 3,279, `cities.venues_count` sum **11,031**, 0 cities differ from `city_venue_counts`. city_aliases 262. rename_batches 30 (last id 45), rename_rows 1,302. Ledger 189 rows, last id **243**. audit_log 119,235 rows, last id **125,064**. Closed published 0, closed not published 292, active not published 0.
@@ -22,19 +23,22 @@ Repo: `main` = branch `switzerland-status-pre-go` = 0b91a86, plus the commit of 
 Limits: the page reads are short reports from the web-fetch tool. The own After Seven page shows an old note (re-open Dec 6, 2024). Only Michelin prints "Colani Bistrot": the own site prints BISTROT, Pontresina Tourismus prints Bistro Bar Restaurant Colani. Ben chose Colani Bistrot.
 
 ## Ô Bois Sauvage read (2A, no write)
-`ve_9503403a2a` stays closed, not published. Evidence `docs/ch-2026-build/o-bois-sauvage-recheck-2026-11-02.csv` (sha256 `5ab91bfc...2ae7`).
+`ve_9503403a2a` stays closed, not published. Evidence `docs/ch-2026-build/o-bois-sauvage-recheck-2026-11-02.csv` (final sha256 in the commit of this update).
 - Michelin `/us/en/` card: "Temporarily closed", meta description names the 2025 guide. Michelin `/en/` card: no closure note. The conflict of item 7 remains.
 - 0 of the 224 lines of the 2026 list read match. No 2026 award. Award 10636 (Bib 2025) stays as history.
 - Tripadvisor: newest review Mar 2026. Weak evidence.
 - Own site refused by the fetch tool (robots_disallowed). Hérémence Tourisme and MySwitzerland did not open.
-- Ben has not chosen a new recheck date.
+- Ben's phone, 21:43 ET: leboissauvage.ch gives "the server can't be found" (one device, one try). The fetch tool still refuses the site with and without `www`.
+- Tripadvisor list: ranked first, label only "Closed today". Guidle: no closure note, no date. GaultMillau Jan 2024: no closure. restaurantguru and finde-offen did not open.
+- No source gives a date or a reason for the closure, says that it is permanent, or shows the venue open now.
+- Ben 22:26 ET "A": stays closed, recheck after Jan 2027 (conflict rule).
 
 ## Recheck list added
 | Venue | Id | Recheck after |
 |---|---|---|
 | Colani Bistrot | `ve_8f85789bec` | **Nov 27, 2026** (Ben 1A) |
 | After Seven | `ve_7077280426` | **Dec 2, 2026** (Ben 1A) |
-| Ô Bois Sauvage | `ve_9503403a2a` | Not set. Ben to choose, or to open the own site |
+| Ô Bois Sauvage | `ve_9503403a2a` | **Jan 2027** (Ben 22:26 ET "A"). Replaces the "Swiss batch" line on the item 7 list |
 
 No scheduled task holds these dates. First due on the older lists: Ling Ling after Nov 5, 2026.
 
@@ -45,7 +49,6 @@ No scheduled task holds these dates. First due on the older lists: Ling Ling aft
 4. Slugs with ø removed: `/aubonne/nj-rd-cafe`, `/aubonne/nj-rden-restaurant-cafe-brunch`.
 5. 2025 backfill: La Croix d'Or Ballaigues, Bären Schwarzenburg, Bären Utzenstorf, Restaurant LA Basel.
 6. Worldwide alias check (262 aliases; Swiss suspects: `grisons`, `sankt niklausen`, `silvaplana`, `lens`, `sorengo`).
-7. Ô Bois Sauvage recheck date (above).
 
 ## Methods (new)
 - **Rename gate:** `norm_key` is a generated column. If the new name changes the key, the audit gate needs `(old_row-'name'-'norm_key')=(new_row-'name'-'norm_key')`. The Item 3 gate passed only because the key did not change there.

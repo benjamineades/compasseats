@@ -6,3 +6,9 @@ ve_9503403a2a,Ô Bois Sauvage,Tripadvisor,https://www.tripadvisor.com/Restaurant
 ve_9503403a2a,Ô Bois Sauvage,Own site,https://leboissauvage.ch/,2026-11-03,not read,"The fetch tool refused the site (robots_disallowed)."
 ve_9503403a2a,Ô Bois Sauvage,Hérémence Tourisme,https://www.heremence-tourisme.ch/fr/restaurant-o-bois-sauvage-fp45843,2026-11-03,not read,"Page did not open."
 ve_9503403a2a,Ô Bois Sauvage,MySwitzerland,https://www.myswitzerland.com/fr-ch/decouvrir/a-manger-a-boire/restaurant/le-bois-sauvage/,2026-11-03,not read,"Page did not open."
+ve_9503403a2a,Ô Bois Sauvage,"Own site, Ben phone (Safari)",https://leboissauvage.ch/,2026-11-03,"Ben screenshot, 21:43 ET Nov 2","""Safari can't open the page because the server can't be found."" One device, one try."
+ve_9503403a2a,Ô Bois Sauvage,Own site with www,https://www.leboissauvage.ch/,2026-11-03,not read,The fetch tool refused the site (robots_disallowed).
+ve_9503403a2a,Ô Bois Sauvage,Tripadvisor Hérémence list,https://www.tripadvisor.com/Restaurants-g4352903-Heremence_Canton_of_Valais_Swiss_Alps.html,2026-11-03,web fetch report,"Ranked first. Label only ""Closed today"". Weak status evidence."
+ve_9503403a2a,Ô Bois Sauvage,Guidle,https://www.guidle.com/en/restaurants/heremence/le-bois-sauvage_AeBSKhH,2026-11-03,web fetch report,Link to the own site. No closure note. No date.
+ve_9503403a2a,Ô Bois Sauvage,GaultMillau,https://www.gaultmillau.ch/fr/romandie-gourmande/une-merveille-de-resto-dans-le-val-dherens-670574,2026-11-03,web fetch report,"Jan 12, 2024. Chef Kevin Villaret. No closure. Old."
+ve_9503403a2a,Ô Bois Sauvage,restaurantguru; finde-offen,https://restaurantguru.com/Restaurant-Le-Bois-Sauvage-Heremence https://finde-offen.ch/heremence/%C3%B4-bois-sauvage-369953,2026-11-03,not read,Pages did not open.
