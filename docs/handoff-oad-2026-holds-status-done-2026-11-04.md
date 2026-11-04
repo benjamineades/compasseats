@@ -60,7 +60,7 @@ All items of the last handoff, less Sustanza, Testina, Art di Daniele Sperindio 
 - Arnanz: Michelin `us/en` card 404, control DiverXO 200. Added by Michelin about Sep 2025. No closure report found. Own site did not load.
 - Defune: Harden's prints closed and open hours. Own site not reachable.
 - Sushi Ichi, Kiku Sushi place, Gloria Maris (as above).
-- Jing Yaa Tang: Michelin `us/en` card 404 on the guessed path, own hotel page read as open on Nov 3.
+- Jing Yaa Tang: Michelin `us/en` card 404, own hotel page read as open on Nov 3.
 
 ## Methods (new)
 - **Search the chef in Japanese.** 瀬口 祐介 found Kikuzushi in Kasuga when the phone and address did not.
