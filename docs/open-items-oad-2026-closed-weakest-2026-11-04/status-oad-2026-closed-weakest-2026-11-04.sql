@@ -1,5 +1,5 @@
 -- status-oad-2026-closed-weakest-2026-11-04.sql  CompassEats, Nov 4 2026. Item 3: closed venues OAD 2026 prints, 26 weakest (Ben 4A).
--- PENDING: Ben has not chosen. This file does not run before his go.
+-- Ben, Nov 4 18:49 ET: 1-5 A. 1A = Mandarin Grill + Bar and Kawaki active. 2A = T3 renamed Treis, new slug, active. 3A = Agreste stays closed, recheck. 4A = other 22 no write, rechecks. 5A = Kawaki city stays Fukui, open item. This file runs only after his go.
 -- Scope: 3 of 26 venues, closed to active, listings.published false to true, city counts. 1 of the 3 renamed, with a new slug. Other 23: no change.
 -- Evidence for all 26: closed-weakest-evidence-2026-11-04.csv.
 --   ve_d3e2463621 Mandarin Grill + Bar: Own hotel page offers Book Table, hours and a new chef, Junior Nadje. Michelin card returns 200 with review date 2026-03-19. Forbes 2026 lists it Four-Star. Database holds La Liste 2026.
@@ -36,7 +36,7 @@ BEGIN
   IF EXISTS (SELECT 1 FROM venues WHERE id<>'ve_644d124840' AND city_id='ci_ef0cc10ff4' AND lower(name) ~ 'treis|τρε|トレイス') THEN RAISE EXCEPTION 'treis twin'; END IF;
   IF EXISTS (SELECT 1 FROM rename_batches WHERE batch_key='status-oad-2026-closed-weakest-2026-11-04') THEN RAISE EXCEPTION 'batch key used'; END IF;
   -- WRITE
-  INSERT INTO rename_batches (batch_key,status,note) VALUES ('status-oad-2026-closed-weakest-2026-11-04','staged',$n$Item 3, T3 to Treis: PENDING: Ben has not chosen. This file does not run before his go.$n$) RETURNING id INTO bid;
+  INSERT INTO rename_batches (batch_key,status,note) VALUES ('status-oad-2026-closed-weakest-2026-11-04','staged',$n$Item 3, T3 to Treis: Ben, Nov 4 18:49 ET: 1-5 A. 1A = Mandarin Grill + Bar and Kawaki active. 2A = T3 renamed Treis, new slug, active. 3A = Agreste stays closed, recheck. 4A = other 22 no write, rechecks. 5A = Kawaki city stays Fukui, open item. This file runs only after his go.$n$) RETURNING id INTO bid;
   PERFORM set_config('app.allow_rename','on',true);
   INSERT INTO rename_rows (batch_id,line,venue_id,expected_name,new_name,source_id,source_url,verdict,detail)
     SELECT bid,1,v.id,v.name,'Treis','oad','https://www.oadguides.com/restaurant/treis-t-e','rename',jsonb_build_object('live_name',v.name,'city_id',v.city_id) FROM venues v WHERE v.id='ve_644d124840' AND v.name='T3 (ティースリー)';
@@ -51,7 +51,7 @@ BEGIN
   UPDATE cities SET venues_count=282 WHERE id='ci_1b1537ad28' AND venues_count=281; GET DIAGNOSTICS n=ROW_COUNT; IF n<>1 THEN RAISE EXCEPTION 'city hk %',n; END IF;
   UPDATE cities SET venues_count=2 WHERE id='ci_286da19d94' AND venues_count=1; GET DIAGNOSTICS n=ROW_COUNT; IF n<>1 THEN RAISE EXCEPTION 'city fukui %',n; END IF;
   UPDATE cities SET venues_count=675 WHERE id='ci_ef0cc10ff4' AND venues_count=674; GET DIAGNOSTICS n=ROW_COUNT; IF n<>1 THEN RAISE EXCEPTION 'city tokyo %',n; END IF;
-  INSERT INTO source_capture_ledger (publisher,field_type,items,job) VALUES ('oad','name',1,$j$rename-apply:status-oad-2026-closed-weakest-2026-11-04 | OAD name Treis for ve_644d124840, read Nov 4 | PENDING: Ben has not chosen. This file does not run before his go.$j$);
+  INSERT INTO source_capture_ledger (publisher,field_type,items,job) VALUES ('oad','name',1,$j$rename-apply:status-oad-2026-closed-weakest-2026-11-04 | OAD name Treis for ve_644d124840, read Nov 4 | Ben, Nov 4 18:49 ET: 1-5 A. 1A = Mandarin Grill + Bar and Kawaki active. 2A = T3 renamed Treis, new slug, active. 3A = Agreste stays closed, recheck. 4A = other 22 no write, rechecks. 5A = Kawaki city stays Fukui, open item. This file runs only after his go.$j$);
   -- POST
   IF (SELECT count(*) FROM venues)<>11594 OR (SELECT count(*) FROM venues WHERE status='active')<>11291 OR (SELECT count(*) FROM venues WHERE status='closed')<>303 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT sum(venues_count) FROM cities)<>11291 THEN RAISE EXCEPTION 'cities after'; END IF;
