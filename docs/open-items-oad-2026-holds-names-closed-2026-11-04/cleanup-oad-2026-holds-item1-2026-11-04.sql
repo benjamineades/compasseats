@@ -1,5 +1,5 @@
 -- cleanup-oad-2026-holds-item1-2026-11-04.sql
--- CompassEats, Nov 4 2026. Open item 1 of handoff-oad-2026-holds-status-done. PENDING: Ben has not chosen. This file runs only after his "go".
+-- CompassEats, Nov 4 2026. Open item 1 of handoff-oad-2026-holds-status-done. Ben Nov 4 09:34 ET "choices 1-5 = A". This file runs only after his "go".
 -- 2 new OAD 2026 rows: Japan 469 on Kusunoki ve_a1fee2bf94 (second row), Japan 755 on new venue Sushi Takumi ve_60b541e3e7 (Tokyo, active). No price, address, geo or blurb.
 -- Expected after: venues 11,594 (active 11,288, closed 306); awards 27,481; OAD 2026 2,859; OAD 2025 2,437; slugs 13,444; listings 11,594; labels 24,595; price 7,759; redirects 33; aliases 222; cities 3,318, sum 11,288; ledger 239 rows; audit_log +8.
 BEGIN;
@@ -28,8 +28,8 @@ BEGIN
   UPDATE cities c SET venues_count=coalesce(k.active_venues,0) FROM cities d LEFT JOIN city_venue_counts k ON k.city_id=d.id WHERE d.id=c.id AND c.venues_count IS DISTINCT FROM coalesce(k.active_venues,0);
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'city counts %', n; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('oad', 'award', 2, 'cleanup:cleanup-oad-2026-holds-item1-2026-11-04 | OAD 2026 hold rows, japan 469 and 755 | https://www.oadguides.com/lists/japan/top-restaurants/2026 | PENDING: Ben has not chosen'),
-    ('oad', 'city_label', 2, 'cleanup:cleanup-oad-2026-holds-item1-2026-11-04 | city labels of Sushi Takumi | PENDING: Ben has not chosen');
+    ('oad', 'award', 2, 'cleanup:cleanup-oad-2026-holds-item1-2026-11-04 | OAD 2026 hold rows, japan 469 and 755 | https://www.oadguides.com/lists/japan/top-restaurants/2026 | Ben Nov 4 09:34 ET "choices 1-5 = A"'),
+    ('oad', 'city_label', 2, 'cleanup:cleanup-oad-2026-holds-item1-2026-11-04 | city labels of Sushi Takumi | Ben Nov 4 09:34 ET "choices 1-5 = A"');
   IF (SELECT count(*) FROM venues) <> 11594 OR (SELECT count(*) FROM venues WHERE status='active') <> 11288 OR (SELECT count(*) FROM venues WHERE status='closed') <> 306 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 27481 OR (SELECT count(*) FROM awards WHERE source_id='oad' AND year=2026) <> 2859 OR (SELECT count(*) FROM awards WHERE source_id='oad' AND year=2025) <> 2437 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT count(*) FROM slugs) <> 13444 OR (SELECT count(*) FROM listings) <> 11594 OR (SELECT count(*) FROM city_label_source) <> 24595 OR (SELECT count(*) FROM price) <> 7759 OR (SELECT count(*) FROM redirects) <> 33 OR (SELECT count(*) FROM city_aliases) <> 222 THEN RAISE EXCEPTION 'tables after'; END IF;
