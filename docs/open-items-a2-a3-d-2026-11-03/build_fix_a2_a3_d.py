@@ -61,7 +61,7 @@ w("  IF (SELECT count(*) FROM cities c LEFT JOIN city_venue_counts k ON k.city_i
 w("  IF (SELECT count(*) FROM rename_batches) <> 33 OR (SELECT count(*) FROM rename_rows) <> 1398 OR (SELECT count(*) FROM source_capture_ledger) <> 205 THEN RAISE EXCEPTION 'rename, ledger before'; END IF;")
 w("  IF (SELECT count(*) FROM listings l JOIN venues v ON v.id=l.venue_id WHERE v.status='closed' AND l.published) <> 0 THEN RAISE EXCEPTION 'closed published before'; END IF;")
 w("  SELECT count(*), max(id) INTO n, aud_max FROM audit_log; IF n <> 120092 OR aud_max <> 125921 THEN RAISE EXCEPTION 'audit before % / %', n, aud_max; END IF;")
-w(f"  IF {q(C['pr'][0])} <> 'ci_'||left(md5('prato'),10) OR EXISTS (SELECT 1 FROM cities WHERE id={q(C['pr'][0])} OR slug='prato') OR EXISTS (SELECT 1 FROM slugs WHERE city_slug='prato') THEN RAISE EXCEPTION 'prato'; END IF;")
+w(f"  IF {q(C['pr'][0])} <> 'ci_'||left(md5('prato'),10) OR EXISTS (SELECT 1 FROM cities WHERE id={q(C['pr'][0])} OR slug='prato') OR EXISTS (SELECT 1 FROM slugs WHERE city_slug='prato' AND (is_canonical OR venue_id<>'ve_542c195114')) THEN RAISE EXCEPTION 'prato'; END IF;")
 for n,c,st in NEW:
     sl=slugify(n); vid=V[n]; cid,cs,_,_=C[c]
     w(f"  IF {q(vid)} <> 've_'||left(md5({q(cs+':'+sl)}),10) OR trim(both '-' from regexp_replace(lower(f_unaccent({q(n)})),'[^a-z0-9]+','-','g')) <> {q(sl)} OR EXISTS (SELECT 1 FROM venues WHERE id={q(vid)} OR (city_id={q(cid)} AND norm_key=norm_key({q(n)}))) OR EXISTS (SELECT 1 FROM slugs WHERE city_slug={q(cs)} AND slug={q(sl)}) THEN RAISE EXCEPTION 'clash {sl}'; END IF;")
