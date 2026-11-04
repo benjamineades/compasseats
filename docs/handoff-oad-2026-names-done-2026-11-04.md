@@ -22,12 +22,12 @@ Evidence: `names-evidence-2026-11-04.csv` in the same folder (266 rows). Card re
 | Ledger | 294 (michelin, name, 76). No row for venue or listing | |
 | audit_log | 130,181-130,617 (437): venues UPDATE 159, slugs UPDATE 188, slugs INSERT 90 | |
 
-Read-back: 159 of 159 live names equal `rename_rows.new_name`. Group 4 test now finds 17 venues on the whole table (was 141). Not listed one by one: they are the holds plus real long names, such as Pasta|Bar and Imperial Treasure.
+Read-back: 159 of 159 live names equal `rename_rows.new_name`. Group 4 test now finds 17 venues on the whole table (was 141). These 17 are 9 holds and 8 keeps (for example Pasta|Bar and La Micheline, where the card or site prints the live name).
 
 **Weak points:**
 - 19 text cuts: only listings, press or tourism pages support them, most by a search title not opened. Rows use source_id `listing`, a new value. Column has no foreign key.
-- 76 Michelin card names: own site not read. 34 of the French cards show only a TheFork ad link, so no own site was on the card.
-- 79 of the first 158 renames hold a non-Michelin award. The database stores no publisher spelling, so no majority vote could be counted.
+- 76 Michelin card names: own site not read. 43 of the 157 cards read show only a TheFork ad link, so no own site was on the card.
+- 79 of the 159 renames hold a non-Michelin award. The database stores no publisher spelling, so no majority vote could be counted.
 - Site reads are short fetch reports, not exact text.
 - Straight apostrophes used. Policy still open.
 - Blurbs on Akelarre and Le Petit Nice have status `needs_rewrite` and were not changed.
@@ -44,7 +44,7 @@ Read-back: 159 of 159 live names equal `rename_rows.new_name`. Group 4 test now 
 5. **Items 4, 5, 6 of the item 1 handoff:** new cities, carried items, Michelin Kuala Lumpur & Penang 2027.
 
 ## Recheck list (added; no scheduled task holds these dates)
-Imperial Treasure Crowne Plaza `ve_155851d837` (own site: closes Jun 29, 2026; still active). Franky's Grill `ve_85247a0627` (own title "Coming soon"). Saap `ve_ab8204505e` (sources say Randolph, Vermont; check the live city). Brula `ve_5bc114bba1` (card and site agree; award rows read La Gaia era).
+Imperial Treasure Crowne Plaza `ve_155851d837` (own site: closes Jun 29, 2026; still active). Franky's Grill `ve_85247a0627` (own title "Coming soon"). Saap `ve_ab8204505e` (sources say Randolph, Vermont; check the live city).
 
 ## Methods (new)
 - **Michelin search page works from a tab.** `fetch('/us/en/restaurants?q=' + name)` on guide.michelin.com, `a[href*="/restaurant/"]`. Result lists end with the same fixed cards (Hen Mother Cookhouse, Chez FonFon): ignore these. Check each match by hand. A short plain query works best ("Sardaarji", "Ngoc Chi").
