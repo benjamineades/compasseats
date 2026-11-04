@@ -46,7 +46,7 @@ S={ # id:(class,new,url,note)
 'db1275e24a':('H','Comer','https://comer.gorp.jp/','site コメール only; mar y montana not on site'),
 '7e33a36e6b':('H','Sushi Nishichi','https://www.2727.com.tw','site 鮨二七, footer SUSHI NISHICHI; Qi 27 not on site'),
 'a65b4cfbbe':('H','Bangkok Bold (Pathum Wan)','','card name differs; OAD Bangkok Bold Kitchen'),
-'5bc114bba1':('H','Brula','https://brulaibiza.com/','card brula; site says La Gaia evolved into Brula, at Ibiza Gran Hotel'),
+'5bc114bba1':('S','Brula','https://brulaibiza.com/','card brula; site says La Gaia evolved into Brula, at Ibiza Gran Hotel. Ben 5A'),
 '23317e8d00':('H','La Bastide Bourrelly','','card dash and chef; no own site read'),
 'fa54992eff':('H','La Magdeleine','','card dash and chef; no own site read'),
 'f042d8773f':('H',"La Grand'Vigne",'','card dash and place; no own site read'),

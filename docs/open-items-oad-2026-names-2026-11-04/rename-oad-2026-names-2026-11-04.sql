@@ -1,5 +1,5 @@
--- rename-oad-2026-names-2026-11-04.sql  CompassEats, Nov 4 2026. Open item 2: rename batch. 158 renames with new canonical slugs. Old slugs stay non-canonical.
--- Choices: PENDING: Ben has not chosen
+-- rename-oad-2026-names-2026-11-04.sql  CompassEats, Nov 4 2026. Open item 2: rename batch. 159 renames with new canonical slugs. Old slugs stay non-canonical.
+-- Choices: Ben Nov 4 10:29 ET "A for all 8"
 -- Evidence: names-evidence-2026-11-04.csv. Built by build_names.py, build_sql_names.py. One transaction.
 BEGIN;
 DO $do$
@@ -63,6 +63,7 @@ ve_5651dc27bd	SISAPO Restaurant | Fusion Cuisine	Sisapo	venue	https://www.sisapo
 ve_5683d1f7b5	De Lauzun : Hôtel et Restaurant Gastronomique à Pézenas	Restaurant De Lauzun	michelin	https://guide.michelin.com/en/occitanie/pzenas/restaurant/restaurant-de-lauzun
 ve_579388e6c8	ESPECIARIUM BAR | Barcelona	Especiarium Bar	listing	https://theworlds50best.com/discovery/Establishments/Spain/Barcelona/Especiarium-Bar.html
 ve_597637956c	L'Atelier de Joel Robuchon Roppongi Hills Restaurant	L'ATELIER de Joël Robuchon	michelin	https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-atelier-de-joel-robuchon-1194216
+ve_5bc114bba1	La Gaia | Ibiza Gran Hotel	Brula	venue	https://brulaibiza.com/
 ve_5d078c2bc3	Agreste de Fabio & Roser | Restaurante gastronómico Barcelona	Agreste de Fabio & Roser	listing	https://ajuntament.barcelona.cat/comerc/en/agreste
 ve_5d147987d2	Trid	trid	venue	https://tridseoul.com/
 ve_5f270c5c32	L’ Eau	L'EAU	venue	https://leau.tokyo/
@@ -167,14 +168,14 @@ $p$,E'\r','');
   n int; n2 int; bid bigint; aud bigint; same int; flip int; ch int; r record; msg text; ln int:=0;
 BEGIN
   p := trim(both E'\n' from p);
-  IF md5(p) <> '83bc88ae37e182373da3e933f0b6275b' THEN RAISE EXCEPTION 'plan md5 %, length %', md5(p), length(p); END IF;
+  IF md5(p) <> 'ca34a40be342ff28ccaed9b0405d02a0' THEN RAISE EXCEPTION 'plan md5 %, length %', md5(p), length(p); END IF;
   IF (SELECT count(*) FROM venues)<>11594 OR (SELECT count(*) FROM venues WHERE status='active')<>11288 OR (SELECT count(*) FROM venues WHERE status='closed')<>306 THEN RAISE EXCEPTION 'venues before'; END IF;
   IF (SELECT count(*) FROM awards)<>27481 OR (SELECT count(*) FROM slugs)<>13444 OR (SELECT count(*) FROM price)<>7759 OR (SELECT count(*) FROM redirects)<>33 THEN RAISE EXCEPTION 'tables before'; END IF;
   IF (SELECT count(*) FROM source_capture_ledger)<>239 OR (SELECT max(id) FROM source_capture_ledger)<>293 THEN RAISE EXCEPTION 'ledger before'; END IF;
   SELECT count(*),max(id) INTO n,aud FROM audit_log; IF n<>124351 OR aud<>130180 THEN RAISE EXCEPTION 'audit before % %',n,aud; END IF;
   IF EXISTS (SELECT 1 FROM rename_batches WHERE batch_key='rename-oad-2026-names-2026-11-04') THEN RAISE EXCEPTION 'batch key used'; END IF;
   WITH q AS (SELECT split_part(x,E'\t',1) id,split_part(x,E'\t',2) oldn FROM regexp_split_to_table(p,E'\n') x)
-    SELECT count(*) INTO n FROM q JOIN venues v ON v.id=q.id AND v.name=q.oldn; IF n<>158 THEN RAISE EXCEPTION 'names moved, % of 158',n; END IF;
+    SELECT count(*) INTO n FROM q JOIN venues v ON v.id=q.id AND v.name=q.oldn; IF n<>159 THEN RAISE EXCEPTION 'names moved, % of 159',n; END IF;
   -- same new name twice in one city, or an equal key on another venue in the city
   WITH q AS (SELECT split_part(x,E'\t',1) id,split_part(x,E'\t',3) newn FROM regexp_split_to_table(p,E'\n') x), w AS (SELECT q.id,q.newn,v.city_id,norm_key(q.newn) k FROM q JOIN venues v ON v.id=q.id)
     SELECT string_agg(w.newn||' / '||o.name||' '||o.id,'; ') INTO msg FROM w JOIN venues o ON o.city_id=w.city_id AND o.id<>w.id AND o.norm_key=w.k AND o.id NOT IN (SELECT id FROM q) WHERE w.k IS NOT NULL;
@@ -193,7 +194,7 @@ BEGIN
   SELECT count(*) INTO n2 FROM blurbs WHERE venue_id IN (SELECT split_part(x,E'\t',1) FROM regexp_split_to_table(p,E'\n') x);
 
   -- WRITE
-  INSERT INTO rename_batches (batch_key,status,note) VALUES ('rename-oad-2026-names-2026-11-04','staged',$n$Open item 2: PENDING: Ben has not chosen$n$) RETURNING id INTO bid;
+  INSERT INTO rename_batches (batch_key,status,note) VALUES ('rename-oad-2026-names-2026-11-04','staged',$n$Open item 2: Ben Nov 4 10:29 ET "A for all 8"$n$) RETURNING id INTO bid;
   PERFORM set_config('app.allow_rename','on',true);
   ch:=0;
   FOR r IN SELECT split_part(x,E'\t',1) vid,split_part(x,E'\t',2) oldn,split_part(x,E'\t',3) newn,split_part(x,E'\t',4) src,split_part(x,E'\t',5) url FROM regexp_split_to_table(p,E'\n') x LOOP
@@ -215,14 +216,14 @@ BEGIN
   END LOOP;
   PERFORM set_config('app.allow_rename','off',true);
   UPDATE rename_batches SET status='applied',applied_at=now() WHERE id=bid AND status='staged'; GET DIAGNOSTICS n=ROW_COUNT; IF n<>1 THEN RAISE EXCEPTION 'batch %',n; END IF;
-  INSERT INTO source_capture_ledger (publisher,field_type,items,job) VALUES ('michelin','name',76,$j$rename-apply:rename-oad-2026-names-2026-11-04 | Michelin card names, read Nov 4 | PENDING: Ben has not chosen$j$);
+  INSERT INTO source_capture_ledger (publisher,field_type,items,job) VALUES ('michelin','name',76,$j$rename-apply:rename-oad-2026-names-2026-11-04 | Michelin card names, read Nov 4 | Ben Nov 4 10:29 ET "A for all 8"$j$);
   -- POST
-  IF ch<>158-same THEN RAISE EXCEPTION 'slug change % same %',ch,same; END IF;
+  IF ch<>159-same THEN RAISE EXCEPTION 'slug change % same %',ch,same; END IF;
   IF (SELECT count(*) FROM venues)<>11594 OR (SELECT count(*) FROM awards)<>27481 OR (SELECT count(*) FROM price)<>7759 THEN RAISE EXCEPTION 'tables after'; END IF;
   IF (SELECT count(*) FROM slugs)<>13444+ch-flip THEN RAISE EXCEPTION 'slugs after'; END IF;
   IF EXISTS (SELECT 1 FROM venues v LEFT JOIN slugs s ON s.venue_id=v.id AND s.is_canonical GROUP BY v.id HAVING count(s.slug)<>1) THEN RAISE EXCEPTION 'canonical slugs'; END IF;
-  IF (SELECT count(*) FROM audit_log WHERE id>aud AND table_name='venues' AND action='UPDATE')<>158 THEN RAISE EXCEPTION 'audit venues'; END IF;
+  IF (SELECT count(*) FROM audit_log WHERE id>aud AND table_name='venues' AND action='UPDATE')<>159 THEN RAISE EXCEPTION 'audit venues'; END IF;
   IF (SELECT count(*) FROM listings l JOIN venues v ON v.id=l.venue_id WHERE v.status='closed' AND l.published)<>0 THEN RAISE EXCEPTION 'closed published'; END IF;
-  RAISE NOTICE 'done: batch %, renames 158, slug changes %',bid,ch;
+  RAISE NOTICE 'done: batch %, renames 159, slug changes %',bid,ch;
 END $do$;
 COMMIT;
