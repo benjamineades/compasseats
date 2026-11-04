@@ -1,0 +1,2 @@
+batch_key,venue_id,expected_name,new_name,source_id,source_url,note
+rename-signum-molnlycke-2026-11-03,ve_a6a92ff828,Restaurang Signum,Signum,michelin,https://guide.michelin.com/us/en/vastra-gotaland/molnlycke_2675596/restaurant/signum-1205585,"Open item 1; live ""Restaurang Signum"" (Google place name); Michelin card name ""Signum""; venue page ""Restaurant Signum"", menu ""Menu Signum""; after award 2562 moves, Michelin is the only publisher (Sep 14 ruling); relay sha256 f54ca0b02b428889b2a5a055bdc86b89207d3aa5c219340a098dce40524ac3bc; Ben Nov 3 19:05 ET ""1A, 2A"""
