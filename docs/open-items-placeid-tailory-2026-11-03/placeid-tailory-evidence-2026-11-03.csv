@@ -1,0 +1,32 @@
+group,venue_id,venue,city,award_id,award,publisher_prints,target_venue_id,target_state,source
+A1,ve_d6d7a07cee,Ensue,shenzhen,15683,asia-50-best-restaurants 2026 No. 65,"Fumée, Shenzhen",ve_38916224da,target exists,https://thedotmagazine.com/asias-50-best-restaurants-2026-drops-its-extended-51-100-list/
+A1,ve_965e0e3908,L'Atelier,las-vegas,16923,oad 2025 No. 88,"Joel Robuchon at The Mansion, Las Vegas",ve_273774c457,target exists,https://www.oadguides.com/lists/north-america/top-restaurants/2025
+A1,ve_965e0e3908,L'Atelier,las-vegas,16921,oad 2026 No. 16,"Joel Robuchon at The Mansion, Las Vegas",ve_273774c457,target exists,https://www.oadguides.com/lists/north-america/top-restaurants/2026
+A1,ve_1779942f15,Fiola Mare,washington-dc,17153,oad 2025 No. 509,"Fiola da Fabio Trabocchi, Washington",ve_842d853e13,target exists,https://www.oadguides.com/lists/north-america/top-restaurants/2025
+A1,ve_1779942f15,Fiola Mare,washington-dc,17151,oad 2026 No. 486,"Fiola da Fabio Trabocchi, Washington",ve_842d853e13,target exists,https://www.oadguides.com/lists/north-america/top-restaurants/2026
+A1,ve_b6eb74a0a2,Sukiyabashi Jiro,tokyo,3422,oad 2025 No. 196,"Sukiyabashi Jiro Roppongi, Tokyo",ve_175f7d63c2,target exists,https://www.oadguides.com/lists/japan/top-restaurants/2025
+A2,ve_fbcb833f0c,Bar Masa,new-york,2670,oad 2025 No. 67,"Masa, New York",,no live venue,https://www.oadguides.com/lists/north-america/top-restaurants/2025
+A2,ve_fbcb833f0c,Bar Masa,new-york,2668,oad 2026 No. 92,"Masa, New York",,no live venue,https://www.oadguides.com/lists/north-america/top-restaurants/2026
+A2,ve_e8097f89e5,Il Ristorante - Niko Romito,paris,18439,oad 2025 No. 304,"Da Niko, Milan, Italy",,no live venue,https://www.oadguides.com/lists/europe/top-restaurants/2025
+A2,ve_e4697958f0,Sen Omakase,madrid,6339,oad 2025 No. 407,"Moi Omakase, Prato, Italy",,no live venue,https://www.oadguides.com/lists/europe/top-restaurants/2025
+A2,ve_1b2f4308ae,Buca Osteria & Bar,toronto,17532,oad 2025 No. 580,"Buca Yorkville, Toronto",,no live venue,https://www.oadguides.com/lists/north-america/top-restaurants/2025
+A2,ve_6c564637e8,Sushi of Gari 46,new-york,17234,oad 2025 No. 254,"Gari, New York",,no live venue,https://www.oadguides.com/lists/north-america/top-restaurants/2025
+A2,ve_6c564637e8,Sushi of Gari 46,new-york,17232,oad 2026 No. 267,"Gari, New York",,no live venue,https://www.oadguides.com/lists/north-america/top-restaurants/2026
+A2,ve_411ead11c6,Kioicho Mitani,tokyo,18648,oad 2025 No. 28,"Mitani, Tokyo",,no live venue,https://www.oadguides.com/lists/japan/top-restaurants/2025
+A2,ve_fe34271323,Kurosaki,tokyo,18695,oad 2025 No. 469,"Yakitori Kurosaki, Tokyo",,no live venue,https://www.oadguides.com/lists/japan/top-restaurants/2025
+A2,ve_61cf53898d,Yamazaki,tokyo,18713,oad 2025 No. 107,"Yamasaki, Tokyo",,no live venue,https://www.oadguides.com/lists/japan/top-restaurants/2025
+A2,ve_26a217eb82,Sushi Kyoto Saeki,kyoto,18846,oad 2025 No. 528,"Saeki Hanten, Tokyo",,no live venue,https://www.oadguides.com/lists/japan/top-restaurants/2025
+A2,ve_7b02b65595,Mercato,shanghai,18127,oad 2025 No. 179,"Jean Georges, Shanghai, China",,no live venue,https://www.oadguides.com/lists/asia/top-restaurants/2025
+A3,ve_a248207d2a,Sushi Saito,hong-kong,18027,oad 2025 No. 354,"Sushi Saito, Hong Kong (printed at No. 21 and No. 354)",,publisher prints twice,https://www.oadguides.com/lists/asia/top-restaurants/2025
+A3,ve_5ba6c32664,Tempura Yamanoue Ginza,tokyo,19033,oad 2025 No. 590,"Yama no Ue (no city in read), Masanori Teraoka",,not settled,https://www.oadguides.com/lists/japan/top-restaurants/2025
+B,ve_9acf561dcf,Restaurant Wörgötter,ligist,5938,michelin 2025 Bib Gourmand,Wörgötter - Wirtshaus (One Star is Wörgötter - Fine Dining),,no live venue,https://guide.michelin.com/at/en/article/michelin-guide-ceremony/43-bib-gourmands-for-austria-guide-michelin
+B,ve_fb7dc1ff33,Schlosskeller Südsteiermark,leibnitz,5898,michelin 2025 Bib Gourmand,Schlosskeller Wirtshaus (One Star is Schlosskeller Gourmetstube),,no live venue,https://guide.michelin.com/at/en/article/michelin-guide-ceremony/43-bib-gourmands-for-austria-guide-michelin
+B,ve_c2e6c8acfb,"Hill Street Tai Hwa Pork Noodle, Crawford Lane",singapore,8214,michelin 2025 Bib Gourmand,Tai Wah Pork Noodle (One Star is Hill Street Tai Hwa),,no live venue,https://guide.michelin.com/en/article/michelin-guide-ceremony/full-list-michelin-guide-sg-2025
+B,ve_7a967f498b,Fagn,trondheim,12737,michelin 2026 Bib Gourmand,"FAGN-Bistro, Ørjaveita 4 (card, 2026 guide)",,no live venue,https://guide.michelin.com/us/en/trondelag/trondheim/restaurant/fagn-bistro
+B,ve_7a967f498b,Fagn,trondheim,12739,michelin 2025 Bib Gourmand,Same read: the Bib is the bistro. 2025 list not read,,no live venue,https://guide.michelin.com/us/en/trondelag/trondheim/restaurant/fagn-bistro
+B,ve_c5e00877c1,Vyn Restaurant,simrishamn,3142,michelin 2026 Bib Gourmand,"Vyn Food & Wine Bar, Höga vägen 72 (card, 2026 guide). Two Stars is VYN",,no live venue,https://guide.michelin.com/is/en/skane/simrishamn_2683288/restaurant/vyn-food-wine-bar
+C,ve_732d5cc78a,Bleu Provence,naples (Italy),21794,wine-spectator 2026 Grand Award,"Bleu Provence, Naples, Florida, USA",,no US city,https://www.winespectator.com/restaurants/885/bleu-provence
+D,ve_444325fab9,Kabuki Madrid,milan,18573,oad 2025 No. 615,"Kabuki, Milan, Spain, Ricardo Sanz",,publisher conflict,https://www.oadguides.com/lists/europe/top-restaurants/2025
+D,ve_2935ce649e,Carmen,lima,17958,oad 2025 No. 48,"Carmen, Lima, Colombia, Carmen Angel",ve_6cd9c1b505,publisher conflict,https://www.oadguides.com/lists/south-america/top-restaurants/2025
+D,ve_6ed52d9126,Fiesta Restaurant,lima,17913,oad 2025 No. 28,"Fiesta, Lima, Argentina, Germán Sitz & Pedro Peña",,publisher conflict,https://www.oadguides.com/lists/south-america/top-restaurants/2025
+E,ve_d1e61a315d,The Tailory New York - Custom Suits NYC - Bespoke Tailor®,new-york,15336,worlds-50-best-bars 2009 No. 49,"Tailor, New York. Closed Nov 2009 (Punch)",,"rename, close",https://www.the50.com/bars/best-in-the-world/previous-list/2009

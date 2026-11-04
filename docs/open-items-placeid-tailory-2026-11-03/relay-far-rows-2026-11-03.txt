@@ -1,0 +1,344 @@
+3.1 N ve_e3413976b4:vienna
+7.1 N ve_5c2b30278d:washington-dc,ve_e46b60682d:zurich,ve_ee1c1b7958:new-york
+10.1 N ve_8076804f93:seoul
+12.1 N ve_be2180615c:amsterdam
+15.2 R ve_98973f6b15:tokyo,ve_a92a913b1a:london,ve_cecca406a4:las-vegas
+17.1 X
+17.2 X
+17.3 X
+17.4 R ve_20dd52fc62:seoul,ve_2dbff4bc03:osaka,ve_b652527d59:montreal,ve_cd80f14ae3:munich
+17.5 X
+18.1 X
+21.1 N ve_16681ee5aa:cham-ch,ve_b9b955d08e:malmesbury,ve_efd3209471:orlando
+23.1 N ve_434db7ef54:washington-dc
+23.2 N ve_434db7ef54:washington-dc
+24.1 N ve_60de69c92f:hovingham
+25.1 X
+26.1 R ve_804832ea81:tokyo,ve_dd7554104b:cesenatico,ve_f8bf601282:new-york
+26.2 X
+29.1 N ve_c12dbdbae1:new-york
+29.2 N ve_c12dbdbae1:new-york
+30.1 N ve_0ab94dc525:washington-dc
+32.1 R ve_0af33e0886:san-francisco,ve_40d3649f58:london,ve_73d901a8fe:hong-kong,ve_85872304a4:tokyo
+33.1 N ve_e76ae24458:rennes
+35.1 N ve_cee8303f36:los-angeles
+36.1 N ve_df01cdbcf6:washington-dc,ve_e0b85919c8:benavente,ve_f19d2083ac:madonna-di-campiglio
+40.1 N ve_dcfa59471a:saint-moritz
+46.1 X
+49.1 N ve_2da51f8658:new-york
+52.1 N ve_697073dab3:antwerp
+56.1 R ve_6bab364265:lima
+56.2 R ve_034adbb581:bad-ragaz,ve_411ead11c6:tokyo,ve_6ed52d9126:lima,ve_a66113fa8e:hong-kong
+57.1 X
+58.1 X
+59.1 X
+60.1 N ve_4ba45827e9:new-york
+62.1 N ve_d5de99de2a:montreal
+64.1 N ve_259e4efe74:washington-dc
+70.1 R ve_42b6f24c27:tokyo,ve_5ac323cccd:dallas,ve_bf3adf5226:beijing,ve_db661b5dd8:paris
+73.1 N ve_cafc3272b9:seoul
+76.1 N ve_835f7e290b:barcelona
+78.1 N ve_57e58bb437:middleton-tyas
+79.1 X
+86.1 N ve_7a967f498b:trondheim
+91.1 N ve_6875e82e76:cairndow
+92.1 N ve_942ea22e04:aachen
+93.1 X
+97.1 N ve_feed15649f:miami
+97.2 N ve_feed15649f:miami
+97.3 N ve_feed15649f:miami
+97.4 N ve_feed15649f:miami
+102.1 X
+106.1 R ve_3fbd6f3506:maastricht
+108.1 N ve_5f59950b4c:new-york
+108.2 N ve_5f59950b4c:new-york
+111.2 R ve_4f1ef3df82:santander,ve_55101794e8:kyoto,ve_da800fa57e:new-york
+115.1 N ve_5e1befe955:castelnuovo-berardenga
+117.1 R ve_893dbeaa44:tokyo
+117.2 R ve_893dbeaa44:tokyo
+117.3 R ve_893dbeaa44:tokyo
+118.1 X
+122.2 R ve_2d4e824cb3:tokyo,ve_48116a1c89:york,ve_8ab44b1803:san-juan
+123.2 R ve_14cd36e867:rockland,ve_9732ece668:kyoto,ve_f7eea34b19:nova-gorica
+125.1 X
+126.1 X
+127.1 X
+130.1 N ve_c420808a1b:ouches
+130.2 N ve_c420808a1b:ouches
+131.2 R ve_2e985904ad:paris,ve_75ab592b1a:dallas,ve_b428886c60:tokyo
+134.1 N ve_b00c7b967b:guangzhou
+137.1 N ve_e884f4d630:odenthal
+141.1 X
+143.1 N ve_e04bf11ee2:new-york
+146.1 N ve_d3e4310446:tarrytown
+146.2 N ve_d3e4310446:tarrytown
+147.1 N ve_885707af72:monaco
+149.1 N ve_885707af72:monaco
+149.2 N ve_885707af72:monaco
+151.1 X
+153.1 N ve_f2c4df8e7b:new-york
+154.1 N ve_6cf6b155f6:washington-dc
+155.1 N ve_6cf6b155f6:washington-dc
+163.1 N ve_45b6607378:miami
+163.2 N ve_45b6607378:miami
+164.1 R ve_ceeede4f67:new-york
+165.1 X
+168.1 X
+169.1 N ve_b2b57e491b:bernried
+171.1 N ve_6407dbda2d:new-york
+171.2 N ve_6407dbda2d:new-york
+175.1 N ve_f11e1f2315:chardonne
+177.1 N ve_115bd39094:hong-kong,ve_2bf9c6ab79:miami,ve_7b249a8a15:new-york,ve_7da50e5e57:san-francisco,ve_e67d5ac741:petaluma,ve_f18b4ed788:taipei
+179.1 N ve_358f3a02fe:washington-dc
+179.2 N ve_358f3a02fe:washington-dc
+182.1 X
+183.1 N ve_8fc2727204:washington-dc
+185.1 X
+192.2 R ve_1ed7dea74b:mexico-city,ve_41e6b6279d:nagoya,ve_b77b9b1c1c:reykjavik
+198.1 R ve_051b80654d:los-angeles
+199.1 N ve_51674838f2:washington-dc
+204.1 X
+205.1 X
+206.1 X
+207.1 N ve_26a217eb82:kyoto
+210.1 X
+210.2 X
+212.1 X
+214.1 X
+215.3 R ve_600f8aecb8:kyoto,ve_7a967f498b:trondheim,ve_8309ebbff3:new-york
+222.1 N ve_da655a493a:puerto-morelos
+222.2 N ve_da655a493a:puerto-morelos
+222.3 N ve_da655a493a:puerto-morelos
+222.4 N ve_da655a493a:puerto-morelos
+222.5 N ve_da655a493a:puerto-morelos
+222.6 N ve_da655a493a:puerto-morelos
+222.7 N ve_da655a493a:puerto-morelos
+222.8 N ve_da655a493a:puerto-morelos
+222.9 N ve_da655a493a:puerto-morelos
+225.1 N ve_f8785fd4ef:new-york
+225.2 N ve_f8785fd4ef:new-york
+226.1 N ve_d3fe45c064:washington-dc
+226.2 N ve_d3fe45c064:washington-dc
+234.1 N ve_b142fcbc33:kitakyushu
+238.1 N ve_981b9ce156:new-york
+238.2 N ve_981b9ce156:new-york
+243.1 X
+244.1 N ve_5ca1043d07:franschhoek
+246.1 N ve_5fb42921c9:george-town
+246.2 N ve_5fb42921c9:george-town
+246.3 N ve_5fb42921c9:george-town
+246.4 N ve_5fb42921c9:george-town
+248.1 N ve_f100b27414:bonn
+251.1 X
+253.1 N ve_2918448e34:calldetenes
+254.1 N ve_7a19b6c414:massa-lubrense,ve_ccd4d1ec94:toronto
+255.3 R ve_3d8a17c8d2:los-angeles,ve_97ac0a7216:berlin,ve_ec37a44a96:tokyo
+257.1 N ve_0a90500f2f:salta
+257.2 N ve_0a90500f2f:salta
+257.3 N ve_0a90500f2f:salta
+257.4 N ve_0a90500f2f:salta
+260.1 N ve_a5ac6c3767:new-york
+262.1 N ve_8be220d6ab:washington-dc
+262.2 N ve_8be220d6ab:washington-dc
+264.1 X
+265.1 X
+273.1 X
+273.2 R ve_122ddebf7a:new-york,ve_520ed7d621:nara,ve_866c6a1512:hong-kong
+274.1 N ve_fabf43d6e3:miami
+281.1 N ve_0810d95181:osaka
+281.2 X
+281.3 X
+281.4 R ve_3c3f107341:shanghai,ve_64c54a84c8:tokyo,ve_79cefb4af4:london,ve_981b9ce156:new-york
+281.5 R ve_3c3f107341:shanghai
+282.1 X
+285.1 N ve_f8bf601282:new-york
+290.1 X
+294.1 N ve_6f0b34cc23:macau
+295.1 N ve_ee5ac4c506:new-york
+300.1 N ve_0c35c1b7f6:miami
+301.1 N ve_a06a1ac494:new-york
+302.1 N ve_1cf5b67c05:alvsjo
+305.1 N ve_fe19e0468f:monaco
+307.1 N ve_b69e4aa4be:guangzhou
+308.1 N ve_1541bc459f:washington-dc
+308.2 X
+312.1 N ve_ea76859d88:new-york
+312.2 N ve_ea76859d88:new-york
+312.3 N ve_ea76859d88:new-york
+312.4 N ve_ea76859d88:new-york
+315.1 N ve_952c8a0321:san-lorenzo-de-el-escorial
+317.1 X
+317.2 X
+317.3 X
+317.4 R ve_912be23b66:new-york,ve_a38eb90da3:tokyo,ve_ca8702dffa:london,ve_d2c67e7d3d:dubai
+317.5 X
+318.1 N ve_498fec45f9:new-york
+321.1 N ve_619850c8ef:busan
+323.1 X
+328.1 X
+329.1 N ve_c5cef458df:los-angeles
+332.1 R ve_2489c43a87:sydney
+332.2 R ve_2489c43a87:sydney
+333.1 R ve_2089b43ade:london
+333.2 R ve_2089b43ade:london
+333.3 R ve_2089b43ade:london
+333.4 R ve_2089b43ade:london
+335.1 R ve_412e1716a6:copenhagen
+335.2 X
+335.3 X
+336.1 R ve_412e1716a6:copenhagen,ve_91f084a38a:elk,ve_c68bf51028:lima,ve_d4fb60b454:hong-kong,ve_f4461f95f2:tokyo
+338.2 R ve_264407c8a3:seaside,ve_9c17c8241b:fukuoka,ve_9d0ca017d8:london
+339.2 R ve_1a94838a41:madrid,ve_af379dcb72:tokyo,ve_ef99db1013:seattle
+345.1 N ve_8853feb456:quezon-metro-manila,ve_8fd3db962e:new-york
+346.1 X
+346.2 R ve_9b6f15d6d5:llanca,ve_b6eb74a0a2:tokyo,ve_d783347096:singapore
+352.1 N ve_049de7329f:miami
+352.2 N ve_049de7329f:miami
+354.1 N ve_ff3d2caf9a:new-york
+355.1 N ve_1573ef3bc8:newcastle,ve_cafb0c33e1:washington-dc
+355.2 N ve_cafb0c33e1:washington-dc
+358.1 N ve_5126fcd962:hong-kong
+361.1 N ve_540bc26286:washington-dc
+362.1 N ve_da8fbb0fb9:washington-dc
+365.1 R ve_59d51888e6:bangkok,ve_a193cd70fe:tokyo,ve_b454957801:miami,ve_d9e8560f1a:modena
+366.1 X
+377.1 X
+379.1 N ve_ee986ed366:new-york
+381.1 X
+383.1 R ve_254b7c9c5f:deidesheim,ve_2decfdac78:los-angeles,ve_70f5ad9a22:tokyo,ve_a72e34207b:seoul
+384.1 R ve_a267f95c3b:panama-city
+388.1 N ve_bc0aa78c2e:vancouver
+391.1 X
+393.1 N ve_a278b8a6da:west-university-place
+396.1 X
+397.1 X
+402.1 N ve_fcfe23567c:otsu
+403.1 X
+408.1 R ve_52809f8499:paris
+408.2 R ve_52809f8499:paris
+416.1 N ve_2eddf8ec78:new-york
+416.2 N ve_2eddf8ec78:new-york
+418.1 N ve_8f2eac1b00:new-york
+418.2 N ve_8f2eac1b00:new-york
+421.1 N ve_b8992c91b9:capelle-aan-den-ijssel
+424.1 N ve_46640fd4c8:vilnius
+427.2 R ve_01ed923bb7:karuizawa,ve_075584d6b9:chicago,ve_6036462df1:munich
+431.1 R ve_565aca0448:san-diego,ve_60447964ab:padron,ve_7b02b65595:shanghai,ve_9d026011f1:tokyo
+438.1 R ve_71c77b9930:new-york,ve_7f732a531c:tokyo,ve_9ed23a6304:dubai,ve_e934665572:aosta
+442.1 N ve_66a88537f6:lisbon
+445.1 X
+445.2 X
+446.1 R ve_1ee134c813:lima,ve_4250adc251:chicago,ve_4b6b1c4072:shanghai,ve_6ce9f52552:furstenau,ve_9729ceefbf:shizuoka
+447.1 X
+449.1 X
+450.1 X
+453.1 R ve_9d24a63713:london
+453.2 R ve_9d24a63713:london
+454.1 R ve_1e2773bf5c:taipei
+455.1 N ve_afdd93e931:washington-dc
+455.2 N ve_afdd93e931:washington-dc
+456.1 N ve_f98f790eff:dorking
+457.1 N ve_f98f790eff:dorking
+458.1 X
+463.1 N ve_c6228f204a:george-town
+463.2 N ve_c6228f204a:george-town
+463.3 N ve_c6228f204a:george-town
+467.1 N ve_8b818c73c5:new-york
+467.2 N ve_8b818c73c5:new-york
+468.1 R ve_4b3518d312:san-francisco,ve_8fd2b1ec3e:tokyo,ve_e6fa597676:port-dalcudia
+469.1 N ve_e3cd43f5af:washington-dc
+471.1 X
+472.1 N ve_71cb99da4d:madrid
+473.1 X
+475.1 X
+476.1 X
+486.1 N ve_89ca903ac2:fisterra
+487.1 N ve_aea4740c84:jose-ignacio
+487.2 N ve_aea4740c84:jose-ignacio
+490.1 N ve_bc0a56ce13:moscow
+490.2 N ve_bc0a56ce13:moscow
+494.1 R ve_9cffb94ed6:los-angeles
+494.2 R ve_06644c1f4c:dubai,ve_9cffb94ed6:los-angeles,ve_ca4ac70868:london,ve_ca7ad6ea1a:tokyo
+495.2 R ve_64f26b27f1:corca,ve_6b6581c335:los-angeles,ve_e811a27dfb:tokyo
+502.1 N ve_ca6dd6863e:new-york
+502.2 N ve_ca6dd6863e:new-york
+504.1 N ve_b13765366f:dubai
+507.1 N ve_ebc2142ed9:woodinville
+507.2 N ve_ebc2142ed9:woodinville
+512.1 N ve_efe1077d6c:ragusa
+514.1 N ve_e46b60682d:zurich
+515.1 N ve_28c3e71671:tokyo
+520.1 N ve_3bef57c77f:lisbon
+525.1 N ve_cf423b13ce:new-york
+526.1 N ve_6dcb2526ce:washington-dc
+527.1 N ve_697d24276c:new-york
+529.1 X
+529.2 X
+530.1 N ve_244bcb9aac:new-york
+533.1 N ve_244bcb9aac:new-york
+533.2 N ve_244bcb9aac:new-york
+534.1 X
+538.1 N ve_8184221c2f:new-york
+540.1 N ve_06a50f2165:doha
+541.1 N ve_06a50f2165:doha
+543.1 N ve_1b43a8a518:cayman-islands
+544.1 X
+552.1 X
+552.2 R ve_fb89a8302d:munich
+552.3 X
+552.4 X
+552.5 R ve_b142fcbc33:kitakyushu,ve_c7544bc540:singapore,ve_de46664a99:san-francisco,ve_fb89a8302d:munich,ve_fcbc08e9d3:santiago
+552.6 X
+553.1 X
+554.1 X
+554.2 R ve_eecb08a500:hong-kong
+554.3 R ve_eecb08a500:hong-kong
+554.4 R ve_eecb08a500:hong-kong
+554.5 R ve_eecb08a500:hong-kong
+554.6 R ve_eecb08a500:hong-kong
+554.7 R ve_eecb08a500:hong-kong
+555.1 R ve_1b0f943c7b:buenos-aires,ve_2dcebeb1da:tokyo,ve_4d8c220a0a:arriondas,ve_9267749ccc:new-york,ve_eecb08a500:hong-kong
+556.1 X
+557.1 N ve_8a88a44a38:san-francisco
+560.1 X
+563.1 N ve_1bf5ede21f:new-york
+564.1 X
+565.1 X
+567.1 N ve_bbb89adc15:brissago
+570.2 R ve_115c866946:tokyo,ve_4ced79de61:gothenburg,ve_4d51b310d6:santa-barbara
+572.1 N ve_85088316db:abu-dhabi
+573.1 X
+573.2 R ve_1ed7dea74b:mexico-city,ve_41e6b6279d:nagoya,ve_b77b9b1c1c:reykjavik
+574.1 X
+576.1 N ve_e46b60682d:zurich
+580.1 N ve_81127653c8:oldstead
+581.1 R ve_97e2b4cb10:venice
+581.2 R ve_97e2b4cb10:venice
+582.1 N ve_cdd31cd894:macau
+584.1 X
+585.1 X
+587.1 X
+590.1 N ve_660bcd873e:new-york
+592.1 N ve_e2d85a0b22:george-town
+592.2 N ve_e2d85a0b22:george-town
+593.1 N ve_4e77c0295c:saint-remy-de-provence
+593.2 N ve_4e77c0295c:saint-remy-de-provence
+597.1 X
+600.1 X
+602.1 N ve_2d8e602730:miami,ve_e46b60682d:zurich
+603.2 R ve_1e67f7ff1b:fukuoka,ve_57efc98f07:kennebunk,ve_cba5ed9402:newcastle
+605.1 N ve_ca2f9feb82:miami,ve_e6980b4433:taipei
+610.1 X
+612.1 N ve_e6a837b5b3:los-angeles
+612.2 N ve_e6a837b5b3:los-angeles
+615.1 N ve_96b0ca86ff:new-york
+620.2 R ve_05c24b0076:tokyo,ve_4feb000ab5:madrid,ve_5de30d7e95:new-york
+622.2 X
+623.1 N ve_5f0d9572ff:new-york
+628.1 N ve_7c0b5bdc38:new-york
+628.2 N ve_7c0b5bdc38:new-york
+629.2 R ve_27302ae41b:toronto,ve_293a7908ee:tokyo,ve_a4c6753c0b:llagostera
+631.1 N ve_2aa23782b0:iida
+639.1 X
+644.1 N ve_17dddf4312:vitznau
+645.2 R ve_45e9631686:tokyo,ve_66b4bd3391:santorini,ve_7a65c96422:los-angeles
