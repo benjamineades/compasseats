@@ -1,0 +1,61 @@
+{
+ "nl": [
+  "a|325|Bangkok Bold Kitchen|bangkok|a|Bangkok|Thailand",
+  "e|412|Restaurant Pirouette|paris|c|Paris|France",
+  "j|214|Uran|otsu|a|Osaka|Japan",
+  "j|313|Yakiniku Kousen|tokyo|a|Tokyo|Japan",
+  "j|318|Hisada|akaiwa|a|Hiroshima|Japan",
+  "j|448|Katatsumuri|yamagata-gifu|a|Nagoya|Japan",
+  "j|479|Kimiya|ikoma|a|Nara|Japan",
+  "j|609|Kappo Yoshida|fukuoka|a|Fukuoka|Japan",
+  "j|638|Hamagen|nagoya|a|Nagoya|Japan",
+  "j|702|Mudai|tokyo|a|Tokyo|Japan",
+  "j|746|Seto|kyoto|a|Kyoto|Japan",
+  "j|769|Tempura Yokota|tokyo|a|Tokyo|Japan",
+  "j|784|Sushi Hachiya|kanazawa|a|Kanazawa|Japan",
+  "j|789|Shangu|tokyo|a|Tokyo|Japan"
+ ],
+ "al": [
+  "a|259|ve_54ab6673c8"
+ ],
+ "mv": [
+  [
+   5562,
+   "ve_54ab6673c8",
+   "ve_6a1064e62c"
+  ],
+  [
+   18119,
+   "ve_6a1064e62c",
+   "ve_54ab6673c8"
+  ],
+  [
+   18463,
+   "ve_3a0ba9fb7b",
+   "ve_acb290badf"
+  ],
+  [
+   32880,
+   "ve_54ab6673c8",
+   "ve_6a1064e62c"
+  ]
+ ],
+ "newc": [
+  [
+   "akaiwa",
+   "Akaiwa"
+  ],
+  [
+   "ikoma",
+   "Ikoma"
+  ],
+  [
+   "yamagata-gifu",
+   "Yamagata (Gifu)"
+  ]
+ ],
+ "ids": [
+  "ve_3a0ba9fb7b"
+ ],
+ "piro": "ve_acb290badf"
+}
