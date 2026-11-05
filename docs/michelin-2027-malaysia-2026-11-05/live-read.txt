@@ -1,0 +1,67 @@
+ve_003bb97d1b|10781|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|rotibydtandoor|ROTI By d'Tandoor
+ve_010971fed7|10277|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|myowncafe|My Own Cafe
+ve_029831f29d|5718|One Star|2025|ci_3531a466fc|kuala-lumpur|active|$$$$|chimbychefnoom|Chim By Chef Noom
+ve_02dbe107de|10764|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|anakbababrickfields|Anak Baba @ Brickfields
+ve_047a2c6261|10280|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|rasarasa|Rasa Rasa 回味
+ve_0863dfa720|10771|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|hingkeebakutehmainbranch|Hing Kee Bakuteh Main Branch 甲洞大街 兴记肉骨茶 总行
+ve_0a3979eb3d|5721|One Star|2025|ci_3531a466fc|kuala-lumpur|active|$$$$|molina|Molina
+ve_0e32b10f52|10267|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|bridgestreetprawnnoodle|Bridge Street Prawn Noodle
+ve_1159f5a76f|10770|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|haikahlangseafoodnoodleandfishheadnoodle|Hai Kah Lang Seafood Noodle and Fish Head Noodle
+ve_12d2b1101f|10287|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$$|teksenrestaurant|Tek Sen Restaurant
+ve_15423d04be|10775|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|kedaijualbeliduitlamacentralmarketpasarsenikualalumpur|Kedai Jual Beli Duit Lama Central Market, Pasar Seni, Kuala Lumpur.
+ve_1569932f04|10766|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|congkak|Congkak
+ve_15aa903c9c|10782|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|saonam|Sao Nam
+ve_18554be84d|10285|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|sisteryaoscharkoaykak|Sister Yao's Char Koay Kak
+ve_1956f85ef8|5714|One Star|2025|ci_3531a466fc|kuala-lumpur|active|$$$|akar|akar
+ve_1d28549f02|10762|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|ahheibakkutteh|Ah Hei Bak Kut Teh
+ve_1ec4dd4906|10281|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|ravisclaypotappommanis|Ravi's Claypot Appom Manis
+ve_1edcb5d0c0|10264|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|awesomecharkoayteow|Awesome Char Koay Teow
+ve_2a7584aca3|10288|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$$|tharapenang|Thara Penang
+ve_30acc47074|10266|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$$|bibikskitchennyonyacuisine|Bibik's Kitchen Nyonya Cuisine
+ve_3eb71e74f4|5146|One Star|2025|ci_021dfa5a5a|george-town|active|$$|auntiegaikleansoldschooleatery|Auntie Gaik Lean's Old School Eatery
+ve_40bde2f6be|12068|Bib Gourmand|2025|ci_1ba468de61|seberang-perai|active|$|bmcathaypancake|BM Cathay Pancake
+ve_42ca15697d|10783|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|sekyuenrestaurant|Sek Yuen Restaurant
+ve_45a6cd6cc9|5720|One Star|2025|ci_3531a466fc|kuala-lumpur|active|$$$$|dcrestaurant|DC Restaurant
+ve_4731ec9e3a|12071|Bib Gourmand|2025|ci_1ba468de61|seberang-perai|active|$$|neighbourwoodrestaurantbukitmertajam|Neighbourwood Restaurant Bukit Mertajam
+ve_49238ef301|12069|Bib Gourmand|2025|ci_1ba468de61|seberang-perai|active|$|bmyamricekopitiam|BM Yam Rice Kopitiam
+ve_4df75e0ea5|2184|Two Stars|2025|ci_3531a466fc|kuala-lumpur|active|$$$$|dewakanrestaurant|Dewakan Restaurant
+ve_5fb42921c9|5145|One Star|2025|ci_021dfa5a5a|george-town|active|$$$|restaurantaujardin|Restaurant au Jardin
+ve_63e0e5b6a4|10270|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|greentomyam|義蓮鱼头米粉 Green Tomyam
+ve_646d576229|10784|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|sinkiewyeeshinkeebeefnoodles|Sin Kiew Yee Shin Kee Beef Noodles
+ve_6da2164371|10776|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|leensmiddleeastkitchenttdi|Leen’s Middle East Kitchen TTDI
+ve_6f66fe2b77|12072|Bib Gourmand|2025|ci_1ba468de61|seberang-perai|active|$|tamanbukitcurrymee|Taman Bukit Curry Mee
+ve_705085f5e5|5717|One Star|2025|ci_3531a466fc|kuala-lumpur|active|$$$|betakl|Beta KL
+ve_71a9ff7b01|10290|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$$|winnscafe|Winn's Cafe
+ve_73cfa89a00|10778|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|namheongchickenricejalansultan|Nam Heong Chicken Rice, Jalan Sultan
+ve_75da63785d|10274|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|laksalicious|Laksalicious
+ve_78fd0c5910|10284|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$$|sifufit|Sifu Fit
+ve_7d405bcf02|10273|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$$|ivysnyonyacuisine|Ivy's Nyonya Cuisine
+ve_8170285a94|10263|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|ahboykoayteowthng|Ah Boy Koay Teow Th'ng
+ve_8278980536|10275|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|lumlaiduckmeatkoayteowthng|LUM LAI Duck Meat Koay Teow Th'ng
+ve_911387ca74|10768|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|foonglian|Foong Lian - 丰年瓦煲美食馆
+ve_9156dfc937|10289|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|wandaotouassamlaksa|Wan Dao Tou Assam Laksa
+ve_9494c702d6|10271|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|greenhouseprawnmeecorner|Green House Prawn Mee Corner
+ve_97b7a906d3|10279|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|penangroadfamouslaksa|Penang Road Famous Laksa
+ve_9f150d6f0f|10282|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$$|sardaarji|Sardaarji
+ve_a3757bfed4|5722|One Star|2025|ci_3531a466fc|kuala-lumpur|active|$$$|terradiningkl|Terra Dining KL
+ve_ac70ae8632|10767|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$$|dewan1958bychefwan|De.Wan 1958 by Chef Wan
+ve_ac8f06d025|10773|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|jalanipohclaypotchickenrice|Jalan Ipoh Claypot Chicken Rice
+ve_b51d61a2cf|10763|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|aliyaa|Aliyaa
+ve_b54d8af4a1|10283|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|siamroadcharcoalcharkueyteow|Siam Road Charcoal Char Kuey Teow
+ve_b6590f8808|10269|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|duckbloodcurrymee|Duck Blood Curry Mee
+ve_b723b6103b|10268|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$$|communaltablebygen|Communal Table by Gēn 根
+ve_bcd0baa29f|10765|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|coastbykayra|Coast by Kayra
+ve_c33b6405c3|10278|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|penangroadfamousjinkorcharkueyteow|Penang Road Famous Jin Kor Char Kuey Teow
+ve_ce590a0a10|12070|Bib Gourmand|2025|ci_1ba468de61|seberang-perai|active|$|mingqincharcholduckeggcharkoayteow|Ming Qin Charchol Duck Egg Char Koay Teow
+ve_d1c0717a0a|10785|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|restoranwongmeikee|Restoran Wong Mei Kee
+ve_da250213da|10779|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|nasiayamhainancheemengjalanklanglama|Nasi Ayam Hainan Chee Meng • Jalan Klang Lama
+ve_dae7944089|10777|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|mtr|MTR
+ve_dc32f76e1a|-|-|-|ci_3531a466fc|kuala-lumpur|active||potagerkl|Potager KL
+ve_de917acda2|10774|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|laifoonglalanoodleskualalumpur|Lai Foong Lala Noodles, Kuala Lumpur
+ve_e137bc040a|10286|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|superstarkoayteowsoupshop|Super Star Koay Teow Soup(shop)
+ve_e5b5026a4e|10276|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|mohtengpheownyonyakoay|Moh Teng Pheow Nyonya Koay
+ve_e9490a1590|10265|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|beehwacafe|Bee Hwa Cafe
+ve_eb77fd68ae|10780|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|restoransrinirwanamaju|Restoran Sri Nirwana Maju
+ve_f47f713cf6|10769|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$$|gulainyabukitdamansara|GulaiNya Bukit Damansara
+ve_f90ecf7436|10772|Bib Gourmand|2025|ci_3531a466fc|kuala-lumpur|active|$|horpohcuisinerestaurant|Hor Poh Cuisine Restaurant
+ve_ff339c089d|10272|Bib Gourmand|2025|ci_021dfa5a5a|george-town|active|$|hotbowlwhitecurrymee|Hot Bowl White Curry Mee
