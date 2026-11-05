@@ -1,0 +1,178 @@
+ve_007615f444|9422|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|samlor|Sam Lor
+ve_00ee742044|1501|Two Stars|2025|ci_b90bbd2b87|bangkok|active|$$$$|cotebymaurocolagreco|Côte by Mauro Colagreco
+ve_0137a9444c|12316|Bib Gourmand|2025|ci_3436e13f2b|surat-thani|active|$$|luckyrestaurant|Lucky Restaurant
+ve_0189256b95|11269|Bib Gourmand|2025|ci_15f2a9d025|nakhon-ratchasima|active|$|sangthaigrilledchicken|Sangthai Grilled Chicken
+ve_0260161d67|9426|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|thaitham|Thai Tham
+ve_02ef15c6b4|3970|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$|juksunchae|Juksunchae
+ve_04ae14fccc|3929|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$|coda|Coda
+ve_04cf48f53a|9416|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|padthaifaitaludinsord|Pad Thai Fai Ta Lu (Dinso Rd)
+ve_06c130d2bf|3994|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|nahm|nahm
+ve_06dbda2609|3923|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|bolan|Bo.lan
+ve_07435fce14|4004|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|nusara|Nusara
+ve_092acd629b|9423|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|somsakpuob|Somsak Pu-ob
+ve_096be69bd1|11642|Bib Gourmand|2025|ci_3a3e902bcd|pathum-thani|active|$|khaomungainhajone|Khao Mun Gai Nha Jone
+ve_09a0eddd98|1510|Two Stars|2025|ci_b90bbd2b87|bangkok|active|$$$$|gaa|Gaa
+ve_09d60a25d6|11693|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$$|mormudongrestaurant|Mor Mu Dong Restaurant
+ve_0be8f372f5|9409|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|kpanichstickyrice|K. Panich Sticky Rice
+ve_0bea31301b|10739|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$$|prichaprasitroad|Pricha Prasit Road
+ve_0c8c633103|3913|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|8020eightytwenty|80/20 Eighty Twenty
+ve_0d2e8ee6d4|9418|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|phedphedbistro|Phed Phed Bistro
+ve_10073d7a22|9801|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$$|huansoontaree|Huan Soontaree
+ve_1072511a79|9404|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|gimnguanfishballnoodle|Gim Nguan Fishball Noodle
+ve_109a86f846|11694|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$$|namyoi|Nam Yoi
+ve_113ca78e27|11663|Bib Gourmand|2025|ci_158c07b0b7|phang-nga|active|$|munpochana|Mun Pochana
+ve_131ba44a3b|11274|Bib Gourmand|2025|ci_15f2a9d025|nakhon-ratchasima|active|$|papleungmheekratok|Pa Pleung Mhee Kratok
+ve_1599f1d608|11444|Bib Gourmand|2025|ci_6c959551b1|nonthaburi|active|$$|sann|SANN
+ve_180eece4af|11267|Bib Gourmand|2025|ci_a5ef1d428e|nakhon-pathom|active|$|plaewnoodles|Plaew Noodles
+ve_19d015da36|3927|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|cannubibyumbertobombana|Cannubi by Umberto Bombana
+ve_1a54e4f33d|11702|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$$|tohdaengatbaanarjor|Toh Daeng at Baan Ar Jor
+ve_1c8b08e204|4003|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|nawathaicuisine|Nawa Thai Cuisine
+ve_1c90c6dc4f|11682|Bib Gourmand|2025|ci_c9dcaa0480|phra-nakhon-si-ayutthaya|active|$|khunpranormchickennoodle|Khun Pranorm Chicken Noodle
+ve_1ee9fa6ac6|12767|Bib Gourmand|2025|ci_f23376f097|udon-thani|active|$|kruakhunnid|Krua Khun-Nid
+ve_203e7ffcb1|9810|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$$|saiyutdoctorsaikitchen|Saiyut & Doctor Sai Kitchen
+ve_2273b1f262|12317|Bib Gourmand|2025|ci_3436e13f2b|surat-thani|active|$$|None|ร้านอาหารน้ำเพชร
+ve_239a6bf9bf|9804|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$|krualawngkhao|Krua Lawng Khao
+ve_23e36444e7|11660|Bib Gourmand|2025|ci_158c07b0b7|phang-nga|active|$$|None|ฮกกี่เหลา
+ve_242a6332d7|9417|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|paesbrasspotcongee|Pae's Brass Pot Congee
+ve_2597b0b03e|11272|Bib Gourmand|2025|ci_15f2a9d025|nakhon-ratchasima|active|$|laabsomphit|Laab Somphit
+ve_260c4c33ff|3942|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|gaggan|Gaggan
+ve_28d1107597|11937|Bib Gourmand|2025|ci_34f11c136c|samut-sakhon|active|$$|rueanpanyarestaurantsamutsakhon|Ruean Panya Restaurant(Samut Sakhon)
+ve_2967137c6f|10740|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$$|None|โสเจ๊งโภชนา สาขาเมืองขอนแก่น
+ve_29c04d7296|11665|Bib Gourmand|2025|ci_158c07b0b7|phang-nga|active|$$|tonfonbistro|Tonfon Bistro
+ve_29c14151d5|3987|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|miabangkok|MIA Bangkok
+ve_29ff82e089|9860|Bib Gourmand|2025|ci_f3f0ff8106|chon-buri|active|$$|pladidslocalfishermendishes|Pladids (Local Fishermen Dishes)
+ve_2bd60008af|11664|Bib Gourmand|2025|ci_158c07b0b7|phang-nga|active|$|rerdungseafood|เรอดัง ซีฟู้ด Rer Dung Seafood
+ve_2c3107515f|11681|Bib Gourmand|2025|ci_c9dcaa0480|phra-nakhon-si-ayutthaya|active|$|palekboatnoodle|Pa Lek Boat Noodle
+ve_2cc3091377|10733|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$|jokguayjabtomsenbatqueue|Jok Guay Jab Tom Sen Bat Queue
+ve_2fe7abc9ba|9856|Bib Gourmand|2025|ci_f3f0ff8106|chon-buri|active|$|khaolammaekhaitoonklao|Khao Lam Mae Khai Toon Klao
+ve_2fea614a03|10732|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$|herejoibeefnoodles|Here Joi Beef Noodles
+ve_30d4122ad8|12759|Bib Gourmand|2025|ci_0be873fc53|ubon-ratchathani|active|$$|agave|Agave
+ve_3a39e62568|11677|Bib Gourmand|2025|ci_c9dcaa0480|phra-nakhon-si-ayutthaya|active|$|baankunpra|Baan Kun Pra
+ve_3a7ee15f36|7369|One Star|2025|ci_1d6bd4e16a|phuket|active|$$$$|pru|PRU พรุ
+ve_3c51e02932|11685|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$|apongmaesunee|A Pong Mae Sunee
+ve_3d24c06022|12761|Bib Gourmand|2025|ci_0be873fc53|ubon-ratchathani|active|$$|somtumjindarestaurant|SOMTUM JINDA RESTAURANT
+ve_3dce2015e3|3984|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|maisondunand|Maison Dunand
+ve_41f0f282db|11679|Bib Gourmand|2025|ci_c9dcaa0480|phra-nakhon-si-ayutthaya|active|$|khanommhokaengmaeyai|Khanom Mho Kaeng Mae Yai
+ve_42e191ba8c|11271|Bib Gourmand|2025|ci_15f2a9d025|nakhon-ratchasima|active|$|kruasuwimol|Krua Suwimol
+ve_43d1e05d2f|10731|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$|baanheng|Baan Heng
+ve_447ad081de|9800|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$|guayjubchangmoitatmai|Guay Jub Chang Moi Tat Mai
+ve_44b74070e1|11698|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$|rotichaofaphuket|Roti Chaofa Phuket
+ve_478f4be4f0|11275|Bib Gourmand|2025|ci_15f2a9d025|nakhon-ratchasima|active|$|sowjeckpochana|Sow Jeck Pochana
+ve_482462eaec|4036|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|samrubsamrubthai|Samrub Samrub Thai
+ve_48c25944ad|4040|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|sushisaito|Sushi Saito
+ve_492cb1490f|12318|Bib Gourmand|2025|ci_3436e13f2b|surat-thani|active|$$|pathingrestaurant|Pa Thing Restaurant
+ve_4c61de3d5b|9401|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|beerhima|Beer Hima
+ve_4d3d2b9980|9403|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|boonlerteggnoodle|Boonlert Egg noodle
+ve_4d422625bb|3961|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|igniv|IGNIV
+ve_4f173ec841|11265|Bib Gourmand|2025|ci_a5ef1d428e|nakhon-pathom|active|$$|jaesimkitchen|Jae Sim Kitchen
+ve_4fb84113eb|3931|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|elementsinspiredbycielbleu|Elements, Inspired by Ciel Bleu
+ve_51e0736f3a|9859|Bib Gourmand|2025|ci_f3f0ff8106|chon-buri|active|$|lungshallkitchen|Lung Shall Kitchen
+ve_51fccd2985|4047|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|wanayook|Wana Yook
+ve_52a8e7ad11|9410|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|keawloonbkkadvancereservationonly|Keawloon BKK (Advance reservation only)
+ve_52c9ed849e|11440|Bib Gourmand|2025|ci_6c959551b1|nonthaburi|active|$$|samchaialley|Sam Chai Alley
+ve_554dca07f5|56|Three Stars|2025|ci_b90bbd2b87|bangkok|active|$$$$|sorn|Sorn
+ve_55d3e61b04|9807|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$$|meenaricebasedcuisine|Meena Rice Based Cuisine
+ve_57259650b4|9858|Bib Gourmand|2025|ci_f3f0ff8106|chon-buri|active|$|lavoipremiumbeefpattaya|La Voi Premium Beef Pattaya
+ve_57624d2531|3928|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$|chimbysiamwisdom|Chim by Siam Wisdom
+ve_5837479041|9420|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|prikyuak|Prik-Yuak
+ve_58bc6cb0d7|9802|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$$|huenmuanjai|Huen Muan Jai
+ve_59e74c6856|9797|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$|danchickenrice|Dan Chicken Rice
+ve_5ae8e6bf27|9412|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|kolunh|Kolun.h
+ve_5b5caa90aa|10738|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$$|praprairestaurant|Praprai Restaurant
+ve_5dff83cac6|9805|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$|lungkhajohnwatket|Lung Khajohn Wat Ket
+ve_5e48dec9a7|9803|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$|khaosoimaesai|Khao Soi Maesai
+ve_61981631c4|9398|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|annthadindaeng|Ann Tha Din Daeng
+ve_65ed1f31ff|1496|Two Stars|2025|ci_b90bbd2b87|bangkok|active|$$$$|baantepaculinaryspace|Baan Tepa Culinary Space
+ve_662a06e56d|11700|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$$|surfturfbysoulkitchen|Surf & Turf by Soul Kitchen
+ve_67f5b7d35f|11266|Bib Gourmand|2025|ci_a5ef1d428e|nakhon-pathom|active|$|naingiebnoodlesinfishballsoup|Nai Ngieb Noodles in Fish Ball Soup
+ve_68f0e2320e|11680|Bib Gourmand|2025|ci_c9dcaa0480|phra-nakhon-si-ayutthaya|active|$$|None|ร้านกินลูกเดียว
+ve_6ca1ba93a9|12314|Bib Gourmand|2025|ci_3436e13f2b|surat-thani|active|$$|dearphangan|ถึงพะงัน Dear Phangan
+ve_6e9ae9de21|12315|Bib Gourmand|2025|ci_3436e13f2b|surat-thani|active|$|keopla|Keo Pla
+ve_703169de74|11683|Bib Gourmand|2025|ci_c9dcaa0480|phra-nakhon-si-ayutthaya|active|$$|ruanthaikungpao|Ruan Thai Kung Pao
+ve_73e2545e69|11692|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$$|kruapraya|Krua Praya
+ve_74b5967754|11686|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$$|chuanchim|Chuan Chim
+ve_7590a28759|1522|Two Stars|2025|ci_b90bbd2b87|bangkok|active|$$$$|inddee|INDDEE
+ve_76950b6f5b|12768|Bib Gourmand|2025|ci_f23376f097|udon-thani|active|$|matchaphasukrestaurant|Matcha Pha Suk Restaurant
+ve_77af594dd0|9811|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$|sanaehotelnimman|Sanae' Hotel Nimman
+ve_7aafb4d065|10734|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$|khonkaenkhaawmuuyaanggrilledporkneck|Khon Kaen Khaaw Muu Yaang (Grilled Pork Neck)
+ve_7ae41a5665|12320|Bib Gourmand|2025|ci_3436e13f2b|surat-thani|active|$|yokkheng|Yok Kheng
+ve_7b35234b84|10752|Bib Gourmand|2025|ci_b8b369669c|ko-samui|active|$$|bansuanlungkhai|Ban Suan Lung Khai
+ve_7c42d67c95|12766|Bib Gourmand|2025|ci_f23376f097|udon-thani|active|$|khaosoithaiyairestaurantuaudon|Khao Soi Thai Yai Restaurant (Ua Udon)
+ve_7d82b331d9|11270|Bib Gourmand|2025|ci_15f2a9d025|nakhon-ratchasima|active|$|oshinsnackkorat|Oshin Snack Korat
+ve_7db4d938af|11684|Bib Gourmand|2025|ci_c9dcaa0480|phra-nakhon-si-ayutthaya|active|$$|ukhaorestaurants|U - KHAO Restaurants
+ve_7df42be157|11688|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$|khaotomdibuk|KHAO TOM DIBUK
+ve_7e3852becc|12770|Bib Gourmand|2025|ci_f23376f097|udon-thani|active|$|pengducknoodles|Peng Duck Noodles
+ve_7e5311f93e|3971|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|ledu|Le Du
+ve_8599c396c2|11442|Bib Gourmand|2025|ci_6c959551b1|nonthaburi|active|$$|hongseng|Hong Seng
+ve_859ac4e389|12760|Bib Gourmand|2025|ci_0be873fc53|ubon-ratchathani|active|$$|mok|Mok
+ve_85a0d6b339|9405|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|herehaioriginalshop|Here Hai (Original shop)
+ve_86b194cc62|9813|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$|tuekakhonaprince|Tue Ka Kho Na Prince
+ve_88b51c5458|11273|Bib Gourmand|2025|ci_15f2a9d025|nakhon-ratchasima|active|$|nub|Nub
+ve_88c7c0c420|3969|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$|raanjayfai|Raan Jay Fai
+ve_901735a5d1|9808|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$$|rasiklocalkitchen|RASIK LOCAL KITCHEN
+ve_927d2deb89|11689|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$$|kinkubei|กินกับอี๋ Kin-Kub-Ei
+ve_9793d6cc48|11443|Bib Gourmand|2025|ci_6c959551b1|nonthaburi|active|$$|kangpaloongsangathaicurryrestaurant|Kang Pa Loong Sanga - Thai Curry Restaurant
+ve_98931cb8fc|11662|Bib Gourmand|2025|ci_158c07b0b7|phang-nga|active|$|krualuangten|Krua Luang Ten
+ve_99c445aa98|11661|Bib Gourmand|2025|ci_158c07b0b7|phang-nga|active|$$|krachangkhaolak|Krachang Khao Lak (กระชังเขาหลัก)
+ve_9ac6a9654a|4037|One Star|2025|ci_b90bbd2b87|bangkok|active|$$|sanehjaan|Saneh Jaan
+ve_9b1b47ce68|1528|Two Stars|2025|ci_b90bbd2b87|bangkok|active|$$$$|rhaan|R-HAAN
+ve_9b36040b77|12765|Bib Gourmand|2025|ci_f23376f097|udon-thani|active|$|kaopiaksen|KAO.PIAK.SEN
+ve_9d47a94a4e|6924|One Star|2025|ci_6c959551b1|nonthaburi|active|$$$|akkeethaidelicaciesandtastingcounter|AKKEE Thai Delicacies and Tasting Counter
+ve_9f037b5d8d|11696|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$$|onechuncaferestaurant|One Chun Cafe & Restaurant
+ve_9f89cf7189|9399|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|aunglobyyangrak|Aunglo by Yangrak
+ve_a3e84c3f7b|9406|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|hiawankhaotompla|Hia Wan Khao Tom Pla
+ve_a72c0f5bfd|9806|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$$|magnoliacafe|Magnolia Café
+ve_a76b6e01c7|11691|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$$|kruakaokuk|Krua Kao Kuk
+ve_acf0ff5baf|9424|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|tensuns|Ten Suns
+ve_af0a74d092|9798|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$$|euangkamsainorthernthaicuisine|Euang Kam Sai Northern Thai Cuisine
+ve_b2d60b3de7|9413|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|None|ลัคกี้​ ซีฟู้ด​ เฮ้ย​ ถูกแล้ว
+ve_b30ba8b03c|9407|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|jaanbykhunjim|Jaan by Khun Jim
+ve_b38b8d75a1|11701|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$$|thecharmdininggallery|The Charm Dining Gallery
+ve_ba755a7b46|11699|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$|rotithaewnam|Roti Thaew Nam
+ve_bc86555f31|11697|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$|pathongkomaepranee|Pathongko Mae Pranee
+ve_bf6b150a08|9421|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|rungrueangporknoodles|Rung Rueang Pork Noodles
+ve_c18c1fe399|3915|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|avant|AVANT
+ve_c1a2b0726d|10735|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$|khunjaengguaytiewpakmorkaowang|Khun Jaeng Guay Tiew Pak Mor Kao Wang
+ve_c1c52b60af|11678|Bib Gourmand|2025|ci_c9dcaa0480|phra-nakhon-si-ayutthaya|active|$$|baantakohrai|Baan Ta-Koh-Rai
+ve_c57f64b168|9414|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|maanmuang|Maan Muang
+ve_c66116144c|9402|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|bokkiathadindaeng|Bok Kia Thadindaeng 潮州清湯冰甜品
+ve_c6c657ea89|10737|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$$|mekinfarm|Mekin Farm มีกินฟาร์ม
+ve_c9ebbd94de|3932|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$|etcha|etcha
+ve_ca266e026f|9425|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|thainiyomcuisine|Thai Niyom Cuisine
+ve_cc47467d7d|9427|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|thienduongbaandusitthani|Thien Duong - Baan Dusit Thani
+ve_cc7cde333c|1499|Two Stars|2025|ci_b90bbd2b87|bangkok|active|$$$$|chefstablebylebua|Chef's Table by Lebua เชฟส์เทเบิล บาย เลอบัว
+ve_ceb56e1c5d|11441|Bib Gourmand|2025|ci_6c959551b1|nonthaburi|active|$$|changwangimm|Chang-Wang-Imm
+ve_cf56deaf06|9857|Bib Gourmand|2025|ci_f3f0ff8106|chon-buri|active|$|krualaewtaerrom|Krua Laew Tae R-Rom
+ve_cf75147034|10753|Bib Gourmand|2025|ci_b8b369669c|ko-samui|active|$$|chanhomseafood|Chan Hom Seafood
+ve_cfb032e12d|9796|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$$|chawee|CHAWEE
+ve_cff2ea2cb9|11643|Bib Gourmand|2025|ci_3a3e902bcd|pathum-thani|active|$$|morakotkitchen|Morakot Kitchen
+ve_d14b90da5e|71|Three Stars|2025|ci_b90bbd2b87|bangkok|active|$$$$|suhring|Sühring
+ve_d202b826b4|6926|One Star|2025|ci_6c959551b1|nonthaburi|active|$$|suanthip|Suan Thip
+ve_d234288b2c|11690|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$|kruabaanplatong|Krua Baan Platong
+ve_d3bd425530|9408|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|janhom|Janhom
+ve_d55db66fe4|4016|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|restaurantpotong|Restaurant POTONG
+ve_d8308ff080|1525|Two Stars|2025|ci_b90bbd2b87|bangkok|active|$$$$|mezzaluna|Mezzaluna
+ve_d956f31ccf|4026|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|restaurantresonance|Restaurant Resonance
+ve_d996f54622|12769|Bib Gourmand|2025|ci_f23376f097|udon-thani|active|$|redlotuspadthai|Red Lotus Pad Thai
+ve_db9bba980d|9799|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$|gongkhammaerim|Gongkham Maerim
+ve_dcc8b2a42a|10736|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$|lengyentafonoodles|Leng Yentafo Noodles
+ve_dcd05ce7df|9411|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|kinkubkoirestaurant|Kin Kub Koi Restaurant
+ve_df337c9f87|1487|Two Stars|2025|ci_b90bbd2b87|bangkok|active|$$$$|annesophiepicatlenormandie|Anne-Sophie Pic At Le Normandie
+ve_e210849f66|9415|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|nonamenoodlebkk|NO NAME NOODLE BKK
+ve_e3f314d340|12319|Bib Gourmand|2025|ci_3436e13f2b|surat-thani|active|$$|phunisasuratthani|Phunisa Surat Thani
+ve_e4886fb250|9812|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$|kanomjeensanpakoi|Kanomjeen Sanpakoi
+ve_e6838a78be|4039|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|signaturebangkok|Signature Bangkok
+ve_ed11d0cfd0|3954|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|haomabangkok|Haoma Bangkok
+ve_ee817cec5a|11268|Bib Gourmand|2025|ci_15f2a9d025|nakhon-ratchasima|active|$$|banmaichaynam|Banmai Chaynam
+ve_ef4210c136|11644|Bib Gourmand|2025|ci_3a3e902bcd|pathum-thani|active|$$|paepochana|Pae Pochana
+ve_f0553e0f93|10741|Bib Gourmand|2025|ci_4df5367c60|khon-kaen|active|$|None|ศรีเรือนผัดไทยไข่เป็ด
+ve_f1587a7bf1|9428|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$|uraibraisedgoose|Urai Braised Goose
+ve_f2392a915f|9419|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|plu|Plu
+ve_f2cc1c81d0|11687|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$|gobenzriceporridgephuket|Go Benz Rice Porridge Phuket
+ve_f32a2b946b|11703|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$|tonmayomkitchen|Ton Mayom Kitchen
+ve_f4684f1fa2|11695|Bib Gourmand|2025|ci_1d6bd4e16a|phuket|active|$|niyomsaltgrilledduck|Niyom Salt Grilled Duck
+ve_f79607559b|3916|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|bluebyalainducasse|Blue by Alain Ducasse
+ve_f9ba888437|3953|One Star|2025|ci_b90bbd2b87|bangkok|active|$$$$|goat|GOAT
+ve_fa9c7990e7|9400|Bib Gourmand|2025|ci_b90bbd2b87|bangkok|active|$$|baanpeelekrestaurant|Baan Pee Lek Restaurant
+ve_fc929cd7b2|9809|Bib Gourmand|2025|ci_55f5cf1dc3|chiang-mai|active|$|rotipadae|Roti Pa Dae
+ve_fddc554cc8|7360|One Star|2025|ci_158c07b0b7|phang-nga|active|$$$$|aulis|Aulis
