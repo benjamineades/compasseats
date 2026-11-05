@@ -1,5 +1,5 @@
 -- status-oad-2026-closed-other-54-2026-11-04.sql  CompassEats, Nov 4 2026. Open item 1: closed venues OAD 2026 prints, other 54 of 80.
--- PENDING: Ben has not chosen. This file does not run before his go.
+-- Ben, Nov 5 02:10 ET: 1-4 A. 1A = SOLA stays closed, recheck after Nov 6. 2A = Endo Chelsea no write, open item. 3A = Howard's Gourmet Hong Kong closed and not published, award rows stay. 4A = other 52 no write, rechecks and leads to the handoff. This file runs only after his go.
 -- Scope: 0 of the 54 change. 1 side finding, outside the 54: Howard's Gourmet Hong Kong ve_5126fcd962, active to closed, listings.published true to false, Hong Kong count 282 to 281.
 -- Evidence: oad-2026-closed-other-54-evidence-2026-11-04.csv and the Dimsum Daily article of Jun 27 2026.
 -- Expected after: venues 11,594 (active 11,290, closed 304); cities sum 11,290; closed published 0; active not published 0; slugs 13,535; awards 27,481; price 7,759; redirects 33.
