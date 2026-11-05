@@ -1,5 +1,5 @@
 -- load-top-500-bars-2026-2026-11-05.sql
--- CompassEats, Nov 5 2026. Top 500 Bars 2026. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 5 2026. Top 500 Bars 2026. Ben Nov 5 17:05 ET "1-7:A". This file runs only after Ben's "go".
 -- 500 new award rows, ranks 1-500, source_url = the publisher block page. 45 new venues (all bar, active, published). 2 new cities (Antigua, Katowice).
 -- Evidence: top-500-bars-2026-evidence-2026-11-05.csv. No rename, price, address, geo, blurb or status change on a live venue.
 -- Expected after: venues 11668 (active 11365, closed 303); awards 28296; slugs 13612; listings 11668; labels 24743; cities 3321, sum 11365; ledger 252 rows; audit_log +762 (126068 rows).
@@ -569,8 +569,8 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 500 THEN RAISE EXCEPTION 'awards %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('top-500-bars','award',500,'cleanup:load-top-500-bars-2026-2026-11-05 | 2026 edition, ranks 1-500 | https://www.top500bars.com/1-100-2026 | DRAFT, choices not yet given'),
-    ('top-500-bars','city_label',90,'cleanup:load-top-500-bars-2026-2026-11-05 | city labels of 45 new venues; country label from the cities table where the publisher gives a city only | DRAFT, choices not yet given');
+    ('top-500-bars','award',500,'cleanup:load-top-500-bars-2026-2026-11-05 | 2026 edition, ranks 1-500 | https://www.top500bars.com/1-100-2026 | Ben Nov 5 17:05 ET "1-7:A"'),
+    ('top-500-bars','city_label',90,'cleanup:load-top-500-bars-2026-2026-11-05 | city labels of 45 new venues; country label from the cities table where the publisher gives a city only | Ben Nov 5 17:05 ET "1-7:A"');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11668 OR (SELECT count(*) FROM venues WHERE status='active') <> 11365 OR (SELECT count(*) FROM venues WHERE status='closed') <> 303 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28296 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 500 THEN RAISE EXCEPTION 'awards after'; END IF;
