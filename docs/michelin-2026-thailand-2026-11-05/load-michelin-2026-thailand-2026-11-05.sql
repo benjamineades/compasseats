@@ -1,5 +1,5 @@
 -- load-michelin-2026-thailand-2026-11-05.sql
--- CompassEats, Nov 5 2026. Michelin Thailand: the 2026 label. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 5 2026. Michelin Thailand: the 2026 label. Ben choices 1-6:A, Nov 5 18:56 ET. This file runs only after Ben's "go".
 -- Rule 2.1.1 and 2.1.7: the 178 legacy rows hold the 2026 edition (ceremony Nov 27, 2025: https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-thailand-2026). Relabel 2025 -> 2026, no source_url. Retire 0.
 -- Then 2 new rows, year 2026, source_url = the card (/us/en/): One Star Aksorn (live venue), Bib Gourmand Krua Apsorn (Dusit) (new venue).
 -- Source: docs/michelin-2026-thailand-2026-11-05/relay-th-2026-list-pages-2026-11-05.txt sha256 4baab2de66eb6211ef805d7cb4f86ab7beee02af8cbfd63848b5d1acb2cdaff3.
@@ -248,9 +248,9 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 2 THEN RAISE EXCEPTION 'awards %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',178,'relabel:load-michelin-2026-thailand-2026-11-05 | rule 2.1.7: Thailand edition live at capture = 2026 (ceremony Nov 27, 2025, https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-thailand-2026) | year 2025 -> 2026, no source_url, retire 0 | relay sha256 4baab2de66eb6211ef805d7cb4f86ab7beee02af8cbfd63848b5d1acb2cdaff3 | DRAFT, choices not yet given'),
-    ('michelin','award',2,'cleanup:load-michelin-2026-thailand-2026-11-05 | Thailand 2026 rows not in the legacy rows: One Star Aksorn, Bib Gourmand Krua Apsorn (Dusit), list read Nov 5, 2026 | relay sha256 4baab2de66eb6211ef805d7cb4f86ab7beee02af8cbfd63848b5d1acb2cdaff3 | DRAFT, choices not yet given'),
-    ('michelin','city_label',2,'cleanup:load-michelin-2026-thailand-2026-11-05 | city labels of 1 new venue | DRAFT, choices not yet given');
+    ('michelin','award',178,'relabel:load-michelin-2026-thailand-2026-11-05 | rule 2.1.7: Thailand edition live at capture = 2026 (ceremony Nov 27, 2025, https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-thailand-2026) | year 2025 -> 2026, no source_url, retire 0 | relay sha256 4baab2de66eb6211ef805d7cb4f86ab7beee02af8cbfd63848b5d1acb2cdaff3 | Ben choices 1-6:A, Nov 5 18:56 ET'),
+    ('michelin','award',2,'cleanup:load-michelin-2026-thailand-2026-11-05 | Thailand 2026 rows not in the legacy rows: One Star Aksorn, Bib Gourmand Krua Apsorn (Dusit), list read Nov 5, 2026 | relay sha256 4baab2de66eb6211ef805d7cb4f86ab7beee02af8cbfd63848b5d1acb2cdaff3 | Ben choices 1-6:A, Nov 5 18:56 ET'),
+    ('michelin','city_label',2,'cleanup:load-michelin-2026-thailand-2026-11-05 | city labels of 1 new venue | Ben choices 1-6:A, Nov 5 18:56 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11673 OR (SELECT count(*) FROM venues WHERE status='active') <> 11370 OR (SELECT count(*) FROM venues WHERE status='closed') <> 303 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28368 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 2 THEN RAISE EXCEPTION 'awards after'; END IF;
