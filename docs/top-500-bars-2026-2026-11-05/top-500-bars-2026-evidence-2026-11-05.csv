@@ -1,0 +1,501 @@
+rank,publisher_name,publisher_place,publisher_country,publisher_link,group,venue_id,live_name,category,status,city_slug,rank_2025,rank_2024,note,source_url
+1,Bar Leone,Hong Kong,China,barleonehk.com,same name,ve_89e647b929,Bar Leone,bar,active,hong-kong,3,9,,https://www.top500bars.com/1-25-2026
+2,HIMKOK,Oslo,Norway,himkok.no,name differs,ve_5c7c64ab03,HIMKOK Storgata Destilleri,bar,active,oslo,6,1,,https://www.top500bars.com/1-25-2026
+3,Montana,Hong Kong,China,montanabarhk.com,same name,ve_a45d654209,Montana,bar,active,hong-kong,,,,https://www.top500bars.com/1-25-2026
+4,Alquimico,Cartagena,Colombia,alquimico.com,same name,ve_2d64be2724,Alquimico,bar,active,cartagena,8,10,,https://www.top500bars.com/1-25-2026
+5,Line,Line,Greece,lineathens.gr,name differs,ve_f666df5301,Line Athens,bar,active,athens,120,152,publisher place says Line; site lineathens.gr,https://www.top500bars.com/1-25-2026
+6,Handshake Speakeasy,Mexico City,Mexico,handshake.bar,same name,ve_5dde540c28,Handshake Speakeasy,bar,active,mexico-city,4,3,,https://www.top500bars.com/1-25-2026
+7,Panda & Sons,Edinburgh,Scotland,pandaandsons.com,same name,ve_5d717b675f,Panda & Sons,bar,active,edinburgh,1,4,,https://www.top500bars.com/1-25-2026
+8,Hope & Sesame,Guangzhou,China,hopeandsesame.cn/home/hope-sesame-guangzhou,name differs,ve_4834f0a15b,Hope,bar,active,guangzhou,26,54,"hand: Hope & Sesame, as Nov 5 decision",https://www.top500bars.com/1-25-2026
+9,Moebius,Milan,Italy,moebiusmilano.it/eng,name differs,ve_fde05d62a1,Moebius Milano,bar,active,milan,9,43,,https://www.top500bars.com/1-25-2026
+10,Paradiso,Barcelona,Spain,paradiso.cat,same name,ve_01e8f7a7d3,Paradiso,bar,active,barcelona,2,7,,https://www.top500bars.com/1-25-2026
+11,Connaught Bar,London,UK,the-connaught.co.uk/restaurants-bars/connaught-bar,name differs,ve_be4d971102,The Connaught Bar,bar,active,london,12,12,hand: The Connaught Bar,https://www.top500bars.com/1-25-2026
+12,SIPS,Barcelona,Spain,sips.barcelona,same name,ve_54866b70a6,Sips,bar,active,barcelona,10,2,,https://www.top500bars.com/1-25-2026
+13,Locale Firenze,Florence,Italy,localefirenze.it/en/home-2,same name,ve_a4249334e6,Locale Firenze,bar,active,florence,15,34,,https://www.top500bars.com/1-25-2026
+14,Angelita,Madrid,Spain,madrid-angelita.es/en/experience,name differs,ve_10788d0e05,Angelita Madrid,bar,active,madrid,24,21,,https://www.top500bars.com/1-25-2026
+15,De Vie,Paris,France,devie.bar,same name,ve_17d212b769,De Vie,bar,active,paris,93,,,https://www.top500bars.com/1-25-2026
+16,Jigger & Pony,Singapore City,Singapore,jiggerandpony.com,same name,ve_82b44b967f,Jigger & Pony,bar,active,singapore,5,5,,https://www.top500bars.com/1-25-2026
+17,Bar Us,Bangkok,Thailand,us-bar.com,same name,ve_114e7e85f2,Bar Us,bar,active,bangkok,30,214,,https://www.top500bars.com/1-25-2026
+18,Danico,Paris,France,facebook.com/danicoparis,same name,ve_b031886a48,Danico,bar,active,paris,17,23,,https://www.top500bars.com/1-25-2026
+19,Lyaness,London,UK,lyaness.com,same name,ve_f3bc486ac0,Lyaness,bar,active,london,40,14,,https://www.top500bars.com/1-25-2026
+20,Tres Monos,Buenos Aires,Argentina,penicillinbar.com,same name,ve_bcb4e4b84f,Tres Monos,bar,active,buenos-aires,13,13,,https://www.top500bars.com/1-25-2026
+21,The Cambridge Public House,Paris,France,thecambridge.paris,same name,ve_7354fda9db,The Cambridge Public House,bar,active,paris,14,24,,https://www.top500bars.com/1-25-2026
+22,Bar Mauro,Mexico City,Mexico,instagram.com/barmauromx,same name,ve_1f97b4f29c,Bar Mauro,bar,active,mexico-city,412,,,https://www.top500bars.com/1-25-2026
+23,Eximia,Sao Paulo,Brazil,instagram.com/eximiabar,name differs,ve_05b2f7610f,Exímia Bar,bar,active,sao-paulo,43,496,,https://www.top500bars.com/1-25-2026
+24,ARGO,Hong Kong,China,fourseasons.com/hongkong/dining/lounges/argo,same name,ve_bfbc85db67,ARGO,bar,active,hong-kong,69,101,,https://www.top500bars.com/1-25-2026
+25,Lady Bee,Lima,Peru,instagram.com/zest.seoul,same name,ve_73438bd8cd,Lady Bee,bar,active,lima,44,163,,https://www.top500bars.com/1-25-2026
+26,Seed Library,New York,US,seedlibrarynyc.com,name differs,ve_0421aed12b,Seed Library NYC,bar,active,new-york,,,,https://www.top500bars.com/26-50-2026
+27,Gucci Giardino,Florence,Italy,gucci.com/fr/en_gb/st/stories/inspirations-and-codes/article/gucci-giardino-25,same name,ve_012855b792,Gucci Giardino,bar,active,florence,31,36,,https://www.top500bars.com/26-50-2026
+28,Zest,Seoul,Korea,instagram.com/zest.seoul,name differs,ve_846912e3a1,ZEST SEOUL,bar,active,seoul,25,40,,https://www.top500bars.com/26-50-2026
+29,The Bar in Front of The Bar,Athens,Greece,thebarinfrontofthebar.gr,same name,ve_8568e9d2e5,THE BAR IN FRONT OF THE BAR,bar,active,athens,52,58,,https://www.top500bars.com/26-50-2026
+30,Sip & Guzzle,New York,US,sipandguzzlenyc.com,same name,ve_fec141b0fc,Sip&Guzzle,bar,active,new-york,51,107,,https://www.top500bars.com/26-50-2026
+31,Maybe Sammy,Sydney,Australia,maybesammy.com,same name,ve_b12fffb75f,Maybe Sammy,bar,active,sydney,16,8,,https://www.top500bars.com/26-50-2026
+32,Tan Tan,Sao Paulo,Brazil,instagram.com/tantannb,same name,ve_53059d0c81,TAN TAN,bar,active,sao-paulo,19,39,,https://www.top500bars.com/26-50-2026
+33,Satan's Whisker,London,UK,satanswhiskers.com,name differs,ve_c7a3c0308a,Satan's Whiskers,bar,active,london,22,35,,https://www.top500bars.com/26-50-2026
+34,Salmon Guru,Madrid,Spain,salmonguru.es,same name,ve_df9d307d66,Salmon Guru,bar,active,madrid,11,15,,https://www.top500bars.com/26-50-2026
+35,Mirror Bar,Bratislava,Slovakia,mirrorbarcarlton.com,same name,ve_74a0eb0cc4,Mirror Bar,bar,active,bratislava,46,114,,https://www.top500bars.com/26-50-2026
+36,Baba au Rum,Athens,Greece,babaaurum.com,same name,ve_ff718d2b90,Baba au Rum,bar,active,athens,20,18,,https://www.top500bars.com/26-50-2026
+37,Bar Nouveau,Paris,France,instagram.com/bar_nouveau_,same name,ve_ecbb074260,Bar Nouveau,bar,active,paris,18,32,,https://www.top500bars.com/26-50-2026
+38,Barro Negro,Athens,Greece,barronegroathens.com,name differs,ve_18ae06b942,BarroNegro Athens,bar,active,athens,70,70,,https://www.top500bars.com/26-50-2026
+39,Devil's Cut,Madrid,Spain,devilscutmadrid.com,same name,ve_4403c182f4,Devil’s Cut,bar,active,madrid,34,,,https://www.top500bars.com/26-50-2026
+40,Dry Wave Cocktail Studio,Bangkok,Thailand,instagram.com/drywavecocktailstudio,same name,ve_f802b602c1,Dry Wave Cocktail Studio,bar,active,bangkok,129,,,https://www.top500bars.com/26-50-2026
+41,BKK Social Club,Bangkok,Thailand,facebook.com/BKKSocialClub,same name,ve_740d862737,BKK Social Club,bar,active,bangkok,67,17,,https://www.top500bars.com/26-50-2026
+42,Waltz,London,UK,waltzbar.uk,same name,ve_c76570eed2,Waltz,bar,active,london,,,,https://www.top500bars.com/26-50-2026
+43,Scarfes,London,UK,scarfesbar.com,name differs,ve_2786cd9cb9,Scarfes Bar,bar,active,london,21,27,,https://www.top500bars.com/26-50-2026
+44,The Spy Bar,London,UK,raffles.com/london/dining,same name,ve_956e6ffb64,The Spy Bar,bar,active,london,48,56,,https://www.top500bars.com/26-50-2026
+45,Harry's Bar,Paris,France,harrysbar.com,same name,ve_79140112ef,Harry's Bar,bar,active,paris,60,63,,https://www.top500bars.com/26-50-2026
+46,Boadas,Barcelona,Spain,boadascocktails.com,name differs,ve_02ebc28502,Boadas Cocktails,bar,active,barcelona,54,55,,https://www.top500bars.com/26-50-2026
+47,Freni e Frizioni,Rome,Italy,freniefrizioni.com/en,same name,ve_03f9ae3090,FRENI E FRIZIONI,bar,active,rome,37,33,,https://www.top500bars.com/26-50-2026
+48,Nouvelle Vague,Tirana,Albania,nouvellevaguetirana.com,name differs,ve_c9867db238,Nouvelle Vague Tirana,bar,active,tirana,39,90,,https://www.top500bars.com/26-50-2026
+49,CoChinChina,Buenos Aires,Argentina,instagram.com/cochinchina.bar,same name,ve_036cb7e5ed,Cochinchina,bar,active,buenos-aires,23,146,,https://www.top500bars.com/26-50-2026
+50,Bar Snack,New York,US,barsnacknyc.com,same name,ve_c15d0dc615,Bar Snack,bar,active,new-york,,,,https://www.top500bars.com/26-50-2026
+51,Drink Kong,Rome,Italy,drinkkong.com,same name,ve_08b99c5d91,Drink Kong,bar,active,rome,27,20,,https://www.top500bars.com/51-75-2026
+52,Camparino,Milan,Italy,camparino.com,name differs,ve_24dd660df4,Camparino in Galleria,bar,active,milan,41,47,,https://www.top500bars.com/51-75-2026
+53,Double Chicken,New York,US,doublechickenplease.com,name differs,ve_1fa8307ed2,Double Chicken Please,bar,active,new-york,49,11,,https://www.top500bars.com/51-75-2026
+54,Superbueno,New York,US,superbuenonyc.com,same name,ve_5fffaa9af2,Superbueno,bar,active,new-york,35,105,,https://www.top500bars.com/51-75-2026
+55,The Clumsies,Athens,Greece,overstory-nyc.com,same name,ve_52bbfca7eb,The Clumsies,bar,active,athens,32,22,,https://www.top500bars.com/51-75-2026
+56,Dr. Stravinsky,Barcelona,Spain,drstravinsky.cat,name differs,ve_54a7c89399,Dr. Stravinsky cocktail bar,bar,active,barcelona,29,48,,https://www.top500bars.com/51-75-2026
+57,COA,Hong Kong,China,coa.com.hk,same name,ve_bbbd76c206,COA,bar,active,hong-kong,28,19,,https://www.top500bars.com/51-75-2026
+58,Bar Leone,Shanghai,China,instagram.com/barleonesh,new venue,,Bar Leone,bar,active (new),shanghai,,,,https://www.top500bars.com/51-75-2026
+59,Virtu,Tokyo,Japan,fourseasons.com/otemachi/dining/restaurants/virtu,same name,ve_ca7462648a,VIRTÙ,bar,active,tokyo,66,45,,https://www.top500bars.com/51-75-2026
+60,Donovan,London,UK,instagram.com/thedonovanbar,name differs,ve_3e100d6dc4,The Donovan Bar,bar,active,london,55,72,,https://www.top500bars.com/51-75-2026
+61,Bar Benfiddich,Tokyo,Japan,instagram.com/benfiddich_tokyo,same name,ve_330958cefd,Bar Benfiddich,bar,active,tokyo,42,26,,https://www.top500bars.com/51-75-2026
+62,Penicillin,Hong Kong,China,penicillinbar.com,same name,ve_0398aa18f7,Penicillin,bar,active,hong-kong,59,44,,https://www.top500bars.com/51-75-2026
+63,Atrium Bar,Florence,Italy,fourseasons.com/florence/dining/lounges/atrium_bar,same name,ve_39e15680eb,Atrium Bar,bar,active,florence,82,77,,https://www.top500bars.com/51-75-2026
+64,El Gallo Altanero,Guadalajara,Mexico,galloaltanero.com.mx,same name,ve_cdf6da8d11,El Gallo Altanero,bar,active,guadalajara,112,153,,https://www.top500bars.com/51-75-2026
+65,Stravinskij Bar,Rome,Italy,roccofortehotels.com/it/hotels-and-resorts/hotel-de-russie/ristoranti-bar/stravinskij-bar,same name,ve_928fd51437,Stravinskij Bar,bar,active,rome,94,,,https://www.top500bars.com/51-75-2026
+66,Bar Carmen,Medellin,Colombia,carmenmedellin.com,name differs,ve_6cd9c1b505,Carmen Medellín,bar,active,medellin,375,,"hand: Carmen Medellin, as Nov 5 decision",https://www.top500bars.com/51-75-2026
+67,Employees Only,New York,US,employeesonlynyc.com,same name,ve_528bcb4252,Employees Only,bar,active,new-york,74,82,,https://www.top500bars.com/51-75-2026
+68,Jewel of the South,New Orleans,US,jewelnola.com,same name,ve_6a52eabeef,Jewel of the South,bar,active,new-orleans,36,62,,https://www.top500bars.com/51-75-2026
+69,Clemente Bar,New York,US,clementebar.com,same name,ve_1c25b2bb07,Clemente Bar,bar,active,new-york,77,,,https://www.top500bars.com/51-75-2026
+70,Mag Café,Milan,Italy,farmily.webflow.io/locali/mag,same name,ve_e9eb241e35,Mag Cafe,bar,active,milan,80,84,,https://www.top500bars.com/51-75-2026
+71,Bar Somma,Singapore,Singapore,somma.world/bar,same name,ve_42bbe62038,Bar Somma,bar,active,singapore,122,,,https://www.top500bars.com/51-75-2026
+72,Tayēr + Elementary,London,UK,tayer-elementary.com,same name,ve_40e59554e1,Tayēr + Elementary,bar,closed,london,7,6,"status closed: fire, no reopening this year",https://www.top500bars.com/51-75-2026
+73,La Punta Expendio de Agave,Rome,Italy,lapuntaexpendiodeagave.com,same name,ve_1423546ff8,La Punta Expendio de Agave,bar,active,rome,194,144,,https://www.top500bars.com/51-75-2026
+74,Flying Dutchmen Cocktails,Amsterdam,The Netherlands,flyingdutchmencocktails.shop/bar,same name,ve_264b524873,Flying Dutchmen Cocktails,bar,active,amsterdam,76,65,,https://www.top500bars.com/51-75-2026
+75,Green Door,Berlin,Gemany,greendoor.de/de,name differs,ve_128293c37e,Green Door Bar,bar,active,berlin,283,,,https://www.top500bars.com/51-75-2026
+76,Cafe La Trova,Miami,US,cafelatrova.com,same name,ve_835c6082aa,Cafe La Trova,bar,active,miami,58,30,,https://www.top500bars.com/76-100-2026
+77,Backdoor 43,Milan,Italy,hachabar.com/pages/dalston,same name,ve_1ff0982e3c,Backdoor 43,bar,active,milan,96,132,,https://www.top500bars.com/76-100-2026
+78,FURA,Singapore,Singapore,fura.space,same name,ve_bd75262274,Fura,bar,active,singapore,198,299,,https://www.top500bars.com/76-100-2026
+79,Kwant,London,UK,kwantmayfair.com,name differs,ve_25783f3dc4,Kwãnt Mayfair,bar,active,london,108,37,,https://www.top500bars.com/76-100-2026
+80,Svanen,Oslo,Norway,svanenoslo.no,name differs,ve_b3b51b159d,SVANEN Cocktailbar,bar,active,oslo,88,325,,https://www.top500bars.com/76-100-2026
+81,Seed Library,London,UK,seedlibraryshoreditch.com,name differs,ve_88c6365b3e,Seed Library NYC,bar,active,london,61,51,"venue name says NYC, city London",https://www.top500bars.com/76-100-2026
+82,Red Frog,Lisbon,Portugal,fourseasons.com/florence/dining/lounges/atrium_bar,same name,ve_99a978b880,Red Frog,bar,active,lisbon,50,60,,https://www.top500bars.com/76-100-2026
+83,Cat Bite Club,Singapore,Singapore,catbiteclub.com,same name,ve_3418617247,Cat Bite Club,bar,active,singapore,83,115,,https://www.top500bars.com/76-100-2026
+84,Super Lyan,Amsterdam,The Netherlands,superlyan.com,same name,ve_091d79a6f2,Super Lyan,bar,active,amsterdam,165,150,,https://www.top500bars.com/76-100-2026
+85,Side Hustle,London,UK,thenomadhotel.com/london/side-hustle,same name,ve_1936e8ad9f,Side Hustle,bar,active,london,79,71,,https://www.top500bars.com/76-100-2026
+86,1862 Dry Bar,Madrid,Spain,facebook.com/1862DryBar,same name,ve_bfce45e8af,1862 Dry Bar,bar,active,madrid,68,49,,https://www.top500bars.com/76-100-2026
+87,1930,Milan,Italy,instagram.com/1930cocktailbar,name differs,ve_27493434c0,1930 Cocktail Bar,bar,active,milan,158,41,,https://www.top500bars.com/76-100-2026
+88,Dry Milano,Milan,Italy,tokyoconfidential.com,name differs,ve_9e292b3ff5,Dry,bar,active,milan,136,304,,https://www.top500bars.com/76-100-2026
+89,Artesian,London,UK,artesian-bar.co.uk,same name,ve_e86c58df78,Artesian,bar,active,london,151,53,,https://www.top500bars.com/76-100-2026
+90,Cato,London,UK,catobar.co.uk,new venue,,Cato,bar,active (new),london,,,,https://www.top500bars.com/76-100-2026
+91,Tjoget,Stockholm,Sweden,tjoget.com,same name,ve_9162f49ab7,Tjoget,bar,active,stockholm,87,124,,https://www.top500bars.com/76-100-2026
+92,Mamba Negra,Medellin,Colombia,mambanegra.co/en/home,same name,ve_04121927dd,Mamba Negra,bar,active,medellin,402,,,https://www.top500bars.com/76-100-2026
+93,Kumiko,Chicago,US,barkumiko.com,same name,ve_5a0c96c3ee,Kumiko,bar,active,chicago,101,142,,https://www.top500bars.com/76-100-2026
+94,Sastreria Martinez,Lima,Peru,sastreriamartinez.com,name differs,ve_77c7853582,"Sastrería Martinez, Bar oculto",bar,active,lima,460,,,https://www.top500bars.com/76-100-2026
+95,Arca,Tulum,Mexico,arcatulum.com,same name,ve_2a90808d57,ARCA,bar,active,tulum,91,240,,https://www.top500bars.com/76-100-2026
+96,Bar Pompette,Toronto,Canada,pompette.ca/barpompette,same name,ve_afa90bcb58,Bar Pompette,bar,active,toronto,57,120,,https://www.top500bars.com/76-100-2026
+97,Moonshiner,Paris,France,moonshinerbar.fr,same name,ve_357802e073,Moonshiner,bar,active,paris,81,79,,https://www.top500bars.com/76-100-2026
+98,L'Antiquario,Naples,Italy,lantiquarionapoli.superbexperience.com,same name,ve_96ab20c41c,L'Antiquario,bar,active,naples,65,64,,https://www.top500bars.com/76-100-2026
+99,Jerry Thomas,Rome,Italy,thejerrythomasproject.it/speakeasy,name differs,ve_6723ea2cea,Jerry Thomas Speakeasy,bar,active,rome,174,73,,https://www.top500bars.com/76-100-2026
+100,Selva,Oaxaca,Mexico,selvaoaxaca.com,name differs,ve_a92da40289,Selva Oaxaca Cocktail Bar,bar,active,oaxaca,72,75,,https://www.top500bars.com/76-100-2026
+101,Martiny's,New York,,martinys.com,same name,ve_0a0425ab1b,Martiny’s,bar,active,new-york,73,38,,https://www.top500bars.com/150-101-2026
+102,Mahaniyom Cocktail Bar,Bangkok,,facebook.com/Mahaniyom-Cocktail-Bar-%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%99%E0%B8%B4%E0%B8%A2%E0%B8%A1%E0%B8%84%E0%B9%87%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%97%E0%B8%A5%E0%B8%9A%E0%B8%B2%E0%B8%A3%E0%B9%8C-111733094625872,same name,ve_e955672c8f,Mahaniyom Cocktail Bar,bar,active,bangkok,107,67,,https://www.top500bars.com/150-101-2026
+103,Bar 1661,Dublin,,bar1661.ie,same name,ve_09431b9089,BAR 1661,bar,active,dublin,201,232,,https://www.top500bars.com/150-101-2026
+104,Nutmeg & Clove,Singapore,,nutmegclove.com,same name,ve_d1add621c8,Nutmeg & Clove,bar,active,singapore,105,25,,https://www.top500bars.com/150-101-2026
+105,Tlecan,Mexico City,,tlecan.com,same name,ve_e0686a098e,Tlecan,bar,active,mexico-city,33,320,,https://www.top500bars.com/150-101-2026
+106,Overstory,New York,,overstory-nyc.com,same name,ve_0141814b1c,Overstory,bar,active,new-york,56,16,,https://www.top500bars.com/150-101-2026
+107,Thunderbolt,Los Angeles,,thunderboltla.com,same name,ve_4a5e7acb5c,Thunderbolt,bar,active,los-angeles,143,186,,https://www.top500bars.com/150-101-2026
+108,Bar Cham,Seoul,,instagram.com/bar.cham,same name,ve_96a41b5ec6,Bar Cham,bar,active,seoul,147,353,,https://www.top500bars.com/150-101-2026
+109,Caretaker's Cottage,Melbourne,,caretakerscottage.bar,same name,ve_ad5e94ad80,Caretaker's Cottage,bar,active,melbourne,47,160,,https://www.top500bars.com/150-101-2026
+110,Night Hawk,Singapore,,nighthawk.sg,same name,ve_96b45598ae,Night Hawk,bar,active,singapore,209,168,,https://www.top500bars.com/150-101-2026
+111,Bar Trigona,Kuala Lumpur,,fourseasons.com/kualalumpur/dining/lounges/bar-trigona,same name,ve_acb8d6ce6c,Bar Trigona,bar,active,kuala-lumpur,121,126,,https://www.top500bars.com/150-101-2026
+112,Attaboy,New York,,attaboy.us,same name,ve_b7731d6c56,Attaboy,bar,active,new-york,104,81,,https://www.top500bars.com/150-101-2026
+113,Swift,London,,barswift.com,name differs,ve_df00870d8d,Swift Soho,bar,active,london,133,52,,https://www.top500bars.com/150-101-2026
+114,Mius,Hong Kong,,mius.hk,same name,ve_59d44bb899,Mius,bar,active,hong-kong,,,,https://www.top500bars.com/150-101-2026
+115,Rita,Milan,,ritacocktails.com,name differs,ve_88a61f19b3,Rita Cocktails,bar,active,milan,95,110,,https://www.top500bars.com/150-101-2026
+116,Darkside at Rosewood,Hong Kong,,rosewoodhotels.com/en/hong-kong/dining/darkside,name differs,ve_f95a7eae43,DarkSide,bar,active,hong-kong,117,96,,https://www.top500bars.com/150-101-2026
+117,The SG Club,Tokyo,,sg-management.jp/en/establishments/sgclub,same name,ve_b60abb118f,The SG Club,bar,active,tokyo,109,108,,https://www.top500bars.com/150-101-2026
+118,Little Red Door,Paris,,lrdparis.com,same name,ve_825841b307,Little Red Door,bar,active,paris,127,,,https://www.top500bars.com/150-101-2026
+119,Charles H,Seoul,,fourseasons.com/kr/seoul/dining/lounges/charles_h,name differs,ve_3503821ac6,찰스 H. Charles H. (H. Bar),bar,active,seoul,111,104,,https://www.top500bars.com/150-101-2026
+120,Mirate,Los Angeles,,mirate.la,same name,ve_64f6d69510,Mirate,bar,active,los-angeles,166,255,,https://www.top500bars.com/150-101-2026
+121,Dukes Bar,London,,dukeshotel.com/dukes-bar,same name,ve_22e824e70a,Dukes Bar,bar,active,london,85,50,,https://www.top500bars.com/150-101-2026
+122,Floreria Atlantico,Buenos Aires,,floreriatlantico.com.ar,same name,ve_0afaabd3ce,Floreria Atlántico,bar,active,buenos-aires,110,57,,https://www.top500bars.com/150-101-2026
+123,Röda Huset,Stockholm,,rodahuset.nu/en,same name,ve_d4713fdf10,Röda Huset,bar,active,stockholm,78,195,,https://www.top500bars.com/150-101-2026
+124,Shakerato,Amsterdam,,shakerato.bar,new venue,,Shakerato,bar,active (new),amsterdam,,,,https://www.top500bars.com/150-101-2026
+125,Viceversa,Miami,,viceversamia.com,name differs,ve_ee59820013,ViceVersa Miami,bar,active,miami,184,,,https://www.top500bars.com/150-101-2026
+126,Schmuck,New York,,schmucknyc.com,same name,ve_51118f9027,schmuck.,bar,active,new-york,102,,,https://www.top500bars.com/150-101-2026
+127,Baltra Bar,Mexico City,,baltra.bar,same name,ve_b54e968e86,Baltra Bar,bar,active,mexico-city,150,177,,https://www.top500bars.com/150-101-2026
+128,Native,Singapore,,tribenative.com,same name,ve_818e796590,Native,bar,active,singapore,103,59,,https://www.top500bars.com/150-101-2026
+129,A bar with shapes for a name,London,,clubbauhaus.com/abarwithshapesforaname,same name,ve_1b64a08928,A Bar with Shapes for a Name,bar,active,london,63,129,,https://www.top500bars.com/150-101-2026
+130,Le Mary Celeste,Paris,,lemaryceleste.com,same name,ve_9f786ca890,Le Mary Celeste,bar,active,paris,116,127,,https://www.top500bars.com/150-101-2026
+131,BOP,Singapore,,bartendersofpony.com,same name,ve_6af8c74bd3,BOP,bar,active,singapore,,,,https://www.top500bars.com/150-101-2026
+132,Bar Sathorn,Bangkok,,barsathorn.com,same name,ve_3c8603b388,Bar Sathorn,bar,active,bangkok,410,,,https://www.top500bars.com/150-101-2026
+133,Fifty Mils,Mexico City,,fourseasons.com/mexico/dining/lounges/fifty_mils,same name,ve_5af1a142fe,Fifty Mils,bar,active,mexico-city,114,134,,https://www.top500bars.com/150-101-2026
+134,Opium,Bangkok,,opiumbarbangkok.com,name differs,ve_49982aa63d,Opium Bar,bar,active,bangkok,169,284,,https://www.top500bars.com/150-101-2026
+135,Silver Lyan,Washington DC,,riggsdc.com/eat-drink/silver-lyan,same name,ve_51674838f2,Silver Lyan,bar,active,washington-dc,203,203,,https://www.top500bars.com/150-101-2026
+136,Candelaria,Paris,,candelaria-paris.com,same name,ve_64c396cc97,Candelaria,bar,active,paris,84,83,,https://www.top500bars.com/150-101-2026
+137,Allegory,Washington DC,,allegory-dc.com,same name,ve_afdd93e931,Allegory,bar,active,washington-dc,142,103,,https://www.top500bars.com/150-101-2026
+138,Superfine,Paris,,instagram.com/superfinebar,new venue,,Superfine,bar,active (new),paris,,,,https://www.top500bars.com/150-101-2026
+139,Galaxy Bar,Dubai,,galaxy-bar.com,same name,ve_9c916f0949,Galaxy Bar,bar,active,dubai,182,161,,https://www.top500bars.com/150-101-2026
+140,Bemelmans Bar,New York,,rosewoodhotels.com/en/the-carlyle-new-york/dining/bemelmans-bar,same name,ve_c9c25851ed,Bemelmans Bar,bar,active,new-york,45,46,,https://www.top500bars.com/150-101-2026
+141,Origin Bar,Singapore,,originbar.sg,same name,ve_9d7e3e0d94,Origin Bar,bar,active,singapore,176,141,,https://www.top500bars.com/150-101-2026
+142,Live Twice,Singapore,,livetwice.sg,same name,ve_5a10f59276,Live Twice,bar,active,singapore,241,167,,https://www.top500bars.com/150-101-2026
+143,Licoreria Limantour,Mexico City,,limantour.tv,same name,ve_85763dcb0d,Licorería Limantour,bar,active,mexico-city,119,28,,https://www.top500bars.com/150-101-2026
+144,Advocaatur,Amsterdam,,rosewoodhotels.com/en/amsterdam/dining/advocatuur,new venue,,Advocatuur,bar,active (new),amsterdam,,,,https://www.top500bars.com/150-101-2026
+145,Abstract Bistrot,Paris,,instagram.com/abstract_bistrot_paris,new venue,,Abstract Bistrot,bar,active (new),paris,,,,https://www.top500bars.com/150-101-2026
+146,True Laurel,San Francisco,,truelaurelsf.com,same name,ve_7eda7ecaa2,True Laurel,bar,active,san-francisco,157,130,,https://www.top500bars.com/150-101-2026
+147,Quinary,Hong Kong,,quinary.hk,same name,ve_d8be9c5bb8,Quinary,bar,active,hong-kong,155,76,,https://www.top500bars.com/150-101-2026
+148,Rita's Tiki Room,Milan,,ritastikiroom.com/en,same name,ve_5bbf5bfa27,Rita's Tiki Room,bar,active,milan,348,313,,https://www.top500bars.com/150-101-2026
+149,Library Bar,Toronto,,fairmont.com/royal-york/dining/library-bar,same name,ve_943a7a1ba2,LIBRARY BAR,bar,active,toronto,,,,https://www.top500bars.com/150-101-2026
+150,The Court,Rome,,palazzomanfredi.com/en/aroma-michelin-starred-restaurant/the-court.html,name differs,ve_965f32f04d,The Court Bar. Palazzo Manfredi,bar,active,rome,100,89,,https://www.top500bars.com/150-101-2026
+151,Firefly,Bangkok,,kempinski.com/en/sindhorn-hotel/restaurants-bars/firefly-bar,name differs,ve_18960e46d6,Firefly Bar,bar,active,bangkok,245,,,https://www.top500bars.com/200-151-2026
+152,Arts Bar,Venice,,artsbarvenice.com,same name,ve_7528a66f9b,Arts Bar,bar,active,venice,204,420,,https://www.top500bars.com/200-151-2026
+153,Tokyo Confidential,Tokyo,,tokyoconfidential.com,same name,ve_d046490a61,Tokyo Confidential,bar,active,tokyo,89,74,,https://www.top500bars.com/200-151-2026
+154,Bar Trench,Tokyo,,small-axe.net/bar-trench,same name,ve_62d3a80d5a,Bar TRENCH,bar,active,tokyo,185,145,,https://www.top500bars.com/200-151-2026
+155,Above Board,Melbourne,,aboveboardbar.com,same name,ve_b36ed03992,Above Board,bar,active,melbourne,132,171,,https://www.top500bars.com/200-151-2026
+156,American Bar at the Savoy,London,,thesavoylondon.com/restaurants-and-bars/american-bar,same name,ve_d0b6797a9a,American Bar at The Savoy,bar,active,london,128,125,,https://www.top500bars.com/200-151-2026
+157,Volare,Bologna,,instagram.com/volarebologna,name differs,ve_315505b64f,Bar Volare,bar,active,bologna,497,,,https://www.top500bars.com/200-151-2026
+158,Alice,Seoul,,instagram.com/alice_cheongdam,name differs,ve_314a4e2d47,Alice Cheongdam,bar,active,seoul,156,331,,https://www.top500bars.com/200-151-2026
+159,The Savory Project,Hong Kong,,thesavoryproject.com,same name,ve_3e2a8aa427,The Savory Project,bar,active,hong-kong,75,29,,https://www.top500bars.com/200-151-2026
+160,La Petite Maison,Dubai,,lpmrestaurants.com/dubai,name differs,ve_5821e6f420,La Petite Maison (LPM) Dubai,bar,active,dubai,175,,,https://www.top500bars.com/200-151-2026
+161,Avra Bar,Athens,,fourseasons.com/athens/dining/lounges/avra,same name,ve_cc76232de7,Avra Bar,bar,active,athens,160,397,,https://www.top500bars.com/200-151-2026
+162,Bramble,Edinburgh,,bramblebar.co.uk,same name,ve_f8b60bb853,Bramble,bar,active,edinburgh,177,189,,https://www.top500bars.com/200-151-2026
+163,Bar Spirit Forward,Bangalore,,barspiritforward.com,same name,ve_e7ad405be9,Bar Spirit Forward,bar,active,bengaluru,,,,https://www.top500bars.com/200-151-2026
+164,Trick Dog,San Francisco,,trickdogbar.com,same name,ve_1e153f586e,Trick Dog,bar,active,san-francisco,164,181,,https://www.top500bars.com/200-151-2026
+165,Cinquanta Spirito Italiano,Pagani,,barcinquanta.it,same name,ve_2613881bf1,Cinquanta - Spirito Italiano,bar,active,pagani,98,92,,https://www.top500bars.com/200-151-2026
+166,Nightjar,London,,barnightjar.com,same name,ve_e2838a6bf1,Nightjar,bar,active,london,71,151,,https://www.top500bars.com/200-151-2026
+167,Atwater Cocktail Club,Montreal,,atwatercocktailclub.com,same name,ve_c65c071897,Atwater Cocktail Club,bar,active,montreal,202,155,,https://www.top500bars.com/200-151-2026
+168,Ceresio 7,Milan,,ceresio7.com,name differs,ve_21e55353a7,"Via Ceresio, 7",bar,active,milan,53,66,venue name is an address,https://www.top500bars.com/200-151-2026
+169,Victor Audio Bar,Buenos Aires,,instagram.com/victoraudiobar,same name,ve_5c115f5da3,Victor audio bar,bar,active,buenos-aires,,,,https://www.top500bars.com/200-151-2026
+170,Hero Bar,Nairobi,,hero-kenya.com,name differs,ve_7d346b7684,Hero Restaurant,bar,active,nairobi,469,371,"venue name says Restaurant, category bar",https://www.top500bars.com/200-151-2026
+171,Bar Termini,London,,bar-termini.com,same name,ve_8aeb44db55,Bar Termini,bar,active,london,130,118,,https://www.top500bars.com/200-151-2026
+172,Atlas,Singapore,,atlasbar.sg,same name,ve_f3be5b1735,Atlas,bar,active,singapore,38,31,,https://www.top500bars.com/200-151-2026
+173,The Aubrey,Hong Kong,,mandarinoriental.com/en/hong-kong/victoria-harbour/dine/the-aubrey,same name,ve_76668adb57,The Aubrey,bar,active,hong-kong,135,122,,https://www.top500bars.com/200-151-2026
+174,Wax on,Berlin,,waxonwaxoff.berlin,name differs,ve_1918096a41,Wax On Bar,bar,active,berlin,296,225,,https://www.top500bars.com/200-151-2026
+175,High Five,Tokyo,,barhighfive.com,same name,ve_2b29153019,High Five,bar,active,tokyo,226,251,,https://www.top500bars.com/200-151-2026
+176,Bar 1802,Paris,,bar1802.com,same name,ve_b650f67cca,Bar 1802,bar,active,paris,171,271,,https://www.top500bars.com/200-151-2026
+177,Mimi Kakushi,Dubai,,mimikakushi.ae,same name,ve_2988652c65,Mimi Kakushi,bar,active,dubai,64,123,,https://www.top500bars.com/200-151-2026
+178,Gokan,Hong Kong,,instagram.com/gokan.hk,same name,ve_f01c7f187a,GOKAN,bar,active,hong-kong,258,,,https://www.top500bars.com/200-151-2026
+179,Clover Club,New York,,cloverclubny.com,same name,ve_7c8e87c220,Clover Club,bar,active,new-york,149,339,,https://www.top500bars.com/200-151-2026
+180,Stravinsky Parfumerie,Barcelona,,grupconfiteria.com/grup/parfumerie-stravinski,new venue,,Stravinsky Parfumerie,bar,active (new),barcelona,,,,https://www.top500bars.com/200-151-2026
+181,Artifact,Hong Kong,,artifactbar.com,same name,ve_9246bee346,Artifact,bar,active,hong-kong,211,,,https://www.top500bars.com/200-151-2026
+182,Le Syndicat,Paris,,instagram.com/lesyndicat,name differs,ve_426f79ac2e,Le Syndicat Paris,bar,active,paris,173,133,,https://www.top500bars.com/200-151-2026
+183,Three Sheets Soho,London,,threesheets-bar.com/soho,same name,ve_97098d900b,Three Sheets Soho,bar,active,london,115,91,,https://www.top500bars.com/200-151-2026
+184,Side Door,Singapore,,instagram.com/sidedoor_sg,same name,ve_c5a953654f,Side Door,bar,active,singapore,260,383,,https://www.top500bars.com/200-151-2026
+185,Vender,Taichung,,instagram.com/venderbar,name differs,ve_941f41d72b,Vender Bar,bar,active,taichung,381,,,https://www.top500bars.com/200-151-2026
+186,Happy Accidents,Albuquerque,,happyaccidentsbar.com,same name,ve_d8a57ae393,Happy Accidents,bar,active,albuquerque,318,,,https://www.top500bars.com/200-151-2026
+187,Toca da Raposa,Lisbon,,tocadaraposa.co/pages/toca-da-raposa,same name,ve_efef7b9410,Toca da Raposa,bar,active,lisbon,254,330,,https://www.top500bars.com/200-151-2026
+188,Bar Joséphine,Paris,,mandarinoriental.com/fr/paris/lutetia/dine/bar-josephine,name differs,ve_4d06d43951,Joséphine,bar,active,paris,314,,,https://www.top500bars.com/200-151-2026
+189,Bar Nayuta,Osaka,,bar-nayuta.com,same name,ve_549052a728,Bar Nayuta,bar,active,osaka,242,253,,https://www.top500bars.com/200-151-2026
+190,CopperBay,Paris,,copperbay.fr,same name,ve_da8d395298,CopperBay,bar,active,paris,113,69,,https://www.top500bars.com/200-151-2026
+191,La Factoria,San Juan,,lafactoriavsj.com,same name,ve_261395d97c,La Factoría,bar,active,san-juan,153,111,,https://www.top500bars.com/200-151-2026
+192,Zapote Bar,Playa De Carmen,,rosewoodhotels.com/en/mayakoba-riviera-maya/dining/zapote-bar,same name,ve_78b2df0a39,Zapote Bar,bar,active,playa-del-carmen,163,185,,https://www.top500bars.com/200-151-2026
+193,Smoke & Bitters,Hiriketiya,,smokeandbitters.com,same name,ve_e60728f652,Smoke & Bitters,bar,active,hiriketiya,152,354,,https://www.top500bars.com/200-151-2026
+194,Julep,Houston,,julephouston.com,same name,ve_82ad00117c,Julep,bar,active,houston,237,,,https://www.top500bars.com/200-151-2026
+195,Salmon Guru,Milan,,salmonguru.it,same name,ve_c412b929ae,Salmon Guru,bar,active,milan,374,,,https://www.top500bars.com/200-151-2026
+196,Pacific Cocktail Haven,San Francisco,,pacificcocktailsf.com,same name,ve_0f9e0a7d0e,Pacific Cocktail Haven,bar,active,san-francisco,238,158,,https://www.top500bars.com/200-151-2026
+197,The American Bar at Gleneagles,Auchterarder,,gleneagles.com/eat-drink/the-american-bar,name differs,ve_05e3a1ae2d,The American Bar,bar,active,auchterarder,139,220,,https://www.top500bars.com/200-151-2026
+198,Momus,Madrid,,momusbar.com,name differs,ve_406641b4c6,Momus Bar,bar,active,madrid,146,98,,https://www.top500bars.com/200-151-2026
+199,Mo Bar,Shenzhen,,mandarinoriental.com/en/shenzhen/futian/dine/mo-bar,name differs,ve_0a2d39e6bd,"Mo Bar - Mandarin Oriental, Shenzhen",bar,active,shenzhen,291,,,https://www.top500bars.com/200-151-2026
+200,La Sala de Laura,Bogota,,lasaladelaura.com,same name,ve_13098c0869,La Sala de Laura,bar,active,bogota,125,213,,https://www.top500bars.com/200-151-2026
+201,Mandarin Garden,Milan,,mandarinoriental.com/en/milan/la-scala/dine/mandarin-garden,same name,ve_d93d8d6d0f,Mandarin Garden,bar,active,milan,168,97,,https://www.top500bars.com/copie-de-300-251-2026
+202,Black Pearl,Melbourne,,blackpearlbar.com.au,same name,ve_07a347cdb7,Black Pearl,bar,active,melbourne,269,154,,https://www.top500bars.com/copie-de-300-251-2026
+203,Cure,New Orleans,,curenola.com,same name,ve_9f118c39fc,Cure,bar,active,new-orleans,309,,,https://www.top500bars.com/copie-de-300-251-2026
+204,Equal Parts,London,,equalpartslondon.com,same name,ve_570eb26822,EQUAL PARTS,bar,active,london,261,333,,https://www.top500bars.com/copie-de-300-251-2026
+205,Cloakroom,Montreal,,cloakroombarmtl.com,name differs,ve_2c8eb14d3b,Cloakroom Bar,bar,active,montreal,210,319,,https://www.top500bars.com/copie-de-300-251-2026
+206,Dante,New York,,dante-nyc.com,name differs,ve_6131c9eb7e,Dante NYC,bar,active,new-york,123,143,,https://www.top500bars.com/copie-de-300-251-2026
+207,Katana Kitten,New York,,katanakitten.com,same name,ve_8df8ac22d3,Katana Kitten,bar,active,new-york,197,140,,https://www.top500bars.com/copie-de-300-251-2026
+208,Pulitzer's Bar,Amsterdam,,pulitzeramsterdam.com,same name,ve_070a7decc4,Pulitzer's Bar,bar,active,amsterdam,370,238,,https://www.top500bars.com/copie-de-300-251-2026
+209,Bar Kaiju,Miami,,barkaiju.com,same name,ve_bc2b977ab7,Bar Kaiju,bar,active,miami,264,,,https://www.top500bars.com/copie-de-300-251-2026
+210,Botanist Bar,Vancouver,,botanistrestaurant.com,name differs,ve_e002167a67,Botanist,bar,active,vancouver,317,285,,https://www.top500bars.com/copie-de-300-251-2026
+211,Bird,Copenhagen,,birdcph.dk,same name,ve_c364550e8b,Bird,bar,active,copenhagen,191,,,https://www.top500bars.com/copie-de-300-251-2026
+212,Barc,Kathmandu,,barc.com.np,same name,ve_3a8435ad35,Barc,bar,active,kathmandu,180,,,https://www.top500bars.com/copie-de-300-251-2026
+213,Penrose,Kuala Lumpur,,instagram.com/penrose.kl,name differs,ve_fa5fc953be,Penrose KL,bar,active,kuala-lumpur,97,95,,https://www.top500bars.com/copie-de-300-251-2026
+214,Beachbum Berry's Latitude 29,New Orleans,,latitude29nola.com,same name,ve_5c8b7d69d0,Beachbum Berry's Latitude 29,bar,active,new-orleans,244,490,,https://www.top500bars.com/copie-de-300-251-2026
+215,Offtrack,Singapore,,offtrack.sg,same name,ve_db36dd716d,Offtrack,bar,active,singapore,270,,,https://www.top500bars.com/copie-de-300-251-2026
+216,Best Intentions,Chicago,,bestintentionschicago.com,same name,ve_9ec8d0e3c9,Best Intentions,bar,active,chicago,465,408,,https://www.top500bars.com/copie-de-300-251-2026
+217,Foxtrot,Lisbon,,barfoxtrot.pt,same name,ve_a40d3247d9,Foxtrot,bar,active,lisbon,339,286,,https://www.top500bars.com/copie-de-300-251-2026
+218,Ruby,Copenhagen,,rby.dk,same name,ve_3f63f68796,Ruby,bar,active,copenhagen,99,93,,https://www.top500bars.com/copie-de-300-251-2026
+219,Tell Camellia,Hong Kong,,tellcamellia.hk,same name,ve_0403fb1677,Tell Camellia,bar,active,hong-kong,300,300,,https://www.top500bars.com/copie-de-300-251-2026
+220,Bar les Ambassadeurs,Paris,,rosewoodhotels.com/fr/hotel-de-crillon/dining/bar-les-ambassadeurs,same name,ve_232cbce8db,Bar Les Ambassadeurs,bar,active,paris,106,112,,https://www.top500bars.com/copie-de-300-251-2026
+221,Sora Bar,Phnom Penh,,rosewoodhotels.com/en/phnom-penh/dining/sora,name differs,ve_579265aa74,Sora,bar,active,phnom-penh,141,116,,https://www.top500bars.com/copie-de-300-251-2026
+222,Hemingway Bar,Prague,,hemingwaybar.cz,same name,ve_2c999c532c,Hemingway Bar,bar,active,prague,253,372,,https://www.top500bars.com/copie-de-300-251-2026
+223,The Dead Rabbit,New York,,thedeadrabbit.com,same name,ve_bf9f86c005,The Dead Rabbit,bar,active,new-york,126,109,,https://www.top500bars.com/copie-de-300-251-2026
+224,Civil Liberties,Toronto,,civillibertiesbar.com,same name,ve_f7242985ce,Civil Liberties,bar,active,toronto,256,235,,https://www.top500bars.com/copie-de-300-251-2026
+225,Lucy's Flower Shop,Stockholm,,lucysstockholm.se,same name,ve_fdc71eac83,Lucy's Flower Shop,bar,active,stockholm,265,190,,https://www.top500bars.com/copie-de-300-251-2026
+226,Kaito del Valle,Mexico City,,kaitodelvalle.com,same name,ve_fcc9b663a5,Kaito del Valle,bar,active,mexico-city,231,479,,https://www.top500bars.com/copie-de-300-251-2026
+227,Carrots Bar,Jakarta,,bar-carrots.com,same name,ve_9ee0da838c,Carrots Bar,bar,active,jakarta,,,,https://www.top500bars.com/copie-de-300-251-2026
+228,The Bellwood,Tokyo,,instagram.com/the_bellwood,same name,ve_fd6d30880f,The Bellwood,bar,active,tokyo,190,179,,https://www.top500bars.com/copie-de-300-251-2026
+229,Nottingham Forest,Milan,,nottingham-forest.com,same name,ve_6c4370c6a8,Nottingham Forest,bar,active,milan,268,239,,https://www.top500bars.com/copie-de-300-251-2026
+230,Sabina Sabe,Oaxaca,,facebook.com/SabinaSabeOaxaca,same name,ve_03b28fe151,Sabina Sabe,bar,active,oaxaca,145,182,,https://www.top500bars.com/copie-de-300-251-2026
+231,The Elephant Room,Singapore,,theelephantroom.sg,name differs,ve_cb3cd230b2,The Elephant Room Singapore,bar,active,singapore,219,80,,https://www.top500bars.com/copie-de-300-251-2026
+232,Obsidian Bar,Shenzhen,,facebook.com/ObsidianBarSZ,same name,ve_79d5359761,Obsidian Bar,bar,active,shenzhen,,,,https://www.top500bars.com/copie-de-300-251-2026
+233,Meadowlark,Chicago,,meadowlarkchicago.com,name differs,ve_aa449093e9,The Meadowlark,bar,active,chicago,236,,,https://www.top500bars.com/copie-de-300-251-2026
+234,Maison Premiere,New York,,maisonpremiere.com,same name,ve_4c0dbcc0c6,Maison Premiere,bar,active,new-york,186,196,,https://www.top500bars.com/copie-de-300-251-2026
+235,The Old Man,Hong Kong,,theoldman.bar,same name,ve_80496dda8c,The Old Man,bar,active,hong-kong,313,309,,https://www.top500bars.com/copie-de-300-251-2026
+236,Peaches & Cream Bar,Zagreb,,peachesandcreambar.com,same name,ve_da8d7efe73,Peaches & Cream Bar,bar,active,zagreb,330,,,https://www.top500bars.com/copie-de-300-251-2026
+237,The Keefer Bar,Vancouver,,thekeeferbar.com,same name,ve_915cf83d84,The Keefer Bar,bar,active,vancouver,225,211,,https://www.top500bars.com/copie-de-300-251-2026
+238,FOCO,Barcelona,,focobcn.com,same name,ve_5857606ead,FOCO,bar,active,barcelona,451,422,,https://www.top500bars.com/copie-de-300-251-2026
+239,Champagne Bar at The Surf Club,Miami,,fourseasons.com/surfside/dining/lounges/the-champagne-bar,same name,ve_037c0c1e0c,Champagne Bar at The Surf Club,bar,active,miami,208,315,,https://www.top500bars.com/copie-de-300-251-2026
+240,Manhattan Bar,Singapore,,hilton.com/en/hotels/sinodci-conrad-singapore-orchard/dining/manhattan,name differs,ve_e922b62103,Manhattan,bar,active,singapore,131,68,,https://www.top500bars.com/copie-de-300-251-2026
+241,Bandista,Houston,,bandistahouston.com,same name,ve_d4e7351799,Bandista,bar,active,houston,,,,https://www.top500bars.com/copie-de-300-251-2026
+242,Hanky Panky,Mexico City,,hankypanky.mx,name differs,ve_d2c1cb7228,Hanky Panky Cocktail Bar,bar,active,mexico-city,62,42,,https://www.top500bars.com/copie-de-300-251-2026
+243,ZLB23,Bangalore,,instagram.com/zlb23.in,name differs,ve_8efdf81741,ZLB23 Speakeasy,bar,active,bengaluru,404,277,,https://www.top500bars.com/copie-de-300-251-2026
+244,Cosmo Pony,Jakarta,,cosmopony.com,same name,ve_e1ba80a398,Cosmo Pony,bar,active,jakarta,206,,,https://www.top500bars.com/copie-de-300-251-2026
+245,Britannia Bar,Trondheim,,britannia.no/en/dine-with-us/britannia-bar,new venue,,Britannia Bar,bar,active (new),trondheim,,,,https://www.top500bars.com/copie-de-300-251-2026
+246,Death & Co,New York,,deathandcompany.com,name differs,ve_93a3963f9d,Death & Co East Village,bar,active,new-york,337,307,,https://www.top500bars.com/copie-de-300-251-2026
+247,Salmon Guru,Dubai,,salmon-guru.ae,same name,ve_71509290b0,Salmon Guru,bar,active,dubai,199,197,,https://www.top500bars.com/copie-de-300-251-2026
+248,Nipperkin,London,,nijulondon.com/nipperkin,same name,ve_dabb8342a6,Nipperkin,bar,active,london,86,61,,https://www.top500bars.com/copie-de-300-251-2026
+249,The Carlton Bar,Milan,,roccofortehotels.com/it/hotels-and-resorts/the-carlton-milan/ristoranti-bar/the-carlton-bar,new venue,,The Carlton Bar,bar,active (new),milan,,,,https://www.top500bars.com/copie-de-300-251-2026
+250,Bad Company 1920,Madrid,,badcompany1920.com,same name,ve_3074dc38e6,Bad Company 1920,bar,active,madrid,322,275,,https://www.top500bars.com/copie-de-300-251-2026
+251,Quanto Basta,Lecce,,quantobastalecce.com,same name,ve_de378ecdb3,Quanto Basta,bar,active,lecce,311,175,,https://www.top500bars.com/300-251-2026
+252,Terrible Baby,Hong Kong,,terriblebaby.com,same name,ve_dab15a929a,Terrible Baby,bar,active,hong-kong,378,,,https://www.top500bars.com/300-251-2026
+253,The Carousel Bar,New Orleans,,hotelmonteleone.com/restaurant/carousel-bar,name differs,ve_f0d3a8ee85,The Carousel Bar & Lounge,bar,active,new-orleans,280,209,,https://www.top500bars.com/300-251-2026
+254,Santos y Desamparados,Madrid,,instagram.com/santosydesamparados,same name,ve_fd4e1302bc,Santos y Desamparados,bar,active,madrid,335,267,,https://www.top500bars.com/300-251-2026
+255,Cafe de Nadie,Mexico City,,cafedenadie.mx,same name,ve_0552ba91f4,Café de Nadie,bar,active,mexico-city,328,243,,https://www.top500bars.com/300-251-2026
+256,Viajante 87,London,,viajantebar.com,same name,ve_5807e401d9,Viajante87,bar,active,london,170,135,,https://www.top500bars.com/300-251-2026
+257,The Hudson Rooms,Hanoi,,capellahotels.com/en/capella-hanoi/dining/hudson-rooms,same name,ve_efc873f914,The Hudson Rooms,bar,active,hanoi,266,,,https://www.top500bars.com/300-251-2026
+258,Press Club,Washington DC,,pressclubdc.com,new venue,,Press Club,bar,active (new),washington-dc,,,,https://www.top500bars.com/300-251-2026
+259,Sidecar,New Delhi,,sidecarindia.com,same name,ve_0c3b941bb9,SIDECAR,bar,active,new-delhi,167,102,,https://www.top500bars.com/300-251-2026
+260,Rasputin,Florence,,rasputinsecretbar.com,same name,ve_826c297928,Rasputin,bar,active,florence,134,199,,https://www.top500bars.com/300-251-2026
+261,Lair,New Delhi,,lairdelhi.com,same name,ve_9b6f7b64f2,Lair,bar,active,new-delhi,161,295,,https://www.top500bars.com/300-251-2026
+262,Gold Bar at Edition,Tokyo,,goldbaratedition.com,same name,ve_078cf5c796,Gold Bar at EDITION,bar,active,tokyo,214,205,,https://www.top500bars.com/300-251-2026
+263,Hey Palu,Edinburgh,,heypalu.com,same name,ve_cb79c0751f,Hey Palu,bar,active,edinburgh,148,148,,https://www.top500bars.com/300-251-2026
+264,Bar Goto,New York,,bargoto.com,same name,ve_67b0edf67d,BAR GOTO,bar,active,new-york,279,187,,https://www.top500bars.com/300-251-2026
+265,Moonlight Experimental Bar,Saragossa,,instagram.com/moonlightexperimental,same name,ve_ce8f3ad381,Moonlight Experimental Bar,bar,active,zaragoza,240,270,,https://www.top500bars.com/300-251-2026
+266,G.O.D,Bangkok,,instagram.com/god_bkk,same name,ve_608a7bb06a,G.O.D,bar,active,bangkok,,,,https://www.top500bars.com/300-251-2026
+267,Late Bloomers,Zurich,,latebloomersthebar.com,same name,ve_cc9755f309,Late Bloomers,bar,active,zurich,332,,,https://www.top500bars.com/300-251-2026
+268,STIR,Ho Chi Minh City,,instagram.com/stir.saigon,name differs,ve_d0c514cd67,STIR - Modern Classic Cocktail,bar,active,ho-chi-minh-city,223,244,,https://www.top500bars.com/300-251-2026
+269,AnonymouS Bar,Prague,,anonymousbar.cz,same name,ve_0b94216775,Anonymous Bar,bar,active,prague,275,288,,https://www.top500bars.com/300-251-2026
+270,Oriole,London,,oriolebar.com,same name,ve_dd64d59972,Oriole,bar,active,london,92,,,https://www.top500bars.com/300-251-2026
+271,Roosevelt Room,Austin,,therooseveltroomatx.com,name differs,ve_7d58fbced8,The Roosevelt Room,bar,active,austin,305,250,,https://www.top500bars.com/300-251-2026
+272,Bar Mood,Taipei,,inline.app/groups/moodtw,name differs,ve_2dcb0bb68d,Bar Mood Taipei,bar,active,taipei,263,,,https://www.top500bars.com/300-251-2026
+273,Vesper Cocktail Bar,Bangkok,,vesperbar.co,name differs,ve_c0bcf8d709,Vesper,bar,active,bangkok,172,215,,https://www.top500bars.com/300-251-2026
+274,Byrdi,Melbourne,,byrdi.com.au,same name,ve_7b6648edd0,Byrdi,bar,active,melbourne,159,191,,https://www.top500bars.com/300-251-2026
+275,Combat,Paris,,combat-belleville.com,same name,ve_f79c151601,Combat,bar,active,paris,252,166,,https://www.top500bars.com/300-251-2026
+276,Lubna,Milan,,lubnamilano.com,name differs,ve_bef43f853a,Lubna Milano,bar,active,milan,162,,,https://www.top500bars.com/300-251-2026
+277,Happiness Forgets,London,,happinessforgets.com,same name,ve_c9b02066a6,Happiness Forgets,bar,active,london,310,227,,https://www.top500bars.com/300-251-2026
+278,Experimental Cocktail Club,Paris,,fr.experimentalcocktailclub.com/paris,same name,ve_27e6f36d11,Experimental Cocktail Club,bar,active,paris,218,365,,https://www.top500bars.com/300-251-2026
+279,Gong Gan,Seoul,,instagram.com/gong_gan_anguk,same name,ve_418463e608,Gong-Gan,bar,active,seoul,458,,,https://www.top500bars.com/300-251-2026
+280,Angel's Share,New York,,angelssharenyc.com,same name,ve_cfe0c5e039,Angel’s Share,bar,active,new-york,200,138,,https://www.top500bars.com/300-251-2026
+281,Giacosa 1815,Florence,,giacosafirenze.com,same name,ve_b3f2382cb5,Giacosa 1815,bar,active,florence,215,252,,https://www.top500bars.com/300-251-2026
+282,Mace,New York,,macenewyork.com,same name,ve_47c972fb32,Mace,bar,active,new-york,246,230,,https://www.top500bars.com/300-251-2026
+283,Ritz Bar,Paris,,ritzparis.com/fr/hotel/paris/bars-restaurants/ritz-bar,same name,ve_70d78d31d4,Ritz Bar,bar,active,paris,247,487,,https://www.top500bars.com/300-251-2026
+284,The Pontiac,Hong Kong,,thepontiac.com,same name,ve_5f53bb827b,The Pontiac,bar,active,hong-kong,372,202,,https://www.top500bars.com/300-251-2026
+285,Sago House,Singapore,,sagohouse.sg,same name,ve_37889ef392,Sago House,bar,active,singapore,248,106,,https://www.top500bars.com/300-251-2026
+286,Barrier,Bergamo,,barbarrier.com,same name,ve_200744636d,Barrier,bar,active,bergamo,482,,,https://www.top500bars.com/300-251-2026
+287,Santa Cocktail Club,Florence,,santacocktailclub.com/florence,same name,ve_8e0dfc7bba,Santa Cocktail Club,bar,active,florence,295,447,,https://www.top500bars.com/300-251-2026
+288,Backdoor Bodega,Penang,,backdoorbodega.com,same name,ve_e2d85a0b22,Backdoor Bodega,bar,active,george-town,470,321,,https://www.top500bars.com/300-251-2026
+289,Amaro Bar,London,,amarobar.co.uk,name differs,ve_fa1773f2f9,AMARO BAR - London,bar,active,london,259,236,,https://www.top500bars.com/300-251-2026
+290,The 7 Jokers,Athens,,instagram.com/the7jokersbar.athens,name differs,ve_eb8ec4eb23,The 7 Jokers Cocktail Bar,bar,active,athens,457,,,https://www.top500bars.com/300-251-2026
+291,Cantina Ok,Sydney,,okokok.com.au,same name,ve_1bd8d24a78,Cantina OK!,bar,active,sydney,189,310,,https://www.top500bars.com/300-251-2026
+292,Rossio Gastrobar,Lisbon,,rossiogastrobar.com,same name,ve_cb42831194,Rossio Gastrobar,bar,active,lisbon,228,305,,https://www.top500bars.com/300-251-2026
+293,Sexy Fish,London,,sexyfish.com,same name,ve_d7fb47107b,Sexy Fish,bar,active,london,439,149,,https://www.top500bars.com/300-251-2026
+294,Dram Bar,London,,drambar.co.uk,same name,ve_9cdafd245d,Dram Bar,bar,closed,london,183,218,"status closed: left Soho Feb 2026, Dalston move announced; recheck",https://www.top500bars.com/300-251-2026
+295,Radio Bar,Tirana,,radiobar.al,name differs,ve_e8061415fb,Radio bar Tirana,bar,active,tirana,389,,,https://www.top500bars.com/300-251-2026
+296,The French 75 Bar,New Orleans,,arnaudsrestaurant.com/bars/french-75,name differs,ve_ccf0b80a21,French 75 Bar,bar,active,new-orleans,298,221,,https://www.top500bars.com/300-251-2026
+297,Soka,Bangalore,,sokabar.com,name differs,ve_60e8ffc199,SOKA Cocktail Bar,bar,active,bengaluru,386,,,https://www.top500bars.com/300-251-2026
+298,Prophecy Cocktail Bar,Vancouver,,prophecybar.com,same name,ve_3154ab0916,Prophecy Cocktail Bar,bar,active,vancouver,,,,https://www.top500bars.com/300-251-2026
+299,Avoca,Hong Kong,,mondrianhotels.com/hong-kong/dining/avoca,new venue,,Avoca,bar,active (new),hong-kong,,,,https://www.top500bars.com/300-251-2026
+300,To Infinity & Beyond,Taipei,,facebook.com/infinitybeyond19,same name,ve_6670c4bede,To Infinity & Beyond,bar,active,taipei,299,,,https://www.top500bars.com/300-251-2026
+301,Three X Co.,Kuala Lumpur,,threexco.com,same name,ve_9d704d0f72,THREE X CO,bar,active,kuala-lumpur,424,480,,https://www.top500bars.com/301-350-2026
+302,Widder Bar,Zurich,,widderhotel.com/en/eat-drink/widder-bar,same name,ve_eee71c3856,Widder Bar,bar,active,zurich,250,226,,https://www.top500bars.com/301-350-2026
+303,The St. Regis Bar,Macau,,thestregisbarmacao.com,same name,ve_a924426e0a,The St. Regis Bar,bar,active,macau,394,392,,https://www.top500bars.com/301-350-2026
+304,Igiea Terrazza Bar,Palermo,,roccofortehotels.com/hotels-and-resorts/villa-igiea/dining/igiea-terrazza-bar,same name,ve_5c5403ab08,Igiea Terrazza Bar,bar,active,palermo,304,,,https://www.top500bars.com/301-350-2026
+305,Lennon's,Bangkok,,rosewoodhotels.com/en/bangkok/dining/lennons,same name,ve_6f0b877a60,Lennon's,bar,active,bangkok,462,306,,https://www.top500bars.com/301-350-2026
+306,Bekeb,San Miguel De Allende,,bekebsma.com,same name,ve_647df91aa5,Bekeb,bar,active,san-miguel-de-allende,301,,,https://www.top500bars.com/301-350-2026
+307,Old Crow,Zurich,,oldcrow.ch,same name,ve_a0576465a8,Old Crow,bar,active,zurich,373,373,,https://www.top500bars.com/301-350-2026
+308,The Sazerac Bar,New Orleans,,therooseveltneworleans.com/dining,same name,ve_747cae52d8,The Sazerac Bar,bar,active,new-orleans,395,269,,https://www.top500bars.com/301-350-2026
+309,Vandell,Los Angeles,,thevandell.com,same name,ve_2d106939fa,Vandell,bar,active,los-angeles,,,,https://www.top500bars.com/301-350-2026
+310,Cry Baby Gallery,Toronto,,crybabygallery.ca,same name,ve_8fc85ce002,Cry Baby Gallery,bar,active,toronto,,,,https://www.top500bars.com/301-350-2026
+311,Milady's,New York,,miladysnyc.com,same name,ve_3d02bab0b5,Milady's,bar,active,new-york,140,157,,https://www.top500bars.com/301-350-2026
+312,Le Chamber,Seoul,,instagram.com/le_chamber,same name,ve_60f0400918,Le Chamber,bar,active,seoul,196,360,,https://www.top500bars.com/301-350-2026
+313,Bar am Wasser,Zurich,,baramwasser.ch,same name,ve_e55771ca10,Bar am Wasser,bar,active,zurich,362,483,,https://www.top500bars.com/301-350-2026
+314,Smuggler's Cove,San Francisco,,smugglerscovesf.com,same name,ve_fe0cb79da6,Smuggler's Cove,bar,active,san-francisco,329,180,,https://www.top500bars.com/301-350-2026
+315,Aman Bar,Venice,,aman.com/hotels/aman-venice/dining/bar,name differs,ve_086948f186,Aman Venice,restaurant,active,venice,216,254,"hand: Aman Bar on Aman Venice, category restaurant, holds 2024 and 2025 rows",https://www.top500bars.com/301-350-2026
+316,Anvil Bar,Houston,,anvilhouston.com,name differs,ve_3544ed6cee,Anvil,bar,active,houston,326,,,https://www.top500bars.com/301-350-2026
+317,Yakoboku,Kumamoto,,instagram.com/bar_yakoboku_kumamoto,same name,ve_da1a10b6cb,夜香木 yakoboku,bar,active,kumamoto,,,,https://www.top500bars.com/301-350-2026
+318,28 Hongkong Street,Singapore,,28hks.com,name differs,ve_084f959b14,28 Hongkong St,bar,active,singapore,278,137,,https://www.top500bars.com/301-350-2026
+319,Quattro Teste,Lisbon,,instagram.com/quattro.teste,same name,ve_7bac3c68f8,Quattro Teste,bar,active,lisbon,492,386,,https://www.top500bars.com/301-350-2026
+320,Moonrock,Tainan,,instagram.com/moonrock.tw,same name,ve_7035175286,Moonrock,bar,active,tainan,,494,,https://www.top500bars.com/301-350-2026
+321,Fede Cocktail Lab,Florence,,instagram.com/fedecocktailab,new venue,,Fede Cocktail Lab,bar,active (new),florence,,,,https://www.top500bars.com/301-350-2026
+322,Employees Only,Singapore,,employeesonlysg.com,same name,ve_d6be15b37d,Employees Only,bar,active,singapore,178,147,,https://www.top500bars.com/301-350-2026
+323,Black Angel's Bar,Prague,,blackangelsbar.com,same name,ve_37e2e6b8e7,Black Angel's Bar,bar,active,prague,357,268,,https://www.top500bars.com/301-350-2026
+324,Ulew Cocktail Bar,Antigua,,ulew.com.gt,new venue,,Ulew Cocktail Bar,bar,active (new),antigua,,,,https://www.top500bars.com/301-350-2026
+325,Eau de Vie,Melbourne,,eaudevie.com.au/melbourne,name differs,ve_cc4bfd02d9,Eau De Vie Sydney,bar,active,melbourne,405,279,"venue name says Sydney, city Melbourne, holds 2024 and 2025 rows",https://www.top500bars.com/301-350-2026
+326,Speak Low,Shanghai,,instagram.com/speaklow_shanghai,same name,ve_c6367da3c6,Speak Low,bar,active,shanghai,312,334,,https://www.top500bars.com/301-350-2026
+327,AER,Mumbai,,fourseasons.com/mumbai/dining/lounges/aer,same name,ve_19f3589a35,AER,bar,active,mumbai,319,219,,https://www.top500bars.com/301-350-2026
+328,PCO,New Delhi,,passcodeonly.com,name differs,ve_3a4cc16224,PCO Bar,bar,active,new-delhi,193,228,,https://www.top500bars.com/301-350-2026
+329,Library by the Sea,Grand Cayman,,librarybythesea.com,same name,ve_fcf88c2ae3,Library By The Sea,bar,active,grand-cayman,390,,,https://www.top500bars.com/301-350-2026
+330,Sweet Liberty,Miami,,mysweetliberty.com,name differs,ve_a4b17aaf23,Sweet Liberty Drinks & Supply Company,bar,active,miami,368,259,,https://www.top500bars.com/301-350-2026
+331,Bar Leather Apron,Honolulu,,barleatherapron.com,same name,ve_3ca9cad8b7,Bar Leather Apron,bar,active,honolulu,,410,,https://www.top500bars.com/301-350-2026
+332,Alto Rooftop,Cervia,,altorooftop.com,same name,ve_d6686e448b,Alto Rooftop,bar,active,cervia,,,hand: Alto Rooftop; second Cervia venue ALTO - Ristorante e Cocktail Bar holds 2024 and 2025 rows,https://www.top500bars.com/301-350-2026
+333,Tata Cocktail Bar,Copenhagen,,hotelsanders.com/tata-cocktail-bar,same name,ve_ac2515e93c,TATA Cocktail Bar,bar,active,copenhagen,273,347,,https://www.top500bars.com/301-350-2026
+334,Savile Row,Brisbane,,savilerowbar.com.au,same name,ve_0c7f92059b,Savile Row,bar,active,brisbane,438,,,https://www.top500bars.com/301-350-2026
+335,Brujas,Mexico City,,lasbrujas.mx,name differs,ve_a4e307ad26,Bar Las Brujas,bar,active,mexico-city,90,86,,https://www.top500bars.com/301-350-2026
+336,Couch,Birmingham,,instagram.com/couchstirchleyb30,name differs,ve_861fcf255d,Couch Stirchley,bar,active,birmingham,,475,,https://www.top500bars.com/301-350-2026
+337,Door 74,Amsterdam,,finddoor74.com,same name,ve_858b9235c9,Door 74,bar,active,amsterdam,343,233,,https://www.top500bars.com/301-350-2026
+338,Savas Bar,Madrid,,instagram.com/savasbarmad,name differs,ve_df1825084a,Savas bar cócteles,bar,active,madrid,420,351,,https://www.top500bars.com/301-350-2026
+339,Dutch Courage,Amsterdam,,dutchcouragecocktails.com,new venue,,Dutch Courage,bar,active (new),amsterdam,,,,https://www.top500bars.com/301-350-2026
+340,Classique,Paris,,instagram.com/classique.cafe,same name,ve_1e8e0f2809,CLASSIQUE,bar,active,paris,308,322,,https://www.top500bars.com/301-350-2026
+341,Modernhaus,Jakarta,,uniongroupjakarta.com/brands/modernhaus/modernhaus-senopati,same name,ve_22fc005070,Modernhaus,bar,active,jakarta,293,,,https://www.top500bars.com/301-350-2026
+342,Stay Gold Flamingo,Singapore,,staygoldflamingo.com,name differs,ve_3df1b0fa85,Stay Gold,bar,active,singapore,285,176,"hand: Stay Gold Flamingo on Stay Gold, as Nov 5 decision",https://www.top500bars.com/301-350-2026
+343,Sober Company,Shanghai,,sg-management.jp/en/establishments/sober,same name,ve_da96fa6ee2,Sober Company,bar,active,shanghai,282,452,,https://www.top500bars.com/301-350-2026
+344,Yacht Club,Denver,,yachtclubbar.com,same name,ve_3713ed47f6,Yacht Club,bar,active,denver,,,,https://www.top500bars.com/301-350-2026
+345,Carnaval,Lima,,carnavalbar.com,same name,ve_136bc9d089,Carnaval,bar,active,lima,239,159,,https://www.top500bars.com/301-350-2026
+346,Becketts Kopf,Berlin,,becketts-kopf.de,name differs,ve_74349d4485,Bar Becketts Kopf,bar,active,berlin,452,,,https://www.top500bars.com/301-350-2026
+347,The Curator,Manila,,thecuratorcoffeeandcocktails.com,name differs,ve_79530cadea,The Curator Coffee & Cocktails,bar,active,manila,227,262,,https://www.top500bars.com/301-350-2026
+348,CopperBay Lancaster,Paris,,hotel-lancaster.com/en/bar-copperbay.html,same name,ve_7476deab7c,CopperBay Lancaster,bar,active,paris,331,324,,https://www.top500bars.com/301-350-2026
+349,Plumette,Brussels,,plumette-bar.com,same name,ve_6282a1b0d0,Plumette,bar,active,brussels,468,,,https://www.top500bars.com/301-350-2026
+350,Pony Up,Shanghai,,ponyupshanghai.com,same name,ve_06d30d61f9,Pony Up,bar,active,shanghai,,,,https://www.top500bars.com/301-350-2026
+351,The Diplomat,Hong Kong,,thediplomat.hk,same name,ve_b4f551bee4,The Diplomat,bar,active,hong-kong,,,,https://www.top500bars.com/351-400-2026
+352,Williams & Graham,Denver,,williamsandgraham.com,same name,ve_b01a93b29e,Williams & Graham,bar,active,denver,,,,https://www.top500bars.com/351-400-2026
+353,Torto,Porto,,torto-porto.com/en,name differs,ve_09b69840da,Torto - Bar & Cocktails,bar,active,porto,413,,,https://www.top500bars.com/351-400-2026
+354,Otro Bar,San Jose,,instagram.com/otro___bar,same name,ve_e971d33539,Otro Bar,bar,active,san-jose,,,,https://www.top500bars.com/351-400-2026
+355,Workshop 14,Hanoi,,instagram.com/workshop14.hanoi,same name,ve_953b4951da,Workshop14,bar,active,hanoi,,,,https://www.top500bars.com/351-400-2026
+356,Manifattura,Florence,,manifatturafirenze.it,same name,ve_fcbbe94857,Manifattura,bar,active,florence,234,263,,https://www.top500bars.com/351-400-2026
+357,Jerry Thomas Bar Room,Rome,,thejerrythomasproject.it/en/bar-room,same name,ve_ee436b23b5,Jerry Thomas Bar Room,bar,active,rome,230,377,,https://www.top500bars.com/351-400-2026
+358,Bisou,Paris,,bar-bisou.com,same name,ve_269e419f3c,Bisou.,bar,active,paris,179,172,,https://www.top500bars.com/351-400-2026
+359,The Royal Cocktail Club,Porto,,theroyalcocktailclub.pt/en,same name,ve_0ed32864c0,THE ROYAL COCKTAIL CLUB,bar,active,porto,345,237,,https://www.top500bars.com/351-400-2026
+360,Symbiose,Bordeaux,,symbiose-bordeaux.com,same name,ve_7b1ddd7c98,Symbiose,bar,active,bordeaux,377,,,https://www.top500bars.com/351-400-2026
+361,Fable,Cape Town,,fablecocktailbar.capetown,same name,ve_0383463b57,fable,bar,active,cape-town,353,451,,https://www.top500bars.com/351-400-2026
+362,Bombay Canteen,Mumbai,,thebombaycanteen.com,name differs,ve_012465dd2b,The Bombay Canteen,bar,active,mumbai,232,276,,https://www.top500bars.com/351-400-2026
+363,Swizzle Rum Bar & Drinkery,Miami,,swizzlerumbardrinkery.com,same name,ve_0c88b9f57a,Swizzle Rum Bar & Drinkery,bar,active,miami,,,,https://www.top500bars.com/351-400-2026
+364,Schumann's,Munich,,schumanns.de/en/index.html,same name,ve_e9057f267e,Schumann's,bar,active,munich,,409,,https://www.top500bars.com/351-400-2026
+365,Missy's This That,Calgary,,missysthisthat.com,same name,ve_2d547160d8,Missy's This That,bar,active,calgary,485,,,https://www.top500bars.com/351-400-2026
+366,Bulgari Bar,Rome,,bulgarihotels.com/en_US/rome/dining/the-bulgari-bar,name differs,ve_6177a50e7f,The Bulgari Bar,bar,active,rome,255,,,https://www.top500bars.com/351-400-2026
+367,The Long Island Bar,New York,,thelongislandbar.com,same name,ve_4dcdddb39b,The Long Island Bar,bar,active,new-york,,247,,https://www.top500bars.com/351-400-2026
+368,Three Sheets Dalston,London,,threesheets-bar.com/dalston,same name,ve_412c9eeae2,Three Sheets Dalston,bar,active,london,222,169,,https://www.top500bars.com/351-400-2026
+369,Velvet by Salvatore Calabrese,London,,corinthia.com/en-gb/london/restaurants-bars/velvet-by-salvatore-calabrese,same name,ve_91b54ffbe5,Velvet by Salvatore Calabrese,bar,active,london,144,78,,https://www.top500bars.com/351-400-2026
+370,Sentaku Izakaya,Bologna,,sentakuconcept.com/sentaku-izakaya,same name,ve_a5c93351ab,Sentaku Izakaya,bar,active,bologna,272,462,,https://www.top500bars.com/351-400-2026
+371,Soma,London,,soma.london,name differs,ve_98fc69d15a,SOMA Soho,bar,active,london,346,338,,https://www.top500bars.com/351-400-2026
+372,PDT,New York,,pdtnyc.com,name differs,ve_4249f54d54,Please Don't Tell,bar,active,new-york,235,390,hand: PDT on Please Don't Tell,https://www.top500bars.com/351-400-2026
+373,Bar Hemingway,Paris,,ritzparis.com/fr/hotel/paris/bars-restaurants/bar-hemingway,same name,ve_52809f8499,Bar Hemingway,bar,active,paris,303,217,,https://www.top500bars.com/351-400-2026
+374,The Clap,Dubai,,claprestaurant.com/dubai,new venue,,Clap,bar,active (new),dubai,,,,https://www.top500bars.com/351-400-2026
+375,Mesures,Paris,,instagram.com/mesures.paris,new venue,,Mesures,bar,active (new),paris,,,,https://www.top500bars.com/351-400-2026
+376,Jungle Bird,Kuala Lumpur,,instagram.com/junglebirdkl,same name,ve_3bf95b8a77,JungleBird,bar,active,kuala-lumpur,398,273,,https://www.top500bars.com/351-400-2026
+377,Two Moons,Macau,,instagram.com/project_twomoons,new venue,,Two Moons,bar,active (new),macau,,,,https://www.top500bars.com/351-400-2026
+378,Shady Pig,Canggu,,theshadyfamily.com,new venue,,Shady Pig,bar,active (new),bali,,,,https://www.top500bars.com/351-400-2026
+379,Laowai,Vancouver,,laowai.ca,same name,ve_82eb000e06,Laowai,bar,active,vancouver,340,241,,https://www.top500bars.com/351-400-2026
+380,Bijou Drinkery Room,Mexico City,,bijoudrinkeryroom.com,same name,ve_19ecd3b830,Bijou Drinkery Room,bar,active,mexico-city,422,,,https://www.top500bars.com/351-400-2026
+381,Duck and Cover,Copenhagen,,duckandcoverbar.dk,name differs,ve_947003ef80,Duck and Cover - Cocktailbar,bar,active,copenhagen,359,345,,https://www.top500bars.com/351-400-2026
+382,The Waratah,Sydney,,thewaratahsydney.com,new venue,,The Waratah,bar,active (new),sydney,,,,https://www.top500bars.com/351-400-2026
+383,Bee's Knees,Kyoto,,bees-knees-kyoto.jp,same name,ve_76024bcb58,BEE’S KNEES,bar,active,kyoto,277,266,,https://www.top500bars.com/351-400-2026
+384,Del Diego,Madrid,,deldiego.com/Bienvenida.html,name differs,ve_c869e42840,Del Diego Cocktail Bar,bar,active,madrid,487,,,https://www.top500bars.com/351-400-2026
+385,The Opposites,Hong Kong,,theopposites.hk,same name,ve_4065bce4d2,The Opposites,bar,active,hong-kong,342,,,https://www.top500bars.com/351-400-2026
+386,Rattlebag,Belfast,,rattlebag.co.uk,same name,ve_84449a64ca,Rattlebag,bar,active,belfast,,,,https://www.top500bars.com/351-400-2026
+387,Yoi,Kyoto,,capellahotels.com/en/capella-kyoto/dining,new venue,,Yoi,bar,active (new),kyoto,,,,https://www.top500bars.com/351-400-2026
+388,Subastor,Sao Paulo,,subastor.com.br,new venue,,Subastor,bar,active (new),sao-paulo,,,,https://www.top500bars.com/351-400-2026
+389,Monkey Bar,Berlin,,monkeybarberlin.de,same name,ve_01598d2686,Monkey Bar,bar,active,berlin,,433,,https://www.top500bars.com/351-400-2026
+390,Dos Arcos,Sao Paulo,,bardosarcos.com.br,name differs,ve_e5fac9252c,Bar dos Arcos,bar,active,sao-paulo,336,,,https://www.top500bars.com/351-400-2026
+391,Domashniy Bar,Almaty,,instagram.com/domashniybar,new venue,,Domashniy Bar,bar,active (new),almaty,,,,https://www.top500bars.com/351-400-2026
+392,Lamp Bar,Nara,,lamp-bar.com,same name,ve_c41317d511,LAMP BAR,bar,active,nara,,,,https://www.top500bars.com/351-400-2026
+393,La Ménagère,Florence,,lamenagere.it/via-de-ginori-firenze,same name,ve_e4c9d46458,La Ménagère,bar,active,florence,289,,,https://www.top500bars.com/351-400-2026
+394,The Bulgari Bar,Milan,,bulgarihotels.com/en_US/milan/dining/il-bar,same name,ve_8d2b36ffe0,The Bulgari Bar,bar,active,milan,391,292,,https://www.top500bars.com/351-400-2026
+395,Le Churchill,Marrakesh,,mamounia.com/fr/bars/le-churchill.html,new venue,,Le Churchill,bar,active (new),marrakech,,,,https://www.top500bars.com/351-400-2026
+396,Dean & Nancy On 22,Sydney,,deanandnancyon22.com.au,same name,ve_170ed61fc0,Dean & Nancy on 22,bar,active,sydney,138,201,,https://www.top500bars.com/351-400-2026
+397,Kabin,New York,,kabin.nyc.,same name,ve_d2186520c0,KABIN,bar,active,new-york,,,,https://www.top500bars.com/351-400-2026
+398,Monkey Mash,Lisbon,,monkeymash.pt,same name,ve_d16359a1c2,Monkey Mash,bar,active,lisbon,213,362,,https://www.top500bars.com/351-400-2026
+399,Naked,Athens,,nakedbarathens.com,same name,ve_b375d8b43a,Naked,bar,active,athens,,,,https://www.top500bars.com/351-400-2026
+400,Buck & Breck,Berlin,,buckandbreck.com,same name,ve_048a018db9,Buck and Breck,bar,active,berlin,,492,,https://www.top500bars.com/351-400-2026
+401,Realm of the 52 Remedies,San Diego,,52remedies.com/therealm,same name,ve_4ab9a6f08e,Realm Of The 52 Remedies,bar,active,san-diego,,,,https://www.top500bars.com/401-450-2026
+402,SCHOFIELD'S BAR,Manchester,,schofieldsbar.com,same name,ve_aa7e8e2a22,SCHOFIELD'S BAR,bar,active,manchester,224,174,,https://www.top500bars.com/401-450-2026
+403,The St. Regis Bar,Jakarta,,stregisbarjakarta.com,same name,ve_647f6bcaf6,The St. Regis Bar,bar,active,jakarta,302,,,https://www.top500bars.com/401-450-2026
+404,Sin + Tax,Johannesburg,,sintaxbar.com,same name,ve_367fcd4044,Sin+Tax,bar,active,johannesburg,195,170,,https://www.top500bars.com/401-450-2026
+405,Morgana Lounge Bar,Taormina,,morganataormina.it,new venue,,Morgana Lounge Bar,bar,active (new),taormina,,,,https://www.top500bars.com/401-450-2026
+406,Netsu,Dubai,,mandarinoriental.com/en/dubai/jumeira-beach/dine/netsu-bar,new venue,,Netsu,bar,active (new),dubai,,,,https://www.top500bars.com/401-450-2026
+407,Il Mercante,Venice,,ilmercantevenezia.com,same name,ve_3a86d31125,Il Mercante,bar,active,venice,443,407,,https://www.top500bars.com/401-450-2026
+408,Le Lion Bar de Paris,Hamburg,,lelion.net,same name,ve_57ef0713b5,Le Lion • Bar de Paris,bar,active,hamburg,495,290,,https://www.top500bars.com/401-450-2026
+409,Caffe Paszkowski,Florence,,caffepaszkowski.com,name differs,ve_f26eaf4d14,Caffe Concerto Paszkowski,bar,active,florence,379,,,https://www.top500bars.com/401-450-2026
+410,Eve Bar,London,,evebar.co.uk,name differs,ve_54393bdd58,Eve Bar Covent Garden,bar,active,london,,,hand: Eve Bar on Eve Bar Covent Garden,https://www.top500bars.com/401-450-2026
+411,Aviary,Chicago,,theaviary.com,name differs,ve_5ee4d73a7e,The Aviary,bar,active,chicago,,,,https://www.top500bars.com/401-450-2026
+412,5L Speakeasy Bar,Sofia,,instagram.com/5lspeakeasybar,new venue,,5L Speakeasy Bar,bar,active (new),sofia,,,,https://www.top500bars.com/401-450-2026
+413,El Baron Cafe,Cartagena,,elbaron.co,name differs,ve_56ad6e3295,El Barón,bar,active,cartagena,351,204,,https://www.top500bars.com/401-450-2026
+414,The Milk Thistle,Bristol,,milkthistlebristol.com,same name,ve_6b410785f7,The Milk Thistle,bar,active,bristol,315,298,,https://www.top500bars.com/401-450-2026
+415,CMYK,Changsha,,instagram.com/cmyk.china,same name,ve_046b5ba9af,CMYK,bar,active,changsha,,,,https://www.top500bars.com/401-450-2026
+416,Ory,Munich,,ory.bar,new venue,,Ory,bar,active (new),munich,,,,https://www.top500bars.com/401-450-2026
+417,Antique American Bar,Bratislava,,antique-americanbar.com,new venue,,Antique American Bar,bar,active (new),bratislava,,,,https://www.top500bars.com/401-450-2026
+418,The Absent Ear,Glasgow,,theabsentear.com,same name,ve_c75253b519,The Absent Ear,bar,active,glasgow,466,,,https://www.top500bars.com/401-450-2026
+419,Speak in Code,Manchester,,speakincodebar.com,new venue,,Speak in Code,bar,active (new),manchester,,,,https://www.top500bars.com/401-450-2026
+420,The Chug Club,Hamburg,,thechugclub.bar,same name,ve_a542bfff02,The Chug Club,bar,active,hamburg,,418,,https://www.top500bars.com/401-450-2026
+421,Mother Cocktail Bar,Toronto,,motherdrinks.co,name differs,ve_7ae5011bbc,Mother,bar,active,toronto,321,445,,https://www.top500bars.com/401-450-2026
+422,Liz Cocktail & Wine,Rio De Janeiro,,lizcocktailewine.com,name differs,ve_475af214b9,Liz Cocktail e Wine,bar,active,rio-de-janeiro,354,350,,https://www.top500bars.com/401-450-2026
+423,Sky Bar & Restaurant,Bratislava,,skybar.sk,new venue,,Sky Bar & Restaurant,bar,active (new),bratislava,,,,https://www.top500bars.com/401-450-2026
+424,The Coldroom,Montreal,,thecoldroommtl.com,same name,ve_71eff9c5a1,The Coldroom,bar,active,montreal,364,364,,https://www.top500bars.com/401-450-2026
+425,Everson Royce Bar,Los Angeles,,erbarla.com,new venue,,Everson Royce Bar,bar,active (new),los-angeles,,,,https://www.top500bars.com/401-450-2026
+426,Mathilda's Cocktail Bar,Istanbul,,mathildascocktailbar.com/kadikoy,same name,ve_2492107aef,Mathilda's Cocktail Bar,bar,active,istanbul,423,,,https://www.top500bars.com/401-450-2026
+427,Dante West Village,New York,,dante-westvillage.com,same name,ve_baa199026d,Dante West Village,bar,active,new-york,,,,https://www.top500bars.com/401-450-2026
+428,Hotsy Totsy,Budapest,,hotsytotsy.hu,name differs,ve_9d6455abe8,Hotsy Totsy Budapest,bar,active,budapest,267,,,https://www.top500bars.com/401-450-2026
+429,Reka:Bar,Kuala Lumpur,,reservation.umai.io/en/widget/reka-bar,same name,ve_2e38c8fac4,Reka:Bar,bar,active,kuala-lumpur,205,265,,https://www.top500bars.com/401-450-2026
+430,Mizunara The Library,Hong Kong,,mizunarathelibrary.com,same name,ve_278e2d6648,Mizunara: The Library,bar,active,hong-kong,297,260,,https://www.top500bars.com/401-450-2026
+431,Ruggine,Bologna,,ruggine.bo.it,new venue,,Ruggine,bar,active (new),bologna,,,,https://www.top500bars.com/401-450-2026
+432,Honeycomb Hi-Fi,Dubai,,honeycombhifi.com,same name,ve_4942bd061b,Honeycomb Hi-Fi,bar,active,dubai,243,207,,https://www.top500bars.com/401-450-2026
+433,Nickel City,Austin,,nickelcitybar.com,same name,ve_b834011466,Nickel City,bar,active,austin,406,,,https://www.top500bars.com/401-450-2026
+434,Bar Oldenhof,Amsterdam,,bar-oldenhof.com,same name,ve_57c1a21b09,Bar Oldenhof,bar,active,amsterdam,,471,,https://www.top500bars.com/401-450-2026
+435,Purgatório,Salvador,,purgatoriobar.com.br,name differs,ve_90ba5c99b2,Purgatório Bar,bar,active,salvador,476,430,,https://www.top500bars.com/401-450-2026
+436,878 Bar,Buenos Aires,,878bar.com.ar,name differs,ve_45c66b8d89,Bar 878,bar,active,buenos-aires,441,342,,https://www.top500bars.com/401-450-2026
+437,Slink & Bardot,Mumbai,,instagram.com/slinkandbardot,same name,ve_37c7815dd9,Slink & Bardot,bar,active,mumbai,434,,,https://www.top500bars.com/401-450-2026
+438,Bar Mordecai,Toronto,,barmordecai.com,same name,ve_fc1bc8c4d2,Bar Mordecai,bar,active,toronto,154,223,,https://www.top500bars.com/401-450-2026
+439,Bar Kinky,London,,kinkally.co.uk,same name,ve_c937e34d80,Bar Kinky,bar,active,london,,,,https://www.top500bars.com/401-450-2026
+440,Botanical by Alfonse,Namur,,alfonse.be,new venue,,Botanical by Alfonse,bar,active (new),namur,,,,https://www.top500bars.com/401-450-2026
+441,Moretenders' Cocktail Crib,Istanbul,,moretenders.com,name differs,ve_c6b90ebdc9,Moretenders’ Cocktail Crib & Sushi,bar,active,istanbul,480,493,,https://www.top500bars.com/401-450-2026
+442,Coley,Kuala Lumpur,,instagram.com/coleylumpur,same name,ve_b27a885361,Coley,bar,active,kuala-lumpur,417,455,,https://www.top500bars.com/401-450-2026
+443,Drinx at Il Gusto di Xinge,Florence,,ilgustodixinge.com,name differs,ve_c054d2d195,Il Gusto di XINGE,bar,active,florence,448,,hand: Drinx at Il Gusto di Xinge on Il Gusto di XINGE,https://www.top500bars.com/401-450-2026
+444,Balderdash,Copenhagen,,balderdash.dk,same name,ve_d71e9ab86c,Balderdash,bar,active,copenhagen,383,,,https://www.top500bars.com/401-450-2026
+445,PENICILLIN,Shanghai,,penicillinbarsha.com,new venue,,Penicillin,bar,active (new),shanghai,,,,https://www.top500bars.com/401-450-2026
+446,Service Bar,Washington Dc,,servicebardc.com,name differs,ve_2845fa21b3,Service Bar DC,bar,active,washington-dc,249,258,,https://www.top500bars.com/401-450-2026
+447,Amelia,Dubai,,amelialounge.com/ameliadubai,name differs,ve_24f273b619,Amelia by Paulo Airaudo,bar,active,dubai,251,399,,https://www.top500bars.com/401-450-2026
+448,COA,Shanghai,,instagram.com/coashanghai,same name,ve_0d6a554162,COA,bar,active,shanghai,411,,,https://www.top500bars.com/401-450-2026
+449,Summer Experiment,Ho Chi Minh,,instagram.com/summer_experiment,same name,ve_edf86b4152,Summer Experiment,bar,active,ho-chi-minh-city,407,,,https://www.top500bars.com/401-450-2026
+450,Hecate,Boston,,hecatebar.com,same name,ve_f77c21875a,Hecate,bar,active,boston,366,474,,https://www.top500bars.com/401-450-2026
+451,Jeffer,Pisa,,jefferpisa.com,name differs,ve_3f7358fd1e,JEFFER cocktails & friends,bar,active,pisa,,442,,https://www.top500bars.com/451-500-2026
+452,Blind Tiger,Dubai,,jumeirah.com/en/stay/dubai/jumeirah-al-naseem/dining/al-naseem-blind-tiger,same name,ve_0a791e5a9b,Blind Tiger,bar,active,dubai,233,291,,https://www.top500bars.com/451-500-2026
+453,Madame Pang,Bordeaux,,madamepang.com,same name,ve_99ced2f109,Madame Pang,bar,active,bordeaux,446,,,https://www.top500bars.com/451-500-2026
+454,TIAO,Beijing,,mandarinoriental.com/en/beijing/qianmen/dine/tiao,same name,ve_bb1c65d427,Tiao,bar,active,beijing,,,,https://www.top500bars.com/451-500-2026
+455,Sartoria,Palermo,,lasartoriapalermo.it,new venue,,Sartoria,bar,active (new),palermo,,,,https://www.top500bars.com/451-500-2026
+456,Depero,Rieti,,deperoclub.it,name differs,ve_7838b37a31,Depero Club,bar,active,rieti,338,449,,https://www.top500bars.com/451-500-2026
+457,Front/Back,Accra,,frontbackaccra.com,same name,ve_b294e1f0aa,Front/Back,bar,active,accra,387,388,,https://www.top500bars.com/451-500-2026
+458,Cinco Lounge,Lisbon,,cincolounge.com,same name,ve_05e0905338,CINCO lounge,bar,active,lisbon,333,486,,https://www.top500bars.com/451-500-2026
+459,Isa,Madrid,,fourseasons.com/madrid/dining/restaurants/isa,name differs,ve_9d7a42beb9,Isa Restaurant & Cocktail Bar,bar,active,madrid,181,94,,https://www.top500bars.com/451-500-2026
+460,Bitter Bar,Florence,,bitterbarfirenze.it,same name,ve_8d029668f2,Bitter Bar,bar,active,florence,349,,,https://www.top500bars.com/451-500-2026
+461,A for Athens,Athens,,aforathens.com,same name,ve_d7a3958beb,A for Athens,bar,active,athens,,406,,https://www.top500bars.com/451-500-2026
+462,BoB the other side,Milan,,bobmilano.it/the-other-side,new venue,,BoB the other side,bar,active (new),milan,,,,https://www.top500bars.com/451-500-2026
+463,Maria Mezcal,Lima,,mariamezcalbar.com,new venue,,Maria Mezcal,bar,active (new),lima,,,,https://www.top500bars.com/451-500-2026
+464,Piano 35 Lounge Bar,Turin,,piano35.com/en/lounge-bar,same name,ve_aa97999d76,Piano 35 lounge bar,bar,active,turin,361,,,https://www.top500bars.com/451-500-2026
+465,El Koktel,Warsaw,,instagram.com/el_koktel,new venue,,El Koktel,bar,active (new),warsaw,,,,https://www.top500bars.com/451-500-2026
+466,Aldea,Barcelona,,aldeabar.com,name differs,ve_062ae78893,Carrer de l'Aldea,bar,active,barcelona,,,hand: Aldea on Carrer de l'Aldea; 50 Best page says Aldea,https://www.top500bars.com/451-500-2026
+467,Lab 22,Cardiff,,lab22cardiff.com,same name,ve_ca1582b31c,Lab 22,bar,active,cardiff,306,349,,https://www.top500bars.com/451-500-2026
+468,14 de la Rosa,Barcelona,,14delarosa.com,same name,ve_9812f7966f,14 De La Rosa,bar,active,barcelona,355,314,,https://www.top500bars.com/451-500-2026
+469,The Enigma Mansion,Ho Chi Minh,,instagram.com/theenigma.saigon,name differs,ve_01628a9fb2,Enigma,bar,active,ho-chi-minh-city,445,357,"hand: The Enigma Mansion on Enigma, as Nov 5 decision",https://www.top500bars.com/451-500-2026
+470,Santana Bar,Sao Paulo,,instagram.com/_santanabar,same name,ve_35b28ed862,Santana Bar,bar,active,sao-paulo,437,,,https://www.top500bars.com/451-500-2026
+471,Oto,Manila,,instagram.com/oto.ph,same name,ve_a512539ec2,oto,bar,active,manila,,,,https://www.top500bars.com/451-500-2026
+472,Bar Next Door,Los Angeles,,barnextdoor.com,same name,ve_c281268010,Bar Next Door,bar,active,los-angeles,,,,https://www.top500bars.com/451-500-2026
+473,Art,Katowice,,artkatowice.pl,new venue,,Art,bar,active (new),katowice,,,,https://www.top500bars.com/451-500-2026
+474,Especiarium,Barcelona,,especiariumbar.com,name differs,ve_579388e6c8,Especiarium Bar,bar,active,barcelona,,481,,https://www.top500bars.com/451-500-2026
+475,Baker's Bar,Montevideo,,bakers.uy,same name,ve_36d3e0104b,Baker's Bar,bar,active,montevideo,431,,,https://www.top500bars.com/451-500-2026
+476,Passing Fancies,Birmingham,,passingfanciesbar.co.uk,same name,ve_33d1ebb75c,Passing Fancies,bar,active,birmingham,400,440,,https://www.top500bars.com/451-500-2026
+477,Lockdown,Hong Kong,,instagram.com/lockdown_hk,same name,ve_97dbf1fe77,LOCKDOWN,bar,active,hong-kong,217,113,,https://www.top500bars.com/451-500-2026
+478,Gorilla,Thessaloniki,,gorillabar.gr,name differs,ve_1ffcac902f,Gorilas,bar,active,thessaloniki,393,,"hand: Gorilla on Gorilas; 50 Best says Gorilla, guides say Gorilas",https://www.top500bars.com/451-500-2026
+479,Muzsa,Budapest,,muzsa.com,same name,ve_05b81445a4,MÙZSA,bar,active,budapest,427,,,https://www.top500bars.com/451-500-2026
+480,TAG,Krakow,,tagcocktails.com,same name,ve_a1b2c31972,TAG,bar,active,krakow,,,,https://www.top500bars.com/451-500-2026
+481,The Alchemix,Barcelona,,thealchemix.com,same name,ve_18616a0247,The Alchemix,bar,active,barcelona,474,,,https://www.top500bars.com/451-500-2026
+482,Library Bar,Abu Dhabi,,editionhotels.com/abu-dhabi/restaurants-and-bars/library-bar,same name,ve_2bf502a1d0,Library Bar,bar,active,abu-dhabi,486,,,https://www.top500bars.com/451-500-2026
+483,Noble Roots,Belgrade,,nobleroots.bar,new venue,,Noble Roots,bar,active (new),belgrade,,,,https://www.top500bars.com/451-500-2026
+484,Dragonfly,Edinburgh,,dragonflycocktailbar.com,new venue,,Dragonfly,bar,active (new),edinburgh,,,,https://www.top500bars.com/451-500-2026
+485,Vintage Cocktail Club,Dublin,,vintagecocktailclub.com,same name,ve_3f6b53f1d9,Vintage Cocktail Club,bar,active,dublin,392,381,,https://www.top500bars.com/451-500-2026
+486,Bar Glue,Liverpool,,barglue.com,new venue,,Bar Glue,bar,active (new),liverpool,,,,https://www.top500bars.com/451-500-2026
+487,Shinji's,New York,,shinjisbar.com,same name,ve_60f5d02279,Shinji's,bar,active,new-york,382,,,https://www.top500bars.com/451-500-2026
+488,Lidkoeb,Copenhagen,,lidkoeb.dk,same name,ve_d4cd1b3fe3,Lidkoeb,bar,active,copenhagen,376,426,,https://www.top500bars.com/451-500-2026
+489,Proof,Calgary,,proofyyc.com,same name,ve_b09fdb818a,Proof,bar,active,calgary,,460,,https://www.top500bars.com/451-500-2026
+490,Urania,Zagreb,,instagram.com/urania.bar.zg,new venue,,Urania,bar,active (new),zagreb,,,,https://www.top500bars.com/451-500-2026
+491,Chihuahua Julep,Helsinki,,chihuahuajulep.fi,same name,ve_9285a0ea9e,Chihuahua Julep,bar,active,helsinki,454,,,https://www.top500bars.com/451-500-2026
+492,Le Mal Nécessaire,Montreal,,lemalnecessaire.com,name differs,ve_8a922f068d,Bar Le Mal Nécessaire,bar,active,montreal,350,398,,https://www.top500bars.com/451-500-2026
+493,Layla Eatery & Bar,Ho Chi Minh,,linktr.ee/laylaeateryandbar,same name,ve_d5f67fdd6e,Layla - Eatery & Bar,bar,active,ho-chi-minh-city,,472,,https://www.top500bars.com/451-500-2026
+494,Umi,Panama City,,umi.bar,same name,ve_a267f95c3b,Umi,restaurant,active,panama-city,,,"hand: Umi, category restaurant, publisher link umi.bar",https://www.top500bars.com/451-500-2026
+495,Vibes,Nice,,instagram.com/vibes.bar.nice,new venue,,Vibes,bar,active (new),nice,,,,https://www.top500bars.com/451-500-2026
+496,Kinsman,Hong Kong,,singularconcepts.com/kinsman,same name,ve_39790c5a55,Kinsman,bar,active,hong-kong,323,,,https://www.top500bars.com/451-500-2026
+497,Soko,Seoul,,instagram.com/soko_bar,name differs,ve_5753ab6302,BAR SOKO,bar,active,seoul,498,437,,https://www.top500bars.com/451-500-2026
+498,Nucleo,Rome,,instagram.com/nucleo_bar,new venue,,Nucleo,bar,active (new),rome,,,,https://www.top500bars.com/451-500-2026
+499,Punch Room at Edition,Madrid,,editionhotels.com/madrid/restaurants-and-bars/punch-room,name differs,ve_ecd1daeb67,Punch Room Madrid,bar,active,madrid,287,297,,https://www.top500bars.com/451-500-2026
+500,Punch Room at Edition,Tokyo,,editionhotels.com/tokyo-toranomon/restaurants-and-bars/punch-room,name differs,ve_d4569d460d,Punch Room Tokyo,bar,active,tokyo,262,,,https://www.top500bars.com/451-500-2026

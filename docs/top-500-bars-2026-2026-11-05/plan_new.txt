@@ -1,0 +1,45 @@
+58|Bar Leone|shanghai|Shanghai|China
+90|Cato|london|London|United Kingdom
+124|Shakerato|amsterdam|Amsterdam|Netherlands
+138|Superfine|paris|Paris|France
+144|Advocatuur|amsterdam|Amsterdam|Netherlands
+145|Abstract Bistrot|paris|Paris|France
+180|Stravinsky Parfumerie|barcelona|Barcelona|Spain
+245|Britannia Bar|trondheim|Trondheim|Norway
+249|The Carlton Bar|milan|Milan|Italy
+258|Press Club|washington-dc|Washington DC|United States
+299|Avoca|hong-kong|Hong Kong|Hong Kong
+321|Fede Cocktail Lab|florence|Florence|Italy
+324|Ulew Cocktail Bar|antigua|Antigua|Guatemala
+339|Dutch Courage|amsterdam|Amsterdam|Netherlands
+374|Clap|dubai|Dubai|United Arab Emirates
+375|Mesures|paris|Paris|France
+377|Two Moons|macau|Macau|Macao
+378|Shady Pig|bali|Canggu|Indonesia
+382|The Waratah|sydney|Sydney|Australia
+387|Yoi|kyoto|Kyoto|Japan
+388|Subastor|sao-paulo|Sao Paulo|Brazil
+391|Domashniy Bar|almaty|Almaty|Kazakhstan
+395|Le Churchill|marrakech|Marrakesh|Morocco
+405|Morgana Lounge Bar|taormina|Taormina|Italy
+406|Netsu|dubai|Dubai|United Arab Emirates
+412|5L Speakeasy Bar|sofia|Sofia|Bulgaria
+416|Ory|munich|Munich|Germany
+417|Antique American Bar|bratislava|Bratislava|Slovakia
+419|Speak in Code|manchester|Manchester|United Kingdom
+423|Sky Bar & Restaurant|bratislava|Bratislava|Slovakia
+425|Everson Royce Bar|los-angeles|Los Angeles|United States
+431|Ruggine|bologna|Bologna|Italy
+440|Botanical by Alfonse|namur|Namur|Belgium
+445|Penicillin|shanghai|Shanghai|China
+455|Sartoria|palermo|Palermo|Italy
+462|BoB the other side|milan|Milan|Italy
+463|Maria Mezcal|lima|Lima|Peru
+465|El Koktel|warsaw|Warsaw|Poland
+473|Art|katowice|Katowice|Poland
+483|Noble Roots|belgrade|Belgrade|Serbia
+484|Dragonfly|edinburgh|Edinburgh|United Kingdom
+486|Bar Glue|liverpool|Liverpool|United Kingdom
+490|Urania|zagreb|Zagreb|Croatia
+495|Vibes|nice|Nice|France
+498|Nucleo|rome|Rome|Italy

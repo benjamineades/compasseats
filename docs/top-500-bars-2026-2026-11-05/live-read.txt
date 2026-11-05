@@ -1,0 +1,454 @@
+1|89e647b929|Bar Leone|b|a|hong-kong|3|9
+2|5c7c64ab03|HIMKOK Storgata Destilleri|b|a|oslo|6|1
+3|a45d654209|Montana|b|a|hong-kong||
+4|2d64be2724|Alquimico|b|a|cartagena|8|10
+5|f666df5301|Line Athens|b|a|athens|120|152
+6|5dde540c28|Handshake Speakeasy|b|a|mexico-city|4|3
+7|5d717b675f|Panda & Sons|b|a|edinburgh|1|4
+8|4834f0a15b|Hope|b|a|guangzhou|26|54
+9|fde05d62a1|Moebius Milano|b|a|milan|9|43
+10|01e8f7a7d3|Paradiso|b|a|barcelona|2|7
+11|be4d971102|The Connaught Bar|b|a|london|12|12
+12|54866b70a6|Sips|b|a|barcelona|10|2
+13|a4249334e6|Locale Firenze|b|a|florence|15|34
+14|10788d0e05|Angelita Madrid|b|a|madrid|24|21
+15|17d212b769|De Vie|b|a|paris|93|
+16|82b44b967f|Jigger & Pony|b|a|singapore|5|5
+17|114e7e85f2|Bar Us|b|a|bangkok|30|214
+18|b031886a48|Danico|b|a|paris|17|23
+19|f3bc486ac0|Lyaness|b|a|london|40|14
+20|bcb4e4b84f|Tres Monos|b|a|buenos-aires|13|13
+21|7354fda9db|The Cambridge Public House|b|a|paris|14|24
+22|1f97b4f29c|Bar Mauro|b|a|mexico-city|412|
+23|05b2f7610f|Exímia Bar|b|a|sao-paulo|43|496
+24|bfbc85db67|ARGO|b|a|hong-kong|69|101
+25|73438bd8cd|Lady Bee|b|a|lima|44|163
+26|0421aed12b|Seed Library NYC|b|a|new-york||
+27|012855b792|Gucci Giardino|b|a|florence|31|36
+28|846912e3a1|ZEST SEOUL|b|a|seoul|25|40
+29|8568e9d2e5|THE BAR IN FRONT OF THE BAR|b|a|athens|52|58
+30|fec141b0fc|Sip&Guzzle|b|a|new-york|51|107
+31|b12fffb75f|Maybe Sammy|b|a|sydney|16|8
+32|53059d0c81|TAN TAN|b|a|sao-paulo|19|39
+33|c7a3c0308a|Satan's Whiskers|b|a|london|22|35
+34|df9d307d66|Salmon Guru|b|a|madrid|11|15
+35|74a0eb0cc4|Mirror Bar|b|a|bratislava|46|114
+36|ff718d2b90|Baba au Rum|b|a|athens|20|18
+37|ecbb074260|Bar Nouveau|b|a|paris|18|32
+38|18ae06b942|BarroNegro Athens|b|a|athens|70|70
+39|4403c182f4|Devil’s Cut|b|a|madrid|34|
+40|f802b602c1|Dry Wave Cocktail Studio|b|a|bangkok|129|
+41|740d862737|BKK Social Club|b|a|bangkok|67|17
+42|c76570eed2|Waltz|b|a|london||
+43|2786cd9cb9|Scarfes Bar|b|a|london|21|27
+44|956e6ffb64|The Spy Bar|b|a|london|48|56
+45|79140112ef|Harry's Bar|b|a|paris|60|63
+46|02ebc28502|Boadas Cocktails|b|a|barcelona|54|55
+47|03f9ae3090|FRENI E FRIZIONI|b|a|rome|37|33
+48|c9867db238|Nouvelle Vague Tirana|b|a|tirana|39|90
+49|036cb7e5ed|Cochinchina|b|a|buenos-aires|23|146
+50|c15d0dc615|Bar Snack|b|a|new-york||
+51|08b99c5d91|Drink Kong|b|a|rome|27|20
+52|24dd660df4|Camparino in Galleria|b|a|milan|41|47
+53|1fa8307ed2|Double Chicken Please|b|a|new-york|49|11
+54|5fffaa9af2|Superbueno|b|a|new-york|35|105
+55|52bbfca7eb|The Clumsies|b|a|athens|32|22
+56|54a7c89399|Dr. Stravinsky cocktail bar|b|a|barcelona|29|48
+57|bbbd76c206|COA|b|a|hong-kong|28|19
+59|ca7462648a|VIRTÙ|b|a|tokyo|66|45
+60|3e100d6dc4|The Donovan Bar|b|a|london|55|72
+61|330958cefd|Bar Benfiddich|b|a|tokyo|42|26
+62|0398aa18f7|Penicillin|b|a|hong-kong|59|44
+63|39e15680eb|Atrium Bar|b|a|florence|82|77
+64|cdf6da8d11|El Gallo Altanero|b|a|guadalajara|112|153
+65|928fd51437|Stravinskij Bar|b|a|rome|94|
+66|6cd9c1b505|Carmen Medellín|b|a|medellin|375|
+67|528bcb4252|Employees Only|b|a|new-york|74|82
+68|6a52eabeef|Jewel of the South|b|a|new-orleans|36|62
+69|1c25b2bb07|Clemente Bar|b|a|new-york|77|
+70|e9eb241e35|Mag Cafe|b|a|milan|80|84
+71|42bbe62038|Bar Somma|b|a|singapore|122|
+72|40e59554e1|Tayēr + Elementary|b|c|london|7|6
+73|1423546ff8|La Punta Expendio de Agave|b|a|rome|194|144
+74|264b524873|Flying Dutchmen Cocktails|b|a|amsterdam|76|65
+75|128293c37e|Green Door Bar|b|a|berlin|283|
+76|835c6082aa|Cafe La Trova|b|a|miami|58|30
+77|1ff0982e3c|Backdoor 43|b|a|milan|96|132
+78|bd75262274|Fura|b|a|singapore|198|299
+79|25783f3dc4|Kwãnt Mayfair|b|a|london|108|37
+80|b3b51b159d|SVANEN Cocktailbar|b|a|oslo|88|325
+81|88c6365b3e|Seed Library NYC|b|a|london|61|51
+82|99a978b880|Red Frog|b|a|lisbon|50|60
+83|3418617247|Cat Bite Club|b|a|singapore|83|115
+84|091d79a6f2|Super Lyan|b|a|amsterdam|165|150
+85|1936e8ad9f|Side Hustle|b|a|london|79|71
+86|bfce45e8af|1862 Dry Bar|b|a|madrid|68|49
+87|27493434c0|1930 Cocktail Bar|b|a|milan|158|41
+88|9e292b3ff5|Dry|b|a|milan|136|304
+89|e86c58df78|Artesian|b|a|london|151|53
+91|9162f49ab7|Tjoget|b|a|stockholm|87|124
+92|04121927dd|Mamba Negra|b|a|medellin|402|
+93|5a0c96c3ee|Kumiko|b|a|chicago|101|142
+94|77c7853582|Sastrería Martinez, Bar oculto|b|a|lima|460|
+95|2a90808d57|ARCA|b|a|tulum|91|240
+96|afa90bcb58|Bar Pompette|b|a|toronto|57|120
+97|357802e073|Moonshiner|b|a|paris|81|79
+98|96ab20c41c|L'Antiquario|b|a|naples|65|64
+99|6723ea2cea|Jerry Thomas Speakeasy|b|a|rome|174|73
+100|a92da40289|Selva Oaxaca Cocktail Bar|b|a|oaxaca|72|75
+101|0a0425ab1b|Martiny’s|b|a|new-york|73|38
+102|e955672c8f|Mahaniyom Cocktail Bar|b|a|bangkok|107|67
+103|09431b9089|BAR 1661|b|a|dublin|201|232
+104|d1add621c8|Nutmeg & Clove|b|a|singapore|105|25
+105|e0686a098e|Tlecan|b|a|mexico-city|33|320
+106|0141814b1c|Overstory|b|a|new-york|56|16
+107|4a5e7acb5c|Thunderbolt|b|a|los-angeles|143|186
+108|96a41b5ec6|Bar Cham|b|a|seoul|147|353
+109|ad5e94ad80|Caretaker's Cottage|b|a|melbourne|47|160
+110|96b45598ae|Night Hawk|b|a|singapore|209|168
+111|acb8d6ce6c|Bar Trigona|b|a|kuala-lumpur|121|126
+112|b7731d6c56|Attaboy|b|a|new-york|104|81
+113|df00870d8d|Swift Soho|b|a|london|133|52
+114|59d44bb899|Mius|b|a|hong-kong||
+115|88a61f19b3|Rita Cocktails|b|a|milan|95|110
+116|f95a7eae43|DarkSide|b|a|hong-kong|117|96
+117|b60abb118f|The SG Club|b|a|tokyo|109|108
+118|825841b307|Little Red Door|b|a|paris|127|
+119|3503821ac6|찰스 H. Charles H. (H. Bar)|b|a|seoul|111|104
+120|64f6d69510|Mirate|b|a|los-angeles|166|255
+121|22e824e70a|Dukes Bar|b|a|london|85|50
+122|0afaabd3ce|Floreria Atlántico|b|a|buenos-aires|110|57
+123|d4713fdf10|Röda Huset|b|a|stockholm|78|195
+125|ee59820013|ViceVersa Miami|b|a|miami|184|
+126|51118f9027|schmuck.|b|a|new-york|102|
+127|b54e968e86|Baltra Bar|b|a|mexico-city|150|177
+128|818e796590|Native|b|a|singapore|103|59
+129|1b64a08928|A Bar with Shapes for a Name|b|a|london|63|129
+130|9f786ca890|Le Mary Celeste|b|a|paris|116|127
+131|6af8c74bd3|BOP|b|a|singapore||
+132|3c8603b388|Bar Sathorn|b|a|bangkok|410|
+133|5af1a142fe|Fifty Mils|b|a|mexico-city|114|134
+134|49982aa63d|Opium Bar|b|a|bangkok|169|284
+135|51674838f2|Silver Lyan|b|a|washington-dc|203|203
+136|64c396cc97|Candelaria|b|a|paris|84|83
+137|afdd93e931|Allegory|b|a|washington-dc|142|103
+139|9c916f0949|Galaxy Bar|b|a|dubai|182|161
+140|c9c25851ed|Bemelmans Bar|b|a|new-york|45|46
+141|9d7e3e0d94|Origin Bar|b|a|singapore|176|141
+142|5a10f59276|Live Twice|b|a|singapore|241|167
+143|85763dcb0d|Licorería Limantour|b|a|mexico-city|119|28
+146|7eda7ecaa2|True Laurel|b|a|san-francisco|157|130
+147|d8be9c5bb8|Quinary|b|a|hong-kong|155|76
+148|5bbf5bfa27|Rita's Tiki Room|b|a|milan|348|313
+149|943a7a1ba2|LIBRARY BAR|b|a|toronto||
+150|965f32f04d|The Court Bar. Palazzo Manfredi|b|a|rome|100|89
+151|18960e46d6|Firefly Bar|b|a|bangkok|245|
+152|7528a66f9b|Arts Bar|b|a|venice|204|420
+153|d046490a61|Tokyo Confidential|b|a|tokyo|89|74
+154|62d3a80d5a|Bar TRENCH|b|a|tokyo|185|145
+155|b36ed03992|Above Board|b|a|melbourne|132|171
+156|d0b6797a9a|American Bar at The Savoy|b|a|london|128|125
+157|315505b64f|Bar Volare|b|a|bologna|497|
+158|314a4e2d47|Alice Cheongdam|b|a|seoul|156|331
+159|3e2a8aa427|The Savory Project|b|a|hong-kong|75|29
+160|5821e6f420|La Petite Maison (LPM) Dubai|b|a|dubai|175|
+161|cc76232de7|Avra Bar|b|a|athens|160|397
+162|f8b60bb853|Bramble|b|a|edinburgh|177|189
+163|e7ad405be9|Bar Spirit Forward|b|a|bengaluru||
+164|1e153f586e|Trick Dog|b|a|san-francisco|164|181
+165|2613881bf1|Cinquanta - Spirito Italiano|b|a|pagani|98|92
+166|e2838a6bf1|Nightjar|b|a|london|71|151
+167|c65c071897|Atwater Cocktail Club|b|a|montreal|202|155
+168|21e55353a7|Via Ceresio, 7|b|a|milan|53|66
+169|5c115f5da3|Victor audio bar|b|a|buenos-aires||
+170|7d346b7684|Hero Restaurant|b|a|nairobi|469|371
+171|8aeb44db55|Bar Termini|b|a|london|130|118
+172|f3be5b1735|Atlas|b|a|singapore|38|31
+173|76668adb57|The Aubrey|b|a|hong-kong|135|122
+174|1918096a41|Wax On Bar|b|a|berlin|296|225
+175|2b29153019|High Five|b|a|tokyo|226|251
+176|b650f67cca|Bar 1802|b|a|paris|171|271
+177|2988652c65|Mimi Kakushi|b|a|dubai|64|123
+178|f01c7f187a|GOKAN|b|a|hong-kong|258|
+179|7c8e87c220|Clover Club|b|a|new-york|149|339
+181|9246bee346|Artifact|b|a|hong-kong|211|
+182|426f79ac2e|Le Syndicat Paris|b|a|paris|173|133
+183|97098d900b|Three Sheets Soho|b|a|london|115|91
+184|c5a953654f|Side Door|b|a|singapore|260|383
+185|941f41d72b|Vender Bar|b|a|taichung|381|
+186|d8a57ae393|Happy Accidents|b|a|albuquerque|318|
+187|efef7b9410|Toca da Raposa|b|a|lisbon|254|330
+188|4d06d43951|Joséphine|b|a|paris|314|
+189|549052a728|Bar Nayuta|b|a|osaka|242|253
+190|da8d395298|CopperBay|b|a|paris|113|69
+191|261395d97c|La Factoría|b|a|san-juan|153|111
+192|78b2df0a39|Zapote Bar|b|a|playa-del-carmen|163|185
+193|e60728f652|Smoke & Bitters|b|a|hiriketiya|152|354
+194|82ad00117c|Julep|b|a|houston|237|
+195|c412b929ae|Salmon Guru|b|a|milan|374|
+196|0f9e0a7d0e|Pacific Cocktail Haven|b|a|san-francisco|238|158
+197|05e3a1ae2d|The American Bar|b|a|auchterarder|139|220
+198|406641b4c6|Momus Bar|b|a|madrid|146|98
+199|0a2d39e6bd|Mo Bar - Mandarin Oriental, Shenzhen|b|a|shenzhen|291|
+200|13098c0869|La Sala de Laura|b|a|bogota|125|213
+201|d93d8d6d0f|Mandarin Garden|b|a|milan|168|97
+202|07a347cdb7|Black Pearl|b|a|melbourne|269|154
+203|9f118c39fc|Cure|b|a|new-orleans|309|
+204|570eb26822|EQUAL PARTS|b|a|london|261|333
+205|2c8eb14d3b|Cloakroom Bar|b|a|montreal|210|319
+206|6131c9eb7e|Dante NYC|b|a|new-york|123|143
+207|8df8ac22d3|Katana Kitten|b|a|new-york|197|140
+208|070a7decc4|Pulitzer's Bar|b|a|amsterdam|370|238
+209|bc2b977ab7|Bar Kaiju|b|a|miami|264|
+210|e002167a67|Botanist|b|a|vancouver|317|285
+211|c364550e8b|Bird|b|a|copenhagen|191|
+212|3a8435ad35|Barc|b|a|kathmandu|180|
+213|fa5fc953be|Penrose KL|b|a|kuala-lumpur|97|95
+214|5c8b7d69d0|Beachbum Berry's Latitude 29|b|a|new-orleans|244|490
+215|db36dd716d|Offtrack|b|a|singapore|270|
+216|9ec8d0e3c9|Best Intentions|b|a|chicago|465|408
+217|a40d3247d9|Foxtrot|b|a|lisbon|339|286
+218|3f63f68796|Ruby|b|a|copenhagen|99|93
+219|0403fb1677|Tell Camellia|b|a|hong-kong|300|300
+220|232cbce8db|Bar Les Ambassadeurs|b|a|paris|106|112
+221|579265aa74|Sora|b|a|phnom-penh|141|116
+222|2c999c532c|Hemingway Bar|b|a|prague|253|372
+223|bf9f86c005|The Dead Rabbit|b|a|new-york|126|109
+224|f7242985ce|Civil Liberties|b|a|toronto|256|235
+225|fdc71eac83|Lucy's Flower Shop|b|a|stockholm|265|190
+226|fcc9b663a5|Kaito del Valle|b|a|mexico-city|231|479
+227|9ee0da838c|Carrots Bar|b|a|jakarta||
+228|fd6d30880f|The Bellwood|b|a|tokyo|190|179
+229|6c4370c6a8|Nottingham Forest|b|a|milan|268|239
+230|03b28fe151|Sabina Sabe|b|a|oaxaca|145|182
+231|cb3cd230b2|The Elephant Room Singapore|b|a|singapore|219|80
+232|79d5359761|Obsidian Bar|b|a|shenzhen||
+233|aa449093e9|The Meadowlark|b|a|chicago|236|
+234|4c0dbcc0c6|Maison Premiere|b|a|new-york|186|196
+235|80496dda8c|The Old Man|b|a|hong-kong|313|309
+236|da8d7efe73|Peaches & Cream Bar|b|a|zagreb|330|
+237|915cf83d84|The Keefer Bar|b|a|vancouver|225|211
+238|5857606ead|FOCO|b|a|barcelona|451|422
+239|037c0c1e0c|Champagne Bar at The Surf Club|b|a|miami|208|315
+240|e922b62103|Manhattan|b|a|singapore|131|68
+241|d4e7351799|Bandista|b|a|houston||
+242|d2c1cb7228|Hanky Panky Cocktail Bar|b|a|mexico-city|62|42
+243|8efdf81741|ZLB23 Speakeasy|b|a|bengaluru|404|277
+244|e1ba80a398|Cosmo Pony|b|a|jakarta|206|
+246|93a3963f9d|Death & Co East Village|b|a|new-york|337|307
+247|71509290b0|Salmon Guru|b|a|dubai|199|197
+248|dabb8342a6|Nipperkin|b|a|london|86|61
+250|3074dc38e6|Bad Company 1920|b|a|madrid|322|275
+251|de378ecdb3|Quanto Basta|b|a|lecce|311|175
+252|dab15a929a|Terrible Baby|b|a|hong-kong|378|
+253|f0d3a8ee85|The Carousel Bar & Lounge|b|a|new-orleans|280|209
+254|fd4e1302bc|Santos y Desamparados|b|a|madrid|335|267
+255|0552ba91f4|Café de Nadie|b|a|mexico-city|328|243
+256|5807e401d9|Viajante87|b|a|london|170|135
+257|efc873f914|The Hudson Rooms|b|a|hanoi|266|
+259|0c3b941bb9|SIDECAR|b|a|new-delhi|167|102
+260|826c297928|Rasputin|b|a|florence|134|199
+261|9b6f7b64f2|Lair|b|a|new-delhi|161|295
+262|078cf5c796|Gold Bar at EDITION|b|a|tokyo|214|205
+263|cb79c0751f|Hey Palu|b|a|edinburgh|148|148
+264|67b0edf67d|BAR GOTO|b|a|new-york|279|187
+265|ce8f3ad381|Moonlight Experimental Bar|b|a|zaragoza|240|270
+266|608a7bb06a|G.O.D|b|a|bangkok||
+267|cc9755f309|Late Bloomers|b|a|zurich|332|
+268|d0c514cd67|STIR - Modern Classic Cocktail|b|a|ho-chi-minh-city|223|244
+269|0b94216775|Anonymous Bar|b|a|prague|275|288
+270|dd64d59972|Oriole|b|a|london|92|
+271|7d58fbced8|The Roosevelt Room|b|a|austin|305|250
+272|2dcb0bb68d|Bar Mood Taipei|b|a|taipei|263|
+273|c0bcf8d709|Vesper|b|a|bangkok|172|215
+274|7b6648edd0|Byrdi|b|a|melbourne|159|191
+275|f79c151601|Combat|b|a|paris|252|166
+276|bef43f853a|Lubna Milano|b|a|milan|162|
+277|c9b02066a6|Happiness Forgets|b|a|london|310|227
+278|27e6f36d11|Experimental Cocktail Club|b|a|paris|218|365
+279|418463e608|Gong-Gan|b|a|seoul|458|
+280|cfe0c5e039|Angel’s Share|b|a|new-york|200|138
+281|b3f2382cb5|Giacosa 1815|b|a|florence|215|252
+282|47c972fb32|Mace|b|a|new-york|246|230
+283|70d78d31d4|Ritz Bar|b|a|paris|247|487
+284|5f53bb827b|The Pontiac|b|a|hong-kong|372|202
+285|37889ef392|Sago House|b|a|singapore|248|106
+286|200744636d|Barrier|b|a|bergamo|482|
+287|8e0dfc7bba|Santa Cocktail Club|b|a|florence|295|447
+288|e2d85a0b22|Backdoor Bodega|b|a|george-town|470|321
+289|fa1773f2f9|AMARO BAR - London|b|a|london|259|236
+290|eb8ec4eb23|The 7 Jokers Cocktail Bar|b|a|athens|457|
+291|1bd8d24a78|Cantina OK!|b|a|sydney|189|310
+292|cb42831194|Rossio Gastrobar|b|a|lisbon|228|305
+293|d7fb47107b|Sexy Fish|b|a|london|439|149
+294|9cdafd245d|Dram Bar|b|c|london|183|218
+295|e8061415fb|Radio bar Tirana|b|a|tirana|389|
+296|ccf0b80a21|French 75 Bar|b|a|new-orleans|298|221
+297|60e8ffc199|SOKA Cocktail Bar|b|a|bengaluru|386|
+298|3154ab0916|Prophecy Cocktail Bar|b|a|vancouver||
+300|6670c4bede|To Infinity & Beyond|b|a|taipei|299|
+301|9d704d0f72|THREE X CO|b|a|kuala-lumpur|424|480
+302|eee71c3856|Widder Bar|b|a|zurich|250|226
+303|a924426e0a|The St. Regis Bar|b|a|macau|394|392
+304|5c5403ab08|Igiea Terrazza Bar|b|a|palermo|304|
+305|6f0b877a60|Lennon's|b|a|bangkok|462|306
+306|647df91aa5|Bekeb|b|a|san-miguel-de-allende|301|
+307|a0576465a8|Old Crow|b|a|zurich|373|373
+308|747cae52d8|The Sazerac Bar|b|a|new-orleans|395|269
+309|2d106939fa|Vandell|b|a|los-angeles||
+310|8fc85ce002|Cry Baby Gallery|b|a|toronto||
+311|3d02bab0b5|Milady's|b|a|new-york|140|157
+312|60f0400918|Le Chamber|b|a|seoul|196|360
+313|e55771ca10|Bar am Wasser|b|a|zurich|362|483
+314|fe0cb79da6|Smuggler's Cove|b|a|san-francisco|329|180
+315|086948f186|Aman Venice|r|a|venice|216|254
+316|3544ed6cee|Anvil|b|a|houston|326|
+317|da1a10b6cb|夜香木 yakoboku|b|a|kumamoto||
+318|084f959b14|28 Hongkong St|b|a|singapore|278|137
+319|7bac3c68f8|Quattro Teste|b|a|lisbon|492|386
+320|7035175286|Moonrock|b|a|tainan||494
+322|d6be15b37d|Employees Only|b|a|singapore|178|147
+323|37e2e6b8e7|Black Angel's Bar|b|a|prague|357|268
+325|cc4bfd02d9|Eau De Vie Sydney|b|a|melbourne|405|279
+326|c6367da3c6|Speak Low|b|a|shanghai|312|334
+327|19f3589a35|AER|b|a|mumbai|319|219
+328|3a4cc16224|PCO Bar|b|a|new-delhi|193|228
+329|fcf88c2ae3|Library By The Sea|b|a|grand-cayman|390|
+330|a4b17aaf23|Sweet Liberty Drinks & Supply Company|b|a|miami|368|259
+331|3ca9cad8b7|Bar Leather Apron|b|a|honolulu||410
+332|d6686e448b|Alto Rooftop|b|a|cervia||
+333|ac2515e93c|TATA Cocktail Bar|b|a|copenhagen|273|347
+334|0c7f92059b|Savile Row|b|a|brisbane|438|
+335|a4e307ad26|Bar Las Brujas|b|a|mexico-city|90|86
+336|861fcf255d|Couch Stirchley|b|a|birmingham||475
+337|858b9235c9|Door 74|b|a|amsterdam|343|233
+338|df1825084a|Savas bar cócteles|b|a|madrid|420|351
+340|1e8e0f2809|CLASSIQUE|b|a|paris|308|322
+341|22fc005070|Modernhaus|b|a|jakarta|293|
+342|3df1b0fa85|Stay Gold|b|a|singapore|285|176
+343|da96fa6ee2|Sober Company|b|a|shanghai|282|452
+344|3713ed47f6|Yacht Club|b|a|denver||
+345|136bc9d089|Carnaval|b|a|lima|239|159
+346|74349d4485|Bar Becketts Kopf|b|a|berlin|452|
+347|79530cadea|The Curator Coffee & Cocktails|b|a|manila|227|262
+348|7476deab7c|CopperBay Lancaster|b|a|paris|331|324
+349|6282a1b0d0|Plumette|b|a|brussels|468|
+350|06d30d61f9|Pony Up|b|a|shanghai||
+351|b4f551bee4|The Diplomat|b|a|hong-kong||
+352|b01a93b29e|Williams & Graham|b|a|denver||
+353|09b69840da|Torto - Bar & Cocktails|b|a|porto|413|
+354|e971d33539|Otro Bar|b|a|san-jose||
+355|953b4951da|Workshop14|b|a|hanoi||
+356|fcbbe94857|Manifattura|b|a|florence|234|263
+357|ee436b23b5|Jerry Thomas Bar Room|b|a|rome|230|377
+358|269e419f3c|Bisou.|b|a|paris|179|172
+359|0ed32864c0|THE ROYAL COCKTAIL CLUB|b|a|porto|345|237
+360|7b1ddd7c98|Symbiose|b|a|bordeaux|377|
+361|0383463b57|fable|b|a|cape-town|353|451
+362|012465dd2b|The Bombay Canteen|b|a|mumbai|232|276
+363|0c88b9f57a|Swizzle Rum Bar & Drinkery|b|a|miami||
+364|e9057f267e|Schumann's|b|a|munich||409
+365|2d547160d8|Missy's This That|b|a|calgary|485|
+366|6177a50e7f|The Bulgari Bar|b|a|rome|255|
+367|4dcdddb39b|The Long Island Bar|b|a|new-york||247
+368|412c9eeae2|Three Sheets Dalston|b|a|london|222|169
+369|91b54ffbe5|Velvet by Salvatore Calabrese|b|a|london|144|78
+370|a5c93351ab|Sentaku Izakaya|b|a|bologna|272|462
+371|98fc69d15a|SOMA Soho|b|a|london|346|338
+372|4249f54d54|Please Don't Tell|b|a|new-york|235|390
+373|52809f8499|Bar Hemingway|b|a|paris|303|217
+376|3bf95b8a77|JungleBird|b|a|kuala-lumpur|398|273
+379|82eb000e06|Laowai|b|a|vancouver|340|241
+380|19ecd3b830|Bijou Drinkery Room|b|a|mexico-city|422|
+381|947003ef80|Duck and Cover - Cocktailbar|b|a|copenhagen|359|345
+383|76024bcb58|BEE’S KNEES|b|a|kyoto|277|266
+384|c869e42840|Del Diego Cocktail Bar|b|a|madrid|487|
+385|4065bce4d2|The Opposites|b|a|hong-kong|342|
+386|84449a64ca|Rattlebag|b|a|belfast||
+389|01598d2686|Monkey Bar|b|a|berlin||433
+390|e5fac9252c|Bar dos Arcos|b|a|sao-paulo|336|
+392|c41317d511|LAMP BAR|b|a|nara||
+393|e4c9d46458|La Ménagère|b|a|florence|289|
+394|8d2b36ffe0|The Bulgari Bar|b|a|milan|391|292
+396|170ed61fc0|Dean & Nancy on 22|b|a|sydney|138|201
+397|d2186520c0|KABIN|b|a|new-york||
+398|d16359a1c2|Monkey Mash|b|a|lisbon|213|362
+399|b375d8b43a|Naked|b|a|athens||
+400|048a018db9|Buck and Breck|b|a|berlin||492
+401|4ab9a6f08e|Realm Of The 52 Remedies|b|a|san-diego||
+402|aa7e8e2a22|SCHOFIELD'S BAR|b|a|manchester|224|174
+403|647f6bcaf6|The St. Regis Bar|b|a|jakarta|302|
+404|367fcd4044|Sin+Tax|b|a|johannesburg|195|170
+407|3a86d31125|Il Mercante|b|a|venice|443|407
+408|57ef0713b5|Le Lion • Bar de Paris|b|a|hamburg|495|290
+409|f26eaf4d14|Caffe Concerto Paszkowski|b|a|florence|379|
+410|54393bdd58|Eve Bar Covent Garden|b|a|london||
+411|5ee4d73a7e|The Aviary|b|a|chicago||
+413|56ad6e3295|El Barón|b|a|cartagena|351|204
+414|6b410785f7|The Milk Thistle|b|a|bristol|315|298
+415|046b5ba9af|CMYK|b|a|changsha||
+418|c75253b519|The Absent Ear|b|a|glasgow|466|
+420|a542bfff02|The Chug Club|b|a|hamburg||418
+421|7ae5011bbc|Mother|b|a|toronto|321|445
+422|475af214b9|Liz Cocktail e Wine|b|a|rio-de-janeiro|354|350
+424|71eff9c5a1|The Coldroom|b|a|montreal|364|364
+426|2492107aef|Mathilda's Cocktail Bar|b|a|istanbul|423|
+427|baa199026d|Dante West Village|b|a|new-york||
+428|9d6455abe8|Hotsy Totsy Budapest|b|a|budapest|267|
+429|2e38c8fac4|Reka:Bar|b|a|kuala-lumpur|205|265
+430|278e2d6648|Mizunara: The Library|b|a|hong-kong|297|260
+432|4942bd061b|Honeycomb Hi-Fi|b|a|dubai|243|207
+433|b834011466|Nickel City|b|a|austin|406|
+434|57c1a21b09|Bar Oldenhof|b|a|amsterdam||471
+435|90ba5c99b2|Purgatório Bar|b|a|salvador|476|430
+436|45c66b8d89|Bar 878|b|a|buenos-aires|441|342
+437|37c7815dd9|Slink & Bardot|b|a|mumbai|434|
+438|fc1bc8c4d2|Bar Mordecai|b|a|toronto|154|223
+439|c937e34d80|Bar Kinky|b|a|london||
+441|c6b90ebdc9|Moretenders’ Cocktail Crib & Sushi|b|a|istanbul|480|493
+442|b27a885361|Coley|b|a|kuala-lumpur|417|455
+443|c054d2d195|Il Gusto di XINGE|b|a|florence|448|
+444|d71e9ab86c|Balderdash|b|a|copenhagen|383|
+446|2845fa21b3|Service Bar DC|b|a|washington-dc|249|258
+447|24f273b619|Amelia by Paulo Airaudo|b|a|dubai|251|399
+448|0d6a554162|COA|b|a|shanghai|411|
+449|edf86b4152|Summer Experiment|b|a|ho-chi-minh-city|407|
+450|f77c21875a|Hecate|b|a|boston|366|474
+451|3f7358fd1e|JEFFER cocktails & friends|b|a|pisa||442
+452|0a791e5a9b|Blind Tiger|b|a|dubai|233|291
+453|99ced2f109|Madame Pang|b|a|bordeaux|446|
+454|bb1c65d427|Tiao|b|a|beijing||
+456|7838b37a31|Depero Club|b|a|rieti|338|449
+457|b294e1f0aa|Front/Back|b|a|accra|387|388
+458|05e0905338|CINCO lounge|b|a|lisbon|333|486
+459|9d7a42beb9|Isa Restaurant & Cocktail Bar|b|a|madrid|181|94
+460|8d029668f2|Bitter Bar|b|a|florence|349|
+461|d7a3958beb|A for Athens|b|a|athens||406
+464|aa97999d76|Piano 35 lounge bar|b|a|turin|361|
+466|062ae78893|Carrer de l'Aldea|b|a|barcelona||
+467|ca1582b31c|Lab 22|b|a|cardiff|306|349
+468|9812f7966f|14 De La Rosa|b|a|barcelona|355|314
+469|01628a9fb2|Enigma|b|a|ho-chi-minh-city|445|357
+470|35b28ed862|Santana Bar|b|a|sao-paulo|437|
+471|a512539ec2|oto|b|a|manila||
+472|c281268010|Bar Next Door|b|a|los-angeles||
+474|579388e6c8|Especiarium Bar|b|a|barcelona||481
+475|36d3e0104b|Baker's Bar|b|a|montevideo|431|
+476|33d1ebb75c|Passing Fancies|b|a|birmingham|400|440
+477|97dbf1fe77|LOCKDOWN|b|a|hong-kong|217|113
+479|05b81445a4|MÙZSA|b|a|budapest|427|
+480|a1b2c31972|TAG|b|a|krakow||
+481|18616a0247|The Alchemix|b|a|barcelona|474|
+482|2bf502a1d0|Library Bar|b|a|abu-dhabi|486|
+485|3f6b53f1d9|Vintage Cocktail Club|b|a|dublin|392|381
+487|60f5d02279|Shinji's|b|a|new-york|382|
+488|d4cd1b3fe3|Lidkoeb|b|a|copenhagen|376|426
+489|b09fdb818a|Proof|b|a|calgary||460
+491|9285a0ea9e|Chihuahua Julep|b|a|helsinki|454|
+492|8a922f068d|Bar Le Mal Nécessaire|b|a|montreal|350|398
+493|d5f67fdd6e|Layla - Eatery & Bar|b|a|ho-chi-minh-city||472
+494|a267f95c3b|Umi|r|a|panama-city||
+496|39790c5a55|Kinsman|b|a|hong-kong|323|
+497|5753ab6302|BAR SOKO|b|a|seoul|498|437
+499|ecd1daeb67|Punch Room Madrid|b|a|madrid|287|297
+500|d4569d460d|Punch Room Tokyo|b|a|tokyo|262|
