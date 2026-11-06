@@ -1,5 +1,5 @@
 -- load-michelin-2027-philippines-2026-11-05.sql
--- CompassEats, Nov 6 2026. Michelin Philippines 2027 and the 2026 label. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin Philippines 2027 and the 2026 label. Ben choices 1-6:A, Nov 5 23:54 ET. This file runs only after Ben's "go".
 -- Rule 2.1.7: the 34 legacy rows hold the 2026 edition, the first Philippine edition (Oct 30, 2025: https://guide.michelin.com/ph/en/article/michelin-guide-ceremony/full-list-michelin-guide-ph-2026). Relabel 2025 -> 2026, source_url = that article. Retire 0.
 -- Then 41 new rows, year 2027 (Oct 29, 2026: https://guide.michelin.com/ph/en/article/michelin-guide-ceremony/full-list-michelin-guide-ph-2027): Two Stars 1, One Star 9, Bib Gourmand 31, source_url = the card (/us/en/). 11 new venues, 2 new cities.
 -- Source: docs/michelin-2027-philippines-2026-11-05/relay-ph-2027-list-pages-2026-11-05.txt sha256 08b28ab3b5cf1ee81c8e46f4469f3c6b86d18f951783b53aa91a6c5aab502cbc.
@@ -159,9 +159,9 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 41 THEN RAISE EXCEPTION 'awards %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',34,'relabel:load-michelin-2027-philippines-2026-11-05 | rule 2.1.7: Philippines edition live at capture = 2026 (Oct 30, 2025, https://guide.michelin.com/ph/en/article/michelin-guide-ceremony/full-list-michelin-guide-ph-2026) | year 2025 -> 2026, article URL, retire 0 | DRAFT, choices not yet given'),
-    ('michelin','award',41,'cleanup:load-michelin-2027-philippines-2026-11-05 | Philippines 2027, Oct 29, 2026, https://guide.michelin.com/ph/en/article/michelin-guide-ceremony/full-list-michelin-guide-ph-2027 | Two Stars 1, One Star 9, Bib 31 | relay sha256 08b28ab3b5cf1ee81c8e46f4469f3c6b86d18f951783b53aa91a6c5aab502cbc | DRAFT, choices not yet given'),
-    ('michelin','city_label',22,'cleanup:load-michelin-2027-philippines-2026-11-05 | city labels of 11 new venues, new cities pampanga, las-pinas-metro-manila | DRAFT, choices not yet given');
+    ('michelin','award',34,'relabel:load-michelin-2027-philippines-2026-11-05 | rule 2.1.7: Philippines edition live at capture = 2026 (Oct 30, 2025, https://guide.michelin.com/ph/en/article/michelin-guide-ceremony/full-list-michelin-guide-ph-2026) | year 2025 -> 2026, article URL, retire 0 | Ben choices 1-6:A, Nov 5 23:54 ET'),
+    ('michelin','award',41,'cleanup:load-michelin-2027-philippines-2026-11-05 | Philippines 2027, Oct 29, 2026, https://guide.michelin.com/ph/en/article/michelin-guide-ceremony/full-list-michelin-guide-ph-2027 | Two Stars 1, One Star 9, Bib 31 | relay sha256 08b28ab3b5cf1ee81c8e46f4469f3c6b86d18f951783b53aa91a6c5aab502cbc | Ben choices 1-6:A, Nov 5 23:54 ET'),
+    ('michelin','city_label',22,'cleanup:load-michelin-2027-philippines-2026-11-05 | city labels of 11 new venues, new cities pampanga, las-pinas-metro-manila | Ben choices 1-6:A, Nov 5 23:54 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11730 OR (SELECT count(*) FROM venues WHERE status='active') <> 11418 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28746 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 41 THEN RAISE EXCEPTION 'awards after'; END IF;
