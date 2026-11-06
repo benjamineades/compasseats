@@ -1,0 +1,7 @@
+ve_072176a06f|11825|Bib Gourmand|2025|ci_922f13fdf0|riga|active|$$|smormodernbistro|SMOR Modern Bistro
+ve_19940406fd|9985|Bib Gourmand|2025|ci_f28662c7a5|cesis|active|$$|hevanadzinsziemelurestorans|H.E. Vanadziņš. Ziemeļu restorāns
+ve_4e6e00fcea|7557|One Star|2025|ci_922f13fdf0|riga|active|$$$$|johnchefshall|John Chef's Hall
+ve_99bd11222f|11826|Bib Gourmand|2025|ci_922f13fdf0|riga|active|$$|snatch|Snatch
+ve_a79704e992|11824|Bib Gourmand|2025|ci_922f13fdf0|riga|active|$$|shoyu|Shōyu
+ve_c8293fb725|7559|One Star|2025|ci_922f13fdf0|riga|active|$$$$|maxcekotkitchen|Max Cekot Kitchen
+ve_fc08eea783|11823|Bib Gourmand|2025|ci_922f13fdf0|riga|active|$$|milda|Milda

@@ -1,0 +1,8 @@
+venue_id	old_address_data_venues_json	card_address	result
+ve_072176a06f	Krišjāņa Valdemāra iela 27-29, Centra rajons, Rīga, LV-1010, Latvia	Krišjāņa Valdemāra iela 27-29, Riga, 1010, Latvia	same street, number, postcode
+ve_19940406fd	Rīgas iela 15, Cēsis, Cēsis pilsēta, Cēsu novads, LV-4101, Latvia	Rīgas iela 15, Cēsis, 4101, Latvia	same street, number, postcode
+ve_4e6e00fcea	Ausekļa iela 22, Centra rajons, Rīga, LV-1010, Latvia	A22 Hotel, Ausekļa iela 22, Riga, 1010, Latvia	same street, number, postcode
+ve_99bd11222f	Elizabetes iela 39, Centra rajons, Rīga, LV-1010, Latvia	Elizabetes iela 39, Riga, 1010, Latvia	same street, number, postcode
+ve_a79704e992	Ausekļa iela 20, Centra rajons, Rīga, LV-1010, Latvia	Ausekļa iela 20, Riga, 1010, Latvia	same street, number, postcode
+ve_c8293fb725	Jelgavas iela 42, Zemgales priekšpilsēta, Rīga, LV-1004, Latvia	Jelgavas iela 42, Riga, 1004, Latvia	same street, number, postcode
+ve_fc08eea783	Grēcinieku iela 26, Centra rajons, Rīga, LV-1050, Latvia	Grēcinieku iela 26, Riga, 1050, Latvia	same street, number, postcode

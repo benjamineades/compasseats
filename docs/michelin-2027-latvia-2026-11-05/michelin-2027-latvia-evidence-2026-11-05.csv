@@ -1,0 +1,10 @@
+group,category_2027,card_name,card_city,card_price,card_url,venue_id,venue_name,award_id_relabelled,category_2026,new_2025_row,venue_price
+new venue,Bib Gourmand,Baltā Kaza,Riga,€€,https://guide.michelin.com/us/en/riga-region/riga_1991577/restaurant/balta-kaza,ve_eb67a13d26,Baltā Kaza,,,,
+new venue,Bib Gourmand,Café Mimosa,Riga,€,https://guide.michelin.com/us/en/riga-region/riga_1991577/restaurant/cafe-mimosa,ve_6b3fda5d22,Café Mimosa,,,,
+"name differs, same address",Bib Gourmand,H.E. Vanadziņš,Cēsis,€€,https://guide.michelin.com/us/en/vidzeme/cesis_1988584/restaurant/h-e-vanadzins,ve_19940406fd,H.E. Vanadziņš. Ziemeļu restorāns,9985,Bib Gourmand,,$$
+exact,Bib Gourmand,Milda,Riga,€€,https://guide.michelin.com/us/en/riga-region/riga_1991577/restaurant/milda,ve_fc08eea783,Milda,11823,Bib Gourmand,Bib Gourmand,$$
+"name differs, same address",Bib Gourmand,SMØR Bistro,Riga,€€,https://guide.michelin.com/us/en/riga-region/riga_1991577/restaurant/smor-bistro,ve_072176a06f,SMOR Modern Bistro,11825,Bib Gourmand,,$$
+exact,Bib Gourmand,Shōyu,Riga,€€,https://guide.michelin.com/us/en/riga-region/riga_1991577/restaurant/shoyu,ve_a79704e992,Shōyu,11824,Bib Gourmand,Bib Gourmand,$$
+exact,Bib Gourmand,Snatch,Riga,€€,https://guide.michelin.com/us/en/riga-region/riga_1991577/restaurant/snatch,ve_99bd11222f,Snatch,11826,Bib Gourmand,Bib Gourmand,$$
+exact,One Star,JOHN Chef's Hall,Riga,€€€€,https://guide.michelin.com/us/en/riga-region/riga_1991577/restaurant/john-chef-s-hall,ve_4e6e00fcea,John Chef's Hall,7557,One Star,One Star,$$$$
+exact,One Star,Max Cekot Kitchen,Riga,€€€€,https://guide.michelin.com/us/en/riga-region/riga_1991577/restaurant/max-cekot-kitchen,ve_c8293fb725,Max Cekot Kitchen,7559,One Star,One Star,$$$$
