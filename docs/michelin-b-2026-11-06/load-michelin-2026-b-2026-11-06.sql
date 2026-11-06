@@ -1,5 +1,5 @@
 -- load-michelin-2026-b-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin group B: Poland, Croatia, Slovenia 2026. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin group B: Poland, Croatia, Slovenia 2026. Ben choices 1-5:A, Nov 6 09:22 ET. This file runs only after Ben's "go".
 -- 86 new 2026 rows (Poland 45, Croatia 22, Slovenia 19), /us/en/ card URL. 5 rows already labelled 2026 get the card URL. 8 sourced rows checked, no change. Legacy 2025 rows stay. Relabel 0. Retire 0.
 -- 19 new venues and 9 new cities, all Poland.
 -- Source: docs/michelin-b-2026-11-06/relay-b-2026-list-pages-2026-11-06.txt sha256 69dca933c4a4070625876a5f28565efe09aa89663a09feb7b63a34d09dbc36d5.
@@ -198,10 +198,10 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 86 THEN RAISE EXCEPTION 'awards %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',46,'cleanup:load-michelin-2026-b-2026-11-06 | rule 2.1.1 and 2.1.7: Poland 2026, May 27, 2026, https://guide.michelin.com/pl/en/article/michelin-guide-ceremony/michelin-guide-poland-2026-news | legacy 2025 rows stay, relabel 0, retire 0 | 45 new rows, 19 new venues, 9 new cities, 1 rows labelled 2026 get the card URL | relay sha256 69dca933c4a4070625876a5f28565efe09aa89663a09feb7b63a34d09dbc36d5 | DRAFT, choices not yet given'),
-    ('michelin','award',24,'cleanup:load-michelin-2026-b-2026-11-06 | rule 2.1.1 and 2.1.7: Croatia 2026, Jun 25, 2026, https://guide.michelin.com/en/article/michelin-guide-ceremony/the-michelin-guide-croatia-2026-is-unveiled | legacy 2025 rows stay, relabel 0, retire 0 | 22 new rows, 2 rows labelled 2026 get the card URL | relay sha256 69dca933c4a4070625876a5f28565efe09aa89663a09feb7b63a34d09dbc36d5 | DRAFT, choices not yet given'),
-    ('michelin','award',21,'cleanup:load-michelin-2026-b-2026-11-06 | rule 2.1.1 and 2.1.7: Slovenia 2026, Jun 16, 2026, https://guide.michelin.com/en/article/news-and-views/the-michelin-guide-slovenia-2026-is-out | legacy 2025 rows stay, relabel 0, retire 0 | 19 new rows, 2 rows labelled 2026 get the card URL | relay sha256 69dca933c4a4070625876a5f28565efe09aa89663a09feb7b63a34d09dbc36d5 | DRAFT, choices not yet given'),
-    ('michelin','city_label',38,'cleanup:load-michelin-2026-b-2026-11-06 | city labels of 19 new Poland venues | DRAFT, choices not yet given');
+    ('michelin','award',46,'cleanup:load-michelin-2026-b-2026-11-06 | rule 2.1.1 and 2.1.7: Poland 2026, May 27, 2026, https://guide.michelin.com/pl/en/article/michelin-guide-ceremony/michelin-guide-poland-2026-news | legacy 2025 rows stay, relabel 0, retire 0 | 45 new rows, 19 new venues, 9 new cities, 1 rows labelled 2026 get the card URL | relay sha256 69dca933c4a4070625876a5f28565efe09aa89663a09feb7b63a34d09dbc36d5 | Ben choices 1-5:A, Nov 6 09:22 ET'),
+    ('michelin','award',24,'cleanup:load-michelin-2026-b-2026-11-06 | rule 2.1.1 and 2.1.7: Croatia 2026, Jun 25, 2026, https://guide.michelin.com/en/article/michelin-guide-ceremony/the-michelin-guide-croatia-2026-is-unveiled | legacy 2025 rows stay, relabel 0, retire 0 | 22 new rows, 2 rows labelled 2026 get the card URL | relay sha256 69dca933c4a4070625876a5f28565efe09aa89663a09feb7b63a34d09dbc36d5 | Ben choices 1-5:A, Nov 6 09:22 ET'),
+    ('michelin','award',21,'cleanup:load-michelin-2026-b-2026-11-06 | rule 2.1.1 and 2.1.7: Slovenia 2026, Jun 16, 2026, https://guide.michelin.com/en/article/news-and-views/the-michelin-guide-slovenia-2026-is-out | legacy 2025 rows stay, relabel 0, retire 0 | 19 new rows, 2 rows labelled 2026 get the card URL | relay sha256 69dca933c4a4070625876a5f28565efe09aa89663a09feb7b63a34d09dbc36d5 | Ben choices 1-5:A, Nov 6 09:22 ET'),
+    ('michelin','city_label',38,'cleanup:load-michelin-2026-b-2026-11-06 | city labels of 19 new Poland venues | Ben choices 1-5:A, Nov 6 09:22 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11831 OR (SELECT count(*) FROM venues WHERE status='active') <> 11513 OR (SELECT count(*) FROM venues WHERE status='closed') <> 318 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 29052 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 86 THEN RAISE EXCEPTION 'awards after'; END IF;
