@@ -1,6 +1,6 @@
 -- load-michelin-d-norway-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin group D Norway. DRAFT, choices not yet given. This file runs only after Ben's "go".
--- 20 rows keep year 2026 and get the card URL. 2 rows get the article URL. Relabel 0. Retire 0. No new rows, no new venues, no closures.
+-- CompassEats, Nov 6 2026. Michelin group D Norway. Ben NO 1-5: A, Nov 6 2026 15:17 ET. This file runs only after Ben's "go".
+-- 20 rows keep year 2026 and get the card URL. 2 rows get the archive capture URL. Relabel 0. Retire 0. No new rows, no new venues, no closures.
 -- Source: relay-no-2026-cards-2026-11-06.txt sha256 51c51361b6be81bed2451afd438ba3185d36934607f5bbbd6c7f6128d4fcff51.
 -- Expected after: awards 29052 unchanged; ledger 317 rows; audit_log +22.
 BEGIN;
@@ -58,7 +58,7 @@ BEGIN
   UPDATE awards a SET source_url=split_part(x,'~',4) FROM regexp_split_to_table(rl2,E'\n') x WHERE a.id=split_part(x,'~',1)::bigint;
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 2 THEN RAISE EXCEPTION 'article urls %', n; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',22,'cleanup:load-michelin-d-norway-2026-11-06 | rule 2.1.7: Nordic 2026, Jun 1, 2026, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-nordic-denmark-finland-iceland-norway-sweden-2026-new-stars-bib-gourmands-special-awards | year stays 2026, source_url = the card (/us/en/), all 24 card labels 2026 read Nov 6 2026, retire 0 | archive capture URL (card left the site, capture after the ceremony): 7119 À L’aise (Oslo): card a-l-aise 404 on Nov 6 2026, capture no/en Jun 1 2026 21:34 UTC label 2026 One Star, named One Star in the Nordic 2026 full star list; 7100 Bar Amour (Oslo): card bar-amour 404 on Nov 6 2026, capture no/en Jun 1 2026 21:34 UTC label 2026 One Star, full star list marks it Now Closed | relay sha256 51c51361b6be81bed2451afd438ba3185d36934607f5bbbd6c7f6128d4fcff51 | DRAFT, choices not yet given');
+    ('michelin','award',22,'cleanup:load-michelin-d-norway-2026-11-06 | rule 2.1.7: Nordic 2026, Jun 1, 2026, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-nordic-denmark-finland-iceland-norway-sweden-2026-new-stars-bib-gourmands-special-awards | year stays 2026, source_url = the card (/us/en/), all 24 card labels 2026 read Nov 6 2026, retire 0 | archive capture URL (card left the site, capture after the ceremony): 7119 À L’aise (Oslo): card a-l-aise 404 on Nov 6 2026, capture no/en Jun 1 2026 21:34 UTC label 2026 One Star, named One Star in the Nordic 2026 full star list; 7100 Bar Amour (Oslo): card bar-amour 404 on Nov 6 2026, capture no/en Jun 1 2026 21:34 UTC label 2026 One Star, full star list marks it Now Closed | relay sha256 51c51361b6be81bed2451afd438ba3185d36934607f5bbbd6c7f6128d4fcff51 | Ben NO 1-5: A, Nov 6 2026 15:17 ET');
   -- POST gates
   IF (SELECT count(*) FROM awards) <> 29052 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7821 THEN RAISE EXCEPTION 'Michelin after'; END IF;

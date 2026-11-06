@@ -27,6 +27,7 @@ assert len({p[2] for p in pairs}) == len(pairs)
 rl = sorted((int(a), f"{a}~{v}~{cards[s]['cat']}~{cards[s]['url']}") for s, v, a in pairs)
 RL = '\n'.join(x for _, x in rl); N = len(rl); RA = C['rows_after']
 ART = C.get('article', []); NA = len(ART)
+AK = C.get('art_kind', 'article'); ART_TXT = {'article': ('article URL (card left the site, no capture after the ceremony)', ' (article)', 'article url set: '), 'capture': ('archive capture URL (card left the site, capture after the ceremony)', ' (archive capture)', 'capture url set: ')}[AK]
 RL2 = '\n'.join(f"{a}~{v}~{c}~{u}" for a, v, c, u, k, note in sorted(ART))
 art_gate = ''.join(f"  IF (SELECT count(*) FROM awards WHERE source_url='{u}') <> {k} THEN RAISE EXCEPTION 'article url rows {a}'; END IF;\n" for a, v, c, u, k, note in ART)
 art_pre = (f"""  IF md5(rl2) <> '{md5(RL2)}' THEN RAISE EXCEPTION 'article plan text'; END IF;
@@ -37,9 +38,8 @@ art_pre = (f"""  IF md5(rl2) <> '{md5(RL2)}' THEN RAISE EXCEPTION 'article plan 
 art_write = (f"""  UPDATE awards a SET source_url=split_part(x,'~',4) FROM regexp_split_to_table(rl2,E'\\n') x WHERE a.id=split_part(x,'~',1)::bigint;
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> {NA} THEN RAISE EXCEPTION 'article urls %', n; END IF;
 """) if ART else ''
-art_line = f' {NA} rows get the article URL.' if ART else ''
+art_line = f" {NA} rows get the {'article' if AK == 'article' else 'archive capture'} URL." if ART else ''
 rl2_decl = f"  rl2 text := $plan${RL2}$plan$;\n" if ART else ''
-AK = C.get('art_kind', 'article'); ART_TXT = {'article': ('article URL (card left the site, no capture after the ceremony)', ' (article)', 'article url set: '), 'capture': ('archive capture URL (card left the site, capture after the ceremony)', ' (archive capture)', 'capture url set: ')}[AK]
 art_note = (' | ' + ART_TXT[0] + ': ' + '; '.join(f"{a} {note}" for a, v, c, u, k, note in ART)) if ART else ''
 HV = ', '.join(f"({a}, '{v}', '{cards[s]['url']}')" for a, v, s in C['have_url'])
 have_gate = (f"  IF (SELECT count(*) FROM awards WHERE (id, venue_id, source_url) IN ({HV})) <> {len(have)} THEN RAISE EXCEPTION 'rows with URL'; END IF;\n") if have else ''
