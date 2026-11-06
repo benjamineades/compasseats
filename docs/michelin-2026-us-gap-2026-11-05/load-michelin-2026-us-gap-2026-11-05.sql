@@ -1,5 +1,5 @@
 -- load-michelin-2026-us-gap-2026-11-05.sql
--- CompassEats, Nov 5 2026. Michelin US gap: California and Florida. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 5 2026. Michelin US gap: California and Florida. Ben, Nov 5, 2026, 23:06 ET: 1-6 A. This file runs only after Ben's "go".
 -- Rule 2.1.1 and 2.1.7. California: stars June 24, 2026 (https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california), Bibs May 28, 2026 (https://guide.michelin.com/us/en/article/michelin-guide-ceremony/california-s-most-affordable-restaurants-in-2026). Florida: May 28, 2026 (https://guide.michelin.com/us/en/article/michelin-guide-ceremony/every-michelin-starred-restaurant-in-florida-for-2026-and-the-year-s-key-trends-copy1). Site edition 2026, population 267 venue pages. 2027: no edition.
 -- Test of named changes: California new tiers 3, new Bibs 7, Florida new stars 2, new Bibs 10: 0 of 22 in the 2025 rows. The 2025 rows hold the 2025 edition. Retire 0, relabel 0.
 -- 225 rows labelled 2026 with no URL take a URL: 221 the card, 4 the 2026 article (no card today). 2 of the 221 go Two Stars to One Star (Caruso's 6591, Osteria Mozza 6177).
@@ -338,9 +338,9 @@ BEGIN
   UPDATE cities SET venues_count=76 WHERE id='ci_c218492ef0' AND venues_count=77; GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'city san-francisco %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',225,'cleanup:load-michelin-2026-us-gap-2026-11-05 | 225 US rows labelled 2026 take a URL: 221 card, 4 article, 2 tier fixes (6591, 6177) | list sha256 9b5fd3ef5b631b5ea92a2c954ff362ca8b54bcb2723a05a26eb5c5d3ca4274e1 | DRAFT, choices not yet given'),
-    ('michelin','award',10,'cleanup:load-michelin-2026-us-gap-2026-11-05 | 10 new 2026 rows, card URL | list read Nov 5, 2026 | DRAFT, choices not yet given'),
-    ('michelin','city_label',2,'cleanup:load-michelin-2026-us-gap-2026-11-05 | city labels of 1 new venue, Lynx | DRAFT, choices not yet given');
+    ('michelin','award',225,'cleanup:load-michelin-2026-us-gap-2026-11-05 | 225 US rows labelled 2026 take a URL: 221 card, 4 article, 2 tier fixes (6591, 6177) | list sha256 9b5fd3ef5b631b5ea92a2c954ff362ca8b54bcb2723a05a26eb5c5d3ca4274e1 | Ben, Nov 5, 2026, 23:06 ET: 1-6 A'),
+    ('michelin','award',10,'cleanup:load-michelin-2026-us-gap-2026-11-05 | 10 new 2026 rows, card URL | list read Nov 5, 2026 | Ben, Nov 5, 2026, 23:06 ET: 1-6 A'),
+    ('michelin','city_label',2,'cleanup:load-michelin-2026-us-gap-2026-11-05 | city labels of 1 new venue, Lynx | Ben, Nov 5, 2026, 23:06 ET: 1-6 A');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11717 OR (SELECT count(*) FROM venues WHERE status='active') <> 11405 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28691 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 10 THEN RAISE EXCEPTION 'awards after'; END IF;
