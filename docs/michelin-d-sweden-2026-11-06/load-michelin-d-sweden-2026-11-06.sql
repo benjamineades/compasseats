@@ -1,5 +1,5 @@
 -- load-michelin-d-sweden-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin group D Sweden. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin group D Sweden. Ben SE 1-4: A, Nov 6 2026 15:55 ET. This file runs only after Ben's "go".
 -- 33 rows keep year 2026 and get the card URL. 1 rows get the article URL. 1 rows have another URL of their card replaced by the /us/en/ card URL. Relabel 0. Retire 0. No new rows, no new venues, no closures.
 -- Source: relay-se-2026-cards-2026-11-06.txt sha256 3dd27529f076c8b86f1e0faa967b504322b78b027257915eb2c2e69bdb1e4d2c.
 -- Expected after: awards 29052 unchanged; ledger 319 rows; audit_log +35.
@@ -77,7 +77,7 @@ BEGIN
   UPDATE awards a SET source_url=split_part(x,'~',5) FROM regexp_split_to_table(rl3,E'\n') x WHERE a.id=split_part(x,'~',1)::bigint;
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'replaced urls %', n; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',35,'cleanup:load-michelin-d-sweden-2026-11-06 | rule 2.1.7: Nordic 2026, Jun 1, 2026, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-nordic-denmark-finland-iceland-norway-sweden-2026-new-stars-bib-gourmands-special-awards | year stays 2026, source_url = the card (/us/en/), all 37 card labels 2026 read Nov 6 2026, retire 0 | article URL (card left the site, no capture after the ceremony): 13007 JH matbar (Ystad): Nordic 2026 Bib article Jun 1 2026 lists it for Sweden, card jh-matbar 404 on Nov 6 2026, Wayback last capture May 27 2024 (10 locales), own site says moving to Malmo, reopening May 2027 | other card URL: 3142 replaced https://guide.michelin.com/is/en/skane/simrishamn_2683288/restaurant/vyn-food-wine-bar | relay sha256 3dd27529f076c8b86f1e0faa967b504322b78b027257915eb2c2e69bdb1e4d2c | DRAFT, choices not yet given');
+    ('michelin','award',35,'cleanup:load-michelin-d-sweden-2026-11-06 | rule 2.1.7: Nordic 2026, Jun 1, 2026, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-nordic-denmark-finland-iceland-norway-sweden-2026-new-stars-bib-gourmands-special-awards | year stays 2026, source_url = the card (/us/en/), all 37 card labels 2026 read Nov 6 2026, retire 0 | article URL (card left the site, no capture after the ceremony): 13007 JH matbar (Ystad): Nordic 2026 Bib article Jun 1 2026 lists it for Sweden, card jh-matbar 404 on Nov 6 2026, Wayback last capture May 27 2024 (10 locales), own site says moving to Malmo, reopening May 2027 | other card URL: 3142 replaced https://guide.michelin.com/is/en/skane/simrishamn_2683288/restaurant/vyn-food-wine-bar | relay sha256 3dd27529f076c8b86f1e0faa967b504322b78b027257915eb2c2e69bdb1e4d2c | Ben SE 1-4: A, Nov 6 2026 15:55 ET');
   -- POST gates
   IF (SELECT count(*) FROM awards) <> 29052 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7821 THEN RAISE EXCEPTION 'Michelin after'; END IF;
