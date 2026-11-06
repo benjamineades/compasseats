@@ -1,0 +1,106 @@
+ve_00ef9f0113|12699|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|bbs||BB's
+ve_0240c86817|7509|One Star|2025|ci_5be977ac2d|quebec|active|$$$$|laurieraphaelquebeccity||Laurie Raphaël, Quebec City
+ve_075f814915|12703|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|conejonegro||Conejo Negro
+ve_0b49d36ca6|6625|One Star|2025|ci_0f569b4cf5|montreal|active|$$$$|sabayon||Sabayon
+ve_108ef51bf4|8846|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|sushiokeyakyujiro||Sushi Okeya Kyujiro
+ve_12dda1d3e0|11240|Bib Gourmand|2025|ci_0f569b4cf5|montreal|active|$$|lepetitalepbistro||Le Petit Alep Bistro
+ve_14deab4c46|6969|One Star|2025|ci_9c05b05831|oakville|closed|$$$|hexagonrestaurant||Hexagon Restaurant
+ve_1858b87671|12708|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$$|mhel||Mhel
+ve_1d0d58b780|12696|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|barraval||Bar Raval
+ve_1ee2f24c1d|12695|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$$|alma||Alma
+ve_1f7aadbfff|7510|One Star|2025|ci_5be977ac2d|quebec|active|$$$$|restaurantleclan||Restaurant Le Clan
+ve_1f862bbd2a|12719|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|restauranttiflisi||Restaurant Tiflisi
+ve_2539c833f4|10700|Bib Gourmand|2025|ci_e7f2f40518|kamouraska|active|$$|coteest||Côté Est
+ve_2540ccab0a|12795|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|farmersapprenticerestaurant||Farmer's Apprentice Restaurant
+ve_2c33752f07|8852|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|stlawrencerestaurant||St. Lawrence Restaurant
+ve_2df5b9d44b|8831|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|annalena||AnnaLena
+ve_3160c0aec9|12794|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|fablekitchen||Fable Kitchen
+ve_34e6c7d459|10083|Bib Gourmand|2025|ci_28c241147f|drummondville|active|$$|bibinebuvette||Bibine Buvette
+ve_35134fbb56|12716|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|sunnyschinese||Sunnys Chinese
+ve_39715ef838|12712|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$$|||R&D
+ve_3dd7dca5aa|12711|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|puertobravo||Puerto Bravo
+ve_3e6e6ac26a|11239|Bib Gourmand|2025|ci_0f569b4cf5|montreal|active|$$|casavant||Casavant
+ve_430031fb39|11795|Bib Gourmand|2025|ci_5be977ac2d|quebec|active|$$|honoizakaya||Honō Izakaya
+ve_443da5bf6f|2851|Two Stars|2025|ci_5be977ac2d|quebec|active|$$$$|restauranttaniere||Restaurant Tanière³
+ve_49ad9513d3|7709|One Star|2025|ci_015f3377dc|saint-mathieu-du-parc|active|$$$$|aubergestmathieudulac||Auberge St-Mathieu-Du-Lac
+ve_4c2b5d1904|11796|Bib Gourmand|2025|ci_5be977ac2d|quebec|active|$$|leclocherpenche||Le Clocher Penché
+ve_5230f6f33f|12802|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|motonobuudon||Motonobu Udon
+ve_53f1658223|8680|One Star|2025|ci_79cca97018|toronto|active|$$$$|edulisrestaurant||Edulis Restaurant
+ve_57d08e541e|8855|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|sumibiyakiarashi||Sumibiyaki Arashi
+ve_59ded0d1f8|11707|Bib Gourmand|2025|ci_4fac954630|piedmont|active|$$|baumierbaravin||Baumier - Bar à vin
+ve_5b05e05457|17019|One Star|2025|ci_79cca97018|toronto|active|$$$$|hashimoto||Hashimoto
+ve_63a62a738b|8837|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|burdockco||Burdock & Co
+ve_63b570ba6f|8856|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|sushihyunomakaserestaurant||Sushi Hyun Omakase restaurant
+ve_6654bb51d4|12807|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|vijs||Vij's
+ve_671992d417|11200|Bib Gourmand|2025|ci_87d719a3ab|mississauga|active|$$|gurulukshmi||Guru Lukshmi
+ve_67433802a4|12706|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$$|greygardens||Grey Gardens
+ve_6f413685d3|11800|Bib Gourmand|2025|ci_5be977ac2d|quebec|active|$$|toriiizakayabuvettejaponaise||Torii Izakaya (buvette japonaise)
+ve_7240c3809f|12713|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|rasa||RASA
+ve_72503c667d|11799|Bib Gourmand|2025|ci_5be977ac2d|quebec|active|$$|restaurantouroboros||Restaurant Ouroboros
+ve_75c8b8bbf9|11241|Bib Gourmand|2025|ci_0f569b4cf5|montreal|active|$$|restaurantlimbo||Restaurant Limbo
+ve_7681351bed|12796|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|garys||Gary's
+ve_7b26d42de5|8665|One Star|2025|ci_79cca97018|toronto|active|$$$$|aburihana||Aburi Hana
+ve_7de075b29a|12801|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|magaribyoca||Magari by Oca
+ve_7f6b059ce1|12799|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|littlebirddimsumcraftbeer||Little Bird Dim Sum + Craft Beer
+ve_80b7bb0c1c|8673|One Star|2025|ci_79cca97018|toronto|active|$$$$|alo||Alo
+ve_8123febfee|11242|Bib Gourmand|2025|ci_0f569b4cf5|montreal|active|$$|restaurantparapluie||Restaurant Parapluie
+ve_825a08608d|9386|Bib Gourmand|2025|ci_08c76db38f|baie-saint-paul|active|$$|buvettegentille||Buvette gentille
+ve_82d27db7bb|11794|Bib Gourmand|2025|ci_5be977ac2d|quebec|active|$$|buvettescott||Buvette Scott
+ve_847c1983f8|12804|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|seaportcityrestaurant||海洋城 Seaport City Restaurant
+ve_85833dfbe6|8696|One Star|2025|ci_79cca97018|toronto|active|$$$$|shoushin||Shoushin
+ve_8719c0a53d|10133|Bib Gourmand|2025|ci_91b3de7298|dundas|active|$$|barrelheartbrewing||Barrel Heart Brewing
+ve_8d50ba8fd5|8835|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|barbara||Barbara
+ve_9013f1c867|12702|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|chicaschicken||Chica's Chicken
+ve_919de817cb|12700|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|campechanoadelaide||Campechano Adelaide
+ve_925de5d611|11792|Bib Gourmand|2025|ci_5be977ac2d|quebec|active|$$|restaurantbattuto||Restaurant Battuto
+ve_940714a4e7|12797|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|goodthief||Good Thief
+ve_9782e31af1|6627|One Star|2025|ci_0f569b4cf5|montreal|active|$$$$|sushinishinokaze||Sushi Nishinokaze
+ve_9a5fc5a478|6622|One Star|2025|ci_0f569b4cf5|montreal|active|$$$$|restaurantjeromeferrereuropea||Restaurant Jérôme Ferrer - Europea
+ve_9bd6c70b69|8699|One Star|2025|ci_79cca97018|toronto|active|$$$$|sushimasakisaito||Sushi Masaki Saito
+ve_9fc9478b68|7507|One Star|2025|ci_5be977ac2d|quebec|active|$$$$|arvi||ARVI
+ve_9fcc331be1|8676|One Star|2025|ci_79cca97018|toronto|active|$$$$|danico||DaNico
+ve_a28a30edaa|12805|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|songbykinkao||Song (by Kin Kao)
+ve_a7fe602c8e|8687|One Star|2025|ci_79cca97018|toronto|active|$$$$|kapposato||Kappo Sato
+ve_ab4f160bc9|6623|One Star|2025|ci_0f569b4cf5|montreal|active|$$$|restaurantmastard||Restaurant Mastard
+ve_b15194cc68|11793|Bib Gourmand|2025|ci_5be977ac2d|quebec|active|$$|bistrob||Bistro B
+ve_b31e8f3690|12707|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|indianstreetfoodco||Indian Street Food Co.
+ve_b65ef42b07|12714|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|restaurantrickyolivia||Restaurant Ricky+Olivia
+ve_b9b893ade5|7511|One Star|2025|ci_5be977ac2d|quebec|active|$$$$|legende||Légende
+ve_bc0aa78c2e|8857|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|sushimasuda||Sushi Masuda
+ve_bc9efb7b28|8840|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|idenquanjudebeijingduckhouse||iDen & Quanjude Beijing Duck House
+ve_bd5785c5bf|12715|Bib Gourmand|2025|ci_79cca97018|toronto|active|$|sumilicioussmokedmeatdeli||SumiLicious Smoked Meat & Deli
+ve_bdf5e77973|8669|One Star|2025|ci_79cca97018|toronto|active|$$$$|akin||aKin
+ve_bfcac91803|12803|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|phnompenhrestaurant||Phnom Penh Restaurant
+ve_c162984a89|11928|Bib Gourmand|2025|ci_7128bedfe8|sainte-marie|active|$$|saindouxrestaurantbbq||Saindoux Restaurant BBQ
+ve_c21f506fe9|6621|One Star|2025|ci_0f569b4cf5|montreal|active|$$$$|hooganetbeaufort||Hoogan et Beaufort
+ve_c5c4355a84|8843|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|masayoshi||Masayoshi
+ve_ccd4d1ec94|8678|One Star|2025|ci_79cca97018|toronto|active|$$$$|donalfonso1890||Don Alfonso 1890
+ve_cf9e1d8399|12701|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|cherrystreetbarbque||Cherry Street Bar-B-Que
+ve_d3187f10ce|8841|One Star|2025|ci_2ad52028d6|vancouver|active|$$$$|kissatanto||Kissa Tanto
+ve_d3bcf64825|12720|Bib Gourmand|2025|ci_79cca97018|toronto|active|$|whitelilydiner||White Lily Diner
+ve_d4d872fb38|8685|One Star|2025|ci_79cca97018|toronto|active|$$$$|enigmayorkville||Enigma Yorkville
+ve_d595bf1e5c|12793|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|anhandchi||Anh and Chi
+ve_d5de99de2a|11238|Bib Gourmand|2025|ci_0f569b4cf5|montreal|active|$$|cadet||Cadet
+ve_d7c0adb34f|2276|Two Stars|2025|ci_aa45997477|lincoln|active|$$$$|restaurantpearlmorissette||Restaurant Pearl Morissette
+ve_dc116642ee|12798|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|karmaindianbistro||Karma Indian Bistro
+ve_dd636e9355|8847|One Star|2025|ci_2ad52028d6|vancouver|active|$$$|publishedonmain||Published on Main
+ve_ddf48c1b76|11243|Bib Gourmand|2025|ci_0f569b4cf5|montreal|active|$$|rotisserielalune||Rôtisserie La Lune
+ve_e1d7bb6690|12705|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|favoritesthai||Favorites Thai
+ve_e3e5905165|12718|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|thecottagecheeseurbanindian||The Cottage Cheese - Urban Indian
+ve_e96f2aab64|8688|One Star|2025|ci_79cca97018|toronto|active|$$$$|osteriagiulia||Osteria Giulia
+ve_e9e21ec201|4675|One Star|2025|ci_265cd1a4c6|creemore|active|$$$$|thepine||The Pine
+ve_eaafd35634|12717|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|theace||The Ace
+ve_eb2c82682d|11830|Bib Gourmand|2025|ci_21ee61a491|rimouski|active|$$|losangerestaurant||Losange Restaurant
+ve_eeea4c8187|8690|One Star|2025|ci_79cca97018|toronto|active|$$$$|quetzal||Quetzal
+ve_ef22c812b8|11797|Bib Gourmand|2025|ci_5be977ac2d|quebec|active|$$|lueur||lueur
+ve_f216403682|11798|Bib Gourmand|2025|ci_5be977ac2d|quebec|active|$$|restaurantmelba||Restaurant Melba
+ve_f255e32faa|7572|One Star|2025|ci_21ee61a491|rimouski|active|$$$$|restaurantnarval||Restaurant Narval
+ve_f4a918e36b|12704|Bib Gourmand|2025|ci_79cca97018|toronto|active|$$|enotecasociale||Enoteca Sociale
+ve_f55070939a|11926|Bib Gourmand|2025|ci_8ced8d5f14|sainte-anne-de-beaupre|active|$$|coquette||Coquette
+ve_f6bd4271be|7508|One Star|2025|ci_5be977ac2d|quebec|active|$$$$|kebecclubprive||Kebec Club Privé
+ve_fb57673047|11237|Bib Gourmand|2025|ci_0f569b4cf5|montreal|active|$$|annettebaravin||Annette bar à vin
+ve_fbf2d9f536|8695|One Star|2025|ci_79cca97018|toronto|active|$$$$|restaurant20victoria||Restaurant 20 Victoria
+ve_fd25bd01e7|12800|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|thelunchlady||The Lunch Lady
+ve_fe4e2fa157|12806|Bib Gourmand|2025|ci_2ad52028d6|vancouver|active|$$|sushihil||Sushi Hil
+ve_ff53c3b6e6|11476|Bib Gourmand|2025|ci_9c05b05831|oakville|active|$$|7enoteca||7 Enoteca
+ve_ff61f4b92c|12780|Bib Gourmand|2025|ci_cd6e81d299|uxbridge|active|$$|sundays||Sundays
