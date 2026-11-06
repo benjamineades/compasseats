@@ -1,0 +1,91 @@
+Two Stars | /us/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/pujol | Pujol | Miguel Hildalgo, Mexico | $$$$ \u00b7 Mexican
+Two Stars | /us/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/quintonil | Quintonil | Miguel Hildalgo, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/baja-california/ensenada_2059847/restaurant/olivea-farm-to-table | Olivea Farm to Table | Ensenada, Mexico | $$$$ \u00b7 Contemporary
+One Star | /us/en/yucatan/merida_2068208/restaurant/la-barra-de-huniik | La Barra de Huniik | M\u00e9rida, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/yucatan/chochola_2067346/restaurant/ixi-im | Ixi'im | Chochol\u00e1, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/nuevo-leon/monterrey_2041973/restaurant/koli-cocina-de-origen | KOLI Cocina de Origen | Monterrey, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/baja-california/valle-de-guadalupe_7770290/restaurant/damiana | Damiana | Valle de Guadalupe, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/esquina-comun | Esquina Com\u00fan | Cuauht\u00e9moc, Mexico | $$ \u00b7 Mexican
+One Star | /us/en/jalisco/guadalajara_2011748/restaurant/alcalde-1243800 | Alcalde | Guadalajara, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/maximo | M\u00e1ximo | Cuauht\u00e9moc, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/quintana-roo/playa-del-carmen_2068368/restaurant/ha-1208266 | HA' | Playa del Carmen, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/quintana-roo/playa-del-carmen_2068368/restaurant/cocina-de-autor-riviera-maya | Cocina de Autor Riviera Maya | Playa del Carmen, Mexico | $$$$ \u00b7 Creative
+One Star | /us/en/nuevo-leon/san-pedro-garza-garcia_2042888/restaurant/pangea | Pangea | San Pedro Garza Garc\u00eda, Mexico | $$$ \u00b7 Contemporary
+One Star | /us/en/baja-california/valle-de-guadalupe_7770290/restaurant/conchas-de-piedra | Conchas de Piedra | Valle de Guadalupe, Mexico | $$$ \u00b7 Fish and Seafood
+One Star | /us/en/quintana-roo/playa-del-carmen_2068368/restaurant/le-chique | Le Chique | Playa del Carmen, Mexico | $$$$ \u00b7 Contemporary
+One Star | /us/en/baja-california-sur/cabo-san-lucas_2059129/restaurant/cocina-de-autor-los-cabos | Cocina de Autor Los Cabos | Cabo San Lucas, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/expendio-de-maiz | Expendio de Ma\u00edz | Cuauht\u00e9moc, Mexico | $$ \u00b7 Mexican
+One Star | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/masala-y-maiz | Masala y Ma\u00edz | Cuauht\u00e9moc, Mexico | $$ \u00b7 Fusion
+One Star | /us/en/oaxaca/oaxaca-de-juarez_2056768/restaurant/levadura-de-olla-restaurante | Levadura de Olla Restaurante | Oaxaca, Mexico | $$ \u00b7 Mexican
+One Star | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/gaba | Gaba | Cuauht\u00e9moc, Mexico | $$$ \u00b7 Mexican
+One Star | /us/en/baja-california/el-porvenir_2059721/restaurant/lunario | Lunario | El Porvenir, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/ciudad-de-mexico/alvaro-obregon_2003790/restaurant/sud-777 | Sud 777 | \u00c1lvaro Obreg\u00f3n, Mexico | $$ \u00b7 Creative
+One Star | /us/en/yucatan/merida_2068208/restaurant/huniik | Huniik | M\u00e9rida, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/jalisco/guadalajara_2011748/restaurant/xokol | Xokol | Guadalajara, Mexico | $$$ \u00b7 Mexican
+One Star | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/rosetta | Rosetta | Cuauht\u00e9moc, Mexico | $$ \u00b7 Creative
+One Star | /us/en/baja-california/valle-de-guadalupe_7770290/restaurant/animalon | Animal\u00f3n | Valle de Guadalupe, Mexico | $$$$ \u00b7 Mexican
+One Star | /us/en/oaxaca/oaxaca-de-juarez_2056768/restaurant/los-danzantes-oaxaca | Los Danzantes Oaxaca | Oaxaca, Mexico | $$$ \u00b7 Mexican
+One Star | /us/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/la-once-mil | La Once Mil | Miguel Hildalgo, Mexico | $$ \u00b7 Mexican
+One Star | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/em | Em | Cuauht\u00e9moc, Mexico | $$$ \u00b7 Mexican
+Bib Gourmand | /us/en/puebla/atlixco_2014458/restaurant/vica | Vica Cocina de un Valle | Atlixco, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/jalisco/puerto-vallarta_2013264/restaurant/icu | IC\u00da | Puerto Vallarta, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/quintana-roo/puerto-morelos_2068420/restaurant/punta-corcho | Punta Corcho | Puerto Morelos, Mexico | $$ \u00b7 Seafood
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/pargot | Pargot | Cuauht\u00e9moc, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/contramar | Contramar | Cuauht\u00e9moc, Mexico | $$ \u00b7 Fish and Seafood
+Bib Gourmand | /us/en/quintana-roo/playa-del-carmen_2068368/restaurant/axiote-cocina-de-mexico | Axiote Cocina de Mexico | Playa del Carmen, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/raiz-1208231 | Ra\u00edz | Miguel Hildalgo, Mexico | $ \u00b7 Contemporary
+Bib Gourmand | /us/en/puebla/heroica-puebla-de-zaragoza_2015740/restaurant/cultivo | Cultivo | Her\u00f3ica Puebla de Zaragoza, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/baja-california-sur/el-pescadero_2059712/restaurant/cocina-de-campo-by-agricole | Cocina de Campo by Agricole | El Pescadero, Mexico | $$ \u00b7 Contemporary
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/plonk | Plonk | Cuauht\u00e9moc, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/aleli-rooftop | Aleli Rooftop | Cuauht\u00e9moc, Mexico | $$ \u00b7 Spanish
+Bib Gourmand | /us/en/oaxaca/oaxaca-de-juarez_2056768/restaurant/labo-fermento | Labo Fermento | Oaxaca, Mexico | $$ \u00b7 Asian
+Bib Gourmand | /us/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/comal-oculto | Comal Oculto | Miguel Hildalgo, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/baja-california/ensenada_2059847/restaurant/humo-y-sal | HumoySal | Ensenada, Mexico | $$ \u00b7 Seafood
+Bib Gourmand | /us/en/oaxaca/oaxaca-de-juarez_2056768/restaurant/la-olla | La Olla | Oaxaca, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/baja-california-sur/cabo-san-lucas_2059129/restaurant/metate | Metate | Cabo San Lucas, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/baja-california/villa-de-juarez_2061842/restaurant/villa-torel | Villa Tor\u00e9l | Villa de Ju\u00e1rez, Mexico | $$$$ \u00b7 Mexican
+Bib Gourmand | /us/en/yucatan/tixkokob_2069405/restaurant/pueblo-pibil | Pueblo Pibil | Tixkokob, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/yucatan/merida_2068208/restaurant/taquerias-kisin | Taquer\u00edas Kis\u00edn | M\u00e9rida, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/jalisco/guadalajara_2011748/restaurant/tacos-y-gorditas-elvira | Tacos Y Gorditas Elvira | Guadalajara, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/puebla/heroica-puebla-de-zaragoza_2015740/restaurant/semitas-beto | Semitas "Beto" | Her\u00f3ica Puebla de Zaragoza, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/jalisco/guadalajara_2011748/restaurant/palreal | palReal | Guadalajara, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/puebla/heroica-puebla-de-zaragoza_2015740/restaurant/los-camellos | Los Camellos | Her\u00f3ica Puebla de Zaragoza, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/baja-california/valle-de-guadalupe_7770290/restaurant/fauna-1208366 | Fauna | Valle de Guadalupe, Mexico | $$$ \u00b7 Mexican
+Bib Gourmand | /us/en/nuevo-leon/monterrey_2041973/restaurant/tacos-dona-mary-la-gritona | Tacos Do\u00f1a Mary La Gritona | Monterrey, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/fugaz | Fugaz | Cuauht\u00e9moc, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/baja-california/tijuana_2061688/restaurant/carmelita-molino-y-cocina | Carmelita Molino y Cocina | Tijuana, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/alvaro-obregon_2003790/restaurant/taqueria-los-milanesos | Taquer\u00eda Los Milanesos | \u00c1lvaro Obreg\u00f3n, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/galanga-thai-house | Galanga Thai House | Cuauht\u00e9moc, Mexico | $$ \u00b7 Thai
+Bib Gourmand | /us/en/baja-california/el-porvenir_2059721/restaurant/la-cocina-de-dona-esthela | La Cocina de Do\u00f1a Esthela | El Porvenir, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/vigneron | Vigneron | Cuauht\u00e9moc, Mexico | $$ \u00b7 Contemporary
+Bib Gourmand | /us/en/oaxaca/oaxaca-de-juarez_2056768/restaurant/xaok | Xaok | Oaxaca, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/taqueria-el-jarocho | Taquer\u00eda El Jarocho | Cuauht\u00e9moc, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/taqueria-los-cocuyos | Taqueria Los Cocuyos | Cuauht\u00e9moc, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/puebla/heroica-puebla-de-zaragoza_2015740/restaurant/moyuelo | Moyuelo | Her\u00f3ica Puebla de Zaragoza, Mexico | $$ \u00b7 Fusion
+Bib Gourmand | /us/en/puebla/heroica-puebla-de-zaragoza_2015740/restaurant/jacinto-y-yo | Jacinto y Yo | Her\u00f3ica Puebla de Zaragoza, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/jowong | Jowong | Cuauht\u00e9moc, Mexico | $$ \u00b7 Korean
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/caracol-de-mar | Caracol de Mar | Cuauht\u00e9moc, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/oaxaca/oaxaca-de-juarez_2056768/restaurant/tierra-del-sol | Tierra del Sol | Oaxaca, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/la-89 | La 89 | Cuauht\u00e9moc, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/tacos-los-alexis | Tacos Los Alexis | Cuauht\u00e9moc, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/oaxaca/oaxaca-de-juarez_2056768/restaurant/las-quince-letras | Las Quince Letras | Oaxaca, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/baja-california/ensenada_2059847/restaurant/sabina | Sabina | Ensenada, Mexico | $$ \u00b7 Seafood
+Bib Gourmand | /us/en/nuevo-leon/san-pedro-garza-garcia_2042888/restaurant/el-bambis-cafe | El Bambis Caf\u00e9 | San Pedro Garza Garc\u00eda, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/tacos-del-valle | Tacos del Valle | Cuauht\u00e9moc, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/filigrana | Filigrana | Cuauht\u00e9moc, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/baja-california/ensenada_2059847/restaurant/casa-marcelo-1210913 | Casa Marcelo | Ensenada, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/quintana-roo/tulum_2069429/restaurant/mestixa | Mestixa | Tulum, Mexico | $$ \u00b7 Fusion
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/galea | Galea | Cuauht\u00e9moc, Mexico | $$ \u00b7 Italian
+Bib Gourmand | /us/en/ciudad-de-mexico/tlalpan_2003036/restaurant/tacos-charly | Tacos Charly | Tlalpan, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/comedor-jacinta | Comedor Jacinta | Miguel Hildalgo, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/baja-california/ensenada_2059847/restaurant/la-concheria | La Concheria | Ensenada, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/puebla/heroica-puebla-de-zaragoza_2015740/restaurant/el-guero-marinero | El G\u00fcero Marinero | Her\u00f3ica Puebla de Zaragoza, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/molino-el-pujol | Molino El Pujol | Cuauht\u00e9moc, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/puebla/heroica-puebla-de-zaragoza_2015740/restaurant/restaurante-casareyna | Restaurante Casareyna | Her\u00f3ica Puebla de Zaragoza, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/ultramarinos-demar | Ultramarinos Demar | Cuauht\u00e9moc, Mexico | $$ \u00b7 Seafood
+Bib Gourmand | /us/en/ciudad-de-mexico/benito-juarez_1994163/restaurant/los-consentidos-del-barrio | Los Consentidos del Barrio | Benito Ju\u00e1rez, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/yucatan/merida_2068208/restaurant/pancho-maiz | Pancho Maiz | M\u00e9rida, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/siembra-tortilleria | Siembra Tortiller\u00eda | Miguel Hildalgo, Mexico | $ \u00b7 Mexican
+Bib Gourmand | /us/en/baja-california-sur/san-jose-del-cabo_2061454/restaurant/flora-s-field-kitchen | Flora's Field Kitchen | San Jos\u00e9 del Cabo, Mexico | $$ \u00b7 Contemporary
+Bib Gourmand | /us/en/quintana-roo/tulum_2069429/restaurant/cetli | Cetli | Tulum, Mexico | $$ \u00b7 Mexican
+Bib Gourmand | /us/en/ciudad-de-mexico/benito-juarez_1994163/restaurant/el-vilsito | El Vilsito | Benito Ju\u00e1rez, Mexico | $ \u00b7 Mexican
