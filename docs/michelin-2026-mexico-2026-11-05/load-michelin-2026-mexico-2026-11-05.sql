@@ -1,5 +1,5 @@
 -- load-michelin-2026-mexico-2026-11-05.sql
--- CompassEats, Nov 5 2026. Michelin Mexico 2026. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 5 2026. Michelin Mexico 2026. Ben, Nov 5, 2026, 22:25 ET: 1-5 A. This file runs only after Ben's "go".
 -- Rule 2.1.1 and 2.1.7: ceremony May 20, 2026, inside the capture window (https://guide.michelin.com/us/en/article/michelin-guide-ceremony/every-michelin-starred-restaurant-in-mexico-for-2026-and-the-year-s-key-trends). Test of named promotions: 6 of 7 new stars are in the live rows, 0 of 16 new Bibs. Result: mixed.
 -- Relabel 6 rows 2025 -> 2026, card URL: the 6 new stars, which cannot be 2025 rows. The other 70 rows stay 2025, no URL. Retire 0.
 -- New awards: 86 rows 2026 (card URL; Pink Rambo = Bib article URL, card 404). 2 rows 2025 (Em One Star, Gaba Bib Gourmand), article URL.
@@ -195,9 +195,9 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 88 THEN RAISE EXCEPTION 'awards %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',6,'relabel:load-michelin-2026-mexico-2026-11-05 | rule 2.1.7: ceremony May 20, 2026 (https://guide.michelin.com/us/en/article/michelin-guide-ceremony/every-michelin-starred-restaurant-in-mexico-for-2026-and-the-year-s-key-trends), inside the capture window, test mixed | 6 new stars, year 2025 -> 2026, source_url = the card (/us/en/), 70 rows stay 2025, retire 0 | relay sha256 eaa8b76fce43958a96549ce20537c6f5871a1fb48ca997be71617c08cd03b549 | DRAFT, choices not yet given'),
-    ('michelin','award',88,'cleanup:load-michelin-2026-mexico-2026-11-05 | 86 rows 2026, card URL, Pink Rambo = article URL (https://guide.michelin.com/us/en/article/michelin-guide-ceremony/mexico-s-most-affordable-restaurants-in-2026) | 2 rows 2025, article URL | list read Nov 5, 2026 | relay sha256 eaa8b76fce43958a96549ce20537c6f5871a1fb48ca997be71617c08cd03b549 | DRAFT, choices not yet given'),
-    ('michelin','city_label',34,'cleanup:load-michelin-2026-mexico-2026-11-05 | city labels of 17 new venues, new cities atlixco, puerto-vallarta, tixkokob | DRAFT, choices not yet given');
+    ('michelin','award',6,'relabel:load-michelin-2026-mexico-2026-11-05 | rule 2.1.7: ceremony May 20, 2026 (https://guide.michelin.com/us/en/article/michelin-guide-ceremony/every-michelin-starred-restaurant-in-mexico-for-2026-and-the-year-s-key-trends), inside the capture window, test mixed | 6 new stars, year 2025 -> 2026, source_url = the card (/us/en/), 70 rows stay 2025, retire 0 | relay sha256 eaa8b76fce43958a96549ce20537c6f5871a1fb48ca997be71617c08cd03b549 | Ben, Nov 5, 2026, 22:25 ET: 1-5 A'),
+    ('michelin','award',88,'cleanup:load-michelin-2026-mexico-2026-11-05 | 86 rows 2026, card URL, Pink Rambo = article URL (https://guide.michelin.com/us/en/article/michelin-guide-ceremony/mexico-s-most-affordable-restaurants-in-2026) | 2 rows 2025, article URL | list read Nov 5, 2026 | relay sha256 eaa8b76fce43958a96549ce20537c6f5871a1fb48ca997be71617c08cd03b549 | Ben, Nov 5, 2026, 22:25 ET: 1-5 A'),
+    ('michelin','city_label',34,'cleanup:load-michelin-2026-mexico-2026-11-05 | city labels of 17 new venues, new cities atlixco, puerto-vallarta, tixkokob | Ben, Nov 5, 2026, 22:25 ET: 1-5 A');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11716 OR (SELECT count(*) FROM venues WHERE status='active') <> 11408 OR (SELECT count(*) FROM venues WHERE status='closed') <> 308 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28681 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 88 THEN RAISE EXCEPTION 'awards after'; END IF;
