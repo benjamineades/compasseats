@@ -1,5 +1,5 @@
 -- load-michelin-2026-portugal-2026-11-05.sql
--- CompassEats, Nov 5 2026. Michelin Portugal 2026. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 5 2026. Michelin Portugal 2026. Ben choices 1-5 A, Nov 5 2026 22:02 ET. This file runs only after Ben's "go".
 -- Rule 2.1.1 and 2.1.7: ceremony March 10, 2026, before the capture window (https://guide.michelin.com/en/article/michelin-guide-ceremony/All%20About%20the%20MICHELIN%20Guide%20Portugal%202026). The 78 legacy rows hold the 2026 edition. Relabel 78 rows 2025 -> 2026. Retire 0.
 -- source_url: 77 rows = the card (/us/en/). O Tipico (award 13031), card 404 today: capture of June 1, 2026, says "2026 MICHELIN Guide" and Bib Gourmand (https://web.archive.org/web/20260601200735id_/https://guide.michelin.com/pt/pt_PT/aveiro-region/gueda/restaurant/o-tipico). Venue stays active.
 -- New: A Cozinha do Paco, One Star 2026, card name, restaurant, active, published. New city Evora, country Portugal. No price, address, geo, blurb or chef.
@@ -148,9 +148,9 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'awards %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',78,'relabel:load-michelin-2026-portugal-2026-11-05 | rule 2.1.7: Portugal edition live at capture = 2026 (ceremony March 10, 2026, https://guide.michelin.com/en/article/michelin-guide-ceremony/All%20About%20the%20MICHELIN%20Guide%20Portugal%202026) | year 2025 -> 2026, source_url = the card (/us/en/), 1 archive capture for award 13031, retire 0 | relay sha256 717227e03a4005fdfa8c522424f834d74c6bfa7452f892e8b2b1442accc9882a | DRAFT, choices not yet given'),
-    ('michelin','award',1,'cleanup:load-michelin-2026-portugal-2026-11-05 | A Cozinha do Paco, One Star 2026, absent from the legacy rows | list read Nov 5, 2026 | relay sha256 717227e03a4005fdfa8c522424f834d74c6bfa7452f892e8b2b1442accc9882a | DRAFT, choices not yet given'),
-    ('michelin','city_label',2,'cleanup:load-michelin-2026-portugal-2026-11-05 | city labels of 1 new venue, new city evora | DRAFT, choices not yet given');
+    ('michelin','award',78,'relabel:load-michelin-2026-portugal-2026-11-05 | rule 2.1.7: Portugal edition live at capture = 2026 (ceremony March 10, 2026, https://guide.michelin.com/en/article/michelin-guide-ceremony/All%20About%20the%20MICHELIN%20Guide%20Portugal%202026) | year 2025 -> 2026, source_url = the card (/us/en/), 1 archive capture for award 13031, retire 0 | relay sha256 717227e03a4005fdfa8c522424f834d74c6bfa7452f892e8b2b1442accc9882a | Ben choices 1-5 A, Nov 5 2026 22:02 ET'),
+    ('michelin','award',1,'cleanup:load-michelin-2026-portugal-2026-11-05 | A Cozinha do Paco, One Star 2026, absent from the legacy rows | list read Nov 5, 2026 | relay sha256 717227e03a4005fdfa8c522424f834d74c6bfa7452f892e8b2b1442accc9882a | Ben choices 1-5 A, Nov 5 2026 22:02 ET'),
+    ('michelin','city_label',2,'cleanup:load-michelin-2026-portugal-2026-11-05 | city labels of 1 new venue, new city evora | Ben choices 1-5 A, Nov 5 2026 22:02 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11699 OR (SELECT count(*) FROM venues WHERE status='active') <> 11391 OR (SELECT count(*) FROM venues WHERE status='closed') <> 308 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28593 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 1 THEN RAISE EXCEPTION 'awards after'; END IF;
