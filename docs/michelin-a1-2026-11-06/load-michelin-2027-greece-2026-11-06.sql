@@ -1,5 +1,5 @@
 -- load-michelin-2027-greece-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin Greece 2027. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin Greece 2027. Ben choices 1-6:A, Nov 6 01:03 ET. This file runs only after Ben's "go".
 -- 30 new rows, year 2027 (Oct 20, 2026: https://guide.michelin.com/en/article/michelin-guide-ceremony/the-michelin-guide-athens-thessaloniki-santorini-2027-marks-a-milestone-for-greek-gastronomy), source_url = the card (/us/en/). 14 new venues, 0 new cities. Relabel 17 rows 2025 -> 2024: Athens edition live at capture = 2024 (Dec 18, 2024); no Athens selection in 2025 (https://guide.michelin.com/en/article/news-and-views/the-michelin-guide-expands-in-greece-for-2026). Retire 0.
 -- Source: docs/michelin-a1-2026-11-06/relay-greece-2027-list-pages-2026-11-06.txt sha256 8976dd6d36b4e0886c5b7655cd6b9357c5ce02b0a5f3b16a5bb343986bc67982.
 -- No rename, price, address, geo, blurb or status change on a live venue.
@@ -131,9 +131,9 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 30 THEN RAISE EXCEPTION 'awards %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',17,'relabel:load-michelin-2027-greece-2026-11-06 | rule 2.1.7: Athens edition live at capture = 2024 (Dec 18, 2024); no Athens selection in 2025 (https://guide.michelin.com/en/article/news-and-views/the-michelin-guide-expands-in-greece-for-2026) | https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-athens-2024-is-out | year 2025 -> 2024, article URL, retire 0 | DRAFT, choices not yet given'),
-    ('michelin','award',30,'cleanup:load-michelin-2027-greece-2026-11-06 | Greece 2027, Oct 20, 2026, https://guide.michelin.com/en/article/michelin-guide-ceremony/the-michelin-guide-athens-thessaloniki-santorini-2027-marks-a-milestone-for-greek-gastronomy | Three Stars 0, Two Stars 1, One Star 19, Bib 10 | relay sha256 8976dd6d36b4e0886c5b7655cd6b9357c5ce02b0a5f3b16a5bb343986bc67982 | DRAFT, choices not yet given'),
-    ('michelin','city_label',28,'cleanup:load-michelin-2027-greece-2026-11-06 | city labels of 14 new venues | DRAFT, choices not yet given');
+    ('michelin','award',17,'relabel:load-michelin-2027-greece-2026-11-06 | rule 2.1.7: Athens edition live at capture = 2024 (Dec 18, 2024); no Athens selection in 2025 (https://guide.michelin.com/en/article/news-and-views/the-michelin-guide-expands-in-greece-for-2026) | https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-athens-2024-is-out | year 2025 -> 2024, article URL, retire 0 | Ben choices 1-6:A, Nov 6 01:03 ET'),
+    ('michelin','award',30,'cleanup:load-michelin-2027-greece-2026-11-06 | Greece 2027, Oct 20, 2026, https://guide.michelin.com/en/article/michelin-guide-ceremony/the-michelin-guide-athens-thessaloniki-santorini-2027-marks-a-milestone-for-greek-gastronomy | Three Stars 0, Two Stars 1, One Star 19, Bib 10 | relay sha256 8976dd6d36b4e0886c5b7655cd6b9357c5ce02b0a5f3b16a5bb343986bc67982 | Ben choices 1-6:A, Nov 6 01:03 ET'),
+    ('michelin','city_label',28,'cleanup:load-michelin-2027-greece-2026-11-06 | city labels of 14 new venues | Ben choices 1-6:A, Nov 6 01:03 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11768 OR (SELECT count(*) FROM venues WHERE status='active') <> 11456 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28858 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 30 THEN RAISE EXCEPTION 'awards after'; END IF;
