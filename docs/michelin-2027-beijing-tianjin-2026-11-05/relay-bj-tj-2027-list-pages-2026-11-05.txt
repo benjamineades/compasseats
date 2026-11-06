@@ -1,0 +1,82 @@
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/bao-bao-hao | Bao Bao Hao | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Cantonese
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/bao-du-jin-sheng-long | Bao Du Jin Sheng Long (Dongcheng) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Hotpot
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/bao-yuan | Bao Yuan | Beijing, Chinese Mainland | \u00a5 \u00b7 Dumplings
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/chen-ji-lu-zhu-xiao-chang | Chen Ji Lu Zhu Xiao Chang | Beijing, Chinese Mainland | \u00a5 \u00b7 Small eats
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/fragrant-kitchen-chaoyang | Fragrant Kitchen (Chaoyang) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Shandong
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/fujian-cuisine-dongsanhuan-north-road | Fujian Cuisine (Dongsanhuan North Road) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Fujian
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/fujian-yu-shan-tang | Fujian Yu Shan Tang | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Fujian
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/hong-fan-qie-yuyuantan-south-road | Hong Fan Qie (Yuyuantan South Road) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Hubei
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/hua-sheng-feng-dongsanhuan-south-road | Hua Sheng Feng (Dongsanhuan South Road) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Zhejiang
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/jing-hua-lou | Jing Hua Lou | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Beijing Cuisine
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/jingyi | Jingyi (Liulichang East Street) | Beijing, Chinese Mainland | \u00a5 \u00b7 Hubei
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/lao-chuan-ban | Lao Chuan Ban (Dongcheng) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Sichuan
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/liu-ma-ma-dumplings-chaoyang | Liu Ma Ma Dumplings (Chaoyang) | Beijing, Chinese Mainland | \u00a5 \u00b7 Dumplings
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/louyau | Louyau | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Cantonese
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/mingyuan-restaurant | Mingyuan Restaurant | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Beijing Cuisine
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/my-soup | My Soup | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Cantonese
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/niujie-halal-man-heng-ji | Man Heng Ji | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Hotpot
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/no-69-fangzhuanchang-zhajiangmian | No. 69 Fangzhuanchang Zhajiangmian (Fangzhuanchang Hutong) | Beijing, Chinese Mainland | \u00a5 \u00b7 Noodles
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/pan-zhi-hua-yin-xiang | Pan Zhi Hua Yin Xiang | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Sichuan
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/pang-mei-noodles | Pang Mei Noodles (Xiang'er Hutong) | Beijing, Chinese Mainland | \u00a5 \u00b7 Noodles
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/qiantang-garden | Qiantang Garden (Shuangyushu North Road) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Ningbo
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/rong-cuisine-baiziwan-south-er-road | Rong Cuisine (Baiziwan South Er Road) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Taizhou
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/tan-1218718 | Tan | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Sichuan
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/tianchumiaoxiang-vegetarian-chaoyang | Tianchumiaoxiang Vegetarian (Chaoyang) | Beijing, Chinese Mainland | \u00a5 \u00b7 Vegetarian
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/tong-he-ju-yuetan-south-street | Tong He Ju (Yuetan South Street) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Shandong
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/wan-hong-lu-yang-tang-shao-bing-dian | Wan Hong Lu Yang Tang Shao Bing Dian | Beijing, Chinese Mainland | \u00a5 \u00b7 Small eats
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/xiang-bin-xuan-huayuan-road | Xiang Bin Xuan (Huayuan Road) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Hunanese
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/xiang-lin-tian-xia | Xiang Lin Tian Xia | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Hunanese
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/yibin | Yibin | Beijing, Chinese Mainland | \u00a5 \u00b7 Sichuan
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/yu-hua-tai-xicheng | Yu Hua Tai (Xicheng) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Huaiyang
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/zhe-xian-xiao-chu-chaoyang | Zhe Xian Xiao Chu (Chaoyang) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Taizhou
+Bib Gourmand | /us/en/beijing-municipality/beijing/restaurant/zhong | Zhong | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Huaiyang
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/ba-jiu-bu-li-shi | Ba Jiu Bu Li Shi | Tianjin, Chinese Mainland | \u00a5\u00a5 \u00b7 Tianjin
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/bi-dian-hai-xian-%E2%80%A7-tou-deng-cang | Bi Dian Hai Xian \u2027 Tou Deng Cang | Tianjin, Chinese Mainland | \u00a5\u00a5 \u00b7 Fish and Seafood
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/ember-1252248 | Ember | Tianjin, Chinese Mainland | \u00a5\u00a5 \u00b7 Grills
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/huibincanting | Huibincanting | Tianjin, Chinese Mainland | \u00a5\u00a5 \u00b7 Tianjin
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/jin-lu-restaurant-nankai | Jin Lu Restaurant (Nankai) | Tianjin, Chinese Mainland | \u00a5\u00a5 \u00b7 Tianjin
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/lake-yard-shuishanggongyuan-east-road | Lake Yard (Shuishanggongyuan East Road) | Tianjin, Chinese Mainland | \u00a5 \u00b7 Tianjin
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/nine-river-house-liwan-road | Nine River House (Liwan Road) | Tianjin, Chinese Mainland | \u00a5 \u00b7 Tianjin
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/qing-lang-xuan-shui-jiao-hongqiao | Qing Lang Xuan Shui Jiao (Hongqiao) | Tianjin, Chinese Mainland | \u00a5 \u00b7 Dumplings
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/qu-kou-zhou-jia-rou-bing | Qu Kou Zhou Jia Rou Bing | Tianjin, Chinese Mainland | \u00a5 \u00b7 Chinese
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/rao-shi-fu-da-xian-shui-jiao | Rao Shi Fu Da Xian Shui Jiao | Tianjin, Chinese Mainland | \u00a5 \u00b7 Dumplings
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/re-hai-fan-zhuang | Re Hai Fan Zhuang | Tianjin, Chinese Mainland | \u00a5\u00a5 \u00b7 Tianjin
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/story-of-dumpling | Story Of Dumpling | Tianjin, Chinese Mainland | \u00a5 \u00b7 Dumplings
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/xiao-yu | Xiao Yu | Tianjin, Chinese Mainland | \u00a5\u00a5 \u00b7 Tianjin
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/yu-quan-fan-zhuang | Yu Quan Fan Zhuang | Tianjin, Chinese Mainland | \u00a5\u00a5 \u00b7 Tianjin
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/zhao-da-gu-jin-wei-fang | Zhao Da Gu Jin Wei Fang | Tianjin, Chinese Mainland | \u00a5\u00a5 \u00b7 Tianjin
+Bib Gourmand | /us/en/tianjin-municipality/tianjin_1031352/restaurant/zheng-wei-zhai | Zheng Wei Zhai | Tianjin, Chinese Mainland | \u00a5 \u00b7 Small eats
+One Star | /us/en/beijing-municipality/beijing/restaurant/cai-yi-xuan | Cai Yi Xuan | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Cantonese
+One Star | /us/en/beijing-municipality/beijing/restaurant/chao-shang-chao-xicheng | Chao Shang Chao (Xicheng) | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Chao Zhou
+One Star | /us/en/beijing-municipality/beijing/restaurant/chef-1996 | Chef 1996 | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Sichuan
+One Star | /us/en/beijing-municipality/beijing/restaurant/fu-chun-ju | Fu Chun Ju | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Cantonese
+One Star | /us/en/beijing-municipality/beijing/restaurant/furong | Furong | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Hunanese
+One Star | /us/en/beijing-municipality/beijing/restaurant/gastro-esthetics-dadong | Gastro Esthetics DaDong | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Chinese Contemporary
+One Star | /us/en/beijing-municipality/beijing/restaurant/giada-garden | Giada Garden | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 Italian
+One Star | /us/en/beijing-municipality/beijing/restaurant/il-ristorante-niko-romito-1186723 | Il Ristorante - Niko Romito | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 Italian
+One Star | /us/en/beijing-municipality/beijing/restaurant/lei-garden-jinbao-tower | Lei Garden (Jinbao Tower) | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Cantonese
+One Star | /us/en/beijing-municipality/beijing/restaurant/lu-style | Lu Style (Anding Road) | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Shandong
+One Star | /us/en/beijing-municipality/beijing/restaurant/mansion-cuisine-by-jingyan | Mansion Cuisine by Jingyan | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 Beijing Cuisine
+One Star | /us/en/beijing-municipality/beijing/restaurant/mo-jasmine | MO Jasmine | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Beijing Cuisine
+One Star | /us/en/beijing-municipality/beijing/restaurant/old-tower | Old Tower | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 Innovative
+One Star | /us/en/beijing-municipality/beijing/restaurant/poetry%E2%80%A7wine | Poetry\u2027Wine (Dongsanhuan Middle Road) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Beijing Cuisine
+One Star | /us/en/beijing-municipality/beijing/restaurant/rong-pao | Rong Pao | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Sichuan
+One Star | /us/en/beijing-municipality/beijing/restaurant/seventh-son-1186794 | Seventh Son | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Cantonese
+One Star | /us/en/beijing-municipality/beijing/restaurant/shanghai-cuisine | Shanghai Cuisine | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Shanghainese
+One Star | /us/en/beijing-municipality/beijing/restaurant/sheng-yong-xing-chaoyang | Sheng Yong Xing (Chaoyang) | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Beijing Cuisine
+One Star | /us/en/beijing-municipality/beijing/restaurant/the-beijing-kitchen | The Beijing Kitchen (Jianguo Road) | Beijing, Chinese Mainland | \u00a5\u00a5 \u00b7 Cantonese
+One Star | /us/en/beijing-municipality/beijing/restaurant/the-georg | The Georg | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 European Contemporary
+One Star | /us/en/beijing-municipality/beijing/restaurant/the-house-of-dynasties | The House of Dynasties | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Cantonese
+One Star | /us/en/beijing-municipality/beijing/restaurant/trb-hutong | Trb Hutong | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 French Contemporary
+One Star | /us/en/beijing-municipality/beijing/restaurant/xin-rong-ji-jianguomenwai-street | Xin Rong Ji (Jianguomenwai Street) | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Taizhou
+One Star | /us/en/beijing-municipality/beijing/restaurant/xin-rong-ji-jinrong-street | Xin Rong Ji (Jinrong Street) | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Taizhou
+One Star | /us/en/beijing-municipality/beijing/restaurant/zhiguan | Zhiguan Courtyard | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Dongbei
+One Star | /us/en/beijing-municipality/beijing/restaurant/zijin-mansion | Zijin Mansion | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5 \u00b7 Cantonese
+One Star | /us/en/tianjin-municipality/tianjin_1031352/restaurant/china-banquet | China Banquet | Tianjin, Chinese Mainland | \u00a5\u00a5 \u00b7 Huaiyang
+Three Stars | /us/en/beijing-municipality/beijing/restaurant/chao-shang-chao | Chao Shang Chao (Chaoyang) | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 Chao Zhou
+Three Stars | /us/en/beijing-municipality/beijing/restaurant/xin-rong-ji-xinyuan-south-road | Xin Rong Ji (Xinyuan South Road) | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 Taizhou
+Two Stars | /us/en/beijing-municipality/beijing/restaurant/blackswan | Blackswan | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 French Contemporary
+Two Stars | /us/en/beijing-municipality/beijing/restaurant/jingji | Jingji | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 Beijing Cuisine
+Two Stars | /us/en/beijing-municipality/beijing/restaurant/king-s-joy | King's Joy | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 Vegetarian
+Two Stars | /us/en/beijing-municipality/beijing/restaurant/lamdre | Lamdre | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 Vegan
+Two Stars | /us/en/beijing-municipality/beijing/restaurant/lu-shang-lu | Lu Shang Lu | Beijing, Chinese Mainland | \u00a5\u00a5\u00a5\u00a5 \u00b7 Shandong
