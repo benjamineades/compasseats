@@ -1,5 +1,5 @@
 -- load-michelin-2026-singapore-2026-11-05.sql
--- CompassEats, Nov 5 2026. Michelin Singapore 2026 edition. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 5 2026. Michelin Singapore 2026 edition. Ben choices 1-8:A, Nov 5 20:49 ET. This file runs only after Ben's "go".
 -- Rule 2.1.1 and 2.1.7: the ceremony was Aug 4, 2026, after June 1, so the 126 legacy rows hold the 2025 edition (article of Jul 24, 2025: https://guide.michelin.com/sg/en/article/michelin-guide-ceremony/full-list-michelin-guide-sg-2025). They stay as 2025 history. Relabel 0, retire 0.
 -- 142 new rows, year 2026, with the /us/en/ card URL: Three Stars 3, Two Stars 9, One Star 33, Bib Gourmand 97 (https://guide.michelin.com/sg/en/article/michelin-guide-ceremony/full-list-michelin-guide-sg-2026).
 -- 17 new venues, card name, restaurant, active, published.
@@ -245,9 +245,9 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'city %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',142,'cleanup:load-michelin-2026-singapore-2026-11-05 | rule 2.1.1 and 2.1.7: ceremony Aug 4, 2026 (https://guide.michelin.com/sg/en/article/michelin-guide-ceremony/full-list-michelin-guide-sg-2026), legacy rows hold the 2025 edition, relabel 0, retire 0 | list read Nov 5, 2026 | relay sha256 d6df72b17a315fd238ee56d19edadabdcbd073c1ae51cab391dad330b1605d8c | DRAFT, choices not yet given'),
-    ('michelin','award',4,'cleanup:load-michelin-2026-singapore-2026-11-05 | 2025 edition One Star rows absent from the live rows: Alma, Esora, Euphoria, Imperial Treasure Fine Teochew Cuisine | Chaleur has no venue | https://guide.michelin.com/sg/en/article/michelin-guide-ceremony/full-list-michelin-guide-sg-2025 | DRAFT, choices not yet given'),
-    ('michelin','city_label',34,'cleanup:load-michelin-2026-singapore-2026-11-05 | city labels of 17 new venues | DRAFT, choices not yet given');
+    ('michelin','award',142,'cleanup:load-michelin-2026-singapore-2026-11-05 | rule 2.1.1 and 2.1.7: ceremony Aug 4, 2026 (https://guide.michelin.com/sg/en/article/michelin-guide-ceremony/full-list-michelin-guide-sg-2026), legacy rows hold the 2025 edition, relabel 0, retire 0 | list read Nov 5, 2026 | relay sha256 d6df72b17a315fd238ee56d19edadabdcbd073c1ae51cab391dad330b1605d8c | Ben choices 1-8:A, Nov 5 20:49 ET'),
+    ('michelin','award',4,'cleanup:load-michelin-2026-singapore-2026-11-05 | 2025 edition One Star rows absent from the live rows: Alma, Esora, Euphoria, Imperial Treasure Fine Teochew Cuisine | Chaleur has no venue | https://guide.michelin.com/sg/en/article/michelin-guide-ceremony/full-list-michelin-guide-sg-2025 | Ben choices 1-8:A, Nov 5 20:49 ET'),
+    ('michelin','city_label',34,'cleanup:load-michelin-2026-singapore-2026-11-05 | city labels of 17 new venues | Ben choices 1-8:A, Nov 5 20:49 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11691 OR (SELECT count(*) FROM venues WHERE status='active') <> 11384 OR (SELECT count(*) FROM venues WHERE status='closed') <> 307 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28519 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 146 THEN RAISE EXCEPTION 'awards after'; END IF;
