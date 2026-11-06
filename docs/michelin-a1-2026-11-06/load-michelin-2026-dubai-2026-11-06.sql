@@ -1,9 +1,9 @@
 -- load-michelin-2026-dubai-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin Dubai 2026. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin Dubai 2026. Ben choices 1-6:A, Nov 6 01:03 ET. This file runs only after Ben's "go".
 -- 42 new rows, year 2026 (Oct 6, 2026: https://guide.michelin.com/ae-du/en/article/michelin-guide-ceremony/full-list-michelin-guide-dubai-selection), source_url = the card (/us/en/). 4 new venues, 0 new cities. Relabel 0. Retire 0.
 -- Source: docs/michelin-a1-2026-11-06/relay-dubai-2026-list-pages-2026-11-06.txt sha256 3e6f66b26d45a2acd424754394020703afcf878329ca717b3e6788146dbbb351.
 -- No rename, price, address, geo, blurb or status change on a live venue.
--- Expected after: venues 11758 (active 11446, closed 312); awards 28870; slugs 13702; listings 11758; labels 24923; cities 3328, sum 11446; ledger 288 rows; audit_log +63.
+-- Expected after: venues 11795 (active 11483, closed 312); awards 28927; slugs 13739; listings 11795; labels 24997; cities 3335, sum 11483; ledger 293 rows; audit_log +63.
 BEGIN;
 DO $load$
 DECLARE
@@ -64,15 +64,15 @@ BEGIN
     WHERE a.source_id='michelin' AND c.id='ci_3c40d285e6') y;
   IF fp IS DISTINCT FROM 'd902f74e3620b8fff542ca2c2a1def0d' THEN RAISE EXCEPTION 'scope fingerprint %', fp; END IF;
   IF (SELECT count(*) FROM awards a JOIN venues v ON v.id=a.venue_id JOIN cities c ON c.id=v.city_id WHERE a.source_id='michelin' AND c.id='ci_3c40d285e6') <> 38 THEN RAISE EXCEPTION 'scope rows'; END IF;
-  IF (SELECT count(*) FROM venues) <> 11754 OR (SELECT count(*) FROM venues WHERE status='active') <> 11442 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues before'; END IF;
-  IF (SELECT count(*) FROM awards) <> 28828 OR (SELECT max(id) FROM awards) <> 35999 THEN RAISE EXCEPTION 'awards before'; END IF;
-  IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2024) <> 27 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2025) <> 4329 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7521 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2027) <> 254 THEN RAISE EXCEPTION 'Michelin before'; END IF;
-  IF (SELECT count(*) FROM slugs) <> 13698 OR (SELECT count(*) FROM listings) <> 11754 OR (SELECT count(*) FROM city_label_source) <> 24915 OR (SELECT count(*) FROM price) <> 7759 OR (SELECT count(*) FROM redirects) <> 35 OR (SELECT count(*) FROM city_aliases) <> 222 THEN RAISE EXCEPTION 'tables before'; END IF;
-  IF (SELECT count(*) FROM cities) <> 3328 OR (SELECT sum(venues_count) FROM cities) <> 11442 OR (SELECT venues_count FROM cities WHERE id='ci_3c40d285e6') <> 93 OR (SELECT count(*) FROM source_capture_ledger) <> 286 OR (SELECT max(id) FROM source_capture_ledger) <> 340 THEN RAISE EXCEPTION 'cities, ledger before'; END IF;
+  IF (SELECT count(*) FROM venues) <> 11791 OR (SELECT count(*) FROM venues WHERE status='active') <> 11479 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues before'; END IF;
+  IF (SELECT count(*) FROM awards) <> 28885 OR (SELECT max(id) FROM awards) <> 36056 THEN RAISE EXCEPTION 'awards before'; END IF;
+  IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2024) <> 44 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2025) <> 4312 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7521 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2027) <> 311 THEN RAISE EXCEPTION 'Michelin before'; END IF;
+  IF (SELECT count(*) FROM slugs) <> 13735 OR (SELECT count(*) FROM listings) <> 11791 OR (SELECT count(*) FROM city_label_source) <> 24989 OR (SELECT count(*) FROM price) <> 7759 OR (SELECT count(*) FROM redirects) <> 35 OR (SELECT count(*) FROM city_aliases) <> 222 THEN RAISE EXCEPTION 'tables before'; END IF;
+  IF (SELECT count(*) FROM cities) <> 3335 OR (SELECT sum(venues_count) FROM cities) <> 11479 OR (SELECT venues_count FROM cities WHERE id='ci_3c40d285e6') <> 93 OR (SELECT count(*) FROM source_capture_ledger) <> 291 OR (SELECT max(id) FROM source_capture_ledger) <> 345 THEN RAISE EXCEPTION 'cities, ledger before'; END IF;
   IF false THEN RAISE EXCEPTION 'city clash'; END IF;
   IF (SELECT count(*) FROM cities c LEFT JOIN city_venue_counts k ON k.city_id=c.id WHERE c.venues_count IS DISTINCT FROM coalesce(k.active_venues,0)) <> 0 THEN RAISE EXCEPTION 'city view before'; END IF;
   IF (SELECT count(*) FROM listings l JOIN venues v ON v.id=l.venue_id WHERE v.status='closed' AND l.published) <> 0 THEN RAISE EXCEPTION 'closed published before'; END IF;
-  SELECT count(*), max(id) INTO n, aud_max FROM audit_log; IF n <> 127982 OR aud_max <> 133811 THEN RAISE EXCEPTION 'audit before % / %', n, aud_max; END IF;
+  SELECT count(*), max(id) INTO n, aud_max FROM audit_log; IF n <> 128253 OR aud_max <> 134082 THEN RAISE EXCEPTION 'audit before % / %', n, aud_max; END IF;
   -- Plan rows against live rows
 
   SELECT count(*) INTO n FROM regexp_split_to_table(aw,E'\n') x WHERE split_part(x,'~',1) NOT IN (SELECT split_part(y,'~',1) FROM regexp_split_to_table(nw,E'\n') y) AND NOT EXISTS (SELECT 1 FROM venues v WHERE v.id=split_part(x,'~',1) AND (v.status='active' OR v.id IN ('ve_d35cc76459')));
@@ -109,20 +109,20 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 42 THEN RAISE EXCEPTION 'awards %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',42,'cleanup:load-michelin-2026-dubai-2026-11-06 | Dubai 2026, Oct 6, 2026, https://guide.michelin.com/ae-du/en/article/michelin-guide-ceremony/full-list-michelin-guide-dubai-selection | Three Stars 2, Two Stars 4, One Star 14, Bib 22 | relay sha256 3e6f66b26d45a2acd424754394020703afcf878329ca717b3e6788146dbbb351 | DRAFT, choices not yet given'),
-    ('michelin','city_label',8,'cleanup:load-michelin-2026-dubai-2026-11-06 | city labels of 4 new venues | DRAFT, choices not yet given');
+    ('michelin','award',42,'cleanup:load-michelin-2026-dubai-2026-11-06 | Dubai 2026, Oct 6, 2026, https://guide.michelin.com/ae-du/en/article/michelin-guide-ceremony/full-list-michelin-guide-dubai-selection | Three Stars 2, Two Stars 4, One Star 14, Bib 22 | relay sha256 3e6f66b26d45a2acd424754394020703afcf878329ca717b3e6788146dbbb351 | Ben choices 1-6:A, Nov 6 01:03 ET'),
+    ('michelin','city_label',8,'cleanup:load-michelin-2026-dubai-2026-11-06 | city labels of 4 new venues | Ben choices 1-6:A, Nov 6 01:03 ET');
   -- POST gates
-  IF (SELECT count(*) FROM venues) <> 11758 OR (SELECT count(*) FROM venues WHERE status='active') <> 11446 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues after'; END IF;
-  IF (SELECT count(*) FROM awards) <> 28870 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 42 THEN RAISE EXCEPTION 'awards after'; END IF;
+  IF (SELECT count(*) FROM venues) <> 11795 OR (SELECT count(*) FROM venues WHERE status='active') <> 11483 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues after'; END IF;
+  IF (SELECT count(*) FROM awards) <> 28927 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 42 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT md5(string_agg(venue_id||'~'||category||'~'||source_url, E'\n' ORDER BY venue_id COLLATE "C")) FROM awards WHERE id > first_award AND year=2026 AND source_id='michelin') <> 'dcd9d6f2749b705a7990bffdb41f11e1' THEN RAISE EXCEPTION 'rows after'; END IF;
-  IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2024) <> 27 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2025) <> 4329 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7563 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2027) <> 254 THEN RAISE EXCEPTION 'Michelin after'; END IF;
+  IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2024) <> 44 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2025) <> 4312 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7563 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2027) <> 311 THEN RAISE EXCEPTION 'Michelin after'; END IF;
   SELECT string_agg(year||':'||category||'='||k, ',' ORDER BY year, category) INTO s FROM (SELECT a.year, a.category, count(*) k FROM awards a JOIN venues v ON v.id=a.venue_id JOIN cities c ON c.id=v.city_id WHERE a.source_id='michelin' AND c.id='ci_3c40d285e6' GROUP BY 1,2) z;
   IF s IS DISTINCT FROM '2025:Bib Gourmand=19,2025:One Star=14,2025:Three Stars=2,2025:Two Stars=3,2026:Bib Gourmand=22,2026:One Star=14,2026:Three Stars=2,2026:Two Stars=4' THEN RAISE EXCEPTION 'scope after %', s; END IF;
   IF EXISTS (SELECT 1 FROM awards a JOIN venues v ON v.id=a.venue_id JOIN cities c ON c.id=v.city_id WHERE a.source_id='michelin' AND c.id='ci_3c40d285e6' GROUP BY a.venue_id, a.year, a.category HAVING count(*)>1) THEN RAISE EXCEPTION 'duplicate rows'; END IF;
-  IF (SELECT count(*) FROM slugs) <> 13702 OR (SELECT count(*) FROM listings) <> 11758 OR (SELECT count(*) FROM city_label_source) <> 24923 OR (SELECT count(*) FROM price) <> 7759 OR (SELECT count(*) FROM redirects) <> 35 OR (SELECT count(*) FROM city_aliases) <> 222 THEN RAISE EXCEPTION 'tables after'; END IF;
-  IF (SELECT count(*) FROM cities) <> 3328 OR (SELECT sum(venues_count) FROM cities) <> 11446 THEN RAISE EXCEPTION 'cities after'; END IF;
+  IF (SELECT count(*) FROM slugs) <> 13739 OR (SELECT count(*) FROM listings) <> 11795 OR (SELECT count(*) FROM city_label_source) <> 24997 OR (SELECT count(*) FROM price) <> 7759 OR (SELECT count(*) FROM redirects) <> 35 OR (SELECT count(*) FROM city_aliases) <> 222 THEN RAISE EXCEPTION 'tables after'; END IF;
+  IF (SELECT count(*) FROM cities) <> 3335 OR (SELECT sum(venues_count) FROM cities) <> 11483 THEN RAISE EXCEPTION 'cities after'; END IF;
   IF (SELECT count(*) FROM cities c LEFT JOIN city_venue_counts k ON k.city_id=c.id WHERE c.venues_count IS DISTINCT FROM coalesce(k.active_venues,0)) <> 0 THEN RAISE EXCEPTION 'city view after'; END IF;
-  IF (SELECT count(*) FROM source_capture_ledger) <> 288 THEN RAISE EXCEPTION 'ledger after'; END IF;
+  IF (SELECT count(*) FROM source_capture_ledger) <> 293 THEN RAISE EXCEPTION 'ledger after'; END IF;
   IF (SELECT count(*) FROM listings l JOIN venues v ON v.id=l.venue_id WHERE v.status='closed' AND l.published) <> 0 OR (SELECT count(*) FROM listings l JOIN venues v ON v.id=l.venue_id WHERE v.status='active' AND NOT l.published) <> 0 THEN RAISE EXCEPTION 'published after'; END IF;
   SELECT count(*) INTO n FROM venues v WHERE (SELECT count(*) FROM slugs s WHERE s.venue_id=v.id AND s.property_id='eats' AND s.is_canonical) <> 1; IF n <> 0 THEN RAISE EXCEPTION 'canonical %', n; END IF;
   SELECT string_agg(table_name||':'||action||'='||c, ',' ORDER BY table_name COLLATE "C", action COLLATE "C") INTO s FROM (SELECT table_name, action, count(*) c FROM audit_log WHERE id > aud_max GROUP BY 1,2) z;
