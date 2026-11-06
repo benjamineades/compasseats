@@ -1,0 +1,32 @@
+hungary | Bib Gourmand | /us/en/baranya/pecs/restaurant/morzsa | Morzsa Konyha | P\u00e9cs, Hungary | \u20ac\u20ac \u00b7 Contemporary | hu | bib
+hungary | Bib Gourmand | /us/en/bekes/szarvas_1787559/restaurant/ujvaros-bisztro | \u00dajv\u00e1ros Bisztr\u00f3 | Szarvas, Hungary | \u20ac\u20ac \u00b7 Hungarian | hu | bib
+hungary | Bib Gourmand | /us/en/borsod-abauj-zemplen/encs/restaurant/anyukam-mondta | Anyuk\u00e1m Mondta | Encs, Hungary | \u20ac\u20ac \u00b7 Italian | hu | bib
+hungary | Bib Gourmand | /us/en/borsod-abauj-zemplen/malyinka_1786967/restaurant/iszkor | Iszkor | M\u00e1lyinka, Hungary | \u20ac\u20ac \u00b7 Modern Cuisine | hu | bib
+hungary | Bib Gourmand | /us/en/central-hungary/budapest/restaurant/94-konyha-bar | 94' Konyha & Bar | Budapest, Hungary | \u20ac\u20ac \u00b7 Vietnamese | hu | bib
+hungary | Bib Gourmand | /us/en/central-hungary/budapest/restaurant/cabrio | Cabrio | Budapest, Hungary | \u20ac\u20ac \u00b7 European Contemporary | hu | bib
+hungary | Bib Gourmand | /us/en/central-hungary/budapest/restaurant/goli | Goli | Budapest, Hungary | \u20ac\u20ac \u00b7 Middle Eastern | hu | bib
+hungary | Bib Gourmand | /us/en/central-hungary/budapest/restaurant/n28-wine-and-kitchen | N28 Wine and Kitchen | Budapest, Hungary | \u20ac\u20ac \u00b7 Traditional Cuisine | hu | bib
+hungary | Bib Gourmand | /us/en/heves/eger/restaurant/macok | Macok Bistro | Eger, Hungary | \u20ac\u20ac \u00b7 Modern Cuisine | hu | bib
+hungary | Bib Gourmand | /us/en/komarom-esztergom/tata/restaurant/platan-bisztro | Plat\u00e1n Bisztr\u00f3 | Tata, Hungary | \u20ac\u20ac \u00b7 Hungarian | hu | bib
+hungary | Bib Gourmand | /us/en/somogy/balatonszemes/restaurant/kistucsok | Kist\u00fccs\u00f6k | Balatonszemes, Hungary | \u20ac\u20ac \u00b7 Hungarian | hu | bib
+hungary | Bib Gourmand | /us/en/veszprem-region/balatonfured/restaurant/sparhelt | Sparhelt | Balatonf\u00fcred, Hungary | \u20ac\u20ac \u00b7 Modern Cuisine | hu | bib
+hungary | Bib Gourmand | /us/en/veszprem-region/balatonszolos/restaurant/casa-christa | Casa Christa | Balatonsz\u0151l\u0151s, Hungary | \u20ac\u20ac \u00b7 Mediterranean Cuisine | hu | bib
+hungary | One Star | /us/en/central-hungary/budapest/restaurant/babel | Babel | Budapest, Hungary | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hu | 1 star
+hungary | One Star | /us/en/central-hungary/budapest/restaurant/borkonyha-winekitchen | Borkonyha Winekitchen | Budapest, Hungary | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hu | 1 star
+hungary | One Star | /us/en/central-hungary/budapest/restaurant/costes | Costes Restaurant | Budapest, Hungary | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hu | 1 star
+hungary | One Star | /us/en/central-hungary/budapest/restaurant/essencia | ess\u00eancia | Budapest, Hungary | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hu | 1 star
+hungary | One Star | /us/en/central-hungary/budapest/restaurant/rumour | Rumour by R\u00e1cz Jen\u0151 | Budapest, Hungary | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | hu | 1 star
+hungary | One Star | /us/en/central-hungary/budapest/restaurant/salt-1196768 | Salt | Budapest, Hungary | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hu | 1 star
+hungary | One Star | /us/en/komarom-esztergom/esztergom/restaurant/42 | 42 | Esztergom, Hungary | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hu | 1 star
+hungary | One Star | /us/en/vas/oriszentpeter/restaurant/pajta | Pajta | \u0150riszentp\u00e9ter, Hungary | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hu | 1 star
+hungary | Two Stars | /us/en/central-hungary/budapest/restaurant/stand | Stand | Budapest, Hungary | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hu | 2 star
+saudi-arabia | Bib Gourmand | /us/en/mecca-province/al-ula_2555005/restaurant/joontos | Joontos | AlUla, Saudi Arabia | $$ \u00b7 Middle Eastern | sa | bib
+saudi-arabia | Bib Gourmand | /us/en/mecca-province/al-ula_2555005/restaurant/tofareya-1242533 | Tofareya | AlUla, Saudi Arabia | $ \u00b7 Saudi Cuisine | sa | bib
+saudi-arabia | Bib Gourmand | /us/en/mecca-province/jeddah_2555048/restaurant/the-lucky-llama | The Lucky Llama | Jeddah, Saudi Arabia | $$ \u00b7 Peruvian | sa | bib
+saudi-arabia | Bib Gourmand | /us/en/riyadh-province/riyadh_2555317/restaurant/em-sherif-cafe | Em Sherif Caf\u00e9 | Riyadh, Saudi Arabia | $$ \u00b7 Lebanese | sa | bib
+saudi-arabia | Bib Gourmand | /us/en/riyadh-province/riyadh_2555317/restaurant/fi-glbak | Fi Glbak | Riyadh, Saudi Arabia | $ \u00b7 Saudi Cuisine | sa | bib
+saudi-arabia | Bib Gourmand | /us/en/riyadh-province/riyadh_2555317/restaurant/kayzo | KAYZ\u014c | Riyadh, Saudi Arabia | $$ \u00b7 Japanese Contemporary | sa | bib
+saudi-arabia | Bib Gourmand | /us/en/riyadh-province/riyadh_2555317/restaurant/mirzam | Mirzam | Riyadh, Saudi Arabia | $ \u00b7 Saudi Cuisine | sa | bib
+saudi-arabia | Bib Gourmand | /us/en/riyadh-province/riyadh_2555317/restaurant/najd-village | Najd Village | Riyadh, Saudi Arabia | $ \u00b7 Saudi Cuisine | sa | bib
+saudi-arabia | Bib Gourmand | /us/en/riyadh-province/riyadh_2555317/restaurant/sasani | Sasani | Riyadh, Saudi Arabia | $ \u00b7 Persian | sa | bib
+saudi-arabia | Bib Gourmand | /us/en/riyadh-province/riyadh_2555317/restaurant/tameesa | Tameesa | Riyadh, Saudi Arabia | $ \u00b7 Saudi Cuisine | sa | bib
