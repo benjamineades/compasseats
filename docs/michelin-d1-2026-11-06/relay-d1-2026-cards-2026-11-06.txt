@@ -1,0 +1,6 @@
+denmark | Two Stars | /us/en/faroe-islands/torshavn/restaurant/paz | PAZ | T\u00f3rshavn, Denmark | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | dk | 2 star | 2026 | Denmark | 200
+iceland | One Star | /us/en/capital-region-iceland/reykjavik/restaurant/dill1186101 | DILL | Reykjav\u00edk, Iceland | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | is | 1 star | 2026 | Iceland | 200
+iceland | One Star | /us/en/capital-region-iceland/reykjavik/restaurant/ox | \u00d3X | Reykjav\u00edk, Iceland | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | is | 1 star | 2026 | Iceland | 200
+iceland | One Star | /us/en/southern-peninsula/grindavik/restaurant/moss | Moss | Grindav\u00edk, Iceland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | is | 1 star | 2026 | Iceland | 200
+new-zealand | Bib Gourmand | /us/en/north-island/auckland_2302926/restaurant/atelier-1247986 | Atelier | Auckland, New Zealand | $$ \u00b7 French Contemporary | nz | bib | 2026 | New Zealand | 200
+new-zealand | Bib Gourmand | /us/en/south-island/wanaka_2306683/restaurant/muttonbird | Muttonbird | W\u0101naka, New Zealand | $$ \u00b7 New Zealand | nz | bib | 2026 | New Zealand | 200
