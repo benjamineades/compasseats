@@ -120,7 +120,8 @@ Do a fresh count read and confirm ledger 340, audit_log 133,811, venues 11,754 (
 OAD 2026 rows 2,859, OAD 2025 rows 2,437, slugs 13,698, price 7,759, city_aliases 222, redirects 35, closed published 0 and
 cities.venues_count sum 11,442. Stop and tell me if any count differs.
 Attach benjamineades/compasseats with push access. Work from branch oad-2026-read-block.
-Start Gault & Millau France and Monaco 2027: check first that the edition is out (due Nov 9). Read the live rows again first, then read the list from the publisher and check first that it is complete. Find the edition that the live rows hold.
+First search for gaps in the Michelin guides: compare the editions on guide.michelin.com (guide, latest edition, date, URL) with the live rows by guide and year, including 2027 editions such as Fujian. Report each gap with a population on every count, then stop and ask me which to do. No file or write for a gap before my choice.
+Then start Gault & Millau France and Monaco 2027: check first that the edition is out (due Nov 9). Read the live rows again first, then read the list from the publisher and check first that it is complete. Find the edition that the live rows hold.
 Build the file first, examine it read-only with a dry run, present the evidence, then ask me for choices. After my choices: a fresh read, then wait for my "go". No write before my "go".
 If you have trouble fetching sites or connecting to GitHub & Supabase, check the chrome connector.
 ```
