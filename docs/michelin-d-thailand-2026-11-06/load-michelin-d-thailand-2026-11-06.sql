@@ -1,5 +1,5 @@
 -- load-michelin-d-thailand-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin group D Thailand. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin group D Thailand. Ben 1-4: A, Nov 6 2026 11:53 ET. This file runs only after Ben's "go".
 -- 178 rows keep year 2026 and get the card URL. Relabel 0. Retire 0. No new rows, no new venues, no closures.
 -- Source: docs/michelin-d-thailand-2026-11-06/relay-th-2026-cards-2026-11-06.txt sha256 1524f063b5abdcc2807d0b2f3031aea064e93eb6af8bb2e0171b0f8366d23c89.
 -- Expected after: awards 29052 unchanged; ledger 314 rows; audit_log +178.
@@ -206,7 +206,7 @@ BEGIN
   UPDATE awards a SET source_url=split_part(x,'~',4) FROM regexp_split_to_table(rl,E'\n') x WHERE a.id=split_part(x,'~',1)::bigint;
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 178 THEN RAISE EXCEPTION 'urls %', n; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',178,'cleanup:load-michelin-d-thailand-2026-11-06 | rule 2.1.7: Thailand 2026, ceremony Nov 27, 2025, https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-thailand-2026 | year stays 2026, source_url = the card (/us/en/), all 180 card labels 2026 read Nov 6 2026, retire 0 | Ben 5A Nov 6 (replaces Nov 5 decision 2) | relay sha256 1524f063b5abdcc2807d0b2f3031aea064e93eb6af8bb2e0171b0f8366d23c89 | DRAFT, choices not yet given');
+    ('michelin','award',178,'cleanup:load-michelin-d-thailand-2026-11-06 | rule 2.1.7: Thailand 2026, ceremony Nov 27, 2025, https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-thailand-2026 | year stays 2026, source_url = the card (/us/en/), all 180 card labels 2026 read Nov 6 2026, retire 0 | Ben 5A Nov 6 (replaces Nov 5 decision 2) | relay sha256 1524f063b5abdcc2807d0b2f3031aea064e93eb6af8bb2e0171b0f8366d23c89 | Ben 1-4: A, Nov 6 2026 11:53 ET');
   -- POST gates
   IF (SELECT count(*) FROM awards) <> 29052 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7821 THEN RAISE EXCEPTION 'Michelin after'; END IF;
