@@ -1,9 +1,9 @@
 -- load-michelin-2027-south-australia-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin South Australia 2027. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin South Australia 2027. Ben choices 1-6:A, Nov 6 01:03 ET. This file runs only after Ben's "go".
 -- 27 new rows, year 2027 (Oct 14, 2026: https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-south-australia-restaurant-selection-2027), source_url = the card (/us/en/). 23 new venues, 7 new cities. Relabel 0. Retire 0.
 -- Source: docs/michelin-a1-2026-11-06/relay-south-australia-2027-list-pages-2026-11-06.txt sha256 de4c2f370b6bc608e9afe3d65114b16bc1c93c874695939f18498d8c86899829.
 -- No rename, price, address, geo, blurb or status change on a live venue.
--- Expected after: venues 11777 (active 11465, closed 312); awards 28855; slugs 13721; listings 11777; labels 24961; cities 3335, sum 11465; ledger 288 rows; audit_log +151.
+-- Expected after: venues 11791 (active 11479, closed 312); awards 28885; slugs 13735; listings 11791; labels 24989; cities 3335, sum 11479; ledger 291 rows; audit_log +151.
 BEGIN;
 DO $load$
 DECLARE
@@ -68,15 +68,15 @@ BEGIN
     WHERE a.source_id='michelin' AND c.country_iso='AU') y;
   IF fp IS DISTINCT FROM 'd41d8cd98f00b204e9800998ecf8427e' THEN RAISE EXCEPTION 'scope fingerprint %', fp; END IF;
   IF (SELECT count(*) FROM awards a JOIN venues v ON v.id=a.venue_id JOIN cities c ON c.id=v.city_id WHERE a.source_id='michelin' AND c.country_iso='AU') <> 0 THEN RAISE EXCEPTION 'scope rows'; END IF;
-  IF (SELECT count(*) FROM venues) <> 11754 OR (SELECT count(*) FROM venues WHERE status='active') <> 11442 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues before'; END IF;
-  IF (SELECT count(*) FROM awards) <> 28828 OR (SELECT max(id) FROM awards) <> 35999 THEN RAISE EXCEPTION 'awards before'; END IF;
-  IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2024) <> 27 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2025) <> 4329 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7521 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2027) <> 254 THEN RAISE EXCEPTION 'Michelin before'; END IF;
-  IF (SELECT count(*) FROM slugs) <> 13698 OR (SELECT count(*) FROM listings) <> 11754 OR (SELECT count(*) FROM city_label_source) <> 24915 OR (SELECT count(*) FROM price) <> 7759 OR (SELECT count(*) FROM redirects) <> 35 OR (SELECT count(*) FROM city_aliases) <> 222 THEN RAISE EXCEPTION 'tables before'; END IF;
-  IF (SELECT count(*) FROM cities) <> 3328 OR (SELECT sum(venues_count) FROM cities) <> 11442 OR (SELECT venues_count FROM cities WHERE id='ci_851819adaa') <> 5 OR (SELECT venues_count FROM cities WHERE id='ci_37a1f5075f') <> 1 OR (SELECT count(*) FROM source_capture_ledger) <> 286 OR (SELECT max(id) FROM source_capture_ledger) <> 340 THEN RAISE EXCEPTION 'cities, ledger before'; END IF;
+  IF (SELECT count(*) FROM venues) <> 11768 OR (SELECT count(*) FROM venues WHERE status='active') <> 11456 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues before'; END IF;
+  IF (SELECT count(*) FROM awards) <> 28858 OR (SELECT max(id) FROM awards) <> 36029 THEN RAISE EXCEPTION 'awards before'; END IF;
+  IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2024) <> 44 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2025) <> 4312 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7521 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2027) <> 284 THEN RAISE EXCEPTION 'Michelin before'; END IF;
+  IF (SELECT count(*) FROM slugs) <> 13712 OR (SELECT count(*) FROM listings) <> 11768 OR (SELECT count(*) FROM city_label_source) <> 24943 OR (SELECT count(*) FROM price) <> 7759 OR (SELECT count(*) FROM redirects) <> 35 OR (SELECT count(*) FROM city_aliases) <> 222 THEN RAISE EXCEPTION 'tables before'; END IF;
+  IF (SELECT count(*) FROM cities) <> 3328 OR (SELECT sum(venues_count) FROM cities) <> 11456 OR (SELECT venues_count FROM cities WHERE id='ci_851819adaa') <> 5 OR (SELECT venues_count FROM cities WHERE id='ci_37a1f5075f') <> 1 OR (SELECT count(*) FROM source_capture_ledger) <> 289 OR (SELECT max(id) FROM source_capture_ledger) <> 343 THEN RAISE EXCEPTION 'cities, ledger before'; END IF;
   IF EXISTS (SELECT 1 FROM cities WHERE id='ci_eeb9a95c72' OR slug='stirling') OR EXISTS (SELECT 1 FROM city_aliases WHERE lower(alias)=lower('Stirling')) OR EXISTS (SELECT 1 FROM cities WHERE id='ci_7f4807b8f8' OR slug='mclaren-vale') OR EXISTS (SELECT 1 FROM city_aliases WHERE lower(alias)=lower('McLaren Vale')) OR EXISTS (SELECT 1 FROM cities WHERE id='ci_6024dbf0cf' OR slug='sevenhill') OR EXISTS (SELECT 1 FROM city_aliases WHERE lower(alias)=lower('Sevenhill')) OR EXISTS (SELECT 1 FROM cities WHERE id='ci_197fa43f87' OR slug='kangarilla') OR EXISTS (SELECT 1 FROM city_aliases WHERE lower(alias)=lower('Kangarilla')) OR EXISTS (SELECT 1 FROM cities WHERE id='ci_5ffa8386ab' OR slug='woodside-au') OR EXISTS (SELECT 1 FROM city_aliases WHERE lower(alias)=lower('Woodside')) OR EXISTS (SELECT 1 FROM cities WHERE id='ci_babc2860c1' OR slug='clare') OR EXISTS (SELECT 1 FROM city_aliases WHERE lower(alias)=lower('Clare')) OR EXISTS (SELECT 1 FROM cities WHERE id='ci_79fd273a12' OR slug='kingscote') OR EXISTS (SELECT 1 FROM city_aliases WHERE lower(alias)=lower('Kingscote')) THEN RAISE EXCEPTION 'city clash'; END IF;
   IF (SELECT count(*) FROM cities c LEFT JOIN city_venue_counts k ON k.city_id=c.id WHERE c.venues_count IS DISTINCT FROM coalesce(k.active_venues,0)) <> 0 THEN RAISE EXCEPTION 'city view before'; END IF;
   IF (SELECT count(*) FROM listings l JOIN venues v ON v.id=l.venue_id WHERE v.status='closed' AND l.published) <> 0 THEN RAISE EXCEPTION 'closed published before'; END IF;
-  SELECT count(*), max(id) INTO n, aud_max FROM audit_log; IF n <> 127982 OR aud_max <> 133811 THEN RAISE EXCEPTION 'audit before % / %', n, aud_max; END IF;
+  SELECT count(*), max(id) INTO n, aud_max FROM audit_log; IF n <> 128102 OR aud_max <> 133931 THEN RAISE EXCEPTION 'audit before % / %', n, aud_max; END IF;
   -- Plan rows against live rows
 
   SELECT count(*) INTO n FROM regexp_split_to_table(aw,E'\n') x WHERE split_part(x,'~',1) NOT IN (SELECT split_part(y,'~',1) FROM regexp_split_to_table(nw,E'\n') y) AND NOT EXISTS (SELECT 1 FROM venues v WHERE v.id=split_part(x,'~',1) AND (v.status='active' OR v.id IN ('')));
@@ -121,20 +121,20 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 27 THEN RAISE EXCEPTION 'awards %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',27,'cleanup:load-michelin-2027-south-australia-2026-11-06 | South Australia 2027, Oct 14, 2026, https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-south-australia-restaurant-selection-2027 | Three Stars 0, Two Stars 1, One Star 10, Bib 16 | relay sha256 de4c2f370b6bc608e9afe3d65114b16bc1c93c874695939f18498d8c86899829 | DRAFT, choices not yet given'),
-    ('michelin','city_label',46,'cleanup:load-michelin-2027-south-australia-2026-11-06 | city labels of 23 new venues, new cities stirling, mclaren-vale, sevenhill, kangarilla, woodside-au, clare, kingscote | DRAFT, choices not yet given');
+    ('michelin','award',27,'cleanup:load-michelin-2027-south-australia-2026-11-06 | South Australia 2027, Oct 14, 2026, https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-south-australia-restaurant-selection-2027 | Three Stars 0, Two Stars 1, One Star 10, Bib 16 | relay sha256 de4c2f370b6bc608e9afe3d65114b16bc1c93c874695939f18498d8c86899829 | Ben choices 1-6:A, Nov 6 01:03 ET'),
+    ('michelin','city_label',46,'cleanup:load-michelin-2027-south-australia-2026-11-06 | city labels of 23 new venues, new cities stirling, mclaren-vale, sevenhill, kangarilla, woodside-au, clare, kingscote | Ben choices 1-6:A, Nov 6 01:03 ET');
   -- POST gates
-  IF (SELECT count(*) FROM venues) <> 11777 OR (SELECT count(*) FROM venues WHERE status='active') <> 11465 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues after'; END IF;
-  IF (SELECT count(*) FROM awards) <> 28855 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 27 THEN RAISE EXCEPTION 'awards after'; END IF;
+  IF (SELECT count(*) FROM venues) <> 11791 OR (SELECT count(*) FROM venues WHERE status='active') <> 11479 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues after'; END IF;
+  IF (SELECT count(*) FROM awards) <> 28885 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 27 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT md5(string_agg(venue_id||'~'||category||'~'||source_url, E'\n' ORDER BY venue_id COLLATE "C")) FROM awards WHERE id > first_award AND year=2027 AND source_id='michelin') <> 'f7cca9a5341fc07e9c2e532b810b34d7' THEN RAISE EXCEPTION 'rows after'; END IF;
-  IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2024) <> 27 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2025) <> 4329 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7521 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2027) <> 281 THEN RAISE EXCEPTION 'Michelin after'; END IF;
+  IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2024) <> 44 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2025) <> 4312 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7521 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2027) <> 311 THEN RAISE EXCEPTION 'Michelin after'; END IF;
   SELECT string_agg(year||':'||category||'='||k, ',' ORDER BY year, category) INTO s FROM (SELECT a.year, a.category, count(*) k FROM awards a JOIN venues v ON v.id=a.venue_id JOIN cities c ON c.id=v.city_id WHERE a.source_id='michelin' AND c.country_iso='AU' GROUP BY 1,2) z;
   IF s IS DISTINCT FROM '2027:Bib Gourmand=16,2027:One Star=10,2027:Two Stars=1' THEN RAISE EXCEPTION 'scope after %', s; END IF;
   IF EXISTS (SELECT 1 FROM awards a JOIN venues v ON v.id=a.venue_id JOIN cities c ON c.id=v.city_id WHERE a.source_id='michelin' AND c.country_iso='AU' GROUP BY a.venue_id, a.year, a.category HAVING count(*)>1) THEN RAISE EXCEPTION 'duplicate rows'; END IF;
-  IF (SELECT count(*) FROM slugs) <> 13721 OR (SELECT count(*) FROM listings) <> 11777 OR (SELECT count(*) FROM city_label_source) <> 24961 OR (SELECT count(*) FROM price) <> 7759 OR (SELECT count(*) FROM redirects) <> 35 OR (SELECT count(*) FROM city_aliases) <> 222 THEN RAISE EXCEPTION 'tables after'; END IF;
-  IF (SELECT count(*) FROM cities) <> 3335 OR (SELECT sum(venues_count) FROM cities) <> 11465 THEN RAISE EXCEPTION 'cities after'; END IF;
+  IF (SELECT count(*) FROM slugs) <> 13735 OR (SELECT count(*) FROM listings) <> 11791 OR (SELECT count(*) FROM city_label_source) <> 24989 OR (SELECT count(*) FROM price) <> 7759 OR (SELECT count(*) FROM redirects) <> 35 OR (SELECT count(*) FROM city_aliases) <> 222 THEN RAISE EXCEPTION 'tables after'; END IF;
+  IF (SELECT count(*) FROM cities) <> 3335 OR (SELECT sum(venues_count) FROM cities) <> 11479 THEN RAISE EXCEPTION 'cities after'; END IF;
   IF (SELECT count(*) FROM cities c LEFT JOIN city_venue_counts k ON k.city_id=c.id WHERE c.venues_count IS DISTINCT FROM coalesce(k.active_venues,0)) <> 0 THEN RAISE EXCEPTION 'city view after'; END IF;
-  IF (SELECT count(*) FROM source_capture_ledger) <> 288 THEN RAISE EXCEPTION 'ledger after'; END IF;
+  IF (SELECT count(*) FROM source_capture_ledger) <> 291 THEN RAISE EXCEPTION 'ledger after'; END IF;
   IF (SELECT count(*) FROM listings l JOIN venues v ON v.id=l.venue_id WHERE v.status='closed' AND l.published) <> 0 OR (SELECT count(*) FROM listings l JOIN venues v ON v.id=l.venue_id WHERE v.status='active' AND NOT l.published) <> 0 THEN RAISE EXCEPTION 'published after'; END IF;
   SELECT count(*) INTO n FROM venues v WHERE (SELECT count(*) FROM slugs s WHERE s.venue_id=v.id AND s.property_id='eats' AND s.is_canonical) <> 1; IF n <> 0 THEN RAISE EXCEPTION 'canonical %', n; END IF;
   SELECT string_agg(table_name||':'||action||'='||c, ',' ORDER BY table_name COLLATE "C", action COLLATE "C") INTO s FROM (SELECT table_name, action, count(*) c FROM audit_log WHERE id > aud_max GROUP BY 1,2) z;
