@@ -1,5 +1,5 @@
 -- load-michelin-2027-latvia-2026-11-05.sql
--- CompassEats, Nov 6 2026. Michelin Latvia 2027 and the 2026 label. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin Latvia 2027 and the 2026 label. Ben choices 1-5:A, Nov 5 23:33 ET. This file runs only after Ben's "go".
 -- Rule 2.1.7: the 7 legacy rows hold the 2026 edition (Oct 22, 2025: https://guide.michelin.com/lv/en/article/michelin-guide-ceremony/the-michelin-guide-latvia-riga-2026-winners-michelin-guide-ceremony). Relabel 2025 -> 2026, source_url = that article. Retire 0.
 -- Then 9 new rows, year 2027 (Nov 5, 2026: https://guide.michelin.com/lv/en/article/michelin-guide-ceremony/the-michelin-guide-latvia-riga-2027-winners-michelin-guide-ceremony): One Star 2, Bib Gourmand 7, source_url = the card (/us/en/). 2 new venues.
 -- Then 5 history rows, year 2025, source_url = https://guide.michelin.com/lv/en/article/michelin-guide-ceremony/the-michelin-guide-latvia-riga-2025-winners-michelin-guide-ceremony: One Star 2, Bib Gourmand 3.
@@ -93,10 +93,10 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 5 THEN RAISE EXCEPTION 'awards 2025 %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',7,'relabel:load-michelin-2027-latvia-2026-11-05 | rule 2.1.7: Latvia edition live at capture = 2026 (Oct 22, 2025, https://guide.michelin.com/lv/en/article/michelin-guide-ceremony/the-michelin-guide-latvia-riga-2026-winners-michelin-guide-ceremony) | year 2025 -> 2026, article URL, retire 0 | DRAFT, choices not yet given'),
-    ('michelin','award',9,'cleanup:load-michelin-2027-latvia-2026-11-05 | Latvia 2027, Nov 5, 2026, https://guide.michelin.com/lv/en/article/michelin-guide-ceremony/the-michelin-guide-latvia-riga-2027-winners-michelin-guide-ceremony | One Star 2, Bib 7 | relay sha256 4b49d822714d5c80072e5f4c493c74819d705a8bd936eb09a034886ac860e164 | DRAFT, choices not yet given'),
-    ('michelin','award',5,'cleanup:load-michelin-2027-latvia-2026-11-05 | Latvia 2025 history, https://guide.michelin.com/lv/en/article/michelin-guide-ceremony/the-michelin-guide-latvia-riga-2025-winners-michelin-guide-ceremony | One Star 2, Bib 3 | DRAFT, choices not yet given'),
-    ('michelin','city_label',4,'cleanup:load-michelin-2027-latvia-2026-11-05 | city labels of 2 new venues | DRAFT, choices not yet given');
+    ('michelin','award',7,'relabel:load-michelin-2027-latvia-2026-11-05 | rule 2.1.7: Latvia edition live at capture = 2026 (Oct 22, 2025, https://guide.michelin.com/lv/en/article/michelin-guide-ceremony/the-michelin-guide-latvia-riga-2026-winners-michelin-guide-ceremony) | year 2025 -> 2026, article URL, retire 0 | Ben choices 1-5:A, Nov 5 23:33 ET'),
+    ('michelin','award',9,'cleanup:load-michelin-2027-latvia-2026-11-05 | Latvia 2027, Nov 5, 2026, https://guide.michelin.com/lv/en/article/michelin-guide-ceremony/the-michelin-guide-latvia-riga-2027-winners-michelin-guide-ceremony | One Star 2, Bib 7 | relay sha256 4b49d822714d5c80072e5f4c493c74819d705a8bd936eb09a034886ac860e164 | Ben choices 1-5:A, Nov 5 23:33 ET'),
+    ('michelin','award',5,'cleanup:load-michelin-2027-latvia-2026-11-05 | Latvia 2025 history, https://guide.michelin.com/lv/en/article/michelin-guide-ceremony/the-michelin-guide-latvia-riga-2025-winners-michelin-guide-ceremony | One Star 2, Bib 3 | Ben choices 1-5:A, Nov 5 23:33 ET'),
+    ('michelin','city_label',4,'cleanup:load-michelin-2027-latvia-2026-11-05 | city labels of 2 new venues | Ben choices 1-5:A, Nov 5 23:33 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11719 OR (SELECT count(*) FROM venues WHERE status='active') <> 11407 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28705 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 14 THEN RAISE EXCEPTION 'awards after'; END IF;
