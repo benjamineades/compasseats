@@ -1,5 +1,5 @@
 -- closure-michelin-d-norway-bar-amour-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin group D Norway, step 2. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin group D Norway, step 2. Ben NO 2: A, Nov 6 2026 15:17 ET, go 15:42 ET. This file runs only after Ben's "go".
 -- 1 closure: Bar Amour ve_6b4eb76969 (Oslo). Status closed, listing unpublished, Oslo venues_count 20 to 19.
 -- Award rows 7099 and 7100 stay. Slug stays. Price stays. No redirect.
 -- Evidence: Michelin Nordic 2026 full star list "(Update: Now Closed)"; Store norske leksikon (Aug 8 2026): closed first half of 2026; card 404 Nov 6 2026.
@@ -24,7 +24,7 @@ BEGIN
   UPDATE listings SET published=false WHERE venue_id='ve_6b4eb76969' AND published; GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'unpublish'; END IF;
   UPDATE cities SET venues_count=19 WHERE id='ci_8cfbfaefa5' AND venues_count=20; GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'oslo'; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',1,'closure:closure-michelin-d-norway-bar-amour-2026-11-06 | venue ve_6b4eb76969 Bar Amour (Oslo) closed: Michelin Nordic 2026 full star list marks it Now Closed (https://guide.michelin.com/fi/en/article/michelin-guide-ceremony/full-list-of-michelin-star-restaurants-in-the-nordic-countries); Store norske leksikon (edited Aug 8 2026) says closed in the first half of 2026 (https://snl.no/Bar_Amour); card bar-amour 404 on Nov 6 2026 | awards 7099 (2025) and 7100 (2026, capture URL, ledger 371) stay, slug stays, no redirect | Oslo venues_count 20 to 19 | DRAFT, choices not yet given');
+    ('michelin','award',1,'closure:closure-michelin-d-norway-bar-amour-2026-11-06 | venue ve_6b4eb76969 Bar Amour (Oslo) closed: Michelin Nordic 2026 full star list marks it Now Closed (https://guide.michelin.com/fi/en/article/michelin-guide-ceremony/full-list-of-michelin-star-restaurants-in-the-nordic-countries); Store norske leksikon (edited Aug 8 2026) says closed in the first half of 2026 (https://snl.no/Bar_Amour); card bar-amour 404 on Nov 6 2026 | awards 7099 (2025) and 7100 (2026, capture URL, ledger 371) stay, slug stays, no redirect | Oslo venues_count 20 to 19 | Ben NO 2: A, Nov 6 2026 15:17 ET, go 15:42 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11831 OR (SELECT count(*) FROM venues WHERE status='active') <> 11511 OR (SELECT count(*) FROM venues WHERE status='closed') <> 320 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 29052 THEN RAISE EXCEPTION 'awards after'; END IF;
