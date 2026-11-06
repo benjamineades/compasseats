@@ -7,7 +7,10 @@ config.json keys: key, iso, guide, label, year, rule (ledger text: edition, date
   article: optional [[award_id, venue_id, category, url, rows_already_on_url, note], ...] for a card that left the site (rule of the A2-E handoff).
   art_kind: optional, 'article' (default) or 'capture' (archive capture URL); sets the ledger and evidence wording only.
   other_url: optional [[award_id, venue_id, slug, current_url, 'keep'|'replace'], ...] rows that hold another URL for the card (for example another locale).
-    keep: gate that the row still holds current_url. replace: gate current_url, then set the /us/en/ card URL."""
+    keep: gate that the row still holds current_url. replace: gate current_url, then set the /us/en/ card URL.
+  outside: optional [[award_id, venue_id, slug, iso, note], ...] a card in this list on a venue of another country (PAZ, FO, in the Denmark list).
+    No write. Gate: the row holds the card URL and the venue's city has that country_iso. Counts toward card coverage.
+  note_ok: optional {slug: [relay_note, evidence_text]} a card whose page has a closure note; the row still gets the card URL."""
 import csv, hashlib, json, re, sys
 C = json.load(open(sys.argv[1])); FP = sys.argv[2]
 APPROVAL = sys.argv[3] if len(sys.argv) > 3 else 'DRAFT, choices not yet given'; SCRATCH = sys.argv[4] if len(sys.argv) > 4 else '.'
@@ -20,13 +23,16 @@ rel = open(RELAY, encoding='ascii').read(); assert hashlib.sha256(rel.encode()).
 cards = {}
 for line in rel.split('\n'):
     cat, href, name, loc, pr, lab, guide, st, final, closed = dec(line).split(' | ')
-    assert lab == C['label'] and guide == C['guide'] and st == '200' and final == href and closed == '-', line
-    cards[href.split('/restaurant/')[1]] = dict(cat=cat, url='https://guide.michelin.com' + href, name=name, loc=loc, pr=pr)
+    NOK = C.get('note_ok', {}); sl = href.split('/restaurant/')[1]
+    assert lab == C['label'] and guide == C['guide'] and st == '200' and final == href and (closed == '-' or (sl in NOK and NOK[sl][0] == closed)), line
+    cards[sl] = dict(cat=cat, url='https://guide.michelin.com' + href, name=name, loc=loc, pr=pr)
 pairs = [l.split('\t') for l in open('pairs.tsv', encoding='utf8').read().strip().split('\n')]
 have = {s: (a, v) for a, v, s in C['have_url']}
 OTH = C.get('other_url', []); oth = {s: (a, v, u, k) for a, v, s, u, k in OTH}; assert all(k in ('keep', 'replace') for *_, k in OTH)
-sets = [{p[0] for p in pairs}, set(have), set(oth)]
+OUT = C.get('outside', []); out = {s: (a, v, i, note) for a, v, s, i, note in OUT}
+sets = [{p[0] for p in pairs}, set(have), set(oth)] + ([set(out)] if OUT else [])
 assert set().union(*sets) == set(cards) and sum(map(len, sets)) == len(cards), 'pairs + have_url + other_url must cover the cards once'
+assert all(s in {p[0] for p in pairs} for s in C.get('note_ok', {})), 'note_ok slugs must be in pairs'
 assert len({p[2] for p in pairs}) == len(pairs)
 rl = sorted((int(a), f"{a}~{v}~{cards[s]['cat']}~{cards[s]['url']}") for s, v, a in pairs)
 RL = '\n'.join(x for _, x in rl); N = len(rl); RA = C['rows_after']
@@ -62,10 +68,14 @@ oth_note = (' | other card URL: ' + '; '.join(f"{a} {'kept' if k == 'keep' else 
 oth_line = (f' {len(KEEP)} rows keep another URL of their card.' if KEEP else '') + (f' {NR} rows have another URL of their card replaced by the /us/en/ card URL.' if REPL else '')
 HV = ', '.join(f"({a}, '{v}', '{cards[s]['url']}')" for a, v, s in C['have_url'])
 have_gate = (f"  IF (SELECT count(*) FROM awards WHERE (id, venue_id, source_url) IN ({HV})) <> {len(have)} THEN RAISE EXCEPTION 'rows with URL'; END IF;\n") if have else ''
-led = f"('michelin','award',{N+NA+NR},'cleanup:{KEY} | {C['rule']} | year stays {Y}, source_url = the card (/us/en/), all {len(cards)} card labels {C['label']} read Nov 6 2026, retire 0{art_note}{oth_note} | relay sha256 {SHA} | {APPROVAL}')"
+OV = ', '.join(f"({a}, '{v}', '{cards[s]['url']}', '{i}')" for a, v, s, i, note in OUT)
+have_gate += (f"  IF (SELECT count(*) FROM awards a JOIN venues v ON v.id=a.venue_id JOIN cities c ON c.id=v.city_id WHERE (a.id, a.venue_id, a.source_url, c.country_iso) IN ({OV})) <> {len(OUT)} THEN RAISE EXCEPTION 'rows outside scope'; END IF;\n") if OUT else ''
+out_note = (' | outside scope, no write: ' + '; '.join(f"{a} {note}" for a, v, s, i, note in OUT)) if OUT else ''
+nok_note = (' | card closure note, url set: ' + '; '.join(f"{s} {t}" for s, (n, t) in sorted(C['note_ok'].items()))) if C.get('note_ok') else ''
+led = f"('michelin','award',{N+NA+NR},'cleanup:{KEY} | {C['rule']} | year stays {Y}, source_url = the card (/us/en/), all {len(cards)} card labels {C['label']} read Nov 6 2026, retire 0{art_note}{oth_note}{out_note}{nok_note} | relay sha256 {SHA} | {APPROVAL}')"
 sql = f"""-- {KEY}.sql
 -- CompassEats, Nov 6 2026. Michelin group D {C['guide']}. {APPROVAL}. This file runs only after Ben's "go".
--- {N} rows keep year {Y} and get the card URL.{art_line}{oth_line} Relabel 0. Retire 0. No new rows, no new venues, no closures.
+-- {N} rows keep year {Y} and get the card URL.{art_line}{oth_line}{' ' + str(len(OUT)) + ' card(s) on a venue outside the scope: no write.' if OUT else ''} Relabel 0. Retire 0. No new rows, no new venues, no closures.
 -- Source: {RELAY} sha256 {SHA}.
 -- Expected after: awards {B['a']} unchanged; ledger {B['led']+1} rows; audit_log +{N+NA+NR}.
 BEGIN;
@@ -118,8 +128,9 @@ with open(KEY.replace('load-', '') + '-evidence.csv', 'w', newline='', encoding=
     w = csv.writer(f); w.writerow(['card_slug', 'card_category', 'card_name', 'card_city', 'card_price', 'card_url', 'card_label', 'venue_id', 'award_id', 'action'])
     for s in sorted(cards):
         c = cards[s]; p = next((p for p in pairs if p[0] == s), None)
-        if p: v, a, act = p[1], p[2], 'url set'
+        if p: v, a, act = p[1], p[2], 'url set' + ((' (card note: ' + C['note_ok'][s][1] + ')') if s in C.get('note_ok', {}) else '')
         elif s in have: v, a, act = have[s][1], have[s][0], 'url already set'
+        elif s in out: a, v, i, note = out[s]; act = f'outside scope ({i} venue), url already set, no write'
         else: a, v, u, k = oth[s]; act = ('url kept: ' if k == 'keep' else 'url replaced, was: ') + u
         w.writerow([s, c['cat'], c['name'], c['loc'].split(', ')[0], c['pr'].split(' · ')[0], c['url'], C['label'], v, a, act])
 if ART:

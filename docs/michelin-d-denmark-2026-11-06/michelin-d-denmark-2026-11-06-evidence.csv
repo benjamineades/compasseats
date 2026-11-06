@@ -1,0 +1,70 @@
+card_slug,card_category,card_name,card_city,card_price,card_url,card_label,venue_id,award_id,action
+a%E2%80%9Ao%E2%80%9Ac,Two Stars,a|o|c,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/a%E2%80%9Ao%E2%80%9Ac,2026,ve_bc8db0ea43,1795,url set
+akme,One Star,akmē,Copenhagen,€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/akme,2026,ve_cea5c87389,21041,url already set
+alchemist,Two Stars,Alchemist,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/alchemist,2026,ve_768a440eb6,1793,url set
+alimentum,One Star,Alimentum,Aalborg,€€€€,https://guide.michelin.com/us/en/north-denmark/aalborg/restaurant/alimentum,2026,ve_3ec90acf92,3603,url set
+alouette,One Star,Alouette,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/alouette,2026,ve_ba625143b9,4614,url set
+anarki,Bib Gourmand,Anarki,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/anarki,2026,ve_881711ecb6,9899,url set
+aro,One Star,ARO,Odense,€€,https://guide.michelin.com/us/en/southern-denmark/odense/restaurant/aro,2026,ve_778f64e5e0,6981,url set
+bach-nurup,One Star,Bach & Nurup,Aalborg,€€,https://guide.michelin.com/us/en/north-denmark/aalborg/restaurant/bach-nurup,2026,ve_cd005d1e4d,21042,url already set
+bistro-lupa,Bib Gourmand,Bistro Lupa,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/bistro-lupa,2026,ve_139ad2f863,9901,url set
+bobe,Bib Gourmand,Bobe,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/bobe,2026,ve_276e542f4a,9903,url set
+botschaft,Bib Gourmand,Botschaft,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/botschaft,2026,ve_a4cdd65b30,21103,url already set
+calma,Bib Gourmand,Calma,Copenhagen,€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/calma,2026,ve_fb79a8eace,9905,url set
+domaene,One Star,Domæne,Herning,€€€,https://guide.michelin.com/us/en/central-denmark/herning/restaurant/domaene,2026,ve_a135a5ab21,5361,url set
+domestic,One Star,Domestic,Aarhus,€€€€,https://guide.michelin.com/us/en/central-denmark/aarhus/restaurant/domestic,2026,ve_13ac37e7bf,3609,url set
+dragsholm-slot-gourmet,One Star,Dragsholm Slot Gourmet,Hørve,€€€€,https://guide.michelin.com/us/en/zealand/horve/restaurant/dragsholm-slot-gourmet,2026,ve_23805c8501,5616,url set
+enomania,Bib Gourmand,Enomania,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/enomania,2026,ve_0276d61b4a,9907,url set
+esse,One Star,ESSE,Copenhagen,€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/esse,2026,ve_d506cb62f8,18417,url already set
+formel-b,One Star,formel B,Copenhagen,€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/formel-b,2026,ve_a616ef7c7b,4621,url set
+frank569608,Bib Gourmand,Restaurant Frank,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/frank569608,2026,ve_bc652b214e,21107,url already set
+frederikshoj,Two Stars,Frederikshøj,Aarhus,€€€€,https://guide.michelin.com/us/en/central-denmark/aarhus/restaurant/frederikshoj,2026,ve_11f934752e,1414,url set
+frederiksminde,One Star,Frederiksminde,Præstø,€€€,https://guide.michelin.com/us/en/zealand/praesto/restaurant/frederiksminde,2026,ve_68a2c8e847,7481,url set
+gabrielle,Bib Gourmand,Gabrielle,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/gabrielle,2026,ve_aa3f42de9e,9909,url set
+gastrome,One Star,Gastromé,Aarhus,€€€€,https://guide.michelin.com/us/en/central-denmark/aarhus/restaurant/gastrome,2026,ve_d38e799d9e,3611,url set
+geranium,Three Stars,Geranium,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/geranium,2026,ve_ad6b213f39,203,url set
+graziano,Bib Gourmand,Graziano,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/graziano,2026,ve_3471cf5525,21104,url already set
+henne-kirkeby-kro,Two Stars,Henne Kirkeby Kro,Henne,€€€€,https://guide.michelin.com/us/en/southern-denmark/henne/restaurant/henne-kirkeby-kro,2026,ve_301702feaf,2038,url set
+jatak,One Star,Jatak,Copenhagen,€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/jatak,2026,ve_f2c7f002e3,4626,url set
+jordnaer,Three Stars,Jordnær,Gentofte,€€€€,https://guide.michelin.com/us/en/capital-region/gentofte_1373269/restaurant/jordnaer,2026,ve_412e1716a6,329,url set
+kadeau-bornholm,One Star,Kadeau Bornholm,Åkirkeby,€€€€,https://guide.michelin.com/us/en/capital-region/kirkeby/restaurant/kadeau-bornholm,2026,ve_fa21e78242,9142,url set
+kadeau-copenhagen,Three Stars,Kadeau Copenhagen,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/kadeau-copenhagen,2026,ve_0887d3b2c0,1801,url set
+koan,Two Stars,Koan,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/koan,2026,ve_8bab1ac2d2,1810,url set
+koefoed,Bib Gourmand,Koefoed,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/koefoed,2026,ve_e4c139d124,9911,url set
+kong-hans-kaelder,Two Stars,Kong Hans Kælder,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/kong-hans-kaelder,2026,ve_89f1fbd175,1815,url set
+levi,Bib Gourmand,Levi,Copenhagen,€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/levi,2026,ve_29e2076287,21105,url already set
+lille-molle,One Star,Lille Mølle,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/lille-molle,2026,ve_fe3bb3204c,21043,url already set
+lyst,One Star,LYST,Vejle,€€€€,https://guide.michelin.com/us/en/southern-denmark/vejle/restaurant/lyst,2026,ve_14e0034dcf,8866,url set
+marchal,One Star,Marchal,Copenhagen,€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/marchal,2026,ve_3ced870b52,4630,url set
+marv-ben,Bib Gourmand,Marv & Ben,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/marv-ben,2026,ve_3bd9eff797,9913,url set
+melee,Bib Gourmand,Mêlée,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/melee,2026,ve_7fb3fca348,9915,url set
+mota,One Star,MOTA,Nykøbing Sjælland,€€€€,https://guide.michelin.com/us/en/zealand/nykobing-sjaelland/restaurant/mota,2026,ve_f7e4cd5116,6960,url set
+no-2,Bib Gourmand,no.2,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/no-2,2026,ve_b57e9acfed,9916,url set
+norrlyst,Bib Gourmand,Norrlyst,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/norrlyst,2026,ve_26dc1f9397,9920,url set
+oke,One Star,Okê,Skagen,€€€,https://guide.michelin.com/us/en/north-denmark/skagen/restaurant/oke,2026,ve_dcdc654c7b,21044,url already set
+paesano,Bib Gourmand,Paesàno,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/paesano,2026,ve_b98e131aca,9922,url set
+parsley-salon,One Star,Parsley Salon,Hellerup,€€€€,https://guide.michelin.com/us/en/capital-region/hellerup_7770408/restaurant/parsley-salon,2026,ve_2e7fda413e,5340,url set
+paz,Two Stars,PAZ,Tórshavn,€€€€,https://guide.michelin.com/us/en/faroe-islands/torshavn/restaurant/paz,2026,ve_42a5f4e1d3,3444,"outside scope (FO venue), url already set, no write"
+pearl-by-paul-proffitt,One Star,Pearl by Paul Proffitt,Kruså,€€€,https://guide.michelin.com/us/en/southern-denmark/krusa_1375755/restaurant/pearl-by-paul-proffitt,2026,ve_494b644efe,5712,url set
+petra-bar-restaurant,Bib Gourmand,Petra Bar & Restaurant,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/petra-bar-restaurant,2026,ve_0b7f3ea5fb,21106,url already set
+pluto,Bib Gourmand,Pluto,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/pluto,2026,ve_f56f883efe,9924,url set
+pondus,Bib Gourmand,Pondus,Aarhus,€,https://guide.michelin.com/us/en/central-denmark/aarhus/restaurant/pondus,2026,ve_57c5fa0b04,9191,url set
+radio,Bib Gourmand,Radio,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/radio,2026,ve_bb98cc4449,9926,url set
+rebel,Bib Gourmand,Rebel,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/rebel,2026,ve_ece120d51e,9928,url set
+restaurant-aure,One Star,Aure,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/restaurant-aure,2026,ve_f2d62f12bb,4618,url set
+restaurant-et,Bib Gourmand,Restaurant ET,Aarhus,€,https://guide.michelin.com/us/en/central-denmark/aarhus/restaurant/restaurant-et,2026,ve_d91bfddd92,9193,url set
+restaurant-vie,Bib Gourmand,Restaurant VIE,Nordhavn,€,https://guide.michelin.com/us/en/capital-region/nordhavn_7770461/restaurant/restaurant-vie,2026,ve_b33d9e8790,9930,url set
+sanchez,Bib Gourmand,Sanchez,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/sanchez,2026,ve_cbcc1f0329,21108,url already set
+selma,Bib Gourmand,Selma,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/selma,2026,ve_d433e2742e,9932,url set
+silberbauers-bistro,Bib Gourmand,Silberbauers Bistro,Copenhagen,€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/silberbauers-bistro,2026,ve_d670875f46,9934,url set
+sollerod-kro,One Star,Søllerød Kro,Holte,€€€€,https://guide.michelin.com/us/en/capital-region/holte_1374367/restaurant/sollerod-kro,2026,ve_5687d452d7,4639,url set
+substans,One Star,Substans,Aarhus,€€€€,https://guide.michelin.com/us/en/central-denmark/aarhus/restaurant/substans,2026,ve_a86117b663,3613,url set
+sushi-anaba,One Star,Sushi Anaba,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/sushi-anaba,2026,ve_71f30ba3cb,4635,url set
+syttende,One Star,Syttende,Sønderborg,€€€€,https://guide.michelin.com/us/en/southern-denmark/sonderborg/restaurant/syttende,2026,ve_3a5ba34dfc,8385,url set
+texture-1215658,One Star,texture,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/texture-1215658,2026,ve_f5f4d7600d,4641,url set
+the-samuel,One Star,The Samuel,Hellerup,€€€€,https://guide.michelin.com/us/en/capital-region/hellerup_7770408/restaurant/the-samuel,2026,ve_d3d4cf6ce0,5342,url set
+ti-trin-ned,One Star,Ti Trin Ned,Fredericia,€€€€,https://guide.michelin.com/us/en/southern-denmark/fredericia/restaurant/ti-trin-ned,2026,ve_f2425cd9f2,5073,url set
+tri-1203718,One Star,Tri,Agger,€€€€,https://guide.michelin.com/us/en/north-denmark/agger/restaurant/tri-1203718,2026,ve_5289e4d2d3,3632,url set
+udtryk,One Star,Udtryk,Copenhagen,€€€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/udtryk,2026,ve_357709fdf3,4643,url set (card note: card says temporarily closed and set to reopen in December; venue status stays closed)
+uformel,Bib Gourmand,Uformel,Copenhagen,€€,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/uformel,2026,ve_e288def142,21109,url already set
+villa-vest,One Star,Villa Vest,Lønstrup,€€€,https://guide.michelin.com/us/en/north-denmark/lonstrup/restaurant/villa-vest,2026,ve_dd313fea0a,6218,url set
