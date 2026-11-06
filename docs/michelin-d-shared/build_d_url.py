@@ -3,7 +3,8 @@
 Run from the country folder: python3 ../michelin-d-shared/build_d_url.py config.json <scope_fp> [approval] [scratch]
 Folder inputs: config.json, baseline.json, pairs.tsv (slug, venue_id, award_id), relay file + relay.sha256.
 config.json keys: key, iso, guide, label, year, rule (ledger text: edition, date, article URL), relay,
-  have_url: [[award_id, venue_id, slug], ...] rows that already hold their card URL, rows_after: rows of that year in scope."""
+  have_url: [[award_id, venue_id, slug], ...] rows that already hold their card URL, rows_after: rows of that year in scope.
+  article: optional [[award_id, venue_id, category, url, rows_already_on_url, note], ...] for a card that left the site (rule of the A2-E handoff)."""
 import csv, hashlib, json, re, sys
 C = json.load(open(sys.argv[1])); FP = sys.argv[2]
 APPROVAL = sys.argv[3] if len(sys.argv) > 3 else 'DRAFT, choices not yet given'; SCRATCH = sys.argv[4] if len(sys.argv) > 4 else '.'
@@ -24,19 +25,33 @@ assert {p[0] for p in pairs} | set(have) == set(cards) and not ({p[0] for p in p
 assert len({p[2] for p in pairs}) == len(pairs)
 rl = sorted((int(a), f"{a}~{v}~{cards[s]['cat']}~{cards[s]['url']}") for s, v, a in pairs)
 RL = '\n'.join(x for _, x in rl); N = len(rl); RA = C['rows_after']
+ART = C.get('article', []); NA = len(ART)
+RL2 = '\n'.join(f"{a}~{v}~{c}~{u}" for a, v, c, u, k, note in sorted(ART))
+art_gate = ''.join(f"  IF (SELECT count(*) FROM awards WHERE source_url='{u}') <> {k} THEN RAISE EXCEPTION 'article url rows {a}'; END IF;\n" for a, v, c, u, k, note in ART)
+art_pre = (f"""  IF md5(rl2) <> '{md5(RL2)}' THEN RAISE EXCEPTION 'article plan text'; END IF;
+  SELECT count(*) INTO n FROM regexp_split_to_table(rl2,E'\\n') x LEFT JOIN awards a ON a.id=split_part(x,'~',1)::bigint
+    WHERE a.id IS NULL OR a.venue_id<>split_part(x,'~',2) OR a.category<>split_part(x,'~',3) OR a.year<>{Y} OR a.source_id<>'michelin' OR a.source_url IS NOT NULL;
+  IF n <> 0 THEN RAISE EXCEPTION 'article plan rows %', n; END IF;
+""" + art_gate) if ART else ''
+art_write = (f"""  UPDATE awards a SET source_url=split_part(x,'~',4) FROM regexp_split_to_table(rl2,E'\\n') x WHERE a.id=split_part(x,'~',1)::bigint;
+  GET DIAGNOSTICS n = ROW_COUNT; IF n <> {NA} THEN RAISE EXCEPTION 'article urls %', n; END IF;
+""") if ART else ''
+art_line = f' {NA} rows get the article URL.' if ART else ''
+rl2_decl = f"  rl2 text := $plan${RL2}$plan$;\n" if ART else ''
+art_note = (' | article URL (card left the site, no capture after the ceremony): ' + '; '.join(f"{a} {note}" for a, v, c, u, k, note in ART)) if ART else ''
 HV = ', '.join(f"({a}, '{v}', '{cards[s]['url']}')" for a, v, s in C['have_url'])
 have_gate = (f"  IF (SELECT count(*) FROM awards WHERE (id, venue_id, source_url) IN ({HV})) <> {len(have)} THEN RAISE EXCEPTION 'rows with URL'; END IF;\n") if have else ''
-led = f"('michelin','award',{N},'cleanup:{KEY} | {C['rule']} | year stays {Y}, source_url = the card (/us/en/), all {len(cards)} card labels {C['label']} read Nov 6 2026, retire 0 | relay sha256 {SHA} | {APPROVAL}')"
+led = f"('michelin','award',{N+NA},'cleanup:{KEY} | {C['rule']} | year stays {Y}, source_url = the card (/us/en/), all {len(cards)} card labels {C['label']} read Nov 6 2026, retire 0{art_note} | relay sha256 {SHA} | {APPROVAL}')"
 sql = f"""-- {KEY}.sql
 -- CompassEats, Nov 6 2026. Michelin group D {C['guide']}. {APPROVAL}. This file runs only after Ben's "go".
--- {N} rows keep year {Y} and get the card URL. Relabel 0. Retire 0. No new rows, no new venues, no closures.
+-- {N} rows keep year {Y} and get the card URL.{art_line} Relabel 0. Retire 0. No new rows, no new venues, no closures.
 -- Source: {RELAY} sha256 {SHA}.
--- Expected after: awards {B['a']} unchanged; ledger {B['led']+1} rows; audit_log +{N}.
+-- Expected after: awards {B['a']} unchanged; ledger {B['led']+1} rows; audit_log +{N+NA}.
 BEGIN;
 DO $load$
 DECLARE
   rl text := $plan${RL}$plan$;
-  n bigint; s text; fp text; u1 bigint; u2 bigint;
+{rl2_decl}  n bigint; s text; fp text; u1 bigint; u2 bigint;
 BEGIN
   -- PRE gates
   IF md5(rl) <> '{md5(RL)}' THEN RAISE EXCEPTION 'plan text'; END IF;
@@ -53,10 +68,10 @@ BEGIN
     WHERE a.id IS NULL OR a.venue_id<>split_part(x,'~',2) OR a.category<>split_part(x,'~',3) OR a.year<>{Y} OR a.source_id<>'michelin' OR a.source_url IS NOT NULL;
   IF n <> 0 THEN RAISE EXCEPTION 'plan rows %', n; END IF;
   IF EXISTS (SELECT 1 FROM awards a WHERE a.source_url IN (SELECT split_part(x,'~',4) FROM regexp_split_to_table(rl,E'\\n') x)) THEN RAISE EXCEPTION 'url in use'; END IF;
-{have_gate}  -- WRITE: start
+{have_gate}{art_pre}  -- WRITE: start
   UPDATE awards a SET source_url=split_part(x,'~',4) FROM regexp_split_to_table(rl,E'\\n') x WHERE a.id=split_part(x,'~',1)::bigint;
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> {N} THEN RAISE EXCEPTION 'urls %', n; END IF;
-  INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
+{art_write}  INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
     {led};
   -- POST gates
   IF (SELECT count(*) FROM awards) <> {B['a']} THEN RAISE EXCEPTION 'awards after'; END IF;
@@ -68,7 +83,7 @@ BEGIN
   IF n <> 0 THEN RAISE EXCEPTION 'url repeats %', n; END IF;
   IF (SELECT count(*) FROM source_capture_ledger) <> {B['led']+1} THEN RAISE EXCEPTION 'ledger after'; END IF;
   SELECT string_agg(table_name||':'||action||'='||c, ',' ORDER BY table_name COLLATE "C", action COLLATE "C") INTO s FROM (SELECT table_name, action, count(*) c FROM audit_log WHERE id > {B['aum']} GROUP BY 1,2) z;
-  IF s IS DISTINCT FROM 'awards:UPDATE={N}' THEN RAISE EXCEPTION 'audit after %', s; END IF;
+  IF s IS DISTINCT FROM 'awards:UPDATE={N+NA}' THEN RAISE EXCEPTION 'audit after %', s; END IF;
   RAISE NOTICE 'OK: all gates passed';
 END
 $load$;
@@ -84,4 +99,8 @@ with open(KEY.replace('load-', '') + '-evidence.csv', 'w', newline='', encoding=
         c = cards[s]; p = next((p for p in pairs if p[0] == s), None)
         v, a, act = (p[1], p[2], 'url set') if p else (have[s][1], have[s][0], 'url already set')
         w.writerow([s, c['cat'], c['name'], c['loc'].split(', ')[0], c['pr'].split(' · ')[0], c['url'], C['label'], v, a, act])
+if ART:
+    with open(KEY.replace('load-', '') + '-evidence.csv', 'a', newline='', encoding='utf8') as f:
+        w = csv.writer(f)
+        for a, v, c, u, k, note in ART: w.writerow(['(card left the site)', c, '', '', '', u, C['label'] + ' (article)', v, a, 'article url set: ' + note])
 print(KEY, 'sha256', hashlib.sha256(sql.encode()).hexdigest(), 'chars', len(sql), 'rows', N, 'plan md5', md5(RL))
