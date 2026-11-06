@@ -1,5 +1,5 @@
 -- load-michelin-e-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin group E: Hungary, Saudi Arabia. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin group E: Hungary, Saudi Arabia. Ben choices 1-5:A, Nov 6 09:39 ET. This file runs only after Ben's "go".
 -- 34 rows keep year 2025 and get a URL: 32 cards, 2 articles (Platan Gourmet, Samia's Dish). Relabel 0. Retire 0. No new rows, no new venues.
 -- 1 closure: Platan Gourmet ve_b35292624c, closed Jul 31, 2026 (Portfolio.hu, Jun 4, 2026). Award row stays. Slug stays.
 -- Source: docs/michelin-e-2026-11-06/relay-e-2026-list-pages-2026-11-06.txt sha256 9a48f596d2a2eb3e9561f9620b734f1e44cc8929f995c5ff4776aa6a2ac8e831.
@@ -68,8 +68,8 @@ BEGIN
   UPDATE listings SET published=false WHERE venue_id='ve_b35292624c' AND published; GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'unpublish'; END IF;
   UPDATE cities SET venues_count=1 WHERE id='ci_49d02d55ad' AND venues_count=2; GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'tata'; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',23,'cleanup:load-michelin-e-2026-11-06 | rule 2.1.7: Hungary 2025, Oct 9, 2025, https://guide.michelin.com/en/article/michelin-guide-ceremony/the-michelin-guide-hungary-2025-is-out | year stays 2025, source_url = the card (/us/en/), retire 0 | award 3286 Platan Gourmet: card gone, closed Jul 31 2026, article URL | relay sha256 9a48f596d2a2eb3e9561f9620b734f1e44cc8929f995c5ff4776aa6a2ac8e831 | DRAFT, choices not yet given'),
-    ('michelin','award',11,'cleanup:load-michelin-e-2026-11-06 | rule 2.1.7: Saudi Arabia, Dec 15, 2025, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/saudi-arabia-inaugural-michelin-guide-restaurant-selection: article says 2026, cards say 2025, label stays with the card | year stays 2025, source_url = the card (/us/en/), retire 0 | award 10693 Samia Dish: card gone, article URL | relay sha256 9a48f596d2a2eb3e9561f9620b734f1e44cc8929f995c5ff4776aa6a2ac8e831 | DRAFT, choices not yet given');
+    ('michelin','award',23,'cleanup:load-michelin-e-2026-11-06 | rule 2.1.7: Hungary 2025, Oct 9, 2025, https://guide.michelin.com/en/article/michelin-guide-ceremony/the-michelin-guide-hungary-2025-is-out | year stays 2025, source_url = the card (/us/en/), retire 0 | award 3286 Platan Gourmet: card gone, closed Jul 31 2026, article URL | relay sha256 9a48f596d2a2eb3e9561f9620b734f1e44cc8929f995c5ff4776aa6a2ac8e831 | Ben choices 1-5:A, Nov 6 09:39 ET'),
+    ('michelin','award',11,'cleanup:load-michelin-e-2026-11-06 | rule 2.1.7: Saudi Arabia, Dec 15, 2025, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/saudi-arabia-inaugural-michelin-guide-restaurant-selection: article says 2026, cards say 2025, label stays with the card | year stays 2025, source_url = the card (/us/en/), retire 0 | award 10693 Samia Dish: card gone, article URL | relay sha256 9a48f596d2a2eb3e9561f9620b734f1e44cc8929f995c5ff4776aa6a2ac8e831 | Ben choices 1-5:A, Nov 6 09:39 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11831 OR (SELECT count(*) FROM venues WHERE status='active') <> 11512 OR (SELECT count(*) FROM venues WHERE status='closed') <> 319 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 29052 THEN RAISE EXCEPTION 'awards after'; END IF;
