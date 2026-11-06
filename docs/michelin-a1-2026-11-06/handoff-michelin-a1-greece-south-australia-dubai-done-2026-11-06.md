@@ -99,7 +99,22 @@ Not out on Nov 6: Fujian 2027 (card reads 2026, last edition Nov 21, 2025), Toky
 
 **Repo:** branch `oad-2026-read-block` holds this folder and this handoff. Not merged. A merge is Ben's by hand: https://github.com/benjamineades/compasseats/compare/main...oad-2026-read-block
 
-## Suggested opening prompt
+## Suggested opening prompt: rest of the Michelin gaps (Ben, Nov 6 01:16 ET: "Let's do the rest of the Michelin gaps in a new chat")
+```
+Read claude/handoff-michelin-a1-greece-south-australia-dubai-done-2026-11-06.md from the project files, then
+claude/launch-list-2026-11-05.md, and
+claude/handoff-chengdu-held-7-cleanup-done-2026-10-04.md for working rules. Use plain /ste replies, with a population on every count.
+Do a fresh count read and confirm ledger 347, audit_log 134,155, venues 11,795 (active 11,479, closed 316), awards 28,927,
+OAD 2026 rows 2,859, OAD 2025 rows 2,437, slugs 13,739, price 7,759, city_aliases 222, redirects 35, closed published 0 and
+cities.venues_count sum 11,479. Stop and tell me if any count differs.
+Attach benjamineades/compasseats with push access. Work from branch oad-2026-read-block.
+Do the rest of the Michelin gaps in the gap table of the handoff, in this order: A2, A3, B, E, then D. Group F (United States) and Thailand 2027 wait for their dates: tell me when they are due. Re-read the site list and the live rows for each guide first. Do one guide or group at a time.
+For each one: build the file first, examine it read-only with a dry run, present the evidence, then ask me for choices. After my choices: a fresh read, then wait for my "go". No write before my "go".
+Before Fujian, read again whether Fujian 2027 is out. If it is, tell me and ask where it goes in the order.
+If you have trouble fetching sites or connecting to GitHub & Supabase, check the chrome connector.
+```
+
+## Suggested opening prompt: Gault & Millau (after Nov 9)
 ```
 Read claude/handoff-michelin-a1-greece-south-australia-dubai-done-2026-11-06.md from the project files, then
 claude/launch-list-2026-11-05.md, and
