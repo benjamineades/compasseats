@@ -1,5 +1,5 @@
 -- load-michelin-2026-austria-2026-11-05.sql
--- CompassEats, Nov 5 2026. Michelin Austria: the 2026 label. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 5 2026. Michelin Austria: the 2026 label. Ben choices 1-8:A, Nov 5 19:31 ET. This file runs only after Ben's "go".
 -- Rule 2.1.1 and 2.1.7: the legacy rows hold the 2026 edition (selection Mar 18, 2026: https://guide.michelin.com/at/en/article/michelin-guide-ceremony/all-starred-restaurants---michelin-guide-austria-2026). Relabel 156 rows 2025 -> 2026, source_url = the card (/us/en/), the star article for 5897. Retire 0.
 -- 2 sourced 2025 Bib rows (5898, 5938, URL = the 2025 Bib article) stay as 2025 history.
 -- 5 new rows, year 2026: One Star TIAN, One Star Kirchenwirt (Leogang), One Star Thaller - Restaurant (new venue), Bib Wörgötter - Wirtshaus, all with the card URL. Bib Schlosskeller Wirtshaus, no URL (card gone).
@@ -246,9 +246,9 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'city sankt veit %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',156,'relabel:load-michelin-2026-austria-2026-11-05 | rule 2.1.7: Austria edition live at capture = 2026 (selection Mar 18, 2026, https://guide.michelin.com/at/en/article/michelin-guide-ceremony/all-starred-restaurants---michelin-guide-austria-2026) | year 2025 -> 2026, source_url = the card (/us/en/), the star article for 5897, retire 0 | relay sha256 a7a3ea3d880885565f1865c38e9fa15edd5029b329114e3396e31cc5f21b0c80 | DRAFT, choices not yet given'),
-    ('michelin','award',5,'cleanup:load-michelin-2026-austria-2026-11-05 | Austria 2026 rows not in the legacy rows: One Star TIAN, Kirchenwirt (Leogang), Thaller - Restaurant; Bib Wörgötter - Wirtshaus, Schlosskeller Wirtshaus | list read Nov 5, 2026 | relay sha256 a7a3ea3d880885565f1865c38e9fa15edd5029b329114e3396e31cc5f21b0c80 | DRAFT, choices not yet given'),
-    ('michelin','city_label',2,'cleanup:load-michelin-2026-austria-2026-11-05 | city labels of 1 new venue | DRAFT, choices not yet given');
+    ('michelin','award',156,'relabel:load-michelin-2026-austria-2026-11-05 | rule 2.1.7: Austria edition live at capture = 2026 (selection Mar 18, 2026, https://guide.michelin.com/at/en/article/michelin-guide-ceremony/all-starred-restaurants---michelin-guide-austria-2026) | year 2025 -> 2026, source_url = the card (/us/en/), the star article for 5897, retire 0 | relay sha256 a7a3ea3d880885565f1865c38e9fa15edd5029b329114e3396e31cc5f21b0c80 | Ben choices 1-8:A, Nov 5 19:31 ET'),
+    ('michelin','award',5,'cleanup:load-michelin-2026-austria-2026-11-05 | Austria 2026 rows not in the legacy rows: One Star TIAN, Kirchenwirt (Leogang), Thaller - Restaurant; Bib Wörgötter - Wirtshaus, Schlosskeller Wirtshaus | list read Nov 5, 2026 | relay sha256 a7a3ea3d880885565f1865c38e9fa15edd5029b329114e3396e31cc5f21b0c80 | Ben choices 1-8:A, Nov 5 19:31 ET'),
+    ('michelin','city_label',2,'cleanup:load-michelin-2026-austria-2026-11-05 | city labels of 1 new venue | Ben choices 1-8:A, Nov 5 19:31 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11674 OR (SELECT count(*) FROM venues WHERE status='active') <> 11369 OR (SELECT count(*) FROM venues WHERE status='closed') <> 305 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28373 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 5 THEN RAISE EXCEPTION 'awards after'; END IF;
