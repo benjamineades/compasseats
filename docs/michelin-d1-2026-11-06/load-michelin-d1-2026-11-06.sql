@@ -1,5 +1,5 @@
 -- load-michelin-d1-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin group D1: Faroe Islands, Iceland, New Zealand. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin group D1: Faroe Islands, Iceland, New Zealand. Ben Nov 6 11:20 ET: 1-6 A. This file runs only after Ben's "go".
 -- 6 rows keep year 2026 and get the card URL. Relabel 0. Retire 0. No new rows, no new venues, no closures.
 -- Source: docs/michelin-d1-2026-11-06/relay-d1-2026-cards-2026-11-06.txt sha256 401ce717d7acd2459994d913b1fb6649a030fdf8d774ba37dda0d01503336170.
 -- Expected after: awards 29052 unchanged; ledger 313 rows; audit_log +6.
@@ -33,8 +33,8 @@ BEGIN
   UPDATE awards a SET source_url=split_part(x,'~',4) FROM regexp_split_to_table(rl,E'\n') x WHERE a.id=split_part(x,'~',1)::bigint;
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 6 THEN RAISE EXCEPTION 'urls %', n; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',4,'cleanup:load-michelin-d1-2026-11-06 | rule 2.1.7: Nordic 2026, Jun 1, 2026, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-nordic-denmark-finland-iceland-norway-sweden-2026-new-stars-bib-gourmands-special-awards | year stays 2026, source_url = the card (/us/en/), card label 2026 read Nov 6 2026, retire 0 | FO 1 (PAZ, card guide Denmark), IS 3 | relay sha256 401ce717d7acd2459994d913b1fb6649a030fdf8d774ba37dda0d01503336170 | DRAFT, choices not yet given'),
-    ('michelin','award',2,'cleanup:load-michelin-d1-2026-11-06 | rule 2.1.7: New Zealand 2026, Jun 30, 2026, https://guide.michelin.com/jp/en/article/michelin-guide-ceremony/michelin-guide-new-zealand-2026-restaurant-selection | year stays 2026, source_url = the card (/us/en/), card label 2026 read Nov 6 2026, retire 0 | relay sha256 401ce717d7acd2459994d913b1fb6649a030fdf8d774ba37dda0d01503336170 | DRAFT, choices not yet given');
+    ('michelin','award',4,'cleanup:load-michelin-d1-2026-11-06 | rule 2.1.7: Nordic 2026, Jun 1, 2026, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-nordic-denmark-finland-iceland-norway-sweden-2026-new-stars-bib-gourmands-special-awards | year stays 2026, source_url = the card (/us/en/), card label 2026 read Nov 6 2026, retire 0 | FO 1 (PAZ, card guide Denmark), IS 3 | relay sha256 401ce717d7acd2459994d913b1fb6649a030fdf8d774ba37dda0d01503336170 | Ben Nov 6 11:20 ET: 1-6 A'),
+    ('michelin','award',2,'cleanup:load-michelin-d1-2026-11-06 | rule 2.1.7: New Zealand 2026, Jun 30, 2026, https://guide.michelin.com/jp/en/article/michelin-guide-ceremony/michelin-guide-new-zealand-2026-restaurant-selection | year stays 2026, source_url = the card (/us/en/), card label 2026 read Nov 6 2026, retire 0 | relay sha256 401ce717d7acd2459994d913b1fb6649a030fdf8d774ba37dda0d01503336170 | Ben Nov 6 11:20 ET: 1-6 A');
   -- POST gates
   IF (SELECT count(*) FROM awards) <> 29052 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7821 THEN RAISE EXCEPTION 'Michelin after'; END IF;
