@@ -1,0 +1,94 @@
+brazil | Bib Gourmand | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/artigiano | Artigiano | Rio de Janeiro, Brazil | $ \u00b7 Italian | br | bib | 
+brazil | Bib Gourmand | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/brota | Brota | Rio de Janeiro, Brazil | $ \u00b7 Vegetarian | br | bib | 
+brazil | Bib Gourmand | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/koral | Koral | Rio de Janeiro, Brazil | $$ \u00b7 Modern Cuisine | br | bib | 
+brazil | Bib Gourmand | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/maria-e-o-boi | Maria e o Boi | Rio de Janeiro, Brazil | $ \u00b7 Traditional Cuisine | br | bib | 
+brazil | Bib Gourmand | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/miam-miam | Miam Miam | Rio de Janeiro, Brazil | $$ \u00b7 Modern Cuisine | br | bib | 
+brazil | Bib Gourmand | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/pici-trattoria | Pici Trattoria | Rio de Janeiro, Brazil | $$ \u00b7 Italian | br | bib | 
+brazil | Bib Gourmand | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/sult | Sult | Rio de Janeiro, Brazil | $$ \u00b7 Italian Contemporary | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/a-baianeira-masp | A Baianeira | S\u00e3o Paulo, Brazil | $$ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/a-casa-do-porco | A Casa do Porco | S\u00e3o Paulo, Brazil | $$ \u00b7 Pork | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/ae-cozinha | AE! Cozinha | S\u00e3o Paulo, Brazil | $$ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/balaio-ims | Balaio IMS | S\u00e3o Paulo, Brazil | $$ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/banzeiro | Banzeiro | S\u00e3o Paulo, Brazil | $$ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/baru-marisqueria | Bar\u00fa Marisquer\u00eda | S\u00e3o Paulo, Brazil | $$ \u00b7 Fish and Seafood | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/brasserie-victoria | Brasserie Vict\u00f3ria | S\u00e3o Paulo, Brazil | $ \u00b7 Lebanese | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/capim-santo | Capim Santo | S\u00e3o Paulo, Brazil | $ \u00b7 Traditional Cuisine | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/cepa | Cepa | S\u00e3o Paulo, Brazil | $$ \u00b7 Contemporary | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/clandestina | Clandestina | S\u00e3o Paulo, Brazil | $$ \u00b7 Contemporary | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/cora-1210174 | Cora | S\u00e3o Paulo, Brazil | $$ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/corrutela | Corrutela | S\u00e3o Paulo, Brazil | $$ \u00b7 Seasonal Cuisine | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/cuia | Cuia | S\u00e3o Paulo, Brazil | $$ \u00b7 Creative | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/ecully-perdizes | Ecully | S\u00e3o Paulo, Brazil | $$ \u00b7 International | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/fito | Fit\u00f3 | S\u00e3o Paulo, Brazil | $$ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/jaco-1212676 | Jac\u00f3 | S\u00e3o Paulo, Brazil | $$$ \u00b7 Contemporary | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/jiquitaia-1190078 | Jiquitaia | S\u00e3o Paulo, Brazil | $ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/kith-2%C2%BA-andar | The Kith | S\u00e3o Paulo, Brazil | $ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/komah | Komah | S\u00e3o Paulo, Brazil | $$ \u00b7 Korean | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/kotori | Kotori | S\u00e3o Paulo, Brazil | $$ \u00b7 Japanese | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/le-bife | Le Bife | S\u00e3o Paulo, Brazil | $$ \u00b7 Meats and Grills | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/manioca | Manioca | S\u00e3o Paulo, Brazil | $$ \u00b7 Modern Cuisine | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/manioca-da-mata | Manioca da Mata | S\u00e3o Paulo, Brazil | $$ \u00b7 Modern Cuisine | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/manioca-jk | Manioca JK | S\u00e3o Paulo, Brazil | $$ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/mocoto | Mocot\u00f3 Vila Medeiros | S\u00e3o Paulo, Brazil | $ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/mocoto-vila-leopoldina | Mocot\u00f3 Vila Leopoldina | S\u00e3o Paulo, Brazil | $$ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/nomo | NOMO | S\u00e3o Paulo, Brazil | $$ \u00b7 Contemporary | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/peti-gastronomia | Pet\u00ed no MAM | S\u00e3o Paulo, Brazil | $ \u00b7 Modern Cuisine | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/ping-yang-thai-bar-food | Ping Yang Thai Bar & Food | S\u00e3o Paulo, Brazil | $$ \u00b7 Thai contemporary | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/piu | Pi\u00f9 Pinheiros | S\u00e3o Paulo, Brazil | $$ \u00b7 Italian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/shihoma-pasta-fresca | Shihoma Pasta Fresca | S\u00e3o Paulo, Brazil | $$ \u00b7 Italian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/taboa-cozinha-artesanal | Tab\u014da Cozinha Artesanal | S\u00e3o Paulo, Brazil | $$ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/tanit | Tanit | S\u00e3o Paulo, Brazil | $$ \u00b7 Mediterranean Cuisine | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/tordesilhas | Tordesilhas | S\u00e3o Paulo, Brazil | $$ \u00b7 Brazilian | br | bib | 
+brazil | Bib Gourmand | /us/en/sao-paulo-region/sao-paulo/restaurant/zena-caffe | Zena Cucina | S\u00e3o Paulo, Brazil | $$ \u00b7 Italian | br | bib | 
+brazil | One Star | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/casa-201 | Casa 201 | Rio de Janeiro, Brazil | $$$$ \u00b7 French | br | 1 star | 
+brazil | One Star | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/madame-olympe | Madame Olympe | Rio de Janeiro, Brazil | $$$ \u00b7 Creative French | br | 1 star | 
+brazil | One Star | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/mee | Mee | Rio de Janeiro, Brazil | $$$$ \u00b7 Asian Influences | br | 1 star | 
+brazil | One Star | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/oseille | Oseille | Rio de Janeiro, Brazil | $$$$ \u00b7 Modern Cuisine | br | 1 star | 
+brazil | One Star | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/oteque | Oteque | Rio de Janeiro, Brazil | $$$$ \u00b7 Modern Cuisine | br | 1 star | 
+brazil | One Star | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/san-omakase-room | San Omakase | Rio de Janeiro, Brazil | $$$$ \u00b7 Japanese | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/fame-osteria | Fame Osteria | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Italian Contemporary | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/jun-sakamoto | Jun Sakamoto | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Japanese | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/kan-suke | Kan Suke | S\u00e3o Paulo, Brazil | $$$ \u00b7 Japanese | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/kanoe | KANOE | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Japanese | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/kazuo | Kazuo | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Asian Influences | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/kinoshita | Kinoshita | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Japanese | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/kuro | Kuro | S\u00e3o Paulo, Brazil | $$$ \u00b7 Japanese | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/mani | Man\u00ed | S\u00e3o Paulo, Brazil | $$$ \u00b7 Creative | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/murakami | Murakami | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Japanese Contemporary | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/oizumi-sushi | Oizumi Sushi | S\u00e3o Paulo, Brazil | $$$ \u00b7 Japanese | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/picchi | Picchi | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Italian | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/ryo-gastronomia | Ryo Gastronomia | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Japanese | br | 1 star | 
+brazil | One Star | /us/en/sao-paulo-region/sao-paulo/restaurant/tangara-jean-georges | Tangar\u00e1 Jean-Georges | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Contemporary | br | 1 star | 
+brazil | Three Stars | /us/en/sao-paulo-region/sao-paulo/restaurant/evvai | Evvai | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Modern Cuisine | br | 3 star | 
+brazil | Three Stars | /us/en/sao-paulo-region/sao-paulo/restaurant/tuju | Tuju | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Creative | br | 3 star | 
+brazil | Two Stars | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/lasai | Lasai | Rio de Janeiro, Brazil | $$$$ \u00b7 Modern Cuisine | br | 2 star | 
+brazil | Two Stars | /us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/oro | Oro | Rio de Janeiro, Brazil | $$$$ \u00b7 Creative | br | 2 star | 
+brazil | Two Stars | /us/en/sao-paulo-region/sao-paulo/restaurant/d-o-m | D.O.M. | S\u00e3o Paulo, Brazil | $$$$ \u00b7 Creative | br | 2 star | 
+malta | Bib Gourmand | /us/en/malta-central-region/gira/restaurant/ayu | AYU | Gzira, Malta | \u20ac\u20ac \u00b7 World Cuisine | mt | bib | 
+malta | Bib Gourmand | /us/en/malta-northern-region/marr/restaurant/verbena | Verbena | Mgarr, Malta | \u20ac\u20ac \u00b7 Mediterranean Cuisine | mt | bib | 
+malta | Bib Gourmand | /us/en/malta-northern-region/melliea/restaurant/commando | Commando | Mellie\u0127a, Malta | \u20ac\u20ac \u00b7 Mediterranean Cuisine | mt | bib | 
+malta | Bib Gourmand | /us/en/malta-south-eastern-region/valletta/restaurant/grain-street | Grain Street | Valletta, Malta | \u20ac\u20ac \u00b7 Modern Cuisine | mt | bib | 
+malta | Bib Gourmand | /us/en/malta-south-eastern-region/valletta/restaurant/rubino | Rubino | Valletta, Malta | \u20ac\u20ac \u00b7 Traditional Cuisine | mt | bib | 
+malta | One Star | /us/en/malta-central-region/st-julian-s/restaurant/rosami | Rosam\u00ec | St. Julian's, Malta | \u20ac\u20ac\u20ac \u00b7 Creative | mt | 1 star | 
+malta | One Star | /us/en/malta-northern-region/mdina/restaurant/de-mondion | De Mondion | Mdina, Malta | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | mt | 1 star | 
+malta | One Star | /us/en/malta-northern-region/sliema/restaurant/fernando-gastrotheque | Fernand\u00f5 Gastrotheque | Sliema, Malta | \u20ac\u20ac\u20ac \u00b7 Mediterranean Cuisine | mt | 1 star | 
+malta | One Star | /us/en/malta-northern-region/sliema/restaurant/le-gv | Le GV | Sliema, Malta | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | mt | 1 star | 
+malta | One Star | /us/en/malta-south-eastern-region/valletta/restaurant/noni | Noni | Valletta, Malta | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | mt | 1 star | 
+malta | One Star | /us/en/malta-south-eastern-region/valletta/restaurant/under-grain | Under Grain | Valletta, Malta | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | mt | 1 star | 
+malta | Two Stars | /us/en/malta-south-eastern-region/valletta/restaurant/ion-the-harbour | ION Harbour by Simon Rogan | Valletta, Malta | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary | mt | 2 star | 
+qatar | Bib Gourmand | /us/en/doha-region/doha_2433318/restaurant/argan | Argan | Doha, Qatar | \ufdfc \u00b7 Moroccan | qa | bib | 
+qatar | Bib Gourmand | /us/en/doha-region/doha_2433318/restaurant/baron | Baron | Doha, Qatar | \ufdfc\ufdfc \u00b7 Middle Eastern | qa | bib | 
+qatar | Bib Gourmand | /us/en/doha-region/doha_2433318/restaurant/berenjak-al-maha-island | Berenjak Al Maha Island | Doha, Qatar | \ufdfc\ufdfc \u00b7 Persian | qa | bib | 
+qatar | Bib Gourmand | /us/en/doha-region/doha_2433318/restaurant/fenyal | Fenyal | Doha, Qatar | \ufdfc \u00b7 Traditional Cuisine | qa | bib | 
+qatar | Bib Gourmand | /us/en/doha-region/doha_2433318/restaurant/hoppers-1206059 | Hoppers | Doha, Qatar | \ufdfc\ufdfc \u00b7 Sri Lankan | qa | bib | 
+qatar | Bib Gourmand | /us/en/doha-region/doha_2433318/restaurant/isaan | Isaan | Doha, Qatar | \ufdfc\ufdfc \u00b7 Thai | qa | bib | 
+qatar | Bib Gourmand | /us/en/doha-region/doha_2433318/restaurant/jiwan | Jiwan | Doha, Qatar | \ufdfc\ufdfc \u00b7 Middle Eastern | qa | bib | 
+qatar | Bib Gourmand | /us/en/doha-region/doha_2433318/restaurant/mila-1243026 | Mila | Doha, Qatar | \ufdfc\ufdfc \u00b7 Middle Eastern | qa | bib | 
+qatar | One Star | /us/en/doha-region/doha_2433318/restaurant/alba-1213877 | Alba | Doha, Qatar | \ufdfc\ufdfc\ufdfc\ufdfc \u00b7 Italian | qa | 1 star | 
+qatar | One Star | /us/en/doha-region/doha_2433318/restaurant/idam-by-alain-ducasse | IDAM by Alain Ducasse | Doha, Qatar | \ufdfc\ufdfc\ufdfc\ufdfc \u00b7 French Contemporary | qa | 1 star | 
+qatar | One Star | /us/en/doha-region/doha_2433318/restaurant/jamavar-1197472 | Jamavar | Doha, Qatar | \ufdfc\ufdfc\ufdfc\ufdfc \u00b7 Indian | qa | 1 star | 
+serbia | Bib Gourmand | /us/en/belgrade-region/belgrade/restaurant/bela-reka | Bela Reka | Belgrade, Serbia | \u20ac\u20ac \u00b7 Traditional Cuisine | rs | bib | 
+serbia | Bib Gourmand | /us/en/belgrade-region/belgrade/restaurant/istok | Istok | Belgrade, Serbia | \u20ac \u00b7 Vietnamese | rs | bib | 
+serbia | Bib Gourmand | /us/en/belgrade-region/belgrade/restaurant/iva-new-balkan-cuisine | Iva New Balkan Cuisine | Belgrade, Serbia | \u20ac\u20ac \u00b7 Modern Cuisine | rs | bib | 
+serbia | One Star | /us/en/belgrade-region/belgrade/restaurant/langouste | Langouste | Belgrade, Serbia | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | rs | 1 star | 
+serbia | One Star | /us/en/syrmia/novi-slankamen_7770386/restaurant/fleur-de-sel-1212486 | Fleur de Sel | Novi Slankamen, Serbia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | rs | 1 star | 
