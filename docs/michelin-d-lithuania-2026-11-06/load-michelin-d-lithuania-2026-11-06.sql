@@ -1,5 +1,5 @@
 -- load-michelin-d-lithuania-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin group D Lithuania. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin group D Lithuania. Ben LT 1-3: A, FI 2-3: A, Nov 6 2026 14:34 ET. This file runs only after Ben's "go".
 -- 9 rows keep year 2026 and get the card URL. 1 rows get the article URL. Relabel 0. Retire 0. No new rows, no new venues, no closures.
 -- Source: relay-lt-2026-cards-2026-11-06.txt sha256 cacd419a5076318467a151e95a03811d58786d6994c9141b2f7b71cf25429883.
 -- Expected after: awards 29052 unchanged; ledger 316 rows; audit_log +10.
@@ -45,7 +45,7 @@ BEGIN
   UPDATE awards a SET source_url=split_part(x,'~',4) FROM regexp_split_to_table(rl2,E'\n') x WHERE a.id=split_part(x,'~',1)::bigint;
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 1 THEN RAISE EXCEPTION 'article urls %', n; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',10,'cleanup:load-michelin-d-lithuania-2026-11-06 | rule 2.1.7: Lithuania 2026, Jun 5, 2026, https://guide.michelin.com/lt/en/article/michelin-guide-ceremony/all-the-winners-michelin-guide-lithuania-2026-has-been-unveiled-new-stars-bib-gourmands-special-awards | year stays 2026, source_url = the card (/us/en/), all 12 card labels 2026 read Nov 6 2026, retire 0 | article URL (card left the site, no capture after the ceremony): 8930 Demo (Vilnius): article Jun 5 2026 names it One Star, card demo-1210016 404 on Nov 6 2026, Wayback last capture Nov 8 2025 (label 2025) | relay sha256 cacd419a5076318467a151e95a03811d58786d6994c9141b2f7b71cf25429883 | DRAFT, choices not yet given');
+    ('michelin','award',10,'cleanup:load-michelin-d-lithuania-2026-11-06 | rule 2.1.7: Lithuania 2026, Jun 5, 2026, https://guide.michelin.com/lt/en/article/michelin-guide-ceremony/all-the-winners-michelin-guide-lithuania-2026-has-been-unveiled-new-stars-bib-gourmands-special-awards | year stays 2026, source_url = the card (/us/en/), all 12 card labels 2026 read Nov 6 2026, retire 0 | article URL (card left the site, no capture after the ceremony): 8930 Demo (Vilnius): article Jun 5 2026 names it One Star, card demo-1210016 404 on Nov 6 2026, Wayback last capture Nov 8 2025 (label 2025) | relay sha256 cacd419a5076318467a151e95a03811d58786d6994c9141b2f7b71cf25429883 | Ben LT 1-3: A, FI 2-3: A, Nov 6 2026 14:34 ET');
   -- POST gates
   IF (SELECT count(*) FROM awards) <> 29052 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7821 THEN RAISE EXCEPTION 'Michelin after'; END IF;
