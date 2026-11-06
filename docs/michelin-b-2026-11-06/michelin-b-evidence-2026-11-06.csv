@@ -1,0 +1,100 @@
+guide,category,card_name,card_city,card_price,card_url,venue_id,award_id,live_name,name_check
+croatia,Bib Gourmand,Taj Mahal,"Dubrovnik, Croatia",€€,https://guide.michelin.com/us/en/dubrovnik-neretva/dubrovnik/restaurant/taj-mahal,ve_e14df75660,,Taj Mahal Old Town,differs
+croatia,Bib Gourmand,Konoba Mate,"Korcula, Croatia",€€€,https://guide.michelin.com/us/en/dubrovnik-neretva/korcula/restaurant/konoba-mate,ve_0e9f819ada,,Konoba Mate,same
+croatia,Bib Gourmand,Konoba Malo Selo,"Buje, Croatia",€€,https://guide.michelin.com/us/en/istria/buje/restaurant/konoba-malo-selo,ve_b45ab55c9e,,Konoba Malo selo,same
+croatia,Bib Gourmand,Alla Beccaccia,"Valbandon, Croatia",€€,https://guide.michelin.com/us/en/istria/valbandon/restaurant/alla-beccaccia,ve_a6fefc4896,,Alla Beccaccia,same
+croatia,Bib Gourmand,Fakin,"Legrad, Croatia",€€,https://guide.michelin.com/us/en/koprivnica-krizevci/legrad_1780426/restaurant/fakin,ve_e4b0c2a3c1,,Restoran & Pansion Fakin,differs
+croatia,Bib Gourmand,Vuglec Breg,"Krapina, Croatia",€€,https://guide.michelin.com/us/en/krapina-zagorje/krapina/restaurant/vuglec-breg,ve_dd7b89e2b7,,"Restaurant, winery and pension ""Vuglec Breg""",differs
+croatia,Bib Gourmand,Bistro Loora,"Đakovo, Croatia",€,https://guide.michelin.com/us/en/osijek-baranja/dakovo_1784403/restaurant/bistro-loora,ve_c7ded05de6,21174,Bistro Loora,same
+croatia,Bib Gourmand,Lulu Fusion Bistro,"Osijek, Croatia",€,https://guide.michelin.com/us/en/osijek-baranja/osijek/restaurant/lulu-fusion-bistro,ve_f3378b4564,21175,LULU fusion bistro,same
+croatia,Bib Gourmand,Konoba Pescaria,"Mošćenička Draga, Croatia",€€,https://guide.michelin.com/us/en/primorje-gorski-kotar/moscenicka-draga/restaurant/konoba-pescaria,ve_dc6527692c,,Konoba Pescaria,same
+croatia,Bib Gourmand,Konoba Vinko,"Konjevrate, Croatia",€€,https://guide.michelin.com/us/en/sibenik-knin/konjevrate/restaurant/konoba-vinko,ve_498e434f24,,Konoba Vinko,same
+croatia,Bib Gourmand,K.užina,"Split, Croatia",€€€,https://guide.michelin.com/us/en/split-dalmatia/split/restaurant/k-uzina,ve_1c6c61d7b4,,Restoran K.užina,differs
+croatia,Bib Gourmand,Beštija,"Zagreb, Croatia",€€,https://guide.michelin.com/us/en/zagreb-region/zagreb/restaurant/bestija,ve_319b291669,,Beštija,same
+croatia,Bib Gourmand,Izakaya,"Zagreb, Croatia",€€,https://guide.michelin.com/us/en/zagreb-region/zagreb/restaurant/izakaya-by-time,ve_4fb62bdf02,,Restoran Izakaya,differs
+croatia,Bib Gourmand,Nuré,"Zagreb, Croatia",€,https://guide.michelin.com/us/en/zagreb-region/zagreb/restaurant/nure,ve_23c9c842a2,21176,Nuré,same
+croatia,One Star,Restaurant 360,"Dubrovnik, Croatia",€€€€,https://guide.michelin.com/us/en/dubrovnik-neretva/dubrovnik/restaurant/360%C2%BA,ve_7d7c043f13,,Restaurant 360,same
+croatia,One Star,LD Restaurant,"Korcula, Croatia",€€€€,https://guide.michelin.com/us/en/dubrovnik-neretva/korcula/restaurant/ld-terrace,ve_d7419b951d,,LD Restaurant,same
+croatia,One Star,Harry’s Piccolo Poreč,"Porec, Croatia",€€€€,https://guide.michelin.com/us/en/istria/porec/restaurant/harry-s-piccolo-porec,ve_edecaf0478,21173,Harry's Piccolo Poreč,same
+croatia,One Star,Cap Aureo,"Rovinj, Croatia",€€€€,https://guide.michelin.com/us/en/istria/rovinj/restaurant/cap-aureo,ve_8dcfc55059,,Cap Aureo Signature Restaurant,differs
+croatia,One Star,Monte,"Rovinj, Croatia",€€€€,https://guide.michelin.com/us/en/istria/rovinj/restaurant/monte,ve_82320b2e5b,,Monte,same
+croatia,One Star,Boškinac,"Novalja, Croatia",€€€€,https://guide.michelin.com/us/en/lika-senj/novalja/restaurant/boskinac,ve_2469bad7a5,,Boskinac,same
+croatia,One Star,Alfred Keller,"Mali Lošinj, Croatia",€€€€,https://guide.michelin.com/us/en/primorje-gorski-kotar/mali-losinj/restaurant/alfred-keller,ve_e8f635bf11,,Restaurant Alfred Keller,differs
+croatia,One Star,Nebo,"Rijeka, Croatia",€€€€,https://guide.michelin.com/us/en/primorje-gorski-kotar/rijeka/restaurant/nebo,ve_209c59814e,,Nebo,same
+croatia,One Star,Pelegrini,"Sibenik, Croatia",€€€€,https://guide.michelin.com/us/en/sibenik-knin/sibenik/restaurant/pelegrini,ve_d4eadf0bd3,8089,Pelegrini,same
+croatia,One Star,Krug,"Split, Croatia",€€€€,https://guide.michelin.com/us/en/split-dalmatia/split/restaurant/krug,ve_9bf981b8d2,,Restaurant Krug,differs
+croatia,One Star,Korak,"Jastrebarsko, Croatia",€€€€,https://guide.michelin.com/us/en/zagreb-region/jastrebarsko_1779514/restaurant/korak,ve_0f9dcb7ce8,,Korak Winery,differs
+croatia,One Star,Dubravkin Put,"Zagreb, Croatia",€€€,https://guide.michelin.com/us/en/zagreb-region/zagreb/restaurant/dubravkin-put,ve_9f42ad0554,,Dubravkin put,same
+croatia,One Star,Noel,"Zagreb, Croatia",€€€,https://guide.michelin.com/us/en/zagreb-region/zagreb/restaurant/noel,ve_d2518b1b2c,,Noel,same
+croatia,Two Stars,Agli Amici Rovinj,"Rovinj, Croatia",€€€€,https://guide.michelin.com/us/en/istria/rovinj/restaurant/agli-amici-rovinj,ve_557b114bfd,2925,Agli Amici Rovinj,same
+poland,Bib Gourmand,Biblioteka,"Wałbrzych, Poland",€€,https://guide.michelin.com/us/en/dolnoslaskie/walbrzych_2399184/restaurant/biblioteka,,,,new
+poland,Bib Gourmand,The Moment,"Kielce, Poland",€€,https://guide.michelin.com/us/en/lesser-poland/kielce_2358496/restaurant/the-moment,,,,new
+poland,Bib Gourmand,Bufet KRK,"Kraków, Poland",€€,https://guide.michelin.com/us/en/lesser-poland/krakow/restaurant/bufet-krk,,,,new
+poland,Bib Gourmand,Folga,"Kraków, Poland",€€,https://guide.michelin.com/us/en/lesser-poland/krakow/restaurant/folga,ve_caf934eb20,,FOLGA,same
+poland,Bib Gourmand,MOLÁM,"Kraków, Poland",€,https://guide.michelin.com/us/en/lesser-poland/krakow/restaurant/molam,ve_0fb26d6a92,,Molam Thai,differs
+poland,Bib Gourmand,Nat Bistro,"Kraków, Poland",€€,https://guide.michelin.com/us/en/lesser-poland/krakow/restaurant/nat-bistro,,,,new
+poland,Bib Gourmand,NOAH,"Kraków, Poland",€,https://guide.michelin.com/us/en/lesser-poland/krakow/restaurant/noah,ve_712fd39ff8,,NOAH Israeli Food Sharing Concept,differs
+poland,Bib Gourmand,Stary Niedźwiedź,"Zakopane, Poland",€€,https://guide.michelin.com/us/en/lesser-poland/zakopane_2385511/restaurant/stary-niedzwiedz,ve_9dbfc286ba,,Stary Niedzwiedz willa & resto,differs
+poland,Bib Gourmand,Acanti,"Łódź, Poland",€€,https://guide.michelin.com/us/en/lodz-region/lodz_2386189/restaurant/acanti,,,,new
+poland,Bib Gourmand,IDA kuchnia i wino,"Wrocław, Poland",€,https://guide.michelin.com/us/en/lower-silesian/wroclaw_2399695/restaurant/ida-kuchnia-i-wino,ve_9b981764b6,,IDA kuchnia i wino,same
+poland,Bib Gourmand,Pijalni,"Wrocław, Poland",€€,https://guide.michelin.com/us/en/lower-silesian/wroclaw_2399695/restaurant/pijalni,,,,new
+poland,Bib Gourmand,Tarasowa,"Wrocław, Poland",€€,https://guide.michelin.com/us/en/lower-silesian/wroclaw_2399695/restaurant/tarasowa,ve_f5c83ada0c,,Restauracja Tarasowa,differs
+poland,Bib Gourmand,2PiEr,"Lublin, Poland",€€,https://guide.michelin.com/us/en/lublin-region/lublin_2361556/restaurant/2pier,,,,new
+poland,Bib Gourmand,AHAAN,"Warsaw, Poland",€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/ahaan,,,,new
+poland,Bib Gourmand,Blisko Bar,"Warsaw, Poland",€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/blisko-bar,,,,new
+poland,Bib Gourmand,Ceviche Bar,"Warsaw, Poland",€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/ceviche-bar,ve_e6b88aa6f3,,Ceviche Bar,same
+poland,Bib Gourmand,Kieliszki na Próżnej,"Warsaw, Poland",€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/kieliszki-na-proznej,ve_c012be71d2,,Kieliszki na Próżnej,same
+poland,Bib Gourmand,Koneser Grill,"Warsaw, Poland",€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/koneser-grill,ve_c4dd0404fa,,Koneser Grill,same
+poland,Bib Gourmand,kontakt,"Warsaw, Poland",€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/kontakt,ve_9403faf514,,kontakt wino & bistro,differs
+poland,Bib Gourmand,Le Braci,"Warsaw, Poland",€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/le-braci,ve_33fa847e2a,,Restaurant Le Braci,differs
+poland,Bib Gourmand,WANDAL,"Warsaw, Poland",€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/wandal,,,,new
+poland,Bib Gourmand,WIN wine bar & shop,"Warsaw, Poland",€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/win-wine-bar-shop,,,,new
+poland,Bib Gourmand,WYRAJ,"Warsaw, Poland",€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/wyraj,ve_7ecf71c263,,WYRAJ,same
+poland,Bib Gourmand,Kwestia Czasu / NAGO,"Białystok, Poland",€,https://guide.michelin.com/us/en/podlaskie/bialystok_2401507/restaurant/kwestia-czasu-nago,,,,new
+poland,Bib Gourmand,Sztuka Chleba i Wina,"Białystok, Poland",€,https://guide.michelin.com/us/en/podlaskie/bialystok_2401507/restaurant/sztuka-chleba-i-wina,,,,new
+poland,Bib Gourmand,Naama,"Rzeszów, Poland",€€,https://guide.michelin.com/us/en/podlaskie/rzeszow_2367318/restaurant/naama,,,,new
+poland,Bib Gourmand,Brut Bistro,"Gdańsk, Poland",€€,https://guide.michelin.com/us/en/pomerania/gdansk_2403599/restaurant/brut-bistro,,,,new
+poland,Bib Gourmand,Hewelke,"Gdańsk, Poland",€€,https://guide.michelin.com/us/en/pomerania/gdansk_2403599/restaurant/hewelke,ve_f95e815a9a,,Hewelke Restauracja i Piekarnia,differs
+poland,Bib Gourmand,Treinta y Tres,"Gdańsk, Poland",€€,https://guide.michelin.com/us/en/pomerania/gdansk_2403599/restaurant/treinta-y-tres,ve_8f3b3e3a44,,Treinta y Tres,same
+poland,Bib Gourmand,Vinissimo,"Sopot, Poland",€€,https://guide.michelin.com/us/en/pomerania/sopot_2411807/restaurant/vinissimo,ve_4786d9d0b0,,Vinissimo Restaurant & Wine Bar,differs
+poland,Bib Gourmand,Piernicova,"Toruń, Poland",€€,https://guide.michelin.com/us/en/pomerania/torun_2398786/restaurant/piernicova,,,,new
+poland,Bib Gourmand,KRZYWA Sztuka Wina,"Katowice, Poland",€,https://guide.michelin.com/us/en/silesia/katowice_2377909/restaurant/krzywa-sztuka-wina,,,,new
+poland,Bib Gourmand,Da Andrea,"Olsztyn, Poland",€€,https://guide.michelin.com/us/en/warmia-masuria/olsztyn_2409296/restaurant/da-andrea-1248066,,,,new
+poland,Bib Gourmand,Fromażeria,"Poznań, Poland",€€,https://guide.michelin.com/us/en/wielkopolskie/poznan_2395985/restaurant/fromazeria,ve_b8818ce290,,Fromażeria,same
+poland,Bib Gourmand,Posto,"Poznań, Poland",€,https://guide.michelin.com/us/en/wielkopolskie/poznan_2395985/restaurant/posto,ve_e96d006b1c,,Posto,same
+poland,Bib Gourmand,SPOT.,"Poznań, Poland",€€,https://guide.michelin.com/us/en/wielkopolskie/poznan_2395985/restaurant/spot,ve_40405748a5,,SPOT.,same
+poland,Bib Gourmand,TU.REStAURANT,"Poznań, Poland",€€,https://guide.michelin.com/us/en/wielkopolskie/poznan_2395985/restaurant/tu-restaurant,ve_8cf2bd7a7d,,TU. REStAURANT,same
+poland,Bib Gourmand,Farmer & Sons,"Skórzewo, Poland",€€,https://guide.michelin.com/us/en/wielkopolskie/skorzewo_2397439/restaurant/farmer-sons,,,,new
+poland,One Star,Giewont,"Kościelisko, Poland",€€€€,https://guide.michelin.com/us/en/lesser-poland/koscielisko_2378757/restaurant/giewont,ve_f0d2217bbe,,Restaurant Giewont,differs
+poland,One Star,BABA,"Wrocław, Poland",€€,https://guide.michelin.com/us/en/lower-silesian/wroclaw_2399695/restaurant/baba-1219184,ve_321c00c095,12964,BABA,same
+poland,One Star,Most,"Wrocław, Poland",€€€,https://guide.michelin.com/us/en/lower-silesian/wroclaw_2399695/restaurant/most,ve_00d8a2d2b6,21049,Most,same
+poland,One Star,Alon Omakase,"Warsaw, Poland",€€€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/alon-omakase,ve_71d26b9cb5,21048,Alon Omakase,same
+poland,One Star,hub.praga,"Warsaw, Poland",€€€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/hub-praga,ve_63c6bd3237,,hub.praga,same
+poland,One Star,NUTA,"Warsaw, Poland",€€€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/nuta,ve_e71ebb1f5f,,Nuta,same
+poland,One Star,Rozbrat 20,"Warsaw, Poland",€€€€,https://guide.michelin.com/us/en/masovia/warsaw/restaurant/rozbrat-20,ve_2f264a0bf6,,Rozbrat 20,same
+poland,One Star,Arco by Paco Pérez,"Gdańsk, Poland",€€€€,https://guide.michelin.com/us/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez,ve_fe3a2862fe,,Arco by Paco Pérez,same
+poland,One Star,Steampunk,"Pszczyna, Poland",€€€€,https://guide.michelin.com/us/en/silesia/pszczyna_2382223/restaurant/steampunk,ve_9f50697f1f,21050,Steampunk Restauracja,differs
+poland,One Star,Muga,"Poznań, Poland",€€€€,https://guide.michelin.com/us/en/wielkopolskie/poznan_2395985/restaurant/muga,ve_4dd82462e8,,MUGA,same
+poland,Two Stars,Bottiglieria 1881,"Kraków, Poland",€€€€,https://guide.michelin.com/us/en/lesser-poland/krakow/restaurant/bottiglieria-1881,ve_bfb315bcf6,,Bottiglieria 1881 Restaurant,differs
+slovenia,Bib Gourmand,Etna,"Divača, Slovenia",€,https://guide.michelin.com/us/en/coastal%E2%80%93karst/divaca/restaurant/etna,ve_3f83fe7750,,Picerija Etna,differs
+slovenia,Bib Gourmand,Gostilnica Ruj,"Dol pri Vogljah, Slovenia",€€,https://guide.michelin.com/us/en/coastal%E2%80%93karst/dol-pri-vogljah/restaurant/ruj,ve_cff170dada,,Gostilnica Ruj,same
+slovenia,Bib Gourmand,Gostilna Mahorčič,"Rodik, Slovenia",€€,https://guide.michelin.com/us/en/coastal%E2%80%93karst/rodik/restaurant/mahorcic,ve_7f248ad343,,Gostilna Mahorčič,same
+slovenia,Bib Gourmand,Gredič,"Dobrovo v Brdih, Slovenia",€€,https://guide.michelin.com/us/en/gorizia/dobrovo-v-brdih/restaurant/gredic,ve_6d4792efb2,,Hotel & Restaurant Gredič,differs
+slovenia,Bib Gourmand,Restavracija Jožef,"Idrija, Slovenia",€€,https://guide.michelin.com/us/en/gorizia/idrija/restaurant/jozef,ve_1a70ff6b74,,Restavracija Jožef,same
+slovenia,Bib Gourmand,Klinec,"Medana, Slovenia",€€,https://guide.michelin.com/us/en/gorizia/medana_7770441/restaurant/klinec,ve_40e788bc57,21171,Klinec Medana,differs
+slovenia,Bib Gourmand,Kodila,"Murska Sobota, Slovenia",€€,https://guide.michelin.com/us/en/mura/murska-sobota/restaurant/kodila,ve_f3809e085a,,Kodila delikatesa & restavracija,differs
+slovenia,Bib Gourmand,Gostilna Rajh,"Murska Sobota, Slovenia",€€,https://guide.michelin.com/us/en/mura/murska-sobota/restaurant/rajh,ve_53628a4a44,,Gostilna Rajh,same
+slovenia,Bib Gourmand,Gostilna Francl,"Celje, Slovenia",€€,https://guide.michelin.com/us/en/savinja/celje/restaurant/gostilna-francl,ve_b9249cb9cb,21172,Gostilna Francl,same
+slovenia,Bib Gourmand,LALÚ Bistro,"Celje, Slovenia",€€,https://guide.michelin.com/us/en/savinja/celje/restaurant/lalu-bistro,ve_1968a4d3c2,,LALU bistro d.o.o.,differs
+slovenia,Bib Gourmand,Triangel,"Gozd Martuljek, Slovenia",€€,https://guide.michelin.com/us/en/upper-carniola/gozd-martuljek_7770292/restaurant/triangel,ve_5d994223ad,,Triangel Boutique Hotel,differs
+slovenia,Bib Gourmand,Restavracija Majerca,"Stara Fužina, Slovenia",€€,https://guide.michelin.com/us/en/upper-carniola/stara-fuzina_7770293/restaurant/restavracija-majerca,ve_d0274f64c7,,Restaurant Majerca,differs
+slovenia,One Star,COB,"Portorož, Slovenia",€€€€,https://guide.michelin.com/us/en/coastal%E2%80%93karst/portoroz/restaurant/cob,ve_854eee0d22,,COB,same
+slovenia,One Star,Hiša Denk,"Zgornja Kungota, Slovenia",€€€,https://guide.michelin.com/us/en/drava/zgornja-kungota/restaurant/hisa-denk,ve_891390df7e,,Hisa Denk - Hiša Denk,differs
+slovenia,One Star,Dam,"Nova Gorica, Slovenia",€€€,https://guide.michelin.com/us/en/gorizia/nova-gorica/restaurant/dam,ve_f7eea34b19,,DAM boutique hotel & restaurant,differs
+slovenia,One Star,Gostilna Pri Lojzetu,"Vipava, Slovenia",€€€€,https://guide.michelin.com/us/en/gorizia/vipava/restaurant/pri-lojzetu,ve_3c7265bce1,,Dvorec Zemono,differs
+slovenia,One Star,Grič,"Šentjošt nad Horjulom, Slovenia",€€€€,https://guide.michelin.com/us/en/lower-carniola/sentjost-nad-horjulom/restaurant/gostisce-gric,ve_bfd9b0e0b0,,Grič,same
+slovenia,One Star,Pavus,"Lasko, Slovenia",€€€,https://guide.michelin.com/us/en/savinja/lasko/restaurant/pavus,ve_e44f58332b,,Gostinstvo Pavus Marko Pavčnik s.p.,differs
+slovenia,One Star,Galerija okusov,"Petrovče, Slovenia",€€€,https://guide.michelin.com/us/en/savinja/petrovce/restaurant/galerija-okusov,ve_44dd0ee127,21170,Galerija okusov,same
+slovenia,One Star,Hiša Linhart,"Radovljica, Slovenia",€€€€,https://guide.michelin.com/us/en/upper-carniola/radovljica/restaurant/hisa-linhart,ve_705faf733a,,Linhart Hotel,differs
+slovenia,Three Stars,Hiša Franko,"Kobarid, Slovenia",€€€€,https://guide.michelin.com/us/en/gorizia/kobarid/restaurant/hisa-franko,ve_0f072a7818,,Hiša Franko,same
+slovenia,Two Stars,Milka,"Kranjska Gora, Slovenia",€€€€,https://guide.michelin.com/us/en/upper-carniola/kranjska-gora/restaurant/milka,ve_a399839329,,Restaurant Milka,differs

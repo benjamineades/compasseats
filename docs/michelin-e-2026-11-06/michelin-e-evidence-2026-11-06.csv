@@ -1,0 +1,33 @@
+guide,category,card_name,card_city,card_price,card_url,venue_id,award_id,live_name,name_check
+hungary,Bib Gourmand,Morzsa Konyha,"Pécs, Hungary",€€,https://guide.michelin.com/us/en/baranya/pecs/restaurant/morzsa,ve_6061670b0e,11760,Morzsa,differs
+hungary,Bib Gourmand,Újváros Bisztró,"Szarvas, Hungary",€€,https://guide.michelin.com/us/en/bekes/szarvas_1787559/restaurant/ujvaros-bisztro,ve_9d7145b7d5,12335,Újváros Bisztró - innovatív kortárs magyar étterem,differs
+hungary,Bib Gourmand,Anyukám Mondta,"Encs, Hungary",€€,https://guide.michelin.com/us/en/borsod-abauj-zemplen/encs/restaurant/anyukam-mondta,ve_24feb0706b,10158,Anyukám Mondta,same
+hungary,Bib Gourmand,Iszkor,"Mályinka, Hungary",€€,https://guide.michelin.com/us/en/borsod-abauj-zemplen/malyinka_1786967/restaurant/iszkor,ve_598b64c7d8,11264,Iszkor,same
+hungary,Bib Gourmand,94' Konyha & Bar,"Budapest, Hungary",€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/94-konyha-bar,ve_4ac1aca78d,9632,94' konyha & bar,same
+hungary,Bib Gourmand,Cabrio,"Budapest, Hungary",€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/cabrio,ve_6d7c50f339,9633,Cabrio,same
+hungary,Bib Gourmand,Goli,"Budapest, Hungary",€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/goli,ve_adf09bbbb6,9634,Goli Restaurant,differs
+hungary,Bib Gourmand,N28 Wine and Kitchen,"Budapest, Hungary",€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/n28-wine-and-kitchen,ve_eb22c2a5ca,9635,N28 Wine and Kitchen,same
+hungary,Bib Gourmand,Macok Bistro,"Eger, Hungary",€€,https://guide.michelin.com/us/en/heves/eger/restaurant/macok,ve_423d5ab716,10144,Macok Bistro,same
+hungary,Bib Gourmand,Platán Bisztró,"Tata, Hungary",€€,https://guide.michelin.com/us/en/komarom-esztergom/tata/restaurant/platan-bisztro,ve_8b494816dc,12541,Platán Bistro,differs
+hungary,Bib Gourmand,Kistücsök,"Balatonszemes, Hungary",€€,https://guide.michelin.com/us/en/somogy/balatonszemes/restaurant/kistucsok,ve_155c8dc797,9392,Kistücsök Food&Room,differs
+hungary,Bib Gourmand,Sparhelt,"Balatonfüred, Hungary",€€,https://guide.michelin.com/us/en/veszprem-region/balatonfured/restaurant/sparhelt,ve_aa6a251be4,9391,Bistro Sparhelt,differs
+hungary,Bib Gourmand,Casa Christa,"Balatonszőlős, Hungary",€€,https://guide.michelin.com/us/en/veszprem-region/balatonszolos/restaurant/casa-christa,ve_8d8a36f02a,9393,Casa Christa,same
+hungary,One Star,Babel,"Budapest, Hungary",€€€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/babel,ve_16a163a96a,4330,Babel Budapest,differs
+hungary,One Star,Borkonyha Winekitchen,"Budapest, Hungary",€€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/borkonyha-winekitchen,ve_db7128646c,4332,Borkonyha Winekitchen,same
+hungary,One Star,Costes Restaurant,"Budapest, Hungary",€€€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/costes,ve_9a0fbfdd0a,4333,Costes Restaurant,same
+hungary,One Star,essência,"Budapest, Hungary",€€€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/essencia,ve_c77da4a0b3,4336,Essência Restaurant - Tiago & Éva,differs
+hungary,One Star,Rumour by Rácz Jenő,"Budapest, Hungary",€€€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/rumour,ve_fb160af4b5,4340,Rumour by Rácz Jenő,same
+hungary,One Star,Salt,"Budapest, Hungary",€€€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/salt-1196768,ve_023ac41daa,4341,Salt,same
+hungary,One Star,42,"Esztergom, Hungary",€€€€,https://guide.michelin.com/us/en/komarom-esztergom/esztergom/restaurant/42,ve_f5b50b339a,4982,42 Restaurant,differs
+hungary,One Star,Pajta,"Őriszentpéter, Hungary",€€€€,https://guide.michelin.com/us/en/vas/oriszentpeter/restaurant/pajta,ve_18905734b5,9151,Pajta,same
+hungary,Two Stars,Stand,"Budapest, Hungary",€€€€,https://guide.michelin.com/us/en/central-hungary/budapest/restaurant/stand,ve_b69e138700,1667,Stand Étterem,differs
+saudi-arabia,Bib Gourmand,Joontos,"AlUla, Saudi Arabia",$$,https://guide.michelin.com/us/en/mecca-province/al-ula_2555005/restaurant/joontos,ve_f1a46ff562,9241,Joontos Restaurant,differs
+saudi-arabia,Bib Gourmand,Tofareya,"AlUla, Saudi Arabia",$,https://guide.michelin.com/us/en/mecca-province/al-ula_2555005/restaurant/tofareya-1242533,ve_893a2ea0eb,9242,Tofareya,same
+saudi-arabia,Bib Gourmand,The Lucky Llama,"Jeddah, Saudi Arabia",$$,https://guide.michelin.com/us/en/mecca-province/jeddah_2555048/restaurant/the-lucky-llama,ve_71c2e27da3,10694,The Lucky Llama,same
+saudi-arabia,Bib Gourmand,Em Sherif Café,"Riyadh, Saudi Arabia",$$,https://guide.michelin.com/us/en/riyadh-province/riyadh_2555317/restaurant/em-sherif-cafe,ve_c1924998fa,11841,Em Sherif Cafe,same
+saudi-arabia,Bib Gourmand,Fi Glbak,"Riyadh, Saudi Arabia",$,https://guide.michelin.com/us/en/riyadh-province/riyadh_2555317/restaurant/fi-glbak,ve_ffbbadc2c4,11842,fi glbak,same
+saudi-arabia,Bib Gourmand,KAYZŌ,"Riyadh, Saudi Arabia",$$,https://guide.michelin.com/us/en/riyadh-province/riyadh_2555317/restaurant/kayzo,ve_95db9855ed,11843,KAYZŌ,same
+saudi-arabia,Bib Gourmand,Mirzam,"Riyadh, Saudi Arabia",$,https://guide.michelin.com/us/en/riyadh-province/riyadh_2555317/restaurant/mirzam,ve_4e4751123e,11844,Mirzam,same
+saudi-arabia,Bib Gourmand,Najd Village,"Riyadh, Saudi Arabia",$,https://guide.michelin.com/us/en/riyadh-province/riyadh_2555317/restaurant/najd-village,ve_ab1be57e8f,11845,Najd Village,same
+saudi-arabia,Bib Gourmand,Sasani,"Riyadh, Saudi Arabia",$,https://guide.michelin.com/us/en/riyadh-province/riyadh_2555317/restaurant/sasani,ve_7942fba5be,11846,SASANI,same
+saudi-arabia,Bib Gourmand,Tameesa,"Riyadh, Saudi Arabia",$,https://guide.michelin.com/us/en/riyadh-province/riyadh_2555317/restaurant/tameesa,ve_82b3b976ab,11847,TAMEESA,same
