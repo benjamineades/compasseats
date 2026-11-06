@@ -1,0 +1,42 @@
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/21-grams | 21 Grams | Dubai | $$ \u00b7 Balkan
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/3-fils | 3Fils | Dubai | $$ \u00b7 Japanese Contemporary
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/al-khayma | Al Khayma Heritage Restaurant | Dubai | $$ \u00b7 Emirati Cuisine
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/bait-maryam | Bait Maryam | Dubai | $ \u00b7 Middle Eastern
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/berenjak-1211855 | Berenjak | Dubai | $$ \u00b7 Persian
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/duo-gastrobar | DUO Gastrobar-Dubai Hills | Dubai | $$ \u00b7 Modern Cuisine
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/duo-gastrobar-creek-harbour | DUO Gastrobar-Creek Harbour | Dubai | $$ \u00b7 Modern Cuisine
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/goldfish | Goldfish | Dubai | $$ \u00b7 Japanese Contemporary
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/harummanis | Harummanis | Dubai | $$ \u00b7 Asian
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/hawkerboi | Hawkerboi | Dubai | $$ \u00b7 Asian
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/khadak | Khadak | Dubai | $$ \u00b7 Indian
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/kinoya | Kinoya | Dubai | $$ \u00b7 Japanese
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/konjiki-hototogisu | Konjiki Hototogisu | Dubai | $ \u00b7 Japanese
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/middle-child | Middle Child | Dubai | $$ \u00b7 International
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/reif-japanese-kushiyaki | REIF Japanese Kushiyaki - Dar Wasl | Dubai | $$ \u00b7 Japanese Contemporary
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/reif-japanese-kushiyaki-dubai-hills | REIF Japanese Kushiyaki - Dubai Hills | Dubai | $$ \u00b7 Japanese Contemporary
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/revelry | Revelry | Dubai | $ \u00b7 Indian
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/s-e-a-bistrot | S.E.A Bistrot | Dubai | $$ \u00b7 Asian
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/shabestan | Shabestan | Dubai | $$ \u00b7 Middle Eastern
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/sufret-maryam | Sufret Maryam | Dubai | $$ \u00b7 Middle Eastern
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/three-bros | Three Bros | Dubai | $$ \u00b7 Mediterranean Cuisine
+Bib Gourmand | /us/en/dubai-emirate/dubai/restaurant/yubi-dubai | YUBI Dubai | Dubai | $$ \u00b7 Sushi
+One Star | /us/en/dubai-emirate/dubai/restaurant/11-woodfire | 11 Woodfire | Dubai | $$$ \u00b7 Modern Cuisine
+One Star | /us/en/dubai-emirate/dubai/restaurant/al-muntaha | Al Muntaha | Dubai | $$$$ \u00b7 French
+One Star | /us/en/dubai-emirate/dubai/restaurant/avatara | avat\u0101ra | Dubai | $$$$ \u00b7 Indian Vegetarian
+One Star | /us/en/dubai-emirate/dubai/restaurant/birch | Birch | Dubai | $$$$ \u00b7 Modern Cuisine
+One Star | /us/en/dubai-emirate/dubai/restaurant/dinner-by-heston-blumenthal-1206450 | Dinner by Heston Blumenthal | Dubai | $$$$ \u00b7 Traditional British
+One Star | /us/en/dubai-emirate/dubai/restaurant/hakkasan-516107 | Hakkasan Dubai | Dubai | $$$$ \u00b7 Chinese
+One Star | /us/en/dubai-emirate/dubai/restaurant/hoseki | H\u014dseki | Dubai | $$$$ \u00b7 Japanese
+One Star | /us/en/dubai-emirate/dubai/restaurant/jamavar-1210531 | Jamavar | Dubai | $$$ \u00b7 Indian
+One Star | /us/en/dubai-emirate/dubai/restaurant/kigo | KIGO | Dubai | $$$$ \u00b7 Japanese
+One Star | /us/en/dubai-emirate/dubai/restaurant/manao-1217282 | Man\u0101o | Dubai | $$$$ \u00b7 Thai contemporary
+One Star | /us/en/dubai-emirate/dubai/restaurant/moonrise | moonrise | Dubai | $$$$ \u00b7 Creative
+One Star | /us/en/dubai-emirate/dubai/restaurant/ossiano | Ossiano | Dubai | $$$$ \u00b7 Creative
+One Star | /us/en/dubai-emirate/dubai/restaurant/smoked-room-1212350 | Smoked Room | Dubai | $$$$ \u00b7 Contemporary
+One Star | /us/en/dubai-emirate/dubai/restaurant/tasca-by-jose-avillez | Tasca by Jos\u00e9 Avillez | Dubai | $$$$ \u00b7 Portuguese
+Three Stars | /us/en/dubai-emirate/dubai/restaurant/fzn-by-bjorn-frantzen | FZN by Bj\u00f6rn Frantz\u00e9n | Dubai | $$$$ \u00b7 Modern Cuisine
+Three Stars | /us/en/dubai-emirate/dubai/restaurant/tresind-studio | Tr\u00e8sind Studio | Dubai | $$$$ \u00b7 Indian
+Two Stars | /us/en/dubai-emirate/dubai/restaurant/il-ristorante-niko-romito-1196980 | Il Ristorante-Niko Romito | Dubai | $$$$ \u00b7 Italian
+Two Stars | /us/en/dubai-emirate/dubai/restaurant/orfali-bros | Orfali Bros | Dubai | $$$$ \u00b7 Contemporary
+Two Stars | /us/en/dubai-emirate/dubai/restaurant/row-on-45 | Row on 45 | Dubai | $$$$ \u00b7 Creative
+Two Stars | /us/en/dubai-emirate/dubai/restaurant/stay-by-yannick-alleno | STAY by Yannick All\u00e9no | Dubai | $$$$ \u00b7 French

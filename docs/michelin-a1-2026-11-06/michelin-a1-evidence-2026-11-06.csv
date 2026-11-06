@@ -1,0 +1,100 @@
+guide,edition,group,category,card_name,card_city,card_price,card_url,venue_id
+greece,2027,paired,Bib Gourmand,Akra,Athens,€,https://guide.michelin.com/us/en/attica/athens/restaurant/akra,ve_ad540c4225
+greece,2027,paired,Bib Gourmand,Nolan,Athens,€,https://guide.michelin.com/us/en/attica/athens/restaurant/nolan,ve_30cb4b84d8
+greece,2027,paired,Bib Gourmand,Pharaoh,Athens,€€,https://guide.michelin.com/us/en/attica/athens/restaurant/pharaoh,ve_34358d5954
+greece,2027,new venue,Bib Gourmand,UPON,Athens,€€,https://guide.michelin.com/us/en/attica/athens/restaurant/upon,ve_5c0fb3dbb0
+greece,2027,new venue,Bib Gourmand,Zohós,Athens,€€,https://guide.michelin.com/us/en/attica/athens/restaurant/zohos,ve_05cd9d3a35
+greece,2027,new venue,Bib Gourmand,Deka trapezia,Thessalonica,€€,https://guide.michelin.com/us/en/central-macedonia/thessaloniki_1773462/restaurant/deka-trapezia,ve_66afa513d0
+greece,2027,new venue,Bib Gourmand,Menu me... nou,Thessalonica,€,https://guide.michelin.com/us/en/central-macedonia/thessaloniki_1773462/restaurant/menu-me-nou,ve_f79d041242
+greece,2027,new venue,Bib Gourmand,Sintrofi,Thessalonica,€€,https://guide.michelin.com/us/en/central-macedonia/thessaloniki_1773462/restaurant/sintrofi,ve_7887ccf0ad
+greece,2027,new venue,Bib Gourmand,Three Little Pigs,Thessalonica,€€,https://guide.michelin.com/us/en/central-macedonia/thessaloniki_1773462/restaurant/three-little-pigs,ve_945282988d
+greece,2027,new venue,Bib Gourmand,To Manitari,Thessalonica,€,https://guide.michelin.com/us/en/central-macedonia/thessaloniki_1773462/restaurant/to-manitari,ve_eca705112a
+greece,2027,new venue,One Star,Aleria,Athens,€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/aleria,ve_0089b8041b
+greece,2027,paired,One Star,Botrini's,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/botrini-s,ve_6e1ff31f5f
+greece,2027,paired,One Star,CTC Urban Gastronomy,Athens,€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/ctc,ve_d9cbf5c3e3
+greece,2027,paired,One Star,Delta,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/delta,ve_10eecfa689
+greece,2027,paired,One Star,Hervé,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/herve,ve_29395dff3a
+greece,2027,paired,One Star,Hytra,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/hytra,ve_69fcaf6d82
+greece,2027,paired,One Star,Makris Athens,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/makris-athens,ve_f98d22b271
+greece,2027,paired,One Star,Patio,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/patio,ve_c2c0fa86ff
+greece,2027,paired,One Star,Pelagos,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/pelagos,ve_0b650c34ab
+greece,2027,new venue,One Star,see|ds,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/see-ds,ve_f6bc89448f
+greece,2027,new venue,One Star,SENSE,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/sense,ve_1eb871e231
+greece,2027,new venue,One Star,Simul,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/simul,ve_de424b03fc
+greece,2027,paired,One Star,Soil,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/soil,ve_e9c3b13a11
+greece,2027,paired,One Star,Spondi,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/spondi,ve_42af5ac0c7
+greece,2027,paired,One Star,The Zillers Rooftop Gastronomy,Athens,€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/the-zillers,ve_8575b7c9aa
+greece,2027,paired,One Star,Tudor Hall,Athens,€€€€,https://guide.michelin.com/us/en/attica/athens/restaurant/tudor-hall,ve_85bd89ee1e
+greece,2027,new venue,One Star,Botrini's Santorini,Santorini,€€€€,https://guide.michelin.com/us/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini,ve_ab61d4d4e5
+greece,2027,new venue,One Star,Lauda,Santorini,€€€€,https://guide.michelin.com/us/en/south-aegean/santorini_1772287/restaurant/lauda,ve_238b50fe0e
+greece,2027,paired,One Star,Selene,Santorini,€€€€,https://guide.michelin.com/us/en/south-aegean/santorini_1772287/restaurant/selene,ve_66b4bd3391
+greece,2027,new venue,Two Stars,Lycabettus,Santorini,€€€€,https://guide.michelin.com/us/en/south-aegean/santorini_1772287/restaurant/lycabettus,ve_8c501271d3
+south-australia,2027,new venue,Bib Gourmand,Africola,Adelaide,$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/africola,ve_894a2e8b1e
+south-australia,2027,new venue,Bib Gourmand,Bar Torino,Adelaide,$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/bar-torino,ve_38df6dc168
+south-australia,2027,new venue,Bib Gourmand,Bistro Français,Adelaide,$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/bistro-francais,ve_f94730c17d
+south-australia,2027,new venue,Bib Gourmand,Golden Boy,Adelaide,$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/golden-boy,ve_74a176d4a4
+south-australia,2027,new venue,Bib Gourmand,Gondola Gondola,Adelaide,$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/gondola-gondola,ve_cda3cbe43d
+south-australia,2027,new venue,Bib Gourmand,La Popular Taqueria,Adelaide,$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/la-popular-taqueria,ve_7cbc50b440
+south-australia,2027,new venue,Bib Gourmand,Noi Vietnamese Eatery,Adelaide,$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/noi-vietnamese-eatery,ve_9266964529
+south-australia,2027,new venue,Bib Gourmand,Pantry on Prospect,Adelaide,$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/pantry-on-prospect,ve_cb2b37098b
+south-australia,2027,new venue,Bib Gourmand,Part Time Lover,Adelaide,$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/part-time-lover,ve_98d8033367
+south-australia,2027,new venue,Bib Gourmand,Parwana Afghan Kitchen,Adelaide,$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/parwana-afghan-kitchen,ve_e9fe8b1bdf
+south-australia,2027,new venue,Bib Gourmand,Stamps,Adelaide,$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/stamps,ve_9383af1b56
+south-australia,2027,new venue,Bib Gourmand,Sunny's Pizza,Adelaide,$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/sunny-s-pizza,ve_21b3b550d6
+south-australia,2027,new venue,Bib Gourmand,Antidote Kitchen,Clare,$$,https://guide.michelin.com/us/en/south-australia/clare_7770499/restaurant/antidote-kitchen,ve_fda7d94b1f
+south-australia,2027,new venue,Bib Gourmand,Tirage on Kangaroo Island,Kingscote,$$,https://guide.michelin.com/us/en/south-australia/kingscote_7770485/restaurant/tirage-on-kangaroo-island,ve_26e78dd764
+south-australia,2027,new venue,Bib Gourmand,The Salopian Inn,McLaren Vale,$$,https://guide.michelin.com/us/en/south-australia/mclaren-vale_7770483/restaurant/the-salopian-inn,ve_39f8bcfd63
+south-australia,2027,new venue,Bib Gourmand,Fino Seppeltsfield,Seppeltsfield,$$,https://guide.michelin.com/us/en/south-australia/seppeltsfield_7770486/restaurant/fino-seppeltsfield,ve_1fbccbad94
+south-australia,2027,paired,One Star,arkhé,Adelaide,$$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/arkhe-1244917,ve_0ee8a8dc98
+south-australia,2027,new venue,One Star,Aurora at ILA,Adelaide,$$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/aurora-at-ila,ve_515c9750c3
+south-australia,2027,paired,One Star,Botanic,Adelaide,$$$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/botanic,ve_22583eeda6
+south-australia,2027,new venue,One Star,Esmay,Adelaide,$$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/esmay,ve_e8c09e673f
+south-australia,2027,new venue,One Star,Anvers Restaurant,Kangarilla,$$$,https://guide.michelin.com/us/en/south-australia/kangarilla_7770484/restaurant/anvers-restaurant,ve_793c410ab7
+south-australia,2027,new venue,One Star,Maxwell Restaurant,McLaren Vale,$$$$,https://guide.michelin.com/us/en/south-australia/mclaren-vale_7770483/restaurant/maxwell-restaurant,ve_416a9d611f
+south-australia,2027,paired,One Star,Hentley Farm,Seppeltsfield,$$$$,https://guide.michelin.com/us/en/south-australia/seppeltsfield_7770486/restaurant/hentley-farm,ve_af3b34625d
+south-australia,2027,new venue,One Star,Skillogalee Barrel House,Sevenhill,$$,https://guide.michelin.com/us/en/south-australia/sevenhill_7770480/restaurant/skillogalee-barrel-house,ve_485ec46ed8
+south-australia,2027,new venue,One Star,Aptos,Stirling,$$$$,https://guide.michelin.com/us/en/south-australia/stirling_7770500/restaurant/aptos,ve_db895dfccb
+south-australia,2027,new venue,One Star,LVN Restaurant at Bird in Hand,Woodside,$$$$,https://guide.michelin.com/us/en/south-australia/woodside_7770481/restaurant/lvn-restaurant-at-bird-in-hand,ve_5ed1af4ca0
+south-australia,2027,paired,Two Stars,Magill Estate Restaurant,Adelaide,$$$$,https://guide.michelin.com/us/en/south-australia/adelaide_7770061/restaurant/magill-estate-restaurant,ve_f6bc917177
+dubai,2026,paired,Bib Gourmand,21 Grams,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/21-grams,ve_76723808cd
+dubai,2026,paired,Bib Gourmand,3Fils,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/3-fils,ve_ceb0e3468a
+dubai,2026,paired,Bib Gourmand,Al Khayma Heritage Restaurant,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/al-khayma,ve_e27bca251d
+dubai,2026,paired,Bib Gourmand,Bait Maryam,Dubai,$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/bait-maryam,ve_6d0ad571d7
+dubai,2026,paired,Bib Gourmand,Berenjak,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/berenjak-1211855,ve_b13765366f
+dubai,2026,paired,Bib Gourmand,DUO Gastrobar-Dubai Hills,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/duo-gastrobar,ve_f9ea14cbc5
+dubai,2026,paired,Bib Gourmand,DUO Gastrobar-Creek Harbour,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/duo-gastrobar-creek-harbour,ve_0ca8c8a503
+dubai,2026,paired,Bib Gourmand,Goldfish,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/goldfish,ve_210bcd7f88
+dubai,2026,paired,Bib Gourmand,Harummanis,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/harummanis,ve_cf92b2f9cd
+dubai,2026,paired,Bib Gourmand,Hawkerboi,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/hawkerboi,ve_454e2a3112
+dubai,2026,paired,Bib Gourmand,Khadak,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/khadak,ve_6d942f82dd
+dubai,2026,paired,Bib Gourmand,Kinoya,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/kinoya,ve_cb9639a243
+dubai,2026,paired,Bib Gourmand,Konjiki Hototogisu,Dubai,$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/konjiki-hototogisu,ve_f9b1391518
+dubai,2026,new venue,Bib Gourmand,Middle Child,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/middle-child,ve_5f0b3b9f3c
+dubai,2026,paired,Bib Gourmand,REIF Japanese Kushiyaki - Dar Wasl,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/reif-japanese-kushiyaki,ve_35885413ee
+dubai,2026,paired,Bib Gourmand,REIF Japanese Kushiyaki - Dubai Hills,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/reif-japanese-kushiyaki-dubai-hills,ve_be4d5f8025
+dubai,2026,paired,Bib Gourmand,Revelry,Dubai,$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/revelry,ve_e7a107335e
+dubai,2026,new venue,Bib Gourmand,S.E.A Bistrot,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/s-e-a-bistrot,ve_cd8fdacb4d
+dubai,2026,paired,Bib Gourmand,Shabestan,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/shabestan,ve_138511a1e1
+dubai,2026,paired,Bib Gourmand,Sufret Maryam,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/sufret-maryam,ve_cde173dbb9
+dubai,2026,paired,Bib Gourmand,Three Bros,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/three-bros,ve_6f2c83eafe
+dubai,2026,new venue,Bib Gourmand,YUBI Dubai,Dubai,$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/yubi-dubai,ve_3778551afd
+dubai,2026,paired,One Star,11 Woodfire,Dubai,$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/11-woodfire,ve_5ef63116a1
+dubai,2026,paired,One Star,Al Muntaha,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/al-muntaha,ve_d35cc76459
+dubai,2026,paired,One Star,avatāra,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/avatara,ve_cd2fad38f3
+dubai,2026,paired,One Star,Birch,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/birch,ve_28e0c32038
+dubai,2026,paired,One Star,Dinner by Heston Blumenthal,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/dinner-by-heston-blumenthal-1206450,ve_556d69255a
+dubai,2026,paired,One Star,Hakkasan Dubai,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/hakkasan-516107,ve_8e1313c21e
+dubai,2026,paired,One Star,Hōseki,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/hoseki,ve_26c5dd7c6d
+dubai,2026,paired,One Star,Jamavar,Dubai,$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/jamavar-1210531,ve_6ec234643a
+dubai,2026,new venue,One Star,KIGO,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/kigo,ve_d5d255c325
+dubai,2026,paired,One Star,Manāo,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/manao-1217282,ve_7f908a045b
+dubai,2026,paired,One Star,moonrise,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/moonrise,ve_f3bc6b1bf8
+dubai,2026,paired,One Star,Ossiano,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/ossiano,ve_2407cf20a7
+dubai,2026,paired,One Star,Smoked Room,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/smoked-room-1212350,ve_05d3c5844a
+dubai,2026,paired,One Star,Tasca by José Avillez,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/tasca-by-jose-avillez,ve_2dece88ca1
+dubai,2026,paired,Three Stars,FZN by Björn Frantzén,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/fzn-by-bjorn-frantzen,ve_81e21905a6
+dubai,2026,paired,Three Stars,Trèsind Studio,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/tresind-studio,ve_e61e6c68d8
+dubai,2026,paired,Two Stars,Il Ristorante-Niko Romito,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/il-ristorante-niko-romito-1196980,ve_443b63b685
+dubai,2026,paired,Two Stars,Orfali Bros,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/orfali-bros,ve_758003680a
+dubai,2026,paired,Two Stars,Row on 45,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/row-on-45,ve_ba69122f1c
+dubai,2026,paired,Two Stars,STAY by Yannick Alléno,Dubai,$$$$,https://guide.michelin.com/us/en/dubai-emirate/dubai/restaurant/stay-by-yannick-alleno,ve_9ed23a6304
