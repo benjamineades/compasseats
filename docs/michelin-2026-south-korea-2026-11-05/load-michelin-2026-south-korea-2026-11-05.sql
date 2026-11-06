@@ -1,5 +1,5 @@
 -- load-michelin-2026-south-korea-2026-11-05.sql
--- CompassEats, Nov 5 2026. Michelin South Korea: the 2026 label. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 5 2026. Michelin South Korea: the 2026 label. Ben, Nov 5 2026 21:08 ET: 1-6 A, go. This file runs only after Ben's "go".
 -- Rule 2.1.1 and 2.1.7: the legacy rows hold the 2026 edition (ceremony Mar 5, 2026: https://guide.michelin.com/kr/en/article/michelin-guide-ceremony/2026-save-the-date; stars: https://guide.michelin.com/us/en/article/michelin-guide-ceremony/all-the-stars-michelin-guide-seoul-busan-2026). Relabel 117 rows 2025 -> 2026, source_url = the card (/us/en/). Retire 0.
 -- Row 4389 (ARP) holds the /kr/en/ card URL today: it takes the /us/en/ card URL.
 -- Source: docs/michelin-2026-south-korea-2026-11-05/relay-kr-2026-list-pages-2026-11-05.txt sha256 6f43f5825ab792cd64a0a62e1f504004a6a670047ab536d446c337217efdf8a4.
@@ -155,7 +155,7 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 117 THEN RAISE EXCEPTION 'relabel %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',117,'relabel:load-michelin-2026-south-korea-2026-11-05 | rule 2.1.7: South Korea edition live at capture = 2026 (ceremony Mar 5, 2026, https://guide.michelin.com/kr/en/article/michelin-guide-ceremony/2026-save-the-date) | year 2025 -> 2026, source_url = the card (/us/en/), retire 0 | relay sha256 6f43f5825ab792cd64a0a62e1f504004a6a670047ab536d446c337217efdf8a4 | DRAFT, choices not yet given');
+    ('michelin','award',117,'relabel:load-michelin-2026-south-korea-2026-11-05 | rule 2.1.7: South Korea edition live at capture = 2026 (ceremony Mar 5, 2026, https://guide.michelin.com/kr/en/article/michelin-guide-ceremony/2026-save-the-date) | year 2025 -> 2026, source_url = the card (/us/en/), retire 0 | relay sha256 6f43f5825ab792cd64a0a62e1f504004a6a670047ab536d446c337217efdf8a4 | Ben, Nov 5 2026 21:08 ET: 1-6 A, go');
   -- POST gates
   IF (SELECT count(*) FROM awards) <> 28519 OR (SELECT max(id) FROM awards) <> 35690 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2025) <> 4483 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7190 OR (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2027) <> 122 THEN RAISE EXCEPTION 'Michelin after'; END IF;
