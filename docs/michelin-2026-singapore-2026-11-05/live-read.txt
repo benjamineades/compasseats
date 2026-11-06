@@ -1,0 +1,126 @@
+ve_a4ed4683e3|12168|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|anoodlestory|-|-|-|A Noodle Story
+ve_a497b4b94d|12169|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|adamrdnoochengbigprawnnoodle|-|-|-|Adam Rd Noo Cheng Big Prawn Noodle
+ve_fe545a4e92|12170|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|allianceseafood|-|-|-|Alliance Seafood
+ve_85732683a4|12171|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|angloindiancafebar|-|-|-|Anglo Indian Cafe & Bar
+ve_328e74e8e0|12172|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|arersoup|-|-|-|Ar Er Soup
+ve_06e63a5d42|12173|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|bahrakathmuttonsoup|-|-|-|Bahrakath Mutton Soup
+ve_1882d162a4|12174|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|beachroadfishheadbeehoon|-|-|-|Beach Road Fish Head Bee Hoon
+ve_8db5a2e230|12175|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|bismillahbiryanirestaurant|-|-|-|Bismillah Biryani Restaurant
+ve_0127e72f1b|12176|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|boontongkeerestaurant|-|-|-|Boon Tong Kee Restaurant
+ve_2be6384828|12177|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|chaichuantouyangroutang|-|-|-|Chai Chuan Tou Yang Rou Tang
+ve_e889827c8f|12178|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|chefkangsnoodlehouse|-|-|-|Chef Kang’s Noodle House
+ve_a6cd4611d3|12179|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|cheokkee|-|-|-|Cheok Kee
+ve_5f2dde818e|12180|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|cheysuacarrotcake|-|-|-|Chey Sua Carrot Cake
+ve_3b20f19655|12181|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|chuankeebonelessbraisedduck|-|-|-|Chuan Kee Boneless Braised Duck
+ve_e8f106c916|12182|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|cumibali|-|-|-|Cumi Bali
+ve_d8a3b12b83|12183|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|dashijiabigprawnmee|-|-|-|Da Shi Jia Big Prawn Mee
+ve_37b84733f8|12184|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|delhilahori|-|-|-|Delhi Lahori
+ve_2c4893da5a|12185|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|duducookedfood0110|-|-|-|Du Du Cooked Food (#01-10)
+ve_3c60e6d1a2|12186|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|eminentfrogporridgeseafood|-|-|-|Eminent Frog Porridge & Seafood
+ve_202c4324ef|12187|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|feifeiroastednoodle|-|-|-|Fei Fei Roasted Noodle
+ve_c90e4d51fe|12188|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|fico|-|-|-|Fico
+ve_281d2b5bc6|12189|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|fumingcookedfood|-|-|-|Fu Ming Cooked Food
+ve_4005ef4503|12190|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|hainanxingzhoubeefnoodle|-|-|-|Hai Nan Xing Zhou Beef Noodle
+ve_6bffb4c7e4|12191|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|hainanzai|-|-|-|Hai Nan Zai
+ve_307e81d7e0|12192|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|hankeefishsoup|-|-|-|Han Kee Fish Soup
+ve_f6902da1f4|12194|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|henghengcookedfood|-|-|-|Heng Heng Cooked Food
+ve_6b337647ff|12195|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|hengkeecurrychickenbeehoonmee|-|-|-|Heng Kee Curry Chicken Bee Hoon Mee
+ve_4deb0c2986|12193|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|hengwatch|-|-|-|Heng Watch
+ve_548686853a|12196|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|honghengfriedsotongprawnmee|-|-|-|Hong Heng Fried Sotong Prawn Mee 鸿興炒蘇東蝦麵
+ve_ae801a7622|12197|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|hongkongyummysoup|-|-|-|Hong Kong Yummy Soup 真之味
+ve_2cffb4557a|12198|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|hookeebakchang|-|-|-|Hoo Kee Bak Chang (和記）
+ve_b20d4e0428|12200|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|indocafeperanakandining|-|-|-|INDOCAFÉ - Peranakan Dining
+ve_adedc1ce2e|12201|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|j2famouscrispycurrypuff|-|-|-|J2 Famous Crispy Curry Puff
+ve_1c011e6ff0|12202|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|jalansultanprawnmee|-|-|-|Jalan Sultan Prawn Mee
+ve_83283d9440|12203|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|jasonpenangcuisine|-|-|-|Jason Penang Cuisine
+ve_d08c7095be|12204|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|jidelaihainanesechickenrice|-|-|-|Ji De Lai Hainanese Chicken Rice
+ve_9d877ca6fd|12205|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|jijiwantonnoodlespecialist|-|-|-|Ji Ji Wanton Noodle Specialist
+ve_e2325ed446|12206|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|jianboshuikueh|-|-|-|Jian Bo Shui Kueh
+ve_d54fcdaf78|12207|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|joosiahbakkootteh|-|-|-|Joo Siah Bak Koot Teh
+ve_a947c882a3|12208|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|jungle|-|-|-|Jungle
+ve_e1dc8f6877|12209|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|kelantankwaychappigsorgansoup|-|-|-|Kelantan Kway Chap • Pig's Organ Soup 吉蘭丹粿汁•猪什汤
+ve_3e30f0d0b3|12210|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|kitchenmannasilemak|-|-|-|Kitchenman Nasi Lemak
+ve_24f8177b25|12211|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|kohbrotherpigsorgansoup|-|-|-|Koh Brother Pig's Organ Soup
+ve_e43b00d099|12212|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|koksenrestaurant|-|-|-|KOK Sen Restaurant
+ve_e23bb4c347|12213|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|kotuwa|-|-|-|Kotuwa
+ve_2b29fdec69|12215|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|kwangkeeteochewfishporridge|-|-|-|Kwang Kee Teochew Fish Porridge
+ve_435bae01ed|12216|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|kweeheng|-|-|-|Kwee Heng 贵兴
+ve_23cace31ff|12217|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|lagnaabarefootdining|-|-|-|Lagnaa...barefoot dining
+ve_3770989848|12218|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|laihenghandmadeteochewkueh|-|-|-|Lai Heng Handmade Teochew Kueh
+ve_a3b0050fdb|12219|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|laofuzifriedkwayteow|-|-|-|Lao Fu Zi Fried Kway Teow
+ve_fda8c4766c|12220|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|lianhebenjiclaypotrice|-|-|-|Lian He Ben Ji Claypot Rice
+ve_17558af4cf|12221|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|lixinteochewfishballnoodles|-|-|-|LiXin Teochew Fishball Noodles
+ve_9cbb87bdaf|12222|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|margaretdrivesinkeechickenrice|-|-|-|Margaret Drive Sin Kee Chicken Rice
+ve_f28a629cb4|12223|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|mpthaivisionexchange|-|-|-|MP THAI - Vision Exchange
+ve_6d3ee3a1b4|12224|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|muthuscurry|-|-|-|Muthu's Curry
+ve_1e48294edc|12225|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|nanacurry|-|-|-|Na Na Curry
+ve_8d7f7f5336|12226|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|namsinghokkienfriedmee|-|-|-|Nam Sing Hokkien Fried Mee
+ve_b35f990460|12227|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|newluckyclaypotrice|-|-|-|New Lucky Claypot Rice
+ve_aab14ed20a|12239|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|newtonauthenticsongkeeteochewfishporridge|-|-|-|Newton Authentic Song Kee Teochew Fish Porridge
+ve_28cd57c885|12228|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|no18zionroadfriedkwayteow|-|-|-|No. 18 Zion Road Fried Kway Teow
+ve_b1b42b2c4c|12229|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|outramparkfriedkwayteowmee0217|-|-|-|Outram Park Fried Kway Teow Mee (#02-17)
+ve_5f96bf1fa5|12230|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|rujikitchenmain|-|-|-|Ru Ji Kitchen 如记小厨 (Main)
+ve_e19c1da802|12231|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|selamatdatangwarongpaksapari|-|-|-|Selamat Datang Warong Pak Sapari
+ve_b9c64072fb|12232|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|sikbaosindesmondcreation|-|-|-|Sik Bao Sin/Desmond Creation 吃飽先
+ve_afa43188a0|12233|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|sinhengclaypotbakkootteh|-|-|-|Sin Heng Claypot Bak Koot Teh
+ve_38ccf6662d|12234|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|sinhuateatinghouse|-|-|-|Sin Huat Eating House (新蕟餐廰)
+ve_69c36a3edf|12235|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|singaporefriedhokkienmee|-|-|-|Singapore Fried Hokkien Mee 新加坡炒福建虾面
+ve_74af388cd7|12236|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|sohkeecookedfood|-|-|-|Soh Kee Cooked Food
+ve_a17ba076bd|12237|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|songfabakkutteh11newbridgeroad|-|-|-|Song Fa Bak Kut Teh (11 New Bridge Road)
+ve_70c9e72ac2|12238|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|songfishsoup|-|-|-|Song Fish Soup
+ve_d6a6b6aac1|12240|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|soonhuatgoldsmithpteltd|-|-|-|Soon Huat Goldsmith Pte Ltd
+ve_31443c7e19|12241|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|spinachsoup|-|-|-|Spinach Soup
+ve_677a6f224a|8214|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active||taiwahporknoodle|https://guide.michelin.com/en/article/michelin-guide-ceremony/full-list-michelin-guide-sg-2025|-|-|Tai Wah Pork Noodle
+ve_67c75dd2eb|12242|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|thaisengfishsoup|-|-|-|Thai Seng Fish Soup
+ve_c1eb69dd87|12243|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|theblueginger|-|-|-|The Blue Ginger
+ve_bc1a078378|12244|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|thecoconutclubbeachroad|-|-|-|The Coconut Club Beach Road
+ve_8b15474d29|12245|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|tiantianhainanesechickenrice|-|-|-|Tian Tian Hainanese Chicken Rice
+ve_2de01f07a0|12246|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|tiongbahruhainanesebonelesschickenrice|-|-|-|Tiong Bahru Hainanese Boneless Chicken Rice
+ve_9bed3015f8|12247|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|toricoskwaychap|-|-|-|To-Ricos Kway Chap
+ve_49f1a57a35|12248|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|truebluecuisine|-|-|-|True Blue Cuisine
+ve_cf392c5f30|12249|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|unyangkordaisingapore|-|-|-|Un-Yang-Kor-Dai Singapore
+ve_2389dbd8d0|12250|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|wholeearth|-|-|-|Whole Earth
+ve_a2a73f2890|12251|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|wokheihorfunredhilloriginalstall|-|-|-|Wok Hei Hor Fun (Redhill Original Stall)
+ve_21dcfa3295|12252|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$$|yhingthaipalacerestaurant|-|-|-|Yhingthai Palace Restaurant
+ve_4ba1439ca8|12253|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|yongchunwantonnoodle|-|-|-|Yong Chun Wan Ton Noodle
+ve_6d318f5bf2|12254|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|zaishuncurryfishhead|-|-|-|Zai Shun Curry Fish Head
+ve_48a9a096b3|12255|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|zhiweixianzionroadbigprawnnoodle|-|-|-|Zhi Wei Xian Zion Road Big Prawn Noodle 知味鲜
+ve_9cf6b5fe0a|12256|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|zhupzhup|-|-|-|Zhup Zhup
+ve_45d3f61ccf|12199|Bib Gourmand|2025|ci_d3197fb64e|Singapore|active|$|huiweichillibanmian0158|-|-|-|回味辣椒板面 Hui Wei Chilli Ban Mian (#01-58)
+ve_9c82f18726|8098|One Star|2025|ci_d3197fb64e|Singapore|active|$$$$|araya|-|-|-|Araya
+ve_e7de830b40|8109|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|buonaterra|-|-|-|Buona Terra
+ve_ade207892d|8197|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|burntends|-|-|-|Burnt Ends
+ve_85a590ea3b|8110|One Star|2025|ci_d3197fb64e|Singapore|active|$$|candlenut|-|-|-|Candlenut
+ve_a29b63593f|8122|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|cutbywolfgangpuck|-|-|-|CUT by Wolfgang Puck
+ve_f84e29015b|8212|One Star|2025|ci_d3197fb64e|Singapore|active|$$$$|hamamoto|-|-|-|Hamamoto
+ve_c2e6c8acfb|8213|One Star|2025|ci_d3197fb64e|Singapore|active|$|hillstreettaihwaporknoodlecrawfordlane|-|-|-|Hill Street Tai Hwa Pork Noodle, Crawford Lane
+ve_88f59221fa|8124|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|iggys|-|-|-|Iggy's
+ve_88810fb0a1|8149|One Star|2025|ci_d3197fb64e|Singapore|active|$$|leigardenrestaurantchijmes|-|-|-|Lei Garden Restaurant (Chijmes)
+ve_356c3f7e53|8151|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|lerouy|-|-|-|Lerouy
+ve_c9606ad3c7|8215|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|macuisine|-|-|-|Ma Cuisine
+ve_36c7c933c1|8217|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|marguerite|-|-|-|Marguerite
+ve_c1a6e2e265|8218|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|naeumrestaurant|-|-|-|NAEUM Restaurant
+ve_35158ba672|8153|One Star|2025|ci_d3197fb64e|Singapore|active|$$$$|nouri|-|-|-|Nouri
+ve_76e5d38748|8159|One Star|2025|ci_d3197fb64e|Singapore|active|$$$$|omakasestevens|-|-|-|Omakase @ Stevens
+ve_5cd5ee184b|8160|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|pangium|-|-|-|Pangium
+ve_8e7c1c6608|8101|One Star|2025|ci_d3197fb64e|Singapore|active|$$$$|restaurantborn|-|-|-|Restaurant Born
+ve_cb49debd91|8138|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|restaurantjag|-|-|-|Restaurant JAG
+ve_50c31e03ce|8147|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|restaurantlabyrinth|-|-|-|Restaurant Labyrinth
+ve_57f5944034|8161|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|seroja|-|-|-|Seroja
+ve_c87089f0b5|8170|One Star|2025|ci_d3197fb64e|Singapore|active|$$|shisenhantenbychenkentaro|-|-|-|Shisen Hanten by Chen Kentaro
+ve_d22ba45770|8172|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|summerpalace|-|-|-|Summer Palace
+ve_2ced00f8d1|8173|One Star|2025|ci_d3197fb64e|Singapore|active|$$|summerpavilion|-|-|-|Summer Pavilion
+ve_e252f25bbc|8180|One Star|2025|ci_d3197fb64e|Singapore|active|$$$$|sushiichi|-|-|-|Sushi Ichi
+ve_5b38b62991|8182|One Star|2025|ci_d3197fb64e|Singapore|active|$$$$|wakughin|-|-|-|Waku Ghin
+ve_389c4c4217|8195|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|whitegrassrestaurant|-|-|-|Whitegrass Restaurant
+ve_4ae884613f|8196|One Star|2025|ci_d3197fb64e|Singapore|active|$$$|willow|-|-|-|Willow
+ve_d8cdbfd73f|1102|Three Stars|2025|ci_d3197fb64e|Singapore|active|$$$$|lesamis|-|-|-|Les Amis
+ve_5a5a88539c|1122|Three Stars|2025|ci_d3197fb64e|Singapore|active|$$$$|odette|-|-|-|Odette
+ve_c7544bc540|1148|Three Stars|2025|ci_d3197fb64e|Singapore|active|$$$$|zen|-|-|-|Zén
+ve_a881aa8987|3146|Two Stars|2025|ci_d3197fb64e|Singapore|active|$$$$|cloudstreet|-|-|-|Cloudstreet
+ve_1cb7a45f01|3164|Two Stars|2025|ci_d3197fb64e|Singapore|active|$$$|jaanbykirkwestaway|-|-|-|JAAN By Kirk Westaway
+ve_9088daf796|3176|Two Stars|2025|ci_d3197fb64e|Singapore|active|$$$|meta|-|-|-|Meta
+ve_0c856ed715|3178|Two Stars|2025|ci_d3197fb64e|Singapore|active|$$$$|saintpierre|-|-|-|Saint Pierre
+ve_40613faa1f|3182|Two Stars|2025|ci_d3197fb64e|Singapore|active|$$$$|shoukouwarestaurant|-|-|-|Shoukouwa Restaurant
+ve_29cab76b7a|3187|Two Stars|2025|ci_d3197fb64e|Singapore|active|$$$$|sushisakuta|-|-|-|Sushi Sakuta
+ve_af21932872|3189|Two Stars|2025|ci_d3197fb64e|Singapore|active|$$$$|thevar|-|-|-|Thevar
