@@ -4,7 +4,8 @@ Run from the country folder: python3 ../michelin-d-shared/build_d_url.py config.
 Folder inputs: config.json, baseline.json, pairs.tsv (slug, venue_id, award_id), relay file + relay.sha256.
 config.json keys: key, iso, guide, label, year, rule (ledger text: edition, date, article URL), relay,
   have_url: [[award_id, venue_id, slug], ...] rows that already hold their card URL, rows_after: rows of that year in scope.
-  article: optional [[award_id, venue_id, category, url, rows_already_on_url, note], ...] for a card that left the site (rule of the A2-E handoff)."""
+  article: optional [[award_id, venue_id, category, url, rows_already_on_url, note], ...] for a card that left the site (rule of the A2-E handoff).
+  art_kind: optional, 'article' (default) or 'capture' (archive capture URL); sets the ledger and evidence wording only."""
 import csv, hashlib, json, re, sys
 C = json.load(open(sys.argv[1])); FP = sys.argv[2]
 APPROVAL = sys.argv[3] if len(sys.argv) > 3 else 'DRAFT, choices not yet given'; SCRATCH = sys.argv[4] if len(sys.argv) > 4 else '.'
@@ -38,7 +39,8 @@ art_write = (f"""  UPDATE awards a SET source_url=split_part(x,'~',4) FROM regex
 """) if ART else ''
 art_line = f' {NA} rows get the article URL.' if ART else ''
 rl2_decl = f"  rl2 text := $plan${RL2}$plan$;\n" if ART else ''
-art_note = (' | article URL (card left the site, no capture after the ceremony): ' + '; '.join(f"{a} {note}" for a, v, c, u, k, note in ART)) if ART else ''
+AK = C.get('art_kind', 'article'); ART_TXT = {'article': ('article URL (card left the site, no capture after the ceremony)', ' (article)', 'article url set: '), 'capture': ('archive capture URL (card left the site, capture after the ceremony)', ' (archive capture)', 'capture url set: ')}[AK]
+art_note = (' | ' + ART_TXT[0] + ': ' + '; '.join(f"{a} {note}" for a, v, c, u, k, note in ART)) if ART else ''
 HV = ', '.join(f"({a}, '{v}', '{cards[s]['url']}')" for a, v, s in C['have_url'])
 have_gate = (f"  IF (SELECT count(*) FROM awards WHERE (id, venue_id, source_url) IN ({HV})) <> {len(have)} THEN RAISE EXCEPTION 'rows with URL'; END IF;\n") if have else ''
 led = f"('michelin','award',{N+NA},'cleanup:{KEY} | {C['rule']} | year stays {Y}, source_url = the card (/us/en/), all {len(cards)} card labels {C['label']} read Nov 6 2026, retire 0{art_note} | relay sha256 {SHA} | {APPROVAL}')"
@@ -102,5 +104,5 @@ with open(KEY.replace('load-', '') + '-evidence.csv', 'w', newline='', encoding=
 if ART:
     with open(KEY.replace('load-', '') + '-evidence.csv', 'a', newline='', encoding='utf8') as f:
         w = csv.writer(f)
-        for a, v, c, u, k, note in ART: w.writerow(['(card left the site)', c, '', '', '', u, C['label'] + ' (article)', v, a, 'article url set: ' + note])
+        for a, v, c, u, k, note in ART: w.writerow(['(card left the site)', c, '', '', '', u, C['label'] + ART_TXT[1], v, a, ART_TXT[2] + note])
 print(KEY, 'sha256', hashlib.sha256(sql.encode()).hexdigest(), 'chars', len(sql), 'rows', N, 'plan md5', md5(RL))

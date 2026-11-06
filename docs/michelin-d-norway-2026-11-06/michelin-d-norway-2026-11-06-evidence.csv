@@ -1,0 +1,27 @@
+card_slug,card_category,card_name,card_city,card_price,card_url,card_label,venue_id,award_id,action
+credo-1248105,One Star,Credo,Oslo,€€€€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/credo-1248105,2026,ve_8aa02a036f,21046,url already set
+fagn,One Star,FAGN,Trondheim,€€€€,https://guide.michelin.com/us/en/trondelag/trondheim/restaurant/fagn,2026,ve_7a967f498b,12738,url set
+fagn-bistro,Bib Gourmand,FAGN-Bistro,Trondheim,€€,https://guide.michelin.com/us/en/trondelag/trondheim/restaurant/fagn-bistro,2026,ve_754faabbde,12737,url already set
+frances-1212050,Bib Gourmand,Frances Vinbar,Oslo,€€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/frances-1212050,2026,ve_222ac1bad7,11587,url set
+gaptrast,Two Stars,Gaptrast,Bergen,€€€€,https://guide.michelin.com/us/en/hordaland/bergen/restaurant/gaptrast,2026,ve_1b62257733,4137,url set
+hermetikken,One Star,Hermetikken,Stavanger,€€€€,https://guide.michelin.com/us/en/rogaland/stavanger/restaurant/hermetikken,2026,ve_759e2f538c,8270,url set
+hot-shop,One Star,Hot Shop,Oslo,€€€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/hot-shop,2026,ve_085609e1a1,7103,url set
+k2-1192264,One Star,K2,Stavanger,€€€,https://guide.michelin.com/us/en/rogaland/stavanger/restaurant/k2-1192264,2026,ve_8f9de8dd51,8272,url set
+kontrast,Two Stars,Kontrast,Oslo,€€€€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/kontrast,2026,ve_f1575a63d4,2787,url set
+kvitnes-gard,One Star,Kvitnes Gård,Kvitnes,€€€€,https://guide.michelin.com/us/en/nordland/kvitnes_7770468/restaurant/kvitnes-gard,2026,ve_d71553cf5f,15905,url already set
+lysverket,One Star,Lysverket,Bergen,€€€€,https://guide.michelin.com/us/en/hordaland/bergen/restaurant/lysverket,2026,ve_67056a6a74,4141,url set
+maaemo-1194933,Three Stars,Maaemo,Oslo,€€€€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/maaemo-1194933,2026,ve_50bb7f89d1,818,url set
+mirabelle-by-orjan-johannessen,One Star,Mirabelle by Ørjan Johannessen,Bekkjarvik,€€€€,https://guide.michelin.com/us/en/vestland/bekkjarvik_7770446/restaurant/mirabelle-by-orjan-johannessen,2026,ve_a19a34aecc,21047,url already set
+mon-oncle,One Star,Mon Oncle,Oslo,€€€€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/mon-oncle,2026,ve_c5baaf18a6,7105,url set
+omakase-by-sergey-pak,One Star,Omakase by Sergey Pak,Bergen,€€€€,https://guide.michelin.com/us/en/hordaland/bergen/restaurant/omakase-by-sergey-pak,2026,ve_fb5acf5258,4143,url set
+re-naa,Three Stars,RE-NAA,Stavanger,€€€€,https://guide.michelin.com/us/en/rogaland/stavanger/restaurant/re-naa,2026,ve_9638873fdf,1153,url set
+sabi-omakase,One Star,Sabi Omakase Stavanger,Stavanger,€€€€,https://guide.michelin.com/us/en/rogaland/stavanger/restaurant/sabi-omakase,2026,ve_3694bc6c51,8274,url set
+sabi-omakase-oslo,One Star,Sabi Omakase Oslo,Oslo,€€€€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/sabi-omakase-oslo,2026,ve_330b48914b,7107,url set
+savage-1205580,One Star,SAVAGE,Oslo,€€€€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/savage-1205580,2026,ve_7afbcf9868,7112,url set
+speilsalen,One Star,Speilsalen,Trondheim,€€€€,https://guide.michelin.com/us/en/trondelag/trondheim/restaurant/speilsalen,2026,ve_a1a41fcb6d,8744,url set
+stallen,One Star,Stallen,Oslo,€€€€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/stallen,2026,ve_df569e236f,7114,url set
+statholdergaarden,One Star,Statholdergaarden,Oslo,€€€€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/statholdergaarden,2026,ve_5752a1d819,7117,url set
+the-little-pickle,Bib Gourmand,The Little Pickle,Oslo,€,https://guide.michelin.com/us/en/oslo-region/oslo/restaurant/the-little-pickle,2026,ve_c525c8e67a,11590,url set
+under,One Star,Under,Lindesnes,€€€€,https://guide.michelin.com/us/en/agder/lindesnes/restaurant/under,2026,ve_8396af2504,5951,url set
+(card left the site),One Star,,,,https://web.archive.org/web/20260601213435id_/https://guide.michelin.com/no/en/oslo-region/oslo/restaurant/a-l-aise,2026 (archive capture),ve_7a1fc079d2,7119,"capture url set: À L’aise (Oslo): card a-l-aise 404 on Nov 6 2026, capture no/en Jun 1 2026 21:34 UTC label 2026 One Star, named One Star in the Nordic 2026 full star list"
+(card left the site),One Star,,,,https://web.archive.org/web/20260601213429id_/https://guide.michelin.com/no/en/oslo-region/oslo/restaurant/bar-amour,2026 (archive capture),ve_6b4eb76969,7100,"capture url set: Bar Amour (Oslo): card bar-amour 404 on Nov 6 2026, capture no/en Jun 1 2026 21:34 UTC label 2026 One Star, full star list marks it Now Closed"
