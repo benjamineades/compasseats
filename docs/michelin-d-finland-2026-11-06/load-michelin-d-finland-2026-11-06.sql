@@ -1,5 +1,5 @@
 -- load-michelin-d-finland-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin group D Finland. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin group D Finland. Ben go, Nov 6 2026 12:09 ET (run as built; choices 2-3 open). This file runs only after Ben's "go".
 -- 10 rows keep year 2026 and get the card URL. Relabel 0. Retire 0. No new rows, no new venues, no closures.
 -- Source: relay-fi-2026-cards-2026-11-06.txt sha256 c1c962cfbc0c3ec86b2466db334e863b910e2774d28bea226d5cc2c5981da94b.
 -- Expected after: awards 29052 unchanged; ledger 315 rows; audit_log +10.
@@ -38,7 +38,7 @@ BEGIN
   UPDATE awards a SET source_url=split_part(x,'~',4) FROM regexp_split_to_table(rl,E'\n') x WHERE a.id=split_part(x,'~',1)::bigint;
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 10 THEN RAISE EXCEPTION 'urls %', n; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',10,'cleanup:load-michelin-d-finland-2026-11-06 | rule 2.1.7: Nordic 2026, Jun 1, 2026, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-nordic-denmark-finland-iceland-norway-sweden-2026-new-stars-bib-gourmands-special-awards | year stays 2026, source_url = the card (/us/en/), all 11 card labels 2026 read Nov 6 2026, retire 0 | relay sha256 c1c962cfbc0c3ec86b2466db334e863b910e2774d28bea226d5cc2c5981da94b | DRAFT, choices not yet given');
+    ('michelin','award',10,'cleanup:load-michelin-d-finland-2026-11-06 | rule 2.1.7: Nordic 2026, Jun 1, 2026, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-nordic-denmark-finland-iceland-norway-sweden-2026-new-stars-bib-gourmands-special-awards | year stays 2026, source_url = the card (/us/en/), all 11 card labels 2026 read Nov 6 2026, retire 0 | relay sha256 c1c962cfbc0c3ec86b2466db334e863b910e2774d28bea226d5cc2c5981da94b | Ben go, Nov 6 2026 12:09 ET (run as built; choices 2-3 open)');
   -- POST gates
   IF (SELECT count(*) FROM awards) <> 29052 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7821 THEN RAISE EXCEPTION 'Michelin after'; END IF;
