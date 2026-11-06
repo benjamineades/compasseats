@@ -1,5 +1,5 @@
 -- load-michelin-2027-beijing-tianjin-2026-11-05.sql
--- CompassEats, Nov 6 2026. Michelin Beijing & Tianjin 2027. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin Beijing & Tianjin 2027. Ben choices 1-6:A, Nov 6 00:04 ET. This file runs only after Ben's "go".
 -- Rule 2.1.7, Tokyo row of the table: the 58 Beijing tier rows are sourced 2026 rows (Oct 2025 edition). They stay as history. Relabel 0, retire 0.
 -- 82 new rows, year 2027 (Oct 26-27, 2026: https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-beijing-tianjin-2027): Three Stars 2, Two Stars 5, One Star 27, Bib Gourmand 48, source_url = the card (/us/en/). 24 new venues, new city Tianjin.
 -- 56 of the card URLs repeat on the 2026 row of the same venue. This is expected.
@@ -170,8 +170,8 @@ BEGIN
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 82 THEN RAISE EXCEPTION 'awards %', n; END IF;
   -- WRITE: ledger
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',82,'cleanup:load-michelin-2027-beijing-tianjin-2026-11-05 | Beijing & Tianjin 2027, https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-beijing-tianjin-2027 | Three Stars 2, Two Stars 5, One Star 27, Bib 48 | rule 2.1.7: 2026 rows stay, relabel 0, retire 0 | relay sha256 f1e9d7ed6382d85cd75b17195953747a6938b9bce3d4be548b1aee28ec84b608 | DRAFT, choices not yet given'),
-    ('michelin','city_label',48,'cleanup:load-michelin-2027-beijing-tianjin-2026-11-05 | city labels of 24 new venues, new city tianjin | DRAFT, choices not yet given');
+    ('michelin','award',82,'cleanup:load-michelin-2027-beijing-tianjin-2026-11-05 | Beijing & Tianjin 2027, https://guide.michelin.com/en/article/michelin-guide-ceremony/michelin-guide-beijing-tianjin-2027 | Three Stars 2, Two Stars 5, One Star 27, Bib 48 | rule 2.1.7: 2026 rows stay, relabel 0, retire 0 | relay sha256 f1e9d7ed6382d85cd75b17195953747a6938b9bce3d4be548b1aee28ec84b608 | Ben choices 1-6:A, Nov 6 00:04 ET'),
+    ('michelin','city_label',48,'cleanup:load-michelin-2027-beijing-tianjin-2026-11-05 | city labels of 24 new venues, new city tianjin | Ben choices 1-6:A, Nov 6 00:04 ET');
   -- POST gates
   IF (SELECT count(*) FROM venues) <> 11754 OR (SELECT count(*) FROM venues WHERE status='active') <> 11442 OR (SELECT count(*) FROM venues WHERE status='closed') <> 312 THEN RAISE EXCEPTION 'venues after'; END IF;
   IF (SELECT count(*) FROM awards) <> 28828 OR (SELECT count(*) FROM awards WHERE id > first_award) <> 82 THEN RAISE EXCEPTION 'awards after'; END IF;
