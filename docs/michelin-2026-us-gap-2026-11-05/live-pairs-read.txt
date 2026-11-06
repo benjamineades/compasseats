@@ -1,0 +1,266 @@
+1|ve_502e89f9ca|381|Thr|n|382|Thr|active|Healdsburg|SingleThread Farm - Restaurant - Inn
+2|ve_e920e891d8|3206|Thr|n|3203|Two|active|Sonoma|Enclos
+3|ve_0237b382c8|1360|Thr|n|1355|Thr|active|Los Angeles|Somni
+4|ve_3a565f0fd3|1042|Thr|n|1035|Thr|active|San Francisco|Quince
+5|ve_aa4e671b2b|2980|Thr|n|2975|Two|active|San Francisco|Californios
+6|ve_b4fbbe80d1|990|Thr|n|991|Thr|active|San Diego|ADDISON BY WILLIAM BRADLEY
+7|ve_ad97b44f82|576|Thr|n|568|Thr|active|Los Angeles|Providence
+8|ve_9d718e8931|1026|Thr|n|1015|Thr|active|San Francisco|Benu
+9|ve_edb05e7ffc|1006|Thr|n|996|Thr|active|San Francisco|Atelier Crenn
+10|ve_54a771c32f|1383|Thr|n|1384|Thr|active|Yountville|The French Laundry
+11|ve_df266d7329|2731|Two|n|2727|Two|active|Oakland|Commis
+12|ve_ac81406d7d|2967|Two|n|2963|Two|active|San Francisco|Acquerello
+13|ve_e5d02bbd2e|6154|Two|n|6146|One|active|Los Angeles|Kato Restaurant
+14|ve_3ca038b90c|2985|Two|n|2981|Two|active|San Francisco|Kiln
+15|ve_6ff454e767|3030|Two|n|3025|Two|active|Santa Monica|Mélisse Restaurant
+16|ve_799eb214f7|2372|Two|n|2367|Two|active|Los Angeles|Hayato
+17|ve_7dede17b88|2991|Two|n|2986|Two|active|San Francisco|Lazy Bear
+18|ve_eb0e48a31d|3016|Two|n|3011|Two|active|San Francisco|Sons & Daughters
+19|ve_de46664a99|3002|Two|n|2993|Two|active|San Francisco|Saison
+20|ve_91f084a38a|1904|Two|n|1905|Two|active|Elk|Harbor House Inn
+21|ve_50bd5012cc|1836|Two|n|1837|Two|active|Culver City|Vespertine
+22|ve_51b8621b8d|2974|Two|n|2969|Two|active|San Francisco|Birdsong
+23|ve_1ba19d6d0f|1694|Two|n|1696|Two|active|Carmel by the Sea|Aubergine the restaurant at L'Auberge Carmel
+24|ve_c9110746e3|7659|One|n|7657|One|active|Rutherford|Auberge du Soleil
+25|ve_9dfa8d8f4e|6591|Two|n|6589|One|active|Santa Barbara|Caruso's
+26|ve_9a756bf4ef|4406|One|n|4405|One|active|Calistoga|Auro
+27|ve_f7ac5f7d96|21075|One|u|-|-|active|Los Angeles|Lielle
+28|ve_ec93c46116|21076|One|u|-|-|active|La Jolla|LUCIEN
+29|ve_86dd6bdee7|7330|One|n|7328|One|active|Paso Robles|The Restaurant at JUSTIN
+30|ve_9316631b69|4439|One|n|4437|One|active|Carlsbad|Lilo
+31|ve_4501673126|6968|One|n|6967|One|active|Oakland|Sun Moon Studio
+32|ve_9de41fa4eb|6159|One|n|6160|One|active|Los Angeles|Mori Nozomi
+33|ve_4879723518|7852|One|n|7851|One|active|Santa Barbara|Silvers Omakase
+34|ve_94b838eb8b|17771|One|u|-|-|active|San Diego|Soichi
+35|ve_3659433db8|7769|One|n|7764|One|active|San Francisco|Niku Steakhouse
+36|ve_09d8e44878|6142|One|n|6137|One|active|Los Angeles|Holbox
+37|ve_a9e952ce61|9076|One|n|9077|One|active|Woodside|The Village Pub
+38|ve_0d2a2613bc|17226|One|u|-|-|active|Santa Monica|Seline
+39|ve_667cf4d80b|7858|One|n|7859|One|active|Santa Monica|Citrin Restaurant
+40|ve_2d651dc5ee|21082|One|u|-|-|active|San Francisco|Wolfsbane
+41|ve_ca50fd9f2e|21077|One|u|-|-|active|Beverly Hills|Miura
+42|ve_8306b4ef14|5162|One|n|5158|One|active|Geyserville|Cyrus
+43|ve_0e1df7091b|7781|One|n|7778|One|active|San Francisco|SAN HO WON
+44|ve_86f6263b49|7734|One|n|7732|One|active|San Anselmo|Madcap
+45|ve_87f236f7aa|7669|One|n|7667|One|active|Sacramento|Localis
+46|ve_69e9d7215e|20749|One|u|-|-|active|Sacramento|The Kitchen
+47|ve_462bc70c9a|7785|One|n|7782|One|active|San Francisco|SSAL
+48|ve_4bc9d2c352|6167|One|n|6168|One|active|Los Angeles|n/naka
+49|ve_86e3a4b141|7787|One|n|7786|One|active|San Francisco|State Bird Provisions
+50|ve_49b2799d41|7749|One|n|7747|One|active|San Francisco|Hilda and Jesse
+51|ve_11f14d9320|17172|One|u|-|-|active|Los Angeles|Corridor 109
+52|ve_76fb05f46e|7774|One|n|7770|One|active|San Francisco|Nisei
+53|ve_95d87f1674|21072|One|u|30105|One|active|Long Beach|Heritage
+54|ve_564183b1a6|8707|One|n|8706|One|active|Torrance|Inaba Japanese Restaurant
+55|ve_3fa3c370d9|6177|Two|n|6175|One|active|Los Angeles|Osteria Mozza
+56|ve_378d88fd3b|6145|One|n|6143|One|active|Los Angeles|Kali Steak
+57|ve_9aa3e8c665|7327|One|n|7326|One|active|Paso Robles|Six Test Kitchen
+58|ve_c47076de88|21074|One|u|-|-|active|Los Angeles|KOJIMA
+59|ve_e0a6d0b1e8|21079|One|u|-|-|active|San Francisco|Restaurant Naides
+60|ve_8a88a44a38|7763|One|n|7760|One|active|San Francisco|Nari
+61|ve_e6a837b5b3|4194|One|n|4191|One|active|Los Angeles|Nozawa Bar
+62|ve_cca348c786|7163|One|n|7160|One|active|Palo Alto|Protégé
+63|ve_0af33e0886|7758|One|n|7755|One|active|San Francisco|Mister Jiu's
+64|ve_f92b1aad99|3773|One|n|3771|One|active|Redwood City|Selby's
+65|ve_3b2129dd9d|7743|One|n|7744|One|active|San Francisco|Angler
+66|ve_6a9eea35e8|7751|One|n|7750|One|active|San Francisco|Kin Khao
+67|ve_8c4982eaa3|7742|One|n|7740|One|active|San Francisco|7 Adams
+68|ve_161ac9fada|6174|One|n|6171|One|active|Los Angeles|Orsa & Winston
+69|ve_228f6bde8b|17199|One|u|-|-|active|San Francisco|Sorrel
+70|ve_5d359fb68b|7789|One|n|7788|One|active|San Francisco|The Progress
+71|ve_42c8c3c3a0|4443|One|n|4440|One|active|Carmel by the Sea|Chez Noir
+72|ve_189d14ae89|6158|One|n|6155|One|active|Los Angeles|Meteora
+73|ve_f12e597554|21081|One|u|-|-|active|Healdsburg|Troubadour
+74|ve_9b9ccb2be8|5855|One|n|5854|One|active|Laguna Beach|Rebel Omakase
+75|ve_4da7074605|4956|One|n|4955|One|active|Encino|Pasta|Bar
+76|ve_ef1d8929a2|6184|One|n|6181|One|active|Los Angeles|Sushi Kaneyoshi
+77|ve_8bf3a78048|4436|One|n|4433|One|active|Carlsbad|Jeune et Jolie
+78|ve_53c32d0246|7872|One|n|7873|One|active|Saratoga|Plumed Horse
+79|ve_c3404177a3|6180|One|n|6178|One|active|Los Angeles|Restaurant Ki
+80|ve_56cbb50bd2|7689|One|n|7687|One|active|Saint Helena|PRESS Restaurant
+81|ve_515f1a9fd7|7799|One|n|7796|One|active|San Mateo|Wakuriya
+82|ve_49ef12464f|6127|One|n|6126|One|active|Los Alamos|Bell's
+83|ve_e9ff8bdcea|4960|One|n|4957|One|active|Encino|Shin Sushi
+84|ve_96565de422|11459|Bib|n|11458|Bib|active|Oakland|Bombera
+85|ve_4e6e498dbd|10466|Bib|n|10465|Bib|active|Hermosa Beach|Vin Folk
+86|ve_20d379b0d2|11028|Bib|n|11027|Bib|active|Los Angeles|Rasarumah
+87|ve_ad9355460e|11491|Bib|n|11490|Bib|active|Oceanside|Dija Mara
+88|ve_4e650746f4|11018|Bib|n|11017|Bib|active|Los Angeles|Pizzana
+89|ve_87e227df1c|11973|Bib|n|11972|Bib|active|San Francisco|Rintaro
+90|ve_20d32ff9a2|11962|Bib|n|11961|Bib|active|San Francisco|A16
+91|ve_a2bf585504|11948|Bib|n|11947|Bib|active|San Diego|Callie
+92|ve_047cae6da8|11996|Bib|n|11995|Bib|active|San Mateo|Pausa Bar & Cookery
+93|ve_9814b8ec34|10991|Bib|n|10990|Bib|active|Los Angeles|Chifa 國偉
+94|ve_e5e22504f5|10221|Bib|n|10220|Bib|active|Fullerton|Khan Saab Desi Craft Kitchen
+95|ve_e20ad0a205|21067|Bib|u|-|-|active|Los Angeles|Lapaba
+96|ve_a1a437ebe3|11983|Bib|n|11982|Bib|active|San Francisco|Z & Y Restaurant
+97|ve_637f199313|12067|Bib|n|12066|Bib|active|Sebastopol|Ramen Gaijin
+98|ve_d238bae4a6|11885|Bib|n|11884|Bib|active|Sacramento|Canon
+99|ve_f1fa767e3c|12022|Bib|n|12021|Bib|active|Santa Barbara|Loquita Santa Barbara
+100|ve_4b73508f1c|-|-|-|11957|Bib|active|San Diego|Mabel's Gone Fishing
+101|ve_56970b2941|11971|Bib|n|11970|Bib|active|San Francisco|Good Good Culture Club
+102|ve_eb179305b1|12031|Bib|n|12030|Bib|active|Santa Monica|Cobi's
+103|ve_1bf629b447|11158|Bib|n|11156|Bib|active|Menlo Park|Eylan
+104|ve_47c2514d03|10996|Bib|n|10995|Bib|active|Los Angeles|Grá
+105|ve_3e7ce99039|11468|Bib|n|11467|Bib|active|Oakland|Snail Bar
+106|ve_24c44c404c|11421|Bib|n|11420|Bib|active|Newport Beach|Fable & Spirit
+107|ve_1003cb849f|11959|Bib|n|11958|Bib|active|San Diego|Morning Glory
+108|ve_d2e24dc1f9|11952|Bib|n|11951|Bib|active|San Diego|Ciccia Osteria
+109|ve_c801afc42b|11032|Bib|n|11031|Bib|active|Los Angeles|Tsubaki
+110|ve_7df69898fb|11868|Bib|n|11867|Bib|active|Roseville|Nixtaco
+111|ve_a23e59f003|11956|Bib|n|11955|Bib|active|San Diego|Lola 55 Tacos & Cocktails
+112|ve_f53d5825a1|11950|Bib|n|11949|Bib|active|San Diego|Cesarina
+113|ve_45c3b31d36|11954|Bib|n|11953|Bib|active|San Diego|CUCINA urbana
+114|ve_f5300c86ef|11026|Bib|n|11025|Bib|active|Los Angeles|Quarter Sheets
+115|ve_9d0734f2fa|9497|Bib|n|9496|Bib|active|Berkeley|Comal
+116|ve_4be9859f45|9501|Bib|n|9500|Bib|active|Berkeley|Ippuku
+117|ve_42fbd15dca|21068|Bib|u|-|-|active|Los Angeles|Little Fish Melrose Hill
+118|ve_813dab7468|21065|Bib|u|-|-|active|San Francisco|Kitchen Istanbul
+119|ve_cf2130fb19|9220|Bib|n|9219|Bib|active|Alameda|Spinning Bones
+120|ve_a0f5a56e77|12065|Bib|n|12064|Bib|active|Sebastopol|Khom Loi
+121|ve_64cae79d1e|11000|Bib|n|10999|Bib|active|Los Angeles|Kismet
+122|ve_1cf6c1d015|11022|Bib|n|11021|Bib|active|Los Angeles|Pizzeria Mozza
+123|ve_0a16ca1b0f|11975|Bib|n|11974|Bib|active|San Francisco|Okane
+124|ve_9fbc902849|11977|Bib|n|11976|Bib|active|San Francisco|Outerlands
+125|ve_7f07718c5d|11979|Bib|n|11978|Bib|active|San Francisco|Trestle Restaurant
+126|ve_1fe4eceef2|12016|Bib|n|12015|Bib|active|Santa Ana|Lola Gaspar
+127|ve_b6a1a9afb8|-|-|-|11466|Bib|active|Oakland|MAMA Oakland
+128|ve_da0ed49e30|11992|Bib|n|11991|Bib|active|San Leandro|Top Hatters Kitchen and Bar
+129|ve_10734e139b|12018|Bib|n|12017|Bib|active|Santa Barbara|Bettina
+130|ve_a7535e15eb|-|-|-|9232|Bib|active|Alhambra|Lunasia Dim Sum House
+131|ve_d92d33d305|11030|Bib|n|11029|Bib|active|Los Angeles|The Factory Kitchen
+132|ve_201bb6d387|9499|Bib|n|9498|Bib|active|Berkeley|Great China
+133|ve_dbcebcd887|-|-|-|9846|Bib|active|Chicago|Union
+134|ve_1370ec0912|10998|Bib|n|10997|Bib|active|Los Angeles|Jon & Vinny's Fairfax
+135|ve_aa7baa1a12|11939|Bib|n|11938|Bib|active|San Anselmo|Insalata's
+136|ve_d3da9ee43d|10307|Bib|n|10306|Bib|active|Glen Ellen|Glen Ellen Star
+137|ve_264407c8a3|-|-|-|12062|Bib|active|Seaside|Maligne
+138|ve_a4c72e82a9|11966|Bib|n|11965|Bib|active|San Francisco|BANSANG
+139|ve_6ada60b361|11197|Bib|n|11196|Bib|active|Mill Valley|Playa Mill Valley
+140|ve_50d936f9dc|13005|Bib|n|13004|Bib|active|Yountville|Ciccio
+141|ve_7d05978122|11020|Bib|n|11019|Bib|active|Los Angeles|Pizzeria Bianco
+142|ve_cd5794af84|11465|Bib|n|11464|Bib|active|Oakland|Jo's Modern Thai
+143|ve_d3f44a7e0b|21069|Bib|u|-|-|active|Los Angeles|Lugya'h
+145|ve_7c433217a7|11002|Bib|n|11001|Bib|active|Los Angeles|KOMAL
+146|ve_7da50e5e57|11968|Bib|n|11967|Bib|active|San Francisco|Dumpling Home
+147|ve_23346c9f80|12271|Bib|n|12270|Bib|active|Sonoma|Valley
+148|ve_88e7825deb|21063|Bib|u|-|-|active|San Juan Capistrano|Heritage Barbecue
+149|ve_3501e2ec6f|11014|Bib|n|11013|Bib|active|Los Angeles|Moo's Craft Barbecue
+150|ve_0feb0b5d0b|9286|Bib|n|9285|Bib|active|Aptos|Mentone
+151|ve_2be70a8d75|12756|Bib|n|12755|Bib|active|Tustin|CHAAK KITCHEN
+152|ve_f5b4865183|21062|Bib|u|-|-|active|Alhambra|Chengdu Taste
+153|ve_408f686390|11016|Bib|n|11015|Bib|active|Los Angeles|Pine and Crane DTLA
+154|ve_8764298a97|12024|Bib|n|12023|Bib|active|Santa Barbara|Sama Sama Kitchen
+155|ve_4427c440b5|9701|Bib|n|9700|Bib|active|Carmel by the Sea|Yafa
+156|ve_83da5223c2|10248|Bib|n|10247|Bib|active|Garden Grove|Phở 79
+157|ve_e4085a0bce|11862|Bib|n|11861|Bib|active|Rosemead|Longo Seafood Restaurant
+158|ve_500287c739|10309|Bib|n|10308|Bib|closed|Glendale|Adana Restaurant
+159|ve_993973619c|10993|Bib|n|10992|Bib|active|Los Angeles|Dha Rae Oak
+160|ve_66495c1b0a|21061|Bib|u|-|-|active|Encinitas|Atelier Manna
+161|ve_e67d5ac741|11657|Bib|n|11656|Bib|active|Petaluma|Stockhome
+162|ve_680f5043d9|11989|Bib|n|11988|Bib|active|San Jose|Petiscos "Downtown"
+163|ve_ee90c6ab34|12033|Bib|n|12032|Bib|active|Santa Monica|Colapasta Restaurant
+164|ve_d0907d3565|12549|Bib|n|12548|Bib|active|Temple City|Dai Ho Restaurant
+165|ve_ce0deef1af|11470|Bib|n|11469|Bib|active|Oakland|Soba Ichi
+166|ve_d6189159a0|11964|Bib|n|11963|Bib|active|San Francisco|Anchor Oyster Bar
+167|ve_77af2eeb85|11010|Bib|n|11009|Bib|active|Los Angeles|Liu's Cafe
+168|ve_669f84e512|10989|Bib|n|10988|Bib|active|Los Angeles|Carnes Asadas Pancho Lopez
+169|ve_4c343855f2|-|-|-|11012|Bib|active|Los Angeles|Mae Malai Thai House of Noodles
+170|ve_07baefaea8|9638|Bib|n|9637|Bib|active|Buena Park|Ramen & Tsukemen TAO
+171|ve_ff051939ba|10148|Bib|n|10147|Bib|active|El Cerrito|New Dumpling
+172|ve_bd1a6dacb4|12020|Bib|n|12019|Bib|active|Santa Barbara|Corazon Cocina
+173|ve_4d50aa1191|11004|Bib|n|11003|Bib|active|Los Angeles|Lalibela
+174|ve_3f4a9c7229|11034|Bib|n|11033|Bib|active|Los Angeles|Villa's Tacos Los Angeles
+175|ve_8ca86a89a6|11461|Bib|n|11460|Bib|active|Oakland|FOB Kitchen
+176|ve_cf80eefb8b|11887|Bib|n|11886|Bib|active|Sacramento|Pho Momma
+177|ve_20545d099c|21064|Bib|u|-|-|active|Oakland|Joodooboo
+178|ve_98fdc9843a|21070|Bib|u|-|-|active|Los Angeles|Sonoratown
+179|ve_c37bac8ec5|11472|Bib|n|11471|Bib|active|Oakland|Tacos Oscar
+180|ve_04ce55a0c1|-|-|-|11210|Bib|active|Monrovia|Luscious Dumplings
+181|ve_b4db22e9ad|-|-|-|11724|Bib|active|Pomona|Mariscos Jalisco
+182|ve_3ceedd2541|21066|Bib|u|-|-|active|Arcadia|LaoXi Noodle House
+183|ve_fbd5fcb98b|-|-|-|11011|Bib|active|Los Angeles|Maccheroni Republic
+184|ve_96cb551ef5|9738|Bib|n|9737|Bib|active|Cerritos|Amor Y Tacos
+185|ve_53e6fd2f92|11474|Bib|n|11473|Bib|active|Oakland|Teni East Kitchen
+186|ve_49a2fc7669|11008|Bib|n|11007|Bib|active|Los Angeles|Little Fish Echo Park
+187|ve_2715cbd1d8|10454|Bib|n|10453|Bib|active|Hayward|Los Carnalitos Restaurant
+188|ve_e943a5a8f6|9234|Bib|n|9233|Bib|active|Alhambra|Sichuan Impression
+189|ve_5bed0ee967|9487|Bib|n|9486|Bib|active|Bell Gardens|Rocio's Mexican Kitchen
+190|ve_2459a90056|11006|Bib|n|11005|Bib|active|Los Angeles|Langer's Delicatessen-Restaurant
+191|ve_2bd8ff64ec|-|-|-|11987|Bib|active|San Jose|LUNA Mexican Kitchen - San Jose
+192|ve_9256529dfa|10176|Bib|n|10175|Bib|active|Fairfax|Village Sake
+193|ve_0c3ef556a6|9231|Bib|n|9230|Bib|active|Alhambra|Ipoh Kopitiam
+194|ve_021ae96fab|11024|Bib|n|11023|Bib|active|Los Angeles|Pollo A La Brasa
+195|ve_f04c1f312c|11875|Bib|n|11874|Bib|active|Rowland Heights|Eat Joy Food
+196|ve_c2614e0884|12269|Bib|n|12268|Bib|active|Sonoma|El Molino Central
+197|ve_b4865a4131|12266|Bib|n|12265|Bib|active|Solvang|peasants FEAST
+198|ve_ca2f9feb82|2480|Two|n|2481|Two|active|Miami|L’Atelier de Joël Robuchon
+199|ve_7a8b330de3|2748|Two|n|2746|Two|active|Orlando|Sorekara
+200|ve_049de7329f|8338|One|n|8335|One|active|Miami|The Surf Club Restaurant
+201|ve_99cc29d76f|4646|One|n|4644|One|active|Miami|SHINGO
+202|ve_617fa47a07|8441|One|n|8440|One|active|Tampa|Rocca
+203|ve_1c58da1095|21054|One|u|-|-|active|North Miami|Mutra
+204|ve_c6563b1340|6504|One|n|6503|One|active|Miami|Boia De
+205|ve_39b88ded1c|5033|One|n|5034|One|active|Fort Lauderdale|MAASS Restaurant at The Four Seasons
+206|ve_2d8e602730|17721|One|n|17722|One|active|Miami|El Cielo
+207|ve_ab95922a06|21053|One|u|-|-|active|West Palm Beach|Emelina
+208|ve_80d614fcd1|9066|One|n|9064|One|active|Winter Park|Ômo by Jônt
+209|ve_4d6c44523b|7006|One|n|7005|One|active|Orlando|Camille
+210|ve_caa757788c|8434|One|n|8433|One|active|Tampa|Koya
+211|ve_962dd2cab1|6494|One|n|6491|One|active|Miami|Stubborn Seed - Miami Beach
+212|ve_0859e00ee0|8436|One|n|8435|One|active|Tampa|Kōsen
+213|ve_0148e4f068|6515|One|n|6516|One|active|Miami|Le Jardinier
+214|ve_966d9c81b6|6502|One|n|6499|One|active|Miami|Ariete
+215|ve_e5371ef9a3|6509|One|n|6505|One|active|Miami|COTE Miami
+216|ve_e508f8cfe1|6520|One|n|6519|One|active|Miami|Los Félix Miami
+217|ve_c44e381fac|9063|One|n|9062|One|active|Winter Park|Soseki Omakase
+218|ve_38b0ebb132|8432|One|n|8431|One|active|Tampa|EBBE
+219|ve_bd8f8cd47b|7008|One|n|7007|One|active|Orlando|Kadence
+220|ve_efd3209471|7012|One|n|7010|One|active|Orlando|The Dining Room at Victoria & Albert’s
+221|ve_fabf43d6e3|6523|One|n|6521|One|active|Miami|Ogawa
+222|ve_07912a74b2|6514|One|n|6510|One|active|Miami|Hiden
+223|ve_5b7fbcd496|21084|Bib|u|-|-|active|St. Augustine|Bar Citra
+224|ve_b4fda6bf48|21085|Bib|u|-|-|active|North Miami Beach|Barra Callao
+225|ve_cd7affaead|12529|Bib|n|12528|Bib|active|Tampa|Psomi
+226|ve_e05b6a72cb|11165|Bib|n|11164|Bib|active|Miami|Bachour
+227|ve_80e4cd6d15|11177|Bib|n|11176|Bib|active|Miami|Mandolin Aegean Bistro
+228|ve_2bf9c6ab79|11173|Bib|n|11172|Bib|active|Miami|Hometown Barbecue
+229|ve_8689d812f7|11171|Bib|n|11170|Bib|active|Miami|Ghee - Wynwood
+230|ve_9fe85424cc|11163|Bib|n|11162|Bib|active|Miami|Lucali
+231|ve_cc325949fb|21092|Bib|u|-|-|active|Miami|To Be Determined
+232|ve_eec82774fb|12533|Bib|n|12532|Bib|active|Tampa|Streetlight Taco
+233|ve_103f68437c|11519|Bib|n|11518|Bib|active|Orlando|Sushi Saint
+234|ve_16051192ae|10201|Bib|n|10200|Bib|active|Fort Lauderdale|Heritage
+235|ve_3085cf72c8|11513|Bib|n|11511|Bib|active|Orlando|Otto’s High Dive
+236|ve_31127f61ec|12953|Bib|n|12952|Bib|active|Winter Garden|Norigami FL
+237|ve_b524d4de32|11175|Bib|n|11174|Bib|active|Miami|La Natural
+238|ve_7b521249ac|12531|Bib|n|12530|Bib|active|Tampa|Rooster & the Till
+239|ve_01a1dd9ecc|11185|Bib|n|11184|Bib|active|Miami|Tâm Tâm
+240|ve_b9ec992e3e|11517|Bib|n|11516|Bib|active|Orlando|The Strand
+241|ve_febb42de83|11181|Bib|n|11180|Bib|active|Miami|Phuc Yea
+242|ve_588ac0aa6b|12955|Bib|n|12954|Bib|active|Winter Park|The Ravenous Pig
+243|ve_befa2d5dd3|9938|Bib|n|9937|Bib|active|Miami|Zitz Sum
+244|ve_41993ac9f8|21087|Bib|u|-|-|active|North Miami|Cotoa
+245|ve_9dcb31a0f9|11506|Bib|n|11505|Bib|active|Orlando|Coro
+246|ve_c8e67022a0|11179|Bib|n|11178|Bib|active|Miami|Michael's Genuine Food & Drink
+247|ve_701e54ddc4|11169|Bib|n|11168|Bib|active|Miami|El Turco Turkish Food
+248|ve_6930919788|21090|Bib|u|-|-|active|Key West|Moondog Cafe & Bakery
+249|ve_a955a8f78e|12940|Bib|n|12939|Bib|active|West Palm Beach|aioli
+250|ve_bfe1dbd437|11515|Bib|n|11514|Bib|active|Orlando|Smokemade Meats + Eats
+251|ve_7aa20e1d4f|11510|Bib|n|11509|Bib|active|Orlando|Isan zaap Thai cafe
+252|ve_15a11d38a2|21089|Bib|u|-|-|active|Sarasota|Lucky 8
+253|ve_c5d0ff1f05|21086|Bib|u|-|-|active|Bonita Springs|Canary Club
+254|ve_c38a2fc442|11504|Bib|n|11503|Bib|active|Orlando|Bánh Mì Boy
+255|ve_293b46f052|11526|Bib|n|11525|Bib|active|Orlando|Zaru
+256|ve_4820e71d0e|21083|Bib|u|-|-|active|Pensacola|A Mano Panino
+257|ve_c297bfda69|12942|Bib|n|12941|Bib|active|West Palm Beach|Palm Beach Meats
+258|ve_1d0f6886bd|11523|Bib|n|11522|Bib|active|Orlando|UniGirl
+259|ve_d398ffee85|11508|Bib|n|11507|Bib|active|Orlando|DOMU
+260|ve_5eac35af84|11521|Bib|n|11520|Bib|active|Orlando|Taste of Chengdu 成都味道
+261|ve_bb7081f90e|21091|Bib|u|-|-|active|St. Augustine|Sunday
+262|ve_dc68ae55f1|21088|Bib|u|-|-|active|Miami|Double Luck Chinese
+263|ve_6b4066b1e8|11502|Bib|n|11501|Bib|active|Orlando|Bombay Street Kitchen
+264|ve_af1d49ca50|11167|Bib|n|11166|Bib|active|Miami|Chug's Diner
+265|ve_f2c7872930|12527|Bib|n|12526|Bib|active|Tampa|Gorkhali Kitchen
+266|ve_564066ee9f|11183|Bib|n|11182|Bib|active|Miami|Sanguich
+267|ve_944f76d82a|9936|Bib|n|9935|Bib|active|Miami|Tinta Y Cafe - Coral Gables

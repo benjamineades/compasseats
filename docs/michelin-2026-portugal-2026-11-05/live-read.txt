@@ -1,0 +1,78 @@
+ve_02ec8f0c23|7448|One Star|2025|ci_71d6c631e3|porto|active|$$$$|vila-foz-hotel-spa||Vila Foz Hotel & Spa
+ve_03ce225ed2|5966|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$$|feitoria||Feitoria
+ve_06c15a6bb1|8919|One Star|2025|ci_71d6c631e3|porto|active|$$$$|vinha-restaurante||Vinha restaurante
+ve_0c1c6c2179|10920|Bib Gourmand|2025|ci_fbfa6902f0|lisbon|active|$$|carnal||CARNAL
+ve_0f14da650a|10919|Bib Gourmand|2025|ci_fbfa6902f0|lisbon|active|$$|canalha||Canalha
+ve_11508e8a71|7441|One Star|2025|ci_71d6c631e3|porto|active|$$$|indiferente||InDiferente
+ve_12fb6f3b13|5971|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$$|loco||Loco
+ve_1465ed893a|7354|One Star|2025|ci_6332021d87|peso-da-regua|active|$$$$|schisto-restaurante||Schistó Restaurante
+ve_1cb90206e2|7534|One Star|2025|ci_cd726656bc|reguengos-de-monsaraz|active|$$$|herdade-do-esporao-restaurant||Herdade do Esporão Restaurant
+ve_1dbd4f3301|7444|One Star|2025|ci_71d6c631e3|porto|active|$$$$|pedro-lemos||Pedro Lemos
+ve_29050824f6|3661|One Star|2025|ci_e975f50537|amarante|active|$$$$|largo-do-paco||Largo do Paço
+ve_2eff8391c7|8235|One Star|2025|ci_a430b4dd6e|sintra|active|$$$$|midori||Midori
+ve_2f504d218f|9579|Bib Gourmand|2025|ci_391f516e55|braganca|active|$$|o-javali||O Javali
+ve_32b9d20f06|9886|Bib Gourmand|2025|ci_4082f97dc8|coimbra|active|$|restaurante-solar-do-bacalhau||Restaurante Solar do Bacalhau
+ve_3441608188|10370|Bib Gourmand|2025|ci_5ef2b537f6|guimaraes|active|$$|norma||Norma
+ve_36dc4c44af|8095|One Star|2025|ci_52c8c9e337|silgueiros|active|$$$$|mesa-de-lemos||Mesa de Lemos
+ve_3d5550286a|10185|Bib Gourmand|2025|ci_01ee37d451|figueira-da-foz|active|$$|olaias-restaurante||Olaias Restaurante
+ve_3db0864af6|5969|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$|kabuki-lisboa||Kabuki Lisboa
+ve_43ae6e7a39|2287|Two Stars|2025|ci_fbfa6902f0|lisbon|active|$$$$|henrique-sa-pessoa||Henrique Sá Pessoa
+ve_578415de8d|9197|Bib Gourmand|2025|ci_fb67eb3a08|abrantes|active|$|restaurante-casa-chef-victor-felisberto||Restaurante Casa Chef Victor Felisberto
+ve_5c92670da6|6598|One Star|2025|ci_6284cb3f72|montemor-o-novo|active|$$$|mapa||MAPA
+ve_5f82dab470|11736|Bib Gourmand|2025|ci_71d6c631e3|porto|active|$$|oma||OMA
+ve_612141d31c|10922|Bib Gourmand|2025|ci_fbfa6902f0|lisbon|active|$$|pigmeu||Pigmeu
+ve_63b7b5b6e1|3515|Two Stars|2025|ci_71d6c631e3|porto|active|$$$$|the-yeatman-gastronomic-restaurant||The Yeatman Gastronomic Restaurant
+ve_66a88537f6|2283|Two Stars|2025|ci_fbfa6902f0|lisbon|active|$$$$|fifty-seconds||Fifty Seconds
+ve_683132f77c|11737|Bib Gourmand|2025|ci_71d6c631e3|porto|active|$|patio-44-restaurante||Pátio 44 Restaurante
+ve_6fce85097f|5095|One Star|2025|ci_d57ec2c934|funchal|active|$$$$|william-restaurant||William Restaurant
+ve_77ab02854d|1420|Two Stars|2025|ci_7c35a098ef|albufeira|active|$$$$|vila-joya||Vila Joya
+ve_7f24200a5a|5957|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$$|lisbon-ctokj0||2Monkeys Restaurant
+ve_7f5e557320|5238|One Star|2025|ci_5ef2b537f6|guimaraes|active|$$$|a-cozinha-por-antonio-loureiro||A Cozinha por António Loureiro
+ve_82e0750c94|7449|One Star|2025|ci_71d6c631e3|porto|active|$$$$|eon-restaurante||ÉON Restaurante
+ve_83dcfcb027|5094|One Star|2025|ci_d57ec2c934|funchal|active|$$$$|restaurante-desarma||Restaurante Desarma
+ve_8faf5fe211|7442|One Star|2025|ci_71d6c631e3|porto|active|$$$$|le-monument||Le Monument
+ve_902f41c40c|10923|Bib Gourmand|2025|ci_fbfa6902f0|lisbon|active|$$|zunzum-gastrobar||Zunzum Gastrobar
+ve_985b6561a5|11735|Bib Gourmand|2025|ci_df1b648e91|portalegre|active|$|solar-do-forcado-em-portalegre||Solar do Forcado em Portalegre
+ve_9c5faf9b1a|12824|Bib Gourmand|2025|ci_6ee39e29b6|viana-do-castelo|active|$|restaurante-camelo||Restaurante Camelo
+ve_9c9425eedd|10921|Bib Gourmand|2025|ci_fbfa6902f0|lisbon|active|$$|oficio||Ofício
+ve_9ee0193f68|1946|Two Stars|2025|ci_d57ec2c934|funchal|active|$$$$|il-gallo-d-oro||Il Gallo D'Oro
+ve_a44b4d1920|7434|One Star|2025|ci_71d6c631e3|porto|active|$$$$|dop||DOP
+ve_a5a73f1b60|4275|One Star|2025|ci_391f516e55|braganca|active|$$$$|g-pousada-restaurante||G Pousada Restaurante
+ve_a5e2345ee7|9244|Bib Gourmand|2025|ci_816d9b5ccf|alverca-do-ribatejo|active|$|taberna-sakra||Taberna Sakra
+ve_aea1eaea0f|4453|One Star|2025|ci_b4087f5874|cascais|active|$$$$|kappo||Kappo
+ve_b401142d6e|13158|Two Stars|2025|ci_fbfa6902f0|lisbon|active|$$$$|belcanto||Belcanto
+ve_b64fdc78e5|5970|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$$|kanazawa||Kanazawa
+ve_b6fb48f8f1|5974|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$$|marlene||Marlene,
+ve_c1c6d84e4b|8233|One Star|2025|ci_a430b4dd6e|sintra|active|$$$$|lab-by-sergi-arola||LAB by Sergi Arola
+ve_c571d9d3eb|4274|One Star|2025|ci_a904adf191|braga|active|$$$|palatial||Palatial
+ve_c663d4a73a|5962|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$|encanto||Encanto
+ve_c697311d35|5841|One Star|2025|ci_b17b24ff28|lagoa|active|$$$$|bon-bon||Bon Bon
+ve_cd8fae6f67|9243|Bib Gourmand|2025|ci_9be9a25f3e|alvados|active|$$|terruja||Terruja
+ve_cdb234e39f|12866|Bib Gourmand|2025|ci_05c47b3c01|viseu|active|$$|flora-food-wine||Flora (Food & Wine)
+ve_cef6099299|7426|One Star|2025|ci_065ea30d8a|portimao|active|$$$$|vista||Vista
+ve_d5257db805|4451|One Star|2025|ci_b4087f5874|cascais|active|$$$$|fortaleza-do-guincho||Fortaleza do Guincho
+ve_d8936e2258|10222|Bib Gourmand|2025|ci_d57ec2c934|funchal|active|$$|restaurante-casal-da-penha||Restaurante Casal da Penha
+ve_d8a2bac9f9|12693|Bib Gourmand|2025|ci_2d784fd834|tonda|active|$$|tonda-z3xo9e||3 Pipos
+ve_d92c6ae3a5|2839|Two Stars|2025|ci_11fd403fac|porches|active|$$$$|restaurante-ocean||Restaurante Ocean
+ve_da24f20eaa|12132|Bib Gourmand|2025|ci_e047472911|setubal|active|$$|xtoria||Xtoria
+ve_db3718b695|8918|One Star|2025|ci_e9f030033a|vila-do-conde|active|$$$$|oculto||Oculto
+ve_db6cfedd9b|10898|Bib Gourmand|2025|ci_83804871bc|leiria|active|$$|mesa15-restaurant||Mesa15 restaurant
+ve_dbd8c080bd|9578|Bib Gourmand|2025|ci_391f516e55|braganca|active|$$|contradicao||Contradição
+ve_de4fd42462|5979|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$|yoso-omakase||YŌSO - Omakase
+ve_e46916cd7e|7865|One Star|2025|ci_16869dac6e|santarem|active|$$|taberna-o-balcao||Taberna Ó Balcão
+ve_e47cd9ab64|2259|Two Stars|2025|ci_65df0ad0ae|leca-da-palmeira|active|$$$$|casa-de-cha-da-boa-nova||Casa de Chá da Boa Nova
+ve_e4dff87d89|5963|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$$|epur||Epur
+ve_e637956b15|5968|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$$|grenache||Grenache
+ve_e78a5228c4|3653|One Star|2025|ci_e92b6cee60|almancil|active|$$$$|gusto||Gusto
+ve_e87afefdc9|11095|Bib Gourmand|2025|ci_cb6caa3519|maia|active|$|restaurante-machado||Restaurante Machado
+ve_eb0e147299|13031|Bib Gourmand|2025|ci_b6aaf0ebe5|agueda|active|$|o-tipico||O Tipico
+ve_eb931b4166|8448|One Star|2025|ci_271362f3ee|tavira|active|$$$$|a-ver-tavira||A Ver Tavira
+ve_ebdea8383b|7433|One Star|2025|ci_71d6c631e3|porto|active|$$$$|blind-restaurante||Blind Restaurante
+ve_ebed1b5620|7435|One Star|2025|ci_71d6c631e3|porto|active|$$$$|euskalduna-studio||Euskalduna Studio
+ve_ecfec26b66|5958|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$$|cura||Cura
+ve_eea3c9af60|11223|Bib Gourmand|2025|ci_6284cb3f72|montemor-o-novo|active|$|poda||Poda
+ve_ef8635f354|4989|One Star|2025|ci_c538ccfeca|faro|active|$$$|alameda||Alameda
+ve_f322c5f6d8|2843|Two Stars|2025|ci_71d6c631e3|porto|active|$$$$|restaurante-antiqvvm||Restaurante Antiqvvm
+ve_f590bedecd|10238|Bib Gourmand|2025|ci_444bce45f1|gafanha-da-encarnacao|active|$$|dori-restaurante-marisqueira||Dóri Restaurante - Marisqueira
+ve_f7858aaf09|7440|One Star|2025|ci_71d6c631e3|porto|active|$$$|gastro-by-elemento||Gastro by Elemento
+ve_fd3f9b0e88|5978|One Star|2025|ci_fbfa6902f0|lisbon|active|$$$|sala||Sála

@@ -1,0 +1,9 @@
+Bib Gourmand | /us/en/riga-region/riga_1991577/restaurant/balta-kaza | Balt\u0101 Kaza | Riga, Latvia | \u20ac\u20ac \u00b7 Regional Cuisine
+Bib Gourmand | /us/en/riga-region/riga_1991577/restaurant/cafe-mimosa | Caf\u00e9 Mimosa | Riga, Latvia | \u20ac \u00b7 Contemporary
+Bib Gourmand | /us/en/riga-region/riga_1991577/restaurant/milda | Milda | Riga, Latvia | \u20ac\u20ac \u00b7 Traditional Cuisine
+Bib Gourmand | /us/en/riga-region/riga_1991577/restaurant/shoyu | Sh\u014dyu | Riga, Latvia | \u20ac\u20ac \u00b7 Japanese
+Bib Gourmand | /us/en/riga-region/riga_1991577/restaurant/smor-bistro | SM\u00d8R Bistro | Riga, Latvia | \u20ac\u20ac \u00b7 French
+Bib Gourmand | /us/en/riga-region/riga_1991577/restaurant/snatch | Snatch | Riga, Latvia | \u20ac\u20ac \u00b7 Italian
+Bib Gourmand | /us/en/vidzeme/cesis_1988584/restaurant/h-e-vanadzins | H.E. Vanadzi\u0146\u0161 | C\u0113sis, Latvia | \u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/riga-region/riga_1991577/restaurant/john-chef-s-hall | JOHN Chef's Hall | Riga, Latvia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/riga-region/riga_1991577/restaurant/max-cekot-kitchen | Max Cekot Kitchen | Riga, Latvia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative

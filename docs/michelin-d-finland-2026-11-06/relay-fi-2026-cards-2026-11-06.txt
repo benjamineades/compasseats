@@ -1,0 +1,11 @@
+Bib Gourmand | /us/en/uusimaa/helsinki/restaurant/305 | 305 | Helsinki, Finland | \u20ac\u20ac \u00b7 Modern Cuisine | 2026 | Finland | 200 | /us/en/uusimaa/helsinki/restaurant/305 | -
+Bib Gourmand | /us/en/uusimaa/helsinki/restaurant/bona-fide | Bona Fide | Helsinki, Finland | \u20ac\u20ac \u00b7 Modern Cuisine | 2026 | Finland | 200 | /us/en/uusimaa/helsinki/restaurant/bona-fide | -
+Bib Gourmand | /us/en/uusimaa/helsinki/restaurant/nolla | Nolla | Helsinki, Finland | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | 2026 | Finland | 200 | /us/en/uusimaa/helsinki/restaurant/nolla | -
+One Star | /us/en/southwest-finland/turku/restaurant/kaskis | Kaskis | Turku, Finland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | 2026 | Finland | 200 | /us/en/southwest-finland/turku/restaurant/kaskis | -
+One Star | /us/en/uusimaa/helsinki/restaurant/boreal | Boreal | Helsinki, Finland | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | 2026 | Finland | 200 | /us/en/uusimaa/helsinki/restaurant/boreal | -
+One Star | /us/en/uusimaa/helsinki/restaurant/demo | Demo | Helsinki, Finland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | 2026 | Finland | 200 | /us/en/uusimaa/helsinki/restaurant/demo | -
+One Star | /us/en/uusimaa/helsinki/restaurant/finnjavel-salonki | Finnj\u00e4vel Salonki | Helsinki, Finland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | 2026 | Finland | 200 | /us/en/uusimaa/helsinki/restaurant/finnjavel-salonki | -
+One Star | /us/en/uusimaa/helsinki/restaurant/olo | Olo | Helsinki, Finland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | 2026 | Finland | 200 | /us/en/uusimaa/helsinki/restaurant/olo | -
+One Star | /us/en/uusimaa/porvoo_1627402/restaurant/var-1198201 | V\u00c5R | Porvoo, Finland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | 2026 | Finland | 200 | /us/en/uusimaa/porvoo_1627402/restaurant/var-1198201 | -
+Two Stars | /us/en/uusimaa/helsinki/restaurant/gron | Gr\u00f6n | Helsinki, Finland | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | 2026 | Finland | 200 | /us/en/uusimaa/helsinki/restaurant/gron | -
+Two Stars | /us/en/uusimaa/helsinki/restaurant/palace | Palace | Helsinki, Finland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | 2026 | Finland | 200 | /us/en/uusimaa/helsinki/restaurant/palace | -

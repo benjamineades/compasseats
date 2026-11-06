@@ -1,0 +1,117 @@
+ve_039aac15f6|12088|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|ggupdangsinsa||Ggupdang Sinsa
+ve_048097aebf|7953|One Star|2025|ci_d793880d5b|seoul|active|$$$$|||강민철 레스토랑
+ve_04815c33ca|12103|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|limbyungjoosandongkalguksu||Lim Byungjoo Sandong Kalguksu
+ve_0ad174c768|12087|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|geumdwaejisikdang||Geumdwaeji Sikdang
+ve_0d175ee7ad|9645|Bib Gourmand|2025|ci_350217d30c|busan|active|$|budamyeonoak||Buda Myeonoak
+ve_0d9516314c|9649|Bib Gourmand|2025|ci_350217d30c|busan|active|$|hapcheongukbaphouse||Hapcheon Gukbap House
+ve_0eb99be129|7995|One Star|2025|ci_d793880d5b|seoul|active|$$$$|yuyuan||유 유안 Yu Yuan
+ve_10fda1a3a7|12112|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|oilje||Oilje
+ve_11f6908a41|12101|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|kyewolgomtang||Kyewol Gomtang
+ve_12c2f1634d|12116|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|pildongmyeonok||Pildong Myeonok
+ve_13a1cd3ab4|9656|Bib Gourmand|2025|ci_350217d30c|busan|active|$|shunsaikubo||Shunsai Kubo
+ve_13c79ffc4d|12123|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|woolaeoak||Woo Lae Oak
+ve_15c8610538|7930|One Star|2025|ci_d793880d5b|seoul|active|$$$|bicena||Bicena
+ve_18871a5a03|12109|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|myeonseoul||Myeonseoul
+ve_1befb17911|7984|One Star|2025|ci_d793880d5b|seoul|active|$$$$|soseoulhannam||Soseoul Hannam
+ve_1cc086d414|7944|One Star|2025|ci_d793880d5b|seoul|active|$$$$|||가겐 by 최준호
+ve_1e70b81516|12121|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|sobakeerisuzu||Sobakeeri Suzu
+ve_1f2b2f681e|12096|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|hwangsaenggakalguksu||Hwangsaengga Kalguksu
+ve_1fda244067|9643|Bib Gourmand|2025|ci_350217d30c|busan|active|$|baohaus||BAO HAUS
+ve_210754946b|7958|One Star|2025|ci_d793880d5b|seoul|active|$$|legume||LEGUME
+ve_24ff9a8dc6|3088|Two Stars|2025|ci_d793880d5b|seoul|active|$$$$|soigne||Soigné
+ve_261ce335c5|12119|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|seogyonanmyeonbang||Seogyo Nanmyeonbang
+ve_271bf5946e|9641|Bib Gourmand|2025|ci_350217d30c|busan|active|$|1001pyeongnaeng||100.1.Pyeongnaeng
+ve_2721e3f85e|7940|One Star|2025|ci_d793880d5b|seoul|active|$$$$|eatanicgardenjosunpalace||Eatanic Garden, Josun Palace
+ve_2736b702b4|12086|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|gebangsikdang||Gebangsikdang
+ve_289ad9e58a|7945|One Star|2025|ci_d793880d5b|seoul|active|$$$|gigas||Gigas
+ve_2964e04585|12111|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|nishimuramen||Nishimuramen
+ve_29b1e26fac|7950|One Star|2025|ci_d793880d5b|seoul|active|$$$$|restaurantjueun||Restaurant Jueun
+ve_2bbc3172b7|12089|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|gomtanglab||Gomtang LAB
+ve_2de0f377b9|9648|Bib Gourmand|2025|ci_350217d30c|busan|active|$|hanwolgwan||Han-Wolgwan
+ve_2de9844798|3053|Two Stars|2025|ci_d793880d5b|seoul|active|$$$$|evett||EVETT
+ve_2df092b83e|3057|Two Stars|2025|ci_d793880d5b|seoul|active|$$$$|jungsik||Jungsik
+ve_2df65d77df|7956|One Star|2025|ci_d793880d5b|seoul|active|$$$|lamitiecheongdam||L'Amitié Cheongdam
+ve_2e60b7c290|12126|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|yonggeumok||Yonggeumok
+ve_315c71f2a5|7972|One Star|2025|ci_d793880d5b|seoul|active|$$$$|onjium||Onjium
+ve_319b3b47e6|12082|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|baseisnice||BASE IS NICE
+ve_3205d5e257|7949|One Star|2025|ci_d793880d5b|seoul|active|$$$$|hakusi||Hakusi
+ve_36bed76026|3066|Two Stars|2025|ci_d793880d5b|seoul|active|$$$$|kwonsooksoo||KwonSookSoo
+ve_376b9f68d2|12095|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|hwanggeumkongbat||Hwanggeum Kongbat
+ve_377775a42c|7988|One Star|2025|ci_d793880d5b|seoul|active|$$$$|sushikanesaka||Sushi Kanesaka
+ve_3785339543|12128|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$$|yukjeonhoegwan||YukJeon Hoegwan
+ve_3dcd7b0d94|12093|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|horapa||Horapa
+ve_4083a94fc2|7976|One Star|2025|ci_d793880d5b|seoul|active|$$$$|solbam||Solbam
+ve_409a1b7b21|3082|Two Stars|2025|ci_d793880d5b|seoul|active|$$$$|mosuseoul||MOSU Seoul
+ve_4838a3ba4f|9647|Bib Gourmand|2025|ci_350217d30c|busan|active|$$|haemokhaeundae||Haemok Haeundae
+ve_48830d7142|9651|Bib Gourmand|2025|ci_350217d30c|busan|active|$|moemiljip||뫼밀집 moemiljip
+ve_492a42554e|9652|Bib Gourmand|2025|ci_350217d30c|busan|active|$|nagahamamangetsu||Nagahama Mangetsu
+ve_4983bed6eb|7943|One Star|2025|ci_d793880d5b|seoul|active|$$$|exquisine||Exquisine
+ve_4a7f0e9def|9653|Bib Gourmand|2025|ci_350217d30c|busan|active|$|niuroumianguanzi||Niurou Mian Guan-zi
+ve_4bec88c490|9659|Bib Gourmand|2025|ci_350217d30c|busan|active|$|yakitorionjeong||Yakitori Onjeong
+ve_4ed13d68fe|12102|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|kyodaiya||Kyodaiya
+ve_52cdb713a8|7986|One Star|2025|ci_d793880d5b|seoul|active|$$$|souldining||Soul Dining
+ve_56eae432ed|12129|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|yurimmyeon||Yurimmyeon
+ve_5b61a9ac66|12100|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|junginmyeonok||Jungin Myeonok
+ve_5c2458b538|9657|Bib Gourmand|2025|ci_350217d30c|busan|active|$|oncheonjip||Oncheonjip
+ve_5fef4bc011|1083|Three Stars|2025|ci_d793880d5b|seoul|active|$$$$|mingles||Mingles
+ve_60883b3d6f|7946|One Star|2025|ci_d793880d5b|seoul|active|$$$$|giwakang||GiwaKang 기와강
+ve_619850c8ef|4384|One Star|2025|ci_350217d30c|busan|active|$$$|fiotto||Fiotto
+ve_6329aa16ee|3068|Two Stars|2025|ci_d793880d5b|seoul|active|$$$$|layeon||La Yeon
+ve_6416005ffe|12120|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|seoryung||Seoryung
+ve_6a003b57d0|3095|Two Stars|2025|ci_d793880d5b|seoul|active|$$$$|sosuheon||Sosuheon
+ve_6ad69f644e|7996|One Star|2025|ci_d793880d5b|seoul|active|$$$|yunseoul||Yun Seoul
+ve_6b14d09415|7994|One Star|2025|ci_d793880d5b|seoul|active|$$$|yeast||Y'east
+ve_6e8e63dfdf|12081|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|||안덕
+ve_6f2380e2db|7960|One Star|2025|ci_d793880d5b|seoul|active|$$$$|muni||Muni
+ve_77663cdf3a|3087|Two Stars|2025|ci_d793880d5b|seoul|active|$$$$|restaurantallen||Restaurant Allen
+ve_7df12f5e42|12078|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|samdaesamgyejangin||Samdae Samgyejangin
+ve_7ef4ee5e45|12085|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|gaeseongmandukoongyeonhuibranch||Gaeseong Mandu Koong Yeonhui branch
+ve_802cd56471|12115|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|orenoramenmainstore||Oreno Ramen Main Store
+ve_81e62be186|12122|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|subaru||Subaru
+ve_85d749fa41|9650|Bib Gourmand|2025|ci_350217d30c|busan|active|$|jeongjitgan||Jeongjitgan
+ve_86ef47d7cc|12094|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$$|hwahaedang||Hwa Hae Dang
+ve_878a82744d|12117|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|samcheongdongsujebi||Samcheongdong Sujebi
+ve_8972868130|12105|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|||마포옥 한우양지설렁탕
+ve_91aa4399c4|12125|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|yangyangmemilmakguksu||Yangyang Memil Makguksu
+ve_94df4751a1|7928|One Star|2025|ci_d793880d5b|seoul|active|$$$$|7thdoor||7th Door
+ve_964e3d265d|9646|Bib Gourmand|2025|ci_350217d30c|busan|active|$|corpastabar||Cor Pasta Bar
+ve_96963040c4|12080|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|anam||Anam
+ve_98ea6e12ef|12118|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|sarukame||Sarukame
+ve_9c2c005fc3|7947|One Star|2025|ci_d793880d5b|seoul|active|$$$$|goryoriken||Goryori Ken
+ve_a1159e62c1|12106|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|mattdol||Mattdol
+ve_a72e34207b|3045|Two Stars|2025|ci_d793880d5b|seoul|active|$$$$|allaprima||Alla Prima
+ve_aa454b8a71|12099|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$$|jinjinbongoan||Jin Jin Bon Goan
+ve_ab25086d3d|7942|One Star|2025|ci_d793880d5b|seoul|active|$$$|escondido||Escondido
+ve_ab8c5b1170|7954|One Star|2025|ci_d793880d5b|seoul|active|$$$$|lamantsecret||L’Amant Secret
+ve_ae2afe4b27|12114|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|okdongsikseogyo||Okdongsik Seogyo
+ve_af5c03d4b5|4387|One Star|2025|ci_350217d30c|busan|active|$$$|mori||Mori
+ve_aff1b56e3d|12084|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|damtaek||Damtaek
+ve_b21afea084|9642|Bib Gourmand|2025|ci_350217d30c|busan|active|$|||안목해변
+ve_b56d4fc3d3|12097|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|jahasonmandu||Jaha Son Mandu
+ve_b86883fa4e|3071|Two Stars|2025|ci_d793880d5b|seoul|active|$$$$|mitou||Mitou
+ve_bc8ab70b1a|7974|One Star|2025|ci_d793880d5b|seoul|active|$$$$|restaurantsan||Restaurant SAN
+ve_c14a29648d|12098|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|jeongmyeon||Jeongmyeon
+ve_c1f6d927dc|12079|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|alta||ALT.a
+ve_c3ecb03dda|12091|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|halmaejip||Halmaejip
+ve_c70dc33645|7961|One Star|2025|ci_d793880d5b|seoul|active|$$$|muoki||Muoki
+ve_c7bc08d362|12092|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|hapjeongdong||Hapjeong-dong
+ve_c9af48a8c5|4388|One Star|2025|ci_350217d30c|busan|active|$$|palate||Palate
+ve_cafc3272b9|7989|One Star|2025|ci_d793880d5b|seoul|active|$$$$|sushimatsumoto||Sushi Matsumoto
+ve_cb68c52ed9|12107|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|mijin||Mijin
+ve_cc26f5a9e9|12108|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|mipildam||Mipildam
+ve_ce10187719|7990|One Star|2025|ci_d793880d5b|seoul|active|$$$$|tutoiement||Tutoiement
+ve_d2eabc088e|7997|One Star|2025|ci_d793880d5b|seoul|active|$$$$|zerocomplex||Zero Complex
+ve_d639dda0e3|9658|Bib Gourmand|2025|ci_350217d30c|busan|active|$|tokyobabsang||Tokyo Babsang
+ve_d8f0073553|12110|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|neungdongminari||Neungdong Minari
+ve_db6fb47135|9644|Bib Gourmand|2025|ci_350217d30c|busan|active|$|bibijae||bibijae
+ve_e15481fb29|4386|One Star|2025|ci_350217d30c|busan|active|$$$|ledorer||Le DORER
+ve_e256bfa97a|4389|Bib Gourmand|2025|ci_350217d30c|busan|active|₩|arp|https://guide.michelin.com/kr/en/busan-region/busan_1025838/restaurant/arp|ARP
+ve_e717d1ee4a|12083|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|daesungjip||Daesungjip
+ve_e88f43639b|12127|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|||유한
+ve_e8e0abffeb|9654|Bib Gourmand|2025|ci_350217d30c|busan|active|$|pilipili||Pili Pili
+ve_eb42674bb6|7932|One Star|2025|ci_d793880d5b|seoul|active|$$$|seoulcollege||서울컬리지(Seoul College)
+ve_ee788cda6f|12104|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|mandoojip||Mandoojip
+ve_ef7ebed55a|12113|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|okdolhyeonok||Okdolhyeonok
+ve_f7d1ee972c|7991|One Star|2025|ci_d793880d5b|seoul|active|$$$|vinho||Vinho
+ve_f9d95b1a76|9655|Bib Gourmand|2025|ci_350217d30c|busan|active|$|pyeongyangjip||Pyeongyangjip
+ve_fb5282c7d5|12090|Bib Gourmand|2025|ci_d793880d5b|seoul|active|$|gosariexpress||Gosari Express

@@ -1,0 +1,94 @@
+10063~ve_45008f97c7~Bib Gourmand~2025~active~doha~$~Argan Moroccan Cuisine
+10064~ve_3b8c78a9f9~Bib Gourmand~2025~active~doha~$$~BARON DOHA
+10065~ve_3596a7aa8f~Bib Gourmand~2025~active~doha~$$~Berenjak Doha - Al Maha Island
+10066~ve_cb064b5372~Bib Gourmand~2025~active~doha~$~Fenyal
+10067~ve_06a50f2165~Bib Gourmand~2025~active~doha~$$~Hoppers
+10068~ve_73851bd35c~Bib Gourmand~2025~active~doha~$$~Isaan
+10069~ve_c997d60acb~Bib Gourmand~2025~active~doha~$$~Jiwan Restaurant
+10070~ve_d455f4afc9~Bib Gourmand~2025~active~doha~$$~Mila
+10372~ve_be4d3ae1c0~Bib Gourmand~2025~active~gzira~$~AYU
+11154~ve_9aef1006b3~Bib Gourmand~2025~active~mellie-a~$$~Commando Restaurant
+11161~ve_e641663972~Bib Gourmand~2025~active~mgarr~$$~Verbena Wine & Dine
+1173~ve_72e32dfdf5~Three Stars~2025~active~sao-paulo~$$$$~Evvai Restaurant
+11831~ve_832f8ac3d4~Bib Gourmand~2025~active~rio-de-janeiro~$~Artigiano Ristorante
+11832~ve_aad1f0be42~Bib Gourmand~2025~active~rio-de-janeiro~$~Brota
+11833~ve_99f41235da~Bib Gourmand~2025~active~rio-de-janeiro~$$~Didier Restaurante
+11834~ve_a3161c988d~Bib Gourmand~2025~active~rio-de-janeiro~$$~Koral Restaurante
+11835~ve_779f32c5c6~Bib Gourmand~2025~active~rio-de-janeiro~$~Maria e o Boi
+11836~ve_775449eafb~Bib Gourmand~2025~active~rio-de-janeiro~$$~Miam Miam
+11837~ve_edeab52f5d~Bib Gourmand~2025~active~rio-de-janeiro~$$~Pici Trattoria
+11838~ve_a9b5e91e52~Bib Gourmand~2025~active~rio-de-janeiro~$$~Sult
+1185~ve_164d9e4fc4~Three Stars~2025~active~sao-paulo~$$$$~TUJU
+12336~ve_d50e71fba4~Bib Gourmand~2025~active~sao-paulo~$$~A Baianeira - MASP
+12346~ve_b8d05bb5fd~Bib Gourmand~2025~active~sao-paulo~$$~A Casa do Porco Bar
+12354~ve_962d427bd4~Bib Gourmand~2025~active~sao-paulo~$~AE! Cozinha
+12355~ve_149a7d280a~Bib Gourmand~2025~active~sao-paulo~$$~Balaio IMS
+12356~ve_550d8cc585~Bib Gourmand~2025~active~sao-paulo~$$~Banzeiro Restaurant - São Paulo
+12357~ve_922fbd97e1~Bib Gourmand~2025~active~sao-paulo~$$~Barú Marisquería
+12358~ve_18dcd4cf51~Bib Gourmand~2025~active~sao-paulo~$~Brasserie Victória
+12359~ve_eba52c0cfa~Bib Gourmand~2025~active~sao-paulo~$~Restaurante Capim Santo São Paulo
+12360~ve_f949dd0f26~Bib Gourmand~2025~active~sao-paulo~$$~Restaurante Cepa
+12362~ve_79d8ce5b75~Bib Gourmand~2025~active~sao-paulo~$$~Clandestina Restaurante
+12363~ve_5fce35ac81~Bib Gourmand~2025~active~sao-paulo~$$~Cora Restaurante
+12364~ve_c14d62645c~Bib Gourmand~2025~active~sao-paulo~$$~Corrutela
+12369~ve_2908ed9b18~Bib Gourmand~2025~active~sao-paulo~$$~Cuia Café e Restaurante
+12370~ve_a51e12476b~Bib Gourmand~2025~active~sao-paulo~$$~Ecully Gastronomia
+12371~ve_139fb793be~Bib Gourmand~2025~active~sao-paulo~$$~FITÓ Restaurante e Bar - Pinheiros
+12372~ve_f94f54acea~Bib Gourmand~2025~active~sao-paulo~$$~Jacó
+12373~ve_4169766097~Bib Gourmand~2025~active~sao-paulo~$~Jiquitaia
+12374~ve_5e0e0564a6~Bib Gourmand~2025~active~sao-paulo~$$~Komah Restaurante
+12377~ve_d0a95b78e4~Bib Gourmand~2025~active~sao-paulo~$$~KOTORI
+12382~ve_a1715198b5~Bib Gourmand~2025~active~sao-paulo~$$~Le Bife
+12383~ve_f43f2059d1~Bib Gourmand~2025~active~sao-paulo~$$~Restaurante Manioca
+12384~ve_01b9dd7661~Bib Gourmand~2025~active~sao-paulo~$$~Restaurante Manioca da Mata
+12385~ve_e3af36a8d7~Bib Gourmand~2025~active~sao-paulo~$$~Restaurante Manioca JK
+12386~ve_715ea6fbc6~Bib Gourmand~2025~active~sao-paulo~$$~Mocotó Vila Leopoldina
+12392~ve_4898647fdf~Bib Gourmand~2025~active~sao-paulo~$~Mocotó Vila Medeiros
+12395~ve_1d1485a18e~Bib Gourmand~2025~active~sao-paulo~$$~NOMO Restaurante
+12396~ve_aab432c9c4~Bib Gourmand~2025~active~sao-paulo~$$~Ping Yang Thai Bar & Food
+12397~ve_195c01f75c~Bib Gourmand~2025~closed~sao-paulo~$$~Più Higienópolis
+12398~ve_17a43e2120~Bib Gourmand~2025~active~sao-paulo~$$~Più Pinheiros
+12399~ve_1bd996d675~Bib Gourmand~2025~active~sao-paulo~$$~Shihoma Pasta Fresca
+12400~ve_c6606378d5~Bib Gourmand~2025~active~sao-paulo~$$~Tanit
+12401~ve_958b322247~Bib Gourmand~2025~active~sao-paulo~$~The Kith
+12402~ve_eec52d5553~Bib Gourmand~2025~active~sao-paulo~$$~Tordesilhas
+12405~ve_ad2b46ef0a~Bib Gourmand~2025~active~sao-paulo~$$~Zena Cucina
+12789~ve_1ac631cc5b~Bib Gourmand~2025~active~valletta~$$~Grain Street
+12790~ve_86af80f753~Bib Gourmand~2025~active~valletta~$$~Rubino
+2883~ve_dfa308c00a~Two Stars~2025~active~rio-de-janeiro~$$$$~Lasai
+2896~ve_a1852a622b~Two Stars~2025~active~rio-de-janeiro~$$$$~Oro
+3217~ve_a9cf86ec4d~Two Stars~2025~active~sao-paulo~$$$$~D.O.M.
+3462~ve_373bb68723~Two Stars~2025~active~valletta~$$$$~ION Harbour By Simon Rogan
+4127~ve_33c924ca48~One Star~2025~active~belgrade~$$$~Langouste Restoran
+4757~ve_79f91198a4~One Star~2025~active~doha~$$$$~Alba
+4760~ve_8627607527~One Star~2025~active~doha~$$$$~IDAM
+4762~ve_2d2bcdc8be~One Star~2025~active~doha~$$$~Jamavar
+6458~ve_14fb4690c9~One Star~2025~active~mdina~$$$$~The de Mondion Restaurant
+6944~ve_60863491c7~One Star~2025~active~novi-slankamen~$$$$~Fleur de Sel
+7573~ve_f8e6aa9e90~One Star~2025~active~rio-de-janeiro~$$$$~Casa 201
+7575~ve_8b9afd43ea~One Star~2025~active~rio-de-janeiro~$$$~Madame Olympe
+7576~ve_5e5b8e2f93~One Star~2025~active~rio-de-janeiro~$$$$~Restaurante Mee
+7577~ve_456d74e80c~One Star~2025~active~rio-de-janeiro~$$$$~Oseille
+7580~ve_a913beb4fa~One Star~2025~active~rio-de-janeiro~$$$$~Oteque
+7594~ve_9371b16a9c~One Star~2025~active~rio-de-janeiro~$$$$~San Omakase
+8241~ve_24191bc2ae~One Star~2025~active~sliema~$$$~Fernandõ Gastrotheque
+8242~ve_b37d29a671~One Star~2025~active~sliema~$$$~Le GV Rooftop Restaurant
+8266~ve_a9bfb8812e~One Star~2025~active~st-julians~$$$~Rosami At The Villa
+8343~ve_cf5567ee42~One Star~2025~active~sao-paulo~$$$$~Fame Osteria
+8347~ve_e410d6a003~One Star~2025~active~sao-paulo~$$$$~Jun Sakamoto
+8351~ve_e79c71e66d~One Star~2025~active~sao-paulo~$$$~Kan Suke
+8354~ve_5c41cdc803~One Star~2025~active~sao-paulo~$$$$~Kanoe
+8356~ve_169947e477~One Star~2025~active~sao-paulo~$$$~Kazuo Restaurante
+8359~ve_d56d381b6a~One Star~2025~active~sao-paulo~$$$$~Kinoshita
+8360~ve_20799ee8b2~One Star~2025~active~sao-paulo~$$$~Kuro Restaurante
+8370~ve_db6835ff43~One Star~2025~active~sao-paulo~$$$~Maní
+8376~ve_6873c5e900~One Star~2025~active~sao-paulo~$$$$~Restaurante Murakami
+8377~ve_2165ca414c~One Star~2025~active~sao-paulo~$$$~Oizumi Sushi
+8378~ve_091d050268~One Star~2025~active~sao-paulo~$$$$~Picchi
+8379~ve_ef28dd0821~One Star~2025~active~sao-paulo~$$$$~Ryo Gastronomia
+8380~ve_80a0782b77~One Star~2025~active~sao-paulo~$$$$~Tangará Jean-Georges
+8826~ve_fd0e8d9bab~One Star~2025~active~valletta~$$$$~Noni
+8828~ve_e4a5a2fde0~One Star~2025~active~valletta~$$$~Under Grain
+9483~ve_e4d67c41ae~Bib Gourmand~2025~active~belgrade~$$~Bela Reka
+9484~ve_d60e864dcf~Bib Gourmand~2025~active~belgrade~$~Restoran ISTOK
+9485~ve_6e1ccfb132~Bib Gourmand~2025~active~belgrade~$~Iva New Balkan Cuisine

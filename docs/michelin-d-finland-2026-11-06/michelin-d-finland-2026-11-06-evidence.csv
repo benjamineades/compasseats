@@ -1,0 +1,12 @@
+card_slug,card_category,card_name,card_city,card_price,card_url,card_label,venue_id,award_id,action
+305,Bib Gourmand,305,Helsinki,€€,https://guide.michelin.com/us/en/uusimaa/helsinki/restaurant/305,2026,ve_84bbfb78f5,10458,url set
+bona-fide,Bib Gourmand,Bona Fide,Helsinki,€€,https://guide.michelin.com/us/en/uusimaa/helsinki/restaurant/bona-fide,2026,ve_4b5f962e61,10460,url set
+boreal,One Star,Boreal,Helsinki,€€€€,https://guide.michelin.com/us/en/uusimaa/helsinki/restaurant/boreal,2026,ve_27ca9196d7,21045,url already set
+demo,One Star,Demo,Helsinki,€€€€,https://guide.michelin.com/us/en/uusimaa/helsinki/restaurant/demo,2026,ve_8d97c80bbf,5344,url set
+finnjavel-salonki,One Star,Finnjävel Salonki,Helsinki,€€€€,https://guide.michelin.com/us/en/uusimaa/helsinki/restaurant/finnjavel-salonki,2026,ve_f2681f7074,5346,url set
+gron,Two Stars,Grön,Helsinki,€€€€,https://guide.michelin.com/us/en/uusimaa/helsinki/restaurant/gron,2026,ve_efedd2c161,5350,url set
+kaskis,One Star,Kaskis,Turku,€€€€,https://guide.michelin.com/us/en/southwest-finland/turku/restaurant/kaskis,2026,ve_1a3cc51995,8761,url set
+nolla,Bib Gourmand,Nolla,Helsinki,€€€,https://guide.michelin.com/us/en/uusimaa/helsinki/restaurant/nolla,2026,ve_a1a7185073,10463,url set
+olo,One Star,Olo,Helsinki,€€€€,https://guide.michelin.com/us/en/uusimaa/helsinki/restaurant/olo,2026,ve_90bbc92525,5353,url set
+palace,Two Stars,Palace,Helsinki,€€€€,https://guide.michelin.com/us/en/uusimaa/helsinki/restaurant/palace,2026,ve_991822a867,2034,url set
+var-1198201,One Star,VÅR,Porvoo,€€€€,https://guide.michelin.com/us/en/uusimaa/porvoo_1627402/restaurant/var-1198201,2026,ve_9713413b6e,7456,url set

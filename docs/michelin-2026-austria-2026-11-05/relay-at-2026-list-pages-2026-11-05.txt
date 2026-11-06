@@ -1,0 +1,159 @@
+Three Stars | /us/en/vienna/wien/restaurant/amador | Amador | Vienna, Austria | €€€€ · Creative | at | 3 star
+Three Stars | /us/en/vienna/wien/restaurant/steirereck-im-stadtpark | Steirereck im Stadtpark | Vienna, Austria | €€€€ · Creative | at | 3 star
+Two Stars | /us/en/tirol/ischgl_1041328/restaurant/stuva-104899 | Stüva | Ischgl, Austria | €€€€ · Creative French | at | 2 star
+Two Stars | /us/en/tirol/sankt-anton-am-arlberg_1045218/restaurant/gourmetrestaurant-tannenhof | Gourmetrestaurant Tannenhof | Sankt Anton am Arlberg, Austria | €€€€ · Alpine | at | 2 star
+Two Stars | /us/en/vorarlberg/lech-am-arlberg_7770322/restaurant/griggeler-stuba | Griggeler Stuba | Lech am Arlberg, Austria | €€€€ · Modern Cuisine | at | 2 star
+Two Stars | /us/en/niederosterreich/mautern-an-der-donau_1050463/restaurant/landhaus-bacher | Landhaus Bacher | Mautern an der Donau, Austria | €€€€ · Classic Cuisine | at | 2 star
+Two Stars | /us/en/steiermark/ehrenhausen_1039101/restaurant/die-weinbank-restaurant | Die Weinbank - Restaurant | Ehrenhausen, Austria | €€€€ · Creative | at | 2 star
+Two Stars | /us/en/salzburg-region/golling-an-der-salzach_1039956/restaurant/dollerer | Döllerer | Golling an der Salzach, Austria | €€€€ · Innovative | at | 2 star
+Two Stars | /us/en/tirol/hall-in-tirol_1040546/restaurant/schwarzer-adler-109176 | Schwarzer Adler | Hall in Tirol, Austria | €€€€ · European Contemporary | at | 2 star
+Two Stars | /us/en/vorarlberg/lech-am-arlberg_7770322/restaurant/rote-wand-chef-s-table | Rote Wand Chef's Table | Lech am Arlberg, Austria | €€€€ · Modern Cuisine | at | 2 star
+Two Stars | /us/en/salzburg-region/werfen_1047689/restaurant/obauer | Obauer | Werfen, Austria | €€€€ · Classic Cuisine | at | 2 star
+Two Stars | /us/en/burgenland/schutzen-am-gebirge_1051731/restaurant/taubenkobel | Taubenkobel | Schützen am Gebirge, Austria | €€€€ · French Contemporary | at | 2 star
+Two Stars | /us/en/salzburg-region/salzburg/restaurant/senns-restaurant | SENNS.Restaurant | Salzburg, Austria | €€€€ · Creative | at | 2 star
+Two Stars | /us/en/vienna/wien/restaurant/mraz-sohn | Mraz & Sohn | Vienna, Austria | €€€€ · Creative | at | 2 star
+Two Stars | /us/en/vienna/wien/restaurant/konstantin-filippou | Konstantin Filippou | Vienna, Austria | €€€€ · Modern Cuisine | at | 2 star
+Two Stars | /us/en/salzburg-region/salzburg/restaurant/ikarus | Ikarus | Salzburg, Austria | €€€€ · Creative | at | 2 star
+Two Stars | /us/en/vienna/wien/restaurant/silvio-nickol-gourmet-restaurant | Silvio Nickol Gourmet Restaurant | Vienna, Austria | €€€€ · Modern Cuisine | at | 2 star
+Two Stars | /us/en/oberosterreich/neufelden_1043292/restaurant/ois | Ois | Neufelden, Austria | €€€€ · Modern Cuisine | at | 2 star
+Two Stars | /us/en/tirol/mieming_7770405/restaurant/restaurant-141-by-joachim-jaud | Restaurant 141 by Joachim Jaud | Mieming, Austria | €€€€ · Creative | at | 2 star
+Two Stars | /us/en/salzburg-region/sankt-veit-im-pongau_1045495/restaurant/krauterreich-by-vitus-winkler | Kräuterreich by Vitus Winkler | Sankt Veit im Pongau, Austria | €€€€ · Creative | at | 2 star
+Two Stars | /us/en/vienna/wien/restaurant/doubek | Doubek | Vienna, Austria | €€€€ · Creative | at | 2 star
+One Star | /us/en/vienna/wien/restaurant/edvard | Edvard | Vienna, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/tirol/ischgl_1041328/restaurant/schlossherrnstube | Schlossherrnstube | Ischgl, Austria | €€€€ · Contemporary | at | 1 star
+One Star | /us/en/niederosterreich/feuersbrunn_1048933/restaurant/morwald-%E2%80%9Etoni-m-%E2%80%9C | Mörwald „Toni M.“ | Feuersbrunn, Austria | €€€€ · Classic Cuisine | at | 1 star
+One Star | /us/en/tirol/ischgl_1041328/restaurant/paznaunerstube | Paznaunerstube | Ischgl, Austria | €€€€ · Contemporary | at | 1 star
+One Star | /us/en/vorarlberg/hirschegg/restaurant/kilian-stuba | Kilian Stuba | Hirschegg, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/vienna/wien/restaurant/pramerl-the-wolf | Pramerl & the Wolf | Vienna, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/steiermark/sankt-andra-im-sausal_1045211/restaurant/harald-irka-am-pfarrhof-fine-dine | Harald Irka am Pfarrhof - Fine Dine | Sankt Andrä im Sausal, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/steiermark/straden_1046422/restaurant/saziani | Saziani | Straden, Austria | €€€€ · Seasonal Cuisine | at | 1 star
+One Star | /us/en/niederosterreich/zau%C3%9Fenberg_7770379/restaurant/himmelreich | Himmelreich | Zaußenberg, Austria | €€€ · Contemporary | at | 1 star
+One Star | /us/en/tirol/obergurlg_7770324/restaurant/austria-stuben | Austria Stuben | Obergurgl, Austria | €€€€ · Contemporary | at | 1 star
+One Star | /us/en/tirol/kitzbuhel_1041658/restaurant/les-deux-kitzbuhel-brasserie-bar | Les Deux Kitzbühel - Brasserie & Bar | Kitzbühel, Austria | €€€ · Modern French | at | 1 star
+One Star | /us/en/niederosterreich/waidhofen-an-der-thaya_1052291/restaurant/zimmerl | Zimmerl | Waidhofen an der Thaya, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/steiermark/sankt-kathrein-am-offenegg_1045314/restaurant/zeitraum | ZeitRAUM | Sankt Kathrein am Offenegg, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/salzburg-region/maria-alm-am-steinernen-meer_1042713/restaurant/rar-fine-dining | RAR Fine Dining | Maria Alm, Austria | €€€€ · Alpine | at | 1 star
+One Star | /us/en/oberosterreich/grossraming_1040162/restaurant/rau-nature-based-cuisine | RAU nature-based cuisine | Großraming, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/oberosterreich/sankt-wolfgang-im-salzkammergut_1045504/restaurant/paula | Paula | Sankt Wolfgang im Salzkammergut, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/niederosterreich/kirchberg-am-wechsel_1049902/restaurant/gaumenkitzel | Gaumenkitzel | Kirchberg am Wechsel, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/vienna/wien/restaurant/herzig | Herzig | Vienna, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/steiermark/sankt-veit-am-vogau_1045490/restaurant/thaller-restaurant | Thaller - Restaurant | Sankt Veit am Vogau, Austria | €€€€ · Seasonal Cuisine | at | 1 star
+One Star | /us/en/steiermark/sankt-joseph_7770382/restaurant/broadmoar | Broadmoar | Sankt Josef, Austria | €€€ · Seasonal Cuisine | at | 1 star
+One Star | /us/en/oberosterreich/steyr_1046382/restaurant/lukas-kapeller | Lukas Kapeller | Steyr, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/vorarlberg/lauterach_1042285/restaurant/guth | Guth | Lauterach, Austria | €€€ · Classic Cuisine | at | 1 star
+One Star | /us/en/vorarlberg/lochau_1042543/restaurant/mangold | Mangold | Lochau, Austria | €€€ · Classic Cuisine | at | 1 star
+One Star | /us/en/tirol/stumm_1046484/restaurant/guat-z-essen | Guat'z Essen | Stumm, Austria | €€€€ · Vegetarian | at | 1 star
+One Star | /us/en/salzburg-region/leogang_1042392/restaurant/kirchenwirt | Kirchenwirt | Leogang, Austria | €€€€ · Seasonal Cuisine | at | 1 star
+One Star | /us/en/salzburg-region/salzburg/restaurant/pfefferschiff | Pfefferschiff | Salzburg, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/steiermark/bad-gleichenberg_1038211/restaurant/geschwister-rauch-restaurant | Geschwister Rauch - Restaurant | Bad Gleichenberg, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/steiermark/altaussee_1037837/restaurant/geiger-alm | Geiger Alm | Altaussee, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/oberosterreich/leonding_1042394/restaurant/kliemstein-vino-vitis | Kliemstein Vino Vitis | Linz, Austria | €€€€ · Classic Cuisine | at | 1 star
+One Star | /us/en/oberosterreich/ort-im-innkreis_1043979/restaurant/kammer5 | Kammer5 | Ort im Innkreis, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/karnten/rennweg-am-katschberg_1044891/restaurant/gamskogelhutte-fine-dining-by-stefan-lastin | Gamskogelhütte Fine Dining by Stefan Lastin | Rennweg am Katschberg, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/tirol/neustift-im-stubaital_1043356/restaurant/hubertusstube | Hubertusstube | Neustift im Stubaital, Austria | €€€€ · Classic Cuisine | at | 1 star
+One Star | /us/en/vienna/wien/restaurant/apron | APRON | Vienna, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/vienna/wien/restaurant/glasswing | Glasswing by Alexandru Simon | Vienna, Austria | €€€€ · Contemporary | at | 1 star
+One Star | /us/en/vienna/wien/restaurant/jola | JOLA | Vienna, Austria | €€€€ · Vegan | at | 1 star
+One Star | /us/en/tirol/tux_7770294/restaurant/bergfried-chefs-table | Bergfried - Chefs Table | Tux, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/salzburg-region/salzburg/restaurant/the-glass-garden | The Glass Garden | Salzburg, Austria | €€€ · Creative | at | 1 star
+One Star | /us/en/tirol/sankt-anton-am-arlberg_1045218/restaurant/alpin-gourmet-stube | Alpin Gourmet Stube | Sankt Anton am Arlberg, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/steiermark/seiersberg_1045978/restaurant/geniesserei-am-markt-steiermark-t-dinner-by-alexander-posch | Genießerei am Markt - Steiermark(t)dinner by Alexander Posch | Graz, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/steiermark/fehring_1039353/restaurant/lilli-fine-dining | Lilli Fine Dining | Fehring, Austria | €€€€ · Contemporary | at | 1 star
+One Star | /us/en/steiermark/ligist_1042478/restaurant/worgotter-fine-dining | Wörgötter - Fine Dining | Ligist, Austria | €€€ · Creative | at | 1 star
+One Star | /us/en/oberosterreich/traunkirchen_1046777/restaurant/bootshaus-1212990 | Bootshaus | Traunkirchen, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/steiermark/gamlitz_1039719/restaurant/sattlerhof | Sattlerhof | Gamlitz, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/karnten/maria-worth_1042729/restaurant/hubert-wallner | Hubert Wallner | Maria Wörth, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/burgenland/konigsdorf_1050155/restaurant/am-mahrbach | Am Mahrbach | Königsdorf, Austria | €€€€ · Seasonal Cuisine | at | 1 star
+One Star | /us/en/niederosterreich/hadersdorf-am-kamp_1049409/restaurant/esslokal | Esslokal | Hadersdorf am Kamp, Austria | €€€€ · Contemporary | at | 1 star
+One Star | /us/en/oberosterreich/scharding_1045861/restaurant/lukas-restaurant | Lukas Restaurant | Schärding, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/oberosterreich/vorchdorf_1047329/restaurant/tanglberg | Tanglberg | Vorchdorf, Austria | €€€€ · French | at | 1 star
+One Star | /us/en/karnten/weissensee_1047660/restaurant/die-forelle | Die Forelle | Weissensee, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/karnten/grafenstein_1040018/restaurant/moritz-1212679 | Moritz | Grafenstein, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/tirol/solden_1046538/restaurant/otztaler-stube | Ötztaler Stube | Sölden, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/salzburg-region/salzburg/restaurant/esszimmer | Esszimmer | Salzburg, Austria | €€€ · Creative | at | 1 star
+One Star | /us/en/tirol/fiss_1039458/restaurant/bruderherz-fine-dine | Bruderherz Fine Dine | Fiss, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/vienna/wien/restaurant/z-som | Z'SOM | Vienna, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/tirol/lienz_1042466/restaurant/ansitz-12 | Ansitz 12 | Lienz, Austria | €€€€ · Austrian | at | 1 star
+One Star | /us/en/karnten/weissensee_1047660/restaurant/rouge-noir | Rouge Noir | Weissensee, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/oberosterreich/grieskirchen_1040098/restaurant/waldschanke-104685 | Waldschänke | Grieskirchen, Austria | €€€ · Contemporary | at | 1 star
+One Star | /us/en/vienna/wien/restaurant/addiert | Addiert | Vienna, Austria | €€€€ · Korean Contemporary | at | 1 star
+One Star | /us/en/tirol/sankt-anton-am-arlberg_1045218/restaurant/ullrs-gourmetstube | Ullrs Gourmetstube | Sankt Anton am Arlberg, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/oberosterreich/leonding_1042394/restaurant/rossbarth | Rossbarth | Linz, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/steiermark/seiersberg_1045978/restaurant/artis-1212496 | Artis | Graz, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/steiermark/seiersberg_1045978/restaurant/zur-goldenen-birn | Zur goldenen Birn | Graz, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/vienna/wien/restaurant/tian | TIAN | Vienna, Austria | €€€€ · Vegetarian | at | 1 star
+One Star | /us/en/salzburg-region/sankt-gilgen_1045272/restaurant/atelier-fischer | Atelier Fischer | Sankt Gilgen, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/tirol/nauders_1043212/restaurant/s-kammerli | s'kammerli | Nauders, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/steiermark/leutschach-an-der-weinstra%C3%9Fe_7770345/restaurant/lieperts | Lieperts | Leutschach an der Weinstraße, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/oberosterreich/leonding_1042394/restaurant/verdi | Verdi | Linz, Austria | €€€ · International | at | 1 star
+One Star | /us/en/tirol/tux_7770294/restaurant/die-geniesserstube-im-alpenhof | Die Geniesserstube im Alpenhof | Tux, Austria | €€€€ · Alpine | at | 1 star
+One Star | /us/en/niederosterreich/langenlois_1050200/restaurant/heurigenhof-brundlmayer | Heurigenhof Bründlmayer | Langenlois, Austria | €€€€ · Classic French | at | 1 star
+One Star | /us/en/salzburg-region/mauterndorf_1042793/restaurant/mesnerhaus | Mesnerhaus | Mauterndorf, Austria | €€€€ · Seasonal Cuisine | at | 1 star
+One Star | /us/en/vienna/wien/restaurant/aend | [aend] | Vienna, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/tirol/innervillgraten_1041303/restaurant/gannerhof | Gannerhof | Innervillgraten, Austria | €€€€ · Regional Cuisine | at | 1 star
+One Star | /us/en/salzburg-region/leogang_1042392/restaurant/dahoam-by-andreas-herbst | dahoam by Andreas Herbst | Leogang, Austria | €€€€ · Seasonal Cuisine | at | 1 star
+One Star | /us/en/tirol/telfs_1046604/restaurant/interalpen-chef-s-table | Interalpen - Chef's Table | Telfs, Austria | €€€€ · Creative | at | 1 star
+One Star | /us/en/tirol/achenkirch_1037662/restaurant/grundler-s-gourmet-stuberl | Gründler's Gourmet Stüberl | Achenkirch, Austria | €€€€ · Classic Cuisine | at | 1 star
+One Star | /us/en/vienna/wien/restaurant/esszimmer-everybody-s-darling | Esszimmer - Everybody's Darling | Vienna, Austria | €€€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/tirol/fiss_1039458/restaurant/beef-club | Beef Club | Fiss, Austria | €€€ · Modern Cuisine | at | 1 star
+One Star | /us/en/vorarlberg/lech-am-arlberg_7770322/restaurant/la-fenice-1212360 | La Fenice | Lech am Arlberg, Austria | €€€€ · Mediterranean Cuisine | at | 1 star
+Bib Gourmand | /us/en/niederosterreich/wilfersdorf_1052491/restaurant/schlosskuche-walpersdorf-blauenstein | Schlossküche Walpersdorf Blauenstein | Walpersdorf, Austria | €€ · Farm to table | at | bib
+Bib Gourmand | /us/en/tirol/westendorf_1047700/restaurant/gasthaus-steinberg | Gasthaus Steinberg | Westendorf, Austria | €€ · Traditional Cuisine | at | bib
+Bib Gourmand | /us/en/oberosterreich/lichtenberg_1042431/restaurant/der-holzpoldl | Der Holzpoldl | Lichtenberg, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/niederosterreich/grafenegg_1049167/restaurant/morwald-grafenegg-restaurant | Mörwald Grafenegg Restaurant | Grafenegg, Austria | €€ · Farm to table | at | bib
+Bib Gourmand | /us/en/vorarlberg/hirschegg/restaurant/carnozet | Carnozet | Hirschegg, Austria | €€ · Country cooking | at | bib
+Bib Gourmand | /us/en/vienna/wien/restaurant/chez-bernard | Chez Bernard | Vienna, Austria | €€ · French Contemporary | at | bib
+Bib Gourmand | /us/en/steiermark/seiersberg_1045978/restaurant/rauch-rebe | Rauch & Rebe | Graz, Austria | €€ · Farm to table | at | bib
+Bib Gourmand | /us/en/steiermark/neuberg-an-der-murz_1043248/restaurant/gasthof-schaffer | Gasthof Schäffer | Neuberg an der Mürz, Austria | €€ · Farm to table | at | bib
+Bib Gourmand | /us/en/steiermark/gamlitz_1039719/restaurant/weinkehr | Weinkehr | Gamlitz, Austria | €€ · Austrian | at | bib
+Bib Gourmand | /us/en/burgenland/weppersdorf_1052430/restaurant/gasthaus-fuchs | Gasthaus Fuchs | Weppersdorf, Austria | €€ · Farm to table | at | bib
+Bib Gourmand | /us/en/niederosterreich/weissenkirchen-in-der-wachau_1052422/restaurant/jamek | Jamek | Weißenkirchen in der Wachau, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/vorarlberg/innerbraz_1041279/restaurant/gasthof-rossle | Gasthof Rössle | Innerbraz, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/tirol/obertilliach_1043879/restaurant/scherer | Scherer | Obertilliach, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/oberosterreich/pfaffing_1044181/restaurant/die-schmiede | Die Schmiede | Pfaffing, Austria | €€ · Austrian | at | bib
+Bib Gourmand | /us/en/steiermark/seiersberg_1045978/restaurant/mohrenwirt | Mohrenwirt | Graz, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/salzburg-region/taxenbach_1046589/restaurant/taxenbacherhof | Taxenbacherhof | Taxenbach, Austria | €€ · Austrian | at | bib
+Bib Gourmand | /us/en/tirol/hall-in-tirol_1040546/restaurant/secco | Secco | Hall in Tirol, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/vienna/wien/restaurant/rosi-1216730 | Rosi | Vienna, Austria | €€ · Creative | at | bib
+Bib Gourmand | /us/en/vorarlberg/lustenau_1042601/restaurant/freigeist | Freigeist | Lustenau, Austria | €€ · Farm to table | at | bib
+Bib Gourmand | /us/en/vienna/wien/restaurant/tian-bistro-am-spittelberg | TIAN Bistro am Spittelberg | Vienna, Austria | €€ · Vegetarian | at | bib
+Bib Gourmand | /us/en/tirol/zoblen_1048140/restaurant/s-morent | s'Morent | Zöblen, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/tirol/kitzbuhel_1041658/restaurant/mocking-das-wirtshaus | Mocking das Wirtshaus | Kitzbühel, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/steiermark/fehring_1039353/restaurant/malerwinkl | Malerwinkl | Fehring, Austria | €€ · Contemporary | at | bib
+Bib Gourmand | /us/en/tirol/matrei-in-osttirol_1042760/restaurant/saluti | Saluti | Matrei in Osttirol, Austria | €€ · Modern Cuisine | at | bib
+Bib Gourmand | /us/en/tirol/achenkirch_1037662/restaurant/grundler-s-geniesser-wirtshaus | Gründler's Genießer Wirtshaus | Achenkirch, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/vienna/wien/restaurant/meierei-im-stadtpark | Meierei im Stadtpark | Vienna, Austria | €€ · Austrian | at | bib
+Bib Gourmand | /us/en/vienna/wien/restaurant/mochi | Mochi | Vienna, Austria | €€ · Japanese | at | bib
+Bib Gourmand | /us/en/tirol/anras_1037957/restaurant/das-pfleger | Das Pfleger | Anras, Austria | €€ · Seasonal Cuisine | at | bib
+Bib Gourmand | /us/en/vorarlberg/hittisau_1040905/restaurant/ernele | Ernele | Hittisau, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/vienna/wien/restaurant/tante-liesl | Gasthaus Tante Liesl | Vienna, Austria | €€ · Austrian | at | bib
+Bib Gourmand | /us/en/niederosterreich/winzendorf_1052540/restaurant/puchegger-wirt | Puchegger-Wirt | Winzendorf, Austria | €€ · Farm to table | at | bib
+Bib Gourmand | /us/en/steiermark/sankt-martin-am-grimming_1045382/restaurant/wirtshaus-im-dorfhotel-mayer | Wirtshaus im Dorfhotel Mayer | Sankt Martin am Grimming, Austria | €€ · Seasonal Cuisine | at | bib
+Bib Gourmand | /us/en/niederosterreich/tulln-an-der-donau_1052117/restaurant/sodoma | Sodoma | Tulln an der Donau, Austria | €€ · Austrian | at | bib
+Bib Gourmand | /us/en/steiermark/ligist_1042478/restaurant/worgotter-wirtshaus | Wörgötter - Wirtshaus | Ligist, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/niederosterreich/hofamt-priel_7770374/restaurant/landgasthof-hinterleithner | Landgasthof Hinterleithner | Hofamt Priel, Austria | €€ · Asian and Western | at | bib
+Bib Gourmand | /us/en/burgenland/wimpassing-an-der-leitha_7770383/restaurant/ziegelwerk-gasthaus | Ziegelwerk Gasthaus | Wimpassing an der Leitha, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/burgenland/rust_1051454/restaurant/kirchenwirt-105648 | Kirchenwirt | Rust, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/burgenland/apetlon_1048328/restaurant/zum-frohlichen-arbeiter | Gasthaus Zum fröhlichen Arbeiter | Apetlon, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/vorarlberg/brand_1038454/restaurant/gufer-55 | Gufer 55 | Brand, Austria | €€ · Regional European | at | bib
+Bib Gourmand | /us/en/burgenland/purbach-am-neusiedler-see_1051160/restaurant/fossil | Fossil | Purbach am Neusiedler See, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/vorarlberg/schwarzenberg_1045819/restaurant/gasthof-adler-105914 | Gasthof Adler | Schwarzenberg, Austria | €€ · Austrian | at | bib
+Bib Gourmand | /us/en/vorarlberg/bizau_1038405/restaurant/schwanen-106612 | Schwanen | Bizau, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/niederosterreich/langenlebarn-oberaigen_1050199/restaurant/floh | Floh | Langenlebarn, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/niederosterreich/kirchberg-am-wechsel_1049902/restaurant/wirtshaus-molzbachhof | Wirtshaus Molzbachhof | Kirchberg am Wechsel, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/steiermark/kitzeck-im-sausal_1041659/restaurant/wirtshaus-im-weinkitz | Wirtshaus im Weinkitz | Kitzeck im Sausal, Austria | €€ · Austrian | at | bib
+Bib Gourmand | /us/en/niederosterreich/oberrohrbach_1050877/restaurant/goldenes-brundl | Goldenes Bründl | Oberrohrbach, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/steiermark/murau_1043059/restaurant/lercher-s-wirtshaus | Lercher's Wirtshaus | Murau, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/salzburg-region/sankt-veit-im-pongau_1045495/restaurant/wirtshaus-by-vitus-winkler | Wirtshaus by Vitus Winkler | Sankt Veit im Pongau, Austria | €€€ · Austrian | at | bib
+Bib Gourmand | /us/en/steiermark/straden_1046422/restaurant/krispels-genusstheater | Krispels Genusstheater | Straden, Austria | €€ · Contemporary | at | bib
+Bib Gourmand | /us/en/niederosterreich/siegersdorf_1051781/restaurant/das-markthof | Das Markthof | Siegersdorf, Austria | €€ · Farm to table | at | bib
+Bib Gourmand | /us/en/niederosterreich/weissenkirchen-in-der-wachau_1052422/restaurant/prandtauerhof-gutshofrestaurant | Prandtauerhof Gutshofrestaurant | Weißenkirchen in der Wachau, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/steiermark/sankt-veit-am-vogau_1045490/restaurant/thaller-gasthaus | Thaller - Gasthaus | Sankt Veit am Vogau, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/steiermark/langenwang_1042222/restaurant/wirtshaus-krainer | Wirtshaus Krainer | Langenwang, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/niederosterreich/sankt-georgen-an-der-leys_1051508/restaurant/hueber-der-wirt-in-brundl | Hueber der Wirt in Bründl | Sankt Georgen an der Leys, Austria | €€ · Country cooking | at | bib
+Bib Gourmand | /us/en/steiermark/turnau_1046853/restaurant/wirtshaus-steirereck-am-pogusch | Wirtshaus Steirereck am POGUSCH | Turnau, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/niederosterreich/haslau-an-der-donau_1049496/restaurant/haslauerhof | Landgasthof Haslauerhof | Haslau an der Donau, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/vienna/wien/restaurant/mast-weinbistro | MAST Weinbistro | Vienna, Austria | €€ · Farm to table | at | bib
+Bib Gourmand | /us/en/salzburg-region/salzburg/restaurant/brandstatter | Brandstätter | Salzburg, Austria | €€ · Country cooking | at | bib
+Bib Gourmand | /us/en/vorarlberg/hittisau_1040905/restaurant/krone-1212356 | Krone Hittisau | Hittisau, Austria | €€ · Regional Cuisine | at | bib
+Bib Gourmand | /us/en/vienna/wien/restaurant/lola-1201445 | LOLA | Vienna, Austria | €€ · Spanish | at | bib

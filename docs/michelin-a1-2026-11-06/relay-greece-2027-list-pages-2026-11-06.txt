@@ -1,0 +1,30 @@
+Bib Gourmand | /us/en/attica/athens/restaurant/akra | Akra | Athens, Greece | \u20ac \u00b7 Greek
+Bib Gourmand | /us/en/attica/athens/restaurant/nolan | Nolan | Athens, Greece | \u20ac \u00b7 Fusion
+Bib Gourmand | /us/en/attica/athens/restaurant/pharaoh | Pharaoh | Athens, Greece | \u20ac\u20ac \u00b7 Greek
+Bib Gourmand | /us/en/attica/athens/restaurant/upon | UPON | Athens, Greece | \u20ac\u20ac \u00b7 Contemporary
+Bib Gourmand | /us/en/attica/athens/restaurant/zohos | Zoh\u00f3s | Athens, Greece | \u20ac\u20ac \u00b7 Traditional Cuisine
+Bib Gourmand | /us/en/central-macedonia/thessaloniki_1773462/restaurant/deka-trapezia | Deka trapezia | Thessalonica, Greece | \u20ac\u20ac \u00b7 Contemporary
+Bib Gourmand | /us/en/central-macedonia/thessaloniki_1773462/restaurant/menu-me-nou | Menu me... nou | Thessalonica, Greece | \u20ac \u00b7 Greek
+Bib Gourmand | /us/en/central-macedonia/thessaloniki_1773462/restaurant/sintrofi | Sintrofi | Thessalonica, Greece | \u20ac\u20ac \u00b7 Regional Cuisine
+Bib Gourmand | /us/en/central-macedonia/thessaloniki_1773462/restaurant/three-little-pigs | Three Little Pigs | Thessalonica, Greece | \u20ac\u20ac \u00b7 Greek
+Bib Gourmand | /us/en/central-macedonia/thessaloniki_1773462/restaurant/to-manitari | To Manitari | Thessalonica, Greece | \u20ac \u00b7 Greek
+One Star | /us/en/attica/athens/restaurant/aleria | Aleria | Athens, Greece | \u20ac\u20ac\u20ac \u00b7 Greek
+One Star | /us/en/attica/athens/restaurant/botrini-s | Botrini's | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Mediterranean Cuisine
+One Star | /us/en/attica/athens/restaurant/ctc | CTC Urban Gastronomy | Athens, Greece | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/attica/athens/restaurant/delta | Delta | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+One Star | /us/en/attica/athens/restaurant/herve | Herv\u00e9 | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/attica/athens/restaurant/hytra | Hytra | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/attica/athens/restaurant/makris-athens | Makris Athens | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+One Star | /us/en/attica/athens/restaurant/patio | Patio | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/attica/athens/restaurant/pelagos | Pelagos | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/attica/athens/restaurant/see-ds | see|ds | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/attica/athens/restaurant/sense | SENSE | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+One Star | /us/en/attica/athens/restaurant/simul | Simul | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+One Star | /us/en/attica/athens/restaurant/soil | Soil | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/attica/athens/restaurant/spondi | Spondi | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 French
+One Star | /us/en/attica/athens/restaurant/the-zillers | The Zillers Rooftop Gastronomy | Athens, Greece | \u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/attica/athens/restaurant/tudor-hall | Tudor Hall | Athens, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini | Botrini's Santorini | Santorini, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/south-aegean/santorini_1772287/restaurant/lauda | Lauda | Santorini, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/south-aegean/santorini_1772287/restaurant/selene | Selene | Santorini, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Greek
+Two Stars | /us/en/south-aegean/santorini_1772287/restaurant/lycabettus | Lycabettus | Santorini, Greece | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine

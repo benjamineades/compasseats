@@ -1,0 +1,7 @@
+guide,category,card_name,card_city,card_price,card_url,card_label,card_guide,venue_id,award_id,live_name,name_check
+denmark,Two Stars,PAZ,"Tórshavn, Denmark",€€€€,https://guide.michelin.com/us/en/faroe-islands/torshavn/restaurant/paz,2026,Denmark,ve_42a5f4e1d3,3444,paz,differs
+iceland,One Star,DILL,"Reykjavík, Iceland",€€€€,https://guide.michelin.com/us/en/capital-region-iceland/reykjavik/restaurant/dill1186101,2026,Iceland,ve_9ee24299b1,7547,DILL,same
+iceland,One Star,ÓX,"Reykjavík, Iceland",€€€€,https://guide.michelin.com/us/en/capital-region-iceland/reykjavik/restaurant/ox,2026,Iceland,ve_b77b9b1c1c,7550,ÓX,same
+iceland,One Star,Moss,"Grindavík, Iceland",€€€€,https://guide.michelin.com/us/en/southern-peninsula/grindavik/restaurant/moss,2026,Iceland,ve_84b5f7966e,5212,Moss Restaurant,differs
+new-zealand,Bib Gourmand,Atelier,"Auckland, New Zealand",$$,https://guide.michelin.com/us/en/north-island/auckland_2302926/restaurant/atelier-1247986,2026,New Zealand,ve_47d4b5d515,21191,Atelier,same
+new-zealand,Bib Gourmand,Muttonbird,"Wānaka, New Zealand",$$,https://guide.michelin.com/us/en/south-island/wanaka_2306683/restaurant/muttonbird,2026,New Zealand,ve_6c7a46653b,21207,Muttonbird,same

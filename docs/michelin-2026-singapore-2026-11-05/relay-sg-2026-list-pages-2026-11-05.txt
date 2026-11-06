@@ -1,0 +1,142 @@
+Three Stars | /us/en/singapore-region/singapore/restaurant/odette | Odette | Singapore | $$$$ \u00b7 French Contemporary | 3 star | 501592 | 1.2896459 | 103.8516
+Three Stars | /us/en/singapore-region/singapore/restaurant/les-amis | Les Amis | Singapore | $$$$ \u00b7 French | 3 star | 501510 | 1.30626 | 103.83204
+Three Stars | /us/en/singapore-region/singapore/restaurant/zen | Z\u00e9n | Singapore | $$$$ \u00b7 European Contemporary | 3 star | 570549 | 1.2796271 | 103.84042
+Two Stars | /us/en/singapore-region/singapore/restaurant/shoukouwa | Shoukouwa | Singapore | $$$$ \u00b7 Sushi | 2 star | 501652 | 1.2863698 | 103.854
+Two Stars | /us/en/singapore-region/singapore/restaurant/seroja | Seroja | Singapore | $$$ \u00b7 Malaysian | 2 star | 1205554 | 1.2998671 | 103.858076
+Two Stars | /us/en/singapore-region/singapore/restaurant/jaan-by-kirk-westaway | Jaan by Kirk Westaway | Singapore | $$$ \u00b7 British Contemporary | 2 star | 501497 | 1.293387 | 103.85314
+Two Stars | /us/en/singapore-region/singapore/restaurant/saint-pierre | Saint Pierre | Singapore | $$$$ \u00b7 French Contemporary | 2 star | 501607 | 1.2862377 | 103.854219
+Two Stars | /us/en/singapore-region/singapore/restaurant/sushi-sakuta | Sushi Sakuta | Singapore | $$$$ \u00b7 Sushi | 2 star | 1205650 | 1.293083 | 103.858715
+Two Stars | /us/en/singapore-region/singapore/restaurant/thevar | Thevar | Singapore | $$$$ \u00b7 Innovative | 2 star | 570545 | 1.29362 | 103.841477
+Two Stars | /us/en/singapore-region/singapore/restaurant/meta-570540 | Meta | Singapore | $$$ \u00b7 Innovative | 2 star | 570540 | 1.29391 | 103.8417604
+Two Stars | /us/en/singapore-region/singapore/restaurant/cloudstreet | Cloudstreet | Singapore | $$$$ \u00b7 Innovative | 2 star | 1190387 | 1.280977 | 103.8470099
+Two Stars | /us/en/singapore-region/singapore/restaurant/1887-by-andre | 1887 by Andr\u00e9 | Singapore | $$$$ \u00b7 French Contemporary | 2 star | 1249513 | 1.2951612 | 103.8548689
+One Star | /us/en/singapore-region/singapore/restaurant/summer-pavillion | Summer Pavilion | Singapore | $$ \u00b7 Cantonese | 1 star | 501659 | 1.291284 | 103.8603
+One Star | /us/en/singapore-region/singapore/restaurant/omakase-stevens | Omakase @ Stevens | Singapore | $$$$ \u00b7 Innovative | 1 star | 1215894 | 1.3137694 | 103.8286826
+One Star | /us/en/singapore-region/singapore/restaurant/tenshima | Tenshima | Singapore | $$$ \u00b7 Tempura | 1 star | 1244862 | 1.2930906 | 103.8586771
+One Star | /us/en/singapore-region/singapore/restaurant/labyrinth | Labyrinth | Singapore | $$$ \u00b7 Innovative | 1 star | 501506 | 1.2897489 | 103.8563
+One Star | /us/en/singapore-region/singapore/restaurant/imperial-treasure-fine-teochew-cuisine-orchard | Imperial Treasure Fine Teochew Cuisine (Orchard) | Singapore | $$ \u00b7 Teochew | 1 star | 501495 | 1.304144 | 103.83147
+One Star | /us/en/singapore-region/singapore/restaurant/whitegrass | Whitegrass | Singapore | $$$ \u00b7 French Contemporary | 1 star | 501680 | 1.2955388 | 103.8519798
+One Star | /us/en/singapore-region/singapore/restaurant/jag | Jag | Singapore | $$$ \u00b7 French Contemporary | 1 star | 570537 | 1.29094 | 103.84028
+One Star | /us/en/singapore-region/singapore/restaurant/summer-palace-501658 | Summer Palace | Singapore | $$$ \u00b7 Cantonese | 1 star | 501658 | 1.3046521 | 103.8247494
+One Star | /us/en/singapore-region/singapore/restaurant/iggy-s | Iggy's | Singapore | $$$ \u00b7 European Contemporary | 1 star | 501489 | 1.3059244 | 103.8293379
+One Star | /us/en/singapore-region/singapore/restaurant/nouri | Nouri | Singapore | $$$$ \u00b7 Innovative | 1 star | 560366 | 1.28086 | 103.84713
+One Star | /us/en/singapore-region/singapore/restaurant/waku-ghin | Waku Ghin | Singapore | $$$$ \u00b7 Japanese Contemporary | 1 star | 501679 | 1.283175 | 103.8598
+One Star | /us/en/singapore-region/singapore/restaurant/born | Born | Singapore | $$$$ \u00b7 Innovative | 1 star | 1204753 | 1.2803952 | 103.843918
+One Star | /us/en/singapore-region/singapore/restaurant/jin-ting-wan | Jin Ting Wan | Singapore | $$$$ \u00b7 Cantonese | 1 star | 1245415 | 1.2823222 | 103.858496
+One Star | /us/en/singapore-region/singapore/restaurant/candlenut | Candlenut | Singapore | $$ \u00b7 Peranakan | 1 star | 501368 | 1.3058588 | 103.8100724
+One Star | /us/en/singapore-region/singapore/restaurant/pangium | Pangium | Singapore | $$$ \u00b7 Peranakan | 1 star | 1209995 | 1.3143675 | 103.8092377
+One Star | /us/en/singapore-region/singapore/restaurant/lerouy-1195638 | Lerouy | Singapore | $$$ \u00b7 French Contemporary | 1 star | 1195638 | 1.293924 | 103.841922
+One Star | /us/en/singapore-region/singapore/restaurant/willow | Willow | Singapore | $$$ \u00b7 Asian Contemporary | 1 star | 1204758 | 1.2874604 | 103.8473514
+One Star | /us/en/singapore-region/singapore/restaurant/lei-garden-501509 | Lei Garden | Singapore | $$ \u00b7 Cantonese | 1 star | 501509 | 1.295336 | 103.8523619
+One Star | /us/en/singapore-region/singapore/restaurant/shisen-hanten | Shisen Hanten | Singapore | $$$ \u00b7 Sichuan | 1 star | 501650 | 1.302395 | 103.8365
+One Star | /us/en/singapore-region/singapore/restaurant/sushi-kimura-1247953 | Sushi Kimura + | Singapore | $$$$ \u00b7 Sushi | 1 star | 1247953 | 1.3049223 | 103.8249229
+One Star | /us/en/singapore-region/singapore/restaurant/loca-niru | Loca Niru | Singapore | $$$$ \u00b7 Innovative | 1 star | 1246701 | 1.2987373 | 103.8432511
+One Star | /us/en/singapore-region/singapore/restaurant/araya | Araya | Singapore | $$$$ \u00b7 Innovative | 1 star | 1212874 | 1.278868 | 103.841816
+One Star | /us/en/singapore-region/singapore/restaurant/buona-terra | Buona Terra | Singapore | $$$ \u00b7 Italian Contemporary | 1 star | 501366 | 1.3107414 | 103.8348231
+One Star | /us/en/singapore-region/singapore/restaurant/cut | CUT | Singapore | $$$ \u00b7 Steakhouse | 1 star | 501446 | 1.2857261 | 103.8597843
+One Star | /us/en/singapore-region/singapore/restaurant/sushi-ichi | Sushi Ichi | Singapore | $$$$ \u00b7 Sushi | 1 star | 501660 | 1.305105 | 103.8324
+One Star | /us/en/singapore-region/singapore/restaurant/burnt-ends-1200777 | Burnt Ends | Singapore | $$$ \u00b7 Barbecue | 1 star | 1200777 | 1.3048886 | 103.8086664
+One Star | /us/en/singapore-region/singapore/restaurant/hill-street-tai-hwa-pork-noodle | Hill Street Tai Hwa Pork Noodle | Singapore | $ \u00b7 Street Food | 1 star | 501727 | 1.3052 | 103.8624
+One Star | /us/en/singapore-region/singapore/restaurant/yong-fu-1218314 | Yong Fu | Singapore | $$$$ \u00b7 Ningbo | 1 star | 1218314 | 1.2951461 | 103.8576472
+One Star | /us/en/singapore-region/singapore/restaurant/cherry-garden-by-chef-fei | Cherry Garden by Chef Fei | Singapore | $$$ \u00b7 Cantonese | 1 star | 501371 | 1.290398 | 103.8581
+One Star | /us/en/singapore-region/singapore/restaurant/nae-um | Nae:um | Singapore | $$$ \u00b7 Korean Contemporary | 1 star | 1197344 | 1.28033 | 103.84755
+One Star | /us/en/singapore-region/singapore/restaurant/marguerite | Marguerite | Singapore | $$$ \u00b7 Australian Contemporary | 1 star | 1200574 | 1.2849725 | 103.8639515
+One Star | /us/en/singapore-region/singapore/restaurant/hamamoto | Hamamoto | Singapore | $$$$ \u00b7 Sushi | 1 star | 1200572 | 1.2779413 | 103.8441838
+One Star | /us/en/singapore-region/singapore/restaurant/ma-cuisine | Ma Cuisine | Singapore | $$$ \u00b7 French | 1 star | 561746 | 1.2782652 | 103.8418934
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/indocafe-the-white-house | Indocaf\u00e9 | Singapore | $$ \u00b7 Peranakan | bib | 501496 | 1.3110605 | 103.8356878
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/zhup-zhup | Zhup Zhup | Singapore | $ \u00b7 Noodles | bib | 1213930 | 1.3319636 | 103.8824999
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/the-coconut-club-1195654 | The Coconut Club (Beach Road) | Singapore | $$ \u00b7 Malaysian | bib | 1195654 | 1.3006534 | 103.8601437
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/the-blue-ginger-tanjong-pagar | The Blue Ginger | Singapore | $$ \u00b7 Peranakan | bib | 529476 | 1.2774155 | 103.8436792
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/muthu-s-curry-little-india | Muthu's Curry | Singapore | $$ \u00b7 Indian | bib | 560365 | 1.30965 | 103.85204
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/kotuwa | Kotuwa | Singapore | $$ \u00b7 Sri Lankan | bib | 1195719 | 1.2929748 | 103.8388373
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/anglo-indian-shenton-way | Anglo Indian (Shenton Way) | Singapore | $$ \u00b7 Indian | bib | 529138 | 1.279361 | 103.85043
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/true-blue-cuisine | True Blue Cuisine | Singapore | $$ \u00b7 Peranakan | bib | 501675 | 1.2945379 | 103.8494194
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/rajarani-thosai | Rajarani Thosai | Singapore | $ \u00b7 Street Food | bib | 1245498 | 1.3454596 | 103.9445598
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/song-kee-teochew-fish-porridge | Song Kee Teochew Fish Porridge | Singapore | $ \u00b7 Street Food | bib | 1216068 | 1.311974 | 103.839442
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/wok-hei-hor-fun | Wok Hei Hor Fun | Singapore | $ \u00b7 Street Food | bib | 1216040 | 1.2874024 | 103.8183527
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/hup-kee-fried-oyster-omelette | Hup Kee Fried Oyster Omelette | Singapore | $ \u00b7 Street Food | bib | 1247295 | 1.3123233 | 103.8395862
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/sin-heng-claypot-bak-koot-teh | Sin Heng Claypot Bak Koot Teh | Singapore | $$ \u00b7 Singaporean | bib | 1218389 | 1.3073313 | 103.9043627
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/seng-kee-black-chicken-herbal-soup | Seng Kee Black Chicken Herbal Soup | Singapore | $ \u00b7 Street Food | bib | 1247236 | 1.334058 | 103.9304489
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/jungle | Jungle | Singapore | $$ \u00b7 Thai | bib | 1216074 | 1.281413 | 103.8453743
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/boon-keng-road-fish-head-bee-hoon | Boon Keng Road Fish Head Bee Hoon | Singapore | $ \u00b7 Street Food | bib | 1246714 | 1.3289267 | 103.9305488
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/kitchenman-nasi-lemak | Kitchenman Nasi Lemak | Singapore | $ \u00b7 Malaysian | bib | 1216065 | 1.3120852 | 103.8628154
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/kok-sen | Kok Sen | Singapore | $$ \u00b7 Singaporean | bib | 501505 | 1.2802718 | 103.841681
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/lixin-teochew-fishball-noodles | Lixin Teochew Fishball Noodles | Singapore | $ \u00b7 Street Food | bib | 1201320 | 1.3352759 | 103.8569441
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/song-fa-bak-kut-teh-new-bridge-road | Song Fa Bak Kut Teh (New Bridge Road) | Singapore | $ \u00b7 Singaporean | bib | 501655 | 1.2890223 | 103.8477147
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/delhi-lahori | Delhi Lahori | Singapore | $ \u00b7 Street Food | bib | 1213251 | 1.3064407 | 103.8507102
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/un-yang-kor-dai | Un-Yang-Kor-Dai | Singapore | $$ \u00b7 Thai | bib | 1190293 | 1.2872095 | 103.8483084
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/outram-park-fried-kway-teow | Outram Park Fried Kway Teow Mee | Singapore | $ \u00b7 Street Food | bib | 501821 | 1.2851585 | 103.8457139
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/heng-heng-cooked-food | Heng Heng Cooked Food | Singapore | $ \u00b7 Street Food | bib | 1189563 | 1.343566 | 103.7380985
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/ji-ji-noodle-house | Ji Ji Noodle House | Singapore | $ \u00b7 Street Food | bib | 501820 | 1.2851692 | 103.8457399
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/kwang-kee-teochew-fish-porridge | Kwang Kee Teochew Fish Porridge | Singapore | $ \u00b7 Street Food | bib | 1189608 | 1.3118717 | 103.8393125
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/lai-heng-handmade-teochew-kueh | Lai Heng Handmade Teochew Kueh | Singapore | $ \u00b7 Street Food | bib | 1189930 | 1.3452103 | 103.7310891
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/joo-siah-bak-koot-teh | Joo Siah Bak Koot Teh | Singapore | $ \u00b7 Street Food | bib | 1189566 | 1.3445639 | 103.7313626
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/lian-he-ben-ji-claypot | Lian He Ben Ji Claypot | Singapore | $ \u00b7 Street Food | bib | 561084 | 1.2825746 | 103.842981
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/hui-wei-chilli-ban-mian | Hui Wei Chilli Ban Mian | Singapore | $ \u00b7 Street Food | bib | 1205726 | 1.32144 | 103.870173
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/selamat-datang-warong-pak-sapari | Selamat Datang Warong Pak Sapari | Singapore | $ \u00b7 Street Food | bib | 1205688 | 1.3240526 | 103.8141033
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/song-fish-soup | Song Fish Soup | Singapore | $ \u00b7 Street Food | bib | 1210668 | 1.313468 | 103.76461
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/boon-tong-kee-balestier-road | Boon Tong Kee (Balestier Road) | Singapore | $ \u00b7 Singaporean | bib | 501365 | 1.3255796 | 103.8495
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/kelantan-kway-chap-pig-organ-soup | Kelantan Kway Chap \u00b7 Pig Organ Soup | Singapore | $ \u00b7 Street Food | bib | 1201488 | 1.3073595 | 103.85674
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/jian-bo-tiong-bahru-shui-kueh | Jian Bo Tiong Bahru Shui Kueh | Singapore | $ \u00b7 Street Food | bib | 1189951 | 1.3492969 | 103.7183594
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/ji-de-lai-hainanese-chicken-rice | Ji De Lai Hainanese Chicken Rice | Singapore | $ \u00b7 Street Food | bib | 1189594 | 1.4319385 | 103.8279349
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/new-lucky-claypot-rice | New Lucky Claypot Rice | Singapore | $ \u00b7 Street Food | bib | 549700 | 1.3083243 | 103.7929898
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/alliance-seafood | Alliance Seafood | Singapore | $ \u00b7 Street Food | bib | 501831 | 1.3121151 | 103.8395393
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/chef-kang-s-noodle-house | Chef Kang's Noodle House | Singapore | $ \u00b7 Street Food | bib | 570558 | 1.3372466 | 103.8485929
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/singapore-fried-hokkien-mee | Singapore Fried Hokkien Mee | Singapore | $ \u00b7 Street Food | bib | 1205565 | 1.3230892 | 103.8549053
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/yong-chun-wan-ton-noodle | Yong Chun Wan Ton Noodle | Singapore | $ \u00b7 Street Food | bib | 1205240 | 1.285259 | 103.8222829
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/yi-pin-wei-braised-duck%EF%BC%8Ekway-chap | Yi Pin Wei Braised Duck\uff0eKway Chap | Singapore | $ \u00b7 Street Food | bib | 1245495 | 1.3454935 | 103.944715
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/han-kee | Han Kee | Singapore | $ \u00b7 Street Food | bib | 1213099 | 1.2796254 | 103.8467276
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/xiangyee | Xiangyee | Singapore | $$ \u00b7 Hunanese | bib | 1247219 | 1.2982117 | 103.838788
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/jia-xiang | Jia Xiang | Singapore | $ \u00b7 Street Food | bib | 1248117 | 1.2875361 | 103.8184949
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/tian-nan-xing-minced-pork-noodle | Tian Nan Xing Minced Pork Noodle | Singapore | $ \u00b7 Street Food | bib | 1247234 | 1.3249411 | 103.9306756
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/king-of-laksa | King of Laksa | Singapore | $ \u00b7 Street Food | bib | 1246633 | 1.3200602 | 103.88723
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/no-18-zion-road-fried-kway-teow | No.18 Zion Road Fried Kway Teow | Singapore | $ \u00b7 Street Food | bib | 561506 | 1.292604 | 103.8312625
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/fei-fei-roasted-%E2%80%A2-noodle | Fei Fei Roasted \u2022 Noodle | Singapore | $ \u00b7 Street Food | bib | 1189561 | 1.3436537 | 103.7376562
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/lagnaa | Lagnaa | Singapore | $$ \u00b7 Indian | bib | 501507 | 1.306444 | 103.8522508
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/heng | Heng | Singapore | $ \u00b7 Street Food | bib | 561269 | 1.3120674 | 103.8393122
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/margaret-drive-sin-kee-chicken-rice | Margaret Drive Sin Kee Chicken Rice | Singapore | $ \u00b7 Street Food | bib | 561547 | 1.3082682 | 103.7929491
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/jalan-sultan-prawn-mee | Jalan Sultan Prawn Mee | Singapore | $ \u00b7 Street Food | bib | 501728 | 1.3111924 | 103.8727709
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/yhingthai-palace | Yhingthai Palace | Singapore | $$ \u00b7 Thai | bib | 501684 | 1.29648 | 103.85497
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/kwee-heng | Kwee Heng | Singapore | $ \u00b7 Street Food | bib | 1206672 | 1.312026 | 103.8395432
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/hong-kong-yummy-soup | Hong Kong Yummy Soup | Singapore | $ \u00b7 Street Food | bib | 560946 | 1.2863998 | 103.8044992
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/chuan-kee-boneless-braised-duck | Chuan Kee Boneless Braised Duck | Singapore | $ \u00b7 Street Food | bib | 561464 | 1.3110244 | 103.788126
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/tian-tian-hainanese-chicken-rice | Tian Tian Hainanese Chicken Rice | Singapore | $ \u00b7 Street Food | bib | 501826 | 1.2804903 | 103.8448118
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/tai-wah-pork-noodle | Tai Wah Pork Noodle | Singapore | $ \u00b7 Street Food | bib | 501822 | 1.2852332 | 103.8457532
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/sin-huat-eating-house | Sin Huat Seafood Restaurant | Singapore | $$ \u00b7 Street Food | bib | 501732 | 1.314489 | 103.8885
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/a-noodle-story | A Noodle Story | Singapore | $ \u00b7 Street Food | bib | 501773 | 1.2790364 | 103.8464494
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/du-du-shou-shi | Dudu Cooked Food | Singapore | $ \u00b7 Street Food | bib | 1206658 | 1.3494 | 103.71848
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/ru-ji-kitchen | Ru Ji Kitchen | Singapore | $ \u00b7 Street Food | bib | 561267 | 1.3081582 | 103.7928826
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/j2-famous-crispy-curry-puff | J2 Famous Crispy Curry Puff | Singapore | $ \u00b7 Street Food | bib | 501774 | 1.2796129 | 103.8468008
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/fico-1213088 | Fico | Singapore | $$ \u00b7 Italian | bib | 1213088 | 1.3105224 | 103.9463853
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/lao-fu-zi-fried-kway-teow | Lao Fu Zi Fried Kway Teow | Singapore | $ \u00b7 Street Food | bib | 561264 | 1.3080902 | 103.8856982
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/hong-heng-fried-sotong-prawn-mee | Hong Heng Fried Sotong Prawn Mee | Singapore | $ \u00b7 Street Food | bib | 501898 | 1.2849649 | 103.8327193
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/tiong-bahru-hainanese-boneless-chicken-rice | Tiong Bahru Hainanese Boneless Chicken Rice | Singapore | $ \u00b7 Street Food | bib | 501902 | 1.2846286 | 103.832596
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/bahrakath-mutton-soup | Bahrakath Mutton Soup | Singapore | $ \u00b7 Street Food | bib | 1205690 | 1.324031 | 103.814139
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/heng-kee | Heng Kee | Singapore | $ \u00b7 Street Food | bib | 1205222 | 1.2851492 | 103.8457218
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/hainan-zi | Hai Nan Zai | Singapore | $ \u00b7 Street Food | bib | 1189593 | 1.4318206 | 103.8279671
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/whole-earth | Whole Earth | Singapore | $$ \u00b7 Vegetarian | bib | 501681 | 1.2772625 | 103.8446935
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/fu-ming-cooked-food | Fu Ming Cooked Food | Singapore | $ \u00b7 Street Food | bib | 570553 | 1.2874936 | 103.8183732
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/sik-bao-sin-desmond-s-creation | Sik Bao Sin | Singapore | $$ \u00b7 Singaporean | bib | 560384 | 1.314127 | 103.8878
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/hoo-kee-bak-chang | Hoo Kee Bak Chang | Singapore | $ \u00b7 Street Food | bib | 501794 | 1.2789952 | 103.8466824
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/zai-shun-curry-fish-head | Zai Shun Curry Fish Head | Singapore | $ \u00b7 Street Food | bib | 529077 | 1.343888 | 103.73722
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/xiu-ji-ikan-bilis-yong-tau-fu | Xiu Ji Ikan Bilis Yong Tau Fu | Singapore | $ \u00b7 Street Food | bib | 1248038 | 1.2826282 | 103.8431473
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/hai-nan-xing-zhou-beef-noodle | Hai Nan Xing Zhou Beef Noodle | Singapore | $ \u00b7 Street Food | bib | 1201321 | 1.3355032 | 103.857018
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/zhi-wei-xian-zion-road-big-prawn-noodle | Zhi Wei Xian Zion Road Big Prawn Noodle | Singapore | $ \u00b7 Street Food | bib | 561505 | 1.2924249 | 103.8312898
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/to-ricos-guo-shi | To-Ricos Kway Chap | Singapore | $ \u00b7 Street Food | bib | 561224 | 1.3083574 | 103.8857344
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/cumi-bali | Cumi Bali | Singapore | $$ \u00b7 Indonesian | bib | 1201371 | 1.2781933 | 103.8442371
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/beach-road-fish-head-bee-hoon | Beach Road Fish Head Bee Hoon | Singapore | $ \u00b7 Street Food | bib | 561484 | 1.3232442 | 103.8548346
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/mp-thai | MP Thai (Vision Exchange) | Singapore | $$ \u00b7 Thai | bib | 1209952 | 1.329991 | 103.744593
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/ar-er-soup | Ar Er Soup | Singapore | $ \u00b7 Street Food | bib | 549678 | 1.2868701 | 103.8081238
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/chai-chuan-tou-yang-rou-tang | Chai Chuan Tou Yang Rou Tang | Singapore | $ \u00b7 Street Food | bib | 561270 | 1.2856243 | 103.8220326
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/soh-kee-cooked-food | Soh Kee Cooked Food | Singapore | $ \u00b7 Street Food | bib | 1189947 | 1.3498361 | 103.7184176
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/jason-penang-cuisine | Jason Penang Cuisine | Singapore | $ \u00b7 Street Food | bib | 1210905 | 1.2869092 | 103.8081365
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/spinach-soup | Spinach Soup | Singapore | $ \u00b7 Street Food | bib | 1205731 | 1.32144 | 103.870173
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/na-na-curry | Na Na Curry | Singapore | $ \u00b7 Street Food | bib | 501833 | 1.2849158 | 103.8221863
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/koh-brother-pig-s-organ-soup | Koh Brother Pig's Organ Soup | Singapore | $ \u00b7 Street Food | bib | 561444 | 1.2850432 | 103.832764
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/chey-sua-carrot-cake | Chey Sua Carrot Cake | Singapore | $ \u00b7 Street Food | bib | 501854 | 1.3380791 | 103.8447178
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/tai-seng-fish-soup | Tai Seng Fish Soup | Singapore | $ \u00b7 Street Food | bib | 1206641 | 1.3348723 | 103.7215061
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/da-shi-jia | Da Shi Jia Big Prawn Mee | Singapore | $ \u00b7 Singaporean | bib | 1190006 | 1.298469 | 103.8389954
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/nam-sing-hokkien-fried-mee | Nam Sing Hokkien Fried Mee | Singapore | $ \u00b7 Street Food | bib | 1205747 | 1.30825 | 103.88579
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/adam-rd-noo-cheng-big-prawn-noodle | Adam Rd Noo Cheng Big Prawn Noodle | Singapore | $ \u00b7 Street Food | bib | 1205683 | 1.3242533 | 103.8141487
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/bismillah-biryani | Bismillah Biryani (Little India) | Singapore | $ \u00b7 Street Food | bib | 501726 | 1.304989 | 103.8536
+Bib Gourmand | /us/en/singapore-region/singapore/restaurant/cheok-kee | Cheok Kee | Singapore | $ \u00b7 Street Food | bib | 1205730 | 1.32144 | 103.870173

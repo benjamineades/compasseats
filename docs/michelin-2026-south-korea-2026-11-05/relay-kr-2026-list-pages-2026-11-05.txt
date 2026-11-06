@@ -1,0 +1,117 @@
+Three Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/mingles | Mingles | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Korean | 3 star
+Two Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/la-yeon | La Yeon | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Korean | 2 star
+Two Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/evett | Evett | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Innovative | 2 star
+Two Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/restaurant-allen | Restaurant Allen | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Contemporary | 2 star
+Two Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/sosuheon | Sosuheon | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Sushi | 2 star
+Two Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/kwonsooksoo | Kwonsooksoo | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Korean | 2 star
+Two Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/jungsik511965 | Jungsik | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Contemporary | 2 star
+Two Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/mosu | Mosu | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Modern Cuisine | 2 star
+Two Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/soigne | Soign\u00e9 | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Contemporary | 2 star
+Two Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/alla-prima | alla prima | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Innovative | 2 star
+Two Stars | /us/en/seoul-capital-area/kr-seoul/restaurant/mitou | Mitou | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Japanese | 2 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/yu-yuan | Yu Yuan | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Chinese | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/collage | Collage | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 French Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/sushi-kanesaka-1244365 | Sushi Kanesaka | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Sushi | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/l-amitie | L'Amiti\u00e9 | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 French | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/l-amant-secret | L'Amant Secret | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/bicena | Bicena | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 Korean | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/hakusi | Hakusi | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Japanese | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/muoki | Muoki | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/onjium | Onjium | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Korean | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/muni | Muni | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Japanese | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/restaurant-jueun | JUEUN | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Korean | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/tutoiement | Tutoiement | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 French | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/soul-dining | Soul | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/exquisine | Exquisine | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/giwakang | GiwaKang | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Korean Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/kang-minchul-restaurant | KANG MINCHUL Restaurant | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 French Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/gaggen | GAGGEN by Choi Junho | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Japanese | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/7th-door | 7th Door | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Korean Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/eatanic-garden | Eatanic Garden | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Korean Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/gigas | Gigas | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 Mediterranean Cuisine | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/vinho | VINHO | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/y-east | y'east | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/zero-complex | Zero Complex | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Innovative | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/legume | L\u00e9gume | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 Vegan | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/solbam | Solbam | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Contemporary | 1 star
+One Star | /us/en/busan-region/busan_1025838/restaurant/fiotto | Fiotto | Busan, South Korea | \u20a9\u20a9\u20a9 \u00b7 Italian Contemporary | 1 star
+One Star | /us/en/busan-region/busan_1025838/restaurant/palate | Palate | Busan, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Contemporary | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/san | SAN | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Innovative | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/escondido | Escondido | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 Mexican | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/sushi-matsumoto-1195338 | Sushi Matsumoto | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Sushi | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/soseoul-hannam | Soseoul Hannam | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Korean | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/yun | YUN | Seoul, South Korea | \u20a9\u20a9\u20a9 \u00b7 Korean | 1 star
+One Star | /us/en/seoul-capital-area/kr-seoul/restaurant/goryori-ken | Goryori Ken | Seoul, South Korea | \u20a9\u20a9\u20a9\u20a9 \u00b7 Contemporary | 1 star
+One Star | /us/en/busan-region/busan_1025838/restaurant/le-dorer | Le DORER | Busan, South Korea | \u20a9\u20a9\u20a9 \u00b7 Korean Contemporary | 1 star
+One Star | /us/en/busan-region/busan_1025838/restaurant/mori | Mori | Busan, South Korea | \u20a9\u20a9\u20a9 \u00b7 Japanese | 1 star
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/jeongjitgan | Jeongjitgan | Busan, South Korea | \u20a9 \u00b7 Dwaeji-gukbap | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/moemiljip | Moemiljip | Busan, South Korea | \u20a9 \u00b7 Memil-guksu | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/jeongmyeon | Jeongmyeon | Seoul, South Korea | \u20a9 \u00b7 Noodles | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/neungdong-minari | Neungdong Minari | Seoul, South Korea | \u20a9 \u00b7 Gomtang | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/100-1-pyeongnaeng | 100.1.Pyeongnaeng | Busan, South Korea | \u20a9 \u00b7 Naengmyeon | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/hanwolgwan | Hanwolgwan | Busan, South Korea | \u20a9 \u00b7 Gomtang | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/gebang-sikdang | Gebangsikdang | Seoul, South Korea | \u20a9 \u00b7 Gejang | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/cor-pasta-bar | Cor Pasta bar | Busan, South Korea | \u20a9 \u00b7 Italian | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/haemok | Haemok | Busan, South Korea | \u20a9\u20a9 \u00b7 Japanese | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/nagahama-mangetsu | Nagahama Mangetsu | Busan, South Korea | \u20a9 \u00b7 Ramen | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/shunsai-kubo | Shunsai Kubo | Busan, South Korea | \u20a9 \u00b7 Unagi / Freshwater Eel | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/hwanggeum-kongbat | Hwanggeum Kongbat | Seoul, South Korea | \u20a9 \u00b7 Dubu | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/arp | ARP | Busan, South Korea | \u20a9 \u00b7 Vegan | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/alt-a | ALT.a | Seoul, South Korea | \u20a9 \u00b7 Vegan | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/sobakeeri-suzu | Sobakeeri Suzu | Seoul, South Korea | \u20a9 \u00b7 Soba | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/seoryung | Seoryung | Seoul, South Korea | \u20a9 \u00b7 Memil-guksu | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/songheonjip | Songheonjip | Busan, South Korea | \u20a9 \u00b7 Korean | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/okdol-heyonok | Okdolhyunok | Seoul, South Korea | \u20a9 \u00b7 Naengmyeon | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/gomtang-lab | Gomtang Lab | Seoul, South Korea | \u20a9 \u00b7 Gomtang | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/nishimuramen | Nishimuramen | Seoul, South Korea | \u20a9 \u00b7 Ramen | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/hapjeongok | Hapjeongok | Seoul, South Korea | \u20a9 \u00b7 Gomtang | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/subaru | Subaru | Seoul, South Korea | \u20a9 \u00b7 Soba | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/mipildam | Mipildam | Seoul, South Korea | \u20a9 \u00b7 Mandu | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/base-is-nice | Base is nice | Seoul, South Korea | \u20a9 \u00b7 Vegetarian | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/mijin | Mijin | Seoul, South Korea | \u20a9 \u00b7 Memil-guksu | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/yurimmyeon | Yurimmyeon | Seoul, South Korea | \u20a9 \u00b7 Memil-guksu | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/mapo-ok | Mapo Ok | Seoul, South Korea | \u20a9 \u00b7 Seolleongtang | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/3rd-samgyetang | 3rd Generation Samgyetang Master | Seoul, South Korea | \u20a9 \u00b7 Samgyetang | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/jungin-myeonok | Jungin Myeonok | Seoul, South Korea | \u20a9 \u00b7 Naengmyeon | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/sarukame | Sarukame | Seoul, South Korea | \u20a9 \u00b7 Ramen | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/youhan | Youhan | Seoul, South Korea | \u20a9\u20a9 \u00b7 Thai | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/seokyonanmyunbang | Seokyonanmyunbang | Seoul, South Korea | \u20a9 \u00b7 Noodles | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/oilje | Oilje | Seoul, South Korea | \u20a9 \u00b7 Korean | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/myeon-seoul | Myeon Seoul | Seoul, South Korea | \u20a9 \u00b7 Noodles | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/ggupdang | Ggupdang | Seoul, South Korea | \u20a9\u20a9 \u00b7 Barbecue | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/okdongsik | Okdongsik | Seoul, South Korea | \u20a9 \u00b7 Dwaeji-gukbap | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/bibijae | Bibijae | Busan, South Korea | \u20a9 \u00b7 Bibimbap | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/andeok | Andeok | Seoul, South Korea | \u20a9 \u00b7 Korean | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/gosari-express | Gosari Express | Seoul, South Korea | \u20a9 \u00b7 Vegan | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/kyodaiya | Kyodaiya | Seoul, South Korea | \u20a9 \u00b7 Udon | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/yukjeon-hoekwan | Yukjeon Hoekwan | Seoul, South Korea | \u20a9\u20a9 \u00b7 Bulgogi | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/tokyo-babsang | Tokyo Babsang | Busan, South Korea | \u20a9 \u00b7 Unagi / Freshwater Eel | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/anam | ANAM | Seoul, South Korea | \u20a9 \u00b7 Dwaeji-gukbap | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/anmok | Anmok | Busan, South Korea | \u20a9 \u00b7 Dwaeji-gukbap | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/buda-myeonoak | Buda Myeonoak | Busan, South Korea | \u20a9 \u00b7 Naengmyeon | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/yonggeumok | Yonggeumok | Seoul, South Korea | \u20a9 \u00b7 Chueotang | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/pili-pili | PILI PILI | Busan, South Korea | \u20a9 \u00b7 Thai | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/pildong-myeonok | Pildong Myeonok | Seoul, South Korea | \u20a9 \u00b7 Naengmyeon | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/hwangsaengga-kalguksu | Hwangsaengga Kalguksu | Seoul, South Korea | \u20a9 \u00b7 Kalguksu | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/jin-jin | Jin Jin | Seoul, South Korea | \u20a9\u20a9 \u00b7 Chinese | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/damtaek | Damtaek | Seoul, South Korea | \u20a9 \u00b7 Ramen | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/oreno-ramen | Oreno Ramen | Seoul, South Korea | \u20a9 \u00b7 Ramen | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/daesungjip | Daesungjip | Seoul, South Korea | \u20a9 \u00b7 Doganitang | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/halmaejip | Halmaejip | Seoul, South Korea | \u20a9 \u00b7 Korean | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/gaeseong-mandu-koong | Gaeseong Mandu Koong | Seoul, South Korea | \u20a9 \u00b7 Mandu | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/hapcheon-gukbapjip | Hapcheon Gukbapjip | Busan, South Korea | \u20a9 \u00b7 Dwaeji-gukbap | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/bao-haus | Bao Haus | Busan, South Korea | \u20a9 \u00b7 Taiwanese | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/horapa | HORAPA | Seoul, South Korea | \u20a9 \u00b7 Thai | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/samcheongdong-sujebi | Samcheongdong Sujebi | Seoul, South Korea | \u20a9 \u00b7 Sujebi | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/mandujip | Mandujip | Seoul, South Korea | \u20a9 \u00b7 Mandu | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/pyeongyangjip | Pyeongyangjip | Busan, South Korea | \u20a9 \u00b7 Mandu | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/geumdwaeji-sikdang | Geumdwaeji Sikdang | Seoul, South Korea | \u20a9 \u00b7 Barbecue | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/woo-lae-oak | Woo Lae Oak | Seoul, South Korea | \u20a9 \u00b7 Naengmyeon | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/yangyang-memil-makguksu | Yangyang Memil Makguksu | Seoul, South Korea | \u20a9 \u00b7 Memil-guksu | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/mattdol | Mattdol | Seoul, South Korea | \u20a9 \u00b7 Mexican | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/limbyungjoo-sandong-kalguksu | Limbyungjoo Sandong Kalguksu | Seoul, South Korea | \u20a9 \u00b7 Kalguksu | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/niurou-mian-guan-zi | Niurou mian guan zi | Busan, South Korea | \u20a9 \u00b7 Taiwanese | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/hwa-hae-dang | Hwa Hae Dang | Seoul, South Korea | \u20a9\u20a9 \u00b7 Gejang | bib
+Bib Gourmand | /us/en/busan-region/busan_1025838/restaurant/yakitori-onjung | Yakitori Onjung | Busan, South Korea | \u20a9 \u00b7 Yakitori | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/kyewol-gomtang | Kyewol | Seoul, South Korea | \u20a9 \u00b7 Gomtang | bib
+Bib Gourmand | /us/en/seoul-capital-area/kr-seoul/restaurant/jaha-son-mandu | Jaha Son Mandu | Seoul, South Korea | \u20a9\u20a9 \u00b7 Mandu | bib

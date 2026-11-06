@@ -1,0 +1,95 @@
+guide,edition,group,category,card_name,card_city,card_price,card_url,venue_id,award_id,live_name,name_check
+brazil,2026,paired,Bib Gourmand,Artigiano,"Rio de Janeiro, Brazil",$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/artigiano,ve_832f8ac3d4,11831,Artigiano Ristorante,differs
+brazil,2026,paired,Bib Gourmand,Brota,"Rio de Janeiro, Brazil",$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/brota,ve_aad1f0be42,11832,Brota,same
+brazil,2026,paired,Bib Gourmand,Koral,"Rio de Janeiro, Brazil",$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/koral,ve_a3161c988d,11834,Koral Restaurante,differs
+brazil,2026,paired,Bib Gourmand,Maria e o Boi,"Rio de Janeiro, Brazil",$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/maria-e-o-boi,ve_779f32c5c6,11835,Maria e o Boi,same
+brazil,2026,paired,Bib Gourmand,Miam Miam,"Rio de Janeiro, Brazil",$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/miam-miam,ve_775449eafb,11836,Miam Miam,same
+brazil,2026,paired,Bib Gourmand,Pici Trattoria,"Rio de Janeiro, Brazil",$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/pici-trattoria,ve_edeab52f5d,11837,Pici Trattoria,same
+brazil,2026,paired,Bib Gourmand,Sult,"Rio de Janeiro, Brazil",$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/sult,ve_a9b5e91e52,11838,Sult,same
+brazil,2026,paired,Bib Gourmand,A Baianeira,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/a-baianeira-masp,ve_d50e71fba4,12336,A Baianeira - MASP,differs
+brazil,2026,paired,Bib Gourmand,A Casa do Porco,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/a-casa-do-porco,ve_b8d05bb5fd,12346,A Casa do Porco Bar,differs
+brazil,2026,paired,Bib Gourmand,AE! Cozinha,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/ae-cozinha,ve_962d427bd4,12354,AE! Cozinha,same
+brazil,2026,paired,Bib Gourmand,Balaio IMS,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/balaio-ims,ve_149a7d280a,12355,Balaio IMS,same
+brazil,2026,paired,Bib Gourmand,Banzeiro,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/banzeiro,ve_550d8cc585,12356,Banzeiro Restaurant - São Paulo,differs
+brazil,2026,paired,Bib Gourmand,Barú Marisquería,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/baru-marisqueria,ve_922fbd97e1,12357,Barú Marisquería,same
+brazil,2026,paired,Bib Gourmand,Brasserie Victória,"São Paulo, Brazil",$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/brasserie-victoria,ve_18dcd4cf51,12358,Brasserie Victória,same
+brazil,2026,paired,Bib Gourmand,Capim Santo,"São Paulo, Brazil",$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/capim-santo,ve_eba52c0cfa,12359,Restaurante Capim Santo São Paulo,differs
+brazil,2026,paired,Bib Gourmand,Cepa,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/cepa,ve_f949dd0f26,12360,Restaurante Cepa,differs
+brazil,2026,paired,Bib Gourmand,Clandestina,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/clandestina,ve_79d8ce5b75,12362,Clandestina Restaurante,differs
+brazil,2026,paired,Bib Gourmand,Cora,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/cora-1210174,ve_5fce35ac81,12363,Cora Restaurante,differs
+brazil,2026,paired,Bib Gourmand,Corrutela,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/corrutela,ve_c14d62645c,12364,Corrutela,same
+brazil,2026,paired,Bib Gourmand,Cuia,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/cuia,ve_2908ed9b18,12369,Cuia Café e Restaurante,differs
+brazil,2026,paired,Bib Gourmand,Ecully,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/ecully-perdizes,ve_a51e12476b,12370,Ecully Gastronomia,differs
+brazil,2026,paired,Bib Gourmand,Fitó,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/fito,ve_139fb793be,12371,FITÓ Restaurante e Bar - Pinheiros,differs
+brazil,2026,paired,Bib Gourmand,Jacó,"São Paulo, Brazil",$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/jaco-1212676,ve_f94f54acea,12372,Jacó,same
+brazil,2026,paired,Bib Gourmand,Jiquitaia,"São Paulo, Brazil",$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/jiquitaia-1190078,ve_4169766097,12373,Jiquitaia,same
+brazil,2026,paired,Bib Gourmand,The Kith,"São Paulo, Brazil",$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/kith-2%C2%BA-andar,ve_958b322247,12401,The Kith,same
+brazil,2026,paired,Bib Gourmand,Komah,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/komah,ve_5e0e0564a6,12374,Komah Restaurante,differs
+brazil,2026,paired,Bib Gourmand,Kotori,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/kotori,ve_d0a95b78e4,12377,KOTORI,same
+brazil,2026,paired,Bib Gourmand,Le Bife,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/le-bife,ve_a1715198b5,12382,Le Bife,same
+brazil,2026,paired,Bib Gourmand,Manioca,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/manioca,ve_f43f2059d1,12383,Restaurante Manioca,differs
+brazil,2026,paired,Bib Gourmand,Manioca da Mata,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/manioca-da-mata,ve_01b9dd7661,12384,Restaurante Manioca da Mata,differs
+brazil,2026,paired,Bib Gourmand,Manioca JK,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/manioca-jk,ve_e3af36a8d7,12385,Restaurante Manioca JK,differs
+brazil,2026,paired,Bib Gourmand,Mocotó Vila Medeiros,"São Paulo, Brazil",$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/mocoto,ve_4898647fdf,12392,Mocotó Vila Medeiros,same
+brazil,2026,paired,Bib Gourmand,Mocotó Vila Leopoldina,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/mocoto-vila-leopoldina,ve_715ea6fbc6,12386,Mocotó Vila Leopoldina,same
+brazil,2026,paired,Bib Gourmand,NOMO,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/nomo,ve_1d1485a18e,12395,NOMO Restaurante,differs
+brazil,2026,paired,Bib Gourmand,Ping Yang Thai Bar & Food,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/ping-yang-thai-bar-food,ve_aab432c9c4,12396,Ping Yang Thai Bar & Food,same
+brazil,2026,paired,Bib Gourmand,Più Pinheiros,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/piu,ve_17a43e2120,12398,Più Pinheiros,same
+brazil,2026,paired,Bib Gourmand,Shihoma Pasta Fresca,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/shihoma-pasta-fresca,ve_1bd996d675,12399,Shihoma Pasta Fresca,same
+brazil,2026,paired,Bib Gourmand,Tanit,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/tanit,ve_c6606378d5,12400,Tanit,same
+brazil,2026,paired,Bib Gourmand,Tordesilhas,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/tordesilhas,ve_eec52d5553,12402,Tordesilhas,same
+brazil,2026,paired,Bib Gourmand,Zena Cucina,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/zena-caffe,ve_ad2b46ef0a,12405,Zena Cucina,same
+brazil,2026,paired,One Star,Casa 201,"Rio de Janeiro, Brazil",$$$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/casa-201,ve_f8e6aa9e90,7573,Casa 201,same
+brazil,2026,paired,One Star,Madame Olympe,"Rio de Janeiro, Brazil",$$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/madame-olympe,ve_8b9afd43ea,7575,Madame Olympe,same
+brazil,2026,paired,One Star,Mee,"Rio de Janeiro, Brazil",$$$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/mee,ve_5e5b8e2f93,7576,Restaurante Mee,differs
+brazil,2026,paired,One Star,Oseille,"Rio de Janeiro, Brazil",$$$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/oseille,ve_456d74e80c,7577,Oseille,same
+brazil,2026,paired,One Star,Oteque,"Rio de Janeiro, Brazil",$$$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/oteque,ve_a913beb4fa,7580,Oteque,same
+brazil,2026,paired,One Star,San Omakase,"Rio de Janeiro, Brazil",$$$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/san-omakase-room,ve_9371b16a9c,7594,San Omakase,same
+brazil,2026,paired,One Star,Fame Osteria,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/fame-osteria,ve_cf5567ee42,8343,Fame Osteria,same
+brazil,2026,paired,One Star,Jun Sakamoto,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/jun-sakamoto,ve_e410d6a003,8347,Jun Sakamoto,same
+brazil,2026,paired,One Star,Kan Suke,"São Paulo, Brazil",$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/kan-suke,ve_e79c71e66d,8351,Kan Suke,same
+brazil,2026,paired,One Star,KANOE,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/kanoe,ve_5c41cdc803,8354,Kanoe,same
+brazil,2026,paired,One Star,Kazuo,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/kazuo,ve_169947e477,8356,Kazuo Restaurante,differs
+brazil,2026,paired,One Star,Kinoshita,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/kinoshita,ve_d56d381b6a,8359,Kinoshita,same
+brazil,2026,paired,One Star,Kuro,"São Paulo, Brazil",$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/kuro,ve_20799ee8b2,8360,Kuro Restaurante,differs
+brazil,2026,paired,One Star,Maní,"São Paulo, Brazil",$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/mani,ve_db6835ff43,8370,Maní,same
+brazil,2026,paired,One Star,Murakami,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/murakami,ve_6873c5e900,8376,Restaurante Murakami,differs
+brazil,2026,paired,One Star,Oizumi Sushi,"São Paulo, Brazil",$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/oizumi-sushi,ve_2165ca414c,8377,Oizumi Sushi,same
+brazil,2026,paired,One Star,Picchi,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/picchi,ve_091d050268,8378,Picchi,same
+brazil,2026,paired,One Star,Ryo Gastronomia,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/ryo-gastronomia,ve_ef28dd0821,8379,Ryo Gastronomia,same
+brazil,2026,paired,One Star,Tangará Jean-Georges,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/tangara-jean-georges,ve_80a0782b77,8380,Tangará Jean-Georges,same
+brazil,2026,paired,Three Stars,Evvai,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/evvai,ve_72e32dfdf5,1173,Evvai Restaurant,differs
+brazil,2026,paired,Three Stars,Tuju,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/tuju,ve_164d9e4fc4,1185,TUJU,same
+brazil,2026,paired,Two Stars,Lasai,"Rio de Janeiro, Brazil",$$$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/lasai,ve_dfa308c00a,2883,Lasai,same
+brazil,2026,paired,Two Stars,Oro,"Rio de Janeiro, Brazil",$$$$,https://guide.michelin.com/us/en/rio-de-janeiro-region/rio-de-janeiro/restaurant/oro,ve_a1852a622b,2896,Oro,same
+brazil,2026,paired,Two Stars,D.O.M.,"São Paulo, Brazil",$$$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/d-o-m,ve_a9cf86ec4d,3217,D.O.M.,same
+malta,2026,paired,Bib Gourmand,AYU,"Gzira, Malta",€€,https://guide.michelin.com/us/en/malta-central-region/gira/restaurant/ayu,ve_be4d3ae1c0,10372,AYU,same
+malta,2026,paired,Bib Gourmand,Verbena,"Mgarr, Malta",€€,https://guide.michelin.com/us/en/malta-northern-region/marr/restaurant/verbena,ve_e641663972,11161,Verbena Wine & Dine,differs
+malta,2026,paired,Bib Gourmand,Commando,"Mellieħa, Malta",€€,https://guide.michelin.com/us/en/malta-northern-region/melliea/restaurant/commando,ve_9aef1006b3,11154,Commando Restaurant,differs
+malta,2026,paired,Bib Gourmand,Grain Street,"Valletta, Malta",€€,https://guide.michelin.com/us/en/malta-south-eastern-region/valletta/restaurant/grain-street,ve_1ac631cc5b,12789,Grain Street,same
+malta,2026,paired,Bib Gourmand,Rubino,"Valletta, Malta",€€,https://guide.michelin.com/us/en/malta-south-eastern-region/valletta/restaurant/rubino,ve_86af80f753,12790,Rubino,same
+malta,2026,paired,One Star,Rosamì,"St. Julian's, Malta",€€€,https://guide.michelin.com/us/en/malta-central-region/st-julian-s/restaurant/rosami,ve_a9bfb8812e,8266,Rosami At The Villa,differs
+malta,2026,paired,One Star,De Mondion,"Mdina, Malta",€€€€,https://guide.michelin.com/us/en/malta-northern-region/mdina/restaurant/de-mondion,ve_14fb4690c9,6458,The de Mondion Restaurant,differs
+malta,2026,paired,One Star,Fernandõ Gastrotheque,"Sliema, Malta",€€€,https://guide.michelin.com/us/en/malta-northern-region/sliema/restaurant/fernando-gastrotheque,ve_24191bc2ae,8241,Fernandõ Gastrotheque,same
+malta,2026,paired,One Star,Le GV,"Sliema, Malta",€€€,https://guide.michelin.com/us/en/malta-northern-region/sliema/restaurant/le-gv,ve_b37d29a671,8242,Le GV Rooftop Restaurant,differs
+malta,2026,paired,One Star,Noni,"Valletta, Malta",€€€€,https://guide.michelin.com/us/en/malta-south-eastern-region/valletta/restaurant/noni,ve_fd0e8d9bab,8826,Noni,same
+malta,2026,paired,One Star,Under Grain,"Valletta, Malta",€€€,https://guide.michelin.com/us/en/malta-south-eastern-region/valletta/restaurant/under-grain,ve_e4a5a2fde0,8828,Under Grain,same
+malta,2026,paired,Two Stars,ION Harbour by Simon Rogan,"Valletta, Malta",€€€€,https://guide.michelin.com/us/en/malta-south-eastern-region/valletta/restaurant/ion-the-harbour,ve_373bb68723,3462,ION Harbour By Simon Rogan,same
+qatar,2026,paired,Bib Gourmand,Argan,"Doha, Qatar",﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/argan,ve_45008f97c7,10063,Argan Moroccan Cuisine,differs
+qatar,2026,paired,Bib Gourmand,Baron,"Doha, Qatar",﷼﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/baron,ve_3b8c78a9f9,10064,BARON DOHA,differs
+qatar,2026,paired,Bib Gourmand,Berenjak Al Maha Island,"Doha, Qatar",﷼﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/berenjak-al-maha-island,ve_3596a7aa8f,10065,Berenjak Doha - Al Maha Island,differs
+qatar,2026,paired,Bib Gourmand,Fenyal,"Doha, Qatar",﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/fenyal,ve_cb064b5372,10066,Fenyal,same
+qatar,2026,paired,Bib Gourmand,Hoppers,"Doha, Qatar",﷼﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/hoppers-1206059,ve_06a50f2165,10067,Hoppers,same
+qatar,2026,paired,Bib Gourmand,Isaan,"Doha, Qatar",﷼﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/isaan,ve_73851bd35c,10068,Isaan,same
+qatar,2026,paired,Bib Gourmand,Jiwan,"Doha, Qatar",﷼﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/jiwan,ve_c997d60acb,10069,Jiwan Restaurant,differs
+qatar,2026,paired,Bib Gourmand,Mila,"Doha, Qatar",﷼﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/mila-1243026,ve_d455f4afc9,10070,Mila,same
+qatar,2026,paired,One Star,Alba,"Doha, Qatar",﷼﷼﷼﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/alba-1213877,ve_79f91198a4,4757,Alba,same
+qatar,2026,paired,One Star,IDAM by Alain Ducasse,"Doha, Qatar",﷼﷼﷼﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/idam-by-alain-ducasse,ve_8627607527,4760,IDAM,differs
+qatar,2026,paired,One Star,Jamavar,"Doha, Qatar",﷼﷼﷼﷼,https://guide.michelin.com/us/en/doha-region/doha_2433318/restaurant/jamavar-1197472,ve_2d2bcdc8be,4762,Jamavar,same
+serbia,2026,paired,Bib Gourmand,Bela Reka,"Belgrade, Serbia",€€,https://guide.michelin.com/us/en/belgrade-region/belgrade/restaurant/bela-reka,ve_e4d67c41ae,9483,Bela Reka,same
+serbia,2026,paired,Bib Gourmand,Istok,"Belgrade, Serbia",€,https://guide.michelin.com/us/en/belgrade-region/belgrade/restaurant/istok,ve_d60e864dcf,9484,Restoran ISTOK,differs
+serbia,2026,paired,Bib Gourmand,Iva New Balkan Cuisine,"Belgrade, Serbia",€€,https://guide.michelin.com/us/en/belgrade-region/belgrade/restaurant/iva-new-balkan-cuisine,ve_6e1ccfb132,9485,Iva New Balkan Cuisine,same
+serbia,2026,paired,One Star,Langouste,"Belgrade, Serbia",€€€,https://guide.michelin.com/us/en/belgrade-region/belgrade/restaurant/langouste,ve_33c924ca48,4127,Langouste Restoran,differs
+serbia,2026,paired,One Star,Fleur de Sel,"Novi Slankamen, Serbia",€€€€,https://guide.michelin.com/us/en/syrmia/novi-slankamen_7770386/restaurant/fleur-de-sel-1212486,ve_60863491c7,6944,Fleur de Sel,same
+brazil,2026,new,Bib Gourmand,Petí no MAM,"São Paulo, Brazil",$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/peti-gastronomia,,,,new
+brazil,2026,new,Bib Gourmand,Tabōa Cozinha Artesanal,"São Paulo, Brazil",$$,https://guide.michelin.com/us/en/sao-paulo-region/sao-paulo/restaurant/taboa-cozinha-artesanal,,,,new

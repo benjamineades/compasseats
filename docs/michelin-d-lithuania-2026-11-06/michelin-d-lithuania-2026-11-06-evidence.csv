@@ -1,0 +1,14 @@
+card_slug,card_category,card_name,card_city,card_price,card_url,card_label,venue_id,award_id,action
+14horses,Bib Gourmand,14Horses,Vilnius,€€,https://guide.michelin.com/us/en/vilnius-region/vilnius_1985479/restaurant/14horses,2026,ve_3bf46450e2,12853,url set
+augustin,Bib Gourmand,Augustin,Vilnius,€€,https://guide.michelin.com/us/en/vilnius-region/vilnius_1985479/restaurant/augustin,2026,ve_64b1007090,12855,url set
+b-arn-bistro,Bib Gourmand,B'ARN Bistro,Vilnius,€€,https://guide.michelin.com/us/en/vilnius-region/vilnius_1985479/restaurant/b-arn-bistro,2026,ve_f5338cfe5c,12857,url set
+deep-roots,One Star,Deep Roots,Vilnius,€€€€,https://guide.michelin.com/us/en/vilnius-region/vilnius_1985479/restaurant/deep-roots,2026,ve_7483bad22f,21128,url already set
+dziaugsmas,One Star,Džiaugsmas,Vilnius,€€€,https://guide.michelin.com/us/en/vilnius-region/vilnius_1985479/restaurant/dziaugsmas,2026,ve_c576098456,8934,url set
+el-gato-negro-1219046,Bib Gourmand,El Gato Negro,Vilnius,€€,https://guide.michelin.com/us/en/vilnius-region/vilnius_1985479/restaurant/el-gato-negro-1219046,2026,ve_46640fd4c8,12859,url set
+gaspar-s,Bib Gourmand,Gaspar's,Vilnius,€€,https://guide.michelin.com/us/en/vilnius-region/vilnius_1985479/restaurant/gaspar-s,2026,ve_20dadd95d6,12862,url set
+le-travi,Bib Gourmand,Le Travi,Vilnius,€,https://guide.michelin.com/us/en/vilnius-region/vilnius_1985479/restaurant/le-travi,2026,ve_3afc27c04f,12865,url set
+nineteen18,One Star,Nineteen18,Vilnius,€€€€,https://guide.michelin.com/us/en/vilnius-region/vilnius_1985479/restaurant/nineteen18,2026,ve_abd926cf7d,8937,url set
+numan,Bib Gourmand,Nüman,Kaunas,€€,https://guide.michelin.com/us/en/kaunas-region/kaunas_1976586/restaurant/numan,2026,ve_f8906e99b1,10726,url set
+pievos,Bib Gourmand,Pievos,Birštonas,€€,https://guide.michelin.com/us/en/kaunas-region/birstonas_1972842/restaurant/pievos,2026,ve_c6c4bba54c,21130,url already set
+red-brick,One Star,Red Brick,Radiškis,€€€€,https://guide.michelin.com/us/en/vilnius-region/radiskis_7770291/restaurant/red-brick,2026,ve_7a0520c296,21129,url already set
+(card left the site),One Star,,,,https://guide.michelin.com/lt/en/article/michelin-guide-ceremony/all-the-winners-michelin-guide-lithuania-2026-has-been-unveiled-new-stars-bib-gourmands-special-awards,2026 (article),ve_87f2380c44,8930,"article url set: Demo (Vilnius): article Jun 5 2026 names it One Star, card demo-1210016 404 on Nov 6 2026, Wayback last capture Nov 8 2025 (label 2025)"

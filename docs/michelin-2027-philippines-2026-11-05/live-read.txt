@@ -1,0 +1,34 @@
+ve_02414fbadb|6356|One Star|2025|ci_198432e80d|manila|active|$$$$|celera|Celera
+ve_0733ac977c|11100|Bib Gourmand|2025|ci_198432e80d|manila|active|$$|manamatthetriangle|Manam at the Triangle
+ve_0b81280910|12412|Bib Gourmand|2025|ci_74b985f749|taguig-metro-manila|active|$$|cochibymarvinagustin|COCHI by Marvin Agustin
+ve_15ab352ddc|11098|Bib Gourmand|2025|ci_198432e80d|manila|active|$$|lapita|LaPita
+ve_1b52721d24|6361|One Star|2025|ci_198432e80d|manila|active|$$$|inato|Inatô
+ve_3322a01dd3|9731|Bib Gourmand|2025|ci_91b1fd2bea|cebu|active|$|esmencarinderia|Esmen Carinderia
+ve_3aa7504a5c|2452|Two Stars|2025|ci_198432e80d|manila|active|$$$$|helmbyjoshboutwood|Helm by Josh Boutwood
+ve_42732bab00|11123|Bib Gourmand|2025|ci_7dce3c875e|manila-metro-manila|active|$$|cabel|Cabel
+ve_55fa37e356|11102|Bib Gourmand|2025|ci_198432e80d|manila|active|$$|sarsakitchenbar|Sarsá Kitchen + Bar
+ve_5d017018da|6364|One Star|2025|ci_198432e80d|manila|active|$$$$|toyoeatery|Toyo Eatery
+ve_6b4653a3c2|9732|Bib Gourmand|2025|ci_91b1fd2bea|cebu|active|$$|lasabusaymodernfilipinofood|LASA BUSAY Modern Filipino Food
+ve_6f47f1c8ed|9733|Bib Gourmand|2025|ci_91b1fd2bea|cebu|active|$|paresbatchoyfoodhouse|Pares Batchoy Food House
+ve_7bba9e3816|11099|Bib Gourmand|2025|ci_198432e80d|manila|active|$$|lampara|Lampara
+ve_84ded2e04a|9734|Bib Gourmand|2025|ci_91b1fd2bea|cebu|active|$$|thepigandpalm|The Pig and Palm
+ve_8539e5beaf|8386|One Star|2025|ci_198432e80d|manila|active|$$$$|gallerybychele|Gallery By Chele
+ve_8853feb456|11787|Bib Gourmand|2025|ci_62fd43b888|quezon-metro-manila|active|$$|palmgrillauthenticsouthernmindanaoncuisine|Palm Grill: Authentic Southern Mindanaon Cuisine
+ve_9c188a1e77|6359|One Star|2025|ci_198432e80d|manila|active|$$$$|hapag|Hapag
+ve_9ef43ea0c6|11097|Bib Gourmand|2025|ci_198432e80d|manila|active|$$|halong|HÁLONG
+ve_a33d03b879|11101|Bib Gourmand|2025|ci_198432e80d|manila|active|$$|pilyaskitchen|Pilya's Kitchen
+ve_a74c96e583|12414|Bib Gourmand|2025|ci_74b985f749|taguig-metro-manila|active|$$|lostacosmnl|Los Tacos MNL
+ve_acb0fd2749|11105|Bib Gourmand|2025|ci_198432e80d|manila|active|$$|yourlocal|Your Local
+ve_afed6a84b8|9729|Bib Gourmand|2025|ci_91b1fd2bea|cebu|active|$$|abaseriadelicafe|Abaseria Deli & Cafe
+ve_b35e1074dd|6362|One Star|2025|ci_198432e80d|manila|active|$$$$|kasapalma|Kása Palma
+ve_b541c134d7|12413|Bib Gourmand|2025|ci_74b985f749|taguig-metro-manila|active|$$|emhanoiemhanoirestaurantbgc|Em Ha Noi - Em Hà Nội Restaurant BGC
+ve_b983ca4787|11788|Bib Gourmand|2025|ci_62fd43b888|quezon-metro-manila|active|$$|somethai|SOME THAI
+ve_bdca6d0be9|11104|Bib Gourmand|2025|ci_198432e80d|manila|active|$$|theunderbelly|The Underbelly
+ve_be4b78a978|11103|Bib Gourmand|2025|ci_198432e80d|manila|active|$$|taqueriafranco|Taquería Franco
+ve_c098594959|7168|One Star|2025|ci_2c4e146fa6|paranaque-metro-manila|active|$$$$|linamnammnl|Linamnam MNL
+ve_c1fad6f34d|4477|One Star|2025|ci_e8e2660d1e|cavite|active|$$$$|asadoralfonso|Asador Alfonso
+ve_c699c5b252|12411|Bib Gourmand|2025|ci_74b985f749|taguig-metro-manila|active|$$|brickcorner|Brick Corner
+ve_c9c94a8b08|11786|Bib Gourmand|2025|ci_62fd43b888|quezon-metro-manila|active|$|morningsuneatery|Morning Sun Eatery
+ve_d5d1159488|12410|Bib Gourmand|2025|ci_74b985f749|taguig-metro-manila|active|$$|bolero|Bolero
+ve_de1afd46e7|11611|Bib Gourmand|2025|ci_2c4e146fa6|paranaque-metro-manila|active|$$|kumba|KUMBA
+ve_fe597436c3|9730|Bib Gourmand|2025|ci_91b1fd2bea|cebu|active|$$|cur8|CUR8

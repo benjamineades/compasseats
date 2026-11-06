@@ -1,0 +1,158 @@
+ve_020200b069|5191|One Star|2025|ci_f51ade7285|grafenstein|active|$$$$|restaurantmoritz|Restaurant Moritz
+ve_03dda05136|6413|One Star|2025|ci_f56484f51f|maria-alm|active|$$$$|aureafinedining|Aurea Fine Dining
+ve_04db6af961|12543|Bib Gourmand|2025|ci_2a3e5a0011|taxenbach|active|$$|taxenbacherhof|Taxenbacherhof
+ve_04f7b3d9e9|5691|One Star|2025|ci_4f0386c7a6|kitzbuhel|active|$$$|lesdeuxkitzbuhelbrasseriebar|Les Deux Kitzbühel - Brasserie & Bar
+ve_0585a7da42|10476|Bib Gourmand|2025|ci_f26c37bea0|hittisau|active|$$|erneledieladenwirtschaft|Ernele – die Ladenwirtschaft
+ve_05df6b956a|2255|Two Stars|2025|ci_5253c3fc21|lech|active|$$$$|rotewandchefstable|Rote Wand Chef's Table
+ve_084f389fc1|8321|One Star|2025|ci_c462b0b5df|stumm|active|$$$$|restaurantguatzessen|Restaurant GuatzEssen
+ve_0c96433ef6|9041|One Star|2025|ci_b8f60c404b|weissensee|active|$$$$|geniesserhoteldieforelle|Genießerhotel Die Forelle
+ve_0cfb53de38|8312|One Star|2025|ci_e893517c4b|straden|active|$$$|sazianiweg|Saziani Weg
+ve_112c10789b|8904|One Star|2025|ci_2f7515e8c5|vienna|active|$$$$|everybodysdarling|Everybody’s Darling
+ve_13fece5602|8899|One Star|2025|ci_2f7515e8c5|vienna|active|$$$$|restaurantaddiert|Restaurant Addiert
+ve_14069684ad|2962|Two Stars|2025|ci_f2646aa02d|salzburg|active|$$$$|sennsrestaurant|SENNS.Restaurant
+ve_14c14db60c|3039|Two Stars|2025|ci_6523b13f52|schutzen-am-gebirge|active|$$$$|taubenkobel|taubenkobel
+ve_1677c64207|11041|Bib Gourmand|2025|ci_ad119f7e39|lustenau|active|$$|freigeistgastrogmbh|Freigeist Gastro GmbH
+ve_168cf55411|10445|Bib Gourmand|2025|ci_53df88170e|haslau-an-der-donau|active|$$|haslauerhof|Haslauerhof
+ve_181db728e7|8281|One Star|2025|ci_ca090ac0c0|steyr|active|$$$$|restaurantkapeller|Restaurant Kapeller
+ve_1b7db18667|10245|Bib Gourmand|2025|ci_220ad3ffa6|gamlitz|active|$$|weinkehrgamlitz|Weinkehr Gamlitz
+ve_1df7f717c0|2252|Two Stars|2025|ci_5253c3fc21|lech|active|$$$$|griggelerstuba|Griggeler Stuba
+ve_20184d6a58|3024|Two Stars|2025|ci_147854fdda|sankt-veit-im-pongau|active|$$$$|krauterreichbyvituswinkler|Kräuterreich by Vitus Winkler
+ve_20fd06fdc8|5209|One Star|2025|ci_46f9b613c4|grieskirchen|active|$$$|restaurantwaldschanke|Restaurant Waldschänke
+ve_212774e992|12943|Bib Gourmand|2025|ci_976e073e90|westendorf|active|$$|gasthaussteinberg|Gasthaus Steinberg
+ve_26e4daa81e|7907|One Star|2025|ci_f29a4c7df2|scharding|active|$$$$|lukasrestaurant|Lukas Restaurant
+ve_282c67ef46|12005|Bib Gourmand|2025|ci_32dd8fa5cc|sankt-martin-am-grimming|active|$$|dorfhotelmayer|Dorfhotel Mayer
+ve_29b8c87571|5956|One Star|2025|ci_907e6aad95|linz|active|$$$|verdirestauranteinkehr|Verdi-Restaurant-Einkehr
+ve_2aff5894da|11659|Bib Gourmand|2025|ci_9fdf6ad78d|pfaffing|active|$$|dieschmiede|Die Schmiede
+ve_2b7584aa96|12832|Bib Gourmand|2025|ci_2f7515e8c5|vienna|active|$$|mochi|Mochi
+ve_2c47b53bde|5880|One Star|2025|ci_9bd9fddc4a|lauterach|active|$$$|restaurantguth|Restaurant Guth
+ve_2c5398e744|3511|Two Stars|2025|ci_2f7515e8c5|vienna|active|$$$$|silvionickol|Silvio Nickol
+ve_2dcbdc3574|3871|One Star|2025|ci_957cd7c2d6|bad-gleichenberg|active|$$$$|geschwisterrauch|Geschwister Rauch
+ve_3019edc0d9|5938|Bib Gourmand|2025|ci_4421c43eb7|ligist|active||worgotterwirtshaus|Wörgötter - Wirtshaus
+ve_30b3753169|12004|Bib Gourmand|2025|ci_d423efbeef|sankt-georgen-an-der-leys|active|$$|hueberderwirtinbrundl|Hueber der Wirt in Bründl
+ve_315e62ed13|8948|One Star|2025|ci_2a88b151de|vorchdorf|active|$$$$|restauranttanglberg|Restaurant Tanglberg
+ve_35197980cb|5890|One Star|2025|ci_5253c3fc21|lech|active|$$$$|lafenice|La Fenice
+ve_385b9ff1fc|13030|Bib Gourmand|2025|ci_17db8f607a|zoblen|active|$$|smorent|s'Morent
+ve_3a39dab240|10475|Bib Gourmand|2025|ci_a50bfd46cc|hirschegg|active|$$|carnozet|Carnozet
+ve_3bafd1da29|9533|Bib Gourmand|2025|ci_1937e5fb51|bizau|active|$$|biohotelschwanen|Biohotel Schwanen
+ve_3d97e80f27|8900|One Star|2025|ci_2f7515e8c5|vienna|active|$$$$|apron|Apron
+ve_3fd7d3ec02|5933|One Star|2025|ci_bad4612442|lienz|active|$$$$|ansitz12|Ansitz12
+ve_407708371a|12166|Bib Gourmand|2025|ci_9cc6441053|siegersdorf|active|$$|dasmarkthof|Das Markthof
+ve_40d28061c5|1895|Two Stars|2025|ci_6f84787491|ehrenhausen|active|$$$$|dieweinbank|Die Weinbank
+ve_416af087fb|2477|Two Stars|2025|ci_70bea543d7|mautern-an-der-donau|active|$$$$|landhausbacher|Landhaus Bacher
+ve_42a0cbebc6|10748|Bib Gourmand|2025|ci_4f0386c7a6|kitzbuhel|active|$$|mockingdaswirtshaus|Mocking - Das Wirtshaus
+ve_443fc3d230|11489|Bib Gourmand|2025|ci_d15d9b4b21|obertilliach|active|$$|almfamilyhotelscherer|Almfamilyhotel Scherer
+ve_44ab9a320b|9278|Bib Gourmand|2025|ci_2a3e33ff68|anras|active|$$|hotelpfleger|Hotel Pfleger
+ve_4845e4eb8e|11934|Bib Gourmand|2025|ci_f2646aa02d|salzburg|active|$$$|restaurantbrandstatter|Restaurant Brandstätter
+ve_48bc0f3eaa|1986|Two Stars|2025|ci_fe712b74e1|hall-in-tirol|active|$$$$|schwarzeradler|Schwarzer Adler
+ve_4ab8f316e7|8913|One Star|2025|ci_2f7515e8c5|vienna|active|$$$$|zsomrestaurant|Z‘Som Restaurant
+ve_4af0c24032|8910|One Star|2025|ci_2f7515e8c5|vienna|active|$$$$|pramerlandthewolf|Pramerl and the Wolf
+ve_4b6699d829|12950|Bib Gourmand|2025|ci_4323ee2720|wimpassing-an-der-leitha|active|$$|gasthausziegelwerk|Gasthaus Ziegelwerk
+ve_501866509c|5955|One Star|2025|ci_907e6aad95|linz|active|$$$$|rossbarth|Rossbarth
+ve_514ac623be|1975|Two Stars|2025|ci_b71ff3b7b7|golling-an-der-salzach|active|$$$$|dollererswirtshaus|Döllerers Wirtshaus
+ve_53c64ac2bd|12958|Bib Gourmand|2025|ci_9b8be9a003|winzendorf|active|$$|pucheggerwirt|Puchegger-Wirt
+ve_54371eca36|6736|One Star|2025|ci_c29f322f6c|neustift-im-stubaital|active|$$$$|gourmetrestauranthubertusstube|Gourmetrestaurant Hubertusstube
+ve_552d769ad5|5989|One Star|2025|ci_47ee567fec|lochau|active|$$$|mangold|Mangold
+ve_553babaed0|5622|One Star|2025|ci_47f2ea654f|innervillgraten|active|$$$$|dergannerhof|Der Gannerhof
+ve_56642edf5a|12057|Bib Gourmand|2025|ci_fcfab24bb3|schwarzenberg|active|$$|restaurantgasthofadler|Restaurant Gasthof Adler
+ve_58bf6630bc|7844|One Star|2025|ci_f05208ce77|sankt-wolfgang-im-salzkammergut|active|$$$$|paulagourmetrestaurant|Paula Gourmet Restaurant
+ve_58e42a71d9|10374|Bib Gourmand|2025|ci_fe712b74e1|hall-in-tirol|active|$$|seccobistro|SECCO Bistro
+ve_5b3af84920|21840|Bib Gourmand|2025|ci_52ee87fd58|turnau|active|$$|schankkuchl|Schankkuchl
+ve_5c37dd4f68|8765|One Star|2025|ci_5ab6e4b98b|tux|active|$$$$|hotelbergfried|Hotel Bergfried
+ve_5d73adf691|8450|One Star|2025|ci_f7401c9174|telfs|active|$$$$|interalpenhoteltyrol|Interalpen-Hotel Tyrol
+ve_5e3b1bb227|8902|One Star|2025|ci_2f7515e8c5|vienna|active|$$$$|restaurantedvard|Restaurant EDVARD
+ve_5f73c18166|5627|One Star|2025|ci_b6540200be|ischgl|active|$$$$|gourmetrestaurantschlossherrnstube|Gourmetrestaurant Schlossherrnstube
+ve_63937f9a7a|10909|Bib Gourmand|2025|ci_f2efcf34b0|lichtenberg-at|active|$$|landgasthausholzpoldlmanuelgrabner|Landgasthaus Holzpoldl - Manuel Grabner
+ve_659f81b68a|6976|One Star|2025|ci_76c9a01042|obergurgl|active|$$$$|austriastuben|Austria Stuben
+ve_66510fec11|9044|One Star|2025|ci_b8f60c404b|weissensee|active|$$$$|wirtshaus|Wirtshaus
+ve_671f46b224|10321|Bib Gourmand|2025|ci_6e00929feb|graz|active|$$|restaurantrauchrebeimaugartenarthotel|Restaurant Rauch & Rebe im Augarten Art Hotel
+ve_6a6892f0f6|6726|One Star|2025|ci_16fdfe269f|nauders|active|$$$$|skammerli|s’kammerli
+ve_6a9f7f565e|21846|One Star|2025|ci_5ab6e4b98b|tux|active|$$$$|geniesserstubeimalpenhof|Geniesserstube im Alpenhof
+ve_6b7df4f801|9581|Bib Gourmand|2025|ci_8c4d3a946a|brand|active|$$|gufer55|Gufer 55
+ve_6b991beb09|12833|Bib Gourmand|2025|ci_2f7515e8c5|vienna|active|$$|rosi|Rosi
+ve_6e8bd090c8|8909|One Star|2025|ci_2f7515e8c5|vienna|active|$$$$|restaurantjola|Restaurant JOLA
+ve_707b16ee30|7840|One Star|2025|ci_161abeb330|sankt-josef|active|$$$|restaurantbroadmoar|Restaurant Broadmoar
+ve_729ed76107|7542|One Star|2025|ci_5e8318dd03|rennweg-am-katschberg|active|$$$$|gamskogelhutte|Gamskogelhütte
+ve_75b0e78fde|8729|One Star|2025|ci_188b4dd617|traunkirchen|active|$$$$|restaurantbootshaus|Restaurant Bootshaus
+ve_7718a4f807|5686|One Star|2025|ci_685f497759|kirchberg-am-wechsel|active|$$$$|gourmetrestaurantgaumenkitzel|Gourmetrestaurant Gaumenkitzel
+ve_796b20bc8e|5954|One Star|2025|ci_907e6aad95|linz|active|$$$$|restaurantkliemsteinvinovitis|Restaurant Kliemstein VinoVitis
+ve_7eca949360|6447|One Star|2025|ci_89bc442412|mauterndorf|active|$$$$|mesnerhaus|Mesnerhaus
+ve_80e4f50060|7726|One Star|2025|ci_f2646aa02d|salzburg|active|$$$|esszimmer|Esszimmer
+ve_81914eba0d|7730|One Star|2025|ci_f2646aa02d|salzburg|active|$$$|theglassgarden|The Glass Garden
+ve_81f500aab7|7728|One Star|2025|ci_f2646aa02d|salzburg|active|$$$$|restaurantpfefferschiff|Restaurant Pfefferschiff
+ve_8b55a3640e|10518|Bib Gourmand|2025|ci_d381324eed|hofamt-priel|active|$$|landgasthofhinterleithner|Landgasthof Hinterleithner
+ve_8b8e5eb04e|5200|One Star|2025|ci_6e00929feb|graz|active|$$$$|restaurantartis|Restaurant ARTIS
+ve_8ee67abacb|11145|Bib Gourmand|2025|ci_ee50dc071a|matrei-in-osttirol|active|$$|saluticafepizzeria|Saluti Cafe-Pizzeria
+ve_8f7008ae11|10477|Bib Gourmand|2025|ci_f26c37bea0|hittisau|active|$$|kronehittisau|Krone Hittisau
+ve_901e3be188|9283|Bib Gourmand|2025|ci_270a73c73d|apetlon|active|$$|gasthauszumfrohlichenarbeiter|Gasthaus "Zum fröhlichen Arbeiter"
+ve_919a374540|5201|One Star|2025|ci_6e00929feb|graz|active|$$$$|geniessereiammarkt|Genießerei am Markt
+ve_94da227c08|12875|Bib Gourmand|2025|ci_bf035632cb|walpersdorf|active|$$|schlosskuchewalpersdorfblauenstein|Schlossküche Walpersdorf Blauenstein
+ve_9acf561dcf|5937|One Star|2025|ci_4421c43eb7|ligist|active|$$$|restaurantworgotter|Restaurant Wörgötter
+ve_9bbb039a7a|12008|Bib Gourmand|2025|ci_147854fdda|sankt-veit-im-pongau|active|$$$|sonnhofbyvituswinkler|Sonnhof by Vitus Winkler
+ve_9c1d9ed48f|3556|Two Stars|2025|ci_4198d25c32|werfen|active|$$$$|restaurantobauer|Restaurant Obauer
+ve_9cc44ba52f|8381|One Star|2025|ci_cddd747a2c|solden|active|$$$$|restaurantotztalerstube|Restaurant Ötztaler Stube
+ve_9d272cf447|12745|Bib Gourmand|2025|ci_b098d2fc36|tulln-an-der-donau|active|$$|gasthaussodomazursonne|Gasthaus Sodoma "Zur Sonne"
+ve_9da2eae87f|2951|Two Stars|2025|ci_f2646aa02d|salzburg|active|$$$$|restaurantikarus|Restaurant Ikarus
+ve_a26077c5be|11879|Bib Gourmand|2025|ci_0ce29a1688|rust-at|active|$$|kirchenwirt|Kirchenwirt
+ve_a3d506a9e2|5624|One Star|2025|ci_b6540200be|ischgl|active|$$$$|paznauerstube|Paznauerstube
+ve_a70fd42717|12007|Bib Gourmand|2025|ci_1dd325947d|sankt-veit-am-vogau|active|$$|gasthausrestaurantthaller|Gasthaus Restaurant Thaller
+ve_a73c1a7ac2|5202|One Star|2025|ci_6e00929feb|graz|active|$$$$|zurgoldenenbirn|Zur Goldenen Birn
+ve_a77ecd83a7|11757|Bib Gourmand|2025|ci_e2d214efc4|purbach-am-neusiedler-see|active|$$|restaurantfossil|Restaurant Fossil
+ve_a7c0633855|5110|One Star|2025|ci_220ad3ffa6|gamlitz|active|$$$$|weingutsattlerhofgmbh|Weingut Sattlerhof GmbH
+ve_a7f5405a52|11256|Bib Gourmand|2025|ci_977eec293c|murau|active|$$|lercherswirtshaus|Lercher's Wirtshaus
+ve_a94f2f6ed8|9209|Bib Gourmand|2025|ci_7ae4ea1411|achenkirch|active|$$|grundlersgeniesserwirtshaus|Gründlers Genießer-Wirtshaus
+ve_aa667e9089|5915|One Star|2025|ci_080c48a291|leogang|active|$$$$|gourmetrestaurantdahoambyandreasherbstleogang|Gourmetrestaurant dahoam by Andreas Herbst Leogang
+ve_acf6983c74|3483|Two Stars|2025|ci_2f7515e8c5|vienna|active|$$$$|restaurantkonstantinfilippou|Restaurant Konstantin Filippou
+ve_ae7ae1c431|8960|One Star|2025|ci_4bc8aff5ad|waidhofen-an-der-thaya|active|$$$$|zimmerl|Zimmerl
+ve_b08abac8f4|3619|One Star|2025|ci_7ae4ea1411|achenkirch|active|$$$$|grundlersgourmetstuberl|Gründlers Gourmetstuberl
+ve_b36a1f3bde|7021|One Star|2025|ci_c6f492acb7|ort-im-innkreis|active|$$$$|kammer5restaurant|kammer5 Restaurant
+ve_b753c165c3|10864|Bib Gourmand|2025|ci_c37e961347|langenwang|active|$$|krainerhotelrestaurantcafe|Krainer Hotel Restaurant Café
+ve_b9fa546726|5248|One Star|2025|ci_0d8462dd85|hadersdorf-am-kamp|active|$$$$|esslokal|Esslokal
+ve_ba35a32755|6414|One Star|2025|ci_605a41b578|maria-worth|active|$$$$|gourmetrestauranthubertwallner|Gourmet Restaurant Hubert Wallner
+ve_ba96f056e4|5218|One Star|2025|ci_12f2900d48|gro-raming|active|$$$$|raunaturebasedcuisine|RAU nature based cuisine
+ve_bd408ea3c3|3017|Two Stars|2025|ci_9ae6a3ac12|sankt-anton-am-arlberg|active|$$$$|gourmetrestauranttannenhof|Gourmetrestaurant Tannenhof
+ve_c3c38e40d2|10320|Bib Gourmand|2025|ci_6e00929feb|graz|active|$$|mohrenwirtgraz|Mohrenwirt Graz
+ve_c3d8648ab6|12827|Bib Gourmand|2025|ci_2f7515e8c5|vienna|active|$$|chezbernardrestaurantetbar|CHEZ BERNARD Restaurant et Bar
+ve_c4d60aaaa2|2118|Two Stars|2025|ci_b6540200be|ischgl|active|$$$$|gourmetrestaurantstuva|Gourmet Restaurant Stüva
+ve_c544a8185e|8905|One Star|2025|ci_2f7515e8c5|vienna|active|$$$$|glasswingrestaurantbyalexandrusimon|Glasswing Restaurant by Alexandru Simon
+ve_c63263d954|10749|Bib Gourmand|2025|ci_9320e17b54|kitzeck-im-sausal|active|$$|dasweinkitzwirtshausinkitzecksudsteiermark|Das Weinkitz - Wirtshaus in Kitzeck, Südsteiermark
+ve_c728eb0883|3654|One Star|2025|ci_c74672a84a|altaussee|active|$$$$|restaurantgeigeralm|Restaurant Geiger Alm
+ve_c82967b28d|2577|Two Stars|2025|ci_7bf5064cbe|neufelden|active|$$$$|hotelrestaurantmuhltalhof|Hotel-Restaurant Mühltalhof
+ve_c8bef9b8e5|12920|Bib Gourmand|2025|ci_cec5280ebe|wei-enkirchen-in-der-wachau|active|$$|weingutundrestaurantjosefjamek|Weingut und Restaurant Josef Jamek
+ve_c988d005ee|4993|One Star|2025|ci_1e8250beff|fehring|active|$$$$|wirtshauslilli|Wirtshaus Lilli
+ve_c9f3675ecd|8895|One Star|2025|ci_2f7515e8c5|vienna|active|$$$$|aend|[aend]
+ve_ca840dae3d|1333|Three Stars|2025|ci_2f7515e8c5|vienna|active|$$$$|steirereck|Steirereck
+ve_cb2b06b783|12828|Bib Gourmand|2025|ci_2f7515e8c5|vienna|active|$$|tanteliesl|TANTE LIESL
+ve_cd944f8fec|7841|One Star|2025|ci_28f577733f|sankt-kathrein-am-offenegg|active|$$$$|derwildeeder|Der WILDe EDER
+ve_cfef9f87e2|5866|One Star|2025|ci_1999c7765e|langenlois|active|$$$$|heurigenhofbundlmayer|Heurigenhof Bündlmayer
+ve_d1400c0a21|12831|Bib Gourmand|2025|ci_2f7515e8c5|vienna|active|$$|meiereiimstadtpark|Meierei im Stadtpark
+ve_d159fc215c|3478|Two Stars|2025|ci_2f7515e8c5|vienna|active|$$$$|restaurantdoubek|Restaurant Doubek
+ve_d38dd14d87|9103|One Star|2025|ci_76202d8210|zau-enberg|active|$$$|restauranthimmelreich|Restaurant Himmelreich
+ve_d3fd2ae165|5898|Bib Gourmand|2025|ci_f957c08967|leibnitz|active||schlosskellerwirtshaus|Schlosskeller Wirtshaus
+ve_d899c9fd11|7829|One Star|2025|ci_4b17988680|sankt-andra-im-sausal|active|$$$$|haraldirkaampfarrhoffinedinewirtshaus|Harald Irka am Pfarrhof - Fine Dine & Wirtshaus
+ve_dedb6a516b|5823|One Star|2025|ci_32bb0b5bf8|konigsdorf|active|$$$$|ammahrbach|Am Mahrbach
+ve_dff12a59f8|1319|Three Stars|2025|ci_2f7515e8c5|vienna|active|$$$$|restaurantamador|Restaurant Amador
+ve_e043f5df5f|11486|Bib Gourmand|2025|ci_d35f481f31|oberrohrbach|active|$$|goldenesbrundl|Goldenes Bründl
+ve_e0a988fe42|11327|Bib Gourmand|2025|ci_236077ef20|neuberg-an-der-murz|active|$$|gasthofschaffer|Gasthof Schäffer
+ve_e1a2e58e03|10317|Bib Gourmand|2025|ci_395fd7c29b|grafenegg|active|$$|morwaldgrafeneggrestaurant|MÖRWALD Grafenegg Restaurant
+ve_e1b5bc689c|10181|Bib Gourmand|2025|ci_1e8250beff|fehring|active|$$|malerwinklrestaurantkunsthotelvinothek|Malerwinkl Restaurant + Kunsthotel + Vinothek
+ve_e1fe265f0f|12829|Bib Gourmand|2025|ci_2f7515e8c5|vienna|active|$$|lolaspanischesrestaurant|LOLA - Spanisches Restaurant
+ve_e2777cbdc0|7832|One Star|2025|ci_9ae6a3ac12|sankt-anton-am-arlberg|active|$$$$|ullrswinedine|Ullrs Wine & Dine
+ve_e2993571f3|12830|Bib Gourmand|2025|ci_2f7515e8c5|vienna|active|$$|mastweinbistro|MAST Weinbistro
+ve_e2a33c72d7|12937|Bib Gourmand|2025|ci_d711c6a5c1|weppersdorf|active|$$|gasthausfuchs|Gasthaus Fuchs
+ve_e3413976b4|3494|Two Stars|2025|ci_2f7515e8c5|vienna|active|$$$$|mrazsohn|Mraz & Sohn
+ve_e841e49aae|5007|One Star|2025|ci_7de0049ee5|fiss|active|$$$$|bruderherzfinedine|Bruderherz Fine Dine
+ve_e95baddee4|10862|Bib Gourmand|2025|ci_e42bb3cb27|langenlebarn|active|$$|gastwirtschaftfloh|Gastwirtschaft Floh
+ve_ea2936e055|4999|One Star|2025|ci_2949775077|feuersbrunn|active|$$$$|morwaldrelaischateauxgourmettonim|MÖRWALD Relais & Châteaux Gourmet "Toni M."
+ve_eb9cd42125|10650|Bib Gourmand|2025|ci_3039c0d452|innerbraz|active|$$|gasthofrossle|Gasthof Rössle
+ve_ed9b16c3e0|8906|One Star|2025|ci_2f7515e8c5|vienna|active|$$$$|restaurantherzig|Restaurant Herzig
+ve_f09cd919e1|12834|Bib Gourmand|2025|ci_2f7515e8c5|vienna|active|$$|tianbistroamspittelberg|Tian Bistro am Spittelberg
+ve_f1f24a63f1|10745|Bib Gourmand|2025|ci_685f497759|kirchberg-am-wechsel|active|$$|wirtshausmolzbachhof|Wirtshaus Molzbachhof
+ve_f42b1927e5|5927|One Star|2025|ci_4ee2547698|leutschach-an-der-weinstra-e|active|$$$$|liepertscafedinnerrooms|Lieperts Cafe Dinner Rooms
+ve_f59540f8bc|12921|Bib Gourmand|2025|ci_cec5280ebe|wei-enkirchen-in-der-wachau|active|$$|weingutholzapfelgutshofrestaurantprandtauerhof|Weingut Holzapfel Gutshofrestaurant Prandtauerhof
+ve_f7214874da|5369|One Star|2025|ci_a50bfd46cc|hirschegg|active|$$$$|kilianstubaifenhotelkleinwalsertal|Kilian Stuba – Ifen Hotel Kleinwalsertal
+ve_f76a89cd97|7836|One Star|2025|ci_d3403cf2dc|sankt-gilgen|active|$$$$|restaurantatelierfischer|Restaurant Atelier Fischer
+ve_fabac56e48|12305|Bib Gourmand|2025|ci_e893517c4b|straden|active|$$|genussgutkrispel|Genussgut Krispel
+ve_fb6905ec77|2486|Two Stars|2025|ci_21af28219d|obermieming|active|$$$$|restaurant141byjoachimjaud|Restaurant 141 by Joachim Jaud
+ve_fb7dc1ff33|5897|One Star|2025|ci_f957c08967|leibnitz|active|$$$$|schlosskellersudsteiermark|Schlosskeller Südsteiermark
+ve_fdeca5ad67|7830|One Star|2025|ci_9ae6a3ac12|sankt-anton-am-arlberg|active|$$$$|alpingourmetstube|Alpin Gourmet Stube
+ve_fe72a55b3c|5005|One Star|2025|ci_7de0049ee5|fiss|active|$$$|beefclub|Beef Club

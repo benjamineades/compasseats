@@ -1,0 +1,76 @@
+ve_1274a0d10d|12746|Bib Gourmand|2025|ci_b55e2f71a8|tulum|active|$$|cetli||Cetli
+ve_1689c2e3f7|11188|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$|raiz||Raíz
+ve_18576be506|10152|Bib Gourmand|2025|ci_f7273826d8|el-porvenir|active|$|la-cocina-de-dona-esthela||La Cocina de Doña Esthela
+ve_1d246aac4c|11477|Bib Gourmand|2025|ci_f5216cfefa|oaxaca|active|$$|alfonsina||Alfonsina
+ve_1e4eda692b|9962|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|galea||Galea
+ve_1fa0951701|2487|Two Stars|2025|ci_002aaa1d1e|mexico-city|active|$$$$|pujol||Pujol
+ve_256cac295c|8821|One Star|2025|ci_6c3d51195c|guadalupe|active|$$$$|animalon||Animalón
+ve_27c9173de4|4944|One Star|2025|ci_6c3d51195c|guadalupe|active|$$$$|lunario-valle-de-guadalupe||LUNARIO VALLE DE GUADALUPE
+ve_29005d67b2|12573|Bib Gourmand|2025|ci_b5300fcd8a|tlalpan|active|$|tacos-charly-oficial||Tacos Charly Oficial
+ve_2c1f062cbf|4395|One Star|2025|ci_4b3dd221d1|cabo-san-lucas|active|$$$$|cocina-de-autor||Cocina de Autor
+ve_2e42ae66e2|11483|Bib Gourmand|2025|ci_f5216cfefa|oaxaca|active|$$|restaurant-tierra-del-sol||Restaurant Tierra del Sol
+ve_339a2999a4|7805|One Star|2025|ci_4e9eaa94e2|monterrey|active|$$$|pangea||PANGEA
+ve_384a06a422|9493|Bib Gourmand|2025|ci_8a81d8d175|benito-juarez|active|$|los-consentidos-del-barrio||Los Consentidos del Barrio
+ve_3b13f66e6f|9492|Bib Gourmand|2025|ci_8a81d8d175|benito-juarez|active|$|el-vilsito||El Vilsito
+ve_3c7521e2eb|9972|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|ultramarinos-demar||Ultramarinos Demar
+ve_3f286d0a0b|11480|Bib Gourmand|2025|ci_f5216cfefa|oaxaca|active|$$|la-olla||La Olla
+ve_4311d111a0|9967|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|plonk||Plonk
+ve_49a063d694|9973|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|vigneron||Vigneron
+ve_4b376309e6|12747|Bib Gourmand|2025|ci_b55e2f71a8|tulum|active|$$|mestixa-tulum||Mestixa Tulum
+ve_4bbcc58a9b|9974|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|voraz||Voraz
+ve_525fed72b2|8824|One Star|2025|ci_6c3d51195c|guadalupe|active|$$$|conchas-de-piedra||Conchas de Piedra
+ve_54e2f05c38|4964|One Star|2025|ci_c3b396466a|ensenada|active|$$$$|olivea-farm-to-table||Olivea Farm to Table
+ve_55222b26b4|9966|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|pink-rambo||Pink Rambo
+ve_592f7ff1e3|11482|Bib Gourmand|2025|ci_f5216cfefa|oaxaca|active|$$|las-quince-letras||Las Quince Letras
+ve_5a8c26383a|2512|Two Stars|2025|ci_002aaa1d1e|mexico-city|active|$$$$|quintonil||Quintonil
+ve_5e31828544|4692|One Star|2025|ci_002aaa1d1e|mexico-city|active|$$$$|maximo||Máximo
+ve_5e8a3f0335|11226|Bib Gourmand|2025|ci_4e9eaa94e2|monterrey|active|$|tacos-dona-mary-la-gritona||Tacos Doña Mary La Gritona
+ve_6222c0a0c3|12567|Bib Gourmand|2025|ci_5fd6a2fafd|tijuana|active|$$|carmelita-molino-y-cocina||Carmelita Molino y Cocina
+ve_64baed52ac|12841|Bib Gourmand|2025|ci_dae6242b03|villa-de-juarez|active|$$$$|villa-torel||Villa Torél
+ve_68d244ee06|11187|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|comedor-jacinta||Comedor Jacinta
+ve_6994b16144|11755|Bib Gourmand|2025|ci_942aedc7ef|puerto-morelos|active|$$|punta-corcho||Punta Corcho
+ve_6d38330897|9955|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|caracol-de-mar||Caracol de Mar
+ve_6eaa2b6f54|9175|One Star|2025|ci_002aaa1d1e|mexico-city|active|$$|la-once-mil-lomas||La Once Mil - Lomas
+ve_703961ccfa|4693|One Star|2025|ci_002aaa1d1e|mexico-city|active|$$|restaurante-rosetta||Restaurante Rosetta
+ve_7572d3c920|11990|Bib Gourmand|2025|ci_121dfcb8bb|san-jose-del-cabo|active|$$|flora-s-field-kitchen||Flora's Field Kitchen
+ve_762b2ed65f|9961|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|galanga-thai-house||Galanga Thai House
+ve_767ca1996d|13032|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$|taqueria-los-milanesos||Taquería Los Milanesos
+ve_78b33b708e|9968|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$|tacos-del-valle||Tacos del Valle
+ve_78c05a0f6c|11715|Bib Gourmand|2025|ci_02584b7923|playa-del-carmen|active|$$|axiote-cocina-de-mexico||Axiote Cocina de México
+ve_8a9d405170|9181|One Star|2025|ci_f020927946|merida|active|$$$$|huniik||Huniik
+ve_914842591c|4704|One Star|2025|ci_002aaa1d1e|mexico-city|active|$|el-califa-de-leon||El Califa de León
+ve_942f6db974|9963|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|jowong||Jowong
+ve_9476a4dcc4|9965|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|pargot||Pargot
+ve_971bd359c7|9960|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|fugaz||Fugaz
+ve_9cc7566b9d|9665|Bib Gourmand|2025|ci_4b3dd221d1|cabo-san-lucas|active|$$|metate-cabo||Metate Cabo
+ve_9d3a359168|9956|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|contramar||Contramar
+ve_a630ec0502|11481|Bib Gourmand|2025|ci_f5216cfefa|oaxaca|active|$$|labo-fermento||Labo Fermento
+ve_a7517b2452|9159|One Star|2025|ci_1431b98607|guadalajara|active|$$$$|restaurante-alcalde||Restaurante Alcalde
+ve_ab5a360f69|9174|One Star|2025|ci_002aaa1d1e|mexico-city|active|$$$|gaba-restaurante||Gaba Restaurante
+ve_add42a2b2e|9954|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|aleli-rooftop||Aleli Rooftop
+ve_b04067d16f|10164|Bib Gourmand|2025|ci_c3b396466a|ensenada|active|$$|sabina-restaurante-por-la-guerrerense||Sabina Restaurante por La Guerrerense
+ve_b52256698b|8825|One Star|2025|ci_6c3d51195c|guadalupe|active|$$$$|damiana-love-food||Damiana Love & Food
+ve_bb91783d56|10150|Bib Gourmand|2025|ci_53ecff4b5d|el-pescadero|active|$$|agricole-tienda-de-campo||Agricole Tienda de Campo
+ve_bdf75c92d6|10161|Bib Gourmand|2025|ci_c3b396466a|ensenada|active|$$|casa-marcelo||Casa Marcelo
+ve_c043328b53|9971|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$|taqueria-el-jarocho||Taquería El Jarocho
+ve_c375ed5540|9970|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$|taqueria-los-cocuyos||Taqueria Los Cocuyos
+ve_c4aed50388|4683|One Star|2025|ci_002aaa1d1e|mexico-city|active|$$|expendio-de-maiz||Expendio de Maiz
+ve_c6ddc99d2f|6974|One Star|2025|ci_f5216cfefa|oaxaca|active|$$|levadura-de-olla-restaurante||Levadura de Olla Restaurante
+ve_ca7c0fada5|7380|One Star|2025|ci_02584b7923|playa-del-carmen|active|$$$$|cocina-de-autor||Cocina de Autor
+ve_cef04ba178|9136|One Star|2025|ci_002aaa1d1e|mexico-city|active|$$|sud-777||Sud 777
+ve_da655a493a|7385|One Star|2025|ci_942aedc7ef|puerto-morelos|active|$$$$|le-chique||Le Chique
+ve_dc4c12b269|4682|One Star|2025|ci_002aaa1d1e|mexico-city|active|$$|esquina-comun||Esquina Común
+ve_e71b270074|10162|Bib Gourmand|2025|ci_c3b396466a|ensenada|active|$$|humo-sal||Humo&Sal
+ve_ea74d4e504|9964|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$|la-89||La 89
+ve_eb15d83731|11189|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$|siembra-tortilleria||Siembra Tortillería
+ve_ef14273320|11186|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$|comal-oculto-itacate||Comal Oculto - Itacate
+ve_eff6507e88|10163|Bib Gourmand|2025|ci_c3b396466a|ensenada|active|$$|la-concheria||La Concheria
+ve_f1a3b8b43c|9969|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$|tacos-los-alexis-roma-norte||Tacos Los Alexis - Roma Norte
+ve_f28f78f215|6606|One Star|2025|ci_4e9eaa94e2|monterrey|active|$$$$|koli||KOLI
+ve_f2b54d4b2a|4684|One Star|2025|ci_002aaa1d1e|mexico-city|active|$$|masala-y-maiz||Masala y Maíz
+ve_f4b194a867|9959|Bib Gourmand|2025|ci_002aaa1d1e|mexico-city|active|$$|filigrana||Filigrana
+ve_f5762ac8d8|9185|One Star|2025|ci_459fd0049e|chochola|active|$$$$|ixi-im-restaurant||Ixi'im Restaurant
+ve_f5d6f5d521|6975|One Star|2025|ci_f5216cfefa|oaxaca|active|$$$|los-danzantes||Los Danzantes
+ve_f81f010a30|7384|One Star|2025|ci_02584b7923|playa-del-carmen|active|$$$$|ha-restaurante-hotel-xcaret||Ha - Restaurante Hotel Xcaret
+ve_fc009181ef|9171|One Star|2025|ci_1431b98607|guadalajara|active|$$$$|xokol||Xokol
+ve_ff8faa396a|11484|Bib Gourmand|2025|ci_f5216cfefa|oaxaca|active|$$|xaok||Xaok

@@ -1,0 +1,99 @@
+croatia | Bib Gourmand | /us/en/dubrovnik-neretva/dubrovnik/restaurant/taj-mahal | Taj Mahal | Dubrovnik, Croatia | \u20ac\u20ac \u00b7 Balkan | hr | bib
+croatia | Bib Gourmand | /us/en/dubrovnik-neretva/korcula/restaurant/konoba-mate | Konoba Mate | Korcula, Croatia | \u20ac\u20ac\u20ac \u00b7 Country cooking | hr | bib
+croatia | Bib Gourmand | /us/en/istria/buje/restaurant/konoba-malo-selo | Konoba Malo Selo | Buje, Croatia | \u20ac\u20ac \u00b7 Regional Cuisine | hr | bib
+croatia | Bib Gourmand | /us/en/istria/valbandon/restaurant/alla-beccaccia | Alla Beccaccia | Valbandon, Croatia | \u20ac\u20ac \u00b7 Traditional Cuisine | hr | bib
+croatia | Bib Gourmand | /us/en/koprivnica-krizevci/legrad_1780426/restaurant/fakin | Fakin | Legrad, Croatia | \u20ac\u20ac \u00b7 Modern Cuisine | hr | bib
+croatia | Bib Gourmand | /us/en/krapina-zagorje/krapina/restaurant/vuglec-breg | Vuglec Breg | Krapina, Croatia | \u20ac\u20ac \u00b7 Regional Cuisine | hr | bib
+croatia | Bib Gourmand | /us/en/osijek-baranja/dakovo_1784403/restaurant/bistro-loora | Bistro Loora | \u0110akovo, Croatia | \u20ac \u00b7 Croatian | hr | bib
+croatia | Bib Gourmand | /us/en/osijek-baranja/osijek/restaurant/lulu-fusion-bistro | Lulu Fusion Bistro | Osijek, Croatia | \u20ac \u00b7 Contemporary | hr | bib
+croatia | Bib Gourmand | /us/en/primorje-gorski-kotar/moscenicka-draga/restaurant/konoba-pescaria | Konoba Pescaria | Mo\u0161\u0107eni\u010dka Draga, Croatia | \u20ac\u20ac \u00b7 Fish and Seafood | hr | bib
+croatia | Bib Gourmand | /us/en/sibenik-knin/konjevrate/restaurant/konoba-vinko | Konoba Vinko | Konjevrate, Croatia | \u20ac\u20ac \u00b7 Country cooking | hr | bib
+croatia | Bib Gourmand | /us/en/split-dalmatia/split/restaurant/k-uzina | K.u\u017eina | Split, Croatia | \u20ac\u20ac\u20ac \u00b7 Mediterranean Cuisine | hr | bib
+croatia | Bib Gourmand | /us/en/zagreb-region/zagreb/restaurant/bestija | Be\u0161tija | Zagreb, Croatia | \u20ac\u20ac \u00b7 Farm to table | hr | bib
+croatia | Bib Gourmand | /us/en/zagreb-region/zagreb/restaurant/izakaya-by-time | Izakaya | Zagreb, Croatia | \u20ac\u20ac \u00b7 Japanese Contemporary | hr | bib
+croatia | Bib Gourmand | /us/en/zagreb-region/zagreb/restaurant/nure | Nur\u00e9 | Zagreb, Croatia | \u20ac \u00b7 Contemporary | hr | bib
+croatia | One Star | /us/en/dubrovnik-neretva/dubrovnik/restaurant/360%C2%BA | Restaurant 360 | Dubrovnik, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hr | 1 star
+croatia | One Star | /us/en/dubrovnik-neretva/korcula/restaurant/ld-terrace | LD Restaurant | Korcula, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hr | 1 star
+croatia | One Star | /us/en/istria/porec/restaurant/harry-s-piccolo-porec | Harry\u2019s Piccolo Pore\u010d | Porec, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary | hr | 1 star
+croatia | One Star | /us/en/istria/rovinj/restaurant/cap-aureo | Cap Aureo | Rovinj, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | hr | 1 star
+croatia | One Star | /us/en/istria/rovinj/restaurant/monte | Monte | Rovinj, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | hr | 1 star
+croatia | One Star | /us/en/lika-senj/novalja/restaurant/boskinac | Bo\u0161kinac | Novalja, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | hr | 1 star
+croatia | One Star | /us/en/primorje-gorski-kotar/mali-losinj/restaurant/alfred-keller | Alfred Keller | Mali Lo\u0161inj, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hr | 1 star
+croatia | One Star | /us/en/primorje-gorski-kotar/rijeka/restaurant/nebo | Nebo | Rijeka, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hr | 1 star
+croatia | One Star | /us/en/sibenik-knin/sibenik/restaurant/pelegrini | Pelegrini | Sibenik, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hr | 1 star
+croatia | One Star | /us/en/split-dalmatia/split/restaurant/krug | Krug | Split, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | hr | 1 star
+croatia | One Star | /us/en/zagreb-region/jastrebarsko_1779514/restaurant/korak | Korak | Jastrebarsko, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary | hr | 1 star
+croatia | One Star | /us/en/zagreb-region/zagreb/restaurant/dubravkin-put | Dubravkin Put | Zagreb, Croatia | \u20ac\u20ac\u20ac \u00b7 Mediterranean Cuisine | hr | 1 star
+croatia | One Star | /us/en/zagreb-region/zagreb/restaurant/noel | Noel | Zagreb, Croatia | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | hr | 1 star
+croatia | Two Stars | /us/en/istria/rovinj/restaurant/agli-amici-rovinj | Agli Amici Rovinj | Rovinj, Croatia | \u20ac\u20ac\u20ac\u20ac \u00b7 Italian Contemporary | hr | 2 star
+poland | Bib Gourmand | /us/en/dolnoslaskie/walbrzych_2399184/restaurant/biblioteka | Biblioteka | Wa\u0142brzych, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/lesser-poland/kielce_2358496/restaurant/the-moment | The Moment | Kielce, Poland | \u20ac\u20ac \u00b7 Traditional Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/lesser-poland/krakow/restaurant/bufet-krk | Bufet KRK | Krak\u00f3w, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/lesser-poland/krakow/restaurant/folga | Folga | Krak\u00f3w, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/lesser-poland/krakow/restaurant/molam | MOL\u00c1M | Krak\u00f3w, Poland | \u20ac \u00b7 Thai | pl | bib
+poland | Bib Gourmand | /us/en/lesser-poland/krakow/restaurant/nat-bistro | Nat Bistro | Krak\u00f3w, Poland | \u20ac\u20ac \u00b7 Traditional Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/lesser-poland/krakow/restaurant/noah | NOAH | Krak\u00f3w, Poland | \u20ac \u00b7 Israeli | pl | bib
+poland | Bib Gourmand | /us/en/lesser-poland/zakopane_2385511/restaurant/stary-niedzwiedz | Stary Nied\u017awied\u017a | Zakopane, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/lodz-region/lodz_2386189/restaurant/acanti | Acanti | \u0141\u00f3d\u017a, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/lower-silesian/wroclaw_2399695/restaurant/ida-kuchnia-i-wino | IDA kuchnia i wino | Wroc\u0142aw, Poland | \u20ac \u00b7 Regional Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/lower-silesian/wroclaw_2399695/restaurant/pijalni | Pijalni | Wroc\u0142aw, Poland | \u20ac\u20ac \u00b7 Contemporary | pl | bib
+poland | Bib Gourmand | /us/en/lower-silesian/wroclaw_2399695/restaurant/tarasowa | Tarasowa | Wroc\u0142aw, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/lublin-region/lublin_2361556/restaurant/2pier | 2PiEr | Lublin, Poland | \u20ac\u20ac \u00b7 Traditional Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/masovia/warsaw/restaurant/ahaan | AHAAN | Warsaw, Poland | \u20ac \u00b7 Thai | pl | bib
+poland | Bib Gourmand | /us/en/masovia/warsaw/restaurant/blisko-bar | Blisko Bar | Warsaw, Poland | \u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/masovia/warsaw/restaurant/ceviche-bar | Ceviche Bar | Warsaw, Poland | \u20ac\u20ac \u00b7 South American | pl | bib
+poland | Bib Gourmand | /us/en/masovia/warsaw/restaurant/kieliszki-na-proznej | Kieliszki na Pr\u00f3\u017cnej | Warsaw, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/masovia/warsaw/restaurant/koneser-grill | Koneser Grill | Warsaw, Poland | \u20ac\u20ac \u00b7 Meats and Grills | pl | bib
+poland | Bib Gourmand | /us/en/masovia/warsaw/restaurant/kontakt | kontakt | Warsaw, Poland | \u20ac\u20ac \u00b7 Mediterranean Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/masovia/warsaw/restaurant/le-braci | Le Braci | Warsaw, Poland | \u20ac\u20ac \u00b7 Italian | pl | bib
+poland | Bib Gourmand | /us/en/masovia/warsaw/restaurant/wandal | WANDAL | Warsaw, Poland | \u20ac\u20ac \u00b7 Contemporary | pl | bib
+poland | Bib Gourmand | /us/en/masovia/warsaw/restaurant/win-wine-bar-shop | WIN wine bar & shop | Warsaw, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/masovia/warsaw/restaurant/wyraj | WYRAJ | Warsaw, Poland | \u20ac\u20ac \u00b7 Traditional Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/podlaskie/bialystok_2401507/restaurant/kwestia-czasu-nago | Kwestia Czasu / NAGO | Bia\u0142ystok, Poland | \u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/podlaskie/bialystok_2401507/restaurant/sztuka-chleba-i-wina | Sztuka Chleba i Wina | Bia\u0142ystok, Poland | \u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/podlaskie/rzeszow_2367318/restaurant/naama | Naama | Rzesz\u00f3w, Poland | \u20ac\u20ac \u00b7 Moroccan | pl | bib
+poland | Bib Gourmand | /us/en/pomerania/gdansk_2403599/restaurant/brut-bistro | Brut Bistro | Gda\u0144sk, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/pomerania/gdansk_2403599/restaurant/hewelke | Hewelke | Gda\u0144sk, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/pomerania/gdansk_2403599/restaurant/treinta-y-tres | Treinta y Tres | Gda\u0144sk, Poland | \u20ac\u20ac \u00b7 Spanish | pl | bib
+poland | Bib Gourmand | /us/en/pomerania/sopot_2411807/restaurant/vinissimo | Vinissimo | Sopot, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/pomerania/torun_2398786/restaurant/piernicova | Piernicova | Toru\u0144, Poland | \u20ac\u20ac \u00b7 Regional Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/silesia/katowice_2377909/restaurant/krzywa-sztuka-wina | KRZYWA Sztuka Wina | Katowice, Poland | \u20ac \u00b7 Regional Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/warmia-masuria/olsztyn_2409296/restaurant/da-andrea-1248066 | Da Andrea | Olsztyn, Poland | \u20ac\u20ac \u00b7 Italian | pl | bib
+poland | Bib Gourmand | /us/en/wielkopolskie/poznan_2395985/restaurant/fromazeria | Froma\u017ceria | Pozna\u0144, Poland | \u20ac\u20ac \u00b7 European | pl | bib
+poland | Bib Gourmand | /us/en/wielkopolskie/poznan_2395985/restaurant/posto | Posto | Pozna\u0144, Poland | \u20ac \u00b7 European | pl | bib
+poland | Bib Gourmand | /us/en/wielkopolskie/poznan_2395985/restaurant/spot | SPOT. | Pozna\u0144, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/wielkopolskie/poznan_2395985/restaurant/tu-restaurant | TU.REStAURANT | Pozna\u0144, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | bib
+poland | Bib Gourmand | /us/en/wielkopolskie/skorzewo_2397439/restaurant/farmer-sons | Farmer & Sons | Sk\u00f3rzewo, Poland | \u20ac\u20ac \u00b7 Traditional Cuisine | pl | bib
+poland | One Star | /us/en/lesser-poland/koscielisko_2378757/restaurant/giewont | Giewont | Ko\u015bcielisko, Poland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | pl | 1 star
+poland | One Star | /us/en/lower-silesian/wroclaw_2399695/restaurant/baba-1219184 | BABA | Wroc\u0142aw, Poland | \u20ac\u20ac \u00b7 Modern Cuisine | pl | 1 star
+poland | One Star | /us/en/lower-silesian/wroclaw_2399695/restaurant/most | Most | Wroc\u0142aw, Poland | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | pl | 1 star
+poland | One Star | /us/en/masovia/warsaw/restaurant/alon-omakase | Alon Omakase | Warsaw, Poland | \u20ac\u20ac\u20ac\u20ac \u00b7 Sushi | pl | 1 star
+poland | One Star | /us/en/masovia/warsaw/restaurant/hub-praga | hub.praga | Warsaw, Poland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | pl | 1 star
+poland | One Star | /us/en/masovia/warsaw/restaurant/nuta | NUTA | Warsaw, Poland | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | pl | 1 star
+poland | One Star | /us/en/masovia/warsaw/restaurant/rozbrat-20 | Rozbrat 20 | Warsaw, Poland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | pl | 1 star
+poland | One Star | /us/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez | Arco by Paco P\u00e9rez | Gda\u0144sk, Poland | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | pl | 1 star
+poland | One Star | /us/en/silesia/pszczyna_2382223/restaurant/steampunk | Steampunk | Pszczyna, Poland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | pl | 1 star
+poland | One Star | /us/en/wielkopolskie/poznan_2395985/restaurant/muga | Muga | Pozna\u0144, Poland | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | pl | 1 star
+poland | Two Stars | /us/en/lesser-poland/krakow/restaurant/bottiglieria-1881 | Bottiglieria 1881 | Krak\u00f3w, Poland | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | pl | 2 star
+slovenia | Bib Gourmand | /us/en/coastal%E2%80%93karst/divaca/restaurant/etna | Etna | Diva\u010da, Slovenia | \u20ac \u00b7 Regional Cuisine | si | bib
+slovenia | Bib Gourmand | /us/en/coastal%E2%80%93karst/dol-pri-vogljah/restaurant/ruj | Gostilnica Ruj | Dol pri Vogljah, Slovenia | \u20ac\u20ac \u00b7 Regional Cuisine | si | bib
+slovenia | Bib Gourmand | /us/en/coastal%E2%80%93karst/rodik/restaurant/mahorcic | Gostilna Mahor\u010di\u010d | Rodik, Slovenia | \u20ac\u20ac \u00b7 Regional European | si | bib
+slovenia | Bib Gourmand | /us/en/gorizia/dobrovo-v-brdih/restaurant/gredic | Gredi\u010d | Dobrovo v Brdih, Slovenia | \u20ac\u20ac \u00b7 Modern Cuisine | si | bib
+slovenia | Bib Gourmand | /us/en/gorizia/idrija/restaurant/jozef | Restavracija Jo\u017eef | Idrija, Slovenia | \u20ac\u20ac \u00b7 Regional Cuisine | si | bib
+slovenia | Bib Gourmand | /us/en/gorizia/medana_7770441/restaurant/klinec | Klinec | Medana, Slovenia | \u20ac\u20ac \u00b7 Regional Cuisine | si | bib
+slovenia | Bib Gourmand | /us/en/mura/murska-sobota/restaurant/kodila | Kodila | Murska Sobota, Slovenia | \u20ac\u20ac \u00b7 Meats and Grills | si | bib
+slovenia | Bib Gourmand | /us/en/mura/murska-sobota/restaurant/rajh | Gostilna Rajh | Murska Sobota, Slovenia | \u20ac\u20ac \u00b7 Regional Cuisine | si | bib
+slovenia | Bib Gourmand | /us/en/savinja/celje/restaurant/gostilna-francl | Gostilna Francl | Celje, Slovenia | \u20ac\u20ac \u00b7 Regional Cuisine | si | bib
+slovenia | Bib Gourmand | /us/en/savinja/celje/restaurant/lalu-bistro | LAL\u00da Bistro | Celje, Slovenia | \u20ac\u20ac \u00b7 Modern Cuisine | si | bib
+slovenia | Bib Gourmand | /us/en/upper-carniola/gozd-martuljek_7770292/restaurant/triangel | Triangel | Gozd Martuljek, Slovenia | \u20ac\u20ac \u00b7 Regional Cuisine | si | bib
+slovenia | Bib Gourmand | /us/en/upper-carniola/stara-fuzina_7770293/restaurant/restavracija-majerca | Restavracija Majerca | Stara Fu\u017eina, Slovenia | \u20ac\u20ac \u00b7 Regional Cuisine | si | bib
+slovenia | One Star | /us/en/coastal%E2%80%93karst/portoroz/restaurant/cob | COB | Portoro\u017e, Slovenia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | si | 1 star
+slovenia | One Star | /us/en/drava/zgornja-kungota/restaurant/hisa-denk | Hi\u0161a Denk | Zgornja Kungota, Slovenia | \u20ac\u20ac\u20ac \u00b7 Creative | si | 1 star
+slovenia | One Star | /us/en/gorizia/nova-gorica/restaurant/dam | Dam | Nova Gorica, Slovenia | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | si | 1 star
+slovenia | One Star | /us/en/gorizia/vipava/restaurant/pri-lojzetu | Gostilna Pri Lojzetu | Vipava, Slovenia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | si | 1 star
+slovenia | One Star | /us/en/lower-carniola/sentjost-nad-horjulom/restaurant/gostisce-gric | Gri\u010d | \u0160entjo\u0161t nad Horjulom, Slovenia | \u20ac\u20ac\u20ac\u20ac \u00b7 Farm to table | si | 1 star
+slovenia | One Star | /us/en/savinja/lasko/restaurant/pavus | Pavus | Lasko, Slovenia | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | si | 1 star
+slovenia | One Star | /us/en/savinja/petrovce/restaurant/galerija-okusov | Galerija okusov | Petrov\u010de, Slovenia | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | si | 1 star
+slovenia | One Star | /us/en/upper-carniola/radovljica/restaurant/hisa-linhart | Hi\u0161a Linhart | Radovljica, Slovenia | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary | si | 1 star
+slovenia | Three Stars | /us/en/gorizia/kobarid/restaurant/hisa-franko | Hi\u0161a Franko | Kobarid, Slovenia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | si | 3 star
+slovenia | Two Stars | /us/en/upper-carniola/kranjska-gora/restaurant/milka | Milka | Kranjska Gora, Slovenia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | si | 2 star

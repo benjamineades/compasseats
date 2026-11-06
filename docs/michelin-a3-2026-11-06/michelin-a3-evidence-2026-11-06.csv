@@ -1,0 +1,75 @@
+guide,category,card_name,card_city,card_price,card_url,venue_id,award_id,live_name,name_check
+abu-dhabi,Bib Gourmand,3Fils Abu Dhabi,Abu Dhabi,$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/3fils-abu-dhabi,ve_c17972f8e7,9202,3Fils - Abu Dhabi,same
+abu-dhabi,Bib Gourmand,Al Mrzab,Abu Dhabi,$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/al-mrzab,ve_a9828b143d,9203,Al Mrzab Traditional Restaurant,differs
+abu-dhabi,Bib Gourmand,Almayass,Abu Dhabi,$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/almayass-1202415,ve_cac886fd50,9198,Almayass,same
+abu-dhabi,Bib Gourmand,Beirut Sur Mer,Abu Dhabi,$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/beirut-sur-mer,ve_e45c0380d2,9199,Beirut Sur Mer Restaurant,differs
+abu-dhabi,Bib Gourmand,Bua Thai Cafe,Abu Dhabi,$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/bua-thai-cafe,ve_cc08771532,9204,Bua Thai Cafe,same
+abu-dhabi,Bib Gourmand,Mika,Abu Dhabi,$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/mika,ve_510f83360e,9206,Mika,same
+abu-dhabi,Bib Gourmand,Otoro,Abu Dhabi,$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/otoro,ve_31dc687975,9207,OTORO,same
+abu-dhabi,Bib Gourmand,ryba,Abu Dhabi,$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/ryba,ve_aa718ce811,9208,Ryba Restaurant,differs
+abu-dhabi,Bib Gourmand,ťazal,Abu Dhabi,$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/tazal,ve_3de8722614,9200,Tazal,same
+abu-dhabi,One Star,Erth,Abu Dhabi,$$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/erth,ve_03b05a284f,3617,ERTH Hotel,differs
+abu-dhabi,One Star,Hakkasan,Abu Dhabi,$$$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/hakkasan-514821,ve_f3d370f518,,Hakkasan,same
+abu-dhabi,One Star,Talea by Antonio Guida,Abu Dhabi,$$$$,https://guide.michelin.com/us/en/abu-dhabi-emirate/abu-dhabi/restaurant/talea-by-antonio-guida,ve_d0abb7315f,3615,Talea by Antonio Guida,same
+argentina,Bib Gourmand,Ácido,"Buenos Aires, Argentina",$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/acido,,,,new
+argentina,Bib Gourmand,Ajo Negro - Mar de Tapas,"Buenos Aires, Argentina",$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/ajo-negro-mar-de-tapas,,,,new
+argentina,Bib Gourmand,ANAFE,"Buenos Aires, Argentina",$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/anafe,ve_99b8be1b50,,Anafe,same
+argentina,Bib Gourmand,Bis Bistró,"Buenos Aires, Argentina",$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/bis-bistro,,,,new
+argentina,Bib Gourmand,Caseros,"Buenos Aires, Argentina",$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/caseros,,,,new
+argentina,Bib Gourmand,Chuchú,"Buenos Aires, Argentina",$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/chuchu,,,,new
+argentina,Bib Gourmand,Garabato Bistro,"Buenos Aires, Argentina",$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/garabato-bistro,,,,new
+argentina,Bib Gourmand,La Alacena Trattoria,"Buenos Aires, Argentina",$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/la-alacena-trattoria,,,,new
+argentina,Bib Gourmand,Mengano,"Buenos Aires, Argentina",$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/mengano,ve_91e91bae75,,Mengano,same
+argentina,Bib Gourmand,MN Santa Inés,"Buenos Aires, Argentina",$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/mn-santa-ines,,,,new
+argentina,Bib Gourmand,Reliquia,"Buenos Aires, Argentina",$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/reliquia,,,,new
+argentina,One Star,Crizia,"Buenos Aires, Argentina",$$$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/crizia,ve_b523973674,,Crizia Restaurante,differs
+argentina,One Star,Don Julio,"Buenos Aires, Argentina",$$$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/don-julio,ve_335d635543,,Don Julio Parrilla,differs
+argentina,One Star,Han,"Buenos Aires, Argentina",$$$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/han,,,,new
+argentina,One Star,Trescha,"Buenos Aires, Argentina",$$$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/trescha,ve_294a4c62c3,,Trescha Restaurant,differs
+argentina,One Star,Angélica Cocina Maestra,"Mendoza, Argentina",$$$$,https://guide.michelin.com/us/en/provincia-mendoza/mendoza_777010/restaurant/angelica-cocina-maestra,ve_ae11c601d6,,Angélica Cocina Maestra,same
+argentina,One Star,Azafrán,"Mendoza, Argentina",$$$$,https://guide.michelin.com/us/en/provincia-mendoza/mendoza_777010/restaurant/azafran-532684,ve_80686a6329,,Azafrán,same
+argentina,One Star,Brindillas,"Mendoza, Argentina",$$$,https://guide.michelin.com/us/en/provincia-mendoza/mendoza_777010/restaurant/brindillas,ve_7261ce4c40,,Brindillas Restaurant,differs
+argentina,One Star,Cal - Gastronomía Viva,"Mendoza, Argentina",$$$,https://guide.michelin.com/us/en/provincia-mendoza/mendoza_777010/restaurant/cal,,,,new
+argentina,One Star,Casa Vigil,"Mendoza, Argentina",$$$$,https://guide.michelin.com/us/en/provincia-mendoza/mendoza_777010/restaurant/casa-vigil,ve_89a4464be4,,Casa Vigil Palmares,differs
+argentina,One Star,Centauro,"Mendoza, Argentina",$$$,https://guide.michelin.com/us/en/provincia-mendoza/mendoza_777010/restaurant/centauro,,,,new
+argentina,One Star,La VidA,"Mendoza, Argentina",$$$$,https://guide.michelin.com/us/en/provincia-mendoza/mendoza_777010/restaurant/la-vida,,,,new
+argentina,One Star,Riccitelli Bistró,"Mendoza, Argentina",$$$,https://guide.michelin.com/us/en/provincia-mendoza/mendoza_777010/restaurant/riccitelli-bistro,ve_a53b0b6956,,Riccitelli Wines,differs
+argentina,One Star,Zonda Cocina de Paisaje,"Mendoza, Argentina",$$$$,https://guide.michelin.com/us/en/provincia-mendoza/mendoza_777010/restaurant/zonda-cocina-de-paisaje,ve_e2c411f7e0,,"Zonda, Cocina de Paisaje",same
+argentina,Two Stars,Aramburu,"Buenos Aires, Argentina",$$$$,https://guide.michelin.com/us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/aramburu,ve_72c1cb3555,,Aramburu Relais & Châteaux,differs
+czechia,Bib Gourmand,Šatlava,"Hradec Králové, Czechia",€€,https://guide.michelin.com/us/en/hradec-kralove-region/hradec-kralove_1265999/restaurant/satlava,ve_6aa1c7f272,10617,Šatlava,same
+czechia,Bib Gourmand,Šupina a Šupinka,"Třeboň, Czechia",€€,https://guide.michelin.com/us/en/jihocesky/trebon_1278941/restaurant/supina-a-supinka,ve_ce27500ff8,12758,Šupina a Šupinka,same
+czechia,Bib Gourmand,ATELIER bar & bistro,"Brno, Czechia",€€,https://guide.michelin.com/us/en/jihomoravsky/brno_1273693/restaurant/bar-atelier-bistro,ve_2bb552adb7,9594,Atelier Bar & Bistro,same
+czechia,Bib Gourmand,Valoria,"Brno, Czechia",€€,https://guide.michelin.com/us/en/jihomoravsky/brno_1273693/restaurant/valoria,ve_5ae3a515e0,9595,Valoria Brno - Restaurant & Catering,differs
+czechia,Bib Gourmand,MIURA,"Čeladná, Czechia",€,https://guide.michelin.com/us/en/moravskoslezsky/celadna_1279845/restaurant/miura,ve_c8f0a3b986,13038,MIURA,same
+czechia,Bib Gourmand,Long Story Short Eatery & Bakery,"Olomouc, Czechia",€€,https://guide.michelin.com/us/en/olomoucky/olomouc_1277165/restaurant/long-story-short-eatery-bakery,ve_dd8e1e7ab8,11496,Long Story Short Eatery & Bakery,same
+czechia,Bib Gourmand,Bohém,"Litomyšl, Czechia",€,https://guide.michelin.com/us/en/pardubicky/litomysl_1267653/restaurant/bohem,ve_fe4a79af15,10925,Bohém Restaurant Litomyšl,differs
+czechia,Bib Gourmand,Štipec,"Pilsen, Czechia",€€,https://guide.michelin.com/us/en/plzensky/plzen_1269468/restaurant/stipec,ve_ab8959e7cf,11712,ŠTIPEC,same
+czechia,Bib Gourmand,Alma,"Prague, Czechia",€€,https://guide.michelin.com/us/en/prague/prague/restaurant/alma-1218075,ve_cebc3bcf80,11744,Alma,same
+czechia,Bib Gourmand,Dejvická 34 by Tomáš Černý,"Prague, Czechia",€€,https://guide.michelin.com/us/en/prague/prague/restaurant/dejvicka-34-by-tomas-cerny,ve_06f25ac0a5,11745,Dejvická 34,differs
+czechia,Bib Gourmand,Na Kopci,"Prague, Czechia",€€,https://guide.michelin.com/us/en/prague/prague/restaurant/na-kopci,ve_fc0ee5a6f1,11746,Na Kopci,same
+czechia,Bib Gourmand,The Eatery,"Prague, Czechia",€€,https://guide.michelin.com/us/en/prague/prague/restaurant/the-eatery,ve_58ce6a8434,11747,The Eatery,same
+czechia,Bib Gourmand,U Kalendů,"Prague, Czechia",€€,https://guide.michelin.com/us/en/prague/prague/restaurant/u-kalendu,ve_3e827a52c1,11748,Restaurace U Kalendů,differs
+czechia,Bib Gourmand,U Matěje,"Prague, Czechia",€€,https://guide.michelin.com/us/en/prague/prague/restaurant/u-mateje,ve_ee392234c3,11749,U Matěje,same
+czechia,Bib Gourmand,Výčep,"Prague, Czechia",€€€,https://guide.michelin.com/us/en/prague/prague/restaurant/vycep,ve_863df9ea78,11750,Výčep,same
+czechia,Bib Gourmand,Goldie,"Tábor, Czechia",€€,https://guide.michelin.com/us/en/south-bohemian/tabor_1278891/restaurant/goldie-1211724,ve_b964eda4a9,12757,Goldie,same
+czechia,Bib Gourmand,Dvůr Perlová voda,"Budyně nad Ohří, Czechia",€€,https://guide.michelin.com/us/en/ustecky/budyne-nad-ohri_1264274/restaurant/dvur-perlova-voda,ve_3eb0fcc1dd,9636,Dvůr Perlová voda,same
+czechia,One Star,ESSENS,"Hlohovec, Czechia",€€€€,https://guide.michelin.com/us/en/jihomoravsky/hlohovec_1274686/restaurant/essens,ve_f98b9c7e60,5370,Restaurant ESSENS,differs
+czechia,One Star,Entrée,"Olomouc, Czechia",€€€,https://guide.michelin.com/us/en/olomoucky/olomouc_1277165/restaurant/entree,ve_9576bbb675,6993,Entrée Restaurant,differs
+czechia,One Star,Casa De Carli,"Prague, Czechia",€€€,https://guide.michelin.com/us/en/prague/prague/restaurant/casa-de-carli,ve_bc0d3d687c,7466,Casa De Carli,same
+czechia,One Star,Field,"Prague, Czechia",€€€€,https://guide.michelin.com/us/en/prague/prague/restaurant/field,ve_ab175fc8f5,7467,Field Restaurant,differs
+czechia,One Star,La Degustation Bohême Bourgeoise,"Prague, Czechia",€€€€,https://guide.michelin.com/us/en/prague/prague/restaurant/la-degustation-boheme-bourgeoise,ve_5d4ba53dd8,7469,La Degustation,differs
+czechia,One Star,LEVITATE,"Prague, Czechia",€€€€,https://guide.michelin.com/us/en/prague/prague/restaurant/levitate-1208342,ve_377c6477c0,7471,L E V I T A T E,same
+czechia,One Star,Štangl,"Prague, Czechia",€€€€,https://guide.michelin.com/us/en/prague/prague/restaurant/stangl,ve_4f0bab6fd9,7472,Štangl,same
+czechia,One Star,La Villa Restaurant,"Zlín, Czechia",€€€,https://guide.michelin.com/us/en/zlinsky/zlin_1279638/restaurant/la-villa-1211435,ve_315e6272a8,9111,La Villa,differs
+czechia,Two Stars,Restaurant Papilio,"Vysoký Újezd, Czechia",€€€€,https://guide.michelin.com/us/en/stredocesky/vysoky-ujezd_1272168/restaurant/restaurant-papilio,ve_8755f6afbb,3523,Restaurant Papilio,same
+estonia,Bib Gourmand,Fotografiska,"Tallinn, Estonia",€€,https://guide.michelin.com/us/en/harju/tallinn/restaurant/fotografiska-1199007,ve_867f67e9eb,,Fotografiska Tallinn,differs
+estonia,Bib Gourmand,FUME,"Tallinn, Estonia",€€,https://guide.michelin.com/us/en/harju/tallinn/restaurant/fume,,,,new
+estonia,Bib Gourmand,Lore Bistroo,"Tallinn, Estonia",€€,https://guide.michelin.com/us/en/harju/tallinn/restaurant/lore-bistroo,ve_8b758ec442,,Lore Bistroo,same
+estonia,Bib Gourmand,Mantel ja Korsten,"Tallinn, Estonia",€€,https://guide.michelin.com/us/en/harju/tallinn/restaurant/mantel-ja-korsten,ve_ab54b3cc90,,Restaurant Mantel & Korsten,differs
+estonia,Bib Gourmand,NOA,"Tallinn, Estonia",€€,https://guide.michelin.com/us/en/harju/tallinn/restaurant/noa,ve_a1395b237f,,NOA Restaurant,differs
+estonia,Bib Gourmand,Tuljak,"Tallinn, Estonia",€€,https://guide.michelin.com/us/en/harju/tallinn/restaurant/tuljak,ve_b792775eb5,,Tuljak,same
+estonia,Bib Gourmand,UMA,"Tallinn, Estonia",€€,https://guide.michelin.com/us/en/harju/tallinn/restaurant/uma-1217018,ve_6a95136b73,,UMA Restoran,differs
+estonia,Bib Gourmand,Vesta,"Tallinn, Estonia",€€,https://guide.michelin.com/us/en/harju/tallinn/restaurant/vesta-1246700,,,,new
+estonia,Bib Gourmand,Fellin,"Viljandi, Estonia",€€,https://guide.michelin.com/us/en/viljandi-region/viljandi/restaurant/fellin,ve_d1bf0d558e,,Fellin,same
+estonia,One Star,NOA Chef’s Hall,"Tallinn, Estonia",€€€€,https://guide.michelin.com/us/en/harju/tallinn/restaurant/noa-chef%E2%80%99s-hall,ve_425f829f4b,,"NCH, NOA CHEF’s HALL",differs
+estonia,Two Stars,180° by Matthias Diether,"Tallinn, Estonia",€€€€,https://guide.michelin.com/us/en/harju/tallinn/restaurant/180%C2%B0-by-matthias-diether,ve_7ed7d856da,,180 Degrees Restaurant,differs

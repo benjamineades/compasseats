@@ -1,0 +1,78 @@
+Bib Gourmand | /us/en/aveiro-region/gafanha-da-encarnacao_2419914/restaurant/dori | D\u00f3ri | Gafanha da Encarna\u00e7\u00e3o, Portugal | \u20ac\u20ac \u00b7 Fish and Seafood
+Bib Gourmand | /us/en/braga-region/guimares/restaurant/norma-1207644 | Norma | Guimaraes, Portugal | \u20ac\u20ac \u00b7 Creative
+Bib Gourmand | /us/en/braganca-region/braganca/restaurant/contradicao | Contradi\u00e7\u00e3o | Bragan\u00e7a, Portugal | \u20ac\u20ac \u00b7 Traditional Cuisine
+Bib Gourmand | /us/en/braganca-region/braganca/restaurant/o-javali | O Javali | Bragan\u00e7a, Portugal | \u20ac \u00b7 Regional Cuisine
+Bib Gourmand | /us/en/coimbra/coimbra/restaurant/solar-do-bacalhau | Solar do Bacalhau | Coimbra, Portugal | \u20ac \u00b7 Portuguese
+Bib Gourmand | /us/en/coimbra/figueira-da-foz_2419538/restaurant/olaias | Olaias | Figueira da Foz, Portugal | \u20ac\u20ac \u00b7 Rice Dishes
+Bib Gourmand | /us/en/evora-region/montemor-o-novo/restaurant/poda | PODA | Montemor-o-Novo, Portugal | \u20ac \u00b7 Regional Cuisine
+Bib Gourmand | /us/en/ilha-da-madeira/funchal/restaurant/casal-da-penha | Casal da Penha | Funchal, Portugal | \u20ac\u20ac \u00b7 Portuguese
+Bib Gourmand | /us/en/leiria/alvados_3138159/restaurant/terruja | Terruja | Alvados, Portugal | \u20ac\u20ac \u00b7 Modern Cuisine
+Bib Gourmand | /us/en/leiria/leiria_2432572/restaurant/mesa15 | Mesa15 | Leiria, Portugal | \u20ac\u20ac \u00b7 Modern Cuisine
+Bib Gourmand | /us/en/lisboa-region/alverca-do-ribatejo_7770439/restaurant/taberna-sakra | Taberna Sakra | Alverca do Ribatejo, Portugal | \u20ac \u00b7 Portuguese
+Bib Gourmand | /us/en/lisboa-region/lisboa/restaurant/canalha | Canalha | Lisbon, Portugal | \u20ac\u20ac \u00b7 Farm to table
+Bib Gourmand | /us/en/lisboa-region/lisboa/restaurant/carnal-1200315 | Carnal | Lisbon, Portugal | \u20ac\u20ac \u00b7 Mexican
+Bib Gourmand | /us/en/lisboa-region/lisboa/restaurant/oficio | Of\u00edcio - Wine & Dining Room | Lisbon, Portugal | \u20ac\u20ac \u00b7 Traditional Cuisine
+Bib Gourmand | /us/en/lisboa-region/lisboa/restaurant/pigmeu | Pigmeu | Lisbon, Portugal | \u20ac\u20ac \u00b7 Portuguese
+Bib Gourmand | /us/en/lisboa-region/lisboa/restaurant/zunzum-gastrobar | Zunzum Gastrobar | Lisbon, Portugal | \u20ac\u20ac \u00b7 Contemporary
+Bib Gourmand | /us/en/portalegre-region/portalegre/restaurant/solar-do-forcado | Solar do Forcado | Portalegre, Portugal | \u20ac \u00b7 Traditional Cuisine
+Bib Gourmand | /us/en/porto-region/maia_2420974/restaurant/machado | Machado | Maia, Portugal | \u20ac \u00b7 Traditional Cuisine
+Bib Gourmand | /us/en/porto-region/porto/restaurant/oma-1203846 | OMA | Porto, Portugal | \u20ac\u20ac \u00b7 Contemporary
+Bib Gourmand | /us/en/porto-region/porto/restaurant/patio-44 | P\u00e1tio 44 | Porto, Portugal | \u20ac \u00b7 Traditional Cuisine
+Bib Gourmand | /us/en/santarem-region/abrantes/restaurant/casa-chef-victor-felisberto | Casa Chef Victor Felisberto | Abrantes, Portugal | \u20ac\u20ac \u00b7 Meats and Grills
+Bib Gourmand | /us/en/setubal/setubal/restaurant/xtoria | Xtoria | Set\u00fabal, Portugal | \u20ac\u20ac \u00b7 Contemporary
+Bib Gourmand | /us/en/viana-do-castelo-region/viana-do-castelo/restaurant/camelo | Camelo | Viana do Castelo, Portugal | \u20ac\u20ac \u00b7 Regional Cuisine
+Bib Gourmand | /us/en/viseu-region/tonda/restaurant/3-pipos | 3 Pipos | Tonda, Portugal | \u20ac\u20ac \u00b7 Regional Cuisine
+Bib Gourmand | /us/en/viseu-region/viseu/restaurant/flora-1210835 | Flora | Viseu, Portugal | \u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/braga-region/braga/restaurant/palatial | Palatial | Braga, Portugal | \u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/braga-region/guimares/restaurant/a-cozinha | A Cozinha | Guimaraes, Portugal | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/braganca-region/braganca/restaurant/g-pousada | G Pousada | Bragan\u00e7a, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+One Star | /us/en/evora-region/montemor-o-novo/restaurant/mapa | MAPA | Montemor-o-Novo, Portugal | \u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/evora-region/reguengos-de-monsaraz/restaurant/esporao | Herdade do Espor\u00e3o | Reguengos de Monsaraz, Portugal | \u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/evora-region/vora/restaurant/a-cozinha-do-paco | A Cozinha do Pa\u00e7o | \u00c9vora, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+One Star | /us/en/faro-region/almancil/restaurant/gusto378372 | Gusto by Heinz Beck | Almancil, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Mediterranean Cuisine
+One Star | /us/en/faro-region/faro/restaurant/alameda-1198788 | Alameda | Faro, Portugal | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/faro-region/lagoa/restaurant/bon-bon472583 | Bon Bon | Lagoa, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/faro-region/portimo/restaurant/vista365067 | Vista | Portimao, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/faro-region/tavira/restaurant/a-ver-tavira | A Ver Tavira | Tavira, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/ilha-da-madeira/funchal/restaurant/desarma | Desarma | Funchal, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/ilha-da-madeira/funchal/restaurant/william216831 | William | Funchal, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/lisboa-region/cascais/restaurant/fortaleza-do-guincho | Fortaleza do Guincho | Cascais, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/lisboa-region/cascais/restaurant/kappo-1196985 | Kappo | Cascais, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Japanese
+One Star | /us/en/lisboa-region/lisboa/restaurant/2monkeys | 2Monkeys | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+One Star | /us/en/lisboa-region/lisboa/restaurant/cura | CURA | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/lisboa-region/lisboa/restaurant/encanto | Encanto | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Vegetarian
+One Star | /us/en/lisboa-region/lisboa/restaurant/epur | EPUR | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+One Star | /us/en/lisboa-region/lisboa/restaurant/feitoria | Feitoria | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/lisboa-region/lisboa/restaurant/grenache | Grenache | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 French Contemporary
+One Star | /us/en/lisboa-region/lisboa/restaurant/kabuki-lisboa | Kabuki Lisboa | Lisbon, Portugal | \u20ac\u20ac\u20ac \u00b7 Japanese
+One Star | /us/en/lisboa-region/lisboa/restaurant/kanazawa | Kanazawa | Lisbon, Portugal | \u20ac\u20ac\u20ac \u00b7 Japanese
+One Star | /us/en/lisboa-region/lisboa/restaurant/loco | Loco | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/lisboa-region/lisboa/restaurant/marlene | Marlene, | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/lisboa-region/lisboa/restaurant/sala1154759 | S\u00c1LA de Jo\u00e3o S\u00e1 | Lisbon, Portugal | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/lisboa-region/lisboa/restaurant/yoso-1214668 | Y\u014cSO | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Japanese
+One Star | /us/en/lisboa-region/sintra/restaurant/lab-by-sergi-arola | LAB by Sergi Arola | Sintra, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+One Star | /us/en/lisboa-region/sintra/restaurant/midori | Midori | Sintra, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Japanese
+One Star | /us/en/porto-region/amarante/restaurant/largo-do-paco | Largo do Pa\u00e7o | Amarante, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/porto-region/porto/restaurant/blind | Blind | Porto, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+One Star | /us/en/porto-region/porto/restaurant/dop | dop | Porto, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/porto-region/porto/restaurant/eon | \u00c9on | Porto, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/porto-region/porto/restaurant/euskalduna-studio | Euskalduna Studio | Porto, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/porto-region/porto/restaurant/gastro-by-elemento | Gastro by Elemento | Porto, Portugal | \u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/porto-region/porto/restaurant/in-diferente | In Diferente | Porto, Portugal | \u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/porto-region/porto/restaurant/le-monument | Le Monument | Porto, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/porto-region/porto/restaurant/pedro-lemos | Pedro Lemos | Porto, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/porto-region/porto/restaurant/vila-foz | Vila Foz | Porto, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/porto-region/vila-do-conde/restaurant/oculto | Oculto | Vila do Conde, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/porto-region/vila-nova-de-gaia/restaurant/vinha | Vinha | Vila Nova de Gaia, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Portuguese
+One Star | /us/en/santarem-region/santarm/restaurant/o-balcao | \u00d3 Balc\u00e3o | Santar\u00e9m, Portugal | \u20ac\u20ac \u00b7 Modern Cuisine
+One Star | /us/en/vila-real-region/peso-da-rgua/restaurant/schisto | Schist\u00f3 | Peso da R\u00e9gua, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary
+One Star | /us/en/viseu-region/silgueiros_2424590/restaurant/mesa-de-lemos | Mesa de Lemos | Silgueiros, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+Two Stars | /us/en/faro-region/albufeira/restaurant/vila-joya | Vila Joya | Albufeira, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+Two Stars | /us/en/faro-region/porches/restaurant/ocean216602 | Ocean | Porches, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+Two Stars | /us/en/ilha-da-madeira/funchal/restaurant/il-gallo-d-oro | Il Gallo d'Oro | Funchal, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Contemporary
+Two Stars | /us/en/lisboa-region/lisboa/restaurant/belcanto | Belcanto | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+Two Stars | /us/en/lisboa-region/lisboa/restaurant/fifty-seconds | Fifty Seconds | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+Two Stars | /us/en/lisboa-region/lisboa/restaurant/henrique-sa-pessoa | Henrique S\u00e1 Pessoa | Lisbon, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+Two Stars | /us/en/porto-region/lea-da-palmeira/restaurant/casa-de-cha-da-boa-nova | Casa de Ch\u00e1 da Boa Nova | Le\u00e7a da Palmeira, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine
+Two Stars | /us/en/porto-region/porto/restaurant/antiqvvm | Antiqvvm | Porto, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative
+Two Stars | /us/en/porto-region/vila-nova-de-gaia/restaurant/the-yeatman | The Yeatman Gastronomic R. | Vila Nova de Gaia, Portugal | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative

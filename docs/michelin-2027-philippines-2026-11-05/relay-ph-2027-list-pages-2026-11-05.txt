@@ -1,0 +1,41 @@
+Bib Gourmand | /us/en/calabarzon/cavite_2318043/restaurant/balay-dako | Balay Dako | Cavite, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/calabarzon/cavite_2318043/restaurant/bawai-s-vietnamese-kitchen | Bawai\u2019s Vietnamese Kitchen | Cavite, The Philippines | \u20b1\u20b1 \u00b7 Vietnamese
+Bib Gourmand | /us/en/central-luzon/pampanga/restaurant/apag-marangle | Apag Marangle | Pampanga, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/central-luzon/pampanga/restaurant/tito-boy | Tito Boy | Pampanga, The Philippines | \u20b1\u20b1 \u00b7 European
+Bib Gourmand | /us/en/central-visayas/cebu-city_2340421/restaurant/abaseria-deli-cafe | Abaseria Deli & Cafe | Cebu, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/central-visayas/cebu-city_2340421/restaurant/ato-ah | ATO-AH | Cebu, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/central-visayas/cebu-city_2340421/restaurant/esmen | Esmen | Cebu, The Philippines | \u20b1 \u00b7 Street Food
+Bib Gourmand | /us/en/central-visayas/cebu-city_2340421/restaurant/kalipay | Kalipay! | Cebu, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/central-visayas/cebu-city_2340421/restaurant/lasa-1241166 | Lasa | Cebu, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/central-visayas/cebu-city_2340421/restaurant/tatang-s-lechon | Tatang's Lechon | Cebu, The Philippines | \u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/central-visayas/cebu-city_2340421/restaurant/the-pig-palm | The Pig & Palm | Cebu, The Philippines | \u20b1\u20b1 \u00b7 European Contemporary
+Bib Gourmand | /us/en/metro-manila/makati-city_2329358/restaurant/c-h-e-bacolod-chicken-house-express | C.H.E. Bacolod Chicken House Express | Makati - Metro Manila, The Philippines | \u20b1 \u00b7 Grills
+Bib Gourmand | /us/en/metro-manila/makati-city_2329358/restaurant/la-pita-poblacion | La Pita (Poblacion) | Makati - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Middle Eastern
+Bib Gourmand | /us/en/metro-manila/makati-city_2329358/restaurant/lampara | Lampara | Makati - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/metro-manila/makati-city_2329358/restaurant/manam-at-the-triangle | Manam at the Triangle | Makati - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/metro-manila/makati-city_2329358/restaurant/pilya-s-kitchen | Pilya's Kitchen | Makati - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Noodles
+Bib Gourmand | /us/en/metro-manila/makati-city_2329358/restaurant/sarsa | Sarsa | Makati - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/metro-manila/makati-city_2329358/restaurant/taqueria-franco | Taquer\u00eda Franco | Makati - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Mexican
+Bib Gourmand | /us/en/metro-manila/makati-city_2329358/restaurant/the-underbelly | The Underbelly | Makati - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Ramen
+Bib Gourmand | /us/en/metro-manila/manila_2329836/restaurant/azela-manila | Azela (Manila) | Manila - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/metro-manila/manila_2329836/restaurant/cabel | Cabel | Manila - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/metro-manila/paranaque-city_2322454/restaurant/kumba | Kumba | Para\u00f1aque - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Asian
+Bib Gourmand | /us/en/metro-manila/quenzon-city_2323700/restaurant/morning-sun-eatery | Morning Sun Eatery | Quezon - Metro Manila, The Philippines | \u20b1 \u00b7 Street Food
+Bib Gourmand | /us/en/metro-manila/quenzon-city_2323700/restaurant/palm-grill-diliman | Palm Grill (Diliman) | Quezon - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/metro-manila/quenzon-city_2323700/restaurant/some-thai-tomas-morato | SOME THAI (Tomas Morato) | Quezon - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Thai
+Bib Gourmand | /us/en/metro-manila/taguig-city_2327686/restaurant/bolero-1217698 | Bolero | Taguig - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Spanish
+Bib Gourmand | /us/en/metro-manila/taguig-city_2327686/restaurant/brick-corner | Brick Corner | Taguig - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Indian
+Bib Gourmand | /us/en/metro-manila/taguig-city_2327686/restaurant/cochi | COCHI | Taguig - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Filipino
+Bib Gourmand | /us/en/metro-manila/taguig-city_2327686/restaurant/em-ha-noi | Em H\u00e0 N\u1ed9i | Taguig - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Vietnamese
+Bib Gourmand | /us/en/metro-manila/taguig-city_2327686/restaurant/los-tacos | Los Tacos | Taguig - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Mexican
+Bib Gourmand | /us/en/national-capital-region/las-pinas-city_2320883/restaurant/butcher-boy | BUTCHER BOY | Las Pi\u00f1as - Metro Manila, The Philippines | \u20b1\u20b1 \u00b7 Asian
+One Star | /us/en/calabarzon/cavite_2318043/restaurant/asador-alfonso | Asador Alfonso | Cavite, The Philippines | \u20b1\u20b1\u20b1\u20b1 \u00b7 Spanish Contemporary
+One Star | /us/en/metro-manila/makati-city_2329358/restaurant/celera | Celera | Makati - Metro Manila, The Philippines | \u20b1\u20b1\u20b1\u20b1 \u00b7 Asian Contemporary
+One Star | /us/en/metro-manila/makati-city_2329358/restaurant/flow | FLOW | Makati - Metro Manila, The Philippines | \u20b1\u20b1\u20b1\u20b1 \u00b7 Creative
+One Star | /us/en/metro-manila/makati-city_2329358/restaurant/hapag | Hapag | Makati - Metro Manila, The Philippines | \u20b1\u20b1\u20b1\u20b1 \u00b7 Filipino
+One Star | /us/en/metro-manila/makati-city_2329358/restaurant/inato | Inat\u00f4 | Makati - Metro Manila, The Philippines | \u20b1\u20b1\u20b1 \u00b7 Filipino
+One Star | /us/en/metro-manila/makati-city_2329358/restaurant/kasa-palma | K\u00e1sa Palma | Makati - Metro Manila, The Philippines | \u20b1\u20b1\u20b1\u20b1 \u00b7 Filipino
+One Star | /us/en/metro-manila/makati-city_2329358/restaurant/toyo-eatery | Toyo Eatery | Makati - Metro Manila, The Philippines | \u20b1\u20b1\u20b1\u20b1 \u00b7 Filipino
+One Star | /us/en/metro-manila/paranaque-city_2322454/restaurant/linamnam | Linamnam | Para\u00f1aque - Metro Manila, The Philippines | \u20b1\u20b1\u20b1\u20b1 \u00b7 Filipino
+One Star | /us/en/metro-manila/taguig-city_2327686/restaurant/gallery-by-chele | Gallery by Chele | Taguig - Metro Manila, The Philippines | \u20b1\u20b1\u20b1\u20b1 \u00b7 Creative
+Two Stars | /us/en/metro-manila/makati-city_2329358/restaurant/helm | Helm | Makati - Metro Manila, The Philippines | \u20b1\u20b1\u20b1\u20b1 \u00b7 Creative

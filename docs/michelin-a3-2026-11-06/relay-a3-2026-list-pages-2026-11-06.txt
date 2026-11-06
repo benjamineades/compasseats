@@ -1,0 +1,74 @@
+abu-dhabi | Bib Gourmand | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/3fils-abu-dhabi | 3Fils Abu Dhabi | Abu Dhabi | $$ \u00b7 Japanese Contemporary | ae-az | bib
+abu-dhabi | Bib Gourmand | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/al-mrzab | Al Mrzab | Abu Dhabi | $ \u00b7 Emirati Cuisine | ae-az | bib
+abu-dhabi | Bib Gourmand | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/almayass-1202415 | Almayass | Abu Dhabi | $$ \u00b7 Lebanese | ae-az | bib
+abu-dhabi | Bib Gourmand | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/beirut-sur-mer | Beirut Sur Mer | Abu Dhabi | $$ \u00b7 Lebanese | ae-az | bib
+abu-dhabi | Bib Gourmand | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/bua-thai-cafe | Bua Thai Cafe | Abu Dhabi | $$ \u00b7 Thai | ae-az | bib
+abu-dhabi | Bib Gourmand | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/mika | Mika | Abu Dhabi | $$ \u00b7 Mediterranean Cuisine | ae-az | bib
+abu-dhabi | Bib Gourmand | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/otoro | Otoro | Abu Dhabi | $$ \u00b7 Japanese Contemporary | ae-az | bib
+abu-dhabi | Bib Gourmand | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/ryba | ryba | Abu Dhabi | $$ \u00b7 Fish and Seafood | ae-az | bib
+abu-dhabi | Bib Gourmand | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/tazal | \u0165azal | Abu Dhabi | $$ \u00b7 Mediterranean Cuisine | ae-az | bib
+abu-dhabi | One Star | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/erth | Erth | Abu Dhabi | $$$ \u00b7 Modern Cuisine | ae-az | 1 star
+abu-dhabi | One Star | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/hakkasan-514821 | Hakkasan | Abu Dhabi | $$$$ \u00b7 Chinese | ae-az | 1 star
+abu-dhabi | One Star | /us/en/abu-dhabi-emirate/abu-dhabi/restaurant/talea-by-antonio-guida | Talea by Antonio Guida | Abu Dhabi | $$$$ \u00b7 Italian | ae-az | 1 star
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/acido | \u00c1cido | Buenos Aires, Argentina | $$ \u00b7 Contemporary | ar | bib
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/ajo-negro-mar-de-tapas | Ajo Negro - Mar de Tapas | Buenos Aires, Argentina | $$ \u00b7 Modern Cuisine | ar | bib
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/anafe | ANAFE | Buenos Aires, Argentina | $ \u00b7 Contemporary | ar | bib
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/bis-bistro | Bis Bistr\u00f3 | Buenos Aires, Argentina | $$ \u00b7 Contemporary | ar | bib
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/caseros | Caseros | Buenos Aires, Argentina | $ \u00b7 Traditional Cuisine | ar | bib
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/chuchu | Chuch\u00fa | Buenos Aires, Argentina | $$ \u00b7 Argentinian | ar | bib
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/garabato-bistro | Garabato Bistro | Buenos Aires, Argentina | $$ \u00b7 Contemporary | ar | bib
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/la-alacena-trattoria | La Alacena Trattoria | Buenos Aires, Argentina | $ \u00b7 Italian | ar | bib
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/mengano | Mengano | Buenos Aires, Argentina | $$ \u00b7 Contemporary | ar | bib
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/mn-santa-ines | MN Santa In\u00e9s | Buenos Aires, Argentina | $ \u00b7 Fusion | ar | bib
+argentina | Bib Gourmand | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/reliquia | Reliquia | Buenos Aires, Argentina | $$ \u00b7 Argentinian | ar | bib
+argentina | One Star | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/crizia | Crizia | Buenos Aires, Argentina | $$$$ \u00b7 Contemporary | ar | 1 star
+argentina | One Star | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/don-julio | Don Julio | Buenos Aires, Argentina | $$$$ \u00b7 Grills | ar | 1 star
+argentina | One Star | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/han | Han | Buenos Aires, Argentina | $$$$ \u00b7 Korean | ar | 1 star
+argentina | One Star | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/trescha | Trescha | Buenos Aires, Argentina | $$$$ \u00b7 Modern Cuisine | ar | 1 star
+argentina | One Star | /us/en/provincia-mendoza/mendoza_777010/restaurant/angelica-cocina-maestra | Ang\u00e9lica Cocina Maestra | Mendoza, Argentina | $$$$ \u00b7 Creative | ar | 1 star
+argentina | One Star | /us/en/provincia-mendoza/mendoza_777010/restaurant/azafran-532684 | Azafr\u00e1n | Mendoza, Argentina | $$$$ \u00b7 Modern Cuisine | ar | 1 star
+argentina | One Star | /us/en/provincia-mendoza/mendoza_777010/restaurant/brindillas | Brindillas | Mendoza, Argentina | $$$ \u00b7 Modern Cuisine | ar | 1 star
+argentina | One Star | /us/en/provincia-mendoza/mendoza_777010/restaurant/cal | Cal - Gastronom\u00eda Viva | Mendoza, Argentina | $$$ \u00b7 Creative | ar | 1 star
+argentina | One Star | /us/en/provincia-mendoza/mendoza_777010/restaurant/casa-vigil | Casa Vigil | Mendoza, Argentina | $$$$ \u00b7 Contemporary | ar | 1 star
+argentina | One Star | /us/en/provincia-mendoza/mendoza_777010/restaurant/centauro | Centauro | Mendoza, Argentina | $$$ \u00b7 Contemporary | ar | 1 star
+argentina | One Star | /us/en/provincia-mendoza/mendoza_777010/restaurant/la-vida | La VidA | Mendoza, Argentina | $$$$ \u00b7 Contemporary | ar | 1 star
+argentina | One Star | /us/en/provincia-mendoza/mendoza_777010/restaurant/riccitelli-bistro | Riccitelli Bistr\u00f3 | Mendoza, Argentina | $$$ \u00b7 Seasonal Cuisine | ar | 1 star
+argentina | One Star | /us/en/provincia-mendoza/mendoza_777010/restaurant/zonda-cocina-de-paisaje | Zonda Cocina de Paisaje | Mendoza, Argentina | $$$$ \u00b7 Traditional Cuisine | ar | 1 star
+argentina | Two Stars | /us/en/ciudad-autonoma-de-buenos-aires/buenos-aires_777009/restaurant/aramburu | Aramburu | Buenos Aires, Argentina | $$$$ \u00b7 Creative | ar | 2 star
+czechia | Bib Gourmand | /us/en/hradec-kralove-region/hradec-kralove_1265999/restaurant/satlava | \u0160atlava | Hradec Kr\u00e1lov\u00e9, Czechia | \u20ac\u20ac \u00b7 Seasonal Cuisine | cz | bib
+czechia | Bib Gourmand | /us/en/jihocesky/trebon_1278941/restaurant/supina-a-supinka | \u0160upina a \u0160upinka | T\u0159ebo\u0148, Czechia | \u20ac\u20ac \u00b7 Regional Cuisine | cz | bib
+czechia | Bib Gourmand | /us/en/jihomoravsky/brno_1273693/restaurant/bar-atelier-bistro | ATELIER bar & bistro | Brno, Czechia | \u20ac\u20ac \u00b7 Farm to table | cz | bib
+czechia | Bib Gourmand | /us/en/jihomoravsky/brno_1273693/restaurant/valoria | Valoria | Brno, Czechia | \u20ac\u20ac \u00b7 International | cz | bib
+czechia | Bib Gourmand | /us/en/moravskoslezsky/celadna_1279845/restaurant/miura | MIURA | \u010celadn\u00e1, Czechia | \u20ac \u00b7 Regional Cuisine | cz | bib
+czechia | Bib Gourmand | /us/en/olomoucky/olomouc_1277165/restaurant/long-story-short-eatery-bakery | Long Story Short Eatery & Bakery | Olomouc, Czechia | \u20ac\u20ac \u00b7 Modern Cuisine | cz | bib
+czechia | Bib Gourmand | /us/en/pardubicky/litomysl_1267653/restaurant/bohem | Boh\u00e9m | Litomy\u0161l, Czechia | \u20ac \u00b7 Regional Cuisine | cz | bib
+czechia | Bib Gourmand | /us/en/plzensky/plzen_1269468/restaurant/stipec | \u0160tipec | Pilsen, Czechia | \u20ac\u20ac \u00b7 Czech | cz | bib
+czechia | Bib Gourmand | /us/en/prague/prague/restaurant/alma-1218075 | Alma | Prague, Czechia | \u20ac\u20ac \u00b7 Contemporary | cz | bib
+czechia | Bib Gourmand | /us/en/prague/prague/restaurant/dejvicka-34-by-tomas-cerny | Dejvick\u00e1 34 by Tom\u00e1\u0161 \u010cern\u00fd | Prague, Czechia | \u20ac\u20ac \u00b7 Italian | cz | bib
+czechia | Bib Gourmand | /us/en/prague/prague/restaurant/na-kopci | Na Kopci | Prague, Czechia | \u20ac\u20ac \u00b7 Traditional Cuisine | cz | bib
+czechia | Bib Gourmand | /us/en/prague/prague/restaurant/the-eatery | The Eatery | Prague, Czechia | \u20ac\u20ac \u00b7 Czech | cz | bib
+czechia | Bib Gourmand | /us/en/prague/prague/restaurant/u-kalendu | U Kalend\u016f | Prague, Czechia | \u20ac\u20ac \u00b7 Czech | cz | bib
+czechia | Bib Gourmand | /us/en/prague/prague/restaurant/u-mateje | U Mat\u011bje | Prague, Czechia | \u20ac\u20ac \u00b7 Czech | cz | bib
+czechia | Bib Gourmand | /us/en/prague/prague/restaurant/vycep | V\u00fd\u010dep | Prague, Czechia | \u20ac\u20ac\u20ac \u00b7 Czech | cz | bib
+czechia | Bib Gourmand | /us/en/south-bohemian/tabor_1278891/restaurant/goldie-1211724 | Goldie | T\u00e1bor, Czechia | \u20ac\u20ac \u00b7 International | cz | bib
+czechia | Bib Gourmand | /us/en/ustecky/budyne-nad-ohri_1264274/restaurant/dvur-perlova-voda | Dv\u016fr Perlov\u00e1 voda | Budyn\u011b nad Oh\u0159\u00ed, Czechia | \u20ac\u20ac \u00b7 Regional Cuisine | cz | bib
+czechia | One Star | /us/en/jihomoravsky/hlohovec_1274686/restaurant/essens | ESSENS | Hlohovec, Czechia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | cz | 1 star
+czechia | One Star | /us/en/olomoucky/olomouc_1277165/restaurant/entree | Entr\u00e9e | Olomouc, Czechia | \u20ac\u20ac\u20ac \u00b7 Modern Cuisine | cz | 1 star
+czechia | One Star | /us/en/prague/prague/restaurant/casa-de-carli | Casa De Carli | Prague, Czechia | \u20ac\u20ac\u20ac \u00b7 Italian | cz | 1 star
+czechia | One Star | /us/en/prague/prague/restaurant/field | Field | Prague, Czechia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | cz | 1 star
+czechia | One Star | /us/en/prague/prague/restaurant/la-degustation-boheme-bourgeoise | La Degustation Boh\u00eame Bourgeoise | Prague, Czechia | \u20ac\u20ac\u20ac\u20ac \u00b7 Modern Cuisine | cz | 1 star
+czechia | One Star | /us/en/prague/prague/restaurant/levitate-1208342 | LEVITATE | Prague, Czechia | \u20ac\u20ac\u20ac\u20ac \u00b7 Asian Influences | cz | 1 star
+czechia | One Star | /us/en/prague/prague/restaurant/stangl | \u0160tangl | Prague, Czechia | \u20ac\u20ac\u20ac\u20ac \u00b7 Seasonal Cuisine | cz | 1 star
+czechia | One Star | /us/en/zlinsky/zlin_1279638/restaurant/la-villa-1211435 | La Villa Restaurant | Zl\u00edn, Czechia | \u20ac\u20ac\u20ac \u00b7 Classic Cuisine | cz | 1 star
+czechia | Two Stars | /us/en/stredocesky/vysoky-ujezd_1272168/restaurant/restaurant-papilio | Restaurant Papilio | Vysok\u00fd \u00dajezd, Czechia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | cz | 2 star
+estonia | Bib Gourmand | /us/en/harju/tallinn/restaurant/fotografiska-1199007 | Fotografiska | Tallinn, Estonia | \u20ac\u20ac \u00b7 Modern Cuisine | ee | bib
+estonia | Bib Gourmand | /us/en/harju/tallinn/restaurant/fume | FUME | Tallinn, Estonia | \u20ac\u20ac \u00b7 Mediterranean Cuisine | ee | bib
+estonia | Bib Gourmand | /us/en/harju/tallinn/restaurant/lore-bistroo | Lore Bistroo | Tallinn, Estonia | \u20ac\u20ac \u00b7 Modern Cuisine | ee | bib
+estonia | Bib Gourmand | /us/en/harju/tallinn/restaurant/mantel-ja-korsten | Mantel ja Korsten | Tallinn, Estonia | \u20ac\u20ac \u00b7 Contemporary | ee | bib
+estonia | Bib Gourmand | /us/en/harju/tallinn/restaurant/noa | NOA | Tallinn, Estonia | \u20ac\u20ac \u00b7 Modern Cuisine | ee | bib
+estonia | Bib Gourmand | /us/en/harju/tallinn/restaurant/tuljak | Tuljak | Tallinn, Estonia | \u20ac\u20ac \u00b7 Modern Cuisine | ee | bib
+estonia | Bib Gourmand | /us/en/harju/tallinn/restaurant/uma-1217018 | UMA | Tallinn, Estonia | \u20ac\u20ac \u00b7 Asian | ee | bib
+estonia | Bib Gourmand | /us/en/harju/tallinn/restaurant/vesta-1246700 | Vesta | Tallinn, Estonia | \u20ac\u20ac \u00b7 Contemporary | ee | bib
+estonia | Bib Gourmand | /us/en/viljandi-region/viljandi/restaurant/fellin | Fellin | Viljandi, Estonia | \u20ac\u20ac \u00b7 Traditional Cuisine | ee | bib
+estonia | One Star | /us/en/harju/tallinn/restaurant/noa-chef%E2%80%99s-hall | NOA Chef\u2019s Hall | Tallinn, Estonia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | ee | 1 star
+estonia | Two Stars | /us/en/harju/tallinn/restaurant/180%C2%B0-by-matthias-diether | 180\u00b0 by Matthias Diether | Tallinn, Estonia | \u20ac\u20ac\u20ac\u20ac \u00b7 Creative | ee | 2 star

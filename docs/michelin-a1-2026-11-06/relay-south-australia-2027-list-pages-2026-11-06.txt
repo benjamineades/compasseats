@@ -1,0 +1,27 @@
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/africola | Africola | Adelaide, Australia | $$ \u00b7 South African
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/bar-torino | Bar Torino | Adelaide, Australia | $$ \u00b7 Italian
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/bistro-francais | Bistro Fran\u00e7ais | Adelaide, Australia | $$ \u00b7 French
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/golden-boy | Golden Boy | Adelaide, Australia | $$ \u00b7 Thai contemporary
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/gondola-gondola | Gondola Gondola | Adelaide, Australia | $$ \u00b7 Asian
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/la-popular-taqueria | La Popular Taqueria | Adelaide, Australia | $ \u00b7 Mexican
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/noi-vietnamese-eatery | Noi Vietnamese Eatery | Adelaide, Australia | $$ \u00b7 Vietnamese
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/pantry-on-prospect | Pantry on Prospect | Adelaide, Australia | $$ \u00b7 Australian
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/part-time-lover | Part Time Lover | Adelaide, Australia | $ \u00b7 Australian Contemporary
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/parwana-afghan-kitchen | Parwana Afghan Kitchen | Adelaide, Australia | $ \u00b7 Afghan
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/stamps | Stamps | Adelaide, Australia | $$ \u00b7 Australian
+Bib Gourmand | /us/en/south-australia/adelaide_7770061/restaurant/sunny-s-pizza | Sunny's Pizza | Adelaide, Australia | $$ \u00b7 Pizza
+Bib Gourmand | /us/en/south-australia/clare_7770499/restaurant/antidote-kitchen | Antidote Kitchen | Clare, Australia | $$ \u00b7 Australian Contemporary
+Bib Gourmand | /us/en/south-australia/kingscote_7770485/restaurant/tirage-on-kangaroo-island | Tirage on Kangaroo Island | Kingscote, Australia | $$ \u00b7 Seasonal Cuisine
+Bib Gourmand | /us/en/south-australia/mclaren-vale_7770483/restaurant/the-salopian-inn | The Salopian Inn | McLaren Vale, Australia | $$ \u00b7 Australian Contemporary
+Bib Gourmand | /us/en/south-australia/seppeltsfield_7770486/restaurant/fino-seppeltsfield | Fino Seppeltsfield | Seppeltsfield, Australia | $$ \u00b7 Seasonal Cuisine
+One Star | /us/en/south-australia/adelaide_7770061/restaurant/arkhe-1244917 | arkh\u00e9 | Adelaide, Australia | $$$ \u00b7 Farm to table
+One Star | /us/en/south-australia/adelaide_7770061/restaurant/aurora-at-ila | Aurora at ILA | Adelaide, Australia | $$$ \u00b7 Australian Contemporary
+One Star | /us/en/south-australia/adelaide_7770061/restaurant/botanic | Botanic | Adelaide, Australia | $$$$ \u00b7 Australian Contemporary
+One Star | /us/en/south-australia/adelaide_7770061/restaurant/esmay | Esmay | Adelaide, Australia | $$$ \u00b7 Seasonal Cuisine
+One Star | /us/en/south-australia/kangarilla_7770484/restaurant/anvers-restaurant | Anvers Restaurant | Kangarilla, Australia | $$$ \u00b7 Australian Contemporary
+One Star | /us/en/south-australia/mclaren-vale_7770483/restaurant/maxwell-restaurant | Maxwell Restaurant | McLaren Vale, Australia | $$$$ \u00b7 Creative
+One Star | /us/en/south-australia/seppeltsfield_7770486/restaurant/hentley-farm | Hentley Farm | Seppeltsfield, Australia | $$$$ \u00b7 Seasonal Cuisine
+One Star | /us/en/south-australia/sevenhill_7770480/restaurant/skillogalee-barrel-house | Skillogalee Barrel House | Sevenhill, Australia | $$ \u00b7 Australian Contemporary
+One Star | /us/en/south-australia/stirling_7770500/restaurant/aptos | Aptos | Stirling, Australia | $$$$ \u00b7 Australian Contemporary
+One Star | /us/en/south-australia/woodside_7770481/restaurant/lvn-restaurant-at-bird-in-hand | LVN Restaurant at Bird in Hand | Woodside, Australia | $$$$ \u00b7 Australian Contemporary
+Two Stars | /us/en/south-australia/adelaide_7770061/restaurant/magill-estate-restaurant | Magill Estate Restaurant | Adelaide, Australia | $$$$ \u00b7 Australian Contemporary
