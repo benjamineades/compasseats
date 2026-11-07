@@ -1,0 +1,8 @@
+[
+  {"id": "ChIJtest000000001", "slug": "le-gabriel", "name": "Le Gabriel", "city_slug": "paris", "status": "active", "lat": 48.87, "lng": 2.31, "address": "x", "price_tier": "$$$$", "blurb_long": "x", "cuisine_tags": ["French"], "awards": [{"source": "michelin"}]},
+  {"id": "ChIJtest000000002", "slug": "bar-nouveau", "name": "Bar Nouveau Paris", "city_slug": "paris", "status": "active", "lat": 48.86, "lng": 2.35, "address": "x", "price_tier": null, "blurb_long": "", "cuisine_tags": [], "awards": [{"source": "worlds-50-best-bars"}]},
+  {"id": "ChIJtest000000003", "slug": "fujiya-1935", "name": "Fujiya 1935", "city_slug": "osaka", "status": "active", "lat": 34.68, "lng": 135.5, "address": "x", "price_tier": "$$$$", "blurb_long": "x", "cuisine_tags": [], "awards": [{"source": "michelin"}]},
+  {"id": "ChIJtest000000004", "slug": "closed-spot", "name": "Closed Spot", "city_slug": "london", "status": "active", "lat": 51.5, "lng": -0.1, "address": "x", "price_tier": "$$", "blurb_long": "", "cuisine_tags": [], "awards": [{"source": "michelin"}]},
+  {"id": "ChIJtest000000005", "slug": "unknown-place", "name": "Unknown Place", "city_slug": "london", "status": "active", "lat": 51.5, "lng": -0.1, "address": "x", "price_tier": null, "blurb_long": "", "cuisine_tags": [], "awards": []},
+  {"id": "ChIJtest000000006", "slug": "long-gone", "name": "Long Gone", "city_slug": "london", "status": "closed", "lat": 51.5, "lng": -0.1, "address": "x", "price_tier": null, "blurb_long": "", "cuisine_tags": [], "awards": []}
+]

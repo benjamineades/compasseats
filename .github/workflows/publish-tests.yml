@@ -1,0 +1,54 @@
+name: Publish — tests
+
+# Runs the publish suite against a throwaway Postgres built from this repo's
+# own canonical schema plus the migrations. It never touches the live project:
+# the live connection string is not even available to this workflow.
+
+on:
+  push:
+    paths:
+      - "scripts/publish/**"
+      - "scripts/ingest/lib/**"
+      - "scripts/ingest/test/harness.ts"
+      - "supabase/migrations/**"
+      - "docs/compass-schema-v1.sql"
+      - ".github/workflows/publish-tests.yml"
+  pull_request:
+    paths:
+      - "scripts/publish/**"
+      - "scripts/ingest/lib/**"
+      - "scripts/ingest/test/harness.ts"
+      - "supabase/migrations/**"
+      - "docs/compass-schema-v1.sql"
+      - ".github/workflows/publish-tests.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: compass_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Run the publish tests
+        env:
+          INGEST_TEST_DB_URL: postgres://postgres:postgres@127.0.0.1:5432/compass_test
+        run: bun test scripts/publish/publish.test.ts

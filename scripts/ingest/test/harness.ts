@@ -44,7 +44,16 @@ export async function buildTestDb(
     );
   }
   const { client: db, close } = await connectTo(TEST_DB_URL);
+  await buildSchema(db, repoRoot);
+  await db.query(readFileSync(join(repoRoot, "scripts/ingest/test/seed.sql"), "utf8"));
+  return { db, close };
+}
 
+/**
+ * The empty schema alone: the canonical schema, the live norm_key() body and
+ * every migration, with no seed. The publish tests use it with their own seed.
+ */
+export async function buildSchema(db: Db, repoRoot: string): Promise<void> {
   await db.query(`drop schema if exists public cascade; create schema public;`);
   await db.query(readFileSync(join(repoRoot, "docs/compass-schema-v1.sql"), "utf8"));
   await db.query(NORM_KEY_AS_LIVE);
@@ -54,9 +63,6 @@ export async function buildTestDb(
     if (!file.endsWith(".sql")) continue;
     await db.query(readFileSync(join(migrationDir, file), "utf8"));
   }
-
-  await db.query(readFileSync(join(repoRoot, "scripts/ingest/test/seed.sql"), "utf8"));
-  return { db, close };
 }
 
 export async function counts(db: Db): Promise<Record<string, number>> {
