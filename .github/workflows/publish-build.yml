@@ -1,0 +1,97 @@
+name: Publish — build
+
+# Reads the database once, read-only, and writes one new version folder to the
+# publish-preview branch, with a report. It does NOT move the preview pointer:
+# that is "Publish — promote".
+#
+# If any gate fails, no version folder is written and nothing is pushed. The
+# report is still in the run summary and in the artifact.
+#
+# It never writes to the database and never touches the live site.
+#
+# Actions tab -> "Publish — build" -> Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      allow_decrease:
+        description: "Leave blank. Only if the report asks: type exactly ALLOW DECREASE <number> as the report says"
+        required: false
+        default: ""
+        type: string
+      note:
+        description: "Optional: a note stored in the version's manifest"
+        required: false
+        default: ""
+        type: string
+
+# One publish workflow at a time: a build, a promote and a rollback can never
+# run at once, because all three write the same branch.
+concurrency:
+  group: publish-preview
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # No `bun install`: the publish scripts have no dependencies.
+
+      - name: Check out the publish-preview branch
+        run: bash scripts/publish/checkout-preview.sh "$RUNNER_TEMP/preview" create
+
+      # Every input goes through env, never spliced into the shell.
+      - name: Build a new version
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          ALLOW_DECREASE: ${{ inputs.allow_decrease }}
+          BUILD_NOTE: ${{ inputs.note }}
+        run: |
+          set -euo pipefail
+          ARGS=(--tree "$RUNNER_TEMP/preview" --live-file data/venues.json --out "$RUNNER_TEMP/publish-out" --git-sha "$(git rev-parse HEAD)")
+          if [ -n "$ALLOW_DECREASE" ]; then
+            ARGS+=(--allow-decrease "$ALLOW_DECREASE")
+          fi
+          if [ -n "$BUILD_NOTE" ]; then
+            ARGS+=(--note "$BUILD_NOTE")
+          fi
+          bun run scripts/publish/build.ts "${ARGS[@]}"
+
+      - name: Put the report in the run summary
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/publish-out/report.md" ]; then
+            cat "$RUNNER_TEMP/publish-out/report.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "The build stopped before it wrote a report. See the log above." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publish-build-report
+          path: ${{ runner.temp }}/publish-out/
+          if-no-files-found: ignore
+
+      - name: Push the new version to publish-preview
+        run: |
+          set -euo pipefail
+          VERSION="$(cat "$RUNNER_TEMP/publish-out/version.txt")"
+          cd "$RUNNER_TEMP/preview"
+          git config user.name  "compasseats-publish"
+          git config user.email "publish@users.noreply.github.com"
+          git add -A
+          git commit -q -m "publish: build $VERSION (from main ${GITHUB_SHA::7})"
+          git push origin HEAD:refs/heads/publish-preview
+          echo "Pushed version $VERSION to publish-preview." >> "$GITHUB_STEP_SUMMARY"

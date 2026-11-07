@@ -1,0 +1,81 @@
+name: Publish — rollback
+
+# Points the preview back at the version it pointed at before the current one
+# (promote-previous-version). Before it moves the pointer it checks that
+# earlier version's folder against its own manifest, file by file.
+#
+# It will not run unless the confirmation field reads exactly
+#   ROLLBACK <the version the preview points at now>
+#
+# It never writes to the database and never touches the live site.
+#
+# Actions tab -> "Publish — rollback" -> Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: "Type: ROLLBACK <the version the preview points at now>"
+        required: true
+        type: string
+      dry_run:
+        description: "Dry run — do every check, print what would change, change nothing"
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: publish-preview
+  cancel-in-progress: false
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Check out the publish-preview branch
+        run: bash scripts/publish/checkout-preview.sh "$RUNNER_TEMP/preview" require
+
+      - name: Roll back
+        env:
+          CONFIRMATION: ${{ inputs.confirmation }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          ARGS=(--tree "$RUNNER_TEMP/preview" --confirm "$CONFIRMATION" --run "$GITHUB_RUN_ID")
+          if [ "$DRY_RUN" = "true" ]; then
+            ARGS+=(--dry-run)
+          fi
+          bun run scripts/publish/rollback.ts "${ARGS[@]}" | tee "$RUNNER_TEMP/rollback.out"
+
+      - name: Put the result in the run summary
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/rollback.out" ]; then
+            cat "$RUNNER_TEMP/rollback.out" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Nothing was rolled back. See the log above for why." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Push the pointer change
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/preview"
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No change to push."
+            exit 0
+          fi
+          git config user.name  "compasseats-publish"
+          git config user.email "publish@users.noreply.github.com"
+          git add -A
+          git commit -q -m "publish: roll back preview"
+          git push origin HEAD:refs/heads/publish-preview

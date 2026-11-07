@@ -15,8 +15,12 @@
     "ingest:undo": "bun run scripts/ingest/undo.ts",
     "rename:apply": "bun run scripts/rename/apply.ts",
     "rename:undo": "bun run scripts/rename/undo.ts",
+    "publish:build": "bun run scripts/publish/build.ts",
+    "publish:promote": "bun run scripts/publish/promote.ts",
+    "publish:rollback": "bun run scripts/publish/rollback.ts",
     "test:ingest": "bun test scripts/ingest/ingest.test.ts",
     "test:rename": "bun test scripts/rename/rename.test.ts",
+    "test:publish": "bun test scripts/publish/publish.test.ts",
     "typecheck:scripts": "tsc -p tsconfig.scripts.json",
     "format": "prettier --write ."
   },
