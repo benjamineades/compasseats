@@ -1,5 +1,5 @@
 -- load-michelin-d-vietnam-2026-11-06.sql
--- CompassEats, Nov 6 2026. Michelin group D Vietnam. DRAFT, choices not yet given. This file runs only after Ben's "go".
+-- CompassEats, Nov 6 2026. Michelin group D Vietnam. Approved: Ben Nov 6 2026 19:41 ET, choices 1-5 A (1 run 64 rows with the 4 weak Da Nang pairs; 2 Pho Bo Lam 10427 and Vi Que Kitchen 10516 no URL, recheck list and archive URL item; 3 Chi Mo to the hold register; 4 Nam Hien pair to the same-name list, no merge; 5 44 names to the rename batch). This file runs only after Ben's "go".
 -- 64 rows keep year 2026 and get the card URL. 1 card(s) with no venue: no write. 2 row(s) stay with no URL. Relabel 0. Retire 0. No new rows, no new venues, no closures.
 -- Source: relay-vn-2026-cards-2026-11-06.txt sha256 078938594a09918abb58daffb4235bf2388922fb82f7ac554713dcd54c5a5b5d.
 -- Expected after: awards 29052 unchanged; ledger 322 rows; audit_log +64.
@@ -93,7 +93,7 @@ BEGIN
   UPDATE awards a SET source_url=split_part(x,'~',4) FROM regexp_split_to_table(rl,E'\n') x WHERE a.id=split_part(x,'~',1)::bigint;
   GET DIAGNOSTICS n = ROW_COUNT; IF n <> 64 THEN RAISE EXCEPTION 'urls %', n; END IF;
   INSERT INTO source_capture_ledger (publisher, field_type, items, job) VALUES
-    ('michelin','award',64,'cleanup:load-michelin-d-vietnam-2026-11-06 | rule 2.1.7: Vietnam 2026, Jun 4, 2026, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-vietnam-2026 | year stays 2026, source_url = the card (/us/en/), all 81 card labels 2026 read Nov 6 2026, retire 0 | card with no venue, hold register, no write: chi-mo Chi Mo (Ho Chi Minh City), new Bib in the Jun 4 2026 Vietnam article, no venue in the database | relay sha256 078938594a09918abb58daffb4235bf2388922fb82f7ac554713dcd54c5a5b5d | DRAFT, choices not yet given');
+    ('michelin','award',64,'cleanup:load-michelin-d-vietnam-2026-11-06 | rule 2.1.7: Vietnam 2026, Jun 4, 2026, https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-vietnam-2026 | year stays 2026, source_url = the card (/us/en/), all 81 card labels 2026 read Nov 6 2026, retire 0 | card with no venue, hold register, no write: chi-mo Chi Mo (Ho Chi Minh City), new Bib in the Jun 4 2026 Vietnam article, no venue in the database | relay sha256 078938594a09918abb58daffb4235bf2388922fb82f7ac554713dcd54c5a5b5d | Approved: Ben Nov 6 2026 19:41 ET, choices 1-5 A (1 run 64 rows with the 4 weak Da Nang pairs; 2 Pho Bo Lam 10427 and Vi Que Kitchen 10516 no URL, recheck list and archive URL item; 3 Chi Mo to the hold register; 4 Nam Hien pair to the same-name list, no merge; 5 44 names to the rename batch)');
   -- POST gates
   IF (SELECT count(*) FROM awards) <> 29052 THEN RAISE EXCEPTION 'awards after'; END IF;
   IF (SELECT count(*) FROM awards WHERE source_id='michelin' AND year=2026) <> 7821 THEN RAISE EXCEPTION 'Michelin after'; END IF;
