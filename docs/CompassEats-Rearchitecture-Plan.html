@@ -60,11 +60,11 @@
   <div class="eyebrow">Living doc · Architecture</div>
   <h1>Re-Architecture <em>&amp; Migration Plan</em></h1>
   <div class="meta">
-    <span class="m">Version <b>1.30</b></span>
-    <span class="m">Updated <b>October 9, 2026</b></span>
-    <span class="m">Author <b>Claude Fable 5 · v1.21–1.24 updates by Claude Opus 5 · v1.25–1.30 by Claude Opus 5.5</b></span>
-    <span class="m">Status <b>Michelin 2026 under way · France, Italy, Japan, Spain &amp; Andorra, Monaco, Colorado + Southwest, China mainland, Great Britain &amp; Ireland, Chengdu (archive) and Germany promoted and closed · Chengdu 2027 promoted · Texas due now · Phase 4 and 5 dates under review · Michelin history backfill approved, after launch</b></span>
-    <span class="m">Responds to <b>Chengdu rename and archive method test 1, Sep 28 – Oct 5 · michelin-2026-germany promoted Oct 8 · Germany option A, cleanup, rename batches 12, 15, 16 and their slug files, Oct 9 · Ben's rulings Sep 28 – Oct 9</b></span>
+    <span class="m">Version <b>1.31</b></span>
+    <span class="m">Updated <b>November 6, 2026</b></span>
+    <span class="m">Author <b>Claude Fable 5 · v1.21–1.24 updates by Claude Opus 5 · v1.25–1.31 by Claude Opus 5.5</b></span>
+    <span class="m">Status <b>Phase 2 publish job built, merged (PR #13) and run on a preview branch, Nov 6 · open in Phase 2: the D10 cap gate and a read-only database user · award work after v1.30 (Oct 9 – Nov 6, ledger 103–376) not yet in this plan, so the Michelin lines and the Phase 4 and 5 dates below are as of v1.30 · Michelin history backfill approved, after launch</b></span>
+    <span class="m">Responds to <b>Phase 2 publish job: design and Ben's choices 1–8: A, Nov 6 · PR #13 merged Nov 6 · 2 supervised runs and the deploy check, Nov 6 ET (Nov 7 UTC)</b></span>
   </div>
 
   <p class="lead">A phased plan to rebuild CompassEats, and later Compass Local, on a licence-compliant, automated foundation that one non-technical operator runs alone. It is a design, not code. Every phase names its model and surface, the decisions that need Ben's judgment, effort in Ben's hours, and its rollback position. The decision register in §1 is the work to finish before August 18.</p>
@@ -135,6 +135,7 @@
       <li><strong>Sharded artifacts.</strong> One <code>index.json</code> plus per-city venue files replace the 11&nbsp;MB monolith. This clears the 25&nbsp;MB Worker-bundle ceiling well past 15,000 venues, speeds builds, and — because a mobile app can read the exact same files — is the "mobile-app-ready" answer without running a server. If the app later needs live queries, Supabase's API is already sitting under everything.</li>
       <li><strong>Versioned with one-click rollback.</strong> Each publish writes to a dated version folder plus a manifest pointer. Rollback is a workflow called <code>promote-previous-version</code>: one click, live in about two minutes, no forensics required first.</li>
     </ul>
+    <p><strong>As built (Nov 6, v1.31).</strong> The versions and the one-click rollback exist, but they move a preview branch (<code>publish-preview</code>), not the live site. The live move stays in Phase 5. Details: the card "Phase 2 record — publish job designed, built, merged and run on a preview branch".</p>
   </div>
 
   <h3>Frontend and hosting</h3>
@@ -282,6 +283,7 @@
     <h3>Phase 2 — Pipeline jobs and guards <span class="tag brass">Aug 15–25</span></h3>
     <p><strong>Produces:</strong> the ingest importer (Award Radar CSV → staging → validation report → approve → promote); the publish builder (Postgres → sharded, versioned artifacts + attribution manifest + the <code>source_exposure</code> report in every publish diff); the invariant suite from §5, now with the D10 exposure caps; <code>promote-previous-version</code> rollback; the typed-confirmation promote gate; two supervised end-to-end runs with Ben. The Apps Script suite stays installed but idle as a fallback until decommission.</p>
     <p><strong>Why here:</strong> guards must exist before any real data operation runs on the new store. <strong>If skipped:</strong> the new store inherits the old operating risk — the outcome D2 exists to prevent.</p>
+    <div class="ok"><p><b>Status, Nov 6 (v1.31).</b> Built: the ingest importer (Sep 12), the undo job (Sep 13) and the publish builder with promote, <code>promote-previous-version</code> rollback and typed confirmations (merged Nov 6). The two supervised runs ran on GitHub on Nov 6 ET. Open: the D10 cap gate (the report shows the exposure table only, choice 8) and a read-only database user (choice 2). The publish builder writes to a preview branch. The live move stays in Phase 5. Record: the card "Phase 2 record — publish job designed, built, merged and run on a preview branch".</p></div>
     <div class="phase-meta">
       <div class="pm"><b>Decisions needing Ben</b>None new — walkthrough and approvals only</div>
       <div class="pm"><b>Model &amp; surface</b>Claude Code via Cowork builds; Opus reviews the invariant suite; Ben approves in GitHub</div>
@@ -1006,6 +1008,124 @@
   </div>
 
   <div class="card">
+    <h3>Phase 2 record — publish job designed, built, merged and run on a preview branch <span class="tag brass">Nov 6, 2026</span></h3>
+    <p><strong>Scope.</strong> This card records the Phase 2 publish job only. The award work after v1.30 (Oct 9 – Nov 6, 2026; ledger ids 103–376) is not in this plan yet. Times are Atlanta time (ET) unless a line says UTC. The GitHub runs were on the evening of Nov 6 ET, which is Nov 7 UTC.</p>
+    <p><strong>Result.</strong> The publish job reads the database once and writes versioned, sharded files to the branch <code>publish-preview</code>. Ben merged it on Nov 6 (PR #13, merge commit <code>f99bc53</code>). Claude ran the buttons on GitHub in Chrome, on Ben's instruction each time: 2 builds, 1 promote dry run, 2 promotes, 1 rollback. All 9 gates passed on both builds. No database write. No change to the live site: the live site builds from <code>data/venues.json</code> on <code>main</code> until the Phase 5 move.</p>
+
+    <p><strong>Design</strong> (Ben approved it on Nov 6 with choices 1–8: A).</p>
+    <ul>
+      <li><strong>Read.</strong> One transaction, <code>REPEATABLE READ READ ONLY</code>, through the existing secret <code>SUPABASE_DB_URL</code> (Session pooler). Tables: venues, listings (property <code>eats</code>, <code>published</code>), slugs (canonical, <code>eats</code>), cities, regions, awards, award_sources (active sources only), price, blurbs, redirects and the <code>source_exposure</code> view. The job also reads <code>geo</code>, <code>addresses</code>, <code>hours</code> and <code>photo_refs</code>, but only counts them. The manifest records the ledger last id and the audit_log last id. No new dependency: Bun built-in <code>SQL</code>, as in the ingest job.</li>
+      <li><strong>Files.</strong> One folder per build: <code>versions/&lt;version&gt;/</code>. It holds <code>manifest.json</code> (version id, build time, code version, database ids, sha256 and row count of every file), <code>index.json</code> (1 light row per venue), <code>venues/&lt;city_slug&gt;.json</code> (1 file per city, each venue in full with every award row of every year, price and blurb), <code>cities.json</code> and <code>regions.json</code> (counts made by the job), <code>redirects.json</code>, <code>attribution.json</code> and <code>report/</code> (<code>report.md</code> and CSV files). Rows and keys are sorted, so one database state gives the same bytes. A test proves this.</li>
+      <li><strong>Preview store.</strong> The branch <code>publish-preview</code> holds the version folders and <code>channels/preview.json</code> (the current version, a stack and a history list). It holds no site code. The live site does not read it.</li>
+      <li><strong>Build gates</strong> (a failed gate writes no version): <code>venue_count_matches_database</code>, <code>one_canonical_slug</code>, <code>city_exists</code>, <code>no_closed_venue</code>, <code>no_suspended_source</code>, <code>no_google_value</code>, <code>no_duplicate_michelin</code>, <code>no_large_decrease</code> (more than 0.5% fewer venues than the last version needs a typed <code>ALLOW DECREASE &lt;count&gt;</code>) and <code>redirect_from_unique</code> (build choice 2).</li>
+    </ul>
+    <table>
+      <tr><th>Button</th><th>What it does</th><th>Gate</th></tr>
+      <tr><td>Publish — build</td><td>Writes 1 new version folder and its report. Does not move the preview.</td><td>The 9 build gates</td></tr>
+      <tr><td>Publish — promote</td><td>Points <code>channels/preview.json</code> at a version, after a hash check of that folder against its manifest. Has a dry-run box.</td><td>Typed <code>PUBLISH &lt;version&gt;</code></td></tr>
+      <tr><td>Publish — rollback</td><td>Points the preview back at the version before, after a hash check of that folder. Has a dry-run box.</td><td>Typed <code>ROLLBACK &lt;version&gt;</code></td></tr>
+      <tr><td>Publish — tests</td><td>CI on push and pull request, throwaway Postgres, no secret.</td><td>None</td></tr>
+    </table>
+
+    <p><strong>Ben's choices, Nov 6 (1–8: A).</strong></p>
+    <table>
+      <tr><th>#</th><th>Question</th><th>Choice</th></tr>
+      <tr><td>1</td><td>Preview store</td><td>The branch <code>publish-preview</code> in the repo.</td></tr>
+      <tr><td>2</td><td>Database login</td><td>The existing <code>SUPABASE_DB_URL</code>, read-only transaction. A read-only database user stays a later item (1 database change, with Ben's "go").</td></tr>
+      <tr><td>3</td><td>Closed venues (321 of 11,831)</td><td>Left out, as <code>listings.published</code> says. Their old addresses go to the Phase 5 address check.</td></tr>
+      <tr><td>4</td><td>Blurbs</td><td>Only blurbs whose status is not <code>needs_rewrite</code> (2 of 142).</td></tr>
+      <tr><td>5</td><td>City counts</td><td>The job counts venues itself and reports any difference from <code>cities.venues_count</code>.</td></tr>
+      <tr><td>6</td><td>Confirmation and folders kept</td><td><code>PUBLISH &lt;version&gt;</code> and <code>ROLLBACK &lt;version&gt;</code>. Keep the last 10 version folders in the tree. Older folders stay in git history.</td></tr>
+      <tr><td>7</td><td>When it runs</td><td>Only when Ben presses the button. No schedule.</td></tr>
+      <tr><td>8</td><td>Exposure (D10)</td><td>A table in the report. No cap gate now.</td></tr>
+    </table>
+
+    <p><strong>Choices made in the build.</strong> The design did not set them. The PR text lists choices 1–5 for Ben. The publish-job handoff adds 6 and 7.</p>
+    <table>
+      <tr><th>#</th><th>Choice</th></tr>
+      <tr><td>1</td><td><code>ROLLBACK &lt;version&gt;</code> names the version the preview points at now, as <code>UNDO &lt;batch_key&gt;</code> names what it undoes.</td></tr>
+      <tr><td>2</td><td>A 9th gate, <code>redirect_from_unique</code>: no old address with 2 different answers. 2 old slugs repeat a redirects-table row with the same answer (<code>/fukui/kawaki</code>, <code>/yokahama/nakajo</code>). Each is written once, as the table row (fix <code>0d39444</code>, found by the rehearsal).</td></tr>
+      <tr><td>3</td><td><code>geo</code>, <code>addresses</code>, <code>hours</code>, <code>photo_refs</code>: read and counted, not published. Their published shape is a Phase 3 decision. Each holds 0 rows.</td></tr>
+      <tr><td>4</td><td>Award rows carry their database <code>id</code> and <code>source_url</code>. The compare CSV leaves out the live ids, because they are Google place ids.</td></tr>
+      <tr><td>5</td><td>Old slugs of an unpublished venue get no redirect (20 rows), as in the Oct 4 cleanup (old URLs 404, no redirect).</td></tr>
+      <tr><td>6</td><td>Version id <code>YYYYMMDDTHHMMSSZ</code> (UTC). The build refuses an id that is not newer than the newest in the tree.</td></tr>
+      <tr><td>7</td><td>Prune keeps the newest 10 folders plus the current version and the rollback target, at any age.</td></tr>
+    </table>
+
+    <p><strong>Changes to the written design.</strong> (1) §03 says a publish goes live and a rollback is "live in about two minutes". The job publishes to a preview branch only. The live move stays in Phase 5 (choice 1). (2) The confirmation is <code>PUBLISH &lt;version&gt;</code>, not <code>PUBLISH</code>, and a rollback needs <code>ROLLBACK &lt;version&gt;</code>. A confirmation for one version cannot move another, for the same reason as <code>PROMOTE &lt;batch_key&gt;</code> (choice 6). (3) §05 names D10 caps that warn and need a typed override, and the Phase 2 card lists the D10 exposure caps. The job shows the exposure table only, with no cap gate (choice 8). (4) The attribution manifest exists (<code>attribution.json</code>, 21 sources in the files), but <code>attribution_required</code> is empty on all 23 sources, so the attribution check has nothing to enforce yet. This is a finding, not a choice. (5) The job uses the shared secret, not a read-only database user (choice 2).</p>
+
+    <p><strong>Proof before the merge</strong> (rehearsal on a local copy of live, Nov 6). 12 tables exported through the Read connector and loaded into a throwaway local Postgres 16. Evidence: <code>docs/publish-job-proof-2026-11-06/</code> on the branch <code>oad-2026-read-block</code> (commit <code>c3e1798</code>, 22 files, <code>SHA256SUMS</code> sha256 <code>ea2639e1…f6b8</code>).</p>
+    <table>
+      <tr><th>Check</th><th>Result</th><th>Population</th></tr>
+      <tr><td>Tests</td><td>Publish 39, ingest 40, rename 24: all pass. Typecheck clean. GitHub Actions: 6 of 6 runs green on the push and on PR #13.</td><td>3 test suites</td></tr>
+      <tr><td>Local copy = live</td><td>md5 of every row per table: all equal, before and after the builds</td><td>12 tables</td></tr>
+      <tr><td>Gates</td><td>9 of 9 pass</td><td>11,510 venues with a published listing</td></tr>
+      <tr><td>Files</td><td><code>index.json</code> 11,510; city files 3,274; <code>cities.json</code> 3,274; <code>regions.json</code> 112; <code>redirects.json</code> 1,957 (35 + 1,922); <code>attribution.json</code> 21</td><td>Version <code>20261107T021949Z</code></td></tr>
+      <tr><td>Size and hash</td><td>3,279 data files, 13,527,914 bytes; content hash <code>3aca439f…9783</code></td><td>Same version</td></tr>
+      <tr><td>Same bytes twice</td><td>Build 2 (<code>20261107T022009Z</code>): same content hash; 0 added, 0 removed, 0 changed</td><td>11,510 venues</td></tr>
+      <tr><td>Independent check (<code>tools/verify.py</code>, no publish-job code)</td><td>3,287 files, 0 sha256 mismatches; awards 28,274, prices 7,690, blurbs 2, native names 340, redirects 1,957: files = SQL</td><td>Both versions</td></tr>
+      <tr><td>Promote and rollback</td><td>Wrong confirmations refused; promote A, promote B, rollback to A; a changed file refused by name; clean rollback after the revert</td><td>Runs 101–112 on a local stand-in for GitHub, fresh clone per run</td></tr>
+    </table>
+
+    <p><strong>Supervised runs on GitHub</strong> (Nov 6 ET, Nov 7 UTC; Ben's instruction each time; Claude clicked in Chrome). The 3 test suites passed on the merge.</p>
+    <table>
+      <tr><th>Run</th><th>Button (Actions run id)</th><th>Input</th><th>Result</th></tr>
+      <tr><td>Build #1</td><td>Publish — build (42334947318)</td><td>Blank</td><td>Version <code>20261107T033856Z</code>. 9 of 9 gates. Database read 03:38:56 UTC, read only = on, ledger 376, audit 135,045. Job 16 s, build step 3 s. Branch <code>publish-preview</code> created, commit <code>08c036b</code>.</td></tr>
+      <tr><td>Promote #1</td><td>Publish — promote (42337644618)</td><td><code>PUBLISH 20261107T033856Z</code>, dry run</td><td>Hash check of 3,287 files. Nothing changed.</td></tr>
+      <tr><td>Promote #2</td><td>Publish — promote (42338038310)</td><td><code>PUBLISH 20261107T033856Z</code></td><td>Preview = <code>20261107T033856Z</code>. Commit <code>9f83aae</code>, 1 file.</td></tr>
+      <tr><td>Build #2</td><td>Publish — build (42338283035)</td><td>Blank</td><td>Version <code>20261107T042410Z</code>. Same content hash. Added 0, removed 0, changed 0, same 11,510. Commit <code>3d1ed79</code>.</td></tr>
+      <tr><td>Promote #3</td><td>Publish — promote (42338361134)</td><td><code>PUBLISH 20261107T042410Z</code></td><td>Preview = <code>20261107T042410Z</code>. Commit <code>709ffb1</code>.</td></tr>
+      <tr><td>Rollback #1</td><td>Publish — rollback (42338418509)</td><td><code>ROLLBACK 20261107T042410Z</code></td><td>Preview = <code>20261107T033856Z</code>. Commit <code>4870fd1</code>.</td></tr>
+    </table>
+    <p>Both real versions have the rehearsal content hash (<code>3aca439f…9783</code>). Each real version: 3,287 files, 0 sha256 mismatches against its manifest, checked from a fresh clone. End state: <code>publish-preview</code> tip <code>4870fd1</code>; versions <code>20261107T033856Z</code> and <code>20261107T042410Z</code>; <code>channels/preview.json</code> current <code>20261107T033856Z</code>, history 3 actions (promote, promote, rollback). GitHub showed 2 notices on every run, no failure: <code>actions/checkout@v4</code> targets Node.js 20 (forced to Node 24), and <code>ubuntu-latest</code> moves to Ubuntu 26.</p>
+    <p><strong>Deploy check</strong> (Chrome, read only, Nov 6, 22:45 ET). Cloudflare Workers &amp; Pages holds 2 apps, <code>family-trips-app</code> and <code>compasseats-venue-photo</code>. No app is linked to the <code>compasseats</code> repo, and no Worker named <code>compasseats</code> exists. Lovable: the last "Pushed from GitHub" entry is the PR #13 merge, and no entry names a <code>publish-preview</code> commit. Lovable reads <code>main</code> only. Lovable shows a "Build unsuccessful / Preview is out of date" label on every "Pushed from GitHub" entry back to August, docs-only commits included. Not opened, not changed. The Lovable preview pane shows the site normally.</p>
+
+    <p><strong>Compare with the live site file.</strong> Population: 10,551 live pages (active rows in <code>data/venues.json</code> on <code>main</code>) and 11,510 venues in the files.</p>
+    <table>
+      <tr><th>Group</th><th>Count</th></tr>
+      <tr><td>Same address</td><td>8,976</td></tr>
+      <tr><td>Of those, the name differs</td><td>432</td></tr>
+      <tr><td>Live page, venue closed in the database</td><td>52</td></tr>
+      <tr><td>Live page, address is an old slug</td><td>1,367</td></tr>
+      <tr><td>Live page, no slug row</td><td>156</td></tr>
+      <tr><td>Published venue, no live page</td><td>2,534</td></tr>
+    </table>
+    <p>Fields (live pages / venues in the files): coordinates 10,551 / 0; address 10,551 / 0; cuisine 8,430 / 0; price 6,997 / 7,690; blurb 9,638 / 2.</p>
+
+    <p><strong>Findings.</strong></p>
+    <ul>
+      <li><strong>Cuisine did not reach the database.</strong> <code>venues.cuisine_tags</code> is NULL on all 11,831 venues, but <code>cuisine_source = 'legacy_guide'</code> on 8,488. The live file has cuisine on 8,430 of 10,551 pages.</li>
+      <li><strong>Blurbs.</strong> 2 of 11,510 venues in the files have a blurb. 140 of the 142 blurb rows are <code>needs_rewrite</code>. The live file has a blurb on 9,638 pages.</li>
+      <li><strong>No map points.</strong> <code>geo</code> 0 rows, <code>addresses</code> 0 rows, city centers (<code>cities.lat</code>) 0 of 3,344. D4 and D6 keep Google coordinates out. Phase 3 fills this.</li>
+      <li><strong>Regions.</strong> 2,097 of 3,344 cities have no region. 2,054 of the 3,274 cities in <code>cities.json</code> have none. The region files cover only cities with a region.</li>
+      <li><strong>Award source URLs.</strong> 14,045 of the 28,274 award rows in the files have no <code>source_url</code>.</li>
+      <li><strong>2 published venues hold no award row:</strong> <code>ve_514f90f364</code> and <code>ve_86b759e5f5</code> (Madame Vo, at 0 awards since the Sep 10 addendum).</li>
+      <li><strong>Mirabelle</strong> <code>ve_bb17fb8774</code>: its address is <code>/vail-and-beaver-creek-colorado/mirabelle</code>, but its city slug is <code>beaver-creek-colorado</code>.</li>
+      <li><strong>Cham redirect.</strong> <code>/cham/the-dining-room</code> points at <code>/cham-ch/the-dining-room</code>, a closed venue (<code>ve_16681ee5aa</code>). That address is not a page in the files.</li>
+      <li><strong><code>cities.venues_count</code>:</strong> 0 cities differ from the job's own count (population: 3,344 cities).</li>
+    </ul>
+
+    <div class="flag"><p><b>Open items from this work.</b></p>
+    <ul>
+      <li>Read-only database user and secret for the publish job (choice 2), with Ben's "go".</li>
+      <li>Cuisine tags: 8,488 <code>legacy_guide</code> venues with no tags.</li>
+      <li>Mirabelle address; the Cham redirect to a closed venue; the 2 venues with no award row.</li>
+      <li>Lovable "Build unsuccessful" label on every GitHub push: read the reason. It did not come from this work.</li>
+      <li>Small: update <code>actions/checkout</code> and the runner labels in all 11 workflows (the Node 20 and Ubuntu 26 notices).</li>
+      <li>This plan: record the award work after v1.30 (Oct 9 – Nov 6, ledger 103–376).</li>
+    </ul></div>
+    <p><strong>Weak points.</strong> Build time on GitHub was measured once: 3 s for the build step, 16 s for the job. The live compare reads the repo file <code>data/venues.json</code>, not the deployed pages.</p>
+
+    <p><strong>Live counts at this version</strong> (population: whole table; read Nov 7, 04:29 UTC, after the runs; equal to the reads before the runs): venues 11,831 (active 11,510, closed 321) · awards 29,052 · slugs 13,775 · price 7,759 · <code>city_aliases</code> 222 · redirects 35 · closed venues with a published listing 0 · active venues with no published listing 0 · <code>cities.venues_count</code> sum 11,510 · <code>source_capture_ledger</code> 322 rows (last id 376) · <code>audit_log</code> 129,216 rows (last id 135,045).</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>A read-only database user (1 database change, with Ben's "go"); a D10 cap level, when Ben wants a cap gate; when this plan records the work of Oct 9 – Nov 6</div>
+      <div class="pm"><b>Model &amp; surface</b>Claude in a Claude Code session (claude.ai/code) with repo access designed, built and tested the job (local Postgres 16) and opened PR #13. Ben merged it. Claude ran the buttons on GitHub in Chrome on Ben's instruction</div>
+      <div class="pm"><b>Ben's input</b>Nov 6, 20:20–23:23 ET: 2 opening prompts, 1 choice reply (1–8: A), 1 merge, 2 Chrome instructions, 3 "go"s</div>
+      <div class="pm"><b>Rollback</b>Publish — rollback moves the preview back one promote. A promote of a kept version undoes a rollback. Removed folders stay in git history. The live site does not read the preview.</div>
+    </div>
+  </div>
+
+  <div class="card">
     <h3>Work item — Michelin card price <span class="tag brass">Approved Sep 28, 2026</span></h3>
     <p><strong>Rule (Ben, Sep 28).</strong> The Michelin card price wins over a legacy price with no URL, for every guide. Reason: the card is current and has a URL. The legacy prices have no source URL.</p>
     <p><strong>Why a work item.</strong> The ingest job writes no price rows. Every Michelin fixture CSV carries <code>price_symbol_raw</code>, but only 10 China venues hold a card price today. Population: distinct venues with at least one Michelin award row that has a <code>source_url</code>, read Sep 28 after the Great Britain &amp; Ireland cleanup: 3,739 venues (v1.28 read 3,353 before that promote). 3,346 hold one price row (3,336 <code>legacy_guide</code>, 10 <code>guide_ingest</code>); 393 hold none. No venue holds more than one price row. Great Britain &amp; Ireland adds 386 venues. Their legacy prices are <code>$</code> symbols. The card prints <code>£</code> for the United Kingdom (344 rows, Channel Islands included) and <code>€</code> for Ireland (42 rows), in <code>fixtures/ingest/michelin-2026-great-britain-ireland.csv</code>.</p>
@@ -1093,6 +1213,7 @@
     <p><strong>Produces:</strong> the open-data pass complete; auto-accepts promoted; the residual quantified per market (which finally sizes the legal-dependent module precisely); the review-queue loop live in Ben's 15-minute format; the venue-website channel live, reading address and price in one visit; the ingest backlog named — Tabelog (Q4-gated, early September), Africa's 50 Best, and the upper bands of four 50 Best lists whose parents hold ranks 1–50 only (World's Restaurants, North America Restaurants, MENA Restaurants, Europe Bars — Award Radar confirms each publisher issues an upper band before ingest); natively long lists (OAD to 673, Top 500 Bars, 101 Best Steakhouses) raise no convention question; plus two Award Radar checks: Asia restaurants 51–100 has no 2022 rows under any slug, and <strong>Asia's 50 Best Bars 2026 is absent entirely — no rows at any rank</strong>; precision tiers populated for every venue and price tiers wherever a confirmed source exists.</p>
     <p><strong>Hard checkpoint, now numeric (per the Aug 11 review):</strong> when the full open-data pass completes, the residual channels are re-planned before any Phase 4 design work if the measured residual exceeds <strong>4,000</strong> (the sample-basis 95% upper bound) or the Japan residual exceeds <strong>1,000</strong>. Undershoot triggers nothing — the live-mix reweighting predicts a landing below 3,300.</p>
     <p><strong>Why here:</strong> runs in parallel the moment the store exists; the frontend needs precision tiers to design the pin states. <strong>If deferred:</strong> launch quality drops in exactly the markets that matter most, or the swap waits on geo — D4 exists so neither has to happen.</p>
+    <div class="flag"><p><b>Publish-job finding (Nov 6, v1.31).</b> The preview files hold no map points: <code>geo</code> 0 rows, <code>addresses</code> 0 rows, city centers (<code>cities.lat</code>) 0 of 3,344. D4 and D6 keep Google coordinates out, so this phase fills them. The publish job counts geo, address, hours and photo rows in its report but does not publish them. Their published shape is a decision for this phase.</p></div>
     <div class="phase-meta">
       <div class="pm"><b>Decisions needing Ben</b>None open — the gate set (A+B+C) was measured and settled Aug 10; gate-C output carries the <code>venue_low</code> tier</div>
       <div class="pm"><b>Model &amp; surface</b>Cowork + Colab for Overture one-off; Sonnet jobs for Geoapify; Cowork browsing for venue-website capture; Claude in Chrome for guide capture only per-publisher, on permission or clearance</div>
@@ -1118,6 +1239,7 @@
     <h3>Phase 5 — Parallel run and swap <span class="tag clay">Dates under review</span></h3>
     <p><strong>Produces:</strong> a URL-parity report (every indexed URL old vs new, redirects verified); Search Console readiness; the DNS cutover runbook executed click-by-click (domain moves from Lovable's settings to Ben's Cloudflare); 30 days of the Lovable deployment kept warm; then decommission — Apps Script retired, Sheet archived, <strong>legacy Google coordinate and price columns purged with a verified deletion report (the legacy-purge gate)</strong>, Lovable cancelled.</p>
     <div class="flag"><p><b>Added to this phase (Sep 28).</b> The URL-parity check must send each non-canonical slug (1,081 today) to its canonical URL with a 301. <code>cities.venues_count</code> is stale: no trigger keeps it, so the publish builder must count venues itself, or a recount job runs first (Ben to decide). Row Level Security is off on <code>award_categories</code>, <code>rename_batches</code> and <code>rename_rows</code>: Ben decides before the swap; do not enable RLS before access policies exist.</p></div>
+    <div class="ok"><p><b>Update, Nov 6 (v1.31).</b> <code>cities.venues_count</code>: Ben chose that the publish job counts venues itself and reports any difference (publish choice 5). The Nov 6 builds found 0 cities that differ (population: 3,344 cities). Redirects: each build writes <code>redirects.json</code>, 1,957 rows on Nov 6 (35 table rows + 1,922 old slugs of published venues). The URL-parity check can start from this file. Closed venues stay out of the files (publish choice 3). Their old addresses go to the address check of this phase.</p></div>
     <p><strong>Why here:</strong> the swap is the point of everything before it. <strong>If skipped:</strong> two systems forever, and the compliance exposure never actually closes.</p>
     <div class="phase-meta">
       <div class="pm"><b>Decisions needing Ben</b>Go/no-go on the parity report — a 20-minute read and one call</div>
@@ -1203,6 +1325,7 @@
       <tr><td>1.28</td><td>September 28, 2026</td><td>Base: v1.27 rebuilt from v1.26 with the exact Sep 24 edit script, because the saved copies in the repo and Project Knowledge were still v1.26. China mainland 2026 (batch id 9) promoted Sep 27: decisions file 423 rows (263 use:, 160 new), restage 309 / 160 / 0, ledger 44–45. Rename and reactivate: name_native on 17 venues, Meet the Bund active, 10 card prices; rename batch 6 (263 venues, ledger 47) and batch 8 (Meet the Bund, majority rule, ledger 66). Retire ledger 48–50 (266 rows) and Guangzhou cleanup 51; cleanup ledger 52–64; slug job for the 263 renamed venues (audit 105,135–105,660). Chengdu 2027 (batch id 10) promoted Sep 28: 47 rows, 23 match / 24 new, ledger 69–70, nothing retired; Set 1 option C. Rule 2.1.7 table: Beijing and Fujian 2027 now follow the Tokyo row. Standing rules recorded: rule 12, rule 6b, name wins, token link, category exception, free-venue rows, second category, 2025 history, other publishers, name_native exception, majority names, slugs, price, Foodle. New work item: Michelin card price for every guide (3,353 venues with a sourced Michelin row; 10 card prices today). Phase 4 and 5 dates and the mid-October swap target marked under review. Phase 5 gains the 301 check for 1,081 non-canonical slugs, the venues_count recount and the RLS decision. Punch List v2.47 and runorder v1.5 marked out of date. Order of the remaining work restated: Great Britain &amp; Ireland next.</td></tr>
       <tr><td>1.29</td><td>September 28, 2026</td><td>Great Britain &amp; Ireland 2026 (batch id 11) promoted Sep 28: ceremony Feb 9, 2026 (before May 13, so rule 2.1.1 retires twins); capture 386 rows (UK 344, Ireland 42); decisions file 148 rows, restage 381 / 5 / 0; ledger 73–74. Retire ledger 75 (380 same-category legacy twins). Status fixes: 3 closed → active, 8 active → closed; Kilberry Inn and Dill unchanged. Bristol contamination cleanup ledger 76 (2 venues). 9 legacy rows stay as history. Standing rules added: temporary closure, conflicting evidence, Michelin-closed venue, contamination with no pairing. Gap list extended: Germany #8 (806 legacy / 0 sourced), next after the Chengdu items. Order of the remaining work restated, with a GB&amp;I rename CSV (143 paired venues, Glovers Alley) and four rechecks. Price work item population updated to 3,739 venues, with GB <code>£</code> and IE <code>€</code>. Phase 4 and 5 dates kept under review.</td></tr>
       <tr><td>1.30</td><td>October 9, 2026</td><td>Chengdu rename batch 10 (ledger 78) and its slug file; Upper House cleanup (ledger 79). Ruling Sep 28: archived <code>guide.michelin.com</code> pages on <code>web.archive.org</code> can be a <code>source_url</code> under 8 conditions, now rules in the history-backfill item; Ben: Chengdu 2026 is archive method test 1, not the pilot (pilot after launch, France 2025 the natural choice). Archive method test 1 complete: batch 12 promoted Oct 2 (15 rows, ledger 82–83), 25 legacy rows sourced in place (ledger 84; 4516 and 9788 option A), held 7 deleted (ledger 85); Chengdu 2026 40 of 40 sourced. Italy/Spain archive small read recorded. Germany 2026 (batch 13): ceremony June 23, 2026 (after June 1, so 2025 rows stay as history); capture 483 rows; city fix (5 aliases deleted, 7 cities added); decisions file 252 rows; promote Oct 8 (ledger 88–89); option A 336 rows (ledger 90); cleanup (status 2 active, ledger 91–92, Posthotel deleted). Rename batches 12, 15, 16 (274 venues, ledger 94, 98–100) and two slug files (235 new canonical slugs). Standing decisions added: Michelin page as move evidence, removed card, "im/by" names, the <code>f_unaccent</code> slug rule, unreadable publisher, house + restaurant, descriptor or temporary site, case tie. Write-connector fallback recorded. Gap list after Germany; order of the remaining work restated (Texas due now). Price work item population read again (4,225 venues).</td></tr>
+      <tr><td>1.31</td><td>November 6, 2026</td><td>Phase 2 publish job recorded (new card after the Germany card). Design and Ben's choices 1–8: A (Nov 6): one read-only transaction through <code>SUPABASE_DB_URL</code>; versioned, sharded files on the branch <code>publish-preview</code>; typed <code>PUBLISH &lt;version&gt;</code> and <code>ROLLBACK &lt;version&gt;</code>; 9 build gates; exposure table, no cap gate. Build choices 1–7. Rehearsal on a local copy of live: tests 39 / 40 / 24 pass, 9 of 9 gates, content hash <code>3aca439f…9783</code>, same bytes twice. PR #13 merged Nov 6 (<code>f99bc53</code>). Supervised runs on GitHub: 2 builds, 1 promote dry run, 2 promotes, 1 rollback; deploy check clean (no Cloudflare app on <code>compasseats</code>; Lovable reads <code>main</code> only). Live compare and findings: cuisine tags empty in the database, 2 blurbs, no map points, cities with no region, Mirabelle address, Cham redirect to a closed venue, 2 venues with no award row. Small edits: §03 publish card, Phase 2 status, Phase 3 finding, Phase 5 update, header. The award work after v1.30 (Oct 9 – Nov 6, ledger 103–376) is not in this version.</td></tr>
     </table>
   </div>
   <footer>CompassEats · Re-Architecture &amp; Migration Plan · v1.0 — Aug 10, 2026<br>Save to <code>docs/</code> in the repo and re-upload to Project Knowledge after ratification. Update version + date on any change.</footer>
