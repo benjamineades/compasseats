@@ -60,11 +60,11 @@
   <div class="eyebrow">Living doc · Architecture</div>
   <h1>Re-Architecture <em>&amp; Migration Plan</em></h1>
   <div class="meta">
-    <span class="m">Version <b>1.34</b></span>
+    <span class="m">Version <b>1.35</b></span>
     <span class="m">Updated <b>November 7, 2026</b></span>
-    <span class="m">Author <b>Claude Fable 5 · v1.21–1.24 updates by Claude Opus 5 · v1.25–1.34 by Claude Opus 5.5</b></span>
-    <span class="m">Status <b>Move goals set (Ben, Nov 5): data cutoff Dec 20, 2026 · 3 design sessions Jan 9 – Feb 6, 2027 · move Feb 27–28, 2027, site unpromoted · Phase 2 publish job built, merged (PR #13) and run on a preview branch, Nov 6 · open in Phase 2: the D10 cap gate and a read-only database user · award work after v1.30 in 3 parts: part 1 (Oct 9–31, ledger 103–176) recorded in v1.33, part 2 cards 1–4 (Nov 1–2, ledger 177–234) recorded in v1.34, part 2 cards 5–8 (Nov 2–3, ledger 235–279) and part 3 (Nov 4–6, ledger 280–376) not yet in this plan · Michelin history backfill approved, after launch</b></span>
-    <span class="m">Responds to <b>Ben's "A", Nov 7 (the award record after v1.30 in 3 parts by date) · Ben's "1-2: A", Nov 7 (part 2 in 8 cards and 2 builds: cards 1–4 in v1.34, cards 5–8 next)</b></span>
+    <span class="m">Author <b>Claude Fable 5 · v1.21–1.24 updates by Claude Opus 5 · v1.25–1.35 by Claude Opus 5.5</b></span>
+    <span class="m">Status <b>Move goals set (Ben, Nov 5): data cutoff Dec 20, 2026 · 3 design sessions Jan 9 – Feb 6, 2027 · move Feb 27–28, 2027, site unpromoted · Phase 2 publish job built, merged (PR #13) and run on a preview branch, Nov 6 · open in Phase 2: the D10 cap gate and a read-only database user · award work after v1.30 in 3 parts: part 1 (Oct 9–31, ledger 103–176) recorded in v1.33, part 2 (Nov 1–3, ledger 177–279) recorded in v1.34 (cards 1–4) and v1.35 (cards 5–8), part 3 (Nov 4–6, ledger 280–376) not yet in this plan · Michelin history backfill approved, after launch</b></span>
+    <span class="m">Responds to <b>Ben's "A", Nov 7 (the award record after v1.30 in 3 parts by date) · Ben's "1-2: A", Nov 7 (part 2 in 8 cards and 2 builds: cards 1–4 in v1.34, cards 5–8 in v1.35)</b></span>
   </div>
 
   <p class="lead">A phased plan to rebuild CompassEats, and later Compass Local, on a licence-compliant, automated foundation that one non-technical operator runs alone. It is a design, not code. Every phase names its model and surface, the decisions that need Ben's judgment, effort in Ben's hours, and its rollback position. The decision register in §1 is the work to finish before August 18.</p>
@@ -1158,7 +1158,7 @@
 
   <div class="card">
     <h3>Open items blocks 7–10 · Best Chef source URLs · the 8 1/2 Otto e Mezzo pair · Forum blurb <span class="tag brass">Nov 1, 2026</span></h3>
-    <p>Part 2 of the award record after v1.30 starts here (Nov 1–3, ledger 177–279). This version holds cards 1–4 (Nov 1–2, ledger 177–234). Each block ran as gated SQL files after Ben's "go", with a fresh count read at the start.</p>
+    <p>Part 2 of the award record after v1.30 starts here (Nov 1–3, ledger 177–279). Cards 1–4 (Nov 1–2, ledger 177–234) came in v1.34, and cards 5–8 (Nov 2–3, ledger 235–279) in v1.35. Each block ran as gated SQL files after Ben's "go", with a fresh count read at the start.</p>
     <p><strong>Block 7, files 2 and 3</strong> (Ben, Oct 31 03:42 "All A", then 04:03 E4 = A1 after the alias finding). File 2: Ben ran it in the SQL Editor (Nov 1, 00:42 ET "ran it"). <code>ve_3e461fe576</code> "La Table de Christophe Hay et Loïs Bée" merged into <code>ve_dd6de25c33</code> "La Table - Christophe Hay" (Ardon). Evidence: the same town and site (<code>latable-orleans.com</code>) and the Michelin card <code>la-table-christophe-hay</code>. Awards 21261 (Gault&amp;Millau) and 29699 (Green Star) moved. The old slug is non-canonical on the survivor. Ardon count 2 → 1. Ledger 177–178, audit 119,425–119,432. File 3 (Write connector): Miura moved to the new city Beverly Hills <code>ci_a7d1756bcb</code> (rule D7: card URL and address). The alias <code>beverly hills</code> moved from Los Angeles to Beverly Hills. 9 other venues with an OAD or Wine Spectator "Beverly Hills" label stay in Los Angeles. No ledger row. Audit 119,433–119,438.</p>
     <p><strong>Block 8: Best Chef source URLs</strong> (Ben, Nov 1 01:03 "Go" = D1 A, D2 A). The results page of each edition became the <code>source_url</code>: 2024 (Dubai) <code>thebestchefawards.com/events-results/?id=1874</code>, 518 rows. 2025 (Milan) <code>?id=2376</code>, 776 rows. A script paired each row to one knife card with the same knife count. No card paired to 2 rows. Row 15879 keeps the 2024 list PDF URL. 5 rows were held. Ledger 179–180, audit 119,439–120,732 (1,294 awards, <code>source_url</code> only).</p>
     <p><strong>Block 9: the held Best Chef rows, 8 names, Guy Savoy</strong> (Ben, Nov 1 08:28 "All recommendations").</p>
@@ -1321,6 +1321,226 @@
       <div class="pm"><b>Decisions needing Fable</b>None</div>
       <div class="pm"><b>Model &amp; surface</b>The built-in browser read the archive and the live lists. WebFetch read Michelin cards and venue sites. The chat built the gated SQL files. Ben ran 3 files in the SQL Editor</div>
       <div class="pm"><b>Rollback</b><code>audit_log</code> for every file except RLS. The RLS file wrote no audit row</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Closed-venue rule · closed-venue sweep · twins, moves and temporary closures · ledger 235–238 <span class="tag brass">Nov 2, 2026</span></h3>
+    <p>Part 2, cards 5–8 (Nov 2–3, ledger 235–279), added in v1.35. Ben's times are ET. Database times are UTC.</p>
+    <p><strong>The closed-venue rule, open item 10</strong> (Ben, Nov 2 13:11 "1A … 7A", 13:26 "1A, 2A, 3A, 4A", 13:40 "Go"). 1A applies the Aug 24 rule.</p>
+    <ul>
+      <li>A closed venue has <code>listings.published</code> = false. An iconic venue stays true by Ben's call per venue. The iconic list is empty (3A).</li>
+      <li>Each closure file sets status <code>closed</code> and published false. Each reopening file sets status <code>active</code> and published true, in the same transaction (2A).</li>
+      <li>A temporary closure (fire, renovation) is closed and false until the venue reopens. A seasonal closure is active (second set, 2A).</li>
+      <li>Gates for each file and for the publish builder: closed published = the iconic list count (0 today), and active not published = 0. After the swap, a hidden venue URL gives a 404, with no redirect (7A). The live site reads the Sheet, so 34 closed venues show as open on the live site until the swap (6A).</li>
+    </ul>
+    <p><strong>The write.</strong> First a read of the 13 venues with a Michelin 2026 row and no earlier status read (4A): 8 not closed, 5 stay closed. Then <code>docs/fix-closed-rule-8-active-350-unpublished-2026-11-02.sql</code>, Write connector, first try, 18:40:52 UTC. 8 venues active: Atelier (Auckland), Muttonbird, Ed.Em, L'Impertinent, Le Saint-James, Alpage, Le Cin5, Ostaria Tyrol. 350 closed venues set to published false. Closed published 358 → 0. Audit 123,757–124,122 (cities 8, listings 350, venues 8). No ledger row.</p>
+    <p><strong>Finding: many closures from the load are wrong.</strong> All closures from the load came from the Sheet <code>closed_venues</code> tab (kept by hand, plus Google "CLOSED_PERMANENTLY" through <code>compasseats-geo-enrich.gs</code>). The database holds no evidence for them. A Google name match can be wrong. Sample of 16 from the 304 sweep venues below (seed 20261102): 8 closures confirmed, 2 live Michelin cards with no note, 4 with no closure found, 2 not settled.</p>
+    <p><strong>The closed-venue sweep</strong> (second set, 4A: an open item, 201 venues first). This is the sweep that Plan v1.15 names as a pre-swap workstream. Population: 304 venues closed at the load (no audit row active → closed), with no Michelin row 2026 or later, read before the flip. 201 hold an award from 2025 or later, 51 from 2020–2024 and 52 before 2020.</p>
+    <p><strong>First 201</strong> (14:14 "1A, 2A, 3A, 4A, 5A", 14:18 "Go"). The 201 are the closed venues whose listing the flip changed, with no audit row active → closed, no Michelin row 2026 or later and an award from 2025 or later (id-list md5 <code>f7cbfa74…e0284f</code>). Evidence: <code>docs/closed-sweep-2026-11-02/closed-sweep-201-evidence-2026-11-02.csv</code>.</p>
+    <table>
+      <tr><th>Group</th><th>Venues</th><th>Result</th></tr>
+      <tr><td>Dated 2026 evidence or live booking</td><td>20</td><td>Active</td></tr>
+      <tr><td>Seasonal, next season or season dates</td><td>8</td><td>Active</td></tr>
+      <tr><td>Undated site or listing, no closure note</td><td>34</td><td>Active (1A). The weakest evidence of the 63</td></tr>
+      <tr><td>HODAN, moved within Istanbul</td><td>1</td><td>Active (4A)</td></tr>
+      <tr><td>Possible twins</td><td>5</td><td>Closed, merge read</td></tr>
+      <tr><td>Name, city or status problem</td><td>4</td><td>Closed, recheck</td></tr>
+      <tr><td>Other moved or renamed, same city</td><td>3</td><td>Closed, rename read</td></tr>
+      <tr><td>Card or listing only</td><td>32</td><td>Closed, recheck (2A)</td></tr>
+      <tr><td>Ended, or new site not confirmed</td><td>7</td><td>Closed</td></tr>
+      <tr><td>Sources disagree</td><td>10</td><td>Closed, recheck (conflict rule)</td></tr>
+      <tr><td>Temporary closure</td><td>17</td><td>Closed, recheck</td></tr>
+      <tr><td>No usable evidence</td><td>6</td><td>Closed, recheck</td></tr>
+      <tr><td>Closure evidence</td><td>54</td><td>Closed</td></tr>
+    </table>
+    <p><code>docs/fix-status-sweep-63-active-2026-11-02.sql</code>, Write connector, first try, 19:19:40 UTC. 63 venues active and published. Audit 124,123–124,290 (cities 42, listings 63, venues 63). No ledger row. Claude opened 11 source pages again, and all 11 agree. Own-site and card evidence can be stale.</p>
+    <p><strong>Twins and moved venues</strong> (14:29 "1A … 9A", 14:35 "Go"). <code>docs/fix-closed-sweep-merge-rename-2026-11-02.sql</code>, one transaction. The Write connector cancelled 2 calls in 0.6 s, and nothing ran. Ben ran the file in the SQL Editor (committed 19:41:19 UTC). Ledger 235–237, audit 124,291–124,320, rename batch 42.</p>
+    <ul>
+      <li>Merge (2A): Hotel Tannenhof <code>ve_aed4b4a9f3</code> into Gourmetrestaurant Tannenhof <code>ve_bd408ea3c3</code>, survivor active and published. Awards 18532 (OAD) and 18533 (La Liste) moved. They have no URL: the link rests on the hotel and the town.</li>
+      <li>Merge (3A): Baumanière 1850 <code>ve_070ced1e07</code> into Slalom 1850 <code>ve_5f98076100</code>, name Slalom 1850. Awards 1824 (Michelin 2025) and 1825 (La Liste) moved. The legacy price and 2 labels were deleted.</li>
+      <li>Rename (6A, 7A): Katsukani Ryōri Akasaka Kitafuku → Azabu-Juban Kitafuku <code>ve_af6c894a24</code> (native 麻布十番 きた福), and Wine RVLT → Revolution Wine Bistro <code>ve_7e3068bc36</code>. Both active and published.</li>
+      <li>No merge: Chesa Stüva Colani - Ristorante goes to the Swiss batch (1A, card 6). ACiD brianza, Wagyumafia (Tokyo) and 花小路さわ田 stay closed, with a recheck. WAGYUMAFIA DISTRICT stays active, with a recheck and no write.</li>
+    </ul>
+    <p><strong>Item 6: the other 124</strong> (15:22 "1A, 2A, 3A, 4A, 5A", 15:24 "Go", 15:29 "1A, 2A, 3A", 15:32 "Go"). Population: the 21 closed venues that the flip did not change (Sep 10 load, audit 89,129–89,149) and the 103 with a last award before 2025. Evidence: <code>closed-sweep-item6-evidence-2026-11-02.csv</code> in the same folder. A second read (the 15 venues rated open, the 2 seasonal venues and the 4 with a 2025 award) changed 6 verdicts.</p>
+    <ul>
+      <li>File 1: <code>docs/fix-status-sweep-7-active-2026-11-02.sql</code>, Write connector, first try, 20:25:18 UTC. 7 venues active. Audit 124,321–124,341. No ledger row.</li>
+      <li>File 2: <code>docs/fix-closed-sweep-goh-barbary-union-2026-11-02.sql</code>. The connector cancelled 2 calls in 0.5 s. Ben ran the file in the SQL Editor (20:36:34 UTC). D.F. Cantina by Barbary Coast <code>ve_e5e9d66f60</code> went back to closed and is now Barbary Coast. The Union Trading Company Bar is now Union Trading Company. La Maison de la Nature Goh merged into Goh <code>ve_ce25175db1</code> (awards 20322–20324 moved). Ledger 238, audit 124,342–124,358, rename batch 43. Net result of the two files: 6 venues active.</li>
+      <li>Double Deuce Lounge stays closed (residency to Dec 5, 2026). Joo Ok (Seoul) stays closed, with no merge (another city). No second read of the 78 venues with closure evidence (5A).</li>
+    </ul>
+    <p><strong>Item 7: the 17 temporary closures</strong> (15:52 "1A, 2A, 3A, 4B, 5A"). No write. Two reads per venue, one for a reopening and one for a closure. Group A (12): temporary closure confirmed, recheck by date. Group B (3): Gravitas and Dulce Patria move to closure evidence with no recheck. Restoran Alexander stays on the list until Pädaste Manor sells. Group C (2): sources disagree. Ling Ling: recheck after Nov 5, 2026. Ô Bois Sauvage: read again in the Swiss batch. Evidence: <code>closed-sweep-item7-evidence-2026-11-02.csv</code>.</p>
+    <p><strong>Item 3: 4 venue problems</strong> (16:25 "1A, 2A, 3A, 4A, 5A", 16:29 "Go"). <code>docs/fix-closed-sweep-item3-2026-11-02.sql</code>, Write connector, first try, 21:30:26 UTC. Audit 124,359–124,371. No ledger row.</p>
+    <ul>
+      <li>Scalottas Terroir <code>ve_fae8dcb6f0</code>: active in Lenzerheide (seasonal closure, back from Dec 9, no year on the post). The Nov 2 Scharans match was wrong.</li>
+      <li>Suetomi <code>ve_779a1ac27f</code>: active (TABLEALL course from Nov 10, 2026).</li>
+      <li>Tsushimi <code>ve_001296abf4</code>: active, renamed from <code>tsushimi フレンチ</code>, moved to the new city Nirasaki <code>ci_1890364073</code> (no region, no coordinates).</li>
+      <li>The Grill at Amangani <code>ve_8d69af215c</code>: stays closed (refurbishment, reopening in 2027). The seasonal read of Nov 2 was wrong.</li>
+      <li>5A: a new open item, a second read of 10 of the 34 venues set active on undated evidence, with a recorded seed.</li>
+    </ul>
+    <p><strong>Counts after card 5</strong> (Nov 2, 21:30:45 UTC, population: whole table): venues 11,293 (active 10,999, closed 294) · closed published 0 · active not published 0 · awards 25,097 · slugs 13,022 · price 7,727 · cities 3,265, <code>cities.venues_count</code> sum 10,999 · <code>source_capture_ledger</code> last id 238 · <code>audit_log</code> 118,857 rows (last id 124,371).</p>
+    <p><strong>Open at the end of the sweep.</strong> The sample of 10. Item 4: possible missing Michelin rows (Hakusi, Schlossherrnstube, Flora, CUR8, Kinship, Mural Farmhouse). Item 5: names (Paznauerstube, Eat and Cook - Best Fine Dining KL, Amal Restaurant Armani Hotel - Burj khalifa, Flora (Food &amp; Wine), Restavracija Lesnika). The recheck lists in the sweep handoffs. No scheduled task holds their dates.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>The sample of 10, items 4 and 5, and the iconic list (empty today)</div>
+      <div class="pm"><b>Decisions needing Fable</b>None</div>
+      <div class="pm"><b>Model &amp; surface</b>WebFetch and WebSearch read the status evidence. Subagents read the 201 and the 124 in batches. After the first batches ran out of searches, each batch had a cap of 2 searches per venue. Item 7 ran inline. The chat built the gated SQL files. Ben ran 2 files in the SQL Editor</div>
+      <div class="pm"><b>Rollback</b><code>audit_log</code> for every file. Item 7 wrote nothing</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Michelin 2026 — Switzerland &amp; Liechtenstein loaded, renamed, priced and cleaned · 2025 URLs · 40 aliases removed · ledger 241–249 <span class="tag brass">Nov 2–3, 2026</span></h3>
+    <p><strong>Before the results</strong> (Ben, Nov 2 11:40 "1B, 2A, 3A, 4A, 5A"). Ceremony Nov 2, 2026, Andermatt, label 2026. At 16:34 UTC the live list still showed 4 / 23 / 103 / 97 = 227. Michelin's Bib press of Oct 23 gave 11 new Bibs, 92 in total. 1B: Ben says when the results are live. 3A: a venue with 2 categories and 2 cards gets a second venue (under-merge). 4A: Liechtenstein goes in the Swiss batch, as Monaco goes with France.</p>
+    <p><strong>The brief and the results</strong> (17:26 "1A, 2A, 3A"). Same-origin <code>fetch()</code> with <code>DOMParser</code> was the main read. Open tabs can give wrong Swiss list pages, because the site script can sort the cards again after a page load. Cowork captured the edition from <code>docs/cowork-michelin-2026-switzerland.md</code>.</p>
+    <table>
+      <tr><th>Population</th><th>3 Stars</th><th>2 Stars</th><th>1 Star</th><th>Bib</th><th>Sum</th></tr>
+      <tr><td>Snapshot, Nov 2 morning</td><td>4</td><td>23</td><td>103</td><td>97</td><td>227</td></tr>
+      <tr><td>Selection <code>switzerland</code>, Nov 2 evening</td><td>5</td><td>22</td><td>105</td><td>92</td><td>224</td></tr>
+      <tr><td>Selection <code>liechtenstein</code></td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+      <tr><td>Michelin article</td><td>5</td><td>22</td><td>106</td><td>92</td><td>225</td></tr>
+      <tr><td>Cowork CSV rows</td><td>5</td><td>22</td><td>106</td><td>92</td><td>225</td></tr>
+    </table>
+    <p>Torkel <code>ve_6784aa9f52</code> (Liechtenstein, One Star) is the difference. 18 new cards (7 One Star, 11 Bib), 21 cards left the lists, and The Japanese Restaurant moved from Two to Three Stars. The database held 227 Michelin rows on 217 venues (5 / 22 / 103 / 97), all labelled 2025, 0 with a URL. The ceremony was after June 1, so amended rule 2.1.1 keeps all legacy rows (retire count 0). Rule 2.1.7: no relabel.</p>
+    <p><strong>Green Star</strong> (17:59 "Yes take it off the plan"). No Green Star file. No Green Star was given at the Swiss 2026 ceremony, and Michelin announced a phase-out of the Green Star (press release May 18, 2026). Green Star rows already in the database stay as history. Method (Claude): a future guide brief records only whether a guide shows one.</p>
+    <p><strong>Decisions</strong> (18:09 "1A, 2A, 3A, 4A, 5A, 6B", 18:17 "1B, 2A", 18:53 "1A, 2A"). The Ollon card is a new venue. A card pairs to the venue whose name and city match it (Cheval Blanc, Da Vittorio, Magdalena: card in Schwyz, venue in Rickenbach), and the other venues go to a cleanup list. The CAAA One Star goes on <code>ve_3b12809d9f</code>. Card price in CHF on all 225 rows. Celerina → Swiss Alps, Intragna and Morbio Inferiore → Italian Lakes (no coordinates). After Seven stays open (17:57). Chesa Stüva Colani - Ristorante becomes Colani Bistrot (17:26, 1A).</p>
+    <table>
+      <tr><th>Write</th><th>File or run</th><th>How</th><th>Audit</th><th>Result</th></tr>
+      <tr><td>Cities</td><td><code>docs/cities-michelin-2026-switzerland-2026-11-02.sql</code></td><td>Ben, SQL Editor, Nov 2 23:31:49 UTC</td><td>124,372–124,389</td><td>14 cities, 4 wrong aliases deleted. No ledger row</td></tr>
+      <tr><td>Stage 1 and 2</td><td>Actions 41546434498, 41549271811</td><td>Claude, <code>gh</code></td><td>–</td><td>Batch 20: 96 / 88 / 41, then 195 / 30 / 0, equal to the prediction. Decisions file: 99 <code>use:</code>, 30 new</td></tr>
+      <tr><td>Promote</td><td>Action 41549614796 (dry run 41549474417 first)</td><td>Claude, <code>gh</code></td><td>124,705–125,019</td><td>+30 venues, +225 awards (32,266–32,490), +60 labels. 11 of 11 invariants. Ledger 241–242</td></tr>
+      <tr><td>Cleanup</td><td><code>docs/cleanup-michelin-2026-switzerland-2026-11-02.sql</code></td><td>Ben, SQL Editor, Nov 3 00:23:09 UTC</td><td>125,020–125,055</td><td>9 rows moved, row 9060 deleted, 26 city counts set. Ledger 243</td></tr>
+      <tr><td>Status</td><td><code>docs/status-michelin-2026-switzerland-2026-11-02.sql</code></td><td>Write connector, 02:32:54 UTC</td><td>125,056–125,064</td><td>After Seven and Colani Bistrot active and published. Rename batch 45. No ledger row</td></tr>
+      <tr><td>Rename</td><td><code>docs/rename-michelin-2026-switzerland.sql</code></td><td>Write connector</td><td>125,065–125,158</td><td>Batch 46, 94 venues. Ledger 244 (81 Michelin names)</td></tr>
+      <tr><td>Slugs</td><td><code>docs/slugs-rename-michelin-2026-switzerland.sql</code></td><td>Write connector</td><td>125,159–125,340</td><td>91 new canonical slugs. No ledger row</td></tr>
+      <tr><td>Price</td><td><code>docs/price-michelin-card-switzerland-2026.sql</code></td><td>Write connector, 21:38:55 UTC</td><td>125,341–125,565</td><td>191 updated, 34 inserted. Ledger 245</td></tr>
+      <tr><td>2025 backfill</td><td><code>docs/backfill-michelin-2025-switzerland-4.sql</code></td><td>Write connector, 21:40:12 UTC</td><td>125,566–125,569</td><td>Awards 32491–32494. Ledger 246</td></tr>
+      <tr><td>Cleanup list</td><td><code>docs/cleanup-michelin-2026-switzerland-list-2026-11-03.sql</code></td><td>Ben, SQL Editor, 21:48:13 UTC</td><td>125,570–125,593</td><td>3 venues merged. Ledger 247–248</td></tr>
+      <tr><td>Aliases</td><td><code>docs/cleanup-city-aliases-2026-11-03.sql</code></td><td>Ben, SQL Editor, 23:29:32 UTC</td><td>125,594–125,633</td><td>40 deleted, 262 → 222. No ledger row</td></tr>
+      <tr><td>Slugs</td><td><code>docs/slugs-letters-removed-2026-11-03.sql</code></td><td>Write connector, 23:30:14 UTC</td><td>125,634–125,677</td><td>22 new canonical slugs. No ledger row</td></tr>
+      <tr><td>2025 URLs</td><td><code>docs/source-url-michelin-2025-switzerland-cards.sql</code></td><td>Write connector, 23:32:41 UTC</td><td>125,678–125,854</td><td>177 rows. Ledger 249</td></tr>
+      <tr><td>Blurb</td><td><code>docs/rewrite-blurb-cheval-blanc-v2.sql</code></td><td>Write connector, 23:37:12 UTC</td><td>125,855</td><td>Cheval Blanc version 2, <code>rewritten</code>. No ledger row</td></tr>
+    </table>
+    <p>A rolled-back dry run used ledger 239–240 and audit 124,390–124,704. The promote does not refresh <code>cities.venues_count</code>, so the cleanup set it from <code>city_venue_counts</code>. Build files and run records: <code>docs/ch-2026-build/</code> and <code>docs/open-items-ch-2026-11-03-build/</code>.</p>
+    <p><strong>Status file</strong> (21:31 "1A, 2A", 21:32 "Go"). After Seven <code>ve_7077280426</code>: Zermatt Tourismus gives open from Dec 2, 2026, and the venue holds the 2026 One Star. Colani Bistrot <code>ve_8f85789bec</code> (was Chesa Stüva Colani - Ristorante): bistro winter season Nov 27, 2026 to Apr 3, 2027, and the venue holds the 2026 Bib. Only Michelin prints "Colani Bistrot". Ben chose that name. Ô Bois Sauvage <code>ve_9503403a2a</code> stays closed (22:26 "A"): no source gives a date or a reason for the closure, and none shows the venue open.</p>
+    <p><strong>Rename and slugs</strong> (Nov 2 23:04 "1&amp;4", 23:25 "A", Nov 3 16:17 "1A … 7A", 16:18 and 16:25 "go"). Population: 225 cards, 107 name differences: rename 94, keep 12, hold 1 (Restaurant Sonne Scheunenberg). Name sources: Michelin 81, venue site 13. 17 renames use rule R5 (site not read, or the page does not name the room). Soleil d'Or <code>ve_157d527091</code> is "Soleil d’Or by Benjamin Geisser" (1A). This replaces Ben's 18:09 choice (5A) of "by David Geisser". The live 2026 card prints "by David". The article and the 2025 card print "by Benjamin". The two Aubonne slugs that had lost the letter ø got a fix in the same batch (7A).</p>
+    <p><strong>Price, 2025 backfill and the cleanup list</strong> (Nov 3 16:29 "1,2,3", 16:37 "1A, 2A, 3A, 4A", 16:38, 16:39 and 16:41 "Go"). Price: printed symbols with currency CHF on all 225 cards (printed <code>€</code> symbols kept with currency CHF, Torkel <code>$$$</code>). Same tier 186, 5 tier changes. Backfill: 4 venues with no 2025 row got one from an archive capture of the card (Restaurant LA, La Croix d'Or, Bären Schwarzenburg, Bären Utzenstorf). Cleanup list: Grand Hotel Les Trois Rois into Cheval Blanc by Peter Knogl (award 111 deleted as a copy of 20659, blurb moved), Carlton Hotel St. Moritz LHW into Da Vittorio - St. Moritz (2940 moved), Restaurant Magdalena (Lucerne) into Magdalena (18514 moved). Old slugs stay non-canonical on the survivors.</p>
+    <p><strong>Swiss open items 1–4</strong> (17:08 "Lets do all 4. You pick the order.", 18:10 "1A,2A, 3A, 4A").</p>
+    <ul>
+      <li>Aliases: 40 deleted (country 8, region 9, wrong place 4, separate town 19). Each had 0 city labels, 0 Michelin card segments and 0 hits in 32 fixture files. 26 aliases with a venue filed under a neighbor city stay. Limit: the place classes come from general knowledge. Only St. Niklausen was checked against sources.</li>
+      <li>Slugs: population 52 venues with ø, æ, œ, ß or đ in the name. 22 slugs differed from the <code>f_unaccent</code> slug and got a new canonical slug.</li>
+      <li>2025 URLs: population 225 rows (CH 224, LI 1). 177 got a card capture inside the window 20251020–20261022 whose meta names 2025 and the row category. 48 stay blank (3A, an exception to condition 5 of the Sep 28 archive ruling: counts).</li>
+      <li>Blurb: Cheval Blanc, version 2, 3 sources, database only. The Sheet and <code>ImportOptionB.gs</code> did not change.</li>
+    </ul>
+    <p><strong>Counts after ledger 249</strong> (Nov 3, 23:37:24 UTC, population: whole table): venues 11,320 (active 11,028, closed 292) · awards 25,324 · Michelin 2025 4,997 (no URL 3,035) · slugs 13,166 (non-canonical 1,846) · price 7,759 (<code>legacy_guide</code> 2,180) · city_aliases 222 · blurbs 142 (rewritten 2) · cities 3,279, <code>cities.venues_count</code> sum 11,028 · closed published 0 · <code>source_capture_ledger</code> 195 rows (last id 249) · <code>audit_log</code> 120,026 rows (last id 125,855).</p>
+    <p><strong>Open (Swiss).</strong> 48 Swiss 2025 rows with no capture. 26 aliases with a venue under a neighbor city. Sonne Scheunenberg: Ben opens the site (card "Sonne", site body "Mösching’s Sonne"). Magdalena stays in the city Rickenbach, and its card says Schwyz. Rechecks: Colani Bistrot Nov 27, After Seven Dec 2, Ô Bois Sauvage Jan 2027. The city <code>malfa</code>: card 7.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>A city split for any of the 26 aliases, and the Sonne Scheunenberg name</div>
+      <div class="pm"><b>Decisions needing Fable</b>None</div>
+      <div class="pm"><b>Model &amp; surface</b>Cowork captured the edition from the brief. The built-in browser read the live lists, the cards and the archive captures. Claude ran the stage and promote Actions with <code>gh</code>. The chat built the gated SQL files. Ben ran 4 files in the SQL Editor</div>
+      <div class="pm"><b>Rollback</b><code>audit_log</code> for every file (hand rows for <code>city_aliases</code>), and the undo job for the batch 20 promote</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Signum and the city <code>malfa</code> · merged place ids and Tailor · OAD rows A2, A3 and Group D · ledger 250–265 <span class="tag brass">Nov 3, 2026</span></h3>
+    <p><strong>Signum and the city <code>malfa</code></strong> (Ben, Nov 3 18:42 "1", 19:05 "1A, 2A", 19:07 "go", 19:18 "Go"). City <code>ci_ef76cfb9a4</code> had slug <code>malfa</code> and display Mölnlycke, Sweden. Two restaurants have the name Signum: Mölnlycke, Sweden (Hällsnäs Hotell) and Malfa, Salina, Italy (Martina Caruso). The repo snapshots show the cause. <code>3d56c74</code> (Jun 7) held 3 rows with one Google place id. <code>4e79226</code> (Jun 9) put all 3 awards on the Swedish row. <code>9d9f349</code> (Jun 12) gave it slug <code>malfa</code>. <code>Reshape.gs</code> holds <code>'molnlycke': 'malfa'</code>. Reshape is prohibited, so it did not change.</p>
+    <ul>
+      <li>Cleanup: <code>docs/cleanup-city-malfa-signum-2026-11-03.sql</code>, Write connector, first try (Nov 4, 00:08:46 UTC). Award 2560 (2025 Two Stars) got an archive URL (capture 20251215153620). Award 2563 (2026 Two Stars) got the live card URL. Award 2561 (2025 One Star) was deleted as a copy of 31915 on Signum (Malfa) <code>ve_69b7b57435</code>. OAD 2025 No. 673 (2562) moved to the Malfa venue. The price changed from legacy <code>$$$$</code> to the card <code>€€€€</code>. Ledger 250–252, audit 125,856–125,863.</li>
+      <li>Rename and slug: <code>docs/rename-signum-molnlycke-2026-11-03.sql</code>, first try (00:19:14 UTC). City slug <code>molnlycke</code>. Venue name Signum (1A, rename batch 47), canonical <code>/molnlycke/signum</code>, redirect from <code>/malfa/restaurang-signum</code>. <code>malfa-it</code> does not change (2A). Ledger 253, audit 125,864–125,867.</li>
+    </ul>
+    <p><strong>Merged place ids and Tailor</strong> (19:52 "1 &amp; 2", 20:14 "1A, 2A, 3B, 4A, 5A", 20:23 "go"). <code>docs/fix-placeid-tailor-2026-11-03.sql</code>, Write connector, first try. Ledger 254–259, audit 125,868–125,921, rename batch 48.</p>
+    <ul>
+      <li>Tailor <code>ve_d1e61a315d</code>: was "The Tailory New York - Custom Suits NYC - Bespoke Tailor®", the name of a suit shop. Now Tailor, closed, not published, canonical <code>/new-york/tailor</code>. 50 Best prints Tailor, New York, 2009 No. 49. Punch: closed November 2009.</li>
+      <li>6 award moves, each with a URL: Asia's 50 Best 2026 No. 65 (15683) from Ensue to Fumée. OAD rows to Joel Robuchon (16923, 16921), Fiola (17153, 17151) and Roppongiten (3422).</li>
+      <li>5 new venues, each with its Bib row moved and a URL: Wörgötter - Wirtshaus, Schlosskeller Wirtshaus, Tai Wah Pork Noodle, FAGN-Bistro (2 rows, one with a 2025 capture), Vyn Food &amp; Wine Bar.</li>
+      <li>Bleu Provence <code>ve_732d5cc78a</code> moved to the new city Naples, Florida <code>ci_9072b5c1e5</code> (<code>naples-fl</code>), with a redirect. Award 21794 has no URL: the Wine Spectator page does not print 2026.</li>
+    </ul>
+    <p><strong>How the tests read.</strong> Two ranks in one list (population: all awards, by venue, source and year): 20 pairs, compared with the publisher's list. Bib and star in one Michelin year: 5 venues before, 0 after. Country label against city: 483 label rows disagree, nearly all spelling, 5 real. Snapshot <code>3d56c74</code>: 617 Google ids in more than 1 city slug, many of them real groups or fixed by later work. These tests do not prove that no other merge exists.</p>
+    <p><strong>OAD rows A2, A3 and Group D</strong> (20:28 "1, 2, 3", 20:42 "1A, 2A, 3A, 4A, 5A, 6A", 20:50 "go"). <code>docs/fix-a2-a3-d-2026-11-03.sql</code>, Write connector, first try. Ledger 260–265, audit 125,922–126,025 (104 rows).</p>
+    <ul>
+      <li>Masa <code>ve_3246b2089c</code>, a new venue in New York: 13 rows (OAD, Forbes, La Liste, Michelin, 50 Best) and the <code>$$$$</code> price moved from Bar Masa <code>ve_fbcb833f0c</code>. Forbes, Michelin and 50 Best print Masa, not Bar Masa. Bar Masa keeps 2 OAD rows.</li>
+      <li>10 new venues with 1 OAD 2025 row each and the list URL: Da Niko, MOI Omakase (new city Prato), Buca Yorkville, Mitani, Yakitori Kurosaki, Yamasaki, Saeki Hanten, Jean Georges (Shanghai), Tempura Yamanoue Roppongi, Yama no Ue (closed, not published).</li>
+      <li>Tempura Yamanoue Ginza: new row 32495, OAD 2026 No. 773, at that time the only OAD 2026 Japan row.</li>
+      <li>Moves with a redirect: Kabuki Madrid from Milan to Madrid, Carmen from Lima to Medellín. Fiesta stays in Lima (URL only). Rows printed twice stay (2A): Gari, Sushi Saito Hong Kong.</li>
+      <li>Proof: strong for Kabuki, Fiesta, Roppongi and Masa. Weak for Carmen, Yakitori Kurosaki and Mitani (6A: all three active). Mitani and Yakitori Kurosaki go on the recheck list.</li>
+    </ul>
+    <p><strong>Counts after ledger 265</strong> (Nov 4, 01:53:43 UTC, population: whole table): venues 11,336 (active 11,042, closed 294) · awards 25,324 · Michelin 2025 no URL 3,028 · slugs 13,184 · price 7,759 (<code>legacy_guide</code> 2,179) · redirects 13 · cities 3,281, <code>cities.venues_count</code> sum 11,042 · <code>source_capture_ledger</code> 211 rows (last id 265) · <code>audit_log</code> 120,196 rows (last id 126,025).</p>
+    <p><strong>Open.</strong> OAD 2026 Europe, Asia and Japan not loaded (card 8). Carmen Medellín <code>ve_6cd9c1b505</code>: bar awards under a restaurant name (5A, held). Merged venues left as they are: Restaurant Wörgötter, Schlosskeller Südsteiermark, Fagn, Vyn Restaurant. 22 venues in a snapshot label city with a Michelin 2026 row and no 2025 row. Other merged Google place ids: the count on live venues is not read. Checks not done: Kioicho Mitani, Yamazaki <code>ve_61cf53898d</code>, Sushi of Gari 46, the Forbes 2020–2025 pages for Masa.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>Carmen Medellín, and the merged venues left as they are</div>
+      <div class="pm"><b>Decisions needing Fable</b>None</div>
+      <div class="pm"><b>Model &amp; surface</b>The built-in browser read the OAD lists and pages, the Michelin cards and the archive. The git history of <code>data/venues.json</code> showed how the Signum row formed. The chat built the gated SQL files. The Write connector ran all 4 files on the first try</div>
+      <div class="pm"><b>Rollback</b><code>audit_log</code> for every file (hand rows for redirects and city labels)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>OAD 2026 — Europe, Asia and Japan loaded · 280 new venues · the separate read block · ledger 266–279 and the 235–279 table <span class="tag brass">Nov 3, 2026</span></h3>
+    <p><strong>Finding</strong> (A2–D, open item 1). Population: the 701 live OAD 2026 rows before the load. All sit in 14 countries of the Americas. The OAD 2026 lists print 774 (Europe), 590 (Asia) and 799 (Japan) restaurants.</p>
+    <p><strong>First write</strong> (Ben, Nov 3 21:16 "1A, 2A, 3A, 4A, 5A, 6A", 21:27 "Go"). <code>docs/load-oad-2026-europe-asia-japan-2026-11-03.sql</code>, Write connector, first try. 1,794 new rows (Europe 695, Asia 506, Japan 593) on 1,789 venues. Each row: year 2026, rank, category <code>No. N</code>, no distinction, the list URL. Awards 32,496–34,289, audit 126,026–127,819 (awards INSERT only), ledger 266–268. 44 rows sit on closed venues, and the venues stay closed (3A). 5 venues hold 2 rows (5A): Sushi Saito Hong Kong, Lai Ching Heen, Nihombashi Sonoji, Yakitori Ichimatsu, Sushi Masuda.</p>
+    <table>
+      <tr><th>Group (population: 2,163 list rows)</th><th>Europe</th><th>Asia</th><th>Japan</th><th>Total</th><th>State</th></tr>
+      <tr><td>Matched</td><td>657</td><td>489</td><td>572</td><td>1,718</td><td>Loaded</td></tr>
+      <tr><td>City disagrees: same place</td><td>35</td><td>17</td><td>19</td><td>71</td><td>Loaded</td></tr>
+      <tr><td>City disagrees: twin</td><td>3</td><td>0</td><td>2</td><td>5</td><td>Loaded</td></tr>
+      <tr><td>Already loaded (award 32495)</td><td>0</td><td>0</td><td>1</td><td>1</td><td>Loaded before</td></tr>
+      <tr><td>No live venue</td><td>68</td><td>71</td><td>172</td><td>311</td><td>Second write</td></tr>
+      <tr><td>Hold</td><td>7</td><td>13</td><td>33</td><td>53</td><td>Read block</td></tr>
+      <tr><td>City disagrees: move question</td><td>4</td><td>0</td><td>0</td><td>4</td><td>Read block</td></tr>
+    </table>
+    <p>Proof of the 1,718 matched rows: 1,469 have the same slug, name and city as a 2025 row. 125 match on name and city, with no 2025 row. 115 were read by hand from the OAD page (the weakest). 9 have the same slug and name, and OAD prints no city.</p>
+    <p><strong>Second write: no live venue</strong> (22:06 "1A, 2A, 3A, 4A, 5A, 6A" and "Handoff break first", 22:10 "Go").</p>
+    <ul>
+      <li>1A: 22 rows go on live venues. 2A: Sushi Riku and Sushiriku are one venue with 2 rows (Japan 372, 630).</li>
+      <li>3A: 10 rows with status not read and 8 with weak proof are active, and go on the recheck list.</li>
+      <li>4A: a venue's city is the city that the source shows (36 rows differ from the OAD print or have none, 27 new cities). City labels keep what OAD printed.</li>
+      <li>5A: the name is the OAD name minus the suffix, plus 10 corrections. About 40 other spellings wait for a later rename batch.</li>
+      <li>6A: Urchin is closed and not published until a read shows that it reopened.</li>
+    </ul>
+    <p><code>docs/open-items-oad-2026-no-live-venue-2026-11-03/load-oad-2026-no-live-venue-2026-11-03.sql</code>, Write connector, first try, Nov 4 03:11:51 UTC. Population: the 311 rows. 281 loaded, 30 held. 258 new venues: 255 active and published, 3 closed and not published (Wine RVLT <code>ve_67409605cb</code>, Urchin, Tokyo Shiba Tofuya Ukai). Card 5 renamed another venue, <code>ve_7e3068bc36</code>, from Wine RVLT to Revolution Wine Bistro. The handoffs do not compare the two rows. New venues have no price, address, geo, blurb or chef. 27 new cities (region NULL, no coordinates). Awards 34,290–34,570. Ledger 269–272, audit 127,820–129,471 (1,652). Workers read all 311 rows in 2 passes. Proof of the 245 open rows: strong 135, medium 102, weak 8. One worker result was wrong (Alexander), so "no closure note" is not proof of open.</p>
+    <p><strong>The separate read block</strong> (22:29 "1A … 8A", 22:46 "A, go", 22:53 "B, go", 23:00 "Ran", 23:03 "Commit"). The 22:46 run did not happen: the connector prompt got no answer. 22:53 B: the Kitafuku row moved, and Azabu-Juban Kitafuku was deleted. Ben ran <code>docs/open-items-oad-2026-read-block-2026-11-03/cleanup-oad-2026-read-block-2026-11-03.sql</code> in the SQL Editor. Ledger 273–279, audit 129,472–130,002 (531).</p>
+    <ul>
+      <li>56 new OAD 2026 rows (Asia 11, Europe 11, Japan 34), awards 34,571–34,626.</li>
+      <li>49 OAD 2025 rows moved to the printed restaurant, read from the 2025 lists.</li>
+      <li>22 new venues: 18 active, 4 closed (Pierre Gagnaire (Tokyo), Mikasa, Howard's Gourmet Beijing, Miyako Zushi). 7 new cities.</li>
+      <li>42 venues with no award after the move were deleted (contamination rule, Sep 28). 5 twins redirect, and the others give a 404. Some were real restaurants, for example Sushi Ueda (Kobe), MO's (Vienna), Sushi Masa Black and Azabu-Juban Kitafuku.</li>
+      <li>14 city moves, each with a redirect. Al Mahara <code>ve_d2c67e7d3d</code> closed → active and published (7A). Renames: Ginza Kojyu, Toritama.</li>
+      <li>On the OAD Japan pages the phone area code was the best proof of the real city. OAD city labels and addresses were wrong on many rows.</li>
+    </ul>
+    <p>The Sheet and the static <code>data/</code> files do not hold these rows. The first write changed no live page. After the second write and the read block, nobody read the live site or a deploy. Ben can open one new venue page (for example <code>tokyo/sushi-riku</code>) to see how the site shows it.</p>
+
+    <div class="flag"><p><b>Write connector, Nov 2–3.</b> Files with no DELETE ran on the first try. The connector did not run 7 files: twins and moved venues (2 calls cancelled in 0.6 s), Goh, Barbary Coast and Union (0.5 s), Swiss cities and Swiss cleanup (cancelled twice each), the Swiss cleanup list (0.6 s), aliases (a question with no answer in 230 s) and the OAD read block (a prompt with no answer). Ben ran these 7 files in the SQL Editor. All 7 delete rows. Exception: the Signum cleanup deletes 1 award and ran on the first try.</p></div>
+
+    <p><strong>Ledger 235–279, by job.</strong> Population: 43 rows. Ids 239–240 do not exist (the rolled-back Swiss dry run).</p>
+    <table>
+      <tr><th>Ledger</th><th>Job</th><th>Publisher, field, items</th></tr>
+      <tr><td>235–237</td><td><code>merge:fix-closed-sweep-merge-rename-2026-11-02</code></td><td>michelin award 1, la-liste award 2, oad award 1</td></tr>
+      <tr><td>238</td><td><code>merge:fix-closed-sweep-goh-barbary-union-2026-11-02</code></td><td>asia-50-best-restaurants award 3</td></tr>
+      <tr><td>241–242</td><td><code>ingest-promote:michelin-2026-switzerland</code></td><td>michelin award 225, michelin city_label 60</td></tr>
+      <tr><td>243</td><td><code>cleanup:cleanup-michelin-2026-switzerland</code></td><td>michelin award 10</td></tr>
+      <tr><td>244</td><td><code>rename-apply:rename-michelin-2026-switzerland</code></td><td>michelin name 81</td></tr>
+      <tr><td>245</td><td><code>price-card:price-michelin-card-switzerland-2026</code></td><td>michelin price 225</td></tr>
+      <tr><td>246</td><td><code>backfill:michelin-2025-switzerland-4</code></td><td>michelin award 4</td></tr>
+      <tr><td>247–248</td><td><code>merge:cleanup-michelin-2026-switzerland-list-2026-11-03</code></td><td>michelin award 2, oad award 1</td></tr>
+      <tr><td>249</td><td><code>url:michelin-2025-switzerland-cards</code></td><td>michelin award 177</td></tr>
+      <tr><td>250–251</td><td><code>cleanup:cleanup-city-malfa-signum-2026-11-03</code></td><td>michelin award 3, oad award 1</td></tr>
+      <tr><td>252</td><td><code>price-card:cleanup-city-malfa-signum-2026-11-03</code></td><td>michelin price 1</td></tr>
+      <tr><td>253</td><td><code>rename-apply:rename-signum-molnlycke-2026-11-03</code></td><td>michelin name 1</td></tr>
+      <tr><td>254</td><td><code>rename-apply:rename-tailor-new-york-2026-11-03</code></td><td>worlds-50-best-bars name 1</td></tr>
+      <tr><td>255–259</td><td><code>cleanup:fix-placeid-tailor-2026-11-03</code></td><td>worlds-50-best-bars award 1, asia-50-best-restaurants award 1, oad award 5, michelin award 6, michelin city_label 10</td></tr>
+      <tr><td>260–265</td><td><code>cleanup:fix-a2-a3-d-2026-11-03</code></td><td>oad award 23, forbes-travel-guide award 7, la-liste award 1, michelin award 1, worlds-50-best-restaurants award 2, oad city_label 22</td></tr>
+      <tr><td>266–268</td><td><code>cleanup:load-oad-2026-europe-asia-japan-2026-11-03</code></td><td>oad award 695, oad award 506, oad award 593</td></tr>
+      <tr><td>269–272</td><td><code>cleanup:load-oad-2026-no-live-venue-2026-11-03</code></td><td>oad award 68, oad award 65, oad award 148, oad city_label 516</td></tr>
+      <tr><td>273–278</td><td><code>cleanup:cleanup-oad-2026-read-block-2026-11-03</code></td><td>oad award 11, oad award 11, oad award 34, oad award 49, oad award 42, oad city_label 44</td></tr>
+      <tr><td>279</td><td><code>rename-apply:rename-oad-2026-read-block-2026-11-03</code></td><td>oad name 2</td></tr>
+    </table>
+
+    <p><strong>Counts after ledger 279</strong> (Nov 4, 04:00:46 UTC, population: whole table): venues 11,574 (active 11,275, closed 299) · awards 27,455 (OAD 2026 2,833, OAD 2025 2,437) · slugs 13,422 · price 7,759 · listings 11,574 · city labels 24,555 · city_aliases 222 · redirects 32 · cities 3,315 (67 with 0 venues), <code>cities.venues_count</code> sum 11,275, 0 cities differ from the view · closed published 0 · active not published 0 · <code>source_capture_ledger</code> 225 rows (last id 279) · <code>audit_log</code> 124,173 rows (last id 130,002).</p>
+    <p><strong>Open on Nov 3 at 23:05 ET</strong> (end of the read block). 27 OAD hold rows. The rest of the read block: 3 rows not proven (Jing Yaa Tang, Kikuzushi, Omino Kamiyacho), Summer Palace (5A, Asia 259 and 432), 2 OAD 2025 rows still on the wrong venue (Pirouette 18463, Sushi Ichi 18993). A rename batch for about 40 OAD spellings, plus 145 name candidates (count again: the read block deleted some of these venues). Status: Sustanza, Testina, Art di Daniele Sperindio (OAD prints closed or temporarily closed). 34 new cities with no region. The recheck lists of the OAD handoffs. Next in this record: part 3 (Nov 4–6, ledger 280–376), v1.36.</p>
+    <div class="phase-meta">
+      <div class="pm"><b>Decisions needing Ben</b>The 27 hold rows, Summer Palace, the 3 rows not proven, the OAD rename batch, and a redirect for <code>tokyo/katsukani-ryori-akasaka-kitafuku</code> (now a 404, not decided)</div>
+      <div class="pm"><b>Decisions needing Fable</b>None</div>
+      <div class="pm"><b>Model &amp; surface</b>The built-in browser read the OAD 2026 and 2025 lists from the live page, and <code>fetch()</code> read the restaurant pages. Parallel workers read the status of the 311 rows. The chat built the gated SQL files. Ben ran the read block in the SQL Editor</div>
+      <div class="pm"><b>Rollback</b><code>audit_log</code> for every file (hand rows for city labels)</div>
     </div>
   </div>
 
@@ -1492,6 +1712,7 @@
     <h3>Work item — Michelin card price <span class="tag brass">Approved Sep 28, 2026</span></h3>
     <div class="ok"><p><b>Status, Oct 30–31 (v1.33).</b> Done with gated SQL files from a live card read (card "Michelin special awards and the card price"): P1 558 rows, P2 4,406 of 4,433, P1 rest 116, plus the held, Turkey and follow-up rows (price rows in ledger 140–150, 152, 154, 156, 159, 161, 169 and 172). Price rows on Oct 31: 7,731 (<code>legacy_guide</code> 2,558). The text below is the plan of Sep 28 and Oct 9.</p></div>
     <div class="ok"><p><b>Status, Nov 1–2 (v1.34).</b> Hong Kong &amp; Macau: 180 card prices (174 legacy rows updated, 6 inserted, HKD 146 and MOP 34), ledger 207. Italy: San Martino (Treviglio) new card price, San Martino (Scorze) source changed to its own card, ledger 220. Price rows after ledger 234 (Nov 2, 17:36 UTC): 7,728.</p></div>
+    <div class="ok"><p><b>Status, Nov 2–3 (v1.35).</b> Switzerland and Liechtenstein: 225 card prices (191 legacy rows updated, 34 inserted, CHF on all 225: printed <code>€</code> symbols kept with currency CHF, Torkel <code>$$$</code>), ledger 245. Signum (Mölnlycke): legacy <code>$$$$</code> replaced by the card <code>€€€€</code>, ledger 252. 3 legacy rows were deleted in merges (Baumanière 1850, Grand Hotel Les Trois Rois, Carlton Hotel St. Moritz LHW). The Masa price row moved from Bar Masa (no price ledger row). Price rows after ledger 279 (Nov 4, 04:00 UTC): 7,759 (<code>legacy_guide</code> 2,179 at 01:53 UTC).</p></div>
     <p><strong>Rule (Ben, Sep 28).</strong> The Michelin card price wins over a legacy price with no URL, for every guide. Reason: the card is current and has a URL. The legacy prices have no source URL.</p>
     <p><strong>Why a work item.</strong> The ingest job writes no price rows. Every Michelin fixture CSV carries <code>price_symbol_raw</code>, but only 10 China venues hold a card price today. Population: distinct venues with at least one Michelin award row that has a <code>source_url</code>, read Sep 28 after the Great Britain &amp; Ireland cleanup: 3,739 venues (v1.28 read 3,353 before that promote). 3,346 hold one price row (3,336 <code>legacy_guide</code>, 10 <code>guide_ingest</code>); 393 hold none. No venue holds more than one price row. Great Britain &amp; Ireland adds 386 venues. Their legacy prices are <code>$</code> symbols. The card prints <code>£</code> for the United Kingdom (344 rows, Channel Islands included) and <code>€</code> for Ireland (42 rows), in <code>fixtures/ingest/michelin-2026-great-britain-ireland.csv</code>.</p>
     <p><strong>Population read again, Oct 9</strong> (after Chengdu and Germany; same population): <strong>4,225 venues</strong>. 3,781 hold one price row (3,771 <code>legacy_guide</code>, 10 <code>guide_ingest</code>); 444 hold none; 0 hold more than one. Germany: 484 venues; 483 hold a card, all <code>€</code> (<code>fixtures/ingest/michelin-2026-germany.csv</code>; Gasthaus Jakob has no card); 50 have no price row. Known differences: Rebers Pflug, BOK and Kuultivo (legacy <code>$$$</code>, card <code>€€€€</code>). The Hall (Chengdu) has no price row; its card shows <code>¥¥¥¥</code>.</p>
@@ -1508,6 +1729,7 @@
   <div class="card">
     <h3>Work item — Michelin history backfill (past editions) <span class="tag brass">Approved Sep 16, 2026 · starts after launch</span></h3>
     <div class="ok"><p><b>Status, Nov 1–2 (v1.34).</b> Ben started the 2025 edition before launch: Hong Kong &amp; Macau (D8, Nov 1 13:22), Taiwan (H1, 15:02), and item 4 (15:41, "lets do 4. Use 2025 history."). 7 guides, 1,707 new rows and 64 URL fills. The <code>source_url</code> is an archive list page (Japan: a region selection page), so rows share one URL, as rule 7 allows. Gated SQL files, not the ingest job. Scope of item 4 (N1): stars and Green Star, no Bib. France, Spain and Italy got stars only, and Japan got complete sets only. Hong Kong &amp; Macau includes Bib (A2). Record: the card "Michelin 2025 history backfill". The text below is the plan of Sep 16 – Oct 9.</p></div>
+    <div class="ok"><p><b>Status, Nov 2–3 (v1.35).</b> Switzerland and Liechtenstein: 4 new 2025 rows from an archive capture of each card (awards 32491–32494, ledger 246), and 177 URL fills on legacy 2025 rows from card captures (ledger 249). 48 Swiss 2025 rows have no capture and stay blank (Ben, Nov 3 18:10 "3A": an exception to condition 5 of the Sep 28 archive ruling, for a URL fill on existing rows). Signum (Mölnlycke): award 2560 got an archive URL (ledger 250). FAGN-Bistro: a Bib row moved with a 2025 capture (ledger 258). Here the <code>source_url</code> is the archived card of each venue, not a list page. Michelin 2025 rows with no URL, all guides: 3,035 on Nov 3, 23:37 UTC, 3,028 on Nov 4, 01:53 UTC. Record: the card "Michelin 2026 — Switzerland &amp; Liechtenstein".</p></div>
     <p><strong>Why.</strong> Ben wants the site to show both the latest distinction and its history (for example, "★★ Michelin 2026", with "★ 2023–2025" when a visitor expands the entry). The design system already shows every year per source, newest first. Other sources already carry real history: World's 50 Best Restaurants 2002–2025, World's 50 Best Bars 2009–2025, James Beard 2016–2026, and Gault&amp;Millau 2018–2026. 3,485 venues have awards from more than one year. <strong>Michelin does not.</strong> The legacy "2025" rows were a 2026 snapshot (Fable ruling), so for France, Italy, Japan and Spain the database now holds only the 2026 edition. There was no true Michelin history to keep, so this is new capture, not a restore.</p>
     <p><strong>Rules</strong> (these follow the ruling):</p>
     <ol>
@@ -1696,6 +1918,7 @@
       <tr><td>1.32</td><td>November 7, 2026</td><td>New card after the Phase 2 publish-job card: "Move goals and order of work". Ben's goals of Nov 5, done-by dates, not start dates: data cutoff Dec 20, 2026; 3 design sessions Jan 9, Jan 23, Feb 6, 2027; address check Feb 21; move Feb 27–28, 2027, site unpromoted; Lovable off about Mar 29. Launch list v1 (approved Nov 5) summarized. Order of work combined from the Nov 6 handoffs (Gault &amp; Millau France and Monaco 2027 from Nov 10, then Thailand 2027). Phase 4 and 5: "Dates under review" replaced by the goal dates. Phase 6 tag "Nov onward" replaced by "After the move" (Ben, Nov 7). Header updated. The award work after v1.30 (Oct 9 – Nov 6, ledger 103–376) is not in this version.</td></tr>
       <tr><td>1.33</td><td>November 7, 2026</td><td>Award record after v1.30, part 1 of 3 (Ben's "A", Nov 7: split by date). Four new cards after the Germany card: Texas, Belgium &amp; Luxembourg and the Netherlands (Oct 9–11) · Taiwan and the American South (Oct 11–27) · the special awards and the card price, with Turkey 2026 (Oct 29–31) · the name differences and open items blocks 1–7, with the naming rules R1–R6, the Michelin city rule, the standing decisions of Oct 10–31, the ledger 103–176 table and the counts (Oct 30–31). Status box in the price work item. Header updated. Parts 2 and 3 (Nov 1–6, ledger 177–376) are not in this version.</td></tr>
       <tr><td>1.34</td><td>November 7, 2026</td><td>Award record after v1.30, part 2, cards 1–4 of 8 (Ben's "1-2: A", Nov 7: 8 cards in 2 builds). Four new cards after the part 1 cards: open items blocks 7–10, Best Chef source URLs, the 8 1/2 Otto e Mezzo pair and the Forum blurb (Nov 1) · Michelin 2026 Hong Kong &amp; Macau, with native names, card price, register items and 2025 history (Nov 1) · Michelin 2025 history backfill for 6 guides (Nov 1–2) · Italy 2026 fixes, small open items, RLS on 3 tables, the list compare, the ledger 177–234 table and the counts (Nov 2). Status boxes in the price and history-backfill work items. Header updated. Part 2 cards 5–8 (Nov 2–3, ledger 235–279) and part 3 (Nov 4–6, ledger 280–376) are not in this version.</td></tr>
+      <tr><td>1.35</td><td>November 7, 2026</td><td>Award record after v1.30, part 2, cards 5–8 of 8 (Ben's "1-2: A", Nov 7, build 2). Four new cards after the part 2 cards 1–4: the closed-venue rule and the closed-venue sweep, with twins, moves and temporary closures (Nov 2) · Michelin 2026 Switzerland &amp; Liechtenstein, with the status file, rename, slugs, card price, 2025 backfill and URLs, cleanup list and 40 aliases removed (Nov 2–3) · Signum and the city <code>malfa</code>, merged place ids and Tailor, OAD rows A2, A3 and Group D (Nov 3) · OAD 2026 Europe, Asia and Japan, 280 new venues, the separate read block, the Write-connector note for Nov 2–3, the ledger 235–279 table and the counts (Nov 3). Status boxes in the price and history-backfill work items. Card 1 intro and header updated. Part 3 (Nov 4–6, ledger 280–376) is not in this version.</td></tr>
     </table>
   </div>
   <footer>CompassEats · Re-Architecture &amp; Migration Plan · v1.0 — Aug 10, 2026<br>Save to <code>docs/</code> in the repo and re-upload to Project Knowledge after ratification. Update version + date on any change.</footer>
