@@ -1,9 +1,12 @@
-# Handoff: Phase 2 publish job built, proven on a local copy of live, PR 13 open. No write. Nov 6, 2026 (21:30 Atlanta). Next: Ben merges PR 13 and does the 2 supervised runs; Gault & Millau France and Monaco 2027 from Nov 10.
+# Handoff: Phase 2 publish job built, merged (PR 13) and run on GitHub: 2 builds, 2 promotes, 1 rollback. Deploy check clean. No database write. Nov 6, 2026 (23:30 Atlanta). Next: Gault & Millau France and Monaco 2027 from Nov 10, and Plan v1.31.
 
 This file adds to `handoff-phase2-publish-design-2026-11-06.md` (design, choices 1-8: A), `handoff-top-500-status-done-2026-11-06.md` and `handoff-michelin-d-dk-vn-done-2026-11-06.md` (live state, open items, Gault & Millau opening prompt). Working rules: `handoff-chengdu-held-7-cleanup-done-2026-10-04.md`. Ingest model: `handoff-phase2-ingest-2026-09-11.md`.
 
 ## Ben's input (ET, Nov 6)
 - 20:59 opening prompt: build the publish job as designed, test, preview build on a local copy, evidence, PR for a hand merge.
+- 22:32 "Merged" (PR 13).
+- 22:38 "use chrome and do this" (build run 1). 22:43 "Use chrome and take care of this" (deploy check in Cloudflare and Lovable).
+- 23:14 "Go" (promote dry run). 23:20 "Go" (promote). 23:23 "Go" (run 2: build, promote, rollback).
 
 ## Start checks (this chat)
 - Date: Nov 6. The Gault & Millau prompt starts Nov 10.
@@ -38,7 +41,30 @@ Read only. No database write. No change to the live site. The real `publish-prev
 
 **Live compare** (population: 10,551 live pages in `data/venues.json`; 11,510 venues): same address 8,976 (name differs 432); live page closed in the database 52; old slug 1,367; no slug row 156; published with no live page 2,534. Fields (live / files): coordinates 10,551 / 0, address 10,551 / 0, cuisine 8,430 / 0, price 6,997 / 7,690, blurb 9,638 / 2.
 
-## Live state (read Nov 7, 02:24 UTC, end of session)
+## Supervised runs on GitHub (Nov 7 UTC; Ben's go each time; Claude clicked in Chrome)
+PR 13 merged 03:30 UTC: `main` at `f99bc53`. The 3 test suites passed on the merge.
+
+| Run | Button (Actions run id) | Input | Result |
+|---|---|---|---|
+| Build #1 | Publish — build (42334947318) | blank | Version `20261107T033856Z`. 9 of 9 gates. Database read 03:38:56, read only = on, ledger 376, audit 135,045. Job 16 s, build step 3 s. Branch `publish-preview` created, commit `08c036b`. |
+| Promote #1 | Publish — promote (42337644618) | `PUBLISH 20261107T033856Z`, dry run | Hash check 3,287 files. Nothing changed. |
+| Promote #2 | Publish — promote (42338038310) | `PUBLISH 20261107T033856Z` | Preview = `20261107T033856Z`. Commit `9f83aae`, 1 file. |
+| Build #2 | Publish — build (42338283035) | blank | Version `20261107T042410Z`. Same content hash. Added 0, removed 0, changed 0, same 11,510. Commit `3d1ed79`. |
+| Promote #3 | Publish — promote (42338361134) | `PUBLISH 20261107T042410Z` | Preview = `20261107T042410Z`. Commit `709ffb1`. |
+| Rollback #1 | Publish — rollback (42338418509) | `ROLLBACK 20261107T042410Z` | Preview = `20261107T033856Z`. Commit `4870fd1`. |
+
+Content hash of both real versions = both rehearsal versions = `3aca439f5764bf656e5c56d6dfe90b6495fc0e771a75e7c69cab2ac202689783`. Each real version: 3,287 files, 0 sha256 mismatches against its manifest (checked by a fresh clone).
+
+End state of `publish-preview` (tip `4870fd1`): versions `20261107T033856Z`, `20261107T042410Z`. `channels/preview.json`: current `20261107T033856Z`, stack [`20261107T033856Z`], history 3 actions (promote, promote, rollback).
+
+**Deploy check (Chrome, read only, 22:45 ET):**
+- Cloudflare Workers & Pages holds 2 apps: `family-trips-app` (repo `family-trips-app`) and `compasseats-venue-photo` (changed 2 months ago). No app is linked to `compasseats`. No Worker named `compasseats` exists.
+- Lovable Compass Eats: the last "Pushed from GitHub" entry is the PR 13 merge. No entry for a `publish-preview` commit. Lovable reads `main` only.
+- Lovable shows a "Build unsuccessful / Preview is out of date" label on every "Pushed from GitHub" entry, back to August, docs-only commits included. Not opened, not changed. The preview pane shows the site normally.
+
+GitHub notices on every run (no failure): `actions/checkout@v4` targets Node.js 20 (forced to Node 24); `ubuntu-latest` moves to Ubuntu 26.
+
+## Live state (read Nov 7, 04:26 UTC, after the runs)
 Unchanged from the start read: ledger 376, audit_log 135,045, venues 11,831 (active 11,510, closed 321), awards 29,052, slugs 13,775, price 7,759, city_aliases 222, redirects 35, closed published 0, `cities.venues_count` sum 11,510.
 
 ## Choices made in the build (not set by the design; in the PR text for Ben)
@@ -66,6 +92,7 @@ Unchanged from the start read: ledger 376, audit_log 135,045, venues 11,831 (act
 - **Fingerprint:** `md5(string_agg(t::text, E'\n' order by <pk> collate "C"))` per table, in one query (one snapshot). Local session `timezone=UTC`, `extra_float_digits=0` (live values). The generated `venues.norm_key` matched, so the live `norm_key()` body is right in the harness.
 - **Local Postgres:** data folder in `/var/tmp/compass-pg` (the `postgres` user cannot reach the scratchpad), port 5433.
 - **Workflow rehearsal:** a bare clone as `origin`, `main` = the PR branch; `tools/wf.sh` runs each button from a fresh shallow clone with the workflow's steps.
+- **Run a button in Chrome:** Actions → workflow → `find` "Run workflow button" → click → fill the fields → zoom on the form to check the fields and the dry-run box (move the mouse off the box first) → green Run workflow. Then poll `api.github.com/.../actions/runs/<id>` until `completed`, and read the result by a shallow fetch of `publish-preview`, not by the page.
 - **Open a PR:** `curl -X POST https://api.github.com/repos/benjamineades/compasseats/pulls` with a JSON body works through the proxy (no token needed in the command). GET on `/actions/runs?head_sha=` shows CI.
 
 ## Dead ends: do not retry
@@ -77,19 +104,19 @@ Unchanged from the start read: ledger 376, audit_log 135,045, venues 11,831 (act
 - A first gate rule "every redirect `from` once" failed on live data: 2 same-answer pairs. Fixed in `0d39444`.
 
 ## Weak points
-- The rehearsal ran the workflow steps by script, not on GitHub Actions. The 2 supervised runs are the first real runs.
-- A push to `publish-preview` starting a Lovable or Cloudflare deploy: not checked yet. The branch holds no site code. Manual step "Before the first run", 3.
-- Build time on GitHub (network read through the Session pooler) is not measured. Local: about 1 second.
+- Build time on GitHub: measured once, 3 s for the build step (16 s for the job).
 - The live compare reads the repo file, not the deployed pages.
 
 ## Open items (changes to the DK-VN and Top 500 lists)
-- Item 8 (Phase 2 publish job): **built, PR 13 open.** Next: Ben merges, then the 2 supervised runs (`docs/publish-job.md`, "The two supervised runs"), then the deploy check. Goal Nov 29.
+- Item 8 (Phase 2 publish job): **done** (goal Nov 29). Merged, 2 supervised runs done, deploy check clean.
 - Item 9 (Plan v1.31): add the publish-job design, choices 1-8, the build choices 1-7 above, and the findings above.
 - New: cuisine tags gap (8,488 `legacy_guide` venues with no tags); Mirabelle address; Cham redirect to a closed venue; 2 venues with no award row.
+- New: Lovable "Build unsuccessful" label on every GitHub push (read the reason; not from this work).
+- New, small: update `actions/checkout` and runner labels in all 11 workflows (Node 20 and Ubuntu 26 notices).
 - Later item (unchanged): read-only database user and secret for the publish job, with Ben's "go".
 - All other items as in `handoff-michelin-d-dk-vn-done-2026-11-06.md` and `handoff-top-500-status-done-2026-11-06.md`. **Gault & Millau 2027 from Nov 10** (opening prompt in the DK-VN handoff).
 
-## Suggested opening prompt: after the 2 supervised runs
+## Suggested opening prompt: Plan v1.31 (or use the Gault & Millau prompt in the DK-VN handoff from Nov 10)
 ```
 Read claude/handoff-phase2-publish-job-pr-2026-11-06.md from the project files for the publish job state, then
 claude/handoff-michelin-d-dk-vn-done-2026-11-06.md for the live state and open items, and
@@ -97,8 +124,7 @@ claude/handoff-chengdu-held-7-cleanup-done-2026-10-04.md for working rules. Use 
 If today is Nov 10 or later, tell me first that Gault & Millau France and Monaco 2027 is due, and ask which comes first.
 Do a fresh count read and confirm ledger 376, audit_log 135,045, venues 11,831 (active 11,510, closed 321), awards 29,052,
 slugs 13,775, price 7,759, city_aliases 222, redirects 35, closed published 0 and cities.venues_count sum 11,510. Stop and tell me if any count differs.
-Attach benjamineades/compasseats. I merged PR 13 and ran the 2 supervised runs. Read the publish-preview branch: channels/preview.json,
-the version folders and their reports. Check each version folder against its manifest, compare the content hashes with the
-Nov 7 rehearsal (3aca439f...9783), and tell me if anything differs. Then tell me what the deploy check must show.
-No database write. Keep handoffs on branch oad-2026-read-block.
+Attach benjamineades/compasseats with push access. Read the Version line of docs/CompassEats-Rearchitecture-Plan.html (expect 1.30).
+Start open item 9, Plan v1.31: add the publish-job design, my choices 1-8, the build choices 1-7, the supervised runs and the findings
+from this handoff. Build it, check it, and present it before you commit. Keep handoffs on branch oad-2026-read-block.
 ```
