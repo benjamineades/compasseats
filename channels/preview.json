@@ -1,0 +1,16 @@
+{
+  "channel": "preview",
+  "current": "20261107T033856Z",
+  "history": [
+    {
+      "action": "promote",
+      "at": "2026-11-07T04:20:53Z",
+      "from": null,
+      "run": "42338038310",
+      "version": "20261107T033856Z"
+    }
+  ],
+  "stack": [
+    "20261107T033856Z"
+  ]
+}
