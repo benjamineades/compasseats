@@ -1,0 +1,16 @@
+select
+ (select md5(string_agg(t::text, E'\n' order by t.slug collate "C")) from award_sources t) award_sources,
+ (select md5(string_agg(t::text, E'\n' order by t.id collate "C")) from regions t) regions,
+ (select md5(string_agg(t::text, E'\n' order by t.id collate "C")) from cities t) cities,
+ (select md5(string_agg(t::text, E'\n' order by t.id collate "C")) from venues t) venues,
+ (select md5(string_agg(t::text, E'\n' order by t.venue_id collate "C", t.property_id collate "C")) from listings t) listings,
+ (select md5(string_agg(t::text, E'\n' order by t.property_id collate "C", t.city_slug collate "C", t.slug collate "C")) from slugs t) slugs,
+ (select md5(string_agg(t::text, E'\n' order by t.from_path collate "C")) from redirects t) redirects,
+ (select md5(string_agg(t::text, E'\n' order by t.id)) from awards t) awards,
+ (select md5(string_agg(t::text, E'\n' order by t.venue_id collate "C")) from price t) price,
+ (select md5(string_agg(t::text, E'\n' order by t.venue_id collate "C")) from blurbs t) blurbs,
+ (select md5(string_agg(t::text, E'\n' order by t.id)) from source_capture_ledger t) ledger,
+ (select md5(string_agg(t::text, E'\n' order by t.id collate "C")) from properties t) properties,
+ (select count(*) from geo) + (select count(*) from addresses) + (select count(*) from hours) + (select count(*) from photo_refs) enrich_rows,
+ (select max(id) from source_capture_ledger) ledger_last,
+ (select max(id) from audit_log) audit_last
