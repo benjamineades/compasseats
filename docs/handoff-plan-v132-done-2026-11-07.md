@@ -40,9 +40,11 @@ No database write. No change to the live site.
 - Commit `10ca899` on `oad-2026-read-block` (Nov 7, 00:13 -0500), 1 file.
 - Fresh clone of the branch: sha256 `26fe414a345f9f424aa7306df07b37f57265a59e014b38e0cd1b5486858b8b0f`, 290,194 bytes, Version 1.32.
 - Project copy over the same name (`CompassEats-Rearchitecture-Plan.html`): read back, sha256 equal, Version 1.32.
-- `main` still holds v1.31. The merge is Ben's by hand: https://github.com/benjamineades/compasseats/compare/main...oad-2026-read-block
+- **Merged to `main`** (Ben asked, Nov 7 00:16 ET): PR #15 opened and merged by Claude through the GitHub REST API (`gh api`, merge commit `214a07f`, Nov 7 00:17:14 -0500). Fresh clone of `main`: plan sha256 `26fe414a…8b0f`, Version 1.32, this handoff present.
 
 ## Methods (new)
+- **Merge by REST API:** `gh pr create` fails (GraphQL 403 in this session). Use `gh api repos/<o>/<r>/pulls -X POST -f base=main -f head=<b> ...`, then `gh api repos/<o>/<r>/pulls/<n>/merge -X PUT -f merge_method=merge -f sha=<head sha>`. Ben asked for this merge in the chat; the Nov 5 dead end was a direct push to `main`, not a PR merge.
+- A shallow clone gives "no merge base" for `git diff main...branch`: fetch `--depth=50` with refspecs first.
 - `project_write` with `local_path` needs a file inside the working directory (`/home/claude/...`). A scratchpad path is refused.
 - The independent check cost about 142k agent tokens for 54 added lines.
 
@@ -52,7 +54,7 @@ No database write. No change to the live site.
 ## Artifacts
 | File | Status | sha256 |
 |---|---|---|
-| `docs/CompassEats-Rearchitecture-Plan.html` **v1.32** | Final. On `oad-2026-read-block` (`10ca899`) and in the project (same name). `main` holds v1.31 until Ben merges | `26fe414a345f9f424aa7306df07b37f57265a59e014b38e0cd1b5486858b8b0f` |
+| `docs/CompassEats-Rearchitecture-Plan.html` **v1.32** | Final. On `main` (`214a07f`, PR #15), on `oad-2026-read-block` (`10ca899`) and in the project (same name) | `26fe414a345f9f424aa7306df07b37f57265a59e014b38e0cd1b5486858b8b0f` |
 | `build132.py`, `check_html.py`, `trace.py` | Sandbox only, not in the repo. The file checksum is the record | - |
 
 ## Open items, in order (as in the v1.32 card "Move goals and order of work")
@@ -61,7 +63,7 @@ No database write. No change to the live site.
 3. Publish-job open items (v1.31 card).
 4. Editions due before the cutoff; foundation (price method, Madame Vo, Hotel de Paris Monte-Carlo).
 5. Rechecks, same-name pairs, rename batch, archive URLs, Phase 3 location pass, research result: as in the v1.32 card.
-6. **Merge `oad-2026-read-block` to `main`** (Ben, by hand, compare link above): Plan v1.32 and this handoff.
+6. Done: PR #15 merged Nov 7 (`214a07f`). Only this merge-note edit of the handoff is on the branch after it.
 
 ## Suggested opening prompt: Plan v1.33 (if Ben wants it before Nov 10)
 ```
@@ -72,7 +74,7 @@ If today is Nov 10 or later, tell me first that Gault & Millau France and Monaco
 Do a fresh count read and confirm ledger 376, audit_log 135,045, venues 11,831 (active 11,510, closed 321), awards 29,052,
 slugs 13,775, price 7,759, city_aliases 222, redirects 35, closed published 0 and cities.venues_count sum 11,510. Stop and tell me if any count differs.
 Attach benjamineades/compasseats with push access. Read the Version line of docs/CompassEats-Rearchitecture-Plan.html on branch
-oad-2026-read-block (expect 1.32, sha256 26fe414a…8b0f) and on main (1.32 if I merged, else 1.31). Build from the 1.32 file.
+oad-2026-read-block (expect 1.32, sha256 26fe414a…8b0f) and on main (expect 1.32, merged Nov 7 in PR #15). Build from the 1.32 file.
 Start Plan v1.33, part 1 of the award record after v1.30: list the handoffs from Oct 9 on by date, propose how to split ledger 103-376
 into 2 or 3 parts, and ask me to choose before you build. Build it, check it, and present it before you commit. Keep handoffs on branch oad-2026-read-block.
 ```
