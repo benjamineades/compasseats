@@ -1,0 +1,10 @@
+gate,pass,detail
+venue_count_matches_database,yes,"files 11510 (index.json 11510, city files 11510); database active venues with a published eats listing 11510"
+one_canonical_slug,yes,all 11510 venues hold exactly 1 canonical eats slug
+city_exists,yes,all 11510 venues name a city that exists
+no_closed_venue,yes,0 of 11510 venues in the files are closed
+no_suspended_source,yes,every source in the files is active (23 of 23 registered sources active)
+no_google_value,yes,"0 Google ids, URLs or sources in 3279 files"
+no_duplicate_michelin,yes,0 venues hold 2 Michelin rows of one year and category
+no_large_decrease,yes,"20261107T033856Z: 11510 -> 11510 (change 0, limit 0.5%)"
+redirect_from_unique,yes,"1957 redirects, each from address once (2 old slugs already in the redirects table with the same answer, written once)"
