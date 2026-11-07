@@ -1,0 +1,44 @@
+{
+  "channel": "preview",
+  "current": "20261107T021949Z",
+  "history": [
+    {
+      "action": "promote",
+      "at": "2026-11-07T02:20:30Z",
+      "from": null,
+      "run": "104",
+      "version": "20261107T021949Z"
+    },
+    {
+      "action": "promote",
+      "at": "2026-11-07T02:20:31Z",
+      "from": "20261107T021949Z",
+      "run": "105",
+      "version": "20261107T022009Z"
+    },
+    {
+      "action": "rollback",
+      "at": "2026-11-07T02:20:34Z",
+      "from": "20261107T022009Z",
+      "run": "108",
+      "version": "20261107T021949Z"
+    },
+    {
+      "action": "promote",
+      "at": "2026-11-07T02:20:49Z",
+      "from": "20261107T021949Z",
+      "run": "109",
+      "version": "20261107T022009Z"
+    },
+    {
+      "action": "rollback",
+      "at": "2026-11-07T02:21:04Z",
+      "from": "20261107T022009Z",
+      "run": "112",
+      "version": "20261107T021949Z"
+    }
+  ],
+  "stack": [
+    "20261107T021949Z"
+  ]
+}

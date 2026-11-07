@@ -1,0 +1,24 @@
+manifest files 3287, on disk 3287 (+manifest), sha256 mismatches 0
+content hash recomputed True: 3aca439f5764bf656e5c56d6dfe90b6495fc0e771a75e7c69cab2ac202689783
+venues in index.json         files   11510  database   11510  MATCH
+venue rows in city files     files   11510  database   11510  MATCH
+city files                   files    3274  database    3274  MATCH
+award rows                   files   28274  database   28274  MATCH
+price rows                   files    7690  database    7690  MATCH
+blurbs published             files       2  database       2  MATCH
+native names                 files     340  database     340  MATCH
+redirects                    files    1957  database    1957  MATCH
+files with a Google value    files       0  database       0  MATCH
+
+== 20261107T022009Z
+manifest files 3287, on disk 3287 (+manifest), sha256 mismatches 0
+content hash recomputed True: 3aca439f5764bf656e5c56d6dfe90b6495fc0e771a75e7c69cab2ac202689783
+venues in index.json         files   11510  database   11510  MATCH
+venue rows in city files     files   11510  database   11510  MATCH
+city files                   files    3274  database    3274  MATCH
+award rows                   files   28274  database   28274  MATCH
+price rows                   files    7690  database    7690  MATCH
+blurbs published             files       2  database       2  MATCH
+native names                 files     340  database     340  MATCH
+redirects                    files    1957  database    1957  MATCH
+files with a Google value    files       0  database       0  MATCH
