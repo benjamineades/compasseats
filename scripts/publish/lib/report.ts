@@ -293,6 +293,7 @@ export function reportMarkdown(r: ReportInputs): string {
         ["Blurbs with status needs_rewrite", e.blurbsNeedsRewrite, "rule Q4"],
         ["Blurbs on a venue with no published listing", e.blurbsOnUnpublishedVenue, "venue not published"],
         ["Old slugs of a venue with no published listing", e.oldSlugsOfUnpublishedVenues, "no page to send them to"],
+        ["Old slugs the redirects table already sends to the same page", e.oldSlugsSameAsRedirect, "one answer, written once (the table row)"],
         ...snap.enrichment.map((x): (string | number)[] => [
           `\`${x.table}\` rows (${fmt(x.on_published)} on published venues)`,
           x.rows,

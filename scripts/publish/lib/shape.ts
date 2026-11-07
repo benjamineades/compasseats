@@ -103,6 +103,8 @@ export interface Shaped {
     blurbsNeedsRewrite: number;
     blurbsOnUnpublishedVenue: number;
     oldSlugsOfUnpublishedVenues: number;
+    /** old slugs the redirects table already sends to the same page: written once */
+    oldSlugsSameAsRedirect: number;
   };
   checks: {
     /** venues whose canonical slug city differs from their city's slug */
@@ -359,11 +361,14 @@ export function shape(snap: Snapshot): Shaped {
   const pagePaths = new Set(canonicalPath.values());
 
   const redirectRows: { from: string; to: string; kind: string }[] = [];
+  const tableTo = new Map<string, string>();
   for (const r of snap.redirects) {
     redirectRows.push({ from: r.from_path, to: r.to_path, kind: "redirect" });
+    tableTo.set(r.from_path, r.to_path);
   }
   let oldSlugsOfUnpublishedVenues = 0;
   let redirectsFromOldSlugs = 0;
+  let oldSlugsSameAsRedirect = 0;
   for (const s of snap.slugs) {
     if (s.is_canonical) continue;
     const to = canonicalPath.get(s.venue_id);
@@ -371,7 +376,15 @@ export function shape(snap: Snapshot): Shaped {
       oldSlugsOfUnpublishedVenues += 1;
       continue;
     }
-    redirectRows.push({ from: `/${s.city_slug}/${s.slug}`, to, kind: "old_slug" });
+    const from = `/${s.city_slug}/${s.slug}`;
+    // An old slug that the redirects table already sends to the same place is
+    // one answer written twice: keep the table row. A different answer stays
+    // in, and the redirect_from_unique gate stops the build.
+    if (tableTo.get(from) === to) {
+      oldSlugsSameAsRedirect += 1;
+      continue;
+    }
+    redirectRows.push({ from, to, kind: "old_slug" });
     redirectsFromOldSlugs += 1;
   }
   redirectRows.sort((a, b) => byKeys([a.from, a.kind, a.to], [b.from, b.kind, b.to]));
@@ -464,6 +477,7 @@ export function shape(snap: Snapshot): Shaped {
       blurbsNeedsRewrite,
       blurbsOnUnpublishedVenue,
       oldSlugsOfUnpublishedVenues,
+      oldSlugsSameAsRedirect,
     },
     checks: {
       pathCityDiffers,

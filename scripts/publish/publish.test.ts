@@ -341,6 +341,30 @@ describe("gates", () => {
     );
   });
 
+  test("an old slug the redirects table already sends to the same page is written once", async () => {
+    const tree = join(tmp("folded"), "tree");
+    await db.query(`insert into redirects (from_path, to_path) values ('/osaka/fujiya-1935', '/osaka/fujiya')`);
+    try {
+      const r = await build(tree, "20260201T000002Z");
+      expect(r.ok).toBe(true);
+      const rows = readJson<{ from: string; kind: string }[]>(join(versionDir(tree, "20260201T000002Z"), "redirects.json"));
+      expect(rows.filter((x) => x.from === "/osaka/fujiya-1935")).toEqual([
+        { from: "/osaka/fujiya-1935", kind: "redirect", to: "/osaka/fujiya" } as never,
+      ]);
+      expect(r.stdout).toContain("| Old slugs the redirects table already sends to the same page | 1 |");
+    } finally {
+      await db.query(`delete from redirects where from_path = '/osaka/fujiya-1935'`);
+    }
+  });
+
+  test("an old address with two different answers", async () => {
+    await failsWith(
+      `insert into redirects (from_path, to_path) values ('/osaka/fujiya-1935', '/paris/le-gabriel')`,
+      "redirect_from_unique",
+      `delete from redirects where from_path = '/osaka/fujiya-1935'`,
+    );
+  });
+
   test("an award from a suspended source never reaches the files (it is left out, not failed)", async () => {
     const tree = join(tmp("suspended"), "tree");
     const r = await build(tree, "20260201T000001Z");

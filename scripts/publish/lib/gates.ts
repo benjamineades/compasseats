@@ -5,8 +5,10 @@ import type { Shaped } from "./shape.ts";
  * The build gates. If a single one fails, no version folder is written.
  *
  * The first eight are the approved design (Nov 6, 1-8: A). The ninth,
- * `redirect_from_unique`, is added because a redirects file with two answers
- * for one old address is not a file a site can serve; it reads 0 on live data.
+ * `redirect_from_unique`, is added because a redirects file with two different
+ * answers for one old address is not a file a site can serve. On the Nov 7
+ * live copy it reads 0 (2 old slugs repeat a redirects-table row with the same
+ * answer; lib/shape.ts writes those once).
  */
 
 export interface Gate {
@@ -196,15 +198,18 @@ export function runGates(input: GateInputs): Gate[] {
     }
   }
 
-  // 9. one answer per old address
+  // 9. one answer per old address (an old slug the redirects table already
+  //    sends to the same page is folded into the table row in lib/shape.ts)
   const dup = shaped.checks.duplicateRedirectFrom;
+  const folded = shaped.excluded.oldSlugsSameAsRedirect;
   gates.push({
     name: "redirect_from_unique",
     pass: dup.length === 0,
     detail:
       dup.length === 0
-        ? `${shaped.counts.redirects} redirects, each from address once`
-        : `${dup.length} from addresses appear more than once: ${sample(dup)}`,
+        ? `${shaped.counts.redirects} redirects, each from address once ` +
+          `(${folded} old slugs already in the redirects table with the same answer, written once)`
+        : `${dup.length} from addresses have 2 different answers: ${sample(dup)}`,
   });
 
   return gates;
