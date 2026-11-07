@@ -53,3 +53,20 @@ Evidence: `docs/top-500-status-2026-11-06/top-500-new-45-status-evidence-2026-11
 - Item 3 (rechecks): Everson Royce Bar after Dec 20 (already listed in the Top 500 handoff).
 - Item 7 (Phase 3 location pass): add Subastor `ve_bf4269c88e`.
 - All other items as in `handoff-michelin-d-dk-vn-done-2026-11-06.md`. Next: Gault & Millau 2027 from Nov 10 (use the opening prompt in that file).
+
+## Suggested opening prompt: Phase 2 publish job (Ben asked for it, Nov 6 20:18 ET)
+Repo facts read Nov 6: plan `docs/CompassEats-Rearchitecture-Plan.html` is v1.30 (Oct 9). No publish code exists yet: `scripts/` holds `ingest/`, `rename/`, `sync-sheet.ts`. Workflows: ingest stage/promote/undo/tests, rename apply/undo/tests.
+```
+Read claude/handoff-top-500-status-done-2026-11-06.md and claude/handoff-michelin-d-dk-vn-done-2026-11-06.md from the project files for the live state and open items, then
+claude/handoff-oad-2026-small-fixes-done-2026-11-05.md for the goals and the publish job definition,
+claude/handoff-phase2-ingest-2026-09-11.md for how the ingest job was built and proven, and
+claude/handoff-chengdu-held-7-cleanup-done-2026-10-04.md for working rules. Use plain /ste replies, with a population on every count.
+If today is Nov 10 or later, tell me first that Gault & Millau France and Monaco 2027 is due, and ask which comes first.
+Do a fresh count read and confirm ledger 376, audit_log 135,045, venues 11,831 (active 11,510, closed 321), awards 29,052,
+slugs 13,775, price 7,759, city_aliases 222, redirects 35, closed published 0 and cities.venues_count sum 11,510. Stop and tell me if any count differs.
+Attach benjamineades/compasseats with push access. Read Phase 2 and section 3 of docs/CompassEats-Rearchitecture-Plan.html (expect v1.30), docs/ingest-job.md, and the ingest and rename scripts and workflows as the model.
+Start open item 8, the Phase 2 publish job. Goal by Nov 29: a job that builds from Postgres to sharded, versioned files, to a preview only, with promote-previous-version rollback. No change to the live site and no database write.
+First give me a short plain-language design: what it reads, what files it makes, where the preview lives, how rollback works, how it compares with the live site data, and what I must do by hand (for example a secret or a merge), with click steps. List the questions the plan does not decide and ask me for choices.
+After my choices: build on a new branch from main, run the tests and a preview build, present the evidence, then open a pull request for me to merge by hand. Keep handoffs on branch oad-2026-read-block. Suggest a handoff break before a new large block.
+If you have trouble fetching sites or connecting to GitHub & Supabase, check the chrome connector.
+```
